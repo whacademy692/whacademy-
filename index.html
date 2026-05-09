@@ -1,0 +1,3451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W.H. Mathematics Academy | Premium Learning</title>
+
+    <!-- =============================================
+         FONTS — Display + Body ka combination
+         Playfair Display: heading ke liye luxury feel
+         Plus Jakarta Sans: body text ke liye modern clarity
+    ============================================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        /* =============================================
+           CSS VARIABLES — Poori website ka color system
+           Ek jagah change karo, sab jagah apply hoga
+        ============================================= */
+        :root {
+            --primary: #3730a3;
+            --primary-mid: #4f46e5;
+            --primary-light: #818cf8;
+            --primary-glow: rgba(79, 70, 229, 0.35);
+            --secondary: #0ea5e9;
+            --accent: #f59e0b;
+            --accent-pink: #ec4899;
+            --success: #10b981;
+
+            /* Light Theme Backgrounds */
+            --bg-base: #f8faff;
+            --bg-card: rgba(255, 255, 255, 0.72);
+            --bg-card-solid: #ffffff;
+            --border-card: rgba(255, 255, 255, 0.85);
+            --border-subtle: rgba(55, 48, 163, 0.08);
+
+            /* Text */
+            --text-dark: #0f172a;
+            --text-body: #334155;
+            --text-muted: #64748b;
+            --text-light: #94a3b8;
+
+            /* Shadows */
+            --shadow-sm: 0 4px 16px rgba(15, 23, 42, 0.04);
+            --shadow-md: 0 10px 35px rgba(15, 23, 42, 0.06);
+            --shadow-lg: 0 20px 60px rgba(15, 23, 42, 0.08);
+            --shadow-primary: 0 15px 40px rgba(79, 70, 229, 0.2);
+
+            /* Fonts */
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+
+            /* Transitions */
+            --ease: cubic-bezier(0.25, 0.8, 0.25, 1);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* =============================================
+           RESET & BASE — Sab elements ki base styling
+        ============================================= */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-base);
+            color: var(--text-body);
+            overflow-x: hidden;
+            cursor: auto;
+        }
+
+        /* =============================================
+           SCROLL PROGRESS BAR — Page ke upar ek line
+           jo scroll karne par barhti jaati hai
+        ============================================= */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-mid), var(--accent-pink), var(--secondary));
+            z-index: 10000;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        /* =============================================
+           AMBIENT ANIMATED BACKGROUND — Light & airy feel
+           Dark nahi, balke soft gradient animation
+        ============================================= */
+        .ambient-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background: linear-gradient(145deg, #eef2ff 0%, #faf5ff 25%, #f0f9ff 50%, #fff7ed 75%, #f8faff 100%);
+            background-size: 400% 400%;
+            animation: ambientShift 30s ease infinite;
+        }
+
+        @keyframes ambientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Blob shapes — depth dene ke liye blurred circles */
+        .blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.45;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .blob-1 {
+            width: 60vw;
+            height: 60vw;
+            top: -20%;
+            left: -20%;
+            background: #c7d2fe;
+            animation: blobFloat1 28s ease-in-out infinite alternate;
+        }
+
+        .blob-2 {
+            width: 50vw;
+            height: 50vw;
+            bottom: -15%;
+            right: -15%;
+            background: #e9d5ff;
+            animation: blobFloat2 22s ease-in-out infinite alternate;
+        }
+
+        .blob-3 {
+            width: 30vw;
+            height: 30vw;
+            top: 40%;
+            left: 30%;
+            background: #bae6fd;
+            animation: blobFloat1 35s ease-in-out infinite alternate-reverse;
+            opacity: 0.25;
+        }
+
+        @keyframes blobFloat1 {
+            from {
+                transform: translate(0px, 0px) scale(1) rotate(0deg);
+            }
+
+            to {
+                transform: translate(80px, 60px) scale(1.12) rotate(15deg);
+            }
+        }
+
+        @keyframes blobFloat2 {
+            from {
+                transform: translate(0px, 0px) scale(1) rotate(0deg);
+            }
+
+            to {
+                transform: translate(-60px, 80px) scale(0.9) rotate(-10deg);
+            }
+        }
+
+        /* Noise texture overlay — premium feel */
+        .noise {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            opacity: 0.03;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-size: 200px 200px;
+        }
+
+        /* =============================================
+           FLOATING MATH PARTICLES — Hero background mein
+           mathematical symbols tairte hain
+        ============================================= */
+        .particles-canvas {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .math-particle {
+            position: absolute;
+            font-family: var(--font-display);
+            color: var(--primary-mid);
+            opacity: 0;
+            font-weight: 700;
+            animation: particleFloat linear infinite;
+            user-select: none;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                opacity: 0;
+                transform: translateY(100px) rotate(0deg);
+            }
+
+            10% {
+                opacity: 0.12;
+            }
+
+            90% {
+                opacity: 0.07;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-120vh) rotate(360deg);
+            }
+        }
+
+        /* =============================================
+           SCROLL REVEAL — Elements scroll par aate hain
+           IntersectionObserver se trigger hota hai
+        ============================================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+        }
+
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+        }
+
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Delay classes */
+        .delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        .delay-4 {
+            transition-delay: 0.4s;
+        }
+
+        /* =============================================
+           TYPOGRAPHY — Headings aur text
+        ============================================= */
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-display);
+            color: var(--text-dark);
+        }
+
+        h4,
+        h5,
+        h6,
+        p,
+        span,
+        a,
+        li {
+            font-family: var(--font-body);
+        }
+
+        p {
+            line-height: 1.75;
+            color: var(--text-body);
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(79, 70, 229, 0.08);
+            color: var(--primary-mid);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 7px 16px;
+            border-radius: 30px;
+            border: 1px solid rgba(79, 70, 229, 0.15);
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            font-size: 2.6rem;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+
+        .section-title span {
+            font-family: var(--font-display);
+            background: linear-gradient(135deg, var(--primary-mid), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 560px;
+            line-height: 1.7;
+        }
+
+        /* Section Layout */
+        section {
+            padding: 110px 5%;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-head {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-head .section-subtitle {
+            margin: 0 auto;
+        }
+
+        /* =============================================
+           BUTTONS — Premium interactive buttons
+        ============================================= */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            font-family: var(--font-body);
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s var(--ease);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.15);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .btn:hover::after {
+            opacity: 1;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-mid) 0%, var(--primary) 100%);
+            color: white;
+            box-shadow: 0 8px 24px var(--primary-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 16px 35px rgba(79, 70, 229, 0.45);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--text-dark);
+            border: 1px solid var(--border-subtle);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-secondary:hover {
+            background: #fff;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(79, 70, 229, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 35px rgba(37, 211, 102, 0.45);
+        }
+
+        /* =============================================
+           NAVIGATION BAR — Fixed top, glassmorphism
+        ============================================= */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 16px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(248, 250, 255, 0.6);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+            z-index: 9000;
+            transition: all 0.4s var(--ease);
+        }
+
+        .navbar.scrolled {
+            padding: 12px 5%;
+            background: rgba(248, 250, 255, 0.88);
+            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+        }
+
+        /* W.H. Academy Logo — SVG embedded */
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-svg-wrap {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-mid), var(--primary));
+            border-radius: 12px;
+            box-shadow: 0 6px 18px var(--primary-glow);
+            flex-shrink: 0;
+            transition: transform 0.3s var(--ease-spring);
+        }
+
+        .nav-logo:hover .logo-svg-wrap {
+            transform: rotate(-6deg) scale(1.08);
+        }
+
+        .logo-text-group {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+            gap: 5px;
+        }
+
+        .logo-text-main {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text-sub {
+            font-size: 0.68rem;
+            font-weight: 600;
+            color: var(--primary-mid);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 8px 14px;
+            text-decoration: none;
+            color: var(--text-body);
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-mid);
+            background: rgba(79, 70, 229, 0.06);
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%) translateY(8px);
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(20px);
+            border-radius: 18px;
+            min-width: 210px;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.1);
+            padding: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.25s var(--ease);
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-menu a {
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-size: 0.88rem;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(79, 70, 229, 0.06);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.4rem;
+            color: var(--text-dark);
+        }
+
+        /* =============================================
+           HERO SECTION — First impression, wow factor
+           Floating particles + animated gradient text
+        ============================================= */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 90px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(79, 70, 229, 0.2);
+            color: var(--primary-mid);
+            padding: 9px 20px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 4px 14px rgba(79, 70, 229, 0.08);
+            margin-bottom: 30px;
+            animation: badgePop 0.8s var(--ease-spring) 0.2s both;
+        }
+
+        .hero-badge .dot {
+            width: 7px;
+            height: 7px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulseDot 2s infinite;
+        }
+
+        @keyframes pulseDot {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+            }
+
+            50% {
+                box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+            }
+        }
+
+        .hero-headline {
+            font-family: var(--font-display);
+            font-size: clamp(2.8rem, 6vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.08;
+            letter-spacing: -2px;
+            color: var(--text-dark);
+            max-width: 920px;
+            margin-bottom: 28px;
+            animation: heroSlideUp 0.9s var(--ease) 0.35s both;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-headline .gradient-word {
+            background: linear-gradient(135deg, var(--primary-mid) 0%, var(--accent-pink) 50%, var(--secondary) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientText 5s linear infinite;
+        }
+
+        @keyframes gradientText {
+            0% {
+                background-position: 0% center;
+            }
+
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        .hero-sub {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            line-height: 1.75;
+            margin-bottom: 45px;
+            animation: heroSlideUp 0.9s var(--ease) 0.5s both;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: heroSlideUp 0.9s var(--ease) 0.65s both;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Hero ke saath stats chips */
+        .hero-stats-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 55px;
+            animation: heroSlideUp 0.9s var(--ease) 0.8s both;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-stat-chip {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            padding: 12px 22px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .chip-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.12), rgba(79, 70, 229, 0.06));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--primary-mid);
+        }
+
+        .chip-text strong {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            font-family: var(--font-display);
+        }
+
+        .chip-text span {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        @keyframes heroSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes badgePop {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* =============================================
+           STATS COUNTER SECTION — Animated numbers
+           Scroll par counter chalte hain
+        ============================================= */
+        .stats-section {
+            padding: 0 5% 90px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .stats-wrapper {
+            background: linear-gradient(135deg, var(--primary-mid) 0%, var(--primary) 100%);
+            border-radius: 32px;
+            padding: 55px 50px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-primary);
+        }
+
+        .stats-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .stats-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .stat-item {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-item+.stat-item {
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
+            padding-left: 30px;
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 900;
+            color: white;
+            line-height: 1;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .stat-plus {
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.75);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* =============================================
+           TUTOR SECTION — Teacher ka profile card
+        ============================================= */
+        .tutor-card {
+            background: #ffffff;
+            backdrop-filter: blur(24px);
+            border: none;
+            border-radius: 35px;
+            padding: 55px;
+            display: grid;
+            grid-template-columns: 1fr 2.8fr;
+            gap: 55px;
+            align-items: center;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tutor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .tutor-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 70px rgba(79, 70, 229, 0.1);
+        }
+
+        /* Avatar wrapper */
+        .tutor-avatar-wrap {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .avatar-rings {
+            position: absolute;
+            width: 210px;
+            height: 210px;
+            border-radius: 50%;
+        }
+
+        .avatar-ring-1 {
+            border: 2px solid rgba(79, 70, 229, 0.15);
+            animation: ringPulse 3s ease-in-out infinite;
+        }
+
+        .avatar-ring-2 {
+            width: 240px;
+            height: 240px;
+            border: 1px solid rgba(79, 70, 229, 0.08);
+            animation: ringPulse 3s ease-in-out infinite 1s;
+        }
+
+        @keyframes ringPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.06);
+                opacity: 0.3;
+            }
+        }
+
+        .tutor-avatar {
+            width: 185px;
+            height: 185px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+            border: 5px solid #ffffff;
+            box-shadow: 0 20px 50px rgba(79, 70, 229, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            z-index: 2;
+            position: relative;
+        }
+
+        .tutor-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .avatar-placeholder {
+            font-size: 5rem;
+            color: var(--primary-light);
+        }
+
+        .avatar-glow-ring {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: var(--primary-glow);
+            border-radius: 50%;
+            filter: blur(30px);
+            z-index: 1;
+            animation: glowPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+
+            0%,
+            100% {
+                opacity: 0.4;
+                transform: scale(0.9);
+            }
+
+            50% {
+                opacity: 0.7;
+                transform: scale(1.1);
+            }
+        }
+
+        /* Tutor info */
+        .tutor-info {
+            position: relative;
+            z-index: 2;
+        }
+
+        .tutor-name {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .tutor-role-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(79, 70, 229, 0.08);
+            color: var(--primary-mid);
+            border: 1px solid rgba(79, 70, 229, 0.15);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 22px;
+        }
+
+        .tutor-bio {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            max-width: 640px;
+        }
+
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .credential-pill {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--text-body);
+            transition: all 0.3s var(--ease);
+        }
+
+        .credential-pill:hover {
+            border-color: var(--primary-light);
+            background: #fff;
+        }
+
+        .credential-pill i {
+            color: var(--primary-mid);
+            font-size: 1rem;
+            width: 16px;
+            text-align: center;
+        }
+
+        .tutor-btns {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        /* =============================================
+           COURSES SECTION — Class cards grid
+        ============================================= */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .course-card {
+            background: var(--bg-card-solid);
+            border: 1px solid var(--border-subtle);
+            border-radius: 28px;
+            padding: 36px 30px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s var(--ease);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-mid), var(--accent-pink));
+            transform: scaleX(0);
+            transition: transform 0.4s var(--ease);
+            transform-origin: left;
+        }
+
+        .course-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 55px rgba(79, 70, 229, 0.1);
+            border-color: rgba(79, 70, 229, 0.15);
+        }
+
+        .course-icon-wrap {
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(79, 70, 229, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: var(--primary-mid);
+            margin-bottom: 24px;
+            transition: all 0.3s var(--ease));
+        }
+
+        .course-card:hover .course-icon-wrap {
+            background: linear-gradient(135deg, var(--primary-mid), var(--primary));
+            color: white;
+            transform: rotate(-8deg) scale(1.1);
+        }
+
+        .course-level {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--primary-mid);
+            margin-bottom: 10px;
+        }
+
+        .course-title {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .course-desc {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            flex: 1;
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+
+        .course-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+        }
+
+        .tag {
+            background: rgba(79, 70, 229, 0.06);
+            color: var(--primary-mid);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(79, 70, 229, 0.1);
+        }
+
+        /* =============================================
+           ANIMATED GRADIENT BORDERS
+           Uses ::before pseudo-element so inner card
+           stays fully white — only border glows
+        ============================================= */
+        @property --grad-angle {
+            syntax: '<angle>';
+            inherits: false;
+            initial-value: 0deg;
+        }
+        @keyframes gradientBorderSpin {
+            to { --grad-angle: 360deg; }
+        }
+
+        /* Wrapper holds the glowing border via ::before */
+        .demo-card-wrap,
+        .tutor-card-wrap,
+        .quiz-card-wrap {
+            position: relative;
+            border-radius: 38px;
+            padding: 3px;
+            background: transparent;
+            isolation: isolate;
+        }
+        .quiz-card-wrap {
+            max-width: 780px;
+            margin: 0 auto;
+            border-radius: 36px;
+        }
+
+        /* The animated gradient lives ONLY in ::before behind the card */
+        .demo-card-wrap::before,
+        .tutor-card-wrap::before,
+        .quiz-card-wrap::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: conic-gradient(
+                from var(--grad-angle),
+                var(--primary-mid) 0%,
+                var(--accent-pink) 25%,
+                var(--secondary) 50%,
+                #a78bfa 75%,
+                var(--primary-mid) 100%
+            );
+            animation: gradientBorderSpin 4s linear infinite;
+            z-index: -1;
+        }
+
+        /* Inner cards — solid white, slightly smaller radius */
+        .demo-card,
+        .tutor-card,
+        .quiz-wrapper {
+            position: relative;
+            z-index: 1;
+            border-radius: 35px !important;
+            background: #ffffff !important;
+        }
+
+        /* =============================================
+        ============================================= */
+        .demo-card {
+            background: #ffffff;
+            backdrop-filter: blur(24px);
+            border: none;
+            border-radius: 35px;
+            padding: 65px 55px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            max-width: 860px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+        }
+
+        .demo-card::before {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            right: -60px;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.1) 0%, transparent 65%);
+            border-radius: 50%;
+        }
+
+        .demo-card::after {
+            content: '';
+            position: absolute;
+            top: -40px;
+            left: -40px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 65%);
+            border-radius: 50%;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .demo-icon-wrap {
+            width: 95px;
+            height: 95px;
+            border-radius: 28px;
+            background: linear-gradient(135deg, var(--primary-mid), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            margin: 0 auto 28px;
+            box-shadow: 0 15px 35px var(--primary-glow);
+            animation: iconBounce 3s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes iconBounce {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* =============================================
+           TESTIMONIALS SECTION — Students ki reviews
+        ============================================= */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card-solid);
+            border: 1px solid var(--border-subtle);
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s var(--ease);
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(79, 70, 229, 0.15);
+        }
+
+        .quote-icon {
+            font-size: 2.2rem;
+            line-height: 1;
+            font-family: serif;
+            color: var(--primary-light);
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .testimonial-text {
+            font-size: 0.92rem;
+            line-height: 1.75;
+            color: var(--text-body);
+            margin-bottom: 22px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-mid), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: white;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .author-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .author-class {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .stars {
+            color: var(--accent);
+            font-size: 0.85rem;
+            margin-top: 3px;
+        }
+
+        /* =============================================
+           QUIZ MODULE — Interactive math quiz
+        ============================================= */
+        .quiz-wrapper {
+            background: #ffffff;
+            border: none;
+            border-radius: 30px;
+            padding: 45px;
+            max-width: 100%;
+            margin: 0;
+            box-shadow: none;
+        }
+
+        .quiz-header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .quiz-progress-text {
+            font-weight: 700;
+            color: var(--primary-mid);
+            font-size: 0.95rem;
+        }
+
+        .quiz-score-badge {
+            background: rgba(79, 70, 229, 0.08);
+            color: var(--primary-mid);
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-weight: 700;
+            font-size: 0.88rem;
+        }
+
+        /* Progress bar */
+        .quiz-progress-bar-wrap {
+            background: rgba(79, 70, 229, 0.08);
+            border-radius: 10px;
+            height: 8px;
+            margin-bottom: 32px;
+            overflow: hidden;
+        }
+
+        .quiz-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-mid), var(--accent-pink));
+            border-radius: 10px;
+            transition: width 0.5s var(--ease);
+        }
+
+        .quiz-q-text {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.5;
+            margin-bottom: 28px;
+            font-family: var(--font-display);
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-btn {
+            background: rgba(248, 250, 255, 0.8);
+            border: 2px solid var(--border-subtle);
+            padding: 15px 20px;
+            border-radius: 16px;
+            text-align: left;
+            font-size: 0.98rem;
+            font-weight: 500;
+            color: var(--text-body);
+            cursor: pointer;
+            transition: all 0.25s var(--ease);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-body);
+        }
+
+        .option-btn .opt-letter {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(79, 70, 229, 0.08);
+            color: var(--primary-mid);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            transition: all 0.25s;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            border-color: var(--primary-light);
+            background: white;
+            transform: translateX(6px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .option-btn:hover:not(:disabled) .opt-letter {
+            background: var(--primary-mid);
+            color: white;
+        }
+
+        .option-btn.correct {
+            background: #f0fdf4;
+            border-color: #22c55e;
+            color: #166534;
+        }
+
+        .option-btn.correct .opt-letter {
+            background: #22c55e;
+            color: white;
+        }
+
+        .option-btn.wrong {
+            background: #fff1f2;
+            border-color: #f43f5e;
+            color: #9f1239;
+        }
+
+        .option-btn.wrong .opt-letter {
+            background: #f43f5e;
+            color: white;
+        }
+
+        .quiz-footer {
+            margin-top: 28px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        /* Quiz result */
+        .quiz-result-view {
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .result-ring {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(79, 70, 229, 0.06));
+            border: 4px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 28px;
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--primary-mid);
+            box-shadow: 0 0 0 8px rgba(79, 70, 229, 0.06);
+            animation: resultPop 0.5s var(--ease-spring) both;
+        }
+
+        @keyframes resultPop {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .result-title {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+
+        .result-msg {
+            color: var(--text-muted);
+            margin-bottom: 28px;
+        }
+
+        /* =============================================
+           NOTES / LIBRARY SECTION — Coming soon box
+        ============================================= */
+        .library-box {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 2px dashed rgba(79, 70, 229, 0.2);
+            border-radius: 32px;
+            padding: 80px 30px;
+            text-align: center;
+            transition: border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .library-box:hover {
+            border-color: rgba(79, 70, 229, 0.4);
+        }
+
+        .library-icon {
+            width: 85px;
+            height: 85px;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            color: var(--primary-light);
+        }
+
+        .coming-soon-badge {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* =============================================
+           PRICING SECTION — 3 tier pricing cards
+        ============================================= */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            align-items: center;
+        }
+
+        .pricing-card {
+            background: var(--bg-card-solid);
+            border: 1px solid var(--border-subtle);
+            border-radius: 32px;
+            padding: 38px 32px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s var(--ease);
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(160deg, var(--primary-mid) 0%, var(--primary) 100%);
+            border-color: var(--primary);
+            transform: scale(1.04);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.04) translateY(-6px);
+        }
+
+        .pricing-card.featured h3,
+        .pricing-card.featured .price-val,
+        .pricing-card.featured .price-period,
+        .pricing-card.featured li,
+        .pricing-card.featured p {
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+
+        .pricing-card.featured li i {
+            color: #6ee7b7 !important;
+        }
+
+        .featured-label {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 5px 18px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+        }
+
+        .pricing-tier-name {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .pricing-card.featured .pricing-tier-name {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .pricing-title {
+            font-size: 1.4rem;
+            margin-bottom: 18px;
+        }
+
+        .price-wrap {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: 8px;
+        }
+
+        .price-currency {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+
+        .price-val {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: var(--text-dark);
+            letter-spacing: -1px;
+            line-height: 1;
+        }
+
+        .price-period {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 22px;
+        }
+
+        .pricing-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            color: var(--text-body);
+        }
+
+        .pricing-features li i {
+            color: var(--success);
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .pricing-divider {
+            height: 1px;
+            background: var(--border-subtle);
+            margin: 20px 0;
+        }
+
+        .pricing-card.featured .pricing-divider {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Resource level/subject buttons */
+        .resource-level-btn {
+            font-size: 0.88rem;
+            padding: 11px 20px;
+            transition: all 0.3s var(--ease);
+        }
+        .resource-level-btn.active {
+            background: linear-gradient(135deg, var(--primary-mid), var(--primary));
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 8px 24px var(--primary-glow);
+        }
+
+        /* Subject list */
+        .subject-list {
+            text-align: left;
+            border: 1px solid var(--border-subtle);
+            border-radius: 18px;
+            overflow: hidden;
+            margin-bottom: 4px;
+        }
+        .subject-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 13px 18px;
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--text-body);
+            border-bottom: 1px solid var(--border-subtle);
+            cursor: pointer;
+            transition: background 0.2s;
+            background: #fff;
+            user-select: none;
+        }
+        .subject-item:last-child { border-bottom: none; }
+        .subject-item:hover { background: rgba(79,70,229,0.04); }
+        .subject-item span { display:flex; align-items:center; gap:10px; }
+        .subject-item span i { color: var(--primary-mid); width:16px; text-align:center; }
+        .sub-lock { color: var(--text-light); font-size:0.85rem; }
+        .sub-chevron { color: var(--primary-mid); font-size:0.8rem; transition: transform 0.25s; }
+        .subject-item.open .sub-chevron { transform: rotate(180deg); }
+        .subject-has-sub:hover { background: rgba(79,70,229,0.06); }
+
+        /* Sub-dropdown */
+        .sub-dropdown {
+            display: none;
+            background: rgba(79,70,229,0.03);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .sub-dropdown.open { display: block; }
+        .sub-dropdown-item {
+            padding: 11px 18px 11px 44px;
+            font-size: 0.87rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-top: 1px solid rgba(79,70,229,0.06);
+        }
+        .sub-dropdown-item i { color: var(--text-light); font-size:0.78rem; }
+
+        /* =============================================
+           COMMENTS / REVIEWS SECTION
+        ============================================= */
+        .comments-section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 110px 5%;
+        }
+
+        /* Wrapper for the dark comments+footer transition */
+        .comments-dark-wrap {
+            background: linear-gradient(180deg, var(--bg-base) 0%, #e8ecf8 100%);
+        }
+
+        .comment-form-wrap {
+            background: var(--bg-card-solid);
+            border: 1px solid var(--border-subtle);
+            border-radius: 28px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .comment-form-wrap h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .comment-form-wrap p {
+            color: var(--text-muted);
+            font-size: 0.93rem;
+            margin-bottom: 24px;
+        }
+
+        .star-select {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .star-select i {
+            font-size: 1.8rem;
+            color: #d1d5db;
+            cursor: pointer;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .star-select i.active {
+            color: var(--accent);
+        }
+
+        .star-select i:hover {
+            transform: scale(1.2);
+        }
+
+        .comment-name-input,
+        .comment-textarea {
+            width: 100%;
+            border: 1px solid var(--border-subtle);
+            border-radius: 14px;
+            padding: 14px 18px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--text-body);
+            background: var(--bg-base);
+            margin-bottom: 14px;
+            transition: border-color 0.2s;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .comment-name-input:focus,
+        .comment-textarea:focus {
+            border-color: var(--primary-light);
+            background: #fff;
+        }
+
+        .comment-textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .comments-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .comment-item {
+            background: var(--bg-card-solid);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 24px 28px;
+            box-shadow: var(--shadow-sm);
+            animation: fadeInUp 0.4s var(--ease) both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity:0; transform:translateY(16px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+
+        .comment-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .comment-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-mid), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: white;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .comment-meta {
+            flex: 1;
+        }
+
+        .comment-author {
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--text-dark);
+        }
+
+        .comment-time {
+            font-size: 0.76rem;
+            color: var(--text-light);
+            margin-top: 2px;
+        }
+
+        .comment-stars {
+            color: var(--accent);
+            font-size: 0.82rem;
+        }
+
+        .comment-body {
+            font-size: 0.92rem;
+            color: var(--text-body);
+            line-height: 1.7;
+        }
+
+        .no-comments {
+            text-align: center;
+            color: var(--text-light);
+            padding: 30px 0;
+            font-size: 0.95rem;
+        }
+
+        /* =============================================
+           FOOTER
+        ============================================= */
+        footer {
+            background: #0a0f1e;
+            padding: 80px 5% 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-mid), var(--accent-pink), var(--secondary), transparent);
+        }
+
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2.2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand-col .logo-text-main {
+            color: white;
+        }
+
+        .footer-brand-col .logo-text-sub {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-tagline {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            line-height: 1.75;
+            max-width: 320px;
+            margin: 18px 0 28px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s var(--ease);
+        }
+
+        .social-icon:hover {
+            background: var(--primary-mid);
+            border-color: var(--primary-mid);
+            color: white;
+            transform: translateY(-4px);
+        }
+
+        .footer-col h5 {
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .footer-col li.contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .footer-col li.contact-item i {
+            color: var(--primary-light);
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.35);
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom-right {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-bottom-right a {
+            color: rgba(255, 255, 255, 0.35);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+        }
+
+        .footer-bottom-right a:hover {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* =============================================
+           RESPONSIVE — Mobile friendly design
+        ============================================= */
+        @media (max-width: 1024px) {
+            .stats-wrapper {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-item+.stat-item:nth-child(3) {
+                border-left: none;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-6px);
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 900px) {
+
+            .courses-grid,
+            .testimonials-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tutor-card-wrap,
+            .tutor-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 36px;
+            }
+            .tutor-card {
+                padding: 40px 28px;
+            }
+
+            .credentials-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto 28px;
+                text-align: left;
+            }
+
+            .tutor-btns {
+                justify-content: center;
+            }
+
+            .tutor-bio {
+                margin: 0 auto 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 80px 5%;
+            }
+
+            .hero-headline {
+                font-size: 2.6rem;
+                letter-spacing: -1px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+            }
+
+            .hero-stats-row {
+                gap: 10px;
+            }
+
+            .hero-stat-chip {
+                padding: 10px 14px;
+            }
+
+            .stats-wrapper {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 38px 24px;
+                gap: 20px;
+            }
+
+            .stat-item+.stat-item {
+                border-left: none;
+                padding-left: 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px 5%;
+                gap: 4px;
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: clip-path 0.4s var(--ease);
+                border-bottom: 1px solid var(--border-subtle);
+            }
+
+            .nav-links.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border: none;
+                background: transparent;
+                padding-left: 18px;
+                opacity: 1;
+                visibility: visible;
+                display: none;
+                transform: none;
+            }
+
+            .dropdown.active .dropdown-menu {
+                display: flex;
+            }
+
+            .dropdown:hover .dropdown-menu {
+                display: none;
+            }
+
+            .demo-card {
+                padding: 45px 28px;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .hero-stats-row {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stat-number {
+                font-size: 2.4rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .quiz-wrapper {
+                padding: 28px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =============================================
+     SCROLL PROGRESS BAR — Top pe thin colored line
+============================================= -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- =============================================
+     ANIMATED BACKGROUND — Soft gradient blobs
+============================================= -->
+    <div class="ambient-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+    <div class="noise"></div>
+
+    <!-- =============================================
+     NAVIGATION BAR — Sticky top navigation
+============================================= -->
+    <nav class="navbar" id="navbar">
+        <!-- Logo — W.H. Academy ka custom SVG logo -->
+        <a href="#home" class="nav-logo">
+            <div class="logo-svg-wrap">
+                <!-- WH Academy Logo SVG — modern geometric style -->
+                <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 5L8 17L13 9L18 17L22 5" stroke="white" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <circle cx="13" cy="20" r="2.5" fill="#fbbf24" />
+                    <path d="M3 21h7M16 21h7" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.5" />
+                </svg>
+            </div>
+            <div class="logo-text-group">
+                <span class="logo-text-main">W.H. Academy</span>
+                <span class="logo-text-sub">Mathematics & Physics</span>
+            </div>
+        </a>
+
+        <!-- Navigation Links -->
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li class="dropdown" id="mobileDropdown">
+                <a href="#classes">Programs <i class="fas fa-chevron-down"
+                        style="font-size:0.7rem; margin-left:4px;"></i></a>
+                <div class="dropdown-menu">
+                    <a href="#classes">Middle School (6th–8th)</a>
+                    <a href="#classes">Matriculation (9th–10th)</a>
+                    <a href="#classes">Higher Secondary (FSc)</a>
+                </div>
+            </li>
+            <li><a href="#demo-classes">Demo Class</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#notes">Resources</a></li>
+            <li><a href="#quizzes">Quiz</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li>
+                <a href="https://wa.me/923295215703" target="_blank" class="btn btn-whatsapp"
+                    style="padding:9px 18px; font-size:0.85rem; cursor:pointer;">
+                    <i class="fab fa-whatsapp"></i> Enroll Now
+                </a>
+            </li>
+        </ul>
+        <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+    </nav>
+
+
+    <!-- =============================================
+     HERO SECTION — Website ka pehla aur sab se aham hissa
+     Floating math particles + animated headline
+============================================= -->
+    <section id="home" class="hero">
+        <!-- Math particles canvas -->
+        <div class="particles-canvas" id="particlesCanvas"></div>
+
+        <div class="hero-badge reveal">
+            <span class="dot"></span>
+            Enrollments Open for 2026
+        </div>
+
+        <h1 class="hero-headline">
+            Master <span class="gradient-word">Mathematics and Other subjects</span><br>
+            with Total Confidence
+        </h1>
+
+        <p class="hero-sub reveal delay-1">
+            Expert online & home tutoring for ambitious students. Build a rock-solid foundation,
+            tackle complex problems, and consistently score at the top.
+        </p>
+
+        <div class="hero-actions reveal delay-2">
+            <a href="#pricing" class="btn btn-primary">Start Learning Today <i class="fas fa-arrow-right"></i></a>
+            <a href="#classes" class="btn btn-secondary">Explore Programs</a>
+            <a href="https://wa.me/923295215703" target="_blank" class="btn btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> WhatsApp Us
+            </a>
+        </div>
+
+    </section>
+
+
+    <!-- =============================================
+     TUTOR PROFILE SECTION — M. Rehan Safdar ka profile
+============================================= -->
+    <section id="tutor">
+        <div class="tutor-card-wrap reveal">
+        <div class="tutor-card">
+            <!-- Avatar left side -->
+            <div class="tutor-avatar-wrap reveal-left">
+                <div class="avatar-rings avatar-ring-2"></div>
+                <div class="avatar-rings avatar-ring-1"></div>
+                <div class="avatar-glow-ring"></div>
+                <div class="tutor-avatar">
+                    <!-- Profile photo: update src when available -->
+                    <img src="Uh3cz.jpg" alt="M. Rehan Safdar"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <span class="avatar-placeholder" style="display:none;"><i class="fas fa-user-graduate"></i></span>
+                </div>
+            </div>
+
+            <!-- Info right side -->
+            <div class="tutor-info reveal-right">
+                <div class="section-label"><i class="fas fa-chalkboard-teacher"></i> Your Instructor</div>
+                <h2 class="tutor-name">M. Rehan Safdar</h2>
+                <div class="tutor-role-badge">
+                    <i class="fas fa-atom"></i> Mathematics & Physics Specialist
+                </div>
+                <p class="tutor-bio">
+                    Dedicated to making complex mathematical concepts feel simple and logical.
+                    With a strong academic background and hands-on teaching experience at
+                    top institutions, my goal is to build both conceptual clarity and lasting
+                    exam confidence in every student.
+                </p>
+                <div class="credentials-grid">
+                    <div class="credential-pill"><i class="fas fa-graduation-cap"></i> BS Mathematics</div>
+                    <div class="credential-pill"><i class="fas fa-school"></i> 1.5 Yrs APS Teaching</div>
+                    <div class="credential-pill"><i class="fas fa-university"></i> University Level Experience</div>
+                    <div class="credential-pill"><i class="fas fa-award"></i> Certified Academic Background</div>
+                </div>
+                <div class="tutor-btns">
+                    <a href="https://wa.me/923295215703" target="_blank" class="btn btn-primary">
+                        Start Learning Now <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#classes" class="btn btn-secondary">View Courses</a>
+                </div>
+            </div>
+        </div><!-- end tutor-card -->
+        </div><!-- end tutor-card-wrap -->
+    </section>
+
+    <section id="classes">
+        <div class="section-head">
+            <div class="section-label reveal"><i class="fas fa-book-open"></i> Academic Programs</div>
+            <h2 class="section-title reveal delay-1">Courses Designed <span>for Every Level</span></h2>
+            <p class="section-subtitle reveal delay-2">Comprehensive curriculum coverage tailored precisely to each
+                student's academic stage.</p>
+        </div>
+
+        <div class="courses-grid">
+            <!-- Course 1: Middle School -->
+            <div class="course-card reveal delay-1">
+                <div class="course-icon-wrap"><i class="fas fa-shapes"></i></div>
+                <div class="course-level">Grades 6–8</div>
+                <h3 class="course-title">Middle School</h3>
+                <p class="course-desc">Establish a strong academic foundation prior to high school by mastering number
+                    systems,
+                    geometry, and core algebraic concepts. Emphasize the development of structured problem-solving
+                    skills, while
+                    following the Cambridge curriculum throughout middle school to ensure conceptual depth and alignment
+                    with
+                    international standards.</p>
+                <div class="course-tags">
+                    <span class="tag">Algebra Basics</span>
+                    <span class="tag">Geometry</span>
+                    <span class="tag">Arithmetic</span>
+                </div>
+                <a href="#pricing" class="btn btn-secondary" style="width:100%;">View Pricing <i
+                        class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Course 2: Matriculation -->
+            <div class="course-card reveal delay-2">
+                <div class="course-icon-wrap"><i class="fas fa-calculator"></i></div>
+                <div class="course-level">Grades 9–10</div>
+                <h3 class="course-title">Matriculation</h3>
+                <p class="course-desc">Master core concepts through intensive past-paper analysis and strategic
+                    techniques designed for top-tier board performance.</p>
+                <div class="course-tags">
+                    <span class="tag">Board Exam Prep</span>
+                    <span class="tag">Past Papers</span>
+                    <span class="tag">Algebra</span>
+                </div>
+                <a href="#pricing" class="btn btn-secondary" style="width:100%;">View Pricing <i
+                        class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Course 3: HSSC / FSc -->
+            <div class="course-card reveal delay-3">
+                <div class="course-icon-wrap"><i class="fas fa-atom"></i></div>
+                <div class="course-level">FSc / HSSC</div>
+                <h3 class="course-title">Higher Secondary</h3>
+                <p class="course-desc">In-depth conceptual study combining advanced Mathematics and Physics for
+                    pre-engineering aspirants seeking top results.</p>
+                <div class="course-tags">
+                    <span class="tag">Calculus</span>
+                    <span class="tag">Physics</span>
+                    <span class="tag">Entry Test</span>
+                </div>
+                <a href="#pricing" class="btn btn-secondary" style="width:100%;">View Pricing <i
+                        class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =============================================
+     DEMO CLASSES SECTION — Free trial class card
+============================================= -->
+    <section id="demo-classes" style="padding-top:20px;">
+        <div class="demo-card-wrap reveal">
+        <div class="demo-card">
+            <div class="demo-icon-wrap"><i class="fas fa-play"></i></div>
+            <div class="section-label" style="justify-content:center; margin-bottom:16px;">
+                <i class="fas fa-gift"></i> Completely Free
+            </div>
+            <h2 class="section-title" style="margin-bottom:16px;">Try a <span>Free Demo Class</span></h2>
+            <p style="max-width:560px; margin:0 auto 36px; color:var(--text-muted); font-size:1.05rem;">
+                Curious about our teaching approach? Enroll for a free trial class to experience
+                our premium, interactive instruction firsthand — no commitment required.
+            </p>
+            <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; position:relative; z-index:2;">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSep5qsf8MiFoVr001aHDw-wVFlVMfW9sfze5oHZJkoCYWpYOA/viewform?usp=header"
+                    target="_blank" class="btn btn-primary">
+                    <i class="fas fa-edit"></i> Register for Free Demo
+                </a>
+                <button class="btn btn-secondary" disabled style="opacity:0.6; cursor:not-allowed;">
+                    <i class="fas fa-video"></i> Sample Lecture — Coming Soon
+                </button>
+            </div>
+        </div><!-- end demo-card -->
+        </div><!-- end demo-card-wrap -->
+    </section>
+
+
+    <!-- TESTIMONIALS SECTION -->
+    <section id="testimonials">
+        <div class="section-head">
+            <div class="section-label reveal"><i class="fas fa-quote-left"></i> Student Reviews</div>
+            <h2 class="section-title reveal delay-1">What Our <span>Students Say</span></h2>
+            <p class="section-subtitle reveal delay-2">Real feedback from students who transformed their academic
+                performance.</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal delay-1">
+                <span class="quote-icon">"</span>
+                <p class="testimonial-text">Sir Rehan ne mere calculus ke concepts itne clearly samjhaye ke main FSc
+                    final mein 95% le aaya. Best decision tha yahan enroll karna!</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AK</div>
+                    <div>
+                        <div class="author-name">Ahmed Khan</div>
+                        <div class="author-class">FSc Pre-Engineering, 2025</div>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card reveal delay-2">
+                <span class="quote-icon">"</span>
+                <p class="testimonial-text">Pehle math se darta tha ab meri favourite subject hai. Sir ka padhane ka
+                    tareeqa bilkul alag aur effective hai. Board mein A1 aaya!</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar" style="background:linear-gradient(135deg, #ec4899, #8b5cf6);">SB</div>
+                    <div>
+                        <div class="author-name">Sara Baig</div>
+                        <div class="author-class">Matriculation, 2025</div>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card reveal delay-3">
+                <span class="quote-icon">"</span>
+                <p class="testimonial-text">Online classes ke bawajood class bahut interactive thi. Har concept pe
+                    practice karvate hain. Highly recommend for board preparation!</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar" style="background:linear-gradient(135deg, #0ea5e9, #10b981);">UF</div>
+                    <div>
+                        <div class="author-name">Usman Farooq</div>
+                        <div class="author-class">9th Grade, 2024</div>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =============================================
+     STUDY RESOURCES — PDF notes section (coming soon)
+============================================= -->
+    <section id="notes">
+        <div class="section-head">
+            <div class="section-label reveal"><i class="fas fa-book"></i> Study Materials</div>
+            <h2 class="section-title reveal delay-1">Premium <span>Study Resources</span></h2>
+            <p class="section-subtitle reveal delay-2">Exclusive digital resources reserved for enrolled students.</p>
+            <p class="reveal delay-3" style="margin-top:10px; font-size:0.88rem; color:var(--primary-mid); font-weight:600;">
+                <i class="fas fa-crown"></i>
+                Detailed notes for every concept — exclusively for <strong>Advanced Elite</strong> students. Other plans receive selective notes.
+            </p>
+        </div>
+
+        <div class="library-box reveal delay-2">
+            <div class="library-icon"><i class="fas fa-file-pdf"></i></div>
+            <div class="coming-soon-badge">Coming Soon</div>
+            <h3 style="font-size:1.45rem; margin-bottom:8px;">Digital Library</h3>
+            <p style="max-width:500px; margin:0 auto 24px; color:var(--text-muted); font-size:0.91rem;">
+                Select your class below to browse available subjects. Notes will be linked here for enrolled students once the library is live.
+            </p>
+
+            <!-- Level buttons inside card -->
+            <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:20px;">
+                <button onclick="selectLevel('ms')" class="btn btn-secondary resource-level-btn" id="lvl-ms">
+                    <i class="fas fa-shapes"></i> Middle School (6–8)
+                </button>
+                <button onclick="selectLevel('matric')" class="btn btn-secondary resource-level-btn" id="lvl-matric">
+                    <i class="fas fa-calculator"></i> Matriculation (9–10)
+                </button>
+                <button onclick="selectLevel('hssc')" class="btn btn-secondary resource-level-btn" id="lvl-hssc">
+                    <i class="fas fa-atom"></i> Higher Secondary (FSc)
+                </button>
+            </div>
+
+            <!-- Subject panel -->
+            <div id="subject-panel" style="display:none; width:100%; max-width:580px; margin:0 auto 20px;">
+
+                <!-- Middle School -->
+                <div id="subs-ms" class="subject-list" style="display:none;">
+                    <div class="subject-item plain" onclick="toggleSub(this)"><span><i class="fas fa-square-root-alt"></i> Mathematics</span><i class="fas fa-lock sub-lock"></i></div>
+                    <div class="subject-item plain" onclick="toggleSub(this)"><span><i class="fas fa-flask"></i> General Science</span><i class="fas fa-lock sub-lock"></i></div>
+                    <div class="subject-item plain" onclick="toggleSub(this)"><span><i class="fas fa-globe"></i> Geography</span><i class="fas fa-lock sub-lock"></i></div>
+                    <div class="subject-item plain" onclick="toggleSub(this)"><span><i class="fas fa-landmark"></i> History</span><i class="fas fa-lock sub-lock"></i></div>
+                    <div class="subject-item plain" onclick="toggleSub(this)"><span><i class="fas fa-desktop"></i> Computer</span><i class="fas fa-lock sub-lock"></i></div>
+                    <div class="subject-item subject-has-sub" onclick="toggleSubDropdown('ms-english', this)"><span><i class="fas fa-language"></i> English</span><i class="fas fa-chevron-down sub-chevron"></i></div>
+                    <div class="sub-dropdown" id="ms-english">
+                        <div class="sub-dropdown-item"><i class="fas fa-lock"></i> English Language</div>
+                        <div class="sub-dropdown-item"><i class="fas fa-lock"></i> English Literature</div>
+                    </div>
+                    <div class="subject-item subject-has-sub" onclick="toggleSubDropdown('ms-urdu', this)"><span><i class="fas fa-feather-alt"></i> Urdu</span><i class="fas fa-chevron-down sub-chevron"></i></div>
+                    <div class="sub-dropdown" id="ms-urdu">
+                        <div class="sub-dropdown-item"><i class="fas fa-lock"></i> Urdu Language</div>
+                        <div class="sub-dropdown-item"><i class="fas fa-lock"></i> Urdu Literature</div>
+                    </div>
+                    <div class="subject-item plain" onclick="toggleSub(this)"><span><i class="fas fa-moon"></i> Islamiyat</span><i class="fas fa-lock sub-lock"></i></div>
+                    <div class="subject-item plain" onclick="toggleSub(this)"><span><i class="fas fa-book-open"></i> Tarjuma-tul-Quran</span><i class="fas fa-lock sub-lock"></i></div>
+                </div>
+
+                <!-- Matriculation -->
+                <div id="subs-matric" class="subject-list" style="display:none;">
+                    <div class="subject-item plain" onclick="toggleSub(this)"><span><i class="fas fa-square-root-alt"></i> Mathematics</span><i class="fas fa-lock sub-lock"></i></div>
+                    <div class="subject-item plain" onclick="toggleSub(this)"><span><i class="fas fa-atom"></i> Physics</span><i class="fas fa-lock sub-lock"></i></div>
+                    <div class="subject-item plain" onclick="toggleSub(this)"><span><i class="fas fa-flask"></i> Chemistry</span><i class="fas fa-lock sub-lock"></i></div>
+                    <div class="subject-item plain" onclick="toggleSub(this)"><span><i class="fas fa-dna"></i> Biology</span><i class="fas fa-lock sub-lock"></i></div>
+                    <div class="subject-item plain" onclick="toggleSub(this)"><span><i class="fas fa-desktop"></i> Computer Science</span><i class="fas fa-lock sub-lock"></i></div>
+                    <div class="subject-item subject-has-sub" onclick="toggleSubDropdown('matric-english', this)"><span><i class="fas fa-language"></i> English</span><i class="fas fa-chevron-down sub-chevron"></i></div>
+                    <div class="sub-dropdown" id="matric-english">
+                        <div class="sub-dropdown-item"><i class="fas fa-lock"></i> English Language</div>
+                        <div class="sub-dropdown-item"><i class="fas fa-lock"></i> English Literature</div>
+                    </div>
+                    <div class="subject-item subject-has-sub" onclick="toggleSubDropdown('matric-urdu', this)"><span><i class="fas fa-feather-alt"></i> Urdu</span><i class="fas fa-chevron-down sub-chevron"></i></div>
+                    <div class="sub-dropdown" id="matric-urdu">
+                        <div class="sub-dropdown-item"><i class="fas fa-lock"></i> Urdu Language</div>
+                        <div class="sub-dropdown-item"><i class="fas fa-lock"></i> Urdu Literature</div>
+                    </div>
+                    <div class="subject-item plain" onclick="toggleSub(this)"><span><i class="fas fa-moon"></i> Islamiyat</span><i class="fas fa-lock sub-lock"></i></div>
+                    <div class="subject-item plain" onclick="toggleSub(this)"><span><i class="fas fa-book-open"></i> Tarjuma-tul-Quran</span><i class="fas fa-lock sub-lock"></i></div>
+                </div>
+
+                <!-- HSSC -->
+                <div id="subs-hssc" class="subject-list" style="display:none;">
+                    <div class="subject-item plain" onclick="toggleSub(this)"><span><i class="fas fa-square-root-alt"></i> Mathematics</span><i class="fas fa-lock sub-lock"></i></div>
+                    <div class="subject-item plain" onclick="toggleSub(this)"><span><i class="fas fa-atom"></i> Physics</span><i class="fas fa-lock sub-lock"></i></div>
+                    <div class="subject-item plain" onclick="toggleSub(this)"><span><i class="fas fa-flask"></i> Chemistry</span><i class="fas fa-lock sub-lock"></i></div>
+                    <div class="subject-item plain" onclick="toggleSub(this)"><span><i class="fas fa-desktop"></i> Computer Science</span><i class="fas fa-lock sub-lock"></i></div>
+                    <div class="subject-item subject-has-sub" onclick="toggleSubDropdown('hssc-english', this)"><span><i class="fas fa-language"></i> English</span><i class="fas fa-chevron-down sub-chevron"></i></div>
+                    <div class="sub-dropdown" id="hssc-english">
+                        <div class="sub-dropdown-item"><i class="fas fa-lock"></i> English Language</div>
+                        <div class="sub-dropdown-item"><i class="fas fa-lock"></i> English Literature</div>
+                    </div>
+                    <div class="subject-item subject-has-sub" onclick="toggleSubDropdown('hssc-urdu', this)"><span><i class="fas fa-feather-alt"></i> Urdu</span><i class="fas fa-chevron-down sub-chevron"></i></div>
+                    <div class="sub-dropdown" id="hssc-urdu">
+                        <div class="sub-dropdown-item"><i class="fas fa-lock"></i> Urdu Language</div>
+                        <div class="sub-dropdown-item"><i class="fas fa-lock"></i> Urdu Literature</div>
+                    </div>
+                    <div class="subject-item plain" onclick="toggleSub(this)"><span><i class="fas fa-moon"></i> Islamiyat</span><i class="fas fa-lock sub-lock"></i></div>
+                </div>
+
+            </div>
+
+            <button class="btn btn-secondary" disabled style="opacity:0.55; cursor:not-allowed;">
+                <i class="fas fa-lock"></i> Available After Enrollment
+            </button>
+        </div>
+    </section>
+
+
+    <!-- =============================================
+     QUIZ SECTION — Interactive math quiz
+     Students apni knowledge test kar sakte hain
+============================================= -->
+    <section id="quizzes">
+        <div class="section-head">
+            <div class="section-label reveal"><i class="fas fa-brain"></i> Self Assessment</div>
+            <h2 class="section-title reveal delay-1">Test Your <span>Math Skills</span></h2>
+            <p class="section-subtitle reveal delay-2">Quick quiz to evaluate your current understanding level.</p>
+        </div>
+
+        <div class="quiz-card-wrap reveal">
+        <div class="quiz-wrapper">
+            <!-- Active quiz view -->
+            <div id="quizActiveView">
+                <div class="quiz-header-bar">
+                    <span class="quiz-progress-text">Question <span id="qCurrent">1</span> of <span
+                            id="qTotal">4</span></span>
+                    <span class="quiz-score-badge">Score: <span id="qScore">0</span></span>
+                </div>
+                <!-- Progress bar -->
+                <div class="quiz-progress-bar-wrap">
+                    <div class="quiz-progress-fill" id="quizProgressFill" style="width:25%"></div>
+                </div>
+                <p class="quiz-q-text" id="quizQuestion">Loading question...</p>
+                <div class="quiz-options" id="quizOptions"></div>
+                <div class="quiz-footer">
+                    <button class="btn btn-primary" id="nextBtn" style="display:none;">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Result view (initially hidden) -->
+            <div id="quizResultView" class="quiz-result-view" style="display:none;">
+                <div class="result-ring" id="finalScore">0/4</div>
+                <h3 class="result-title">Quiz Complete! 🎉</h3>
+                <p class="result-msg" id="resultMsg">Great effort!</p>
+                <button class="btn btn-primary" onclick="startQuiz()">
+                    <i class="fas fa-redo"></i> Try Again
+                </button>
+            </div>
+        </div><!-- end quiz-wrapper -->
+        </div><!-- end quiz-card-wrap -->
+    </section>
+
+    <section id="pricing">
+        <div class="section-head">
+            <div class="section-label reveal"><i class="fas fa-tag"></i> Transparent Pricing</div>
+            <h2 class="section-title reveal delay-1">Monthly <span>Plans</span></h2>
+            <p class="section-subtitle reveal delay-2">Invest in your future. No hidden fees, no surprises. Cancel
+                anytime.</p>
+        </div>
+
+        <div class="pricing-grid">
+            <!-- Tier 1: Standard Mentorship -->
+            <div class="pricing-card reveal delay-1">
+                <div class="pricing-tier-name">Starter</div>
+                <h3 class="pricing-title">Standard Mentorship</h3>
+                <div class="price-wrap">
+                    <span class="price-currency">₨</span>
+                    <span class="price-val">5,000</span>
+                </div>
+                <div class="price-period">per month</div>
+                <p class="pricing-desc">Solid foundation for all levels — Middle School, Matriculation & HSSC (any Pakistan board).</p>
+                <div class="pricing-divider"></div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check-circle"></i> Recorded Lectures</li>
+                    <li><i class="fas fa-check-circle"></i> Lecture Notes</li>
+                    <li><i class="fas fa-check-circle"></i> WhatsApp Q&amp;A Support</li>
+                    <li><i class="fas fa-check-circle"></i> Monthly Test (Once a Month)</li>
+                </ul>
+                <div class="pricing-divider"></div>
+                <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:20px; font-style:italic;">
+                    <i class="fas fa-info-circle" style="color:var(--primary-light);"></i>
+                    Online classes only. Physical classes available in Rawalpindi area — contact us for details.
+                </p>
+                <a href="https://wa.me/923295215703" target="_blank" class="btn btn-secondary" style="width:100%;">Enroll Now</a>
+            </div>
+
+            <!-- Tier 2: Intensive Preparation — Featured -->
+            <div class="pricing-card featured reveal delay-2">
+                <div class="featured-label">⭐ Most Popular</div>
+                <div class="pricing-tier-name">Pro</div>
+                <h3 class="pricing-title">Intensive Preparation</h3>
+                <div class="price-wrap">
+                    <span class="price-currency">₨</span>
+                    <span class="price-val">8,000</span>
+                </div>
+                <div class="price-period">per month</div>
+                <p class="pricing-desc">For all levels — Middle School, Matriculation & HSSC. All Pakistan boards covered.</p>
+                <div class="pricing-divider"></div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check-circle"></i> Weekend Live Sessions</li>
+                    <li><i class="fas fa-check-circle"></i> Premium Digital Notes</li>
+                    <li><i class="fas fa-check-circle"></i> Monthly Mock Tests &amp; Quizzes</li>
+                    <li><i class="fas fa-check-circle"></i> Priority WhatsApp Support</li>
+                    <li><i class="fas fa-check-circle"></i> Past Paper Deep-Dive (End of Session)</li>
+                </ul>
+                <div class="pricing-divider"></div>
+                <p style="font-size:0.78rem; color:rgba(255,255,255,0.7); margin-bottom:20px; font-style:italic;">
+                    <i class="fas fa-info-circle"></i>
+                    Online classes only. Physical classes available in Rawalpindi area — contact us for details.
+                </p>
+                <a href="https://wa.me/923295215703" target="_blank" class="btn btn-primary"
+                    style="width:100%; background:white; color:var(--primary-mid);">Enroll Now</a>
+            </div>
+
+            <!-- Tier 3: Advanced Elite -->
+            <div class="pricing-card reveal delay-3">
+                <div class="pricing-tier-name">Advanced</div>
+                <h3 class="pricing-title">Advanced Elite</h3>
+                <div class="price-wrap">
+                    <span class="price-currency">₨</span>
+                    <span class="price-val">12,000</span>
+                </div>
+                <div class="price-period">per month</div>
+                <p class="pricing-desc">All levels — Middle School, Matriculation & HSSC. Any Pakistan board. Maximum priority.</p>
+                <div class="pricing-divider"></div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check-circle"></i> 5 Extensive Live Classes / Week</li>
+                    <li><i class="fas fa-check-circle"></i> All Standard + Intensive Features</li>
+                    <li><i class="fas fa-check-circle"></i> Entry Test Preparation</li>
+                    <li><i class="fas fa-check-circle"></i> Past Paper Analysis &amp; Live Sessions</li>
+                    <li><i class="fas fa-check-circle"></i> Personal Study Roadmap</li>
+                    <li><i class="fas fa-check-circle"></i> Weekly Mock Tests</li>
+                    <li><i class="fas fa-check-circle"></i> Topic-by-Topic Past Paper Sessions</li>
+                    <li><i class="fas fa-check-circle"></i> Highest Priority Support</li>
+                </ul>
+                <div class="pricing-divider"></div>
+                <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:20px; font-style:italic;">
+                    <i class="fas fa-info-circle" style="color:var(--primary-light);"></i>
+                    Online classes only. Physical classes available in Rawalpindi area — contact us for details.
+                </p>
+                <a href="https://wa.me/923295215703" target="_blank" class="btn btn-secondary" style="width:100%;">Enroll Now</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =============================================
+     DYNAMIC RATING CHIPS — Auto-shown when 10+ reviews
+============================================= -->
+    <div id="heroRatingChipsWrap" style="display:none; padding: 0 5% 20px; max-width:1280px; margin:0 auto;">
+        <div style="text-align:center; margin-bottom:14px;">
+            <span style="font-size:0.85rem; font-weight:600; color:var(--primary-mid); letter-spacing:1px; text-transform:uppercase;">
+                <i class="fas fa-star"></i> Live Student Ratings
+            </span>
+        </div>
+        <div id="heroRatingChipsRow" style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center;"></div>
+    </div>
+
+    <!-- =============================================
+     COMMENTS & RATINGS SECTION
+============================================= -->
+    <section class="comments-section" id="comments">
+        <div class="section-head">
+            <div class="section-label reveal"><i class="fas fa-comments"></i> Community Feedback</div>
+            <h2 class="section-title reveal delay-1">Share Your <span>Experience</span></h2>
+            <p class="section-subtitle reveal delay-2">How was our teaching? How are the resources? What can we improve?
+                Your honest feedback helps us grow.</p>
+        </div>
+
+        <!-- Rating + Comment Form -->
+        <div class="comment-form-wrap reveal delay-1">
+            <h3>Leave a Review</h3>
+            <p>Rate your experience and share your thoughts with other students.</p>
+
+            <!-- Star Rating -->
+            <div class="star-select" id="starSelect">
+                <i class="far fa-star" data-val="1"></i>
+                <i class="far fa-star" data-val="2"></i>
+                <i class="far fa-star" data-val="3"></i>
+                <i class="far fa-star" data-val="4"></i>
+                <i class="far fa-star" data-val="5"></i>
+            </div>
+            <input type="text" class="comment-name-input" id="commentName" placeholder="Your name (optional)" maxlength="60">
+            <textarea class="comment-textarea" id="commentText"
+                placeholder="How was the teaching quality? How are the study resources? Any suggestions for improvement?"
+                maxlength="800"></textarea>
+            <button class="btn btn-primary" onclick="submitComment()" style="min-width:180px;">
+                <i class="fas fa-paper-plane"></i> Submit Review
+            </button>
+            <p id="commentError" style="color:#ef4444; font-size:0.85rem; margin-top:10px; display:none;"></p>
+        </div>
+
+        <!-- Comments List -->
+        <div class="comments-list" id="commentsList">
+            <div class="no-comments" id="noComments">
+                <i class="fas fa-comment-dots" style="font-size:2rem; color:var(--primary-light); display:block; margin-bottom:10px;"></i>
+                Be the first to share your experience!
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =============================================
+     FOOTER — Website ka last section
+     Links, contact info, social icons sab yahan
+============================================= -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <!-- Brand Column -->
+                <div class="footer-brand-col">
+                    <a href="#home" class="nav-logo" style="margin-bottom:18px; display:inline-flex;">
+                        <div class="logo-svg-wrap" style="width:40px; height:40px;">
+                            <svg width="24" height="24" viewBox="0 0 26 26" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 5L8 17L13 9L18 17L22 5" stroke="white" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <circle cx="13" cy="20" r="2.5" fill="#fbbf24" />
+                            </svg>
+                        </div>
+                        <div class="logo-text-group">
+                            <span class="logo-text-main">W.H. Academy</span>
+                            <span class="logo-text-sub">Mathematics & Physics</span>
+                        </div>
+                    </a>
+                    <p class="footer-tagline">A premier tutoring platform dedicated to teaching Mathematics and Physics
+                        with exceptional clarity and modern techniques.</p>
+                    <div class="footer-social">
+                        <a href="https://wa.me/923295215703" target="_blank" class="social-icon"><i
+                                class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-col">
+                    <h5>Platform</h5>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#classes">Academic Programs</a></li>
+                        <li><a href="#demo-classes">Demo Classes</a></li>
+                        <li><a href="#notes">Study Resources</a></li>
+                        <li><a href="#pricing">Pricing Plans</a></li>
+                        <li><a href="#quizzes">Online Quiz</a></li>
+                    </ul>
+                </div>
+
+                <!-- Programs -->
+                <div class="footer-col">
+                    <h5>Programs</h5>
+                    <ul>
+                        <li><a href="#classes">Middle School (6–8)</a></li>
+                        <li><a href="#classes">Matriculation</a></li>
+                        <li><a href="#classes">FSc Pre-Engineering</a></li>
+                        <li><a href="#classes">Entry Test Prep</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="footer-col">
+                    <h5>Contact</h5>
+                    <ul>
+                        <li class="contact-item"><i class="fas fa-phone-alt"></i> +92 329 5215703</li>
+                        <li class="contact-item"><i class="fas fa-envelope"></i> info@whacademy.com</li>
+                        <li class="contact-item"><i class="fas fa-map-marker-alt"></i> Rawalpindi / Islamabad</li>
+                        <li class="contact-item"><i class="fas fa-clock"></i> Mon–Sat, 4 PM – 10 PM</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom Bar -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 W.H. Mathematics Academy | M. Rehan Safdar. All rights reserved.</p>
+                <div class="footer-bottom-right">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- =============================================
+     JAVASCRIPT — Sab interactions yahan hain
+============================================= -->
+    <script>
+        // =============================================
+        // SCROLL PROGRESS BAR — Page scroll progress
+        // =============================================
+        const scrollBar = document.getElementById('scrollProgress');
+        window.addEventListener('scroll', () => {
+            const total = document.documentElement.scrollHeight - window.innerHeight;
+            const percent = (window.scrollY / total) * 100;
+            scrollBar.style.width = percent + '%';
+        });
+
+
+        // =============================================
+        // NAVBAR SCROLL STATE — Scroll par navbar change
+        // =============================================
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 40);
+        });
+
+
+        // =============================================
+        // MOBILE HAMBURGER MENU — Mobile nav toggle
+        // =============================================
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const navIcon = hamburger.querySelector('i');
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('active');
+            navIcon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+        });
+
+        // Mobile dropdown
+        const mobileDropdown = document.getElementById('mobileDropdown');
+        mobileDropdown.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                if (e.target.tagName !== 'A' || e.target.closest('.dropdown-menu')) return;
+                e.preventDefault();
+                mobileDropdown.classList.toggle('active');
+            }
+        });
+
+        // Nav links close on click (mobile)
+        document.querySelectorAll('.nav-links > li > a:not([href="#classes"])').forEach(a => {
+            a.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('active');
+                    navIcon.className = 'fas fa-bars';
+                }
+            });
+        });
+
+
+        // =============================================
+        // FLOATING MATH PARTICLES — Hero mein symbols
+        // JS se dynamically banate hain
+        // =============================================
+        const mathSymbols = ['π', '∑', '∫', '√', 'Δ', '∞', 'θ', 'α', 'β', '²', '³', '=', '+', '×', '÷', 'x²', 'f(x)', 'dy/dx'];
+        const canvas = document.getElementById('particlesCanvas');
+
+        function createParticle() {
+            const el = document.createElement('span');
+            el.className = 'math-particle';
+            el.textContent = mathSymbols[Math.floor(Math.random() * mathSymbols.length)];
+            const size = Math.random() * 22 + 14;
+            el.style.cssText = `
+        left: ${Math.random() * 100}%;
+        font-size: ${size}px;
+        animation-duration: ${Math.random() * 18 + 12}s;
+        animation-delay: ${Math.random() * 8}s;
+        opacity: 0;
+    `;
+            canvas.appendChild(el);
+            // Animation khatam ho to particle remove karo memory ke liye
+            el.addEventListener('animationend', () => el.remove());
+        }
+
+        // 20 particles ek baar mein banao
+        for (let i = 0; i < 20; i++) createParticle();
+        // Har 2 second pe naye banate raho
+        setInterval(createParticle, 2000);
+
+
+        // =============================================
+        // SCROLL REVEAL — Elements scroll par show hon
+        // IntersectionObserver API use karte hain
+        // =============================================
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+
+        // =============================================
+        // ANIMATED COUNTER — Stats section ke numbers
+        // Scroll par ginti chalti hai upar tak
+        // =============================================
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.dataset.counted) {
+                    entry.target.dataset.counted = true;
+                    const target = parseInt(entry.target.dataset.target);
+                    const duration = 1800;
+                    const step = target / (duration / 16);
+                    let current = 0;
+                    const interval = setInterval(() => {
+                        current += step;
+                        if (current >= target) {
+                            entry.target.textContent = target;
+                            clearInterval(interval);
+                        } else {
+                            entry.target.textContent = Math.floor(current);
+                        }
+                    }, 16);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+
+        // =============================================
+        // QUIZ DATA — Questions change karne ke liye
+        // Sirf yahan data update karo, baaki automatic hai
+        // =============================================
+        const QUIZ = [
+            {
+                q: "What is the value of π (Pi) up to two decimal places?",
+                opts: ["3.12", "3.14", "3.16", "3.18"],
+                ans: "3.14"
+            },
+            {
+                q: "If 5x − 10 = 20, what is the value of x?",
+                opts: ["4", "5", "6", "8"],
+                ans: "6"
+            },
+            {
+                q: "Which is equivalent to a² − b²?",
+                opts: ["(a−b)²", "(a+b)(a−b)", "a² + b²", "(a+b)²"],
+                ans: "(a+b)(a−b)"
+            },
+            {
+                q: "What is the derivative of x²?",
+                opts: ["x", "2x", "x³/3", "2"],
+                ans: "2x"
+            }
+        ];
+
+        let qIndex = 0, score = 0, answered = false;
+        const letters = ['A', 'B', 'C', 'D'];
+
+        // Quiz start ya restart
+        function startQuiz() {
+            qIndex = 0; score = 0; answered = false;
+            document.getElementById('quizActiveView').style.display = 'block';
+            document.getElementById('quizResultView').style.display = 'none';
+            document.getElementById('qTotal').textContent = QUIZ.length;
+            loadQuestion();
+        }
+
+        // Sawal load karo
+        function loadQuestion() {
+            answered = false;
+            const nextBtn = document.getElementById('nextBtn');
+            nextBtn.style.display = 'none';
+
+            const q = QUIZ[qIndex];
+            document.getElementById('qCurrent').textContent = qIndex + 1;
+            document.getElementById('qScore').textContent = score;
+            document.getElementById('quizQuestion').textContent = q.q;
+
+            // Progress bar update
+            const pct = ((qIndex) / QUIZ.length) * 100;
+            document.getElementById('quizProgressFill').style.width = pct + '%';
+
+            // Options inject karo
+            const container = document.getElementById('quizOptions');
+            container.innerHTML = '';
+            q.opts.forEach((opt, i) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerHTML = `<span class="opt-letter">${letters[i]}</span> ${opt}`;
+                btn.onclick = () => selectAnswer(btn, opt, q.ans);
+                container.appendChild(btn);
+            });
+        }
+
+        // Jawab select karna
+        function selectAnswer(btn, selected, correct) {
+            if (answered) return;
+            answered = true;
+
+            const allBtns = document.querySelectorAll('.option-btn');
+            allBtns.forEach(b => {
+                b.disabled = true;
+                const txt = b.textContent.trim().slice(2).trim(); // letter ke baad text
+                if (b.textContent.includes(correct)) b.classList.add('correct');
+            });
+
+            if (selected === correct) {
+                score++;
+                btn.classList.add('correct');
+            } else {
+                btn.classList.add('wrong');
+            }
+
+            document.getElementById('qScore').textContent = score;
+            document.getElementById('nextBtn').style.display = 'inline-flex';
+        }
+
+        // Next question ya result
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            qIndex++;
+            if (qIndex < QUIZ.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        });
+
+        // Result dikhao
+        function showResult() {
+            document.getElementById('quizProgressFill').style.width = '100%';
+            document.getElementById('quizActiveView').style.display = 'none';
+            document.getElementById('quizResultView').style.display = 'block';
+            document.getElementById('finalScore').textContent = `${score}/${QUIZ.length}`;
+
+            const pct = (score / QUIZ.length) * 100;
+            const msgs = {
+                100: "🏆 Perfect score! You're a math champion!",
+                75: "🎯 Excellent work! Almost perfect!",
+                50: "👍 Good effort! A bit more practice and you'll ace it.",
+                0: "📚 Keep practicing! Review your notes and try again."
+            };
+            const key = pct === 100 ? 100 : pct >= 75 ? 75 : pct >= 50 ? 50 : 0;
+            document.getElementById('resultMsg').textContent = msgs[key];
+        }
+
+        // Quiz page load pe start karo
+        startQuiz();
+
+
+        // =============================================
+        // RESOURCE SECTION — Level + Subject dropdowns
+        // =============================================
+        function selectLevel(level) {
+            const levels = ['ms', 'matric', 'hssc'];
+            const panel = document.getElementById('subject-panel');
+            const btn = document.getElementById('lvl-' + level);
+            const subDiv = document.getElementById('subs-' + level);
+            const isAlreadyOpen = btn.classList.contains('active');
+
+            // Reset all
+            levels.forEach(l => {
+                document.getElementById('lvl-' + l).classList.remove('active');
+                document.getElementById('subs-' + l).style.display = 'none';
+            });
+            // Close all sub-dropdowns
+            document.querySelectorAll('.sub-dropdown').forEach(d => {
+                d.classList.remove('open');
+                d.style.display = 'none';
+            });
+            document.querySelectorAll('.subject-item').forEach(i => i.classList.remove('open'));
+
+            if (isAlreadyOpen) {
+                panel.style.display = 'none';
+            } else {
+                btn.classList.add('active');
+                subDiv.style.display = 'block';
+                panel.style.display = 'block';
+            }
+        }
+
+        function toggleSub(el) {
+            // Plain subject items just show a coming-soon tooltip effect (no nested sub)
+            el.style.background = 'rgba(245,158,11,0.08)';
+            setTimeout(() => el.style.background = '', 400);
+        }
+
+        function toggleSubDropdown(id, triggerEl) {
+            const dropdown = document.getElementById(id);
+            const isOpen = dropdown.classList.contains('open');
+
+            // Close all sub-dropdowns in same list first
+            const parentList = triggerEl.closest('.subject-list');
+            parentList.querySelectorAll('.sub-dropdown').forEach(d => {
+                d.classList.remove('open');
+                d.style.display = 'none';
+            });
+            parentList.querySelectorAll('.subject-has-sub').forEach(i => i.classList.remove('open'));
+
+            if (!isOpen) {
+                dropdown.classList.add('open');
+                dropdown.style.display = 'block';
+                triggerEl.classList.add('open');
+            }
+        }
+
+
+        // =============================================
+        // COMMENTS & RATINGS — localStorage based
+        // Max 1500 comments stored, oldest auto-deleted
+        // =============================================
+        const STORAGE_KEY = 'wh_academy_comments';
+        const MAX_COMMENTS = 1500;
+        let selectedRating = 0;
+
+        // Star selection logic
+        const stars = document.querySelectorAll('#starSelect i');
+        stars.forEach(star => {
+            star.addEventListener('mouseenter', () => {
+                const val = parseInt(star.dataset.val);
+                stars.forEach((s, i) => {
+                    s.className = i < val ? 'fas fa-star active' : 'far fa-star';
+                });
+            });
+            star.addEventListener('mouseleave', () => {
+                stars.forEach((s, i) => {
+                    s.className = i < selectedRating ? 'fas fa-star active' : 'far fa-star';
+                });
+            });
+            star.addEventListener('click', () => {
+                selectedRating = parseInt(star.dataset.val);
+                stars.forEach((s, i) => {
+                    s.className = i < selectedRating ? 'fas fa-star active' : 'far fa-star';
+                });
+            });
+        });
+
+        // Load and render comments
+        function loadComments() {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            return raw ? JSON.parse(raw) : [];
+        }
+
+        function saveComments(comments) {
+            // Trim to MAX_COMMENTS (keep newest)
+            if (comments.length > MAX_COMMENTS) {
+                comments = comments.slice(comments.length - MAX_COMMENTS);
+            }
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(comments));
+        }
+
+        function renderComments() {
+            const comments = loadComments();
+            const list = document.getElementById('commentsList');
+            const noComments = document.getElementById('noComments');
+
+            // Remove old rendered items (but keep noComments placeholder)
+            const existing = list.querySelectorAll('.comment-item');
+            existing.forEach(el => el.remove());
+
+            if (comments.length === 0) {
+                noComments.style.display = 'block';
+            } else {
+                noComments.style.display = 'none';
+                // Show newest first
+                const reversed = [...comments].reverse();
+                reversed.forEach(c => {
+                    const el = buildCommentEl(c);
+                    list.appendChild(el);
+                });
+            }
+
+            // Check if we should show rating chips on page (10+ comments)
+            updateRatingChips(comments);
+        }
+
+        function buildCommentEl(c) {
+            const div = document.createElement('div');
+            div.className = 'comment-item';
+            const initials = c.name ? c.name.trim().split(' ').map(w => w[0]).join('').toUpperCase().slice(0,2) : '?';
+            const starsHtml = Array.from({length:5}, (_,i) =>
+                `<i class="${i < c.rating ? 'fas' : 'far'} fa-star"></i>`
+            ).join('');
+            const date = new Date(c.ts).toLocaleDateString('en-PK', { year:'numeric', month:'short', day:'numeric' });
+            div.innerHTML = `
+                <div class="comment-header">
+                    <div class="comment-avatar">${initials}</div>
+                    <div class="comment-meta">
+                        <div class="comment-author">${escapeHtml(c.name || 'Anonymous Student')}</div>
+                        <div class="comment-time">${date}</div>
+                    </div>
+                    <div class="comment-stars">${starsHtml}</div>
+                </div>
+                <div class="comment-body">${escapeHtml(c.text)}</div>
+            `;
+            return div;
+        }
+
+        function escapeHtml(str) {
+            return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+        }
+
+        function submitComment() {
+            const nameEl = document.getElementById('commentName');
+            const textEl = document.getElementById('commentText');
+            const errEl  = document.getElementById('commentError');
+
+            const name = nameEl.value.trim();
+            const text = textEl.value.trim();
+
+            if (!text) {
+                errEl.textContent = 'Please write something before submitting.';
+                errEl.style.display = 'block';
+                return;
+            }
+            if (selectedRating === 0) {
+                errEl.textContent = 'Please select a star rating.';
+                errEl.style.display = 'block';
+                return;
+            }
+            errEl.style.display = 'none';
+
+            const comment = { name: name || 'Anonymous Student', text, rating: selectedRating, ts: Date.now() };
+            const comments = loadComments();
+            comments.push(comment);
+            saveComments(comments);
+
+            // Reset form
+            nameEl.value = '';
+            textEl.value = '';
+            selectedRating = 0;
+            stars.forEach(s => s.className = 'far fa-star');
+
+            renderComments();
+        }
+
+        // Update rating chips in the hero area (show only when 10+ reviews)
+        function updateRatingChips(comments) {
+            const wrap = document.getElementById('heroRatingChipsWrap');
+            const row  = document.getElementById('heroRatingChipsRow');
+
+            if (comments.length < 10) {
+                wrap.style.display = 'none';
+                return;
+            }
+
+            // Calculate average
+            const avg = (comments.reduce((s,c) => s + c.rating, 0) / comments.length).toFixed(1);
+            const fiveStars = comments.filter(c => c.rating === 5).length;
+            const total = comments.length;
+
+            wrap.style.display = 'block';
+            row.innerHTML = `
+                <div class="hero-stat-chip">
+                    <div class="chip-icon"><i class="fas fa-star"></i></div>
+                    <div class="chip-text"><strong>${avg}/5</strong><span>Avg. Student Rating</span></div>
+                </div>
+                <div class="hero-stat-chip">
+                    <div class="chip-icon"><i class="fas fa-comments"></i></div>
+                    <div class="chip-text"><strong>${total}</strong><span>Student Reviews</span></div>
+                </div>
+                <div class="hero-stat-chip">
+                    <div class="chip-icon"><i class="fas fa-trophy"></i></div>
+                    <div class="chip-text"><strong>${fiveStars}</strong><span>5-Star Reviews</span></div>
+                </div>
+            `;
+        }
+
+        // Initial render on page load
+        renderComments();
+    </script>
+</body>
+
+</html>
