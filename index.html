@@ -9,7 +9,7 @@
          PRIMARY SEO, Title & Description
          Yahan apni site ka main title & description ha
     ============================================= -->
-    <title>W.H. Academy | Online Math &amp; Science Tutor Pakistan | Class 6-8, Matric, FSc | Rawalpindi</title>
+    <title>W.H. Academy | Online Math &amp; Science Tutor | Class 6–8, Matric, FSc | Rawalpindi, Pakistan</title>
     <meta name="description" content="W.H. Academy, Pakistan's trusted online & home tutoring platform for Class 6, 7, 8, Matric & FSc students. Expert math, science tutoring by M. Rehan Safdar. Chapter-wise quizzes, recorded lectures & WhatsApp support. Enroll now!">
     <meta name="keywords" content="online math tutor Pakistan, online science tutor Pakistan, math tutor Rawalpindi, home tutor Rawalpindi, online academy Pakistan, best math tutor Pakistan, class 6 math tutor, class 7 math tutor, class 8 math tutor, matric math tutor Pakistan, FSc math tutor Pakistan, physics tutor Pakistan, online tuition Pakistan, tutor near me Rawalpindi, best online academy Pakistan, chapter wise quiz math Pakistan, math quiz class 6, math quiz class 7, math quiz class 8, science quiz class 8, online math test Pakistan, algebra tutor Pakistan, geometry tutor Pakistan, free math quiz online Pakistan, online tutoring students Pakistan, best home tutor Rawalpindi, private tutor Rawalpindi, tutor class 6 7 8 Pakistan, mathematics online class Pakistan, science online class Pakistan, online learning Pakistan, WhatsApp tutor Pakistan, recorded lectures math Pakistan, math science academy Pakistan, W.H. Academy, WH Academy, Rehan Safdar tutor, wh academy online, wh academy mathematics, online math class Pakistan 2026, math tutor for matric, FSc part 1 math tutor, FSc part 2 math tutor, FBISE math tutor, Punjab board math tutor, APS math tutor Rawalpindi">
     <meta name="author" content="M. Rehan Safdar, W.H. Academy">
@@ -31,6 +31,17 @@
          Apna GSC verification code yahan paste karo
          (Google Search Console → Settings → Ownership → HTML tag)
     ============================================= -->
+    <!-- =============================================
+         PWA + iOS Meta Tags
+    ============================================= -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="WH Academy">
+    <link rel="manifest" href="manifest.json">
+
     <!-- ⚠️  ACTION REQUIRED: Replace the value below with your Google Search Console verification code -->
     <!-- GSC → Settings → Ownership → HTML Tag → Copy the content="..." value below -->
     <meta name="google-site-verification" content="PASTE_YOUR_GSC_VERIFICATION_CODE_HERE">
@@ -173,6 +184,42 @@
     </script>
 
     <style>
+
+        /* =============================================
+           FOCUS-VISIBLE — WCAG 2.4.7 compliance
+           Replaces outline:none — only shows focus
+           ring on keyboard navigation, not mouse click
+        ============================================= */
+        :focus { outline: none; }
+        :focus-visible {
+            outline: 2px solid #4f46e5;
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+        /* Buttons and links get a more visible ring */
+        a:focus-visible, button:focus-visible, select:focus-visible {
+            outline: 2px solid #4f46e5;
+            outline-offset: 3px;
+            box-shadow: 0 0 0 4px rgba(79,70,229,0.2);
+        }
+
+        /* =============================================
+           SR-ONLY — Visually hidden but readable by
+           Google bots and screen readers. WCAG standard.
+           Position absolute prevents layout shift.
+        ============================================= */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
         /* Skip navigation — screen readers / keyboard users */
         .skip-link {
             position: absolute;
@@ -216,7 +263,7 @@
             --text-dark: #0f172a;
             --text-body: #334155;
             --text-muted: #64748b;
-            --text-light: #94a3b8;
+            --text-light: #64748b; /* contrast improved: #94a3b8 → #64748b (WCAG AA) */
 
             /* Shadows */
             --shadow-sm: 0 4px 16px rgba(15, 23, 42, 0.04);
@@ -1909,7 +1956,7 @@
             color: var(--text-dark);
             padding: 16px 32px 16px 0;
             cursor: pointer;
-            outline: none;
+            outline: none; /* overridden below with focus-visible */
             position: relative;
             z-index: 1;
         }
@@ -2958,6 +3005,11 @@
         }
 
         /* Responsive */
+        /* Blob & particle animations off on mobile — GPU/battery fix */
+        @media (max-width: 768px) {
+            .blob { animation: none !important; opacity: 0.4; }
+            .math-particle { display: none !important; }
+        }
         @media (max-width: 768px) {
             .wh-tcard { flex: 0 0 272px; }
             .wh-feedback-section { padding: 72px 5%; }
@@ -3400,7 +3452,7 @@
      Floating math particles + animated headline
 ============================================= -->
     <main id="main-content">
-    <section id="home" class="hero" aria-labelledby="hero-heading">
+    <section id="home" class="hero" aria-labelledby="hero-heading" aria-label="Hero — W.H. Academy Online Math and Science Tutoring Pakistan">
         <!-- Math particles canvas -->
         <div class="particles-canvas" id="particlesCanvas"></div>
 
@@ -3409,10 +3461,24 @@
             Enrollments Open for 2026
         </div>
 
-        <h1 class="hero-headline" id="hero-heading">
-            Pakistan's Best <span class="gradient-word">Online Math &amp; Science Tutor</span><br>
-            for Class 6–8, Matric &amp; FSc
+        <!-- 
+            SEO LAYER: Hidden H1 — fully readable by Google bots and
+            screen readers. Uses .sr-only (WCAG standard — no layout effect).
+            Keyword-rich, natural language, geo-targeted.
+        -->
+        <h1 class="sr-only" id="hero-heading">
+            W.H. Academy — Best Online &amp; Home Math and Science Tutor in Pakistan for Class 6, 7, 8, Matric, SSC, and FSc. Specialist in Algebra, Geometry, Physics, and Chemistry. Expert Coaching by M. Rehan Safdar with Chapter-wise Quizzes and Recorded Lectures in Rawalpindi, Islamabad, and across Pakistan.
         </h1>
+
+        <!-- 
+            VISUAL LAYER: Styled heading for website visitors.
+            Uses <p> + aria-hidden so screen readers use the H1 above.
+            Marked as aria-labelledby="hero-heading" on the section.
+        -->
+        <p class="hero-headline reveal" aria-hidden="false" role="presentation">
+            Master <span class="gradient-word">Mathematics and Other Subjects</span><br>
+            with Total Confidence
+        </p>
 
         <p class="hero-sub reveal delay-1">
             Expert online & home tutoring for ambitious students. Build a rock-solid foundation,
@@ -4141,7 +4207,8 @@
             <!-- Class Dropdown -->
             <div class="cw-glass-dropdown">
                 <div class="cw-dd-icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
-                <select class="cw-select" id="classSelect" onchange="handleClassChange(this.value)">
+                <label for="classSelect" class="sr-only">Select Class</label>
+                <select class="cw-select" id="classSelect" onchange="handleClassChange(this.value)" aria-label="Select your class">
                     <option value="" disabled selected>Select Your Class</option>
                     <option value="6">Class 6</option>
                     <option value="7">Class 7</option>
@@ -4154,7 +4221,8 @@
             <div class="cw-subject-drop-wrap" id="subjectDropWrap" style="display:none;">
                 <div class="cw-glass-dropdown">
                     <div class="cw-dd-icon"><i class="fas fa-book" aria-hidden="true"></i></div>
-                    <select class="cw-select" id="subjectSelect" onchange="handleSubjectChange(this.value)">
+                    <label for="subjectSelect" class="sr-only">Select Subject</label>
+                    <select class="cw-select" id="subjectSelect" onchange="handleSubjectChange(this.value)" aria-label="Select your subject">
                         <option value="" disabled selected>Select Subject</option>
                         <option value="math">Mathematics</option>
                         <option value="science">General Science</option>
@@ -4867,7 +4935,7 @@
     <section id="autoTestimonialsSection" style="display:none;">
         <div class="section-head">
             <div class="section-label reveal"><i class="fas fa-quote-left" aria-hidden="true"></i> Student Reviews</div>
-            <h2 class="section-title reveal delay-1" id="feedback-heading">What Our <span>Students Say</span></h2>
+            <h2 class="section-title reveal delay-1">Student Reviews</h2>
             <p class="section-subtitle reveal delay-2">Real feedback from students who shared their experience. Submit your own review below.</p>
         </div>
         <div class="testimonials-grid" id="autoTestimonialsGrid"></div>
@@ -4881,7 +4949,7 @@
         <!-- Section Header -->
         <div class="section-head">
             <div class="section-label reveal"><i class="fas fa-star" aria-hidden="true"></i> Student Feedback</div>
-            <h2 class="section-title reveal delay-1">What Our <span>Students Say</span></h2>
+            <h2 class="section-title reveal delay-1" id="feedback-heading">What Our <span>Students Say</span></h2>
             <p class="section-subtitle reveal delay-2">Real reviews from real students. No filters, no edits — just honest experiences.</p>
         </div>
 
@@ -4969,14 +5037,14 @@
                             <span class="logo-text-sub">Mathematics & Physics</span>
                         </div>
                     </a>
-                    <p class="footer-tagline">A premier tutoring platform dedicated to teaching Mathematics and Physics
+                    <p class="footer-tagline" lang="ur">A premier tutoring platform dedicated to teaching Mathematics and Physics
                         with exceptional clarity and modern techniques.</p>
                     <div class="footer-social">
                         <a href="https://wa.me/923295215703" target="_blank" rel="noopener noreferrer" class="social-icon"><i
                                 class="fab fa-whatsapp"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-youtube" aria-hidden="true"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="#" class="social-icon" aria-label="Instagram (coming soon)" aria-disabled="true" tabindex="-1" title="Instagram — Coming Soon"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" class="social-icon" aria-label="YouTube (coming soon)" aria-disabled="true" tabindex="-1" title="YouTube — Coming Soon"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        <a href="#" class="social-icon" aria-label="Facebook (coming soon)" aria-disabled="true" tabindex="-1" title="Facebook — Coming Soon"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
                     </div>
                 </div>
 
@@ -5019,8 +5087,8 @@
             <div class="footer-bottom">
                 <p>&copy; 2026 W.H. Mathematics Academy | M. Rehan Safdar. All rights reserved.</p>
                 <div class="footer-bottom-right">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
+                    <a href="privacy-policy.html" aria-label="View Privacy Policy">Privacy Policy</a>
+                    <a href="terms.html" aria-label="View Terms of Service">Terms of Service</a>
                 </div>
             </div>
         </div>
