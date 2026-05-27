@@ -6126,13 +6126,49 @@
                 _observer.observe(sentinel);
             }
 
+            // ── JSONP Fallback (Google Apps Script CORS workaround) ──
+            function jsonpFetch(url, timeoutMs) {
+                return new Promise(function(resolve, reject) {
+                    var cbName = '__whFbCb_' + Date.now();
+                    var script = document.createElement('script');
+                    var timer  = setTimeout(function() {
+                        cleanup();
+                        reject(new Error('JSONP timeout'));
+                    }, timeoutMs || 12000);
+
+                    function cleanup() {
+                        clearTimeout(timer);
+                        try { delete window[cbName]; } catch(e) { window[cbName] = undefined; }
+                        if (script.parentNode) script.parentNode.removeChild(script);
+                    }
+
+                    window[cbName] = function(data) {
+                        cleanup();
+                        resolve(data);
+                    };
+
+                    script.src = url + (url.indexOf('?') !== -1 ? '&' : '?') + 'callback=' + cbName;
+                    script.onerror = function() {
+                        cleanup();
+                        reject(new Error('JSONP load error'));
+                    };
+                    document.head.appendChild(script);
+                });
+            }
+
             // ── Fetch & Orchestrate ──────────────────────────────
             async function fetchAndRender() {
                 try {
+                    // Primary: regular fetch with CORS + redirect follow
                     const controller = new AbortController();
-                    const timeoutId  = setTimeout(() => controller.abort(), 12000); // 12s timeout
+                    const timeoutId  = setTimeout(() => controller.abort(), 12000);
 
-                    const res  = await fetch(API_URL, { signal: controller.signal });
+                    const res  = await fetch(API_URL, {
+                        signal:   controller.signal,
+                        redirect: 'follow',
+                        mode:     'cors',
+                        headers:  { 'Accept': 'application/json' }
+                    });
                     clearTimeout(timeoutId);
 
                     if (!res.ok) throw new Error('HTTP ' + res.status);
@@ -6141,10 +6177,21 @@
                     renderCards(data.testimonials || []);
                     initLazyList(data.allFeedbacks || data.feedbacks || []);
 
-                } catch (err) {
-                    console.warn('[WH Feedback] Load failed:', err.message || err);
-                    ['whTcardsLoading','whFlistLoading','whTcardsWrap','whFlistWrap'].forEach(hide);
-                    show('whFeedbackError');
+                } catch (fetchErr) {
+                    console.warn('[WH Feedback] Fetch failed, trying JSONP:', fetchErr.message || fetchErr);
+
+                    // Fallback: JSONP (works even when CORS blocks fetch)
+                    try {
+                        const data = await jsonpFetch(API_URL, 12000);
+
+                        renderCards(data.testimonials || []);
+                        initLazyList(data.allFeedbacks || data.feedbacks || []);
+
+                    } catch (jsonpErr) {
+                        console.warn('[WH Feedback] JSONP also failed:', jsonpErr.message || jsonpErr);
+                        ['whTcardsLoading','whFlistLoading','whTcardsWrap','whFlistWrap'].forEach(hide);
+                        show('whFeedbackError');
+                    }
                 }
             }
 
