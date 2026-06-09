@@ -1,0 +1,22 @@
+# ============================================================
+# W.H. Academy — GitHub Pages Custom Headers
+# Yeh file GitHub Pages ko proper HTTP headers serve
+# karne pe force karti hai — Googlebot sitemap fetch
+# karne mein fail nahi hoga
+# File location: repo root mein (_headers naam se)
+# ============================================================
+
+# Sitemap ke liye correct Content-Type headers
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: no-cache, no-store, must-revalidate
+
+# Robots.txt ke liye correct headers  
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: no-cache
+
+# HTML pages ke liye headers
+/*.html
+  Cache-Control: no-cache, must-revalidate
+  X-Content-Type-Options: nosniff
