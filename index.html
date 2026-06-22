@@ -3440,6 +3440,71 @@
             }
         }
 
+
+        /* ── FEEDBACK MODAL ── */
+        #whFeedbackModal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(15,15,35,0.75);
+            backdrop-filter: blur(6px);
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        .wh-modal-box {
+            background: #fff;
+            border-radius: 18px;
+            width: 100%;
+            max-width: 680px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 24px 80px rgba(79,70,229,0.25);
+            overflow: hidden;
+            animation: modalIn 0.3s ease;
+        }
+        @keyframes modalIn {
+            from { transform: translateY(30px); opacity: 0; }
+            to   { transform: translateY(0);    opacity: 1; }
+        }
+        .wh-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 24px;
+            border-bottom: 1px solid rgba(79,70,229,0.10);
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+        }
+        .wh-modal-header h5 {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        .wh-modal-close {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .wh-modal-close:hover { background: rgba(255,255,255,0.35); }
+        .wh-modal-body { flex: 1; overflow-y: auto; }
+        .wh-modal-body iframe { width: 100%; height: 580px; border: none; display: block; }
+        @media (max-width: 600px) {
+            .wh-modal-box { max-height: 95vh; border-radius: 14px; }
+            .wh-modal-body iframe { height: 500px; }
+        }
+
     </style>
 </head>
 
@@ -6501,6 +6566,36 @@
 
         })();
     </script>
+
+    <!-- ── FEEDBACK MODAL ── -->
+    <div id="whFeedbackModal" role="dialog" aria-modal="true" aria-label="Feedback Form"
+         onclick="if(event.target===this)this.style.display='none'">
+        <div class="wh-modal-box">
+            <div class="wh-modal-header">
+                <h5><i class="fas fa-pen-nib" style="margin-right:8px;" aria-hidden="true"></i>Share Your Experience</h5>
+                <button class="wh-modal-close" onclick="document.getElementById('whFeedbackModal').style.display='none'" aria-label="Close form">&#x2715;</button>
+            </div>
+            <div class="wh-modal-body">
+                <iframe
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSeZ8ZELaNf1v5hD9nn_2fmLafMGI0GK9mLK2_Y7C5yBO7gacA/viewform?embedded=true"
+                    title="W.H. Academy Feedback Form"
+                    loading="lazy"
+                    allowfullscreen>
+                    Loading form...
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.getElementById('whFeedbackModal').style.display = 'none';
+            }
+        });
+    </script>
+
 </body>
 
 </html>
