@@ -31,7 +31,8 @@
          SECURITY HEADERS
          Content Security Policy + Referrer Policy
     ============================================= -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://script.google.com https://script.googleusercontent.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https: https://www.google-analytics.com https://stats.g.doubleclick.net; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://docs.google.com https://www.google-analytics.com https://stats.g.doubleclick.net; frame-ancestors 'none';">
+    <!-- SECURITY FIX: Strengthened CSP — added frame-src https://docs.google.com, object-src 'none', base-uri 'self', form-action 'self' https://docs.google.com -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://script.google.com https://script.googleusercontent.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https: https://www.google-analytics.com https://stats.g.doubleclick.net; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://docs.google.com https://www.google-analytics.com https://stats.g.doubleclick.net; frame-src https://docs.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://docs.google.com; frame-ancestors 'none';">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
 
@@ -156,7 +157,10 @@
         rel="stylesheet">
 
     <!-- Icons Library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- SECURITY FIX: Added SRI integrity hash to Font Awesome CDN link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plh7eqjFbCNBz0BmKlF8cO5sNE/JA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- Brands webfont explicit fallback to ensure fab icons (WhatsApp/Instagram/YouTube) render -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/brands.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 
 
     <!-- Local Business Structured Data for Rawalpindi SEO -->
@@ -254,7 +258,7 @@
             --success: #10b981;
 
             /* Light Theme Backgrounds */
-            --bg-base: #f8faff;
+            --bg-base: #f0f4ff;  /* UI FIX: light indigo-blue base - replaces near-white */
             --bg-card: rgba(255, 255, 255, 0.72);
             --bg-card-solid: #ffffff;
             --border-card: rgba(255, 255, 255, 0.85);
@@ -327,7 +331,7 @@
             position: fixed;
             inset: 0;
             z-index: -2;
-            background: linear-gradient(145deg, #eef2ff 0%, #faf5ff 25%, #f0f9ff 50%, #fff7ed 75%, #f8faff 100%);
+            background: linear-gradient(145deg, #e8eeff 0%, #eef2ff 25%, #e6f0ff 50%, #eff3ff 75%, #e8eeff 100%);  /* UI FIX: light blue-indigo ambient bg */
             background-size: 400% 400%;
             animation: ambientShift 30s ease infinite;
         }
@@ -5482,10 +5486,20 @@
         <div class="wh-feedback-cta reveal delay-2">
             <h4><i class="fas fa-pen-nib" style="color:var(--primary-mid);margin-right:8px;" aria-hidden="true"></i>Share Your Experience</h4>
             <p>Studied with us? Your feedback helps future students make better decisions.</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeZ8ZELaNf1v5hD9nn_2fmLafMGI0GK9mLK2_Y7C5yBO7gacA/viewform?usp=header"
-               target="_blank" rel="noopener noreferrer" class="btn-feedback-submit">
-                <i class="fas fa-paper-plane" aria-hidden="true"></i> Submit Your Feedback
-            </a>
+            <!-- FORM FIX: Google Form embedded — user site pe hi rehta hai -->
+            <div style="width:100%;border-radius:12px;overflow:hidden;margin-top:12px;box-shadow:0 4px 24px rgba(79,70,229,0.10);">
+                <iframe
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSeZ8ZELaNf1v5hD9nn_2fmLafMGI0GK9mLK2_Y7C5yBO7gacA/viewform?embedded=true"
+                    width="100%"
+                    height="600"
+                    frameborder="0"
+                    marginheight="0"
+                    marginwidth="0"
+                    title="W.H. Academy Feedback Form"
+                    loading="lazy">
+                    Loading form...
+                </iframe>
+            </div>
         </div>
 
         <!-- ── FEATURED TESTIMONIAL CARDS ── -->
@@ -5920,7 +5934,14 @@
             panel.style.display  = 'none';
             prompt.style.display = 'block';
 
-            subSel.innerHTML = '<option value="" disabled selected>Select Subject</option>';
+            // SECURITY FIX: Replaced innerHTML with safe DOM manipulation (was line 5923)
+            while (subSel.firstChild) subSel.removeChild(subSel.firstChild);
+            const defaultOpt = document.createElement('option');
+            defaultOpt.value = '';
+            defaultOpt.disabled = true;
+            defaultOpt.selected = true;
+            defaultOpt.textContent = 'Select Subject';
+            subSel.appendChild(defaultOpt);
 
             (RES_SUBJECTS[val] || []).forEach(s => {
                 const o = document.createElement('option');
@@ -6094,7 +6115,12 @@
                 if (wh) {
                     const badge = document.createElement('span');
                     badge.className = 'wh-badge';
-                    badge.innerHTML = '<i class="fas fa-shield-alt" aria-hidden="true"></i> ';
+                    // SECURITY FIX: Replaced innerHTML with createElement for icon
+                    const badgeIcon = document.createElement('i');
+                    badgeIcon.className = 'fas fa-shield-alt';
+                    badgeIcon.setAttribute('aria-hidden', 'true');
+                    badge.appendChild(badgeIcon);
+                    badge.appendChild(document.createTextNode(' '));
                     const badgeTxt = document.createTextNode('WH Student');
                     badge.appendChild(badgeTxt);
                     topRow.appendChild(badge);
@@ -6118,7 +6144,12 @@
                 if (subject) {
                     const sub = document.createElement('div');
                     sub.className = 'wh-tcard-subject';
-                    sub.innerHTML = '<i class="fas fa-book-open" aria-hidden="true"></i> ';
+                    // SECURITY FIX: Replaced innerHTML with createElement for icon
+                    const subIcon1 = document.createElement('i');
+                    subIcon1.className = 'fas fa-book-open';
+                    subIcon1.setAttribute('aria-hidden', 'true');
+                    sub.appendChild(subIcon1);
+                    sub.appendChild(document.createTextNode(' '));
                     const subTxt = document.createTextNode(subject);
                     sub.appendChild(subTxt);
                     inner.appendChild(sub);
@@ -6189,7 +6220,12 @@
                 if (wh) {
                     const b = document.createElement('span');
                     b.className = 'wh-flist-wh-badge';
-                    b.innerHTML = '<i class="fas fa-shield-alt" aria-hidden="true"></i> ';
+                    // SECURITY FIX: Replaced innerHTML with createElement for icon
+                    const bIcon = document.createElement('i');
+                    bIcon.className = 'fas fa-shield-alt';
+                    bIcon.setAttribute('aria-hidden', 'true');
+                    b.appendChild(bIcon);
+                    b.appendChild(document.createTextNode(' '));
                     b.appendChild(document.createTextNode('WH Student'));
                     topRow.appendChild(b);
                 }
@@ -6207,14 +6243,24 @@
                 if (subject) {
                     const sub = document.createElement('span');
                     sub.className = 'wh-flist-subject';
-                    sub.innerHTML = '<i class="fas fa-book-open" aria-hidden="true"></i> ';
+                    // SECURITY FIX: Replaced innerHTML with createElement for icon
+                    const subIcon2 = document.createElement('i');
+                    subIcon2.className = 'fas fa-book-open';
+                    subIcon2.setAttribute('aria-hidden', 'true');
+                    sub.appendChild(subIcon2);
+                    sub.appendChild(document.createTextNode(' '));
                     sub.appendChild(document.createTextNode(subject));
                     info.appendChild(sub);
                 }
                 if (date) {
                     const d = document.createElement('span');
                     d.className = 'wh-flist-date';
-                    d.innerHTML = '<i class="far fa-calendar-alt" aria-hidden="true"></i> ';
+                    // SECURITY FIX: Replaced innerHTML with createElement for icon
+                    const dateIcon = document.createElement('i');
+                    dateIcon.className = 'far fa-calendar-alt';
+                    dateIcon.setAttribute('aria-hidden', 'true');
+                    d.appendChild(dateIcon);
+                    d.appendChild(document.createTextNode(' '));
                     d.appendChild(document.createTextNode(date));
                     info.appendChild(d);
                 }
@@ -6241,14 +6287,24 @@
                         // 🔴 Admin badge
                         const adminBadge = document.createElement('span');
                         adminBadge.className = 'wh-reply-badge wh-badge-admin';
-                        adminBadge.innerHTML = '<i class="fas fa-shield-halved" aria-hidden="true"></i> ';
+                        // SECURITY FIX: Replaced innerHTML with createElement for icon
+                        const shieldIcon = document.createElement('i');
+                        shieldIcon.className = 'fas fa-shield-halved';
+                        shieldIcon.setAttribute('aria-hidden', 'true');
+                        adminBadge.appendChild(shieldIcon);
+                        adminBadge.appendChild(document.createTextNode(' '));
                         adminBadge.appendChild(document.createTextNode('Admin'));
                         replyByRow.appendChild(adminBadge);
                     } else {
                         // 🔵 Educator badge with name
                         const eduBadge = document.createElement('span');
                         eduBadge.className = 'wh-reply-badge wh-badge-educator';
-                        eduBadge.innerHTML = '<i class="fas fa-graduation-cap" aria-hidden="true"></i> ';
+                        // SECURITY FIX: Replaced innerHTML with createElement for icon
+                        const graduationIcon = document.createElement('i');
+                        graduationIcon.className = 'fas fa-graduation-cap';
+                        graduationIcon.setAttribute('aria-hidden', 'true');
+                        eduBadge.appendChild(graduationIcon);
+                        eduBadge.appendChild(document.createTextNode(' '));
                         const eduName = document.createTextNode(replyBy);
                         eduBadge.appendChild(eduName);
                         replyByRow.appendChild(eduBadge);
@@ -6256,7 +6312,11 @@
                         // Blue verified ✓ next to name
                         const verifiedIcon = document.createElement('span');
                         verifiedIcon.className = 'wh-verified-icon';
-                        verifiedIcon.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i>';
+                        // SECURITY FIX: Replaced innerHTML with createElement for icon
+                        const checkIcon = document.createElement('i');
+                        checkIcon.className = 'fas fa-check';
+                        checkIcon.setAttribute('aria-hidden', 'true');
+                        verifiedIcon.appendChild(checkIcon);
                         replyByRow.appendChild(verifiedIcon);
 
                         const eduLabel = document.createElement('span');
@@ -6287,7 +6347,8 @@
                 }
                 const scroll = document.getElementById('whTcardScroll');
                 if (!scroll) return;
-                scroll.innerHTML = '';
+                // SECURITY FIX: Replaced innerHTML='' with safe DOM clearing
+                while (scroll.firstChild) scroll.removeChild(scroll.firstChild);
                 const accentGrads = [
                     'linear-gradient(90deg,#4f46e5,#7c3aed)',
                     'linear-gradient(90deg,#0ea5e9,#4f46e5)',
@@ -6368,7 +6429,10 @@
             // ── JSONP Fallback (Google Apps Script CORS workaround) ──
             function jsonpFetch(url, timeoutMs) {
                 return new Promise(function(resolve, reject) {
-                    var cbName = '__whFbCb_' + Date.now();
+                    // SECURITY FIX: Use crypto.getRandomValues instead of predictable Date.now()
+                    var cbName = '__whFbCb_' + (window.crypto && window.crypto.getRandomValues
+                        ? Array.from(window.crypto.getRandomValues(new Uint32Array(2))).map(n => n.toString(36)).join('')
+                        : Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2));
                     var script = document.createElement('script');
                     var timer  = setTimeout(function() {
                         cleanup();
