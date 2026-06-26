@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Class 9 Computer Science Unit 1: Computer Systems | W.H. Academy FBISE</title>
+<meta name="description" content="Free Class 9 Computer Science Unit 1 complete notes, Q&A and quiz: Computer Systems — generations, hardware, Von Neumann architecture, memory, software, and data communication. FBISE Federal Board syllabus. By W.H. Academy Rawalpindi.">
+<meta name="keywords" content="class 9 computer science unit 1 FBISE federal board, computer systems class 9 Pakistan, von neumann architecture class 9, computer generations class 9, OSI model class 9, W.H. Academy computer science notes class 9">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="author" content="M. Rehan Safdar — W.H. Academy">
+<link rel="canonical" href="https://whacademy692.github.io/whacademy-/class-9-computer-science-unit1-computer-systems.html">
+<meta property="og:title" content="Class 9 Computer Science Unit 1: Computer Systems | W.H. Academy">
+<meta property="og:description" content="Free notes and quiz — Class 9 Computer Science Unit 1: Computer Systems. FBISE Federal Board aligned. By W.H. Academy Rawalpindi.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://whacademy692.github.io/whacademy-/class-9-computer-science-unit1-computer-systems.html">
+<meta property="og:site_name" content="W.H. Academy">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Course",
+"name":"Class 9 Computer Science Unit 1 — Computer Systems",
+"description":"Free Class 9 Computer Science Unit 1 notes: Computer Systems — generations, hardware, architecture, memory, software, and data communication. FBISE Federal Board aligned. By W.H. Academy Rawalpindi.",
+"provider":{"@type":"EducationalOrganization","name":"W.H. Academy","url":"https://whacademy692.github.io/whacademy-/"},
+"educationalLevel":"Class 9"}</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"Home","item":"https://whacademy692.github.io/whacademy-/"},
+  {"@type":"ListItem","position":2,"name":"Class 9","item":"https://whacademy692.github.io/whacademy-/"},
+  {"@type":"ListItem","position":3,"name":"Computer Science","item":"https://whacademy692.github.io/whacademy-/"},
+  {"@type":"ListItem","position":4,"name":"Unit 1: Computer Systems","item":"https://whacademy692.github.io/whacademy-/class-9-computer-science-unit1-computer-systems.html"}]}</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@300;400;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ── Reset & Tokens ── */
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#0d9488;--teal-dark:#0f766e;--teal-light:#ccfbf1;
+  --amber:#f59e0b;--amber-light:#fef3c7;
+  --ink:#0c1a1a;--ink-2:#1e3a3a;
+  --slate:#334155;--muted:#64748b;--muted-2:#94a3b8;
+  --bg:#f0fafa;--card:#ffffff;--border:#d1fae5;--border-2:#e2e8f0;
+  --font-display:'Bebas Neue',sans-serif;
+  --font-body:'Lato',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+  --radius:18px;--radius-sm:10px;
+  --shadow:0 4px 28px rgba(13,148,136,.09);
+  --shadow-lg:0 12px 48px rgba(13,148,136,.14);
+}
+body{font-family:var(--font-body);background:var(--bg);color:var(--slate);line-height:1.75;overflow-x:hidden;font-size:15.5px;font-weight:400;letter-spacing:.01em}
+
+/* ── Skip Link ── */
+.skip-link{position:absolute;top:-100px;left:0;background:var(--teal);color:#fff;padding:10px 20px;z-index:9999;border-radius:0 0 8px 0;font-weight:700;transition:top .2s}
+.skip-link:focus{top:0}
+
+/* ── Scroll Progress ── */
+#progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--amber));width:0%;z-index:9999;transition:width .1s linear;border-radius:0 2px 2px 0}
+
+/* ── Nav ── */
+nav.top-nav{background:rgba(255,255,255,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 5%;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(13,148,136,.07)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:.85rem;font-weight:800;color:#fff;letter-spacing:-.5px;box-shadow:0 3px 10px rgba(13,148,136,.3)}
+.nav-brand-text{font-family:var(--font-display);font-size:1.25rem;font-weight:400;color:var(--ink);letter-spacing:2px}
+.nav-back{display:flex;align-items:center;gap:7px;text-decoration:none;color:var(--teal-dark);font-weight:600;font-size:.88rem;padding:8px 18px;border:1.5px solid var(--teal);border-radius:50px;transition:all .2s}
+.nav-back:hover{background:var(--teal);color:#fff;box-shadow:0 4px 14px rgba(13,148,136,.3)}
+
+/* ── Breadcrumb ── */
+.breadcrumb-wrap{max-width:1200px;margin:0 auto;padding:12px 5%;font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.breadcrumb-wrap a{color:var(--teal-dark);text-decoration:none;font-weight:500}
+.breadcrumb-wrap a:hover{text-decoration:underline}
+.bc-sep{color:var(--muted-2)}
+
+/* ── Hero ── */
+.hero{
+  padding:64px 5% 72px;
+  background:linear-gradient(140deg,#062e2e 0%,#0d3d3d 40%,#0d5e5e 75%,#0891b2 100%);
+  position:relative;overflow:hidden
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 80% at 80% 50%,rgba(13,148,136,.18),transparent),
+             radial-gradient(ellipse 40% 40% at 10% 80%,rgba(245,158,11,.08),transparent);
+  pointer-events:none
+}
+.hero-deco{position:absolute;right:4%;top:50%;transform:translateY(-50%);width:280px;height:280px;opacity:.14;pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.18);border-radius:50px;padding:6px 16px;font-size:.76rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:20px;backdrop-filter:blur(6px)}
+.hero h1{font-family:var(--font-display);font-size:clamp(2.8rem,7vw,5.2rem);font-weight:400;color:#fff;line-height:1.05;margin-bottom:8px;letter-spacing:3px;text-transform:uppercase}
+.hero h1 .accent{color:#5eead4}
+.hero-unit{display:inline-block;background:var(--amber);color:#1c1917;font-family:var(--font-mono);font-size:.8rem;font-weight:600;padding:4px 12px;border-radius:50px;margin-bottom:16px;letter-spacing:.3px}
+.hero-sub{color:rgba(255,255,255,.68);font-size:.95rem;margin-bottom:32px;max-width:580px;line-height:1.7}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,var(--amber),#ef4444);color:#fff;font-family:var(--font-body);font-weight:700;font-size:.92rem;padding:13px 28px;border-radius:50px;text-decoration:none;box-shadow:0 6px 22px rgba(245,158,11,.38);transition:transform .2s,box-shadow .2s}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(245,158,11,.45)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;font-family:var(--font-body);font-weight:600;font-size:.88rem;padding:12px 24px;border-radius:50px;text-decoration:none;border:1px solid rgba(255,255,255,.25);transition:all .2s;backdrop-filter:blur(6px)}
+.btn-ghost:hover{background:rgba(255,255,255,.2)}
+
+.hero-stats{display:flex;gap:28px;margin-top:36px;flex-wrap:wrap}
+.hero-stat{display:flex;flex-direction:column}
+.hero-stat strong{font-family:var(--font-display);font-size:2rem;color:#fff;font-weight:400;letter-spacing:2px}
+.hero-stat span{font-size:.76rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.8px;font-weight:600}
+
+/* ── Main ── */
+main{max-width:1200px;margin:0 auto;padding:52px 5%}
+
+/* ── Section Labels ── */
+.sec-eyebrow{display:flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:var(--teal);margin-bottom:6px;font-family:var(--font-body)}
+.sec-title{font-family:var(--font-display);font-size:2.2rem;font-weight:400;color:var(--ink);margin-bottom:6px;letter-spacing:2.5px;text-transform:uppercase;line-height:1.1}
+.sec-title span{color:var(--teal)}
+.sec-sub{color:var(--muted);font-size:.91rem;margin-bottom:32px;line-height:1.65}
+
+/* ── Topics Grid (Learning Outcomes) ── */
+.topics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-bottom:36px}
+.topic-item{display:flex;align-items:flex-start;gap:10px;background:var(--card);border:1px solid var(--border-2);border-radius:10px;padding:12px 16px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.topic-item i{color:var(--teal);flex-shrink:0;margin-top:3px}
+.topic-item span{font-size:.87rem;color:var(--slate);font-weight:500}
+
+/* ── PDF Box ── */
+.pdf-box{background:linear-gradient(135deg,rgba(13,148,136,.07),rgba(8,145,178,.04));border:1px solid rgba(13,148,136,.22);border-radius:var(--radius);padding:22px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:44px}
+.pdf-left{display:flex;align-items:center;gap:16px}
+.pdf-icon{width:48px;height:48px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;flex-shrink:0}
+.pdf-left h3{font-size:.96rem;font-weight:700;color:var(--ink);margin-bottom:3px}
+.pdf-left p{font-size:.8rem;color:var(--muted)}
+.btn-pdf{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;font-weight:700;font-size:.88rem;padding:12px 24px;border-radius:50px;text-decoration:none;box-shadow:0 5px 18px rgba(13,148,136,.32);transition:transform .2s;white-space:nowrap}
+.btn-pdf:hover{transform:translateY(-2px)}
+
+/* ── Info Banner ── */
+.info-banner{background:linear-gradient(135deg,#fef9ec,#fff8e1);border:1px solid #fcd34d;border-radius:12px;padding:14px 20px;display:flex;align-items:flex-start;gap:12px;margin-bottom:44px}
+.info-banner i{color:var(--amber);font-size:1.2rem;margin-top:2px;flex-shrink:0}
+.info-banner p{margin:0;font-size:.86rem;color:#78350f;line-height:1.65}
+
+/* ── Quick Facts Bar ── */
+.fact-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--border-2);border-radius:var(--radius);overflow:hidden;margin-bottom:48px;box-shadow:var(--shadow)}
+.fact-item{background:var(--card);padding:20px;text-align:center}
+.fact-item .val{font-family:var(--font-mono);font-size:1.4rem;font-weight:600;color:var(--teal);display:block;margin-bottom:4px}
+.fact-item .lbl{font-size:.76rem;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;font-weight:600}
+
+/* ── Feature Card grid (Generations / Components / Network Devices) ── */
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-bottom:44px}
+.feature-card{background:var(--card);border:1px solid var(--border-2);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+.feature-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--amber))}
+.feature-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.feat-icon{width:44px;height:44px;background:var(--teal-light);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--teal-dark);font-size:1.2rem;margin-bottom:14px}
+.feat-name{font-family:var(--font-display);font-size:1.3rem;font-weight:400;color:var(--ink);margin-bottom:4px;letter-spacing:2px;text-transform:uppercase}
+.feat-badge{font-family:var(--font-mono);font-size:.74rem;color:var(--teal-dark);background:var(--teal-light);padding:3px 9px;border-radius:50px;display:inline-block;margin-bottom:10px;font-weight:600}
+.feat-desc{font-size:.86rem;color:var(--muted);line-height:1.65}
+.feat-desc strong{color:var(--ink-2)}
+
+/* ── Memory Hierarchy (signature element) ── */
+.mem-hierarchy{background:var(--card);border:1px solid var(--border-2);border-radius:var(--radius);padding:36px 32px;box-shadow:var(--shadow);margin-bottom:20px}
+.mem-tower{display:flex;flex-direction:column;align-items:center;gap:8px}
+.mem-row{display:flex;align-items:center;justify-content:space-between;color:#fff;border-radius:10px;padding:14px 24px;font-family:var(--font-body);box-shadow:0 4px 14px rgba(13,148,136,.18);transition:transform .2s}
+.mem-row:hover{transform:scale(1.015)}
+.mem-row .mem-name{font-family:var(--font-display);font-size:1.15rem;letter-spacing:1.5px;text-transform:uppercase}
+.mem-row .mem-meta{font-family:var(--font-mono);font-size:.74rem;opacity:.9;text-align:right}
+.mem-row.r1{width:38%;background:linear-gradient(135deg,#0f766e,#0d9488)}
+.mem-row.r2{width:56%;background:linear-gradient(135deg,#0d9488,#14b8a6)}
+.mem-row.r3{width:78%;background:linear-gradient(135deg,#14b8a6,#2dd4bf)}
+.mem-row.r4{width:100%;background:linear-gradient(135deg,#2dd4bf,#5eead4);color:#0c1a1a}
+.mem-arrow{display:flex;justify-content:space-between;width:100%;max-width:560px;margin:6px 0 2px;font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-weight:700}
+
+/* ── Memory Units / Derived-style Table ── */
+.derived-table{width:100%;border-collapse:collapse;margin-bottom:44px;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.derived-table thead tr{background:linear-gradient(135deg,var(--teal),var(--teal-dark))}
+.derived-table th{padding:13px 18px;text-align:left;font-size:.82rem;font-weight:700;color:#fff;letter-spacing:.3px}
+.derived-table td{padding:11px 18px;font-size:.88rem;border-bottom:1px solid var(--border-2)}
+.derived-table tr:nth-child(even) td{background:#f0fafa}
+.derived-table td:first-child{font-weight:700;color:var(--ink-2)}
+.derived-table td .mono{font-family:var(--font-mono);font-size:.82rem;color:var(--teal-dark);font-weight:600}
+
+/* ── Topology / small-feature grid ── */
+.mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:44px}
+.mini-card{background:var(--card);border:1px solid var(--border-2);border-radius:12px;padding:16px 18px;display:flex;align-items:flex-start;gap:14px;box-shadow:0 2px 8px rgba(0,0,0,.04);transition:border-color .2s}
+.mini-card:hover{border-color:var(--teal)}
+.mini-card i{font-size:1.3rem;color:var(--teal);margin-top:2px;flex-shrink:0}
+.mini-card .name{font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:3px}
+.mini-card .desc{font-size:.78rem;color:var(--muted);line-height:1.5}
+
+/* ── Q&A ── */
+.qa-section{margin-bottom:48px}
+.qa-part-label{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:12px;border-bottom:2px solid var(--border)}
+.qa-part-num{font-family:var(--font-mono);font-size:.72rem;font-weight:600;color:var(--teal);background:var(--teal-light);border-radius:6px;padding:3px 9px;letter-spacing:.5px}
+.qa-part-title{font-family:var(--font-display);font-size:1.7rem;font-weight:400;color:var(--ink);letter-spacing:2px;text-transform:uppercase}
+
+.qa-topic-block{margin-bottom:32px}
+.qa-topic-title{font-family:var(--font-display);font-size:1.3rem;font-weight:400;color:var(--ink-2);margin-bottom:14px;padding:11px 18px;background:linear-gradient(135deg,rgba(13,148,136,.07),rgba(13,148,136,.02));border-left:4px solid var(--teal);border-radius:0 10px 10px 0;display:flex;align-items:center;gap:10px;letter-spacing:2px;text-transform:uppercase}
+
+.qa-item{background:var(--card);border:1px solid var(--border-2);border-radius:14px;margin-bottom:10px;overflow:hidden;transition:box-shadow .2s,border-color .2s}
+.qa-item:hover{box-shadow:0 4px 18px rgba(13,148,136,.1);border-color:rgba(13,148,136,.25)}
+.qa-item summary{font-weight:700;font-size:.95rem;color:var(--ink);cursor:pointer;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:16px 20px;list-style:none;user-select:none;letter-spacing:.01em;font-family:var(--font-body)}
+.qa-item summary::-webkit-details-marker{display:none}
+.qa-toggle{width:28px;height:28px;border-radius:50%;background:rgba(13,148,136,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal);font-size:.72rem;transition:all .25s;margin-top:1px}
+.qa-item[open] .qa-toggle{background:var(--teal);color:#fff;transform:rotate(180deg)}
+.qa-phrasings{padding:4px 20px 8px;display:flex;flex-direction:column;gap:3px;border-top:1px dashed var(--border-2)}
+.qa-phrasing{font-size:.78rem;color:var(--muted);font-style:italic;padding-top:4px}
+.qa-answer{padding:14px 20px 18px;font-size:.92rem;color:var(--slate);line-height:1.82;border-top:1px solid var(--border-2)}
+.qa-answer strong{color:var(--ink-2)}
+.qa-answer .note{background:#f0fdf4;border-left:3px solid var(--teal);padding:9px 14px;border-radius:0 8px 8px 0;font-size:.84rem;color:#065f46;margin-top:10px;display:flex;gap:8px;align-items:flex-start}
+.qa-answer .formula{background:#f0fafa;border:1px solid rgba(13,148,136,.2);padding:10px 18px;border-radius:8px;font-family:var(--font-mono);font-size:.91rem;margin:10px 0;color:var(--teal-dark);font-weight:600;text-align:center}
+.qa-answer .warning{background:#fff7ed;border-left:3px solid var(--amber);padding:9px 14px;border-radius:0 8px 8px 0;font-size:.84rem;color:#92400e;margin-top:10px}
+
+/* ── Vocab Table ── */
+.vocab-table{width:100%;border-collapse:collapse;margin-bottom:32px;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.vocab-table thead tr{background:linear-gradient(135deg,var(--teal),var(--teal-dark))}
+.vocab-table th{padding:12px 18px;text-align:left;font-size:.83rem;font-weight:700;color:#fff;letter-spacing:.3px}
+.vocab-table td{padding:11px 18px;font-size:.87rem;border-bottom:1px solid var(--border-2)}
+.vocab-table tr:nth-child(even) td{background:#f0fafa}
+.vocab-table td:first-child{font-weight:700;color:var(--ink-2);white-space:nowrap}
+
+/* ── CTA Quiz Box ── */
+.quiz-cta{background:linear-gradient(140deg,#042f2e,#134e4a,#0c4a6e);border-radius:var(--radius);padding:40px;text-align:center;margin-bottom:44px;position:relative;overflow:hidden}
+.quiz-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 50% 0%,rgba(94,234,212,.12),transparent);pointer-events:none}
+.quiz-cta h2{font-family:var(--font-display);color:#fff;font-size:2.2rem;margin-bottom:10px;position:relative;letter-spacing:3px;text-transform:uppercase;font-weight:400}
+.quiz-cta p{color:rgba(255,255,255,.65);margin-bottom:26px;font-size:.92rem;position:relative}
+
+/* ── Enroll Box ── */
+.enroll-box{background:linear-gradient(140deg,#042f2e,#0f172a);border-radius:var(--radius);padding:40px;text-align:center;margin-bottom:44px}
+.enroll-box h2{font-family:var(--font-display);font-size:2.1rem;color:#fff;font-weight:400;margin-bottom:10px;letter-spacing:2.5px;text-transform:uppercase}
+.enroll-box p{color:rgba(255,255,255,.65);margin-bottom:22px;font-size:.92rem;max-width:520px;margin-left:auto;margin-right:auto}
+.enroll-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-enroll{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;font-weight:700;font-size:.9rem;padding:12px 26px;border-radius:50px;text-decoration:none;box-shadow:0 5px 18px rgba(13,148,136,.35);transition:transform .2s}
+.btn-enroll:hover{transform:translateY(-2px)}
+.btn-wa{display:inline-flex;align-items:center;gap:8px;background:#25d366;color:#fff;font-weight:700;font-size:.9rem;padding:12px 26px;border-radius:50px;text-decoration:none;box-shadow:0 5px 18px rgba(37,211,102,.3);transition:transform .2s}
+.btn-wa:hover{transform:translateY(-2px)}
+
+/* ── Back Bar ── */
+.back-bar{padding:28px 0 0;border-top:1px solid var(--border-2);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.btn-back{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;font-weight:700;font-size:.88rem;padding:11px 22px;border-radius:50px;text-decoration:none;transition:opacity .2s}
+.btn-back:hover{opacity:.88}
+.btn-quiz-sm{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--teal);color:var(--teal-dark);font-weight:600;font-size:.88rem;padding:10px 22px;border-radius:50px;text-decoration:none;transition:all .2s}
+.btn-quiz-sm:hover{background:var(--teal);color:#fff}
+
+/* ── Footer ── */
+footer{background:#042f2e;padding:28px 5%;text-align:center}
+footer p{color:#4b7272;font-size:.8rem;line-height:1.7}
+footer a{color:#5eead4;text-decoration:none}
+
+/* ── Responsive ── */
+@media(max-width:640px){
+  .pdf-box{flex-direction:column;text-align:center}
+  .pdf-left{flex-direction:column;align-items:center;text-align:center}
+  .back-bar{flex-direction:column;align-items:flex-start}
+  .hero h1{font-size:1.6rem}
+  .hero-deco{display:none}
+  .hero-stats{gap:18px}
+  .mem-row{padding:11px 16px}
+  .mem-row.r1,.mem-row.r2,.mem-row.r3,.mem-row.r4{width:100%}
+}
+
+/* ── Reduced motion ── */
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div id="progress-bar" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- NAV -->
+<nav class="top-nav" aria-label="Page navigation">
+  <div class="nav-inner">
+    <a href="https://whacademy692.github.io/whacademy-/" class="nav-brand" aria-label="W.H. Academy Homepage">
+      <div class="nav-logo">WH</div>
+      <span class="nav-brand-text">W.H. Academy</span>
+    </a>
+    <a href="https://whacademy692.github.io/whacademy-/" class="nav-back" aria-label="Back to homepage">
+      <i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Home
+    </a>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<nav aria-label="Breadcrumb">
+  <div class="breadcrumb-wrap">
+    <a href="https://whacademy692.github.io/whacademy-/">Home</a><span class="bc-sep" aria-hidden="true">›</span>
+    <a href="https://whacademy692.github.io/whacademy-/#notes">Class 9</a><span class="bc-sep" aria-hidden="true">›</span>
+    <a href="https://whacademy692.github.io/whacademy-/#notes">Computer Science</a><span class="bc-sep" aria-hidden="true">›</span>
+    <span aria-current="page">Unit 1: Computer Systems</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" role="banner">
+  <!-- decorative SVG circuit board -->
+  <svg class="hero-deco" viewBox="0 0 280 280" fill="none" aria-hidden="true">
+    <rect x="110" y="110" width="60" height="60" rx="8" stroke="white" stroke-width="1.5"/>
+    <circle cx="140" cy="140" r="10" fill="white" opacity=".9"/>
+    <path d="M140 110V60M140 170V220M110 140H60M170 140H220" stroke="white" stroke-width="1.5"/>
+    <path d="M60 60H60.01M220 60H220.01M60 220H60.01M220 220H220.01" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="60" cy="60" r="5" fill="white"/>
+    <circle cx="220" cy="60" r="5" fill="white"/>
+    <circle cx="60" cy="220" r="5" fill="white"/>
+    <circle cx="220" cy="220" r="5" fill="white"/>
+    <path d="M60 60V100M220 60V100M60 220V180M220 220V180" stroke="white" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <path d="M60 100H100M220 100H180M60 180H100M220 180H180" stroke="white" stroke-width="1.5" stroke-dasharray="3 3"/>
+  </svg>
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><i class="fas fa-microchip" aria-hidden="true"></i> Class 9 · Computer Science · Federal Board (FBISE)</div>
+    <span class="hero-unit">UNIT 1</span>
+    <h1><span class="accent">Computer</span><br>Systems</h1>
+    <p class="hero-sub">Complete notes, Q&amp;A with alternate phrasings, computer generations, Von Neumann architecture, memory, software, programming languages and data communication — all aligned with <strong style="color:rgba(255,255,255,.85)">FBISE Federal Board</strong> syllabus. By W.H. Academy Rawalpindi.</p>
+    <div class="hero-actions">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSerVN_YwCVoa3h-S_ilFpLNK9ZKAbmunGdPCWWGmp8sKqThfg/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="btn-primary" aria-label="Start free quiz for Computer Systems">
+        <i class="fas fa-bolt" aria-hidden="true"></i> Start Free Quiz
+      </a>
+      <a href="https://drive.google.com/file/d/1EgGaWlS4uQE27KDl5IUHmWjrm2vd7-fj/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-ghost" aria-label="Download PDF notes">
+        <i class="fas fa-file-pdf" aria-hidden="true"></i> Download PDF
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>19</strong><span>Sections</span></div>
+      <div class="hero-stat"><strong>5</strong><span>Generations</span></div>
+      <div class="hero-stat"><strong>253+</strong><span>Q&amp;A Pairs</span></div>
+      <div class="hero-stat"><strong>Free</strong><span>No Login</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main id="main-content">
+
+  <!-- ── What You Will Learn ── -->
+  <section style="margin-bottom:44px">
+    <div class="sec-eyebrow"><i class="fas fa-list-check" aria-hidden="true"></i> Learning Outcomes</div>
+    <h2 class="sec-title">What You Will <span>Learn</span></h2>
+    <p class="sec-sub">Student Learning Outcomes (SLOs) as defined by FBISE for Unit 1.</p>
+    <div class="topics-grid">
+      <div class="topic-item"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Describe the five generations of computers and the technology behind each</span></div>
+      <div class="topic-item"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Differentiate between natural and artificial systems with examples</span></div>
+      <div class="topic-item"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Identify the core hardware components: input, output, system unit and storage devices</span></div>
+      <div class="topic-item"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Explain the Von Neumann architecture: CPU, ALU, control unit, registers and buses</span></div>
+      <div class="topic-item"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Understand data transmission and the memory hierarchy inside a computer</span></div>
+      <div class="topic-item"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Differentiate volatile and non-volatile, and main and secondary memory</span></div>
+      <div class="topic-item"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Distinguish system software, application software and programming languages</span></div>
+      <div class="topic-item"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Identify the components, modes and devices used in data communication</span></div>
+      <div class="topic-item"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Compare network types, topologies, and switching techniques</span></div>
+      <div class="topic-item"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Explain the OSI model, common protocols, and how the Internet works</span></div>
+    </div>
+
+    <!-- PDF Box -->
+    <div class="pdf-box">
+      <div class="pdf-left">
+        <div class="pdf-icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></div>
+        <div>
+          <h3>Computer Science Unit 1 — Complete Notes</h3>
+          <p>Full chapter question bank with 253+ Q&amp;A pairs and complete exercise solutions</p>
+        </div>
+      </div>
+      <a href="https://drive.google.com/file/d/1EgGaWlS4uQE27KDl5IUHmWjrm2vd7-fj/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-pdf" aria-label="Download Computer Science Unit 1 PDF notes">
+        <i class="fas fa-download" aria-hidden="true"></i> Download PDF
+      </a>
+    </div>
+
+    <div class="info-banner">
+      <i class="fas fa-lightbulb" aria-hidden="true"></i>
+      <p><strong>Please note:</strong> This page is a structured preview of Unit 1. The complete notes with all detailed explanations, diagrams, and full exercise solutions (MCQs, SRQs &amp; ERQs) are available in the PDF. Download the PDF for comprehensive study material.</p>
+    </div>
+  </section>
+
+  <!-- ── Quick Fact Bar ── -->
+  <div class="fact-bar" role="region" aria-label="Unit 1 key facts">
+    <div class="fact-item"><span class="val">5</span><span class="lbl">Computer Generations</span></div>
+    <div class="fact-item"><span class="val">8 bits</span><span class="lbl">1 Byte</span></div>
+    <div class="fact-item"><span class="val">7</span><span class="lbl">OSI Model Layers</span></div>
+    <div class="fact-item"><span class="val">1971</span><span class="lbl">First Microprocessor</span></div>
+    <div class="fact-item"><span class="val">2–10</span><span class="lbl">PCs in a P2P Network</span></div>
+    <div class="fact-item"><span class="val">5–50km</span><span class="lbl">MAN Coverage</span></div>
+  </div>
+
+  <!-- ── Computer Generations ── -->
+  <section style="margin-bottom:48px">
+    <div class="sec-eyebrow"><i class="fas fa-clock-rotate-left" aria-hidden="true"></i> History of Computing</div>
+    <h2 class="sec-title">Five <span>Computer Generations</span></h2>
+    <p class="sec-sub">Each generation is defined by a major technological leap in how computers are built.</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feat-icon"><i class="fas fa-lightbulb" aria-hidden="true"></i></div>
+        <div class="feat-name">First Gen</div>
+        <div class="feat-badge">1940 – 1956 · Vacuum Tubes</div>
+        <p class="feat-desc">Slow, unreliable, huge and power-hungry. Programmed in machine language. Examples: <strong>ENIAC, UNIVAC I</strong>.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon"><i class="fas fa-bolt" aria-hidden="true"></i></div>
+        <div class="feat-name">Second Gen</div>
+        <div class="feat-badge">1956 – 1963 · Transistors</div>
+        <p class="feat-desc">Smaller, faster, more reliable. Languages like <strong>FORTRAN, COBOL</strong>. Examples: UNIVAC II, IBM 7030.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon"><i class="fas fa-microchip" aria-hidden="true"></i></div>
+        <div class="feat-name">Third Gen</div>
+        <div class="feat-badge">1963 – 1971 · Integrated Circuits</div>
+        <p class="feat-desc">Multiple transistors on one chip. Introduced keyboards &amp; monitors. Example: <strong>IBM System/360</strong>.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon"><i class="fas fa-laptop" aria-hidden="true"></i></div>
+        <div class="feat-name">Fourth Gen</div>
+        <div class="feat-badge">1971 – Present · Microprocessors</div>
+        <p class="feat-desc">LSI/VLSI chips, GUIs, portable devices. Example: <strong>Intel Pentium series</strong>.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon"><i class="fas fa-robot" aria-hidden="true"></i></div>
+        <div class="feat-name">Fifth Gen</div>
+        <div class="feat-badge">Present &amp; Beyond · AI &amp; NLP</div>
+        <p class="feat-desc">Learning, reasoning, parallel processing. Voice recognition, expert systems &amp; <strong>robots</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Core Hardware Components ── -->
+  <section style="margin-bottom:48px">
+    <div class="sec-eyebrow"><i class="fas fa-desktop" aria-hidden="true"></i> Hardware</div>
+    <h2 class="sec-title">Core <span>Hardware Components</span></h2>
+    <p class="sec-sub">A computer system is built from four essential categories of hardware.</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feat-icon"><i class="fas fa-keyboard" aria-hidden="true"></i></div>
+        <div class="feat-name">Input Devices</div>
+        <div class="feat-badge">Human → Computer</div>
+        <p class="feat-desc">Keyboard, mouse, microphone, scanner, barcode reader, digital camera, touch screen.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon"><i class="fas fa-microchip" aria-hidden="true"></i></div>
+        <div class="feat-name">System Unit</div>
+        <div class="feat-badge">Motherboard + CPU</div>
+        <p class="feat-desc">Houses the motherboard and microprocessor (ALU, Control Unit, Registers) — the "brain" of the PC.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon"><i class="fas fa-hard-drive" aria-hidden="true"></i></div>
+        <div class="feat-name">Storage Devices</div>
+        <div class="feat-badge">Hold Data &amp; Programs</div>
+        <p class="feat-desc">Hard disk, SSD, CD, DVD, memory card, USB flash drive — long-term or portable storage.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon"><i class="fas fa-display" aria-hidden="true"></i></div>
+        <div class="feat-name">Output Devices</div>
+        <div class="feat-badge">Computer → Human</div>
+        <p class="feat-desc">Monitor, impact &amp; non-impact printers, plotter, speakers — show processed results.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Memory Hierarchy (signature visual) ── -->
+  <section style="margin-bottom:48px">
+    <div class="sec-eyebrow"><i class="fas fa-layer-group" aria-hidden="true"></i> Computer Memory</div>
+    <h2 class="sec-title">The Memory <span>Hierarchy</span></h2>
+    <p class="sec-sub">Memory is organized in layers that trade off speed for size — the fastest memory is also the smallest and most expensive.</p>
+    <div class="mem-hierarchy">
+      <div class="mem-tower">
+        <div class="mem-row r1"><span class="mem-name">Registers</span><span class="mem-meta">Fastest · Smallest<br>Inside the CPU</span></div>
+        <div class="mem-row r2"><span class="mem-name">Cache (L1 → L2 → L3)</span><span class="mem-meta">Very Fast<br>Close to the CPU</span></div>
+        <div class="mem-row r3"><span class="mem-name">Main Memory (RAM)</span><span class="mem-meta">Fast, Volatile<br>Runs Active Programs</span></div>
+        <div class="mem-row r4"><span class="mem-name">Secondary Storage (SSD / HDD / Optical)</span><span class="mem-meta">Slowest · Largest<br>Permanent Storage</span></div>
+        <div class="mem-arrow"><span>↑ Faster &amp; Smaller &amp; Costlier</span><span>Larger &amp; Cheaper &amp; Slower ↓</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Memory Units Table ── -->
+  <section style="margin-bottom:48px">
+    <div class="sec-eyebrow"><i class="fas fa-table" aria-hidden="true"></i> Memory Terminology</div>
+    <h2 class="sec-title">Memory <span>Units</span></h2>
+    <p class="sec-sub">Each higher unit equals 1024 (2¹⁰) times the unit before it.</p>
+    <table class="derived-table" aria-label="Computer memory units">
+      <thead><tr><th>Memory Unit</th><th>Power of 2</th><th>Equivalent To</th></tr></thead>
+      <tbody>
+        <tr><td>1 Byte</td><td><span class="mono">2³ bits</span></td><td>8 Bits</td></tr>
+        <tr><td>1 Kilobyte (KB)</td><td><span class="mono">2¹⁰ Bytes</span></td><td>1024 Bytes</td></tr>
+        <tr><td>1 Megabyte (MB)</td><td><span class="mono">2²⁰ Bytes</span></td><td>1024 KB</td></tr>
+        <tr><td>1 Gigabyte (GB)</td><td><span class="mono">2³⁰ Bytes</span></td><td>1024 MB</td></tr>
+        <tr><td>1 Terabyte (TB)</td><td><span class="mono">2⁴⁰ Bytes</span></td><td>1024 GB</td></tr>
+        <tr><td>1 Petabyte (PB)</td><td><span class="mono">2⁵⁰ Bytes</span></td><td>1024 TB</td></tr>
+        <tr><td>1 Exabyte</td><td><span class="mono">2⁶⁰ Bytes</span></td><td>1024 PB</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── Q&A SECTION ── -->
+
+  <!-- Part 1: Hardware, Systems & Architecture -->
+  <section class="qa-section">
+    <div class="qa-part-label">
+      <span class="qa-part-num">PART 1</span>
+      <span class="qa-part-title">Hardware, Systems &amp; Architecture</span>
+    </div>
+
+    <div class="qa-topic-block">
+      <h3 class="qa-topic-title"><i class="fas fa-clock-rotate-left" aria-hidden="true"></i> Computer Generations &amp; Systems</h3>
+      <details class="qa-item">
+        <summary><span>1. What are the five generations of computers, and what technology defined each?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary>
+        <div class="qa-phrasings"><span class="qa-phrasing">• Describe the evolution of computer generations.</span><span class="qa-phrasing">• Which technology characterized each generation of computers?</span></div>
+        <div class="qa-answer">The first generation (1940–1956) used <strong>vacuum tubes</strong>; the second (1956–1963) used <strong>transistors</strong>; the third (1963–1971) used <strong>integrated circuits (ICs)</strong>; the fourth (1971–present) uses <strong>microprocessors</strong> built with LSI/VLSI; and the fifth (present &amp; beyond) focuses on <strong>artificial intelligence</strong> and natural language processing.<div class="note">📝 Intel invented the world's first microprocessor, the Intel 4004, in November 1971.</div></div>
+      </details>
+      <details class="qa-item">
+        <summary><span>2. What is the difference between natural and artificial systems?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary>
+        <div class="qa-phrasings"><span class="qa-phrasing">• Define natural and artificial systems with examples.</span><span class="qa-phrasing">• How do natural and artificial systems differ?</span></div>
+        <div class="qa-answer"><strong>Natural systems</strong> occur organically and are self-regulating, e.g., ecosystems, weather patterns, the human body. <strong>Artificial systems</strong> are human-designed to fulfil specific needs and require maintenance, e.g., communication networks, transportation systems, computers.</div>
+      </details>
+    </div>
+
+    <div class="qa-topic-block">
+      <h3 class="qa-topic-title"><i class="fas fa-microchip" aria-hidden="true"></i> Von Neumann Architecture</h3>
+      <details class="qa-item">
+        <summary><span>3. What is Von Neumann Architecture, and what does it consist of?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary>
+        <div class="qa-phrasings"><span class="qa-phrasing">• Who proposed Von Neumann Architecture, and when?</span><span class="qa-phrasing">• What is the stored-program concept?</span></div>
+        <div class="qa-answer">Von Neumann Architecture, first published by John Von Neumann in <strong>1945</strong>, is based on the <strong>stored-program concept</strong> — instructions and program data are stored in the same memory. Modern Von Neumann architecture consists of a CPU (Control Unit, ALU, Registers), a Memory Unit, buses, and Input/Output controllers.</div>
+      </details>
+      <details class="qa-item">
+        <summary><span>4. What are the functions of the ALU, Control Unit, and Registers in a microprocessor?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary>
+        <div class="qa-phrasings"><span class="qa-phrasing">• What does the ALU do?</span><span class="qa-phrasing">• What is the function of the Control Unit and registers?</span></div>
+        <div class="qa-answer">The <strong>ALU (Arithmetic Logic Unit)</strong> performs arithmetic and logical operations. The <strong>Control Unit (CU)</strong> manages and directs all system activities, decoding instructions for the CPU. <strong>Registers</strong> are high-speed storage areas — all data must be stored in a register before it can be processed (e.g., MAR, MDR, AC, PC, CIR).
+        <div class="formula">CPU = Control Unit + ALU + Registers + Cache</div></div>
+      </details>
+      <details class="qa-item">
+        <summary><span>5. What are the three types of buses in a computer system?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary>
+        <div class="qa-phrasings"><span class="qa-phrasing">• What does the address bus carry?</span><span class="qa-phrasing">• What is the function of the control bus?</span></div>
+        <div class="qa-answer">A standard CPU system bus has three types: the <strong>address bus</strong> carries the addresses of data (not the data itself), the <strong>data bus</strong> carries the actual data between the processor, memory and I/O devices, and the <strong>control bus</strong> carries control signals to coordinate activities within the computer.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Part 2: Memory, Software & Programming Languages -->
+  <section class="qa-section">
+    <div class="qa-part-label">
+      <span class="qa-part-num">PART 2</span>
+      <span class="qa-part-title">Memory, Software &amp; Programming Languages</span>
+    </div>
+
+    <div class="qa-topic-block">
+      <h3 class="qa-topic-title"><i class="fas fa-memory" aria-hidden="true"></i> Computer Memory</h3>
+      <details class="qa-item">
+        <summary><span>6. Differentiate between volatile and non-volatile memory.</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary>
+        <div class="qa-phrasings"><span class="qa-phrasing">• Give examples of volatile and non-volatile memory.</span><span class="qa-phrasing">• What happens to volatile memory when the power is off?</span></div>
+        <div class="qa-answer"><strong>Volatile memory</strong> requires power to retain data and loses it when power is off, e.g., RAM, Cache, Registers. <strong>Non-volatile memory</strong> retains data even when power is off, e.g., ROM, Flash memory, HDDs.
+        <div class="warning">⚠️ RAM is volatile and read/write; ROM is non-volatile and stores the BIOS that boots the computer.</div></div>
+      </details>
+      <details class="qa-item">
+        <summary><span>7. What is cache memory, and how do L1, L2 and L3 differ?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary>
+        <div class="qa-phrasings"><span class="qa-phrasing">• Why is cache memory needed?</span><span class="qa-phrasing">• Which cache level is the fastest?</span></div>
+        <div class="qa-answer">Cache is a small, extremely fast memory between the CPU and RAM that stores frequently accessed data. <strong>L1</strong> is inside the processor core (fastest, smallest); <strong>L2</strong> is slightly larger and slower; <strong>L3</strong> is shared among multiple cores and is the largest and slowest of the three.</div>
+      </details>
+    </div>
+
+    <div class="qa-topic-block">
+      <h3 class="qa-topic-title"><i class="fas fa-code" aria-hidden="true"></i> Software &amp; Programming Languages</h3>
+      <details class="qa-item">
+        <summary><span>8. What is the difference between system software and application software?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary>
+        <div class="qa-phrasings"><span class="qa-phrasing">• Give examples of system software.</span><span class="qa-phrasing">• What are common types of application software?</span></div>
+        <div class="qa-answer"><strong>System software</strong> manages and controls hardware, providing a platform for other software — e.g., the Operating System, device drivers, utilities, compilers. <strong>Application software</strong> performs specific tasks for users — e.g., productivity, business, entertainment and educational software.</div>
+      </details>
+      <details class="qa-item">
+        <summary><span>9. Differentiate between low-level and high-level programming languages.</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary>
+        <div class="qa-phrasings"><span class="qa-phrasing">• What are machine language and assembly language?</span><span class="qa-phrasing">• Name the three categories of high-level languages.</span></div>
+        <div class="qa-answer"><strong>Low-level languages</strong> (Machine &amp; Assembly Language) are machine-oriented and close to the computer's architecture. <strong>High-level languages</strong> resemble English and are easier to learn — they are classified as Procedural (C, Pascal), Structured (FORTRAN, ALGOL), or Object-Oriented (Java, C++, Python).
+        <div class="note">📝 High-level programs need a compiler or interpreter to convert them into machine language for execution.</div></div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Part 3: Networking & Data Communication -->
+  <section class="qa-section">
+    <div class="qa-part-label">
+      <span class="qa-part-num">PART 3</span>
+      <span class="qa-part-title">Networking &amp; Data Communication</span>
+    </div>
+
+    <div class="qa-topic-block">
+      <h3 class="qa-topic-title"><i class="fas fa-network-wired" aria-hidden="true"></i> Network Communication &amp; Devices</h3>
+      <details class="qa-item">
+        <summary><span>10. What are the five basic components of network communication?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary>
+        <div class="qa-phrasings"><span class="qa-phrasing">• What is a protocol, and why is it needed?</span><span class="qa-phrasing">• What is the role of the medium in data communication?</span></div>
+        <div class="qa-answer">Network communication consists of five components: <strong>Sender</strong> (transmits the message), <strong>Message</strong> (the data itself), <strong>Medium</strong> (the path — wired or wireless), <strong>Protocol</strong> (rules governing communication), and <strong>Receiver</strong> (accepts the message).
+        <div class="warning">⚠️ Without a protocol, two connected devices may not be able to communicate with each other at all.</div></div>
+      </details>
+      <details class="qa-item">
+        <summary><span>11. How does a hub differ from a switch in a network?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary>
+        <div class="qa-phrasings"><span class="qa-phrasing">• What is the function of a router and a gateway?</span><span class="qa-phrasing">• Why is a switch more efficient than a hub?</span></div>
+        <div class="qa-answer">A <strong>hub</strong> broadcasts data to every connected device, making it simple but inefficient. A <strong>switch</strong> inspects packets and sends data only to the correct device, reducing traffic. A <strong>router</strong> connects networks and directs internet traffic, while a <strong>gateway</strong> connects networks using different protocols, acting as a translator.</div>
+      </details>
+    </div>
+
+    <div class="qa-topic-block">
+      <h3 class="qa-topic-title"><i class="fas fa-globe" aria-hidden="true"></i> OSI Model, Protocols &amp; The Internet</h3>
+      <details class="qa-item">
+        <summary><span>12. What is the OSI model, and how many layers does it have?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary>
+        <div class="qa-phrasings"><span class="qa-phrasing">• Who developed the OSI model, and when?</span><span class="qa-phrasing">• Name the seven OSI layers.</span></div>
+        <div class="qa-answer">The OSI (Open Systems Interconnection) model, developed by the <strong>ISO</strong> in the 1970s, has <strong>seven layers</strong>: Application, Presentation, Session, Transport, Network, Data Link, and Physical — each performing a specific task during data communication.</div>
+      </details>
+      <details class="qa-item">
+        <summary><span>13. What is the Internet, and how does it work?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary>
+        <div class="qa-phrasings"><span class="qa-phrasing">• What was ARPANET?</span><span class="qa-phrasing">• What does DNS do?</span></div>
+        <div class="qa-answer">The Internet is a global, decentralized network connecting billions of devices, evolving from <strong>ARPANET</strong> in the 1960s. It works through <strong>packet-switching</strong> — data is divided into packets routed via interconnected routers, while the <strong>DNS</strong> translates domain names into IP addresses.
+        <div class="note">📝 Common protocols: TCP/IP (internet communication), HTTP (web pages), FTP (file transfer), SMTP (email).</div></div>
+      </details>
+      <details class="qa-item">
+        <summary><span>14. What is the difference between packet switching and circuit switching?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary>
+        <div class="qa-phrasings"><span class="qa-phrasing">• Give an example of circuit switching.</span><span class="qa-phrasing">• Why are packets reassembled at the destination?</span></div>
+        <div class="qa-answer"><strong>Packet switching</strong> divides data into small packets that travel independently and are reassembled at the destination, e.g., email. <strong>Circuit switching</strong> establishes one dedicated path for the whole session, e.g., a traditional phone call.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ── Network Topologies ── -->
+  <section style="margin-bottom:48px">
+    <div class="sec-eyebrow"><i class="fas fa-diagram-project" aria-hidden="true"></i> Network Design</div>
+    <h2 class="sec-title">Network <span>Topologies</span></h2>
+    <p class="sec-sub">The arrangement of devices and connections within a network.</p>
+    <div class="mini-grid">
+      <div class="mini-card"><i class="fas fa-grip-lines" aria-hidden="true"></i><div><div class="name">Bus Topology</div><div class="desc">All devices share one central cable. Cheap, but one break disables the network.</div></div></div>
+      <div class="mini-card"><i class="fas fa-star" aria-hidden="true"></i><div><div class="name">Star Topology</div><div class="desc">Every device connects to a central hub/switch. Easy to expand; hub failure is risky.</div></div></div>
+      <div class="mini-card"><i class="fas fa-circle-notch" aria-hidden="true"></i><div><div class="name">Ring Topology</div><div class="desc">Devices form a loop; data flows in one direction. Cost-effective but fragile.</div></div></div>
+    </div>
+  </section>
+
+  <!-- ── Key Vocabulary ── -->
+  <section style="margin-bottom:44px">
+    <div class="sec-eyebrow"><i class="fas fa-book-open" aria-hidden="true"></i> Key Vocabulary</div>
+    <h2 class="sec-title">Unit 1 <span>Vocabulary</span></h2>
+    <p class="sec-sub">Important terms — learn these definitions for exam questions.</p>
+    <table class="vocab-table" aria-label="Key vocabulary for Unit 1">
+      <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+      <tbody>
+        <tr><td>Computer</td><td>A programmable electronic device that performs arithmetic and logical operations automatically using instructions</td></tr>
+        <tr><td>Vacuum Tube</td><td>Core technology of first-generation computers; large, slow and power-hungry</td></tr>
+        <tr><td>Transistor</td><td>Solid-state component that replaced vacuum tubes in second-generation computers</td></tr>
+        <tr><td>Integrated Circuit (IC)</td><td>A chip combining multiple transistors; defines the third generation of computers</td></tr>
+        <tr><td>Microprocessor (CPU)</td><td>The "brain" of the computer that executes instructions and performs calculations</td></tr>
+        <tr><td>System</td><td>A collection of interconnected components working together to achieve specific goals</td></tr>
+        <tr><td>Motherboard</td><td>The main circuit board containing the microprocessor, memory and connection slots</td></tr>
+        <tr><td>ALU</td><td>Arithmetic Logic Unit — performs arithmetic and logical operations</td></tr>
+        <tr><td>Control Unit (CU)</td><td>Directs and manages all CPU and system activities</td></tr>
+        <tr><td>Register</td><td>High-speed storage area inside the CPU that holds data during processing</td></tr>
+        <tr><td>RAM</td><td>Volatile read/write memory that temporarily stores data while the computer is on</td></tr>
+        <tr><td>ROM</td><td>Non-volatile memory that stores the BIOS and boot-up instructions</td></tr>
+        <tr><td>Cache Memory</td><td>Small, very fast memory between the CPU and RAM that stores frequently used data</td></tr>
+        <tr><td>Bit</td><td>The smallest unit of memory, representing a binary digit (0 or 1)</td></tr>
+        <tr><td>Byte</td><td>A group of 8 bits; the smallest unit of data a computer can process</td></tr>
+        <tr><td>System Software</td><td>Software that manages and controls hardware, e.g., the Operating System</td></tr>
+        <tr><td>Application Software</td><td>Software designed to perform specific tasks for users, e.g., MS Word</td></tr>
+        <tr><td>Compiler</td><td>Translates an entire high-level program into machine code before execution</td></tr>
+        <tr><td>Assembler</td><td>Converts assembly language into machine language</td></tr>
+        <tr><td>Low-Level Language</td><td>Machine-oriented programming language close to the computer's architecture</td></tr>
+        <tr><td>High-Level Language</td><td>User-friendly programming language that resembles English, e.g., Python, Java</td></tr>
+        <tr><td>Protocol</td><td>A set of rules that governs data communication between devices</td></tr>
+        <tr><td>Network Topology</td><td>The arrangement of devices and connections within a network (e.g., bus, star, ring)</td></tr>
+        <tr><td>LAN</td><td>Local Area Network — connects computers within a small area like a building</td></tr>
+        <tr><td>WAN</td><td>Wide Area Network — connects computers across large areas like countries</td></tr>
+        <tr><td>OSI Model</td><td>A seven-layer conceptual framework describing how networking protocols work together</td></tr>
+        <tr><td>Internet</td><td>A global network of interconnected computer networks</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── Quiz CTA ── -->
+  <div class="quiz-cta">
+    <h2>Test Yourself: Unit 1 Quiz</h2>
+    <p>Chapter-wise MCQs aligned with FBISE Federal Board syllabus. No login required. Instant results.</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSerVN_YwCVoa3h-S_ilFpLNK9ZKAbmunGdPCWWGmp8sKqThfg/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="btn-primary" aria-label="Start Unit 1 quiz">
+      <i class="fas fa-external-link-alt" aria-hidden="true"></i> Start Quiz Now
+    </a>
+  </div>
+
+  <!-- ── Enroll Box ── -->
+  <div class="enroll-box">
+    <h2>Want Live Explanation of <span style="color:#5eead4">Computer Systems?</span></h2>
+    <p>Join W.H. Academy: Live tutoring, recorded lectures, and full chapter solutions for FBISE students in Rawalpindi and online across Pakistan.</p>
+    <div class="enroll-actions">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-SBGFOilfUMDSyWdM4KVA8zxnJI9mRMw8VOB5V-d_OHDiEg/viewform?usp=header"
+         target="_blank" rel="noopener noreferrer" class="btn-enroll"><i class="fas fa-pen-to-square" aria-hidden="true"></i> Enroll</a>
+      <a href="https://wa.me/923295215703" target="_blank" rel="noopener noreferrer" class="btn-wa"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp Us</a>
+    </div>
+  </div>
+
+  <!-- ── Back Bar ── -->
+  <div class="back-bar">
+    <a href="https://whacademy692.github.io/whacademy-/" class="btn-back"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Home</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSerVN_YwCVoa3h-S_ilFpLNK9ZKAbmunGdPCWWGmp8sKqThfg/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="btn-quiz-sm"><i class="fas fa-bolt" aria-hidden="true"></i> Take Quiz Again</a>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <p>&copy; 2026 <a href="https://whacademy692.github.io/whacademy-/">W.H. Academy</a> — M. Rehan Safdar |
+  <a href="https://whacademy692.github.io/whacademy-/privacy-policy.html">Privacy Policy</a> |
+  <a href="https://whacademy692.github.io/whacademy-/terms.html">Terms of Service</a></p>
+  <p style="margin-top:6px">Expert Math and Science Tutoring · FBISE Federal Board · Punjab Board · Rawalpindi and Online Pakistan</p>
+</footer>
+
+<script>
+// ── Scroll progress bar ──
+const bar = document.getElementById('progress-bar');
+function updateProgress(){
+  const scrollTop = window.scrollY;
+  const docH = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const pct = docH > 0 ? (scrollTop / docH) * 100 : 0;
+  bar.style.width = pct + '%';
+  bar.setAttribute('aria-valuenow', Math.round(pct));
+}
+window.addEventListener('scroll', updateProgress, {passive:true});
+updateProgress();
+
+// ── Smooth scroll reveal ──
+if('IntersectionObserver' in window){
+  const els = document.querySelectorAll('.qa-topic-block,.feature-card,.mini-card,.fact-item,.mem-row');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.style.opacity='1';
+        e.target.style.transform='translateY(0)';
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.08});
+  els.forEach(el=>{
+    el.style.opacity='0';
+    el.style.transform='translateY(18px)';
+    el.style.transition='opacity .5s ease, transform .5s ease';
+    io.observe(el);
+  });
+}
+</script>
+</body>
+</html>

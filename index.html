@@ -3440,71 +3440,6 @@
             }
         }
 
-
-        /* ── FEEDBACK MODAL ── */
-        #whFeedbackModal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            background: rgba(15,15,35,0.75);
-            backdrop-filter: blur(6px);
-            align-items: center;
-            justify-content: center;
-            padding: 16px;
-        }
-        .wh-modal-box {
-            background: #fff;
-            border-radius: 18px;
-            width: 100%;
-            max-width: 680px;
-            max-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 24px 80px rgba(79,70,229,0.25);
-            overflow: hidden;
-            animation: modalIn 0.3s ease;
-        }
-        @keyframes modalIn {
-            from { transform: translateY(30px); opacity: 0; }
-            to   { transform: translateY(0);    opacity: 1; }
-        }
-        .wh-modal-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 18px 24px;
-            border-bottom: 1px solid rgba(79,70,229,0.10);
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-        }
-        .wh-modal-header h5 {
-            color: #fff;
-            font-size: 1rem;
-            font-weight: 700;
-            margin: 0;
-        }
-        .wh-modal-close {
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: #fff;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            font-size: 1.1rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-        }
-        .wh-modal-close:hover { background: rgba(255,255,255,0.35); }
-        .wh-modal-body { flex: 1; overflow-y: auto; }
-        .wh-modal-body iframe { width: 100%; height: 580px; border: none; display: block; }
-        @media (max-width: 600px) {
-            .wh-modal-box { max-height: 95vh; border-radius: 14px; }
-            .wh-modal-body iframe { height: 500px; }
-        }
-
     </style>
 </head>
 
@@ -4554,6 +4489,97 @@
                 <div class="cw-note"><i class="fas fa-info-circle" aria-hidden="true"></i> Notes will be linked as they are completed. Enrolled students get access first.</div>
             </div>
 
+            <!-- CLASS 9 BIOLOGY: Resources -->
+            <div id="resC9Bio" style="display:none;">
+                <div class="cw-chapters-grid">
+                    <div class="cw-chapter-card active-chapter"><div class="cw-free-badge" style="background:linear-gradient(135deg,#0ea5e9,#4f46e5);"><i class="fas fa-gamepad" aria-hidden="true"></i> Quiz Live</div><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-microscope" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 1</div></div><div class="cw-chapter-title">The Science of Biology</div><div class="cw-chapter-actions"><a href="class-9-biology-chapter1-science-of-biology.html" class="cw-chapter-btn active-btn" aria-label="View Class 9 Biology Ch 1 Notes"><i class="fas fa-book-open" aria-hidden="true"></i> View Notes</a></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-seedling" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 2</div></div><div class="cw-chapter-title">Biodiversity</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-circle-notch" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 3</div></div><div class="cw-chapter-title">Cell</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-sync-alt" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 4</div></div><div class="cw-chapter-title">Cell Cycle</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-lungs" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 5</div></div><div class="cw-chapter-title">Tissues, Organ and Organ Systems</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-dna" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 6</div></div><div class="cw-chapter-title">Molecular Biology</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-fire" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 7</div></div><div class="cw-chapter-title">Metabolism</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-leaf" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 8</div></div><div class="cw-chapter-title">Plant Physiology</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-spa" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 9</div></div><div class="cw-chapter-title">Plant Reproduction</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                </div>
+                <div class="cw-note"><i class="fas fa-info-circle" aria-hidden="true"></i> Biology Chapter 1 notes are free for everyone. Remaining chapters will be linked as they are completed.</div>
+            </div>
+
+            <!-- CLASS 9 CHEMISTRY: Resources -->
+            <div id="resC9Chem" style="display:none;">
+                <div class="cw-chapters-grid">
+                    <div class="cw-chapter-card active-chapter"><div class="cw-free-badge" style="background:linear-gradient(135deg,#0ea5e9,#4f46e5);"><i class="fas fa-gamepad" aria-hidden="true"></i> Quiz Live</div><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-flask" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 1</div></div><div class="cw-chapter-title">Nature of Science in Chemistry</div><div class="cw-chapter-actions"><a href="class-9-chemistry-unit1-nature-of-science.html" class="cw-chapter-btn active-btn" aria-label="View Class 9 Chemistry Ch 1 Notes"><i class="fas fa-book-open" aria-hidden="true"></i> View Notes</a></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-cube" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 2</div></div><div class="cw-chapter-title">Matter</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-atom" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 3</div></div><div class="cw-chapter-title">Atomic Structure</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-table-cells" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 4</div></div><div class="cw-chapter-title">Periodic Table and Periodicity of Properties</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-link" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 5</div></div><div class="cw-chapter-title">Chemical Bonding</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-balance-scale" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 6</div></div><div class="cw-chapter-title">Stoichiometry</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-bolt" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 7</div></div><div class="cw-chapter-title">Electrochemistry</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-fire-flame-curved" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 8</div></div><div class="cw-chapter-title">Energetics</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-equals" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 9</div></div><div class="cw-chapter-title">Chemical Equilibrium</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-vial" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 10</div></div><div class="cw-chapter-title">Acids, Bases, and Salts</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-wind" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 11</div></div><div class="cw-chapter-title">Environmental Chemistry-Air</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-tint" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 12</div></div><div class="cw-chapter-title">Environmental Chemistry-Water</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-circle-nodes" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 13</div></div><div class="cw-chapter-title">Organic Chemistry</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-oil-can" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 14</div></div><div class="cw-chapter-title">Hydrocarbons</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-dna" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 15</div></div><div class="cw-chapter-title">Biochemistry</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 16</div></div><div class="cw-chapter-title">Empirical Data Collection and Analysis</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-filter" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 17</div></div><div class="cw-chapter-title">Separation Techniques</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-magnifying-glass" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 18</div></div><div class="cw-chapter-title">Qualitative Analysis</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-layer-group" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 19</div></div><div class="cw-chapter-title">Chromatography</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                </div>
+                <div class="cw-note"><i class="fas fa-info-circle" aria-hidden="true"></i> Chemistry Chapter 1 notes are free for everyone. Remaining chapters will be linked as they are completed.</div>
+            </div>
+
+            <!-- CLASS 9 COMPUTER SCIENCE: Resources -->
+            <div id="resC9CS" style="display:none;">
+                <div class="cw-chapters-grid">
+                    <div class="cw-chapter-card active-chapter"><div class="cw-free-badge" style="background:linear-gradient(135deg,#0ea5e9,#4f46e5);"><i class="fas fa-gamepad" aria-hidden="true"></i> Quiz Live</div><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-microchip" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 1</div></div><div class="cw-chapter-title">Computer Systems</div><div class="cw-chapter-actions"><a href="class-9-computer-science-unit1-computer-systems.html" class="cw-chapter-btn active-btn" aria-label="View Class 9 Computer Science Unit 1 Notes"><i class="fas fa-book-open" aria-hidden="true"></i> View Notes</a></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-sitemap" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 2</div></div><div class="cw-chapter-title">Computational Thinking & Algorithms</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-code" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 3</div></div><div class="cw-chapter-title">Programing Fundamentals</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-database" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 4</div></div><div class="cw-chapter-title">Data and Analysis</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 5</div></div><div class="cw-chapter-title">Applications of Computer Science</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-globe" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 6</div></div><div class="cw-chapter-title">Impacts of Computing</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-lightbulb" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 7</div></div><div class="cw-chapter-title">Entrepreneurship</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                </div>
+                <div class="cw-note"><i class="fas fa-info-circle" aria-hidden="true"></i> Computer Science Chapter 1 notes are free for everyone. Remaining chapters will be linked as they are completed.</div>
+            </div>
+
+            <!-- CLASS 9 MATHEMATICS: Resources -->
+            <div id="resC9Math" style="display:none;">
+                <div class="cw-chapters-grid">
+                    <div class="cw-chapter-card active-chapter"><div class="cw-free-badge" style="background:linear-gradient(135deg,#0ea5e9,#4f46e5);"><i class="fas fa-gamepad" aria-hidden="true"></i> Quiz Live</div><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-hashtag" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 1</div></div><div class="cw-chapter-title">Real Numbers</div><div class="cw-chapter-actions"><a href="class-9-math-unit1-real-numbers.html" class="cw-chapter-btn active-btn" aria-label="View Class 9 Mathematics Unit 1 Notes"><i class="fas fa-book-open" aria-hidden="true"></i> View Notes</a></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-superscript" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 2</div></div><div class="cw-chapter-title">Logarithms</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-circle-nodes" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 3</div></div><div class="cw-chapter-title">Sets and Relations</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-square-root-variable" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 4</div></div><div class="cw-chapter-title">Factorization and Algebraic Manipulation</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-equals" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 5</div></div><div class="cw-chapter-title">Linear Equations and Inequalities</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-compass" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 6</div></div><div class="cw-chapter-title">Trigonometry and Bearing</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-ruler-combined" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 7</div></div><div class="cw-chapter-title">Coordinate Geometry</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-ruler" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 8</div></div><div class="cw-chapter-title">Geometry of Straight Lines</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-draw-polygon" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 9</div></div><div class="cw-chapter-title">Geometry and Polygons</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-drafting-compass" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 10</div></div><div class="cw-chapter-title">Practical Geometry</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-chart-bar" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 11</div></div><div class="cw-chapter-title">Basic Statistics</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                </div>
+                <div class="cw-note"><i class="fas fa-info-circle" aria-hidden="true"></i> Mathematics Chapter 1 notes are free for everyone. Remaining chapters will be linked as they are completed.</div>
+            </div>
+
+            <!-- CLASS 9 PHYSICS: Resources -->
+            <div id="resC9Phy" style="display:none;">
+                <div class="cw-chapters-grid">
+                    <div class="cw-chapter-card active-chapter"><div class="cw-free-badge" style="background:linear-gradient(135deg,#0ea5e9,#4f46e5);"><i class="fas fa-gamepad" aria-hidden="true"></i> Quiz Live</div><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-ruler" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 1</div></div><div class="cw-chapter-title">Physical Quantities and Measurement</div><div class="cw-chapter-actions"><a href="class-9-physics-unit1-physical-quantities.html" class="cw-chapter-btn active-btn" aria-label="View Class 9 Physics Ch 1 Notes"><i class="fas fa-book-open" aria-hidden="true"></i> View Notes</a></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-person-running" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 2</div></div><div class="cw-chapter-title">Kinematics</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-arrows-left-right" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 3</div></div><div class="cw-chapter-title">Dynamics - I</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-gears" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 4</div></div><div class="cw-chapter-title">Dynamics - II</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-weight-hanging" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 5</div></div><div class="cw-chapter-title">Pressure and Deformation in Solids</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-bolt-lightning" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 6</div></div><div class="cw-chapter-title">Work and Energy</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-thermometer-half" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 7</div></div><div class="cw-chapter-title">Density and Temperature</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-magnet" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 8</div></div><div class="cw-chapter-title">Magnetism</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-book-open" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 9</div></div><div class="cw-chapter-title">Nature of Science and Physics</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                    <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-dna" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 10</div></div><div class="cw-chapter-title">Evolution</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Notes Coming Soon</button><div class="cw-tooltip">Notes available after enrollment.</div></div></div>
+                </div>
+                <div class="cw-note"><i class="fas fa-info-circle" aria-hidden="true"></i> Physics Chapter 1 notes are free for everyone. Remaining chapters will be linked as they are completed.</div>
+            </div>
+
         <!-- Prompt if nothing selected yet -->
         <div id="resPrompt" class="cw-coming-soon-box" style="margin-top:0;">
             <div class="cw-cs-icon"><i class="fas fa-hand-point-up" aria-hidden="true"></i></div>
@@ -4586,6 +4612,7 @@
                     <option value="6">Class 6</option>
                     <option value="7">Class 7</option>
                     <option value="8">Class 8</option>
+                    <option value="9">Class 9</option>
                 </select>
                 <i class="fas fa-chevron-down cw-dd-arrow" aria-hidden="true"></i>
             </div>
@@ -5194,6 +5221,92 @@
             <div class="cw-note"><i class="fas fa-info-circle" aria-hidden="true"></i> Demo quiz is free for all users. Full quiz access is available through Academy paid plans only.</div>
         </div>
 
+        <!-- CLASS 9 BIOLOGY: Quizzes -->
+        <div id="cwC9Bio" class="cw-content" style="display:none;">
+            <div class="cw-chapters-grid">
+                <div class="cw-chapter-card active-chapter"><div class="cw-free-badge"><i class="fas fa-gift" aria-hidden="true"></i> FREE DEMO</div><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-microscope" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 1</div></div><div class="cw-chapter-title">The Science of Biology</div><div class="cw-chapter-actions"><a href="https://docs.google.com/forms/d/e/1FAIpQLSeMt2PArDrKIFDtsX3bLM7juEzrpMWygKREYOtUMBJiQdgJkw/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="cw-chapter-btn active-btn"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Start Quiz</a></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-seedling" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 2</div></div><div class="cw-chapter-title">Biodiversity</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-circle-notch" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 3</div></div><div class="cw-chapter-title">Cell</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-sync-alt" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 4</div></div><div class="cw-chapter-title">Cell Cycle</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-lungs" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 5</div></div><div class="cw-chapter-title">Tissues, Organ and Organ Systems</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-dna" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 6</div></div><div class="cw-chapter-title">Molecular Biology</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-fire" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 7</div></div><div class="cw-chapter-title">Metabolism</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-leaf" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 8</div></div><div class="cw-chapter-title">Plant Physiology</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-spa" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 9</div></div><div class="cw-chapter-title">Plant Reproduction</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+            </div>
+        </div>
+
+        <!-- CLASS 9 CHEMISTRY: Quizzes -->
+        <div id="cwC9Chem" class="cw-content" style="display:none;">
+            <div class="cw-chapters-grid">
+                <div class="cw-chapter-card active-chapter"><div class="cw-free-badge"><i class="fas fa-gift" aria-hidden="true"></i> FREE DEMO</div><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-flask" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 1</div></div><div class="cw-chapter-title">Nature of Science in Chemistry</div><div class="cw-chapter-actions"><a href="https://docs.google.com/forms/d/e/1FAIpQLSd9BloXbRzrutJ7jGaKzcKmh17ml31FT01HEqQTFPAkUlqfLQ/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="cw-chapter-btn active-btn"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Start Quiz</a></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-cube" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 2</div></div><div class="cw-chapter-title">Matter</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-atom" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 3</div></div><div class="cw-chapter-title">Atomic Structure</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-table-cells" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 4</div></div><div class="cw-chapter-title">Periodic Table and Periodicity of Properties</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-link" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 5</div></div><div class="cw-chapter-title">Chemical Bonding</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-balance-scale" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 6</div></div><div class="cw-chapter-title">Stoichiometry</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-bolt" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 7</div></div><div class="cw-chapter-title">Electrochemistry</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-fire-flame-curved" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 8</div></div><div class="cw-chapter-title">Energetics</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-equals" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 9</div></div><div class="cw-chapter-title">Chemical Equilibrium</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-vial" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 10</div></div><div class="cw-chapter-title">Acids, Bases, and Salts</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-wind" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 11</div></div><div class="cw-chapter-title">Environmental Chemistry-Air</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-tint" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 12</div></div><div class="cw-chapter-title">Environmental Chemistry-Water</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-circle-nodes" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 13</div></div><div class="cw-chapter-title">Organic Chemistry</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-oil-can" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 14</div></div><div class="cw-chapter-title">Hydrocarbons</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-dna" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 15</div></div><div class="cw-chapter-title">Biochemistry</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 16</div></div><div class="cw-chapter-title">Empirical Data Collection and Analysis</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-filter" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 17</div></div><div class="cw-chapter-title">Separation Techniques</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-magnifying-glass" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 18</div></div><div class="cw-chapter-title">Qualitative Analysis</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-layer-group" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 19</div></div><div class="cw-chapter-title">Chromatography</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+            </div>
+        </div>
+
+        <!-- CLASS 9 COMPUTER SCIENCE: Quizzes -->
+        <div id="cwC9CS" class="cw-content" style="display:none;">
+            <div class="cw-chapters-grid">
+                <div class="cw-chapter-card active-chapter"><div class="cw-free-badge"><i class="fas fa-gift" aria-hidden="true"></i> FREE DEMO</div><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-microchip" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 1</div></div><div class="cw-chapter-title">Computer Systems</div><div class="cw-chapter-actions"><a href="https://docs.google.com/forms/d/e/1FAIpQLSerVN_YwCVoa3h-S_ilFpLNK9ZKAbmunGdPCWWGmp8sKqThfg/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="cw-chapter-btn active-btn"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Start Quiz</a></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-sitemap" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 2</div></div><div class="cw-chapter-title">Computational Thinking & Algorithms</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-code" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 3</div></div><div class="cw-chapter-title">Programing Fundamentals</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-database" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 4</div></div><div class="cw-chapter-title">Data and Analysis</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 5</div></div><div class="cw-chapter-title">Applications of Computer Science</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-globe" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 6</div></div><div class="cw-chapter-title">Impacts of Computing</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-lightbulb" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 7</div></div><div class="cw-chapter-title">Entrepreneurship</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+            </div>
+        </div>
+
+        <!-- CLASS 9 MATHEMATICS: Quizzes -->
+        <div id="cwC9Math" class="cw-content" style="display:none;">
+            <div class="cw-chapters-grid">
+                <div class="cw-chapter-card active-chapter"><div class="cw-free-badge"><i class="fas fa-gift" aria-hidden="true"></i> FREE DEMO</div><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-hashtag" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 1</div></div><div class="cw-chapter-title">Real Numbers</div><div class="cw-chapter-actions"><a href="https://docs.google.com/forms/d/e/1FAIpQLSc-8mmxuY52AGGXgbmxxsSBGCEa2vA5U6iEc6OgVjg6kQ1OYw/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="cw-chapter-btn active-btn"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Start Quiz</a></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-superscript" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 2</div></div><div class="cw-chapter-title">Logarithms</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-circle-nodes" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 3</div></div><div class="cw-chapter-title">Sets and Relations</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-square-root-variable" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 4</div></div><div class="cw-chapter-title">Factorization and Algebraic Manipulation</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-equals" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 5</div></div><div class="cw-chapter-title">Linear Equations and Inequalities</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-compass" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 6</div></div><div class="cw-chapter-title">Trigonometry and Bearing</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-ruler-combined" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 7</div></div><div class="cw-chapter-title">Coordinate Geometry</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-ruler" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 8</div></div><div class="cw-chapter-title">Geometry of Straight Lines</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-draw-polygon" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 9</div></div><div class="cw-chapter-title">Geometry and Polygons</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-drafting-compass" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 10</div></div><div class="cw-chapter-title">Practical Geometry</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-chart-bar" aria-hidden="true"></i></div><div class="cw-chapter-num">Unit 11</div></div><div class="cw-chapter-title">Basic Statistics</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+            </div>
+        </div>
+
+        <!-- CLASS 9 PHYSICS: Quizzes -->
+        <div id="cwC9Phy" class="cw-content" style="display:none;">
+            <div class="cw-chapters-grid">
+                <div class="cw-chapter-card active-chapter"><div class="cw-free-badge"><i class="fas fa-gift" aria-hidden="true"></i> FREE DEMO</div><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-ruler" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 1</div></div><div class="cw-chapter-title">Physical Quantities and Measurement</div><div class="cw-chapter-actions"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfBt0paULNKkVOWg7kI9WWwh9ZlR2HH6QXUoVdxjty6fcRFyA/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="cw-chapter-btn active-btn"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Start Quiz</a></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-person-running" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 2</div></div><div class="cw-chapter-title">Kinematics</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-arrows-left-right" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 3</div></div><div class="cw-chapter-title">Dynamics - I</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-gears" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 4</div></div><div class="cw-chapter-title">Dynamics - II</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-weight-hanging" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 5</div></div><div class="cw-chapter-title">Pressure and Deformation in Solids</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-bolt-lightning" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 6</div></div><div class="cw-chapter-title">Work and Energy</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-thermometer-half" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 7</div></div><div class="cw-chapter-title">Density and Temperature</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-magnet" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 8</div></div><div class="cw-chapter-title">Magnetism</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-book-open" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 9</div></div><div class="cw-chapter-title">Nature of Science and Physics</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+                <div class="cw-chapter-card locked"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-dna" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 10</div></div><div class="cw-chapter-title">Evolution</div><div class="cw-chapter-actions"><button class="cw-chapter-btn coming-soon-btn" disabled><i class="fas fa-lock" aria-hidden="true"></i> Coming Soon</button><div class="cw-tooltip">Quiz available after enrollment.</div></div></div>
+            </div>
+        </div>
+
     </section>
 
 
@@ -5550,20 +5663,9 @@
         <div class="wh-feedback-cta reveal delay-2">
             <h4><i class="fas fa-pen-nib" style="color:var(--primary-mid);margin-right:8px;" aria-hidden="true"></i>Share Your Experience</h4>
             <p>Studied with us? Your feedback helps future students make better decisions.</p>
-            <!-- FORM FIX: Google Form embedded — user site pe hi rehta hai -->
-            <div style="width:100%;border-radius:12px;overflow:hidden;margin-top:12px;box-shadow:0 4px 24px rgba(79,70,229,0.10);">
-                <iframe
-                    src="https://docs.google.com/forms/d/e/1FAIpQLSeZ8ZELaNf1v5hD9nn_2fmLafMGI0GK9mLK2_Y7C5yBO7gacA/viewform?embedded=true"
-                    width="100%"
-                    height="600"
-                    frameborder="0"
-                    marginheight="0"
-                    marginwidth="0"
-                    title="W.H. Academy Feedback Form"
-                    loading="lazy">
-                    Loading form...
-                </iframe>
-            </div>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeZ8ZELaNf1v5hD9nn_2fmLafMGI0GK9mLK2_Y7C5yBO7gacA/viewform" class="btn-feedback-submit" rel="noopener noreferrer" referrerpolicy="no-referrer">
+                <i class="fas fa-pen-nib" aria-hidden="true"></i> Submit Feedback
+            </a>
         </div>
 
         <!-- ── FEATURED TESTIMONIAL CARDS ── -->
@@ -5887,19 +5989,50 @@
             ['cwComingSoon','cwMath','cwScience',
              'cwC6Math','cwC6Sci','cwC6Geo','cwC6Hist',
              'cwC7Math','cwC7Sci','cwC7Geo','cwC7Hist',
-             'cwC8Geo','cwC8Hist'
+             'cwC8Geo','cwC8Hist',
+             'cwC9Math','cwC9Phy','cwC9Chem','cwC9Bio','cwC9CS'
             ].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.style.display = 'none';
             });
         }
 
+        const QUIZ_SUBJECTS_69 = [
+            { v: 'math',     l: 'Mathematics' },
+            { v: 'science',  l: 'General Science' },
+            { v: 'geography',l: 'Geography' },
+            { v: 'history',  l: 'History' },
+        ];
+        const QUIZ_SUBJECTS_9 = [
+            { v: 'mathematics',      l: 'Mathematics' },
+            { v: 'physics',          l: 'Physics' },
+            { v: 'chemistry',        l: 'Chemistry' },
+            { v: 'biology',          l: 'Biology' },
+            { v: 'computer-science', l: 'Computer Science' },
+        ];
+
         function handleClassChange(val) {
             hideAllCwPanels();
             const subWrap = document.getElementById('subjectDropWrap');
-            document.getElementById('subjectSelect').value = '';
+            const subSel  = document.getElementById('subjectSelect');
 
-            if (val === '6' || val === '7' || val === '8') {
+            while (subSel.firstChild) subSel.removeChild(subSel.firstChild);
+            const defaultOpt = document.createElement('option');
+            defaultOpt.value = '';
+            defaultOpt.disabled = true;
+            defaultOpt.selected = true;
+            defaultOpt.textContent = 'Select Subject';
+            subSel.appendChild(defaultOpt);
+
+            const list = (val === '9') ? QUIZ_SUBJECTS_9 : QUIZ_SUBJECTS_69;
+            list.forEach(s => {
+                const o = document.createElement('option');
+                o.value = s.v;
+                o.textContent = s.l;
+                subSel.appendChild(o);
+            });
+
+            if (val === '6' || val === '7' || val === '8' || val === '9') {
                 subWrap.style.display = 'block';
                 setTimeout(() => subWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 120);
             } else {
@@ -5930,6 +6063,13 @@
                 else if (val === 'geography') target = document.getElementById('cwC8Geo');
                 else if (val === 'history')   target = document.getElementById('cwC8Hist');
                 else                          target = document.getElementById('cwComingSoon');
+            } else if (classVal === '9') {
+                if      (val === 'mathematics')      target = document.getElementById('cwC9Math');
+                else if (val === 'physics')           target = document.getElementById('cwC9Phy');
+                else if (val === 'chemistry')         target = document.getElementById('cwC9Chem');
+                else if (val === 'biology')           target = document.getElementById('cwC9Bio');
+                else if (val === 'computer-science')  target = document.getElementById('cwC9CS');
+                else                                  target = document.getElementById('cwComingSoon');
             } else {
                 target = document.getElementById('cwComingSoon');
             }
@@ -6021,7 +6161,8 @@
             ['resLocked','resC8Math','resC8Sci',
              'resC6Math','resC6Sci','resC6Geo','resC6Hist',
              'resC7Math','resC7Sci','resC7Geo','resC7Hist',
-             'resC8Geo','resC8Hist'
+             'resC8Geo','resC8Hist',
+             'resC9Math','resC9Phy','resC9Chem','resC9Bio','resC9CS'
             ].forEach(id => { const el = document.getElementById(id); if(el) el.style.display = 'none'; });
         }
 
@@ -6054,6 +6195,13 @@
                 else if (val === 'geography')       target = document.getElementById('resC8Geo');
                 else if (val === 'history')         target = document.getElementById('resC8Hist');
                 else                                target = document.getElementById('resLocked');
+            } else if (level === 'mat9') {
+                if      (val === 'mathematics')      target = document.getElementById('resC9Math');
+                else if (val === 'physics')           target = document.getElementById('resC9Phy');
+                else if (val === 'chemistry')         target = document.getElementById('resC9Chem');
+                else if (val === 'biology')           target = document.getElementById('resC9Bio');
+                else if (val === 'computer-science')  target = document.getElementById('resC9CS');
+                else                                  target = document.getElementById('resLocked');
             } else {
                 target = document.getElementById('resLocked');
             }
@@ -6565,35 +6713,6 @@
             fetchAndRender();
 
         })();
-    </script>
-
-    <!-- ── FEEDBACK MODAL ── -->
-    <div id="whFeedbackModal" role="dialog" aria-modal="true" aria-label="Feedback Form"
-         onclick="if(event.target===this)this.style.display='none'">
-        <div class="wh-modal-box">
-            <div class="wh-modal-header">
-                <h5><i class="fas fa-pen-nib" style="margin-right:8px;" aria-hidden="true"></i>Share Your Experience</h5>
-                <button class="wh-modal-close" onclick="document.getElementById('whFeedbackModal').style.display='none'" aria-label="Close form">&#x2715;</button>
-            </div>
-            <div class="wh-modal-body">
-                <iframe
-                    src="https://docs.google.com/forms/d/e/1FAIpQLSeZ8ZELaNf1v5hD9nn_2fmLafMGI0GK9mLK2_Y7C5yBO7gacA/viewform?embedded=true"
-                    title="W.H. Academy Feedback Form"
-                    loading="lazy"
-                    allowfullscreen>
-                    Loading form...
-                </iframe>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Close modal on Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                document.getElementById('whFeedbackModal').style.display = 'none';
-            }
-        });
     </script>
 
 </body>
