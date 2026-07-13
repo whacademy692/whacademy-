@@ -1,0 +1,196 @@
+/* ============================================================================
+   W.H. Academy — Learning Games — Design Tokens
+   ----------------------------------------------------------------------------
+   RETHEMED to match the main W.H. Academy website exactly. Palette, fonts,
+   shadows and glassmorphism are lifted straight from the main site's :root, so
+   the games platform reads as the same product, not a separate app.
+
+   LIGHT BY DEFAULT, ALWAYS. There is deliberately NO
+   `prefers-color-scheme: dark` auto-switch — the previous version had one,
+   which is exactly why the platform turned dark by itself on devices set to
+   dark mode. The main website has no dark mode, so neither does this.
+   Dark mode now only applies if the person explicitly turns it on.
+   ========================================================================== */
+
+:root {
+  /* ---- Brand (from the main site) ---- */
+  --brand-primary: #3730a3;
+  --brand-primary-mid: #4f46e5;
+  --brand-primary-light: #818cf8;
+  --brand-glow: rgba(79, 70, 229, 0.35);
+  --brand-secondary: #0ea5e9;
+  --brand-accent: #f59e0b;
+  --brand-pink: #ec4899;
+
+  --color-brand-ink: #3730a3;
+  --color-brand-ink-light: #4f46e5;
+  --color-brand-ink-tint: #e8ecff;
+
+  /* ---- Subject accents — harmonised with the indigo/amber palette ---- */
+  --subject-science-primary: #0ea5e9;
+  --subject-science-secondary: #dbf0fd;
+  --subject-mathematics-primary: #4f46e5;
+  --subject-mathematics-secondary: #e4e3fb;
+  --subject-computerscience-primary: #0d9488;
+  --subject-computerscience-secondary: #d3f1ed;
+  --subject-physics-primary: #e11d48;
+  --subject-physics-secondary: #fbdde4;
+  --subject-chemistry-primary: #7c3aed;
+  --subject-chemistry-secondary: #e9ddfd;
+  --subject-biology-primary: #10b981;
+  --subject-biology-secondary: #d4f3e7;
+  --subject-english-primary: #6366f1;
+  --subject-english-secondary: #e5e6fc;
+  --subject-urdu-primary: #be123c;
+  --subject-urdu-secondary: #fbdce3;
+  --subject-islamiat-primary: #b45309;
+  --subject-islamiat-secondary: #fbebd6;
+  --subject-pakistanstudies-primary: #047857;
+  --subject-pakistanstudies-secondary: #d2f0e4;
+
+  /* ---- Semantic ---- */
+  --color-success: #059669;
+  --color-success-surface: #d9f5ea;
+  --color-error: #e11d48;
+  --color-error-surface: #fde7ec;
+  --color-warning: #b45309;
+  --color-warning-surface: #fdf0dc;
+  --color-info: #3730a3;
+  --color-info-surface: #e8ecff;
+
+  /* ---- Neutral scale (slate ramp, matching the main site) ---- */
+  --neutral-0: #ffffff;
+  --neutral-50: #f8fafc;
+  --neutral-100: #f1f5f9;
+  --neutral-200: #e2e8f0;
+  --neutral-300: #cbd5e1;
+  --neutral-400: #94a3b8;
+  --neutral-500: #64748b;
+  --neutral-600: #475569;
+  --neutral-700: #334155;
+  --neutral-800: #1e293b;
+  --neutral-950: #0f172a;
+
+  /* ---- Surfaces (glassmorphism, exactly as the main site does it) ---- */
+  --color-bg-app: #f0f4ff;
+  --color-bg-surface: rgba(255, 255, 255, 0.78);
+  --color-bg-surface-solid: #ffffff;
+  --color-border: rgba(55, 48, 163, 0.10);
+  --color-border-strong: rgba(55, 48, 163, 0.20);
+  --glass-blur: saturate(150%) blur(14px);
+
+  /* ---- Text ---- */
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-placeholder: #94a3b8;
+
+  --color-interactive: #4f46e5;
+  --color-interactive-hover: #3730a3;
+
+  /* ---- Elevation ---- */
+  --elevation-flat: none;
+  --elevation-card: 0 4px 16px rgba(15, 23, 42, 0.04);
+  --elevation-raised: 0 10px 35px rgba(15, 23, 42, 0.07);
+  --elevation-overlay: 0 20px 60px rgba(15, 23, 42, 0.10);
+  --elevation-floating: 0 24px 70px rgba(15, 23, 42, 0.14);
+  --elevation-primary: 0 15px 40px rgba(79, 70, 229, 0.22);
+
+  /* ---- Radius (softer, matching the main site's rounded cards) ---- */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
+  --radius-pill: 9999px;
+
+  /* ---- Spacing ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 40px;
+  --space-8: 48px;
+  --space-9: 64px;
+  --space-10: 80px;
+  --space-11: 96px;
+
+  /* ---- Typography (the main site's exact pairing) ---- */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Courier New', monospace;
+  --font-urdu-display: 'Noto Nastaliq Urdu', serif;
+  --font-urdu-body: 'Noto Naskh Urdu', serif;
+
+  --type-display: 700 42px/1.2 var(--font-display);
+  --type-h1: 800 32px/1.25 var(--font-body);
+  --type-h2: 700 25px/1.3 var(--font-body);
+  --type-h3: 700 20px/1.35 var(--font-body);
+  --type-h4: 700 17px/1.4 var(--font-body);
+  --type-body-lg: 400 17px/1.7 var(--font-body);
+  --type-body-md: 400 16px/1.65 var(--font-body);
+  --type-body-sm: 400 14px/1.6 var(--font-body);
+  --type-button-lg: 700 15px/1 var(--font-body);
+  --type-button-md: 700 13px/1 var(--font-body);
+  --type-caption: 700 11.5px/1.4 var(--font-body);
+
+  /* ---- Breakpoints ---- */
+  --breakpoint-tablet: 640px;
+  --breakpoint-desktop: 1024px;
+  --breakpoint-wide: 1440px;
+  --container-max: 1200px;
+
+  /* ---- Motion (the main site's easings) ---- */
+  --motion-instant: 100ms;
+  --motion-quick: 180ms;
+  --motion-standard: 260ms;
+  --motion-deliberate: 420ms;
+  --motion-celebration: 1000ms;
+  --ease-standard: cubic-bezier(0.25, 0.8, 0.25, 1);
+  --ease-out: cubic-bezier(0.25, 0.8, 0.25, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --touch-target-min: 44px;
+
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay-backdrop: 900;
+  --z-dialog: 1000;
+  --z-toast: 1100;
+  --z-skip-link: 1200;
+}
+
+/* ---- Optional dark mode — ONLY when explicitly turned on by the person.
+   Never applied automatically. Keyed to the same indigo family so it still
+   reads as W.H. Academy rather than a different product. ---- */
+[data-theme="dark"] {
+  --color-bg-app: #0e0d1f;
+  --color-bg-surface: rgba(30, 27, 75, 0.72);
+  --color-bg-surface-solid: #1e1b4b;
+  --color-text-primary: #eef1ff;
+  --color-text-secondary: #a5b0d0;
+  --color-text-placeholder: #6b7699;
+  --color-border: rgba(129, 140, 248, 0.18);
+  --color-border-strong: rgba(129, 140, 248, 0.32);
+
+  --color-brand-ink: #818cf8;
+  --color-brand-ink-light: #a5b4fc;
+  --color-brand-ink-tint: rgba(129, 140, 248, 0.14);
+  --color-interactive: #818cf8;
+  --color-interactive-hover: #a5b4fc;
+
+  --color-success: #34d399;
+  --color-success-surface: rgba(16, 185, 129, 0.15);
+  --color-error: #fb7185;
+  --color-error-surface: rgba(225, 29, 72, 0.16);
+  --color-warning: #fbbf24;
+  --color-warning-surface: rgba(180, 83, 9, 0.18);
+  --color-info: #818cf8;
+  --color-info-surface: rgba(129, 140, 248, 0.14);
+
+  --neutral-100: #262450;
+  --neutral-200: #322f63;
+  --neutral-300: #3f3b78;
+}

@@ -1,0 +1,60 @@
+/* ============================================================================
+   W.H. Academy — Animation System
+   Motion tokens: instant 100ms / quick 180ms / standard 240ms /
+   deliberate 400ms / celebration ~1000ms. Rarity preserves meaning —
+   celebration-tier is reserved for genuine milestones only.
+   ========================================================================== */
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes toast-in { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes toast-out { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-12px); } }
+
+@keyframes skeleton-shimmer { 0% { background-position: 100% 0; } 100% { background-position: 0 0; } }
+
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fade-in-up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes scale-in { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
+@keyframes shake {
+  10%, 90% { transform: translateX(-1px); }
+  20%, 80% { transform: translateX(2px); }
+  30%, 50%, 70% { transform: translateX(-3px); }
+  40%, 60% { transform: translateX(3px); }
+}
+
+@keyframes celebration-pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  50% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes confetti-fall {
+  0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(120px) rotate(360deg); opacity: 0; }
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(31,56,100,0.3); }
+  100% { box-shadow: 0 0 0 12px rgba(31,56,100,0); }
+}
+
+/* ---- Utility animation classes ---- */
+.anim-fade-in { animation: fade-in var(--motion-standard) var(--ease-out); }
+.anim-fade-in-up { animation: fade-in-up var(--motion-standard) var(--ease-out); }
+.anim-scale-in { animation: scale-in var(--motion-standard) var(--ease-out); }
+.anim-shake { animation: shake var(--motion-quick) var(--ease-out); }
+.anim-celebration { animation: celebration-pop var(--motion-celebration) var(--ease-out); }
+
+/* Correct/incorrect feedback states applied by animations.js */
+[data-feedback="correct"] { background: var(--color-success-surface) !important; border-color: var(--color-success) !important; transition: background var(--motion-deliberate) var(--ease-out), border-color var(--motion-deliberate) var(--ease-out); }
+[data-feedback="incorrect"] { background: var(--color-error-surface) !important; border-color: var(--color-error) !important; animation: shake var(--motion-quick) var(--ease-out); }
+
+.confetti-piece { position: absolute; width: 8px; height: 8px; border-radius: 2px; animation: confetti-fall 900ms var(--ease-out) forwards; pointer-events: none; }
+
+/* Route transition (cross-fade + slight vertical settle) */
+.route-transition-enter { animation: fade-in-up var(--motion-standard) var(--ease-out); }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-celebration, .confetti-piece, [data-feedback="incorrect"] { animation: none !important; }
+}

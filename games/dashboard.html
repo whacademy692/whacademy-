@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Dashboard — W.H. Academy</title>
+  <meta name="theme-color" content="#3730a3">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/pages/dashboard.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="app-shell app-shell--with-sidebar">
+    <!-- Sidebar (desktop) -->
+    <nav class="sidebar" aria-label="Primary">
+      <a href="dashboard.html" class="top-bar__brand text-display">W.H. Academy</a>
+      <div class="sidebar__nav">
+        <a class="sidebar__item" href="dashboard.html" data-nav-page="dashboard.html">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>
+          Dashboard
+        </a>
+        <a class="sidebar__item" href="games.html" data-nav-page="games.html">
+          <svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path stroke-linecap="round" d="M7 9h2M9 7v4M15 9h.01M17 11h.01"/></svg>
+          Classes
+        </a>
+        <a class="sidebar__item" href="revision.html" data-nav-page="revision.html">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v16l4-4h12V4H4z"/></svg>
+          Revision
+        </a>
+        <a class="sidebar__item" href="leaderboard.html" data-nav-page="leaderboard.html">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 21h8M12 17v4M6 3h12v6a6 6 0 01-12 0V3z"/></svg>
+          Search
+        </a>
+        <a class="sidebar__item" href="profile.html" data-nav-page="profile.html">
+          <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="8" r="4"/><path stroke-linecap="round" d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+          Profile
+        </a>
+      </div>
+      <div style="margin-top:auto;">
+        <button class="sidebar__item" style="width:100%;" data-action="toggle-theme">
+          <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="4"/><path stroke-linecap="round" d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          Toggle theme
+        </button>
+        <button class="sidebar__item" style="width:100%;" data-action="logout">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+          Log Out
+        </button>
+      </div>
+    </nav>
+
+    <div style="flex:1; min-width:0;">
+      <!-- Top bar (mobile) -->
+      <header class="top-bar hide-desktop">
+        <span class="top-bar__brand">W.H. Academy</span>
+        <div class="top-bar__actions">
+          <button class="btn btn--icon" data-action="toggle-theme" aria-label="Toggle dark mode">
+            <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="4"/><path stroke-linecap="round" d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <main id="main-content" class="app-main">
+        <div class="container section">
+          <h1 class="sr-only">Dashboard</h1>
+
+          <!-- WHO IS LOGGED IN.
+               Siblings share devices and one parent email; each child has their
+               own Student ID. Without this banner, a child who opened the app
+               after a sibling forgot to log out would land silently in the wrong
+               account and earn XP there. Showing the name makes that mistake
+               impossible to miss. -->
+          <div id="identity-banner" class="card cluster" hidden
+               style="justify-content: space-between; padding: var(--space-3) var(--space-4);
+                      margin-bottom: var(--space-5);">
+            <div class="cluster" style="gap: var(--space-3); min-width: 0;">
+              <div aria-hidden="true"
+                   style="width:38px; height:38px; border-radius:50%; flex-shrink:0;
+                          background:linear-gradient(135deg,#6366f1,#4f46e5); color:#fff;
+                          display:flex; align-items:center; justify-content:center;
+                          font-weight:800; font-size:15px;"
+                   id="identity-initial"></div>
+              <div style="min-width: 0;">
+                <p id="identity-name" style="font-weight:700; margin:0; line-height:1.3;"></p>
+                <p id="identity-meta" class="text-mono"
+                   style="font-size:11.5px; color:var(--color-text-secondary); margin:0;"></p>
+              </div>
+            </div>
+            <button class="btn btn--secondary btn--sm" data-action="logout"
+                    style="flex-shrink:0;">Not you? Log out</button>
+          </div>
+
+          <!-- Skeleton -->
+          <div id="dashboard-skeleton" class="stack">
+            <div class="skeleton skeleton--card"></div>
+            <div class="card-grid">
+              <div class="skeleton skeleton--card"></div>
+              <div class="skeleton skeleton--card"></div>
+              <div class="skeleton skeleton--card"></div>
+            </div>
+          </div>
+
+          <!-- Error -->
+          <div id="dashboard-error" class="error-state" hidden>
+            <svg class="error-state__icon" viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 8v5M12 16h.01"/></svg>
+            <p class="error-state__title">Couldn't load your dashboard</p>
+            <p class="error-state__message">Check your connection and try again.</p>
+            <div class="error-state__actions">
+              <button id="dashboard-retry" class="btn btn--primary">Retry</button>
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div id="dashboard-content" class="stack-lg" hidden>
+            <a id="recommendation-card" class="card card--nav card--interactive" href="games.html" style="--subject-accent: var(--color-brand-ink); --subject-accent-tint: var(--color-brand-ink-tint);">
+              <div class="card--nav__icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3l14 9-14 9V3z"/></svg></div>
+              <div class="card--nav__body">
+                <p class="card--nav__title">Loading…</p>
+                <p class="card--nav__meta"></p>
+              </div>
+              <span class="btn btn--secondary btn--sm">Continue</span>
+            </a>
+
+            <div class="card-grid">
+              <div id="stat-xp" class="card card--stat">
+                <span class="card--stat__value">0</span>
+                <span class="card--stat__label">Total XP</span>
+              </div>
+              <div id="stat-streak" class="card card--stat">
+                <span class="card--stat__value">0</span>
+                <span class="card--stat__label">Day streak</span>
+              </div>
+              <div id="stat-revision" class="card card--stat">
+                <span class="card--stat__value">0</span>
+                <span class="card--stat__label">Due for revision</span>
+              </div>
+            </div>
+
+            <section aria-labelledby="weak-topics-heading">
+              <h2 id="weak-topics-heading">Focus Areas</h2>
+              <div id="weak-topics-list" class="stack-sm" style="margin-top: var(--space-3);"></div>
+            </section>
+
+            <section aria-labelledby="achievements-heading">
+              <div class="cluster" style="justify-content:space-between;">
+                <h2 id="achievements-heading">Recent Achievements</h2>
+                <a href="achievements.html" class="text-body-sm">See all</a>
+              </div>
+              <div id="recent-achievements" class="card-grid" style="margin-top: var(--space-3);"></div>
+            </section>
+
+            <section aria-labelledby="certificates-heading">
+              <div class="cluster" style="justify-content:space-between;">
+                <h2 id="certificates-heading">Certificates</h2>
+                <a href="achievements.html#certificates" class="text-body-sm">See all</a>
+              </div>
+              <div id="recent-certificates" class="card-grid" style="margin-top: var(--space-3);"></div>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bottom nav (mobile) -->
+  <nav class="bottom-nav" aria-label="Primary">
+    <a class="bottom-nav__item" href="dashboard.html" data-nav-page="dashboard.html">
+      <svg viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>
+      Home
+    </a>
+    <a class="bottom-nav__item" href="games.html" data-nav-page="games.html">
+      <svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/></svg>
+      Classes
+    </a>
+    <a class="bottom-nav__item" href="revision.html" data-nav-page="revision.html">
+      <svg viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v16l4-4h12V4H4z"/></svg>
+      Revision
+    </a>
+    <a class="bottom-nav__item" href="leaderboard.html" data-nav-page="leaderboard.html">
+      <svg viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 21h8M12 17v4M6 3h12v6a6 6 0 01-12 0V3z"/></svg>
+      Ranks
+    </a>
+    <a class="bottom-nav__item" href="profile.html" data-nav-page="profile.html">
+      <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="8" r="4"/><path stroke-linecap="round" d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+      Profile
+    </a>
+  </nav>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/notifications.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/router.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

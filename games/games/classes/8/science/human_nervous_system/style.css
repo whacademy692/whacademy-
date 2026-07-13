@@ -1,0 +1,58 @@
+/* ============================================================================
+   Chapter-local styles — generic stage-stepper and hotspot-diagram
+   presentation. Nothing subject-specific lives here beyond the diagram's
+   background illustration; the mechanics themselves are styled entirely
+   by the shared components.css.
+   ========================================================================== */
+
+.stage-stepper {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  list-style: none;
+}
+.stage-step {
+  flex-shrink: 0;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-pill);
+  font: var(--type-caption);
+  background: var(--neutral-100);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+[data-theme="dark"] .stage-step { background: var(--color-bg-surface); }
+.stage-step--done { background: var(--color-success-surface); color: var(--color-success); }
+.stage-step--active { background: var(--subject-accent, var(--color-brand-ink)); color: #fff; font-weight: 700; }
+
+.hotspot-diagram {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, var(--subject-accent-tint, var(--color-brand-ink-tint)), var(--color-bg-surface));
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.hotspot-marker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--subject-accent, var(--color-brand-ink));
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 0 6px rgba(255,255,255,0.5);
+  animation: pulse-ring 2s ease-out infinite;
+}
+[data-theme="dark"] .hotspot-marker { box-shadow: 0 0 0 6px rgba(0,0,0,0.3); }
+.hotspot-marker--visited { background: var(--color-success); animation: none; }
+.hotspot-marker--visited span::before { content: '✓'; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hotspot-marker { animation: none; }
+}
+
+#ordering-list li { transition: transform var(--motion-quick) var(--ease-out); }

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Settings — W.H. Academy</title>
+  <meta name="theme-color" content="#3730a3">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/pages/settings.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="app-shell app-shell--with-sidebar">
+    <nav class="sidebar" aria-label="Primary">
+      <a href="dashboard.html" class="top-bar__brand text-display">W.H. Academy</a>
+      <div class="sidebar__nav">
+        <a class="sidebar__item" href="dashboard.html" data-nav-page="dashboard.html">Dashboard</a>
+        <a class="sidebar__item" href="games.html" data-nav-page="games.html">Classes</a>
+        <a class="sidebar__item" href="revision.html" data-nav-page="revision.html">Revision</a>
+        <a class="sidebar__item" href="leaderboard.html" data-nav-page="leaderboard.html">Ranks</a>
+        <a class="sidebar__item" href="profile.html" data-nav-page="profile.html">Profile</a>
+      </div>
+      <div style="margin-top:auto;">
+        <a class="sidebar__item" href="settings.html" data-nav-page="settings.html" aria-current="page">Settings</a>
+        <button class="sidebar__item" style="width:100%;" data-action="logout">Log Out</button>
+      </div>
+    </nav>
+
+    <div style="flex:1; min-width:0;">
+      <header class="top-bar hide-desktop">
+        <button class="btn btn--icon" onclick="history.back()" aria-label="Back"><svg viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg></button>
+        <span class="top-bar__brand">Settings</span>
+        <span></span>
+      </header>
+
+      <main id="main-content" class="app-main">
+        <div class="container section" style="max-width: 560px;">
+          <h1 class="hide-mobile">Settings</h1>
+
+          <form id="settings-form" class="stack-lg" style="margin-top: var(--space-5);">
+            <section>
+              <h2>Appearance</h2>
+              <div class="stack" style="margin-top: var(--space-3);">
+                <div class="field">
+                  <label class="field__label" for="setting-theme">Theme</label>
+                  <select class="select" id="setting-theme" name="theme">
+                    <option value="light">Light (default)</option>
+                    <option value="dark">Dark</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="setting-text-size">Text size</label>
+                  <select class="select" id="setting-text-size" name="textSize">
+                    <option value="default">Default</option>
+                    <option value="large">Large</option>
+                    <option value="larger">Larger</option>
+                  </select>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <h2>Accessibility</h2>
+              <div class="cluster" style="justify-content: space-between; margin-top: var(--space-3);">
+                <label for="setting-motion">Reduce motion</label>
+                <span class="toggle">
+                  <input type="checkbox" id="setting-motion" name="motionReduced">
+                  <span class="toggle__track"></span>
+                  <span class="toggle__thumb"></span>
+                </span>
+              </div>
+            </section>
+
+            <section>
+              <h2>Sound &amp; Notifications</h2>
+              <div class="cluster" style="justify-content: space-between; margin-top: var(--space-3);">
+                <label for="setting-sound">Sound effects</label>
+                <span class="toggle">
+                  <input type="checkbox" id="setting-sound" name="soundEnabled">
+                  <span class="toggle__track"></span>
+                  <span class="toggle__thumb"></span>
+                </span>
+              </div>
+            </section>
+
+            <section>
+              <h2>Teacher Mode</h2>
+              <p class="text-body-sm">Enables a fast chapter-search shortcut for live classroom demonstrations. Scores are not saved while active.</p>
+              <div class="cluster" style="justify-content: space-between; margin-top: var(--space-3);">
+                <label for="setting-teacher-mode">Enable Teacher Mode</label>
+                <span class="toggle">
+                  <input type="checkbox" id="setting-teacher-mode" name="teacherModeEnabled">
+                  <span class="toggle__track"></span>
+                  <span class="toggle__thumb"></span>
+                </span>
+              </div>
+            </section>
+          </form>
+
+          <section style="margin-top: var(--space-8);">
+            <h2>Your Data</h2>
+            <p class="text-body-sm">Download a copy of your locally cached progress.</p>
+            <button id="export-progress-btn" class="btn btn--secondary" style="margin-top: var(--space-3);">Export My Progress</button>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <nav class="bottom-nav" aria-label="Primary">
+    <a class="bottom-nav__item" href="dashboard.html" data-nav-page="dashboard.html">Home</a>
+    <a class="bottom-nav__item" href="games.html" data-nav-page="games.html">Classes</a>
+    <a class="bottom-nav__item" href="revision.html" data-nav-page="revision.html">Revision</a>
+    <a class="bottom-nav__item" href="leaderboard.html" data-nav-page="leaderboard.html">Ranks</a>
+    <a class="bottom-nav__item" href="profile.html" data-nav-page="profile.html">Profile</a>
+  </nav>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/notifications.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/router.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+/* ============================================================================
+   W.H. Academy — login.html page styles
+   ========================================================================== */
+
+.auth-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  background: var(--color-bg-app);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--color-bg-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--elevation-raised);
+  padding: var(--space-6);
+}
+
+.auth-card__brand {
+  display: block;
+  text-align: center;
+  color: var(--color-brand-ink);
+  margin-bottom: var(--space-6);
+  font-size: 24px;
+}
+[data-theme="dark"] .auth-card__brand { color: var(--color-interactive); }
+
+.auth-card section h1 { margin-bottom: var(--space-2); }
+.auth-card section > p.text-body-sm { color: var(--color-text-secondary); margin-bottom: var(--space-5); }
+
+.auth-card form { display: flex; flex-direction: column; gap: var(--space-4); margin-top: var(--space-4); }
+
+.auth-card__footer { text-align: center; margin-top: var(--space-5); color: var(--color-text-secondary); }
+
+@media (max-width: 420px) {
+  .auth-card { padding: var(--space-5); border-radius: 0; box-shadow: none; max-width: 100%; }
+  .auth-shell { padding: 0; align-items: flex-start; }
+}

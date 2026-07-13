@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Learning Games — W.H. Academy</title>
+  <meta name="description" content="W.H. Academy's interactive learning games for FBISE students, Class 6 to 12. Learn through play.">
+  <meta name="theme-color" content="#3730a3">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .welcome-shell {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-6) var(--space-4);
+    }
+    .welcome-card {
+      width: 100%;
+      max-width: 680px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--elevation-overlay);
+      padding: var(--space-9) var(--space-6);
+      position: relative;
+      overflow: hidden;
+    }
+    .welcome-card::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245,158,11,0.16), transparent 70%);
+      pointer-events: none;
+    }
+    .welcome-logo {
+      width: 62px; height: 62px;
+      margin: 0 auto var(--space-4);
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: var(--elevation-primary);
+    }
+    .welcome-eyebrow {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      padding: 6px 16px;
+      border-radius: var(--radius-pill);
+      background: rgba(99, 102, 241, 0.10);
+      border: 1px solid rgba(79, 70, 229, 0.18);
+      color: var(--color-brand-ink);
+      font: var(--type-caption);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-4);
+    }
+    .welcome-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 2.9rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-4);
+    }
+    .welcome-title span {
+      background: linear-gradient(135deg, #4f46e5, #0ea5e9);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .welcome-sub {
+      font: var(--type-body-lg);
+      color: var(--color-text-secondary);
+      max-width: 46ch;
+      margin: 0 auto var(--space-7);
+    }
+    .welcome-actions {
+      display: flex; gap: var(--space-3);
+      justify-content: center; flex-wrap: wrap;
+      position: relative; z-index: 2;
+    }
+    .welcome-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+      margin-top: var(--space-8);
+      padding-top: var(--space-6);
+      border-top: 1px solid var(--color-border);
+    }
+    @media (max-width: 560px) {
+      .welcome-features { grid-template-columns: 1fr; gap: var(--space-3); }
+      .welcome-card { padding: var(--space-7) var(--space-5); }
+    }
+    .welcome-feature__icon {
+      width: 36px; height: 36px;
+      margin: 0 auto var(--space-2);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(99, 102, 241, 0.10);
+      color: var(--color-interactive);
+    }
+    .welcome-feature__icon svg { width: 18px; height: 18px; stroke: currentColor; fill: none; }
+    .welcome-feature__label { font: var(--type-body-sm); font-weight: 700; color: var(--color-text-primary); }
+    .welcome-feature__note { font: var(--type-caption); text-transform: none; letter-spacing: normal; color: var(--color-text-secondary); font-weight: 400; }
+    .welcome-back {
+      margin-top: var(--space-6);
+      font: var(--type-body-sm);
+      color: var(--color-text-secondary);
+    }
+    .welcome-back a { color: var(--color-interactive); font-weight: 700; }
+    .welcome-back a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <main id="main-content" class="welcome-shell">
+    <div class="welcome-card anim-fade-in-up">
+      <div class="welcome-logo" aria-hidden="true">
+        <svg width="32" height="32" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 2L4 6v8c0 5.5 4.3 10.7 10 12 5.7-1.3 10-6.5 10-12V6L14 2z" fill="rgba(255,255,255,0.18)" stroke="white" stroke-width="1.4" stroke-linejoin="round"/>
+          <path d="M10 10h4M10 13h4" stroke="#fbbf24" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M14 10v6" stroke="white" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+          <path d="M14 10h4M14 13h4" stroke="white" stroke-width="1.4" stroke-linecap="round" opacity="0.8"/>
+          <circle cx="14" cy="20" r="1.8" fill="#fbbf24"/>
+        </svg>
+      </div>
+
+      <span class="welcome-eyebrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" fill="none" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3l14 9-14 9V3z"/></svg>
+        Learning Games
+      </span>
+
+      <h1 class="welcome-title">Learning that feels like <span>play</span>.</h1>
+
+      <p class="welcome-sub">
+        Interactive lessons, chapter games and smart revision — built around the
+        FBISE syllabus for Class 6 to 12.
+      </p>
+
+      <div class="welcome-actions">
+        <a href="login.html" class="btn btn--primary btn--lg">Log In to Play</a>
+        <a href="login.html?step=registration" class="btn btn--secondary btn--lg">Register with Student ID</a>
+      </div>
+
+      <div class="welcome-features">
+        <div>
+          <div class="welcome-feature__icon">
+            <svg viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.5A5.5 5.5 0 006.5 12 5.5 5.5 0 0012 17.5 5.5 5.5 0 0017.5 12 5.5 5.5 0 0012 6.5z"/><path stroke-linecap="round" d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
+          </div>
+          <p class="welcome-feature__label">Play &amp; Learn</p>
+          <p class="welcome-feature__note">Every chapter is a game</p>
+        </div>
+        <div>
+          <div class="welcome-feature__icon">
+            <svg viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v16l4-4h12V4H4z"/></svg>
+          </div>
+          <p class="welcome-feature__label">Smart Revision</p>
+          <p class="welcome-feature__note">Reviews what you forget</p>
+        </div>
+        <div>
+          <div class="welcome-feature__icon">
+            <svg viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 21h8M12 17v4M6 3h12v6a6 6 0 01-12 0V3z"/></svg>
+          </div>
+          <p class="welcome-feature__label">Earn Certificates</p>
+          <p class="welcome-feature__note">Track XP &amp; streaks</p>
+        </div>
+      </div>
+
+      <p class="welcome-back">
+        &larr; <a href="../index.html">Back to W.H. Academy</a>
+      </p>
+    </div>
+  </main>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/storage.js"></script>
+  <script>
+    // Already logged in? Go straight to the dashboard.
+    if (Storage.getToken()) { window.location.href = 'dashboard.html'; }
+    // Light is the default and only automatic theme — see variables.css.
+    document.documentElement.setAttribute('data-theme',
+      Storage.getSettings().theme === 'dark' ? 'dark' : 'light');
+  </script>
+</body>
+</html>

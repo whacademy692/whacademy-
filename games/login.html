@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Log In — W.H. Academy</title>
+  <meta name="theme-color" content="#3730a3">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/pages/login.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <main id="main-content" class="auth-shell">
+    <div class="auth-card">
+      <a href="welcome.html" class="text-display auth-card__brand">W.H. Academy</a>
+
+      <!-- ===== LOGIN ===== -->
+      <section data-step="login">
+        <h1 tabindex="-1">Log in</h1>
+        <form id="login-form" novalidate>
+          <div class="field" data-field="studentId">
+            <label class="field__label" for="login-student-id">Student ID</label>
+            <input class="input text-mono" id="login-student-id" name="studentId" type="text" autocomplete="username"
+                   placeholder="WHA-2026-C09-BIO-000001" required aria-describedby="login-student-id-error">
+            <p class="field__error" id="login-student-id-error" role="alert"></p>
+          </div>
+          <div class="field" data-field="pin">
+            <label class="field__label" for="login-pin">PIN</label>
+            <input class="input" id="login-pin" name="pin" type="password" inputmode="numeric" autocomplete="current-password"
+                   minlength="4" maxlength="8" required aria-describedby="login-pin-error">
+            <p class="field__error" id="login-pin-error" role="alert"></p>
+          </div>
+          <div class="cluster" style="justify-content: space-between;">
+            <label class="checkbox-row">
+              <input type="checkbox" name="rememberMe">
+              <span class="text-body-sm">Remember me</span>
+            </label>
+            <button type="button" class="btn btn--tertiary btn--sm" data-goto-step="forgot-pin">Forgot PIN?</button>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full btn--lg">
+            <span class="btn__label">Log In</span>
+            <span class="btn__spinner" aria-hidden="true"></span>
+          </button>
+        </form>
+        <p class="text-body-sm auth-card__footer">
+          New here? <button type="button" class="btn btn--tertiary" data-goto-step="registration">Register with your Student ID</button>
+        </p>
+      </section>
+
+      <!-- ===== FORGOT PIN ===== -->
+      <section data-step="forgot-pin" hidden>
+        <button type="button" class="btn btn--tertiary btn--sm" data-goto-step="login" aria-label="Back to log in">&larr; Back</button>
+        <h1 tabindex="-1">Reset your PIN</h1>
+        <p class="text-body-sm">Enter your Student ID and the email on file — we'll send you a verification code.</p>
+        <form id="forgot-pin-form" novalidate>
+          <div class="field">
+            <label class="field__label" for="forgot-student-id">Student ID</label>
+            <input class="input text-mono" id="forgot-student-id" name="studentId" type="text" placeholder="WHA-2026-C09-BIO-000001" required>
+          </div>
+          <div class="field">
+            <label class="field__label" for="forgot-email">Email</label>
+            <input class="input" id="forgot-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full btn--lg">
+            <span class="btn__label">Send Verification Code</span>
+            <span class="btn__spinner" aria-hidden="true"></span>
+          </button>
+        </form>
+      </section>
+
+      <!-- ===== REGISTRATION ===== -->
+      <section data-step="registration" hidden>
+        <button type="button" class="btn btn--tertiary btn--sm" data-goto-step="login" aria-label="Back to log in">&larr; Back</button>
+        <h1 tabindex="-1">Register</h1>
+        <p class="text-body-sm">Use the Student ID emailed to you once your enrollment was activated.</p>
+        <form id="registration-form" novalidate>
+          <div class="field">
+            <label class="field__label" for="reg-student-id">Student ID</label>
+            <input class="input text-mono" id="reg-student-id" name="studentId" type="text" placeholder="WHA-2026-C09-BIO-000001" required>
+          </div>
+          <div class="field">
+            <label class="field__label" for="reg-full-name">Full name</label>
+            <input class="input" id="reg-full-name" name="fullName" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label class="field__label" for="reg-email">Email</label>
+            <input class="input" id="reg-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <label class="checkbox-row">
+            <input type="checkbox" name="termsAccepted" required>
+            <span class="text-body-sm">I accept the <a href="../terms.html" target="_blank">Terms &amp; Conditions</a></span>
+          </label>
+          <button type="submit" class="btn btn--primary btn--full btn--lg">
+            <span class="btn__label">Continue</span>
+            <span class="btn__spinner" aria-hidden="true"></span>
+          </button>
+        </form>
+      </section>
+
+      <!-- ===== OTP VERIFICATION (shared) ===== -->
+      <section data-step="otp-verification" hidden>
+        <h1 tabindex="-1">Check your email</h1>
+        <p class="text-body-sm">Enter the 6-digit code we just sent you. It expires in 15 minutes.</p>
+        <form id="otp-form" novalidate>
+          <div class="field">
+            <span class="field__label" id="otp-group-label">Verification code</span>
+            <div class="cluster" role="group" aria-labelledby="otp-group-label" style="justify-content:center; gap: var(--space-2);">
+              <input class="input input--otp otp-box" type="text" inputmode="numeric" maxlength="1" style="width:48px; padding:var(--space-2);" aria-label="Digit 1">
+              <input class="input input--otp otp-box" type="text" inputmode="numeric" maxlength="1" style="width:48px; padding:var(--space-2);" aria-label="Digit 2">
+              <input class="input input--otp otp-box" type="text" inputmode="numeric" maxlength="1" style="width:48px; padding:var(--space-2);" aria-label="Digit 3">
+              <input class="input input--otp otp-box" type="text" inputmode="numeric" maxlength="1" style="width:48px; padding:var(--space-2);" aria-label="Digit 4">
+              <input class="input input--otp otp-box" type="text" inputmode="numeric" maxlength="1" style="width:48px; padding:var(--space-2);" aria-label="Digit 5">
+              <input class="input input--otp otp-box" type="text" inputmode="numeric" maxlength="1" style="width:48px; padding:var(--space-2);" aria-label="Digit 6">
+            </div>
+            <input type="hidden" id="otp-code-hidden" name="otpCode">
+          </div>
+          <button type="submit" class="btn btn--primary btn--full btn--lg">
+            <span class="btn__label">Verify</span>
+            <span class="btn__spinner" aria-hidden="true"></span>
+          </button>
+        </form>
+        <p class="text-body-sm auth-card__footer">
+          Didn't get a code? <a href="#" id="resend-otp-link">Resend it</a>
+        </p>
+      </section>
+
+      <!-- ===== SET PIN (registration completion) ===== -->
+      <section data-step="set-pin" hidden>
+        <h1 tabindex="-1">Create your PIN</h1>
+        <p class="text-body-sm">Choose a 4–8 digit PIN. You'll use this with your Student ID to log in.</p>
+        <form id="set-pin-form" novalidate>
+          <div class="field">
+            <label class="field__label" for="new-pin">New PIN</label>
+            <input class="input input--pin" id="new-pin" name="pin" type="password" inputmode="numeric" minlength="4" maxlength="8" required>
+          </div>
+          <div class="field">
+            <label class="field__label" for="confirm-pin">Confirm PIN</label>
+            <input class="input input--pin" id="confirm-pin" name="confirmPin" type="password" inputmode="numeric" minlength="4" maxlength="8" required>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full btn--lg">
+            <span class="btn__label">Create Account</span>
+            <span class="btn__spinner" aria-hidden="true"></span>
+          </button>
+        </form>
+      </section>
+
+      <!-- ===== SET NEW PIN (forgot-pin completion) — reuses the same set-pin-form handler via step name distinction ===== -->
+      <section data-step="set-new-pin" hidden>
+        <h1 tabindex="-1">Choose a new PIN</h1>
+        <form id="set-new-pin-form" novalidate>
+          <div class="field">
+            <label class="field__label" for="reset-new-pin">New PIN</label>
+            <input class="input input--pin" id="reset-new-pin" name="pin" type="password" inputmode="numeric" minlength="4" maxlength="8" required>
+          </div>
+          <div class="field">
+            <label class="field__label" for="reset-confirm-pin">Confirm PIN</label>
+            <input class="input input--pin" id="reset-confirm-pin" name="confirmPin" type="password" inputmode="numeric" minlength="4" maxlength="8" required>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full btn--lg">
+            <span class="btn__label">Save New PIN</span>
+            <span class="btn__spinner" aria-hidden="true"></span>
+          </button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/notifications.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/router.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    document.addEventListener('wha:ready', function () {
+      Auth.initLoginPage();
+      var requestedStep = Router.getQueryParam('step');
+      if (requestedStep) Router.showStep(requestedStep);
+    });
+  </script>
+</body>
+</html>

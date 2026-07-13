@@ -1,0 +1,39 @@
+/* ============================================================================
+   W.H. Academy — Responsive Utilities
+   Mobile-first. Breakpoints: tablet 640px / desktop 1024px / wide 1440px.
+   ========================================================================== */
+
+.hide-mobile { display: none; }
+@media (min-width: 640px) { .hide-mobile { display: revert; } }
+
+.hide-desktop { display: revert; }
+@media (min-width: 1024px) { .hide-desktop { display: none; } }
+
+.show-desktop-only { display: none; }
+@media (min-width: 1024px) { .show-desktop-only { display: revert; } }
+
+@media (min-width: 1024px) {
+  .app-main { padding-left: 240px; }
+  .app-shell--no-sidebar .app-main { padding-left: 0; }
+}
+@media (max-width: 1023px) {
+  .app-main { padding-left: 0; }
+}
+
+/* Two/three column layouts collapse to single column below tablet */
+@media (max-width: 639px) {
+  .card-grid, .grid { grid-template-columns: 1fr !important; }
+}
+
+/* Dialog becomes a bottom sheet visually on mobile via JS toggling data-mode,
+   this just ensures dialog padding stays comfortable at small widths */
+@media (max-width: 639px) {
+  .dialog { border-radius: var(--radius-lg) var(--radius-lg) 0 0; position: fixed; bottom: 0; left: 0; right: 0; max-width: 100%; }
+  .dialog-backdrop { align-items: flex-end; padding: 0; }
+}
+
+/* Container query-ish fallback: reduce card padding at narrow widths */
+@media (max-width: 380px) {
+  .card { padding: var(--space-3); }
+  .container { padding-inline: var(--space-3); }
+}

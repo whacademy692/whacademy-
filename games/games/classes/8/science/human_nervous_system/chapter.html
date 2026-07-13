@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Chapter — W.H. Academy</title>
+  <meta name="theme-color" content="#3730a3">
+  <link rel="icon" href="../../../../../assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../../../../assets/css/variables.css">
+  <link rel="stylesheet" href="../../../../../assets/css/main.css">
+  <link rel="stylesheet" href="../../../../../assets/css/layout.css">
+  <link rel="stylesheet" href="../../../../../assets/css/components.css">
+  <link rel="stylesheet" href="../../../../../assets/css/animations.css">
+  <link rel="stylesheet" href="../../../../../assets/css/responsive.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#chapter-stage-content" class="skip-link">Skip to chapter content</a>
+
+  <div class="app-shell">
+    <header class="top-bar">
+      <a href="../../../../../games.html" class="btn btn--icon" aria-label="Back to Classes">
+        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+      </a>
+      <span id="chapter-title" class="top-bar__brand" style="font-family:var(--font-body); font-size:16px;">Loading…</span>
+      <span style="width:44px;"></span>
+    </header>
+
+    <ol id="stage-stepper" class="stage-stepper" aria-label="Chapter progress"></ol>
+
+    <main id="chapter-stage-content" class="app-main container section" tabindex="-1" style="max-width: 640px;">
+      <div class="skeleton skeleton--card"></div>
+    </main>
+  </div>
+
+  <script src="../../../../../assets/js/utils.js"></script>
+  <script src="../../../../../assets/js/storage.js"></script>
+  <script src="../../../../../assets/js/notifications.js"></script>
+  <script src="../../../../../assets/js/animations.js"></script>
+  <script>
+    // Chapter pages sit five directories deep — override API_BASE_URL/API_KEY
+    // resolution by loading api.js normally (it reads the same constants);
+    // Storage/session token are shared via localStorage across the whole app.
+  </script>
+  <script src="../../../../../assets/js/api.js"></script>
+  <script>
+    if (!Storage.getToken()) {
+      window.location.href = '../../../../../login.html';
+    }
+  </script>
+  <script src="game.js"></script>
+</body>
+</html>
