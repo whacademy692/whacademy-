@@ -137,6 +137,25 @@
         <h1 tabindex="-1">Create your PIN</h1>
         <p class="text-body-sm">Choose a 4–8 digit PIN. You'll use this with your Student ID to log in.</p>
         <form id="set-pin-form" novalidate>
+
+          <!-- Student ID.
+               Shown when the student came straight to the site and typed nothing yet
+               (welcome page -> "Create Your PIN"). HIDDEN and pre-filled when they
+               arrived from the "Create Your PIN" email, which carries ?id= — so they
+               never retype it, and never see a field they have already answered.
+               Safe either way: a wrong ID simply fails, and the confirmation code is
+               only ever emailed to the address on file for that ID. -->
+          <div class="field" id="setpin-id-field">
+            <label class="field__label" for="setpin-student-id">Student ID</label>
+            <input class="input text-mono" id="setpin-student-id" name="studentId" type="text"
+                   placeholder="WHA-2026-C09-BIO-000001" autocomplete="username">
+            <p class="field__error" id="setpin-student-id-error" role="alert"></p>
+          </div>
+
+          <p class="text-body-sm" id="setpin-id-readout" hidden>
+            Student ID: <strong class="text-mono" id="setpin-id-value"></strong>
+          </p>
+
           <div class="field">
             <label class="field__label" for="new-pin">New PIN</label>
             <input class="input input--pin" id="new-pin" name="pin" type="password" inputmode="numeric" minlength="4" maxlength="8" required>
