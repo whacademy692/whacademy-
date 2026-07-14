@@ -221,7 +221,34 @@ const Auth = (() => {
       });
     }
 
-    Router.showStep('login');
+    // The Student-ID email links straight here with ?step=registration&id=...
+    // Without this, initLoginPage() always forced the 'login' step, so the email
+    // link (and welcome.html's "Register with Student ID" button, which has
+    // pointed at ?step=registration all along) both dumped the student on the
+    // login screen with a PIN they had not created yet.
+    //
+    // Only the two steps a student can legitimately START on are honoured.
+    // 'otp-verification' and 'set-pin' are deliberately NOT allowed from a URL:
+    // they are meaningless without the in-memory registrationContext set by the
+    // step before them.
+    const ALLOWED_ENTRY_STEPS = ['registration', 'forgot-pin'];
+    const requestedStep = Router.getQueryParam('step');
+
+    // Pre-fill the Student ID from the email link, so it is never retyped —
+    // by far the easiest place for a student to make a typo.
+    const prefillId = (Router.getQueryParam('id') || '').trim();
+    if (prefillId) {
+      const regIdField = Utils.qs('#reg-student-id');
+      const loginIdField = Utils.qs('#login-student-id');
+      const forgotIdField = Utils.qs('#forgot-student-id');
+      if (regIdField) regIdField.value = prefillId;
+      if (loginIdField) loginIdField.value = prefillId;
+      if (forgotIdField) forgotIdField.value = prefillId;
+    }
+
+    Router.showStep(
+      ALLOWED_ENTRY_STEPS.indexOf(requestedStep) !== -1 ? requestedStep : 'login'
+    );
   }
 
   return { initLoginPage };
