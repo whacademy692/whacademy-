@@ -90,6 +90,32 @@
       justify-content: center; flex-wrap: wrap;
       position: relative; z-index: 2;
     }
+
+    /* Plain-language guidance. Sits between the tagline and the buttons, because a
+       student who does not know what a Student ID is should read it BEFORE choosing
+       a button, not after. */
+    .welcome-guide {
+      position: relative; z-index: 2;
+      max-width: 34rem;
+      margin: var(--space-5) auto var(--space-5);
+      padding: var(--space-4) var(--space-5);
+      text-align: left;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      background: var(--color-surface-raised, rgba(255,255,255,0.55));
+    }
+    .welcome-guide__item { display: flex; gap: var(--space-3); align-items: flex-start; }
+    .welcome-guide__item + .welcome-guide__item { margin-top: var(--space-3); }
+    .welcome-guide__num {
+      flex: 0 0 auto;
+      width: 1.4rem; height: 1.4rem; border-radius: 50%;
+      display: grid; place-items: center;
+      font-size: 0.72rem; font-weight: 700;
+      background: var(--color-brand-ink, #4f46e5); color: #fff;
+    }
+    .welcome-guide__num--tip { background: var(--color-warning, #f59e0b); }
+    .welcome-guide__text { font-size: 0.88rem; line-height: 1.55; color: var(--color-text-secondary); margin: 0; }
+    .welcome-guide__text strong { color: var(--color-text-primary); }
     .welcome-features {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -149,14 +175,50 @@
         FBISE syllabus for Class 6 to 12.
       </p>
 
+      <div class="welcome-guide">
+        <div class="welcome-guide__item">
+          <span class="welcome-guide__num">1</span>
+          <p class="welcome-guide__text">
+            <strong>No account yet?</strong> Start with <strong>Register with Student ID</strong>.
+            Use the Student ID that was emailed to you when your enrollment was activated.
+          </p>
+        </div>
+        <div class="welcome-guide__item">
+          <span class="welcome-guide__num">2</span>
+          <p class="welcome-guide__text">
+            <strong>Then create your PIN.</strong> We email you a link right after you register —
+            or just tap <strong>Create Your PIN</strong> below. That finishes your account.
+          </p>
+        </div>
+        <div class="welcome-guide__item">
+          <span class="welcome-guide__num">3</span>
+          <p class="welcome-guide__text">
+            <strong>Now log in</strong> with your Student ID and PIN, and start playing.
+          </p>
+        </div>
+        <div class="welcome-guide__item">
+          <span class="welcome-guide__num welcome-guide__num--tip">!</span>
+          <p class="welcome-guide__text">
+            <strong>Please log out when you finish.</strong> If a brother or sister at home is
+            enrolled in a different class or subject, they have their own Student ID and their own
+            dashboard. They can only reach it once you have logged out of this device.
+          </p>
+        </div>
+      </div>
+
       <div class="welcome-actions">
         <a href="login.html" class="btn btn--primary btn--lg">Log In to Play</a>
-        <!-- Goes to the Google Registration Form. Both routes now converge there:
-             a student who read their email clicks the link in it, and a student who
-             came straight to the site clicks this. Submitting the Form triggers the
-             "Create Your PIN" email, and the flow is identical from that point on. -->
+
+        <!-- Goes to the Google Registration Form. Both routes converge there: a student
+             who read their email clicks the link in it, and one who came straight to the
+             site clicks this. Submitting the Form triggers the "Create Your PIN" email. -->
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSeUCbuoGkYvgPNMFlpfv3GcVNzkRT0frFpdg3qDgiCHldiQSg/viewform?usp=header"
            class="btn btn--secondary btn--lg" target="_blank" rel="noopener">Register with Student ID</a>
+
+        <!-- For anyone who registered on the site and never opened the email — the exact
+             gap Rehan hit. Opens the same set-pin screen, but with a Student ID field,
+             since there is no ?id= to pre-fill from. -->
+        <a href="login.html?step=set-pin" class="btn btn--secondary btn--lg">Create Your PIN</a>
       </div>
 
       <div class="welcome-features">
