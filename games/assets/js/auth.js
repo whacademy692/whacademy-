@@ -221,6 +221,20 @@ const Auth = (() => {
     const confirmPin = form.confirmPin.value;
     const submitBtn = form.querySelector('[type="submit"]');
 
+    // The Student ID comes from the email link (?id=) when there is one, and from
+    // the visible field when the student walked in off the welcome page instead.
+    const typedId = form.studentId ? form.studentId.value.trim().toUpperCase() : '';
+    const studentId = registrationContext.studentId || typedId;
+
+    if (!Utils.isValidStudentIdFormat(studentId)) {
+      Notifications.error('Enter a valid Student ID (the one from your enrollment email).');
+      const idInput = Utils.qs('#setpin-student-id');
+      if (idInput) idInput.focus();
+      return;
+    }
+    registrationContext.studentId = studentId;
+    registrationContext.purpose = 'Registration';
+
     if (!/^\d{4,8}$/.test(pin)) {
       Notifications.error('Your PIN must be 4–8 digits.');
       return;
@@ -314,20 +328,37 @@ const Auth = (() => {
 
     // Pre-fill the Student ID from the email link, so it is never retyped —
     // by far the easiest place for a student to make a typo.
-    const prefillId = (Router.getQueryParam('id') || '').trim();
+    const prefillId = (Router.getQueryParam('id') || '').trim().toUpperCase();
+    const setPinIdField = Utils.qs('#setpin-id-field');
+    const setPinIdInput = Utils.qs('#setpin-student-id');
+    const setPinReadout = Utils.qs('#setpin-id-readout');
+    const setPinIdValue = Utils.qs('#setpin-id-value');
+
     if (prefillId) {
-      const regIdField = Utils.qs('#reg-student-id');
-      const loginIdField = Utils.qs('#login-student-id');
-      const forgotIdField = Utils.qs('#forgot-student-id');
-      if (regIdField) regIdField.value = prefillId;
-      if (loginIdField) loginIdField.value = prefillId;
-      if (forgotIdField) forgotIdField.value = prefillId;
+      ['#reg-student-id', '#login-student-id', '#forgot-student-id', '#setpin-student-id']
+        .forEach((sel) => { const el = Utils.qs(sel); if (el) el.value = prefillId; });
+
+      // Came from the email — they have already given us the ID. Don't ask again.
+      if (setPinIdField) setPinIdField.hidden = true;
+      if (setPinReadout) setPinReadout.hidden = false;
+      if (setPinIdValue) setPinIdValue.textContent = prefillId;
+    } else {
+      // Came from the website — they need to type it.
+      if (setPinIdField) setPinIdField.hidden = false;
+      if (setPinReadout) setPinReadout.hidden = true;
+      if (setPinIdInput) setPinIdInput.setAttribute('required', 'required');
     }
 
     let entryStep = 'login';
 
     if (ALLOWED_ENTRY_STEPS.indexOf(requestedStep) !== -1) {
       entryStep = requestedStep;
+
+    } else if (requestedStep === 'set-pin' && !prefillId) {
+      // Straight from the welcome page. No ID yet — the field on the panel asks
+      // for it. Nothing is committed here, so this is safe to open cold.
+      registrationContext = { studentId: null, purpose: 'Registration', pendingPin: null };
+      entryStep = 'set-pin';
 
     } else if (requestedStep === 'set-pin' && prefillId) {
       // Arriving from the "Create Your PIN" email, after the Google Form.
