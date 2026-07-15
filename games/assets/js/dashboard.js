@@ -123,6 +123,104 @@
     });
   }
 
+  /**
+   * MY SUBJECTS — the enrolledScope-gated content list.
+   *
+   * The student sees only their class and (for Class 9-12) only their chosen
+   * subjects. Each chapter shows exactly the buttons that are wired for it:
+   * Notes, Quiz, Game. Chapters with nothing wired yet read "Coming soon".
+   */
+  function renderMySubjects(profile) {
+    const section = Utils.qs('#my-subjects-section');
+    const list = Utils.qs('#my-subjects-list');
+    const intro = Utils.qs('#my-subjects-intro');
+    const tag = Utils.qs('#my-subjects-tag');
+    if (!section || !list) return;
+
+    // Guard: the registry + scope modules must be present.
+    if (!window.WHA_Scope || !window.WHA_CONTENT) { section.hidden = true; return; }
+
+    const scope = window.WHA_Scope.parse(profile && profile.enrolledScope);
+    const subjects = window.WHA_Scope.allowedSubjects(scope, window.WHA_CONTENT);
+
+    if (!subjects.length) {
+      // Enrolled class/subjects have no content in the registry yet (e.g. Class
+      // 10-12), OR the scope was empty. Either way, show nothing rather than
+      // leaking other classes' material.
+      section.hidden = true;
+      return;
+    }
+    section.hidden = false;
+
+    const subjectNames = subjects.map((x) => x.name);
+    if (intro) {
+      intro.textContent = scope.fullClass
+        ? 'You are enrolled in Class ' + scope.classLevel + '. Everything below is yours to explore.'
+        : 'You have enrolled for these subjects: ' + subjectNames.join(', ') + '.';
+    }
+    if (tag) tag.textContent = 'Class ' + (scope.classLevel || '');
+
+    list.innerHTML = '';
+    subjects.forEach((subject) => {
+      list.appendChild(renderSubjectBlock(subject));
+    });
+  }
+
+  function renderSubjectBlock(subject) {
+    const wrap = Utils.createEl('div', { class: 'card', style: 'padding: var(--space-4);' });
+
+    wrap.appendChild(Utils.createEl('div', { class: 'cluster', style: 'justify-content:space-between; align-items:baseline; margin-bottom: var(--space-3);' }, [
+      Utils.createEl('h3', { style: 'margin:0;', text: subject.name }),
+      Utils.createEl('span', { class: 'text-caption', text: subject.chapters.length + ' chapters' })
+    ]));
+
+    const chaptersWrap = Utils.createEl('div', { class: 'stack-sm' });
+    subject.chapters.forEach((ch) => chaptersWrap.appendChild(renderChapterRow(ch)));
+    wrap.appendChild(chaptersWrap);
+    return wrap;
+  }
+
+  function renderChapterRow(chapter) {
+    const row = Utils.createEl('div', {
+      class: 'cluster',
+      style: 'justify-content:space-between; gap: var(--space-3); padding: var(--space-3) 0; border-top: 1px solid var(--color-border); flex-wrap: wrap;'
+    });
+
+    const label = chapter.n ? ('Ch ' + chapter.n + '  ·  ' + chapter.title) : chapter.title;
+    row.appendChild(Utils.createEl('span', { style: 'font-weight:600; flex:1 1 12rem;', text: label }));
+
+    const actions = Utils.createEl('div', { class: 'cluster', style: 'gap: var(--space-2); flex-wrap: wrap;' });
+    let any = false;
+
+    if (chapter.game) {
+      any = true;
+      actions.appendChild(Utils.createEl('a', {
+        class: 'btn btn--primary btn--sm', href: chapter.game,
+        'aria-label': 'Play ' + chapter.title
+      }, [Utils.createEl('span', { text: 'Play' })]));
+    }
+    if (chapter.notes) {
+      any = true;
+      actions.appendChild(Utils.createEl('a', {
+        class: 'btn btn--secondary btn--sm', href: chapter.notes,
+        target: '_blank', rel: 'noopener', 'aria-label': 'Notes for ' + chapter.title
+      }, [Utils.createEl('span', { text: 'Notes' })]));
+    }
+    if (chapter.quiz) {
+      any = true;
+      actions.appendChild(Utils.createEl('a', {
+        class: 'btn btn--secondary btn--sm', href: chapter.quiz,
+        target: '_blank', rel: 'noopener', 'aria-label': 'Quiz for ' + chapter.title
+      }, [Utils.createEl('span', { text: 'Quiz' })]));
+    }
+    if (!any) {
+      actions.appendChild(Utils.createEl('span', { class: 'text-caption', text: 'Coming soon' }));
+    }
+
+    row.appendChild(actions);
+    return row;
+  }
+
   function renderError() {
     Utils.qs('#dashboard-skeleton').hidden = true;
     Utils.qs('#dashboard-error').hidden = false;
@@ -139,6 +237,7 @@
       renderWeakTopics(data.weakTopics);
       renderAchievements(data.recentAchievements);
       renderCertificates(data.recentCertificates);
+      renderMySubjects(data.profile);
       Animations.revealContent(Utils.qs('#dashboard-skeleton'), Utils.qs('#dashboard-content'));
     } catch (err) {
       // Fall back to cache if we have one — never show a blank/broken
@@ -151,6 +250,7 @@
         renderWeakTopics(cached.data.weakTopics);
         renderAchievements(cached.data.recentAchievements);
         renderCertificates(cached.data.recentCertificates);
+        renderMySubjects(cached.data.profile);
         Animations.revealContent(Utils.qs('#dashboard-skeleton'), Utils.qs('#dashboard-content'));
         Notifications.info('Showing your last saved progress — reconnect to refresh.');
       } else {
