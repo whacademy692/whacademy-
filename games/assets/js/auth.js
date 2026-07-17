@@ -223,7 +223,12 @@ const Auth = (() => {
 
     // The Student ID comes from the email link (?id=) when there is one, and from
     // the visible field when the student walked in off the welcome page instead.
-    const typedId = form.studentId ? form.studentId.value.trim().toUpperCase() : '';
+    // Field name is 'setpinStudentId' (deliberately NOT 'studentId') so the
+    // browser can't autofill a saved login over the email-link value — that
+    // put a different, already-registered ID in the box and produced the
+    // "Email verification has not been completed" dead-end.
+    const idField = Utils.qs('#setpin-student-id');
+    const typedId = idField ? idField.value.trim().toUpperCase() : '';
     const studentId = registrationContext.studentId || typedId;
 
     if (!Utils.isValidStudentIdFormat(studentId)) {
@@ -338,8 +343,11 @@ const Auth = (() => {
       ['#reg-student-id', '#login-student-id', '#forgot-student-id', '#setpin-student-id']
         .forEach((sel) => { const el = Utils.qs(sel); if (el) el.value = prefillId; });
 
-      // Came from the email — they have already given us the ID. Don't ask again.
+      // Came from the email — the ID is known and trusted. Hide the input, show a
+      // read-only readout, and lock the hidden input so no stray browser autofill
+      // can replace the link's value between load and submit.
       if (setPinIdField) setPinIdField.hidden = true;
+      if (setPinIdInput) { setPinIdInput.readOnly = true; setPinIdInput.setAttribute('readonly', 'readonly'); }
       if (setPinReadout) setPinReadout.hidden = false;
       if (setPinIdValue) setPinIdValue.textContent = prefillId;
     } else {
