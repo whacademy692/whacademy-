@@ -67,7 +67,20 @@ const Router = (() => {
    * Each step is a <section data-step="stepName"> element.
    */
   function showStep(stepName) {
-    Utils.qsa('[data-step]').forEach((section) => {
+    const sections = Utils.qsa('[data-step]');
+    if (!sections.length) return false;
+
+    // Fail visibly, not blankly. This used to hide EVERY section whenever the
+    // name matched nothing (a typo, a stale link, ?step=xyz), leaving an empty
+    // card with no heading, no form and no error — the page looked broken.
+    // Now an unknown step is simply refused and whatever is on screen stays.
+    const exists = sections.some((section) => section.dataset.step === stepName);
+    if (!exists) {
+      console.warn(`Router.showStep: no [data-step="${stepName}"] on this page — ignoring.`);
+      return false;
+    }
+
+    sections.forEach((section) => {
       const isActive = section.dataset.step === stepName;
       section.hidden = !isActive;
       if (isActive) {
@@ -79,6 +92,7 @@ const Router = (() => {
         Notifications.announce(`${stepName.replace(/-/g, ' ')} step`);
       }
     });
+    return true;
   }
 
   function getQueryParam(name) {
