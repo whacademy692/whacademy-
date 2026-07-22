@@ -60,6 +60,19 @@ const Storage = (() => {
   function setToken(token) { return set('session_token', token); }
   function clearToken() { return remove('session_token'); }
 
+  // The admin session is kept in its own slot, NOT in session_token.
+  //
+  // They are different roles with different tokens, and sharing one slot would
+  // break both directions: an admin token in session_token would satisfy
+  // router.js's guard and let the admin walk into the student dashboard, where
+  // every student route would then fail on a role mismatch; and logging in as a
+  // student would silently end the admin session. Separate slots mean you can
+  // be signed into both at once, which is genuinely useful when checking what a
+  // student sees.
+  function getAdminToken() { return get('admin_token', null); }
+  function setAdminToken(token) { return set('admin_token', token); }
+  function clearAdminToken() { return remove('admin_token'); }
+
   function getStudentId() { return get('student_id', null); }
   function setStudentId(id) { return set('student_id', id); }
 
@@ -106,6 +119,7 @@ const Storage = (() => {
   return {
     get, set, remove, clearAll, list,
     getToken, setToken, clearToken,
+    getAdminToken, setAdminToken, clearAdminToken,
     getStudentId, setStudentId,
     getCachedDashboard, setCachedDashboard,
     getSettings, setSettings,
