@@ -10,7 +10,12 @@
 
 const Router = (() => {
 
-  const PUBLIC_PAGES = ['welcome.html', 'login.html', 'chapter.html', ''];
+  // admin.html is listed here because router.js's guard only knows about the
+  // STUDENT session. An admin holds an admin_token and no session_token, so
+  // the guard would bounce them to login.html, which is the wrong sign-in
+  // screen entirely. admin.js does its own guard against the admin token and
+  // shows its own sign-in step.
+  const PUBLIC_PAGES = ['welcome.html', 'login.html', 'chapter.html', 'admin.html', ''];
 
   function currentPageName() {
     const path = window.location.pathname;
