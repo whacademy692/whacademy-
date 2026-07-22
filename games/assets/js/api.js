@@ -204,14 +204,27 @@ const Api = (() => {
     list: () => request('notifications/list', {})
   };
 
+  // Every admin call carries the ADMIN token explicitly.
+  //
+  // buildBody() only falls back to Storage.getToken() when `token` is
+  // undefined — passing it here (even as null) stops a student's token from
+  // ever being attached to an admin route. Null is the correct thing to send
+  // when not signed in as an admin: the backend answers with a clean auth
+  // error, which admin.js turns into the sign-in screen.
+  const adminToken = () => Storage.getAdminToken();
+
   const admin = {
-    searchStudents: (query) => request('admin/searchStudents', { query }),
-    activateStudent: (enrollmentId) => request('admin/activateStudent', { enrollmentId }),
-    suspendStudent: (studentId, reason) => request('admin/suspendStudent', { studentId, reason }),
-    upgradePlan: (studentId, newPlanCode) => request('admin/upgradePlan', { studentId, newPlanCode }),
-    downgradePlan: (studentId, newPlanCode) => request('admin/downgradePlan', { studentId, newPlanCode }),
-    statistics: () => request('admin/statistics', {}),
-    broadcast: (message, targetScope) => request('admin/broadcast', { message, targetScope })
+    login: (email, sharedSecret) => request('admin/login', { email, sharedSecret }),
+    searchStudents: (query) => request('admin/searchStudents', { query, token: adminToken() }),
+    activateStudent: (enrollmentId) => request('admin/activateStudent', { enrollmentId, token: adminToken() }),
+    // rowKey is a Student ID, or an enrollment ID for a row that has not been
+    // activated yet and therefore has no Student ID to name it by.
+    setStatus: (rowKey, status, reason) => request('admin/setStatus', { rowKey, status, reason, token: adminToken() }),
+    suspendStudent: (studentId, reason) => request('admin/suspendStudent', { studentId, reason, token: adminToken() }),
+    upgradePlan: (studentId, newPlanCode) => request('admin/upgradePlan', { studentId, newPlanCode, token: adminToken() }),
+    downgradePlan: (studentId, newPlanCode) => request('admin/downgradePlan', { studentId, newPlanCode, token: adminToken() }),
+    statistics: () => request('admin/statistics', { token: adminToken() }),
+    broadcast: (message, targetScope) => request('admin/broadcast', { message, targetScope, token: adminToken() })
   };
 
   return {
