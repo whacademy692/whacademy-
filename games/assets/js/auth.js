@@ -86,8 +86,11 @@ const Auth = (() => {
     setButtonLoading(submitBtn, true);
     try {
       await Api.otp.request(studentId, email, '', 'PasswordReset');
-      registrationContext = { studentId, purpose: 'PasswordReset' };
+      // Full context shape — pendingPin stays null for a reset (unlike
+      // registration, the new PIN is chosen AFTER the code, on set-new-pin).
+      registrationContext = { studentId, purpose: 'PasswordReset', pendingPin: null };
       Notifications.success('A verification code was sent to your email.');
+      clearOtpBoxes();
       Router.showStep('otp-verification');
     } catch (err) {
       Notifications.error(err.message || 'Could not send a verification code. Check your details and try again.');
@@ -177,10 +180,15 @@ const Auth = (() => {
 
     setButtonLoading(submitBtn, true);
     try {
-      await Api.otp.verify(registrationContext.studentId, otpCode);
+      // The purpose MUST go with the code. OTP rows are stored per
+      // studentId+purpose; sending no purpose made the backend look for a
+      // 'Registration' row, so a valid PIN-reset code was always rejected as
+      // "No verification code was found."
+      await Api.otp.verify(registrationContext.studentId, otpCode, registrationContext.purpose);
 
       if (registrationContext.purpose === 'PasswordReset') {
-        Notifications.success('Verified.');
+        Notifications.success('Verified. Choose your new PIN.');
+        clearOtpBoxes();
         Router.showStep('set-new-pin');
         return;
       }
@@ -267,12 +275,59 @@ const Auth = (() => {
     }
   }
 
+  // ---- Set NEW PIN (completes a Forgot-PIN reset) ----
+  // This handler is what the `set-new-pin` screen was missing: the form
+  // existed in login.html, but nothing listened to it, so a student could get
+  // all the way through Forgot PIN → code → new PIN and then have the submit
+  // do absolutely nothing.
+  async function handleResetPinSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const pin = form.pin.value;
+    const confirmPin = form.confirmPin.value;
+    const submitBtn = form.querySelector('[type="submit"]');
+
+    // Belt and braces. The screen is only reachable after a successful
+    // otp/verify, and the backend refuses without its own verified flag — but
+    // if the context has somehow been lost, say so instead of firing a request
+    // that can only fail confusingly.
+    if (!registrationContext.studentId || registrationContext.purpose !== 'PasswordReset') {
+      Notifications.error('Your reset session has expired. Please start again from "Forgot PIN?".');
+      Router.showStep('forgot-pin');
+      return;
+    }
+
+    if (!/^\d{4,8}$/.test(pin)) {
+      Notifications.error('Your PIN must be 4–8 digits.');
+      return;
+    }
+    if (pin !== confirmPin) {
+      Notifications.error('PINs do not match.');
+      return;
+    }
+
+    setButtonLoading(submitBtn, true);
+    try {
+      await Api.auth.resetPin(registrationContext.studentId, pin, confirmPin);
+      form.reset();
+      registrationContext = { studentId: null, purpose: null, pendingPin: null };
+      Notifications.success('Your PIN has been reset. Please log in with your new PIN.');
+      clearOtpBoxes();
+      Router.showStep('login');
+    } catch (err) {
+      Notifications.error(err.message || 'Could not reset your PIN. Please request a new code and try again.');
+    } finally {
+      setButtonLoading(submitBtn, false);
+    }
+  }
+
   function initLoginPage() {
     const loginForm = Utils.qs('#login-form');
     const forgotPinForm = Utils.qs('#forgot-pin-form');
     const registrationForm = Utils.qs('#registration-form');
     const otpForm = Utils.qs('#otp-form');
     const setPinForm = Utils.qs('#set-pin-form');
+    const setNewPinForm = Utils.qs('#set-new-pin-form');
     const resendLink = Utils.qs('#resend-otp-link');
 
     if (loginForm) loginForm.addEventListener('submit', handleLoginSubmit);
@@ -280,6 +335,7 @@ const Auth = (() => {
     if (registrationForm) registrationForm.addEventListener('submit', handleRegistrationStart);
     if (otpForm) otpForm.addEventListener('submit', handleOtpSubmit);
     if (setPinForm) setPinForm.addEventListener('submit', handleSetPinSubmit);
+    if (setNewPinForm) setNewPinForm.addEventListener('submit', handleResetPinSubmit);
     if (resendLink) resendLink.addEventListener('click', handleResendOtp);
 
     Utils.qsa('[data-goto-step]').forEach((btn) => {
@@ -331,6 +387,14 @@ const Auth = (() => {
     const ALLOWED_ENTRY_STEPS = ['registration', 'forgot-pin'];
     const requestedStep = Router.getQueryParam('step');
 
+    // The PIN-reset email links to ?step=otp-verification&id=…&purpose=PasswordReset.
+    // Without reading this, that link opened the code screen in REGISTRATION
+    // mode, and the code was verified against the wrong OtpRequests row —
+    // a valid code would have been rejected. Anything other than the exact
+    // string 'PasswordReset' means registration, so old links are unaffected.
+    const requestedPurpose =
+      (Router.getQueryParam('purpose') || '') === 'PasswordReset' ? 'PasswordReset' : 'Registration';
+
     // Pre-fill the Student ID from the email link, so it is never retyped —
     // by far the easiest place for a student to make a typo.
     const prefillId = (Router.getQueryParam('id') || '').trim().toUpperCase();
@@ -380,12 +444,15 @@ const Auth = (() => {
     } else if (requestedStep === 'otp-verification' && prefillId) {
       // A student arriving from the "Enter Your Code" button in their email.
       // registrationContext normally comes from the previous in-page step, which
-      // they never saw — the Google Form did that part — so seed it from the URL.
+      // they never saw — the Google Form (or the Forgot-PIN screen on another
+      // device) did that part — so seed it from the URL.
       //
       // Safe: the 6-digit code is the only secret, and OTP.request sends it ONLY
       // to the address on file for that Student ID (Registration.verifyIdentityForOtp).
-      // A Student ID in a link buys an attacker nothing without the code.
-      registrationContext = { studentId: prefillId, purpose: 'Registration' };
+      // A Student ID in a link buys an attacker nothing without the code. That
+      // holds for PasswordReset too — verifying still requires the emailed code,
+      // and set-new-pin is only reachable once that verification has succeeded.
+      registrationContext = { studentId: prefillId, purpose: requestedPurpose, pendingPin: null };
       entryStep = 'otp-verification';
 
       const otpIdLabel = Utils.qs('#otp-student-id');
