@@ -202,10 +202,22 @@
   <script src="assets/js/auth.js"></script>
   <script src="assets/js/app.js"></script>
   <script>
+    // initLoginPage() is the ONLY thing that decides which step opens.
+    //
+    // There used to be a second, blind `Router.showStep(?step)` call right here.
+    // It ran AFTER initLoginPage() and overwrote its decision, which quietly
+    // defeated every guard inside it:
+    //   - ALLOWED_ENTRY_STEPS (only 'registration' and 'forgot-pin' may be
+    //     opened cold from a URL) was bypassed;
+    //   - 'set-new-pin' — the PIN-reset screen, which must ONLY open after
+    //     OTP.verify() has actually succeeded — became reachable by simply
+    //     typing ?step=set-new-pin;
+    //   - 'otp-verification' and 'set-pin' opened without the in-memory
+    //     registrationContext the previous step is supposed to seed, so they
+    //     rendered but could never succeed.
+    // Do not add a showStep call here again. Route entry belongs in auth.js.
     document.addEventListener('wha:ready', function () {
       Auth.initLoginPage();
-      var requestedStep = Router.getQueryParam('step');
-      if (requestedStep) Router.showStep(requestedStep);
     });
   </script>
 </body>
