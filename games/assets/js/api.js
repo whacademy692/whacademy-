@@ -120,12 +120,20 @@ const Api = (() => {
   const auth = {
     login: (studentId, pin, rememberMe) => request('auth/login', { studentId, pin, rememberMe }),
     logout: (token) => request('auth/logout', { token }),
+    // Public by necessity — a student who forgot their PIN has no session.
+    // The backend refuses this unless otp/verify has just succeeded for this
+    // Student ID with the PasswordReset purpose (Auth.resetPin).
+    resetPin: (studentId, pin, confirmPin) => request('auth/resetPin', { studentId, pin, confirmPin }),
     adminLogin: (email, sharedSecret) => request('admin/login', { email, sharedSecret })
   };
 
   const otp = {
     request: (studentId, email, fullName, purpose) => request('otp/request', { studentId, email, fullName, purpose }),
-    verify: (studentId, otpCode) => request('otp/verify', { studentId, otpCode })
+    // `purpose` is required for anything other than registration. OTP rows are
+    // stored per studentId+purpose, so omitting it made every verification
+    // look for a 'Registration' row — which is why a valid PIN-reset code
+    // always came back as "No verification code was found".
+    verify: (studentId, otpCode, purpose) => request('otp/verify', { studentId, otpCode, purpose })
   };
 
   const registration = {
