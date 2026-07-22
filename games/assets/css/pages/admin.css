@@ -1,0 +1,451 @@
+/* ============================================================================
+   admin.css — Administration panel
+   ----------------------------------------------------------------------------
+   Built on the same tokens as the rest of the platform (variables.css), so this
+   reads as W.H. Academy rather than a bolted-on tool. Shared components do most
+   of the work — .card, .data-table, .badge, .btn, .field, .input, .dialog,
+   .empty-state. What is here covers the four things they do not: the two-column
+   admin shell, the sign-in gate, the status chooser, and the overview tiles.
+
+   Two deliberate choices worth naming:
+
+   1. The sidebar is indigo, the workspace is near-white. An admin panel is a
+      place of consequence — a suspend here stops a real student logging in — so
+      it should not look like the student dashboard it governs. Same palette,
+      inverted weight.
+
+   2. The status chooser is radio buttons with a sentence each, not a dropdown.
+      A dropdown hides the consequences behind one word; these four options are
+      not interchangeable, and the difference between Suspended and Expired is
+      worth reading before choosing.
+   ========================================================================== */
+
+.admin-body {
+  background: var(--neutral-100);
+}
+
+.admin-muted { color: var(--neutral-500); }
+
+/* ---------------------------------------------------------------- sign-in */
+/* Deliberately not the app shell: you are not "in" the panel yet. A single
+   centred panel on the brand colour, and nothing else to look at. */
+.admin-gate {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: var(--space-4, 1rem);
+  background:
+    radial-gradient(120% 80% at 50% 0%, #4f46e5 0%, transparent 60%),
+    var(--brand-primary);
+}
+
+.admin-gate__panel {
+  width: 100%;
+  max-width: 24rem;
+  background: var(--neutral-0);
+  border-radius: var(--radius-lg, 0.75rem);
+  padding: var(--space-6, 1.5rem);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.25);
+}
+
+.admin-gate__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-bottom: var(--space-5, 1.25rem);
+}
+
+.admin-gate__mark {
+  color: var(--color-brand-ink);
+  font-size: 1.25rem;
+}
+
+.admin-gate__sub {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--neutral-400);
+}
+
+.admin-gate__note {
+  margin-top: var(--space-4, 1rem);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--neutral-500);
+}
+
+/* ------------------------------------------------------------------ shell */
+.admin-shell {
+  display: flex;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.admin-side {
+  width: 15rem;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6, 1.5rem);
+  padding: var(--space-5, 1.25rem) var(--space-4, 1rem);
+  background: var(--brand-primary);
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.admin-side__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  color: var(--neutral-0);
+  padding: 0 var(--space-2, 0.5rem);
+}
+
+.admin-side__tag {
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.admin-side__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.admin-side__item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  padding: 0.6rem var(--space-2, 0.5rem);
+  border: 0;
+  border-radius: var(--radius-md, 0.5rem);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.9375rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.admin-side__item svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex-shrink: 0;
+  stroke: currentColor;
+  fill: none;
+}
+
+.admin-side__item:hover { background: rgba(255, 255, 255, 0.1); }
+
+.admin-side__item.is-active {
+  background: rgba(255, 255, 255, 0.16);
+  color: var(--neutral-0);
+  font-weight: 600;
+}
+
+.admin-side__item:focus-visible {
+  outline: 2px solid var(--neutral-0);
+  outline-offset: 2px;
+}
+
+.admin-side__foot {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.admin-side__who {
+  padding: 0 var(--space-2, 0.5rem);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.55);
+  overflow-wrap: anywhere;
+}
+
+.admin-main {
+  flex: 1;
+  min-width: 0;
+  padding: var(--space-6, 1.5rem);
+  max-width: 76rem;
+}
+
+/* ------------------------------------------------------------------ heads */
+.admin-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4, 1rem);
+  margin-bottom: var(--space-5, 1.25rem);
+}
+
+.admin-head__title {
+  font-size: 1.5rem;
+  color: var(--neutral-800, #1e293b);
+}
+
+.admin-head__sub {
+  margin-top: 0.2rem;
+  font-size: 0.875rem;
+  color: var(--neutral-500);
+  max-width: 46ch;
+}
+
+/* ----------------------------------------------------------------- search */
+.admin-search {
+  display: flex;
+  gap: var(--space-2, 0.5rem);
+  margin-bottom: var(--space-5, 1.25rem);
+}
+
+.admin-search__box {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-search__box svg {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.05rem;
+  height: 1.05rem;
+  stroke: var(--neutral-400);
+  fill: none;
+  pointer-events: none;
+}
+
+.admin-search__input {
+  width: 100%;
+  padding-left: 2.4rem;
+}
+
+/* ---------------------------------------------------------------- results */
+.admin-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: var(--neutral-0);
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--radius-md, 0.5rem);
+}
+
+.admin-table {
+  min-width: 52rem;
+  margin: 0;
+}
+
+.admin-name { font-weight: 600; }
+
+.admin-sub {
+  font-size: 0.8125rem;
+  color: var(--neutral-500);
+  overflow-wrap: anywhere;
+}
+
+/* Tabular figures stop the ID column jittering row to row. */
+.admin-id {
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.admin-actions {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.admin-count {
+  margin-top: var(--space-2, 0.5rem);
+  font-size: 0.8125rem;
+}
+
+/* A small dot rather than another badge: "has an account" is a quieter fact
+   than the enrollment status beside it, and two badges per row would compete. */
+.admin-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8125rem;
+  white-space: nowrap;
+}
+
+.admin-dot::before {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.admin-dot--ok { color: var(--neutral-600); }
+.admin-dot--ok::before { background: var(--color-success); }
+
+.admin-dot--warn { color: var(--color-warning); }
+.admin-dot--warn::before { background: var(--color-warning); }
+
+/* --------------------------------------------------------------- overview */
+.admin-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: var(--space-3, 0.75rem);
+  margin-bottom: var(--space-5, 1.25rem);
+}
+
+.admin-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: var(--space-4, 1rem);
+  background: var(--neutral-0);
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--radius-md, 0.5rem);
+}
+
+.admin-tile__value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-brand-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.admin-tile__label {
+  font-size: 0.8125rem;
+  color: var(--neutral-500);
+}
+
+.admin-panel {
+  padding: var(--space-4, 1rem);
+  background: var(--neutral-0);
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--radius-md, 0.5rem);
+}
+
+.admin-panel__title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--neutral-600);
+  margin-bottom: var(--space-3, 0.75rem);
+}
+
+.admin-bars {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.admin-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4, 1rem);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--neutral-100);
+  font-size: 0.9375rem;
+}
+
+.admin-bar:last-child { border-bottom: 0; }
+
+.admin-bar__value {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------------------- dialog */
+.admin-dialog__who {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.admin-choices {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.admin-choices legend {
+  margin-bottom: 0.4rem;
+}
+
+/* Each option carries a sentence explaining what it does to the student, so
+   the choice is made with its consequence visible rather than after it. */
+.admin-choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--radius-md, 0.5rem);
+  cursor: pointer;
+}
+
+.admin-choice:hover { border-color: var(--brand-primary-light); }
+
+.admin-choice input {
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+  accent-color: var(--brand-primary);
+}
+
+.admin-choice:has(input:checked) {
+  border-color: var(--brand-primary);
+  background: var(--color-brand-ink-tint);
+}
+
+.admin-choice:has(input:focus-visible) {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+}
+
+.admin-choice__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.admin-choice__name {
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.admin-choice__desc {
+  font-size: 0.8125rem;
+  color: var(--neutral-500);
+  line-height: 1.45;
+}
+
+/* ------------------------------------------------------------ responsive */
+/* Below this width the sidebar becomes a top strip: a 15rem column on a phone
+   would leave nothing for the table it exists to navigate. */
+@media (max-width: 52rem) {
+  .admin-shell { flex-direction: column; }
+
+  .admin-side {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-3, 0.75rem);
+    padding: var(--space-3, 0.75rem);
+    overflow-x: auto;
+  }
+
+  .admin-side__brand { display: none; }
+  .admin-side__nav { flex-direction: row; }
+  .admin-side__item { width: auto; white-space: nowrap; }
+  .admin-side__foot { margin-top: 0; margin-left: auto; flex-direction: row; align-items: center; }
+  .admin-side__who { display: none; }
+
+  .admin-main { padding: var(--space-4, 1rem); }
+  .admin-search { flex-direction: column; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-choice { transition: none; }
+}
