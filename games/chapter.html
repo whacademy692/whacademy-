@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Chapter — W.H. Academy</title>
+  <meta name="theme-color" content="#3730a3">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/pages/chapter.css">
+</head>
+<body>
+  <!--
+    ONE page for every chapter in the platform.
+
+    Which chapter loads is decided by the query string:
+        chapter.html?ch=8/science/human_nervous_system
+    which reads:
+        classes/8/science/human_nervous_system/content.json
+
+    This replaces the old arrangement where every chapter folder carried its
+    own copy of chapter.html + game.js + style.css. That arrangement meant an
+    engine bug had to be fixed in as many places as there were chapters, and
+    it made the relative asset paths (../../../../../) depend on how deeply a
+    chapter folder happened to sit. Here the page never moves, so the paths
+    are one level and can never drift.
+
+    A chapter folder now contains exactly one file: content.json.
+  -->
+  <a href="#chapter-stage-content" class="skip-link">Skip to chapter content</a>
+
+  <div class="app-shell">
+    <header class="top-bar">
+      <a href="games.html" class="btn btn--icon" aria-label="Back to Classes">
+        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+      </a>
+      <span id="chapter-title" class="top-bar__brand" style="font-family:var(--font-body); font-size:16px;">Loading…</span>
+      <span style="width:44px;"></span>
+    </header>
+
+    <ol id="stage-stepper" class="stage-stepper" aria-label="Chapter progress"></ol>
+
+    <main id="chapter-stage-content" class="app-main container section" tabindex="-1" style="max-width: 680px;">
+      <div class="skeleton skeleton--card"></div>
+    </main>
+  </div>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/notifications.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script>
+    if (!Storage.getToken()) {
+      window.location.href = 'login.html';
+    }
+  </script>
+  <script src="assets/js/chapter-engine.js"></script>
+</body>
+</html>
