@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>W.H. Academy — Games</title>
+  <meta name="robots" content="noindex">
+
+  <!--
+    Why this file exists.
+
+    GitHub Pages serves a directory URL by looking for index.html INSIDE that
+    directory. There was never one in games/, so
+    .../whacademy-/games and .../whacademy-/games/ returned a 404 — the only
+    way in was to type a full filename like welcome.html or admin.html.
+
+    This file makes the bare folder URL work. It sends visitors to welcome.html,
+    which is where the student journey already starts.
+
+    The redirect is done three ways on purpose:
+      1. <meta refresh> — works even with JavaScript disabled
+      2. the script below — fires immediately, so there is no visible flash
+      3. the link — the fallback if both are blocked, so nobody is ever stuck
+    It uses replace() rather than assigning href so this page does not sit in
+    the back-button history and bounce the visitor forward again.
+  -->
+  <meta http-equiv="refresh" content="0; url=welcome.html">
+  <link rel="canonical" href="welcome.html">
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: #eef2ff;
+      color: #3730a3;
+    }
+    a { color: inherit; }
+  </style>
+</head>
+<body>
+  <p>Taking you to <a href="welcome.html">W.H. Academy</a>&hellip;</p>
+  <script>window.location.replace('welcome.html');</script>
+</body>
+</html>
