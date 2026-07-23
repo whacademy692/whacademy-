@@ -43,16 +43,22 @@
  */
 
 // ⚠️  BUMP THIS on every frontend deploy. See the note above.
-const CACHE_VERSION = 'wha-v16';
+const CACHE_VERSION = 'wha-v17';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
 const STATIC_ASSETS = [
   'welcome.html', 'login.html', 'dashboard.html', 'profile.html', 'settings.html',
   'games.html', 'leaderboard.html', 'revision.html', 'achievements.html',
+  // One page now serves every chapter (chapter.html?ch=<class>/<subject>/<slug>),
+  // so the chapter shell is part of the app shell and is pre-cached like any
+  // other page. Only each chapter's content.json is fetched per-chapter, and
+  // that stays network-first below.
+  'chapter.html',
   'assets/css/variables.css', 'assets/css/main.css', 'assets/css/layout.css',
   'assets/css/components.css', 'assets/css/animations.css', 'assets/css/responsive.css',
   'assets/css/pages/login.css', 'assets/css/pages/dashboard.css', 'assets/css/pages/games.css',
   'assets/css/pages/profile.css', 'assets/css/pages/settings.css',
+  'assets/css/pages/chapter.css',
   'assets/js/utils.js', 'assets/js/storage.js', 'assets/js/api.js', 'assets/js/router.js',
   'assets/js/auth.js', 'assets/js/dashboard.js', 'assets/js/games.js', 'assets/js/profile.js',
   'assets/js/leaderboard.js', 'assets/js/revision.js', 'assets/js/animations.js',
@@ -60,6 +66,7 @@ const STATIC_ASSETS = [
   // These two were missing from the list, so the dashboard and Classes pages
   // could not resolve which chapters a student may see while offline.
   'assets/js/scope.js', 'assets/js/content-registry.js',
+  'assets/js/chapter-engine.js',
   'manifest.json'
 ];
 
@@ -95,8 +102,10 @@ self.addEventListener('fetch', (event) => {
   // Script /exec endpoint, analytics) goes straight to the network untouched.
   if (url.origin !== self.location.origin) return;
 
-  const isChapterContent = url.pathname.includes('/games/classes/') &&
-    (url.pathname.endsWith('content.json') || url.pathname.endsWith('.html') || url.pathname.endsWith('.css') || url.pathname.endsWith('.js'));
+  // Chapter content is now only ever content.json, under /classes/. The old
+  // matcher also caught .html/.css/.js because each chapter folder carried a
+  // full copy of the engine; there is nothing per-chapter to match any more.
+  const isChapterContent = url.pathname.includes('/classes/') && url.pathname.endsWith('content.json');
 
   if (isChapterContent) {
     // Network-first, falling back to cache when offline — chapter
