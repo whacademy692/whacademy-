@@ -16,9 +16,19 @@
 (function () {
   'use strict';
 
-  // Subject accent keys the design system knows about; fall back gracefully.
-  var ACCENT = {
-    phys: 'physics', chem: 'chemistry', bio: 'biology', math: 'math', cs: 'cs',
+  // Registry subject key -> the accent token name variables.css actually
+  // defines. These were not the same vocabulary: this map used to ask for
+  // --subject-math-primary and --subject-cs-primary, which do not exist, so
+  // every subject except Science silently lost its accent colour. Geography
+  // and History had no tokens defined at all until now.
+  //
+  // chapter-engine.js publishes the same map as WHA_ChapterEngine.SUBJECT_TOKEN
+  // and it is preferred when present. games.html does NOT load the engine, so
+  // in practice the literal below is what runs here — the two are kept in step
+  // by a test that fails if they disagree, not by the code itself.
+  var ACCENT = (window.WHA_ChapterEngine && window.WHA_ChapterEngine.SUBJECT_TOKEN) || {
+    phys: 'physics', chem: 'chemistry', bio: 'biology',
+    math: 'mathematics', cs: 'computerscience',
     science: 'science', geography: 'geography', history: 'history'
   };
   var ICON = {
@@ -74,7 +84,14 @@
   }
 
   function chapterCard(row) {
-    var accent = ACCENT[row.subjectKey] || 'brand-ink';
+    // An unmapped subject gets NO --subject-accent rather than a made-up one.
+    // Pointing the variable at a token that does not exist makes the whole
+    // declaration invalid, which is worse than letting the CSS fallback to
+    // --color-brand-ink do its job.
+    var accent = ACCENT[row.subjectKey] || null;
+    var accentStyle = accent
+      ? '--subject-accent: var(--subject-' + accent + '-primary); --subject-accent-tint: var(--subject-' + accent + '-secondary);'
+      : '';
     var playable = !!row.game;
 
     var children = [
@@ -92,7 +109,7 @@
       return Utils.createEl('a', {
         class: 'card card--nav card--interactive',
         href: row.game,
-        style: '--subject-accent: var(--subject-' + accent + '-primary); --subject-accent-tint: var(--subject-' + accent + '-secondary);'
+        style: accentStyle
       }, children);
     }
     // Not yet playable — a visible, greyed card labelled with its status.
