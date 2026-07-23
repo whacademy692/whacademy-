@@ -682,7 +682,7 @@ window.WHA_CONTENT = {
             "title": "Human Nervous System",
             "notes": "https://whacademy692.github.io/whacademy-/class-8-science-human-nervous-system.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLSd6_QkpyKrm2cPS699LAdJdBQcaYQH6MMQyDgUfIsP2EQlpLA/viewform?usp=header",
-            "game": "https://whacademy692.github.io/whacademy-/games/classes/8/science/human_nervous_system/chapter.html"
+            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=8/science/human_nervous_system"
           },
           {
             "n": 3,
