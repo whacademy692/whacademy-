@@ -1339,6 +1339,15 @@
   function renderTheory(container) {
     var wrap = el('div', { class: 'reading-column stack-lg anim-fade-in-up' });
 
+    // A guidance line telling the student to clear the notes first. Only shown
+    // when the chapter actually supplies a notes link; without one it would be
+    // an instruction the student cannot follow.
+    if (content.notesUrl) {
+      wrap.appendChild(el('div', { class: 'notice notice--info' }, [
+        el('p', { class: 'text-body-sm', text: 'Read the full notes once before moving on. You can open them anytime with the "Full Notes" button below.' })
+      ]));
+    }
+
     content.theory.sections.forEach(function (section) {
       wrap.appendChild(el('section', {}, [
         el('h2', { text: section.heading || '' }),
@@ -1365,10 +1374,40 @@
       wrap.appendChild(tips);
     }
 
+    // "Full Notes" opens the chapter's own notes page IN THIS TAB and remembers
+    // where the student was, so a Back button on the notes page (added by
+    // openNotes) returns them to this exact chapter and stage. Reading is
+    // encouraged but never forced — Continue works whether or not they open it.
+    if (content.notesUrl) {
+      var notesBtn = el('button', { class: 'btn btn--secondary btn--lg btn--full', type: 'button' }, [
+        el('span', { text: '\uD83D\uDCD6  Read Full Notes' })
+      ]);
+      notesBtn.addEventListener('click', function () { openNotes(); });
+      wrap.appendChild(notesBtn);
+    }
+
     var go = el('button', { class: 'btn btn--primary btn--lg', type: 'button', text: 'Continue' });
     go.addEventListener('click', function () { advance('theory'); });
     wrap.appendChild(go);
     container.appendChild(wrap);
+  }
+
+  /**
+   * Opens the chapter's notes page in the same tab. Before leaving, it records
+   * the current chapter path and stage in sessionStorage AND passes them on the
+   * notes URL (?from=...&stage=...), so the notes page can offer a Back link
+   * that lands the student back on this chapter — even mid-way through.
+   * Reading notes is optional, so nothing about progress is changed here.
+   */
+  function openNotes() {
+    if (!content.notesUrl) return;
+    var backTo = 'chapter.html?ch=' + encodeURIComponent(chapterPath);
+    try {
+      sessionStorage.setItem('wha:notesReturn', backTo);
+    } catch (e) { /* private mode — the query param below still works */ }
+    var url = content.notesUrl;
+    var joiner = url.indexOf('?') === -1 ? '?' : '&';
+    window.location.href = url + joiner + 'from=' + encodeURIComponent(backTo);
   }
 
   function renderLesson(container) {
