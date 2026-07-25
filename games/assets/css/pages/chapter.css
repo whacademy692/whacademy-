@@ -12,6 +12,43 @@
    new type scale. A chapter should read as the same product as the dashboard.
    ========================================================================== */
 
+/* ---- Layout helpers the engine relies on -------------------------------
+   These class names are used throughout chapter-engine.js (reading-column,
+   stack, stack-sm, stack-lg, cluster) but were never defined anywhere, so
+   the Theory stage in particular rendered as unstyled, awkwardly aligned
+   text. Defining them here gives every stage a consistent rhythm. */
+
+.stack > * + * { margin-top: var(--space-4); }
+.stack-sm > * + * { margin-top: var(--space-3); }
+.stack-lg > * + * { margin-top: var(--space-6); }
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+/* The reading column keeps prose at a comfortable measure and left-aligned,
+   rather than stranded against the centred card edge. */
+.reading-column {
+  text-align: left;
+  line-height: 1.7;
+}
+.reading-column h2 {
+  font: var(--type-h3);
+  margin-bottom: var(--space-2);
+}
+.reading-column section p {
+  color: var(--color-text-secondary);
+}
+.reading-column section + section { margin-top: var(--space-6); }
+
+/* The chapter shell caps content at 680px and centres it; on the Theory
+   stage that left a big empty gutter on wide screens. Pull the reading
+   column to the full comfortable width and give it breathing room. */
+#chapter-stage-content { padding-inline: var(--space-4); }
+
 /* ---- Stage stepper ------------------------------------------------------ */
 
 .stage-stepper {
