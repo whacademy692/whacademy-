@@ -1401,7 +1401,13 @@
    */
   function openNotes() {
     if (!content.notesUrl) return;
-    var backTo = 'chapter.html?ch=' + encodeURIComponent(chapterPath);
+    // Send an ABSOLUTE back URL. The notes page lives at the site root, so a
+    // relative "chapter.html?..." would resolve to <root>/chapter.html and 404.
+    // Building the full origin+path here means the Back button works no matter
+    // where the notes page sits. window.location.href is this chapter page, so
+    // its directory (…/games/) is exactly the base we want.
+    var here = window.location.href.split('?')[0];              // …/games/chapter.html
+    var backTo = here + '?ch=' + encodeURIComponent(chapterPath);
     try {
       sessionStorage.setItem('wha:notesReturn', backTo);
     } catch (e) { /* private mode — the query param below still works */ }
