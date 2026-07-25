@@ -191,7 +191,10 @@ const Api = (() => {
 
   const leaderboard = {
     personalBest: () => request('leaderboard/personalBest', {}),
-    local: (profileIds) => request('leaderboard/local', { profileIds })
+    local: (profileIds) => request('leaderboard/local', { profileIds }),
+    // Per-game-type XP breakdown + overall average % for the Games/Rank tabs.
+    // questionCounts is { mechanicId: questionCount, ... }.
+    gameXpBreakdown: (questionCounts) => request('leaderboard/gameXpBreakdown', { questionCounts })
   };
 
   const analytics = {
