@@ -519,10 +519,10 @@ footer a{color:#818cf8;text-decoration:none}
   student to the game. It shows a DIFFERENT label depending on how the student
   arrived:
 
-    1. Arrived FROM the game (Theory tab -> "Full Notes"):
-       The game adds ?from=... to the URL. The button reads
-       "<- Back to Game" and returns the student to the exact chapter/stage
-       they were on.
+    1. Arrived FROM the game (Theory tab -> "Read Full Notes"):
+       The game adds ?from=<full game URL> to the address. The button reads
+       "<- Back to Game" and returns the student to the exact chapter they
+       were on.
 
     2. Arrived FROM the website (Google, site menu, etc.):
        No ?from=... is present. The button reads "Play Game" and sends the
@@ -534,15 +534,15 @@ footer a{color:#818cf8;text-decoration:none}
 
   ----------------------------------------------------------------------------
   ONE THING TO SET (per notes page):
-  Set CHAPTER_GAME_URL below to THIS chapter's game link. That is the same
-  link that goes in content-registry.js for this chapter. For the Human
-  Nervous System chapter it is already filled in. For a different chapter,
-  just change the class/subject/slug at the end.
+  Set CHAPTER_GAME_URL below to THIS chapter's game link (the full https URL) -
+  the same link used in content-registry.js for this chapter. For the Human
+  Nervous System chapter it is already filled in. For a different chapter, just
+  change the class/subject/slug at the end.
   ----------------------------------------------------------------------------
 
   WHERE TO PUT THIS:
-  Paste this whole block once, just before the </body> tag of the notes HTML
-  file. Nothing else to do - no library, no page-speed impact.
+  Paste this whole block once, near the end of the notes HTML file (just before
+  the final closing body tag). No library, no page-speed impact.
   ============================================================================
 -->
 <script>
@@ -553,27 +553,27 @@ footer a{color:#818cf8;text-decoration:none}
   var CHAPTER_GAME_URL =
     'https://whacademy692.github.io/whacademy-/games/chapter.html?ch=8/science/human_nervous_system';
 
-  // Did the student come FROM the game? The game passes ?from=... and also
-  // leaves a sessionStorage note. Prefer the URL - it is the freshest.
+  // Did the student come FROM the game? The game passes a full https URL in
+  // ?from=... and also leaves a sessionStorage note. Prefer the URL.
   var params = new URLSearchParams(window.location.search);
   var backTo = params.get('from');
   if (!backTo) {
     try { backTo = sessionStorage.getItem('wha:notesReturn'); } catch (e) { backTo = null; }
   }
 
-  // Only allow links that stay inside our own site (small safety check).
+  // Only accept a full link to our own site. (An older build passed a bare
+  // "chapter.html?..." which 404s from the site root, so that shape is now
+  // rejected and we fall back to Play Game instead.)
   function isSafe(url) {
-    return /^(chapter\.html|https:\/\/whacademy692\.github\.io\/)/.test(url || '');
+    return /^https:\/\/whacademy692\.github\.io\//.test(url || '');
   }
 
   var href, label;
   if (backTo && isSafe(backTo)) {
-    // Came from the game -> send them back where they were.
-    href = backTo;
+    href = backTo;                       // came from the game -> go back
     label = '\u2190  Back to Game';
   } else {
-    // Came from the website -> offer to play this chapter's game.
-    href = CHAPTER_GAME_URL;
+    href = CHAPTER_GAME_URL;             // came from website -> play this game
     label = '\uD83C\uDFAE  Play Game';
   }
 
