@@ -49,6 +49,52 @@
    column to the full comfortable width and give it breathing room. */
 #chapter-stage-content { padding-inline: var(--space-4); }
 
+/* ---- Practice hub ------------------------------------------------------- */
+
+.practice-intro h2 { font: var(--type-h2); margin-bottom: var(--space-2); }
+
+.practice-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+@media (min-width: 560px) { .practice-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px) { .practice-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.practice-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-surface-solid);
+  border-top: 4px solid var(--subject-accent, var(--color-brand-ink));
+}
+.practice-card--done { opacity: 0.92; }
+.practice-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+.practice-card__title { font: var(--type-h4); margin: 0; }
+.practice-card__desc { color: var(--color-text-secondary); flex: 1; }
+
+.progress {
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--neutral-200);
+  overflow: hidden;
+}
+[data-theme="dark"] .progress { background: var(--color-bg-surface); }
+.progress__fill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--subject-accent, var(--color-brand-ink));
+  transition: width var(--motion-base) var(--ease-out);
+}
+
 /* ---- Stage stepper ------------------------------------------------------ */
 
 .stage-stepper {
