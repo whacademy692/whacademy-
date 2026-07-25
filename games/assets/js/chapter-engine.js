@@ -96,25 +96,83 @@
       try { localStorage.setItem(key(chapterRef), JSON.stringify(data)); } catch (e) { /* ignore */ }
     }
 
-    // per type: { seen: [ids], wrong: [ids] }
+    // Per game type we keep:
+    //   seen:    [ids] the student has answered at least once
+    //   wrong:   [ids] currently unsolved (still need review)
+    //   q: {                       per-question detail
+    //     <id>: {
+    //       attempts:  total attempts at this question
+    //       wrong:     wrong attempts so far (drives -2 and burnout)
+    //       solved:    true once answered correctly (stops further XP)
+    //       burntAt:   ISO date-string when it hit 5 wrongs (retired)
+    //       redCard:   true once it burnt out (card shows red on re-surface)
+    //     }
+    //   }
     function forType(chapterRef, mechanicId) {
       var all = read(chapterRef);
-      return all[mechanicId] || { seen: [], wrong: [] };
+      var t = all[mechanicId] || {};
+      return { seen: t.seen || [], wrong: t.wrong || [], q: t.q || {} };
     }
 
+    function qState(chapterRef, mechanicId, questionId) {
+      var t = forType(chapterRef, mechanicId);
+      return t.q[questionId] || { attempts: 0, wrong: 0, solved: false, burntAt: null, redCard: false };
+    }
+
+    // Records one attempt. Returns the per-question state AFTER this attempt,
+    // plus attemptNumber and priorWrongCount (what the backend needs to score).
     function record(chapterRef, mechanicId, questionId, isCorrect) {
       var all = read(chapterRef);
-      var t = all[mechanicId] || { seen: [], wrong: [] };
+      var t = all[mechanicId] || { seen: [], wrong: [], q: {} };
+      if (!t.q) t.q = {};
       if (t.seen.indexOf(questionId) === -1) t.seen.push(questionId);
-      var at = t.wrong.indexOf(questionId);
-      if (!isCorrect && at === -1) t.wrong.push(questionId);
-      if (isCorrect && at !== -1) t.wrong.splice(at, 1); // got it right now — clear it
+
+      var q = t.q[questionId] || { attempts: 0, wrong: 0, solved: false, burntAt: null, redCard: false };
+      var priorWrongCount = q.wrong;      // before this attempt
+      var attemptNumber = q.attempts + 1; // 1-based, this attempt
+
+      q.attempts = attemptNumber;
+      if (isCorrect) {
+        q.solved = true;
+        var at = t.wrong.indexOf(questionId);
+        if (at !== -1) t.wrong.splice(at, 1);
+      } else {
+        // Only count the wrong (and penalise) while not yet burnt out.
+        if (q.wrong < BURNOUT_WRONG_LIMIT) q.wrong += 1;
+        if (t.wrong.indexOf(questionId) === -1) t.wrong.push(questionId);
+        if (q.wrong >= BURNOUT_WRONG_LIMIT && !q.burntAt) {
+          q.burntAt = new Date().toISOString();
+          q.redCard = true;
+        }
+      }
+      t.q[questionId] = q;
       all[mechanicId] = t;
       write(chapterRef, all);
+
+      return { state: q, attemptNumber: attemptNumber, priorWrongCount: priorWrongCount };
     }
 
-    return { forType: forType, record: record };
+    // How many questions in this type are red-carded (burnt out).
+    function redCardCount(chapterRef, mechanicId) {
+      var t = forType(chapterRef, mechanicId);
+      var n = 0;
+      Object.keys(t.q).forEach(function (id) { if (t.q[id].redCard) n++; });
+      return n;
+    }
+
+    return { forType: forType, qState: qState, record: record, redCardCount: redCardCount };
   })();
+
+  // A burnt-out question (5 wrongs) is retired for the day. It may re-surface
+  // only after this cooldown, per "wrong 5 times -> comes back another day".
+  var BURNOUT_WRONG_LIMIT = 5;
+  var BURNOUT_COOLDOWN_MS = 20 * 60 * 60 * 1000;  // ~20h ("next day")
+
+  function isBurntOutNow(qs) {
+    if (!qs || !qs.burntAt) return false;
+    var since = Date.now() - new Date(qs.burntAt).getTime();
+    return since < BURNOUT_COOLDOWN_MS;   // still cooling down -> keep it out
+  }
 
   /**
    * Chooses which questions to serve for one game type this session:
@@ -122,6 +180,8 @@
    *   2. Then NEW questions the student has not seen.
    *   3. Only if both run out, older seen-but-correct ones (so a keen student
    *      can keep going rather than hitting a wall).
+   * Solved questions are never re-served (their XP is already banked), and
+   * burnt-out questions are held back until their cooldown passes.
    * Returns up to PRACTICE_PER_TYPE questions, shuffled within each tier.
    */
   function pickPracticeQuestions(bank, chapterRef, mechanicId, howMany) {
@@ -129,9 +189,16 @@
     var wrongSet = {}; progress.wrong.forEach(function (id) { wrongSet[id] = true; });
     var seenSet = {}; progress.seen.forEach(function (id) { seenSet[id] = true; });
 
-    var wrongOnes = bank.filter(function (q) { return wrongSet[q.id]; });
-    var fresh = bank.filter(function (q) { return !seenSet[q.id]; });
-    var seenCorrect = bank.filter(function (q) { return seenSet[q.id] && !wrongSet[q.id]; });
+    function available(q) {
+      var qs = progress.q[q.id];
+      if (qs && qs.solved) return false;        // already earned — don't repeat
+      if (isBurntOutNow(qs)) return false;      // retired for the day
+      return true;
+    }
+
+    var wrongOnes = bank.filter(function (q) { return wrongSet[q.id] && available(q); });
+    var fresh = bank.filter(function (q) { return !seenSet[q.id] && available(q); });
+    var seenCorrect = bank.filter(function (q) { return seenSet[q.id] && !wrongSet[q.id] && available(q); });
 
     var chosen = Utils.shuffle(wrongOnes).slice(0, howMany);
     if (chosen.length < howMany) {
@@ -1380,7 +1447,7 @@
   var STAGE_LABELS = {
     theory: 'Theory',
     lesson: 'Explore',
-    practice: 'Practice',
+    practice: 'Games',
     games: 'Games',
     'boss-battle': 'Boss Battle',
     'chapter-checkpoint': 'Checkpoint',
@@ -1443,10 +1510,10 @@
     var list = [];
     if (content.theory && isNonEmptyArray(content.theory.sections)) list.push('theory');
     // Explore (interactive-lesson hotspot) stage removed by request. The
-    // renderLesson code stays in the file but is no longer added to any
-    // chapter's flow, so a chapter goes Theory -> Practice directly.
+    // separate miniGames stage is also gone: the former "Practice" hub IS the
+    // Games tab now (XP-earning, backend-synced), so a chapter goes
+    // Theory -> Games -> Boss Battle -> Checkpoint -> Complete.
     if (hasPractice()) list.push('practice');
-    if (miniGames().length) list.push('games');
     if (bossQuestions().length) list.push('boss-battle');
     if (hasPractice()) list.push('chapter-checkpoint');
     list.push('complete');
@@ -1552,12 +1619,39 @@
     practiceAttempts.push({ questionId: question.id, correct: isCorrect });
     if (!isCorrect && wrongQuestionIds.indexOf(question.id) === -1) wrongQuestionIds.push(question.id);
 
-    // PRACTICE MODE: this is a learning space, not a scored one. Nothing is
-    // sent to the backend and no XP is awarded — the student can drill freely.
-    // The only thing recorded is local: which questions they've now seen and
-    // which they got wrong, so a future practice serves fresh + missed ones.
+    // GAMES (practice) MODE: XP-earning, backend-synced. We record the attempt
+    // locally first (attempt count, wrong count, burnout/red-card), then send
+    // it to the backend with the fields the +5/+3/-2 scheme needs:
+    // gameMode='practice', attemptNumber (1-based), priorWrongCount.
     if (opts.practice) {
-      PracticeStore.record(content.chapterRef, opts.bankMechanicId || question.mechanicId, question.id, isCorrect);
+      var mechanicId = opts.bankMechanicId || question.mechanicId;
+      var rec = PracticeStore.record(content.chapterRef, mechanicId, question.id, isCorrect);
+
+      var pPayload = {
+        questionId: fullQuestionId(question.id),
+        mechanicId: mechanicId,
+        topicTag: question.topicTag || 'general',
+        difficulty: question.difficulty,
+        correct: isCorrect,
+        hintsUsed: Math.min(Number(meta.hintsUsed) || 0, 10),
+        retries: Math.min(Number(meta.retries) || 0, 20),
+        gameMode: 'practice',
+        attemptNumber: rec.attemptNumber,
+        priorWrongCount: rec.priorWrongCount
+      };
+
+      Api.progress.recordAttempt(sessionId, pPayload)
+        .then(function (result) {
+          if (result && typeof result.xpAwarded === 'number' && result.xpAwarded !== 0) {
+            xpEarned += result.xpAwarded;
+            coinsEarned += result.coinsAwarded || 0;
+            var amt = result.xpAwarded;
+            Notifications.success((amt > 0 ? '+' : '') + amt + ' XP', 1500);
+          }
+        })
+        .catch(function () {
+          Storage.queuePendingWrite('progress/recordAttempt', { sessionId: sessionId, attemptData: pPayload });
+        });
       return;
     }
 
@@ -1865,69 +1959,79 @@
    */
   var PRACTICE_UNLOCK_FRACTION = 0.5;  // overall progress needed to open Games
 
+  var BOSS_UNLOCK_PERCENT = 90;   // average XP % across all game types to unlock Boss
+
   function renderPractice(container) {
     var banks = practiceBanks();
+    // Map mechanicId -> question count, sent to the backend so it can compute
+    // each type's max XP (count * 5) and the overall average %.
+    var questionCounts = {};
+    banks.forEach(function (b) { questionCounts[b.mechanicId] = b.questions.length; });
 
     function typeStats(bank) {
       var prog = PracticeStore.forType(content.chapterRef, bank.mechanicId);
       var total = bank.questions.length;
-      var done = Math.min(prog.seen.length, total);
-      return { done: done, total: total, wrong: prog.wrong.length };
+      var solved = 0;
+      Object.keys(prog.q).forEach(function (id) { if (prog.q[id].solved) solved++; });
+      return { done: Math.min(prog.seen.length, total), total: total, wrong: prog.wrong.length,
+               solved: solved, red: PracticeStore.redCardCount(content.chapterRef, bank.mechanicId) };
     }
 
-    // Overall progress across every type: total answered / total available.
-    function overallFraction() {
-      var done = 0, total = 0;
-      banks.forEach(function (b) { var s = typeStats(b); done += s.done; total += s.total; });
-      return total ? done / total : 0;
-    }
+    // The latest backend XP breakdown (per-type % and overall average).
+    var breakdown = null;
 
     function renderHub() {
       container.innerHTML = '';
       var wrap = el('div', { class: 'stack anim-fade-in-up' });
 
-      var frac = overallFraction();
-      var pctOverall = Math.round(frac * 100);
-      var unlocked = frac >= PRACTICE_UNLOCK_FRACTION;
+      var avg = breakdown ? breakdown.averagePercent : 0;
+      var unlocked = avg >= BOSS_UNLOCK_PERCENT;
 
       wrap.appendChild(el('div', { class: 'practice-intro' }, [
-        el('h2', { text: 'Practice' }),
-        el('p', { class: 'text-body-sm', text: 'Pick any game to practise — this does not affect your XP, it is just for learning. Once you reach ' + Math.round(PRACTICE_UNLOCK_FRACTION * 100) + '% overall progress, the Games tab opens. Missed questions come back next time; ones you have done are replaced with new ones.' })
+        el('h2', { text: 'Games' }),
+        el('p', { class: 'text-body-sm', text: 'Play any game type to earn XP. Scoring: first correct answer +5 XP, correct after a mistake +3 XP, each wrong answer \u22122 XP. Miss the same question 5 times and its XP stops counting \u2014 that question\u2019s card turns red and comes back another day. Reach ' + BOSS_UNLOCK_PERCENT + '% average XP across all game types to unlock the Boss Battle.' })
       ]));
 
-      // Overall progress toward unlocking Games.
+      // Overall average XP toward unlocking the Boss Battle.
       wrap.appendChild(el('div', { class: 'practice-overall' }, [
         el('div', { class: 'progress progress--lg' }, [
-          el('div', { class: 'progress__fill', style: 'width:' + pctOverall + '%;' })
+          el('div', { class: 'progress__fill' + (unlocked ? ' progress__fill--done' : ''), style: 'width:' + avg + '%;' })
         ]),
-        el('p', { class: 'text-caption', text: unlocked
-          ? 'Games unlocked! You can continue whenever you like.'
-          : pctOverall + '% overall · reach ' + Math.round(PRACTICE_UNLOCK_FRACTION * 100) + '% to unlock Games' })
+        el('p', { class: 'text-caption', text: breakdown
+          ? (unlocked
+              ? ('Boss Battle unlocked! Average XP ' + avg + '%.')
+              : ('Average XP ' + avg + '% \u00b7 reach ' + BOSS_UNLOCK_PERCENT + '% to unlock the Boss Battle'))
+          : 'Loading your XP\u2026' })
       ]));
+
+      var perType = {};
+      if (breakdown) breakdown.perType.forEach(function (t) { perType[t.mechanicId] = t; });
 
       var grid = el('div', { class: 'practice-grid' });
       banks.forEach(function (bank, i) {
         var stats = typeStats(bank);
-        var pct = stats.total ? Math.round((stats.done / stats.total) * 100) : 0;
-        var isDone = !!practiceTypesDone[bank.mechanicId];
+        var t = perType[bank.mechanicId];
+        var xpPct = t ? t.percent : 0;
+        var xpVal = t ? t.xp : 0;
 
-        // Each card gets its own accent slot (1..8) for a distinct gradient.
-        var card = el('div', { class: 'practice-card practice-card--c' + ((i % 8) + 1) + (isDone ? ' practice-card--done' : '') });
+        var card = el('div', { class: 'practice-card practice-card--c' + ((i % 8) + 1) });
         card.appendChild(el('div', { class: 'practice-card__head' }, [
           el('h3', { class: 'practice-card__title', text: bank.name || bank.mechanicId }),
-          isDone ? el('span', { class: 'badge badge--success', text: 'Played' }) : null
+          el('span', { class: 'badge badge--neutral', text: xpVal + ' XP' })
         ]));
         if (bank.description) {
           card.appendChild(el('p', { class: 'practice-card__desc text-body-sm', text: bank.description }));
         }
 
+        // XP progress bar for this type (earned XP / max XP).
         card.appendChild(el('div', { class: 'progress' }, [
-          el('div', { class: 'progress__fill', style: 'width:' + pct + '%;' })
+          el('div', { class: 'progress__fill', style: 'width:' + xpPct + '%;' })
         ]));
-        card.appendChild(el('p', { class: 'text-caption', text: stats.done + ' / ' + stats.total + ' explored' +
-          (stats.wrong ? ' · ' + stats.wrong + ' to review' : '') }));
+        var meta = stats.solved + ' / ' + stats.total + ' solved';
+        if (stats.red) meta += ' \u00b7 ' + stats.red + ' red';
+        card.appendChild(el('p', { class: 'text-caption', text: meta }));
 
-        var play = el('button', { class: 'btn btn--primary btn--full', type: 'button', text: isDone ? 'Practise again' : 'Start' });
+        var play = el('button', { class: 'btn btn--primary btn--full', type: 'button', text: stats.done ? 'Play again' : 'Start' });
         play.addEventListener('click', function () { runPractice(bank); });
         card.appendChild(play);
 
@@ -1935,17 +2039,25 @@
       });
       wrap.appendChild(grid);
 
-      // Games unlocks at PRACTICE_UNLOCK_FRACTION overall progress.
       var go = el('button', {
         class: 'btn btn--lg ' + (unlocked ? 'btn--primary' : 'btn--secondary'),
         type: 'button',
         disabled: unlocked ? null : 'disabled',
-        text: unlocked ? 'Continue to Games' : 'Reach ' + Math.round(PRACTICE_UNLOCK_FRACTION * 100) + '% to continue (' + pctOverall + '% so far)'
+        text: unlocked ? 'Continue to Boss Battle' : 'Reach ' + BOSS_UNLOCK_PERCENT + '% average XP to continue (' + avg + '% so far)'
       });
       go.addEventListener('click', function () { if (unlocked) advance('practice'); });
       wrap.appendChild(go);
 
       container.appendChild(wrap);
+    }
+
+    // Pull the latest XP breakdown from the backend, then (re)render the hub.
+    function refreshAndRender() {
+      renderHub();  // show immediately (with cached/empty breakdown)
+      if (!Api.leaderboard || !Api.leaderboard.gameXpBreakdown) return;
+      Api.leaderboard.gameXpBreakdown(questionCounts)
+        .then(function (data) { breakdown = data; renderHub(); })
+        .catch(function () { /* keep the last view; offline is fine */ });
     }
 
     function runPractice(bank) {
@@ -1962,10 +2074,10 @@
         var justDone = picked.length;
         container.appendChild(el('div', { class: 'card summary-card anim-fade-in-up' }, [
           el('h2', { text: 'Nice work' }),
-          el('p', { class: 'text-body-sm', text: 'You practised ' + justDone + ' ' + (bank.name || 'questions') + '. Try another type, or replay this one for new questions.' }),
+          el('p', { class: 'text-body-sm', text: 'You played ' + justDone + ' ' + (bank.name || 'questions') + '. Try another type, or play this one again for new questions.' }),
           (function () {
             var back = el('button', { class: 'btn btn--primary btn--lg', type: 'button', style: 'margin-top:var(--space-4);', text: 'Back to Games' });
-            back.addEventListener('click', renderHub);
+            back.addEventListener('click', refreshAndRender);
             return back;
           })()
         ]));
@@ -1973,13 +2085,13 @@
         return (bank.name || 'Question') + ' — ' + (index + 1) + ' of ' + total;
       }, submitOptions, {
         // In-question toolbar: exit back to the cards, and step to previous.
-        onExit: renderHub,
+        onExit: refreshAndRender,
         exitLabel: 'Back to Games',
         allowBack: true
       });
     }
 
-    renderHub();
+    refreshAndRender();
   }
 
   function renderMiniGames(container) {
@@ -1990,26 +2102,50 @@
   }
 
   function renderBossBattle(container) {
-    if (practiceAccuracy() < PRACTICE_MASTERY_THRESHOLD && practiceAttempts.length) {
+    // Boss Battle unlocks at BOSS_UNLOCK_PERCENT average XP across all game
+    // types — the same figure the Games hub shows. We re-check with the
+    // backend here so a student can't skip ahead via the stepper.
+    var banks = practiceBanks();
+    var questionCounts = {};
+    banks.forEach(function (b) { questionCounts[b.mechanicId] = b.questions.length; });
+
+    function lockedView() {
+      container.innerHTML = '';
       container.appendChild(el('div', { class: 'empty-state' }, [
         el('p', { class: 'empty-state__title', text: 'Boss Battle locked' }),
-        el('p', { text: 'Score ' + Utils.formatPercent(PRACTICE_MASTERY_THRESHOLD) + ' or higher in Practice to unlock this challenge.' })
+        el('p', { text: 'Reach ' + BOSS_UNLOCK_PERCENT + '% average XP in Games to unlock this challenge.' })
       ]));
-      var back = el('button', { class: 'btn btn--primary empty-state__action', type: 'button', text: 'Back to Practice' });
+      var back = el('button', { class: 'btn btn--primary empty-state__action', type: 'button', text: 'Back to Games' });
       back.addEventListener('click', function () { goToStage(stages.indexOf('practice')); });
       container.querySelector('.empty-state').appendChild(back);
-      return;
     }
 
-    runQuestionSeries(bossQuestions(), container, function () {
+    function startBoss() {
       container.innerHTML = '';
-      var card = el('div', { class: 'card summary-card' }, [el('h2', { text: 'Boss Battle cleared' })]);
-      Animations.celebrate(card);
-      var go = el('button', { class: 'btn btn--primary btn--lg', type: 'button', style: 'margin-top:var(--space-4);', text: 'Continue' });
-      go.addEventListener('click', function () { advance('boss-battle'); });
-      card.appendChild(go);
-      container.appendChild(card);
-    });
+      runQuestionSeries(bossQuestions(), container, function () {
+        container.innerHTML = '';
+        var card = el('div', { class: 'card summary-card' }, [el('h2', { text: 'Boss Battle cleared' })]);
+        Animations.celebrate(card);
+        var go = el('button', { class: 'btn btn--primary btn--lg', type: 'button', style: 'margin-top:var(--space-4);', text: 'Continue' });
+        go.addEventListener('click', function () { advance('boss-battle'); });
+        card.appendChild(go);
+        container.appendChild(card);
+      });
+    }
+
+    // Show a brief loading state, then unlock or lock based on backend XP.
+    container.innerHTML = '';
+    container.appendChild(el('p', { class: 'text-caption', text: 'Checking your XP\u2026' }));
+    if (Api.leaderboard && Api.leaderboard.gameXpBreakdown) {
+      Api.leaderboard.gameXpBreakdown(questionCounts)
+        .then(function (data) {
+          if (data && data.averagePercent >= BOSS_UNLOCK_PERCENT) startBoss();
+          else lockedView();
+        })
+        .catch(function () { lockedView(); });
+    } else {
+      lockedView();
+    }
   }
 
   function renderCheckpoint(container) {
