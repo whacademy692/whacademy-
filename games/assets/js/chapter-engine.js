@@ -1241,7 +1241,9 @@
   function buildStages() {
     var list = [];
     if (content.theory && isNonEmptyArray(content.theory.sections)) list.push('theory');
-    if (content.interactiveLesson && isNonEmptyArray(content.interactiveLesson.hotspots)) list.push('lesson');
+    // Explore (interactive-lesson hotspot) stage removed by request. The
+    // renderLesson code stays in the file but is no longer added to any
+    // chapter's flow, so a chapter goes Theory -> Practice directly.
     if (hasPractice()) list.push('practice');
     if (miniGames().length) list.push('games');
     if (bossQuestions().length) list.push('boss-battle');
@@ -1298,9 +1300,29 @@
   function advance(stageName) {
     Api.progress.markStageComplete(content.chapterRef, stageName)
       .catch(function () {
-        Notifications.error('Could not save your progress for this stage — continuing anyway.');
+        // Non-fatal; don't interrupt the student with a popup on every stage.
+        console.warn('[chapter-engine] could not mark stage complete:', stageName);
       });
     if (stageIndex < stages.length - 1) goToStage(stageIndex + 1);
+  }
+
+  /**
+   * The top-bar back arrow steps BACK one stage rather than leaving the chapter.
+   * Only on the very first stage does it exit to the Classes list — so a student
+   * mid-chapter returns to the previous tab, not all the way out to the
+   * dashboard. Wired once, here.
+   */
+  function stageBack() {
+    if (stageIndex > 0) {
+      goToStage(stageIndex - 1);
+    } else {
+      window.location.href = 'games.html';
+    }
+  }
+
+  function wireBackButton() {
+    var btn = Utils.qs('#chapter-back');
+    if (btn) btn.addEventListener('click', stageBack);
   }
 
   // ---- Question plumbing ---------------------------------------------------
@@ -1858,9 +1880,13 @@
       var result = await Api.progress.sessionStart(content.chapterRef, usedMechanicIds());
       sessionId = result && result.sessionId;
     } catch (sessionError) {
-      Notifications.error('Could not start your session — progress may not be saved.');
+      // Don't alarm the student with a popup. Practice is XP-free so it doesn't
+      // matter there at all, and the XP-earning stages already fall back to an
+      // offline write queue if the session id is missing. Log for debugging.
+      console.warn('[chapter-engine] session start failed:', sessionError);
     }
 
+    wireBackButton();
     goToStage(0);
   }
 
