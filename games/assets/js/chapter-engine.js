@@ -1484,12 +1484,12 @@
       if (!opts.onExit && !opts.allowBack) return null;
       var bar = el('div', { class: 'q-toolbar' });
       if (opts.onExit) {
-        var exit = el('button', { class: 'btn btn--tertiary btn--sm', type: 'button', text: '\u2190 ' + (opts.exitLabel || 'Exit') });
+        var exit = el('button', { class: 'btn', type: 'button', text: '\u2190 ' + (opts.exitLabel || 'Exit') });
         exit.addEventListener('click', function () { opts.onExit(); });
         bar.appendChild(exit);
       }
       if (opts.allowBack) {
-        var prev = el('button', { class: 'btn btn--tertiary btn--sm', type: 'button', text: 'Previous', disabled: index === 0 ? 'disabled' : null });
+        var prev = el('button', { class: 'btn', type: 'button', text: 'Previous', disabled: index === 0 ? 'disabled' : null });
         prev.addEventListener('click', function () { if (index > 0) { index--; step(); } });
         bar.appendChild(prev);
       }
