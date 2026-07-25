@@ -509,5 +509,121 @@ footer a{color:#818cf8;text-decoration:none}
   <a href="https://whacademy692.github.io/whacademy-/terms.html">Terms of Service</a></p>
   <p style="margin-top:6px">Expert Math and Science Tutoring · APSACS · FBISE · Punjab Board · Rawalpindi and Online Pakistan</p>
 </footer>
+
+<!--
+  ============================================================================
+  WHA Notes-Page Button  (notes-back-button)
+  ============================================================================
+  WHAT THIS IS:
+  This adds a floating button at the bottom of a notes page that leads the
+  student to the game. It shows a DIFFERENT label depending on how the student
+  arrived:
+
+    1. Arrived FROM the game (Theory tab -> "Full Notes"):
+       The game adds ?from=... to the URL. The button reads
+       "<- Back to Game" and returns the student to the exact chapter/stage
+       they were on.
+
+    2. Arrived FROM the website (Google, site menu, etc.):
+       No ?from=... is present. The button reads "Play Game" and sends the
+       student to THIS chapter's game.
+
+  So a normal website visitor is NOT shown a confusing "Back to Game" - they
+  get a friendly "Play Game" instead, and a student who came from the game
+  gets sent straight back.
+
+  ----------------------------------------------------------------------------
+  ONE THING TO SET (per notes page):
+  Set CHAPTER_GAME_URL below to THIS chapter's game link. That is the same
+  link that goes in content-registry.js for this chapter. For the Human
+  Nervous System chapter it is already filled in. For a different chapter,
+  just change the class/subject/slug at the end.
+  ----------------------------------------------------------------------------
+
+  WHERE TO PUT THIS:
+  Paste this whole block once, just before the </body> tag of the notes HTML
+  file. Nothing else to do - no library, no page-speed impact.
+  ============================================================================
+-->
+<script>
+(function () {
+  'use strict';
+
+  // >>> SET THIS to this chapter's game link (same as in content-registry.js).
+  var CHAPTER_GAME_URL =
+    'https://whacademy692.github.io/whacademy-/games/chapter.html?ch=8/science/human_nervous_system';
+
+  // Did the student come FROM the game? The game passes ?from=... and also
+  // leaves a sessionStorage note. Prefer the URL - it is the freshest.
+  var params = new URLSearchParams(window.location.search);
+  var backTo = params.get('from');
+  if (!backTo) {
+    try { backTo = sessionStorage.getItem('wha:notesReturn'); } catch (e) { backTo = null; }
+  }
+
+  // Only allow links that stay inside our own site (small safety check).
+  function isSafe(url) {
+    return /^(chapter\.html|https:\/\/whacademy692\.github\.io\/)/.test(url || '');
+  }
+
+  var href, label;
+  if (backTo && isSafe(backTo)) {
+    // Came from the game -> send them back where they were.
+    href = backTo;
+    label = '\u2190  Back to Game';
+  } else {
+    // Came from the website -> offer to play this chapter's game.
+    href = CHAPTER_GAME_URL;
+    label = '\uD83C\uDFAE  Play Game';
+  }
+
+  function makeButton() {
+    if (document.getElementById('wha-game-button')) return;
+
+    var btn = document.createElement('a');
+    btn.id = 'wha-game-button';
+    btn.href = href;
+    btn.setAttribute('role', 'button');
+    btn.textContent = label;
+
+    btn.style.cssText = [
+      'position:fixed',
+      'left:50%',
+      'bottom:20px',
+      'transform:translateX(-50%)',
+      'z-index:99999',
+      'background:#3730a3',
+      'color:#ffffff',
+      'font:600 15px/1 system-ui,-apple-system,Segoe UI,Roboto,sans-serif',
+      'padding:14px 26px',
+      'border-radius:999px',
+      'text-decoration:none',
+      'box-shadow:0 6px 20px rgba(0,0,0,0.28)',
+      'display:inline-flex',
+      'align-items:center',
+      'gap:8px',
+      'transition:transform .15s ease, box-shadow .15s ease'
+    ].join(';');
+
+    btn.addEventListener('mouseenter', function () {
+      btn.style.transform = 'translateX(-50%) translateY(-2px)';
+      btn.style.boxShadow = '0 10px 28px rgba(0,0,0,0.34)';
+    });
+    btn.addEventListener('mouseleave', function () {
+      btn.style.transform = 'translateX(-50%)';
+      btn.style.boxShadow = '0 6px 20px rgba(0,0,0,0.28)';
+    });
+
+    document.body.appendChild(btn);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', makeButton);
+  } else {
+    makeButton();
+  }
+})();
+</script>
+
 </body>
 </html>
