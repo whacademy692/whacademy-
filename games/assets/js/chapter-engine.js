@@ -454,6 +454,105 @@
     }
   };
 
+  // ---- Drag and drop (touch + mouse) --------------------------------------
+  //
+  // HTML5 native drag-and-drop does not work on touch screens, so we implement
+  // dragging with Pointer Events, which unify mouse, touch and pen. The helper
+  // clones the dragged element under the finger/cursor and reports which drop
+  // zone it is released over. Every mechanic that needs dragging uses this, so
+  // the behaviour is identical everywhere and only has to be correct once.
+  //
+  //   makeDraggable(el, { getData })   — marks el as a drag source
+  //   registerDropZone(el, { onDrop }) — marks el as a drop target
+  //   Both are managed by a DragController created per question.
+
+  function createDragController(root) {
+    var zones = [];        // { el, onDrop }
+    var active = null;     // { source, ghost, data, offsetX, offsetY }
+
+    function pointFromEvent(e) {
+      return { x: e.clientX, y: e.clientY };
+    }
+
+    function zoneAtPoint(pt) {
+      for (var i = 0; i < zones.length; i++) {
+        var r = zones[i].el.getBoundingClientRect();
+        if (pt.x >= r.left && pt.x <= r.right && pt.y >= r.top && pt.y <= r.bottom) return zones[i];
+      }
+      return null;
+    }
+
+    function clearZoneHighlights() {
+      zones.forEach(function (z) { z.el.classList.remove('drop-zone--over'); });
+    }
+
+    function onMove(e) {
+      if (!active) return;
+      e.preventDefault();
+      var pt = pointFromEvent(e);
+      active.ghost.style.left = (pt.x - active.offsetX) + 'px';
+      active.ghost.style.top = (pt.y - active.offsetY) + 'px';
+      clearZoneHighlights();
+      var z = zoneAtPoint(pt);
+      if (z) z.el.classList.add('drop-zone--over');
+    }
+
+    function onUp(e) {
+      if (!active) return;
+      var pt = pointFromEvent(e);
+      var z = zoneAtPoint(pt);
+      clearZoneHighlights();
+      if (active.ghost.parentNode) active.ghost.parentNode.removeChild(active.ghost);
+      active.source.classList.remove('drag-source--dragging');
+      var data = active.data;
+      var source = active.source;
+      active = null;
+      document.removeEventListener('pointermove', onMove);
+      document.removeEventListener('pointerup', onUp);
+      document.removeEventListener('pointercancel', onUp);
+      if (z && z.onDrop) z.onDrop(data, source);
+    }
+
+    function makeDraggable(elem, opts) {
+      opts = opts || {};
+      elem.classList.add('drag-source');
+      elem.style.touchAction = 'none';   // stop the page scrolling while dragging
+      elem.addEventListener('pointerdown', function (e) {
+        if (elem.getAttribute('data-locked') === 'true') return;
+        e.preventDefault();
+        var rect = elem.getBoundingClientRect();
+        var ghost = elem.cloneNode(true);
+        ghost.classList.add('drag-ghost');
+        ghost.style.position = 'fixed';
+        ghost.style.left = rect.left + 'px';
+        ghost.style.top = rect.top + 'px';
+        ghost.style.width = rect.width + 'px';
+        ghost.style.height = rect.height + 'px';
+        ghost.style.pointerEvents = 'none';
+        ghost.style.zIndex = '99999';
+        document.body.appendChild(ghost);
+        elem.classList.add('drag-source--dragging');
+        active = {
+          source: elem,
+          ghost: ghost,
+          data: opts.getData ? opts.getData() : null,
+          offsetX: e.clientX - rect.left,
+          offsetY: e.clientY - rect.top
+        };
+        document.addEventListener('pointermove', onMove, { passive: false });
+        document.addEventListener('pointerup', onUp);
+        document.addEventListener('pointercancel', onUp);
+      });
+    }
+
+    function registerDropZone(elem, opts) {
+      elem.classList.add('drop-zone');
+      zones.push({ el: elem, onDrop: opts && opts.onDrop });
+    }
+
+    return { makeDraggable: makeDraggable, registerDropZone: registerDropZone };
+  }
+
   // ---- Ordering family -----------------------------------------------------
 
   /**
@@ -462,15 +561,36 @@
    */
   function renderReorderable(ctx, displayItems, correctOrder, buttonLabel, revealFn) {
     var list = el('ol', { class: 'reorder-list' });
+    var drag = createDragController(ctx.body);
+
+    ctx.body.appendChild(el('p', { class: 'text-caption', text: 'Drag the rows into the correct order — or use the arrows.' }));
+
+    // Reorder by dropping a dragged row onto another row: the dragged row is
+    // inserted before the row it was dropped on.
+    function attachRowDrag(row) {
+      var handle = row.querySelector('.reorder-item__grip');
+      drag.makeDraggable(handle, { getData: function () { return row; } });
+      drag.registerDropZone(row, {
+        onDrop: function (draggedRow) {
+          if (list.dataset.locked === 'true') return;
+          if (draggedRow && draggedRow !== row) {
+            var rect = row.getBoundingClientRect();
+            list.insertBefore(draggedRow, row);
+          }
+        }
+      });
+    }
 
     shuffleForcefully(displayItems.slice()).forEach(function (item) {
       var row = el('li', { class: 'reorder-item', 'data-value': item });
+      row.appendChild(el('span', { class: 'reorder-item__grip', 'aria-hidden': 'true', text: '\u2261' }));
       row.appendChild(el('span', { class: 'reorder-item__label', text: item }));
       row.appendChild(el('span', { class: 'reorder-item__controls' }, [
         el('button', { type: 'button', class: 'btn btn--icon btn--sm', 'aria-label': 'Move ' + item + ' up', 'data-move': 'up', text: '↑' }),
         el('button', { type: 'button', class: 'btn btn--icon btn--sm', 'aria-label': 'Move ' + item + ' down', 'data-move': 'down', text: '↓' })
       ]));
       list.appendChild(row);
+      attachRowDrag(row);
     });
 
     list.addEventListener('click', function (event) {
@@ -496,9 +616,11 @@
       var current = Utils.qsa('li', list).map(function (li) { return li.dataset.value; });
       var isCorrect = current.every(function (v, i) { return v === correctOrder[i]; });
 
+      // Green where the item is in its correct position, red where it isn't.
       Utils.qsa('li', list).forEach(function (li, i) {
         li.classList.add(li.dataset.value === correctOrder[i] ? 'reorder-item--right' : 'reorder-item--wrong');
         Utils.qsa('button', li).forEach(function (b) { b.disabled = true; });
+        li.querySelector('.reorder-item__grip').style.visibility = 'hidden';
         if (revealFn) {
           var extra = revealFn(li.dataset.value);
           if (extra) li.querySelector('.reorder-item__label').appendChild(el('span', { class: 'reorder-item__meta', text: extra }));
@@ -651,15 +773,21 @@
   function renderClassification(ctx) {
     var payload = ctx.question.payload;
     var placed = {};          // item label -> category id
-    var selected = null;      // item label awaiting a bucket
+    var drag = createDragController(ctx.body);
 
-    var tray = el('div', { class: 'chip-tray' });
+    ctx.body.appendChild(el('p', { class: 'text-caption', text: 'Drag each item into the group it belongs to.' }));
+    var tray = el('div', { class: 'chip-tray drop-zone-tray' });
     var buckets = el('div', { class: 'bucket-grid' });
-    ctx.body.appendChild(el('p', { class: 'text-caption', text: 'Tap an item, then tap the group it belongs to' }));
     ctx.body.appendChild(tray);
     ctx.body.appendChild(buckets);
 
     var submit = el('button', { class: 'btn btn--primary btn--full', type: 'button', text: 'Check groups', disabled: true });
+
+    function makeChip(item, inBucket) {
+      var chip = el('span', { class: 'word-chip drag-chip' + (inBucket ? ' word-chip--chosen' : ''), text: item.label });
+      drag.makeDraggable(chip, { getData: function () { return item.label; } });
+      return chip;
+    }
 
     function repaint() {
       tray.innerHTML = '';
@@ -667,47 +795,32 @@
 
       payload.items.forEach(function (item) {
         if (placed[item.label]) return;
-        var chip = el('button', {
-          class: 'word-chip' + (selected === item.label ? ' word-chip--selected' : ''),
-          type: 'button',
-          text: item.label,
-          'aria-pressed': selected === item.label ? 'true' : 'false'
-        });
-        chip.addEventListener('click', function () {
-          selected = selected === item.label ? null : item.label;
-          repaint();
-        });
-        tray.appendChild(chip);
+        tray.appendChild(makeChip(item, false));
       });
-
       if (tray.children.length === 0) {
-        tray.appendChild(el('span', { class: 'text-caption', text: 'All items placed' }));
+        tray.appendChild(el('span', { class: 'text-caption', text: 'All items placed — drag to move, or Check groups.' }));
       }
 
       payload.categories.forEach(function (category) {
-        var box = el('div', { class: 'bucket' + (selected ? ' bucket--armed' : '') });
+        var box = el('div', { class: 'bucket' });
         box.appendChild(el('p', { class: 'bucket__title', text: category.label }));
         var contents = el('div', { class: 'bucket__items' });
-
         payload.items.forEach(function (item) {
           if (placed[item.label] !== category.id) return;
-          var chip = el('button', { class: 'word-chip word-chip--chosen', type: 'button', text: item.label, 'aria-label': 'Remove ' + item.label });
-          chip.addEventListener('click', function () {
-            delete placed[item.label];
-            repaint();
-          });
-          contents.appendChild(chip);
+          contents.appendChild(makeChip(item, true));
         });
         box.appendChild(contents);
-
-        box.addEventListener('click', function (event) {
-          if (event.target.closest('.word-chip')) return;
-          if (!selected) return;
-          placed[selected] = category.id;
-          selected = null;
-          repaint();
+        drag.registerDropZone(box, {
+          onDrop: function (label) {
+            if (label) { placed[label] = category.id; repaint(); }
+          }
         });
         buckets.appendChild(box);
+      });
+
+      // The tray is also a drop zone, so an item can be pulled back out.
+      drag.registerDropZone(tray, {
+        onDrop: function (label) { if (label && placed[label]) { delete placed[label]; repaint(); } }
       });
 
       submit.disabled = Object.keys(placed).length !== payload.items.length;
@@ -716,13 +829,11 @@
     submit.addEventListener('click', function () {
       submit.disabled = true;
       var isCorrect = payload.items.every(function (item) { return placed[item.label] === item.categoryId; });
-
-      // Show which items landed in the wrong group, not just a pass/fail.
       Utils.qsa('.bucket', buckets).forEach(function (box, boxIndex) {
         var categoryId = payload.categories[boxIndex].id;
-        Utils.qsa('.word-chip', box).forEach(function (chip) {
+        Utils.qsa('.drag-chip', box).forEach(function (chip) {
           var item = payload.items.filter(function (i) { return i.label === chip.textContent; })[0];
-          chip.disabled = true;
+          chip.setAttribute('data-locked', 'true');
           if (item) chip.classList.add(item.categoryId === categoryId ? 'word-chip--right' : 'word-chip--wrong');
         });
       });
@@ -748,82 +859,171 @@
 
   function renderMatching(ctx) {
     var payload = ctx.question.payload;
-    var matches = {};      // left -> right
-    var activeLeft = null;
+    var matches = {};      // left label -> right label
 
-    var grid = el('div', { class: 'match-grid' });
-    var leftCol = el('div', { class: 'match-col' });
-    var rightCol = el('div', { class: 'match-col' });
-    leftCol.appendChild(el('p', { class: 'match-col__title', text: payload.leftLabel || 'Term' }));
-    rightCol.appendChild(el('p', { class: 'match-col__title', text: payload.rightLabel || 'Match' }));
-    grid.appendChild(leftCol);
-    grid.appendChild(rightCol);
+    ctx.body.appendChild(el('p', { class: 'text-caption', text: 'Drag the arrow from each item on the left to its match on the right.' }));
 
-    ctx.body.appendChild(el('p', { class: 'text-caption', text: 'Tap one from each column to pair them' }));
-    ctx.body.appendChild(grid);
+    // The board holds two coloured columns with a gap between them, and an SVG
+    // overlay on top that draws the connecting arrows.
+    var board = el('div', { class: 'match-board' });
+    var leftCol = el('div', { class: 'match-col match-col--left' });
+    var rightCol = el('div', { class: 'match-col match-col--right' });
+    var svgNS = 'http://www.w3.org/2000/svg';
+    var svg = document.createElementNS(svgNS, 'svg');
+    svg.setAttribute('class', 'match-svg');
+    // arrowhead marker
+    var defs = document.createElementNS(svgNS, 'defs');
+    var marker = document.createElementNS(svgNS, 'marker');
+    marker.setAttribute('id', 'wha-arrow');
+    marker.setAttribute('viewBox', '0 0 10 10');
+    marker.setAttribute('refX', '8'); marker.setAttribute('refY', '5');
+    marker.setAttribute('markerWidth', '7'); marker.setAttribute('markerHeight', '7');
+    marker.setAttribute('orient', 'auto-start-reverse');
+    var mp = document.createElementNS(svgNS, 'path');
+    mp.setAttribute('d', 'M 0 0 L 10 5 L 0 10 z');
+    mp.setAttribute('fill', 'var(--subject-accent, #3730a3)');
+    marker.appendChild(mp); defs.appendChild(marker); svg.appendChild(defs);
+
+    board.appendChild(leftCol);
+    board.appendChild(rightCol);
+    board.appendChild(svg);
+    ctx.body.appendChild(board);
 
     var submit = el('button', { class: 'btn btn--primary btn--full', type: 'button', text: 'Check matches', disabled: true });
 
     var lefts = Utils.shuffle(payload.pairs.map(function (p) { return String(p.left); }));
     var rights = Utils.shuffle(payload.pairs.map(function (p) { return String(p.right); }));
 
-    function repaint() {
-      Utils.qsa('.match-btn', grid).forEach(function (b) { b.remove(); });
+    var leftNodes = {};   // label -> element
+    var rightNodes = {};  // label -> element
+    var locked = false;
 
-      lefts.forEach(function (left) {
-        var pairedWith = matches[left];
-        var btn = el('button', {
-          class: 'match-btn' + (activeLeft === left ? ' match-btn--active' : '') + (pairedWith ? ' match-btn--paired' : ''),
-          type: 'button'
-        }, [
-          el('span', { text: left }),
-          pairedWith ? el('span', { class: 'match-btn__partner', text: '→ ' + pairedWith }) : null
-        ]);
-        btn.addEventListener('click', function () {
-          if (pairedWith) { delete matches[left]; activeLeft = null; }
-          else { activeLeft = activeLeft === left ? null : left; }
-          repaint();
-        });
-        leftCol.appendChild(btn);
-      });
+    lefts.forEach(function (left) {
+      var node = el('div', { class: 'match-node match-node--left', 'data-label': left }, [
+        el('span', { class: 'match-node__text', text: left }),
+        el('span', { class: 'match-node__handle', 'aria-hidden': 'true' })
+      ]);
+      leftNodes[left] = node;
+      leftCol.appendChild(node);
+    });
+    rights.forEach(function (right) {
+      var node = el('div', { class: 'match-node match-node--right', 'data-label': right }, [
+        el('span', { class: 'match-node__dot', 'aria-hidden': 'true' }),
+        el('span', { class: 'match-node__text', text: right })
+      ]);
+      rightNodes[right] = node;
+      rightCol.appendChild(node);
+    });
 
-      rights.forEach(function (right) {
-        var takenBy = Object.keys(matches).filter(function (l) { return matches[l] === right; })[0];
-        var btn = el('button', {
-          class: 'match-btn' + (takenBy ? ' match-btn--paired' : ''),
-          type: 'button',
-          text: right,
-          disabled: !!takenBy
-        });
-        btn.addEventListener('click', function () {
-          if (!activeLeft) return;
-          matches[activeLeft] = right;
-          activeLeft = null;
-          repaint();
-        });
-        rightCol.appendChild(btn);
-      });
-
-      submit.disabled = Object.keys(matches).length !== payload.pairs.length;
+    function centerOf(node, side) {
+      var br = board.getBoundingClientRect();
+      var r = node.getBoundingClientRect();
+      return {
+        x: (side === 'left' ? r.right : r.left) - br.left,
+        y: r.top + r.height / 2 - br.top
+      };
     }
 
+    function drawLine(x1, y1, x2, y2, cls) {
+      var line = document.createElementNS(svgNS, 'line');
+      line.setAttribute('x1', x1); line.setAttribute('y1', y1);
+      line.setAttribute('x2', x2); line.setAttribute('y2', y2);
+      line.setAttribute('class', cls || 'match-line');
+      line.setAttribute('marker-end', 'url(#wha-arrow)');
+      svg.appendChild(line);
+    }
+
+    function redraw(temp) {
+      // clear existing lines (keep defs)
+      Utils.qsa('line', svg).forEach(function (l) { l.remove(); });
+      Object.keys(matches).forEach(function (left) {
+        var right = matches[left];
+        if (!leftNodes[left] || !rightNodes[right]) return;
+        var a = centerOf(leftNodes[left], 'left');
+        var b = centerOf(rightNodes[right], 'right');
+        var cls = 'match-line';
+        if (locked) {
+          var correct = payload.pairs.some(function (p) { return String(p.left) === left && String(p.right) === right; });
+          cls = correct ? 'match-line match-line--right' : 'match-line match-line--wrong';
+        }
+        drawLine(a.x, a.y, b.x, b.y, cls);
+      });
+      if (temp) drawLine(temp.x1, temp.y1, temp.x2, temp.y2, 'match-line match-line--temp');
+      submit.disabled = Object.keys(matches).length !== payload.pairs.length || locked;
+    }
+
+    // Dragging from a left node's handle draws a live arrow; releasing over a
+    // right node makes the match.
+    function startDrag(leftLabel, e) {
+      if (locked) return;
+      e.preventDefault();
+      var br = board.getBoundingClientRect();
+      var start = centerOf(leftNodes[leftLabel], 'left');
+
+      function move(ev) {
+        redraw({ x1: start.x, y1: start.y, x2: ev.clientX - br.left, y2: ev.clientY - br.top });
+        Object.keys(rightNodes).forEach(function (r) { rightNodes[r].classList.remove('match-node--target'); });
+        var over = rightUnder(ev);
+        if (over) rightNodes[over].classList.add('match-node--target');
+      }
+      function up(ev) {
+        document.removeEventListener('pointermove', move);
+        document.removeEventListener('pointerup', up);
+        Object.keys(rightNodes).forEach(function (r) { rightNodes[r].classList.remove('match-node--target'); });
+        var over = rightUnder(ev);
+        if (over) {
+          // remove any existing match to this right, and any existing from this left
+          Object.keys(matches).forEach(function (l) { if (matches[l] === over) delete matches[l]; });
+          matches[leftLabel] = over;
+        }
+        redraw();
+      }
+      document.addEventListener('pointermove', move, { passive: false });
+      document.addEventListener('pointerup', up);
+    }
+
+    function rightUnder(ev) {
+      var found = null;
+      Object.keys(rightNodes).forEach(function (r) {
+        var rect = rightNodes[r].getBoundingClientRect();
+        if (ev.clientX >= rect.left && ev.clientX <= rect.right && ev.clientY >= rect.top && ev.clientY <= rect.bottom) found = r;
+      });
+      return found;
+    }
+
+    lefts.forEach(function (left) {
+      var handle = leftNodes[left].querySelector('.match-node__handle');
+      handle.style.touchAction = 'none';
+      handle.addEventListener('pointerdown', function (e) { startDrag(left, e); });
+      // Tapping a left node that is already matched clears it.
+      leftNodes[left].addEventListener('click', function (e) {
+        if (locked || e.target.closest('.match-node__handle')) return;
+        if (matches[left]) { delete matches[left]; redraw(); }
+      });
+    });
+
     submit.addEventListener('click', function () {
+      locked = true;
       submit.disabled = true;
       var correctFor = {};
       payload.pairs.forEach(function (p) { correctFor[String(p.left)] = String(p.right); });
       var isCorrect = Object.keys(correctFor).every(function (left) { return matches[left] === correctFor[left]; });
-
-      Utils.qsa('.match-btn', leftCol).forEach(function (btn) {
-        var left = btn.querySelector('span').textContent;
-        btn.disabled = true;
-        if (matches[left]) btn.classList.add(matches[left] === correctFor[left] ? 'match-btn--right' : 'match-btn--wrong');
+      // colour the nodes too
+      Object.keys(matches).forEach(function (left) {
+        var ok = matches[left] === correctFor[left];
+        leftNodes[left].classList.add(ok ? 'match-node--right' : 'match-node--wrong');
+        if (rightNodes[matches[left]]) rightNodes[matches[left]].classList.add(ok ? 'match-node--right' : 'match-node--wrong');
       });
-      Utils.qsa('.match-btn', rightCol).forEach(function (b) { b.disabled = true; });
+      redraw();
       ctx.answer(isCorrect, {});
     });
 
     ctx.body.appendChild(submit);
-    repaint();
+
+    // Redraw on resize so lines stay attached.
+    var ro = function () { redraw(); };
+    window.addEventListener('resize', ro);
+    setTimeout(redraw, 30);
   }
 
   Mechanics['matching-grid'] = { validate: validateMatching, render: renderMatching };
