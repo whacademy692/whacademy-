@@ -1171,6 +1171,7 @@
   var sessionId = null;
   var stages = [];
   var stageIndex = 0;
+  var maxStageReached = 0;   // furthest stage unlocked — earlier tabs are clickable
   var practiceAttempts = [];
   var wrongQuestionIds = [];
   var xpEarned = 0;
@@ -1180,7 +1181,7 @@
     theory: 'Theory',
     lesson: 'Explore',
     practice: 'Practice',
-    games: 'Mini Game',
+    games: 'Games',
     'boss-battle': 'Boss Battle',
     'chapter-checkpoint': 'Checkpoint',
     complete: 'Complete'
@@ -1264,19 +1265,34 @@
     var nav = Utils.qs('#stage-stepper');
     nav.innerHTML = '';
     stages.forEach(function (stage, index) {
-      nav.appendChild(el('li', {
+      // A tab is reachable if the student has already been at or past it.
+      // Reachable tabs are clickable so they can jump back (or to the furthest
+      // point they've unlocked); future tabs are not.
+      var reachable = index <= maxStageReached;
+      var step = el('li', {
         class: 'stage-step' +
           (index < stageIndex ? ' stage-step--done' : '') +
-          (index === stageIndex ? ' stage-step--active' : ''),
+          (index === stageIndex ? ' stage-step--active' : '') +
+          (reachable ? ' stage-step--clickable' : ''),
         'data-stage': stage,
+        role: reachable ? 'button' : null,
+        tabindex: reachable ? '0' : null,
         'aria-current': index === stageIndex ? 'step' : null,
         text: STAGE_LABELS[stage] || stage
-      }));
+      });
+      if (reachable && index !== stageIndex) {
+        step.addEventListener('click', function () { goToStage(index); });
+        step.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToStage(index); }
+        });
+      }
+      nav.appendChild(step);
     });
   }
 
   function goToStage(index) {
     stageIndex = index;
+    if (index > maxStageReached) maxStageReached = index;
     renderStepper();
     var stage = stages[stageIndex];
     var container = main();
@@ -1451,12 +1467,40 @@
     });
   }
 
-  /** Runs a list of questions one at a time, then calls onDone. */
-  function runQuestionSeries(questions, container, onDone, labelFn, submitOptions) {
+  /**
+   * Runs a list of questions one at a time, then calls onDone.
+   *
+   * opts (optional):
+   *   onExit     — if given, shows a small toolbar above each question with an
+   *                "Exit" button (e.g. back to the practice cards).
+   *   allowBack  — if true, the toolbar also shows a "Previous" button that
+   *                re-shows the prior question (answers there are not re-graded).
+   */
+  function runQuestionSeries(questions, container, onDone, labelFn, submitOptions, opts) {
+    opts = opts || {};
     var index = 0;
+
+    function toolbar() {
+      if (!opts.onExit && !opts.allowBack) return null;
+      var bar = el('div', { class: 'q-toolbar' });
+      if (opts.onExit) {
+        var exit = el('button', { class: 'btn btn--tertiary btn--sm', type: 'button', text: '\u2190 ' + (opts.exitLabel || 'Exit') });
+        exit.addEventListener('click', function () { opts.onExit(); });
+        bar.appendChild(exit);
+      }
+      if (opts.allowBack) {
+        var prev = el('button', { class: 'btn btn--tertiary btn--sm', type: 'button', text: 'Previous', disabled: index === 0 ? 'disabled' : null });
+        prev.addEventListener('click', function () { if (index > 0) { index--; step(); } });
+        bar.appendChild(prev);
+      }
+      return bar;
+    }
+
     function step() {
       container.innerHTML = '';
       if (index >= questions.length) { onDone(); return; }
+      var bar = toolbar();
+      if (bar) container.appendChild(bar);
       if (labelFn) {
         container.appendChild(el('p', { class: 'text-caption', text: labelFn(index, questions.length) }));
       }
@@ -1619,6 +1663,8 @@
    * sessions, from the browser store), and a Play button that runs a fresh set
    * of PRACTICE_PER_TYPE questions. Practice awards no XP — it is for learning.
    */
+  var PRACTICE_UNLOCK_FRACTION = 0.5;  // overall progress needed to open Games
+
   function renderPractice(container) {
     var banks = practiceBanks();
 
@@ -1629,25 +1675,47 @@
       return { done: done, total: total, wrong: prog.wrong.length };
     }
 
+    // Overall progress across every type: total answered / total available.
+    function overallFraction() {
+      var done = 0, total = 0;
+      banks.forEach(function (b) { var s = typeStats(b); done += s.done; total += s.total; });
+      return total ? done / total : 0;
+    }
+
     function renderHub() {
       container.innerHTML = '';
       var wrap = el('div', { class: 'stack anim-fade-in-up' });
 
+      var frac = overallFraction();
+      var pctOverall = Math.round(frac * 100);
+      var unlocked = frac >= PRACTICE_UNLOCK_FRACTION;
+
       wrap.appendChild(el('div', { class: 'practice-intro' }, [
         el('h2', { text: 'Practice' }),
-        el('p', { class: 'text-body-sm', text: 'Pick any game to practise. Nothing here affects your XP — it is just for learning. Play each type at least once to finish this stage. Missed questions come back next time; questions you have done are replaced with new ones.' })
+        el('p', { class: 'text-body-sm', text: 'Pick any game to practise — this does not affect your XP, it is just for learning. Once you reach ' + Math.round(PRACTICE_UNLOCK_FRACTION * 100) + '% overall progress, the Games tab opens. Missed questions come back next time; ones you have done are replaced with new ones.' })
+      ]));
+
+      // Overall progress toward unlocking Games.
+      wrap.appendChild(el('div', { class: 'practice-overall' }, [
+        el('div', { class: 'progress progress--lg' }, [
+          el('div', { class: 'progress__fill', style: 'width:' + pctOverall + '%;' })
+        ]),
+        el('p', { class: 'text-caption', text: unlocked
+          ? 'Games unlocked! You can continue whenever you like.'
+          : pctOverall + '% overall · reach ' + Math.round(PRACTICE_UNLOCK_FRACTION * 100) + '% to unlock Games' })
       ]));
 
       var grid = el('div', { class: 'practice-grid' });
-      banks.forEach(function (bank) {
+      banks.forEach(function (bank, i) {
         var stats = typeStats(bank);
         var pct = stats.total ? Math.round((stats.done / stats.total) * 100) : 0;
         var isDone = !!practiceTypesDone[bank.mechanicId];
 
-        var card = el('div', { class: 'practice-card' + (isDone ? ' practice-card--done' : '') });
+        // Each card gets its own accent slot (1..8) for a distinct gradient.
+        var card = el('div', { class: 'practice-card practice-card--c' + ((i % 8) + 1) + (isDone ? ' practice-card--done' : '') });
         card.appendChild(el('div', { class: 'practice-card__head' }, [
           el('h3', { class: 'practice-card__title', text: bank.name || bank.mechanicId }),
-          isDone ? el('span', { class: 'badge badge--success', text: 'Done' }) : null
+          isDone ? el('span', { class: 'badge badge--success', text: 'Played' }) : null
         ]));
         if (bank.description) {
           card.appendChild(el('p', { class: 'practice-card__desc text-body-sm', text: bank.description }));
@@ -1667,17 +1735,14 @@
       });
       wrap.appendChild(grid);
 
-      // Continue only after every type has been played at least once.
-      var allDone = banks.every(function (b) { return practiceTypesDone[b.mechanicId]; });
-      var remaining = banks.filter(function (b) { return !practiceTypesDone[b.mechanicId]; }).length;
-
+      // Games unlocks at PRACTICE_UNLOCK_FRACTION overall progress.
       var go = el('button', {
-        class: 'btn btn--lg ' + (allDone ? 'btn--primary' : 'btn--secondary'),
+        class: 'btn btn--lg ' + (unlocked ? 'btn--primary' : 'btn--secondary'),
         type: 'button',
-        disabled: allDone ? null : 'disabled',
-        text: allDone ? 'Continue' : 'Play all types to continue (' + remaining + ' left)'
+        disabled: unlocked ? null : 'disabled',
+        text: unlocked ? 'Continue to Games' : 'Reach ' + Math.round(PRACTICE_UNLOCK_FRACTION * 100) + '% to continue (' + pctOverall + '% so far)'
       });
-      go.addEventListener('click', function () { if (allDone) advance('practice'); });
+      go.addEventListener('click', function () { if (unlocked) advance('practice'); });
       wrap.appendChild(go);
 
       container.appendChild(wrap);
@@ -1693,21 +1758,25 @@
 
       runQuestionSeries(picked, container, function () {
         practiceTypesDone[bank.mechanicId] = true;
-        // Small round-summary, then back to the hub.
         container.innerHTML = '';
         var justDone = picked.length;
         container.appendChild(el('div', { class: 'card summary-card anim-fade-in-up' }, [
           el('h2', { text: 'Nice work' }),
           el('p', { class: 'text-body-sm', text: 'You practised ' + justDone + ' ' + (bank.name || 'questions') + '. Try another type, or replay this one for new questions.' }),
           (function () {
-            var back = el('button', { class: 'btn btn--primary btn--lg', type: 'button', style: 'margin-top:var(--space-4);', text: 'Back to Practice' });
+            var back = el('button', { class: 'btn btn--primary btn--lg', type: 'button', style: 'margin-top:var(--space-4);', text: 'Back to Games' });
             back.addEventListener('click', renderHub);
             return back;
           })()
         ]));
       }, function (index, total) {
         return (bank.name || 'Question') + ' — ' + (index + 1) + ' of ' + total;
-      }, submitOptions);
+      }, submitOptions, {
+        // In-question toolbar: exit back to the cards, and step to previous.
+        onExit: renderHub,
+        exitLabel: 'Back to Games',
+        allowBack: true
+      });
     }
 
     renderHub();
