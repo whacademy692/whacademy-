@@ -1406,8 +1406,13 @@
     // Building the full origin+path here means the Back button works no matter
     // where the notes page sits. window.location.href is this chapter page, so
     // its directory (…/games/) is exactly the base we want.
+    //
+    // NOTE: chapterPath keeps its plain slashes here. encodeURIComponent would
+    // turn "8/science/x" into "8%2Fscience%2Fx", and GitHub Pages 404s on an
+    // encoded slash in the query — which is exactly why the Back button failed
+    // while the same link with plain slashes worked.
     var here = window.location.href.split('?')[0];              // …/games/chapter.html
-    var backTo = here + '?ch=' + encodeURIComponent(chapterPath);
+    var backTo = here + '?ch=' + chapterPath;
     try {
       sessionStorage.setItem('wha:notesReturn', backTo);
     } catch (e) { /* private mode — the query param below still works */ }
@@ -1616,7 +1621,11 @@
 
     var response;
     try {
-      response = await fetch('classes/' + chapterPath + '/content.json', { cache: 'no-cache' });
+      // Default caching (not 'no-cache'): the browser may reuse a fresh copy,
+      // which makes repeat opens noticeably faster. Chapter content changes
+      // rarely, and the service worker already revalidates it, so forcing a
+      // network round-trip on every open only added load time.
+      response = await fetch('classes/' + chapterPath + '/content.json');
     } catch (networkError) {
       showFatal('This chapter could not load', 'Check your connection and try again.');
       return;
