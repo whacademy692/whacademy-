@@ -69,6 +69,79 @@
   };
 
   var PRACTICE_MASTERY_THRESHOLD = 0.8;
+  var PRACTICE_PER_TYPE = 10;   // questions drawn from each bank per session
+
+  // =========================================================================
+  // PRACTICE PROGRESS STORE  (browser only — no backend)
+  // -------------------------------------------------------------------------
+  // Remembers, per chapter and per game type, which question ids the student
+  // has already answered and which they got wrong. This is what makes a
+  // re-practice show NEW questions instead of the same ones — while still
+  // bringing back the ones they previously missed.
+  //
+  // Stored in localStorage under one key per chapter. Everything is best
+  // effort: if storage is unavailable (private mode), practice still works,
+  // it just can't remember across sessions.
+  // =========================================================================
+  var PracticeStore = (function () {
+    function key(chapterRef) { return 'wha:practice:' + chapterRef; }
+
+    function read(chapterRef) {
+      try {
+        var raw = localStorage.getItem(key(chapterRef));
+        return raw ? JSON.parse(raw) : {};
+      } catch (e) { return {}; }
+    }
+    function write(chapterRef, data) {
+      try { localStorage.setItem(key(chapterRef), JSON.stringify(data)); } catch (e) { /* ignore */ }
+    }
+
+    // per type: { seen: [ids], wrong: [ids] }
+    function forType(chapterRef, mechanicId) {
+      var all = read(chapterRef);
+      return all[mechanicId] || { seen: [], wrong: [] };
+    }
+
+    function record(chapterRef, mechanicId, questionId, isCorrect) {
+      var all = read(chapterRef);
+      var t = all[mechanicId] || { seen: [], wrong: [] };
+      if (t.seen.indexOf(questionId) === -1) t.seen.push(questionId);
+      var at = t.wrong.indexOf(questionId);
+      if (!isCorrect && at === -1) t.wrong.push(questionId);
+      if (isCorrect && at !== -1) t.wrong.splice(at, 1); // got it right now — clear it
+      all[mechanicId] = t;
+      write(chapterRef, all);
+    }
+
+    return { forType: forType, record: record };
+  })();
+
+  /**
+   * Chooses which questions to serve for one game type this session:
+   *   1. First, any previously WRONG questions (revision — highest priority).
+   *   2. Then NEW questions the student has not seen.
+   *   3. Only if both run out, older seen-but-correct ones (so a keen student
+   *      can keep going rather than hitting a wall).
+   * Returns up to PRACTICE_PER_TYPE questions, shuffled within each tier.
+   */
+  function pickPracticeQuestions(bank, chapterRef, mechanicId, howMany) {
+    var progress = PracticeStore.forType(chapterRef, mechanicId);
+    var wrongSet = {}; progress.wrong.forEach(function (id) { wrongSet[id] = true; });
+    var seenSet = {}; progress.seen.forEach(function (id) { seenSet[id] = true; });
+
+    var wrongOnes = bank.filter(function (q) { return wrongSet[q.id]; });
+    var fresh = bank.filter(function (q) { return !seenSet[q.id]; });
+    var seenCorrect = bank.filter(function (q) { return seenSet[q.id] && !wrongSet[q.id]; });
+
+    var chosen = Utils.shuffle(wrongOnes).slice(0, howMany);
+    if (chosen.length < howMany) {
+      chosen = chosen.concat(Utils.shuffle(fresh).slice(0, howMany - chosen.length));
+    }
+    if (chosen.length < howMany) {
+      chosen = chosen.concat(Utils.shuffle(seenCorrect).slice(0, howMany - chosen.length));
+    }
+    return chosen;
+  }
 
   // =========================================================================
   // Small shared helpers
@@ -1130,6 +1203,32 @@
     return isNonEmptyArray(content.practiceQuestions) ? content.practiceQuestions : [];
   }
 
+  /**
+   * The new practice model: content.practiceBanks is an array of
+   *   { mechanicId, name, description, questions: [ ...up to 500... ] }
+   * Each entry becomes one card in the Practice tab. If a chapter still uses
+   * the old flat practiceQuestions list, it is wrapped into a single bank so
+   * nothing breaks during the migration.
+   */
+  function practiceBanks() {
+    if (isNonEmptyArray(content.practiceBanks)) {
+      return content.practiceBanks.filter(function (b) { return b && isNonEmptyArray(b.questions); });
+    }
+    if (practiceQuestions().length) {
+      return [{
+        mechanicId: 'mixed',
+        name: 'Practice Questions',
+        description: 'A mix of question types from this chapter.',
+        questions: practiceQuestions()
+      }];
+    }
+    return [];
+  }
+
+  function hasPractice() {
+    return practiceBanks().length > 0;
+  }
+
   function bossQuestions() {
     return isNonEmptyArray(content.bossBattleQuestions) ? content.bossBattleQuestions : [];
   }
@@ -1143,10 +1242,10 @@
     var list = [];
     if (content.theory && isNonEmptyArray(content.theory.sections)) list.push('theory');
     if (content.interactiveLesson && isNonEmptyArray(content.interactiveLesson.hotspots)) list.push('lesson');
-    if (practiceQuestions().length) list.push('practice');
+    if (hasPractice()) list.push('practice');
     if (miniGames().length) list.push('games');
     if (bossQuestions().length) list.push('boss-battle');
-    if (practiceQuestions().length) list.push('chapter-checkpoint');
+    if (hasPractice()) list.push('chapter-checkpoint');
     list.push('complete');
     return list;
   }
@@ -1210,9 +1309,19 @@
     return { Easy: 'success', Medium: 'info', Hard: 'warning', Expert: 'warning', Master: 'error' }[difficulty] || 'neutral';
   }
 
-  function submitAttempt(question, isCorrect, meta) {
+  function submitAttempt(question, isCorrect, meta, options) {
+    var opts = options || {};
     practiceAttempts.push({ questionId: question.id, correct: isCorrect });
     if (!isCorrect && wrongQuestionIds.indexOf(question.id) === -1) wrongQuestionIds.push(question.id);
+
+    // PRACTICE MODE: this is a learning space, not a scored one. Nothing is
+    // sent to the backend and no XP is awarded — the student can drill freely.
+    // The only thing recorded is local: which questions they've now seen and
+    // which they got wrong, so a future practice serves fresh + missed ones.
+    if (opts.practice) {
+      PracticeStore.record(content.chapterRef, opts.bankMechanicId || question.mechanicId, question.id, isCorrect);
+      return;
+    }
 
     var payload = {
       questionId: fullQuestionId(question.id),
@@ -1267,7 +1376,7 @@
     console.warn('[chapter-engine] ' + reason);
   }
 
-  function renderQuestion(question, container, onComplete) {
+  function renderQuestion(question, container, onComplete, submitOptions) {
     var card = el('div', { class: 'card card--question anim-fade-in-up' });
     if (question.difficulty) {
       card.appendChild(el('span', { class: 'badge badge--' + difficultyBadgeClass(question.difficulty), text: question.difficulty }));
@@ -1314,14 +1423,14 @@
         answered = true;
         var merged = meta || {};
         merged.hintsUsed = hintsUsed;
-        submitAttempt(question, isCorrect, merged);
+        submitAttempt(question, isCorrect, merged, submitOptions);
         renderFeedback(card, isCorrect, question.explanation, onComplete);
       }
     });
   }
 
   /** Runs a list of questions one at a time, then calls onDone. */
-  function runQuestionSeries(questions, container, onDone, labelFn) {
+  function runQuestionSeries(questions, container, onDone, labelFn, submitOptions) {
     var index = 0;
     function step() {
       container.innerHTML = '';
@@ -1329,7 +1438,7 @@
       if (labelFn) {
         container.appendChild(el('p', { class: 'text-caption', text: labelFn(index, questions.length) }));
       }
-      renderQuestion(questions[index], container, function () { index++; step(); });
+      renderQuestion(questions[index], container, function () { index++; step(); }, submitOptions);
     }
     step();
   }
@@ -1478,32 +1587,108 @@
     container.appendChild(wrap);
   }
 
-  function renderPractice(container) {
-    runQuestionSeries(practiceQuestions(), container, function () {
-      container.innerHTML = '';
-      var accuracy = practiceAccuracy();
-      var unlocked = accuracy >= PRACTICE_MASTERY_THRESHOLD;
-      var hasBoss = bossQuestions().length > 0;
+  // Which practice types the student has completed at least once THIS visit.
+  // The rule: play each type at least once before Practice counts as done.
+  var practiceTypesDone = {};
 
-      var card = el('div', { class: 'card summary-card' }, [
-        el('h2', { text: 'Practice complete' }),
-        el('p', { class: 'text-body-lg', text: 'Accuracy: ' + Utils.formatPercent(accuracy) }),
-        el('p', {
-          class: 'text-body-sm',
-          text: !hasBoss
-            ? 'Keep going to finish the chapter.'
-            : (unlocked
-              ? 'Boss Battle unlocked.'
-              : 'Score ' + Utils.formatPercent(PRACTICE_MASTERY_THRESHOLD) + ' or higher to unlock the Boss Battle. You can retry Practice from the stepper above.')
-        })
-      ]);
-      var go = el('button', { class: 'btn btn--primary btn--lg', type: 'button', style: 'margin-top:var(--space-4);', text: 'Continue' });
-      go.addEventListener('click', function () { advance('practice'); });
-      card.appendChild(go);
-      container.appendChild(card);
-    }, function (index, total) {
-      return 'Question ' + (index + 1) + ' of ' + total;
-    });
+  /**
+   * Practice hub. One card per game type. Each card shows a progress bar of how
+   * many of that type's questions the student has answered so far (across all
+   * sessions, from the browser store), and a Play button that runs a fresh set
+   * of PRACTICE_PER_TYPE questions. Practice awards no XP — it is for learning.
+   */
+  function renderPractice(container) {
+    var banks = practiceBanks();
+
+    function typeStats(bank) {
+      var prog = PracticeStore.forType(content.chapterRef, bank.mechanicId);
+      var total = bank.questions.length;
+      var done = Math.min(prog.seen.length, total);
+      return { done: done, total: total, wrong: prog.wrong.length };
+    }
+
+    function renderHub() {
+      container.innerHTML = '';
+      var wrap = el('div', { class: 'stack anim-fade-in-up' });
+
+      wrap.appendChild(el('div', { class: 'practice-intro' }, [
+        el('h2', { text: 'Practice' }),
+        el('p', { class: 'text-body-sm', text: 'Pick any game to practise. Nothing here affects your XP — it is just for learning. Play each type at least once to finish this stage. Missed questions come back next time; questions you have done are replaced with new ones.' })
+      ]));
+
+      var grid = el('div', { class: 'practice-grid' });
+      banks.forEach(function (bank) {
+        var stats = typeStats(bank);
+        var pct = stats.total ? Math.round((stats.done / stats.total) * 100) : 0;
+        var isDone = !!practiceTypesDone[bank.mechanicId];
+
+        var card = el('div', { class: 'practice-card' + (isDone ? ' practice-card--done' : '') });
+        card.appendChild(el('div', { class: 'practice-card__head' }, [
+          el('h3', { class: 'practice-card__title', text: bank.name || bank.mechanicId }),
+          isDone ? el('span', { class: 'badge badge--success', text: 'Done' }) : null
+        ]));
+        if (bank.description) {
+          card.appendChild(el('p', { class: 'practice-card__desc text-body-sm', text: bank.description }));
+        }
+
+        card.appendChild(el('div', { class: 'progress' }, [
+          el('div', { class: 'progress__fill', style: 'width:' + pct + '%;' })
+        ]));
+        card.appendChild(el('p', { class: 'text-caption', text: stats.done + ' / ' + stats.total + ' explored' +
+          (stats.wrong ? ' · ' + stats.wrong + ' to review' : '') }));
+
+        var play = el('button', { class: 'btn btn--primary btn--full', type: 'button', text: isDone ? 'Practise again' : 'Start' });
+        play.addEventListener('click', function () { runPractice(bank); });
+        card.appendChild(play);
+
+        grid.appendChild(card);
+      });
+      wrap.appendChild(grid);
+
+      // Continue only after every type has been played at least once.
+      var allDone = banks.every(function (b) { return practiceTypesDone[b.mechanicId]; });
+      var remaining = banks.filter(function (b) { return !practiceTypesDone[b.mechanicId]; }).length;
+
+      var go = el('button', {
+        class: 'btn btn--lg ' + (allDone ? 'btn--primary' : 'btn--secondary'),
+        type: 'button',
+        disabled: allDone ? null : 'disabled',
+        text: allDone ? 'Continue' : 'Play all types to continue (' + remaining + ' left)'
+      });
+      go.addEventListener('click', function () { if (allDone) advance('practice'); });
+      wrap.appendChild(go);
+
+      container.appendChild(wrap);
+    }
+
+    function runPractice(bank) {
+      var picked = pickPracticeQuestions(bank.questions, content.chapterRef, bank.mechanicId, PRACTICE_PER_TYPE);
+      if (!picked.length) {
+        Notifications.info('No questions available for this type yet.');
+        return;
+      }
+      var submitOptions = { practice: true, bankMechanicId: bank.mechanicId };
+
+      runQuestionSeries(picked, container, function () {
+        practiceTypesDone[bank.mechanicId] = true;
+        // Small round-summary, then back to the hub.
+        container.innerHTML = '';
+        var justDone = picked.length;
+        container.appendChild(el('div', { class: 'card summary-card anim-fade-in-up' }, [
+          el('h2', { text: 'Nice work' }),
+          el('p', { class: 'text-body-sm', text: 'You practised ' + justDone + ' ' + (bank.name || 'questions') + '. Try another type, or replay this one for new questions.' }),
+          (function () {
+            var back = el('button', { class: 'btn btn--primary btn--lg', type: 'button', style: 'margin-top:var(--space-4);', text: 'Back to Practice' });
+            back.addEventListener('click', renderHub);
+            return back;
+          })()
+        ]));
+      }, function (index, total) {
+        return (bank.name || 'Question') + ' — ' + (index + 1) + ' of ' + total;
+      }, submitOptions);
+    }
+
+    renderHub();
   }
 
   function renderMiniGames(container) {
@@ -1537,12 +1722,20 @@
   }
 
   function renderCheckpoint(container) {
-    var missed = practiceQuestions().filter(function (q) { return wrongQuestionIds.indexOf(q.id) !== -1; });
+    // Practice now records its own missed questions in the browser and brings
+    // them back automatically, so a session where the student only used the new
+    // Practice hub has nothing extra to check here. This stage stays meaningful
+    // for any non-practice attempts made this session; otherwise it passes
+    // straight through.
+    var missedIds = wrongQuestionIds.slice();
+    var pool = [];
+    practiceBanks().forEach(function (b) { pool = pool.concat(b.questions); });
+    var missed = pool.filter(function (q) { return missedIds.indexOf(q.id) !== -1; });
 
     if (!missed.length) {
       container.appendChild(el('div', { class: 'empty-state' }, [
-        el('p', { class: 'empty-state__title', text: 'Nothing to check' }),
-        el('p', { text: 'You answered every practice question correctly the first time.' })
+        el('p', { class: 'empty-state__title', text: 'All clear' }),
+        el('p', { text: 'Nothing to review right now — anything you miss in Practice comes back automatically next time.' })
       ]));
       setTimeout(function () { advance('chapter-checkpoint'); }, 1400);
       return;
@@ -1550,7 +1743,7 @@
 
     runQuestionSeries(missed, container, function () { advance('chapter-checkpoint'); }, function (index, total) {
       return 'Checkpoint — revisiting ' + (index + 1) + ' of ' + total + ' missed ' + Utils.pluralize(total, 'question');
-    });
+    }, { practice: true });
   }
 
   function renderComplete(container) {
@@ -1597,7 +1790,11 @@
 
   function usedMechanicIds() {
     var ids = {};
-    practiceQuestions().concat(miniGames(), bossQuestions()).forEach(function (q) {
+    var all = miniGames().concat(bossQuestions());
+    practiceBanks().forEach(function (b) {
+      b.questions.forEach(function (q) { all.push(q); });
+    });
+    all.forEach(function (q) {
       if (q && q.mechanicId) ids[q.mechanicId] = true;
     });
     return Object.keys(ids);
