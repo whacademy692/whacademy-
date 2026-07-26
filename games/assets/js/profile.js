@@ -159,6 +159,40 @@
     });
   }
 
+  function initChangePin() {
+    const form = Utils.qs('#change-pin-form');
+    if (!form) return;
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const currentPin = form.currentPin.value;
+      const newPin = form.newPin.value;
+      const confirmPin = form.confirmPin.value;
+      if (!currentPin || !newPin || !confirmPin) {
+        Notifications.error('Please fill in all three PIN fields.');
+        return;
+      }
+      if (newPin !== confirmPin) {
+        Notifications.error('New PIN and confirmation do not match.');
+        return;
+      }
+      const btn = Utils.qs('#change-pin-btn');
+      if (btn) btn.disabled = true;
+      Api.auth.changePin(currentPin, newPin, confirmPin)
+        .then((res) => {
+          if (res && res.success === false) {
+            Notifications.error(res.errorMessage || 'Could not change your PIN.');
+            return;
+          }
+          Notifications.success('Your PIN has been changed.');
+          form.reset();
+        })
+        .catch((err) => {
+          Notifications.error((err && err.message) ? err.message : 'Could not change your PIN.');
+        })
+        .finally(() => { if (btn) btn.disabled = false; });
+    });
+  }
+
   document.addEventListener('wha:ready', () => {
     const page = Router.currentPageName();
     if (page === 'profile.html') {
@@ -167,7 +201,7 @@
       loadAchievementsList();
       loadCertificatesList();
     }
-    if (page === 'settings.html') initSettingsPage();
+    if (page === 'settings.html') { initSettingsPage(); initChangePin(); }
     if (page === 'achievements.html') { loadAchievementsList(); loadCertificatesList(); }
   });
 })();
