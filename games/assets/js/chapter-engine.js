@@ -1454,6 +1454,29 @@
     complete: 'Complete'
   };
 
+  // ---- Stage progress persistence -----------------------------------------
+  // Remembers, per chapter, the furthest stage the student reached and the
+  // stage they were last on. Without this, leaving the chapter (e.g. to the
+  // dashboard) reset maxStageReached to 0, so on return only Theory was
+  // clickable and every already-opened tab locked again. Saved per device.
+  var STAGE_PROG_PREFIX = 'wha:stageprog:';
+
+  function saveStageProgress() {
+    try {
+      localStorage.setItem(STAGE_PROG_PREFIX + content.chapterRef,
+        JSON.stringify({ max: maxStageReached, last: stageIndex }));
+    } catch (e) { /* private mode — no persistence, not fatal */ }
+  }
+
+  function loadStageProgress() {
+    try {
+      var raw = localStorage.getItem(STAGE_PROG_PREFIX + content.chapterRef);
+      if (!raw) return null;
+      var d = JSON.parse(raw);
+      return (d && typeof d.max === 'number') ? d : null;
+    } catch (e) { return null; }
+  }
+
   function main() { return Utils.qs('#chapter-stage-content'); }
 
   function fullQuestionId(localId) {
@@ -1560,6 +1583,7 @@
   function goToStage(index) {
     stageIndex = index;
     if (index > maxStageReached) maxStageReached = index;
+    saveStageProgress();
     renderStepper();
     var stage = stages[stageIndex];
     var container = main();
@@ -1642,11 +1666,15 @@
 
       Api.progress.recordAttempt(sessionId, pPayload)
         .then(function (result) {
-          if (result && typeof result.xpAwarded === 'number' && result.xpAwarded !== 0) {
-            xpEarned += result.xpAwarded;
-            coinsEarned += result.coinsAwarded || 0;
+          if (result && typeof result.xpAwarded === 'number') {
             var amt = result.xpAwarded;
-            Notifications.success((amt > 0 ? '+' : '') + amt + ' XP', 1500);
+            if (amt !== 0) {
+              xpEarned += amt;
+              coinsEarned += result.coinsAwarded || 0;
+            }
+            // Feed the live XP box (set up by runPractice) instead of a
+            // fleeting popup. amt may be 0 for a burnt-out ("resting") question.
+            if (opts.onXpDelta) opts.onXpDelta(amt, isCorrect);
           }
         })
         .catch(function () {
@@ -1689,6 +1717,43 @@
     card.appendChild(next);
     next.addEventListener('click', onContinue, { once: true });
     next.focus();
+  }
+
+  /**
+   * A small, persistent XP panel shown above each practice question. It shows
+   * this game type's running XP total and a one-line note about the last
+   * change (+5 first correct, +3 later correct, -2 wrong). This replaces the
+   * old fading popup so the student can always see where their XP stands and
+   * why it moved.
+   */
+  function makeXpBox(xpState, typeName) {
+    var totalEl = el('span', { class: 'xp-box__value', text: xpState.total + ' XP' });
+    var changeEl = el('p', { class: 'xp-box__change' });
+    var box = el('div', { class: 'xp-box' }, [
+      el('p', { class: 'xp-box__label', text: (typeName || 'Game') + ' XP' }),
+      totalEl,
+      changeEl
+    ]);
+
+    function render() {
+      totalEl.textContent = xpState.total + ' XP';
+      var d = xpState.lastDelta;
+      box.classList.remove('xp-box--up', 'xp-box--down');
+      if (d === null || d === undefined) {
+        changeEl.textContent = 'Answer questions to earn XP.';
+      } else if (d > 0) {
+        changeEl.textContent = 'Correct: +' + d + ' XP';
+        box.classList.add('xp-box--up');
+      } else if (d < 0) {
+        changeEl.textContent = 'Wrong answer: ' + d + ' XP';
+        box.classList.add('xp-box--down');
+      } else {
+        changeEl.textContent = 'This question is resting - no XP change.';
+      }
+    }
+
+    render();
+    return { el: box, update: render };
   }
 
   /**
@@ -1795,6 +1860,7 @@
       if (index >= questions.length) { onDone(); return; }
       var bar = toolbar();
       if (bar) container.appendChild(bar);
+      if (opts.renderStatus) opts.renderStatus(container);
       if (labelFn) {
         container.appendChild(el('p', { class: 'text-caption', text: labelFn(index, questions.length) }));
       }
@@ -2066,7 +2132,27 @@
         Notifications.info('No questions available for this type yet.');
         return;
       }
-      var submitOptions = { practice: true, bankMechanicId: bank.mechanicId };
+      // Live XP box for this game type. Starts from the type's stored total
+      // (so the number matches the backend), then moves with each answer.
+      var startXp = 0;
+      if (breakdown && breakdown.perType) {
+        breakdown.perType.forEach(function (t) {
+          if (t.mechanicId === bank.mechanicId) startXp = t.xp;
+        });
+      }
+      var xpState = { total: startXp, lastDelta: null };
+      var currentXpBox = null;
+
+      var submitOptions = {
+        practice: true,
+        bankMechanicId: bank.mechanicId,
+        onXpDelta: function (delta, isCorrect) {
+          xpState.total += delta;
+          xpState.lastDelta = delta;
+          xpState.lastCorrect = isCorrect;
+          if (currentXpBox) currentXpBox.update();
+        }
+      };
 
       runQuestionSeries(picked, container, function () {
         practiceTypesDone[bank.mechanicId] = true;
@@ -2087,7 +2173,11 @@
         // In-question toolbar: exit back to the cards, and step to previous.
         onExit: refreshAndRender,
         exitLabel: 'Back to Games',
-        allowBack: true
+        allowBack: true,
+        renderStatus: function (host) {
+          currentXpBox = makeXpBox(xpState, bank.name || 'This game');
+          host.appendChild(currentXpBox.el);
+        }
       });
     }
 
@@ -2292,7 +2382,19 @@
     }
 
     wireBackButton();
-    goToStage(0);
+
+    // Restore where the student was. If they've opened this chapter before,
+    // land them on their last stage and keep every tab they'd already reached
+    // clickable — so coming back from the dashboard no longer forces a restart
+    // from the Theory tab.
+    var saved = loadStageProgress();
+    if (saved) {
+      maxStageReached = Math.min(Math.max(0, saved.max || 0), stages.length - 1);
+      var startAt = Math.min(Math.max(0, saved.last || 0), stages.length - 1);
+      goToStage(startAt);
+    } else {
+      goToStage(0);
+    }
   }
 
   // Exposed for the test suite and for games.js, which needs the same
