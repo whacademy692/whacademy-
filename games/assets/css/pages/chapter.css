@@ -627,3 +627,39 @@
 .summary-card { text-align: center; }
 .summary-card--final { padding: var(--space-8) var(--space-5); }
 .summary-card__rewards { justify-content: center; margin-top: var(--space-5); }
+
+/* ---- Live XP box (Games practice) --------------------------------------- */
+.xp-box {
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: var(--radius-lg, 14px);
+  background: var(--color-surface, #ffffff);
+  padding: var(--space-3, 12px) var(--space-4, 16px);
+  margin-bottom: var(--space-3, 12px);
+  text-align: center;
+  transition: border-color 0.2s ease;
+}
+.xp-box__label {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-muted, #6b7280);
+}
+.xp-box__value {
+  display: block;
+  margin-top: 2px;
+  font-size: 1.9rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--subject-accent, #3730a3);
+}
+.xp-box__change {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-muted, #6b7280);
+}
+.xp-box--up { border-color: #16a34a; }
+.xp-box--up .xp-box__change { color: #16a34a; }
+.xp-box--down { border-color: #dc2626; }
+.xp-box--down .xp-box__change { color: #dc2626; }
