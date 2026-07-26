@@ -13,6 +13,37 @@
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/animations.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    /* Scoped to the Ranks page so no shared stylesheet is touched. */
+    .rank-summary { text-align: center; }
+    .rank-summary__xp {
+      display: block; font-size: 2.6rem; font-weight: 800; line-height: 1.1;
+      color: var(--color-primary, #3730a3);
+    }
+    .rank-summary__meta {
+      display: flex; justify-content: center; gap: var(--space-6, 32px);
+      margin: var(--space-3, 12px) 0;
+    }
+    .rank-summary__num { font-size: 1.3rem; font-weight: 800; }
+    .rank-boss {
+      margin-top: var(--space-3, 12px); font-weight: 700;
+      color: var(--color-text-muted, #6b7280);
+    }
+    .rank-boss--on { color: #16a34a; }
+    .rank-h2 { margin: var(--space-6, 32px) 0 var(--space-3, 12px); font-size: 1.05rem; }
+    .rank-row__top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+    .rank-row__name { font-weight: 600; }
+    .rank-row__xp { font-weight: 800; color: var(--color-primary, #3730a3); white-space: nowrap; }
+    .rank-row__sub { margin: 6px 0 0; color: var(--color-text-muted, #6b7280); }
+    .rank-bar {
+      height: 8px; border-radius: 999px; overflow: hidden; margin-top: 8px;
+      background: var(--color-border, #e5e7eb);
+    }
+    .rank-bar__fill {
+      height: 100%; border-radius: 999px; transition: width 0.3s ease;
+      background: var(--color-primary, #3730a3);
+    }
+  </style>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -36,10 +67,10 @@
       <header class="top-bar hide-desktop"><span class="top-bar__brand">Leaderboard</span></header>
 
       <main id="main-content" class="app-main">
-        <div class="container section" style="max-width: 560px;">
-          <h1>Leaderboard</h1>
+        <div class="container section" style="max-width: 620px;">
+          <h1>Ranks</h1>
           <p class="text-body-sm" style="margin-bottom: var(--space-5);">
-            Local to this device only — never shared across the internet.
+            Your XP in each game type, plus your average toward the Boss Battle.
           </p>
           <div id="leaderboard-content" class="stack-sm">
             <div class="skeleton skeleton--card"></div>
