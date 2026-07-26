@@ -201,3 +201,111 @@
   --neutral-200: #322f63;
   --neutral-300: #3f3b78;
 }
+
+/* ============================================================================
+   EXTRA THEMES — opt-in from Settings (like dark). Each keeps dark text on a
+   softly tinted light background and restyles the brand accent + gradients, so
+   the whole app (including the profile hero gradient) takes on the theme while
+   staying legible and unmistakably W.H. Academy.
+   ========================================================================== */
+
+/* ---- Ocean (calm blue / cyan) ---- */
+[data-theme="ocean"] {
+  --brand-primary: #0369a1;
+  --brand-primary-mid: #0ea5e9;
+  --brand-primary-light: #38bdf8;
+  --brand-glow: rgba(14, 165, 233, 0.35);
+  --brand-secondary: #06b6d4;
+  --color-brand-ink: #0369a1;
+  --color-brand-ink-light: #0ea5e9;
+  --color-brand-ink-tint: #dcefff;
+  --color-interactive: #0284c7;
+  --color-interactive-hover: #0369a1;
+  --color-info: #0369a1;
+  --color-info-surface: #dcefff;
+  --color-bg-app: #eef6ff;
+  --color-bg-surface: rgba(255, 255, 255, 0.82);
+  --color-border: rgba(3, 105, 161, 0.12);
+  --color-border-strong: rgba(3, 105, 161, 0.22);
+  --elevation-primary: 0 15px 40px rgba(14, 165, 233, 0.24);
+}
+
+/* ---- Forest (fresh green) ---- */
+[data-theme="forest"] {
+  --brand-primary: #15803d;
+  --brand-primary-mid: #22c55e;
+  --brand-primary-light: #4ade80;
+  --brand-glow: rgba(34, 197, 94, 0.32);
+  --brand-secondary: #10b981;
+  --color-brand-ink: #15803d;
+  --color-brand-ink-light: #16a34a;
+  --color-brand-ink-tint: #d7f5df;
+  --color-interactive: #16a34a;
+  --color-interactive-hover: #15803d;
+  --color-info: #15803d;
+  --color-info-surface: #d7f5df;
+  --color-bg-app: #eefaf1;
+  --color-bg-surface: rgba(255, 255, 255, 0.82);
+  --color-border: rgba(21, 128, 61, 0.12);
+  --color-border-strong: rgba(21, 128, 61, 0.22);
+  --elevation-primary: 0 15px 40px rgba(34, 197, 94, 0.22);
+}
+
+/* ---- Sunset (warm orange / pink) ---- */
+[data-theme="sunset"] {
+  --brand-primary: #c2410c;
+  --brand-primary-mid: #f97316;
+  --brand-primary-light: #fb923c;
+  --brand-glow: rgba(249, 115, 22, 0.32);
+  --brand-secondary: #ec4899;
+  --color-brand-ink: #c2410c;
+  --color-brand-ink-light: #ea580c;
+  --color-brand-ink-tint: #ffe4d3;
+  --color-interactive: #ea580c;
+  --color-interactive-hover: #c2410c;
+  --color-info: #c2410c;
+  --color-info-surface: #ffe4d3;
+  --color-bg-app: #fff3ec;
+  --color-bg-surface: rgba(255, 255, 255, 0.82);
+  --color-border: rgba(194, 65, 12, 0.12);
+  --color-border-strong: rgba(194, 65, 12, 0.22);
+  --elevation-primary: 0 15px 40px rgba(249, 115, 22, 0.24);
+}
+
+/* ============================================================================
+   TEXT SIZE — actually resizes reading text (previously a no-op). Overrides the
+   type tokens so headings and body text scale together, plus a base bump.
+   ========================================================================== */
+html[data-text-size="large"] {
+  font-size: 17px;
+  --type-h1: 800 37px/1.25 var(--font-body);
+  --type-h2: 700 29px/1.3 var(--font-body);
+  --type-h3: 700 23px/1.35 var(--font-body);
+  --type-h4: 700 20px/1.4 var(--font-body);
+  --type-body-lg: 400 20px/1.7 var(--font-body);
+  --type-body-md: 400 18px/1.65 var(--font-body);
+  --type-body-sm: 400 16px/1.6 var(--font-body);
+  --type-display: 700 48px/1.2 var(--font-display);
+}
+html[data-text-size="larger"] {
+  font-size: 18px;
+  --type-h1: 800 42px/1.25 var(--font-body);
+  --type-h2: 700 33px/1.3 var(--font-body);
+  --type-h3: 700 26px/1.35 var(--font-body);
+  --type-h4: 700 22px/1.4 var(--font-body);
+  --type-body-lg: 400 22px/1.7 var(--font-body);
+  --type-body-md: 400 21px/1.65 var(--font-body);
+  --type-body-sm: 400 18px/1.6 var(--font-body);
+  --type-display: 700 54px/1.2 var(--font-display);
+}
+
+/* ============================================================================
+   EASY-READING TEXT — opt-in. Opens up line height and letter spacing to make
+   longer passages easier for younger or struggling readers, without changing
+   the fonts or layout.
+   ========================================================================== */
+[data-reading="easy"] body {
+  line-height: 1.85;
+  letter-spacing: 0.012em;
+  word-spacing: 0.04em;
+}
