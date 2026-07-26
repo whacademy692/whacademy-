@@ -124,6 +124,9 @@ const Api = (() => {
     // The backend refuses this unless otp/verify has just succeeded for this
     // Student ID with the PasswordReset purpose (Auth.resetPin).
     resetPin: (studentId, pin, confirmPin) => request('auth/resetPin', { studentId, pin, confirmPin }),
+    // Authenticated: the signed-in student changes their own PIN by proving the
+    // current one. studentId is taken from the session server-side.
+    changePin: (currentPin, newPin, confirmPin) => request('auth/changePin', { currentPin, newPin, confirmPin }),
     adminLogin: (email, sharedSecret) => request('admin/login', { email, sharedSecret })
   };
 
