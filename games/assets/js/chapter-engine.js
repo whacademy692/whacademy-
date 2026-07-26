@@ -174,6 +174,34 @@
     return since < BURNOUT_COOLDOWN_MS;   // still cooling down -> keep it out
   }
 
+  // Same +5/+3/-2/0 rule the backend uses (Constants.GAME.PRACTICE_XP),
+  // mirrored here so the XP box can update the INSTANT a question is answered
+  // instead of waiting on the slow Sheets round-trip. The backend still records
+  // every attempt and stays the source of truth for the starting total each
+  // session, so the two never drift.
+  var PRACTICE_XP_FIRST_CORRECT = 5;
+  var PRACTICE_XP_LATER_CORRECT = 3;
+  var PRACTICE_XP_WRONG = -2;
+
+  function computeLocalXpDelta(correct, attemptNumber, priorWrongCount) {
+    if (Number(priorWrongCount) >= BURNOUT_WRONG_LIMIT) return 0;   // burnt out
+    if (correct) return Number(attemptNumber) <= 1 ? PRACTICE_XP_FIRST_CORRECT : PRACTICE_XP_LATER_CORRECT;
+    return PRACTICE_XP_WRONG;
+  }
+
+  // 1 -> "1st", 2 -> "2nd", 3 -> "3rd", 4 -> "4th", 5 -> "5th" ...
+  function ordinalWord(n) {
+    n = Number(n) || 0;
+    var rem100 = n % 100;
+    if (rem100 >= 11 && rem100 <= 13) return n + 'th';
+    switch (n % 10) {
+      case 1: return n + 'st';
+      case 2: return n + 'nd';
+      case 3: return n + 'rd';
+      default: return n + 'th';
+    }
+  }
+
   /**
    * Chooses which questions to serve for one game type this session:
    *   1. First, any previously WRONG questions (revision — highest priority).
@@ -1651,6 +1679,13 @@
       var mechanicId = opts.bankMechanicId || question.mechanicId;
       var rec = PracticeStore.record(content.chapterRef, mechanicId, question.id, isCorrect);
 
+      // INSTANT feedback: compute the XP change locally with the same rule the
+      // backend uses, and update the box right away — so it never lags a
+      // question or two behind while the slow Sheets write is still in flight.
+      var localDelta = computeLocalXpDelta(isCorrect, rec.attemptNumber, rec.priorWrongCount);
+      if (localDelta !== 0) xpEarned += localDelta;
+      if (opts.onXpDelta) opts.onXpDelta(localDelta, isCorrect, rec.attemptNumber);
+
       var pPayload = {
         questionId: fullQuestionId(question.id),
         mechanicId: mechanicId,
@@ -1664,18 +1699,12 @@
         priorWrongCount: rec.priorWrongCount
       };
 
+      // Persist in the background — the box already shows the change, so we do
+      // NOT drive it from this response (that is what caused the lag). The
+      // backend stays the source of truth for the starting total next session.
       Api.progress.recordAttempt(sessionId, pPayload)
         .then(function (result) {
-          if (result && typeof result.xpAwarded === 'number') {
-            var amt = result.xpAwarded;
-            if (amt !== 0) {
-              xpEarned += amt;
-              coinsEarned += result.coinsAwarded || 0;
-            }
-            // Feed the live XP box (set up by runPractice) instead of a
-            // fleeting popup. amt may be 0 for a burnt-out ("resting") question.
-            if (opts.onXpDelta) opts.onXpDelta(amt, isCorrect);
-          }
+          if (result && result.coinsAwarded) coinsEarned += result.coinsAwarded;
         })
         .catch(function () {
           Storage.queuePendingWrite('progress/recordAttempt', { sessionId: sessionId, attemptData: pPayload });
@@ -1738,14 +1767,18 @@
     function render() {
       totalEl.textContent = xpState.total + ' XP';
       var d = xpState.lastDelta;
+      var n = xpState.lastAttempt;
       box.classList.remove('xp-box--up', 'xp-box--down');
       if (d === null || d === undefined) {
         changeEl.textContent = 'Answer questions to earn XP.';
+      } else if (d > 0 && Number(n) <= 1) {
+        changeEl.textContent = 'First-time correct, so +' + d + ' XP';
+        box.classList.add('xp-box--up');
       } else if (d > 0) {
-        changeEl.textContent = 'Correct: +' + d + ' XP';
+        changeEl.textContent = 'Correct on your ' + ordinalWord(n) + ' attempt, so +' + d + ' XP';
         box.classList.add('xp-box--up');
       } else if (d < 0) {
-        changeEl.textContent = 'Wrong answer: ' + d + ' XP';
+        changeEl.textContent = 'Wrong answer, so ' + d + ' XP';
         box.classList.add('xp-box--down');
       } else {
         changeEl.textContent = 'This question is resting - no XP change.';
@@ -2146,10 +2179,11 @@
       var submitOptions = {
         practice: true,
         bankMechanicId: bank.mechanicId,
-        onXpDelta: function (delta, isCorrect) {
+        onXpDelta: function (delta, isCorrect, attemptNumber) {
           xpState.total += delta;
           xpState.lastDelta = delta;
           xpState.lastCorrect = isCorrect;
+          xpState.lastAttempt = attemptNumber;
           if (currentXpBox) currentXpBox.update();
         }
       };
@@ -2175,6 +2209,11 @@
         exitLabel: 'Back to Games',
         allowBack: true,
         renderStatus: function (host) {
+          // New question on screen — clear the previous reason line (but keep
+          // the running total) so the message always matches the question the
+          // student just answered.
+          xpState.lastDelta = null;
+          xpState.lastAttempt = null;
           currentXpBox = makeXpBox(xpState, bank.name || 'This game');
           host.appendChild(currentXpBox.el);
         }
