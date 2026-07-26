@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Settings: W.H. Academy</title>
+  <title>Settings — W.H. Academy</title>
   <meta name="theme-color" content="#3730a3">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
@@ -91,6 +91,26 @@
             </section>
 
           </form>
+
+          <section style="margin-top: var(--space-6);">
+            <h2>Account</h2>
+            <p class="text-body-sm">Change the PIN you use to sign in.</p>
+            <form id="change-pin-form" class="stack" style="margin-top: var(--space-3);">
+              <div class="field">
+                <label class="field__label" for="pin-current">Current PIN</label>
+                <input class="input input--pin" id="pin-current" name="currentPin" type="password" inputmode="numeric" autocomplete="current-password" minlength="4" maxlength="8">
+              </div>
+              <div class="field">
+                <label class="field__label" for="pin-new">New PIN</label>
+                <input class="input input--pin" id="pin-new" name="newPin" type="password" inputmode="numeric" autocomplete="new-password" minlength="4" maxlength="8">
+              </div>
+              <div class="field">
+                <label class="field__label" for="pin-confirm">Confirm new PIN</label>
+                <input class="input input--pin" id="pin-confirm" name="confirmPin" type="password" inputmode="numeric" autocomplete="new-password" minlength="4" maxlength="8">
+              </div>
+              <button type="submit" class="btn btn--primary" id="change-pin-btn" style="align-self:flex-start;">Change PIN</button>
+            </form>
+          </section>
         </div>
       </main>
     </div>
