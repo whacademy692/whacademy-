@@ -305,7 +305,16 @@ html[data-text-size="larger"] {
    the fonts or layout.
    ========================================================================== */
 [data-reading="easy"] body {
-  line-height: 1.85;
-  letter-spacing: 0.012em;
-  word-spacing: 0.04em;
+  letter-spacing: 0.035em;
+  word-spacing: 0.08em;
+}
+/* Text elements set their own line-height via the type tokens (font shorthand),
+   so a body-level line-height is ignored — override the actual text elements. */
+html[data-reading="easy"] p,
+html[data-reading="easy"] li,
+html[data-reading="easy"] label,
+html[data-reading="easy"] .text-body-lg,
+html[data-reading="easy"] .text-body-md,
+html[data-reading="easy"] .text-body-sm {
+  line-height: 2 !important;
 }
