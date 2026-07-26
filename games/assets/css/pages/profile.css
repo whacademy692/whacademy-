@@ -1,7 +1,155 @@
 /* ============================================================================
    W.H. Academy — profile.html page styles
+   Redesigned: an identity "learner card" header, a segmented tab control, and
+   clean stat sections. Built entirely on the shared design tokens so the page
+   reads as the same product as the rest of the app.
    ========================================================================== */
 
-#profile-avatar { font-size: 24px; }
+/* ---- Identity card (hero) ------------------------------------------------ */
+.profile-hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+  border-radius: var(--radius-lg);
+  color: #ffffff;
+  background: linear-gradient(135deg,
+    var(--brand-primary) 0%,
+    var(--brand-primary-mid) 55%,
+    var(--brand-secondary) 130%);
+  box-shadow: var(--elevation-primary);
+}
 
+.profile-hero__id {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.profile-hero__avatar {
+  width: 68px;
+  height: 68px;
+  font-size: 26px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  box-shadow: none;
+}
+
+.profile-hero__idtext { min-width: 0; }
+
+.profile-hero__class {
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  margin-bottom: var(--space-2);
+}
+
+.profile-hero__name {
+  font: var(--type-display);
+  font-size: 30px;
+  line-height: 1.15;
+  color: #ffffff;
+  margin: 0;
+  word-break: break-word;
+}
+
+.profile-hero__code {
+  font: var(--type-body-sm);
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.82);
+  margin: var(--space-1) 0 0;
+  word-break: break-all;
+}
+
+.profile-hero__stats {
+  display: flex;
+  gap: var(--space-6);
+}
+
+.profile-hero__stat { text-align: center; }
+
+.profile-hero__stat-value {
+  display: block;
+  font: var(--type-h1);
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.profile-hero__stat-label {
+  font: var(--type-caption);
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* ---- Segmented tab control ---------------------------------------------- */
+.profile-tabs {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--neutral-100);
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.profile-tabs .tab {
+  border: 0;
+  background: transparent;
+  padding: 9px 20px;
+  border-radius: var(--radius-pill);
+  font: var(--type-button-md);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color var(--motion-quick) var(--ease-standard),
+              background var(--motion-quick) var(--ease-standard);
+}
+
+.profile-tabs .tab:hover { color: var(--color-brand-ink); }
+
+.profile-tabs .tab[aria-selected="true"] {
+  color: var(--color-brand-ink);
+  background: var(--color-bg-surface-solid);
+  box-shadow: var(--elevation-card);
+}
+
+/* ---- Sections + stat grids ---------------------------------------------- */
 [role="tabpanel"] section + section { margin-top: var(--space-6); }
+
+.profile-section-title {
+  font: var(--type-h3);
+  margin: 0 0 var(--space-3);
+}
+
+.profile-stats {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
+.profile-month {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.profile-month__value {
+  font: var(--type-h1);
+  color: var(--color-brand-ink);
+}
+
+@media (max-width: 640px) {
+  .profile-hero { padding: var(--space-5); }
+  .profile-hero__stats { width: 100%; justify-content: flex-start; gap: var(--space-7); }
+  .profile-hero__name { font-size: 26px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-tabs .tab { transition: none; }
+}
