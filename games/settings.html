@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Settings — W.H. Academy</title>
+  <title>Settings: W.H. Academy</title>
   <meta name="theme-color" content="#3730a3">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
@@ -54,6 +54,9 @@
                   <select class="select" id="setting-theme" name="theme">
                     <option value="light">Light (default)</option>
                     <option value="dark">Dark</option>
+                    <option value="ocean">Ocean</option>
+                    <option value="forest">Forest</option>
+                    <option value="sunset">Sunset</option>
                   </select>
                 </div>
                 <div class="field">
@@ -64,18 +67,14 @@
                     <option value="larger">Larger</option>
                   </select>
                 </div>
-              </div>
-            </section>
-
-            <section>
-              <h2>Accessibility</h2>
-              <div class="cluster" style="justify-content: space-between; margin-top: var(--space-3);">
-                <label for="setting-motion">Reduce motion</label>
-                <span class="toggle">
-                  <input type="checkbox" id="setting-motion" name="motionReduced">
-                  <span class="toggle__track"></span>
-                  <span class="toggle__thumb"></span>
-                </span>
+                <div class="cluster" style="justify-content: space-between;">
+                  <label for="setting-easy-reading">Easy-reading text</label>
+                  <span class="toggle">
+                    <input type="checkbox" id="setting-easy-reading" name="easyReading">
+                    <span class="toggle__track"></span>
+                    <span class="toggle__thumb"></span>
+                  </span>
+                </div>
               </div>
             </section>
 
@@ -91,25 +90,7 @@
               </div>
             </section>
 
-            <section>
-              <h2>Teacher Mode</h2>
-              <p class="text-body-sm">Enables a fast chapter-search shortcut for live classroom demonstrations. Scores are not saved while active.</p>
-              <div class="cluster" style="justify-content: space-between; margin-top: var(--space-3);">
-                <label for="setting-teacher-mode">Enable Teacher Mode</label>
-                <span class="toggle">
-                  <input type="checkbox" id="setting-teacher-mode" name="teacherModeEnabled">
-                  <span class="toggle__track"></span>
-                  <span class="toggle__thumb"></span>
-                </span>
-              </div>
-            </section>
           </form>
-
-          <section style="margin-top: var(--space-8);">
-            <h2>Your Data</h2>
-            <p class="text-body-sm">Download a copy of your locally cached progress.</p>
-            <button id="export-progress-btn" class="btn btn--secondary" style="margin-top: var(--space-3);">Export My Progress</button>
-          </section>
         </div>
       </main>
     </div>
@@ -130,6 +111,7 @@
   <script src="assets/js/api.js"></script>
   <script src="assets/js/router.js"></script>
   <script src="assets/js/app.js"></script>
+  <script src="assets/js/sound.js"></script>
   <script src="assets/js/profile.js"></script>
 </body>
 </html>
