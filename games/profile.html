@@ -57,15 +57,28 @@
 
       <main id="main-content" class="app-main">
         <div class="container section">
-          <div class="cluster" style="margin-bottom: var(--space-6);">
-            <div class="avatar avatar--lg" id="profile-avatar" aria-hidden="true">S</div>
-            <div>
-              <h1 id="profile-name">Student</h1>
-              <p class="text-body-sm" id="profile-meta">Class — · —</p>
+          <section class="profile-hero">
+            <div class="profile-hero__id">
+              <div class="avatar avatar--lg profile-hero__avatar" id="profile-avatar" aria-hidden="true">S</div>
+              <div class="profile-hero__idtext">
+                <span class="badge profile-hero__class" id="profile-class" hidden></span>
+                <h1 class="profile-hero__name" id="profile-name">Student</h1>
+                <p class="profile-hero__code" id="profile-code">—</p>
+              </div>
             </div>
-          </div>
+            <div class="profile-hero__stats">
+              <div class="profile-hero__stat">
+                <span class="profile-hero__stat-value" id="hero-xp">—</span>
+                <span class="profile-hero__stat-label">Total XP</span>
+              </div>
+              <div class="profile-hero__stat">
+                <span class="profile-hero__stat-value" id="hero-streak">—</span>
+                <span class="profile-hero__stat-label">Day streak</span>
+              </div>
+            </div>
+          </section>
 
-          <div role="tablist" class="tabs" aria-label="Profile sections">
+          <div role="tablist" class="profile-tabs" aria-label="Profile sections">
             <button role="tab" class="tab" id="tab-analytics" aria-selected="true" aria-controls="panel-analytics">Analytics</button>
             <button role="tab" class="tab" id="tab-achievements" aria-selected="false" aria-controls="panel-achievements" tabindex="-1">Achievements</button>
             <button role="tab" class="tab" id="tab-certificates" aria-selected="false" aria-controls="panel-certificates" tabindex="-1">Certificates</button>
@@ -73,22 +86,22 @@
 
           <div role="tabpanel" id="panel-analytics" aria-labelledby="tab-analytics" class="stack-lg" style="margin-top: var(--space-5);">
             <section id="analytics-weekly" aria-labelledby="weekly-heading">
-              <h2 id="weekly-heading">This Week</h2>
-              <div class="card-grid" style="margin-top: var(--space-3);">
+              <h2 id="weekly-heading" class="profile-section-title">This Week</h2>
+              <div class="profile-stats">
                 <div class="card card--stat"><span class="card--stat__value" data-field="accuracy">—</span><span class="card--stat__label">Accuracy</span></div>
                 <div class="card card--stat"><span class="card--stat__value" data-field="sessions">—</span><span class="card--stat__label">Sessions</span></div>
               </div>
             </section>
             <section id="analytics-monthly" aria-labelledby="monthly-heading">
-              <h2 id="monthly-heading">This Month</h2>
-              <div class="card cluster" style="margin-top: var(--space-3); justify-content: space-between;">
-                <span data-field="accuracy" class="text-h3" style="font-size: 28px; font-weight:700;">—</span>
+              <h2 id="monthly-heading" class="profile-section-title">This Month</h2>
+              <div class="card profile-month">
+                <span data-field="accuracy" class="profile-month__value">—</span>
                 <span data-field="delta" class="badge badge--neutral">—</span>
               </div>
             </section>
             <section id="analytics-lifetime" aria-labelledby="lifetime-heading">
-              <h2 id="lifetime-heading">Lifetime</h2>
-              <div class="card-grid" style="margin-top: var(--space-3);">
+              <h2 id="lifetime-heading" class="profile-section-title">Lifetime</h2>
+              <div class="profile-stats">
                 <div class="card card--stat"><span class="card--stat__value" data-field="xp">—</span><span class="card--stat__label">Total XP</span></div>
                 <div class="card card--stat"><span class="card--stat__value" data-field="certificates">—</span><span class="card--stat__label">Certificates</span></div>
                 <div class="card card--stat"><span class="card--stat__value" data-field="streak">—</span><span class="card--stat__label">Longest streak</span></div>
@@ -154,11 +167,6 @@
           if (e.key === 'ArrowLeft') tabs[(idx - 1 + tabs.length) % tabs.length].focus();
         });
       });
-      var studentId = Storage.getStudentId();
-      if (studentId) {
-        Utils.qs('#profile-name').textContent = studentId;
-        Utils.qs('#profile-avatar').textContent = studentId.charAt(0);
-      }
     });
   </script>
 </body>
