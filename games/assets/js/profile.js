@@ -6,6 +6,47 @@
 
 (function () {
 
+  // Fills the identity hero (name, class, Student ID, Total XP, current streak)
+  // from the dashboard payload, which already carries all of it. A cached copy
+  // paints instantly; a fresh call then updates it.
+  function fillIdentity(data) {
+    if (!data) return;
+    var profile = data.profile || {};
+    var name = (profile.fullName || '').trim();
+    var id = profile.studentId || (Storage.getStudentId && Storage.getStudentId()) || '';
+
+    var nameEl = Utils.qs('#profile-name');
+    if (nameEl) nameEl.textContent = name || 'Student';
+
+    var avatarEl = Utils.qs('#profile-avatar');
+    if (avatarEl) avatarEl.textContent = (name ? name.charAt(0) : (id ? id.charAt(0) : 'S')).toUpperCase();
+
+    var codeEl = Utils.qs('#profile-code');
+    if (codeEl) codeEl.textContent = id || '';
+
+    var classEl = Utils.qs('#profile-class');
+    if (classEl) {
+      if (profile.classLevel) { classEl.textContent = 'Class ' + profile.classLevel; classEl.hidden = false; }
+      else { classEl.hidden = true; }
+    }
+
+    var xpEl = Utils.qs('#hero-xp');
+    if (xpEl && typeof data.xpTotal === 'number') xpEl.textContent = data.xpTotal.toLocaleString();
+
+    var streakEl = Utils.qs('#hero-streak');
+    var current = (data.streak && data.streak.currentStreak != null) ? data.streak.currentStreak : null;
+    if (streakEl && current != null) streakEl.textContent = current;
+  }
+
+  async function loadIdentity() {
+    var cached = (Storage.getCachedDashboard && Storage.getCachedDashboard()) || null;
+    if (cached && cached.data) fillIdentity(cached.data);
+    try {
+      var data = await Api.dashboard.compose();
+      fillIdentity(data);
+    } catch (err) { /* keep cached/fallback values */ }
+  }
+
   async function loadProfileAnalytics() {
     const [weekly, monthly, lifetime] = await Promise.all([
       Api.analytics.weekly(), Api.analytics.monthly(), Api.analytics.lifetime()
@@ -122,6 +163,7 @@
   document.addEventListener('wha:ready', () => {
     const page = Router.currentPageName();
     if (page === 'profile.html') {
+      loadIdentity();
       loadProfileAnalytics().catch(() => Notifications.error('Could not load your analytics.'));
       loadAchievementsList();
       loadCertificatesList();
