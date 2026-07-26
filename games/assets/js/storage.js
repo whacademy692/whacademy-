@@ -90,7 +90,7 @@ const Storage = (() => {
     textSize: 'default',
     motionReduced: false,
     soundEnabled: true,
-    teacherModeEnabled: false
+    easyReading: false
   };
   function getSettings() { return Object.assign({}, DEFAULT_SETTINGS, get('settings', {})); }
   function setSettings(partial) {
