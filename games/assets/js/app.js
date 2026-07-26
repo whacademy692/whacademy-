@@ -8,16 +8,21 @@
 
 (function bootstrap() {
 
+  var VALID_THEMES = ['light', 'dark', 'ocean', 'forest', 'sunset'];
+
   function applySettings() {
     const settings = Storage.getSettings();
     const root = document.documentElement;
 
     // Always write an explicit theme. Light is the default and the fallback —
     // we never leave this unset, because an unset theme previously allowed the
-    // device's OS dark-mode preference to take over the whole platform.
-    root.setAttribute('data-theme', settings.theme === 'dark' ? 'dark' : 'light');
-    root.setAttribute('data-text-size', settings.textSize);
-    if (settings.motionReduced) root.setAttribute('data-motion-reduced', 'true');
+    // device's OS dark-mode preference to take over the whole platform. Any
+    // value outside the known set falls back to light.
+    const theme = VALID_THEMES.indexOf(settings.theme) >= 0 ? settings.theme : 'light';
+    root.setAttribute('data-theme', theme);
+    root.setAttribute('data-text-size', settings.textSize || 'default');
+    if (settings.easyReading) root.setAttribute('data-reading', 'easy');
+    else root.removeAttribute('data-reading');
   }
 
   function wireCommonChrome() {
