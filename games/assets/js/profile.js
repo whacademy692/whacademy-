@@ -67,9 +67,12 @@
     }
     const lifetimeEl = Utils.qs('#analytics-lifetime');
     if (lifetimeEl) {
-      lifetimeEl.querySelector('[data-field="xp"]').textContent = lifetime.xpTotal.toLocaleString();
-      lifetimeEl.querySelector('[data-field="certificates"]').textContent = lifetime.certificateCount;
-      lifetimeEl.querySelector('[data-field="streak"]').textContent = lifetime.longestStreak;
+      const xpCell = lifetimeEl.querySelector('[data-field="xp"]');
+      if (xpCell) xpCell.textContent = lifetime.xpTotal.toLocaleString();
+      const certCell = lifetimeEl.querySelector('[data-field="certificates"]');
+      if (certCell) certCell.textContent = lifetime.certificateCount;
+      const streakCell = lifetimeEl.querySelector('[data-field="streak"]');
+      if (streakCell) streakCell.textContent = lifetime.longestStreak;
     }
   }
 
@@ -129,35 +132,31 @@
 
     form.theme.value = settings.theme;
     form.textSize.value = settings.textSize;
-    form.motionReduced.checked = settings.motionReduced;
     form.soundEnabled.checked = settings.soundEnabled;
-    form.teacherModeEnabled.checked = settings.teacherModeEnabled;
+    if (form.easyReading) form.easyReading.checked = settings.easyReading;
 
-    form.addEventListener('change', () => {
+    form.addEventListener('change', (e) => {
+      const easyReading = form.easyReading ? form.easyReading.checked : false;
       Storage.setSettings({
         theme: form.theme.value,
         textSize: form.textSize.value,
-        motionReduced: form.motionReduced.checked,
         soundEnabled: form.soundEnabled.checked,
-        teacherModeEnabled: form.teacherModeEnabled.checked
+        easyReading: easyReading
       });
-      document.documentElement.setAttribute('data-text-size', form.textSize.value);
-      document.documentElement.setAttribute('data-theme', form.theme.value === 'dark' ? 'dark' : 'light');
+
+      const root = document.documentElement;
+      root.setAttribute('data-text-size', form.textSize.value);
+      root.setAttribute('data-theme', form.theme.value);
+      if (easyReading) root.setAttribute('data-reading', 'easy');
+      else root.removeAttribute('data-reading');
+
+      // When sound is switched on, play a short confirmation so it's obvious
+      // the setting is live.
+      if (e.target === form.soundEnabled && form.soundEnabled.checked && window.Sound) {
+        Sound.play('toggle');
+      }
       Notifications.success('Settings saved.');
     });
-
-    const exportBtn = Utils.qs('#export-progress-btn');
-    if (exportBtn) {
-      exportBtn.addEventListener('click', () => {
-        const cached = Storage.getCachedDashboard();
-        const blob = new Blob([JSON.stringify(cached, null, 2)], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = Utils.createEl('a', { href: url, download: 'wha-progress-export.json' });
-        a.click();
-        URL.revokeObjectURL(url);
-        Notifications.success('Your progress export has downloaded.');
-      });
-    }
   }
 
   document.addEventListener('wha:ready', () => {
