@@ -89,8 +89,7 @@ const Storage = (() => {
     theme: 'light',
     textSize: 'default',
     motionReduced: false,
-    soundEnabled: true,
-    easyReading: false
+    soundEnabled: true
   };
   function getSettings() { return Object.assign({}, DEFAULT_SETTINGS, get('settings', {})); }
   function setSettings(partial) {
