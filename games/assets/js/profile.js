@@ -132,29 +132,15 @@
 
     form.theme.value = settings.theme;
     form.textSize.value = settings.textSize;
-    form.soundEnabled.checked = settings.soundEnabled;
-    if (form.easyReading) form.easyReading.checked = settings.easyReading;
 
-    form.addEventListener('change', (e) => {
-      const easyReading = form.easyReading ? form.easyReading.checked : false;
+    form.addEventListener('change', () => {
       Storage.setSettings({
         theme: form.theme.value,
-        textSize: form.textSize.value,
-        soundEnabled: form.soundEnabled.checked,
-        easyReading: easyReading
+        textSize: form.textSize.value
       });
-
       const root = document.documentElement;
       root.setAttribute('data-text-size', form.textSize.value);
       root.setAttribute('data-theme', form.theme.value);
-      if (easyReading) root.setAttribute('data-reading', 'easy');
-      else root.removeAttribute('data-reading');
-
-      // When sound is switched on, play a short confirmation so it's obvious
-      // the setting is live.
-      if (e.target === form.soundEnabled && form.soundEnabled.checked && window.Sound) {
-        Sound.play('toggle');
-      }
       Notifications.success('Settings saved.');
     });
   }
@@ -162,35 +148,72 @@
   function initChangePin() {
     const form = Utils.qs('#change-pin-form');
     if (!form) return;
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const currentPin = form.currentPin.value;
-      const newPin = form.newPin.value;
-      const confirmPin = form.confirmPin.value;
-      if (!currentPin || !newPin || !confirmPin) {
-        Notifications.error('Please fill in all three PIN fields.');
-        return;
-      }
-      if (newPin !== confirmPin) {
-        Notifications.error('New PIN and confirmation do not match.');
-        return;
-      }
-      const btn = Utils.qs('#change-pin-btn');
-      if (btn) btn.disabled = true;
-      Api.auth.changePin(currentPin, newPin, confirmPin)
-        .then((res) => {
-          if (res && res.success === false) {
-            Notifications.error(res.errorMessage || 'Could not change your PIN.');
-            return;
-          }
-          Notifications.success('Your PIN has been changed.');
-          form.reset();
-        })
-        .catch((err) => {
-          Notifications.error((err && err.message) ? err.message : 'Could not change your PIN.');
-        })
-        .finally(() => { if (btn) btn.disabled = false; });
-    });
+    const step1 = Utils.qs('#pin-step-1');
+    const step2 = Utils.qs('#pin-step-2');
+    const sendBtn = Utils.qs('#pin-send-code-btn');
+    const changeBtn = Utils.qs('#pin-change-btn');
+    const note = Utils.qs('#pin-code-note');
+
+    // Step 1 — verify the current PIN, which triggers an emailed code.
+    if (sendBtn) {
+      sendBtn.addEventListener('click', () => {
+        const currentPin = form.currentPin.value;
+        if (!currentPin) { Notifications.error('Please enter your current PIN.'); return; }
+        sendBtn.disabled = true;
+        Api.auth.requestPinChange(currentPin)
+          .then((res) => {
+            if (res && res.success === false) {
+              Notifications.error(res.errorMessage || 'Could not send the code.');
+              return;
+            }
+            if (note) {
+              note.textContent = (res && res.sentTo)
+                ? ('We emailed a code to ' + res.sentTo + '. Enter it below with your new PIN.')
+                : 'We emailed you a code. Enter it below with your new PIN.';
+            }
+            if (step1) step1.hidden = true;
+            if (step2) step2.hidden = false;
+            Notifications.success('Verification code sent.');
+          })
+          .catch((err) => {
+            Notifications.error((err && err.message) ? err.message : 'Could not send the code.');
+          })
+          .finally(() => { sendBtn.disabled = false; });
+      });
+    }
+
+    // Step 2 — enter the code + the new PIN.
+    if (changeBtn) {
+      changeBtn.addEventListener('click', () => {
+        const otpCode = form.otpCode.value;
+        const newPin = form.newPin.value;
+        const confirmPin = form.confirmPin.value;
+        if (!otpCode || !newPin || !confirmPin) {
+          Notifications.error('Please fill in the code and both new-PIN fields.');
+          return;
+        }
+        if (newPin !== confirmPin) {
+          Notifications.error('New PIN and confirmation do not match.');
+          return;
+        }
+        changeBtn.disabled = true;
+        Api.auth.confirmPinChange(otpCode, newPin, confirmPin)
+          .then((res) => {
+            if (res && res.success === false) {
+              Notifications.error(res.errorMessage || 'Could not change your PIN.');
+              return;
+            }
+            Notifications.success('Your PIN has been changed.');
+            form.reset();
+            if (step2) step2.hidden = true;
+            if (step1) step1.hidden = false;
+          })
+          .catch((err) => {
+            Notifications.error((err && err.message) ? err.message : 'Could not change your PIN.');
+          })
+          .finally(() => { changeBtn.disabled = false; });
+      });
+    }
   }
 
   document.addEventListener('wha:ready', () => {
