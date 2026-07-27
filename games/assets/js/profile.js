@@ -150,11 +150,17 @@
     if (!form) return;
     const step1 = Utils.qs('#pin-step-1');
     const step2 = Utils.qs('#pin-step-2');
+    const step3 = Utils.qs('#pin-step-3');
     const sendBtn = Utils.qs('#pin-send-code-btn');
+    const verifyBtn = Utils.qs('#pin-verify-btn');
     const changeBtn = Utils.qs('#pin-change-btn');
     const note = Utils.qs('#pin-code-note');
+    const studentId = Storage.getStudentId();
 
-    // Step 1 — verify the current PIN, which triggers an emailed code.
+    const show = (el) => { if (el) el.hidden = false; };
+    const hide = (el) => { if (el) el.hidden = true; };
+
+    // Step 1 — verify the current PIN, which emails a code.
     if (sendBtn) {
       sendBtn.addEventListener('click', () => {
         const currentPin = form.currentPin.value;
@@ -168,49 +174,49 @@
             }
             if (note) {
               note.textContent = (res && res.sentTo)
-                ? ('We emailed a code to ' + res.sentTo + '. Enter it below with your new PIN.')
-                : 'We emailed you a code. Enter it below with your new PIN.';
+                ? ('We emailed a code to ' + res.sentTo + '.')
+                : 'We emailed you a verification code.';
             }
-            if (step1) step1.hidden = true;
-            if (step2) step2.hidden = false;
+            hide(step1); show(step2);
             Notifications.success('Verification code sent.');
           })
-          .catch((err) => {
-            Notifications.error((err && err.message) ? err.message : 'Could not send the code.');
-          })
+          .catch((err) => { Notifications.error((err && err.message) ? err.message : 'Could not send the code.'); })
           .finally(() => { sendBtn.disabled = false; });
       });
     }
 
-    // Step 2 — enter the code + the new PIN.
+    // Step 2 — verify the emailed code (rejects on an invalid code).
+    if (verifyBtn) {
+      verifyBtn.addEventListener('click', () => {
+        const otpCode = form.otpCode.value;
+        if (!otpCode) { Notifications.error('Please enter the code from your email.'); return; }
+        verifyBtn.disabled = true;
+        Api.otp.verify(studentId, otpCode, 'PasswordReset')
+          .then(() => {
+            hide(step2); show(step3);
+            Notifications.success('Code verified — now set your new PIN.');
+          })
+          .catch((err) => { Notifications.error((err && err.message) ? err.message : 'That code is not valid.'); })
+          .finally(() => { verifyBtn.disabled = false; });
+      });
+    }
+
+    // Step 3 — set the new PIN (backend requires the verified code; it also
+    // emails the student a confirmation that their PIN changed).
     if (changeBtn) {
       changeBtn.addEventListener('click', () => {
-        const otpCode = form.otpCode.value;
         const newPin = form.newPin.value;
         const confirmPin = form.confirmPin.value;
-        if (!otpCode || !newPin || !confirmPin) {
-          Notifications.error('Please fill in the code and both new-PIN fields.');
-          return;
-        }
-        if (newPin !== confirmPin) {
-          Notifications.error('New PIN and confirmation do not match.');
-          return;
-        }
+        if (!newPin || !confirmPin) { Notifications.error('Please fill in both new-PIN fields.'); return; }
+        if (newPin !== confirmPin) { Notifications.error('New PIN and confirmation do not match.'); return; }
         changeBtn.disabled = true;
-        Api.auth.confirmPinChange(otpCode, newPin, confirmPin)
-          .then((res) => {
-            if (res && res.success === false) {
-              Notifications.error(res.errorMessage || 'Could not change your PIN.');
-              return;
-            }
-            Notifications.success('Your PIN has been changed.');
+        Api.auth.resetPin(studentId, newPin, confirmPin)
+          .then(() => {
+            Notifications.success('Your PIN has been changed. A confirmation email is on its way.');
             form.reset();
-            if (step2) step2.hidden = true;
-            if (step1) step1.hidden = false;
+            hide(step3); show(step1);
           })
-          .catch((err) => {
-            Notifications.error((err && err.message) ? err.message : 'Could not change your PIN.');
-          })
+          .catch((err) => { Notifications.error((err && err.message) ? err.message : 'Could not change your PIN.'); })
           .finally(() => { changeBtn.disabled = false; });
       });
     }
