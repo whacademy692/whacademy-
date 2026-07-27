@@ -102,9 +102,8 @@
             <section id="analytics-lifetime" aria-labelledby="lifetime-heading">
               <h2 id="lifetime-heading" class="profile-section-title">Lifetime</h2>
               <div class="profile-stats">
-                <div class="card card--stat"><span class="card--stat__value" data-field="xp">—</span><span class="card--stat__label">Total XP</span></div>
-                <div class="card card--stat"><span class="card--stat__value" data-field="certificates">—</span><span class="card--stat__label">Certificates</span></div>
                 <div class="card card--stat"><span class="card--stat__value" data-field="streak">—</span><span class="card--stat__label">Longest streak</span></div>
+                <div class="card card--stat"><span class="card--stat__value" data-field="certificates">—</span><span class="card--stat__label">Certificates</span></div>
               </div>
             </section>
           </div>
@@ -115,6 +114,13 @@
 
           <div role="tabpanel" id="panel-certificates" aria-labelledby="tab-certificates" hidden style="margin-top: var(--space-5);">
             <div id="certificates-grid" class="card-grid"></div>
+          </div>
+
+          <!-- Mobile-only: the sidebar (with Settings + Log Out) is hidden on
+               phones, so surface those here from the account page. -->
+          <div class="hide-desktop stack" style="margin-top: var(--space-8);">
+            <a class="btn btn--secondary" href="settings.html" data-nav-page="settings.html" style="width:100%;">Settings</a>
+            <button class="btn btn--secondary" data-action="logout" style="width:100%;">Log Out</button>
           </div>
         </div>
       </main>
