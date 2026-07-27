@@ -14,6 +14,12 @@
   <link rel="stylesheet" href="assets/css/animations.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
   <link rel="stylesheet" href="assets/css/pages/settings.css">
+  <style>
+    /* The step containers use .stack (display:flex), which would otherwise beat
+       the [hidden] attribute — force hidden to win so the wizard shows one step
+       at a time. */
+    [hidden] { display: none !important; }
+  </style>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -85,13 +91,18 @@
                 <button type="button" class="btn btn--primary" id="pin-send-code-btn" style="align-self:flex-start;">Send code to my email</button>
               </div>
 
-              <!-- Step 2: enter the emailed code plus the new PIN. -->
+              <!-- Step 2: enter the emailed code. -->
               <div id="pin-step-2" class="stack" hidden>
                 <p class="text-body-sm" id="pin-code-note"></p>
                 <div class="field">
                   <label class="field__label" for="pin-otp">Verification code</label>
                   <input class="input" id="pin-otp" name="otpCode" inputmode="numeric" autocomplete="one-time-code">
                 </div>
+                <button type="button" class="btn btn--primary" id="pin-verify-btn" style="align-self:flex-start;">Verify code</button>
+              </div>
+
+              <!-- Step 3: set the new PIN. -->
+              <div id="pin-step-3" class="stack" hidden>
                 <div class="field">
                   <label class="field__label" for="pin-new">New PIN</label>
                   <input class="input input--pin" id="pin-new" name="newPin" type="password" inputmode="numeric" autocomplete="new-password" minlength="4" maxlength="8">
