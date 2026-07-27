@@ -21,8 +21,6 @@
     const theme = VALID_THEMES.indexOf(settings.theme) >= 0 ? settings.theme : 'light';
     root.setAttribute('data-theme', theme);
     root.setAttribute('data-text-size', settings.textSize || 'default');
-    if (settings.easyReading) root.setAttribute('data-reading', 'easy');
-    else root.removeAttribute('data-reading');
   }
 
   function wireCommonChrome() {
