@@ -67,26 +67,6 @@
                     <option value="larger">Larger</option>
                   </select>
                 </div>
-                <div class="cluster" style="justify-content: space-between;">
-                  <label for="setting-easy-reading">Easy-reading text</label>
-                  <span class="toggle">
-                    <input type="checkbox" id="setting-easy-reading" name="easyReading">
-                    <span class="toggle__track"></span>
-                    <span class="toggle__thumb"></span>
-                  </span>
-                </div>
-              </div>
-            </section>
-
-            <section>
-              <h2>Sound &amp; Notifications</h2>
-              <div class="cluster" style="justify-content: space-between; margin-top: var(--space-3);">
-                <label for="setting-sound">Sound effects</label>
-                <span class="toggle">
-                  <input type="checkbox" id="setting-sound" name="soundEnabled">
-                  <span class="toggle__track"></span>
-                  <span class="toggle__thumb"></span>
-                </span>
               </div>
             </section>
 
@@ -96,19 +76,32 @@
             <h2>Account</h2>
             <p class="text-body-sm">Change the PIN you use to sign in.</p>
             <form id="change-pin-form" class="stack" style="margin-top: var(--space-3);">
-              <div class="field">
-                <label class="field__label" for="pin-current">Current PIN</label>
-                <input class="input input--pin" id="pin-current" name="currentPin" type="password" inputmode="numeric" autocomplete="current-password" minlength="4" maxlength="8">
+              <!-- Step 1: prove the current PIN, then we email a verification code. -->
+              <div id="pin-step-1" class="stack">
+                <div class="field">
+                  <label class="field__label" for="pin-current">Current PIN</label>
+                  <input class="input input--pin" id="pin-current" name="currentPin" type="password" inputmode="numeric" autocomplete="current-password" minlength="4" maxlength="8">
+                </div>
+                <button type="button" class="btn btn--primary" id="pin-send-code-btn" style="align-self:flex-start;">Send code to my email</button>
               </div>
-              <div class="field">
-                <label class="field__label" for="pin-new">New PIN</label>
-                <input class="input input--pin" id="pin-new" name="newPin" type="password" inputmode="numeric" autocomplete="new-password" minlength="4" maxlength="8">
+
+              <!-- Step 2: enter the emailed code plus the new PIN. -->
+              <div id="pin-step-2" class="stack" hidden>
+                <p class="text-body-sm" id="pin-code-note"></p>
+                <div class="field">
+                  <label class="field__label" for="pin-otp">Verification code</label>
+                  <input class="input" id="pin-otp" name="otpCode" inputmode="numeric" autocomplete="one-time-code">
+                </div>
+                <div class="field">
+                  <label class="field__label" for="pin-new">New PIN</label>
+                  <input class="input input--pin" id="pin-new" name="newPin" type="password" inputmode="numeric" autocomplete="new-password" minlength="4" maxlength="8">
+                </div>
+                <div class="field">
+                  <label class="field__label" for="pin-confirm">Confirm new PIN</label>
+                  <input class="input input--pin" id="pin-confirm" name="confirmPin" type="password" inputmode="numeric" autocomplete="new-password" minlength="4" maxlength="8">
+                </div>
+                <button type="button" class="btn btn--primary" id="pin-change-btn" style="align-self:flex-start;">Change PIN</button>
               </div>
-              <div class="field">
-                <label class="field__label" for="pin-confirm">Confirm new PIN</label>
-                <input class="input input--pin" id="pin-confirm" name="confirmPin" type="password" inputmode="numeric" autocomplete="new-password" minlength="4" maxlength="8">
-              </div>
-              <button type="submit" class="btn btn--primary" id="change-pin-btn" style="align-self:flex-start;">Change PIN</button>
             </form>
           </section>
         </div>
@@ -131,7 +124,6 @@
   <script src="assets/js/api.js"></script>
   <script src="assets/js/router.js"></script>
   <script src="assets/js/app.js"></script>
-  <script src="assets/js/sound.js"></script>
   <script src="assets/js/profile.js"></script>
 </body>
 </html>
