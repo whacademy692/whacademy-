@@ -78,16 +78,24 @@
 .practice-card:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,0,0,0.12); }
 .practice-card--done { opacity: 0.96; }
 
-/* Eight distinct, light gradients — one per game type. Text stays dark for
-   contrast; the gradient is a soft tint, not a heavy fill. */
-.practice-card--c1 { background: linear-gradient(135deg, #eef2ff, #e0e7ff); border-color:#c7d2fe; }
-.practice-card--c2 { background: linear-gradient(135deg, #ecfeff, #cffafe); border-color:#a5f3fc; }
-.practice-card--c3 { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-color:#fed7aa; }
-.practice-card--c4 { background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-color:#bbf7d0; }
-.practice-card--c5 { background: linear-gradient(135deg, #fdf4ff, #fae8ff); border-color:#f5d0fe; }
-.practice-card--c6 { background: linear-gradient(135deg, #fef2f2, #fee2e2); border-color:#fecaca; }
-.practice-card--c7 { background: linear-gradient(135deg, #fefce8, #fef9c3); border-color:#fef08a; }
-.practice-card--c8 { background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border-color:#bae6fd; }
+/* Eight vivid, colorful gradients — one per game type. On these saturated
+   fills the text and chips flip to white for contrast (see rules below). */
+.practice-card--c1 { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+.practice-card--c2 { background: linear-gradient(135deg, #06b6d4, #3b82f6); }
+.practice-card--c3 { background: linear-gradient(135deg, #f97316, #f59e0b); }
+.practice-card--c4 { background: linear-gradient(135deg, #10b981, #22c55e); }
+.practice-card--c5 { background: linear-gradient(135deg, #d946ef, #a855f7); }
+.practice-card--c6 { background: linear-gradient(135deg, #ef4444, #f43f5e); }
+.practice-card--c7 { background: linear-gradient(135deg, #d97706, #f59e0b); }
+.practice-card--c8 { background: linear-gradient(135deg, #0ea5e9, #14b8a6); }
+
+/* Any coloured card: white text, no border, a stronger lift on hover. */
+.practice-card[class*="--c"] {
+  border: none;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+.practice-card[class*="--c"]:hover { box-shadow: 0 12px 28px rgba(0,0,0,0.24); }
 
 .practice-card__head {
   display: flex;
@@ -97,6 +105,26 @@
 }
 .practice-card__title { font: var(--type-h4); margin: 0; color: #1e293b; }
 .practice-card__desc { color: #475569; flex: 1; }
+
+/* Force inner text, badge, progress bar and Play button to read on the fill. */
+.practice-card[class*="--c"] .practice-card__title { color: #fff; }
+.practice-card[class*="--c"] .practice-card__desc,
+.practice-card[class*="--c"] .text-caption { color: rgba(255,255,255,0.92); }
+.practice-card[class*="--c"] .badge {
+  background: rgba(255,255,255,0.22);
+  color: #fff;
+  border: none;
+}
+.practice-card[class*="--c"] .progress { background: rgba(255,255,255,0.30); }
+.practice-card[class*="--c"] .progress__fill { background: #fff; }
+.practice-card[class*="--c"] .progress__fill--done { background: #bbf7d0; }
+.practice-card[class*="--c"] .btn--primary {
+  background: #fff;
+  color: #1e293b;
+  border: none;
+  font-weight: 700;
+}
+.practice-card[class*="--c"] .btn--primary:hover { background: #f1f5f9; }
 
 .progress {
   height: 8px;
