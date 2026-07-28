@@ -224,18 +224,52 @@
       return true;
     }
 
+    // How far the student has progressed in THIS game type. The more questions
+    // they have already solved, the deeper into the harder end we start drawing —
+    // so difficulty ramps up the more they play and they stay mentally challenged.
+    var solvedCount = 0;
+    Object.keys(progress.q).forEach(function (id) {
+      if (progress.q[id] && progress.q[id].solved) solvedCount++;
+    });
+    var progressFrac = bank.length ? Math.min(1, solvedCount / bank.length) : 0;
+
     var wrongOnes = bank.filter(function (q) { return wrongSet[q.id] && available(q); });
     var fresh = bank.filter(function (q) { return !seenSet[q.id] && available(q); });
     var seenCorrect = bank.filter(function (q) { return seenSet[q.id] && !wrongSet[q.id] && available(q); });
 
+    // Sort the fresh pool Easy -> Medium -> Hard (shuffled within each tier so
+    // sessions still vary), then take a window whose start slides toward the
+    // hard end in proportion to how much of this type the student has solved.
+    var freshSorted = shuffleWithinDifficultyTiers(fresh);
+    var startIdx = Math.round(progressFrac * Math.max(0, freshSorted.length - howMany));
+    var adaptiveFresh = freshSorted.slice(startIdx).concat(freshSorted.slice(0, startIdx));
+
     var chosen = Utils.shuffle(wrongOnes).slice(0, howMany);
     if (chosen.length < howMany) {
-      chosen = chosen.concat(Utils.shuffle(fresh).slice(0, howMany - chosen.length));
+      chosen = chosen.concat(adaptiveFresh.slice(0, howMany - chosen.length));
     }
     if (chosen.length < howMany) {
       chosen = chosen.concat(Utils.shuffle(seenCorrect).slice(0, howMany - chosen.length));
     }
+
+    // Within the session, present easiest first so each round itself ramps up.
+    chosen.sort(function (a, b) { return difficultyRank(a) - difficultyRank(b); });
     return chosen;
+  }
+
+  // Easy -> 0, Medium -> 1, Hard -> 2 (anything unlabelled is treated as Medium).
+  var DIFFICULTY_RANK = { easy: 0, medium: 1, hard: 2 };
+  function difficultyRank(q) {
+    var d = (q && q.difficulty ? String(q.difficulty) : 'Medium').toLowerCase();
+    return DIFFICULTY_RANK[d] != null ? DIFFICULTY_RANK[d] : 1;
+  }
+
+  // Groups a list into Easy/Medium/Hard, shuffles inside each group, then
+  // concatenates so the result is difficulty-ordered but never identical twice.
+  function shuffleWithinDifficultyTiers(list) {
+    var tiers = [[], [], []];
+    list.forEach(function (q) { tiers[difficultyRank(q)].push(q); });
+    return Utils.shuffle(tiers[0]).concat(Utils.shuffle(tiers[1]), Utils.shuffle(tiers[2]));
   }
 
   // =========================================================================
