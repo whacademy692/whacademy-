@@ -1531,7 +1531,12 @@
    */
   function practiceBanks() {
     if (isNonEmptyArray(content.practiceBanks)) {
-      return content.practiceBanks.filter(function (b) { return b && isNonEmptyArray(b.questions); });
+      // Questions now live in their own per-game file, so a bank counts as
+      // real if it has a positive `count` (split model) OR inline `questions`
+      // (legacy content.json where everything was in one file).
+      return content.practiceBanks.filter(function (b) {
+        return b && b.mechanicId && ((typeof b.count === 'number' && b.count > 0) || isNonEmptyArray(b.questions));
+      });
     }
     if (practiceQuestions().length) {
       return [{
@@ -1546,6 +1551,42 @@
 
   function hasPractice() {
     return practiceBanks().length > 0;
+  }
+
+  /**
+   * How many questions a bank holds, WITHOUT needing the questions loaded.
+   * In the split model content.json carries only `count`; the questions sit
+   * in their own file and load on demand. Legacy inline banks fall back to
+   * the array length. This count feeds the backend max-XP (count * 5) and the
+   * "solved / total" line, so it must match the real question file exactly.
+   */
+  function bankCount(bank) {
+    if (typeof bank.count === 'number') return bank.count;
+    return isNonEmptyArray(bank.questions) ? bank.questions.length : 0;
+  }
+
+  /**
+   * Load a bank's questions from its own file the first time its game is
+   * played, then cache them on the bank object so re-opens are instant. This
+   * is what keeps content.json small even when each game has 500 questions:
+   * only the ONE game the student opened is ever downloaded, never all 4000.
+   * A legacy bank that already carries inline questions resolves immediately.
+   */
+  var _bankQuestionCache = {};
+  function loadBankQuestions(bank) {
+    if (isNonEmptyArray(bank.questions)) return Promise.resolve(bank.questions);
+    var cached = _bankQuestionCache[bank.mechanicId];
+    if (cached) { bank.questions = cached; return Promise.resolve(cached); }
+    var url = 'classes/' + chapterPath + '/banks/' + bank.mechanicId + '.json';
+    return fetch(url).then(function (r) {
+      if (!r.ok) throw new Error('bank file missing: ' + bank.mechanicId);
+      return r.json();
+    }).then(function (data) {
+      var qs = (data && isNonEmptyArray(data.questions)) ? data.questions : [];
+      _bankQuestionCache[bank.mechanicId] = qs;
+      bank.questions = qs;
+      return qs;
+    });
   }
 
   function bossQuestions() {
@@ -2065,11 +2106,11 @@
     // Map mechanicId -> question count, sent to the backend so it can compute
     // each type's max XP (count * 5) and the overall average %.
     var questionCounts = {};
-    banks.forEach(function (b) { questionCounts[b.mechanicId] = b.questions.length; });
+    banks.forEach(function (b) { questionCounts[b.mechanicId] = bankCount(b); });
 
     function typeStats(bank) {
       var prog = PracticeStore.forType(content.chapterRef, bank.mechanicId);
-      var total = bank.questions.length;
+      var total = bankCount(bank);
       var solved = 0;
       Object.keys(prog.q).forEach(function (id) { if (prog.q[id].solved) solved++; });
       return { done: Math.min(prog.seen.length, total), total: total, wrong: prog.wrong.length,
@@ -2160,6 +2201,16 @@
     }
 
     function runPractice(bank) {
+      // The bank's questions live in their own file; fetch them the first time
+      // this game is opened, then play. Cached after the first load.
+      loadBankQuestions(bank).then(function () {
+        runPracticeLoaded(bank);
+      }).catch(function () {
+        Notifications.info('This game could not load. Check your connection and try again.');
+      });
+    }
+
+    function runPracticeLoaded(bank) {
       var picked = pickPracticeQuestions(bank.questions, content.chapterRef, bank.mechanicId, PRACTICE_PER_TYPE);
       if (!picked.length) {
         Notifications.info('No questions available for this type yet.');
@@ -2236,7 +2287,7 @@
     // backend here so a student can't skip ahead via the stepper.
     var banks = practiceBanks();
     var questionCounts = {};
-    banks.forEach(function (b) { questionCounts[b.mechanicId] = b.questions.length; });
+    banks.forEach(function (b) { questionCounts[b.mechanicId] = bankCount(b); });
 
     function lockedView() {
       container.innerHTML = '';
