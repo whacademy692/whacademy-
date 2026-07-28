@@ -43,7 +43,7 @@
  */
 
 // ⚠️  BUMP THIS on every frontend deploy. See the note above.
-const CACHE_VERSION = 'wha-v22';
+const CACHE_VERSION = 'wha-v23';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
 const STATIC_ASSETS = [
@@ -96,7 +96,7 @@ self.addEventListener('fetch', (event) => {
   if (url.origin !== self.location.origin) return;
 
   const isChapterContent = url.pathname.includes('/games/classes/') &&
-    (url.pathname.endsWith('content.json') || url.pathname.endsWith('.html') || url.pathname.endsWith('.css') || url.pathname.endsWith('.js'));
+    (url.pathname.endsWith('.json') || url.pathname.endsWith('.html') || url.pathname.endsWith('.css') || url.pathname.endsWith('.js'));
 
   if (isChapterContent) {
     // Network-first, falling back to cache when offline — chapter
