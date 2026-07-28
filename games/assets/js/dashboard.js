@@ -161,35 +161,79 @@
     if (tag) tag.textContent = 'Class ' + (scope.classLevel || '');
 
     list.innerHTML = '';
-    subjects.forEach((subject) => {
-      list.appendChild(renderSubjectBlock(subject));
-    });
+    renderSubjectGrid(subjects, list);
   }
 
-  function renderSubjectBlock(subject) {
-    const wrap = Utils.createEl('div', { class: 'card', style: 'padding: var(--space-4);' });
+  // Fallback palette (primary, light-secondary) for subjects without a token.
+  const SUBJECT_PALETTE = [
+    ['#4f46e5', '#e4e3fb'], ['#0ea5e9', '#dbf0fd'], ['#0d9488', '#d3f1ed'],
+    ['#c2410c', '#fbe3d5'], ['#0891b2', '#d5f0f7'], ['#7c3aed', '#ede9fe'],
+    ['#db2777', '#fce7f3'], ['#16a34a', '#dcfce7']
+  ];
 
-    wrap.appendChild(Utils.createEl('div', { class: 'cluster', style: 'justify-content:space-between; align-items:baseline; margin-bottom: var(--space-3);' }, [
-      Utils.createEl('h3', { style: 'margin:0;', text: subject.name }),
-      Utils.createEl('span', { class: 'text-caption', text: subject.chapters.length + ' chapters' })
+  function subjectColors(name) {
+    const slug = String(name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+    const known = ['science', 'mathematics', 'computerscience', 'geography', 'history'];
+    if (known.indexOf(slug) >= 0) {
+      return {
+        primary: 'var(--subject-' + slug + '-primary)',
+        secondary: 'var(--subject-' + slug + '-secondary)'
+      };
+    }
+    let h = 0;
+    for (let i = 0; i < slug.length; i++) h = (h * 31 + slug.charCodeAt(i)) % SUBJECT_PALETTE.length;
+    return { primary: SUBJECT_PALETTE[h][0], secondary: SUBJECT_PALETTE[h][1] };
+  }
+
+  // View 1: a grid of gradient subject cards. Tapping one opens its chapters.
+  function renderSubjectGrid(subjects, container) {
+    container.innerHTML = '';
+    const grid = Utils.createEl('div', { class: 'subject-grid' });
+    subjects.forEach((subject) => {
+      const c = subjectColors(subject.name);
+      const card = Utils.createEl('button', {
+        class: 'subject-card', type: 'button',
+        style: '--sc-primary:' + c.primary + '; --sc-secondary:' + c.secondary + ';'
+      }, [
+        Utils.createEl('span', { class: 'subject-card__name', text: subject.name }),
+        Utils.createEl('span', { class: 'subject-card__count', text: subject.chapters.length + ' chapters' }),
+        Utils.createEl('span', { class: 'subject-card__go', text: 'View chapters →' })
+      ]);
+      card.addEventListener('click', () => renderSubjectChapters(subject, container, subjects));
+      grid.appendChild(card);
+    });
+    container.appendChild(grid);
+  }
+
+  // View 2: the chosen subject's chapters, tinted in that subject's colour,
+  // with a button back to the grid.
+  function renderSubjectChapters(subject, container, allSubjects) {
+    container.innerHTML = '';
+    const c = subjectColors(subject.name);
+    const vars = '--sc-primary:' + c.primary + '; --sc-secondary:' + c.secondary + ';';
+
+    const back = Utils.createEl('button', { class: 'btn btn--secondary btn--sm', type: 'button' },
+      [Utils.createEl('span', { text: '← All subjects' })]);
+    back.addEventListener('click', () => renderSubjectGrid(allSubjects, container));
+    container.appendChild(back);
+
+    container.appendChild(Utils.createEl('div', { class: 'subject-chapters__header', style: vars }, [
+      Utils.createEl('h3', { class: 'subject-chapters__title', text: subject.name }),
+      Utils.createEl('span', { class: 'subject-chapters__count', text: subject.chapters.length + ' chapters' })
     ]));
 
-    const chaptersWrap = Utils.createEl('div', { class: 'stack-sm' });
-    subject.chapters.forEach((ch) => chaptersWrap.appendChild(renderChapterRow(ch)));
-    wrap.appendChild(chaptersWrap);
-    return wrap;
+    const listWrap = Utils.createEl('div', { class: 'chapter-list', style: vars });
+    subject.chapters.forEach((ch) => listWrap.appendChild(renderChapterRow(ch)));
+    container.appendChild(listWrap);
   }
 
   function renderChapterRow(chapter) {
-    const row = Utils.createEl('div', {
-      class: 'cluster',
-      style: 'justify-content:space-between; gap: var(--space-3); padding: var(--space-3) 0; border-top: 1px solid var(--color-border); flex-wrap: wrap;'
-    });
+    const row = Utils.createEl('div', { class: 'chapter-item' });
 
     const label = chapter.n ? ('Ch ' + chapter.n + '  ·  ' + chapter.title) : chapter.title;
-    row.appendChild(Utils.createEl('span', { style: 'font-weight:600; flex:1 1 12rem;', text: label }));
+    row.appendChild(Utils.createEl('span', { class: 'chapter-item__label', text: label }));
 
-    const actions = Utils.createEl('div', { class: 'cluster', style: 'gap: var(--space-2); flex-wrap: wrap;' });
+    const actions = Utils.createEl('div', { class: 'chapter-item__actions' });
     let any = false;
 
     if (chapter.game) {
