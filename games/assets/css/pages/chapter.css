@@ -314,6 +314,25 @@
   padding-block: var(--space-3);
 }
 
+/* Inside a game (the card the student sees while playing): keep it calm but
+   not flat — a soft tint on the question card, and gentle pastel answer
+   options. Simple on purpose: lively, not loud. */
+.card--question {
+  background: linear-gradient(160deg, #ffffff, #eef2fb);
+}
+
+.option-btn {
+  color: #1e293b;
+  font-weight: 600;
+  border-width: 1px;
+}
+.option-btn:nth-child(4n+1) { background: linear-gradient(135deg, #eff6ff, #dbeafe); border-color: #bfdbfe; }
+.option-btn:nth-child(4n+2) { background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-color: #bbf7d0; }
+.option-btn:nth-child(4n+3) { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-color: #fed7aa; }
+.option-btn:nth-child(4n+4) { background: linear-gradient(135deg, #faf5ff, #f3e8ff); border-color: #e9d5ff; }
+.option-btn:hover { filter: brightness(0.97); }
+.option-btn:disabled { opacity: 0.9; }
+
 .hint-text {
   font: var(--type-body-sm);
   color: var(--color-text-secondary);
