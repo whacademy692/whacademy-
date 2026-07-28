@@ -13,7 +13,9 @@
 @media (min-width: 1024px) { .show-desktop-only { display: revert; } }
 
 @media (min-width: 1024px) {
-  .app-main { padding-left: 240px; }
+  /* The sidebar is a 240px flex item in the shell, so content already starts
+     right after it. The old padding-left added a SECOND 240px, leaving a big
+     empty gap between the sidebar and the content — removed. */
   .app-shell--no-sidebar .app-main { padding-left: 0; }
 }
 @media (max-width: 1023px) {
