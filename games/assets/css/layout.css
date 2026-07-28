@@ -153,3 +153,13 @@
 @media (min-width: 1024px) { .section { padding-block: var(--space-8); } }
 
 .reading-column { max-width: 680px; }
+
+/* ---- Mobile bottom-nav: brand gradient bar (adapts to the chosen theme) --- */
+.bottom-nav {
+  background: linear-gradient(90deg, var(--brand-primary), var(--brand-primary-mid));
+  border-top: none;
+  box-shadow: 0 -6px 20px var(--brand-glow, rgba(79, 70, 229, 0.25));
+}
+.bottom-nav__item { color: rgba(255, 255, 255, 0.82); }
+.bottom-nav__item[aria-current="page"] { color: #ffffff; font-weight: 700; }
+[data-theme="dark"] .bottom-nav__item[aria-current="page"] { color: #ffffff; }
