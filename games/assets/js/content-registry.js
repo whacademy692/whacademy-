@@ -772,7 +772,7 @@ window.WHA_CONTENT = {
             "title": "Oceans and Seas",
             "notes": "https://whacademy692.github.io/whacademy-/class-8-geography-oceans-seas.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLSfiF1Ix7YD97gjIG1s3aVjLC_NCSVH2SxeWWCcw0MyL0PoxCw/viewform?usp=publish-editor",
-            "game": null
+            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=8/geography/oceans_and_seas"
           },
           {
             "n": 2,
