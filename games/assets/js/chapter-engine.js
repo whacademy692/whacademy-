@@ -1764,6 +1764,7 @@
       var pPayload = {
         questionId: fullQuestionId(question.id),
         mechanicId: mechanicId,
+        chapterRef: content.chapterRef,
         topicTag: question.topicTag || 'general',
         difficulty: question.difficulty,
         correct: isCorrect,
@@ -2229,7 +2230,7 @@
     function refreshAndRender() {
       renderHub();  // show immediately (with cached/empty breakdown)
       if (!Api.leaderboard || !Api.leaderboard.gameXpBreakdown) return;
-      Api.leaderboard.gameXpBreakdown(questionCounts)
+      Api.leaderboard.gameXpBreakdown(content.chapterRef, questionCounts)
         .then(function (data) { breakdown = data; renderHub(); })
         .catch(function () { /* keep the last view; offline is fine */ });
     }
@@ -2351,7 +2352,7 @@
     container.innerHTML = '';
     container.appendChild(el('p', { class: 'text-caption', text: 'Checking your XP\u2026' }));
     if (Api.leaderboard && Api.leaderboard.gameXpBreakdown) {
-      Api.leaderboard.gameXpBreakdown(questionCounts)
+      Api.leaderboard.gameXpBreakdown(content.chapterRef, questionCounts)
         .then(function (data) {
           if (data && data.averagePercent >= BOSS_UNLOCK_PERCENT) startBoss();
           else lockedView();
