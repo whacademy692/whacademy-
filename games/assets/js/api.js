@@ -199,7 +199,7 @@ const Api = (() => {
     local: (profileIds) => request('leaderboard/local', { profileIds }),
     // Per-game-type XP breakdown + overall average % for the Games/Rank tabs.
     // questionCounts is { mechanicId: questionCount, ... }.
-    gameXpBreakdown: (questionCounts) => request('leaderboard/gameXpBreakdown', { questionCounts })
+    gameXpBreakdown: (chapterRef, questionCounts) => request('leaderboard/gameXpBreakdown', { chapterRef, questionCounts })
   };
 
   const analytics = {
