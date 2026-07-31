@@ -820,7 +820,7 @@ window.WHA_CONTENT = {
             "title": "Colonisation of the Subcontinent",
             "notes": "https://whacademy692.github.io/whacademy-/class-8-history-colonization.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLSeayv6x-_cVYVbTLS5z7vkg48YWhQdoYQIngohqqUc5Zq8F9w/viewform?usp=publish-editor",
-            "game": null
+            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=8/history/colonization_of_subcontinent"
           },
           {
             "n": 2,
