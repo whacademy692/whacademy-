@@ -2226,13 +2226,48 @@
       container.appendChild(wrap);
     }
 
+    // Persist the last good XP breakdown per chapter so a warm reload shows the
+    // real numbers instantly instead of a spinner. If the network call then
+    // fails or is slow (Apps Script cold start, flaky mobile data), the student
+    // still sees their last-known XP rather than a permanent "Loading your XP…"
+    // — which is what the old silent catch left behind on every refresh.
+    var XP_CACHE_KEY = 'wha-xpbreakdown:' + content.chapterRef;
+    function readCachedBreakdown() {
+      try {
+        var raw = window.localStorage.getItem(XP_CACHE_KEY);
+        return raw ? JSON.parse(raw) : null;
+      } catch (e) { return null; }
+    }
+    function writeCachedBreakdown(data) {
+      try { window.localStorage.setItem(XP_CACHE_KEY, JSON.stringify(data)); } catch (e) {}
+    }
+    // A hung request must not leave the hub stuck forever, so race it against a timer.
+    function withTimeout(p, ms) {
+      return new Promise(function (resolve, reject) {
+        var done = false;
+        var t = setTimeout(function () { if (!done) { done = true; reject(new Error('timeout')); } }, ms);
+        p.then(function (v) { if (!done) { done = true; clearTimeout(t); resolve(v); } },
+               function (e) { if (!done) { done = true; clearTimeout(t); reject(e); } });
+      });
+    }
+
     // Pull the latest XP breakdown from the backend, then (re)render the hub.
     function refreshAndRender() {
-      renderHub();  // show immediately (with cached/empty breakdown)
+      if (breakdown == null) {
+        var cached = readCachedBreakdown();
+        if (cached) breakdown = cached;   // show last-known XP immediately, no spinner
+      }
+      renderHub();
       if (!Api.leaderboard || !Api.leaderboard.gameXpBreakdown) return;
-      Api.leaderboard.gameXpBreakdown(content.chapterRef, questionCounts)
-        .then(function (data) { breakdown = data; renderHub(); })
-        .catch(function () { /* keep the last view; offline is fine */ });
+      function attempt(retriesLeft) {
+        withTimeout(Api.leaderboard.gameXpBreakdown(content.chapterRef, questionCounts), 12000)
+          .then(function (data) { breakdown = data; writeCachedBreakdown(data); renderHub(); })
+          .catch(function () {
+            if (retriesLeft > 0) { setTimeout(function () { attempt(retriesLeft - 1); }, 1500); }
+            // else keep the cached/last view — never fall back to a stuck spinner
+          });
+      }
+      attempt(1);
     }
 
     function runPractice(bank) {
