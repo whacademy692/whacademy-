@@ -43,7 +43,7 @@
  */
 
 // ⚠️  BUMP THIS on every frontend deploy. See the note above.
-const CACHE_VERSION = 'wha-v35';
+const CACHE_VERSION = 'wha-v36';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
 const STATIC_ASSETS = [
