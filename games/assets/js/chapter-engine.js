@@ -273,6 +273,34 @@
   }
 
   // =========================================================================
+  // Math rendering (KaTeX). Content authors write inline math as \( ... \)
+  // and display/block math as \[ ... \] (or $$ ... $$) directly inside any
+  // content.json string — prompts, options, theory text, explanations, etc.
+  // KaTeX + its auto-render extension are loaded via CDN in chapter.html;
+  // this helper just asks KaTeX to scan a freshly-rendered DOM subtree and
+  // typeset any delimiters it finds. If the CDN script hasn't loaded for any
+  // reason (offline, blocked), this silently no-ops — the raw \(...\) text
+  // stays visible and readable, so a chapter never breaks because of it.
+  // =========================================================================
+  var KATEX_DELIMITERS = [
+    { left: '$$', right: '$$', display: true },
+    { left: '\\[', right: '\\]', display: true },
+    { left: '\\(', right: '\\)', display: false }
+  ];
+
+  function renderMathIn(rootEl) {
+    if (!rootEl || typeof window.renderMathInElement !== 'function') return;
+    try {
+      window.renderMathInElement(rootEl, {
+        delimiters: KATEX_DELIMITERS,
+        throwOnError: false
+      });
+    } catch (e) {
+      console.warn('[chapter-engine] KaTeX render failed:', e);
+    }
+  }
+
+  // =========================================================================
   // Small shared helpers
   // =========================================================================
 
@@ -1703,6 +1731,7 @@
       complete: renderComplete
     };
     (renderers[stage] || renderComplete)(container);
+    renderMathIn(container);
     Notifications.announce((STAGE_LABELS[stage] || stage) + ' stage');
     window.scrollTo({ top: 0, behavior: Animations.reducedMotionPreferred() ? 'auto' : 'smooth' });
   }
@@ -1818,6 +1847,7 @@
       el('p', { class: 'feedback__verdict', text: isCorrect ? 'Correct' : 'Not quite' }),
       explanation ? el('p', { class: 'text-body-sm', text: explanation }) : null
     ]));
+    renderMathIn(card);
     var next = el('button', { class: 'btn btn--primary btn--full', type: 'button', style: 'margin-top:var(--space-4);', text: 'Next' });
     card.appendChild(next);
     next.addEventListener('click', onContinue, { once: true });
@@ -1898,6 +1928,7 @@
       renderBrokenQuestion(card, body,
         'Question "' + question.id + '" uses mechanic "' + question.mechanicId + '", which this engine does not render yet.',
         onComplete);
+      renderMathIn(card);
       return;
     }
 
@@ -1906,6 +1937,7 @@
       renderBrokenQuestion(card, body,
         'Question "' + question.id + '" (' + question.mechanicId + ') ' + problem + '.',
         onComplete);
+      renderMathIn(card);
       return;
     }
 
@@ -1933,6 +1965,7 @@
         renderFeedback(card, isCorrect, question.explanation, onComplete);
       }
     });
+    renderMathIn(card);
   }
 
   /**
