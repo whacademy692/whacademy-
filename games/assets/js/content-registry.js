@@ -599,7 +599,7 @@ window.WHA_CONTENT = {
             "title": "Further Expansion and Factorization of Algebraic Expressions",
             "notes": "https://whacademy692.github.io/whacademy-/class-8-math-expansion-factorization.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLSfza8Uyxns5RAn-42mguZBYVEYUk1bXBhPzUvIe9F-nV40eOg/viewform?usp=header",
-            "game": null
+            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=8/math/further_expansion_and_factorization"
           },
           {
             "n": 4,
