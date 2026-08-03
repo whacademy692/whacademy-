@@ -2284,7 +2284,7 @@
    */
   var PRACTICE_UNLOCK_FRACTION = 0.5;  // overall progress needed to open Games
 
-  var BOSS_UNLOCK_PERCENT = 90;   // average XP % across all game types to unlock Boss
+  var BOSS_UNLOCK_PERCENT = 70;   // average XP % across all game types to unlock Boss
 
   function renderPractice(container) {
     var banks = practiceBanks();
