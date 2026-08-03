@@ -1862,9 +1862,9 @@
   var FeedbackFx = (function () {
     // Filenames only (no folder, no extension). Edit to add / remove media.
     var GIFS = {
-      correct: ['correct-01', 'correct-03', 'correct-04', 'correct-05', 'correct-06',
+      correct: ['correct-01', 'correct-02', 'correct-03', 'correct-04', 'correct-05', 'correct-06',
                 'correct-07', 'correct-08', 'correct-09', 'correct-10', 'correct-11'],
-      wrong:   ['wrong-01', 'wrong-02', 'wrong-03', 'wrong-04', 'wrong-05', 'wrong-06']
+      wrong:   ['wrong-01', 'wrong-02', 'wrong-03', 'wrong-04', 'wrong-05', 'wrong-06', 'wrong-07']
     };
     var SOUNDS = {
       correct:        ['correct-01'],
