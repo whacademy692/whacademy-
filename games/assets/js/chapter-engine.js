@@ -1814,7 +1814,9 @@
         .catch(function () {
           Storage.queuePendingWrite('progress/recordAttempt', { sessionId: sessionId, attemptData: pPayload });
         });
-      return;
+      // Hand the wrong-attempt history back so the feedback layer can tell a
+      // first wrong (random wrong sound) from a repeat wrong (depression sound).
+      return { attemptNumber: rec.attemptNumber, priorWrongCount: rec.priorWrongCount };
     }
 
     var payload = {
@@ -1841,17 +1843,128 @@
       });
   }
 
-  function renderFeedback(card, isCorrect, explanation, onContinue) {
+  /**
+   * FeedbackFx — the little celebration / commiseration after each answer:
+   * an emoji, a gif, and a sound. Media lives (relative to this page) in:
+   *     assets/sounds/{correct,wrong,repeat-wrong}/*.mp3
+   *     assets/gifs/{correct,wrong}/*.webp
+   * Rehan drops the files into those folders on GitHub; to add or remove one,
+   * just edit the filename lists below. Everything degrades gracefully — a
+   * missing sound simply means no sound, a missing gif means no gif, and the
+   * student is NEVER trapped (the Next button always unlocks, even if a sound
+   * fails to load or the browser blocks autoplay).
+   *
+   * kinds:
+   *   'correct'       answer was right          -> correct sound + correct gif
+   *   'wrong'         first wrong on this Q     -> random wrong sound + wrong gif
+   *   'repeat-wrong'  same Q wrong 2nd+ time    -> repeat-wrong sound + wrong gif
+   */
+  var FeedbackFx = (function () {
+    // Filenames only (no folder, no extension). Edit to add / remove media.
+    var GIFS = {
+      correct: ['correct-01', 'correct-03', 'correct-04', 'correct-05', 'correct-06',
+                'correct-07', 'correct-08', 'correct-09', 'correct-10', 'correct-11'],
+      wrong:   ['wrong-01', 'wrong-02', 'wrong-03', 'wrong-04', 'wrong-05', 'wrong-06']
+    };
+    var SOUNDS = {
+      correct:        ['correct-01'],
+      wrong:          ['wrong-01', 'wrong-02', 'wrong-03', 'wrong-04'],
+      'repeat-wrong': ['repeat-01']
+    };
+    var EMOJI = {
+      correct:        ['🎉', '✅', '🌟', '👏', '🔥', '💯'],
+      wrong:          ['❌', '😬', '🙈', '😅'],
+      'repeat-wrong': ['😵', '🥲', '💀', '😩']
+    };
+    var GIF_EXT = '.webp';
+    var SAFETY_MS = 3500; // sounds are trimmed to <=3s, so never wait longer
+
+    var current = null; // the audio currently playing (a new answer stops it)
+
+    function pick(a) { return a && a.length ? a[Math.floor(Math.random() * a.length)] : null; }
+    function gifKindFor(kind) { return kind === 'correct' ? 'correct' : 'wrong'; }
+
+    function show(kind) {
+      if (!SOUNDS[kind] && !EMOJI[kind]) kind = (kind === 'correct' ? 'correct' : 'wrong');
+
+      var wrap = el('div', { class: 'feedback-fx feedback-fx--' + kind });
+
+      var emoji = pick(EMOJI[kind] || EMOJI.wrong);
+      if (emoji) wrap.appendChild(el('div', { class: 'feedback-fx__emoji', text: emoji }));
+
+      var gifName = pick(GIFS[gifKindFor(kind)]);
+      if (gifName) {
+        var img = el('img', {
+          class: 'feedback-fx__gif',
+          src: 'assets/gifs/' + gifKindFor(kind) + '/' + gifName + GIF_EXT,
+          alt: '', loading: 'eager'
+        });
+        img.addEventListener('error', function () { img.remove(); }); // missing file -> hide
+        wrap.appendChild(img);
+      }
+
+      var done = false, cbs = [], timer = null;
+      function finish() {
+        if (done) return;
+        done = true;
+        if (timer) { clearTimeout(timer); timer = null; }
+        cbs.forEach(function (fn) { try { fn(); } catch (e) { /* ignore */ } });
+        cbs = [];
+      }
+
+      var soundName = pick(SOUNDS[kind]);
+      if (soundName) {
+        try {
+          if (current) { try { current.pause(); } catch (e) { /* ignore */ } }
+          var audio = new Audio('assets/sounds/' + kind + '/' + soundName + '.mp3');
+          current = audio;
+          audio.addEventListener('ended', finish);
+          audio.addEventListener('error', function () { setTimeout(finish, 250); });
+          timer = setTimeout(finish, SAFETY_MS);
+          var p = audio.play();
+          if (p && typeof p.catch === 'function') {
+            p.catch(function () { setTimeout(finish, 250); }); // autoplay blocked -> don't trap
+          }
+        } catch (e) {
+          setTimeout(finish, 250);
+        }
+      } else {
+        timer = setTimeout(finish, 600); // no sound for this kind -> brief beat, then unlock
+      }
+
+      return {
+        node: wrap,
+        whenDone: function (cb) { if (done) cb(); else cbs.push(cb); }
+      };
+    }
+
+    return { show: show };
+  })();
+
+  function renderFeedback(card, isCorrect, explanation, onContinue, kind) {
+    kind = kind || (isCorrect ? 'correct' : 'wrong');
     Animations.showAnswerFeedback(card, isCorrect);
+
+    var fx = FeedbackFx.show(kind);
+    card.appendChild(fx.node);
+
     card.appendChild(el('div', { class: 'feedback' }, [
       el('p', { class: 'feedback__verdict', text: isCorrect ? 'Correct' : 'Not quite' }),
       explanation ? el('p', { class: 'text-body-sm', text: explanation }) : null
     ]));
     renderMathIn(card);
-    var next = el('button', { class: 'btn btn--primary btn--full', type: 'button', style: 'margin-top:var(--space-4);', text: 'Next' });
+
+    // The Next button appears only once the feedback sound has finished, so the
+    // moment is never cut off. If the sound is missing or blocked, whenDone()
+    // fires quickly, so the student is never left waiting on a silent card.
+    var next = el('button', { class: 'btn btn--primary btn--full', type: 'button', style: 'margin-top:var(--space-4); display:none;', text: 'Next' });
     card.appendChild(next);
     next.addEventListener('click', onContinue, { once: true });
-    next.focus();
+
+    fx.whenDone(function () {
+      next.style.display = '';
+      next.focus();
+    });
   }
 
   /**
@@ -1961,8 +2074,12 @@
         answered = true;
         var merged = meta || {};
         merged.hintsUsed = hintsUsed;
-        submitAttempt(question, isCorrect, merged, submitOptions);
-        renderFeedback(card, isCorrect, question.explanation, onComplete);
+        var info = submitAttempt(question, isCorrect, merged, submitOptions);
+        // priorWrongCount >= 1 means this question was already wrong before, so
+        // getting it wrong again is a REPEAT wrong (2nd time or more).
+        var kind = isCorrect ? 'correct'
+          : (info && info.priorWrongCount >= 1 ? 'repeat-wrong' : 'wrong');
+        renderFeedback(card, isCorrect, question.explanation, onComplete, kind);
       }
     });
     renderMathIn(card);
