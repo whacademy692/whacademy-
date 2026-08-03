@@ -3,7 +3,7 @@
  *
  * Shows, for the signed-in student:
  *   - total XP earned across all game types
- *   - the average XP % that unlocks the Boss Battle (>= 90%)
+ *   - the average XP % that unlocks the Boss Battle (>= 70%)
  *   - how many questions are red-carded (burnt out) on this device
  *   - XP earned in each individual game type, with a progress bar
  *
@@ -14,7 +14,7 @@
 (function () {
   'use strict';
 
-  var BOSS_UNLOCK_PERCENT = 90;
+  var BOSS_UNLOCK_PERCENT = 70;
 
   // The system's fixed set of game types: mechanicId + friendly label, plus
   // the per-type question count used to work out each type's max XP and the
