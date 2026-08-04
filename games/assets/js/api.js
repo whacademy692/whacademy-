@@ -212,6 +212,19 @@ const Api = (() => {
     list: () => request('notifications/list', {})
   };
 
+  // Boss Battle — the 3-level exam ladder (L1 chapter / L2 subject / L3 class).
+  // The backend scopes everything to the signed-in student's class + subjects,
+  // so no class/subject is ever passed from the client.
+  const bossBattle = {
+    activePapers: () => request('bossbattle/activePapers', {}),
+    pastPapers: () => request('bossbattle/pastPapers', {}),
+    // Opens one paper to attempt (or read-only if past / already submitted).
+    paper: (paperId) => request('bossbattle/paper', { paperId }),
+    // answers is a map { qId: answer } — MCQ answer is the chosen option index.
+    submit: (paperId, answers) => request('bossbattle/submit', { paperId, answers }),
+    mySubmission: (paperId) => request('bossbattle/mySubmission', { paperId })
+  };
+
   // Every admin call carries the ADMIN token explicitly.
   //
   // buildBody() only falls back to Storage.getToken() when `token` is
@@ -239,6 +252,6 @@ const Api = (() => {
     request, flushPendingQueue, ApiError,
     auth, otp, registration, dashboard, progress, revision, wrongAnswers,
     bookmarks, favorites, coins, xp, achievements, certificates,
-    leaderboard, analytics, notifications: notificationsApi, admin
+    leaderboard, analytics, notifications: notificationsApi, admin, bossBattle
   };
 })();
