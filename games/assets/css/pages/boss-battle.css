@@ -1,0 +1,295 @@
+/**
+ * boss-battle.css — W.H. Academy
+ * The Arena. A bold, gamified skin for the Boss-Battle tab that still sits on
+ * the platform's design tokens (variables.css), so light / dark / theme
+ * switching all keep working. Fully responsive: lanes reflow to one column and
+ * the paper sheet stays comfortable to read and type in on a phone.
+ */
+
+/* Level accent colours (work in light + dark via alpha). */
+.bb-chip--l1, .bb-lane--l1 { --bb-accent: #6d28d9; }
+.bb-chip--l2, .bb-lane--l2 { --bb-accent: #0369a1; }
+.bb-chip--l3, .bb-lane--l3 { --bb-accent: #b45309; }
+
+/* ============================ HERO ============================ */
+.bb-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  padding: var(--space-7) var(--space-6);
+  color: #fff;
+  background:
+    radial-gradient(120% 140% at 12% 0%, #6d28d9 0%, transparent 55%),
+    radial-gradient(120% 160% at 100% 0%, #b45309 0%, transparent 45%),
+    linear-gradient(135deg, #312e81 0%, #1e1b4b 60%, #0e0d1f 100%);
+  box-shadow: 0 24px 60px -28px rgba(49, 46, 129, 0.75);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-5);
+}
+.bb-hero__glow {
+  position: absolute; inset: -40% -10% auto -10%; height: 320px;
+  background: radial-gradient(closest-side, rgba(129,140,248,0.35), transparent 70%);
+  pointer-events: none;
+  animation: bb-pulse 6s ease-in-out infinite;
+}
+@keyframes bb-pulse { 0%,100%{ opacity:.55; transform:translateY(0);} 50%{ opacity:.9; transform:translateY(10px);} }
+.bb-hero__crest {
+  flex-shrink: 0; width: 78px; height: 78px; color: #fde68a;
+  display: grid; place-items: center;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+}
+.bb-hero__crest svg { width: 46px; height: 46px; }
+.bb-hero__text { min-width: 0; flex: 1; }
+.bb-hero__eyebrow {
+  text-transform: uppercase; letter-spacing: .18em; font-size: 12px; font-weight: 700;
+  color: #c7d2fe;
+}
+.bb-hero__title { font-size: clamp(30px, 6vw, 46px); line-height: 1.05; margin: 4px 0 6px; }
+.bb-hero__subtitle { color: rgba(255,255,255,0.82); margin: 0; font-size: 15px; max-width: 46ch; }
+.bb-hero__levels { display: flex; gap: 8px; flex-wrap: wrap; width: 100%; }
+.bb-chip {
+  font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: var(--radius-pill);
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: #fff;
+}
+
+/* ============================ LANES ============================ */
+.bb-lanes {
+  margin-top: var(--space-6);
+  display: grid; gap: var(--space-4);
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 900px) { .bb-lanes { grid-template-columns: 1fr; } }
+
+.bb-lane {
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-surface-solid);
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--bb-accent);
+  padding: var(--space-5);
+  display: flex; flex-direction: column; gap: var(--space-4);
+  box-shadow: 0 10px 30px -24px rgba(15, 23, 42, 0.5);
+}
+.bb-lane__head { display: flex; gap: var(--space-3); align-items: center; }
+.bb-lane__badge {
+  flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px;
+  display: grid; place-items: center;
+  font-family: var(--font-display); font-size: 22px; font-weight: 800; color: #fff;
+  background: var(--bb-accent);
+  box-shadow: 0 8px 18px -8px var(--bb-accent);
+}
+.bb-lane__title { font-size: 17px; margin: 0; color: var(--color-text-primary); }
+.bb-lane__tag {
+  font-size: 11px; font-weight: 700; vertical-align: middle;
+  color: var(--bb-accent); background: color-mix(in srgb, var(--bb-accent) 12%, transparent);
+  padding: 2px 8px; border-radius: var(--radius-pill); margin-left: 4px;
+}
+.bb-lane__blurb { margin: 2px 0 0; font-size: 13px; color: var(--color-text-secondary); }
+.bb-lane__papers { display: flex; flex-direction: column; gap: var(--space-3); }
+
+.bb-empty-lane {
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-md);
+  padding: var(--space-4); text-align: center;
+  color: var(--color-text-placeholder); font-size: 13px;
+}
+
+/* ---- active paper card ---- */
+.bb-paper-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  background: var(--color-bg-app);
+  display: flex; flex-direction: column; gap: var(--space-3);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.bb-paper-card:hover { transform: translateY(-2px); box-shadow: 0 12px 26px -18px rgba(15,23,42,0.5); }
+.bb-paper-card__title { font-size: 15px; margin: 0 0 4px; line-height: 1.35; color: var(--color-text-primary); }
+.bb-paper-card__meta { font-size: 12.5px; color: var(--color-text-secondary); margin: 0 0 8px; }
+.bb-paper-card .btn { align-self: flex-start; }
+
+/* ---- status pills ---- */
+.bb-pill {
+  display: inline-block; font-size: 11.5px; font-weight: 700;
+  padding: 4px 10px; border-radius: var(--radius-pill); line-height: 1.4;
+}
+.bb-pill--new     { background: var(--color-info-surface);    color: var(--color-info); }
+.bb-pill--pending { background: var(--color-warning-surface); color: var(--color-warning); }
+.bb-pill--graded  { background: var(--color-success-surface); color: var(--color-success); }
+
+/* ============================ PAST PAPERS ============================ */
+.bb-past { margin-top: var(--space-7); }
+.bb-section-title { font-size: 18px; margin: 0 0 var(--space-4); color: var(--color-text-primary); }
+.bb-muted-note { font-size: 12px; font-weight: 500; color: var(--color-text-placeholder); }
+.bb-past__grid { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.bb-past-card {
+  border: 1px solid var(--color-border); border-radius: var(--radius-md);
+  padding: var(--space-4); background: var(--color-bg-surface-solid);
+  display: flex; flex-direction: column; gap: var(--space-3); justify-content: space-between;
+}
+.bb-past-card__title { font-size: 14px; margin: 0 0 4px; color: var(--color-text-primary); }
+.bb-past-card .btn { align-self: flex-start; }
+
+/* ============================ PAPER SHEET (attempt + result) ============ */
+.bb-paper-sheet {
+  margin-top: var(--space-5);
+  background: var(--color-bg-surface-solid);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: 0 18px 50px -34px rgba(15, 23, 42, 0.55);
+}
+@media (max-width: 640px) { .bb-paper-sheet { padding: var(--space-4); } }
+
+.bb-paper-topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4); gap: var(--space-3); }
+.bb-paper-topbar__marks { font-size: 13px; font-weight: 700; color: var(--color-text-secondary); }
+
+.bb-paper-head { text-align: center; padding-bottom: var(--space-4); border-bottom: 2px dashed var(--color-border-strong); margin-bottom: var(--space-4); }
+.bb-paper-head__level {
+  display: inline-block; font-size: 12px; font-weight: 800; color: #fff;
+  padding: 4px 12px; border-radius: var(--radius-pill); background: var(--bb-accent, var(--color-brand-ink));
+  margin-bottom: var(--space-3);
+}
+.bb-paper-head__title { font-size: clamp(18px, 3.4vw, 24px); margin: 0; line-height: 1.3; color: var(--color-text-primary); }
+.bb-paper-head__desc { margin: var(--space-2) auto 0; font-size: 13px; color: var(--color-text-secondary); max-width: 60ch; }
+
+.bb-readonly-note, .bb-attempt-warn {
+  border-radius: var(--radius-md); padding: var(--space-3) var(--space-4);
+  font-size: 13px; font-weight: 600; margin-bottom: var(--space-5); text-align: center;
+}
+.bb-readonly-note { background: var(--color-info-surface); color: var(--color-info); }
+.bb-attempt-warn { background: var(--color-warning-surface); color: var(--color-warning); }
+
+/* ---- parts (A / B / C) ---- */
+.bb-part { margin-bottom: var(--space-6); }
+.bb-part__head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-3); margin-bottom: var(--space-4); }
+.bb-part__head h3 { font-size: 16px; margin: 0; color: var(--color-brand-ink); }
+.bb-part__head span { font-size: 12px; color: var(--color-text-placeholder); }
+
+/* ---- a single question ---- */
+.bb-q, .bb-result-q { padding: var(--space-4) 0; border-bottom: 1px solid var(--color-border); }
+.bb-q:last-child { border-bottom: none; }
+.bb-q__head { display: grid; grid-template-columns: auto 1fr auto; gap: var(--space-3); align-items: start; margin-bottom: var(--space-3); }
+.bb-q__num {
+  flex-shrink: 0; width: 26px; height: 26px; border-radius: 8px;
+  display: grid; place-items: center; font-size: 13px; font-weight: 800;
+  background: var(--color-brand-ink-tint); color: var(--color-brand-ink);
+}
+.bb-q__text { margin: 0; font-size: 15px; line-height: 1.55; color: var(--color-text-primary); font-weight: 500; }
+.bb-q__marks {
+  flex-shrink: 0; font-size: 11px; font-weight: 800; color: var(--color-text-secondary);
+  background: var(--color-bg-app); border: 1px solid var(--color-border);
+  padding: 3px 9px; border-radius: var(--radius-pill);
+}
+.bb-q__marks::after { content: ' mk'; font-weight: 600; }
+
+/* ---- MCQ options ---- */
+.bb-opts { display: grid; gap: 8px; padding-left: 38px; }
+@media (max-width: 480px) { .bb-opts { padding-left: 0; } }
+.bb-opt {
+  display: flex; align-items: center; gap: var(--space-3);
+  border: 1.5px solid var(--color-border); border-radius: var(--radius-sm);
+  padding: 10px 12px; cursor: pointer; transition: border-color .12s ease, background .12s ease;
+}
+.bb-opt:hover { border-color: var(--color-border-strong); }
+.bb-opt input { position: absolute; opacity: 0; width: 0; height: 0; }
+.bb-opt__mark {
+  flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 12px; font-weight: 800;
+  border: 1.5px solid var(--color-border-strong); color: var(--color-text-secondary);
+  transition: all .12s ease;
+}
+.bb-opt__text { font-size: 14px; color: var(--color-text-primary); }
+.bb-opt--chosen { border-color: var(--color-interactive); background: var(--color-brand-ink-tint); }
+.bb-opt--chosen .bb-opt__mark { background: var(--color-interactive); border-color: var(--color-interactive); color: #fff; }
+
+/* ---- written answer boxes ---- */
+.bb-answer {
+  width: 100%; margin-left: 0; margin-top: 4px;
+  border: 1.5px solid var(--color-border); border-radius: var(--radius-sm);
+  padding: 12px 14px; font-family: var(--font-body); font-size: 14.5px; line-height: 1.9;
+  color: var(--color-text-primary); background: var(--color-bg-surface-solid);
+  resize: vertical;
+  /* Ruled-paper feel so the fixed answer space reads like an exam sheet. */
+  background-image: linear-gradient(var(--color-border) 1px, transparent 1px);
+  background-size: 100% 1.9em; background-position: 0 1.35em; background-attachment: local;
+}
+.bb-answer:focus { outline: none; border-color: var(--color-interactive); box-shadow: 0 0 0 3px var(--color-brand-ink-tint); }
+.bb-answer[readonly] { background-image: none; background: var(--color-bg-app); color: var(--color-text-secondary); }
+
+/* ---- submit bar ---- */
+.bb-submitbar {
+  position: sticky; bottom: 0; margin-top: var(--space-5);
+  display: flex; justify-content: space-between; align-items: center; gap: var(--space-3);
+  padding: var(--space-4); border-radius: var(--radius-md);
+  background: var(--color-bg-surface-solid);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 -8px 24px -18px rgba(15,23,42,0.5);
+}
+.bb-submitbar__count { font-size: 13px; font-weight: 700; color: var(--color-text-secondary); }
+.bb-submit-btn { min-width: 150px; }
+@media (max-width: 640px) {
+  .bb-submitbar { flex-direction: column-reverse; align-items: stretch; }
+  .bb-submit-btn { width: 100%; }
+  .bb-submitbar__count { text-align: center; }
+}
+
+/* ============================ RESULT ============================ */
+.bb-result-score {
+  display: flex; align-items: center; gap: var(--space-5); flex-wrap: wrap;
+  padding: var(--space-5); margin-bottom: var(--space-5);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--color-success-surface), transparent);
+  border: 1px solid var(--color-success-surface);
+}
+.bb-result-score__ring {
+  flex-shrink: 0; width: 96px; height: 96px; border-radius: 50%;
+  display: grid; place-items: center; line-height: 1;
+  color: var(--color-success);
+  background: var(--color-bg-surface-solid);
+  border: 4px solid var(--color-success);
+  box-shadow: 0 10px 26px -14px var(--color-success);
+}
+.bb-result-score__ring span { font-family: var(--font-display); font-size: 30px; font-weight: 800; }
+.bb-result-score__ring small { font-size: 12px; color: var(--color-text-secondary); }
+.bb-result-score__title { margin: 0 0 4px; font-size: 20px; color: var(--color-text-primary); }
+.bb-result-score__sub { margin: 0; font-size: 13px; color: var(--color-text-secondary); }
+
+.bb-result-pending {
+  display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap;
+  padding: var(--space-5); margin-bottom: var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--color-warning-surface); border: 1px solid var(--color-warning-surface);
+}
+.bb-result-pending__spinner {
+  flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
+  border: 4px solid color-mix(in srgb, var(--color-warning) 30%, transparent);
+  border-top-color: var(--color-warning); animation: bb-spin 0.9s linear infinite;
+}
+@keyframes bb-spin { to { transform: rotate(360deg); } }
+.bb-result-pending__title { margin: 0 0 4px; font-size: 18px; color: var(--color-warning); }
+.bb-result-pending__sub { margin: 0; font-size: 13px; color: var(--color-text-secondary); max-width: 52ch; }
+
+.bb-result-q__ans { margin-left: 38px; margin-top: var(--space-2); }
+@media (max-width: 480px) { .bb-result-q__ans { margin-left: 0; } }
+.bb-result-q__label { display: block; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--color-text-placeholder); margin-bottom: 4px; }
+.bb-result-q__ansbody {
+  background: var(--color-bg-app); border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm); padding: 10px 14px; font-size: 14px; line-height: 1.7;
+  color: var(--color-text-primary);
+}
+.bb-result-q__graded { margin: var(--space-3) 0 0 38px; }
+@media (max-width: 480px) { .bb-result-q__graded { margin-left: 0; } }
+.bb-result-q__fb {
+  margin: var(--space-2) 0 0; font-size: 13.5px; line-height: 1.6;
+  color: var(--color-text-secondary);
+  background: var(--color-info-surface); border-radius: var(--radius-sm); padding: 8px 12px;
+}
+
+/* Active nav highlight (matches how other pages style the current item). */
+.sidebar__item[data-nav-page="boss-battle.html"].is-active,
+.bottom-nav__item[data-nav-page="boss-battle.html"].is-active { color: var(--color-interactive); }
