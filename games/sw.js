@@ -43,12 +43,13 @@
  */
 
 // ⚠️  BUMP THIS on every frontend deploy. See the note above.
-const CACHE_VERSION = 'wha-v39';
+const CACHE_VERSION = 'wha-v40';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
 const STATIC_ASSETS = [
   'welcome.html', 'login.html', 'dashboard.html', 'profile.html', 'settings.html',
-  'games.html', 'leaderboard.html', 'revision.html', 'achievements.html',
+  'games.html', 'leaderboard.html', 'revision.html', 'achievements.html', 'boss-battle.html',
+  'assets/css/pages/boss-battle.css', 'assets/js/boss-battle.js',
   'assets/css/variables.css', 'assets/css/main.css', 'assets/css/layout.css',
   'assets/css/components.css', 'assets/css/animations.css', 'assets/css/responsive.css',
   'assets/css/pages/login.css', 'assets/css/pages/dashboard.css', 'assets/css/pages/games.css',
