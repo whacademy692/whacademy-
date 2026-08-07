@@ -69,9 +69,20 @@ const Storage = (() => {
   // student would silently end the admin session. Separate slots mean you can
   // be signed into both at once, which is genuinely useful when checking what a
   // student sees.
-  function getAdminToken() { return get('admin_token', null); }
-  function setAdminToken(token) { return set('admin_token', token); }
-  function clearAdminToken() { return remove('admin_token'); }
+  // Audit S10: the admin token is the highest-value credential on the platform,
+  // so it is kept in MEMORY ONLY — never written to localStorage, where any
+  // script (a future XSS) could read it. Trade-off: a full page reload drops the
+  // admin session and the admin signs in again (device stays trusted, so it is
+  // just email + password, no OTP). session_token stays in localStorage — a
+  // student re-login is cheap and losing it on every reload would be poor UX.
+  let adminTokenInMemory = null;
+  function getAdminToken() { return adminTokenInMemory; }
+  function setAdminToken(token) { adminTokenInMemory = token; return true; }
+  function clearAdminToken() {
+    adminTokenInMemory = null;
+    remove('admin_token'); // clear any token persisted by an earlier version
+    return true;
+  }
 
   function getStudentId() { return get('student_id', null); }
   function setStudentId(id) { return set('student_id', id); }
