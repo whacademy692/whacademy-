@@ -118,7 +118,11 @@ const Api = (() => {
   // ---- Resource-scoped convenience wrappers (mirrors API.gs's route table) ----
 
   const auth = {
-    login: (studentId, pin, rememberMe) => request('auth/login', { studentId, pin, rememberMe }),
+    // captchaToken (audit S1) is optional — undefined when CAPTCHA is off, in
+    // which case it is dropped from the body by JSON.stringify and the backend
+    // (FLAG_CAPTCHA unset) ignores it. Sent only when the Turnstile widget is
+    // configured and solved.
+    login: (studentId, pin, rememberMe, captchaToken) => request('auth/login', { studentId, pin, rememberMe, captchaToken }),
     logout: (token) => request('auth/logout', { token }),
     // Public by necessity — a student who forgot their PIN has no session.
     // The backend refuses this unless otp/verify has just succeeded for this
@@ -133,7 +137,8 @@ const Api = (() => {
   };
 
   const otp = {
-    request: (studentId, email, fullName, purpose) => request('otp/request', { studentId, email, fullName, purpose }),
+    // captchaToken (audit S1) — see auth.login note above; optional and dropped when off.
+    request: (studentId, email, fullName, purpose, captchaToken) => request('otp/request', { studentId, email, fullName, purpose, captchaToken }),
     // `purpose` is required for anything other than registration. OTP rows are
     // stored per studentId+purpose, so omitting it made every verification
     // look for a 'Registration' row — which is why a valid PIN-reset code
