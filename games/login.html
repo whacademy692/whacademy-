@@ -3,7 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- Audit S2: per-page CSP (GitHub Pages can't send HTTP headers). The key
+       protection is frame-ancestors 'none' — this login page can no longer be
+       framed, which shuts the clickjacking risk. 'unsafe-inline' is kept for
+       script/style because this page relies on an inline bootstrap script and
+       inline style attributes; challenges.cloudflare.com is allowed for the
+       Turnstile CAPTCHA (audit S1), script.google.com for the API. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://script.google.com https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com">
   <title>Log In — W.H. Academy</title>
+
+  <!-- Audit S1: Cloudflare Turnstile. CAPTCHA stays OFF until you paste your
+       SITE key below (and set TURNSTILE_SECRET_KEY + FLAG_CAPTCHA on the
+       backend). Empty key = no widgets, login/OTP work exactly as before. -->
+  <script>
+    window.WHA_TURNSTILE_SITE_KEY = ''; /* <-- paste Cloudflare Turnstile SITE key here to enable CAPTCHA */
+    window.whaTurnstileOnload = function () {
+      window.__whaTurnstileReady = true;
+      if (typeof window.whaRenderCaptchas === 'function') window.whaRenderCaptchas();
+    };
+  </script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=whaTurnstileOnload&render=explicit" async defer></script>
   <meta name="theme-color" content="#3730a3">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
@@ -45,6 +64,7 @@
             </label>
             <button type="button" class="btn btn--tertiary btn--sm" data-goto-step="forgot-pin">Forgot PIN?</button>
           </div>
+          <div id="login-captcha" class="wha-captcha" style="margin: var(--space-3) 0;"></div>
           <button type="submit" class="btn btn--primary btn--full btn--lg">
             <span class="btn__label">Log In</span>
             <span class="btn__spinner" aria-hidden="true"></span>
@@ -69,6 +89,7 @@
             <label class="field__label" for="forgot-email">Email</label>
             <input class="input" id="forgot-email" name="email" type="email" autocomplete="email" required>
           </div>
+          <div id="forgot-captcha" class="wha-captcha" style="margin: var(--space-3) 0;"></div>
           <button type="submit" class="btn btn--primary btn--full btn--lg">
             <span class="btn__label">Send Verification Code</span>
             <span class="btn__spinner" aria-hidden="true"></span>
@@ -96,7 +117,7 @@
           </div>
           <label class="checkbox-row">
             <input type="checkbox" name="termsAccepted" required>
-            <span class="text-body-sm">I accept the <a href="../terms.html" target="_blank">Terms &amp; Conditions</a></span>
+            <span class="text-body-sm">I accept the <a href="../terms.html" target="_blank" rel="noopener">Terms &amp; Conditions</a></span>
           </label>
           <button type="submit" class="btn btn--primary btn--full btn--lg">
             <span class="btn__label">Continue</span>
@@ -165,6 +186,7 @@
             <label class="field__label" for="confirm-pin">Confirm PIN</label>
             <input class="input input--pin" id="confirm-pin" name="confirmPin" type="password" inputmode="numeric" minlength="4" maxlength="8" required>
           </div>
+          <div id="setpin-captcha" class="wha-captcha" style="margin: var(--space-3) 0;"></div>
           <button type="submit" class="btn btn--primary btn--full btn--lg">
             <span class="btn__label">Create Account</span>
             <span class="btn__spinner" aria-hidden="true"></span>
