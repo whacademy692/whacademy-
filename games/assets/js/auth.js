@@ -14,6 +14,38 @@ const Auth = (() => {
   // "PIN first, code second" flow is exactly as safe as the old one.
   let registrationContext = { studentId: null, purpose: null, pendingPin: null };
 
+  // ---- CAPTCHA (audit S1) --------------------------------------------------
+  // Cloudflare Turnstile. Entirely inert unless window.WHA_TURNSTILE_SITE_KEY is
+  // set (in login.html). When off: enabled() is false, token() returns '', and
+  // every call below passes undefined — so login/OTP behave exactly as before.
+  // When on: a widget renders on each gated form and its token rides along.
+  const Captcha = (() => {
+    const SITE_KEY = (typeof window !== 'undefined' && window.WHA_TURNSTILE_SITE_KEY) || '';
+    const ids = {};
+    const CONTAINERS = ['login-captcha', 'forgot-captcha', 'setpin-captcha'];
+    function renderInto(containerId) {
+      if (!SITE_KEY || !window.turnstile) return;
+      const el = document.getElementById(containerId);
+      if (!el || ids[containerId] !== undefined) return; // render once
+      try { ids[containerId] = window.turnstile.render('#' + containerId, { sitekey: SITE_KEY }); } catch (e) { /* not ready yet */ }
+    }
+    return {
+      enabled() { return !!SITE_KEY; },
+      renderAll() { CONTAINERS.forEach(renderInto); },
+      token(containerId) {
+        if (!SITE_KEY || !window.turnstile || ids[containerId] === undefined) return '';
+        try { return window.turnstile.getResponse(ids[containerId]) || ''; } catch (e) { return ''; }
+      },
+      reset(containerId) {
+        if (!SITE_KEY || !window.turnstile || ids[containerId] === undefined) return;
+        try { window.turnstile.reset(ids[containerId]); } catch (e) { /* ignore */ }
+      }
+    };
+  })();
+  // Called by login.html's Turnstile onload, and again from initLoginPage in
+  // case the script finished loading first.
+  window.whaRenderCaptchas = function () { Captcha.renderAll(); };
+
   function setButtonLoading(btn, isLoading) {
     btn.disabled = isLoading;
     btn.dataset.loading = isLoading ? 'true' : 'false';
@@ -55,9 +87,16 @@ const Auth = (() => {
     }
     if (hasError) return;
 
+    // Audit S1: human-verification, only when CAPTCHA is configured.
+    let captchaToken;
+    if (Captcha.enabled()) {
+      captchaToken = Captcha.token('login-captcha');
+      if (!captchaToken) { Notifications.error('Please complete the verification check.'); return; }
+    }
+
     setButtonLoading(submitBtn, true);
     try {
-      const result = await Api.auth.login(studentId, pin, rememberMe);
+      const result = await Api.auth.login(studentId, pin, rememberMe, captchaToken);
       Storage.setToken(result.token);
       Storage.setStudentId(studentId);
       Notifications.success('Welcome back!');
@@ -67,6 +106,7 @@ const Auth = (() => {
       Notifications.error(err.message || 'Login failed. Please check your Student ID and PIN.');
     } finally {
       setButtonLoading(submitBtn, false);
+      Captcha.reset('login-captcha'); // tokens are single-use
     }
   }
 
@@ -83,9 +123,15 @@ const Auth = (() => {
       return;
     }
 
+    let captchaToken; // audit S1
+    if (Captcha.enabled()) {
+      captchaToken = Captcha.token('forgot-captcha');
+      if (!captchaToken) { Notifications.error('Please complete the verification check.'); return; }
+    }
+
     setButtonLoading(submitBtn, true);
     try {
-      await Api.otp.request(studentId, email, '', 'PasswordReset');
+      await Api.otp.request(studentId, email, '', 'PasswordReset', captchaToken);
       // Full context shape — pendingPin stays null for a reset (unlike
       // registration, the new PIN is chosen AFTER the code, on set-new-pin).
       registrationContext = { studentId, purpose: 'PasswordReset', pendingPin: null };
@@ -96,6 +142,7 @@ const Auth = (() => {
       Notifications.error(err.message || 'Could not send a verification code. Check your details and try again.');
     } finally {
       setButtonLoading(submitBtn, false);
+      Captcha.reset('forgot-captcha');
     }
   }
 
@@ -213,8 +260,17 @@ const Auth = (() => {
 
   async function handleResendOtp(event) {
     event.preventDefault();
+    // Audit S1: reuse the captcha from whichever flow we're in. The widgets live
+    // in hidden (not removed) sections, so their tokens are still reachable.
+    let captchaToken;
+    if (Captcha.enabled()) {
+      const containerId = registrationContext.purpose === 'PasswordReset' ? 'forgot-captcha' : 'setpin-captcha';
+      captchaToken = Captcha.token(containerId);
+      if (!captchaToken) { Notifications.error('Please complete the verification check on the previous step, then resend.'); return; }
+      Captcha.reset(containerId);
+    }
     try {
-      await Api.otp.request(registrationContext.studentId, '', '', registrationContext.purpose);
+      await Api.otp.request(registrationContext.studentId, '', '', registrationContext.purpose, captchaToken);
       Notifications.success('A new code was sent.');
     } catch (err) {
       Notifications.error(err.message || 'Could not resend the code right now.');
@@ -257,13 +313,19 @@ const Auth = (() => {
       return;
     }
 
+    let captchaToken; // audit S1
+    if (Captcha.enabled()) {
+      captchaToken = Captcha.token('setpin-captcha');
+      if (!captchaToken) { Notifications.error('Please complete the verification check.'); return; }
+    }
+
     setButtonLoading(submitBtn, true);
     try {
       // Hold the PIN in memory and ask for the code NOW — this is the moment the
       // student actually needs it. (It used to be fired the instant the Google Form
       // was submitted, so a code turned up before they had chosen anything.)
       registrationContext.pendingPin = pin;
-      await Api.otp.request(registrationContext.studentId, '', '', 'Registration');
+      await Api.otp.request(registrationContext.studentId, '', '', 'Registration', captchaToken);
       Notifications.success('A 6-digit code was sent to your email. Enter it to finish.');
       clearOtpBoxes();
       Router.showStep('otp-verification');
@@ -272,6 +334,7 @@ const Auth = (() => {
       Notifications.error(err.message || 'Could not send your verification code.');
     } finally {
       setButtonLoading(submitBtn, false);
+      Captcha.reset('setpin-captcha');
     }
   }
 
@@ -337,6 +400,10 @@ const Auth = (() => {
     if (setPinForm) setPinForm.addEventListener('submit', handleSetPinSubmit);
     if (setNewPinForm) setNewPinForm.addEventListener('submit', handleResetPinSubmit);
     if (resendLink) resendLink.addEventListener('click', handleResendOtp);
+
+    // Audit S1: render Turnstile widgets now if the script already loaded; the
+    // onload callback covers the other order. No-op when CAPTCHA is off.
+    if (window.__whaTurnstileReady) Captcha.renderAll();
 
     Utils.qsa('[data-goto-step]').forEach((btn) => {
       btn.addEventListener('click', () => Router.showStep(btn.dataset.gotoStep));
