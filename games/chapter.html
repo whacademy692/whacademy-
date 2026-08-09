@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <!-- Audit S2: per-page CSP (GitHub Pages can't send HTTP headers). frame-ancestors
+       'none' shuts clickjacking. 'unsafe-inline' kept for script/style because this
+       page has an inline token-guard script + inline style attributes. cdnjs is
+       allowed for KaTeX (script/style/font — KaTeX pulls its font files from cdnjs
+       too). script.google(usercontent).com allowed for the Apps Script API.
+       NOTE: img is 'self' data: only — if a chapter's content.json loads a remote
+       image, add https: to img-src. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data:; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self' https://script.google.com https://script.googleusercontent.com">
   <title>Chapter — W.H. Academy</title>
   <meta name="theme-color" content="#3730a3">
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
@@ -17,9 +26,9 @@
        (question prompts, options, theory, explanations). Loaded from CDN so
        no build step is needed; chapter-engine.js no-ops safely if this ever
        fails to load. -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
   <!--
