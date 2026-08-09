@@ -528,7 +528,7 @@ window.WHA_CONTENT = {
             "title": "Middle Ages",
             "notes": "https://whacademy692.github.io/whacademy-/class-7-history-middle-ages.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLSfEJLsJ3Uyzm52o5NZBA3qdPd1K8vYVIl16CNBQePAAahqgBg/viewform?usp=header",
-            "game": null
+            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=7/history/middle_ages"
           },
           {
             "n": 2,
