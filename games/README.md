@@ -17,10 +17,10 @@ whacademy-/
     └── ...
 ```
 
-**Kuch edit karne ki zarurat nahi.** `api.js` mein URL aur key pehle se bhare hue hain.
+**Kuch edit karne ki zarurat nahi.** `api.js` mein backend ka URL pehle se configure hai.
 
 ## Live URL
-`whacademy692.github.io/whacademy-/games/welcome.html`
+`https://whacademypk.com/games/welcome.html`
 
 ## Yahan koi index.html NAHI hai
 Aap ki main website ka `index.html` protect karne ke liye:
