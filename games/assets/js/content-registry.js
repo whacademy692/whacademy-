@@ -390,7 +390,7 @@ window.WHA_CONTENT = {
             "title": "Plant Systems",
             "notes": "https://whacademy692.github.io/whacademy-/class-7-science-plant-systems.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLSfgkQlTAERiNkueZu-Og-Hnh2QJD3jbIiO5lWBxx2iFcOYOrg/viewform?usp=header",
-            "game": null
+            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=7/science/plant_systems"
           },
           {
             "n": 2,
