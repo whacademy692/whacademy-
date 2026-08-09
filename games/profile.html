@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <!-- Audit S2 (CSP). GitHub Pages cannot send HTTP headers, so CSP is per-page.
+       frame-ancestors 'none' shuts clickjacking. 'unsafe-inline' kept for inline
+       <style>/<script>. Google Fonts allowed (main.css @imports them). connect-src allows the Apps Script API (script.google[usercontent].com) — the page's JS calls it at runtime, so this is required or every API call breaks. img is 'self' data:; widen with https: only if a remote image is ever added. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://script.google.com https://script.googleusercontent.com">
+
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Profile — W.H. Academy</title>
   <meta name="theme-color" content="#3730a3">
