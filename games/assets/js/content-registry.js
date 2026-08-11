@@ -480,7 +480,7 @@ window.WHA_CONTENT = {
             "title": "Plains and Rivers",
             "notes": "https://whacademy692.github.io/whacademy-/class-7-geography-plains-rivers.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLSdQ60ais2Q7lV01IDC60lsbEf-O2M0ATqKdxpAueOVrDx_Yxw/viewform?usp=header",
-            "game": null
+            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=7/geography/plains_and_rivers"
           },
           {
             "n": 2,
