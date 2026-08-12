@@ -300,7 +300,7 @@ window.WHA_CONTENT = {
             "title": "Real Numbers and Approximation",
             "notes": "https://whacademy692.github.io/whacademy-/class-7-math-real-numbers-approximation.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLSdOcGeSOo_9o-ypAlgXsm3xAPK3wa6FCk7TgdVbNfMg6w4aHQ/viewform?usp=header",
-            "game": null
+            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=7/math/real_numbers_and_approximation"
           },
           {
             "n": 2,
