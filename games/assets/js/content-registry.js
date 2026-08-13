@@ -91,7 +91,7 @@ window.WHA_CONTENT = {
             "title": "Cellular Organization",
             "notes": "https://whacademy692.github.io/whacademy-/class-6-sci-ch1-cellular-organization.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLSeIRDvUJ_fnVTmk7V-OCcaDg2NmK71WGHiCuDiMZfnhNQntyQ/viewform?usp=header",
-            "game": null
+            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=6/science/cellular_organization"
           },
           {
             "n": 2,
@@ -181,7 +181,7 @@ window.WHA_CONTENT = {
             "title": "Structure of Earth and Types of Rocks",
             "notes": "https://whacademy692.github.io/whacademy-/class-6-geo-ch1-structure-earth-rocks.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLSc641PspgSMa0EjZNoD9b6bnZ145QejxGHT0GoaXHjNFbyPzA/viewform?usp=header",
-            "game": null
+            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=6/geography/structure_of_earth_and_rocks"
           },
           {
             "n": 2,
