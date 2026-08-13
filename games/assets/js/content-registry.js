@@ -15,7 +15,7 @@ window.WHA_CONTENT = {
             "title": "Primes, HCF, LCM and Integers",
             "notes": "https://whacademy692.github.io/whacademy-/class-6-math-ch1-primes-hcf-lcm-integers.html",
             "quiz": null,
-            "game": null
+            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=6/math/primes_hcf_lcm_and_integers"
           },
           {
             "n": 2,
@@ -229,7 +229,7 @@ window.WHA_CONTENT = {
             "title": "Mesopotamia",
             "notes": "https://whacademy692.github.io/whacademy-/class-6-history-ch1-mesopotamia.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLScHm7v0hIawODOrkOEpWOOXLU4zhIZtHQiCvOrgrMevXOnCfg/viewform?usp=header",
-            "game": null
+            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=6/history/mesopotamia"
           },
           {
             "n": 2,
