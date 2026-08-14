@@ -166,12 +166,33 @@
     return questionShell(q, num, '<div class="bb-opts">' + opts + '</div>');
   }
 
+  // Hard character cap per question — the federal-board "fixed space" rule.
+  // Prefer an explicit backend value (q.maxChars / q.answerLimit); otherwise
+  // derive a sane cap from the answer space (~80 chars per visible line),
+  // clamped so a 3-line short box and a 14-line long box both stay reasonable.
+  function answerCharLimit(q, rows) {
+    const explicit = Number(q.maxChars != null ? q.maxChars : q.answerLimit);
+    if (explicit > 0) return explicit;
+    return Utils.clamp(rows * 80, 120, 2000);
+  }
+
   function writtenBlock(q, num, readOnly, savedAnswer) {
     const rows = Utils.clamp(Number(q.maxLines) || (q.type === 'long' ? 10 : 4), 3, 14);
+    const limit = answerCharLimit(q, rows);
     const val = savedAnswer != null ? esc(savedAnswer) : '';
-    const box = '<textarea class="bb-answer" data-qid="' + esc(q.qId) + '" rows="' + rows + '" ' +
-      'placeholder="' + (readOnly ? '' : 'Write your answer here…') + '" ' +
-      (readOnly ? 'readonly' : '') + '>' + val + '</textarea>';
+    const used = savedAnswer != null ? String(savedAnswer).length : 0;
+    const box =
+      '<textarea class="bb-answer" data-qid="' + esc(q.qId) + '" rows="' + rows + '" ' +
+        'maxlength="' + limit + '" ' +
+        'placeholder="' + (readOnly ? '' : 'Write your answer here…') + '" ' +
+        (readOnly ? 'readonly' : '') + '>' + val + '</textarea>' +
+      // Counter only while attempting — a read-only past/submitted view doesn't need it.
+      (readOnly ? '' :
+        '<div class="bb-answer-meta">' +
+          '<span class="bb-answer-count" data-count-for="' + esc(q.qId) + '">' +
+            used + ' / ' + limit + ' characters' +
+          '</span>' +
+        '</div>');
     return questionShell(q, num, box);
   }
 
@@ -268,7 +289,18 @@
           updateCount();
         });
       });
-      Utils.qsa('.bb-answer', view).forEach((ta) => ta.addEventListener('input', updateCount));
+      Utils.qsa('.bb-answer', view).forEach((ta) => {
+        ta.addEventListener('input', () => {
+          updateCount();
+          const qid = ta.getAttribute('data-qid');
+          const meta = view.querySelector('.bb-answer-count[data-count-for="' + CSS.escape(qid) + '"]');
+          if (meta) {
+            const max = ta.getAttribute('maxlength');
+            meta.textContent = ta.value.length + ' / ' + max + ' characters';
+            meta.classList.toggle('bb-answer-count--full', !!max && ta.value.length >= Number(max));
+          }
+        });
+      });
       el('bb-submit').addEventListener('click', () => submitPaper(paper));
       updateCount();
     }
@@ -323,11 +355,29 @@
     const graded = submission.graded;
     const items = submission.items || [];
 
+    // Percentage (spec §4) — only when we have a positive total to divide by.
+    const total = Number(submission.totalMarks);
+    const pct = (graded && total > 0)
+      ? Math.round((Number(submission.awardedMarks) / total) * 100)
+      : null;
+
+    // Overall teacher feedback (spec §4, "if provided"). Renders only when the
+    // backend actually sends it — populate submission.overallFeedback on the
+    // grade endpoint. teacherFeedback / overallComment are accepted as aliases.
+    const overall = submission.overallFeedback || submission.teacherFeedback || submission.overallComment || '';
+    const overallBlock = (graded && overall)
+      ? '<div class="bb-result-overall">' +
+          '<span class="bb-result-overall__label">Overall feedback</span>' +
+          '<p class="bb-result-overall__body">' + esc(overall).replace(/\n/g, '<br>') + '</p>' +
+        '</div>'
+      : '';
+
     const header = graded
       ? '<div class="bb-result-score">' +
           '<div class="bb-result-score__ring"><span>' + esc(submission.awardedMarks) + '</span>' +
           '<small>/ ' + esc(submission.totalMarks) + '</small></div>' +
           '<div><h2 class="bb-result-score__title">Battle graded!</h2>' +
+          (pct != null ? '<p class="bb-result-score__pct">' + pct + '%</p>' : '') +
           '<p class="bb-result-score__sub">Here is your teacher\'s feedback, question by question.</p></div>' +
         '</div>'
       : '<div class="bb-result-pending">' +
@@ -367,6 +417,7 @@
         '</div>' +
         '<h2 class="bb-paper-head__title" style="margin-bottom:var(--space-4);">' + esc(paperTitle || submission.paperTitle || 'Your submission') + '</h2>' +
         header +
+        overallBlock +
         '<div class="bb-paper-body">' + rows + '</div>' +
       '</div>';
 
