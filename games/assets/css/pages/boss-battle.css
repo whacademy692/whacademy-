@@ -293,3 +293,58 @@
 /* Active nav highlight (matches how other pages style the current item). */
 .sidebar__item[data-nav-page="boss-battle.html"].is-active,
 .bottom-nav__item[data-nav-page="boss-battle.html"].is-active { color: var(--color-interactive); }
+
+/* ============================================================
+   Answer character cap + result percentage / overall feedback
+   (added with the boss-battle.js result-polish + answer-limit pass)
+   ============================================================ */
+
+/* Live character counter under each written-answer box */
+.bb-answer-meta {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--space-1, 4px);
+}
+.bb-answer-count {
+  font-size: 0.78rem;
+  color: var(--color-text-muted, #6b7280);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+.bb-answer-count--full {
+  color: var(--color-danger, #dc2626);
+  font-weight: 600;
+}
+
+/* Percentage under the graded score ring */
+.bb-result-score__pct {
+  margin: 2px 0 0;
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--brand-primary, #4f46e5);
+}
+
+/* Overall teacher feedback panel */
+.bb-result-overall {
+  margin: var(--space-4, 16px) 0;
+  padding: var(--space-4, 16px);
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-left: 4px solid var(--brand-primary, #4f46e5);
+  border-radius: var(--radius-md, 12px);
+  background: var(--color-surface-alt, #f8fafc);
+}
+.bb-result-overall__label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--brand-primary, #4f46e5);
+  margin-bottom: var(--space-1, 4px);
+}
+.bb-result-overall__body {
+  margin: 0;
+  color: var(--color-text, #1f2937);
+  line-height: 1.55;
+}
