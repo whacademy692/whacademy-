@@ -8,7 +8,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://script.google.com https://script.googleusercontent.com">
 
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Classes — W.H. Academy</title>
+  <title>Chapters — W.H. Academy</title>
   <meta name="theme-color" content="#3730a3">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
@@ -59,17 +59,20 @@
 
     <div style="flex:1; min-width:0;">
       <header class="top-bar hide-desktop">
-        <span class="top-bar__brand">Classes</span>
+        <span class="top-bar__brand">Chapters</span>
       </header>
 
       <main id="main-content" class="app-main">
         <div class="container section">
-          <h1>Your Classes</h1>
+          <h1>Chapters</h1>
+          <p class="text-body-sm" style="color: var(--color-text-secondary); margin-top: calc(-1 * var(--space-2));">
+            Your chapters, grouped by subject.
+          </p>
           <div class="field" style="max-width: 420px; margin-block: var(--space-5);">
             <label class="sr-only" for="chapter-search">Search chapters</label>
             <input class="input" id="chapter-search" type="search" placeholder="Search chapters or subjects…">
           </div>
-          <div id="chapters-grid" class="card-grid"></div>
+          <div id="chapters-grid" class="chapter-groups"></div>
         </div>
       </main>
     </div>
