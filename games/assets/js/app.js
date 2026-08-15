@@ -8,7 +8,8 @@
 
 (function bootstrap() {
 
-  var VALID_THEMES = ['light', 'dark', 'ocean', 'forest', 'sunset'];
+  var VALID_THEMES = ['light', 'dark', 'ocean', 'forest', 'sunset',
+                      'grape', 'rose', 'candy', 'aurora', 'gold', 'midnight'];
 
   function applySettings() {
     const settings = Storage.getSettings();
