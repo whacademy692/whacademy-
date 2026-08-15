@@ -49,7 +49,7 @@
   color: var(--color-brand-ink);
   letter-spacing: 0.02em;
 }
-[data-theme="dark"] .top-bar__brand { color: var(--color-interactive); }
+:is([data-theme="dark"], [data-theme="midnight"]) .top-bar__brand { color: var(--color-interactive); }
 .top-bar__actions { display: flex; align-items: center; gap: var(--space-2); }
 
 /* ---- Bottom navigation (mobile-primary, per IA §7 — 5 items) ---- */
@@ -78,7 +78,7 @@
 }
 .bottom-nav__item svg { width: 22px; height: 22px; stroke: currentColor; fill: none; }
 .bottom-nav__item[aria-current="page"] { color: var(--color-brand-ink); font-weight: 700; }
-[data-theme="dark"] .bottom-nav__item[aria-current="page"] { color: var(--color-interactive); }
+:is([data-theme="dark"], [data-theme="midnight"]) .bottom-nav__item[aria-current="page"] { color: var(--color-interactive); }
 
 @media (min-width: 1024px) {
   .bottom-nav { display: none; }
@@ -113,9 +113,9 @@
   }
   .sidebar__item svg { width: 20px; height: 20px; stroke: currentColor; fill: none; }
   .sidebar__item:hover { background: var(--neutral-100); }
-  [data-theme="dark"] .sidebar__item:hover { background: var(--color-bg-app); }
+  :is([data-theme="dark"], [data-theme="midnight"]) .sidebar__item:hover { background: var(--color-bg-app); }
   .sidebar__item[aria-current="page"] { background: var(--color-brand-ink-tint); color: var(--color-brand-ink); font-weight: 700; }
-  [data-theme="dark"] .sidebar__item[aria-current="page"] { background: var(--color-info-surface); color: var(--color-interactive); }
+  :is([data-theme="dark"], [data-theme="midnight"]) .sidebar__item[aria-current="page"] { background: var(--color-info-surface); color: var(--color-interactive); }
   .app-main--with-sidebar { max-width: calc(var(--container-max) + 240px); margin-inline: auto; }
 }
 
@@ -162,4 +162,4 @@
 }
 .bottom-nav__item { color: rgba(255, 255, 255, 0.82); }
 .bottom-nav__item[aria-current="page"] { color: #ffffff; font-weight: 700; }
-[data-theme="dark"] .bottom-nav__item[aria-current="page"] { color: #ffffff; }
+:is([data-theme="dark"], [data-theme="midnight"]) .bottom-nav__item[aria-current="page"] { color: #ffffff; }
