@@ -16,6 +16,11 @@ const Api = (() => {
 
   const MAX_RETRIES = 2;
   const RETRY_BASE_DELAY_MS = 800;
+  // Hard ceiling per attempt. Apps Script can be slow on a cold start, so this
+  // is generous — but without it a stalled request hangs a page's skeleton
+  // forever (e.g. Boss Battle spinning with no error). On timeout we abort and
+  // surface a clear, retryable error instead of waiting indefinitely.
+  const REQUEST_TIMEOUT_MS = 25000;
 
   // Operations that mutate state — queued for retry if the network is
   // down, per the PendingSyncQueue design (Software Architecture §9).
@@ -46,11 +51,26 @@ const Api = (() => {
    * call from a browser.
    */
   async function rawRequest(operation, params) {
-    const response = await fetch(API_BASE_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify(buildBody(operation, params))
-    });
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+    let response;
+    try {
+      response = await fetch(API_BASE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(buildBody(operation, params)),
+        signal: controller.signal
+      });
+    } catch (err) {
+      // Timeout (AbortError) or a genuine connection failure. Both are transient
+      // and retryable — request() will back off and retry, then surface this.
+      const msg = (err && err.name === 'AbortError')
+        ? 'The server took too long to respond. Please try again.'
+        : 'Could not reach the server. Check your connection and try again.';
+      throw new ApiError('NETWORK_ERROR', msg, true);
+    } finally {
+      clearTimeout(timer);
+    }
     if (!response.ok) {
       throw new ApiError('NETWORK_ERROR', `Request failed with status ${response.status}.`, true);
     }
