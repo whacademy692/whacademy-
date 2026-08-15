@@ -117,6 +117,49 @@
     return Utils.createEl('div', { class: 'card card--nav', style: 'opacity:0.55;' }, children);
   }
 
+  /** Group the (already-filtered) rows into per-subject buckets, preserving the
+   *  order subjects first appear in — which is the registry's subject order. */
+  function groupBySubject(rows) {
+    var order = [];
+    var buckets = {};
+    rows.forEach(function (r) {
+      if (!buckets[r.subjectKey]) {
+        buckets[r.subjectKey] = { key: r.subjectKey, name: r.subjectName, classLevel: r.classLevel, rows: [] };
+        order.push(r.subjectKey);
+      }
+      buckets[r.subjectKey].rows.push(r);
+    });
+    return order.map(function (k) { return buckets[k]; });
+  }
+
+  /** A subject section: labelled header + its own chapter grid underneath. */
+  function subjectSection(group) {
+    var accent = ACCENT[group.key] || null;
+    var accentStyle = accent
+      ? '--subject-accent: var(--subject-' + accent + '-primary); --subject-accent-tint: var(--subject-' + accent + '-secondary);'
+      : '';
+
+    // Playable chapters first within each subject.
+    var rows = group.rows.slice().sort(function (a, b) { return (b.game ? 1 : 0) - (a.game ? 1 : 0); });
+    var playableCount = rows.filter(function (r) { return !!r.game; }).length;
+
+    var grid = Utils.createEl('div', { class: 'card-grid' },
+      rows.map(function (r) { return chapterCard(r); }));
+
+    var header = Utils.createEl('div', { class: 'subject-group__head', style: accentStyle }, [
+      Utils.createEl('span', { class: 'subject-group__icon', 'aria-hidden': 'true',
+        text: ICON[group.key] || '📘' }),
+      Utils.createEl('div', { class: 'subject-group__titles' }, [
+        Utils.createEl('h2', { class: 'subject-group__name', text: group.name }),
+        Utils.createEl('p', { class: 'subject-group__meta',
+          text: 'Class ' + group.classLevel + ' · ' + rows.length + ' chapters' +
+                (playableCount ? ' · ' + playableCount + ' ready to play' : '') })
+      ])
+    ]);
+
+    return Utils.createEl('section', { class: 'subject-group', style: accentStyle }, [header, grid]);
+  }
+
   function renderGrid(rows, filterText) {
     var container = Utils.qs('#chapters-grid');
     if (!container) return;
@@ -141,9 +184,10 @@
       return;
     }
 
-    // Playable chapters first, then coming-soon — most useful at the top.
-    matches.sort(function (a, b) { return (b.game ? 1 : 0) - (a.game ? 1 : 0); });
-    matches.forEach(function (r) { container.appendChild(chapterCard(r)); });
+    // One section per subject, subjects in registry order, chapters grouped inside.
+    groupBySubject(matches).forEach(function (group) {
+      container.appendChild(subjectSection(group));
+    });
   }
 
   function initSearch(rows) {
