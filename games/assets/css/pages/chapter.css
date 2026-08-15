@@ -290,7 +290,7 @@
   color: var(--color-text-secondary);
   white-space: nowrap;
 }
-[data-theme="dark"] .stage-step { background: var(--color-bg-surface); }
+:is([data-theme="dark"], [data-theme="midnight"]) .stage-step { background: var(--color-bg-surface); }
 .stage-step--done { background: var(--color-success-surface); color: var(--color-success); }
 .stage-step--clickable { cursor: pointer; }
 .stage-step--clickable:hover { filter: brightness(0.95); }
@@ -402,7 +402,7 @@
   padding: var(--space-4);
   margin-bottom: var(--space-4);
 }
-[data-theme="dark"] .scenario-box { background: var(--color-bg-surface); }
+:is([data-theme="dark"], [data-theme="midnight"]) .scenario-box { background: var(--color-bg-surface); }
 
 .sequence-strip {
   display: flex;
@@ -623,7 +623,7 @@
   cursor: pointer;
   box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.55);
 }
-[data-theme="dark"] .diagram-point { box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.35); }
+:is([data-theme="dark"], [data-theme="midnight"]) .diagram-point { box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.35); }
 .diagram-point--pulse { animation: pulse-ring 2s ease-out infinite; }
 .diagram-point--visited,
 .diagram-point--right { background: var(--color-success); animation: none; }
