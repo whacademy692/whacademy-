@@ -528,3 +528,14 @@ h1, h2 { letter-spacing: -0.015em; }
 :is([data-theme="dark"], [data-theme="midnight"]) .chapter-item { background: rgba(255, 255, 255, 0.05); }
 .chapter-item__label { font-weight: 600; flex: 1 1 12rem; }
 .chapter-item__actions { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+
+/* ---------------------------------------------------------------------------
+ * Global: the HTML `hidden` attribute must always win.
+ * The UA stylesheet hides [hidden] via display:none, but ANY author rule that
+ * sets `display` on the same element (e.g. `.stack{display:flex}` on a hidden
+ * skeleton, or a flex/grid utility) silently beats it — leaving a "hidden"
+ * element on screen. That is exactly why the Boss Battle skeleton kept showing
+ * on top of the level cards after the list had loaded. `!important` here makes
+ * `hidden` authoritative app-wide, so JS toggling `.hidden = true` truly hides.
+ * ------------------------------------------------------------------------- */
+[hidden] { display: none !important; }
