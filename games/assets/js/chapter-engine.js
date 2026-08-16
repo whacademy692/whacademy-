@@ -2305,7 +2305,13 @@
     // The latest backend XP breakdown (per-type % and overall average).
     var breakdown = null;
 
+    // True only while the Games hub itself is the on-screen view. It flips to
+    // false the moment the student opens a game (runPractice) so a LATE backend
+    // XP response can't repaint the hub over the game the student is playing.
+    var onHub = false;
+
     function renderHub() {
+      onHub = true;   // the Games hub is now the on-screen view
       container.innerHTML = '';
       var wrap = el('div', { class: 'stack anim-fade-in-up' });
 
@@ -2411,7 +2417,17 @@
       if (!Api.leaderboard || !Api.leaderboard.gameXpBreakdown) return;
       function attempt(retriesLeft) {
         withTimeout(Api.leaderboard.gameXpBreakdown(content.chapterRef, questionCounts), 12000)
-          .then(function (data) { breakdown = data; writeCachedBreakdown(data); renderHub(); })
+          .then(function (data) {
+            breakdown = data; writeCachedBreakdown(data);
+            // Apps Script cold starts make this land 6-7s late. By the time it
+            // resolves the student may have opened a game (onHub === false) or
+            // moved to another stage (stages[stageIndex] !== 'practice').
+            // Repainting the hub in either case wipes what they're looking at
+            // and throws them "back to the games page" — the reported bug. Only
+            // repaint when the hub is still the live view. The fresh XP is
+            // already cached above, so it shows correctly next time regardless.
+            if (onHub && stages[stageIndex] === 'practice') renderHub();
+          })
           .catch(function () {
             if (retriesLeft > 0) { setTimeout(function () { attempt(retriesLeft - 1); }, 1500); }
             // else keep the cached/last view — never fall back to a stuck spinner
@@ -2421,6 +2437,7 @@
     }
 
     function runPractice(bank) {
+      onHub = false;  // leaving the hub to play — a stale/late XP response must not repaint over this game
       // The bank's questions live in their own file; fetch them the first time
       // this game is opened, then play. Cached after the first load.
       loadBankQuestions(bank).then(function () {
