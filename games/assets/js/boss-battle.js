@@ -40,7 +40,14 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function showError() { showView('bb-error'); }
+  function showError(message) {
+    var errBox = el('bb-error');
+    if (errBox) {
+      var msgEl = errBox.querySelector('.error-state__message');
+      if (msgEl) msgEl.textContent = message || 'Check your connection and try again.';
+    }
+    showView('bb-error');
+  }
 
   // ---- LIST view ---------------------------------------------------------
 
@@ -459,7 +466,8 @@
       ]);
       renderList(active, past);
     } catch (err) {
-      showError();
+      console.error('[boss-battle] loadList failed:', err);
+      showError((err && err.message) || null);
     }
   }
 
