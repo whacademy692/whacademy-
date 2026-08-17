@@ -30,6 +30,28 @@ const Api = (() => {
     'favorites/add', 'favorites/remove', 'coins/spend'
   ]);
 
+  // A dead session — token expired (AUTH_003) or invalid/revoked/logged-out
+  // (AUTH_004) — cannot be fixed by a retry or by staying on the page. When any
+  // authenticated call returns one of these, we clear the token and send the
+  // student to login ONCE, so an expired session prompts a clean re-login
+  // EVERYWHERE. Without this, an expired token silently fell back to stale cache
+  // on some pages (dashboard) while dead-ending with an error on others (Boss
+  // Battle) — which is exactly the "Session has expired / Retry" wall we saw.
+  // Login-time codes (AUTH_001 bad credentials, AUTH_002 inactive) are NOT here
+  // — those belong to the login form, not a redirect.
+  const SESSION_DEAD_CODES = new Set(['AUTH_003', 'AUTH_004']);
+  let sessionDeathHandled = false;
+
+  function handleSessionDeath() {
+    if (sessionDeathHandled) return;          // one redirect, even if several calls fail at once
+    sessionDeathHandled = true;
+    try { Storage.clearToken(); } catch (e) {}
+    const page = (window.location.pathname.split('/').pop()) || '';
+    if (page !== 'login.html') {
+      window.location.href = 'login.html?redirect=' + encodeURIComponent(page) + '&reason=expired';
+    }
+  }
+
   function sleep(ms) { return new Promise((resolve) => setTimeout(resolve, ms)); }
 
   /**
@@ -81,6 +103,7 @@ const Api = (() => {
     if (!envelope.success) {
       const code = envelope.error && envelope.error.code;
       const message = (envelope.error && envelope.error.message) || 'Something went wrong.';
+      if (SESSION_DEAD_CODES.has(code)) handleSessionDeath();
       throw new ApiError(code, message, false);
     }
     return envelope.data;
