@@ -454,6 +454,16 @@ const Auth = (() => {
     const ALLOWED_ENTRY_STEPS = ['registration', 'forgot-pin'];
     const requestedStep = Router.getQueryParam('step');
 
+    // api.js redirects here with ?reason=expired when a dead session
+    // (AUTH_003/AUTH_004) is detected, so the student lands on a bare login
+    // form with no explanation of why they were signed out. A one-line notice
+    // turns that into an expected, unsurprising moment instead of a confusing
+    // "did I get logged out?" — no change to the actual auth flow.
+    if (Router.getQueryParam('reason') === 'expired' && window.Notifications) {
+      Notifications.info('Your session expired — please log in again.');
+    }
+
+
     // The PIN-reset email links to ?step=otp-verification&id=…&purpose=PasswordReset.
     // Without reading this, that link opened the code screen in REGISTRATION
     // mode, and the code was verified against the wrong OtpRequests row —
