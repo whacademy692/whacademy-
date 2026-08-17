@@ -458,16 +458,33 @@
   }
 
   async function loadList() {
-    showView('bb-skeleton');
+    // Cache-first, same pattern as dashboard.js: if we have a previous snapshot,
+    // paint it INSTANTLY (skip the skeleton entirely) instead of making the
+    // student stare at loading cards while Apps Script wakes up. The fresh
+    // network copy quietly replaces it — via renderList's view.innerHTML full
+    // replace, so this can never duplicate cards — as soon as it lands. First
+    // -ever visit (no cache yet) still shows the skeleton like before.
+    const cached = Storage.getCachedBossPapers();
+    const haveCache = !!(cached && cached.data);
+
+    if (haveCache) {
+      renderList(cached.data.active, cached.data.past);
+    } else {
+      showView('bb-skeleton');
+    }
+
     try {
       const [active, past] = await Promise.all([
         Api.bossBattle.activePapers(),
         Api.bossBattle.pastPapers().catch(() => ({ papers: [] }))
       ]);
+      Storage.setCachedBossPapers({ active, past });
       renderList(active, past);
     } catch (err) {
       console.error('[boss-battle] loadList failed:', err);
-      showError((err && err.message) || null);
+      // Cache already on screen → a failed background refresh is harmless,
+      // keep showing it rather than replacing a usable list with an error wall.
+      if (!haveCache) showError((err && err.message) || null);
     }
   }
 
