@@ -270,35 +270,53 @@
     Utils.qs('#dashboard-error').hidden = false;
   }
 
+  // All seven panels in one place so a cache paint and a fresh paint stay
+  // identical. Every render function clears its own container / sets its own
+  // text, so calling this twice (cache first, fresh second) can never duplicate.
+  function renderAll(data) {
+    renderIdentity(data.profile);
+    renderRecommendation(data.recommendation);
+    renderStats(data);
+    renderWeakTopics(data.weakTopics);
+    renderAchievements(data.recentAchievements);
+    renderCertificates(data.recentCertificates);
+    renderMySubjects(data.profile);
+  }
+
   async function loadDashboard() {
-    renderSkeleton();
+    const cached = Storage.getCachedDashboard();
+    const haveCache = !!(cached && cached.data);
+    let revealed = false;
+
+    // Cache-first: if we have a previous snapshot, paint it INSTANTLY instead of
+    // making the student watch a skeleton while Apps Script wakes up and reads
+    // sheets. The fresh copy quietly replaces it as soon as it arrives, so the
+    // page feels immediate even though the network round-trip still takes a
+    // couple of seconds. First-ever load (no cache) still shows the skeleton.
+    if (haveCache) {
+      renderAll(cached.data);
+      Animations.revealContent(Utils.qs('#dashboard-skeleton'), Utils.qs('#dashboard-content'));
+      revealed = true;
+    } else {
+      renderSkeleton();
+    }
+
     try {
       const data = await Api.dashboard.compose();
       Storage.setCachedDashboard(data);
-      renderIdentity(data.profile);
-      renderRecommendation(data.recommendation);
-      renderStats(data);
-      renderWeakTopics(data.weakTopics);
-      renderAchievements(data.recentAchievements);
-      renderCertificates(data.recentCertificates);
-      renderMySubjects(data.profile);
-      Animations.revealContent(Utils.qs('#dashboard-skeleton'), Utils.qs('#dashboard-content'));
-    } catch (err) {
-      // Fall back to cache if we have one — never show a blank/broken
-      // dashboard just because the network hiccuped.
-      const cached = Storage.getCachedDashboard();
-      if (cached && cached.data) {
-        renderIdentity(cached.data.profile);
-        renderRecommendation(cached.data.recommendation);
-        renderStats(cached.data);
-        renderWeakTopics(cached.data.weakTopics);
-        renderAchievements(cached.data.recentAchievements);
-        renderCertificates(cached.data.recentCertificates);
-        renderMySubjects(cached.data.profile);
+      renderAll(data);
+      if (!revealed) {
         Animations.revealContent(Utils.qs('#dashboard-skeleton'), Utils.qs('#dashboard-content'));
-        Notifications.info('Showing your last saved progress — reconnect to refresh.');
-      } else {
+        revealed = true;
+      }
+    } catch (err) {
+      // If cache is already on screen, a failed background refresh is harmless —
+      // keep the usable dashboard and just note it's not fresh. Only when we have
+      // nothing to show do we fall to the error state.
+      if (!revealed) {
         renderError();
+      } else {
+        Notifications.info('Couldn\u2019t refresh just now — showing your last saved progress.');
       }
     }
   }
