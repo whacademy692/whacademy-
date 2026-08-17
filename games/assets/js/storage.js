@@ -91,6 +91,10 @@ const Storage = (() => {
   function getCachedDashboard() { return get('dashboard_cache', null); }
   function setCachedDashboard(data) { return set('dashboard_cache', { data, cachedAt: Date.now() }); }
 
+  // ---- Boss Battle active-papers cache (same instant-paint pattern as dashboard) ----
+  function getCachedBossPapers() { return get('boss_papers_cache', null); }
+  function setCachedBossPapers(data) { return set('boss_papers_cache', { data, cachedAt: Date.now() }); }
+
   // ---- Settings (theme, text size, motion, sound — mirrors Settings tab) ----
   // Default is LIGHT, deliberately — never 'auto'. 'auto' followed the
   // device's OS setting, which is why the platform appeared dark on
@@ -132,6 +136,7 @@ const Storage = (() => {
     getAdminToken, setAdminToken, clearAdminToken,
     getStudentId, setStudentId,
     getCachedDashboard, setCachedDashboard,
+    getCachedBossPapers, setCachedBossPapers,
     getSettings, setSettings,
     queuePendingWrite, getPendingQueue, clearPendingQueueItem,
     getActiveGameSession, setActiveGameSession, clearActiveGameSession
