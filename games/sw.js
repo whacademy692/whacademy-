@@ -43,13 +43,17 @@
  */
 
 // ⚠️  BUMP THIS on every frontend deploy. See the note above.
-const CACHE_VERSION = 'wha-v59';
+const CACHE_VERSION = 'wha-v60';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
 const STATIC_ASSETS = [
   'welcome.html', 'login.html', 'dashboard.html', 'profile.html', 'settings.html',
   'games.html', 'leaderboard.html', 'revision.html', 'achievements.html', 'boss-battle.html',
   'assets/css/pages/boss-battle.css', 'assets/js/boss-battle.js',
+  // Boss-Battle "steps" question type: extra CSS, the KaTeX render helper, and
+  // the self-hosted KaTeX build (CSP forbids a CDN, so it ships in-repo).
+  'assets/css/pages/boss-steps.css', 'assets/js/katex-render.js',
+  'assets/vendor/katex/katex.min.js', 'assets/vendor/katex/katex.min.css',
   'assets/css/variables.css', 'assets/css/main.css', 'assets/css/layout.css',
   'assets/css/components.css', 'assets/css/animations.css', 'assets/css/responsive.css',
   'assets/css/pages/login.css', 'assets/css/pages/dashboard.css', 'assets/css/pages/games.css',
