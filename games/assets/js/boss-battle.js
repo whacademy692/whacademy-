@@ -155,8 +155,16 @@
   const TYPE_PARTS = [
     { type: 'mcq',   heading: 'Part A — Multiple Choice', hint: 'Choose one option.' },
     { type: 'short', heading: 'Part B — Short Questions',  hint: 'Answer briefly.' },
-    { type: 'long',  heading: 'Part C — Long Questions',   hint: 'Answer in detail.' }
+    { type: 'long',  heading: 'Part C — Long Questions',   hint: 'Answer in detail.' },
+    { type: 'steps', heading: 'Part D — Solve by Steps',
+      hint: 'Delete the steps that don\u2019t belong, then reorder the rest into the correct sequence.' }
   ];
+
+  // Renders a step\u2019s (possibly LaTeX) text with the self-hosted KaTeX helper,
+  // degrading to escaped plain text if MathText is unavailable.
+  function mathHtml(text) {
+    return (window.MathText ? window.MathText.toHtml(text) : esc(text).replace(/\n/g, '<br>'));
+  }
 
   function mcqBlock(q, num, readOnly, savedAnswer) {
     const opts = (q.options || []).map((opt, i) => {
@@ -203,6 +211,70 @@
     return questionShell(q, num, box);
   }
 
+  // A single reorderable / deletable step card. `math` text is rendered via a
+  // [data-math] span so KaTeX draws it after injection.
+  function stepCard(step, readOnly) {
+    const controls = readOnly ? '' :
+      '<div class="bb-step-card__ctrls">' +
+        '<button type="button" class="bb-step-btn bb-step-up" aria-label="Move step up">\u2191</button>' +
+        '<button type="button" class="bb-step-btn bb-step-down" aria-label="Move step down">\u2193</button>' +
+        '<button type="button" class="bb-step-btn bb-step-del" aria-label="Delete step">\u2715</button>' +
+      '</div>';
+    return '' +
+      '<li class="bb-step-card" data-sid="' + esc(step.sId) + '"' + (readOnly ? '' : ' draggable="true"') + '>' +
+        '<span class="bb-step-card__grip" aria-hidden="true">\u2630</span>' +
+        '<span class="bb-step-card__text" data-math="' + esc(step.text) + '"></span>' +
+        controls +
+      '</li>';
+  }
+
+  // The full steps question. In an attempt the student sees the shuffled cards
+  // (backend already stripped the answer key). In a read-only / submitted view
+  // we render only the kept steps, in the order the student left them.
+  function stepsBlock(q, num, readOnly, savedAnswer) {
+    let active = (q.steps || []).slice();
+    // savedAnswer is the kept sId order (from a submitted paper). Re-project the
+    // cards onto it so the student sees exactly what they built.
+    if (Array.isArray(savedAnswer) && savedAnswer.length) {
+      const byId = {};
+      (q.steps || []).forEach((s) => { byId[s.sId] = s; });
+      active = savedAnswer.map((id) => byId[id]).filter(Boolean);
+    } else if (Array.isArray(savedAnswer)) {
+      active = [];   // submitted but deleted everything
+    }
+
+    const activeList =
+      '<ol class="bb-steps__list" data-qid="' + esc(q.qId) + '">' +
+        active.map((s) => stepCard(s, readOnly)).join('') +
+      '</ol>';
+
+    // The "removed" tray only exists while attempting — a place deleted steps
+    // go so a mistaken delete is one tap to undo.
+    const tray = readOnly ? '' :
+      '<div class="bb-steps__tray" data-qid="' + esc(q.qId) + '" hidden>' +
+        '<span class="bb-steps__tray-label">Removed steps <small>(tap \u21A9 to bring one back)</small></span>' +
+        '<ol class="bb-steps__trash"></ol>' +
+      '</div>';
+
+    const inner =
+      '<div class="bb-steps" data-qid="' + esc(q.qId) + '">' +
+        (readOnly ? '' : '<p class="bb-steps__hint">Delete distractor steps, then drag or use \u2191\u2193 to order them.</p>') +
+        activeList +
+        tray +
+      '</div>';
+
+    // Build the shell ourselves so the question text renders as math too.
+    return '' +
+      '<div class="bb-q bb-q--steps">' +
+        '<div class="bb-q__head">' +
+          '<span class="bb-q__num">' + num + '</span>' +
+          '<p class="bb-q__text" data-math="' + esc(q.text) + '"></p>' +
+          '<span class="bb-q__marks">' + esc(q.marks) + '</span>' +
+        '</div>' +
+        inner +
+      '</div>';
+  }
+
   function questionShell(q, num, inner) {
     return '' +
       '<div class="bb-q">' +
@@ -235,7 +307,9 @@
         const sa = saved ? saved[q.qId] : null;
         bodyHtml += (q.type === 'mcq')
           ? mcqBlock(q, num, readOnly, sa)
-          : writtenBlock(q, num, readOnly, sa);
+          : (q.type === 'steps')
+            ? stepsBlock(q, num, readOnly, sa)
+            : writtenBlock(q, num, readOnly, sa);
       });
       bodyHtml += '</div>';
     });
@@ -273,6 +347,9 @@
 
     el('bb-back').addEventListener('click', loadList);
 
+    // Render any LaTeX (steps cards + steps question text) now that it's in the DOM.
+    if (window.MathText) MathText.render(el('bb-attempt-view'));
+
     if (!readOnly) {
       const view = el('bb-attempt-view');
       const updateCount = () => {
@@ -280,6 +357,11 @@
         paper.questions.forEach((q) => {
           if (q.type === 'mcq') {
             if (view.querySelector('input[name="' + CSS.escape(q.qId) + '"]:checked')) answered++;
+          } else if (q.type === 'steps') {
+            // A steps question counts as "answered" once the student has kept at
+            // least one step (i.e. engaged with it).
+            const list = view.querySelector('.bb-steps__list[data-qid="' + CSS.escape(q.qId) + '"]');
+            if (list && list.querySelector('.bb-step-card')) answered++;
           } else {
             const ta = view.querySelector('textarea[data-qid="' + CSS.escape(q.qId) + '"]');
             if (ta && ta.value.trim()) answered++;
@@ -288,6 +370,7 @@
         const c = el('bb-answered-count');
         if (c) c.textContent = answered + ' / ' + paper.questions.length + ' answered';
       };
+      wireSteps(view, updateCount);
       Utils.qsa('.bb-opt input', view).forEach((inp) => {
         inp.addEventListener('change', () => {
           // highlight the chosen option within its group
@@ -315,6 +398,112 @@
     showView('bb-attempt-view');
   }
 
+  // Wires every steps question in the attempt view: delete → tray, restore,
+  // ↑/↓ reorder, and native drag-and-drop on desktop. `onChange` refreshes the
+  // answered-count. All moves are DOM node moves, so already-rendered KaTeX is
+  // preserved (no re-render needed).
+  function wireSteps(view, onChange) {
+    Utils.qsa('.bb-steps', view).forEach((box) => {
+      const qid = box.getAttribute('data-qid');
+      const list = box.querySelector('.bb-steps__list');
+      const tray = box.querySelector('.bb-steps__tray');
+      const trash = tray ? tray.querySelector('.bb-steps__trash') : null;
+      if (!list) return;
+
+      const refreshTray = () => {
+        if (!tray) return;
+        tray.hidden = !trash.querySelector('.bb-step-card');
+      };
+
+      // Delete a card → move it to the tray with a restore button.
+      const makeRestoreCtrls = (card) => {
+        const ctrls = card.querySelector('.bb-step-card__ctrls');
+        if (ctrls) {
+          ctrls.innerHTML =
+            '<button type="button" class="bb-step-btn bb-step-restore" aria-label="Restore step">\u21A9</button>';
+        }
+        card.setAttribute('draggable', 'false');
+        card.classList.add('bb-step-card--removed');
+      };
+      const makeActiveCtrls = (card) => {
+        const ctrls = card.querySelector('.bb-step-card__ctrls');
+        if (ctrls) {
+          ctrls.innerHTML =
+            '<button type="button" class="bb-step-btn bb-step-up" aria-label="Move step up">\u2191</button>' +
+            '<button type="button" class="bb-step-btn bb-step-down" aria-label="Move step down">\u2193</button>' +
+            '<button type="button" class="bb-step-btn bb-step-del" aria-label="Delete step">\u2715</button>';
+        }
+        card.setAttribute('draggable', 'true');
+        card.classList.remove('bb-step-card--removed');
+      };
+
+      // Event delegation on the whole steps box.
+      box.addEventListener('click', (e) => {
+        const btn = e.target.closest('.bb-step-btn');
+        if (!btn) return;
+        const card = btn.closest('.bb-step-card');
+        if (!card) return;
+
+        if (btn.classList.contains('bb-step-del') && trash) {
+          makeRestoreCtrls(card);
+          trash.appendChild(card);
+          refreshTray();
+          onChange();
+        } else if (btn.classList.contains('bb-step-restore')) {
+          makeActiveCtrls(card);
+          list.appendChild(card);
+          refreshTray();
+          onChange();
+        } else if (btn.classList.contains('bb-step-up')) {
+          const prev = card.previousElementSibling;
+          if (prev) list.insertBefore(card, prev);
+          onChange();
+        } else if (btn.classList.contains('bb-step-down')) {
+          const next = card.nextElementSibling;
+          if (next) list.insertBefore(next, card);
+          onChange();
+        }
+      });
+
+      // Desktop drag-and-drop (optional; ↑/↓ works everywhere including mobile).
+      let dragging = null;
+      list.addEventListener('dragstart', (e) => {
+        const card = e.target.closest('.bb-step-card');
+        if (!card) return;
+        dragging = card;
+        card.classList.add('bb-step-card--dragging');
+        if (e.dataTransfer) e.dataTransfer.effectAllowed = 'move';
+      });
+      list.addEventListener('dragend', () => {
+        if (dragging) dragging.classList.remove('bb-step-card--dragging');
+        dragging = null;
+      });
+      list.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        if (!dragging) return;
+        const after = dragAfterElement(list, e.clientY);
+        if (after == null) list.appendChild(dragging);
+        else list.insertBefore(dragging, after);
+      });
+      list.addEventListener('drop', (e) => { e.preventDefault(); onChange(); });
+
+      refreshTray();
+    });
+  }
+
+  // Finds the card the dragged one should be inserted before, by cursor Y.
+  function dragAfterElement(list, y) {
+    const cards = Utils.qsa('.bb-step-card:not(.bb-step-card--dragging)', list);
+    let closest = null;
+    let closestOffset = Number.NEGATIVE_INFINITY;
+    cards.forEach((card) => {
+      const box = card.getBoundingClientRect();
+      const offset = y - box.top - box.height / 2;
+      if (offset < 0 && offset > closestOffset) { closestOffset = offset; closest = card; }
+    });
+    return closest;
+  }
+
   function collectAnswers(paper) {
     const view = el('bb-attempt-view');
     const answers = {};
@@ -322,6 +511,13 @@
       if (q.type === 'mcq') {
         const sel = view.querySelector('input[name="' + CSS.escape(q.qId) + '"]:checked');
         if (sel) answers[q.qId] = Number(sel.value);
+      } else if (q.type === 'steps') {
+        // The kept sIds in the order they now sit in the active list (top→bottom).
+        const list = view.querySelector('.bb-steps__list[data-qid="' + CSS.escape(q.qId) + '"]');
+        if (list) {
+          const ids = Utils.qsa('.bb-step-card', list).map((c) => c.getAttribute('data-sid'));
+          answers[q.qId] = ids;   // may be [] if they deleted everything
+        }
       } else {
         const ta = view.querySelector('textarea[data-qid="' + CSS.escape(q.qId) + '"]');
         if (ta && ta.value.trim()) answers[q.qId] = ta.value.trim();
@@ -395,9 +591,21 @@
         '</div>';
 
     const rows = items.map((it, i) => {
-      const yourAns = (it.type === 'mcq')
-        ? mcqAnswerLabel(it)
-        : (it.yourAnswer ? esc(it.yourAnswer).replace(/\n/g, '<br>') : '<em class="bb-muted-note">No answer given</em>');
+      let yourAns;
+      if (it.type === 'mcq') {
+        yourAns = mcqAnswerLabel(it);
+      } else if (it.type === 'steps') {
+        // The ordered sequence the student built, each step rendered as math.
+        const steps = Array.isArray(it.yourSteps) ? it.yourSteps : [];
+        yourAns = steps.length
+          ? '<ol class="bb-steps__result">' +
+              steps.map((s) => '<li class="bb-step-card bb-step-card--static">' +
+                '<span class="bb-step-card__text" data-math="' + esc(s.text) + '"></span></li>').join('') +
+            '</ol>'
+          : '<em class="bb-muted-note">No steps kept</em>';
+      } else {
+        yourAns = it.yourAnswer ? esc(it.yourAnswer).replace(/\n/g, '<br>') : '<em class="bb-muted-note">No answer given</em>';
+      }
       const gradedBlock = graded
         ? '<div class="bb-result-q__graded">' +
             '<span class="bb-pill bb-pill--graded">' +
@@ -406,10 +614,13 @@
               esc(it.correction).replace(/\n/g, '<br>') + '</p>' : '') +
           '</div>'
         : '';
+      const qText = (it.type === 'steps')
+        ? '<p class="bb-q__text" data-math="' + esc(it.text) + '"></p>'
+        : '<p class="bb-q__text">' + esc(it.text).replace(/\n/g, '<br>') + '</p>';
       return '' +
         '<div class="bb-result-q">' +
           '<div class="bb-q__head"><span class="bb-q__num">' + (i + 1) + '</span>' +
-            '<p class="bb-q__text">' + esc(it.text).replace(/\n/g, '<br>') + '</p>' +
+            qText +
             '<span class="bb-q__marks">' + esc(it.marks) + '</span></div>' +
           '<div class="bb-result-q__ans"><span class="bb-result-q__label">Your answer</span>' +
             '<div class="bb-result-q__ansbody">' + yourAns + '</div></div>' +
@@ -428,6 +639,7 @@
         '<div class="bb-paper-body">' + rows + '</div>' +
       '</div>';
 
+    if (window.MathText) MathText.render(el('bb-result-view'));
     el('bb-result-back').addEventListener('click', loadList);
     showView('bb-result-view');
   }
