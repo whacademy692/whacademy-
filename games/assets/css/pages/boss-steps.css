@@ -1,0 +1,157 @@
+/* ===========================================================================
+ * boss-steps.css — W.H. Academy
+ * Styles for the Boss-Battle "steps" (Parsons-style math) question type:
+ * reorderable / deletable step cards, the removed-steps tray, and the
+ * read-only result rendering. Uses the same design tokens as boss-battle.css.
+ * =========================================================================== */
+
+/* The steps question container inside a .bb-q */
+.bb-q--steps .bb-steps {
+  margin-top: var(--space-3);
+}
+
+.bb-steps__hint {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-3);
+}
+
+/* Active + trash lists share card styling; reset the <ol> chrome. */
+.bb-steps__list,
+.bb-steps__trash,
+.bb-steps__result {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* A single step card */
+.bb-step-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-bg-surface-solid);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease, transform 0.05s ease;
+}
+.bb-step-card:hover {
+  border-color: var(--color-border-strong);
+}
+
+/* Drag grip */
+.bb-step-card__grip {
+  color: var(--color-text-placeholder);
+  cursor: grab;
+  user-select: none;
+  font-size: 1.05rem;
+  line-height: 1;
+  flex: 0 0 auto;
+}
+.bb-step-card[draggable="false"] .bb-step-card__grip { visibility: hidden; }
+
+/* The (rendered) step text — takes the remaining width */
+.bb-step-card__text {
+  flex: 1 1 auto;
+  min-width: 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+/* Keep KaTeX from overflowing narrow phone cards */
+.bb-step-card__text .katex { font-size: 1.02em; }
+.bb-step-card__text .katex-display { margin: 0; }
+
+/* Control cluster (↑ ↓ ✕ / ↩) */
+.bb-step-card__ctrls {
+  display: flex;
+  gap: var(--space-2);
+  flex: 0 0 auto;
+}
+.bb-step-btn {
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-app);
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+}
+.bb-step-btn:hover { border-color: var(--color-border-strong); color: var(--color-text-primary); }
+.bb-step-btn:active { transform: translateY(1px); }
+.bb-step-del:hover { color: var(--color-warning); border-color: var(--color-warning); }
+.bb-step-restore:hover { color: var(--color-success); border-color: var(--color-success); }
+
+/* Dragging + removed states */
+.bb-step-card--dragging {
+  opacity: 0.6;
+  border-style: dashed;
+  border-color: var(--color-interactive);
+}
+.bb-step-card--removed {
+  opacity: 0.7;
+  background: var(--color-bg-app);
+  border-style: dashed;
+}
+.bb-step-card--removed .bb-step-card__text {
+  color: var(--color-text-secondary);
+  text-decoration: line-through;
+  text-decoration-color: var(--color-text-placeholder);
+}
+
+/* Removed-steps tray */
+.bb-steps__tray {
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-app);
+}
+.bb-steps__tray-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2);
+}
+.bb-steps__tray-label small { font-weight: 400; }
+
+/* Read-only result rendering: numbered, static cards */
+.bb-steps__result { counter-reset: bb-step; }
+.bb-step-card--static {
+  cursor: default;
+  box-shadow: none;
+}
+.bb-step-card--static::before {
+  counter-increment: bb-step;
+  content: counter(bb-step);
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  background: var(--color-brand-ink-tint);
+  color: var(--color-brand-ink);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* Touch targets a little larger on phones */
+@media (max-width: 640px) {
+  .bb-step-btn { width: 34px; height: 34px; }
+  .bb-step-card { padding: var(--space-3); }
+}
