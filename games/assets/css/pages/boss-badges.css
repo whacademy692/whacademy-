@@ -1,0 +1,128 @@
+/* ===========================================================================
+ * boss-badges.css — W.H. Academy
+ * Badge chips (student's own + on the board) and the class-scoped
+ * "Battle Bosses" ranking board. Uses the same tokens as boss-battle.css.
+ * =========================================================================== */
+
+/* Arena top strip: own badges + the board button */
+.bb-arena-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-5);
+}
+.bb-mybadges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  min-height: 1.75rem;
+}
+.bb-mybadges__label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  margin-right: var(--space-1);
+}
+.bb-mybadges__empty {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+.bb-board-btn { flex: 0 0 auto; }
+
+/* A badge chip */
+.bb-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  line-height: 1.2;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-surface-solid);
+  color: var(--color-text-primary);
+  max-width: 100%;
+}
+.bb-badge__lvl {
+  font-weight: 800;
+  font-size: 0.7rem;
+  padding: 0.05rem 0.35rem;
+  border-radius: var(--radius-sm);
+  color: #fff;
+}
+.bb-badge em { font-style: normal; font-weight: 700; opacity: 0.8; }
+
+/* Level colours */
+.bb-badge--l1 { border-color: #c7d2fe; background: #eef2ff; }
+.bb-badge--l1 .bb-badge__lvl { background: #6366f1; }
+.bb-badge--l2 { border-color: #bbf7d0; background: #f0fdf4; }
+.bb-badge--l2 .bb-badge__lvl { background: #16a34a; }
+.bb-badge--l3 { border-color: #fde68a; background: #fffbeb; }
+.bb-badge--l3 .bb-badge__lvl { background: #d97706; }
+
+/* ---- The board ---- */
+.bb-board { max-width: 760px; margin: 0 auto; }
+.bb-board__head { text-align: center; margin: var(--space-4) 0 var(--space-6); }
+.bb-board__title { font-family: var(--font-display); margin: 0 0 var(--space-2); }
+.bb-board__sub { color: var(--color-text-secondary); font-size: 0.9rem; margin: 0; }
+
+.bb-board__list { display: flex; flex-direction: column; gap: var(--space-3); }
+
+.bb-rank-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-surface-solid);
+}
+.bb-rank-row--you {
+  border-color: var(--color-interactive);
+  box-shadow: 0 0 0 1px var(--color-interactive) inset;
+}
+.bb-rank-row__pos {
+  flex: 0 0 auto;
+  min-width: 2.25rem;
+  text-align: center;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--color-text-secondary);
+}
+.bb-rank-row__main { flex: 1 1 auto; min-width: 0; }
+.bb-rank-row__name {
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+  display: flex; align-items: center; gap: var(--space-2);
+}
+.bb-you-tag {
+  font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+  padding: 0.05rem 0.4rem; border-radius: var(--radius-sm);
+  background: var(--color-interactive); color: #fff;
+}
+.bb-rank-row__badges { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.bb-rank-row__count {
+  flex: 0 0 auto;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-brand-ink);
+  min-width: 2rem;
+  text-align: center;
+}
+.bb-rank-row__count::after {
+  content: 'badges';
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--color-text-placeholder);
+  text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
+  .bb-rank-row { gap: var(--space-3); padding: var(--space-3); }
+  .bb-rank-row__pos { font-size: 1.1rem; min-width: 1.75rem; }
+  .bb-rank-row__count { font-size: 1.25rem; }
+}
