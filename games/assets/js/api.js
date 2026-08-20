@@ -270,7 +270,11 @@ const Api = (() => {
     paper: (paperId) => request('bossbattle/paper', { paperId }),
     // answers is a map { qId: answer } — MCQ answer is the chosen option index.
     submit: (paperId, answers) => request('bossbattle/submit', { paperId, answers }),
-    mySubmission: (paperId) => request('bossbattle/mySubmission', { paperId })
+    mySubmission: (paperId) => request('bossbattle/mySubmission', { paperId }),
+    // The signed-in student's own badges (with their own percents).
+    myBadges: () => request('bossbattle/myBadges', {}),
+    // Class-scoped public "Battle Bosses" ranking board (badges + rank only).
+    rankingBoard: () => request('bossbattle/rankingBoard', {})
   };
 
   // Every admin call carries the ADMIN token explicitly.
