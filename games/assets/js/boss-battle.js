@@ -175,7 +175,7 @@
           '<input type="radio" name="' + esc(q.qId) + '" value="' + i + '" ' + checked +
             (readOnly ? ' disabled' : '') + '>' +
           '<span class="bb-opt__mark">' + String.fromCharCode(65 + i) + '</span>' +
-          '<span class="bb-opt__text">' + esc(opt) + '</span>' +
+          '<span class="bb-opt__text">' + mathHtml(opt) + '</span>' +
         '</label>';
     }).join('');
     return questionShell(q, num, '<div class="bb-opts">' + opts + '</div>');
@@ -280,7 +280,7 @@
       '<div class="bb-q">' +
         '<div class="bb-q__head">' +
           '<span class="bb-q__num">' + num + '</span>' +
-          '<p class="bb-q__text">' + esc(q.text).replace(/\n/g, '<br>') + '</p>' +
+          '<p class="bb-q__text">' + mathHtml(q.text) + '</p>' +
           '<span class="bb-q__marks">' + esc(q.marks) + '</span>' +
         '</div>' +
         inner +
@@ -616,7 +616,7 @@
         : '';
       const qText = (it.type === 'steps')
         ? '<p class="bb-q__text" data-math="' + esc(it.text) + '"></p>'
-        : '<p class="bb-q__text">' + esc(it.text).replace(/\n/g, '<br>') + '</p>';
+        : '<p class="bb-q__text">' + mathHtml(it.text) + '</p>';
       return '' +
         '<div class="bb-result-q">' +
           '<div class="bb-q__head"><span class="bb-q__num">' + (i + 1) + '</span>' +
@@ -648,7 +648,7 @@
     if (it.yourAnswer === '' || it.yourAnswer == null) return '<em class="bb-muted-note">No answer given</em>';
     const idx = Number(it.yourAnswer);
     const opt = (it.options && it.options[idx] != null) ? it.options[idx] : '';
-    return '<strong>' + String.fromCharCode(65 + idx) + '.</strong> ' + esc(opt);
+    return '<strong>' + String.fromCharCode(65 + idx) + '.</strong> ' + mathHtml(opt);
   }
 
   // ---- flow --------------------------------------------------------------
