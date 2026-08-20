@@ -33,7 +33,7 @@
   function el(id) { return Utils.qs('#' + id); }
 
   function showView(name) {
-    ['bb-skeleton', 'bb-error', 'bb-list-view', 'bb-attempt-view', 'bb-result-view']
+    ['bb-skeleton', 'bb-error', 'bb-list-view', 'bb-attempt-view', 'bb-result-view', 'bb-board-view']
       .forEach((v) => { const n = el(v); if (n) n.hidden = (v !== name); });
     const hero = el('bb-hero');
     if (hero) hero.hidden = (name === 'bb-attempt-view'); // give the paper full focus
@@ -123,7 +123,7 @@
       '</section>';
   }
 
-  function renderList(activeData, pastData) {
+  function renderList(activeData, pastData, myBadges) {
     const papers = (activeData && activeData.papers) || [];
     const byLevel = { L1: [], L2: [], L3: [] };
     papers.forEach((p) => { if (byLevel[p.level]) byLevel[p.level].push(p); });
@@ -136,6 +136,10 @@
 
     const view = el('bb-list-view');
     view.innerHTML =
+      '<div class="bb-arena-top">' +
+        '<div id="bb-my-badges" class="bb-mybadges"></div>' +
+        '<button class="btn btn--secondary btn--sm bb-board-btn" id="bb-open-board" type="button">🏆 Battle Bosses</button>' +
+      '</div>' +
       '<div class="bb-lanes">' +
         levelLane('L1', byLevel.L1) +
         levelLane('L2', byLevel.L2) +
@@ -146,8 +150,86 @@
     Utils.qsa('.bb-open-btn', view).forEach((btn) => {
       btn.addEventListener('click', () => openPaper(btn.getAttribute('data-paper-id')));
     });
+    const boardBtn = el('bb-open-board');
+    if (boardBtn) boardBtn.addEventListener('click', loadBoard);
 
+    renderMyBadges(myBadges);
     showView('bb-list-view');
+  }
+
+  // ---- BADGES + BATTLE BOSSES BOARD --------------------------------------
+
+  // Small chips above the arena showing the student's own earned badges.
+  function renderMyBadges(data) {
+    const host = el('bb-my-badges');
+    if (!host) return;
+    const badges = (data && data.badges) || [];
+    if (!badges.length) {
+      const pending = data && data.l3status === 'pending';
+      host.innerHTML = '<span class="bb-mybadges__empty">' +
+        (pending ? 'L3 badge pending — finish your remaining L3 papers.'
+                 : 'No badges yet — score 50%+ on a boss paper to earn one.') + '</span>';
+      return;
+    }
+    host.innerHTML = '<span class="bb-mybadges__label">Your badges</span>' +
+      badges.map((b) => badgeChip(b, true)).join('');
+  }
+
+  function badgeChip(b, withPercent) {
+    const lvl = esc(b.level || '');
+    const pct = (withPercent && b.percent != null) ? ' <em>' + esc(b.percent) + '%</em>' : '';
+    return '<span class="bb-badge bb-badge--' + lvl.toLowerCase() + '" title="' + esc(b.label || '') + '">' +
+      '<span class="bb-badge__lvl">' + lvl + '</span>' + esc(b.label || '') + pct + '</span>';
+  }
+
+  async function loadBoard() {
+    const view = el('bb-board-view');
+    view.innerHTML = '<div class="bb-board"><button class="btn btn--tertiary btn--sm" id="bb-board-back">‹ Back to Arena</button>' +
+      '<p class="bb-muted-note" style="margin-top:var(--space-4);">Loading the board…</p></div>';
+    el('bb-board-back').addEventListener('click', loadList);
+    showView('bb-board-view');
+    try {
+      const data = await Api.bossBattle.rankingBoard();
+      renderBoard(data);
+    } catch (err) {
+      console.error('[boss-battle] board failed:', err);
+      view.innerHTML = '<div class="bb-board"><button class="btn btn--tertiary btn--sm" id="bb-board-back2">‹ Back to Arena</button>' +
+        '<p class="bb-muted-note" style="margin-top:var(--space-4);">Could not load the board. Try again.</p></div>';
+      el('bb-board-back2').addEventListener('click', loadList);
+    }
+  }
+
+  function renderBoard(data) {
+    const board = (data && data.board) || [];
+    const cls = (data && data.classLevel) ? ('Class ' + data.classLevel) : 'your class';
+    const rows = board.length
+      ? board.map((row) =>
+          '<div class="bb-rank-row' + (row.isYou ? ' bb-rank-row--you' : '') + '">' +
+            '<span class="bb-rank-row__pos">' + medal(row.rank) + '</span>' +
+            '<div class="bb-rank-row__main">' +
+              '<div class="bb-rank-row__name">' + esc(row.studentName) + (row.isYou ? ' <span class="bb-you-tag">you</span>' : '') + '</div>' +
+              '<div class="bb-rank-row__badges">' + (row.badges || []).map((b) => badgeChip(b, false)).join('') + '</div>' +
+            '</div>' +
+            '<span class="bb-rank-row__count">' + esc(row.badgeCount) + '</span>' +
+          '</div>').join('')
+      : '<p class="bb-muted-note" style="margin-top:var(--space-5);">No badges in ' + esc(cls) + ' yet. Be the first — score 50%+ on a boss paper!</p>';
+
+    el('bb-board-view').innerHTML =
+      '<div class="bb-board">' +
+        '<div class="bb-paper-topbar"><button class="btn btn--tertiary btn--sm" id="bb-board-back">‹ Back to Arena</button></div>' +
+        '<div class="bb-board__head"><h2 class="bb-board__title">🏆 Battle Bosses</h2>' +
+          '<p class="bb-board__sub">Top badge-holders in ' + esc(cls) + '. Badges only — no one sees anyone\u2019s papers.</p></div>' +
+        '<div class="bb-board__list">' + rows + '</div>' +
+      '</div>';
+    el('bb-board-back').addEventListener('click', loadList);
+    showView('bb-board-view');
+  }
+
+  function medal(rank) {
+    if (rank === 1) return '🥇';
+    if (rank === 2) return '🥈';
+    if (rank === 3) return '🥉';
+    return '#' + rank;
   }
 
   // ---- ATTEMPT view ------------------------------------------------------
@@ -686,12 +768,13 @@
     }
 
     try {
-      const [active, past] = await Promise.all([
+      const [active, past, badges] = await Promise.all([
         Api.bossBattle.activePapers(),
-        Api.bossBattle.pastPapers().catch(() => ({ papers: [] }))
+        Api.bossBattle.pastPapers().catch(() => ({ papers: [] })),
+        Api.bossBattle.myBadges().catch(() => ({ badges: [] }))
       ]);
       Storage.setCachedBossPapers({ active, past });
-      renderList(active, past);
+      renderList(active, past, badges);
     } catch (err) {
       console.error('[boss-battle] loadList failed:', err);
       // Cache already on screen → a failed background refresh is harmless,
