@@ -49,6 +49,13 @@
    */
   function toHtml(str) {
     const src = String(str == null ? '' : str);
+    // No $ delimiters at all: if the text carries a math signal (^ _ \), render
+    // the WHOLE thing as math (so "x^2+1" works without dollars); otherwise it's
+    // plain prose — escape it. This keeps word-answers like "None of these" text.
+    if (src.indexOf('$') === -1) {
+      if (/[\^_\\]/.test(src)) return renderExpr(src);
+      return escapeHtml(src).replace(/\n/g, '<br>');
+    }
     let out = '';
     let i = 0;
     let inMath = false;
