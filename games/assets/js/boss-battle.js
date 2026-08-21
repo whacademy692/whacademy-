@@ -248,6 +248,26 @@
     return (window.MathText ? window.MathText.toHtml(text) : esc(text).replace(/\n/g, '<br>'));
   }
 
+  // Standard rules shown at the top of EVERY paper (general template, plan §6).
+  // The paper's own optional `instructions` (set by the author) render below.
+  const GENERAL_INSTRUCTIONS = [
+    'Read every question carefully before you begin.',
+    'The marks for each question are shown on its right.',
+    'For "Solve by Steps", delete the steps that don\'t belong, then drag the rest into the correct order.',
+    'Once you submit, your answers are final — you cannot change them.'
+  ];
+
+  function instructionsBlock(paper) {
+    const general = '<ul class="bb-instructions__list">' +
+      GENERAL_INSTRUCTIONS.map((li) => '<li>' + esc(li) + '</li>').join('') + '</ul>';
+    const custom = (paper && paper.instructions)
+      ? '<div class="bb-instructions__custom"><span class="bb-instructions__custom-label">For this paper</span>' +
+        mathHtml(paper.instructions) + '</div>'
+      : '';
+    return '<div class="bb-instructions">' +
+      '<div class="bb-instructions__title">Instructions</div>' + general + custom + '</div>';
+  }
+
   function mcqBlock(q, num, readOnly, savedAnswer) {
     const opts = (q.options || []).map((opt, i) => {
       const checked = (String(savedAnswer) === String(i)) ? 'checked' : '';
@@ -402,7 +422,7 @@
             ? 'This is a past paper — practice only, not graded or ranked.'
             : 'You have already submitted this paper. This is a read-only view.') +
         '</div>'
-      : '<div class="bb-attempt-warn">Once you submit, your answers are final — you cannot change them.</div>';
+      : instructionsBlock(paper);
 
     const submitBar = readOnly ? '' :
       '<div class="bb-submitbar">' +
