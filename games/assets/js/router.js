@@ -34,8 +34,41 @@ const Router = (() => {
     return true;
   }
 
+  /**
+   * Adds the "Badges" item to the sidebar + bottom-nav on every page that has
+   * the app shell, so the tab appears app-wide without editing each page's
+   * markup. Idempotent — skips if the item is already present (e.g. badges.html
+   * ships it hard-coded).
+   */
+  function injectBadgesNav() {
+    const icon = '<svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="8" r="5"/>' +
+      '<path stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.5L7 21l5-3 5 3-1.5-8.5"/></svg>';
+    const sidebar = document.querySelector('.sidebar__nav');
+    if (sidebar && !sidebar.querySelector('[data-nav-page="badges.html"]')) {
+      const a = document.createElement('a');
+      a.className = 'sidebar__item';
+      a.href = 'badges.html';
+      a.setAttribute('data-nav-page', 'badges.html');
+      a.innerHTML = icon + ' Badges';
+      const anchor = sidebar.querySelector('[data-nav-page="revision.html"]') ||
+        sidebar.querySelector('[data-nav-page="profile.html"]');
+      if (anchor) sidebar.insertBefore(a, anchor); else sidebar.appendChild(a);
+    }
+    const bottom = document.querySelector('.bottom-nav');
+    if (bottom && !bottom.querySelector('[data-nav-page="badges.html"]')) {
+      const b = document.createElement('a');
+      b.className = 'bottom-nav__item';
+      b.href = 'badges.html';
+      b.setAttribute('data-nav-page', 'badges.html');
+      b.innerHTML = icon + ' Badges';
+      const anchorB = bottom.querySelector('[data-nav-page="profile.html"]');
+      if (anchorB) bottom.insertBefore(b, anchorB); else bottom.appendChild(b);
+    }
+  }
+
   /** Marks the correct bottom-nav / sidebar item as aria-current. */
   function highlightActiveNav() {
+    injectBadgesNav();
     const page = currentPageName();
     Utils.qsa('[data-nav-page]').forEach((el) => {
       if (el.dataset.navPage === page) {
