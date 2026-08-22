@@ -175,10 +175,19 @@
       badges.map((b) => badgeChip(b, true)).join('');
   }
 
+  // 50–64% bronze, 65–84% silver, 85%+ gold. Only applies where a percent is
+  // known (a student's own badges); the public board has no percents.
+  function badgeTier(pct) {
+    if (pct == null) return '';
+    if (pct >= 85) return ' bb-badge--gold';
+    if (pct >= 65) return ' bb-badge--silver';
+    return ' bb-badge--bronze';
+  }
   function badgeChip(b, withPercent) {
     const lvl = esc(b.level || '');
+    const tier = withPercent ? badgeTier(b.percent) : '';
     const pct = (withPercent && b.percent != null) ? ' <em>' + esc(b.percent) + '%</em>' : '';
-    return '<span class="bb-badge bb-badge--' + lvl.toLowerCase() + '" title="' + esc(b.label || '') + '">' +
+    return '<span class="bb-badge bb-badge--' + lvl.toLowerCase() + tier + '" title="' + esc(b.label || '') + '">' +
       '<span class="bb-badge__lvl">' + lvl + '</span>' + esc(b.label || '') + pct + '</span>';
   }
 
@@ -315,15 +324,17 @@
 
   // A single reorderable / deletable step card. `math` text is rendered via a
   // [data-math] span so KaTeX draws it after injection.
-  function stepCard(step, readOnly) {
+  function stepCard(step, readOnly, orderMatters) {
+    const reorder = (orderMatters === false) ? '' :
+      '<button type="button" class="bb-step-btn bb-step-up" aria-label="Move step up">\u2191</button>' +
+      '<button type="button" class="bb-step-btn bb-step-down" aria-label="Move step down">\u2193</button>';
     const controls = readOnly ? '' :
-      '<div class="bb-step-card__ctrls">' +
-        '<button type="button" class="bb-step-btn bb-step-up" aria-label="Move step up">\u2191</button>' +
-        '<button type="button" class="bb-step-btn bb-step-down" aria-label="Move step down">\u2193</button>' +
+      '<div class="bb-step-card__ctrls">' + reorder +
         '<button type="button" class="bb-step-btn bb-step-del" aria-label="Delete step">\u2715</button>' +
       '</div>';
+    const drag = (readOnly || orderMatters === false) ? '' : ' draggable="true"';
     return '' +
-      '<li class="bb-step-card" data-sid="' + esc(step.sId) + '"' + (readOnly ? '' : ' draggable="true"') + '>' +
+      '<li class="bb-step-card" data-sid="' + esc(step.sId) + '"' + drag + '>' +
         '<span class="bb-step-card__grip" aria-hidden="true">\u2630</span>' +
         '<span class="bb-step-card__text" data-math="' + esc(step.text) + '"></span>' +
         controls +
@@ -334,6 +345,7 @@
   // (backend already stripped the answer key). In a read-only / submitted view
   // we render only the kept steps, in the order the student left them.
   function stepsBlock(q, num, readOnly, savedAnswer) {
+    const orderMatters = q.orderMatters !== false;
     let active = (q.steps || []).slice();
     // savedAnswer is the kept sId order (from a submitted paper). Re-project the
     // cards onto it so the student sees exactly what they built.
@@ -347,7 +359,7 @@
 
     const activeList =
       '<ol class="bb-steps__list" data-qid="' + esc(q.qId) + '">' +
-        active.map((s) => stepCard(s, readOnly)).join('') +
+        active.map((s) => stepCard(s, readOnly, orderMatters)).join('') +
       '</ol>';
 
     // The "removed" tray only exists while attempting — a place deleted steps
@@ -358,9 +370,12 @@
         '<ol class="bb-steps__trash"></ol>' +
       '</div>';
 
+    const hint = orderMatters
+      ? 'Delete the steps that don\u2019t belong, then drag or use \u2191\u2193 to put the rest in order.'
+      : 'Delete the steps that don\u2019t belong — the order does not matter here.';
     const inner =
       '<div class="bb-steps" data-qid="' + esc(q.qId) + '">' +
-        (readOnly ? '' : '<p class="bb-steps__hint">Delete distractor steps, then drag or use \u2191\u2193 to order them.</p>') +
+        (readOnly ? '' : '<p class="bb-steps__hint">' + hint + '</p>') +
         activeList +
         tray +
       '</div>';
