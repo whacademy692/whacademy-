@@ -15,10 +15,17 @@
     : String(v == null ? '' : v).replace(/[&<>"']/g, (c) =>
         ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])));
 
+  function badgeTier(pct) {
+    if (pct == null) return '';
+    if (pct >= 85) return ' bb-badge--gold';
+    if (pct >= 65) return ' bb-badge--silver';
+    return ' bb-badge--bronze';
+  }
   function badgeChip(b, withPercent) {
     const lvl = esc(b.level || '');
+    const tier = withPercent ? badgeTier(b.percent) : '';
     const pct = (withPercent && b.percent != null) ? ' <em>' + esc(b.percent) + '%</em>' : '';
-    return '<span class="bb-badge bb-badge--' + lvl.toLowerCase() + '" title="' + esc(b.label || '') + '">' +
+    return '<span class="bb-badge bb-badge--' + lvl.toLowerCase() + tier + '" title="' + esc(b.label || '') + '">' +
       '<span class="bb-badge__lvl">' + lvl + '</span>' + esc(b.label || '') + pct + '</span>';
   }
 
@@ -87,7 +94,26 @@
           '<p class="bb-board__sub">Badge-holders in ' + esc(cls) + '. Badges only — no one sees anyone\u2019s papers.</p>' +
         '</div>' +
         '<div class="bb-board__list">' + boardRows + '</div>' +
+        legendBlock() +
       '</div>';
+  }
+
+  // A small "how badges work" legend (plan §10).
+  function legendBlock() {
+    return '<div class="bb-legend">' +
+      '<div class="bb-legend__title">How badges work</div>' +
+      '<ul class="bb-legend__rules">' +
+        '<li><span class="bb-badge bb-badge--l1"><span class="bb-badge__lvl">L1</span>Chapter</span> — score 50%+ on a chapter\u2019s paper.</li>' +
+        '<li><span class="bb-badge bb-badge--l2"><span class="bb-badge__lvl">L2</span>Subject</span> — score 50%+ on a subject\u2019s paper.</li>' +
+        '<li><span class="bb-badge bb-badge--l3"><span class="bb-badge__lvl">L3</span>Whole syllabus</span> — your marks across all L3 papers add up to 50%+.</li>' +
+      '</ul>' +
+      '<div class="bb-legend__title" style="margin-top:var(--space-3);">Tiers (by your score)</div>' +
+      '<div class="bb-legend__tiers">' +
+        '<span class="bb-badge bb-badge--l1 bb-badge--bronze"><span class="bb-badge__lvl">L1</span>Bronze <em>50–64%</em></span>' +
+        '<span class="bb-badge bb-badge--l1 bb-badge--silver"><span class="bb-badge__lvl">L1</span>Silver <em>65–84%</em></span>' +
+        '<span class="bb-badge bb-badge--l1 bb-badge--gold"><span class="bb-badge__lvl">L1</span>Gold <em>85–100%</em></span>' +
+      '</div>' +
+    '</div>';
   }
 
   async function load() {
