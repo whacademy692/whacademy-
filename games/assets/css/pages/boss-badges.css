@@ -158,3 +158,23 @@
   border-radius: var(--radius-md);
   margin-bottom: var(--space-4);
 }
+
+/* ---- Badge tiers (by percent) + rules legend (plan §10) ---- */
+.bb-badge--bronze { box-shadow: inset 0 0 0 2px rgba(205,127,50,0.65); }
+.bb-badge--silver { box-shadow: inset 0 0 0 2px rgba(148,163,184,0.75); }
+.bb-badge--gold   { box-shadow: inset 0 0 0 2px rgba(234,179,8,0.85); }
+
+.bb-legend {
+  margin-top: var(--space-6);
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-surface-solid);
+}
+.bb-legend__title {
+  font-size: 0.75rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.04em; color: var(--color-text-secondary); margin-bottom: var(--space-2);
+}
+.bb-legend__rules { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+.bb-legend__rules li { font-size: 0.9rem; color: var(--color-text-primary); display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
+.bb-legend__tiers { display: flex; flex-wrap: wrap; gap: var(--space-2); }
