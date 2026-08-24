@@ -34,6 +34,9 @@
   }
 
   // text/plain avoids a CORS preflight Apps Script can't answer (same trick as api.js).
+  // Cold-start HTML is auto-retried ONLY for the read-only approved feed — a
+  // submit is never retried (it would duplicate the row and reuse a single-use
+  // Turnstile token).
   function apiCall(operation, params, _attempt) {
     var attempt = _attempt || 1;
     var body = Object.assign({ operation: operation, apiKey: API_KEY }, params || {});
@@ -46,21 +49,18 @@
       .then(function (text) {
         var env = null;
         try { env = JSON.parse(text); } catch (e) { env = null; }
-        // Cold-start / transient responses come back as HTML, not JSON — retry.
-        if (env === null) { var re = new Error('cold-start'); re.__retry = true; throw re; }
+        if (env === null) {
+          if (operation === 'insights/approved' && attempt < 4) {
+            return new Promise(function (resolve) {
+              setTimeout(function () { resolve(apiCall(operation, params, attempt + 1)); }, 700 * attempt);
+            });
+          }
+          throw new Error('The server is waking up — please try again in a moment.');
+        }
         if (env.success) return env.data || {};
         var e2 = new Error((env.error && env.error.message) || 'Something went wrong.');
         e2.code = env.error && env.error.code;
         throw e2;
-      })
-      .catch(function (e) {
-        var transient = (e && e.__retry) || (e instanceof TypeError);
-        if (transient && attempt < 4) {
-          return new Promise(function (resolve) {
-            setTimeout(function () { resolve(apiCall(operation, params, attempt + 1)); }, 700 * attempt);
-          });
-        }
-        throw e;
       });
   }
 
