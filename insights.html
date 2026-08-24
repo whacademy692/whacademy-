@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insights & Feedback - W.H. Academy</title>
+  <meta name="description" content="Share your experience with a topic — students, parents and teachers. Approved insights help W.H. Academy improve.">
+  <meta name="theme-color" content="#4f46e5">
+  <meta name="robots" content="index, follow">
+
+  <!--
+    Content-Security-Policy for THIS page only. Adds Cloudflare Turnstile
+    (challenges.cloudflare.com) to script/connect/frame, plus Google Fonts and
+    the Apps Script API endpoint. Turnstile = the anti-spam gate for the form.
+  -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="insights.css">
+
+  <!--
+    Cloudflare Turnstile. The SITE key below is the same one the admin panel
+    uses; it is PUBLIC (safe to commit). The form works with the widget OFF too
+    — it only becomes an enforced gate once FLAG_CAPTCHA + TURNSTILE_SECRET_KEY
+    are set on the backend. Replace the site key only if you rotate it.
+  -->
+  <script>
+    window.WHA_TURNSTILE_SITE_KEY = '0x4AAAAAAEKa85ts_mWrcild';
+    window.__whaTurnstileReady = false;
+    window.whaTurnstileOnload = function () {
+      window.__whaTurnstileReady = true;
+      if (window.WHAInsights && window.WHAInsights.renderCaptcha) window.WHAInsights.renderCaptcha();
+    };
+  </script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=whaTurnstileOnload&render=explicit" async defer></script>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="wrap topbar__inner">
+      <a class="brand" href="index.html">W.H. <span>Academy</span></a>
+      <a class="topbar__back" href="index.html">&larr; Back to site</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <span class="hero__eyebrow">Insights &amp; Feedback</span>
+      <h1 class="hero__title">Tell us what <em>helped </em> and what didn't.</h1>
+      <p class="hero__sub">Students, parents and teachers all welcome. Share your experience with a topic. Approved insights appear below to help everyone learn.</p>
+    </section>
+
+    <!-- STEP 1 — who are you -->
+    <section class="section" id="pickSection">
+      <h2 class="section__title">Who are you?</h2>
+      <p class="section__hint">Pick one to open the right form.</p>
+      <div class="roles" role="group" aria-label="Choose your role">
+        <button class="role" type="button" data-role="student" aria-pressed="false">
+          <span class="role__icon"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l9 5-9 5-9-5 9-5z"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 8v5M7 11v4c0 1.5 2.2 3 5 3s5-1.5 5-3v-4"/></svg></span>
+          <span class="role__name">Student</span> <br>
+          <span class="role__desc">Feedback on a chapter or topic you studied.</span>
+        </button>
+        <button class="role" type="button" data-role="parent" aria-pressed="false">
+          <span class="role__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3.2"/><path stroke-linecap="round" d="M5 21c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg></span>
+          <span class="role__name">Parent</span> <br>
+          <span class="role__desc">Challenges you see and what you expect.</span>
+        </button>
+        <button class="role" type="button" data-role="teacher" aria-pressed="false">
+          <span class="role__icon"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l9-3 9 3-9 3-9-3z"/><path stroke-linecap="round" stroke-linejoin="round" d="M7 8v5c0 1.6 2.2 3 5 3s5-1.4 5-3V8M12 11v9"/></svg></span>
+          <span class="role__name">Teacher</span> <br>
+          <span class="role__desc">Teaching tips, mistakes and exam pointers.</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- STEP 2 — the form (built per role by insights.js) -->
+    <section class="section form" id="formSection" hidden>
+      <h2 class="section__title" id="formTitle">Your feedback</h2>
+      <p class="section__hint" id="formHint"></p>
+      <form class="card" id="insightForm" novalidate autocomplete="off">
+        <div id="formFields"></div>
+
+        <div class="captcha" id="captchaHost"></div>
+
+        <div id="formNotice" class="notice notice--err" hidden></div>
+
+        <div class="form__acts">
+          <button class="btn btn--primary" type="submit" id="submitBtn">Submit feedback</button>
+          <button class="btn btn--ghost" type="button" id="changeRoleBtn">Change role</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- STEP 3 — success -->
+    <section class="section" id="doneSection" hidden>
+      <div class="card done">
+        <div class="done__badge"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
+        <h2>Thank you!</h2>
+        <p>Your feedback has been received. Once it's reviewed, it will appear in the community insights below.</p>
+        <button class="btn btn--primary" type="button" id="againBtn">Share another</button>
+      </div>
+    </section>
+
+    <!-- Approved community insights -->
+    <section class="section" id="feedSection">
+      <h2 class="section__title">Community insights</h2>
+      <p class="section__hint">Approved feedback, in the words of the people who shared it.</p>
+      <div class="feed" id="feed"><p class="empty">Loading insights…</p></div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">© <span id="year"></span> W.H. Academy · Insights are moderated before they appear.</div>
+  </footer>
+
+  <!-- WHA_CONTENT: the 168-chapter class → subject → chapter registry -->
+  <script src="games/assets/js/content-registry.js"></script>
+  <script src="insights.js"></script>
+</body>
+</html>
