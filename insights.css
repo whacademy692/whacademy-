@@ -253,18 +253,47 @@ a { color: var(--primary-mid); }
 .done p { color: var(--muted); margin: 0 auto 18px; max-width: 420px; }
 
 /* ---- Community list ---- */
-.feed { display: grid; gap: 16px; }
+.feed { display: grid; gap: 18px; }
 .tile {
+  position: relative;
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 18px 20px;
+  padding: 20px 22px 20px 26px;
   box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.tile__head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }
-.tile__name { font-weight: 800; }
+.tile:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(30, 27, 75, 0.12); }
+/* left accent bar, colored by role */
+.tile::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 5px;
+}
+.tile--student::before { background: var(--primary-mid); }
+.tile--parent::before  { background: var(--accent-amber); }
+.tile--teacher::before { background: var(--accent-pink); }
+
+.tile__head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.tile__avatar {
+  flex: none;
+  width: 44px; height: 44px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+.tile__avatar--student { background: linear-gradient(135deg, var(--primary-mid), var(--primary)); }
+.tile__avatar--parent  { background: linear-gradient(135deg, var(--accent-amber), #d97706); }
+.tile__avatar--teacher { background: linear-gradient(135deg, var(--accent-pink), #be185d); }
+.tile__id { min-width: 0; }
+.tile__name { font-weight: 800; font-size: 1.02rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .badge {
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -275,17 +304,18 @@ a { color: var(--primary-mid); }
 .badge--student { background: var(--primary-mid); }
 .badge--parent  { background: var(--accent-amber); }
 .badge--teacher { background: var(--accent-pink); }
-.tile__meta { color: var(--muted); font-size: 0.82rem; margin-bottom: 10px; }
+.tile__meta { color: var(--muted); font-size: 0.82rem; margin-top: 3px; }
 .tile__meta b { color: var(--ink); font-weight: 700; }
-.tile__block { margin-top: 10px; }
+.tile__block { margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line); }
+.tile__block:first-of-type { border-top: none; padding-top: 0; }
 .tile__block h4 {
-  margin: 0 0 2px;
-  font-size: 0.78rem;
+  margin: 0 0 3px;
+  font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--primary-mid);
 }
-.tile__block p { margin: 0; white-space: pre-wrap; }
+.tile__block p { margin: 0; white-space: pre-wrap; line-height: 1.55; }
 .empty { color: var(--muted); text-align: center; padding: 28px; }
 
 .footer { text-align: center; padding: 40px 0; color: var(--muted); font-size: 0.85rem; }

@@ -16,7 +16,8 @@
   var API_BASE_URL = 'https://script.google.com/macros/s/AKfycbxjaqW5hmUk6B5gYW3hRjAfsPrbrdZB4a3B3VfJRvfKcfepz4WPYIX_aCVKS-STmiwQIA/exec';
   var API_KEY = 'Jdb-iJByoQ-WA0UwlQrorQOH77buDQjepPH0y2SsDyo';
 
-  var TEXT_MAX = 1500;
+  var TEXT_MAX = 5000;
+  var TOPIC_MAX = 700;
 
   // ---- tiny DOM + API helpers ---------------------------------------------
   function qs(sel, root) { return (root || document).querySelector(sel); }
@@ -106,12 +107,14 @@
   }
   function areaField(id, label, opts) {
     opts = opts || {};
+    var max = opts.max || TEXT_MAX;
     var reqMark = opts.required ? ' <span class="req">*</span>' : ' <span class="opt">(optional)</span>';
     return '<div class="field">' +
       '<label class="label" for="' + id + '">' + esc(label) + reqMark + '</label>' +
-      '<textarea class="textarea" id="' + id + '" maxlength="' + TEXT_MAX + '"' +
+      '<textarea class="textarea" id="' + id + '" maxlength="' + max + '"' +
+      (opts.rows ? ' rows="' + opts.rows + '"' : '') +
       (opts.placeholder ? ' placeholder="' + esc(opts.placeholder) + '"' : '') + '></textarea>' +
-      '<span class="charcount" data-for="' + id + '">0/' + TEXT_MAX + '</span>' +
+      '<span class="charcount" data-for="' + id + '">0 / ' + max + ' characters</span>' +
       '</div>';
   }
   function selectField(id, label) {
@@ -124,7 +127,7 @@
   function cascadeFields() {
     return '<div class="grid2">' + selectField('f-class', 'Class') + selectField('f-subject', 'Subject') + '</div>' +
       selectField('f-chapter', 'Chapter') +
-      textField('f-topic', 'Topic (specific part of the chapter)', { required: true, placeholder: 'e.g. Long division of decimals' });
+      areaField('f-topic', 'Topic(s) — the specific part(s) of the chapter', { required: true, max: TOPIC_MAX, rows: 2, placeholder: 'e.g. Long division of decimals; rounding off; word problems…' });
   }
 
   // ---- role -> form definition --------------------------------------------
@@ -239,7 +242,8 @@
     Array.prototype.forEach.call(document.querySelectorAll('.textarea'), function (t) {
       var counter = document.querySelector('.charcount[data-for="' + t.id + '"]');
       if (!counter) return;
-      var update = function () { counter.textContent = t.value.length + '/' + TEXT_MAX; };
+      var max = t.getAttribute('maxlength') || TEXT_MAX;
+      var update = function () { counter.textContent = t.value.length + ' / ' + max + ' characters'; };
       t.addEventListener('input', update); update();
     });
   }
@@ -328,43 +332,85 @@
     if (!text) return '';
     return '<div class="tile__block"><h4>' + esc(title) + '</h4><p>' + esc(text) + '</p></div>';
   }
+  function initials(name) {
+    var parts = String(name || 'A').trim().split(/\s+/).slice(0, 2);
+    return parts.map(function (p) { return p.charAt(0).toUpperCase(); }).join('') || 'A';
+  }
   function metaLine(it) {
     var bits = [];
     if (it.role === 'teacher' && it.experienceYears) bits.push('<b>' + esc(it.experienceYears) + '</b> yrs experience');
     if (it.classLevel) bits.push('Class <b>' + esc(it.classLevel) + '</b>');
     if (it.subject) bits.push(esc(it.subject));
     if (it.chapter) bits.push(esc(it.chapter));
-    if (it.topic) bits.push('<b>' + esc(it.topic) + '</b>');
     if (it.schools) bits.push(esc(it.schools));
     return bits.join(' · ');
   }
   function tile(it) {
     var roleName = it.role.charAt(0).toUpperCase() + it.role.slice(1);
-    var blocks = '';
+    var blocks = block('Topic', it.topic);
     if (it.role === 'student') {
-      blocks = block('What was difficult', it.field1) + block('How they solved it', it.field2);
+      blocks += block('What was difficult', it.field1) + block('How they solved it', it.field2);
     } else if (it.role === 'parent') {
-      blocks = block('Challenges', it.field1) + block('Their approach', it.field2) + block('Expectations', it.field3);
+      blocks += block('Challenges', it.field1) + block('Their approach', it.field2) + block('Expectations', it.field3);
     } else {
-      blocks = block('Teaching tips', it.field1) + block('Common mistakes', it.field2) + block('Exam tips', it.field3);
+      blocks += block('Teaching tips', it.field1) + block('Common mistakes', it.field2) + block('Exam tips', it.field3);
     }
     var meta = metaLine(it);
-    return '<article class="tile">' +
-      '<div class="tile__head"><span class="tile__name">' + esc(it.name || 'Anonymous') + '</span>' +
-      '<span class="badge badge--' + esc(it.role) + '">' + esc(roleName) + '</span></div>' +
-      (meta ? '<div class="tile__meta">' + meta + '</div>' : '') +
+    return '<article class="tile tile--' + esc(it.role) + '">' +
+      '<header class="tile__head">' +
+        '<div class="tile__avatar tile__avatar--' + esc(it.role) + '">' + esc(initials(it.name)) + '</div>' +
+        '<div class="tile__id">' +
+          '<div class="tile__name">' + esc(it.name || 'Anonymous') +
+            ' <span class="badge badge--' + esc(it.role) + '">' + esc(roleName) + '</span></div>' +
+          (meta ? '<div class="tile__meta">' + meta + '</div>' : '') +
+        '</div>' +
+      '</header>' +
       blocks +
       '</article>';
   }
-  function loadFeed() {
+
+  // Fetched once, drawn in batches as the reader scrolls (no page reload needed).
+  var feedList = [];
+  var feedShown = 0;
+  var feedObserver = null;
+  var FEED_BATCH = 8;
+
+  function renderMoreFeed() {
+    var host = qs('#feed');
+    var old = document.getElementById('feed-sentinel'); if (old) old.remove();
+    var slice = feedList.slice(feedShown, feedShown + FEED_BATCH);
+    feedShown += slice.length;
+    slice.forEach(function (it) { host.insertAdjacentHTML('beforeend', tile(it)); });
+    if (feedShown < feedList.length) {
+      host.insertAdjacentHTML('beforeend', '<div id="feed-sentinel" style="height:1px;"></div>');
+      var s = document.getElementById('feed-sentinel');
+      if (feedObserver) feedObserver.disconnect();
+      feedObserver = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { feedObserver.disconnect(); renderMoreFeed(); }
+      }, { rootMargin: '300px' });
+      feedObserver.observe(s);
+    }
+  }
+
+  // Retries a few times: the very first call after a fresh Apps Script deploy
+  // can be a cold start, which is why the feed sometimes only appeared after a
+  // reload. Now it loads in place, first time.
+  function loadFeed(attempt) {
+    attempt = attempt || 1;
     var host = qs('#feed');
     apiCall('insights/approved', {})
       .then(function (data) {
-        var list = (data && data.insights) || [];
-        if (!list.length) { host.innerHTML = '<p class="empty">No insights yet — be the first to share.</p>'; return; }
-        host.innerHTML = list.map(tile).join('');
+        feedList = (data && data.insights) || [];
+        feedShown = 0;
+        if (feedObserver) { feedObserver.disconnect(); feedObserver = null; }
+        if (!feedList.length) { host.innerHTML = '<p class="empty">No insights yet — be the first to share.</p>'; return; }
+        host.innerHTML = '';
+        renderMoreFeed();
       })
-      .catch(function () { host.innerHTML = '<p class="empty">Could not load insights right now.</p>'; });
+      .catch(function () {
+        if (attempt < 3) { setTimeout(function () { loadFeed(attempt + 1); }, 1200); return; }
+        host.innerHTML = '<p class="empty">Could not load insights right now. Please refresh.</p>';
+      });
   }
 
   // ---- init ---------------------------------------------------------------
