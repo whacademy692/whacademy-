@@ -34,18 +34,32 @@
   }
 
   // text/plain avoids a CORS preflight Apps Script can't answer (same trick as api.js).
-  function apiCall(operation, params) {
+  function apiCall(operation, params, _attempt) {
+    var attempt = _attempt || 1;
     var body = Object.assign({ operation: operation, apiKey: API_KEY }, params || {});
     return fetch(API_BASE_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify(body)
     })
-      .then(function (r) { return r.json(); })
-      .then(function (env) {
-        if (env && env.success) return env.data || {};
-        var e = new Error((env && env.error && env.error.message) || 'Something went wrong.');
-        e.code = env && env.error && env.error.code;
+      .then(function (r) { return r.text(); })
+      .then(function (text) {
+        var env = null;
+        try { env = JSON.parse(text); } catch (e) { env = null; }
+        // Cold-start / transient responses come back as HTML, not JSON — retry.
+        if (env === null) { var re = new Error('cold-start'); re.__retry = true; throw re; }
+        if (env.success) return env.data || {};
+        var e2 = new Error((env.error && env.error.message) || 'Something went wrong.');
+        e2.code = env.error && env.error.code;
+        throw e2;
+      })
+      .catch(function (e) {
+        var transient = (e && e.__retry) || (e instanceof TypeError);
+        if (transient && attempt < 4) {
+          return new Promise(function (resolve) {
+            setTimeout(function () { resolve(apiCall(operation, params, attempt + 1)); }, 700 * attempt);
+          });
+        }
         throw e;
       });
   }
