@@ -321,9 +321,67 @@
     }
   }
 
+  // ---- MY CHAPTERS — the student's own chapter/topic performance ----
+  function myChapAccColor(a) { return a < 0.5 ? '#ef4444' : (a < 0.75 ? '#f59e0b' : '#22c55e'); }
+  function myChapTitle(ref) {
+    return String(ref).split('/').pop().replace(/[_-]+/g, ' ').replace(/\b\w/g, function (c) { return c.toUpperCase(); });
+  }
+
+  function renderMyChapters(chapters) {
+    const section = Utils.qs('#my-chapters-section');
+    const list = Utils.qs('#my-chapters-list');
+    if (!section || !list) return;
+    section.hidden = false;
+    list.innerHTML = '';
+
+    if (!chapters || !chapters.length) {
+      list.appendChild(Utils.createEl('p', { class: 'text-body-sm', text: 'Play a few games and your chapter-by-chapter performance will show up here.' }));
+      return;
+    }
+
+    chapters.forEach((c) => {
+      const pctText = c.lowSample ? 'keep going' : Utils.formatPercent(c.accuracy);
+      const head = Utils.createEl('div', { class: 'mychap__head' }, [
+        Utils.createEl('span', { class: 'mychap__name', text: myChapTitle(c.chapterRef) }),
+        Utils.createEl('span', { class: 'mychap__pct', text: pctText, style: c.lowSample ? 'color:var(--color-text-secondary);font-weight:700;' : ('color:' + myChapAccColor(c.accuracy)) })
+      ]);
+      const track = Utils.createEl('span', { class: 'mychap__track' }, [
+        Utils.createEl('i', { class: 'mychap__fill', style: 'width:' + Math.round((c.lowSample ? 0 : c.accuracy) * 100) + '%;background:' + (c.lowSample ? '#cbd5e1' : myChapAccColor(c.accuracy)) + ';' })
+      ]);
+      const hint = Utils.createEl('span', { class: 'mychap__hint', text: c.attemptCount + ' attempts' + (c.lowSample ? ' · not enough yet for a score' : '') });
+      const summary = Utils.createEl('summary', {}, [head, track, hint]);
+
+      const topicsWrap = Utils.createEl('div', { class: 'mychap__topics' });
+      (c.topics || []).forEach((t) => {
+        const right = t.lowSample
+          ? Utils.createEl('span', { class: 'text-caption', text: 'not enough data' })
+          : Utils.createEl('span', { text: Utils.formatPercent(t.accuracy), style: 'color:' + myChapAccColor(t.accuracy) + ';font-weight:700;' });
+        topicsWrap.appendChild(Utils.createEl('div', { class: 'mychap__topic' }, [
+          Utils.createEl('span', { class: 'mychap__topic-name', text: String(t.topicTag).replace(/-/g, ' ') }),
+          right
+        ]));
+      });
+      if (!(c.topics || []).length) {
+        topicsWrap.appendChild(Utils.createEl('p', { class: 'text-caption', text: 'No topic breakdown yet.' }));
+      }
+
+      list.appendChild(Utils.createEl('details', { class: 'card mychap' }, [summary, topicsWrap]));
+    });
+  }
+
+  async function loadMyChapters() {
+    try {
+      const data = await Api.analytics.myBreakdown();
+      renderMyChapters(data.chapters || []);
+    } catch (err) {
+      // Non-critical — the section just stays hidden if this can't load.
+    }
+  }
+
   document.addEventListener('wha:ready', () => {
     if (Router.currentPageName() !== 'dashboard.html') return;
     loadDashboard();
+    loadMyChapters();
     const retryBtn = Utils.qs('#dashboard-retry');
     if (retryBtn) retryBtn.addEventListener('click', loadDashboard);
   });
