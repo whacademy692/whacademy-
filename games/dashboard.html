@@ -19,6 +19,20 @@
   <link rel="stylesheet" href="assets/css/animations.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
   <link rel="stylesheet" href="assets/css/pages/dashboard.css">
+<style>
+  #my-chapters-list .mychap { padding: var(--space-3); }
+  #my-chapters-list .mychap > summary { list-style: none; cursor: pointer; }
+  #my-chapters-list .mychap > summary::-webkit-details-marker { display: none; }
+  #my-chapters-list .mychap__head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-2); }
+  #my-chapters-list .mychap__name { font-weight: 700; }
+  #my-chapters-list .mychap__pct { font-weight: 800; }
+  #my-chapters-list .mychap__track { display: block; height: 10px; border-radius: 999px; background: var(--color-surface-sunken, #eef0f4); overflow: hidden; margin-top: var(--space-2); }
+  #my-chapters-list .mychap__fill { display: block; height: 100%; border-radius: 999px; }
+  #my-chapters-list .mychap__hint { color: var(--color-text-secondary); font-size: 0.8rem; margin-top: var(--space-1); }
+  #my-chapters-list .mychap__topics { margin-top: var(--space-3); border-top: 1px solid var(--color-border, #e6e6f0); padding-top: var(--space-2); }
+  #my-chapters-list .mychap__topic { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); padding: 6px 0; }
+  #my-chapters-list .mychap__topic-name { text-transform: capitalize; }
+</style>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -167,6 +181,14 @@
             <section aria-labelledby="weak-topics-heading">
               <h2 id="weak-topics-heading">Focus Areas</h2>
               <div id="weak-topics-list" class="stack-sm" style="margin-top: var(--space-3);"></div>
+            </section>
+
+            <section id="my-chapters-section" aria-labelledby="my-chapters-heading" hidden>
+              <h2 id="my-chapters-heading">Your chapters</h2>
+              <p class="text-body-sm" style="margin-top: var(--space-2); color: var(--color-text-secondary);">
+                Where you're strong, and what to practice. Tap a chapter to see its topics.
+              </p>
+              <div id="my-chapters-list" class="stack-sm" style="margin-top: var(--space-3);"></div>
             </section>
 
             <section aria-labelledby="achievements-heading">
