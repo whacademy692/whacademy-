@@ -253,7 +253,8 @@ const Api = (() => {
   const analytics = {
     weekly: () => request('analytics/weekly', {}),
     monthly: () => request('analytics/monthly', {}),
-    lifetime: () => request('analytics/lifetime', {})
+    lifetime: () => request('analytics/lifetime', {}),
+    myBreakdown: () => request('analytics/myBreakdown', {})
   };
 
   const notificationsApi = {
