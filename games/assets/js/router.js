@@ -66,9 +66,39 @@ const Router = (() => {
     }
   }
 
+  /**
+   * Adds the "My Progress" item to the sidebar + bottom-nav on every page with
+   * the app shell — same app-wide injection approach as Badges. Idempotent.
+   */
+  function injectProgressNav() {
+    const icon = '<svg viewBox="0 0 24 24" stroke-width="2" fill="none">' +
+      '<path stroke-linecap="round" stroke-linejoin="round" d="M4 20V10M10 20V4M16 20v-6M20 20H3"/></svg>';
+    const sidebar = document.querySelector('.sidebar__nav');
+    if (sidebar && !sidebar.querySelector('[data-nav-page="progress.html"]')) {
+      const a = document.createElement('a');
+      a.className = 'sidebar__item';
+      a.href = 'progress.html';
+      a.setAttribute('data-nav-page', 'progress.html');
+      a.innerHTML = icon + ' My Progress';
+      const anchor = sidebar.querySelector('[data-nav-page="profile.html"]');
+      if (anchor) sidebar.insertBefore(a, anchor); else sidebar.appendChild(a);
+    }
+    const bottom = document.querySelector('.bottom-nav');
+    if (bottom && !bottom.querySelector('[data-nav-page="progress.html"]')) {
+      const b = document.createElement('a');
+      b.className = 'bottom-nav__item';
+      b.href = 'progress.html';
+      b.setAttribute('data-nav-page', 'progress.html');
+      b.innerHTML = icon + ' Progress';
+      const anchorB = bottom.querySelector('[data-nav-page="profile.html"]');
+      if (anchorB) bottom.insertBefore(b, anchorB); else bottom.appendChild(b);
+    }
+  }
+
   /** Marks the correct bottom-nav / sidebar item as aria-current. */
   function highlightActiveNav() {
     injectBadgesNav();
+    injectProgressNav();
     const page = currentPageName();
     Utils.qsa('[data-nav-page]').forEach((el) => {
       if (el.dataset.navPage === page) {
