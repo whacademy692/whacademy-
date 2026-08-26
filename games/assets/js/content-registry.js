@@ -687,9 +687,9 @@ window.WHA_CONTENT = {
           {
             "n": 3,
             "title": "Variations, Heredity and Cell Division",
-            "notes": null,
+            "notes": "https://whacademy692.github.io/whacademy-/class-8-science-variations-heredity-cell-division.html",
             "quiz": null,
-            "game": null
+            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=8/science/variations_heredity_and_cell_division"
           },
           {
             "n": 5,
