@@ -43,12 +43,13 @@
  */
 
 // ⚠️  BUMP THIS on every frontend deploy. See the note above.
-const CACHE_VERSION = 'wha-v66';
+const CACHE_VERSION = 'wha-v69';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
 const STATIC_ASSETS = [
   'welcome.html', 'login.html', 'dashboard.html', 'profile.html', 'settings.html',
   'games.html', 'leaderboard.html', 'revision.html', 'achievements.html', 'boss-battle.html', 'badges.html',
+  'progress.html',
   'assets/css/pages/boss-battle.css', 'assets/js/boss-battle.js', 'assets/js/badges.js',
   // Boss-Battle "steps" question type: extra CSS, the KaTeX render helper, and
   // the self-hosted KaTeX build (CSP forbids a CDN, so it ships in-repo).
@@ -60,7 +61,7 @@ const STATIC_ASSETS = [
   'assets/css/pages/profile.css', 'assets/css/pages/settings.css',
   'assets/js/utils.js', 'assets/js/storage.js', 'assets/js/api.js', 'assets/js/router.js',
   'assets/js/auth.js', 'assets/js/dashboard.js', 'assets/js/games.js', 'assets/js/profile.js',
-  'assets/js/leaderboard.js', 'assets/js/revision.js', 'assets/js/animations.js',
+  'assets/js/leaderboard.js', 'assets/js/revision.js', 'assets/js/progress.js', 'assets/js/animations.js',
   'assets/js/notifications.js', 'assets/js/app.js',
   // These two were missing from the list, so the dashboard and Classes pages
   // could not resolve which chapters a student may see while offline.
