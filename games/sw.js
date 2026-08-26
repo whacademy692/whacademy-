@@ -11,7 +11,7 @@
  * The previous version served the app shell CACHE-FIRST from a cache whose
  * name never changed:
  *
- *     const CACHE_VERSION = 'wha-v1';                       // never bumped
+ *     const CACHE_VERSION = 'wha-v71';                       // never bumped
  *     caches.match(request).then((cached) => cached || fetch(request))
  *
  * `activate` deletes every 'wha-' cache EXCEPT the current one — but since the
@@ -43,7 +43,7 @@
  */
 
 // ⚠️  BUMP THIS on every frontend deploy. See the note above.
-const CACHE_VERSION = 'wha-v70';
+const CACHE_VERSION = 'wha-v71';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
 const STATIC_ASSETS = [

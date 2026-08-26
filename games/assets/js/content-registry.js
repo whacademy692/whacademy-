@@ -13,9 +13,9 @@ window.WHA_CONTENT = {
           {
             "n": 1,
             "title": "Primes, HCF, LCM and Integers",
-            "notes": "https://whacademy692.github.io/whacademy-/class-6-math-ch1-primes-hcf-lcm-integers.html",
+            "notes": "https://whacademypk.com/notes/class-6/math/primes-hcf-lcm-integers.html",
             "quiz": null,
-            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=6/math/primes_hcf_lcm_and_integers"
+            "game": "https://whacademypk.com/games/chapter.html?ch=6/math/primes_hcf_lcm_and_integers"
           },
           {
             "n": 2,
@@ -89,9 +89,9 @@ window.WHA_CONTENT = {
           {
             "n": 1,
             "title": "Cellular Organization",
-            "notes": "https://whacademy692.github.io/whacademy-/class-6-sci-ch1-cellular-organization.html",
+            "notes": "https://whacademypk.com/notes/class-6/science/cellular-organization.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLSeIRDvUJ_fnVTmk7V-OCcaDg2NmK71WGHiCuDiMZfnhNQntyQ/viewform?usp=header",
-            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=6/science/cellular_organization"
+            "game": "https://whacademypk.com/games/chapter.html?ch=6/science/cellular_organization"
           },
           {
             "n": 2,
@@ -179,9 +179,9 @@ window.WHA_CONTENT = {
           {
             "n": 1,
             "title": "Structure of Earth and Types of Rocks",
-            "notes": "https://whacademy692.github.io/whacademy-/class-6-geo-ch1-structure-earth-rocks.html",
+            "notes": "https://whacademypk.com/notes/class-6/geography/structure-earth-rocks.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLSc641PspgSMa0EjZNoD9b6bnZ145QejxGHT0GoaXHjNFbyPzA/viewform?usp=header",
-            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=6/geography/structure_of_earth_and_rocks"
+            "game": "https://whacademypk.com/games/chapter.html?ch=6/geography/structure_of_earth_and_rocks"
           },
           {
             "n": 2,
@@ -227,9 +227,9 @@ window.WHA_CONTENT = {
           {
             "n": 1,
             "title": "Mesopotamia",
-            "notes": "https://whacademy692.github.io/whacademy-/class-6-history-ch1-mesopotamia.html",
+            "notes": "https://whacademypk.com/notes/class-6/history/mesopotamia.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLScHm7v0hIawODOrkOEpWOOXLU4zhIZtHQiCvOrgrMevXOnCfg/viewform?usp=header",
-            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=6/history/mesopotamia"
+            "game": "https://whacademypk.com/games/chapter.html?ch=6/history/mesopotamia"
           },
           {
             "n": 2,
@@ -298,9 +298,9 @@ window.WHA_CONTENT = {
           {
             "n": 1,
             "title": "Real Numbers and Approximation",
-            "notes": "https://whacademy692.github.io/whacademy-/class-7-math-real-numbers-approximation.html",
+            "notes": "https://whacademypk.com/notes/class-7/math/real-numbers-approximation.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLSdOcGeSOo_9o-ypAlgXsm3xAPK3wa6FCk7TgdVbNfMg6w4aHQ/viewform?usp=header",
-            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=7/math/real_numbers_and_approximation"
+            "game": "https://whacademypk.com/games/chapter.html?ch=7/math/real_numbers_and_approximation"
           },
           {
             "n": 2,
@@ -388,9 +388,9 @@ window.WHA_CONTENT = {
           {
             "n": 1,
             "title": "Plant Systems",
-            "notes": "https://whacademy692.github.io/whacademy-/class-7-science-plant-systems.html",
+            "notes": "https://whacademypk.com/notes/class-7/science/plant-systems.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLSfgkQlTAERiNkueZu-Og-Hnh2QJD3jbIiO5lWBxx2iFcOYOrg/viewform?usp=header",
-            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=7/science/plant_systems"
+            "game": "https://whacademypk.com/games/chapter.html?ch=7/science/plant_systems"
           },
           {
             "n": 2,
@@ -478,9 +478,9 @@ window.WHA_CONTENT = {
           {
             "n": 1,
             "title": "Plains and Rivers",
-            "notes": "https://whacademy692.github.io/whacademy-/class-7-geography-plains-rivers.html",
+            "notes": "https://whacademypk.com/notes/class-7/geography/plains-rivers.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLSdQ60ais2Q7lV01IDC60lsbEf-O2M0ATqKdxpAueOVrDx_Yxw/viewform?usp=header",
-            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=7/geography/plains_and_rivers"
+            "game": "https://whacademypk.com/games/chapter.html?ch=7/geography/plains_and_rivers"
           },
           {
             "n": 2,
@@ -526,9 +526,9 @@ window.WHA_CONTENT = {
           {
             "n": 1,
             "title": "Middle Ages",
-            "notes": "https://whacademy692.github.io/whacademy-/class-7-history-middle-ages.html",
+            "notes": "https://whacademypk.com/notes/class-7/history/middle-ages.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLSfEJLsJ3Uyzm52o5NZBA3qdPd1K8vYVIl16CNBQePAAahqgBg/viewform?usp=header",
-            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=7/history/middle_ages"
+            "game": "https://whacademypk.com/games/chapter.html?ch=7/history/middle_ages"
           },
           {
             "n": 2,
@@ -597,9 +597,9 @@ window.WHA_CONTENT = {
           {
             "n": 3,
             "title": "Further Expansion and Factorization of Algebraic Expressions",
-            "notes": "https://whacademy692.github.io/whacademy-/class-8-math-expansion-factorization.html",
+            "notes": "https://whacademypk.com/notes/class-8/math/expansion-factorization.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLSfza8Uyxns5RAn-42mguZBYVEYUk1bXBhPzUvIe9F-nV40eOg/viewform?usp=header",
-            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=8/math/further_expansion_and_factorization"
+            "game": "https://whacademypk.com/games/chapter.html?ch=8/math/further_expansion_and_factorization"
           },
           {
             "n": 4,
@@ -680,16 +680,16 @@ window.WHA_CONTENT = {
           {
             "n": 2,
             "title": "Human Nervous System",
-            "notes": "https://whacademy692.github.io/whacademy-/class-8-science-human-nervous-system.html",
+            "notes": "https://whacademypk.com/notes/class-8/science/human-nervous-system.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLSd6_QkpyKrm2cPS699LAdJdBQcaYQH6MMQyDgUfIsP2EQlpLA/viewform?usp=header",
-            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=8/science/human_nervous_system"
+            "game": "https://whacademypk.com/games/chapter.html?ch=8/science/human_nervous_system"
           },
           {
             "n": 3,
             "title": "Variations, Heredity and Cell Division",
-            "notes": "https://whacademy692.github.io/whacademy-/class-8-science-variations-heredity-cell-division.html",
+            "notes": "https://whacademypk.com/notes/class-8/science/variations-heredity-cell-division.html",
             "quiz": null,
-            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=8/science/variations_heredity_and_cell_division"
+            "game": "https://whacademypk.com/games/chapter.html?ch=8/science/variations_heredity_and_cell_division"
           },
           {
             "n": 5,
@@ -770,9 +770,9 @@ window.WHA_CONTENT = {
           {
             "n": 1,
             "title": "Oceans and Seas",
-            "notes": "https://whacademy692.github.io/whacademy-/class-8-geography-oceans-seas.html",
+            "notes": "https://whacademypk.com/notes/class-8/geography/oceans-seas.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLSfiF1Ix7YD97gjIG1s3aVjLC_NCSVH2SxeWWCcw0MyL0PoxCw/viewform?usp=publish-editor",
-            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=8/geography/oceans_and_seas"
+            "game": "https://whacademypk.com/games/chapter.html?ch=8/geography/oceans_and_seas"
           },
           {
             "n": 2,
@@ -818,9 +818,9 @@ window.WHA_CONTENT = {
           {
             "n": 1,
             "title": "Colonisation of the Subcontinent",
-            "notes": "https://whacademy692.github.io/whacademy-/class-8-history-colonization.html",
+            "notes": "https://whacademypk.com/notes/class-8/history/colonization.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLSeayv6x-_cVYVbTLS5z7vkg48YWhQdoYQIngohqqUc5Zq8F9w/viewform?usp=publish-editor",
-            "game": "https://whacademy692.github.io/whacademy-/games/chapter.html?ch=8/history/colonization_of_subcontinent"
+            "game": "https://whacademypk.com/games/chapter.html?ch=8/history/colonization_of_subcontinent"
           },
           {
             "n": 2,
@@ -875,7 +875,7 @@ window.WHA_CONTENT = {
           {
             "n": 1,
             "title": "The Science of Biology",
-            "notes": "https://whacademy692.github.io/whacademy-/class-9-biology-chapter1-science-of-biology.html",
+            "notes": "https://whacademypk.com/notes/class-9/biology/science-of-biology.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLSeMt2PArDrKIFDtsX3bLM7juEzrpMWygKREYOtUMBJiQdgJkw/viewform?usp=header",
             "game": null
           },
@@ -944,7 +944,7 @@ window.WHA_CONTENT = {
           {
             "n": 1,
             "title": "Nature of Science in Chemistry",
-            "notes": "https://whacademy692.github.io/whacademy-/class-9-chemistry-unit1-nature-of-science.html",
+            "notes": "https://whacademypk.com/notes/class-9/chemistry/nature-of-science.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLSd9BloXbRzrutJ7jGaKzcKmh17ml31FT01HEqQTFPAkUlqfLQ/viewform?usp=header",
             "game": null
           },
@@ -1083,7 +1083,7 @@ window.WHA_CONTENT = {
           {
             "n": 1,
             "title": "Computer Systems",
-            "notes": "https://whacademy692.github.io/whacademy-/class-9-computer-science-unit1-computer-systems.html",
+            "notes": "https://whacademypk.com/notes/class-9/computer-science/computer-systems.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLSerVN_YwCVoa3h-S_ilFpLNK9ZKAbmunGdPCWWGmp8sKqThfg/viewform?usp=header",
             "game": null
           },
@@ -1138,7 +1138,7 @@ window.WHA_CONTENT = {
           {
             "n": 1,
             "title": "Real Numbers",
-            "notes": "https://whacademy692.github.io/whacademy-/class-9-math-unit1-real-numbers.html",
+            "notes": "https://whacademypk.com/notes/class-9/math/real-numbers.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLSc-8mmxuY52AGGXgbmxxsSBGCEa2vA5U6iEc6OgVjg6kQ1OYw/viewform?usp=header",
             "game": null
           },
@@ -1221,7 +1221,7 @@ window.WHA_CONTENT = {
           {
             "n": 1,
             "title": "Physical Quantities and Measurement",
-            "notes": "https://whacademy692.github.io/whacademy-/class-9-physics-unit1-physical-quantities.html",
+            "notes": "https://whacademypk.com/notes/class-9/physics/physical-quantities.html",
             "quiz": "https://docs.google.com/forms/d/e/1FAIpQLSfBt0paULNKkVOWg7kI9WWwh9ZlR2HH6QXUoVdxjty6fcRFyA/viewform?usp=header",
             "game": null
           },
