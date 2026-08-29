@@ -3458,12 +3458,18 @@
             box-shadow: 0 8px 30px rgba(18, 16, 55, 0.35) !important;
         }
         /* Logo: "W.H." white + "Academy" gradient (like the reference) */
+        /* Logo: "W.H." + "Academy" same font (Playfair Display); W.H. white, Academy gradient */
         .navbar .logo-text-main {
+            font-family: var(--font-display);
+            font-weight: 800;
+            letter-spacing: 1px;
             background: none;
             -webkit-text-fill-color: #ffffff;
             color: #ffffff;
         }
         .navbar .logo-text-main .logo-accent {
+            font-family: var(--font-display);
+            font-weight: 800;
             background: linear-gradient(120deg, #a78bfa 0%, #f472b6 100%);
             -webkit-background-clip: text;
             background-clip: text;
@@ -3584,19 +3590,20 @@
             box-shadow: 0 30px 70px rgba(79, 70, 229, 0.16);
             background:
                 linear-gradient(90deg,
-                    rgba(246, 242, 252, 0.97) 0%,
-                    rgba(246, 242, 252, 0.90) 24%,
-                    rgba(246, 242, 252, 0.60) 38%,
-                    rgba(246, 242, 252, 0.20) 50%,
-                    rgba(246, 242, 252, 0.00) 62%),
+                    rgba(247, 243, 252, 0.90) 0%,
+                    rgba(247, 243, 252, 0.72) 22%,
+                    rgba(247, 243, 252, 0.40) 38%,
+                    rgba(247, 243, 252, 0.12) 50%,
+                    rgba(247, 243, 252, 0.00) 62%),
                 url("/images/hero-student.webp") right center / cover no-repeat;
         }
         .hero-copy { position: relative; z-index: 2; max-width: 560px; }
         /* text ko image se saaf alag karne ke liye halka white halo (sirf banner par) */
         @media (min-width: 1001px) {
-            .hero-banner .hero-headline { text-shadow: 0 2px 10px rgba(246, 242, 252, 0.9); }
-            .hero-banner .hero-sub { text-shadow: 0 1px 6px rgba(246, 242, 252, 0.95); }
-            .hero-banner .hf-label { text-shadow: 0 1px 5px rgba(246, 242, 252, 0.95); }
+            .hero-banner .hero-headline { text-shadow: 0 2px 12px rgba(247, 243, 252, 0.98), 0 1px 2px rgba(247,243,252,0.9); }
+            .hero-banner .hero-sub { text-shadow: 0 1px 8px rgba(247, 243, 252, 1), 0 0 2px rgba(247,243,252,1); }
+            .hero-banner .hf-label { text-shadow: 0 1px 7px rgba(247, 243, 252, 1), 0 0 3px rgba(247,243,252,1); }
+            .hero-banner .hero-sub { font-weight: 500; }
         }
 
         /* image element sirf mobile ke liye (desktop pe banner bg use hota hai) */
@@ -3622,11 +3629,19 @@
             color: #17153a;
         }
         .hero-2026 .hero-headline .gradient-word {
-            background: linear-gradient(120deg, #7c3aed 0%, #a21caf 45%, #db2777 100%);
+            background: linear-gradient(90deg,
+                #4f46e5 0%, #7c3aed 14%, #c026d3 28%, #db2777 40%,
+                #f97316 50%, #db2777 60%, #c026d3 72%, #7c3aed 86%, #4f46e5 100%);
+            background-size: 220% 100%;
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: none;
+            text-shadow: none;
+            animation: heroWave 7s linear infinite;
+        }
+        @keyframes heroWave {
+            0%   { background-position: 0% 50%; }
+            100% { background-position: 220% 50%; }
         }
         .hero-2026 .hero-sub {
             text-align: left;
@@ -3669,22 +3684,34 @@
             gap: 18px;
         }
         .hv-card {
-            background: #ffffff;
             border: 1px solid rgba(124, 58, 237, 0.10);
             border-radius: 16px;
             padding: 18px 20px;
             box-shadow: 0 14px 36px rgba(30, 27, 75, 0.08);
-            display: flex; gap: 13px; align-items: flex-start;
+            display: flex; gap: 14px; align-items: flex-start;
         }
         .hvc-icon {
-            width: 40px; height: 40px; border-radius: 11px;
-            background: linear-gradient(135deg, #ede9fe, #f5f3ff);
-            color: #7c3aed; display: flex; align-items: center; justify-content: center;
-            font-size: 1.05rem; flex-shrink: 0;
+            width: 50px; height: 50px; border-radius: 13px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; color: #ffffff; flex-shrink: 0;
+            box-shadow: 0 8px 18px rgba(30, 27, 75, 0.16);
         }
-        .hv-card strong { display: block; font-size: 0.96rem; color: #17153a; font-weight: 700; margin-bottom: 3px; }
-        .hv-card span { font-size: 0.82rem; color: #6b7280; line-height: 1.45; display: block; }
-        .hvc-accent { width: 28px; height: 3px; border-radius: 2px; background: #7c3aed; margin-top: 10px; }
+        .hv-card strong { display: block; font-size: 0.98rem; color: #17153a; font-weight: 700; margin-bottom: 3px; }
+        .hv-card span { font-size: 0.83rem; color: #6b7280; line-height: 1.45; display: block; }
+        .hvc-accent { width: 30px; height: 3px; border-radius: 2px; margin-top: 10px; }
+
+        /* per-card colors */
+        .hv-card-1 { background: linear-gradient(135deg, #eef2ff 0%, #ffffff 60%); border-color: rgba(79, 70, 229, 0.18); }
+        .hv-card-1 .hvc-icon { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+        .hv-card-1 .hvc-accent { background: #4f46e5; }
+
+        .hv-card-2 { background: linear-gradient(135deg, #f5f0ff 0%, #ffffff 60%); border-color: rgba(124, 58, 237, 0.20); }
+        .hv-card-2 .hvc-icon { background: linear-gradient(135deg, #a855f7, #7c3aed); }
+        .hv-card-2 .hvc-accent { background: #7c3aed; }
+
+        .hv-card-3 { background: linear-gradient(135deg, #fff0f7 0%, #ffffff 60%); border-color: rgba(219, 39, 119, 0.20); }
+        .hv-card-3 .hvc-icon { background: linear-gradient(135deg, #f472b6, #db2777); }
+        .hv-card-3 .hvc-accent { background: #db2777; }
 
         /* TRUST BAR */
         .hero-trustbar {
