@@ -3472,15 +3472,16 @@
         .navbar .logo-text-sub { color: rgba(255, 255, 255, 0.72); }
         .hamburger { color: #ffffff; }
 
-        /* Desktop nav link colors only (mobile menu is on white bg, keep dark text) */
-        @media (min-width: 769px) {
+        /* ===== DESKTOP NAV (>=1181px): tighten so all 12 links + Enroll fit ===== */
+        @media (min-width: 1200px) {
+            .navbar { padding: 12px 24px; }
+            .nav-links { gap: 0; }
             .nav-links a {
                 color: #edecff;
-                display: inline-flex;
-                align-items: center;
-                gap: 7px;
+                padding: 7px 8px;
+                font-size: 0.79rem;
+                white-space: nowrap;
             }
-            .nav-links a i { opacity: 0.82; font-size: 0.82rem; }
             .nav-links a:hover {
                 color: #ffffff;
                 background: rgba(255, 255, 255, 0.1);
@@ -3493,16 +3494,70 @@
             .nav-links a.active::after {
                 content: '';
                 position: absolute;
-                left: 14px;
-                right: 14px;
-                bottom: 3px;
-                height: 3px;
-                border-radius: 3px;
+                left: 10px; right: 10px; bottom: 2px;
+                height: 3px; border-radius: 3px;
                 background: linear-gradient(90deg, #f97316, #ec4899);
             }
-            /* dropdown menu stays light for readability */
-            .dropdown-menu a { color: var(--text-body); }
+            .dropdown-menu a { color: var(--text-body); white-space: normal; }
             .dropdown-menu a:hover { color: var(--primary-mid); }
+        }
+
+        /* ===== MOBILE / MID NAV (<=1180px): hamburger + DARK dropdown panel ===== */
+        @media (max-width: 1199px) {
+            .hamburger { display: block; }
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(160deg, #1b1b4d 0%, #29276b 60%, #322f92 100%);
+                backdrop-filter: none;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 14px 6% 22px;
+                gap: 2px;
+                max-height: calc(100vh - 62px);
+                overflow-y: auto;
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: clip-path 0.4s var(--ease);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+                box-shadow: 0 22px 40px rgba(15, 12, 45, 0.4);
+            }
+            .nav-links.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            .nav-links a {
+                color: #f1f0ff;
+                width: 100%;
+                padding: 12px 12px;
+                font-size: 1rem;
+                border-radius: 10px;
+            }
+            .nav-links a:hover,
+            .nav-links a.active {
+                color: #ffffff;
+                background: rgba(255, 255, 255, 0.1);
+            }
+            .nav-links a.active::after { display: none; }
+            /* sub-menu inside dark panel */
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border: none;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 10px;
+                padding: 4px 6px;
+                margin: 2px 0 4px 10px;
+                opacity: 1;
+                visibility: visible;
+                display: none;
+                transform: none;
+            }
+            .dropdown.active .dropdown-menu { display: flex; flex-direction: column; }
+            .dropdown:hover .dropdown-menu { display: none; }
+            .dropdown.active .dropdown-menu { display: flex; }
+            .dropdown-menu a { color: rgba(255, 255, 255, 0.85); font-size: 0.92rem; }
+            .dropdown-menu a:hover { color: #ffffff; background: rgba(255, 255, 255, 0.1); }
         }
 
         /* ---------- HERO 2026: two-column lavender ---------- */
@@ -3511,43 +3566,37 @@
             display: block;
             text-align: left;
             align-items: stretch;
-            padding: 122px 5% 46px;
+            padding: 108px 5% 46px;
             background: linear-gradient(160deg, #f5f2fc 0%, #efeaf8 48%, #f4eefb 100%);
         }
-        .hero-2026 .hero-inner {
+
+        /* ===== BANNER: image = background, text on top (desktop) ===== */
+        .hero-banner {
+            position: relative;
             max-width: 1280px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.05fr 0.95fr;
-            gap: 48px;
+            border-radius: 26px;
+            overflow: hidden;
+            min-height: 560px;
+            display: flex;
             align-items: center;
-            position: relative;
-            z-index: 2;
+            padding: 56px 60px;
+            box-shadow: 0 30px 70px rgba(79, 70, 229, 0.16);
+            background:
+                linear-gradient(90deg,
+                    rgba(244, 240, 252, 0.99) 0%,
+                    rgba(244, 240, 252, 0.96) 34%,
+                    rgba(244, 240, 252, 0.70) 50%,
+                    rgba(245, 241, 252, 0.18) 68%,
+                    rgba(245, 241, 252, 0.00) 84%),
+                url("/images/hero-student.webp") center right / cover no-repeat;
         }
+        .hero-copy { position: relative; z-index: 2; max-width: 560px; }
 
-        /* faint decorative circles + formulas behind the visual */
-        .hero2-decor { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
-        .hero2-decor .ring {
-            position: absolute;
-            border: 1.5px solid rgba(124, 58, 237, 0.10);
-            border-radius: 50%;
-        }
-        .hero2-decor .ring-1 { width: 460px; height: 460px; top: 40px; right: 4%; }
-        .hero2-decor .ring-2 { width: 300px; height: 300px; top: 120px; right: 14%; }
-        .hero2-decor .fx {
-            position: absolute;
-            font-family: var(--font-display);
-            font-style: italic;
-            color: rgba(79, 70, 229, 0.16);
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-        .hero2-decor .fx-1 { top: 70px;  right: 30%; }
-        .hero2-decor .fx-2 { top: 150px; right: 8%;  font-size: 1.9rem; }
-        .hero2-decor .fx-3 { top: 300px; right: 26%; }
-        .hero2-decor .fx-4 { top: 360px; right: 6%;  }
+        /* image element sirf mobile ke liye (desktop pe banner bg use hota hai) */
+        .hero-photo-m { display: none; }
 
-        /* LEFT copy */
+        /* ---------- copy styles ---------- */
         .hero-2026 .hero-badge {
             background: #ffffff;
             border: 1px solid rgba(124, 58, 237, 0.22);
@@ -3558,12 +3607,12 @@
         .hero-2026 .hero-badge i { color: #7c3aed; }
         .hero-2026 .hero-headline {
             font-family: var(--font-display);
-            font-size: clamp(2.4rem, 4.2vw, 4rem);
+            font-size: clamp(2.3rem, 3.9vw, 3.7rem);
             line-height: 1.05;
             letter-spacing: -1.5px;
             text-align: left;
-            max-width: 640px;
-            margin: 0 0 22px;
+            max-width: 560px;
+            margin: 0 0 20px;
             color: #17153a;
         }
         .hero-2026 .hero-headline .gradient-word {
@@ -3575,13 +3624,13 @@
         }
         .hero-2026 .hero-sub {
             text-align: left;
-            max-width: 520px;
-            margin: 0 0 30px;
+            max-width: 470px;
+            margin: 0 0 28px;
             color: #4b5563;
-            font-size: 1.06rem;
+            font-size: 1.04rem;
             line-height: 1.7;
         }
-        .hero-2026 .hero-actions { justify-content: flex-start; margin-bottom: 42px; }
+        .hero-2026 .hero-actions { justify-content: flex-start; margin-bottom: 36px; }
         .hero-2026 .btn { border-radius: 14px; padding: 15px 26px; }
         .hero-2026 .btn-primary { background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 100%); }
         .hero-2026 .btn-secondary {
@@ -3592,78 +3641,49 @@
         .hero-2026 .btn-secondary:hover { border-color: #7c3aed; color: #6d28d9; }
 
         /* feature row */
-        .hero-features { display: flex; gap: 30px; flex-wrap: wrap; }
+        .hero-features { display: flex; gap: 26px; flex-wrap: wrap; }
         .hf-item {
             display: flex; flex-direction: column; align-items: flex-start;
-            gap: 10px; max-width: 112px;
+            gap: 9px; max-width: 108px;
         }
         .hf-icon {
-            width: 52px; height: 52px; border-radius: 14px;
+            width: 50px; height: 50px; border-radius: 14px;
             display: flex; align-items: center; justify-content: center;
-            background: #ffffff; color: #7c3aed; font-size: 1.15rem;
+            background: #ffffff; color: #7c3aed; font-size: 1.1rem;
             box-shadow: 0 6px 18px rgba(109, 40, 217, 0.12);
         }
-        .hf-label { font-size: 0.82rem; font-weight: 600; color: #374151; line-height: 1.3; }
+        .hf-label { font-size: 0.8rem; font-weight: 600; color: #374151; line-height: 1.3; }
 
-        /* RIGHT visual */
-        .hero-visual { position: relative; min-height: 440px; }
-        .hv-panel {
-            position: relative;
-            border-radius: 24px;
-            overflow: hidden;
-            aspect-ratio: 3 / 2;
-            background: linear-gradient(160deg, #ede9fe 0%, #faf5ff 100%);
-            box-shadow: 0 30px 70px rgba(79, 70, 229, 0.18);
-            display: flex; align-items: center; justify-content: center;
+        /* ===== CARDS ROW (image ke neeche, kabhi image pe nahi) ===== */
+        .hero-cards-row {
+            max-width: 1280px;
+            margin: 22px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
         }
-        .hv-photo { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
-        .hv-photo.hv-photo-missing { display: none; }
-        .hv-monogram {
-            position: absolute; inset: 0;
-            display: none;
-            flex-direction: column; align-items: center; justify-content: center;
-            gap: 14px; color: #7c3aed; text-align: center; padding: 20px;
-        }
-        /* sirf tab dikhao jab photo load na ho */
-        .hv-photo-missing + .hv-monogram { display: flex; }
-        .hv-monogram svg { width: 96px; height: 96px; opacity: 0.9; }
-        .hv-monogram span {
-            font-family: var(--font-display); font-weight: 800; font-size: 1.1rem;
-            color: #5b21b6; letter-spacing: 0.5px;
-        }
-        /* floating cards */
         .hv-card {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.97);
+            background: #ffffff;
             border: 1px solid rgba(124, 58, 237, 0.10);
             border-radius: 16px;
-            padding: 14px 16px;
-            box-shadow: 0 16px 40px rgba(30, 27, 75, 0.14);
-            display: flex; gap: 12px; align-items: flex-start;
-            max-width: 232px; z-index: 4;
-            animation: hvFloat 6s ease-in-out infinite;
-        }
-        .hv-card-1 { top: 4%;  right: -5%; }
-        .hv-card-2 { top: 45%; left: -9%; animation-delay: -2s; }
-        .hv-card-3 { bottom: 6%; right: -3%; animation-delay: -4s; }
-        @keyframes hvFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-9px); }
+            padding: 18px 20px;
+            box-shadow: 0 14px 36px rgba(30, 27, 75, 0.08);
+            display: flex; gap: 13px; align-items: flex-start;
         }
         .hvc-icon {
-            width: 38px; height: 38px; border-radius: 10px;
+            width: 40px; height: 40px; border-radius: 11px;
             background: linear-gradient(135deg, #ede9fe, #f5f3ff);
             color: #7c3aed; display: flex; align-items: center; justify-content: center;
-            font-size: 1rem; flex-shrink: 0;
+            font-size: 1.05rem; flex-shrink: 0;
         }
-        .hv-card strong { display: block; font-size: 0.9rem; color: #17153a; font-weight: 700; margin-bottom: 3px; }
-        .hv-card span { font-size: 0.76rem; color: #6b7280; line-height: 1.4; display: block; }
-        .hvc-accent { width: 26px; height: 3px; border-radius: 2px; background: #7c3aed; margin-top: 9px; }
+        .hv-card strong { display: block; font-size: 0.96rem; color: #17153a; font-weight: 700; margin-bottom: 3px; }
+        .hv-card span { font-size: 0.82rem; color: #6b7280; line-height: 1.45; display: block; }
+        .hvc-accent { width: 28px; height: 3px; border-radius: 2px; background: #7c3aed; margin-top: 10px; }
 
         /* TRUST BAR */
         .hero-trustbar {
             max-width: 1280px;
-            margin: 46px auto 0;
+            margin: 18px auto 0;
             background: #ffffff;
             border: 1px solid rgba(124, 58, 237, 0.10);
             border-radius: 20px;
@@ -3678,44 +3698,40 @@
         .htb-lead i { font-size: 1.12rem; }
 
         /* ---------- HERO 2026 responsive ---------- */
-        /* Tablet & mobile: cards image ke UPAR na aayein — neeche stack ho jayein */
+        /* Tablet & mobile: banner bg image HATAO, image ko neeche clean banner bana do */
         @media (max-width: 1000px) {
-            .hero-2026 .hero-inner { grid-template-columns: 1fr; gap: 44px; }
-            .hero-2026 .hero-headline, .hero-2026 .hero-sub { max-width: none; }
-            .hero2-decor { display: none; }
-
-            .hero-visual {
-                max-width: 560px;
-                width: 100%;
-                margin: 0 auto;
+            .hero-banner {
+                background: none;
                 min-height: auto;
-                display: flex;
-                flex-direction: column;
-                gap: 14px;
+                padding: 0;
+                box-shadow: none;
+                border-radius: 0;
+                display: block;
             }
-            /* floating cards ko normal blocks bana do (koi overlap nahi) */
-            .hv-cards-wrap { display: flex; flex-direction: column; gap: 12px; width: 100%; }
-            .hv-card {
-                position: static;
-                max-width: none;
+            .hero-copy { max-width: none; }
+            .hero-2026 .hero-headline, .hero-2026 .hero-sub { max-width: none; }
+
+            .hero-photo-m {
+                display: block;
                 width: 100%;
-                top: auto; right: auto; bottom: auto; left: auto;
-                animation: none;
-                box-shadow: 0 10px 26px rgba(30, 27, 75, 0.10);
+                max-width: 680px;
+                margin: 6px auto 4px;
+                border-radius: 22px;
+                box-shadow: 0 26px 60px rgba(79, 70, 229, 0.18);
             }
-        }
-        /* neeche cards ko 3-across kar do jahan jagah ho (tablet) */
-        @media (min-width: 620px) and (max-width: 1000px) {
-            .hero-visual { max-width: 680px; }
-            .hv-cards-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+            .hero-cards-row { max-width: 680px; margin: 16px auto 0; gap: 12px; }
         }
         @media (max-width: 768px) {
-            .hero.hero-2026 { padding-top: 100px; text-align: left; }
+            .hero.hero-2026 { padding-top: 96px; text-align: left; }
             .hero-2026 .hero-actions { flex-direction: row; flex-wrap: wrap; }
             .hero-2026 .hero-actions .btn { width: auto; flex: 1 1 auto; }
             .hero-features { gap: 22px; }
             .hf-item { max-width: 46%; }
             .hero-trustbar { gap: 18px 26px; padding: 18px 22px; }
+        }
+        /* phones: cards single column */
+        @media (max-width: 620px) {
+            .hero-cards-row { grid-template-columns: 1fr; }
         }
         @media (max-width: 520px) {
             .hero-2026 .hero-actions .btn { width: 100%; }
@@ -3824,18 +3840,8 @@
         <!-- Math particles canvas -->
         <div class="particles-canvas" id="particlesCanvas"></div>
 
-        <!-- faint decorative rings + formulas (behind visual) -->
-        <div class="hero2-decor" aria-hidden="true">
-            <span class="ring ring-1"></span>
-            <span class="ring ring-2"></span>
-            <span class="fx fx-1">a² = mc²</span>
-            <span class="fx fx-2">F = ma</span>
-            <span class="fx fx-3">a² + b² = c²</span>
-            <span class="fx fx-4">E = mc²</span>
-        </div>
-
-        <div class="hero-inner">
-            <!-- LEFT: copy -->
+        <!-- BANNER: student image is the background (desktop) | text sits on top -->
+        <div class="hero-banner">
             <div class="hero-copy">
                 <div class="hero-badge reveal">
                     <i class="fas fa-graduation-cap" aria-hidden="true"></i>
@@ -3885,53 +3891,37 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- RIGHT: visual with floating cards -->
-            <div class="hero-visual reveal-right delay-2">
-                <div class="hv-panel">
-                    <!-- Rehan: apni hero image yahan images/hero-student.webp par upload karein.
-                         Agar image na ho to neeche wala WH monogram apne aap dikhega. -->
-                    <img class="hv-photo" src="/images/hero-student.webp"
-                         alt="Student learning Mathematics and Physics with W.H. Academy"
-                         loading="eager" onerror="this.classList.add('hv-photo-missing')">
-                    <div class="hv-monogram">
-                        <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="W.H. Academy shield">
-                            <path d="M14 2L4 6v8c0 5.5 4.3 10.7 10 12 5.7-1.3 10-6.5 10-12V6L14 2z" fill="rgba(124,58,237,0.12)" stroke="#7c3aed" stroke-width="1.4" stroke-linejoin="round"/>
-                            <path d="M10 10h4M10 13h4" stroke="#7c3aed" stroke-width="1.6" stroke-linecap="round"/>
-                            <path d="M14 10v6" stroke="#7c3aed" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
-                            <path d="M14 10h4M14 13h4" stroke="#7c3aed" stroke-width="1.4" stroke-linecap="round" opacity="0.85"/>
-                            <circle cx="14" cy="20" r="1.8" fill="#7c3aed"/>
-                        </svg>
-                        <span>W.H. Academy</span>
-                    </div>
-                </div>
+        <!-- MOBILE-ONLY image (desktop pe banner background use hota hai) -->
+        <img class="hero-photo-m" src="/images/hero-student.webp"
+             alt="Student learning Mathematics and Physics with W.H. Academy"
+             loading="eager">
 
-                <!-- floating cards (desktop: float at edges | mobile: stack below image) -->
-                <div class="hv-cards-wrap">
-                <div class="hv-card hv-card-1">
-                    <span class="hvc-icon"><i class="fas fa-brain" aria-hidden="true"></i></span>
-                    <div>
-                        <strong>Concept Mastery</strong>
-                        <span>Build strong concepts that last forever.</span>
-                        <div class="hvc-accent"></div>
-                    </div>
+        <!-- CARDS ROW (image ke NEECHE — image pe kabhi nahi) -->
+        <div class="hero-cards-row reveal delay-2">
+            <div class="hv-card hv-card-1">
+                <span class="hvc-icon"><i class="fas fa-brain" aria-hidden="true"></i></span>
+                <div>
+                    <strong>Concept Mastery</strong>
+                    <span>Build strong concepts that last forever.</span>
+                    <div class="hvc-accent"></div>
                 </div>
-                <div class="hv-card hv-card-2">
-                    <span class="hvc-icon"><i class="fas fa-user" aria-hidden="true"></i></span>
-                    <div>
-                        <strong>Personalized Learning</strong>
-                        <span>Custom study plans for every student.</span>
-                        <div class="hvc-accent"></div>
-                    </div>
+            </div>
+            <div class="hv-card hv-card-2">
+                <span class="hvc-icon"><i class="fas fa-user" aria-hidden="true"></i></span>
+                <div>
+                    <strong>Personalized Learning</strong>
+                    <span>Custom study plans for every student.</span>
+                    <div class="hvc-accent"></div>
                 </div>
-                <div class="hv-card hv-card-3">
-                    <span class="hvc-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></span>
-                    <div>
-                        <strong>Progress Tracking</strong>
-                        <span>Track performance and improve every day.</span>
-                        <div class="hvc-accent"></div>
-                    </div>
-                </div>
+            </div>
+            <div class="hv-card hv-card-3">
+                <span class="hvc-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></span>
+                <div>
+                    <strong>Progress Tracking</strong>
+                    <span>Track performance and improve every day.</span>
+                    <div class="hvc-accent"></div>
                 </div>
             </div>
         </div>
@@ -4001,8 +3991,8 @@
                         <div style="color:rgba(255,255,255,0.8);font-size:0.82rem;">Full premium access with zero cost for the entire first month.</div>
                     </div>
                     <div style="background:rgba(255,255,255,0.15);border-radius:12px;padding:14px 16px;margin-bottom:18px;">
-                        <div style="color:#fff;font-size:1rem;font-weight:800;margin-bottom:3px;"><i class="fas fa-percentage" style="margin-right:6px;" aria-hidden="true"></i> Months 2: 50% Off</div>
-                        <div style="color:rgba(255,255,255,0.8);font-size:0.82rem;">Half price for the following months, then regular fee applies.</div>
+                        <div style="color:#fff;font-size:1rem;font-weight:800;margin-bottom:3px;"><i class="fas fa-percentage" style="margin-right:6px;" aria-hidden="true"></i>Months 2 and 3: 50% Off</div>
+                        <div style="color:rgba(255,255,255,0.8);font-size:0.82rem;">Half price for the following two months, then regular fee applies.</div>
                     </div>
                     <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
                         <li style="color:#fff;font-size:0.83rem;display:flex;align-items:flex-start;gap:8px;"><i class="fas fa-check-circle" style="color:rgba(255,255,255,0.9);margin-top:2px;flex-shrink:0;" aria-hidden="true"></i>All premium video lectures</li>
@@ -4019,8 +4009,8 @@
                     <div style="font-size:2.4rem;font-weight:900;color:var(--text-dark);line-height:1;margin-bottom:4px;">Spots 11 to 30</div>
                     <div style="color:var(--text-muted);font-size:0.85rem;margin-bottom:18px;font-weight:600;">Next 20 students to enroll</div>
                     <div style="background:#e0e7ff;border-radius:12px;padding:14px 16px;margin-bottom:18px;">
-                        <div style="color:var(--primary);font-size:1rem;font-weight:800;margin-bottom:3px;"><i class="fas fa-percentage" style="margin-right:6px;" aria-hidden="true"></i> 50% Off for 1 Month</div>
-                        <div style="color:var(--text-body);font-size:0.82rem;">Half price for the first month on whichever plan you choose.</div>
+                        <div style="color:var(--primary);font-size:1rem;font-weight:800;margin-bottom:3px;"><i class="fas fa-percentage" style="margin-right:6px;" aria-hidden="true"></i>50% Off for 2 Months</div>
+                        <div style="color:var(--text-body);font-size:0.82rem;">Half price for the first two months on whichever plan you choose.</div>
                     </div>
                     <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
                         <li style="color:var(--text-body);font-size:0.83rem;display:flex;align-items:flex-start;gap:8px;"><i class="fas fa-check-circle" style="color:var(--primary-mid);margin-top:2px;flex-shrink:0;" aria-hidden="true"></i>All premium video lectures</li>
@@ -6711,7 +6701,7 @@
         // Mobile dropdown
         const mobileDropdown = document.getElementById('mobileDropdown');
         mobileDropdown.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768) {
+            if (window.innerWidth <= 1199) {
                 if (e.target.tagName !== 'A' || e.target.closest('.dropdown-menu')) return;
                 e.preventDefault();
                 mobileDropdown.classList.toggle('active');
@@ -6721,7 +6711,7 @@
         // Nav links close on click (mobile)
         document.querySelectorAll('.nav-links > li > a:not([href="#classes"])').forEach(a => {
             a.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
+                if (window.innerWidth <= 1199) {
                     navLinks.classList.remove('active');
                     navIcon.className = 'fas fa-bars';
                 }
