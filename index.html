@@ -3458,18 +3458,19 @@
             box-shadow: 0 8px 30px rgba(18, 16, 55, 0.35) !important;
         }
         /* Logo: "W.H." white + "Academy" gradient (like the reference) */
-        /* Logo: "W.H." + "Academy" same font (Playfair Display); W.H. white, Academy gradient */
+        /* Logo: "W.H." + "Academy" same font (Playfair Display), BOLD; W.H. white, Academy gradient */
         .navbar .logo-text-main {
             font-family: var(--font-display);
-            font-weight: 800;
-            letter-spacing: 1px;
+            font-weight: 900;
+            font-size: 1.3rem;
+            letter-spacing: 0.5px;
             background: none;
             -webkit-text-fill-color: #ffffff;
             color: #ffffff;
         }
         .navbar .logo-text-main .logo-accent {
             font-family: var(--font-display);
-            font-weight: 800;
+            font-weight: 900;
             background: linear-gradient(120deg, #a78bfa 0%, #f472b6 100%);
             -webkit-background-clip: text;
             background-clip: text;
@@ -3480,12 +3481,12 @@
 
         /* ===== DESKTOP NAV (>=1181px): tighten so all 12 links + Enroll fit ===== */
         @media (min-width: 1200px) {
-            .navbar { padding: 12px 24px; }
-            .nav-links { gap: 0; }
+            .navbar { padding: 12px 22px; }
+            .nav-links { gap: 3px; }
             .nav-links a {
                 color: #edecff;
-                padding: 7px 8px;
-                font-size: 0.79rem;
+                padding: 7px 10px;
+                font-size: 0.8rem;
                 white-space: nowrap;
             }
             .nav-links a:hover {
@@ -3572,38 +3573,41 @@
             display: block;
             text-align: left;
             align-items: stretch;
-            padding: 108px 5% 46px;
+            padding: 0 0 46px;
             background: linear-gradient(160deg, #f5f2fc 0%, #efeaf8 48%, #f4eefb 100%);
         }
 
-        /* ===== BANNER: image = background, text on top (desktop) ===== */
+        /* ===== BANNER: full-width, image = background, text on top ===== */
         .hero-banner {
             position: relative;
-            max-width: 1280px;
-            margin: 0 auto;
-            border-radius: 26px;
+            width: 100%;
+            border-radius: 0;
             overflow: hidden;
-            min-height: 560px;
+            min-height: 620px;
             display: flex;
             align-items: center;
-            padding: 56px 60px;
-            box-shadow: 0 30px 70px rgba(79, 70, 229, 0.16);
+            padding: 128px 0 62px;
             background:
-                linear-gradient(90deg,
-                    rgba(247, 243, 252, 0.90) 0%,
-                    rgba(247, 243, 252, 0.72) 22%,
-                    rgba(247, 243, 252, 0.40) 38%,
-                    rgba(247, 243, 252, 0.12) 50%,
-                    rgba(247, 243, 252, 0.00) 62%),
+                radial-gradient(125% 92% at 20% 40%,
+                    rgba(247, 243, 252, 0.97) 0%,
+                    rgba(247, 243, 252, 0.90) 30%,
+                    rgba(247, 243, 252, 0.55) 46%,
+                    rgba(247, 243, 252, 0.16) 58%,
+                    rgba(247, 243, 252, 0.00) 70%),
                 url("/images/hero-student.webp") right center / cover no-repeat;
         }
-        .hero-copy { position: relative; z-index: 2; max-width: 560px; }
-        /* text ko image se saaf alag karne ke liye halka white halo (sirf banner par) */
+        .hero-banner-inner {
+            max-width: 1280px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+        .hero-copy { position: relative; z-index: 2; max-width: 540px; }
+        /* text ko image se saaf alag karne ke liye halka white halo */
         @media (min-width: 1001px) {
             .hero-banner .hero-headline { text-shadow: 0 2px 12px rgba(247, 243, 252, 0.98), 0 1px 2px rgba(247,243,252,0.9); }
-            .hero-banner .hero-sub { text-shadow: 0 1px 8px rgba(247, 243, 252, 1), 0 0 2px rgba(247,243,252,1); }
+            .hero-banner .hero-sub { text-shadow: 0 1px 8px rgba(247, 243, 252, 1), 0 0 3px rgba(247,243,252,1); font-weight: 600; }
             .hero-banner .hf-label { text-shadow: 0 1px 7px rgba(247, 243, 252, 1), 0 0 3px rgba(247,243,252,1); }
-            .hero-banner .hero-sub { font-weight: 500; }
         }
 
         /* image element sirf mobile ke liye (desktop pe banner bg use hota hai) */
@@ -3645,13 +3649,13 @@
         }
         .hero-2026 .hero-sub {
             text-align: left;
-            max-width: 470px;
+            max-width: 400px;
             margin: 0 0 28px;
-            color: #4b5563;
-            font-size: 1.04rem;
-            line-height: 1.7;
+            color: #3f3d56;
+            font-size: 1.02rem;
+            line-height: 1.65;
         }
-        .hero-2026 .hero-actions { justify-content: flex-start; margin-bottom: 36px; }
+        .hero-2026 .hero-actions { justify-content: flex-start; margin-bottom: 32px; }
         .hero-2026 .btn { border-radius: 14px; padding: 15px 26px; }
         .hero-2026 .btn-primary { background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 100%); }
         .hero-2026 .btn-secondary {
@@ -3661,61 +3665,62 @@
         }
         .hero-2026 .btn-secondary:hover { border-color: #7c3aed; color: #6d28d9; }
 
-        /* feature row */
-        .hero-features { display: flex; gap: 26px; flex-wrap: wrap; }
+        /* feature row -> 2 x 2 (do vertical, phir do) taake books dikhein */
+        .hero-features {
+            display: grid;
+            grid-template-columns: auto auto;
+            justify-content: start;
+            column-gap: 40px;
+            row-gap: 18px;
+            width: max-content;
+        }
         .hf-item {
-            display: flex; flex-direction: column; align-items: flex-start;
-            gap: 9px; max-width: 108px;
+            display: flex; flex-direction: row; align-items: center;
+            gap: 11px; max-width: none;
         }
         .hf-icon {
-            width: 50px; height: 50px; border-radius: 14px;
+            width: 46px; height: 46px; border-radius: 13px;
             display: flex; align-items: center; justify-content: center;
-            background: #ffffff; color: #7c3aed; font-size: 1.1rem;
-            box-shadow: 0 6px 18px rgba(109, 40, 217, 0.12);
+            background: #ffffff; color: #7c3aed; font-size: 1.05rem;
+            box-shadow: 0 6px 18px rgba(109, 40, 217, 0.14);
+            flex-shrink: 0;
         }
-        .hf-label { font-size: 0.8rem; font-weight: 600; color: #374151; line-height: 1.3; }
+        .hf-label { font-size: 0.84rem; font-weight: 600; color: #2f2b45; line-height: 1.25; }
 
-        /* ===== CARDS ROW (image ke neeche, kabhi image pe nahi) ===== */
+        /* ===== CARDS ROW (image ke neeche) — POORA card colorful ===== */
         .hero-cards-row {
-            max-width: 1280px;
+            width: min(1280px, 90%);
             margin: 22px auto 0;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 18px;
         }
         .hv-card {
-            border: 1px solid rgba(124, 58, 237, 0.10);
-            border-radius: 16px;
-            padding: 18px 20px;
-            box-shadow: 0 14px 36px rgba(30, 27, 75, 0.08);
-            display: flex; gap: 14px; align-items: flex-start;
+            border-radius: 18px;
+            padding: 22px 22px;
+            box-shadow: 0 16px 40px rgba(30, 27, 75, 0.14);
+            display: flex; gap: 16px; align-items: flex-start;
+            color: #ffffff;
         }
         .hvc-icon {
-            width: 50px; height: 50px; border-radius: 13px;
+            width: 58px; height: 58px; border-radius: 15px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; color: #ffffff; flex-shrink: 0;
-            box-shadow: 0 8px 18px rgba(30, 27, 75, 0.16);
+            font-size: 1.7rem; color: #ffffff; flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.22);
+            border: 1px solid rgba(255, 255, 255, 0.35);
         }
-        .hv-card strong { display: block; font-size: 0.98rem; color: #17153a; font-weight: 700; margin-bottom: 3px; }
-        .hv-card span { font-size: 0.83rem; color: #6b7280; line-height: 1.45; display: block; }
-        .hvc-accent { width: 30px; height: 3px; border-radius: 2px; margin-top: 10px; }
+        .hv-card strong { display: block; font-size: 1.05rem; color: #ffffff; font-weight: 800; margin-bottom: 4px; }
+        .hv-card span { font-size: 0.86rem; color: rgba(255, 255, 255, 0.92); line-height: 1.45; display: block; }
+        .hvc-accent { width: 34px; height: 3px; border-radius: 2px; margin-top: 12px; background: rgba(255, 255, 255, 0.85); }
 
-        /* per-card colors */
-        .hv-card-1 { background: linear-gradient(135deg, #eef2ff 0%, #ffffff 60%); border-color: rgba(79, 70, 229, 0.18); }
-        .hv-card-1 .hvc-icon { background: linear-gradient(135deg, #6366f1, #4f46e5); }
-        .hv-card-1 .hvc-accent { background: #4f46e5; }
-
-        .hv-card-2 { background: linear-gradient(135deg, #f5f0ff 0%, #ffffff 60%); border-color: rgba(124, 58, 237, 0.20); }
-        .hv-card-2 .hvc-icon { background: linear-gradient(135deg, #a855f7, #7c3aed); }
-        .hv-card-2 .hvc-accent { background: #7c3aed; }
-
-        .hv-card-3 { background: linear-gradient(135deg, #fff0f7 0%, #ffffff 60%); border-color: rgba(219, 39, 119, 0.20); }
-        .hv-card-3 .hvc-icon { background: linear-gradient(135deg, #f472b6, #db2777); }
-        .hv-card-3 .hvc-accent { background: #db2777; }
+        /* har card ka apna colorful gradient */
+        .hv-card-1 { background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%); }
+        .hv-card-2 { background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); }
+        .hv-card-3 { background: linear-gradient(135deg, #db2777 0%, #f472b6 100%); }
 
         /* TRUST BAR */
         .hero-trustbar {
-            max-width: 1280px;
+            width: min(1280px, 90%);
             margin: 18px auto 0;
             background: #ffffff;
             border: 1px solid rgba(124, 58, 237, 0.10);
@@ -3733,6 +3738,7 @@
         /* ---------- HERO 2026 responsive ---------- */
         /* Tablet & mobile: banner bg image HATAO, image ko neeche clean banner bana do */
         @media (max-width: 1000px) {
+            .hero.hero-2026 { padding: 96px 5% 40px; }
             .hero-banner {
                 background: none;
                 min-height: auto;
@@ -3741,8 +3747,13 @@
                 border-radius: 0;
                 display: block;
             }
+            .hero-banner-inner { padding: 0; max-width: none; }
             .hero-copy { max-width: none; }
             .hero-2026 .hero-headline, .hero-2026 .hero-sub { max-width: none; }
+            .hero-2026 .hero-sub { text-shadow: none; }
+
+            .hero-features { width: 100%; grid-template-columns: 1fr 1fr; column-gap: 20px; row-gap: 16px; }
+            .hf-icon { color: #7c3aed; }
 
             .hero-photo-m {
                 display: block;
@@ -3752,23 +3763,22 @@
                 border-radius: 22px;
                 box-shadow: 0 26px 60px rgba(79, 70, 229, 0.18);
             }
-            .hero-cards-row { max-width: 680px; margin: 16px auto 0; gap: 12px; }
+            .hero-cards-row { width: 100%; max-width: 680px; margin: 16px auto 0; gap: 12px; }
+            .hero-trustbar { width: 100%; }
         }
         @media (max-width: 768px) {
-            .hero.hero-2026 { padding-top: 96px; text-align: left; }
             .hero-2026 .hero-actions { flex-direction: row; flex-wrap: wrap; }
             .hero-2026 .hero-actions .btn { width: auto; flex: 1 1 auto; }
-            .hero-features { gap: 22px; }
-            .hf-item { max-width: 46%; }
+            .hero-features { column-gap: 20px; }
             .hero-trustbar { gap: 18px 26px; padding: 18px 22px; }
         }
-        /* phones: cards single column */
+        /* phones: cards single column + features single column */
         @media (max-width: 620px) {
             .hero-cards-row { grid-template-columns: 1fr; }
+            .hero-features { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 520px) {
             .hero-2026 .hero-actions .btn { width: 100%; }
-            .hf-item { max-width: 44%; }
         }
 
     </style>
@@ -3873,8 +3883,9 @@
         <!-- Math particles canvas -->
         <div class="particles-canvas" id="particlesCanvas"></div>
 
-        <!-- BANNER: student image is the background (desktop) | text sits on top -->
+        <!-- BANNER: student image = full-width background | text on top -->
         <div class="hero-banner">
+          <div class="hero-banner-inner">
             <div class="hero-copy">
                 <div class="hero-badge reveal">
                     <i class="fas fa-graduation-cap" aria-hidden="true"></i>
@@ -3891,7 +3902,7 @@
 
                 <!-- VISUAL headline (screen readers use the H1 above) -->
                 <p class="hero-headline reveal" aria-hidden="false" role="presentation">
-                    Master <span class="gradient-word">Mathematics</span>, Physics &amp; More... 
+                    Master <span class="gradient-word">Mathematics</span>, Physics &amp; More —
                     With <span class="gradient-word">Real Confidence</span>
                 </p>
 
@@ -3924,6 +3935,7 @@
                     </div>
                 </div>
             </div>
+          </div>
         </div>
 
         <!-- MOBILE-ONLY image (desktop pe banner background use hota hai) -->
@@ -4024,8 +4036,8 @@
                         <div style="color:rgba(255,255,255,0.8);font-size:0.82rem;">Full premium access with zero cost for the entire first month.</div>
                     </div>
                     <div style="background:rgba(255,255,255,0.15);border-radius:12px;padding:14px 16px;margin-bottom:18px;">
-                        <div style="color:#fff;font-size:1rem;font-weight:800;margin-bottom:3px;"><i class="fas fa-percentage" style="margin-right:6px;" aria-hidden="true"></i>Months 2: 50% Off</div>
-                        <div style="color:rgba(255,255,255,0.8);font-size:0.82rem;">Half price for the following month, then regular fee applies.</div>
+                        <div style="color:#fff;font-size:1rem;font-weight:800;margin-bottom:3px;"><i class="fas fa-percentage" style="margin-right:6px;" aria-hidden="true"></i>Months 2 and 3: 50% Off</div>
+                        <div style="color:rgba(255,255,255,0.8);font-size:0.82rem;">Half price for the following two months, then regular fee applies.</div>
                     </div>
                     <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
                         <li style="color:#fff;font-size:0.83rem;display:flex;align-items:flex-start;gap:8px;"><i class="fas fa-check-circle" style="color:rgba(255,255,255,0.9);margin-top:2px;flex-shrink:0;" aria-hidden="true"></i>All premium video lectures</li>
@@ -4042,8 +4054,8 @@
                     <div style="font-size:2.4rem;font-weight:900;color:var(--text-dark);line-height:1;margin-bottom:4px;">Spots 11 to 30</div>
                     <div style="color:var(--text-muted);font-size:0.85rem;margin-bottom:18px;font-weight:600;">Next 20 students to enroll</div>
                     <div style="background:#e0e7ff;border-radius:12px;padding:14px 16px;margin-bottom:18px;">
-                        <div style="color:var(--primary);font-size:1rem;font-weight:800;margin-bottom:3px;"><i class="fas fa-percentage" style="margin-right:6px;" aria-hidden="true"></i>50% Off for 1 Month</div>
-                        <div style="color:var(--text-body);font-size:0.82rem;">Half price for the first month on whichever plan you choose.</div>
+                        <div style="color:var(--primary);font-size:1rem;font-weight:800;margin-bottom:3px;"><i class="fas fa-percentage" style="margin-right:6px;" aria-hidden="true"></i>50% Off for 2 Months</div>
+                        <div style="color:var(--text-body);font-size:0.82rem;">Half price for the first two months on whichever plan you choose.</div>
                     </div>
                     <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
                         <li style="color:var(--text-body);font-size:0.83rem;display:flex;align-items:flex-start;gap:8px;"><i class="fas fa-check-circle" style="color:var(--primary-mid);margin-top:2px;flex-shrink:0;" aria-hidden="true"></i>All premium video lectures</li>
