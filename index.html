@@ -3440,6 +3440,288 @@
             }
         }
 
+        /* =====================================================================
+           HERO + NAV REDESIGN 2026  (dark indigo nav + two-column lavender hero)
+           Ye block sab se aakhir mein hai taake purani CSS ko override kare.
+        ===================================================================== */
+
+        /* ---------- NAVBAR: dark indigo gradient ---------- */
+        .navbar {
+            background: linear-gradient(90deg, #1b1b4d 0%, #29276b 55%, #3532a0 100%) !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+            padding: 14px 5%;
+        }
+        .navbar.scrolled {
+            background: linear-gradient(90deg, #171742 0%, #232160 55%, #2f2c92 100%) !important;
+            box-shadow: 0 8px 30px rgba(18, 16, 55, 0.35) !important;
+        }
+        /* Logo: "W.H." white + "Academy" gradient (like the reference) */
+        .navbar .logo-text-main {
+            background: none;
+            -webkit-text-fill-color: #ffffff;
+            color: #ffffff;
+        }
+        .navbar .logo-text-main .logo-accent {
+            background: linear-gradient(120deg, #a78bfa 0%, #f472b6 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .navbar .logo-text-sub { color: rgba(255, 255, 255, 0.72); }
+        .hamburger { color: #ffffff; }
+
+        /* Desktop nav link colors only (mobile menu is on white bg, keep dark text) */
+        @media (min-width: 769px) {
+            .nav-links a {
+                color: #edecff;
+                display: inline-flex;
+                align-items: center;
+                gap: 7px;
+            }
+            .nav-links a i { opacity: 0.82; font-size: 0.82rem; }
+            .nav-links a:hover {
+                color: #ffffff;
+                background: rgba(255, 255, 255, 0.1);
+            }
+            .nav-links a.active {
+                color: #ffffff;
+                background: rgba(255, 255, 255, 0.12);
+                position: relative;
+            }
+            .nav-links a.active::after {
+                content: '';
+                position: absolute;
+                left: 14px;
+                right: 14px;
+                bottom: 3px;
+                height: 3px;
+                border-radius: 3px;
+                background: linear-gradient(90deg, #f97316, #ec4899);
+            }
+            /* dropdown menu stays light for readability */
+            .dropdown-menu a { color: var(--text-body); }
+            .dropdown-menu a:hover { color: var(--primary-mid); }
+        }
+
+        /* ---------- HERO 2026: two-column lavender ---------- */
+        .hero.hero-2026 {
+            min-height: auto;
+            display: block;
+            text-align: left;
+            align-items: stretch;
+            padding: 122px 5% 46px;
+            background: linear-gradient(160deg, #f5f2fc 0%, #efeaf8 48%, #f4eefb 100%);
+        }
+        .hero-2026 .hero-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 48px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* faint decorative circles + formulas behind the visual */
+        .hero2-decor { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+        .hero2-decor .ring {
+            position: absolute;
+            border: 1.5px solid rgba(124, 58, 237, 0.10);
+            border-radius: 50%;
+        }
+        .hero2-decor .ring-1 { width: 460px; height: 460px; top: 40px; right: 4%; }
+        .hero2-decor .ring-2 { width: 300px; height: 300px; top: 120px; right: 14%; }
+        .hero2-decor .fx {
+            position: absolute;
+            font-family: var(--font-display);
+            font-style: italic;
+            color: rgba(79, 70, 229, 0.16);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .hero2-decor .fx-1 { top: 70px;  right: 30%; }
+        .hero2-decor .fx-2 { top: 150px; right: 8%;  font-size: 1.9rem; }
+        .hero2-decor .fx-3 { top: 300px; right: 26%; }
+        .hero2-decor .fx-4 { top: 360px; right: 6%;  }
+
+        /* LEFT copy */
+        .hero-2026 .hero-badge {
+            background: #ffffff;
+            border: 1px solid rgba(124, 58, 237, 0.22);
+            color: #6d28d9;
+            margin-bottom: 24px;
+            box-shadow: 0 6px 18px rgba(124, 58, 237, 0.10);
+        }
+        .hero-2026 .hero-badge i { color: #7c3aed; }
+        .hero-2026 .hero-headline {
+            font-family: var(--font-display);
+            font-size: clamp(2.4rem, 4.2vw, 4rem);
+            line-height: 1.05;
+            letter-spacing: -1.5px;
+            text-align: left;
+            max-width: 640px;
+            margin: 0 0 22px;
+            color: #17153a;
+        }
+        .hero-2026 .hero-headline .gradient-word {
+            background: linear-gradient(120deg, #7c3aed 0%, #a21caf 45%, #db2777 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: none;
+        }
+        .hero-2026 .hero-sub {
+            text-align: left;
+            max-width: 520px;
+            margin: 0 0 30px;
+            color: #4b5563;
+            font-size: 1.06rem;
+            line-height: 1.7;
+        }
+        .hero-2026 .hero-actions { justify-content: flex-start; margin-bottom: 42px; }
+        .hero-2026 .btn { border-radius: 14px; padding: 15px 26px; }
+        .hero-2026 .btn-primary { background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 100%); }
+        .hero-2026 .btn-secondary {
+            color: #6d28d9;
+            border: 1.5px solid rgba(124, 58, 237, 0.4);
+            background: #ffffff;
+        }
+        .hero-2026 .btn-secondary:hover { border-color: #7c3aed; color: #6d28d9; }
+
+        /* feature row */
+        .hero-features { display: flex; gap: 30px; flex-wrap: wrap; }
+        .hf-item {
+            display: flex; flex-direction: column; align-items: flex-start;
+            gap: 10px; max-width: 112px;
+        }
+        .hf-icon {
+            width: 52px; height: 52px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            background: #ffffff; color: #7c3aed; font-size: 1.15rem;
+            box-shadow: 0 6px 18px rgba(109, 40, 217, 0.12);
+        }
+        .hf-label { font-size: 0.82rem; font-weight: 600; color: #374151; line-height: 1.3; }
+
+        /* RIGHT visual */
+        .hero-visual { position: relative; min-height: 440px; }
+        .hv-panel {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            aspect-ratio: 3 / 2;
+            background: linear-gradient(160deg, #ede9fe 0%, #faf5ff 100%);
+            box-shadow: 0 30px 70px rgba(79, 70, 229, 0.18);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .hv-photo { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+        .hv-photo.hv-photo-missing { display: none; }
+        .hv-monogram {
+            position: absolute; inset: 0;
+            display: none;
+            flex-direction: column; align-items: center; justify-content: center;
+            gap: 14px; color: #7c3aed; text-align: center; padding: 20px;
+        }
+        /* sirf tab dikhao jab photo load na ho */
+        .hv-photo-missing + .hv-monogram { display: flex; }
+        .hv-monogram svg { width: 96px; height: 96px; opacity: 0.9; }
+        .hv-monogram span {
+            font-family: var(--font-display); font-weight: 800; font-size: 1.1rem;
+            color: #5b21b6; letter-spacing: 0.5px;
+        }
+        /* floating cards */
+        .hv-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.97);
+            border: 1px solid rgba(124, 58, 237, 0.10);
+            border-radius: 16px;
+            padding: 14px 16px;
+            box-shadow: 0 16px 40px rgba(30, 27, 75, 0.14);
+            display: flex; gap: 12px; align-items: flex-start;
+            max-width: 232px; z-index: 4;
+            animation: hvFloat 6s ease-in-out infinite;
+        }
+        .hv-card-1 { top: 4%;  right: -5%; }
+        .hv-card-2 { top: 45%; left: -9%; animation-delay: -2s; }
+        .hv-card-3 { bottom: 6%; right: -3%; animation-delay: -4s; }
+        @keyframes hvFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-9px); }
+        }
+        .hvc-icon {
+            width: 38px; height: 38px; border-radius: 10px;
+            background: linear-gradient(135deg, #ede9fe, #f5f3ff);
+            color: #7c3aed; display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; flex-shrink: 0;
+        }
+        .hv-card strong { display: block; font-size: 0.9rem; color: #17153a; font-weight: 700; margin-bottom: 3px; }
+        .hv-card span { font-size: 0.76rem; color: #6b7280; line-height: 1.4; display: block; }
+        .hvc-accent { width: 26px; height: 3px; border-radius: 2px; background: #7c3aed; margin-top: 9px; }
+
+        /* TRUST BAR */
+        .hero-trustbar {
+            max-width: 1280px;
+            margin: 46px auto 0;
+            background: #ffffff;
+            border: 1px solid rgba(124, 58, 237, 0.10);
+            border-radius: 20px;
+            padding: 20px 34px;
+            display: flex; align-items: center; gap: 34px; flex-wrap: wrap;
+            box-shadow: 0 18px 50px rgba(30, 27, 75, 0.08);
+            position: relative; z-index: 2;
+        }
+        .htb-item { display: flex; align-items: center; gap: 10px; font-size: 0.92rem; font-weight: 600; color: #374151; }
+        .htb-item i { color: #7c3aed; }
+        .htb-lead { color: #6d28d9; font-weight: 800; }
+        .htb-lead i { font-size: 1.12rem; }
+
+        /* ---------- HERO 2026 responsive ---------- */
+        /* Tablet & mobile: cards image ke UPAR na aayein — neeche stack ho jayein */
+        @media (max-width: 1000px) {
+            .hero-2026 .hero-inner { grid-template-columns: 1fr; gap: 44px; }
+            .hero-2026 .hero-headline, .hero-2026 .hero-sub { max-width: none; }
+            .hero2-decor { display: none; }
+
+            .hero-visual {
+                max-width: 560px;
+                width: 100%;
+                margin: 0 auto;
+                min-height: auto;
+                display: flex;
+                flex-direction: column;
+                gap: 14px;
+            }
+            /* floating cards ko normal blocks bana do (koi overlap nahi) */
+            .hv-cards-wrap { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+            .hv-card {
+                position: static;
+                max-width: none;
+                width: 100%;
+                top: auto; right: auto; bottom: auto; left: auto;
+                animation: none;
+                box-shadow: 0 10px 26px rgba(30, 27, 75, 0.10);
+            }
+        }
+        /* neeche cards ko 3-across kar do jahan jagah ho (tablet) */
+        @media (min-width: 620px) and (max-width: 1000px) {
+            .hero-visual { max-width: 680px; }
+            .hv-cards-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        }
+        @media (max-width: 768px) {
+            .hero.hero-2026 { padding-top: 100px; text-align: left; }
+            .hero-2026 .hero-actions { flex-direction: row; flex-wrap: wrap; }
+            .hero-2026 .hero-actions .btn { width: auto; flex: 1 1 auto; }
+            .hero-features { gap: 22px; }
+            .hf-item { max-width: 46%; }
+            .hero-trustbar { gap: 18px 26px; padding: 18px 22px; }
+        }
+        @media (max-width: 520px) {
+            .hero-2026 .hero-actions .btn { width: 100%; }
+            .hf-item { max-width: 44%; }
+        }
+
     </style>
 </head>
 
@@ -3486,14 +3768,14 @@
                 </svg>
             </div>
             <div class="logo-text-group">
-                <span class="logo-text-main">W.H. Academy</span>
+                <span class="logo-text-main">W.H. <span class="logo-accent">Academy</span></span>
                 <span class="logo-text-sub">Mathematics & Physics</span>
             </div>
         </a>
 
         <!-- Navigation Links -->
         <ul class="nav-links" id="navLinks">
-            <li><a href="#home" aria-label="Go to Home section">Home</a></li>
+            <li><a href="#home" class="active" aria-label="Go to Home section">Home</a></li>
             <li><a href="about.html" aria-label="About W.H. Academy">About</a></li>
             <li class="dropdown" id="mobileDropdown">
                 <a href="#classes">Programs <i class="fas fa-chevron-down"
@@ -3524,8 +3806,8 @@
             <li><a href="#pricing" aria-label="View pricing and plans">Pricing</a></li>
             <li>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-SBGFOilfUMDSyWdM4KVA8zxnJI9mRMw8VOB5V-d_OHDiEg/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="btn btn-primary"
-                    style="padding:9px 20px; font-size:0.85rem; cursor:pointer; background:linear-gradient(135deg,#6366f1,#4f46e5); color:#ffffff !important; font-weight:700; letter-spacing:0.3px; box-shadow:0 4px 18px rgba(99,102,241,0.45); -webkit-text-fill-color:#ffffff;">
-                    <i class="fas fa-pen-to-square" style="color:#fff;" aria-hidden="true"></i> <span>Enroll Now</span>
+                    style="padding:9px 22px; font-size:0.85rem; cursor:pointer; background:linear-gradient(135deg,#f97316 0%,#ef4444 55%,#ec4899 100%); color:#ffffff !important; font-weight:700; letter-spacing:0.3px; box-shadow:0 6px 20px rgba(249,115,22,0.4); -webkit-text-fill-color:#ffffff; border-radius:12px;">
+                    <span>Enroll Now</span> <i class="fas fa-arrow-right" style="color:#fff;" aria-hidden="true"></i>
                 </a>
             </li>
         </ul>
@@ -3538,45 +3820,128 @@
      Floating math particles + animated headline
 ============================================= -->
     <main id="main-content">
-    <section id="home" class="hero" aria-labelledby="hero-heading" aria-label="Hero: W.H. Academy Online Math and Science Tutoring Pakistan">
+    <section id="home" class="hero hero-2026" aria-labelledby="hero-heading" aria-label="Hero: W.H. Academy Online Math and Science Tutoring Pakistan">
         <!-- Math particles canvas -->
         <div class="particles-canvas" id="particlesCanvas"></div>
 
-        <div class="hero-badge reveal">
-            <span class="dot"></span>
-            Enrollments Open for 2026
+        <!-- faint decorative rings + formulas (behind visual) -->
+        <div class="hero2-decor" aria-hidden="true">
+            <span class="ring ring-1"></span>
+            <span class="ring ring-2"></span>
+            <span class="fx fx-1">a² = mc²</span>
+            <span class="fx fx-2">F = ma</span>
+            <span class="fx fx-3">a² + b² = c²</span>
+            <span class="fx fx-4">E = mc²</span>
         </div>
 
-        <!-- 
-            SEO LAYER: Hidden H1: fully readable by Google bots and
-            screen readers. Uses .sr-only (WCAG standard: no layout effect).
-            Keyword-rich, natural language, geo-targeted.
-        -->
-        <h1 class="sr-only" id="hero-heading">
-            W.H. Academy: Best Online &amp; Home Math and Science Tutor in Pakistan for Class 6, 7, 8, Matric, SSC, and FSc. Specialist in Algebra, Geometry, Physics, and Chemistry. Expert Coaching by M. Rehan Safdar with Chapter-wise Quizzes and Recorded Lectures in Rawalpindi, Islamabad, and across Pakistan.
-        </h1>
+        <div class="hero-inner">
+            <!-- LEFT: copy -->
+            <div class="hero-copy">
+                <div class="hero-badge reveal">
+                    <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                    Enrollments Open for 2026
+                </div>
 
-        <!-- 
-            VISUAL LAYER: Styled heading for website visitors.
-            Uses <p> + aria-hidden so screen readers use the H1 above.
-            Marked as aria-labelledby="hero-heading" on the section.
-        -->
-        <p class="hero-headline reveal" aria-hidden="false" role="presentation">
-            Master <span class="gradient-word">Mathematics and Other Subjects</span><br>
-            with Total Confidence
-        </p>
+                <!--
+                    SEO LAYER: Hidden H1 (fully readable by Google + screen readers).
+                    Keyword-rich, geo-targeted. .sr-only = no layout effect.
+                -->
+                <h1 class="sr-only" id="hero-heading">
+                    W.H. Academy: Best Online &amp; Home Math and Science Tutor in Pakistan for Class 6, 7, 8, Matric, SSC, and FSc. Specialist in Algebra, Geometry, Physics, and Chemistry. Expert Coaching by M. Rehan Safdar with Chapter-wise Quizzes and Recorded Lectures in Rawalpindi, Islamabad, and across Pakistan.
+                </h1>
 
-        <p class="hero-sub reveal delay-1">
-            Expert online & home tutoring for ambitious students. Build a rock-solid foundation,
-            tackle complex problems, and consistently score at the top.
-        </p>
+                <!-- VISUAL headline (screen readers use the H1 above) -->
+                <p class="hero-headline reveal" aria-hidden="false" role="presentation">
+                    Master <span class="gradient-word">Mathematics</span>, Physics &amp; More —
+                    With <span class="gradient-word">Real Confidence</span>
+                </p>
 
-        <div class="hero-actions reveal delay-2">
-            <a href="#pricing" class="btn btn-primary" aria-label="Start learning today - view pricing plans">Start Learning Today <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-            <a href="#classes" class="btn btn-secondary" aria-label="Explore our tutoring programs">Explore Programs</a>
-            <a href="https://wa.me/923295215703" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" aria-label="Contact us on WhatsApp">
-                <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp Us
-            </a>
+                <p class="hero-sub reveal delay-1">
+                    Personalized online and home tutoring designed to strengthen concepts,
+                    improve problem-solving skills, and help students learn with confidence.
+                </p>
+
+                <div class="hero-actions reveal delay-2">
+                    <a href="#pricing" class="btn btn-primary" aria-label="Start learning today - view pricing plans">Start Learning Today <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="#classes" class="btn btn-secondary" aria-label="Explore our tutoring programs">Explore Programs</a>
+                </div>
+
+                <div class="hero-features reveal delay-3">
+                    <div class="hf-item">
+                        <span class="hf-icon"><i class="fas fa-users" aria-hidden="true"></i></span>
+                        <span class="hf-label">Personalized Learning</span>
+                    </div>
+                    <div class="hf-item">
+                        <span class="hf-icon"><i class="fas fa-user-graduate" aria-hidden="true"></i></span>
+                        <span class="hf-label">Expert Tutors</span>
+                    </div>
+                    <div class="hf-item">
+                        <span class="hf-icon"><i class="fas fa-laptop" aria-hidden="true"></i></span>
+                        <span class="hf-label">Online &amp; Home Classes</span>
+                    </div>
+                    <div class="hf-item">
+                        <span class="hf-icon"><i class="fas fa-hands-holding-child" aria-hidden="true"></i></span>
+                        <span class="hf-label">Parent Support</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: visual with floating cards -->
+            <div class="hero-visual reveal-right delay-2">
+                <div class="hv-panel">
+                    <!-- Rehan: apni hero image yahan images/hero-student.webp par upload karein.
+                         Agar image na ho to neeche wala WH monogram apne aap dikhega. -->
+                    <img class="hv-photo" src="/images/hero-student.webp"
+                         alt="Student learning Mathematics and Physics with W.H. Academy"
+                         loading="eager" onerror="this.classList.add('hv-photo-missing')">
+                    <div class="hv-monogram">
+                        <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="W.H. Academy shield">
+                            <path d="M14 2L4 6v8c0 5.5 4.3 10.7 10 12 5.7-1.3 10-6.5 10-12V6L14 2z" fill="rgba(124,58,237,0.12)" stroke="#7c3aed" stroke-width="1.4" stroke-linejoin="round"/>
+                            <path d="M10 10h4M10 13h4" stroke="#7c3aed" stroke-width="1.6" stroke-linecap="round"/>
+                            <path d="M14 10v6" stroke="#7c3aed" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+                            <path d="M14 10h4M14 13h4" stroke="#7c3aed" stroke-width="1.4" stroke-linecap="round" opacity="0.85"/>
+                            <circle cx="14" cy="20" r="1.8" fill="#7c3aed"/>
+                        </svg>
+                        <span>W.H. Academy</span>
+                    </div>
+                </div>
+
+                <!-- floating cards (desktop: float at edges | mobile: stack below image) -->
+                <div class="hv-cards-wrap">
+                <div class="hv-card hv-card-1">
+                    <span class="hvc-icon"><i class="fas fa-brain" aria-hidden="true"></i></span>
+                    <div>
+                        <strong>Concept Mastery</strong>
+                        <span>Build strong concepts that last forever.</span>
+                        <div class="hvc-accent"></div>
+                    </div>
+                </div>
+                <div class="hv-card hv-card-2">
+                    <span class="hvc-icon"><i class="fas fa-user" aria-hidden="true"></i></span>
+                    <div>
+                        <strong>Personalized Learning</strong>
+                        <span>Custom study plans for every student.</span>
+                        <div class="hvc-accent"></div>
+                    </div>
+                </div>
+                <div class="hv-card hv-card-3">
+                    <span class="hvc-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></span>
+                    <div>
+                        <strong>Progress Tracking</strong>
+                        <span>Track performance and improve every day.</span>
+                        <div class="hvc-accent"></div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TRUST BAR -->
+        <div class="hero-trustbar reveal delay-3">
+            <div class="htb-item htb-lead"><i class="fas fa-shield-halved" aria-hidden="true"></i> Trusted by Students &amp; Parents</div>
+            <div class="htb-item"><i class="fas fa-circle-check" aria-hidden="true"></i> Concept-Focused Teaching</div>
+            <div class="htb-item"><i class="fas fa-circle-check" aria-hidden="true"></i> Flexible Learning Options</div>
+            <div class="htb-item"><i class="fas fa-circle-check" aria-hidden="true"></i> Support Every Step of the Way</div>
         </div>
 
     </section>
