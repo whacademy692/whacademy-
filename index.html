@@ -3584,14 +3584,20 @@
             box-shadow: 0 30px 70px rgba(79, 70, 229, 0.16);
             background:
                 linear-gradient(90deg,
-                    rgba(244, 240, 252, 0.99) 0%,
-                    rgba(244, 240, 252, 0.96) 34%,
-                    rgba(244, 240, 252, 0.70) 50%,
-                    rgba(245, 241, 252, 0.18) 68%,
-                    rgba(245, 241, 252, 0.00) 84%),
-                url("/images/hero-student.webp") center right / cover no-repeat;
+                    rgba(246, 242, 252, 0.97) 0%,
+                    rgba(246, 242, 252, 0.90) 24%,
+                    rgba(246, 242, 252, 0.60) 38%,
+                    rgba(246, 242, 252, 0.20) 50%,
+                    rgba(246, 242, 252, 0.00) 62%),
+                url("/images/hero-student.webp") right center / cover no-repeat;
         }
         .hero-copy { position: relative; z-index: 2; max-width: 560px; }
+        /* text ko image se saaf alag karne ke liye halka white halo (sirf banner par) */
+        @media (min-width: 1001px) {
+            .hero-banner .hero-headline { text-shadow: 0 2px 10px rgba(246, 242, 252, 0.9); }
+            .hero-banner .hero-sub { text-shadow: 0 1px 6px rgba(246, 242, 252, 0.95); }
+            .hero-banner .hf-label { text-shadow: 0 1px 5px rgba(246, 242, 252, 0.95); }
+        }
 
         /* image element sirf mobile ke liye (desktop pe banner bg use hota hai) */
         .hero-photo-m { display: none; }
