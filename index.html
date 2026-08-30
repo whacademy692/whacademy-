@@ -3855,13 +3855,29 @@
             <li><a href="insights.html" aria-label="Share and read insights and feedback">Insights</a></li>
             <li><a href="#notes" aria-label="Access study resources and notes">Resources</a></li>
             <li><a href="#quizzes" aria-label="Take chapter-wise quizzes">Quiz</a></li>
-            <li>
-                <a href="#learning-games" aria-label="Go to the learning games section">
+            <li class="dropdown" id="gamesDropdown">
+                <a href="#learning-games" class="games-toggle" aria-label="Games menu: log in, get a Student ID, or learn how to create an account">
                     Games
                     <span style="display:inline-block; margin-left:5px; padding:1px 7px; border-radius:999px;
                                  background:linear-gradient(135deg,#f59e0b,#ec4899); color:#fff;
                                  font-size:0.6rem; font-weight:800; letter-spacing:0.5px; vertical-align:middle;">NEW</span>
+                    <i class="fas fa-chevron-down" style="font-size:0.7rem; margin-left:4px;" aria-hidden="true"></i>
                 </a>
+                <div class="dropdown-menu">
+                    <!-- Already enrolled: straight to login, no scrolling to the games section -->
+                    <a href="games/login.html" aria-label="Log in to the games (enrolled students)">
+                        <i class="fas fa-right-to-bracket" style="width:18px; margin-right:8px; color:#4f46e5;" aria-hidden="true"></i>Login
+                    </a>
+                    <!-- New students: open the enrollment form to get a Student ID -->
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-SBGFOilfUMDSyWdM4KVA8zxnJI9mRMw8VOB5V-d_OHDiEg/viewform?usp=header"
+                       target="_blank" rel="noopener noreferrer" aria-label="Get a Student ID (new students - opens enrollment form)">
+                        <i class="fas fa-id-card" style="width:18px; margin-right:8px; color:#4f46e5;" aria-hidden="true"></i>Get Student ID
+                    </a>
+                    <!-- Everyone else: the existing games / account-creation instructions section -->
+                    <a href="#learning-games" aria-label="How to create your account and start the games">
+                        <i class="fas fa-circle-question" style="width:18px; margin-right:8px; color:#4f46e5;" aria-hidden="true"></i>How to Create Account
+                    </a>
+                </div>
             </li>
             <li><a href="#pricing" aria-label="View pricing and plans">Pricing</a></li>
             <li>
@@ -6744,7 +6760,7 @@
             hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
         });
 
-        // Mobile dropdown
+        // Mobile dropdown (Programs)
         const mobileDropdown = document.getElementById('mobileDropdown');
         mobileDropdown.addEventListener('click', (e) => {
             if (window.innerWidth <= 1199) {
@@ -6754,8 +6770,35 @@
             }
         });
 
-        // Nav links close on click (mobile)
-        document.querySelectorAll('.nav-links > li > a:not([href="#classes"])').forEach(a => {
+        // Mobile dropdown (Games) — tapping the top-level "Games" toggles its
+        // menu instead of jumping to the section, so Login / Get Student ID /
+        // How to Create Account are reachable straight from the top on phones.
+        const gamesDropdown = document.getElementById('gamesDropdown');
+        if (gamesDropdown) {
+            gamesDropdown.addEventListener('click', (e) => {
+                if (window.innerWidth <= 1199) {
+                    if (e.target.tagName !== 'A' || e.target.closest('.dropdown-menu')) return;
+                    e.preventDefault();
+                    gamesDropdown.classList.toggle('active');
+                }
+            });
+        }
+
+        // Nav links close on click (mobile). The two dropdown TOGGLES (#classes
+        // Programs, and the Games toggle) are excluded so the first tap opens
+        // their sub-menu rather than closing the whole nav.
+        document.querySelectorAll('.nav-links > li > a:not([href="#classes"]):not(.games-toggle)').forEach(a => {
+            a.addEventListener('click', () => {
+                if (window.innerWidth <= 1199) {
+                    navLinks.classList.remove('active');
+                    navIcon.className = 'fas fa-bars';
+                }
+            });
+        });
+
+        // Sub-menu items (inside any dropdown) close the mobile nav on tap, so a
+        // same-page link like "How to Create Account" reveals its section.
+        document.querySelectorAll('.dropdown-menu a').forEach(a => {
             a.addEventListener('click', () => {
                 if (window.innerWidth <= 1199) {
                     navLinks.classList.remove('active');
