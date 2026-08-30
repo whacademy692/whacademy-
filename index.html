@@ -6775,13 +6775,19 @@
         // How to Create Account are reachable straight from the top on phones.
         const gamesDropdown = document.getElementById('gamesDropdown');
         if (gamesDropdown) {
-            gamesDropdown.addEventListener('click', (e) => {
-                if (window.innerWidth <= 1199) {
-                    if (e.target.tagName !== 'A' || e.target.closest('.dropdown-menu')) return;
+            const gamesToggle = gamesDropdown.querySelector('.games-toggle');
+            if (gamesToggle) {
+                gamesToggle.addEventListener('click', (e) => {
+                    // "Games" is a menu opener, not a link — never jump to the
+                    // section on click (desktop opens the menu on hover; use
+                    // "How to Create Account" to reach the section). On mobile
+                    // the tap toggles the sub-menu open/closed.
                     e.preventDefault();
-                    gamesDropdown.classList.toggle('active');
-                }
-            });
+                    if (window.innerWidth <= 1199) {
+                        gamesDropdown.classList.toggle('active');
+                    }
+                });
+            }
         }
 
         // Nav links close on click (mobile). The two dropdown TOGGLES (#classes
@@ -6806,6 +6812,41 @@
                 }
             });
         });
+
+        // Login-aware Games menu. The games app stores a signed-in student's
+        // session token in localStorage under its own 'wha:' namespace, on the
+        // same domain — so the homepage can tell whether someone is already
+        // logged in. If they are, swap the menu to take them straight into
+        // their dashboard/games instead of showing "Login / Get Student ID".
+        (function () {
+            if (!gamesDropdown) return;
+            const menu = gamesDropdown.querySelector('.dropdown-menu');
+            if (!menu) return;
+            let loggedIn = false;
+            try {
+                const raw = window.localStorage.getItem('wha:session_token');
+                loggedIn = !!(raw && JSON.parse(raw));
+            } catch (e) { loggedIn = false; }
+            if (!loggedIn) return; // not signed in → keep default Login / Get Student ID menu
+
+            menu.innerHTML =
+                '<a href="games/dashboard.html" aria-label="Go to my dashboard">' +
+                    '<i class="fas fa-gauge-high" style="width:18px; margin-right:8px; color:#4f46e5;" aria-hidden="true"></i>My Dashboard</a>' +
+                '<a href="games/welcome.html" aria-label="Play the learning games">' +
+                    '<i class="fas fa-play" style="width:18px; margin-right:8px; color:#4f46e5;" aria-hidden="true"></i>Play Games</a>' +
+                '<a href="games/login.html" aria-label="Switch to a different student account">' +
+                    '<i class="fas fa-user-group" style="width:18px; margin-right:8px; color:#4f46e5;" aria-hidden="true"></i>Switch Account</a>';
+
+            // Re-bind the mobile "close the nav on tap" behaviour to the new links.
+            menu.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', () => {
+                    if (window.innerWidth <= 1199) {
+                        navLinks.classList.remove('active');
+                        navIcon.className = 'fas fa-bars';
+                    }
+                });
+            });
+        })();
 
 
         // =============================================
