@@ -694,7 +694,7 @@ window.WHA_CONTENT = {
           {
             "n": 5,
             "title": "Periodic Table",
-            "notes": null,
+            "notes": "https://whacademypk.com/notes/class-8/science/periodic-table.html",
             "quiz": null,
             "game": null
           },
