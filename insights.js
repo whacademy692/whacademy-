@@ -8,6 +8,11 @@
  *     insights/submit    -> writes a row with status=pending (Turnstile-gated)
  *     insights/approved  -> reads approved rows for the list below
  * Chapters come from window.WHA_CONTENT (content-registry.js).
+ *
+ * Flow: choose General or Specific -> (Specific also chooses a role) -> fill the
+ * form -> submit. General = free feedback / tips / academy suggestions (name +
+ * country + one box). Specific = the class/subject/chapter forms, which now let
+ * anyone from any board pick "Other - not listed" and type their own.
  */
 (function () {
   'use strict';
@@ -18,6 +23,7 @@
 
   var TEXT_MAX = 5000;
   var TOPIC_MAX = 700;
+  var OTHER = '__other__';   // sentinel value for the "not listed" option
 
   // ---- tiny DOM + API helpers ---------------------------------------------
   function qs(sel, root) { return (root || document).querySelector(sel); }
@@ -32,11 +38,13 @@
       .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
+  // Collapse runs of 3+ newlines down to a single blank line so AI-pasted text
+  // with huge gaps still reads cleanly in the public feed.
+  function tidy(v) {
+    return String(v == null ? '' : v).replace(/\r\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+  }
 
   // text/plain avoids a CORS preflight Apps Script can't answer (same trick as api.js).
-  // Cold-start HTML is auto-retried ONLY for the read-only approved feed — a
-  // submit is never retried (it would duplicate the row and reuse a single-use
-  // Turnstile token).
   function apiCall(operation, params, _attempt) {
     var attempt = _attempt || 1;
     var body = Object.assign({ operation: operation, apiKey: API_KEY }, params || {});
@@ -55,7 +63,7 @@
               setTimeout(function () { resolve(apiCall(operation, params, attempt + 1)); }, 700 * attempt);
             });
           }
-          throw new Error('The server is waking up — please try again in a moment.');
+          throw new Error('The server is waking up - please try again in a moment.');
         }
         if (env.success) return env.data || {};
         var e2 = new Error((env.error && env.error.message) || 'Something went wrong.');
@@ -64,7 +72,7 @@
       });
   }
 
-  // ---- Turnstile (Option A — no login, bot check only) --------------------
+  // ---- Turnstile (Option A - no login, bot check only) --------------------
   var Captcha = (function () {
     var SITE_KEY = window.WHA_TURNSTILE_SITE_KEY || '';
     var widgetId;
@@ -86,8 +94,6 @@
       }
     };
   })();
-  // Exposed so the Turnstile onload callback (in the HTML) can trigger a render
-  // even if the script loads in the other order.
   window.WHAInsights = { renderCaptcha: function () { Captcha.render(); } };
 
   // ---- content registry (class -> subject -> chapter) ---------------------
@@ -109,6 +115,14 @@
   }
 
   // ---- field templates -----------------------------------------------------
+  // Compact "before you write" tips, shown at the top of every form.
+  function howtoNote() {
+    return '<div class="form-howto">' +
+      '<b>Tip:</b> write in any language - Roman Urdu (like WhatsApp), Urdu, or English ' +
+      '(or your own, if you are outside Pakistan). Using AI is fine, but please ' +
+      'remove any extra blank lines so your card stays short and clean.' +
+      '</div>';
+  }
   function textField(id, label, opts) {
     opts = opts || {};
     var reqMark = opts.required ? ' <span class="req">*</span>' : ' <span class="opt">(optional)</span>';
@@ -137,32 +151,89 @@
       '<select class="select" id="' + id + '"></select>' +
       '</div>';
   }
+  // A fixed-option select (used by the General form's "What are you?").
+  function pickField(id, label, options, required) {
+    var reqMark = required ? ' <span class="req">*</span>' : ' <span class="opt">(optional)</span>';
+    var opts = '<option value="">Choose...</option>' + options.map(function (o) {
+      return '<option value="' + esc(o.value) + '">' + esc(o.label) + '</option>';
+    }).join('');
+    return '<div class="field">' +
+      '<label class="label" for="' + id + '">' + esc(label) + reqMark + '</label>' +
+      '<select class="select" id="' + id + '">' + opts + '</select>' +
+      '</div>';
+  }
+  function countryField() {
+    return textField('f-country', 'Country', { placeholder: 'e.g. Pakistan (any country welcome)' });
+  }
+  // A hidden "type your own" input revealed when a select is set to "Other".
+  function otherInput(id, ph) {
+    return '<div class="field field--other" id="' + id + '-wrap" hidden>' +
+      '<input class="input" id="' + id + '" type="text" placeholder="' + esc(ph) + '">' +
+      '</div>';
+  }
   // class + subject + chapter cascade, shared by student & teacher forms.
   function cascadeFields() {
     return '<div class="grid2">' + selectField('f-class', 'Class') + selectField('f-subject', 'Subject') + '</div>' +
+      otherInput('f-class-other', 'Type your class (e.g. Grade 8, O-Level)') +
+      otherInput('f-subject-other', 'Type your subject') +
       selectField('f-chapter', 'Chapter') +
-      areaField('f-topic', 'Topic(s) — the specific part(s) of the chapter', { required: true, max: TOPIC_MAX, rows: 2, placeholder: 'e.g. Long division of decimals; rounding off; word problems…' });
+      otherInput('f-chapter-other', 'Type your chapter / unit name') +
+      areaField('f-topic', 'Topic(s) - the specific part(s) of the chapter', { required: true, max: TOPIC_MAX, rows: 2, placeholder: 'e.g. Long division of decimals; rounding off; word problems...' });
   }
 
-  // ---- role -> form definition --------------------------------------------
+  // ---- General form (free feedback / tips / academy suggestions) -----------
+  function generalFields() {
+    return howtoNote() +
+      textField('f-name', 'Your name', { required: true, placeholder: 'Shown publicly' }) +
+      '<div class="grid2">' +
+        pickField('f-who', 'What are you?', [
+          { value: 'student', label: 'Student' },
+          { value: 'parent', label: 'Parent' },
+          { value: 'teacher', label: 'Teacher' },
+          { value: 'other', label: 'Other' }
+        ], true) +
+        countryField() +
+      '</div>' +
+      areaField('f-field1', 'Your feedback, tip or suggestion', {
+        required: true,
+        placeholder: 'Anything about education in general, a problem you notice, or a suggestion for W.H. Academy...'
+      });
+  }
+  function generalCollect() {
+    var who = (val('f-who') || 'other').toLowerCase();
+    return {
+      category: 'general',
+      role: who,
+      name: val('f-name'),
+      country: val('f-country'),
+      field1: val('f-field1')
+    };
+  }
+
+  // ---- role -> form definition (Specific path) -----------------------------
   var ROLES = {
     student: {
       title: 'Student feedback',
       hint: 'Tell us about a specific chapter and topic you studied.',
       fields: function () {
-        return textField('f-name', 'Your name', { required: true, placeholder: 'Shown publicly' }) +
+        return howtoNote() +
+          textField('f-name', 'Your name', { required: true, placeholder: 'Shown publicly' }) +
+          countryField() +
           cascadeFields() +
-          areaField('f-field1', 'What did you find difficult?', { required: true, placeholder: 'The part that was hard, and why…' }) +
-          areaField('f-field2', 'If you solved it, how? (your strategy)', { placeholder: 'What finally made it click…' });
+          areaField('f-field1', 'What did you find difficult?', { required: true, placeholder: 'The part that was hard, and why...' }) +
+          areaField('f-field2', 'If you solved it, how? (your strategy)', { placeholder: 'What finally made it click...' });
       },
       collect: function () {
+        var c = cascadeValues();
         return {
+          category: 'specific',
           role: 'student',
           name: val('f-name'),
-          classLevel: val('f-class'),
-          subject: subjectName(val('f-class'), val('f-subject')),
-          chapter: val('f-chapter'),
-          topic: val('f-topic'),
+          country: val('f-country'),
+          classLevel: c.classLevel,
+          subject: c.subject,
+          chapter: c.chapter,
+          topic: c.topic,
           field1: val('f-field1'),
           field2: val('f-field2')
         };
@@ -170,9 +241,11 @@
     },
     parent: {
       title: 'Parent feedback',
-      hint: 'General feedback — no class or chapter needed.',
+      hint: 'General feedback - no class or chapter needed.',
       fields: function () {
-        return textField('f-name', 'Your name', { required: true, placeholder: 'Shown publicly' }) +
+        return howtoNote() +
+          textField('f-name', 'Your name', { required: true, placeholder: 'Shown publicly' }) +
+          countryField() +
           areaField('f-field1', 'What challenges do you face helping your child study?', { required: true }) +
           areaField('f-field2', 'How do you teach or support them? (your approach)', {}) +
           areaField('f-field3', 'What do you seriously expect from teachers / institutions?', {}) +
@@ -180,8 +253,10 @@
       },
       collect: function () {
         return {
+          category: 'specific',
           role: 'parent',
           name: val('f-name'),
+          country: val('f-country'),
           schools: val('f-schools'),
           field1: val('f-field1'),
           field2: val('f-field2'),
@@ -191,28 +266,33 @@
     },
     teacher: {
       title: 'Teacher feedback',
-      hint: 'Share teaching insight for a specific topic — yours or any board topic.',
+      hint: 'Share teaching insight for a specific topic - yours or any board topic.',
       fields: function () {
-        return '<div class="grid2">' +
+        return howtoNote() +
+          '<div class="grid2">' +
             textField('f-name', 'Your name', { required: true, placeholder: 'Shown publicly' }) +
             textField('f-exp', 'Teaching experience (years)', { required: true, inputmode: 'numeric', placeholder: 'e.g. 6' }) +
           '</div>' +
+          countryField() +
           textField('f-schools', 'Schools you have taught at', { placeholder: 'Only if you want to mention them' }) +
           cascadeFields() +
-          areaField('f-field1', 'Teaching tips — how would you teach this topic?', { required: true }) +
+          areaField('f-field1', 'Teaching tips - how would you teach this topic?', { required: true }) +
           areaField('f-field2', "Students' common mistakes & misconceptions", { required: true }) +
           areaField('f-field3', 'Exam tips / importance of this topic', {});
       },
       collect: function () {
+        var c = cascadeValues();
         return {
+          category: 'specific',
           role: 'teacher',
           name: val('f-name'),
+          country: val('f-country'),
           experienceYears: val('f-exp'),
           schools: val('f-schools'),
-          classLevel: val('f-class'),
-          subject: subjectName(val('f-class'), val('f-subject')),
-          chapter: val('f-chapter'),
-          topic: val('f-topic'),
+          classLevel: c.classLevel,
+          subject: c.subject,
+          chapter: c.chapter,
+          topic: c.topic,
           field1: val('f-field1'),
           field2: val('f-field2'),
           field3: val('f-field3')
@@ -223,33 +303,90 @@
 
   function val(id) { var n = qs('#' + id); return n ? n.value.trim() : ''; }
 
-  // ---- cascade wiring ------------------------------------------------------
-  function fillSelect(sel, items, placeholder) {
+  // ---- cascade wiring (with "Other - not listed") --------------------------
+  function fillSelect(sel, items, placeholder, withOther) {
     sel.innerHTML = '';
     sel.appendChild(el('option', { value: '' }, esc(placeholder)));
     items.forEach(function (it) { sel.appendChild(el('option', { value: it.value }, esc(it.label))); });
+    if (withOther) sel.appendChild(el('option', { value: OTHER }, 'Other - not listed'));
+  }
+  function showOther(id, show) {
+    var w = qs('#' + id + '-wrap');
+    if (w) w.hidden = !show;
+    if (!show) { var i = qs('#' + id); if (i) i.value = ''; }
   }
   function wireCascade() {
     var clsSel = qs('#f-class'), subSel = qs('#f-subject'), chSel = qs('#f-chapter');
     if (!clsSel || !subSel || !chSel) return;
 
-    fillSelect(clsSel, classKeys().map(function (k) { return { value: k, label: 'Class ' + k }; }), 'Choose class');
-    fillSelect(subSel, [], 'Choose class first'); subSel.disabled = true;
-    fillSelect(chSel, [], 'Choose subject first'); chSel.disabled = true;
+    fillSelect(clsSel, classKeys().map(function (k) { return { value: k, label: 'Class ' + k }; }), 'Choose class', true);
+    fillSelect(subSel, [], 'Choose class first', false); subSel.disabled = true;
+    fillSelect(chSel, [], 'Choose subject first', false); chSel.disabled = true;
+    showOther('f-class-other', false); showOther('f-subject-other', false); showOther('f-chapter-other', false);
 
     clsSel.addEventListener('change', function () {
       var cls = clsSel.value;
-      if (!cls) { fillSelect(subSel, [], 'Choose class first'); subSel.disabled = true; fillSelect(chSel, [], 'Choose subject first'); chSel.disabled = true; return; }
-      fillSelect(subSel, subjectsFor(cls).map(function (s) { return { value: s.key, label: s.name }; }), 'Choose subject');
-      subSel.disabled = false;
-      fillSelect(chSel, [], 'Choose subject first'); chSel.disabled = true;
+      if (cls === OTHER) {
+        // Non-APSACS board: let them type class, subject and chapter freely.
+        showOther('f-class-other', true);
+        subSel.disabled = true; fillSelect(subSel, [], 'Type subject below', false); showOther('f-subject-other', true);
+        chSel.disabled = true; fillSelect(chSel, [], 'Type chapter below', false); showOther('f-chapter-other', true);
+        return;
+      }
+      showOther('f-class-other', false);
+      if (!cls) {
+        fillSelect(subSel, [], 'Choose class first', false); subSel.disabled = true; showOther('f-subject-other', false);
+        fillSelect(chSel, [], 'Choose subject first', false); chSel.disabled = true; showOther('f-chapter-other', false);
+        return;
+      }
+      fillSelect(subSel, subjectsFor(cls).map(function (s) { return { value: s.key, label: s.name }; }), 'Choose subject', true);
+      subSel.disabled = false; showOther('f-subject-other', false);
+      fillSelect(chSel, [], 'Choose subject first', false); chSel.disabled = true; showOther('f-chapter-other', false);
     });
+
     subSel.addEventListener('change', function () {
       var cls = clsSel.value, sub = subSel.value;
-      if (!sub) { fillSelect(chSel, [], 'Choose subject first'); chSel.disabled = true; return; }
-      fillSelect(chSel, chaptersFor(cls, sub).map(function (c) { return { value: c.title, label: c.n + '. ' + c.title }; }), 'Choose chapter');
-      chSel.disabled = false;
+      if (sub === OTHER) {
+        showOther('f-subject-other', true);
+        chSel.disabled = true; fillSelect(chSel, [], 'Type chapter below', false); showOther('f-chapter-other', true);
+        return;
+      }
+      showOther('f-subject-other', false);
+      if (!sub) { fillSelect(chSel, [], 'Choose subject first', false); chSel.disabled = true; showOther('f-chapter-other', false); return; }
+      fillSelect(chSel, chaptersFor(cls, sub).map(function (c) { return { value: c.title, label: c.n + '. ' + c.title }; }), 'Choose chapter', true);
+      chSel.disabled = false; showOther('f-chapter-other', false);
     });
+
+    chSel.addEventListener('change', function () {
+      showOther('f-chapter-other', chSel.value === OTHER);
+    });
+  }
+
+  // Resolve class/subject/chapter from either the selects or the "Other" inputs.
+  function cascadeValues() {
+    var clsSel = qs('#f-class');
+    var clsRaw = clsSel ? clsSel.value : '';
+    var classLevel, subject, chapter;
+
+    if (clsRaw === OTHER) {
+      classLevel = val('f-class-other');
+      subject = val('f-subject-other');
+      chapter = val('f-chapter-other');
+    } else {
+      classLevel = clsRaw;
+      var subSel = qs('#f-subject');
+      var subRaw = subSel ? subSel.value : '';
+      if (subRaw === OTHER) {
+        subject = val('f-subject-other');
+        chapter = val('f-chapter-other');
+      } else {
+        subject = subRaw ? subjectName(clsRaw, subRaw) : '';
+        var chSel = qs('#f-chapter');
+        var chRaw = chSel ? chSel.value : '';
+        chapter = (chRaw === OTHER) ? val('f-chapter-other') : chRaw;
+      }
+    }
+    return { classLevel: classLevel, subject: subject, chapter: chapter, topic: val('f-topic') };
   }
 
   function wireCharCounts() {
@@ -263,7 +400,17 @@
   }
 
   // ---- flow ----------------------------------------------------------------
-  var currentRole = null;
+  var currentMode = null;   // 'general' | 'specific'
+  var currentRole = null;   // student | parent | teacher (specific only)
+
+  function setStep(step) {
+    // step: 'type' | 'pick' | 'form' | 'done'
+    qs('#howtoSection').hidden = (step === 'form' || step === 'done');
+    qs('#typeSection').hidden = (step !== 'type');
+    qs('#pickSection').hidden = (step !== 'pick');
+    qs('#formSection').hidden = (step !== 'form');
+    qs('#doneSection').hidden = (step !== 'done');
+  }
 
   function showNotice(msg, kind) {
     var n = qs('#formNotice');
@@ -272,7 +419,21 @@
     n.hidden = !msg;
   }
 
+  function openGeneral() {
+    currentMode = 'general';
+    currentRole = null;
+    qs('#formTitle').textContent = 'General feedback';
+    qs('#formHint').textContent = 'Education tips, a general issue, or a suggestion for W.H. Academy.';
+    qs('#formFields').innerHTML = generalFields();
+    showNotice('', null);
+    wireCharCounts();
+    setStep('form');
+    Captcha.render();
+    qs('#formSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
   function openForm(role) {
+    currentMode = 'specific';
     currentRole = role;
     var def = ROLES[role];
     qs('#formTitle').textContent = def.title;
@@ -283,38 +444,51 @@
     if (role === 'student' || role === 'teacher') wireCascade();
     wireCharCounts();
 
-    qs('#pickSection').hidden = true;
-    qs('#doneSection').hidden = true;
-    qs('#formSection').hidden = false;
+    setStep('form');
     Captcha.render();
     qs('#formSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
-  function backToPicker() {
-    currentRole = null;
-    qs('#formSection').hidden = true;
-    qs('#doneSection').hidden = true;
+  function showRolePicker() {
     Array.prototype.forEach.call(document.querySelectorAll('.role'), function (b) { b.setAttribute('aria-pressed', 'false'); });
-    qs('#pickSection').hidden = false;
+    setStep('pick');
     qs('#pickSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function backToStart() {
+    currentMode = null;
+    currentRole = null;
+    Array.prototype.forEach.call(document.querySelectorAll('.type'), function (b) { b.setAttribute('aria-pressed', 'false'); });
+    Array.prototype.forEach.call(document.querySelectorAll('.role'), function (b) { b.setAttribute('aria-pressed', 'false'); });
+    setStep('type');
+    qs('#typeSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // "Change" button inside the form: back to the role picker (specific) or the
+  // start (general).
+  function backFromForm() {
+    if (currentMode === 'specific') showRolePicker();
+    else backToStart();
   }
 
   function onSubmit(e) {
     e.preventDefault();
-    if (!currentRole) return;
+    if (!currentMode) return;
     showNotice('', null);
 
-    var payload = ROLES[currentRole].collect();
+    var payload = (currentMode === 'general') ? generalCollect() : ROLES[currentRole].collect();
 
     // Client-side required checks mirror the backend, for a friendlier message.
     if (!payload.name) return showNotice('Please enter your name.', 'err');
+    if (currentMode === 'general' && !val('f-who')) return showNotice('Please pick what you are (student, parent, teacher or other).', 'err');
     if (!payload.field1) return showNotice('Please fill in the main feedback field.', 'err');
-    if (currentRole === 'student' || currentRole === 'teacher') {
-      if (!payload.classLevel || !val('f-subject') || !payload.chapter || !payload.topic) {
-        return showNotice('Please choose class, subject, chapter and topic.', 'err');
+
+    if (currentMode === 'specific' && (currentRole === 'student' || currentRole === 'teacher')) {
+      if (!payload.classLevel || !payload.subject || !payload.chapter || !payload.topic) {
+        return showNotice('Please choose (or type, if not listed) class, subject, chapter and topic.', 'err');
       }
     }
-    if (currentRole === 'teacher') {
+    if (currentMode === 'specific' && currentRole === 'teacher') {
       if (!payload.experienceYears) return showNotice('Please enter your teaching experience.', 'err');
       if (!payload.field2) return showNotice("Please share students' common mistakes.", 'err');
     }
@@ -326,12 +500,11 @@
     }
 
     var btn = qs('#submitBtn');
-    btn.disabled = true; btn.textContent = 'Submitting…';
+    btn.disabled = true; btn.textContent = 'Submitting...';
 
     apiCall('insights/submit', payload)
       .then(function () {
-        qs('#formSection').hidden = true;
-        qs('#doneSection').hidden = false;
+        setStep('done');
         qs('#doneSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
       })
       .catch(function (err) {
@@ -343,8 +516,9 @@
 
   // ---- approved feed -------------------------------------------------------
   function block(title, text) {
-    if (!text) return '';
-    return '<div class="tile__block"><h4>' + esc(title) + '</h4><p>' + esc(text) + '</p></div>';
+    var t = tidy(text);
+    if (!t) return '';
+    return '<div class="tile__block"><h4>' + esc(title) + '</h4><p>' + esc(t) + '</p></div>';
   }
   function initials(name) {
     var parts = String(name || 'A').trim().split(/\s+/).slice(0, 2);
@@ -352,30 +526,40 @@
   }
   function metaLine(it) {
     var bits = [];
+    if (it.category === 'general') bits.push('General');
     if (it.role === 'teacher' && it.experienceYears) bits.push('<b>' + esc(it.experienceYears) + '</b> yrs experience');
     if (it.classLevel) bits.push('Class <b>' + esc(it.classLevel) + '</b>');
     if (it.subject) bits.push(esc(it.subject));
     if (it.chapter) bits.push(esc(it.chapter));
     if (it.schools) bits.push(esc(it.schools));
-    return bits.join(' · ');
+    if (it.country) bits.push(esc(it.country));
+    return bits.join(' &middot; ');
   }
   function tile(it) {
-    var roleName = it.role.charAt(0).toUpperCase() + it.role.slice(1);
-    var blocks = block('Topic', it.topic);
-    if (it.role === 'student') {
-      blocks += block('What was difficult', it.field1) + block('How they solved it', it.field2);
-    } else if (it.role === 'parent') {
-      blocks += block('Challenges', it.field1) + block('Their approach', it.field2) + block('Expectations', it.field3);
+    var role = String(it.role || 'other');
+    var roleName = role.charAt(0).toUpperCase() + role.slice(1);
+    var blocks;
+    if (it.category === 'general') {
+      blocks = block('Feedback', it.field1);
     } else {
-      blocks += block('Teaching tips', it.field1) + block('Common mistakes', it.field2) + block('Exam tips', it.field3);
+      blocks = block('Topic', it.topic);
+      if (role === 'student') {
+        blocks += block('What was difficult', it.field1) + block('How they solved it', it.field2);
+      } else if (role === 'parent') {
+        blocks += block('Challenges', it.field1) + block('Their approach', it.field2) + block('Expectations', it.field3);
+      } else if (role === 'teacher') {
+        blocks += block('Teaching tips', it.field1) + block('Common mistakes', it.field2) + block('Exam tips', it.field3);
+      } else {
+        blocks += block('Feedback', it.field1);
+      }
     }
     var meta = metaLine(it);
-    return '<article class="tile tile--' + esc(it.role) + '">' +
+    return '<article class="tile tile--' + esc(role) + '">' +
       '<header class="tile__head">' +
-        '<div class="tile__avatar tile__avatar--' + esc(it.role) + '">' + esc(initials(it.name)) + '</div>' +
+        '<div class="tile__avatar tile__avatar--' + esc(role) + '">' + esc(initials(it.name)) + '</div>' +
         '<div class="tile__id">' +
           '<div class="tile__name">' + esc(it.name || 'Anonymous') +
-            ' <span class="badge badge--' + esc(it.role) + '">' + esc(roleName) + '</span></div>' +
+            ' <span class="badge badge--' + esc(role) + '">' + esc(roleName) + '</span></div>' +
           (meta ? '<div class="tile__meta">' + meta + '</div>' : '') +
         '</div>' +
       '</header>' +
@@ -383,7 +567,6 @@
       '</article>';
   }
 
-  // Fetched once, drawn in batches as the reader scrolls (no page reload needed).
   var feedList = [];
   var feedShown = 0;
   var feedObserver = null;
@@ -406,9 +589,6 @@
     }
   }
 
-  // Retries a few times: the very first call after a fresh Apps Script deploy
-  // can be a cold start, which is why the feed sometimes only appeared after a
-  // reload. Now it loads in place, first time.
   function loadFeed(attempt) {
     attempt = attempt || 1;
     var host = qs('#feed');
@@ -417,7 +597,7 @@
         feedList = (data && data.insights) || [];
         feedShown = 0;
         if (feedObserver) { feedObserver.disconnect(); feedObserver = null; }
-        if (!feedList.length) { host.innerHTML = '<p class="empty">No insights yet — be the first to share.</p>'; return; }
+        if (!feedList.length) { host.innerHTML = '<p class="empty">No insights yet - be the first to share.</p>'; return; }
         host.innerHTML = '';
         renderMoreFeed();
       })
@@ -431,6 +611,17 @@
   document.addEventListener('DOMContentLoaded', function () {
     qs('#year').textContent = new Date().getFullYear();
 
+    // Step 1 - General vs Specific
+    Array.prototype.forEach.call(document.querySelectorAll('.type'), function (b) {
+      b.addEventListener('click', function () {
+        Array.prototype.forEach.call(document.querySelectorAll('.type'), function (x) { x.setAttribute('aria-pressed', 'false'); });
+        b.setAttribute('aria-pressed', 'true');
+        if (b.getAttribute('data-type') === 'general') openGeneral();
+        else showRolePicker();
+      });
+    });
+
+    // Step 2 - role (specific only)
     Array.prototype.forEach.call(document.querySelectorAll('.role'), function (b) {
       b.addEventListener('click', function () {
         Array.prototype.forEach.call(document.querySelectorAll('.role'), function (x) { x.setAttribute('aria-pressed', 'false'); });
@@ -439,10 +630,14 @@
       });
     });
 
-    qs('#insightForm').addEventListener('submit', onSubmit);
-    qs('#changeRoleBtn').addEventListener('click', backToPicker);
-    qs('#againBtn').addEventListener('click', backToPicker);
+    var backBtn = qs('#backToTypeBtn');
+    if (backBtn) backBtn.addEventListener('click', backToStart);
 
+    qs('#insightForm').addEventListener('submit', onSubmit);
+    qs('#changeRoleBtn').addEventListener('click', backFromForm);
+    qs('#againBtn').addEventListener('click', backToStart);
+
+    setStep('type');
     Captcha.render();
     loadFeed();
   });

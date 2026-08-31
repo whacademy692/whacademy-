@@ -53,11 +53,41 @@
     <section class="hero">
       <span class="hero__eyebrow">Insights &amp; Feedback</span>
       <h1 class="hero__title">Tell us what <em>helped </em> and what didn't.</h1>
-      <p class="hero__sub">Students, parents and teachers all welcome. Share your experience with a topic. Approved insights appear below to help everyone learn.</p>
+      <p class="hero__sub">Students, parents and teachers all welcome. Share your experience. Approved insights appear below to help everyone learn.</p>
     </section>
 
-    <!-- STEP 1 — who are you -->
-    <section class="section" id="pickSection">
+    <!-- HOW TO WRITE — shown before anything, and again above every form -->
+    <section class="section" id="howtoSection">
+      <div class="howto card">
+        <h2 class="howto__title">Before you write — a few quick tips</h2>
+        <ul class="howto__list">
+          <li><b>Write in your own words.</b> You can just type it yourself — it does not need to be perfect.</li>
+          <li><b>Any language is welcome.</b> Roman Urdu (like your WhatsApp messages), simple Urdu, or English — all three are fine. Writing from another country? Use any language you like.</li>
+          <li><b>Using AI to structure your response? Great —</b> but AI often adds extra blank lines that make the card very long, with big empty gaps. Please <b>delete those extra blank lines</b> before you submit so it looks clean.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- STEP 1 — what kind of feedback -->
+    <section class="section" id="typeSection">
+      <h2 class="section__title">What would you like to share?</h2>
+      <p class="section__hint">Pick one to open the right form.</p>
+      <div class="types" role="group" aria-label="Choose feedback type">
+        <button class="type" type="button" data-type="general" aria-pressed="false">
+          <span class="type__icon"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3a9 9 0 100 18 9 9 0 000-18z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 8h.01M11 12h1v4h1"/></svg></span>
+          <span class="type__name">General</span>
+          <span class="type__desc">Education tips, general issues, or a suggestion for W.H. Academy — nothing class- or subject-specific.</span>
+        </button>
+        <button class="type" type="button" data-type="specific" aria-pressed="false">
+          <span class="type__icon"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5h16M4 12h16M4 19h10"/></svg></span>
+          <span class="type__name">Subject / Class specific</span>
+          <span class="type__desc">Feedback about a particular class, subject, chapter or topic.</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- STEP 2 — who are you (only for the "specific" path) -->
+    <section class="section" id="pickSection" hidden>
       <h2 class="section__title">Who are you?</h2>
       <p class="section__hint">Pick one to open the right form.</p>
       <div class="roles" role="group" aria-label="Choose your role">
@@ -76,6 +106,9 @@
           <span class="role__name">Teacher</span> <br>
           <span class="role__desc">Teaching tips, mistakes and exam pointers.</span>
         </button>
+      </div>
+      <div class="pick__back">
+        <button class="btn btn--ghost" type="button" id="backToTypeBtn">&larr; Back</button>
       </div>
     </section>
 

@@ -329,3 +329,58 @@ a { color: var(--primary-mid); }
   * { transition: none !important; scroll-behavior: auto !important; }
   .role:hover, .btn--primary:hover { transform: none; }
 }
+
+/* ==========================================================================
+   Insights v2 additions — instructions, General/Specific chooser, Other inputs
+   ========================================================================== */
+
+/* "Before you write" instructions box */
+.howto { padding: 18px 20px; }
+.howto__title { margin: 0 0 10px; font-size: 1.05rem; }
+.howto__list { margin: 0; padding-left: 20px; }
+.howto__list li { margin: 6px 0; line-height: 1.6; }
+
+/* Compact tip shown at the top of every form */
+.form-howto {
+  background: rgba(79, 70, 229, 0.06);
+  border: 1px solid rgba(79, 70, 229, 0.18);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+/* General vs Specific chooser (mirrors the .roles card style) */
+.types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+.type {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+  padding: 20px;
+  border: 1px solid var(--line, #e5e7eb);
+  border-radius: 16px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color .15s, box-shadow .15s, transform .15s;
+}
+.type:hover { border-color: var(--primary, #4f46e5); box-shadow: 0 8px 24px rgba(79,70,229,.12); transform: translateY(-2px); }
+.type[aria-pressed="true"] { border-color: var(--primary, #4f46e5); box-shadow: 0 8px 24px rgba(79,70,229,.16); }
+.type__icon { width: 34px; height: 34px; color: var(--primary, #4f46e5); }
+.type__icon svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.7; }
+.type__name { font-weight: 700; font-size: 1.02rem; }
+.type__desc { color: var(--muted, #6b7280); font-size: 0.9rem; line-height: 1.5; }
+
+.pick__back { margin-top: 14px; }
+
+/* "Other — not listed" free-text inputs sit just under their select */
+.field--other { margin-top: -4px; }
+
+/* Badge for the extra roles used by General submissions */
+.badge--other { background: #eef2ff; color: #4338ca; }
+.tile__avatar--other { background: #eef2ff; color: #4338ca; }
