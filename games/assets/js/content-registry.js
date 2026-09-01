@@ -696,7 +696,7 @@ window.WHA_CONTENT = {
             "title": "Periodic Table",
             "notes": "https://whacademypk.com/notes/class-8/science/periodic-table.html",
             "quiz": null,
-            "game": null
+            "game": "https://whacademypk.com/games/chapter.html?ch=8/science/periodic_table"
           },
           {
             "n": 6,
