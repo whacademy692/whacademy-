@@ -701,9 +701,9 @@ window.WHA_CONTENT = {
           {
             "n": 6,
             "title": "Chemical Reactions",
-            "notes": null,
+            "notes": "https://whacademypk.com/notes/class-8/science/chemical-reactions.html",
             "quiz": null,
-            "game": null
+            "game": "https://whacademypk.com/games/chapter.html?ch=8/science/chemical_reactions"
           },
           {
             "n": 8,
