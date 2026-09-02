@@ -708,9 +708,9 @@ window.WHA_CONTENT = {
           {
             "n": 8,
             "title": "Force and Pressure",
-            "notes": null,
+            "notes": "https://whacademypk.com/notes/class-8/science/force-and-pressure.html",
             "quiz": null,
-            "game": null
+            "game": "https://whacademypk.com/games/chapter.html?ch=8/science/force_and_pressure"
           },
           {
             "n": 1,
