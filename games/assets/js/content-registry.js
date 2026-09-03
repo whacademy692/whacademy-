@@ -825,9 +825,9 @@ window.WHA_CONTENT = {
           {
             "n": 2,
             "title": "Reform Movements and Muslim Revivalists",
-            "notes": null,
+            "notes": "https://whacademypk.com/notes/class-8/history/reform-movements-muslim-revivalists.html",
             "quiz": null,
-            "game": null
+            "game": "https://whacademypk.com/games/chapter.html?ch=8/history/reform_movements_and_muslim_revivalists"
           },
           {
             "n": 3,
