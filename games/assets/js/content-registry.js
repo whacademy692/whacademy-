@@ -832,9 +832,9 @@ window.WHA_CONTENT = {
           {
             "n": 3,
             "title": "The World at War (1914–1991)",
-            "notes": null,
+            "notes": "https://whacademypk.com/notes/class-8/history/world-at-war.html",
             "quiz": null,
-            "game": null
+            "game": "https://whacademypk.com/games/chapter.html?ch=8/history/world_at_war"
           },
           {
             "n": 4,
