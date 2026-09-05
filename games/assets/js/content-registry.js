@@ -777,9 +777,9 @@ window.WHA_CONTENT = {
           {
             "n": 2,
             "title": "Living with the Climate",
-            "notes": null,
+            "notes": "https://whacademypk.com/notes/class-8/geography/living-with-the-climate.html",
             "quiz": null,
-            "game": null
+            "game": "https://whacademypk.com/games/chapter.html?ch=8/geography/living_with_the_climate"
           },
           {
             "n": 3,
