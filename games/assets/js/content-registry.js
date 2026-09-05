@@ -784,9 +784,9 @@ window.WHA_CONTENT = {
           {
             "n": 3,
             "title": "Social and Economic Development",
-            "notes": null,
+            "notes": "https://whacademypk.com/notes/class-8/geography/social-economic-development.html",
             "quiz": null,
-            "game": null
+            "game": "https://whacademypk.com/games/chapter.html?ch=8/geography/social_and_economic_development"
           },
           {
             "n": 4,
