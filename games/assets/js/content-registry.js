@@ -186,9 +186,9 @@ window.WHA_CONTENT = {
           {
             "n": 2,
             "title": "Mountains, Plateaus and Valleys",
-            "notes": null,
+            "notes": "https://whacademypk.com/notes/class-6/geography/mountains-plateaus-valleys.html",
             "quiz": null,
-            "game": null
+            "game": "https://whacademypk.com/games/chapter.html?ch=6/geography/mountains_plateaus_and_valleys"
           },
           {
             "n": 3,
