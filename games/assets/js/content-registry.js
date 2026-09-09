@@ -582,10 +582,10 @@ window.WHA_CONTENT = {
         "chapters": [
           {
             "n": 1,
-            "title": "Inverse and Direct Proportion",
-            "notes": null,
+            "title": "Direct and Inverse Proportions",
+            "notes": "https://whacademypk.com/notes/class-8/math/direct-inverse-proportions.html",
             "quiz": null,
-            "game": null
+            "game": "https://whacademypk.com/games/chapter.html?ch=8/math/direct_and_inverse_proportions"
           },
           {
             "n": 2,

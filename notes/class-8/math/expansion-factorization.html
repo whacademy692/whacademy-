@@ -33,6 +33,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha384-/o6I2CkkWC//PSjvWC/eYN7l3xM3tJm8ZzVkCOfp//W05QcE3mlGskpoHB6XqI+B" crossorigin="anonymous" referrerpolicy="no-referrer">
+<!-- Self-hosted KaTeX (CSP default-src 'self'): renders \(...\) and \[...\] in the notes. -->
+<link rel="stylesheet" href="/games/assets/vendor/katex/katex.min.css">
+<script defer src="/games/assets/vendor/katex/katex.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -217,9 +220,9 @@ footer a{color:#67e8f9;text-decoration:none}
       <summary><span>1. What is the Distributive Law? State it with an example.</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary>
       <div class="qa-phrasings"><span class="qa-phrasing">• State the most important rule in expansion</span><span class="qa-phrasing">• How do you expand a(b + c)?</span></div>
       <div class="qa-answer">The <strong>Distributive Law</strong> is the single most important rule in expansion. It states that the term outside the bracket multiplies <strong>every single term</strong> inside the bracket:<br><br>
-        <div class="formula">a(b + c) = ab + ac</div>
-        Example: 3x(2y + 5) = 6xy + 15x<br><br>
-        For a <strong>negative</strong> outside term, carry the sign carefully: −2x(6x − 5y) = −12x² + 10xy
+        <div class="formula">\(a(b + c) = ab + ac\)</div>
+        Example: \(3x(2y + 5) = 6xy + 15x\)<br><br>
+        For a <strong>negative</strong> outside term, carry the sign carefully: \(-2x(6x - 5y) = -12x^{2} + 10xy\)
         <div class="warn">⛔ Common Mistake: Negative × Negative = Positive. Always write out the sign explicitly in each step — do NOT do sign arithmetic in your head.</div>
       </div>
     </details>
@@ -227,7 +230,7 @@ footer a{color:#67e8f9;text-decoration:none}
       <summary><span>2. How do you multiply two brackets? State the rule and give an example.</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary>
       <div class="qa-phrasings"><span class="qa-phrasing">• How do you expand (a + b)(c + d)?</span><span class="qa-phrasing">• What is the handshake model of bracket expansion?</span></div>
       <div class="qa-answer">Every term in the <strong>first bracket</strong> multiplies every term in the <strong>second bracket</strong>:<br><br>
-        <div class="formula">(a + b)(c + d) = ac + ad + bc + bd</div>
+        <div class="formula">\((a + b)(c + d) = ac + ad + bc + bd\)</div>
         <div class="note">📝 Think of the "handshake model": every person in Group A shakes hands with every person in Group B. 2 terms × 2 terms = 4 products before collecting like terms.</div>
       </div>
     </details>
@@ -238,7 +241,7 @@ footer a{color:#67e8f9;text-decoration:none}
         <strong>Step 2:</strong> Write all terms out.<br>
         <strong>Step 3:</strong> Group LIKE TERMS together (same variable combination, same power).<br>
         <strong>Step 4:</strong> Simplify by adding/subtracting the like terms.<br><br>
-        <div class="warn">⛔ Common Mistake: When a bracket has a MINUS sign in front, e.g. −(3x² − 7xy + 4y²), flip ALL signs inside: −3x² + 7xy − 4y². A common mistake is to only flip the first term.</div>
+        <div class="warn">⛔ Common Mistake: When a bracket has a MINUS sign in front, e.g. \(-(3x^{2} - 7xy + 4y^{2})\), flip ALL signs inside: \(-3x^{2} + 7xy - 4y^{2}\). A common mistake is to only flip the first term.</div>
       </div>
     </details>
   </div>
@@ -250,11 +253,11 @@ footer a{color:#67e8f9;text-decoration:none}
       <div class="qa-phrasings"><span class="qa-phrasing">• Write all the special expansion identities</span><span class="qa-phrasing">• What are the three special algebraic identities for squares and cubes?</span></div>
       <div class="qa-answer">
         <div class="identities-grid">
-          <div class="identity-card"><div class="label">Identity 1 — Perfect Square (+)</div><div class="expr">(a + b)² = a² + 2ab + b²</div></div>
-          <div class="identity-card"><div class="label">Identity 2 — Perfect Square (−)</div><div class="expr">(a − b)² = a² − 2ab + b²</div></div>
-          <div class="identity-card"><div class="label">Identity 3 — Difference of Squares</div><div class="expr">(a + b)(a − b) = a² − b²</div></div>
-          <div class="identity-card"><div class="label">Identity 4 — Cube (+)</div><div class="expr">(a + b)³ = a³ + 3a²b + 3ab² + b³</div></div>
-          <div class="identity-card"><div class="label">Identity 5 — Cube (−)</div><div class="expr">(a − b)³ = a³ − 3a²b + 3ab² − b³</div></div>
+          <div class="identity-card"><div class="label">Identity 1 — Perfect Square (+)</div><div class="expr">\((a + b)^{2} = a^{2} + 2ab + b^{2}\)</div></div>
+          <div class="identity-card"><div class="label">Identity 2 — Perfect Square (−)</div><div class="expr">\((a - b)^{2} = a^{2} - 2ab + b^{2}\)</div></div>
+          <div class="identity-card"><div class="label">Identity 3 — Difference of Squares</div><div class="expr">\((a + b)(a - b) = a^{2} - b^{2}\)</div></div>
+          <div class="identity-card"><div class="label">Identity 4 — Cube (+)</div><div class="expr">\((a + b)^{3} = a^{3} + 3a^{2}b + 3ab^{2} + b^{3}\)</div></div>
+          <div class="identity-card"><div class="label">Identity 5 — Cube (−)</div><div class="expr">\((a - b)^{3} = a^{3} - 3a^{2}b + 3ab^{2} - b^{3}\)</div></div>
         </div>
         <div class="note">📝 The coefficients 1, 3, 3, 1 in the cube identities come from Pascal's Triangle.</div>
       </div>
@@ -262,19 +265,19 @@ footer a{color:#67e8f9;text-decoration:none}
     <details class="qa-item">
       <summary><span>2. How do you use Identity 1 and Identity 2 (perfect square identities)?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary>
       <div class="qa-phrasings"><span class="qa-phrasing">• Expand (2x + 3y)²</span><span class="qa-phrasing">• What is the pattern of a perfect square expansion?</span></div>
-      <div class="qa-answer">For <strong>(a + b)² = a² + 2ab + b²</strong>:<br>
-        Example: (2x + 3y)² = (2x)² + 2(2x)(3y) + (3y)² = 4x² + 12xy + 9y²<br><br>
-        For <strong>(a − b)² = a² − 2ab + b²</strong>:<br>
-        Example: (5x − 2y)² = 25x² − 20xy + 4y²
+      <div class="qa-answer">For <strong>\((a + b)^{2} = a^{2} + 2ab + b^{2}\)</strong>:<br>
+        Example: \((2x + 3y)^{2} = (2x)^{2} + 2(2x)(3y) + (3y)^{2} = 4x^{2} + 12xy + 9y^{2}\)<br><br>
+        For <strong>\((a - b)^{2} = a^{2} - 2ab + b^{2}\)</strong>:<br>
+        Example: \((5x - 2y)^{2} = 25x^{2} - 20xy + 4y^{2}\)
         <div class="warn">⛔ Common Mistake: (2x)² = 4x², NOT 2x². You must square BOTH the coefficient and the variable.</div>
       </div>
     </details>
     <details class="qa-item">
       <summary><span>3. How do you use Identity 3: difference of two squares?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary>
       <div class="qa-phrasings"><span class="qa-phrasing">• What is the difference of two squares?</span><span class="qa-phrasing">• Expand (3x + 4y)(3x − 4y)</span></div>
-      <div class="qa-answer">Identity 3 states: <strong>(a + b)(a − b) = a² − b²</strong><br><br>
+      <div class="qa-answer">Identity 3 states: <strong>\((a + b)(a - b) = a^{2} - b^{2}\)</strong><br><br>
         This applies when two identical brackets differ ONLY by the sign in the middle.<br><br>
-        Example: (3x + 4y)(3x − 4y) = (3x)² − (4y)² = 9x² − 16y²<br><br>
+        Example: \((3x + 4y)(3x - 4y) = (3x)^{2} - (4y)^{2} = 9x^{2} - 16y^{2}\)<br><br>
         This is also used in reverse when factorizing: a² − b² = (a + b)(a − b)
       </div>
     </details>
@@ -293,7 +296,7 @@ footer a{color:#67e8f9;text-decoration:none}
       <summary><span>1. What is factorization? How does it relate to expansion?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary>
       <div class="qa-phrasings"><span class="qa-phrasing">• Define factorization</span><span class="qa-phrasing">• Why is factorization called the reverse of expansion?</span></div>
       <div class="qa-answer"><strong>Factorization</strong> is the exact REVERSE of expansion. In expansion, you remove brackets; in factorization, you put the brackets back in. The goal is to express an algebraic expression as a product of its factors.<br><br>
-        <div class="formula">Expansion: (x + 3)(x + 2) → x² + 5x + 6<br>Factorization: x² + 5x + 6 → (x + 3)(x + 2)</div>
+        <div class="formula">Expansion: \((x + 3)(x + 2) \rightarrow  x^{2} + 5x + 6\)<br>Factorization: \(x^{2} + 5x + 6 \rightarrow  (x + 3)(x + 2)\)</div>
       </div>
     </details>
     <details class="qa-item">
@@ -312,8 +315,8 @@ footer a{color:#67e8f9;text-decoration:none}
       <summary><span>3. How do you factorize using the grouping method?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary>
       <div class="qa-phrasings"><span class="qa-phrasing">• What is factorization by grouping?</span><span class="qa-phrasing">• How do you group terms in pairs to factorize?</span></div>
       <div class="qa-answer">For expressions with four terms, group them in pairs and extract a common factor from each pair:<br><br>
-        Example: ax + bx + ay + by<br>
-        = x(a + b) + y(a + b)<br>
+        Example: \(ax + bx + ay + by\)<br>
+        = \(x(a + b) + y(a + b)\)<br>
         = <strong>(a + b)(x + y)</strong><br><br>
         The same bracket (a + b) appears in both groups — that is the shared factor to extract.
         <div class="note">📝 If grouping doesn't work immediately, try rearranging the terms first.</div>
@@ -324,9 +327,9 @@ footer a{color:#67e8f9;text-decoration:none}
       <div class="qa-phrasings"><span class="qa-phrasing">• How do you factorize a perfect square?</span><span class="qa-phrasing">• How do you factorize a difference of two squares?</span></div>
       <div class="qa-answer">Recognize the pattern and apply the identity in reverse:<br><br>
         <strong>Perfect square:</strong> a² + 2ab + b² = (a + b)²<br>
-        Example: 4x² + 12xy + 9y² = (2x + 3y)²<br><br>
+        Example: \(4x^{2} + 12xy + 9y^{2} = (2x + 3y)^{2}\)<br><br>
         <strong>Difference of squares:</strong> a² − b² = (a + b)(a − b)<br>
-        Example: 25x² − 16y² = (5x + 4y)(5x − 4y)
+        Example: \(25x^{2} - 16y^{2} = (5x + 4y)(5x - 4y)\)
         <div class="warn">⛔ Important: a² + b² CANNOT be factorized using real numbers. Only a² − b² factors as a difference of squares.</div>
       </div>
     </details>
@@ -341,14 +344,14 @@ footer a{color:#67e8f9;text-decoration:none}
   <table class="vocab-table" aria-label="Key identities">
     <thead><tr><th>Expansion Form</th><th>Factorization Form</th></tr></thead>
     <tbody>
-      <tr><td>a(b + c) = ab + ac</td><td>ab + ac = a(b + c)</td></tr>
-      <tr><td>(a + b)(c + d) = ac + ad + bc + bd</td><td>Group and extract common factor</td></tr>
-      <tr><td>(a + b)² = a² + 2ab + b²</td><td>a² + 2ab + b² = (a + b)²</td></tr>
-      <tr><td>(a − b)² = a² − 2ab + b²</td><td>a² − 2ab + b² = (a − b)²</td></tr>
-      <tr><td>(a + b)(a − b) = a² − b²</td><td>a² − b² = (a + b)(a − b)</td></tr>
-      <tr><td>(a + b)³ = a³ + 3a²b + 3ab² + b³</td><td>Reverse: identify cube pattern</td></tr>
-      <tr><td>(a − b)³ = a³ − 3a²b + 3ab² − b³</td><td>Reverse: identify cube pattern</td></tr>
-      <tr><td>ax + bx + ay + by</td><td>(a + b)(x + y) — grouping</td></tr>
+      <tr><td>\(a(b + c) = ab + ac\)</td><td>\(ab + ac = a(b + c)\)</td></tr>
+      <tr><td>\((a + b)(c + d) = ac + ad + bc + bd\)</td><td>Group and extract common factor</td></tr>
+      <tr><td>\((a + b)^{2} = a^{2} + 2ab + b^{2}\)</td><td>\(a^{2} + 2ab + b^{2} = (a + b)^{2}\)</td></tr>
+      <tr><td>\((a - b)^{2} = a^{2} - 2ab + b^{2}\)</td><td>\(a^{2} - 2ab + b^{2} = (a - b)^{2}\)</td></tr>
+      <tr><td>\((a + b)(a - b) = a^{2} - b^{2}\)</td><td>\(a^{2} - b^{2} = (a + b)(a - b)\)</td></tr>
+      <tr><td>\((a + b)^{3} = a^{3} + 3a^{2}b + 3ab^{2} + b^{3}\)</td><td>Reverse: identify cube pattern</td></tr>
+      <tr><td>\((a - b)^{3} = a^{3} - 3a^{2}b + 3ab^{2} - b^{3}\)</td><td>Reverse: identify cube pattern</td></tr>
+      <tr><td>\(ax + bx + ay + by\)</td><td>\((a + b)(x + y)\) — grouping</td></tr>
     </tbody>
   </table>
 </section>
@@ -380,5 +383,31 @@ footer a{color:#67e8f9;text-decoration:none}
   <a href="https://whacademypk.com/terms.html">Terms of Service</a></p>
   <p style="margin-top:6px">Expert Math and Science Tutoring · APSACS · FBISE · Punjab Board · Rawalpindi and Online Pakistan</p>
 </footer>
+<script>
+/* Minimal self-hosted KaTeX auto-render for \(...\) and \[...\] — CSP-safe (no CDN). */
+(function(){
+  function walk(node){
+    if(node.nodeType===3){
+      var t=node.nodeValue;
+      if(t.indexOf('\\(')<0 && t.indexOf('\\[')<0) return;
+      var re=/\\\((.+?)\\\)|\\\[(.+?)\\\]/g, m, last=0, frag=document.createDocumentFragment();
+      while((m=re.exec(t))){
+        if(m.index>last) frag.appendChild(document.createTextNode(t.slice(last,m.index)));
+        var span=document.createElement('span'), disp=(m[2]!==undefined);
+        try{ katex.render(disp?m[2]:m[1], span, {throwOnError:false, displayMode:disp}); }
+        catch(e){ span.textContent=m[0]; }
+        frag.appendChild(span); last=re.lastIndex;
+      }
+      if(last<t.length) frag.appendChild(document.createTextNode(t.slice(last)));
+      node.parentNode.replaceChild(frag,node);
+    } else if(node.nodeType===1 && !/^(script|style|textarea)$/i.test(node.tagName)
+              && !(node.className && String(node.className).indexOf('katex')>=0)){
+      for(var i=node.childNodes.length-1;i>=0;i--) walk(node.childNodes[i]);
+    }
+  }
+  function run(){ if(window.katex){ walk(document.getElementById('main-content')||document.body); } }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', run); else run();
+})();
+</script>
 </body>
 </html>
