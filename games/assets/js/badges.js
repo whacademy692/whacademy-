@@ -102,6 +102,7 @@
   function legendBlock() {
     return '<div class="bb-legend">' +
       '<div class="bb-legend__title">How badges work</div>' +
+      '<p class="bb-muted-note" style="margin:2px 0 var(--space-2);">These are just examples to show the rules — you haven\u2019t earned any yet. Score 50%+ on a Boss Battle paper to earn a real one.</p>' +
       '<ul class="bb-legend__rules">' +
         '<li><span class="bb-badge bb-badge--l1"><span class="bb-badge__lvl">L1</span>Chapter</span> — score 50%+ on a chapter\u2019s paper.</li>' +
         '<li><span class="bb-badge bb-badge--l2"><span class="bb-badge__lvl">L2</span>Subject</span> — score 50%+ on a subject\u2019s paper.</li>' +

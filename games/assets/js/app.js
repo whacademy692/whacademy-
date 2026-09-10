@@ -25,18 +25,22 @@
   }
 
   function wireCommonChrome() {
-    const logoutBtn = Utils.qs('[data-action="logout"]');
-    if (logoutBtn) logoutBtn.addEventListener('click', () => Router.logoutAndRedirect());
+    // A page can have MORE THAN ONE logout button — e.g. the dashboard has one
+    // in the desktop sidebar AND one in the mobile identity banner ("Not you?
+    // Log out"). qs() only returns the first in DOM order, so on mobile (where
+    // the sidebar is hidden) the visible logout button was never wired and did
+    // nothing. Wire EVERY logout button, on every breakpoint.
+    Utils.qsa('[data-action="logout"]').forEach((btn) =>
+      btn.addEventListener('click', () => Router.logoutAndRedirect()));
 
-    const themeToggle = Utils.qs('[data-action="toggle-theme"]');
-    if (themeToggle) {
-      themeToggle.addEventListener('click', () => {
+    // Same story for theme toggles (sidebar + mobile top-bar) — wire them all.
+    Utils.qsa('[data-action="toggle-theme"]').forEach((btn) =>
+      btn.addEventListener('click', () => {
         const current = Storage.getSettings().theme;
         const next = current === 'dark' ? 'light' : 'dark';
         Storage.setSettings({ theme: next });
         applySettings();
-      });
-    }
+      }));
 
     Router.highlightActiveNav();
   }

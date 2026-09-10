@@ -123,12 +123,19 @@
                   <p class="text-body-sm" style="color:var(--color-text-secondary); margin-top:var(--space-1);">Higher is greener, lower is redder. Filter by class, subject or chapter.</p>
                 </div>
                 <div class="trend-filters">
+                  <select id="trend-range" class="select" aria-label="Group by time">
+                    <option value="day">Daily</option>
+                    <option value="week">Weekly</option>
+                    <option value="month">Monthly</option>
+                  </select>
                   <select id="trend-class" class="select" aria-label="Filter by class"><option value="">All classes</option></select>
                   <select id="trend-subject" class="select" aria-label="Filter by subject"><option value="">All subjects</option></select>
                   <select id="trend-chapter" class="select" aria-label="Filter by chapter"><option value="">All chapters</option></select>
                 </div>
               </div>
               <div id="trend-chart" class="trend-chart"></div>
+              <p id="trend-meta" class="text-body-sm" style="color:var(--color-text-secondary); margin-top:var(--space-2);" aria-live="polite"></p>
+              <p class="text-caption" style="color:var(--color-text-secondary); margin-top:var(--space-1);">A chapter appears here as soon as you finish your first game (about 10 questions) — there's no big minimum. Switch Daily / Weekly / Monthly to see progress over time.</p>
             </div>
             <p id="progress-status" class="text-body-sm">Loading your progress…</p>
             <div id="progress-list" class="stack-sm"></div>

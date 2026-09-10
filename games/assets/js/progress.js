@@ -1,10 +1,12 @@
 /**
  * progress.js — W.H. Academy · "My Progress" page
  * Two views of the student's own game performance:
- *   1) Accuracy-over-time line graph (X = date, Y = accuracy %). The line's
+ *   1) Accuracy-over-time line graph (X = time, Y = accuracy %). The line's
  *      colour follows its height — green up high, red down low — so a dip is
- *      obvious. Filter by class / subject / chapter (cascading, from the
- *      student's own data).
+ *      obvious. Filter by TIME (daily / weekly / monthly) and by
+ *      class / subject / chapter (cascading, from the student's own data).
+ *      A live caption shows exactly how many attempts (and buckets) the graph
+ *      is drawn from, so even one game already shows something.
  *   2) Per-chapter bars, each expandable to per-topic bars.
  * Data: analytics/myBreakdown → { chapters, trend }.
  */
@@ -29,13 +31,47 @@
   }
   function distinct(arr) { var s = {}, o = []; arr.forEach(function (x) { if (x != null && x !== '' && !s[x]) { s[x] = 1; o.push(x); } }); return o; }
 
+  // ---------- date helpers (used by the daily/weekly/monthly buckets) ----------
+  function pad2(n) { return n < 10 ? '0' + n : '' + n; }
+  function toUTCDate(s) { var p = String(s).split('-'); return new Date(Date.UTC(parseInt(p[0], 10), parseInt(p[1], 10) - 1, parseInt(p[2], 10))); }
+  function dayLabel(s) { var p = String(s).split('-'); return p.length === 3 ? (parseInt(p[2], 10) + ' ' + (MONTHS[parseInt(p[1], 10) - 1] || '')) : s; }
+  function mondayOf(d) { var day = d.getUTCDay(); var diff = (day === 0 ? -6 : 1 - day); var m = new Date(d.getTime()); m.setUTCDate(d.getUTCDate() + diff); return m; }
+  function keyStr(d) { return d.getUTCFullYear() + '-' + pad2(d.getUTCMonth() + 1) + '-' + pad2(d.getUTCDate()); }
+
+  // Turn a YYYY-MM-DD row date into a {key,label} bucket for the chosen range.
+  function bucketOf(dateStr, gran) {
+    if (!dateStr || String(dateStr).length !== 10) return null;
+    if (gran === 'week') {
+      var m = mondayOf(toUTCDate(dateStr)); var k = keyStr(m);
+      return { key: k, label: 'wk ' + dayLabel(k) };
+    }
+    if (gran === 'month') {
+      var p = String(dateStr).split('-');
+      var k2 = p[0] + '-' + p[1];
+      return { key: k2, label: (MONTHS[parseInt(p[1], 10) - 1] || '') + " '" + p[0].slice(2) };
+    }
+    return { key: dateStr, label: dayLabel(dateStr) }; // daily (default)
+  }
+
   // ---------- accuracy-over-time line chart ----------
-  var trendRows = [];
+  var trendRows = [];      // [{chapterRef, date, total, correct}] — has dates
+  var chapterMeta = [];    // [{chapterRef}] — every attempted chapter, even if trend has no dated rows
+
+  function granularity() { var el = Utils.qs('#trend-range'); return (el && el.value) || 'day'; }
 
   function buildTrendFilters() {
     var cSel = Utils.qs('#trend-class'), sSel = Utils.qs('#trend-subject'), chSel = Utils.qs('#trend-chapter');
     if (!cSel || !sSel || !chSel) return;
-    var meta = trendRows.map(function (r) { var m = parseRef(r.chapterRef); return { classLevel: m.classLevel, subjectKey: m.subjectKey, chapterRef: r.chapterRef }; });
+
+    // Dropdowns are built from the UNION of trend rows AND the chapter list, so
+    // a chapter the student has attempted shows up even if its dated trend rows
+    // are missing — no chapter silently disappears from the filters.
+    var refs = distinct(
+      trendRows.map(function (r) { return r.chapterRef; })
+        .concat(chapterMeta.map(function (c) { return c.chapterRef; }))
+    );
+    var meta = refs.map(function (ref) { var m = parseRef(ref); return { classLevel: m.classLevel, subjectKey: m.subjectKey, chapterRef: ref }; });
+
     var curC = cSel.value, curS = sSel.value, curCh = chSel.value;
 
     var classes = distinct(meta.map(function (m) { return m.classLevel; })).sort(function (a, b) { return a - b; });
@@ -53,22 +89,23 @@
 
   function computeSeries() {
     var c = Utils.qs('#trend-class').value, s = Utils.qs('#trend-subject').value, ch = Utils.qs('#trend-chapter').value;
-    var byDate = {};
+    var gran = granularity();
+    var byBucket = {}; // key -> { key, label, total, correct }
     trendRows.forEach(function (r) {
       var m = parseRef(r.chapterRef);
       if (c && String(m.classLevel) !== c) return;
       if (s && m.subjectKey !== s) return;
       if (ch && r.chapterRef !== ch) return;
-      if (!byDate[r.date]) byDate[r.date] = { total: 0, correct: 0 };
-      byDate[r.date].total += r.total; byDate[r.date].correct += r.correct;
+      var b = bucketOf(r.date, gran);
+      if (!b) return;
+      if (!byBucket[b.key]) byBucket[b.key] = { key: b.key, label: b.label, total: 0, correct: 0 };
+      byBucket[b.key].total += r.total; byBucket[b.key].correct += r.correct;
     });
-    return Object.keys(byDate).sort().map(function (d) {
-      var x = byDate[d];
-      return { date: d, accuracy: x.total ? x.correct / x.total : 0, attempts: x.total };
+    return Object.keys(byBucket).sort().map(function (k) {
+      var x = byBucket[k];
+      return { key: k, label: x.label, accuracy: x.total ? x.correct / x.total : 0, attempts: x.total };
     });
   }
-
-  function fmtDate(d) { var p = String(d).split('-'); return p.length === 3 ? (parseInt(p[2], 10) + ' ' + (MONTHS[parseInt(p[1], 10) - 1] || '')) : d; }
 
   function lineChartSVG(points) {
     var W = 600, H = 240, padL = 40, padR = 14, padT = 14, padB = 34;
@@ -88,7 +125,7 @@
     var xlab = '';
     points.forEach(function (pt, i) {
       if (i % step === 0 || i === n - 1) {
-        xlab += '<text x="' + X(i) + '" y="' + (H - padB + 16) + '" text-anchor="middle" font-size="10" fill="#6b7280">' + fmtDate(pt.date) + '</text>';
+        xlab += '<text x="' + X(i) + '" y="' + (H - padB + 16) + '" text-anchor="middle" font-size="10" fill="#6b7280">' + pt.label + '</text>';
       }
     });
 
@@ -101,18 +138,35 @@
       line = '<polyline points="' + pts + '" fill="none" stroke="url(#accGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>';
     }
     var dots = points.map(function (pt, i) {
-      return '<circle cx="' + X(i) + '" cy="' + Y(pt.accuracy) + '" r="' + (n === 1 ? 4 : 3) + '" fill="' + color(pt.accuracy) + '"><title>' + fmtDate(pt.date) + ': ' + Math.round(pt.accuracy * 100) + '%</title></circle>';
+      return '<circle cx="' + X(i) + '" cy="' + Y(pt.accuracy) + '" r="' + (n === 1 ? 4 : 3) + '" fill="' + color(pt.accuracy) + '"><title>' + pt.label + ': ' + Math.round(pt.accuracy * 100) + '% (' + pt.attempts + ' attempts)</title></circle>';
     }).join('');
 
     return '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Accuracy over time">' + defs + grid + line + dots + xlab + '</svg>';
+  }
+
+  function renderCaption(pts) {
+    var meta = Utils.qs('#trend-meta');
+    if (!meta) return;
+    if (!pts.length) { meta.textContent = ''; return; }
+    var gran = granularity();
+    var totalAttempts = pts.reduce(function (a, p) { return a + p.attempts; }, 0);
+    var unit = gran === 'week' ? 'week' : (gran === 'month' ? 'month' : 'day');
+    var bucketWord = pts.length === 1 ? unit : unit + 's';
+    meta.textContent = 'Graph based on ' + totalAttempts + ' question' + (totalAttempts === 1 ? '' : 's') +
+      ' across ' + pts.length + ' ' + bucketWord + '. It updates automatically as you play more.';
   }
 
   function renderTrend() {
     var host = Utils.qs('#trend-chart');
     if (!host) return;
     var pts = computeSeries();
-    if (!pts.length) { host.innerHTML = '<p class="trend-empty">No attempts for this selection yet — play some games to see your trend.</p>'; return; }
+    if (!pts.length) {
+      host.innerHTML = '<p class="trend-empty">No attempts for this selection yet — play a game (even one) and your trend appears here.</p>';
+      renderCaption([]);
+      return;
+    }
     host.innerHTML = lineChartSVG(pts);
+    renderCaption(pts);
   }
 
   // ---------- per-chapter bars ----------
@@ -167,9 +221,11 @@
     try {
       var data = await Api.analytics.myBreakdown();
       trendRows = data.trend || [];
+      chapterMeta = (data.chapters || []).map(function (c) { return { chapterRef: c.chapterRef }; });
       renderChapters(data.chapters || []);
     } catch (err) {
       trendRows = [];
+      chapterMeta = [];
       renderChapters([]);
     }
     refreshTrend();
@@ -177,7 +233,7 @@
 
   document.addEventListener('wha:ready', function () {
     if (Router.currentPageName() !== 'progress.html') return;
-    ['#trend-class', '#trend-subject', '#trend-chapter'].forEach(function (sel) {
+    ['#trend-range', '#trend-class', '#trend-subject', '#trend-chapter'].forEach(function (sel) {
       var el = Utils.qs(sel);
       if (el) el.addEventListener('change', refreshTrend);
     });

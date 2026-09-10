@@ -3524,7 +3524,10 @@
                 padding: 14px 6% 22px;
                 gap: 2px;
                 max-height: calc(100vh - 62px);
+                max-height: calc(100dvh - 62px);
                 overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+                overscroll-behavior: contain;
                 clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
                 transition: clip-path 0.4s var(--ease);
                 border-bottom: 1px solid rgba(255, 255, 255, 0.12);
@@ -6753,27 +6756,60 @@
         const navLinks = document.getElementById('navLinks');
         const navIcon = hamburger.querySelector('i');
 
+        const mobileDropdown = document.getElementById('mobileDropdown');
+        const gamesDropdown = document.getElementById('gamesDropdown');
+
+        // Collapse any open sub-menus (Programs / Games). We call this whenever
+        // the whole nav closes, so re-opening the panel always starts clean —
+        // previously a left-open sub-menu made the nav look "broken" the next
+        // time it was opened, and pushed items around when switching tabs.
+        function closeMobileDropdowns() {
+            if (mobileDropdown) mobileDropdown.classList.remove('active');
+            if (gamesDropdown) gamesDropdown.classList.remove('active');
+        }
+        function closeMobileNav() {
+            navLinks.classList.remove('active');
+            navIcon.className = 'fas fa-bars';
+            hamburger.setAttribute('aria-expanded', 'false');
+            hamburger.setAttribute('aria-label', 'Open navigation menu');
+            closeMobileDropdowns();
+        }
+
         hamburger.addEventListener('click', () => {
             const isOpen = navLinks.classList.toggle('active');
             navIcon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
             hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
             hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+            if (!isOpen) closeMobileDropdowns();
         });
 
-        // Mobile dropdown (Programs)
-        const mobileDropdown = document.getElementById('mobileDropdown');
+        // On phones the nav panel scrolls, so an opened sub-menu can sit below
+        // the fold. After opening one, scroll it into view inside the panel so
+        // its items (e.g. Games → Login / Get Student ID) are always visible.
+        function openDropdownInView(dd) {
+            const menu = dd.querySelector('.dropdown-menu');
+            requestAnimationFrame(() => {
+                const el = menu || dd;
+                if (el.scrollIntoView) el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            });
+        }
+
+        // Mobile dropdown (Programs) — tap toggles its sub-menu; opening it
+        // closes the Games menu so only one is open at a time.
         mobileDropdown.addEventListener('click', (e) => {
             if (window.innerWidth <= 1199) {
                 if (e.target.tagName !== 'A' || e.target.closest('.dropdown-menu')) return;
                 e.preventDefault();
-                mobileDropdown.classList.toggle('active');
+                const willOpen = !mobileDropdown.classList.contains('active');
+                if (gamesDropdown) gamesDropdown.classList.remove('active');
+                mobileDropdown.classList.toggle('active', willOpen);
+                if (willOpen) openDropdownInView(mobileDropdown);
             }
         });
 
         // Mobile dropdown (Games) — tapping the top-level "Games" toggles its
         // menu instead of jumping to the section, so Login / Get Student ID /
         // How to Create Account are reachable straight from the top on phones.
-        const gamesDropdown = document.getElementById('gamesDropdown');
         if (gamesDropdown) {
             const gamesToggle = gamesDropdown.querySelector('.games-toggle');
             if (gamesToggle) {
@@ -6784,7 +6820,10 @@
                     // the tap toggles the sub-menu open/closed.
                     e.preventDefault();
                     if (window.innerWidth <= 1199) {
-                        gamesDropdown.classList.toggle('active');
+                        const willOpen = !gamesDropdown.classList.contains('active');
+                        if (mobileDropdown) mobileDropdown.classList.remove('active');
+                        gamesDropdown.classList.toggle('active', willOpen);
+                        if (willOpen) openDropdownInView(gamesDropdown);
                     }
                 });
             }
@@ -6795,10 +6834,7 @@
         // their sub-menu rather than closing the whole nav.
         document.querySelectorAll('.nav-links > li > a:not([href="#classes"]):not(.games-toggle)').forEach(a => {
             a.addEventListener('click', () => {
-                if (window.innerWidth <= 1199) {
-                    navLinks.classList.remove('active');
-                    navIcon.className = 'fas fa-bars';
-                }
+                if (window.innerWidth <= 1199) closeMobileNav();
             });
         });
 
@@ -6806,10 +6842,7 @@
         // same-page link like "How to Create Account" reveals its section.
         document.querySelectorAll('.dropdown-menu a').forEach(a => {
             a.addEventListener('click', () => {
-                if (window.innerWidth <= 1199) {
-                    navLinks.classList.remove('active');
-                    navIcon.className = 'fas fa-bars';
-                }
+                if (window.innerWidth <= 1199) closeMobileNav();
             });
         });
 
@@ -6840,10 +6873,7 @@
             // Re-bind the mobile "close the nav on tap" behaviour to the new links.
             menu.querySelectorAll('a').forEach(a => {
                 a.addEventListener('click', () => {
-                    if (window.innerWidth <= 1199) {
-                        navLinks.classList.remove('active');
-                        navIcon.className = 'fas fa-bars';
-                    }
+                    if (window.innerWidth <= 1199) closeMobileNav();
                 });
             });
         })();
