@@ -598,7 +598,7 @@
             transition: all 0.25s var(--ease);
         }
 
-        .dropdown:hover .dropdown-menu {
+        .dropdown.active .dropdown-menu {
             opacity: 1;
             visibility: visible;
             transform: translateX(-50%) translateY(0);
@@ -3594,3 +3594,47 @@
         @media (max-width: 520px) {
             .hero-2026 .hero-actions .btn { width: 100%; }
         }
+
+
+/* ===== Nav pill boxes — subtle colourful (added 2026-09-14) ===== */
+@media (min-width: 1200px) {
+  .nav-links { gap: 8px; }
+  .nav-links > li > a:not(.btn){
+    border:1px solid rgba(79,70,229,0.14);
+    background:rgba(79,70,229,0.05);
+    border-radius:11px; font-weight:600;
+    transition: transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
+  }
+  .nav-links > li > a:not(.btn):hover{ transform:translateY(-1px); box-shadow:0 5px 16px rgba(79,70,229,0.14); }
+  .nav-links > li.dropdown.active > a:not(.btn){ box-shadow:0 5px 16px rgba(79,70,229,0.16); }
+  .nav-links > li:nth-child(1) > a:not(.btn){ background:rgba(79,70,229,0.05); border-color:rgba(79,70,229,0.15);}
+  .nav-links > li:nth-child(2) > a:not(.btn){ background:rgba(79,70,229,0.06); border-color:rgba(79,70,229,0.16);}
+  .nav-links > li:nth-child(3) > a:not(.btn){ background:rgba(124,58,237,0.06); border-color:rgba(124,58,237,0.16);}
+  .nav-links > li:nth-child(4) > a:not(.btn){ background:rgba(5,150,105,0.07); border-color:rgba(5,150,105,0.18);}
+  .nav-links > li:nth-child(5) > a:not(.btn){ background:rgba(14,165,233,0.07); border-color:rgba(14,165,233,0.18);}
+  .nav-links > li:nth-child(6) > a:not(.btn){ background:rgba(236,72,153,0.06); border-color:rgba(236,72,153,0.16);}
+  .nav-links > li:nth-child(7) > a:not(.btn){ background:rgba(245,158,11,0.08); border-color:rgba(245,158,11,0.20);}
+  .nav-links > li:nth-child(1) > a:not(.btn):hover{ background:rgba(79,70,229,0.13);}
+  .nav-links > li:nth-child(2) > a:not(.btn):hover{ background:rgba(79,70,229,0.13);}
+  .nav-links > li:nth-child(3) > a:not(.btn):hover{ background:rgba(124,58,237,0.14);}
+  .nav-links > li:nth-child(4) > a:not(.btn):hover{ background:rgba(5,150,105,0.15);}
+  .nav-links > li:nth-child(5) > a:not(.btn):hover{ background:rgba(14,165,233,0.15);}
+  .nav-links > li:nth-child(6) > a:not(.btn):hover{ background:rgba(236,72,153,0.14);}
+  .nav-links > li:nth-child(7) > a:not(.btn):hover{ background:rgba(245,158,11,0.16);}
+}
+
+
+/* ===== Mobile dropdown contain + focus fixes (added 2026-09-14) ===== */
+@media (max-width: 1199px){
+  .nav-links .dropdown-menu{
+    position: static !important; left: auto !important; right:auto !important; transform: none !important;
+    min-width: 0 !important; width: auto !important; max-width: 100% !important;
+    box-shadow: none !important; margin: 2px 0 6px 14px !important; padding: 4px 6px !important;
+  }
+}
+/* Remove harsh blue focus lines on interactive elements; keep a soft ring for keyboard only */
+.btn, button, select, .cw-select, .nav-links a, a.btn, .dropdown-menu a { -webkit-tap-highlight-color: transparent; }
+.btn:focus, button:focus, select:focus, .cw-select:focus, .nav-links a:focus, a.btn:focus,
+.btn:focus-visible, button:focus-visible, select:focus-visible, .cw-select:focus-visible,
+.nav-links a:focus-visible, a.btn:focus-visible { outline: none !important; }
+.btn:focus-visible, button:focus-visible, .cw-select:focus-visible { box-shadow: 0 0 0 3px rgba(79,70,229,0.22); }

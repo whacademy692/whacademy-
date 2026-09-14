@@ -2365,19 +2365,18 @@
     </script>
 
 <script>
-/* Learn dropdown — mobile toggle (additive, self-contained) */
 (function(){
-  var ld=document.getElementById('learnDropdown');
-  var burger=document.getElementById('hamburger');
-  if(ld){
-    ld.addEventListener('click',function(e){
-      if(window.innerWidth<=1199){
-        if(e.target.tagName!=='A'||e.target.closest('.dropdown-menu'))return;
-        e.preventDefault(); ld.classList.toggle('active');
-      }
-    });
-  }
-  if(burger){ burger.addEventListener('click',function(){ if(ld)ld.classList.remove('active'); }); }
+  document.querySelectorAll('.nav-links .dropdown > a').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault(); e.stopPropagation();
+      var dd=a.parentElement, open=dd.classList.contains('active');
+      document.querySelectorAll('.nav-links .dropdown').forEach(function(o){ o.classList.remove('active'); });
+      if(!open) dd.classList.add('active');
+    }, true);
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.nav-links .dropdown')) document.querySelectorAll('.nav-links .dropdown').forEach(function(o){ o.classList.remove('active'); });
+  });
 })();
 </script>
 </body>

@@ -604,9 +604,9 @@ window.WHA_CONTENT = {
           {
             "n": 4,
             "title": "Graphs of Linear Equations and Simultaneous Linear Equations",
-            "notes": null,
+            "notes": "https://whacademypk.com/notes/class-8/math/graphs-linear-equations.html",
             "quiz": null,
-            "game": null
+            "game": "https://whacademypk.com/games/chapter.html?ch=8/math/graphs_of_linear_equations"
           },
           {
             "n": 5,
