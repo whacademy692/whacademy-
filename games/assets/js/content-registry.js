@@ -484,10 +484,10 @@ window.WHA_CONTENT = {
           },
           {
             "n": 2,
-            "title": "Water Resources and Management",
-            "notes": null,
+            "title": "Water Sources and Management",
+            "notes": "https://whacademypk.com/notes/class-7/geography/water-sources-and-management.html",
             "quiz": null,
-            "game": null
+            "game": "https://whacademypk.com/games/chapter.html?ch=7/geography/water_sources_and_management"
           },
           {
             "n": 3,
