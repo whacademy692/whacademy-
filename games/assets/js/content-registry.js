@@ -590,9 +590,9 @@ window.WHA_CONTENT = {
           {
             "n": 2,
             "title": "Financial Transaction",
-            "notes": null,
+            "notes": "https://whacademypk.com/notes/class-8/math/financial-transaction.html",
             "quiz": null,
-            "game": null
+            "game": "https://whacademypk.com/games/chapter.html?ch=8/math/financial_transaction"
           },
           {
             "n": 3,
