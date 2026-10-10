@@ -266,12 +266,12 @@
                 </a>
                 <div class="dropdown-menu">
                     <a href="games/login.html"><i class="fas fa-right-to-bracket" style="width:18px;margin-right:8px;color:#4f46e5;"></i>Login</a>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-SBGFOilfUMDSyWdM4KVA8zxnJI9mRMw8VOB5V-d_OHDiEg/viewform?usp=header" target="_blank" rel="noopener noreferrer"><i class="fas fa-id-card" style="width:18px;margin-right:8px;color:#4f46e5;"></i>Get Student ID</a>
+                    <a href="enroll.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-id-card" style="width:18px;margin-right:8px;color:#4f46e5;"></i>Register</a>
                     <a href="#learning-games"><i class="fas fa-circle-question" style="width:18px;margin-right:8px;color:#4f46e5;"></i>How to Create Account</a>
                 </div>
             </li>
             <li>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-SBGFOilfUMDSyWdM4KVA8zxnJI9mRMw8VOB5V-d_OHDiEg/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding:9px 22px;font-size:0.85rem;background:linear-gradient(135deg,#f97316 0%,#ef4444 55%,#ec4899 100%);color:#fff !important;font-weight:700;letter-spacing:0.3px;box-shadow:0 6px 20px rgba(249,115,22,0.4);-webkit-text-fill-color:#fff;border-radius:12px;">
+                <a href="enroll.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding:9px 22px;font-size:0.85rem;background:linear-gradient(135deg,#f97316 0%,#ef4444 55%,#ec4899 100%);color:#fff !important;font-weight:700;letter-spacing:0.3px;box-shadow:0 6px 20px rgba(249,115,22,0.4);-webkit-text-fill-color:#fff;border-radius:12px;">
                     <span>Enroll Now</span> <i class="fas fa-arrow-right" style="color:#fff;" aria-hidden="true"></i>
                 </a>
             </li>
@@ -794,7 +794,7 @@
                                 Open the enrollment form
                             </div>
                             <div style="font-size:0.86rem; color:var(--text-muted); line-height:1.65;">
-                                Tap the <strong>Get Student ID</strong> button below. This opens the enrollment form.
+                                Tap the <strong>Register</strong> button below. This opens the enrollment form.
                             </div>
                         </div>
                     </div>
@@ -1024,9 +1024,9 @@
                             <a href="games/welcome.html" class="btn btn-primary">
                                 <i class="fas fa-play" aria-hidden="true"></i> Start Playing
                             </a>
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-SBGFOilfUMDSyWdM4KVA8zxnJI9mRMw8VOB5V-d_OHDiEg/viewform?usp=header"
+                            <a href="enroll.html"
                                target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-                                <i class="fas fa-id-card" aria-hidden="true"></i> Get Student ID
+                                <i class="fas fa-id-card" aria-hidden="true"></i> Register
                             </a>
                         </div>
 
@@ -1036,7 +1036,7 @@
                         </p>
                         <p style="font-size:0.86rem; color:var(--text-muted); line-height:1.6;">
                             <strong style="color:var(--text-dark);">First time here?</strong>
-                            You need to enroll first. Tap <em>Get Student ID</em> to open the enrollment form,
+                            You need to enroll first. Tap <em>Register</em> to open the enrollment form,
                             then follow the steps above to create your account.
                         </p>
 
@@ -1458,7 +1458,7 @@
 
         // On phones the nav panel scrolls, so an opened sub-menu can sit below
         // the fold. After opening one, scroll it into view inside the panel so
-        // its items (e.g. Games → Login / Get Student ID) are always visible.
+        // its items (e.g. Games → Login / Register) are always visible.
         function openDropdownInView(dd) {
             const menu = dd.querySelector('.dropdown-menu');
             requestAnimationFrame(() => {
@@ -1481,7 +1481,7 @@
         });
 
         // Mobile dropdown (Games) — tapping the top-level "Games" toggles its
-        // menu instead of jumping to the section, so Login / Get Student ID /
+        // menu instead of jumping to the section, so Login / Register /
         // How to Create Account are reachable straight from the top on phones.
         if (gamesDropdown) {
             const gamesToggle = gamesDropdown.querySelector('.games-toggle');
@@ -1523,7 +1523,7 @@
         // session token in localStorage under its own 'wha:' namespace, on the
         // same domain — so the homepage can tell whether someone is already
         // logged in. If they are, swap the menu to take them straight into
-        // their dashboard/games instead of showing "Login / Get Student ID".
+        // their dashboard/games instead of showing "Login / Register".
         (function () {
             if (!gamesDropdown) return;
             const menu = gamesDropdown.querySelector('.dropdown-menu');
@@ -1533,7 +1533,7 @@
                 const raw = window.localStorage.getItem('wha:session_token');
                 loggedIn = !!(raw && JSON.parse(raw));
             } catch (e) { loggedIn = false; }
-            if (!loggedIn) return; // not signed in → keep default Login / Get Student ID menu
+            if (!loggedIn) return; // not signed in → keep default Login / Register menu
 
             menu.innerHTML =
                 '<a href="games/dashboard.html" aria-label="Go to my dashboard">' +
