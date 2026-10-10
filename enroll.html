@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Enroll — W.H. Academy</title>
+<meta name="description" content="Enroll at W.H. Academy — online & home tutoring for FBISE Class 1–12. Choose your class, subjects and plan. Your Student ID is emailed after fee confirmation." />
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="icon" type="image/png" href="favicon.png" sizes="32x32" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+<style>
+  /* =========================================================================
+     enroll.html — W.H. Academy first-party enrollment form
+     Self-contained. Submits to the Supabase Edge Function `enrollment/submit`,
+     which creates a PENDING Enrollments row. Student ID is emailed after the
+     admin confirms the fee. Replaces the old Google Form.
+     ========================================================================= */
+  :root{
+    --indigo:#4f46e5; --indigo-deep:#3730a3; --indigo-soft:#6366f1;
+    --ink:#0f172a; --muted:#64748b; --line:#e2e8f0; --line-soft:#eef2f7;
+    --bg:#f6f7fb; --card:#ffffff; --ok:#16a34a; --err:#dc2626;
+    --cta:linear-gradient(135deg,#f97316 0%,#ef4444 55%,#ec4899 100%);
+    --radius:16px; --shadow:0 10px 30px rgba(15,23,42,.08);
+    --shadow-lg:0 24px 60px rgba(49,55,163,.18);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    color:var(--ink); background:var(--bg); line-height:1.55;
+    background-image:
+      radial-gradient(circle at 10% -5%, rgba(99,102,241,.12), transparent 42%),
+      radial-gradient(circle at 95% 0%, rgba(236,72,153,.08), transparent 45%);
+    background-attachment:fixed; min-height:100vh;
+  }
+  .wrap{max-width:860px; margin:0 auto; padding:24px 18px 80px}
+  /* ---- header ---- */
+  .top{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:6px 2px 18px}
+  .brand{display:flex; align-items:center; gap:11px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:1.15rem; color:var(--indigo-deep); text-decoration:none}
+  .brand .mark{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--indigo) 0%,var(--indigo-deep) 100%);color:#fff;display:grid;place-items:center;font-weight:800;box-shadow:0 6px 16px rgba(79,70,229,.35)}
+  .back{font-size:.86rem;color:var(--muted);text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+  .back:hover{color:var(--indigo)}
+  /* ---- hero ---- */
+  .hero{background:linear-gradient(135deg,#4f46e5 0%,#3730a3 100%); color:#fff; border-radius:22px; padding:30px 28px; box-shadow:var(--shadow-lg); position:relative; overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:auto -40px -60px auto;width:220px;height:220px;background:radial-gradient(circle,rgba(255,255,255,.14),transparent 70%)}
+  .hero h1{font-family:'Plus Jakarta Sans',sans-serif; margin:0 0 8px; font-size:1.7rem; line-height:1.2}
+  .hero p{margin:0; opacity:.92; font-size:.96rem; max-width:620px}
+  .hero .tag{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);padding:4px 12px;border-radius:999px;font-size:.72rem;font-weight:700;letter-spacing:.4px;text-transform:uppercase;margin-bottom:12px}
+  .notebar{margin-top:16px;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:14px;padding:12px 15px;font-size:.84rem;display:flex;gap:9px;align-items:flex-start}
+  .notebar b{color:#7c2d12}
+  /* ---- progress ---- */
+  .steps{display:flex;gap:8px;margin:22px 2px 10px}
+  .steps .s{flex:1;height:5px;border-radius:999px;background:var(--line);transition:.3s}
+  .steps .s.active{background:linear-gradient(90deg,var(--indigo),var(--indigo-soft))}
+  .steps .s.done{background:var(--indigo-deep)}
+  /* ---- card / sections ---- */
+  form{margin-top:10px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px 22px;margin-bottom:18px}
+  .card h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.08rem;margin:0 0 4px;display:flex;align-items:center;gap:10px}
+  .card h2 .n{width:26px;height:26px;border-radius:8px;background:#eef2ff;color:var(--indigo-deep);display:grid;place-items:center;font-size:.82rem;font-weight:800}
+  .card .sub{color:var(--muted);font-size:.85rem;margin:0 0 18px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+  @media(max-width:600px){.grid{grid-template-columns:1fr}}
+  .full{grid-column:1/-1}
+  label{display:block;font-size:.82rem;font-weight:600;color:#334155;margin:0 0 6px}
+  label .req{color:var(--err)}
+  input,select,textarea{
+    width:100%;font:inherit;font-size:.92rem;color:var(--ink);background:#fff;
+    border:1.5px solid var(--line);border-radius:11px;padding:11px 13px;transition:.15s;
+  }
+  textarea{resize:vertical;min-height:70px}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--indigo-soft);box-shadow:0 0 0 4px rgba(99,102,241,.14)}
+  input.bad,select.bad,textarea.bad{border-color:var(--err);box-shadow:0 0 0 4px rgba(220,38,38,.1)}
+  .hint{font-size:.76rem;color:var(--muted);margin:6px 0 0}
+  .err{font-size:.76rem;color:var(--err);margin:6px 0 0;display:none;font-weight:600}
+  .err.show{display:block}
+  /* ---- subject chips ---- */
+  .chips{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{position:relative;cursor:pointer;user-select:none}
+  .chip input{position:absolute;opacity:0;pointer-events:none}
+  .chip span{display:inline-flex;align-items:center;gap:7px;padding:9px 15px;border:1.5px solid var(--line);border-radius:999px;font-size:.85rem;font-weight:600;color:#475569;background:#fff;transition:.15s}
+  .chip input:checked+span{background:#eef2ff;border-color:var(--indigo-soft);color:var(--indigo-deep)}
+  .chip span::before{content:"+";font-weight:800;color:#94a3b8}
+  .chip input:checked+span::before{content:"✓";color:var(--indigo)}
+  /* ---- plan cards ---- */
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+  @media(max-width:600px){.plans{grid-template-columns:1fr}}
+  .plan{cursor:pointer;position:relative;border:1.8px solid var(--line);border-radius:15px;padding:18px 16px;background:#fff;transition:.18s;text-align:left}
+  .plan:hover{border-color:var(--indigo-soft);transform:translateY(-2px);box-shadow:var(--shadow)}
+  .plan.sel{border-color:var(--indigo);background:linear-gradient(180deg,#f5f3ff,#fff);box-shadow:0 10px 26px rgba(79,70,229,.18)}
+  .plan .tier{font-weight:800;font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;color:var(--ink)}
+  .plan .price{font-size:1.5rem;font-weight:800;color:var(--indigo-deep);margin:6px 0 2px}
+  .plan .price small{font-size:.72rem;color:var(--muted);font-weight:600}
+  .plan .per{font-size:.72rem;color:var(--muted)}
+  .plan .pick{position:absolute;top:12px;right:12px;width:20px;height:20px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:.7rem;color:#fff}
+  .plan.sel .pick{background:var(--indigo);border-color:var(--indigo)}
+  .plan.sel .pick::after{content:"✓"}
+  .band-note{font-size:.8rem;color:var(--muted);margin:0 0 13px;padding:9px 12px;background:#f8fafc;border-radius:10px;border:1px dashed var(--line)}
+  /* ---- home tuition note ---- */
+  .home-note{display:none;margin-top:14px;background:#f0f9ff;border:1px solid #bae6fd;color:#075985;border-radius:12px;padding:13px 15px;font-size:.83rem}
+  .home-note.show{display:block}
+  .home-note b{color:#0c4a6e}
+  /* ---- submit ---- */
+  .actions{display:flex;flex-direction:column;gap:12px;align-items:center;margin-top:4px}
+  .btn{appearance:none;border:0;cursor:pointer;font:inherit;font-weight:800;font-size:1rem;color:#fff;background:var(--cta);padding:15px 20px;border-radius:14px;width:100%;box-shadow:0 10px 26px rgba(249,115,22,.4);transition:.15s;display:inline-flex;align-items:center;justify-content:center;gap:9px}
+  .btn:hover:not(:disabled){transform:translateY(-1px);filter:brightness(1.03)}
+  .btn:disabled{opacity:.6;cursor:not-allowed;box-shadow:none}
+  .mini{font-size:.78rem;color:var(--muted);text-align:center;max-width:520px}
+  .mini a{color:var(--indigo);font-weight:600;text-decoration:none}
+  .formerr{display:none;background:#fef2f2;border:1px solid #fecaca;color:#991b1b;border-radius:12px;padding:12px 15px;font-size:.86rem;font-weight:600;margin-bottom:6px}
+  .formerr.show{display:block}
+  /* ---- success ---- */
+  .success{display:none;text-align:center;padding:40px 24px}
+  .success.show{display:block}
+  .success .ico{width:78px;height:78px;border-radius:50%;background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;display:grid;place-items:center;font-size:2.2rem;margin:0 auto 18px;box-shadow:0 14px 34px rgba(22,163,74,.35)}
+  .success h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.5rem;margin:0 0 10px}
+  .success p{color:var(--muted);max-width:480px;margin:0 auto 10px}
+  .success .mailed{font-weight:700;color:var(--ink)}
+  .spin{width:18px;height:18px;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;display:none}
+  @keyframes sp{to{transform:rotate(360deg)}}
+  .is-loading .spin{display:inline-block}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="brand" href="index.html"><span class="mark">W</span>W.H. Academy</a>
+    <a class="back" href="index.html">← Back to home</a>
+  </div>
+
+  <section class="hero">
+    <span class="tag">Enrollment</span>
+    <h1>Enroll at W.H. Academy</h1>
+    <p>Online & home tutoring for FBISE / Federal Board students, Class 6–12. Fill the form below. Once your fee is confirmed and your account is activated, we email your <strong>Student ID</strong> and a link to set your PIN — then you log in.</p>
+    <div class="notebar">
+      <span>⚠️</span>
+      <div><b>Important:</b> Select only the subjects and plan that match your class and stream. Requests with an incorrect subject or plan selection will not be processed.</div>
+    </div>
+  </section>
+
+  <div class="steps" aria-hidden="true">
+    <div class="s active" data-s="1"></div>
+    <div class="s" data-s="2"></div>
+    <div class="s" data-s="3"></div>
+  </div>
+
+  <div class="formerr" id="formErr"></div>
+
+  <form id="enrollForm" novalidate autocomplete="on">
+
+    <!-- 1. Student & guardian -->
+    <div class="card">
+      <h2><span class="n">1</span> Student & Guardian Details</h2>
+      <p class="sub">Tell us who's enrolling. We'll email everything to the address you enter.</p>
+      <div class="grid">
+        <div class="full">
+          <label for="email">Email <span class="req">*</span></label>
+          <input type="email" id="email" name="email" placeholder="e.g. whacademy692@gmail.com" inputmode="email" />
+          <p class="hint">Your Student ID and registration link will be sent here. Write it correctly.</p>
+          <p class="err" id="e-email">Please enter a valid email address.</p>
+        </div>
+        <div>
+          <label for="fullName">Student Full Name <span class="req">*</span></label>
+          <input type="text" id="fullName" name="fullName" placeholder="Student's full name" />
+          <p class="err" id="e-fullName">Required.</p>
+        </div>
+        <div>
+          <label for="fatherName">Father's Full Name <span class="req">*</span></label>
+          <input type="text" id="fatherName" name="fatherName" placeholder="Father's full name" />
+          <p class="err" id="e-fatherName">Required.</p>
+        </div>
+        <div>
+          <label for="fatherOccupation">Father's Occupation & Designation <span class="req">*</span></label>
+          <input type="text" id="fatherOccupation" name="fatherOccupation" placeholder="e.g. Teacher, Govt. School" />
+          <p class="err" id="e-fatherOccupation">Required.</p>
+        </div>
+        <div>
+          <label for="schoolName">School Full Name <span class="req">*</span></label>
+          <input type="text" id="schoolName" name="schoolName" placeholder="Student's school name" />
+          <p class="err" id="e-schoolName">Required.</p>
+        </div>
+        <div class="full">
+          <label for="address">Student Address <span class="req">*</span></label>
+          <textarea id="address" name="address" placeholder="Complete home address"></textarea>
+          <p class="err" id="e-address">Required.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Academic details -->
+    <div class="card">
+      <h2><span class="n">2</span> Academic Details</h2>
+      <p class="sub">Pick your class first — the stream, subjects and plan update to match.</p>
+      <div class="grid">
+        <div>
+          <label for="classLevel">Select Class <span class="req">*</span></label>
+          <select id="classLevel" name="classLevel">
+            <option value="">— Select class —</option>
+          </select>
+          <p class="err" id="e-classLevel">Please select your class.</p>
+        </div>
+        <div>
+          <label for="stream">Select Stream <span class="req">*</span></label>
+          <select id="stream" name="stream">
+            <option value="">— Select class first —</option>
+          </select>
+          <p class="err" id="e-stream">Please select your stream.</p>
+        </div>
+        <div class="full" id="subjectWrap">
+          <label>Select Subject(s) <span class="req">*</span></label>
+          <div class="chips" id="subjectChips"></div>
+          <p class="hint" id="subjectHint">Pick the subjects you want — only these will unlock in your account.</p>
+          <p class="err" id="e-subjects">Please select at least one subject.</p>
+        </div>
+        <div class="full">
+          <label for="otherSubject">Other Subject (optional)</label>
+          <input type="text" id="otherSubject" name="otherSubject" placeholder="Any subject not listed above — also mention class/grade/diploma if any" />
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Mode & plan -->
+    <div class="card">
+      <h2><span class="n">3</span> Tuition Mode & Plan</h2>
+      <p class="sub">Choose how you'd like to study and the plan for your class.</p>
+      <div class="grid">
+        <div class="full">
+          <label for="tuitionMode">Select Tuition Mode <span class="req">*</span></label>
+          <select id="tuitionMode" name="tuitionMode">
+            <option value="">— Select mode —</option>
+            <option value="Online">Online</option>
+            <option value="Home Tuition">Home Tuition</option>
+          </select>
+          <p class="err" id="e-tuitionMode">Please select a tuition mode.</p>
+          <div class="home-note" id="homeNote">
+            <b>Home Tuition:</b> currently available only in selected areas of Rawalpindi. Please also text the required details to
+            <b>0329-5215703</b> (text messages only): student name, father's name, father's occupation, complete address, school name, class, subject(s).
+          </div>
+        </div>
+        <div class="full">
+          <label>Select Plan <span class="req">*</span></label>
+          <p class="band-note" id="bandNote">Select your class above to see the plans for your level.</p>
+          <div class="plans" id="plans"></div>
+          <p class="err" id="e-plan">Please select a plan.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="btn" id="submitBtn">
+        <span class="spin"></span><span class="label">Submit Enrollment</span>
+      </button>
+      <p class="mini">By submitting you confirm the details are correct. Your Student ID is emailed <b>once your account is activated</b> (after fee confirmation). Questions? Call <a href="tel:03295215703">0329-5215703</a>.</p>
+    </div>
+  </form>
+
+  <!-- success -->
+  <div class="card success" id="success">
+    <div class="ico">✓</div>
+    <h2>Enrollment received!</h2>
+    <p>Thank you — your request is now <strong>pending fee confirmation</strong>.</p>
+    <p>Once your fee is confirmed and your account is <strong>activated</strong>, your <strong>Student ID</strong> and a link to set your PIN will be emailed to <span class="mailed" id="mailedTo">your email</span>. Set your PIN, then log in.</p>
+    <p>For fee details, contact us at <a href="tel:03295215703" style="color:var(--indigo);font-weight:700">0329-5215703</a>.</p>
+    <p style="margin-top:22px"><a class="back" href="index.html" style="font-size:.95rem">← Back to home</a></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  /* ============================ CONFIG =====================================
+     Same values as the student site's games/assets/js/api.js and the admin
+     panel. At real-site cutover these stay the same (one backend). */
+  var API_BASE_URL = 'https://gbgcaonmdekumluwgwvn.supabase.co/functions/v1/api';
+  var API_KEY      = 'Jdb-iJByoQ-WA0UwlQrorQOH77buDQjepPH0y2SsDyo';
+
+  /* -------- Plan fee tables (names fixed; Middle fees updated) ------------ */
+  var PLANS = {
+    Middle:       [ {tier:'Starter',price:5000}, {tier:'Pro',price:12000}, {tier:'Advanced',price:18000} ],
+    Matric:       [ {tier:'Starter',price:2000}, {tier:'Pro',price:3500},  {tier:'Advanced',price:4500}  ],
+    Intermediate: [ {tier:'Starter',price:2500}, {tier:'Pro',price:4500},  {tier:'Advanced',price:5500}  ],
+  };
+  var BAND_LABEL = {
+    Middle:'📚 Middle Section (Grades 6–8) — flat plan fee; pick the subjects you want',
+    Matric:'📘 Matriculation (9th–10th) — charges apply per subject',
+    Intermediate:'📘 Intermediate (Grades 11–12) — charges apply per subject'
+  };
+  /* -------- Stream options per class band -------------------------------- */
+  var STREAMS = {
+    low:    ['Not applicable'],                                   // class 1-8
+    matric: ['Biology group','Computer group'],                  // class 9-10
+    inter:  ['Pre-Medical','Pre-Engineering','ICS'],             // class 11-12
+  };
+  /* -------- Subject options per class band ------------------------------- */
+  var SUBJECTS = {
+    low:    ['Mathematics','Science','Geography','History','Computer'], // Middle (6-8) — per-subject now
+    matric: ['Mathematics','Physics','Chemistry','Biology','Computer'],
+    inter:  ['Mathematics','Physics','Chemistry','Biology','Computer'],
+  };
+
+  function bandOf(cls){ cls=Number(cls); if(cls<=8) return 'Middle'; if(cls<=10) return 'Matric'; return 'Intermediate'; }
+  function keyOf(cls){ cls=Number(cls); if(cls<=8) return 'low'; if(cls<=10) return 'matric'; return 'inter'; }
+  function $(id){ return document.getElementById(id); }
+
+  var state = { plan:null, price:null };
+
+  /* ---- populate class dropdown ---- */
+  (function(){
+    var sel=$('classLevel');
+    for(var c=6;c<=12;c++){ var o=document.createElement('option'); o.value=c; o.textContent='Class '+c; sel.appendChild(o); }
+  })();
+
+  /* ---- react to class change ---- */
+  $('classLevel').addEventListener('change', function(){
+    var cls=this.value; clearErr('classLevel');
+    var k = cls ? keyOf(cls) : null;
+
+    // stream
+    var ss=$('stream'); ss.innerHTML='';
+    if(!cls){ ss.innerHTML='<option value="">— Select class first —</option>'; }
+    else {
+      STREAMS[k].forEach(function(s){ var o=document.createElement('option'); o.value=s; o.textContent=(s==='Not applicable'?'Class 1–8 — Not applicable':s); ss.appendChild(o); });
+      if(k==='low'){ ss.value='Not applicable'; ss.disabled=true; } else { ss.disabled=false; ss.insertAdjacentHTML('afterbegin','<option value="">— Select stream —</option>'); ss.value=''; }
+    }
+
+    // subjects
+    var chips=$('subjectChips'); chips.innerHTML='';
+    if(cls){
+      SUBJECTS[k].forEach(function(sub){
+        var l=document.createElement('label'); l.className='chip';
+        l.innerHTML='<input type="checkbox" value="'+sub+'"><span>'+sub+'</span>';
+        chips.appendChild(l);
+      });
+      $('subjectHint').textContent = (k==='low')
+        ? 'Pick the subjects you want — only these unlock in your account (flat Middle plan fee).'
+        : 'Charges apply per subject — tick each subject you want to enroll in.';
+    }
+
+    // plans
+    renderPlans(cls ? bandOf(cls) : null);
+    setStep();
+  });
+
+  /* ---- render plan cards ---- */
+  function renderPlans(band){
+    var wrap=$('plans'); wrap.innerHTML=''; state.plan=null; state.price=null;
+    if(!band){ $('bandNote').textContent='Select your class above to see the plans for your level.'; return; }
+    $('bandNote').textContent = BAND_LABEL[band];
+    var perNote = (band==='Middle') ? 'all subjects' : 'per subject';
+    PLANS[band].forEach(function(p){
+      var d=document.createElement('button'); d.type='button'; d.className='plan'; d.dataset.tier=p.tier; d.dataset.price=p.price;
+      d.innerHTML='<span class="pick"></span><div class="tier">'+p.tier+'</div>'+
+                  '<div class="price">PKR '+p.price.toLocaleString()+'</div>'+
+                  '<div class="per">'+perNote+'</div>';
+      d.addEventListener('click', function(){
+        wrap.querySelectorAll('.plan').forEach(function(x){x.classList.remove('sel');});
+        d.classList.add('sel'); state.plan=p.tier; state.price=p.price; clearErr('plan'); setStep();
+      });
+      wrap.appendChild(d);
+    });
+  }
+
+  $('stream').addEventListener('change',function(){clearErr('stream');setStep();});
+  $('tuitionMode').addEventListener('change',function(){
+    clearErr('tuitionMode');
+    $('homeNote').classList.toggle('show', this.value==='Home Tuition');
+    setStep();
+  });
+  document.getElementById('subjectChips').addEventListener('change',function(){clearErr('subjects');setStep();});
+  ['email','fullName','fatherName','fatherOccupation','schoolName','address'].forEach(function(id){
+    $(id).addEventListener('input',function(){clearErr(id);setStep();});
+  });
+
+  /* ---- progress bar ---- */
+  function setStep(){
+    var s1 = $('email').value && $('fullName').value && $('fatherName').value && $('fatherOccupation').value && $('schoolName').value && $('address').value;
+    var s2 = $('classLevel').value && $('stream').value;
+    var s3 = $('tuitionMode').value && state.plan;
+    var steps=document.querySelectorAll('.steps .s');
+    steps[0].className='s '+(s1?'done':'active');
+    steps[1].className='s '+(s2?'done':(s1?'active':''));
+    steps[2].className='s '+(s3?'done':(s2?'active':''));
+  }
+
+  /* ---- validation helpers ---- */
+  function showErr(id,msg){ var e=$('e-'+id); if(e){ if(msg)e.textContent=msg; e.classList.add('show'); } var f=$(id); if(f)f.classList.add('bad'); }
+  function clearErr(id){ var e=$('e-'+id); if(e)e.classList.remove('show'); var f=$(id); if(f)f.classList.remove('bad'); }
+  function emailOk(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+  function selectedSubjects(){ return Array.prototype.map.call(document.querySelectorAll('#subjectChips input:checked'),function(x){return x.value;}); }
+
+  /* ---- submit ---- */
+  $('enrollForm').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    $('formErr').classList.remove('show');
+    var ok=true, firstBad=null;
+    function need(id,test){ if(!test){ showErr(id); ok=false; if(!firstBad)firstBad=$(id)||$('e-'+id); } }
+
+    need('email', emailOk($('email').value.trim()));
+    need('fullName', $('fullName').value.trim());
+    need('fatherName', $('fatherName').value.trim());
+    need('fatherOccupation', $('fatherOccupation').value.trim());
+    need('schoolName', $('schoolName').value.trim());
+    need('address', $('address').value.trim());
+    need('classLevel', $('classLevel').value);
+    need('stream', $('stream').value);
+    need('tuitionMode', $('tuitionMode').value);
+    need('plan', !!state.plan);
+
+    var cls=Number($('classLevel').value);
+    var subs=selectedSubjects();
+    var other=$('otherSubject').value.trim();
+    if(subs.length===0){ showErr('subjects'); ok=false; if(!firstBad)firstBad=$('subjectChips'); }
+
+
+    if(!ok){
+      $('formErr').textContent='Please fill in the highlighted fields before submitting.';
+      $('formErr').classList.add('show');
+      if(firstBad && firstBad.scrollIntoView) firstBad.scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+
+    var payload = {
+      operation:'enrollment/submit', apiKey:API_KEY,
+      email:$('email').value.trim(),
+      fullName:$('fullName').value.trim(),
+      fatherName:$('fatherName').value.trim(),
+      fatherOccupation:$('fatherOccupation').value.trim(),
+      schoolName:$('schoolName').value.trim(),
+      address:$('address').value.trim(),
+      classLevel:cls,
+      stream:$('stream').value,
+      subjects:subs,
+      otherSubject:other,
+      tuitionMode:$('tuitionMode').value,
+      planTier:state.plan,
+      planPrice:state.price,
+      submittedAtLocal:new Date().toString()
+    };
+
+    var btn=$('submitBtn'); btn.disabled=true; btn.classList.add('is-loading');
+    btn.querySelector('.label').textContent='Submitting…';
+
+    fetch(API_BASE_URL,{
+      method:'POST',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify(payload)
+    })
+    .then(function(r){return r.text();})
+    .then(function(t){
+      var data=null; try{data=JSON.parse(t);}catch(e){}
+      if(data===null){ throw new Error('The server is waking up — please try again in a moment.'); }
+      if(!data.success){ throw new Error((data.error&&data.error.message)||'Something went wrong. Please try again.'); }
+      // success
+      $('mailedTo').textContent=payload.email;
+      document.getElementById('enrollForm').style.display='none';
+      document.querySelector('.steps').style.display='none';
+      document.querySelector('.actions') && (document.querySelector('.actions').style.display='none');
+      $('success').classList.add('show');
+      window.scrollTo({top:0,behavior:'smooth'});
+    })
+    .catch(function(e){
+      $('formErr').textContent=e.message||'Could not submit. Please try again.';
+      $('formErr').classList.add('show');
+      $('formErr').scrollIntoView({behavior:'smooth',block:'center'});
+      btn.disabled=false; btn.classList.remove('is-loading'); btn.querySelector('.label').textContent='Submit Enrollment';
+    });
+  });
+
+  setStep();
+})();
+</script>
+</body>
+</html>

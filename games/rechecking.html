@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://gbgcaonmdekumluwgwvn.supabase.co https://script.google.com https://script.googleusercontent.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Support & Rechecking — W.H. Academy</title>
+  <meta name="theme-color" content="#3730a3">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/pages/rechecking.css">
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<div class="app-shell app-shell--with-sidebar">
+  <nav class="sidebar" aria-label="Primary">
+    <a href="dashboard.html" class="top-bar__brand text-display">W.H. Academy</a>
+    <div class="sidebar__nav">
+      <a class="sidebar__item" href="dashboard.html" data-nav-page="dashboard.html"><span>⌂</span> Dashboard</a>
+      <a class="sidebar__item" href="games.html" data-nav-page="games.html"><span>▣</span> Chapters</a>
+      <a class="sidebar__item" href="boss-battle.html" data-nav-page="boss-battle.html"><span>♜</span> Boss Battle</a>
+      <a class="sidebar__item" href="revision.html" data-nav-page="revision.html"><span>↺</span> Revision</a>
+      <a class="sidebar__item" href="leaderboard.html" data-nav-page="leaderboard.html"><span>🏆</span> Ranks</a>
+      <a class="sidebar__item" href="rechecking.html" data-nav-page="rechecking.html" aria-current="page"><span>↻</span> Support & Rechecking</a>
+      <a class="sidebar__item" href="profile.html" data-nav-page="profile.html"><span>◯</span> Profile</a>
+    </div>
+    <div style="margin-top:auto;"><button class="sidebar__item" style="width:100%;" data-action="logout">Log Out</button></div>
+  </nav>
+  <div style="flex:1;min-width:0;">
+    <header class="top-bar hide-desktop"><span class="top-bar__brand">Support & Rechecking</span></header>
+    <main id="main-content" class="app-main">
+      <div class="container section rc-page">
+        <header class="rc-hero">
+          <div>
+            <span class="rc-eyebrow">Student support</span>
+            <h1>Support & Rechecking</h1>
+            <p>Track marking claims and keep a clear place for website issues without mixing them with your learning progress.</p>
+          </div>
+          <div class="rc-hero__rule">Rechecking keeps the original marking snapshot for Admin audit.</div>
+        </header>
+
+        <div class="rc-tabs" role="tablist" aria-label="Support sections">
+          <button type="button" class="rc-tab is-active" id="rc-tab-recheck" role="tab" aria-selected="true" aria-controls="rc-panel-recheck">My Rechecking Claims</button>
+          <button type="button" class="rc-tab" id="rc-tab-issue" role="tab" aria-selected="false" aria-controls="rc-panel-issue">Report a Website Issue</button>
+        </div>
+
+        <section id="rc-panel-recheck" class="rc-tab-panel" role="tabpanel" aria-labelledby="rc-tab-recheck">
+          <section class="card rc-lookup">
+            <label class="field"><span class="field__label">Paper ID</span>
+              <div class="rc-lookup__row"><input class="input" id="rc-paper-id" placeholder="e.g. BPAP-TEST-C08-L1-001" autocomplete="off"><button class="btn btn--primary" id="rc-load" type="button">Find my paper</button></div>
+              <span class="field__hint">Use the Paper ID shown with your graded Boss Battle result.</span>
+            </label>
+          </section>
+          <div id="rc-paper"></div>
+          <section class="rc-history">
+            <div class="rc-section-head"><div><h2>Your rechecking requests</h2><p>Open and resolved claims stay visible as lifetime history unless Admin archives one.</p></div><button class="btn btn--secondary btn--sm" id="rc-refresh" type="button">Refresh</button></div>
+            <div id="rc-history-list"><p class="muted">Loading…</p></div>
+          </section>
+        </section>
+
+        <section id="rc-panel-issue" class="rc-tab-panel" role="tabpanel" aria-labelledby="rc-tab-issue" hidden>
+          <div class="card support-card">
+            <div class="support-card__head">
+              <div><span class="rc-eyebrow rc-eyebrow--dark">Website support</span><h2>Report a website issue</h2><p>Use this for dashboard, navigation, games, display or other website problems — not for paper marking disputes.</p></div>
+              <span class="badge badge--warning">Backend connection pending</span>
+            </div>
+            <div class="support-notice">This frontend step saves your report as a draft on this browser only. Sending it to Admin will be connected in the next backend step, so nothing is silently submitted yet.</div>
+            <form id="support-issue-form" class="support-form">
+              <label class="field"><span class="field__label">Issue type</span>
+                <select class="select" id="support-category">
+                  <option value="navigation">Navigation / page problem</option>
+                  <option value="game">Game / activity problem</option>
+                  <option value="display">Display / UI problem</option>
+                  <option value="progress">Progress / dashboard problem</option>
+                  <option value="other">Other</option>
+                </select>
+              </label>
+              <label class="field"><span class="field__label">Page</span><input class="input" id="support-page" readonly></label>
+              <label class="field"><span class="field__label">What happened?</span><textarea class="input support-textarea" id="support-message" maxlength="1500" placeholder="Explain what you clicked, what you expected, and what happened instead."></textarea><span class="field__hint">Do not include passwords, PINs or private account secrets.</span></label>
+              <div class="support-actions"><button class="btn btn--primary" id="support-save" type="submit">Save draft</button><button class="btn btn--secondary" id="support-clear" type="button">Clear draft</button></div>
+              <p id="support-status" class="muted" role="status"></p>
+            </form>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="assets/js/utils.js"></script><script src="assets/js/storage.js"></script><script src="assets/js/notifications.js"></script><script src="assets/js/animations.js"></script><script src="assets/js/api.js"></script><script src="assets/js/router.js"></script><script src="assets/js/app.js"></script><script src="assets/js/rechecking.js"></script><script src="assets/js/student-support.js"></script>
+</body></html>

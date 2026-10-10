@@ -1,0 +1,475 @@
+/* ============================================================================
+   W.H. Academy — Student Theme + Navigation Stability Layer
+   2026-09-15
+   Loaded dynamically by app.js AFTER the existing stylesheets so it can correct
+   page-to-page drift without editing every HTML file.
+   ========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   1) Extra themes
+   Existing themes stay untouched. These extend the Settings theme library.
+   ------------------------------------------------------------------------- */
+[data-theme="sky"] {
+  --brand-primary: #2563eb;
+  --brand-primary-mid: #3b82f6;
+  --brand-primary-light: #60a5fa;
+  --brand-secondary: #7c3aed;
+  --brand-accent: #f59e0b;
+  --brand-glow: rgba(59,130,246,.34);
+  --color-brand-ink: #1d4ed8;
+  --color-brand-ink-light: #2563eb;
+  --color-brand-ink-tint: #dbeafe;
+  --color-interactive: #2563eb;
+  --color-interactive-hover: #1d4ed8;
+  --color-info: #2563eb;
+  --color-info-surface: #dbeafe;
+  --color-bg-app: #eff6ff;
+  --color-bg-surface: rgba(255,255,255,.84);
+  --color-border: rgba(37,99,235,.12);
+  --color-border-strong: rgba(37,99,235,.24);
+}
+
+[data-theme="mint"] {
+  --brand-primary: #047857;
+  --brand-primary-mid: #10b981;
+  --brand-primary-light: #34d399;
+  --brand-secondary: #06b6d4;
+  --brand-accent: #f59e0b;
+  --brand-glow: rgba(16,185,129,.32);
+  --color-brand-ink: #047857;
+  --color-brand-ink-light: #059669;
+  --color-brand-ink-tint: #d1fae5;
+  --color-interactive: #059669;
+  --color-interactive-hover: #047857;
+  --color-info: #047857;
+  --color-info-surface: #d1fae5;
+  --color-bg-app: #ecfdf5;
+  --color-bg-surface: rgba(255,255,255,.84);
+  --color-border: rgba(4,120,87,.12);
+  --color-border-strong: rgba(4,120,87,.24);
+}
+
+[data-theme="lavender"] {
+  --brand-primary: #7c3aed;
+  --brand-primary-mid: #8b5cf6;
+  --brand-primary-light: #a78bfa;
+  --brand-secondary: #ec4899;
+  --brand-accent: #f59e0b;
+  --brand-glow: rgba(139,92,246,.34);
+  --color-brand-ink: #6d28d9;
+  --color-brand-ink-light: #7c3aed;
+  --color-brand-ink-tint: #ede9fe;
+  --color-interactive: #7c3aed;
+  --color-interactive-hover: #6d28d9;
+  --color-info: #7c3aed;
+  --color-info-surface: #ede9fe;
+  --color-bg-app: #f5f3ff;
+  --color-bg-surface: rgba(255,255,255,.84);
+  --color-border: rgba(124,58,237,.12);
+  --color-border-strong: rgba(124,58,237,.24);
+}
+
+[data-theme="ember"] {
+  --brand-primary: #b91c1c;
+  --brand-primary-mid: #ef4444;
+  --brand-primary-light: #f87171;
+  --brand-secondary: #f97316;
+  --brand-accent: #fbbf24;
+  --brand-glow: rgba(239,68,68,.32);
+  --color-brand-ink: #b91c1c;
+  --color-brand-ink-light: #dc2626;
+  --color-brand-ink-tint: #fee2e2;
+  --color-interactive: #dc2626;
+  --color-interactive-hover: #b91c1c;
+  --color-info: #b91c1c;
+  --color-info-surface: #fee2e2;
+  --color-bg-app: #fff7ed;
+  --color-bg-surface: rgba(255,255,255,.84);
+  --color-border: rgba(185,28,28,.12);
+  --color-border-strong: rgba(185,28,28,.24);
+}
+
+[data-theme="sky"] body {
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(59,130,246,.15), transparent 44%),
+    radial-gradient(circle at 88% 12%, rgba(124,58,237,.11), transparent 46%);
+}
+[data-theme="mint"] body {
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(16,185,129,.15), transparent 44%),
+    radial-gradient(circle at 88% 12%, rgba(6,182,212,.11), transparent 46%);
+}
+[data-theme="lavender"] body {
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(139,92,246,.16), transparent 44%),
+    radial-gradient(circle at 88% 12%, rgba(236,72,153,.10), transparent 46%);
+}
+[data-theme="ember"] body {
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(239,68,68,.14), transparent 44%),
+    radial-gradient(circle at 88% 12%, rgba(249,115,22,.11), transparent 46%);
+}
+
+/* ---------------------------------------------------------------------------
+   2) Canonical sidebar stability
+   app.js rebuilds the same menu on every page. These rules make spacing/icons
+   deterministic and prevent duplicate/missing icon behavior.
+   ------------------------------------------------------------------------- */
+@media (min-width: 1024px) {
+  .sidebar {
+    width: 252px !important;
+    height: 100vh !important;
+    min-height: 0 !important;
+    position: fixed !important;
+    inset: 0 auto 0 0 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .app-shell--with-sidebar > .sidebar + * {
+    margin-left: 252px !important;
+    width: calc(100% - 252px) !important;
+    min-width: 0 !important;
+  }
+
+  .sidebar .top-bar__brand {
+    font-weight: 900 !important;
+    font-size: 1.18rem !important;
+  }
+
+  .sidebar__nav {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 7px !important;
+  }
+
+  .sidebar__footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,.16);
+  }
+
+  .sidebar__item {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 49px;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 10px 13px !important;
+    transform: none !important;
+    text-align: left;
+    white-space: normal;
+  }
+
+  .sidebar__item:hover,
+  .sidebar__item:focus-visible,
+  .sidebar__item:active {
+    transform: none !important;
+  }
+
+  /* Any old page-specific icon is hidden. Exactly one CSS icon is shown. */
+  .sidebar__item > svg,
+  .sidebar__item > img,
+  .sidebar__item > .sidebar__icon {
+    display: none !important;
+  }
+
+  .sidebar__item::before {
+    content: "";
+    width: 21px !important;
+    height: 21px !important;
+    flex: 0 0 21px !important;
+    display: block !important;
+    background-color: currentColor !important;
+    opacity: .98;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+
+  .sidebar__label {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  /* Default fallback sparkle. */
+  .sidebar__item::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 2l1.7 6.3L20 10l-6.3 1.7L12 18l-1.7-6.3L4 10l6.3-1.7L12 2Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 2l1.7 6.3L20 10l-6.3 1.7L12 18l-1.7-6.3L4 10l6.3-1.7L12 2Z'/%3E%3C/svg%3E");
+  }
+
+  .sidebar__item[href$="dashboard.html"]::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 3 3 10.5V21h7v-6h4v6h7V10.5L12 3Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 3 3 10.5V21h7v-6h4v6h7V10.5L12 3Z'/%3E%3C/svg%3E");
+  }
+
+  .sidebar__item[href$="games.html"]::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M4 4h6c1.1 0 2 .4 2.6 1.2C13.2 4.4 14.1 4 15.2 4H20v16h-5c-1 0-1.8.3-2.5 1-.7-.7-1.5-1-2.5-1H4V4Zm2 2v12h4c.6 0 1.2.1 1.5.3V7c-.3-.6-.8-1-1.5-1H6Zm9.2 0c-.7 0-1.2.4-1.7 1v11.3c.4-.2.9-.3 1.5-.3h3V6h-2.8Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M4 4h6c1.1 0 2 .4 2.6 1.2C13.2 4.4 14.1 4 15.2 4H20v16h-5c-1 0-1.8.3-2.5 1-.7-.7-1.5-1-2.5-1H4V4Zm2 2v12h4c.6 0 1.2.1 1.5.3V7c-.3-.6-.8-1-1.5-1H6Zm9.2 0c-.7 0-1.2.4-1.7 1v11.3c.4-.2.9-.3 1.5-.3h3V6h-2.8Z'/%3E%3C/svg%3E");
+  }
+
+  .sidebar__item[href$="boss-battle.html"]::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='m12 2 8 3.5v5.8c0 5.2-3.4 8.5-8 10.7-4.6-2.2-8-5.5-8-10.7V5.5L12 2Zm0 3L6 7.4v3.9c0 3.7 2.2 6.1 6 8.2 3.8-2.1 6-4.5 6-8.2V7.4L12 5Zm-1 3h2v3h3v2h-3v3h-2v-3H8v-2h3V8Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='m12 2 8 3.5v5.8c0 5.2-3.4 8.5-8 10.7-4.6-2.2-8-5.5-8-10.7V5.5L12 2Zm0 3L6 7.4v3.9c0 3.7 2.2 6.1 6 8.2 3.8-2.1 6-4.5 6-8.2V7.4L12 5Zm-1 3h2v3h3v2h-3v3h-2v-3H8v-2h3V8Z'/%3E%3C/svg%3E");
+  }
+
+  .sidebar__item[href$="badges.html"]::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 2a6 6 0 0 1 4.5 10l1.8 8.7-6.3-3-6.3 3L7.5 12A6 6 0 0 1 12 2Zm0 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 2a6 6 0 0 1 4.5 10l1.8 8.7-6.3-3-6.3 3L7.5 12A6 6 0 0 1 12 2Zm0 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z'/%3E%3C/svg%3E");
+  }
+
+  .sidebar__item[href$="revision.html"]::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M5 4h14a2 2 0 0 1 2 2v12H9l-5 4V6a2 2 0 0 1 1-2Zm1 2v12l2.4-2H19V6H6Zm2 3h9v2H8V9Zm0 4h6v2H8v-2Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M5 4h14a2 2 0 0 1 2 2v12H9l-5 4V6a2 2 0 0 1 1-2Zm1 2v12l2.4-2H19V6H6Zm2 3h9v2H8V9Zm0 4h6v2H8v-2Z'/%3E%3C/svg%3E");
+  }
+
+  .sidebar__item[href$="leaderboard.html"]::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M8 3h8v2h4v3c0 3-1.8 5-4.8 5.7A5 5 0 0 1 13 15.8V19h4v2H7v-2h4v-3.2a5 5 0 0 1-2.2-2.1C5.8 13 4 11 4 8V5h4V3Zm2 2v5a3 3 0 1 0 6 0V5h-6Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M8 3h8v2h4v3c0 3-1.8 5-4.8 5.7A5 5 0 0 1 13 15.8V19h4v2H7v-2h4v-3.2a5 5 0 0 1-2.2-2.1C5.8 13 4 11 4 8V5h4V3Zm2 2v5a3 3 0 1 0 6 0V5h-6Z'/%3E%3C/svg%3E");
+  }
+
+  .sidebar__item[href$="rechecking.html"]::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M4 3h16a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2h-8l-5 4v-4H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm0 2v11h5v2l2.3-2H20V5H4Zm3 3h10v2H7V8Zm0 4h7v2H7v-2Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M4 3h16a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2h-8l-5 4v-4H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm0 2v11h5v2l2.3-2H20V5H4Zm3 3h10v2H7V8Zm0 4h7v2H7v-2Z'/%3E%3C/svg%3E");
+  }
+
+  .sidebar__item[href$="progress.html"]::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M4 19h17v2H2V3h2v16Zm3-2H5v-6h2v6Zm5 0H9V7h3v10Zm5 0h-3V4h3v13Zm4 0h-2V9h2v8Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M4 19h17v2H2V3h2v16Zm3-2H5v-6h2v6Zm5 0H9V7h3v10Zm5 0h-3V4h3v13Zm4 0h-2V9h2v8Z'/%3E%3C/svg%3E");
+  }
+
+  .sidebar__item[href$="profile.html"]::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 2a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm0 10c5 0 9 2.7 9 6v2h-2v-2c0-1.9-2.8-4-7-4s-7 2.1-7 4v2H3v-2c0-3.3 4-6 9-6Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 2a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm0 10c5 0 9 2.7 9 6v2h-2v-2c0-1.9-2.8-4-7-4s-7 2.1-7 4v2H3v-2c0-3.3 4-6 9-6Z'/%3E%3C/svg%3E");
+  }
+
+  .sidebar__item[href$="settings.html"]::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M19.4 13a7.7 7.7 0 0 0 .1-1 7.7 7.7 0 0 0-.1-1l2-1.6-2-3.4-2.5 1a7 7 0 0 0-1.7-1L15 3h-4l-.4 3a7 7 0 0 0-1.7 1l-2.5-1-2 3.4 2 1.6a7.7 7.7 0 0 0-.1 1 7.7 7.7 0 0 0 .1 1l-2 1.6 2 3.4 2.5-1a7 7 0 0 0 1.7 1l.4 3h4l.4-3a7 7 0 0 0 1.7-1l2.5 1 2-3.4-2.2-1.6ZM13 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M19.4 13a7.7 7.7 0 0 0 .1-1 7.7 7.7 0 0 0-.1-1l2-1.6-2-3.4-2.5 1a7 7 0 0 0-1.7-1L15 3h-4l-.4 3a7 7 0 0 0-1.7 1l-2.5-1-2 3.4 2 1.6a7.7 7.7 0 0 0-.1 1 7.7 7.7 0 0 0 .1 1l-2 1.6 2 3.4 2.5-1a7 7 0 0 0 1.7 1l.4 3h4l.4-3a7 7 0 0 0 1.7-1l2.5 1 2-3.4-2.2-1.6ZM13 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z'/%3E%3C/svg%3E");
+  }
+
+  .sidebar__item[data-action="cycle-theme"]::before,
+  .sidebar__item[data-action="toggle-theme"]::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 2a10 10 0 1 0 10 10A8 8 0 0 1 12 2Zm0 2a6 6 0 0 0 0 12V4Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 2a10 10 0 1 0 10 10A8 8 0 0 1 12 2Zm0 2a6 6 0 0 0 0 12V4Z'/%3E%3C/svg%3E");
+  }
+
+  .sidebar__item[data-action="logout"]::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M4 3h9v2H6v14h7v2H4V3Zm12.6 4.6L21 12l-4.4 4.4-1.4-1.4 2-2H9v-2h8.2l-2-2 1.4-1.4Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M4 3h9v2H6v14h7v2H4V3Zm12.6 4.6L21 12l-4.4 4.4-1.4-1.4 2-2H9v-2h8.2l-2-2 1.4-1.4Z'/%3E%3C/svg%3E");
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   3) Dark-theme surface correction
+   Fixes the bright/white controls that were still using page-specific fallback
+   colours in Dark/Midnight.
+   ------------------------------------------------------------------------- */
+:is([data-theme="dark"], [data-theme="midnight"]) {
+  color-scheme: dark;
+}
+
+:is([data-theme="dark"], [data-theme="midnight"]) :is(
+  .input,
+  .select,
+  .textarea,
+  input,
+  select,
+  textarea
+) {
+  background-color: var(--color-bg-surface-solid) !important;
+  color: var(--color-text-primary) !important;
+  border-color: var(--color-border-strong) !important;
+}
+
+:is([data-theme="dark"], [data-theme="midnight"]) select option,
+:is([data-theme="dark"], [data-theme="midnight"]) select optgroup {
+  background: var(--color-bg-surface-solid) !important;
+  color: var(--color-text-primary) !important;
+}
+
+:is([data-theme="dark"], [data-theme="midnight"]) :is(
+  .trend-subject-picker > summary,
+  .trend-subject-options,
+  .trend-card,
+  .card,
+  .dialog,
+  .bottom-sheet,
+  .achievement-card
+) {
+  background-color: var(--color-bg-surface) !important;
+  color: var(--color-text-primary) !important;
+  border-color: var(--color-border) !important;
+}
+
+:is([data-theme="dark"], [data-theme="midnight"]) .trend-subject-picker > summary {
+  background: var(--color-bg-surface-solid) !important;
+}
+
+:is([data-theme="dark"], [data-theme="midnight"]) :is(
+  .btn--secondary,
+  .chip
+) {
+  background: rgba(129,140,248,.09) !important;
+  color: var(--color-text-primary) !important;
+  border-color: var(--color-border-strong) !important;
+}
+
+:is([data-theme="dark"], [data-theme="midnight"]) ::placeholder {
+  color: var(--color-text-placeholder) !important;
+}
+
+/* The native select arrow/field should inherit the active theme cleanly. */
+.select,
+select {
+  color-scheme: light;
+}
+:is([data-theme="dark"], [data-theme="midnight"]) .select,
+:is([data-theme="dark"], [data-theme="midnight"]) select {
+  color-scheme: dark;
+}
+
+/* Keep page-specific hardcoded white backgrounds from becoming glaring boxes. */
+:is([data-theme="dark"], [data-theme="midnight"]) [style*="background:#fff"],
+:is([data-theme="dark"], [data-theme="midnight"]) [style*="background: #fff"],
+:is([data-theme="dark"], [data-theme="midnight"]) [style*="background:white"],
+:is([data-theme="dark"], [data-theme="midnight"]) [style*="background: white"] {
+  background: var(--color-bg-surface-solid) !important;
+  color: var(--color-text-primary) !important;
+}
+
+/* ---------------------------------------------------------------------------
+   4) Theme-linked sidebar polish
+   ------------------------------------------------------------------------- */
+@media (min-width: 1024px) {
+  .sidebar {
+    color: #fff !important;
+    background-color: var(--brand-primary) !important;
+    background-image:
+      radial-gradient(circle at 88% 4%, rgba(255,255,255,.22), transparent 30%),
+      linear-gradient(
+        165deg,
+        var(--brand-primary) 0%,
+        var(--brand-primary-mid) 62%,
+        var(--brand-secondary) 135%
+      ) !important;
+    border-right-color: rgba(255,255,255,.18) !important;
+    box-shadow:
+      18px 0 42px var(--brand-glow),
+      inset -1px 0 0 rgba(255,255,255,.08) !important;
+  }
+
+  .sidebar__item {
+    color: rgba(255,255,255,.90) !important;
+  }
+
+  .sidebar__item:hover,
+  .sidebar__item:focus-visible {
+    color: #fff !important;
+    background: rgba(255,255,255,.14) !important;
+    border-color: rgba(255,255,255,.18) !important;
+  }
+
+  .sidebar__item[aria-current="page"] {
+    color: #fff !important;
+    background: linear-gradient(135deg, rgba(255,255,255,.28), rgba(255,255,255,.13)) !important;
+    border-color: rgba(255,255,255,.31) !important;
+    box-shadow:
+      inset 4px 0 0 var(--brand-accent),
+      0 10px 24px rgba(15,23,42,.14) !important;
+  }
+
+  :is([data-theme="dark"], [data-theme="midnight"]) .sidebar {
+    background-image:
+      radial-gradient(circle at 88% 4%, rgba(129,140,248,.20), transparent 30%),
+      linear-gradient(165deg, #0f172a 0%, var(--brand-primary) 66%, #111827 130%) !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   5) Small Settings-page polish for the expanded theme library
+   ------------------------------------------------------------------------- */
+#setting-theme {
+  min-width: 100%;
+}
+
+
+/* ---------------------------------------------------------------------------
+   6) Midnight readability guard
+   JavaScript adds this class ONLY when a UI surface is actually pale/light.
+   Midnight backgrounds/gradients are not changed.
+   ------------------------------------------------------------------------- */
+[data-theme="midnight"] .wha-midnight-dark-ink,
+[data-theme="midnight"] .wha-midnight-dark-ink * {
+  color: #172554 !important;
+  text-shadow: none !important;
+}
+
+/* Known audit cards are intentionally pale semantic colours in every theme.
+   Their text must remain dark in Midnight too. */
+[data-theme="midnight"] .rc-before,
+[data-theme="midnight"] .rc-before * {
+  color: #7f1d1d !important;
+}
+
+[data-theme="midnight"] .rc-after,
+[data-theme="midnight"] .rc-after * {
+  color: #065f46 !important;
+}
+
+/* Preserve coloured status-chip text where semantic chips already supply it. */
+[data-theme="midnight"] .rc-status--open {
+  color: #92400e !important;
+}
+[data-theme="midnight"] .rc-status--resolved {
+  color: #1e40af !important;
+}
+[data-theme="midnight"] .rc-status--confirmed {
+  color: #065f46 !important;
+}
+
+
+/* 2026-09-16 — Cross-theme automatic readability guard */
+.wha-auto-contrast-dark,
+.wha-auto-contrast-dark *{
+  color:#172554!important;
+  text-shadow:none!important;
+}
+.wha-auto-contrast-light,
+.wha-auto-contrast-light *{
+  color:#f8fafc!important;
+  text-shadow:none!important;
+}
+
+
+/* 2026-09-16 — Student eye-comfort + full-theme surface polish */
+[data-theme="light"]{
+  --color-bg-app:#eaf0f6;--color-bg-surface:#f6f8fb;--color-bg-surface-solid:#f6f8fb;
+  --color-bg-surface-muted:#edf2f7;--color-text-primary:#17243b;--color-text-secondary:#60708a;
+  --color-border:#cbd6e5;--color-border-strong:#b9c7d9
+}
+[data-theme="rose"]{--color-bg-app:#f3e9ee;--color-bg-surface:#faf5f7;--color-bg-surface-solid:#faf5f7}
+[data-theme="candy"]{--color-bg-app:#f2e9f3;--color-bg-surface:#faf6fb;--color-bg-surface-solid:#faf6fb}
+[data-theme="sky"]{--color-bg-app:#e8eef7;--color-bg-surface:#f6f8fb;--color-bg-surface-solid:#f6f8fb}
+[data-theme="mint"]{--color-bg-app:#e7f1ed;--color-bg-surface:#f4f8f6;--color-bg-surface-solid:#f4f8f6}
+[data-theme="lavender"]{--color-bg-app:#ece9f4;--color-bg-surface:#f7f5fa;--color-bg-surface-solid:#f7f5fa}
+.wha-student-auto-surface{
+  background:var(--color-bg-surface-solid)!important;color:var(--color-text-primary)!important;border-color:var(--color-border)!important
+}
+.wha-student-auto-control{
+  background:var(--color-bg-surface-muted,var(--color-bg-surface-solid))!important;
+  color:var(--color-text-primary)!important;border-color:var(--color-border-strong,var(--color-border))!important
+}
+.wha-student-auto-surface :is(h1,h2,h3,h4,h5,h6,strong,label,span,p,small,td,th){color:inherit}
+:is([data-theme="dark"],[data-theme="midnight"],[data-theme="ocean"],[data-theme="aurora"],[data-theme="forest"],[data-theme="gold"],[data-theme="sunset"],[data-theme="grape"],[data-theme="ember"]) :is(select option,optgroup){
+  background:var(--color-bg-surface-solid)!important;color:var(--color-text-primary)!important
+}
