@@ -9,7 +9,7 @@
        script/style because this page relies on an inline bootstrap script and
        inline style attributes; challenges.cloudflare.com is allowed for the
        Turnstile CAPTCHA (audit S1), script.google.com for the API. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://gbgcaonmdekumluwgwvn.supabase.co https://script.google.com https://script.googleusercontent.com https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com">
   <title>Log In — W.H. Academy</title>
 
   <!-- Audit S1: Cloudflare Turnstile. CAPTCHA stays OFF until you paste your
@@ -33,6 +33,20 @@
   <link rel="stylesheet" href="assets/css/animations.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
   <link rel="stylesheet" href="assets/css/pages/login.css">
+  <style>
+    .wha-pin-input.is-bad, .wha-pin-confirm.is-bad { border-color:#dc2626 !important; box-shadow:0 0 0 3px rgba(220,38,38,.15) !important; }
+    .wha-pin-input.is-good, .wha-pin-confirm.is-good { border-color:#16a34a !important; box-shadow:0 0 0 3px rgba(22,163,74,.15) !important; }
+    .wha-pin-rules { list-style:none; margin:8px 0 0; padding:0; font-size:.78rem; }
+    .wha-pin-rules li { display:flex; align-items:center; gap:7px; color:#64748b; margin:3px 0; line-height:1.3; }
+    .wha-pin-rules li::before { content:"○"; color:#cbd5e1; font-weight:700; font-size:.9em; }
+    .wha-pin-rules li.ok { color:#16a34a; }
+    .wha-pin-rules li.ok::before { content:"✓"; color:#16a34a; }
+    .wha-eye-wrap { position:relative; }
+    .wha-eye-wrap input { padding-right:44px !important; }
+    .wha-eye-btn { position:absolute; top:50%; right:8px; transform:translateY(-50%); width:30px; height:30px; display:flex; align-items:center; justify-content:center; background:transparent; border:0; cursor:pointer; color:#64748b; padding:0; border-radius:6px; }
+    .wha-eye-btn:hover { color:#334155; background:rgba(100,116,139,.1); }
+    .wha-eye-btn svg { width:19px; height:19px; pointer-events:none; }
+  </style>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -53,8 +67,8 @@
           </div>
           <div class="field" data-field="pin">
             <label class="field__label" for="login-pin">PIN</label>
-            <input class="input" id="login-pin" name="pin" type="password" inputmode="numeric" autocomplete="current-password"
-                   minlength="4" maxlength="8" required aria-describedby="login-pin-error">
+            <input class="input" id="login-pin" data-eye name="pin" type="password" autocomplete="current-password"
+                   minlength="8" maxlength="16" required aria-describedby="login-pin-error">
             <p class="field__error" id="login-pin-error" role="alert"></p>
           </div>
           <div class="cluster" style="justify-content: space-between;">
@@ -71,7 +85,10 @@
           </button>
         </form>
         <p class="text-body-sm auth-card__footer">
-          New here? <button type="button" class="btn btn--tertiary" data-goto-step="registration">Register with your Student ID</button>
+          New here? <a class="btn btn--tertiary" href="../enroll.html">Register</a>
+        </p>
+        <p class="text-body-sm auth-card__footer">
+          Activated but no PIN yet? <button type="button" class="btn btn--tertiary" data-goto-step="set-pin">Set your PIN</button>
         </p>
       </section>
 
@@ -156,7 +173,7 @@
       <!-- ===== SET PIN (registration completion) ===== -->
       <section data-step="set-pin" hidden>
         <h1 tabindex="-1">Create your PIN</h1>
-        <p class="text-body-sm">Choose a 4–8 digit PIN. You'll use this with your Student ID to log in.</p>
+        <p class="text-body-sm">Create your login PIN. You'll use it with your Student ID to log in.</p>
         <form id="set-pin-form" novalidate>
 
           <!-- Student ID.
@@ -180,11 +197,18 @@
 
           <div class="field">
             <label class="field__label" for="new-pin">New PIN</label>
-            <input class="input input--pin" id="new-pin" name="pin" type="password" inputmode="numeric" minlength="4" maxlength="8" required>
+            <input class="input input--pin wha-pin-input" id="new-pin" data-eye name="pin" type="password" autocomplete="new-password" minlength="8" maxlength="16" required data-rules="#new-pin-rules" data-confirm="#confirm-pin">
+            <ul class="wha-pin-rules" id="new-pin-rules">
+              <li data-rule="len">8–16 characters</li>
+              <li data-rule="num">At least 1 number</li>
+              <li data-rule="alpha">At least 1 letter</li>
+              <li data-rule="special">At least 1 special character (e.g. ! @ # $ %)</li>
+              <li data-rule="match">Both PINs match</li>
+            </ul>
           </div>
           <div class="field">
             <label class="field__label" for="confirm-pin">Confirm PIN</label>
-            <input class="input input--pin" id="confirm-pin" name="confirmPin" type="password" inputmode="numeric" minlength="4" maxlength="8" required>
+            <input class="input input--pin wha-pin-confirm" id="confirm-pin" data-eye name="confirmPin" type="password" autocomplete="new-password" minlength="8" maxlength="16" required>
           </div>
           <div id="setpin-captcha" class="wha-captcha" style="margin: var(--space-3) 0;"></div>
           <button type="submit" class="btn btn--primary btn--full btn--lg">
@@ -197,14 +221,22 @@
       <!-- ===== SET NEW PIN (forgot-pin completion) — reuses the same set-pin-form handler via step name distinction ===== -->
       <section data-step="set-new-pin" hidden>
         <h1 tabindex="-1">Choose a new PIN</h1>
+        <p class="text-body-sm">Create a strong PIN below.</p>
         <form id="set-new-pin-form" novalidate>
           <div class="field">
             <label class="field__label" for="reset-new-pin">New PIN</label>
-            <input class="input input--pin" id="reset-new-pin" name="pin" type="password" inputmode="numeric" minlength="4" maxlength="8" required>
+            <input class="input input--pin wha-pin-input" id="reset-new-pin" data-eye name="pin" type="password" autocomplete="new-password" minlength="8" maxlength="16" required data-rules="#reset-pin-rules" data-confirm="#reset-confirm-pin">
+            <ul class="wha-pin-rules" id="reset-pin-rules">
+              <li data-rule="len">8–16 characters</li>
+              <li data-rule="num">At least 1 number</li>
+              <li data-rule="alpha">At least 1 letter</li>
+              <li data-rule="special">At least 1 special character (e.g. ! @ # $ %)</li>
+              <li data-rule="match">Both PINs match</li>
+            </ul>
           </div>
           <div class="field">
             <label class="field__label" for="reset-confirm-pin">Confirm PIN</label>
-            <input class="input input--pin" id="reset-confirm-pin" name="confirmPin" type="password" inputmode="numeric" minlength="4" maxlength="8" required>
+            <input class="input input--pin wha-pin-confirm" id="reset-confirm-pin" data-eye name="confirmPin" type="password" autocomplete="new-password" minlength="8" maxlength="16" required>
           </div>
           <button type="submit" class="btn btn--primary btn--full btn--lg">
             <span class="btn__label">Save New PIN</span>
@@ -241,6 +273,65 @@
     document.addEventListener('wha:ready', function () {
       Auth.initLoginPage();
     });
+  </script>
+  <script>
+    (function(){
+      function evalPin(v){
+        return {
+          len: v.length>=8 && v.length<=16,
+          num: /[0-9]/.test(v),
+          alpha: /[A-Za-z]/.test(v),
+          special: (v.match(/[^A-Za-z0-9]/g)||[]).length>=1
+        };
+      }
+      function wire(input){
+        var rules = input.getAttribute('data-rules') ? document.querySelector(input.getAttribute('data-rules')) : null;
+        var confirm = input.getAttribute('data-confirm') ? document.querySelector(input.getAttribute('data-confirm')) : null;
+        function update(){
+          var v=input.value, r=evalPin(v);
+          var core = r.len && r.num && r.alpha && r.special;
+          var match = confirm ? (confirm.value.length>0 && confirm.value===v) : true;
+          if(rules){
+            rules.querySelectorAll('[data-rule]').forEach(function(li){
+              var k=li.getAttribute('data-rule');
+              var ok = (k==='match') ? match : r[k];
+              li.classList.toggle('ok', !!ok);
+            });
+          }
+          var good = core && match;
+          input.classList.toggle('is-good', v.length>0 && good);
+          input.classList.toggle('is-bad',  v.length>0 && !good);
+          if(confirm){
+            input.classList.toggle('is-good', v.length>0 && good);
+            confirm.classList.toggle('is-good', confirm.value.length>0 && match && core);
+            confirm.classList.toggle('is-bad',  confirm.value.length>0 && !match);
+          }
+        }
+        input.addEventListener('input', update);
+        if(confirm) confirm.addEventListener('input', update);
+      }
+      document.querySelectorAll('[data-rules]').forEach(wire);
+      // show/hide PIN toggle (eye) on every data-eye field
+      (function(){
+        var EYE='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
+        var EYEOFF='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>';
+        document.querySelectorAll('input[data-eye]').forEach(function(inp){
+          if(inp.parentNode.classList.contains('wha-eye-wrap')) return;
+          var wrap=document.createElement('div'); wrap.className='wha-eye-wrap';
+          inp.parentNode.insertBefore(wrap, inp); wrap.appendChild(inp);
+          var btn=document.createElement('button'); btn.type='button'; btn.className='wha-eye-btn';
+          btn.setAttribute('aria-label','Show PIN'); btn.innerHTML=EYE;
+          btn.addEventListener('click', function(){
+            var show = inp.type==='password';
+            inp.type = show ? 'text' : 'password';
+            btn.innerHTML = show ? EYEOFF : EYE;
+            btn.setAttribute('aria-label', show ? 'Hide PIN' : 'Show PIN');
+            inp.focus();
+          });
+          wrap.appendChild(btn);
+        });
+      })();
+    })();
   </script>
 </body>
 </html>

@@ -2,14 +2,17 @@
  * leaderboard.js — W.H. Academy  (Ranks page)
  *
  * Shows, for the signed-in student:
- *   - total XP earned across all game types
+ *   - total XP earned across all game types for the current/in-progress chapter
  *   - the average XP % that unlocks the Boss Battle (>= 70%)
- *   - how many questions are red-carded (burnt out) on this device
+ *   - how many questions are red-carded (burnt out)
  *   - XP earned in each individual game type, with a progress bar
  *
  * Per-type XP + the average come from the backend
- * (leaderboard/gameXpBreakdown). Red-card counts are read from this device's
- * practice storage, because burnout is tracked per device (like the engine).
+ * (leaderboard/gameXpBreakdown). The backend scopes practice XP by
+ * chapterRef::mechanicId, so this page MUST resolve a chapterRef before asking
+ * for the breakdown. Older code accidentally called gameXpBreakdown with only
+ * questionCounts, which shifted that object into the chapterRef argument and
+ * made every rank value display as 0 even while dashboard XP was correct.
  */
 (function () {
   'use strict';
@@ -35,6 +38,68 @@
     var c = {};
     GAME_TYPES.forEach(function (t) { c[t.id] = t.count; });
     return c;
+  }
+
+  // Resolve the chapter whose XP breakdown should be shown.
+  // 1) Prefer the dashboard's authoritative in-progress chapter.
+  // 2) Fall back to local chapter/practice state so the page still works if
+  //    the dashboard cache has not been refreshed yet.
+  // 3) If neither exists, refresh dashboard data once and try again.
+  function chapterRefFromDashboardData(data) {
+    var rec = data && data.recommendation;
+    var ref = rec && rec.data && rec.data.chapterRef;
+    return ref ? String(ref) : '';
+  }
+
+  function chapterRefFromCache() {
+    try {
+      var cached = Storage.getCachedDashboard && Storage.getCachedDashboard();
+      return chapterRefFromDashboardData(cached && cached.data);
+    } catch (e) {
+      return '';
+    }
+  }
+
+  function chapterRefFromLocalState() {
+    try {
+      // stageprog keys are written by chapter-engine whenever a chapter stage
+      // changes. Prefer them over practice keys because Theory-only visits can
+      // exist before the student has answered a game question.
+      var stageKeys = Storage.list ? Storage.list('stageprog:') : [];
+      if (stageKeys && stageKeys.length) {
+        var stageKey = stageKeys[stageKeys.length - 1];
+        if (stageKey.indexOf('stageprog:') === 0) {
+          return stageKey.slice('stageprog:'.length);
+        }
+      }
+
+      var practiceKeys = Storage.list ? Storage.list('practice:') : [];
+      if (practiceKeys && practiceKeys.length) {
+        var practiceKey = practiceKeys[practiceKeys.length - 1];
+        if (practiceKey.indexOf('practice:') === 0) {
+          return practiceKey.slice('practice:'.length);
+        }
+      }
+    } catch (e) {
+      // localStorage unavailable/private mode — backend refresh below can still work.
+    }
+    return '';
+  }
+
+  function resolveChapterRef() {
+    var cached = chapterRefFromCache();
+    if (cached) return Promise.resolve(cached);
+
+    var local = chapterRefFromLocalState();
+    if (local) return Promise.resolve(local);
+
+    if (Api.dashboard && Api.dashboard.compose) {
+      return Api.dashboard.compose().then(function (data) {
+        return chapterRefFromDashboardData(data) || '';
+      });
+    }
+
+    return Promise.resolve('');
   }
 
   // Count red-carded (burnt-out) questions across every chapter on THIS device.
@@ -65,11 +130,11 @@
   function renderBreakdown(data) {
     var container = Utils.qs('#leaderboard-content');
     container.innerHTML = '';
-
     var avg = Number(data.averagePercent) || 0;
     var unlocked = avg >= BOSS_UNLOCK_PERCENT;
-    // Prefer the backend's tamper-proof, cross-device count; fall back to this
-    // device's own tally only if an older backend hasn't sent one yet.
+
+    // Prefer the backend's tamper-resistant, cross-device count; fall back to
+    // this device's tally only if an older backend has not sent one yet.
     var redCards = (typeof data.redCards === 'number') ? data.redCards : countRedCards();
 
     // --- Overall summary card ---
@@ -90,7 +155,7 @@
       Utils.createEl('p', {
         class: 'rank-boss' + (unlocked ? ' rank-boss--on' : ''),
         text: unlocked
-          ? 'Boss Battle unlocked — 90% average reached!'
+          ? 'Boss Battle unlocked — 70% average reached!'
           : (BOSS_UNLOCK_PERCENT - avg) + '% more average XP to unlock the Boss Battle'
       })
     ]));
@@ -100,7 +165,6 @@
 
     var byId = {};
     (data.perType || []).forEach(function (t) { byId[t.mechanicId] = t; });
-
     var list = Utils.createEl('div', { class: 'stack-sm' });
     GAME_TYPES.forEach(function (gt) {
       var t = byId[gt.id] || { xp: 0, maxXp: gt.count * 5, percent: 0 };
@@ -126,8 +190,16 @@
   }
 
   function load() {
-    if (!Api.leaderboard || !Api.leaderboard.gameXpBreakdown) { renderError(); return; }
-    Api.leaderboard.gameXpBreakdown(questionCounts())
+    if (!Api.leaderboard || !Api.leaderboard.gameXpBreakdown) {
+      renderError();
+      return;
+    }
+
+    resolveChapterRef()
+      .then(function (chapterRef) {
+        if (!chapterRef) throw new Error('No chapter context available for leaderboard.');
+        return Api.leaderboard.gameXpBreakdown(chapterRef, questionCounts());
+      })
       .then(function (data) { renderBreakdown(data || {}); })
       .catch(function () { renderError(); });
   }

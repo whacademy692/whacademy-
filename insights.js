@@ -18,7 +18,7 @@
   'use strict';
 
   // Same endpoint + public API key the rest of the site uses (games/assets/js/api.js).
-  var API_BASE_URL = 'https://script.google.com/macros/s/AKfycbxjaqW5hmUk6B5gYW3hRjAfsPrbrdZB4a3B3VfJRvfKcfepz4WPYIX_aCVKS-STmiwQIA/exec';
+  var API_BASE_URL = 'https://gbgcaonmdekumluwgwvn.supabase.co/functions/v1/api';
   var API_KEY = 'Jdb-iJByoQ-WA0UwlQrorQOH77buDQjepPH0y2SsDyo';
 
   var TEXT_MAX = 5000;
@@ -95,6 +95,154 @@
     };
   })();
   window.WHAInsights = { renderCaptcha: function () { Captcha.render(); } };
+
+  // ---- Draft autosave (localStorage) --------------------------------------
+  // So a user never loses typed feedback if submit fails (rate limit, network,
+  // or the server waking up). Saved locally only; cleared on a real success.
+  var Draft = (function () {
+    var KEY = 'wha_insights_draft_v1';
+    var ok = (function () {
+      try { var t = '__wha'; localStorage.setItem(t, '1'); localStorage.removeItem(t); return true; }
+      catch (e) { return false; }
+    })();
+    return {
+      save: function (snap) {
+        if (!ok || !snap || !snap.mode) return;
+        try { localStorage.setItem(KEY, JSON.stringify(snap)); } catch (e) { /* quota/full - ignore */ }
+      },
+      load: function () {
+        if (!ok) return null;
+        try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { return null; }
+      },
+      clear: function () { if (!ok) return; try { localStorage.removeItem(KEY); } catch (e) { /* ignore */ } }
+    };
+  })();
+
+  // Capture the current form (mode, role, every field's raw value).
+  function snapshotForm() {
+    if (!currentMode) return null;
+    var scope = qs('#formFields');
+    if (!scope) return null;
+    var snap = { mode: currentMode, role: currentRole, fields: {} };
+    Array.prototype.forEach.call(scope.querySelectorAll('input, textarea, select'), function (n) {
+      if (n.id) snap.fields[n.id] = n.value;
+    });
+    return snap;
+  }
+
+  // Rebuild the form from a saved snapshot and refill every field.
+  function restoreForm(snap) {
+    if (!snap || !snap.mode) return false;
+    if (snap.mode === 'general') openGeneral();
+    else if (snap.role && ROLES[snap.role]) openForm(snap.role);
+    else return false;
+
+    var f = snap.fields || {};
+    function set(id, dispatch) {
+      var n = qs('#' + id);
+      if (!n || !Object.prototype.hasOwnProperty.call(f, id)) return;
+      n.value = f[id];
+      if (dispatch) n.dispatchEvent(new Event('change'));
+    }
+    // Cascade must be set in order so each change populates the next select.
+    if (snap.mode === 'specific' && (snap.role === 'student' || snap.role === 'teacher')) {
+      set('f-class', true);
+      set('f-subject', true);
+      set('f-chapter', true);
+    }
+    // Everything else (text, textareas, "Other" inputs, f-who, f-exp...).
+    Object.keys(f).forEach(function (id) {
+      if (id === 'f-class' || id === 'f-subject' || id === 'f-chapter') return;
+      set(id, false);
+    });
+    wireCharCounts();
+    return true;
+  }
+
+  // ---- length-based popup (toast) -----------------------------------------
+  // Auto-dismiss time scales with message length: a one-liner ~6-7s, a long
+  // message up to ~20s. Hovering pauses it; the x closes it immediately.
+  function toastDuration(msg) {
+    var len = String(msg || '').length;
+    return Math.max(6000, Math.min(20000, Math.round(3500 + len * 55)));
+  }
+  var _toastStyled = false;
+  function ensureToastStyle() {
+    if (_toastStyled) return; _toastStyled = true;
+    var css =
+      '.wha-toast{position:fixed;left:50%;bottom:22px;transform:transl(-50%,16px);z-index:9999;' +
+      'max-width:min(520px,92vw);display:flex;gap:12px;align-items:flex-start;padding:14px 16px;' +
+      'border-radius:14px;background:#111827;color:#f8fafc;box-shadow:0 12px 34px rgba(0,0,0,.28);' +
+      'font:500 14px/1.5 "Plus Jakarta Sans",system-ui,sans-serif;opacity:0;transform:translate(-50%,16px);transition:opacity .25s,transform .25s;}' +
+      '.wha-toast.is-in{opacity:1;transform:translate(-50%,0);}' +
+      '.wha-toast--ok{background:#064e3b;}' +
+      '.wha-toast--err{background:#7f1d1d;}' +
+      '.wha-toast__msg{flex:1;white-space:pre-wrap;}' +
+      '.wha-toast__x{appearance:none;border:0;background:transparent;color:inherit;font-size:20px;' +
+      'line-height:1;cursor:pointer;opacity:.75;padding:0 2px;}' +
+      '.wha-toast__x:hover{opacity:1;}' +
+      '.wha-restore{position:fixed;inset:0;z-index:10000;display:flex;align-items:flex-start;' +
+      'justify-content:center;padding:70px 16px;background:rgba(15,23,42,.45);}' +
+      '.wha-restore__card{max-width:440px;width:100%;background:#fff;color:#0f172a;border-radius:18px;' +
+      'padding:22px 22px 18px;box-shadow:0 24px 60px rgba(0,0,0,.3);' +
+      'font:400 15px/1.55 "Plus Jakarta Sans",system-ui,sans-serif;}' +
+      '.wha-restore__msg{margin:0 0 16px;}' +
+      '.wha-restore__btns{display:flex;gap:10px;flex-wrap:wrap;}' +
+      '.wha-restore__yes,.wha-restore__no{appearance:none;border:0;cursor:pointer;border-radius:10px;' +
+      'padding:10px 16px;font:600 14px "Plus Jakarta Sans",system-ui,sans-serif;}' +
+      '.wha-restore__yes{background:#2563eb;color:#fff;}' +
+      '.wha-restore__no{background:#e2e8f0;color:#0f172a;}' +
+      '@media (prefers-color-scheme:dark){.wha-restore__card{background:#1e293b;color:#e2e8f0;}' +
+      '.wha-restore__no{background:#334155;color:#e2e8f0;}}';
+    var st = document.createElement('style');
+    st.id = 'wha-toast-style'; st.textContent = css;
+    document.head.appendChild(st);
+  }
+  function showToast(msg, kind) {
+    ensureToastStyle();
+    var t = el('div', { class: 'wha-toast wha-toast--' + (kind === 'ok' ? 'ok' : 'err') });
+    t.innerHTML = '<span class="wha-toast__msg"></span><button type="button" class="wha-toast__x" aria-label="Dismiss">&times;</button>';
+    t.querySelector('.wha-toast__msg').textContent = msg;
+    document.body.appendChild(t);
+    requestAnimationFrame(function () { t.classList.add('is-in'); });
+    var dur = toastDuration(msg), timer = null;
+    function remove() {
+      t.classList.remove('is-in');
+      setTimeout(function () { if (t.parentNode) t.parentNode.removeChild(t); }, 260);
+    }
+    function start() { timer = setTimeout(remove, dur); }
+    t.addEventListener('mouseenter', function () { if (timer) { clearTimeout(timer); timer = null; } });
+    t.addEventListener('mouseleave', start);
+    t.querySelector('.wha-toast__x').addEventListener('click', function () { if (timer) clearTimeout(timer); remove(); });
+    start();
+  }
+
+  // Persistent popup (with buttons) offering to bring back a saved draft.
+  function showRestorePrompt(snap) {
+    ensureToastStyle();
+    var wrap = el('div', { class: 'wha-restore', role: 'dialog', 'aria-modal': 'true' });
+    wrap.innerHTML =
+      '<div class="wha-restore__card">' +
+        '<p class="wha-restore__msg">We saved the feedback you were writing last time. Would you like to bring it back and finish?</p>' +
+        '<div class="wha-restore__btns">' +
+          '<button type="button" class="wha-restore__yes">Restore my feedback</button>' +
+          '<button type="button" class="wha-restore__no">Start fresh</button>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(wrap);
+    wrap.querySelector('.wha-restore__yes').addEventListener('click', function () {
+      if (wrap.parentNode) wrap.parentNode.removeChild(wrap);
+      if (restoreForm(snap)) {
+        setStep('form');
+        qs('#formSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        showToast('Your feedback is back — just press "Submit feedback" to send it.', 'ok');
+      }
+    });
+    wrap.querySelector('.wha-restore__no').addEventListener('click', function () {
+      if (wrap.parentNode) wrap.parentNode.removeChild(wrap);
+      Draft.clear();
+    });
+  }
 
   // ---- content registry (class -> subject -> chapter) ---------------------
   function content() { return (window.WHA_CONTENT && window.WHA_CONTENT.classes) || {}; }
@@ -504,11 +652,21 @@
 
     apiCall('insights/submit', payload)
       .then(function () {
+        Draft.clear();
         setStep('done');
         qs('#doneSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
       })
       .catch(function (err) {
-        showNotice((err && err.message) || 'Could not submit. Please try again.', 'err');
+        // Submit failed - never lose what they typed.
+        Draft.save(snapshotForm());
+        var msg;
+        if (err && err.code === 'RATE_001') {
+          msg = "You're sending feedback a little too fast. Don't worry - your feedback is saved. Please press Submit again in about a minute.";
+        } else {
+          msg = ((err && err.message) || 'Could not submit. Please try again.') +
+            ' Your feedback is saved, so you can simply press Submit again.';
+        }
+        showNotice(msg, 'err');
         Captcha.reset();
       })
       .then(function () { btn.disabled = false; btn.textContent = 'Submit feedback'; });
@@ -640,5 +798,22 @@
     setStep('type');
     Captcha.render();
     loadFeed();
+
+    // Autosave the draft as the user types (debounced), and on any change.
+    var fsec = qs('#formSection');
+    if (fsec) {
+      var saveTimer;
+      fsec.addEventListener('input', function () {
+        clearTimeout(saveTimer);
+        saveTimer = setTimeout(function () { Draft.save(snapshotForm()); }, 400);
+      });
+      fsec.addEventListener('change', function () { Draft.save(snapshotForm()); });
+    }
+
+    // If a previous, un-submitted draft exists, offer to restore it.
+    var saved = Draft.load();
+    if (saved && saved.fields && (saved.fields['f-field1'] || saved.fields['f-name'])) {
+      showRestorePrompt(saved);
+    }
   });
 })();

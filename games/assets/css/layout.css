@@ -1,7 +1,6 @@
 /* ============================================================================
    W.H. Academy — Layout System
    ========================================================================== */
-
 .container {
   width: 100%;
   max-width: var(--container-max);
@@ -10,7 +9,6 @@
 }
 @media (min-width: 640px) { .container { padding-inline: var(--space-5); } }
 @media (min-width: 1024px) { .container { padding-inline: var(--space-6); } }
-
 /* ---- App shell ---- */
 .app-shell {
   display: flex;
@@ -26,7 +24,6 @@
 @media (min-width: 1024px) {
   .app-main { padding-bottom: var(--space-8); }
 }
-
 /* ---- Top bar (all breakpoints) ---- */
 .top-bar {
   position: sticky;
@@ -51,16 +48,16 @@
 }
 :is([data-theme="dark"], [data-theme="midnight"]) .top-bar__brand { color: var(--color-interactive); }
 .top-bar__actions { display: flex; align-items: center; gap: var(--space-2); }
-
-/* ---- Bottom navigation (mobile-primary, per IA §7 — 5 items) ---- */
+/* ---- Bottom navigation (mobile-primary) ---- */
 .bottom-nav {
   position: fixed;
   bottom: 0; left: 0; right: 0;
   z-index: var(--z-sticky);
   display: flex;
   justify-content: space-around;
-  background: var(--color-bg-surface);
-  border-top: 1px solid var(--color-border);
+  background: linear-gradient(90deg, var(--brand-primary), var(--brand-primary-mid));
+  border-top: none;
+  box-shadow: 0 -6px 20px var(--brand-glow, rgba(79, 70, 229, 0.25));
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 .bottom-nav__item {
@@ -71,52 +68,321 @@
   gap: 2px;
   padding: var(--space-2) var(--space-1);
   min-height: var(--touch-target-min);
-  color: var(--color-text-secondary);
+  color: rgba(255, 255, 255, 0.82);
   font: var(--type-caption);
   text-transform: none;
   letter-spacing: normal;
 }
 .bottom-nav__item svg { width: 22px; height: 22px; stroke: currentColor; fill: none; }
-.bottom-nav__item[aria-current="page"] { color: var(--color-brand-ink); font-weight: 700; }
-:is([data-theme="dark"], [data-theme="midnight"]) .bottom-nav__item[aria-current="page"] { color: var(--color-interactive); }
+.bottom-nav__item[aria-current="page"] { color: #fff; font-weight: 700; }
+:is([data-theme="dark"], [data-theme="midnight"]) .bottom-nav__item[aria-current="page"] { color: #fff; }
+@media (min-width: 1024px) { .bottom-nav { display: none; } }
 
-@media (min-width: 1024px) {
-  .bottom-nav { display: none; }
-}
-
-/* ---- Sidebar (desktop) ---- */
+/* ---- Sidebar (desktop) ------------------------------------------------------
+   2026-09-15 final student-sidebar stabilization:
+   - fixed to viewport while content scrolls
+   - theme-aware palette
+   - one consistent icon slot on every page
+   - no hover translation / no horizontal tab movement
+   - stronger W.H. Academy wordmark
+   -------------------------------------------------------------------------- */
 .sidebar { display: none; }
+
 @media (min-width: 1024px) {
-  .app-shell--with-sidebar { flex-direction: row; }
+  .app-shell--with-sidebar {
+    display: block;
+    min-height: 100vh;
+  }
+
   .sidebar {
     display: flex;
     flex-direction: column;
-    width: 240px;
-    flex-shrink: 0;
-    min-height: 100vh;
-    position: sticky;
-    top: 0;
-    border-right: 1px solid var(--color-border);
-    background: var(--color-bg-surface);
-    padding: var(--space-5) var(--space-4);
-    gap: var(--space-6);
+    width: 252px;
+    height: 100vh;
+    min-height: 0;
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: calc(var(--z-sticky) + 1);
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    isolation: isolate;
+
+    color: #ffffff;
+    background-color: var(--brand-primary) !important;
+    background-image:
+      radial-gradient(circle at 88% 4%, rgba(255,255,255,.24) 0 0, rgba(255,255,255,0) 28%),
+      radial-gradient(circle at 10% 78%, rgba(255,255,255,.10) 0 0, rgba(255,255,255,0) 34%),
+      linear-gradient(
+        165deg,
+        var(--brand-primary) 0%,
+        var(--brand-primary-mid) 58%,
+        var(--brand-secondary) 132%
+      ) !important;
+    border-right: 1px solid rgba(255,255,255,.18);
+    box-shadow:
+      18px 0 42px color-mix(in srgb, var(--brand-primary) 24%, transparent),
+      inset -1px 0 0 rgba(255,255,255,.08);
+    padding: 24px 14px 18px;
+    gap: 18px;
+    transition:
+      background-color var(--motion-standard) var(--ease-standard),
+      box-shadow var(--motion-standard) var(--ease-standard);
   }
-  .sidebar__nav { display: flex; flex-direction: column; gap: var(--space-1); }
-  .sidebar__item {
+
+  .sidebar::before,
+  .sidebar::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    z-index: -1;
+    border-radius: 999px;
+  }
+
+  .sidebar::before {
+    width: 190px;
+    height: 190px;
+    top: -90px;
+    right: -70px;
+    background: rgba(255,255,255,.16);
+    filter: blur(2px);
+  }
+
+  .sidebar::after {
+    width: 220px;
+    height: 220px;
+    left: -120px;
+    bottom: -100px;
+    background: rgba(255,255,255,.09);
+    filter: blur(8px);
+  }
+
+  /* Main content begins after the fixed sidebar. */
+  .app-shell--with-sidebar > .sidebar + * {
+    margin-left: 252px;
+    width: calc(100% - 252px);
+    min-width: 0;
+  }
+
+  /* Stronger, stable Academy wordmark. */
+  .sidebar .top-bar__brand {
     display: flex;
     align-items: center;
-    gap: var(--space-3);
-    padding: var(--space-3);
-    border-radius: var(--radius-sm);
-    color: var(--color-text-secondary);
-    font: var(--type-body-md);
+    min-height: 58px;
+    padding: 10px 12px;
+    border-radius: 16px;
+    color: #ffffff !important;
+    font-weight: 900 !important;
+    font-size: 1.16rem;
+    line-height: 1.1;
+    text-decoration: none;
+    letter-spacing: .018em;
+    text-shadow: 0 2px 18px rgba(15,23,42,.30);
+    background: linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.07));
+    border: 1px solid rgba(255,255,255,.15);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.14),
+      0 8px 22px rgba(15,23,42,.08);
   }
-  .sidebar__item svg { width: 20px; height: 20px; stroke: currentColor; fill: none; }
-  .sidebar__item:hover { background: var(--neutral-100); }
-  :is([data-theme="dark"], [data-theme="midnight"]) .sidebar__item:hover { background: var(--color-bg-app); }
-  .sidebar__item[aria-current="page"] { background: var(--color-brand-ink-tint); color: var(--color-brand-ink); font-weight: 700; }
-  :is([data-theme="dark"], [data-theme="midnight"]) .sidebar__item[aria-current="page"] { background: var(--color-info-surface); color: var(--color-interactive); }
-  .app-main--with-sidebar { max-width: calc(var(--container-max) + 240px); margin-inline: auto; }
+
+  .sidebar__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  /* Every nav item has exactly the same icon/text geometry.
+     This removes the page-to-page shifting caused by some HTML pages having
+     inline SVG icons while others did not. */
+  .sidebar__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 49px;
+    padding: 10px 13px;
+    border: 1px solid transparent;
+    border-radius: 13px;
+    color: rgba(255,255,255,.90) !important;
+    font: var(--type-body-md);
+    font-weight: 700;
+    line-height: 1.25;
+    text-align: left;
+    text-decoration: none;
+    background: transparent;
+    text-shadow: 0 1px 7px rgba(15,23,42,.18);
+    transform: none !important;
+    transition:
+      background-color var(--motion-quick) var(--ease-out),
+      border-color var(--motion-quick) var(--ease-out),
+      box-shadow var(--motion-quick) var(--ease-out),
+      color var(--motion-quick) var(--ease-out);
+  }
+
+  /* Hide page-specific inline icons. The CSS mask below becomes the single
+     source of truth, so every page renders exactly the same icon set. */
+  .sidebar__item > svg {
+    display: none !important;
+  }
+
+  .sidebar__item::before {
+    content: "";
+    width: 21px;
+    height: 21px;
+    flex: 0 0 21px;
+    display: block;
+    background-color: currentColor;
+    opacity: .98;
+    filter: drop-shadow(0 1px 5px rgba(15,23,42,.18));
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+
+  /* Default fallback icon: small four-point sparkle. */
+  .sidebar__item::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 2l1.7 6.3L20 10l-6.3 1.7L12 18l-1.7-6.3L4 10l6.3-1.7L12 2Zm7 13 .9 3.1L23 19l-3.1.9L19 23l-.9-3.1L15 19l3.1-.9L19 15Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 2l1.7 6.3L20 10l-6.3 1.7L12 18l-1.7-6.3L4 10l6.3-1.7L12 2Zm7 13 .9 3.1L23 19l-3.1.9L19 23l-.9-3.1L15 19l3.1-.9L19 15Z'/%3E%3C/svg%3E");
+  }
+
+  /* Stable nav icons mapped by destination. */
+  .sidebar__item[href$="dashboard.html"]::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 3 2.8 10.5a1 1 0 0 0 1.3 1.5L5 11.3V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-8.7l.9.7a1 1 0 1 0 1.3-1.5L12 3Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 3 2.8 10.5a1 1 0 0 0 1.3 1.5L5 11.3V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-8.7l.9.7a1 1 0 1 0 1.3-1.5L12 3Z'/%3E%3C/svg%3E");
+  }
+
+  .sidebar__item[href$="games.html"]::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M4 4h6a3 3 0 0 1 2 1.2A3 3 0 0 1 14 4h6a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-6a3 3 0 0 0-2 1 3 3 0 0 0-2-1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm1 2v12h5c.4 0 .7.1 1 .2V7a1 1 0 0 0-1-1H5Zm9 0a1 1 0 0 0-1 1v11.2c.3-.1.6-.2 1-.2h5V6h-5Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M4 4h6a3 3 0 0 1 2 1.2A3 3 0 0 1 14 4h6a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-6a3 3 0 0 0-2 1 3 3 0 0 0-2-1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm1 2v12h5c.4 0 .7.1 1 .2V7a1 1 0 0 0-1-1H5Zm9 0a1 1 0 0 0-1 1v11.2c.3-.1.6-.2 1-.2h5V6h-5Z'/%3E%3C/svg%3E");
+  }
+
+  .sidebar__item[href$="boss-battle.html"]::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='m12 2 8 3.5v5.8c0 5.2-3.4 8.5-8 10.7-4.6-2.2-8-5.5-8-10.7V5.5L12 2Zm0 2.2L6 6.8v4.5c0 3.9 2.4 6.5 6 8.4 3.6-1.9 6-4.5 6-8.4V6.8l-6-2.6Zm-1 4.3h2v3h3v2h-3v3h-2v-3H8v-2h3v-3Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='m12 2 8 3.5v5.8c0 5.2-3.4 8.5-8 10.7-4.6-2.2-8-5.5-8-10.7V5.5L12 2Zm0 2.2L6 6.8v4.5c0 3.9 2.4 6.5 6 8.4 3.6-1.9 6-4.5 6-8.4V6.8l-6-2.6Zm-1 4.3h2v3h3v2h-3v3h-2v-3H8v-2h3v-3Z'/%3E%3C/svg%3E");
+  }
+
+  .sidebar__item[href$="badges.html"]::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 2a6 6 0 0 1 4.5 10l1.8 8.7-6.3-3-6.3 3L7.5 12A6 6 0 0 1 12 2Zm0 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2.7 9.4-.8 4 3.5-1.7 3.5 1.7-.8-4A6 6 0 0 1 12 14a6 6 0 0 1-2.7-.6Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 2a6 6 0 0 1 4.5 10l1.8 8.7-6.3-3-6.3 3L7.5 12A6 6 0 0 1 12 2Zm0 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2.7 9.4-.8 4 3.5-1.7 3.5 1.7-.8-4A6 6 0 0 1 12 14a6 6 0 0 1-2.7-.6Z'/%3E%3C/svg%3E");
+  }
+
+  .sidebar__item[href$="revision.html"]::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M5 4h13a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H9l-5 3V6a2 2 0 0 1 1-2Zm1 2v13.5L8.4 18H18V6H6Zm2 3h8v2H8V9Zm0 4h6v2H8v-2Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M5 4h13a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H9l-5 3V6a2 2 0 0 1 1-2Zm1 2v13.5L8.4 18H18V6H6Zm2 3h8v2H8V9Zm0 4h6v2H8v-2Z'/%3E%3C/svg%3E");
+  }
+
+  .sidebar__item[href$="leaderboard.html"]::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M8 3h8v2h4v3c0 3-1.8 5-4.8 5.7A5.2 5.2 0 0 1 13 15.8V19h4v2H7v-2h4v-3.2a5.2 5.2 0 0 1-2.2-2.1C5.8 13 4 11 4 8V5h4V3Zm2 2v5a3 3 0 1 0 6 0V5h-6ZM6 7v1c0 1.6.7 2.7 2 3V7H6Zm10 4c1.3-.3 2-1.4 2-3V7h-2v4Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M8 3h8v2h4v3c0 3-1.8 5-4.8 5.7A5.2 5.2 0 0 1 13 15.8V19h4v2H7v-2h4v-3.2a5.2 5.2 0 0 1-2.2-2.1C5.8 13 4 11 4 8V5h4V3Zm2 2v5a3 3 0 1 0 6 0V5h-6ZM6 7v1c0 1.6.7 2.7 2 3V7H6Zm10 4c1.3-.3 2-1.4 2-3V7h-2v4Z'/%3E%3C/svg%3E");
+  }
+
+  .sidebar__item[href$="rechecking.html"]::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M4 3h16a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2h-8l-5 4v-4H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm0 2v11h5v2l2.3-2H20V5H4Zm3 3h10v2H7V8Zm0 4h7v2H7v-2Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M4 3h16a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2h-8l-5 4v-4H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm0 2v11h5v2l2.3-2H20V5H4Zm3 3h10v2H7V8Zm0 4h7v2H7v-2Z'/%3E%3C/svg%3E");
+  }
+
+  .sidebar__item[href$="progress.html"]::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M4 19h16v2H2V3h2v16Zm3-2H5v-6h2v6Zm5 0H9V7h3v10Zm5 0h-3V4h3v13Zm4 0h-2V9h2v8Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M4 19h16v2H2V3h2v16Zm3-2H5v-6h2v6Zm5 0H9V7h3v10Zm5 0h-3V4h3v13Zm4 0h-2V9h2v8Z'/%3E%3C/svg%3E");
+  }
+
+  .sidebar__item[href$="profile.html"]::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 2a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm0 10c5 0 9 2.7 9 6v2h-2v-2c0-1.9-2.8-4-7-4s-7 2.1-7 4v2H3v-2c0-3.3 4-6 9-6Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 2a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm0 10c5 0 9 2.7 9 6v2h-2v-2c0-1.9-2.8-4-7-4s-7 2.1-7 4v2H3v-2c0-3.3 4-6 9-6Z'/%3E%3C/svg%3E");
+  }
+
+  /* Stable icons for bottom controls too. */
+  .sidebar__item[data-action="toggle-theme"]::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 4a8 8 0 1 0 8 8 6 6 0 0 1-8-8Zm0-2a10 10 0 1 1-10 10A10 10 0 0 1 12 2Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 4a8 8 0 1 0 8 8 6 6 0 0 1-8-8Zm0-2a10 10 0 1 1-10 10A10 10 0 0 1 12 2Z'/%3E%3C/svg%3E");
+  }
+
+  .sidebar__item[data-action="logout"]::before,
+  .sidebar a[href*="logout"]::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M4 3h9v2H6v14h7v2H4V3Zm12.6 4.6L21 12l-4.4 4.4-1.4-1.4 2-2H9v-2h8.2l-2-2 1.4-1.4Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M4 3h9v2H6v14h7v2H4V3Zm12.6 4.6L21 12l-4.4 4.4-1.4-1.4 2-2H9v-2h8.2l-2-2 1.4-1.4Z'/%3E%3C/svg%3E");
+  }
+
+  .sidebar__item:hover,
+  .sidebar__item:focus-visible {
+    /* Deliberately no translateX: tabs must never jump left/right. */
+    transform: none !important;
+    color: #ffffff !important;
+    background: rgba(255,255,255,.14);
+    border-color: rgba(255,255,255,.17);
+    box-shadow: 0 8px 20px rgba(15,23,42,.10);
+  }
+
+  .sidebar__item[aria-current="page"],
+  .sidebar__item.is-active {
+    color: #ffffff !important;
+    font-weight: 800;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.27), rgba(255,255,255,.13));
+    border-color: rgba(255,255,255,.30);
+    box-shadow:
+      inset 4px 0 0 var(--brand-accent),
+      inset 0 1px 0 rgba(255,255,255,.22),
+      0 10px 24px rgba(15,23,42,.15);
+  }
+
+  .sidebar__item[aria-current="page"]::after,
+  .sidebar__item.is-active::after {
+    content: "";
+    position: absolute;
+    right: 11px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(255,255,255,.13);
+  }
+
+  .sidebar > div[style*="margin-top:auto"] {
+    padding-top: 10px;
+    border-top: 1px solid rgba(255,255,255,.14);
+  }
+
+  .sidebar > div[style*="margin-top:auto"] .sidebar__item {
+    color: rgba(255,255,255,.86) !important;
+  }
+
+  :is([data-theme="dark"], [data-theme="midnight"]) .sidebar {
+    background-color: #111827 !important;
+    background-image:
+      radial-gradient(circle at 88% 4%, rgba(129,140,248,.22) 0 0, rgba(129,140,248,0) 28%),
+      linear-gradient(
+        165deg,
+        #0f172a 0%,
+        var(--brand-primary) 64%,
+        #111827 125%
+      ) !important;
+    border-right-color: rgba(129,140,248,.20);
+    box-shadow: 18px 0 44px rgba(2,6,23,.34);
+  }
+
+  .sidebar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,.28) transparent;
+  }
+  .sidebar::-webkit-scrollbar { width: 7px; }
+  .sidebar::-webkit-scrollbar-track { background: transparent; }
+  .sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,.26);
+    border-radius: 999px;
+  }
+  .sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,.40);
+  }
+
+  .app-main--with-sidebar {
+    max-width: calc(var(--container-max) + 252px);
+    margin-inline: auto;
+  }
 }
 
 /* ---- Breadcrumb ---- */
@@ -132,12 +398,10 @@
 .breadcrumb__sep { color: var(--color-border-strong); }
 .breadcrumb__current { color: var(--color-text-primary); font-weight: 700; }
 @media (max-width: 1023px) { .breadcrumb__full { display: none; } }
-
 /* ---- Grids ---- */
 .grid { display: grid; gap: var(--space-4); grid-template-columns: repeat(4, 1fr); }
 @media (min-width: 640px) { .grid { grid-template-columns: repeat(8, 1fr); gap: var(--space-4); } }
 @media (min-width: 1024px) { .grid { grid-template-columns: repeat(12, 1fr); gap: var(--space-5); } }
-
 .card-grid { display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
 @media (min-width: 640px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
@@ -146,20 +410,8 @@
 .stack > * + * { margin-top: var(--space-4); }
 .stack-sm > * + * { margin-top: var(--space-2); }
 .stack-lg > * + * { margin-top: var(--space-6); }
-
 .cluster { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
 
 .section { padding-block: var(--space-6); }
 @media (min-width: 1024px) { .section { padding-block: var(--space-8); } }
-
 .reading-column { max-width: 680px; }
-
-/* ---- Mobile bottom-nav: brand gradient bar (adapts to the chosen theme) --- */
-.bottom-nav {
-  background: linear-gradient(90deg, var(--brand-primary), var(--brand-primary-mid));
-  border-top: none;
-  box-shadow: 0 -6px 20px var(--brand-glow, rgba(79, 70, 229, 0.25));
-}
-.bottom-nav__item { color: rgba(255, 255, 255, 0.82); }
-.bottom-nav__item[aria-current="page"] { color: #ffffff; font-weight: 700; }
-:is([data-theme="dark"], [data-theme="midnight"]) .bottom-nav__item[aria-current="page"] { color: #ffffff; }

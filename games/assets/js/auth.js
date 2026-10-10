@@ -14,6 +14,16 @@ const Auth = (() => {
   // "PIN first, code second" flow is exactly as safe as the old one.
   let registrationContext = { studentId: null, purpose: null, pendingPin: null };
 
+  // Strong-PIN policy — kept identical to the backend (validateStrongPin_).
+  function pinRuleError(pin){
+    pin = String(pin || '');
+    if (pin.length < 8 || pin.length > 16) return 'Your PIN must be 8–16 characters.';
+    if (!/[0-9]/.test(pin)) return 'Your PIN must include at least one number.';
+    if (!/[A-Za-z]/.test(pin)) return 'Your PIN must include at least one letter.';
+    if ((pin.match(/[^A-Za-z0-9]/g) || []).length < 1) return 'Your PIN must include at least one special character.';
+    return '';
+  }
+
   // ---- CAPTCHA (audit S1) --------------------------------------------------
   // Cloudflare Turnstile. Entirely inert unless window.WHA_TURNSTILE_SITE_KEY is
   // set (in login.html). When off: enabled() is false, token() returns '', and
@@ -304,10 +314,8 @@ const Auth = (() => {
     registrationContext.studentId = studentId;
     registrationContext.purpose = 'Registration';
 
-    if (!/^\d{4,8}$/.test(pin)) {
-      Notifications.error('Your PIN must be 4–8 digits.');
-      return;
-    }
+    var pinErr = pinRuleError(pin);
+    if (pinErr) { Notifications.error(pinErr); return; }
     if (pin !== confirmPin) {
       Notifications.error('PINs do not match.');
       return;
@@ -360,10 +368,8 @@ const Auth = (() => {
       return;
     }
 
-    if (!/^\d{4,8}$/.test(pin)) {
-      Notifications.error('Your PIN must be 4–8 digits.');
-      return;
-    }
+    var pinErr = pinRuleError(pin);
+    if (pinErr) { Notifications.error(pinErr); return; }
     if (pin !== confirmPin) {
       Notifications.error('PINs do not match.');
       return;

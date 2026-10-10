@@ -7,6 +7,12 @@
 const Notifications = (() => {
 
   const DEFAULT_DURATION_MS = 4000;
+  // Auto-dismiss time scales with message length so long messages stay long
+  // enough to read: ~6-7s for one line, up to ~20s for a long one.
+  function durationFor(message) {
+    var len = String(message || '').length;
+    return Math.max(6000, Math.min(20000, Math.round(3500 + len * 55)));
+  }
   let region = null;
 
   function ensureRegion() {
@@ -30,7 +36,7 @@ const Notifications = (() => {
    * @param {('success'|'error'|'info')} [type='info']
    * @param {number} [durationMs]
    */
-  function toast(message, type = 'info', durationMs = DEFAULT_DURATION_MS) {
+  function toast(message, type = 'info', durationMs) {
     const el = ensureRegion();
     const toastEl = document.createElement('div');
     toastEl.className = `toast toast--${type}`;
@@ -39,7 +45,7 @@ const Notifications = (() => {
 
     el.appendChild(toastEl);
 
-    let remaining = durationMs;
+    let remaining = (typeof durationMs === 'number' && durationMs > 0) ? durationMs : durationFor(message);
     let timer = null;
     let startedAt = Date.now();
 

@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-
   <!-- Audit S2: per-page CSP (GitHub Pages can't send HTTP headers). frame-ancestors
        'none' shuts clickjacking. 'unsafe-inline' kept for script/style because this
        page has an inline token-guard script + inline style attributes. cdnjs is
@@ -11,10 +10,37 @@
        too). script.google(usercontent).com allowed for the Apps Script API.
        NOTE: img is 'self' data: only — if a chapter's content.json loads a remote
        image, add https: to img-src. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; connect-src 'self' https://script.google.com https://script.googleusercontent.com">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; connect-src 'self' https://gbgcaonmdekumluwgwvn.supabase.co https://script.google.com https://script.googleusercontent.com">
   <title>Chapter — W.H. Academy</title>
   <meta name="theme-color" content="#3730a3">
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+
+  <!-- 2026-09-26: EARLY THEME BOOT
+       main.css intentionally hides .app-shell until data-theme exists to prevent
+       stale-theme flashes between pages. chapter.html is the shared engine page
+       for every chapter and historically did not load app.js, so data-theme was
+       never set and the whole chapter stayed invisible.
+       Set the saved theme BEFORE CSS loads so every chapter can paint normally
+       without reintroducing the old theme flash. -->
+  <script>
+    (function () {
+      var validThemes = ['light','dark','ocean','forest','sunset','grape','rose','candy','aurora','gold','midnight'];
+      var theme = 'light';
+      var textSize = 'default';
+      try {
+        var raw = window.localStorage.getItem('wha:settings');
+        var saved = raw ? JSON.parse(raw) : {};
+        if (saved && validThemes.indexOf(saved.theme) >= 0) theme = saved.theme;
+        if (saved && saved.textSize) textSize = String(saved.textSize);
+      } catch (e) {
+        theme = 'light';
+        textSize = 'default';
+      }
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.setAttribute('data-text-size', textSize);
+    })();
+  </script>
+
   <link rel="stylesheet" href="assets/css/variables.css">
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/layout.css">
@@ -33,23 +59,19 @@
 <body>
   <!--
     ONE page for every chapter in the platform.
-
     Which chapter loads is decided by the query string:
         chapter.html?ch=8/science/human_nervous_system
     which reads:
         classes/8/science/human_nervous_system/content.json
-
     This replaces the old arrangement where every chapter folder carried its
     own copy of chapter.html + game.js + style.css. That arrangement meant an
     engine bug had to be fixed in as many places as there were chapters, and
     it made the relative asset paths (../../../../../) depend on how deeply a
     chapter folder happened to sit. Here the page never moves, so the paths
     are one level and can never drift.
-
     A chapter folder now contains exactly one file: content.json.
   -->
   <a href="#chapter-stage-content" class="skip-link">Skip to chapter content</a>
-
   <div class="app-shell">
     <header class="top-bar">
       <button id="chapter-back" type="button" class="btn btn--icon" aria-label="Back">
@@ -58,14 +80,12 @@
       <span id="chapter-title" class="top-bar__brand" style="font-family:var(--font-body); font-size:16px;">Loading…</span>
       <span style="width:44px;"></span>
     </header>
-
     <ol id="stage-stepper" class="stage-stepper" aria-label="Chapter progress"></ol>
 
     <main id="chapter-stage-content" class="app-main container section" tabindex="-1" style="max-width: 680px;">
       <div class="skeleton skeleton--card"></div>
     </main>
   </div>
-
   <script src="assets/js/utils.js"></script>
   <script src="assets/js/storage.js"></script>
   <script src="assets/js/notifications.js"></script>

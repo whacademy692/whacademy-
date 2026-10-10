@@ -5,7 +5,7 @@
   <!-- Audit S2 (CSP). GitHub Pages cannot send HTTP headers, so CSP is per-page.
        frame-ancestors 'none' shuts clickjacking. 'unsafe-inline' kept for inline
        <style>/<script>. Google Fonts allowed (main.css @imports them). connect-src allows the Apps Script API (script.google[usercontent].com) — the page's JS calls it at runtime, so this is required or every API call breaks. img is 'self' data:; widen with https: only if a remote image is ever added. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://script.google.com https://script.googleusercontent.com">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://gbgcaonmdekumluwgwvn.supabase.co https://script.google.com https://script.googleusercontent.com">
 
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Learning Games — W.H. Academy</title>
@@ -184,21 +184,21 @@
         <div class="welcome-guide__item">
           <span class="welcome-guide__num">1</span>
           <p class="welcome-guide__text">
-            <strong>No account yet?</strong> Start with <strong>Register with Student ID</strong>.
-            Use the Student ID that was emailed to you when your enrollment was activated.
+            <strong>No account yet?</strong> Tap <strong>Enroll at W.H. Academy</strong> and fill the form. No PIN or login yet —
+            nothing is set up until your fee is confirmed.
           </p>
         </div>
         <div class="welcome-guide__item">
           <span class="welcome-guide__num">2</span>
           <p class="welcome-guide__text">
-            <strong>Then create your PIN.</strong> We email you a link right after you register —
-            or just tap <strong>Create Your PIN</strong> below. That finishes your account.
+            <strong>We activate your account</strong> after your fee is confirmed, and email your
+            <strong>Student ID</strong> with a link to <strong>set your PIN</strong> (a 6-digit code confirms it's you).
           </p>
         </div>
         <div class="welcome-guide__item">
           <span class="welcome-guide__num">3</span>
           <p class="welcome-guide__text">
-            <strong>Now log in</strong> with your Student ID and PIN, and start playing.
+            <strong>Set your PIN, then log in</strong> with your Student ID and PIN, and start playing.
           </p>
         </div>
         <div class="welcome-guide__item">
@@ -214,16 +214,10 @@
       <div class="welcome-actions">
         <a href="login.html" class="btn btn--primary btn--lg">Log In to Play</a>
 
-        <!-- Goes to the Google Registration Form. Both routes converge there: a student
-             who read their email clicks the link in it, and one who came straight to the
-             site clicks this. Submitting the Form triggers the "Create Your PIN" email. -->
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeUCbuoGkYvgPNMFlpfv3GcVNzkRT0frFpdg3qDgiCHldiQSg/viewform?usp=header"
-           class="btn btn--secondary btn--lg" target="_blank" rel="noopener">Register with Student ID</a>
-
-        <!-- For anyone who registered on the site and never opened the email — the exact
-             gap Rehan hit. Opens the same set-pin screen, but with a Student ID field,
-             since there is no ?id= to pre-fill from. -->
-        <a href="login.html?step=set-pin" class="btn btn--secondary btn--lg">Create Your PIN</a>
+        <!-- New students: the first-party enrollment page. The PIN is chosen there,
+             so there is no separate registration / set-PIN step any more. -->
+        <a href="../enroll.html" class="btn btn--secondary btn--lg">Register</a>
+        <a href="login.html?step=set-pin" class="btn btn--tertiary btn--lg">Activated? Set your PIN</a>
       </div>
 
       <div class="welcome-features">

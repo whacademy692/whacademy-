@@ -5,8 +5,7 @@
   <!-- Audit S2 (CSP). GitHub Pages cannot send HTTP headers, so CSP is per-page.
        frame-ancestors 'none' shuts clickjacking. 'unsafe-inline' kept for inline
        <style>/<script>. Google Fonts allowed (main.css @imports them). connect-src allows the Apps Script API (script.google[usercontent].com) — the page's JS calls it at runtime, so this is required or every API call breaks. img is 'self' data:; widen with https: only if a remote image is ever added. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://script.google.com https://script.googleusercontent.com">
-
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://gbgcaonmdekumluwgwvn.supabase.co https://script.google.com https://script.googleusercontent.com">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>My Progress — W.H. Academy</title>
   <meta name="theme-color" content="#3730a3">
@@ -35,18 +34,115 @@
   #progress-list .prog__topic-name { text-transform:capitalize; }
   #progress-list .prog__ttrack { display:block; height:8px; border-radius:999px; background:var(--color-surface-sunken,#eef0f4); overflow:hidden; margin-top:6px; }
   #progress-list .prog__tfill { display:block; height:100%; border-radius:999px; }
+
   .trend-card { padding: var(--space-4); }
   .trend-card__head { display:flex; justify-content:space-between; align-items:flex-start; gap:var(--space-3); flex-wrap:wrap; }
-  .trend-filters { display:flex; gap:var(--space-2); flex-wrap:wrap; }
-  .trend-filters .select { max-width: 165px; }
+  .trend-filters { display:flex; gap:var(--space-2); flex-wrap:wrap; align-items:flex-start; }
+  .trend-filters .select { max-width: 190px; }
+
+  .trend-subject-picker { min-width:180px; max-width:240px; }
+  .trend-subject-picker > summary {
+    cursor:pointer;
+    list-style:none;
+    min-height:42px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    padding:9px 12px;
+    border:1px solid var(--color-border,#d8dbe5);
+    border-radius:10px;
+    background:var(--color-surface,#fff);
+    color:var(--color-text-primary,inherit);
+    font-size:0.9rem;
+    user-select:none;
+  }
+  .trend-subject-picker > summary::-webkit-details-marker { display:none; }
+  .trend-subject-picker > summary::after { content:'▾'; font-size:0.8rem; opacity:0.7; }
+  .trend-subject-picker[open] > summary::after { content:'▴'; }
+
+  .trend-subject-options {
+    margin-top:6px;
+    padding:10px;
+    border:1px solid var(--color-border,#d8dbe5);
+    border-radius:12px;
+    background:var(--color-surface,#fff);
+    box-shadow:0 10px 30px rgba(15,23,42,0.08);
+    min-width:220px;
+  }
+
+  .trend-subject-option {
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:7px 5px;
+    cursor:pointer;
+    font-size:0.9rem;
+  }
+  .trend-subject-option input { margin:0; }
+  .trend-subject-swatch,
+  .trend-legend__swatch {
+    width:10px;
+    height:10px;
+    border-radius:999px;
+    flex:0 0 10px;
+  }
+
+  .trend-subject-actions {
+    display:flex;
+    gap:8px;
+    padding-bottom:8px;
+    margin-bottom:4px;
+    border-bottom:1px solid var(--color-border,#e6e6f0);
+  }
+  .trend-subject-action {
+    border:0;
+    background:transparent;
+    color:var(--color-primary,#4f46e5);
+    font:inherit;
+    font-size:0.8rem;
+    font-weight:700;
+    cursor:pointer;
+    padding:4px 2px;
+  }
+  .trend-subject-none {
+    margin:0;
+    color:var(--color-text-secondary);
+    font-size:0.85rem;
+  }
+
   .trend-chart { margin-top: var(--space-3); }
-  .trend-chart svg { width: 100%; height: auto; display: block; }
-  .trend-empty { color: var(--color-text-secondary); text-align:center; padding: var(--space-5) 0; font-size:0.9rem; }
+  .trend-chart svg { width:100%; height:auto; display:block; }
+  .trend-empty { color:var(--color-text-secondary); text-align:center; padding:var(--space-5) 0; font-size:0.9rem; }
+
+  .trend-legend {
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 14px;
+    align-items:center;
+    margin-bottom:8px;
+  }
+  .trend-legend__item {
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    color:var(--color-text-secondary);
+    font-size:0.82rem;
+    font-weight:700;
+  }
+
+  #trend-chapter:disabled { opacity:0.6; cursor:not-allowed; }
+
+  @media (max-width: 640px) {
+    .trend-filters { width:100%; }
+    .trend-filters .select,
+    .trend-subject-picker { max-width:none; width:100%; }
+    .trend-subject-options { min-width:0; width:100%; box-sizing:border-box; }
+  }
 </style>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
-
   <div class="app-shell app-shell--with-sidebar">
     <!-- Sidebar (desktop) -->
     <nav class="sidebar" aria-label="Primary">
@@ -65,7 +161,7 @@
           Boss Battle
         </a>
         <a class="sidebar__item" href="revision.html" data-nav-page="revision.html">
-          <svg viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v16l4-4h12V4H4z"/></svg>
+          <svg viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M4 4v16l4-4h12V4H4z"/></svg>
           Revision
         </a>
         <a class="sidebar__item" href="leaderboard.html" data-nav-page="leaderboard.html">
@@ -109,34 +205,41 @@
           </button>
         </div>
       </header>
+
       <div class="container">
         <div class="stack-lg">
           <div>
             <h1 class="text-display">My Progress</h1>
             <p class="text-body-sm" style="color: var(--color-text-secondary);">Your accuracy by chapter and topic, from the games you've played. Tap a chapter to see its topics.</p>
           </div>
+
           <div id="progress-content" class="stack-lg">
             <div class="card trend-card">
               <div class="trend-card__head">
                 <div>
                   <h2 style="margin:0;">Accuracy over time</h2>
-                  <p class="text-body-sm" style="color:var(--color-text-secondary); margin-top:var(--space-1);">Higher is greener, lower is redder. Filter by class, subject or chapter.</p>
+                  <p class="text-body-sm" style="color:var(--color-text-secondary); margin-top:var(--space-1);">Compare one or more subjects at the same time. Each selected subject gets its own line.</p>
                 </div>
+
                 <div class="trend-filters">
-                  <select id="trend-range" class="select" aria-label="Group by time">
-                    <option value="day">Daily</option>
-                    <option value="week">Weekly</option>
-                    <option value="month">Monthly</option>
+                  <select id="trend-class" class="select" aria-label="Filter by class">
+                    <option value="">All classes</option>
                   </select>
-                  <select id="trend-class" class="select" aria-label="Filter by class"><option value="">All classes</option></select>
-                  <select id="trend-subject" class="select" aria-label="Filter by subject"><option value="">All subjects</option></select>
-                  <select id="trend-chapter" class="select" aria-label="Filter by chapter"><option value="">All chapters</option></select>
+
+                  <details id="trend-subject-picker" class="trend-subject-picker">
+                    <summary><span id="trend-subject-summary">All subjects</span></summary>
+                    <div id="trend-subject-options" class="trend-subject-options" role="group" aria-label="Compare subjects"></div>
+                  </details>
+
+                  <select id="trend-chapter" class="select" aria-label="Filter by chapter">
+                    <option value="">Choose one subject for chapter filter</option>
+                  </select>
                 </div>
               </div>
+
               <div id="trend-chart" class="trend-chart"></div>
-              <p id="trend-meta" class="text-body-sm" style="color:var(--color-text-secondary); margin-top:var(--space-2);" aria-live="polite"></p>
-              <p class="text-caption" style="color:var(--color-text-secondary); margin-top:var(--space-1);">A chapter appears here as soon as you finish your first game (about 10 questions) — there's no big minimum. Switch Daily / Weekly / Monthly to see progress over time.</p>
             </div>
+
             <p id="progress-status" class="text-body-sm">Loading your progress…</p>
             <div id="progress-list" class="stack-sm"></div>
           </div>
@@ -161,7 +264,7 @@
       Boss
     </a>
     <a class="bottom-nav__item" href="revision.html" data-nav-page="revision.html">
-      <svg viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v16l4-4h12V4H4z"/></svg>
+      <svg viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M4 4v16l4-4h12V4H4z"/></svg>
       Revision
     </a>
     <a class="bottom-nav__item" href="leaderboard.html" data-nav-page="leaderboard.html">

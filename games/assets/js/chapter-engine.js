@@ -2632,17 +2632,30 @@
     document.documentElement.style.setProperty('--subject-accent-tint', 'var(--subject-' + token + '-secondary)');
   }
 
-  function usedMechanicIds() {
-    var ids = {};
-    var all = miniGames().concat(bossQuestions());
-    practiceBanks().forEach(function (b) {
-      b.questions.forEach(function (q) { all.push(q); });
-    });
-    all.forEach(function (q) {
-      if (q && q.mechanicId) ids[q.mechanicId] = true;
-    });
-    return Object.keys(ids);
-  }
+ function usedMechanicIds() {
+  var ids = {};
+  var all = miniGames().concat(bossQuestions());
+
+  practiceBanks().forEach(function (b) {
+    if (b && b.mechanicId) {
+      ids[b.mechanicId] = true;
+    }
+
+    if (b && Array.isArray(b.questions)) {
+      b.questions.forEach(function (q) {
+        all.push(q);
+      });
+    }
+  });
+
+  all.forEach(function (q) {
+    if (q && q.mechanicId) {
+      ids[q.mechanicId] = true;
+    }
+  });
+
+  return Object.keys(ids);
+}
 
   function showFatal(message, detail) {
     main().innerHTML = '';

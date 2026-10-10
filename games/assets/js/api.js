@@ -9,7 +9,7 @@
  * deployed Web App URL and API key before going live (Step 15).
  */
 
-const API_BASE_URL = 'https://script.google.com/macros/s/AKfycbxjaqW5hmUk6B5gYW3hRjAfsPrbrdZB4a3B3VfJRvfKcfepz4WPYIX_aCVKS-STmiwQIA/exec';
+const API_BASE_URL = 'https://gbgcaonmdekumluwgwvn.supabase.co/functions/v1/api';
 const API_KEY = 'Jdb-iJByoQ-WA0UwlQrorQOH77buDQjepPH0y2SsDyo';
 
 const Api = (() => {
