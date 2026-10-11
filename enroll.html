@@ -305,6 +305,35 @@
   function keyOf(cls){ cls=Number(cls); if(cls<=8) return 'low'; if(cls<=10) return 'matric'; return 'inter'; }
   function $(id){ return document.getElementById(id); }
 
+  /* ---- Subjects depend on the STREAM for classes 9-12 (Federal board groups).
+         EDIT HERE to add/change subjects; Middle (6-8) has one fixed list. ---- */
+  var SUBJECTS_MIDDLE = ['Mathematics','Science','Geography','History','Computer'];
+  var SUBJECTS_BY_STREAM = {
+    'Biology group':   ['Mathematics','Physics','Chemistry','Biology'],
+    'Computer group':  ['Mathematics','Physics','Chemistry','Computer'],
+    'Pre-Medical':     ['Physics','Chemistry','Biology'],
+    'Pre-Engineering': ['Physics','Chemistry','Mathematics'],
+    'ICS':             ['Physics','Mathematics','Computer']
+  };
+  function subjectsFor(cls, stream){
+    if (Number(cls) <= 8) return SUBJECTS_MIDDLE;
+    return SUBJECTS_BY_STREAM[String(stream||'')] || [];
+  }
+  function renderSubjects(cls, stream){
+    var chips=$('subjectChips'); chips.innerHTML='';
+    if(!cls){ $('subjectHint').textContent=''; return; }
+    var list = subjectsFor(cls, stream);
+    if(!list.length){ $('subjectHint').textContent = 'Choose your stream first to see its subjects.'; return; }
+    list.forEach(function(sub){
+      var l=document.createElement('label'); l.className='chip';
+      l.innerHTML='<input type="checkbox" value="'+sub+'"><span>'+sub+'</span>';
+      chips.appendChild(l);
+    });
+    $('subjectHint').textContent = (Number(cls)<=8)
+      ? 'Pick the subjects you want — only these unlock in your account (flat Middle plan fee).'
+      : 'Charges apply per subject — tick each subject you want to enroll in.';
+  }
+
   var state = { plan:null, price:null };
 
   /* ---- populate class dropdown ---- */
@@ -326,18 +355,8 @@
       if(k==='low'){ ss.value='Not applicable'; ss.disabled=true; } else { ss.disabled=false; ss.insertAdjacentHTML('afterbegin','<option value="">— Select stream —</option>'); ss.value=''; }
     }
 
-    // subjects
-    var chips=$('subjectChips'); chips.innerHTML='';
-    if(cls){
-      SUBJECTS[k].forEach(function(sub){
-        var l=document.createElement('label'); l.className='chip';
-        l.innerHTML='<input type="checkbox" value="'+sub+'"><span>'+sub+'</span>';
-        chips.appendChild(l);
-      });
-      $('subjectHint').textContent = (k==='low')
-        ? 'Pick the subjects you want — only these unlock in your account (flat Middle plan fee).'
-        : 'Charges apply per subject — tick each subject you want to enroll in.';
-    }
+    // subjects (depend on the chosen stream for 9-12)
+    renderSubjects(cls, $('stream').value);
 
     // plans
     renderPlans(cls ? bandOf(cls) : null);
@@ -363,7 +382,7 @@
     });
   }
 
-  $('stream').addEventListener('change',function(){clearErr('stream');setStep();});
+  $('stream').addEventListener('change',function(){clearErr('stream');renderSubjects($('classLevel').value, this.value);setStep();});
   $('tuitionMode').addEventListener('change',function(){
     clearErr('tuitionMode');
     $('homeNote').classList.toggle('show', this.value==='Home Tuition');

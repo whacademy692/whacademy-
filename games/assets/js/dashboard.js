@@ -274,7 +274,26 @@
   // Same enrollment config as enroll.html / the admin panel, so the scope the
   // backend computes matches exactly.
   var PROMO_STREAMS = { low: ['Not applicable'], matric: ['Biology group','Computer group'], inter: ['Pre-Medical','Pre-Engineering','ICS'] };
-  var PROMO_SUBJECTS = { low: ['Mathematics','Science','Geography','History','Computer'], matric: ['Mathematics','Physics','Chemistry','Biology','Computer'], inter: ['Mathematics','Physics','Chemistry','Biology','Computer'] };
+  // Subjects depend on the STREAM for classes 9-12 (Federal board groups).
+  var PROMO_SUBJECTS_MIDDLE = ['Mathematics','Science','Geography','History','Computer'];
+  var PROMO_SUBJECTS_BY_STREAM = {
+    'Biology group':   ['Mathematics','Physics','Chemistry','Biology'],
+    'Computer group':  ['Mathematics','Physics','Chemistry','Computer'],
+    'Pre-Medical':     ['Physics','Chemistry','Biology'],
+    'Pre-Engineering': ['Physics','Chemistry','Mathematics'],
+    'ICS':             ['Physics','Mathematics','Computer']
+  };
+  function promoSubjectsFor(cls, stream){
+    if (Number(cls) <= 8) return PROMO_SUBJECTS_MIDDLE;
+    return PROMO_SUBJECTS_BY_STREAM[String(stream||'')] || [];
+  }
+  function promoSubjChipsHtml(list){
+    if (!list.length) return '<span style="color:#64748b;font-size:.9rem;">Choose your stream first to see its subjects.</span>';
+    return list.map(function(sub){
+      return '<label style="display:inline-flex;align-items:center;gap:6px;border:1px solid #cbd5e1;border-radius:999px;padding:6px 12px;margin:4px 6px 0 0;cursor:pointer;">' +
+        '<input type="checkbox" class="promo-subj" value="' + promoEsc(sub) + '"> ' + promoEsc(sub) + '</label>';
+    }).join('');
+  }
   var PROMO_PLANS = { Middle: [['Starter',5000],['Pro',12000],['Advanced',18000]], Matric: [['Starter',2000],['Pro',3500],['Advanced',4500]], Intermediate: [['Starter',2500],['Pro',4500],['Advanced',5500]] };
   var PROMO_TUITION = ['Online','Home Tuition'];
   function promoKeyOf(c){ c = Number(c); return c <= 8 ? 'low' : (c <= 10 ? 'matric' : 'inter'); }
@@ -320,11 +339,9 @@
     }
 
     var k = promoKeyOf(target), band = promoBandOf(target);
-    var streamOpts = '<option value="">— Select —</option>' + PROMO_STREAMS[k].map(function(x){ return '<option>' + promoEsc(x) + '</option>'; }).join('');
-    var subjChips = PROMO_SUBJECTS[k].map(function(sub){
-      return '<label style="display:inline-flex;align-items:center;gap:6px;border:1px solid #cbd5e1;border-radius:999px;padding:6px 12px;margin:4px 6px 0 0;cursor:pointer;">' +
-        '<input type="checkbox" class="promo-subj" value="' + promoEsc(sub) + '"> ' + promoEsc(sub) + '</label>';
-    }).join('');
+    var isMiddle = Number(target) <= 8;
+    var streamOpts = '<option value="">— Select —</option>' + PROMO_STREAMS[k].map(function(x){ return '<option' + (isMiddle && x === 'Not applicable' ? ' selected' : '') + '>' + promoEsc(x) + '</option>'; }).join('');
+    var subjChips = promoSubjChipsHtml(promoSubjectsFor(target, isMiddle ? 'Not applicable' : ''));
     var planOpts = '<option value="">— Select —</option>' + PROMO_PLANS[band].map(function(p){
       return '<option value="' + p[0] + '|' + p[1] + '">' + promoEsc(p[0]) + ' — PKR ' + p[1].toLocaleString() + '</option>';
     }).join('');
@@ -338,7 +355,7 @@
         '<div style="display:flex;flex-direction:column;gap:14px;">' +
           '<div><label style="font-weight:600;display:block;margin-bottom:4px;">Stream</label>' +
             '<select id="promo-stream" style="width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:10px;">' + streamOpts + '</select></div>' +
-          '<div><label style="font-weight:600;display:block;margin-bottom:4px;">Subjects</label><div>' + subjChips + '</div></div>' +
+          '<div><label style="font-weight:600;display:block;margin-bottom:4px;">Subjects</label><div id="promo-subjects">' + subjChips + '</div></div>' +
           '<div><label style="font-weight:600;display:block;margin-bottom:4px;">Plan</label>' +
             '<select id="promo-plan" style="width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:10px;">' + planOpts + '</select></div>' +
           '<div><label style="font-weight:600;display:block;margin-bottom:4px;">Tuition mode</label>' +
@@ -348,6 +365,11 @@
         '</div>' +
       '</div>';
 
+    var streamSel = Utils.qs('#promo-stream');
+    if (streamSel) streamSel.addEventListener('change', function(){
+      var box = Utils.qs('#promo-subjects');
+      if (box) box.innerHTML = promoSubjChipsHtml(promoSubjectsFor(target, this.value));
+    });
     var btn = Utils.qs('#promo-submit');
     if (btn) btn.addEventListener('click', function(){ submitPromotion(target); });
   }
