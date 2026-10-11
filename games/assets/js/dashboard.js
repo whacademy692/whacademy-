@@ -281,7 +281,18 @@
   function promoBandOf(c){ c = Number(c); return c <= 8 ? 'Middle' : (c <= 10 ? 'Matric' : 'Intermediate'); }
   function promoEsc(v){ return Utils.escapeHtml ? Utils.escapeHtml(String(v == null ? '' : v)) : String(v == null ? '' : v); }
 
+  var promoPollTimer = null;
+  function startPromoPoll(){
+    if (promoPollTimer) return;
+    // While the student is locked (filling or awaiting approval), quietly re-check
+    // every 15s so an admin approval opens the new class on its own — no refresh.
+    promoPollTimer = setInterval(function(){
+      Api.dashboard.compose().then(function(data){ renderAll(data || {}); }).catch(function(){});
+    }, 15000);
+  }
+  function stopPromoPoll(){ if (promoPollTimer){ clearInterval(promoPollTimer); promoPollTimer = null; } }
   function hidePromotionLock(){
+    stopPromoPoll();
     var el = Utils.qs('#promotion-lock');
     if (el) { el.hidden = true; el.innerHTML = ''; }
   }
@@ -293,6 +304,7 @@
     var er = Utils.qs('#dashboard-error'); if (er) er.hidden = true;
     el.style.cssText = 'position:fixed;inset:0;z-index:9999;overflow:auto;background:var(--surface,#f8fafc);display:flex;align-items:flex-start;justify-content:center;padding:24px 16px;';
     el.hidden = false;
+    startPromoPoll();
 
     var target = promo.targetClass;
     if (promo.submitted) {
@@ -416,6 +428,12 @@
   }
 
   // ---- MY CHAPTERS — the student's own chapter/topic performance ----
+  // Keep the dashboard current without a manual refresh: when the tab becomes
+  // visible again (e.g. after an admin change), re-fetch the latest data.
+  document.addEventListener('visibilitychange', function(){
+    if (document.visibilityState === 'visible') { loadDashboard(); }
+  });
+
   function myChapAccColor(a) { return a < 0.5 ? '#ef4444' : (a < 0.75 ? '#f59e0b' : '#22c55e'); }
   function myChapTitle(ref) {
     return String(ref).split('/').pop().replace(/[_-]+/g, ' ').replace(/\b\w/g, function (c) { return c.toUpperCase(); });
