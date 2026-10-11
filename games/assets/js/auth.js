@@ -84,7 +84,7 @@ const Auth = (() => {
 
     let hasError = false;
     if (!Utils.isValidStudentIdFormat(studentId)) {
-      showFieldError(form.querySelector('[data-field="studentId"]'), 'Enter your Student ID exactly as it appears in your email, e.g. WHA-2026-C08-000001 or WHA-2026-C09-BIO-000001.');
+      showFieldError(form.querySelector('[data-field="studentId"]'), 'Enter your Student ID exactly as it appears in your email.');
       hasError = true;
     } else {
       showFieldError(form.querySelector('[data-field="studentId"]'), '');

@@ -60,12 +60,12 @@ const Utils = (() => {
   }
 
   function isValidStudentIdFormat(value) {
-    // Accepts BOTH ID shapes. The stream segment (Class 9-12) is optional, so
-    // every ID issued before the stream was introduced stays valid forever —
-    // an ID is a permanent primary key and can never be rewritten.
-    //   WHA-2026-C08-000001        Class 1-8
-    //   WHA-2026-C09-BIO-000001    Class 9-12 (BIO | CS | PMED | PENG | ICS)
-    return typeof value === 'string' && /^WHA-\d{4}-C\d{2}(-[A-Z]{2,4})?-\d{6}$/.test(value.trim());
+    // Accepts every ID shape we have ever issued. An ID is a permanent primary
+    // key and is never rewritten, so legacy shapes stay valid forever alongside
+    // the current universal shape. Digit count is open-ended so the counter can
+    // grow past 6 digits later without touching this check.
+    return typeof value === 'string' &&
+      /^(WHA-\d{4}-C\d{2}(-[A-Z]{2,4})?-\d{6}|WHA-STU-\d{6,})$/.test(value.trim());
   }
 
   /** Escapes HTML-sensitive characters before inserting user text into innerHTML. */
