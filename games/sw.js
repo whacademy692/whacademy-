@@ -5,13 +5,13 @@
  * offline fallback for chapter content.
  */
 // Bump on every frontend deploy.
-const CACHE_VERSION = 'wha-v96';
+const CACHE_VERSION = 'wha-v97';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
 const STATIC_ASSETS = [
   'welcome.html', 'login.html', 'dashboard.html', 'profile.html', 'settings.html',
   'games.html', 'leaderboard.html', 'revision.html', 'achievements.html', 'boss-battle.html', 'badges.html',
-  'progress.html',
+  'progress.html', 'guide.html',
   'assets/css/pages/boss-battle.css', 'assets/js/boss-battle.js', 'assets/js/badges.js',
   'assets/css/pages/boss-steps.css', 'assets/css/pages/boss-badges.css', 'assets/js/katex-render.js',
   'assets/vendor/katex/katex.min.js', 'assets/vendor/katex/katex.min.css',

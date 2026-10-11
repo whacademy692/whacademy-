@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://gbgcaonmdekumluwgwvn.supabase.co https://script.google.com https://script.googleusercontent.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Guide — W.H. Academy</title>
+  <meta name="theme-color" content="#3730a3">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .guide-intro { color: var(--color-text-muted,#6b7280); margin-bottom: var(--space-5,20px); }
+    .guide-item {
+      border: 1px solid var(--color-border,#e5e7eb); border-radius: 14px;
+      background: var(--color-surface,#fff); margin-bottom: 12px; overflow: hidden;
+    }
+    .guide-item > summary {
+      list-style: none; cursor: pointer; padding: 16px 18px;
+      font-weight: 700; font-size: 1.02rem; display: flex; align-items: center; gap: 10px;
+    }
+    .guide-item > summary::-webkit-details-marker { display: none; }
+    .guide-item > summary::after { content: "+"; margin-left: auto; font-weight: 700; color: var(--color-text-muted,#6b7280); font-size: 1.2rem; }
+    .guide-item[open] > summary::after { content: "–"; }
+    .guide-item__ic { font-size: 1.15rem; }
+    .guide-body { padding: 0 18px 16px; color: var(--color-text,#1f2937); line-height: 1.6; }
+    .guide-body ol, .guide-body ul { margin: 8px 0 8px 18px; padding: 0; }
+    .guide-body li { margin: 4px 0; }
+    .guide-body p { margin: 8px 0; }
+    .guide-tip { background: #eef2ff; border: 1px solid #c7d2fe; color: #3730a3; border-radius: 10px; padding: 10px 12px; font-size: .9rem; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="app-shell app-shell--with-sidebar">
+    <nav class="sidebar" aria-label="Primary">
+      <a href="dashboard.html" class="top-bar__brand text-display">W.H. Academy</a>
+      <div class="sidebar__nav">
+        <a class="sidebar__item" href="dashboard.html" data-nav-page="dashboard.html">Dashboard</a>
+        <a class="sidebar__item" href="games.html" data-nav-page="games.html">Chapters</a>
+        <a class="sidebar__item" href="boss-battle.html" data-nav-page="boss-battle.html">Boss Battle</a>
+        <a class="sidebar__item" href="revision.html" data-nav-page="revision.html">Revision</a>
+        <a class="sidebar__item" href="leaderboard.html" data-nav-page="leaderboard.html">Ranks</a>
+        <a class="sidebar__item" href="profile.html" data-nav-page="profile.html">Profile</a>
+      </div>
+      <div style="margin-top:auto;">
+        <button class="sidebar__item" style="width:100%;" data-action="logout">Log Out</button>
+      </div>
+    </nav>
+
+    <div style="flex:1; min-width:0;">
+      <header class="top-bar hide-desktop"><span class="top-bar__brand">Guide</span></header>
+
+      <main id="main-content" class="app-main">
+        <div class="container section" style="max-width: 720px;">
+          <h1>How to use W.H. Academy</h1>
+          <p class="guide-intro">A quick guide to everything on your dashboard. Tap any section to open it.</p>
+
+          <details class="guide-item" open>
+            <summary><span class="guide-item__ic">🏠</span> Dashboard — your home</summary>
+            <div class="guide-body">
+              <p>This is your starting screen. It shows your name and class, your subjects, and a few quick numbers (XP, day streak, revision due).</p>
+              <ol>
+                <li><strong>My Subjects</strong> — the subjects you enrolled in. Tap one to see its chapters.</li>
+                <li><strong>Ready for something new</strong> — a shortcut to pick your next chapter.</li>
+                <li><strong>Focus Areas / Your chapters</strong> — fills in once you start playing, showing where you are strong and what to practise.</li>
+              </ol>
+            </div>
+          </details>
+
+          <details class="guide-item">
+            <summary><span class="guide-item__ic">📘</span> Chapters &amp; games — how to study</summary>
+            <div class="guide-body">
+              <ol>
+                <li>Open <strong>Chapters</strong> from the menu (or tap a subject on the dashboard).</li>
+                <li>Pick a chapter. Chapters marked <em>Coming soon</em> are not ready yet.</li>
+                <li>Inside a chapter, play the <strong>games</strong> for each topic. Every correct answer earns <strong>XP</strong>.</li>
+                <li>Your performance per chapter builds up on the dashboard so you can see what to revise.</li>
+              </ol>
+              <div class="guide-tip">Only the subjects you enrolled in unlock. If a subject is missing, contact W.H. Academy to add it.</div>
+            </div>
+          </details>
+
+          <details class="guide-item">
+            <summary><span class="guide-item__ic">🛡️</span> Boss Battle — test yourself</summary>
+            <div class="guide-body">
+              <p>A Boss Battle is a bigger challenge (a paper set by your teacher) that checks how well you have learned a chapter, subject, or whole class.</p>
+              <ol>
+                <li>Open <strong>Boss Battle</strong> from the menu.</li>
+                <li>Pick an available battle and attempt it like a test.</li>
+                <li>Submit when done. Your teacher reviews it and releases your result.</li>
+              </ol>
+              <div class="guide-tip">Keep your overall practice up — your average progress feeds into your Boss Battle readiness.</div>
+            </div>
+          </details>
+
+          <details class="guide-item">
+            <summary><span class="guide-item__ic">🏅</span> Badges — rewards for effort</summary>
+            <div class="guide-body">
+              <p>Badges are little rewards you unlock automatically as you hit milestones — finishing chapters, keeping streaks, scoring well, and more.</p>
+              <ol>
+                <li>Open <strong>Badges</strong> to see what you have earned and what is still locked.</li>
+                <li>Each locked badge tells you what to do to unlock it. Just keep learning.</li>
+              </ol>
+            </div>
+          </details>
+
+          <details class="guide-item">
+            <summary><span class="guide-item__ic">🔁</span> Revision — remember what you learned</summary>
+            <div class="guide-body">
+              <p>Revision brings back questions you have seen before, at the right time, so they stick in your memory.</p>
+              <ol>
+                <li>Open <strong>Revision</strong>. The number of items <em>due</em> shows on your dashboard.</li>
+                <li>Do your due items daily — a few minutes keeps your memory strong.</li>
+              </ol>
+            </div>
+          </details>
+
+          <details class="guide-item">
+            <summary><span class="guide-item__ic">🏆</span> Ranks — your XP &amp; standing</summary>
+            <div class="guide-body">
+              <p><strong>XP</strong> (experience points) is what you earn for correct answers and activity. Ranks shows your XP in each game type and your progress toward the Boss Battle.</p>
+              <ol>
+                <li>Open <strong>Ranks</strong> to see your totals.</li>
+                <li>Play more games to raise your XP and climb.</li>
+              </ol>
+            </div>
+          </details>
+
+          <details class="guide-item">
+            <summary><span class="guide-item__ic">🔥</span> XP, streaks &amp; coins</summary>
+            <div class="guide-body">
+              <ul>
+                <li><strong>XP</strong> — points for learning. More practice = more XP.</li>
+                <li><strong>Day streak</strong> — how many days in a row you studied. Log in and do a little each day to keep it alive.</li>
+                <li><strong>Coins</strong> — earned through activity and spent on in-app rewards where available.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="guide-item">
+            <summary><span class="guide-item__ic">↩️</span> Support &amp; Rechecking — if a result looks wrong</summary>
+            <div class="guide-body">
+              <p>If you think a Boss Battle result was marked incorrectly, you can ask for a recheck.</p>
+              <ol>
+                <li>Open <strong>Support &amp; Rechecking</strong>.</li>
+                <li>Choose the result you want rechecked and submit your request with a short reason.</li>
+                <li>Your teacher reviews it and updates your result if needed. You will see the outcome here.</li>
+              </ol>
+            </div>
+          </details>
+
+          <details class="guide-item">
+            <summary><span class="guide-item__ic">📈</span> My Progress</summary>
+            <div class="guide-body">
+              <p>See your learning over time — weekly, monthly and lifetime — and which chapters or topics need more work. Use it to plan what to study next.</p>
+            </div>
+          </details>
+
+          <details class="guide-item">
+            <summary><span class="guide-item__ic">👤</span> Profile, PIN &amp; subjects</summary>
+            <div class="guide-body">
+              <ul>
+                <li><strong>Profile</strong> shows your details and subjects.</li>
+                <li>To change your <strong>PIN</strong>, use the Forgot/Change PIN option on the login screen — a code is emailed to the address on file.</li>
+                <li>To add or change subjects, contact W.H. Academy.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="guide-item">
+            <summary><span class="guide-item__ic">🎓</span> Moving to the next class each year</summary>
+            <div class="guide-body">
+              <p>At the start of a new academic year, you don't re-enrol. When W.H. Academy promotes you, your dashboard will ask you to pick your new class's stream, subjects and plan.</p>
+              <ol>
+                <li>Log in — you'll see a short "You have been promoted" form.</li>
+                <li>Choose your stream and subjects, pick a plan, and submit.</li>
+                <li>Once W.H. Academy approves it, your new class opens. Your PIN stays the same.</li>
+              </ol>
+            </div>
+          </details>
+
+          <details class="guide-item">
+            <summary><span class="guide-item__ic">❓</span> Still stuck?</summary>
+            <div class="guide-body">
+              <p>If something isn't working or you can't find what you need, contact W.H. Academy and we'll help you out.</p>
+            </div>
+          </details>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <nav class="bottom-nav" aria-label="Primary">
+    <a class="bottom-nav__item" href="dashboard.html" data-nav-page="dashboard.html">Home</a>
+    <a class="bottom-nav__item" href="games.html" data-nav-page="games.html">Classes</a>
+    <a class="bottom-nav__item" href="boss-battle.html" data-nav-page="boss-battle.html">Boss</a>
+    <a class="bottom-nav__item" href="profile.html" data-nav-page="profile.html">Profile</a>
+  </nav>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/notifications.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/router.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

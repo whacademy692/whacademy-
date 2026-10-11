@@ -95,10 +95,40 @@ const Router = (() => {
     }
   }
 
+  /**
+   * Adds the "Guide" (help) item to the sidebar + bottom-nav on every page —
+   * same app-wide injection approach as Badges / My Progress. Idempotent.
+   */
+  function injectGuideNav() {
+    const icon = '<svg viewBox="0 0 24 24" stroke-width="2" fill="none">' +
+      '<circle cx="12" cy="12" r="9"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.6 9a2.4 2.4 0 114.6 1c0 1.4-2.2 1.8-2.2 3.3M12 17h.01"/></svg>';
+    const sidebar = document.querySelector('.sidebar__nav');
+    if (sidebar && !sidebar.querySelector('[data-nav-page="guide.html"]')) {
+      const a = document.createElement('a');
+      a.className = 'sidebar__item';
+      a.href = 'guide.html';
+      a.setAttribute('data-nav-page', 'guide.html');
+      a.innerHTML = icon + ' Guide';
+      const anchor = sidebar.querySelector('[data-nav-page="profile.html"]');
+      if (anchor) sidebar.insertBefore(a, anchor); else sidebar.appendChild(a);
+    }
+    const bottom = document.querySelector('.bottom-nav');
+    if (bottom && !bottom.querySelector('[data-nav-page="guide.html"]')) {
+      const b = document.createElement('a');
+      b.className = 'bottom-nav__item';
+      b.href = 'guide.html';
+      b.setAttribute('data-nav-page', 'guide.html');
+      b.innerHTML = icon + ' Guide';
+      const anchorB = bottom.querySelector('[data-nav-page="profile.html"]');
+      if (anchorB) bottom.insertBefore(b, anchorB); else bottom.appendChild(b);
+    }
+  }
+
   /** Marks the correct bottom-nav / sidebar item as aria-current. */
   function highlightActiveNav() {
     injectBadgesNav();
     injectProgressNav();
+    injectGuideNav();
     const page = currentPageName();
     Utils.qsa('[data-nav-page]').forEach((el) => {
       if (el.dataset.navPage === page) {
