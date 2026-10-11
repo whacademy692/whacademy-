@@ -270,10 +270,104 @@
     Utils.qs('#dashboard-error').hidden = false;
   }
 
+  // ---- Yearly promotion lock (4c) ------------------------------------------
+  // Same enrollment config as enroll.html / the admin panel, so the scope the
+  // backend computes matches exactly.
+  var PROMO_STREAMS = { low: ['Not applicable'], matric: ['Biology group','Computer group'], inter: ['Pre-Medical','Pre-Engineering','ICS'] };
+  var PROMO_SUBJECTS = { low: ['Mathematics','Science','Geography','History','Computer'], matric: ['Mathematics','Physics','Chemistry','Biology','Computer'], inter: ['Mathematics','Physics','Chemistry','Biology','Computer'] };
+  var PROMO_PLANS = { Middle: [['Starter',5000],['Pro',12000],['Advanced',18000]], Matric: [['Starter',2000],['Pro',3500],['Advanced',4500]], Intermediate: [['Starter',2500],['Pro',4500],['Advanced',5500]] };
+  var PROMO_TUITION = ['Online','Home Tuition'];
+  function promoKeyOf(c){ c = Number(c); return c <= 8 ? 'low' : (c <= 10 ? 'matric' : 'inter'); }
+  function promoBandOf(c){ c = Number(c); return c <= 8 ? 'Middle' : (c <= 10 ? 'Matric' : 'Intermediate'); }
+  function promoEsc(v){ return Utils.escapeHtml ? Utils.escapeHtml(String(v == null ? '' : v)) : String(v == null ? '' : v); }
+
+  function hidePromotionLock(){
+    var el = Utils.qs('#promotion-lock');
+    if (el) { el.hidden = true; el.innerHTML = ''; }
+  }
+  function showPromotionLock(promo){
+    var el = Utils.qs('#promotion-lock');
+    if (!el) return;
+    Utils.qs('#dashboard-skeleton').hidden = true;
+    var c = Utils.qs('#dashboard-content'); if (c) c.hidden = true;
+    var er = Utils.qs('#dashboard-error'); if (er) er.hidden = true;
+    el.style.cssText = 'position:fixed;inset:0;z-index:9999;overflow:auto;background:var(--surface,#f8fafc);display:flex;align-items:flex-start;justify-content:center;padding:24px 16px;';
+    el.hidden = false;
+
+    var target = promo.targetClass;
+    if (promo.submitted) {
+      el.innerHTML =
+        '<div style="max-width:520px;width:100%;background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:28px;margin-top:40px;box-shadow:0 10px 30px rgba(2,6,23,.08);">' +
+          '<h1 style="margin:0 0 8px;font-size:1.4rem;">Request submitted ✓</h1>' +
+          '<p style="color:#475569;line-height:1.5;">Your promotion to <strong>Class ' + promoEsc(target) + '</strong> is now with W.H. Academy for approval. ' +
+          'Once your fee is confirmed and approved, your new class opens automatically. You will keep your same PIN' +
+          ' (your Student ID may change — we will email it).</p>' +
+          '<p style="color:#64748b;font-size:.9rem;margin-top:14px;">You can close this page and come back later.</p>' +
+        '</div>';
+      return;
+    }
+
+    var k = promoKeyOf(target), band = promoBandOf(target);
+    var streamOpts = '<option value="">— Select —</option>' + PROMO_STREAMS[k].map(function(x){ return '<option>' + promoEsc(x) + '</option>'; }).join('');
+    var subjChips = PROMO_SUBJECTS[k].map(function(sub){
+      return '<label style="display:inline-flex;align-items:center;gap:6px;border:1px solid #cbd5e1;border-radius:999px;padding:6px 12px;margin:4px 6px 0 0;cursor:pointer;">' +
+        '<input type="checkbox" class="promo-subj" value="' + promoEsc(sub) + '"> ' + promoEsc(sub) + '</label>';
+    }).join('');
+    var planOpts = '<option value="">— Select —</option>' + PROMO_PLANS[band].map(function(p){
+      return '<option value="' + p[0] + '|' + p[1] + '">' + promoEsc(p[0]) + ' — PKR ' + p[1].toLocaleString() + '</option>';
+    }).join('');
+    var tuitionOpts = '<option value="">— Select —</option>' + PROMO_TUITION.map(function(t){ return '<option>' + promoEsc(t) + '</option>'; }).join('');
+
+    el.innerHTML =
+      '<div style="max-width:560px;width:100%;background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:28px;margin-top:24px;box-shadow:0 10px 30px rgba(2,6,23,.08);">' +
+        '<h1 style="margin:0 0 6px;font-size:1.4rem;">You have been promoted 🎉</h1>' +
+        '<p style="color:#475569;line-height:1.5;margin:0 0 18px;">Welcome to <strong>Class ' + promoEsc(target) + '</strong>! ' +
+        'Choose your subjects and plan for the new class to continue. Your personal details and PIN stay the same.</p>' +
+        '<div style="display:flex;flex-direction:column;gap:14px;">' +
+          '<div><label style="font-weight:600;display:block;margin-bottom:4px;">Stream</label>' +
+            '<select id="promo-stream" style="width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:10px;">' + streamOpts + '</select></div>' +
+          '<div><label style="font-weight:600;display:block;margin-bottom:4px;">Subjects</label><div>' + subjChips + '</div></div>' +
+          '<div><label style="font-weight:600;display:block;margin-bottom:4px;">Plan</label>' +
+            '<select id="promo-plan" style="width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:10px;">' + planOpts + '</select></div>' +
+          '<div><label style="font-weight:600;display:block;margin-bottom:4px;">Tuition mode</label>' +
+            '<select id="promo-tuition" style="width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:10px;">' + tuitionOpts + '</select></div>' +
+          '<p class="promo-err" id="promo-err" style="color:#dc2626;font-size:.9rem;min-height:1em;margin:0;"></p>' +
+          '<button id="promo-submit" class="btn btn--primary btn--lg" style="width:100%;">Submit for approval</button>' +
+        '</div>' +
+      '</div>';
+
+    var btn = Utils.qs('#promo-submit');
+    if (btn) btn.addEventListener('click', function(){ submitPromotion(target); });
+  }
+  function submitPromotion(target){
+    var err = Utils.qs('#promo-err'); if (err) err.textContent = '';
+    var stream = (Utils.qs('#promo-stream') || {}).value || '';
+    var planRaw = (Utils.qs('#promo-plan') || {}).value || '';
+    var tuition = (Utils.qs('#promo-tuition') || {}).value || '';
+    var subjects = Array.prototype.slice.call(document.querySelectorAll('.promo-subj:checked')).map(function(c){ return c.value; });
+    function bad(m){ if (err) err.textContent = m; }
+    if (!stream) return bad('Please choose a stream.');
+    if (!subjects.length) return bad('Please select at least one subject.');
+    if (!planRaw) return bad('Please choose a plan.');
+    if (!tuition) return bad('Please choose a tuition mode.');
+    var parts = planRaw.split('|'), planTier = parts[0], planPrice = Number(parts[1]) || 0;
+    var btn = Utils.qs('#promo-submit'); if (btn) { btn.disabled = true; btn.textContent = 'Submitting…'; }
+    Api.request('student/promotionSubmit', { stream: stream, subjects: subjects, planTier: planTier, planPrice: planPrice, tuitionMode: tuition })
+      .then(function(){ return Api.dashboard.compose(); })
+      .then(function(data){ renderAll(data || {}); })
+      .catch(function(e){
+        if (btn) { btn.disabled = false; btn.textContent = 'Submit for approval'; }
+        bad((e && e.message) || 'Something went wrong. Please try again.');
+      });
+  }
+
   // All seven panels in one place so a cache paint and a fresh paint stay
   // identical. Every render function clears its own container / sets its own
   // text, so calling this twice (cache first, fresh second) can never duplicate.
   function renderAll(data) {
+    var promo = data && data.promotion;
+    if (promo && promo.required) { showPromotionLock(promo); return; }
+    hidePromotionLock();
     renderIdentity(data.profile);
     renderRecommendation(data.recommendation);
     renderStats(data);
