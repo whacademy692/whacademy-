@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- CSP: same per-page policy as the other app pages. Everything this page needs is
+       same-origin (KaTeX is self-hosted); the only network call is fetch() of the
+       animation's own JSON spec. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://gbgcaonmdekumluwgwvn.supabase.co https://script.google.com https://script.googleusercontent.com">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Animation — W.H. Academy</title>
+  <meta name="theme-color" content="#3730a3">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <script>
+    /* early theme boot (same as chapter.html) so the page never flashes the wrong theme */
+    (function () {
+      var ok = ['light','dark','ocean','forest','sunset','grape','rose','candy','aurora','gold','midnight'];
+      var theme = 'light', size = 'default';
+      try {
+        var s = JSON.parse(window.localStorage.getItem('wha:settings') || '{}');
+        if (s && ok.indexOf(s.theme) >= 0) theme = s.theme;
+        if (s && s.textSize) size = String(s.textSize);
+      } catch (e) {}
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.setAttribute('data-text-size', size);
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="assets/css/pages/anim.css">
+</head>
+<body>
+  <div class="anim-page">
+    <header class="anim-page__top">
+      <a class="anim-page__back" href="animations.html" aria-label="Back to Animations">
+        <svg class="anim-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+        Back
+      </a>
+      <div class="anim-page__titles">
+        <h1 class="anim-page__title" id="anim-title">Animation</h1>
+        <p class="anim-page__meta" id="anim-meta"></p>
+      </div>
+    </header>
+    <main id="main-content" class="anim-page__body">
+      <div id="anim-host"><p class="anim-loading">Loading animation…</p></div>
+    </main>
+  </div>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/notifications.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/router.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/scope.js"></script>
+  <script src="assets/js/anim-registry.js"></script>
+  <script src="assets/vendor/katex/katex.min.js"></script>
+  <script src="assets/js/anim-expr.js"></script>
+  <script src="assets/js/anim-engine.js"></script>
+  <script src="assets/js/anim-shapes.js"></script>
+  <script src="assets/js/anim-ui.js"></script>
+  <script src="assets/js/anim-player.js"></script>
+</body>
+</html>

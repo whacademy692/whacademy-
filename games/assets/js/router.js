@@ -124,11 +124,46 @@ const Router = (() => {
     }
   }
 
+  /**
+   * Adds the "Animations" item (interactive subject animations) to the sidebar +
+   * bottom-nav on every page with the app shell — same app-wide injection as
+   * Badges / My Progress / Guide, placed right after "Chapters". Idempotent.
+   * Which animations a student actually sees is decided by scope.js on the
+   * Animations page itself, so the tab is safe to show to everyone.
+   */
+  function injectAnimationsNav() {
+    const icon = '<svg viewBox="0 0 24 24" stroke-width="2" fill="none">' +
+      '<circle cx="12" cy="12" r="9"/><path stroke-linecap="round" stroke-linejoin="round" d="M10 8.6l5.4 3.4-5.4 3.4V8.6z"/></svg>';
+    const sidebar = document.querySelector('.sidebar__nav');
+    if (sidebar && !sidebar.querySelector('[data-nav-page="animations.html"]')) {
+      const a = document.createElement('a');
+      a.className = 'sidebar__item';
+      a.href = 'animations.html';
+      a.setAttribute('data-nav-page', 'animations.html');
+      a.innerHTML = icon + ' Animations';
+      const after = sidebar.querySelector('[data-nav-page="games.html"]');
+      if (after && after.nextSibling) sidebar.insertBefore(a, after.nextSibling);
+      else sidebar.appendChild(a);
+    }
+    const bottom = document.querySelector('.bottom-nav');
+    if (bottom && !bottom.querySelector('[data-nav-page="animations.html"]')) {
+      const b = document.createElement('a');
+      b.className = 'bottom-nav__item';
+      b.href = 'animations.html';
+      b.setAttribute('data-nav-page', 'animations.html');
+      b.innerHTML = icon + ' Animate';
+      const afterB = bottom.querySelector('[data-nav-page="games.html"]');
+      if (afterB && afterB.nextSibling) bottom.insertBefore(b, afterB.nextSibling);
+      else bottom.appendChild(b);
+    }
+  }
+
   /** Marks the correct bottom-nav / sidebar item as aria-current. */
   function highlightActiveNav() {
     injectBadgesNav();
     injectProgressNav();
     injectGuideNav();
+    injectAnimationsNav();
     const page = currentPageName();
     Utils.qsa('[data-nav-page]').forEach((el) => {
       if (el.dataset.navPage === page) {
@@ -137,6 +172,10 @@ const Router = (() => {
         el.removeAttribute('aria-current');
       }
     });
+    // The bottom bar scrolls sideways on phones: bring the current tab into view.
+    const bn = document.querySelector('.bottom-nav');
+    const cur = bn && bn.querySelector('[aria-current="page"]');
+    if (bn && cur) bn.scrollLeft = Math.max(0, cur.offsetLeft - (bn.clientWidth - cur.offsetWidth) / 2);
   }
 
   /** Renders a breadcrumb trail from a simple {label, href}[] descriptor. */

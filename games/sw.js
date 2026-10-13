@@ -5,13 +5,15 @@
  * offline fallback for chapter content.
  */
 // Bump on every frontend deploy.
-const CACHE_VERSION = 'wha-v98';
+const CACHE_VERSION = 'wha-v99';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
 const STATIC_ASSETS = [
   'welcome.html', 'login.html', 'dashboard.html', 'profile.html', 'settings.html',
   'games.html', 'leaderboard.html', 'revision.html', 'achievements.html', 'boss-battle.html', 'badges.html',
-  'progress.html', 'guide.html',
+  'progress.html', 'guide.html', 'animations.html', 'anim-player.html',
+  'assets/css/pages/anim.css', 'assets/js/anim-registry.js', 'assets/js/anim-hub.js', 'assets/js/anim-player.js',
+  'assets/js/anim-expr.js', 'assets/js/anim-engine.js', 'assets/js/anim-shapes.js', 'assets/js/anim-ui.js',
   'assets/css/pages/boss-battle.css', 'assets/js/boss-battle.js', 'assets/js/badges.js',
   'assets/css/pages/boss-steps.css', 'assets/css/pages/boss-badges.css', 'assets/js/katex-render.js',
   'assets/vendor/katex/katex.min.js', 'assets/vendor/katex/katex.min.css',
@@ -122,7 +124,9 @@ self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
   if (url.origin !== self.location.origin) return;
 
-  const isChapterContent = url.pathname.includes('/games/classes/') &&
+  // Chapter content and animation specs: network-first so a corrected lesson
+  // reaches students immediately; the cached copy is only the offline fallback.
+  const isChapterContent = (url.pathname.includes('/games/classes/') || url.pathname.includes('/games/anim-data/')) &&
     (url.pathname.endsWith('.json') || url.pathname.endsWith('.html') ||
      url.pathname.endsWith('.css') || url.pathname.endsWith('.js'));
 

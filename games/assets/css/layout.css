@@ -54,14 +54,23 @@
   bottom: 0; left: 0; right: 0;
   z-index: var(--z-sticky);
   display: flex;
-  justify-content: space-around;
   background: linear-gradient(90deg, var(--brand-primary), var(--brand-primary-mid));
   border-top: none;
   box-shadow: 0 -6px 20px var(--brand-glow, rgba(79, 70, 229, 0.25));
   padding-bottom: env(safe-area-inset-bottom, 0px);
+  /* The bar now carries up to 10 tabs (Badges / Progress / Guide / Animations are injected
+     app-wide). Squeezing them into the screen width pushed the last tabs — Guide, Profile —
+     off-screen on phones, so the bar scrolls sideways instead. Each tab keeps a 64px minimum. */
+  justify-content: flex-start;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
 }
+.bottom-nav::-webkit-scrollbar { display: none; }
 .bottom-nav__item {
-  flex: 1;
+  flex: 1 0 64px;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,0 +1,924 @@
+{
+ "id": "g8-math-pythagoras",
+ "title": "Pythagoras Theorem",
+ "summary": "Stretch the triangle, watch the squares grow, and see why p² + b² = h².",
+ "alt": "A right-angled triangle with perpendicular {{p|1}}, base {{b|1}} and hypotenuse {{h|2}}, with a square drawn on each side.",
+ "uiDefaults": {
+  "angles": false
+ },
+ "world": {
+  "x": [
+   "-zs*p - mg",
+   "b + zs*p + mg"
+  ],
+  "y": [
+   "-zs*b - mg",
+   "p + zs*b + mg"
+  ],
+  "smooth": true,
+  "ratio": 0.95,
+  "pad": 14
+ },
+ "roles": {
+  "perp": {
+   "label": "Perpendicular (p)",
+   "color": "#e11d48",
+   "text": "The side that stands straight up from the right angle."
+  },
+  "base": {
+   "label": "Base (b)",
+   "color": "#2563eb",
+   "text": "The side that lies flat, next to the right angle."
+  },
+  "hyp": {
+   "label": "Hypotenuse (h)",
+   "color": "#059669",
+   "text": "The slanted side facing the right angle — always the longest side."
+  }
+ },
+ "params": [
+  {
+   "id": "p",
+   "label": "Perpendicular (p)",
+   "role": "perp",
+   "group": "Triangle sides",
+   "min": 1,
+   "max": 12,
+   "step": 0.5,
+   "default": 3,
+   "unit": "units",
+   "hint": "The side that stands straight up."
+  },
+  {
+   "id": "b",
+   "label": "Base (b)",
+   "role": "base",
+   "min": 1,
+   "max": 12,
+   "step": 0.5,
+   "default": 4,
+   "unit": "units",
+   "hint": "The side that lies flat."
+  },
+  {
+   "id": "showSq",
+   "label": "Squares on the sides",
+   "type": "toggle",
+   "group": "Show",
+   "default": 1,
+   "enabledWhen": "sq > 0.5"
+  },
+  {
+   "id": "showCells",
+   "label": "Little unit squares",
+   "type": "toggle",
+   "default": 1,
+   "enabledWhen": "sq > 0.5"
+  },
+  {
+   "id": "sq",
+   "hidden": true,
+   "min": 0,
+   "max": 1,
+   "step": 0.001,
+   "default": 0
+  },
+  {
+   "id": "hl",
+   "hidden": true,
+   "min": 0,
+   "max": 1,
+   "step": 1,
+   "default": 0
+  },
+  {
+   "id": "askH",
+   "hidden": true,
+   "min": 0,
+   "max": 1,
+   "step": 1,
+   "default": 0
+  }
+ ],
+ "derived": {
+  "h": "sqrt(p^2 + b^2)",
+  "zs": "sq * showSq",
+  "mg": "1.3 + 0.5 * zs",
+  "C": [
+   0,
+   0
+  ],
+  "B": [
+   "b",
+   0
+  ],
+  "A": [
+   0,
+   "p"
+  ],
+  "angB": "atan2(p, b)",
+  "angA": "90 - angB"
+ },
+ "presets": [
+  {
+   "name": "3 · 4 · 5",
+   "values": {
+    "p": 3,
+    "b": 4
+   }
+  },
+  {
+   "name": "5 · 12 · 13",
+   "values": {
+    "p": 5,
+    "b": 12
+   }
+  },
+  {
+   "name": "6 · 8 · 10",
+   "values": {
+    "p": 6,
+    "b": 8
+   }
+  },
+  {
+   "name": "9 · 12 · 15",
+   "values": {
+    "p": 9,
+    "b": 12
+   }
+  },
+  {
+   "name": "Tall & thin",
+   "values": {
+    "p": 12,
+    "b": 2
+   }
+  },
+  {
+   "name": "Equal sides",
+   "values": {
+    "p": 6,
+    "b": 6
+   }
+  }
+ ],
+ "shapes": [
+  {
+   "type": "grid",
+   "id": "grid",
+   "step": 1,
+   "major": 5,
+   "layer": "back",
+   "uiToggle": "grid"
+  },
+  {
+   "type": "square",
+   "id": "sqP",
+   "role": "perp",
+   "from": "C",
+   "to": "A",
+   "side": 1,
+   "layer": "back",
+   "visible": "showSq",
+   "appear": "squares",
+   "effect": "draw",
+   "delay": 0,
+   "appearDur": 900
+  },
+  {
+   "type": "square",
+   "id": "sqB",
+   "role": "base",
+   "from": "C",
+   "to": "B",
+   "side": -1,
+   "layer": "back",
+   "visible": "showSq",
+   "appear": "squares",
+   "effect": "draw",
+   "delay": 600,
+   "appearDur": 900
+  },
+  {
+   "type": "square",
+   "id": "sqH",
+   "role": "hyp",
+   "from": "B",
+   "to": "A",
+   "side": -1,
+   "layer": "back",
+   "visible": "showSq",
+   "appear": "squares",
+   "effect": "draw",
+   "delay": 1200,
+   "appearDur": 900
+  },
+  {
+   "type": "repeat",
+   "id": "cellsP",
+   "role": "perp",
+   "layer": "back",
+   "count": "floor(p + 0.0001)",
+   "as": "i",
+   "visible": "showSq && showCells",
+   "appear": "count",
+   "appearDur": 900,
+   "template": {
+    "type": "group",
+    "children": [
+     {
+      "type": "segment",
+      "from": [
+       "-(i+1)",
+       0
+      ],
+      "to": [
+       "-(i+1)",
+       "p"
+      ],
+      "role": "perp",
+      "strokeWidth": 1.2,
+      "opacity": 0.55
+     },
+     {
+      "type": "segment",
+      "from": [
+       0,
+       "i+1"
+      ],
+      "to": [
+       "-p",
+       "i+1"
+      ],
+      "role": "perp",
+      "strokeWidth": 1.2,
+      "opacity": 0.55
+     }
+    ]
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "cellsB",
+   "role": "base",
+   "layer": "back",
+   "count": "floor(b + 0.0001)",
+   "as": "i",
+   "visible": "showSq && showCells",
+   "appear": "count",
+   "appearDur": 900,
+   "template": {
+    "type": "group",
+    "children": [
+     {
+      "type": "segment",
+      "from": [
+       "i+1",
+       0
+      ],
+      "to": [
+       "i+1",
+       "-b"
+      ],
+      "role": "base",
+      "strokeWidth": 1.2,
+      "opacity": 0.55
+     },
+     {
+      "type": "segment",
+      "from": [
+       0,
+       "-(i+1)"
+      ],
+      "to": [
+       "b",
+       "-(i+1)"
+      ],
+      "role": "base",
+      "strokeWidth": 1.2,
+      "opacity": 0.55
+     }
+    ]
+   }
+  },
+  {
+   "type": "group",
+   "id": "cellsH",
+   "role": "hyp",
+   "layer": "back",
+   "translate": [
+    0,
+    "p"
+   ],
+   "rotate": "-angB",
+   "visible": "showSq && showCells",
+   "appear": "count",
+   "appearDur": 900,
+   "children": [
+    {
+     "type": "repeat",
+     "count": "floor(h + 0.0001)",
+     "as": "i",
+     "template": {
+      "type": "group",
+      "children": [
+       {
+        "type": "segment",
+        "from": [
+         "i+1",
+         0
+        ],
+        "to": [
+         "i+1",
+         "h"
+        ],
+        "role": "hyp",
+        "strokeWidth": 1.2,
+        "opacity": 0.55
+       },
+       {
+        "type": "segment",
+        "from": [
+         0,
+         "i+1"
+        ],
+        "to": [
+         "h",
+         "i+1"
+        ],
+        "role": "hyp",
+        "strokeWidth": 1.2,
+        "opacity": 0.55
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "type": "polygon",
+   "id": "tri",
+   "role": "ink",
+   "pts": [
+    "C",
+    "B",
+    "A"
+   ],
+   "strokeWidth": 3,
+   "fill": "accent",
+   "fillOpacity": 0.16,
+   "appear": "tri",
+   "effect": "draw",
+   "appearDur": 1500
+  },
+  {
+   "type": "angle",
+   "id": "corner",
+   "at": "C",
+   "from": "B",
+   "to": "A",
+   "style": "square",
+   "r": 30,
+   "role": "ink",
+   "strokeWidth": 2.2,
+   "label": {
+    "text": "90°",
+    "off": 44,
+    "visible": "zs < 0.5"
+   },
+   "appear": "tri",
+   "delay": 1000,
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "perp",
+   "role": "perp",
+   "from": "C",
+   "to": "A",
+   "strokeWidth": 5,
+   "pick": true,
+   "hint": "Perpendicular",
+   "appear": "perp",
+   "effect": "draw",
+   "appearDur": 800,
+   "label": {
+    "text": "\\(p\\) = {{p|1}}",
+    "away": [
+     2,
+     "p/2"
+    ],
+    "off": 6,
+    "size": "l",
+    "visible": "zs < 0.5"
+   }
+  },
+  {
+   "type": "segment",
+   "id": "base",
+   "role": "base",
+   "from": "C",
+   "to": "B",
+   "strokeWidth": 5,
+   "pick": true,
+   "hint": "Base",
+   "appear": "base",
+   "effect": "draw",
+   "appearDur": 800,
+   "label": {
+    "text": "\\(b\\) = {{b|1}}",
+    "away": [
+     "b/2",
+     2
+    ],
+    "off": 6,
+    "size": "l",
+    "visible": "zs < 0.5"
+   }
+  },
+  {
+   "type": "segment",
+   "id": "hyp",
+   "role": "hyp",
+   "from": "B",
+   "to": "A",
+   "strokeWidth": 5,
+   "pick": true,
+   "hint": "Hypotenuse",
+   "appear": "hyp",
+   "effect": "draw",
+   "appearDur": 800
+  },
+  {
+   "type": "text",
+   "id": "lblH",
+   "role": "hyp",
+   "size": "l",
+   "text": "\\(h\\) = {{h|2}}",
+   "at": [
+    "b/2 + 1.05*p/h",
+    "p/2 + 1.05*b/h"
+   ],
+   "visible": "zs < 0.5 && askH < 0.5",
+   "appear": "hyp",
+   "delay": 500,
+   "appearDur": 500
+  },
+  {
+   "type": "text",
+   "id": "lblHq",
+   "role": "hyp",
+   "size": "l",
+   "text": "\\(h\\) = ?",
+   "at": [
+    "b/2 + 1.05*p/h",
+    "p/2 + 1.05*b/h"
+   ],
+   "visible": "zs < 0.5 && askH > 0.5",
+   "appear": "hyp",
+   "delay": 500,
+   "appearDur": 500
+  },
+  {
+   "type": "text",
+   "id": "sideP",
+   "role": "perp",
+   "size": "l",
+   "text": "\\(p\\) = {{p|1}}",
+   "at": [
+    "-p/2",
+    "p/2"
+   ],
+   "dy": -15,
+   "visible": "zs > 0.5",
+   "appear": "squares",
+   "delay": 700,
+   "appearDur": 500
+  },
+  {
+   "type": "text",
+   "id": "areaP",
+   "role": "perp",
+   "size": "l",
+   "text": "\\(p^2\\) = {{p^2|2}}",
+   "at": [
+    "-p/2",
+    "p/2"
+   ],
+   "dy": 15,
+   "visible": "zs > 0.5",
+   "appear": "squares",
+   "delay": 700,
+   "appearDur": 500
+  },
+  {
+   "type": "text",
+   "id": "sideB",
+   "role": "base",
+   "size": "l",
+   "text": "\\(b\\) = {{b|1}}",
+   "at": [
+    "b/2",
+    "-b/2"
+   ],
+   "dy": -15,
+   "visible": "zs > 0.5",
+   "appear": "squares",
+   "delay": 1300,
+   "appearDur": 500
+  },
+  {
+   "type": "text",
+   "id": "areaB",
+   "role": "base",
+   "size": "l",
+   "text": "\\(b^2\\) = {{b^2|2}}",
+   "at": [
+    "b/2",
+    "-b/2"
+   ],
+   "dy": 15,
+   "visible": "zs > 0.5",
+   "appear": "squares",
+   "delay": 1300,
+   "appearDur": 500
+  },
+  {
+   "type": "text",
+   "id": "sideH",
+   "role": "hyp",
+   "size": "l",
+   "text": "\\(h\\) = {{h|2}}",
+   "at": [
+    "(b+p)/2",
+    "(b+p)/2"
+   ],
+   "dy": -15,
+   "visible": "zs > 0.5 && askH < 0.5",
+   "appear": "squares",
+   "delay": 1900,
+   "appearDur": 500
+  },
+  {
+   "type": "text",
+   "id": "areaH",
+   "role": "hyp",
+   "size": "l",
+   "text": "\\(h^2\\) = {{h^2|2}}",
+   "at": [
+    "(b+p)/2",
+    "(b+p)/2"
+   ],
+   "dy": 15,
+   "visible": "zs > 0.5 && askH < 0.5",
+   "appear": "squares",
+   "delay": 1900,
+   "appearDur": 500
+  },
+  {
+   "type": "text",
+   "id": "sideHq",
+   "role": "hyp",
+   "size": "l",
+   "text": "\\(h\\) = ?",
+   "at": [
+    "(b+p)/2",
+    "(b+p)/2"
+   ],
+   "dy": -15,
+   "visible": "zs > 0.5 && askH > 0.5",
+   "appear": "squares",
+   "delay": 1900,
+   "appearDur": 500
+  },
+  {
+   "type": "text",
+   "id": "areaHq",
+   "role": "hyp",
+   "size": "l",
+   "text": "\\(h^2\\) = ?",
+   "at": [
+    "(b+p)/2",
+    "(b+p)/2"
+   ],
+   "dy": 15,
+   "visible": "zs > 0.5 && askH > 0.5",
+   "appear": "squares",
+   "delay": 1900,
+   "appearDur": 500
+  },
+  {
+   "type": "angle",
+   "id": "angMarkB",
+   "at": "B",
+   "from": "C",
+   "to": "A",
+   "r": 34,
+   "role": "accent",
+   "label": "{{ang|0}}°",
+   "uiToggle": "angles",
+   "appear": "drag"
+  },
+  {
+   "type": "angle",
+   "id": "angMarkA",
+   "at": "A",
+   "from": "C",
+   "to": "B",
+   "r": 34,
+   "role": "accent",
+   "label": "{{ang|0}}°",
+   "uiToggle": "angles",
+   "appear": "drag"
+  }
+ ],
+ "handles": [
+  {
+   "at": "A",
+   "role": "perp",
+   "drag": {
+    "p": "py"
+   },
+   "visible": "hl",
+   "label": "Drag up or down to change the perpendicular"
+  },
+  {
+   "at": "B",
+   "role": "base",
+   "drag": {
+    "b": "px"
+   },
+   "visible": "hl",
+   "label": "Drag left or right to change the base"
+  }
+ ],
+ "readouts": [
+  {
+   "label": "p² + b²",
+   "role": "accent",
+   "when": "sq > 0.5 && askH < 0.5",
+   "value": "{{p^2|2}} + {{b^2|2}} = {{p^2+b^2|2}}"
+  },
+  {
+   "label": "h²",
+   "role": "hyp",
+   "when": "sq > 0.5 && askH < 0.5",
+   "value": "{{h^2|2}}"
+  },
+  {
+   "label": "h",
+   "role": "hyp",
+   "when": "sq > 0.5 && askH < 0.5",
+   "value": "{{h|2}}"
+  }
+ ],
+ "steps": [
+  {
+   "id": "tri",
+   "title": "A right-angled triangle",
+   "narration": "Look at this triangle. One of its corners is a perfect **square corner** — exactly **90°**. A triangle like this is called a **right-angled triangle**.",
+   "actions": [
+    {
+     "set": {
+      "sq": 0,
+      "hl": 0,
+      "askH": 0,
+      "p": 3,
+      "b": 4
+     }
+    }
+   ]
+  },
+  {
+   "id": "perp",
+   "title": "The perpendicular — p",
+   "narration": "The side that stands **straight up** from the right angle is called the [[perp|perpendicular]]. We write it as **p**. In this triangle  **p = {{p|1}}**.",
+   "actions": [
+    {
+     "pulse": "perp",
+     "at": 900
+    }
+   ]
+  },
+  {
+   "id": "base",
+   "title": "The base — b",
+   "narration": "The side that lies **flat**, next to the right angle, is called the [[base|base]]. We write it as **b**. In this triangle  **b = {{b|1}}**.",
+   "actions": [
+    {
+     "pulse": "base",
+     "at": 900
+    }
+   ]
+  },
+  {
+   "id": "hyp",
+   "title": "The hypotenuse — h",
+   "narration": "The slanted side that **faces the right angle** is the [[hyp|hypotenuse]], written **h**. It is always the **longest** side of a right-angled triangle. Here  **h = {{h|2}}**.",
+   "actions": [
+    {
+     "pulse": "hyp",
+     "at": 900
+    }
+   ]
+  },
+  {
+   "id": "squares",
+   "title": "A square on every side",
+   "narration": "Now build a square on each side. A square with side s has area **s × s**. The [[perp|perpendicular]] square has area **{{p|1}} × {{p|1}} = {{p^2|2}}**, the [[base|base]] square **{{b|1}} × {{b|1}} = {{b^2|2}}**, and the [[hyp|hypotenuse]] square **{{h^2|2}}**.",
+   "actions": [
+    {
+     "tween": {
+      "sq": 1
+     },
+     "dur": 1000
+    }
+   ]
+  },
+  {
+   "id": "count",
+   "title": "Count the little squares",
+   "narration": "Cut each square into **1 × 1** little squares. The two small squares hold [[perp|{{p^2|2}}]] + [[base|{{b^2|2}}]] = **{{p^2+b^2|2}}** little squares — and the big [[hyp|hypotenuse]] square holds **{{h^2|2}}**. They are exactly equal!",
+   "actions": [
+    {
+     "pulse": [
+      "sqP",
+      "sqB"
+     ],
+     "at": 1100
+    },
+    {
+     "pulse": "sqH",
+     "at": 1800
+    }
+   ]
+  },
+  {
+   "id": "theorem",
+   "title": "Pythagoras Theorem",
+   "narration": "This is true in **every** right-angled triangle:  \\(\\role{hyp}{h^2} = \\role{perp}{p^2} + \\role{base}{b^2}\\)  — the square on the hypotenuse equals the sum of the squares on the other two sides.",
+   "actions": [
+    {
+     "pulse": "sqH",
+     "at": 300
+    },
+    {
+     "pulse": [
+      "sqP",
+      "sqB"
+     ],
+     "at": 1000
+    }
+   ]
+  },
+  {
+   "id": "drag",
+   "title": "Now you change it!",
+   "narration": "Drag the two dots on the triangle — or use the sliders. Watch it stretch: now  **p = {{p|1}}**,  **b = {{b|1}}**  and  **h = {{h|2}}**.  The squares change, yet  {{p^2|2}} + {{b^2|2}} = {{h^2|2}}  stays true!",
+   "actions": [
+    {
+     "set": {
+      "hl": 1
+     }
+    },
+    {
+     "tween": {
+      "p": 6,
+      "b": 8
+     },
+     "at": 300,
+     "dur": 2200
+    }
+   ]
+  },
+  {
+   "id": "use",
+   "title": "Use it to find a side",
+   "narration": "Know two sides? You can find the third! Add the squares, then take the square root:  \\(h = \\sqrt{p^2 + b^2}\\).  With p = {{p|1}} and b = {{b|1}}:  h = √({{p^2|2}} + {{b^2|2}}) = √{{p^2+b^2|2}} = **{{h|2}}**.  Try the challenge — then play freely!",
+   "challenge": "find_h"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Pythagoras Theorem",
+   "tex": "\\role{hyp}{h^2} = \\role{perp}{p^2} + \\role{base}{b^2}",
+   "filled": "\\role{hyp}{ {{h^2|2}} } = \\role{perp}{ {{p^2|2}} } + \\role{base}{ {{b^2|2}} }",
+   "text": "The square on the hypotenuse equals the sum of the squares on the other two sides."
+  },
+  {
+   "title": "Finding the hypotenuse",
+   "tex": "\\role{hyp}{h} = \\sqrt{\\role{perp}{p^2} + \\role{base}{b^2}}",
+   "filled": "\\role{hyp}{ {{h|2}} } = \\sqrt{ {{p^2|2}} + {{b^2|2}} } = \\sqrt{ {{p^2+b^2|2}} }",
+   "text": "Add the two squares, then take the square root."
+  },
+  {
+   "title": "Finding the perpendicular",
+   "tex": "\\role{perp}{p} = \\sqrt{\\role{hyp}{h^2} - \\role{base}{b^2}}",
+   "filled": "\\role{perp}{ {{p|2}} } = \\sqrt{ {{h^2|2}} - {{b^2|2}} } = \\sqrt{ {{h^2-b^2|2}} }",
+   "text": "Looking for a short side? Subtract the other short side's square from the hypotenuse's square."
+  },
+  {
+   "title": "Finding the base",
+   "tex": "\\role{base}{b} = \\sqrt{\\role{hyp}{h^2} - \\role{perp}{p^2}}",
+   "filled": "\\role{base}{ {{b|2}} } = \\sqrt{ {{h^2|2}} - {{p^2|2}} } = \\sqrt{ {{h^2-p^2|2}} }"
+  }
+ ],
+ "challenges": [
+  {
+   "id": "pick_hyp",
+   "type": "pick",
+   "title": "Spot the hypotenuse",
+   "answer": "hyp",
+   "set": {
+    "p": 3,
+    "b": 4
+   },
+   "prompt": "Tap the **hypotenuse** on the drawing.",
+   "hint": "It is the slanted side that faces the right angle.",
+   "explain": "The hypotenuse faces the right angle, and it is the longest side."
+  },
+  {
+   "id": "pick_perp",
+   "type": "pick",
+   "title": "Spot the perpendicular",
+   "answer": "perp",
+   "set": {
+    "p": 5,
+    "b": 3
+   },
+   "prompt": "Now tap the **perpendicular**.",
+   "hint": "It stands straight up from the right angle.",
+   "explain": "The perpendicular is the upright side."
+  },
+  {
+   "id": "find_h",
+   "type": "number",
+   "title": "Find the hypotenuse",
+   "answer": 15,
+   "unit": "units",
+   "set": {
+    "p": 9,
+    "b": 12
+   },
+   "hold": {
+    "askH": 1
+   },
+   "prompt": "The perpendicular is **9** and the base is **12**. Use \\(h^2 = p^2 + b^2\\) to find **h**.",
+   "hint": "First add the squares: 9² + 12² = 81 + 144. Then take the square root of the total.",
+   "explain": "9² + 12² = 81 + 144 = 225, and √225 = 15."
+  },
+  {
+   "id": "ladder",
+   "type": "number",
+   "title": "The ladder",
+   "answer": 12,
+   "unit": "m",
+   "prompt": "A **13 m** ladder leans against a wall. Its foot is **5 m** from the wall. How high up the wall does it reach?",
+   "hint": "The ladder is the hypotenuse. Use \\(p^2 = h^2 - b^2\\) and take the square root.",
+   "explain": "13² − 5² = 169 − 25 = 144, and √144 = 12 m."
+  },
+  {
+   "id": "is_right",
+   "type": "choice",
+   "title": "Is it right-angled?",
+   "answer": "b",
+   "options": [
+    {
+     "id": "a",
+     "label": "4, 5, 6"
+    },
+    {
+     "id": "b",
+     "label": "5, 12, 13"
+    },
+    {
+     "id": "c",
+     "label": "6, 7, 9"
+    }
+   ],
+   "prompt": "Which set of side lengths makes a **right-angled** triangle?",
+   "hint": "Check each one: does (smaller)² + (middle)² equal (largest)²?",
+   "explain": "5² + 12² = 25 + 144 = 169 = 13². Because the theorem works both ways, the triangle must be right-angled."
+  }
+ ],
+ "explore": {
+  "title": "Free play — you are the scientist!",
+  "text": "Drag the dots, move the sliders and try the quick examples. Can you make **h = 10**? Can you find other whole-number triples like 3-4-5? Change the colours in the Colours tab too."
+ },
+ "intro": "A **right-angled triangle** has one corner of exactly 90°. Its three sides have special names: the **perpendicular** (p), the **base** (b) and the **hypotenuse** (h).",
+ "takeaways": [
+  "The **hypotenuse** is the side facing the right angle — it is always the **longest** side.",
+  "\\(\\role{hyp}{h^2} = \\role{perp}{p^2} + \\role{base}{b^2}\\)  — add the squares of the two shorter sides to get the square of the longest.",
+  "To find a short side, **subtract**: \\(p^2 = h^2 - b^2\\).",
+  "Whole-number triples such as **3, 4, 5** and **5, 12, 13** are called Pythagorean triples.",
+  "The theorem works the other way too: if \\(p^2 + b^2 = h^2\\), the triangle must be right-angled."
+ ],
+ "notes": [
+  {
+   "title": "Where is it used?",
+   "text": "Builders check square corners with a 3-4-5 rope. A ladder, a kite string, the diagonal of a TV screen, the shortest path across a field — all of these are hypotenuses."
+  }
+ ],
+ "challengeIntro": "Test yourself. Each challenge sets up the drawing for you — get it right to earn the tick."
+}
