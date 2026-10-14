@@ -275,7 +275,7 @@
   // backend computes matches exactly.
   var PROMO_STREAMS = { low: ['Not applicable'], matric: ['Biology group','Computer group'], inter: ['Pre-Medical','Pre-Engineering','ICS'] };
   // Subjects depend on the STREAM for classes 9-12 (Federal board groups).
-  var PROMO_SUBJECTS_MIDDLE = ['Mathematics','Science','Geography','History','Computer'];
+  var PROMO_SUBJECTS_MIDDLE = ['Mathematics','Science','History','Geography','Computer'];
   var PROMO_SUBJECTS_BY_STREAM = {
     'Biology group':   ['Mathematics','Physics','Chemistry','Biology'],
     'Computer group':  ['Mathematics','Physics','Chemistry','Computer'],
@@ -285,7 +285,8 @@
   };
   function promoSubjectsFor(cls, stream){
     if (Number(cls) <= 8) return PROMO_SUBJECTS_MIDDLE;
-    return PROMO_SUBJECTS_BY_STREAM[String(stream||'')] || [];
+    if (Number(cls) >= 11) return ['Mathematics','Physics'];   // Intermediate: Math & Physics only
+    return PROMO_SUBJECTS_BY_STREAM[String(stream||'')] || [];  // 9-10: by group (includes Computer)
   }
   function promoSubjChipsHtml(list){
     if (!list.length) return '<span style="color:#64748b;font-size:.9rem;">Choose your stream first to see its subjects.</span>';
@@ -294,7 +295,11 @@
         '<input type="checkbox" class="promo-subj" value="' + promoEsc(sub) + '"> ' + promoEsc(sub) + '</label>';
     }).join('');
   }
-  var PROMO_PLANS = { Middle: [['Starter',5000],['Pro',12000],['Advanced',18000]], Matric: [['Starter',2000],['Pro',3500],['Advanced',4500]], Intermediate: [['Starter',2500],['Pro',4500],['Advanced',5500]] };
+  /* Middle: [tier, flat(all 5), per-subject]. Matric/Inter: [tier, per-subject]. */
+  var PROMO_PLANS = { Middle: [['Basic',2500,999],['Plus',4700,1700],['Max',5500,2500]], Matric: [['Basic',1200],['Plus',1999],['Max',2500]], Intermediate: [['Basic',2000],['Plus',3300],['Max',3999]] };
+  var _promoBand = '';
+  function promoPlanOf(band, tier){ var r=null; (PROMO_PLANS[band]||[]).forEach(function(p){ if(p[0]===tier) r=p; }); return r; }
+  function promoComputeFee(band, tier, count){ var p=promoPlanOf(band,tier); if(!p||!count) return 0; if(band==='Middle') return count>=5 ? p[1] : p[2]*count; return p[1]*count; }
   var PROMO_TUITION = ['Online','Home Tuition'];
   function promoKeyOf(c){ c = Number(c); return c <= 8 ? 'low' : (c <= 10 ? 'matric' : 'inter'); }
   function promoBandOf(c){ c = Number(c); return c <= 8 ? 'Middle' : (c <= 10 ? 'Matric' : 'Intermediate'); }
@@ -342,8 +347,12 @@
     var isMiddle = Number(target) <= 8;
     var streamOpts = '<option value="">— Select —</option>' + PROMO_STREAMS[k].map(function(x){ return '<option' + (isMiddle && x === 'Not applicable' ? ' selected' : '') + '>' + promoEsc(x) + '</option>'; }).join('');
     var subjChips = promoSubjChipsHtml(promoSubjectsFor(target, isMiddle ? 'Not applicable' : ''));
+    _promoBand = band;
     var planOpts = '<option value="">— Select —</option>' + PROMO_PLANS[band].map(function(p){
-      return '<option value="' + p[0] + '|' + p[1] + '">' + promoEsc(p[0]) + ' — PKR ' + p[1].toLocaleString() + '</option>';
+      var label = (band === 'Middle')
+        ? (p[0] + ' — all 5: PKR ' + p[1].toLocaleString() + '  ·  or PKR ' + p[2].toLocaleString() + '/subject')
+        : (p[0] + ' — PKR ' + p[1].toLocaleString() + ' per subject');
+      return '<option value="' + p[0] + '">' + promoEsc(label) + '</option>';
     }).join('');
     var tuitionOpts = '<option value="">— Select —</option>' + PROMO_TUITION.map(function(t){ return '<option>' + promoEsc(t) + '</option>'; }).join('');
 
@@ -384,7 +393,7 @@
     if (!subjects.length) return bad('Please select at least one subject.');
     if (!planRaw) return bad('Please choose a plan.');
     if (!tuition) return bad('Please choose a tuition mode.');
-    var parts = planRaw.split('|'), planTier = parts[0], planPrice = Number(parts[1]) || 0;
+    var planTier = planRaw, planPrice = promoComputeFee(_promoBand, planTier, subjects.length);
     var btn = Utils.qs('#promo-submit'); if (btn) { btn.disabled = true; btn.textContent = 'Submitting…'; }
     Api.request('student/promotionSubmit', { stream: stream, subjects: subjects, planTier: planTier, planPrice: planPrice, tuitionMode: tuition })
       .then(function(){ return Api.dashboard.compose(); })

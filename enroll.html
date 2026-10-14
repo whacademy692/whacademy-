@@ -95,6 +95,9 @@
   .plan .price{font-size:1.5rem;font-weight:800;color:var(--indigo-deep);margin:6px 0 2px}
   .plan .price small{font-size:.72rem;color:var(--muted);font-weight:600}
   .plan .per{font-size:.72rem;color:var(--muted)}
+  .plan .peralt{font-size:.7rem;color:var(--muted);margin-top:4px;line-height:1.3}
+  .fee-estimate{margin:12px 0 0;font-size:.9rem;color:var(--indigo-deep);font-weight:600;line-height:1.5}
+  .fee-estimate .fe-note{display:block;margin-top:2px;font-weight:500;color:var(--muted);font-size:.8rem}
   .plan .pick{position:absolute;top:12px;right:12px;width:20px;height:20px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:.7rem;color:#fff}
   .plan.sel .pick{background:var(--indigo);border-color:var(--indigo)}
   .plan.sel .pick::after{content:"✓"}
@@ -245,6 +248,7 @@
           <label>Select Plan <span class="req">*</span></label>
           <p class="band-note" id="bandNote">Select your class above to see the plans for your level.</p>
           <div class="plans" id="plans"></div>
+          <p class="fee-estimate" id="feeEstimate"></p>
           <p class="err" id="e-plan">Please select a plan.</p>
         </div>
       </div>
@@ -279,15 +283,16 @@
   var API_KEY      = 'Jdb-iJByoQ-WA0UwlQrorQOH77buDQjepPH0y2SsDyo';
 
   /* -------- Plan fee tables (names fixed; Middle fees updated) ------------ */
+  /* Basic/Plus/Max. Middle: flat = all-subjects fee, per = per-subject fee. Matric/Inter: per subject. */
   var PLANS = {
-    Middle:       [ {tier:'Starter',price:5000}, {tier:'Pro',price:12000}, {tier:'Advanced',price:18000} ],
-    Matric:       [ {tier:'Starter',price:2000}, {tier:'Pro',price:3500},  {tier:'Advanced',price:4500}  ],
-    Intermediate: [ {tier:'Starter',price:2500}, {tier:'Pro',price:4500},  {tier:'Advanced',price:5500}  ],
+    Middle:       [ {tier:'Basic',flat:2500,per:999}, {tier:'Plus',flat:4700,per:1700}, {tier:'Max',flat:5500,per:2500} ],
+    Matric:       [ {tier:'Basic',per:1200}, {tier:'Plus',per:1999}, {tier:'Max',per:2500} ],
+    Intermediate: [ {tier:'Basic',per:2000}, {tier:'Plus',per:3300}, {tier:'Max',per:3999} ],
   };
   var BAND_LABEL = {
-    Middle:'📚 Middle Section (Grades 6–8) — flat plan fee; pick the subjects you want',
-    Matric:'📘 Matriculation (9th–10th) — charges apply per subject',
-    Intermediate:'📘 Intermediate (Grades 11–12) — charges apply per subject'
+    Middle:'📚 Middle Section (Grades 6–8) — all 5 subjects at a flat fee, or pick fewer and pay per subject',
+    Matric:'📘 Matriculation (9th–10th) — fee is per subject',
+    Intermediate:'📘 Intermediate (Grades 11–12) — Mathematics & Physics, per subject'
   };
   /* -------- Stream options per class band -------------------------------- */
   var STREAMS = {
@@ -308,7 +313,7 @@
 
   /* ---- Subjects depend on the STREAM for classes 9-12 (Federal board groups).
          EDIT HERE to add/change subjects; Middle (6-8) has one fixed list. ---- */
-  var SUBJECTS_MIDDLE = ['Mathematics','Science','Geography','History','Computer'];
+  var SUBJECTS_MIDDLE = ['Mathematics','Science','History','Geography','Computer'];
   var SUBJECTS_BY_STREAM = {
     'Biology group':   ['Mathematics','Physics','Chemistry','Biology'],
     'Computer group':  ['Mathematics','Physics','Chemistry','Computer'],
@@ -318,7 +323,8 @@
   };
   function subjectsFor(cls, stream){
     if (Number(cls) <= 8) return SUBJECTS_MIDDLE;
-    return SUBJECTS_BY_STREAM[String(stream||'')] || [];
+    if (Number(cls) >= 11) return ['Mathematics','Physics'];   // Intermediate: Math & Physics only
+    return SUBJECTS_BY_STREAM[String(stream||'')] || [];        // 9-10: by group (includes Computer)
   }
   function renderSubjects(cls, stream){
     var chips=$('subjectChips'); chips.innerHTML='';
@@ -364,32 +370,54 @@
     setStep();
   });
 
+  /* ---- monthly fee: matches the pricing page (Middle all-5 = flat, else per-subject; Matric/Inter per subject) ---- */
+  function planOf(band,tier){ var r=null; (PLANS[band]||[]).forEach(function(x){ if(x.tier===tier) r=x; }); return r; }
+  function computeFee(band,tier,count){
+    var p=planOf(band,tier); if(!p||!count) return 0;
+    if(band==='Middle') return count>=5 ? p.flat : p.per*count;
+    return p.per*count;
+  }
+  function updateEstimate(){
+    var el=$('feeEstimate'); if(!el) return;
+    var cls=$('classLevel').value, band=cls?bandOf(cls):null;
+    if(!band){ el.innerHTML=''; return; }
+    if(!state.plan){ el.innerHTML='<b>Select a plan</b> to see the estimated monthly fee.'; return; }
+    var c=selectedSubjects().length;
+    if(!c){ el.innerHTML='<b>Pick your subjects</b> to see the estimated monthly fee.'; return; }
+    var fee=computeFee(band,state.plan,c);
+    var sub=(band==='Middle'&&c>=5)?'all 5 subjects':(c+' subject'+(c>1?'s':''));
+    el.innerHTML='Estimated monthly Dashboard fee: <b>PKR '+fee.toLocaleString()+'</b> ('+state.plan+' · '+sub+'). <span class="fe-note">Live classes, if any, are confirmed on WhatsApp.</span>';
+  }
+
   /* ---- render plan cards ---- */
   function renderPlans(band){
     var wrap=$('plans'); wrap.innerHTML=''; state.plan=null; state.price=null;
-    if(!band){ $('bandNote').textContent='Select your class above to see the plans for your level.'; return; }
+    if(!band){ $('bandNote').textContent='Select your class above to see the plans for your level.'; updateEstimate(); return; }
     $('bandNote').textContent = BAND_LABEL[band];
-    var perNote = (band==='Middle') ? 'all subjects' : 'per subject';
     PLANS[band].forEach(function(p){
-      var d=document.createElement('button'); d.type='button'; d.className='plan'; d.dataset.tier=p.tier; d.dataset.price=p.price;
+      var head,per,alt='';
+      if(band==='Middle'){ head='PKR '+p.flat.toLocaleString(); per='all 5 subjects'; alt='<div class="peralt">or PKR '+p.per.toLocaleString()+' / subject</div>'; }
+      else { head='PKR '+p.per.toLocaleString(); per='per subject'; }
+      var d=document.createElement('button'); d.type='button'; d.className='plan'; d.dataset.tier=p.tier;
       d.innerHTML='<span class="pick"></span><div class="tier">'+p.tier+'</div>'+
-                  '<div class="price">PKR '+p.price.toLocaleString()+'</div>'+
-                  '<div class="per">'+perNote+'</div>';
+                  '<div class="price">'+head+'</div>'+
+                  '<div class="per">'+per+'</div>'+alt;
       d.addEventListener('click', function(){
         wrap.querySelectorAll('.plan').forEach(function(x){x.classList.remove('sel');});
-        d.classList.add('sel'); state.plan=p.tier; state.price=p.price; clearErr('plan'); setStep();
+        d.classList.add('sel'); state.plan=p.tier; clearErr('plan'); updateEstimate(); setStep();
       });
       wrap.appendChild(d);
     });
+    updateEstimate();
   }
 
-  $('stream').addEventListener('change',function(){clearErr('stream');renderSubjects($('classLevel').value, this.value);setStep();});
+  $('stream').addEventListener('change',function(){clearErr('stream');renderSubjects($('classLevel').value, this.value);updateEstimate();setStep();});
   $('tuitionMode').addEventListener('change',function(){
     clearErr('tuitionMode');
     $('homeNote').classList.toggle('show', this.value==='Home Tuition');
     setStep();
   });
-  document.getElementById('subjectChips').addEventListener('change',function(){clearErr('subjects');setStep();});
+  document.getElementById('subjectChips').addEventListener('change',function(){clearErr('subjects');updateEstimate();setStep();});
   ['email','fullName','fatherName','fatherOccupation','schoolName','address'].forEach(function(id){
     $(id).addEventListener('input',function(){clearErr(id);setStep();});
   });
@@ -456,7 +484,7 @@
       otherSubject:other,
       tuitionMode:$('tuitionMode').value,
       planTier:state.plan,
-      planPrice:state.price,
+      planPrice: computeFee(bandOf(cls), state.plan, subs.length),
       submittedAtLocal:new Date().toString()
     };
 
