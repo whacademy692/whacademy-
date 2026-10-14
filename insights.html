@@ -13,7 +13,7 @@
     (challenges.cloudflare.com) to script/connect/frame, plus Google Fonts and
     the Apps Script API endpoint. Turnstile = the anti-spam gate for the form.
   -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://gbgcaonmdekumluwgwvn.supabase.co https://script.google.com https://script.googleusercontent.com https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://gbgcaonmdekumluwgwvn.supabase.co https://script.google.com https://script.googleusercontent.com https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com">
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
@@ -38,12 +38,13 @@
     };
   </script>
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=whaTurnstileOnload&render=explicit" async defer></script>
+    <link rel="stylesheet" href="/assets/brand.css">
 </head>
 <body>
 
   <header class="topbar">
     <div class="wrap topbar__inner">
-      <a class="brand" href="index.html">W.H. <span>Academy</span></a>
+      <a class="brand wh-logo" href="index.html"><span class="wh-mark">W.H.</span><span class="wh-text"><span class="wh-l1">ACADEMY</span><span class="wh-l2">MATHEMATICS</span></span></a>
       <a class="topbar__back" href="index.html">&larr; Back to site</a>
     </div>
   </header>

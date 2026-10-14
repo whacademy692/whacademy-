@@ -1,0 +1,43 @@
+/* ============================================================================
+   W.H. Academy — brand typography + logo (self-contained, CSP-safe)
+   Fonts are self-hosted under /assets/fonts (no external requests).
+   - Headings: Montserrat
+   - Logo: "W.H." in Apropal (OFL, by Rafał Buchner), "ACADEMY/MATHEMATICS" in Poppins
+   ========================================================================== */
+@font-face{font-family:'Apropal';src:url('/assets/fonts/Apropal-Bold.woff2') format('woff2');font-weight:400 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Montserrat';src:url('/assets/fonts/montserrat-600.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Montserrat';src:url('/assets/fonts/montserrat-700.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Montserrat';src:url('/assets/fonts/montserrat-800.woff2') format('woff2');font-weight:800;font-display:swap}
+@font-face{font-family:'Poppins';src:url('/assets/fonts/poppins-500.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Poppins';src:url('/assets/fonts/poppins-600.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Poppins';src:url('/assets/fonts/poppins-700.woff2') format('woff2');font-weight:700;font-display:swap}
+
+/* All headings -> Montserrat (clear & bold), site-wide */
+h1,h2,h3,h4,h5,h6{font-family:'Montserrat','Plus Jakarta Sans',sans-serif !important}
+
+/* Remove the old shield/icon marks wherever they remain */
+.logo-svg-wrap{display:none !important}
+
+/* ===== The W.H. Academy wordmark ===== */
+.wh-logo{display:inline-flex !important;align-items:center;gap:11px;text-decoration:none;line-height:1}
+/* colour: dark on light backgrounds, white on the dark navbar/footers.
+   (The games student-app top bar keeps its own accent colour.) */
+.nav-logo.wh-logo,.nav-brand.wh-logo,.brand.wh-logo{color:#1e293b}
+.navbar .wh-logo{color:#fff !important}
+footer .wh-logo,.site-footer .wh-logo,.footer .wh-logo{color:#fff !important}
+.wh-logo .wh-mark{font-family:'Apropal',serif;font-weight:400;font-size:1.95rem;line-height:.78;letter-spacing:-1px;white-space:nowrap;color:currentColor}
+.wh-logo .wh-text{display:inline-flex;flex-direction:column;align-items:flex-start;text-align:left}
+.wh-logo .wh-l1{font-family:'Poppins',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:3px;color:currentColor;-webkit-text-fill-color:currentColor}
+.wh-logo .wh-l2{font-family:'Poppins',sans-serif;font-weight:500;font-size:.5rem;letter-spacing:2.4px;margin-top:3px;color:currentColor;-webkit-text-fill-color:currentColor;opacity:.72}
+
+/* Games student-app top bar: keep it compact */
+.top-bar__brand.wh-logo{gap:9px}
+.top-bar__brand .wh-mark{font-size:1.5rem}
+.top-bar__brand .wh-l1{font-size:.78rem;letter-spacing:2.5px}
+.top-bar__brand .wh-l2{font-size:.46rem}
+
+/* Small screens: trim the wordmark a touch */
+@media(max-width:560px){
+  .wh-logo .wh-mark{font-size:1.7rem}
+  .wh-logo .wh-l1{font-size:.85rem}
+}
