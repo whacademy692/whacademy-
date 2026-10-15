@@ -131,6 +131,14 @@
   document.addEventListener('wha:ready', async function () {
     if (Router.currentPageName() !== 'animations.html') return;
     var profile = await resolveProfile();
+    // Animations are a Max-plan feature. Everyone else sees an upgrade card.
+    if (!(await Plan.can('animations'))) {
+      var lockBox = Utils.qs('#anim-grid');
+      if (lockBox) lockBox.innerHTML = Plan.lockHtml('animations', { message: 'Interactive subject animations are part of the Max plan. Upgrade to Max to open them.' });
+      var lockSearch = Utils.qs('#anim-searchwrap');
+      if (lockSearch) lockSearch.hidden = true;
+      return;
+    }
     var rows = entitledRows(profile);
     render(rows, '');
     var input = Utils.qs('#anim-search');

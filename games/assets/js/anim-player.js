@@ -52,6 +52,11 @@
     var id = Router.getQueryParam('a');
     if (!id) { message('No animation chosen', 'Go back and pick one from the list.'); return; }
     var profile = await resolveProfile();
+    if (!(await Plan.can('animations'))) {
+      host.textContent = '';
+      host.innerHTML = Plan.lockHtml('animations', { message: 'Interactive subject animations are part of the Max plan. Upgrade to Max to open them.' });
+      return;
+    }
     var found = findAllowed(profile, id);
     if (!found) { message('This animation is not available for you', 'It may belong to another class or subject.'); return; }
 

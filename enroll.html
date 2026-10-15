@@ -386,7 +386,17 @@
     if(!c){ el.innerHTML='<b>Pick your subjects</b> to see the estimated monthly fee.'; return; }
     var fee=computeFee(band,state.plan,c);
     var sub=(band==='Middle'&&c>=5)?'all 5 subjects':(c+' subject'+(c>1?'s':''));
-    el.innerHTML='Estimated monthly Dashboard fee: <b>PKR '+fee.toLocaleString()+'</b> ('+state.plan+' · '+sub+'). <span class="fe-note">Live classes, if any, are confirmed on WhatsApp.</span>';
+    el.innerHTML='Estimated monthly Dashboard fee: <b>PKR '+fee.toLocaleString()+'</b> ('+state.plan+' · '+sub+'). '+firstMonthNote(fee)+'<span class="fe-note">Live classes, if any, are confirmed on WhatsApp.</span>';
+  }
+  /* ---- first month: same rule as plan upgrades. Calendar months; joining part-way pays for the days left
+         (today counts, Pakistan time), rounded to the nearest PKR 10; the next month is the full fee. ---- */
+  var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  function firstMonthNote(fee){
+    var t=new Date(Date.now()+5*3600*1000), y=t.getUTCFullYear(), m=t.getUTCMonth(), d=t.getUTCDate();
+    var dim=new Date(Date.UTC(y,m+1,0)).getUTCDate(), left=dim-d+1;
+    if(left>=dim||!fee) return '';
+    var amt=Math.round(fee*left/dim/10)*10;
+    return '<span class="fe-note">If you join today: <b>PKR '+amt.toLocaleString()+'</b> for the rest of '+MONTHS[m]+' ('+left+' day'+(left===1?'':'s')+', today counts), then PKR '+fee.toLocaleString()+' a month from 1 '+MONTHS[(m+1)%12]+'. The exact amount is confirmed on your fee voucher.</span>';
   }
 
   /* ---- render plan cards ---- */

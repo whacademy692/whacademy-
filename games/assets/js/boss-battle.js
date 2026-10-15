@@ -105,7 +105,15 @@
       '</section>';
   }
 
+  // Past Papers shelf is a Plus/Max feature; set at the top of loadList().
+  let pastLocked = false;
+
   function pastPapersSection(pastPapers) {
+    if (pastLocked) {
+      return '<section class="bb-past"><h3 class="bb-section-title">Past Papers</h3>' +
+        Plan.lockHtml('pastPapers', { message: 'Practise with past papers on the Plus and Max plans. Upgrade to unlock them.' }) +
+        '</section>';
+    }
     if (!pastPapers || !pastPapers.length) return '';
     const cards = pastPapers.map((p) =>
       '<article class="bb-past-card">' +
@@ -787,6 +795,7 @@
   }
 
   async function loadList() {
+    pastLocked = !(await Plan.can('pastPapers'));
     // Cache-first, same pattern as dashboard.js: if we have a previous snapshot,
     // paint it INSTANTLY (skip the skeleton entirely) instead of making the
     // student stare at loading cards while Apps Script wakes up. The fresh
@@ -805,7 +814,7 @@
     try {
       const [active, past, badges] = await Promise.all([
         Api.bossBattle.activePapers(),
-        Api.bossBattle.pastPapers().catch(() => ({ papers: [] })),
+        pastLocked ? Promise.resolve({ papers: [] }) : Api.bossBattle.pastPapers().catch(() => ({ papers: [] })),
         Api.bossBattle.myBadges().catch(() => ({ badges: [] }))
       ]);
       Storage.setCachedBossPapers({ active, past });

@@ -338,8 +338,16 @@
     }
   }
 
-  document.addEventListener('wha:ready', () => {
+  document.addEventListener('wha:ready', async () => {
     if (Router.currentPageName() !== 'rechecking.html') return;
+
+    // Rechecking is a Plus/Max feature (the server also refuses Basic). Basic sees an
+    // upgrade card in place of the claims tab; "Report a Website Issue" stays open for everyone.
+    if (!(await Plan.can('rechecking'))) {
+      const lockPanel = el('rc-panel-recheck');
+      if (lockPanel) lockPanel.innerHTML = Plan.lockHtml('rechecking', { message: 'Request a question-by-question recheck of your Boss Battle marking on the Plus and Max plans. Upgrade to unlock it.' });
+      return;
+    }
 
     el('rc-load').addEventListener('click', loadPaper);
     el('rc-paper-id').addEventListener('keydown', (event) => {

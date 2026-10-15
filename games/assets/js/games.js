@@ -59,8 +59,11 @@
     return scopeCache;
   }
 
-  /** All chapters the student may see, flattened, each tagged with its subject. */
-  function entitledChapters(profile) {
+  /** All chapters the student may see, flattened, each tagged with its subject.
+   *  A chapter marked  "advanced": true  in content-registry.js is an Advanced
+   *  game: playable on Plus/Max, shown locked on Basic. Every game that exists
+   *  today is a Basic game (unmarked) and stays open to all plans. */
+  function entitledChapters(profile, plan) {
     if (!window.WHA_Scope || !window.WHA_CONTENT || !profile) return [];
     var scope = window.WHA_Scope.parse(profile.enrolledScope);
     var subjects = window.WHA_Scope.allowedSubjects(scope, window.WHA_CONTENT);
@@ -76,7 +79,8 @@
           n: ch.n,
           game: ch.game,
           notes: ch.notes,
-          quiz: ch.quiz
+          quiz: ch.quiz,
+          locked: !!(ch.advanced && ch.game && !Plan.allows(plan, 'advancedGames'))
         });
       });
     });
@@ -92,7 +96,7 @@
     var accentStyle = accent
       ? '--subject-accent: var(--subject-' + accent + '-primary); --subject-accent-tint: var(--subject-' + accent + '-secondary);'
       : '';
-    var playable = !!row.game;
+    var playable = !!row.game && !row.locked;
 
     var children = [
       Utils.createEl('div', { class: 'card--nav__icon' }, [
@@ -112,8 +116,9 @@
         style: accentStyle
       }, children);
     }
-    // Not yet playable — a visible, greyed card labelled with its status.
-    children.push(Utils.createEl('span', { class: 'badge', style: 'margin-left:auto;', text: 'Coming soon' }));
+    // Not playable — a visible, greyed card labelled with its status.
+    children.push(Utils.createEl('span', { class: 'badge', style: 'margin-left:auto;',
+      text: row.locked ? '\uD83D\uDD12 Plus & Max' : 'Coming soon' }));
     return Utils.createEl('div', { class: 'card card--nav', style: 'opacity:0.55;' }, children);
   }
 
@@ -141,7 +146,7 @@
 
     // Playable chapters first within each subject.
     var rows = group.rows.slice().sort(function (a, b) { return (b.game ? 1 : 0) - (a.game ? 1 : 0); });
-    var playableCount = rows.filter(function (r) { return !!r.game; }).length;
+    var playableCount = rows.filter(function (r) { return !!r.game && !r.locked; }).length;
 
     var grid = Utils.createEl('div', { class: 'card-grid' },
       rows.map(function (r) { return chapterCard(r); }));
@@ -201,7 +206,7 @@
   document.addEventListener('wha:ready', async function () {
     if (Router.currentPageName() !== 'games.html') return;
     var ctx = await resolveScope();
-    var rows = entitledChapters(ctx.profile);
+    var rows = entitledChapters(ctx.profile, await Plan.get());
     renderGrid(rows, '');
     initSearch(rows);
   });

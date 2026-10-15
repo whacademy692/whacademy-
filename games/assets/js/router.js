@@ -253,3 +253,97 @@ const Router = (() => {
     renderBreadcrumb, showStep, getQueryParam, goTo, logoutAndRedirect
   };
 })();
+
+/**
+ * Plan — W.H. Academy (Basic / Plus / Max)
+ * One place that decides which plan unlocks which feature in the student app.
+ * It reads the student's plan from the dashboard/compose payload (data.plan),
+ * using the cached dashboard when it already carries a plan and fetching once
+ * when it does not (e.g. a cache saved before plan support existed).
+ *
+ * HOW TO CHANGE THE RULES: edit FEATURES below. Nothing else needs touching.
+ * The lock card's main button opens upgrade.html, where the student sends an upgrade request.
+ *
+ * An unknown/empty plan (an old enrolment with no tier set, or a failed
+ * lookup) keeps FULL access. This mirrors the backend, which only refuses an
+ * explicit "Basic". This is a UI-level gate; the server stays the authority
+ * (it already refuses Rechecking for Basic).
+ */
+const Plan = (() => {
+  const RANK = { Basic: 1, Plus: 2, Max: 3 };
+  const LEGACY = { Starter: 'Basic', Pro: 'Plus', Advanced: 'Max' };
+  const WHATSAPP = 'https://wa.me/923295215703';
+
+  // feature key -> lowest plan that includes it.
+  const FEATURES = {
+    animations:    { min: 'Max',  label: 'Animations' },
+    rechecking:    { min: 'Plus', label: 'Rechecking' },
+    pastPapers:    { min: 'Plus', label: 'Past Papers' },
+    advancedGames: { min: 'Plus', label: 'Advanced games' }
+  };
+
+  let pending = null;
+
+  function normalize(value) {
+    const v = String(value == null ? '' : value).trim();
+    return LEGACY[v] || v;
+  }
+
+  async function fetchPlan() {
+    const cached = Storage.getCachedDashboard();
+    if (cached && cached.data && Object.prototype.hasOwnProperty.call(cached.data, 'plan')) {
+      return normalize(cached.data.plan);
+    }
+    try {
+      const data = await Api.dashboard.compose();
+      Storage.setCachedDashboard(data);
+      return normalize(data && data.plan);
+    } catch (e) {
+      return '';
+    }
+  }
+
+  /** Resolves to 'Basic' | 'Plus' | 'Max' | '' (unknown). Looked up once per page. */
+  function get() {
+    if (!pending) pending = fetchPlan();
+    return pending;
+  }
+
+  /** Pure check: does this plan include the feature? Unknown plan = yes. */
+  function allows(plan, feature) {
+    const f = FEATURES[feature];
+    const rank = RANK[normalize(plan)];
+    if (!f || !rank) return true;
+    return rank >= RANK[f.min];
+  }
+
+  async function can(feature) { return allows(await get(), feature); }
+
+  /** Upgrade card (HTML string, static text only). opts: { title, message } */
+  function lockHtml(feature, opts) {
+    const f = FEATURES[feature] || { min: 'Plus', label: 'This feature' };
+    const o = opts || {};
+    const who = f.min === 'Max' ? 'the Max plan' : 'the Plus and Max plans';
+    const title = Utils.escapeHtml(o.title || (f.label + ' is included in ' + who));
+    const message = Utils.escapeHtml(o.message || 'Pick a higher plan and W.H. Academy opens it for you once the fee is confirmed.');
+    const href = WHATSAPP + '?text=' + encodeURIComponent('Assalam o Alaikum, I would like to upgrade my plan to unlock ' + f.label + '.');
+    return '<div class="card plan-lock" role="note" style="text-align:center;padding:1.75rem 1rem;">' +
+      '<div aria-hidden="true" style="font-size:2rem;line-height:1;">🔒</div>' +
+      '<h3 style="margin:.6rem 0 .3rem;">' + title + '</h3>' +
+      '<p class="muted" style="margin:0 0 1rem;">' + message + '</p>' +
+      '<a class="btn btn--primary btn--sm" href="upgrade.html">See upgrade options</a> ' +
+      '<a class="btn btn--secondary btn--sm" href="' + href + '" target="_blank" rel="noopener">Ask on WhatsApp</a>' +
+      '<p style="margin:.9rem 0 0;font-size:.85rem;"><button type="button" class="btn btn--quiet btn--sm" data-plan-refresh>Already upgraded? Refresh my plan</button></p>' +
+    '</div>';
+  }
+
+  // "I already upgraded": drop the cached dashboard so the new plan is fetched fresh.
+  document.addEventListener('click', (e) => {
+    const b = e.target && e.target.closest && e.target.closest('[data-plan-refresh]');
+    if (!b) return;
+    Storage.set('dashboard_cache', null);
+    window.location.reload();
+  });
+
+  return { get, can, allows, lockHtml, FEATURES };
+})();
