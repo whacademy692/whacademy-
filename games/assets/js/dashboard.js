@@ -29,7 +29,7 @@
    * account and start earning XP there, with no way to notice. This is the
    * cheap, high-value part of proper multi-profile support.
    */
-  function renderIdentity(profile) {
+  function renderIdentity(profile, plan) {
     const banner = Utils.qs('#identity-banner');
     if (!banner || !profile || !profile.studentId) return;
 
@@ -39,10 +39,21 @@
     Utils.qs('#identity-initial').textContent = initial;
     Utils.qs('#identity-name').textContent = name || 'Signed in';
 
-    const meta = profile.classLevel
-      ? 'Class ' + profile.classLevel + '  \u00b7  ' + profile.studentId
-      : profile.studentId;
-    Utils.qs('#identity-meta').textContent = meta;
+    const cls = Utils.qs('#identity-class');
+    cls.textContent = profile.classLevel ? 'Class ' + profile.classLevel : '';
+    cls.hidden = !profile.classLevel;
+
+    const idChip = Utils.qs('#identity-id');
+    idChip.textContent = profile.studentId;
+    idChip.hidden = false;
+
+    // Plan pill. An unknown / empty plan shows nothing (that student keeps full access).
+    const pill = Utils.qs('#identity-plan');
+    const tier = (typeof Plan !== 'undefined' && Plan.normalize) ? Plan.normalize(plan) : String(plan || '');
+    const known = tier === 'Basic' || tier === 'Plus' || tier === 'Max';
+    pill.className = known ? 'idc__plan idc__plan--' + tier : 'idc__plan';
+    pill.textContent = known ? tier + ' plan' : '';
+    pill.hidden = !known;
 
     banner.hidden = false;
   }
@@ -411,7 +422,8 @@
     var promo = data && data.promotion;
     if (promo && promo.required) { showPromotionLock(promo); return; }
     hidePromotionLock();
-    renderIdentity(data.profile);
+    renderIdentity(data.profile, data.plan);
+    if (typeof Router !== 'undefined' && Router.setUpgradePlan) Router.setUpgradePlan(data.plan);
     renderRecommendation(data.recommendation);
     renderStats(data);
     renderWeakTopics(data.weakTopics);

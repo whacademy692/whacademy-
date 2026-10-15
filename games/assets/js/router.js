@@ -158,12 +158,110 @@ const Router = (() => {
     }
   }
 
+  /**
+   * "Upgrade Plan" button. Sits at the very top of the sidebar (above Dashboard)
+   * and as a small pill in the phone top bar, on every page that has the app
+   * shell. Injected from here so no page's markup has to change, and its style is
+   * injected too so it works on pages that do not load upgrade.css.
+   * It stays hidden until the plan is known: a student with no plan on file keeps
+   * full access and has nothing to upgrade. Max students see "Change Plan"
+   * because the only thing left for them is a lower plan.
+   */
+  function ensureUpgradeStyle() {
+    if (document.getElementById('wha-upg-style')) return;
+    const st = document.createElement('style');
+    st.id = 'wha-upg-style';
+    st.textContent =
+      '.wha-upg[hidden]{display:none!important}' +
+      '.wha-upg{display:flex;align-items:center;justify-content:center;gap:8px;box-sizing:border-box;' +
+        'text-decoration:none;font-weight:800;letter-spacing:.01em;white-space:nowrap;cursor:pointer;' +
+        'color:#3b2300!important;text-shadow:none!important;' +
+        'background:linear-gradient(135deg,#fde68a,#f59e0b 62%,#f97316);' +
+        'border:1px solid rgba(255,255,255,.55);' +
+        'box-shadow:0 6px 16px rgba(245,158,11,.35),inset 0 1px 0 rgba(255,255,255,.55);' +
+        'transition:filter .15s ease,box-shadow .15s ease}' +
+      '.wha-upg:hover{filter:brightness(1.06);box-shadow:0 8px 20px rgba(245,158,11,.5),inset 0 1px 0 rgba(255,255,255,.55)}' +
+      '.wha-upg:focus-visible{outline:3px solid #fff;outline-offset:2px}' +
+      '.wha-upg__icon{width:18px;height:18px;flex:0 0 18px;fill:none;stroke:currentColor;stroke-width:2.4}' +
+      '.wha-upg--side{width:100%;min-height:49px;padding:10px 13px;border-radius:13px;font-size:1rem;margin-bottom:4px}' +
+      '.wha-upg--pill{padding:7px 12px;border-radius:999px;font-size:.78rem;line-height:1}' +
+      '.wha-upg--pill .wha-upg__icon{width:14px;height:14px;flex-basis:14px}' +
+      '.wha-upg-strip{display:flex;justify-content:flex-end;padding:10px 16px 0}' +
+      '.wha-upg-strip[hidden]{display:none!important}' +
+      '@media(min-width:1024px){.wha-upg-strip{display:none!important}}' +
+      '@media(max-width:400px){.wha-upg--pill{padding:6px 10px;font-size:.72rem}.wha-upg--pill .wha-upg__icon{display:none}}';
+    document.head.appendChild(st);
+  }
+
+  function makeUpgradeLink(kind) {
+    const a = document.createElement('a');
+    a.className = 'wha-upg ' + kind;
+    a.href = 'upgrade.html';
+    a.hidden = true;
+    a.setAttribute('data-upgrade-nav', '');
+    a.innerHTML = '<svg class="wha-upg__icon" viewBox="0 0 24 24" aria-hidden="true">' +
+      '<path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5M5 12l7-7 7 7"/></svg>' +
+      '<span class="wha-upg__t"></span>';
+    return a;
+  }
+
+  /** Shows / labels the button for a plan name ('' = unknown -> hidden). */
+  function setUpgradePlan(plan) {
+    const tier = (typeof Plan !== 'undefined' && Plan.normalize) ? Plan.normalize(plan) : String(plan || '');
+    const known = tier === 'Basic' || tier === 'Plus' || tier === 'Max';
+    const max = tier === 'Max';
+    document.querySelectorAll('[data-upgrade-nav]').forEach((el) => {
+      el.hidden = !known;
+      const pill = el.classList.contains('wha-upg--pill');
+      const t = el.querySelector('.wha-upg__t');
+      if (t) t.textContent = max ? (pill ? 'Change plan' : 'Change Plan') : (pill ? 'Upgrade' : 'Upgrade Plan');
+      if (el.parentElement && el.parentElement.classList.contains('wha-upg-strip')) el.parentElement.hidden = !known;
+      el.setAttribute('aria-label', max ? 'Change your plan' : 'Upgrade your plan');
+      el.setAttribute('title', known ? ('Your plan: ' + tier) : '');
+    });
+  }
+
+  function injectUpgradeNav() {
+    if (!Storage.getToken()) return;
+    const side = document.querySelector('.sidebar__nav');
+    const top = document.querySelector('.top-bar.hide-desktop');
+    if (!side && !top) return;
+    ensureUpgradeStyle();
+    if (side && !side.querySelector('[data-upgrade-nav]')) {
+      side.insertBefore(makeUpgradeLink('wha-upg--side'), side.firstChild);
+    }
+    if (top && !top.querySelector('[data-upgrade-nav]')) {
+      const holder = top.querySelector('.top-bar__actions') || top;
+      holder.insertBefore(makeUpgradeLink('wha-upg--pill'), holder.firstChild);
+    } else if (!top && side && !document.querySelector('.wha-upg--pill')) {
+      // A page with a sidebar but no phone top bar (e.g. Badges): give the pill a slim strip of its own.
+      const main = document.querySelector('main');
+      if (main) {
+        const strip = document.createElement('div');
+        strip.className = 'wha-upg-strip';
+        strip.hidden = true;
+        strip.appendChild(makeUpgradeLink('wha-upg--pill'));
+        main.insertBefore(strip, main.firstChild);
+      }
+    }
+    // Plan comes from the cached dashboard when it has one; otherwise it is fetched
+    // once. The dashboard page reports its own fresh plan through setUpgradePlan,
+    // so it never needs this extra lookup.
+    const cached = Storage.getCachedDashboard();
+    if (cached && cached.data && Object.prototype.hasOwnProperty.call(cached.data, 'plan')) {
+      setUpgradePlan(cached.data.plan);
+    } else if (currentPageName() !== 'dashboard.html' && typeof Plan !== 'undefined') {
+      Plan.get().then(setUpgradePlan).catch(() => {});
+    }
+  }
+
   /** Marks the correct bottom-nav / sidebar item as aria-current. */
   function highlightActiveNav() {
     injectBadgesNav();
     injectProgressNav();
     injectGuideNav();
     injectAnimationsNav();
+    injectUpgradeNav();
     const page = currentPageName();
     Utils.qsa('[data-nav-page]').forEach((el) => {
       if (el.dataset.navPage === page) {
@@ -249,7 +347,7 @@ const Router = (() => {
   }
 
   return {
-    currentPageName, guardAuthenticatedPage, highlightActiveNav,
+    currentPageName, guardAuthenticatedPage, highlightActiveNav, setUpgradePlan,
     renderBreadcrumb, showStep, getQueryParam, goTo, logoutAndRedirect
   };
 })();
@@ -345,5 +443,5 @@ const Plan = (() => {
     window.location.reload();
   });
 
-  return { get, can, allows, lockHtml, FEATURES };
+  return { get, can, allows, lockHtml, normalize, FEATURES };
 })();

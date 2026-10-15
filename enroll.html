@@ -396,7 +396,7 @@
     var dim=new Date(Date.UTC(y,m+1,0)).getUTCDate(), left=dim-d+1;
     if(left>=dim||!fee) return '';
     var amt=Math.round(fee*left/dim/10)*10;
-    return '<span class="fe-note">If you join today: <b>PKR '+amt.toLocaleString()+'</b> for the rest of '+MONTHS[m]+' ('+left+' day'+(left===1?'':'s')+', today counts), then PKR '+fee.toLocaleString()+' a month from 1 '+MONTHS[(m+1)%12]+'. The exact amount is confirmed on your fee voucher.</span>';
+    return '<span class="fe-note">If you join today: <b>PKR '+amt.toLocaleString()+'</b> for the rest of '+MONTHS[m]+' '+y+' ('+left+' day'+(left===1?'':'s')+', today counts), then PKR '+fee.toLocaleString()+' a month from 1 '+MONTHS[(m+1)%12]+' '+(m===11?y+1:y)+'. The exact amount is confirmed on your fee voucher.</span>';
   }
 
   /* ---- render plan cards ---- */
