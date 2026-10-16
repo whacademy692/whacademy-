@@ -94,10 +94,18 @@
     return '';
   }
 
+  // The fee is worked out from what the dashboard really unlocks. An account that opens EVERY subject of
+  // the class (older accounts) pays the all-subjects fee, so say so; otherwise name the subjects counted.
   function currentLine(s) {
-    const subs = s.subjectCount + ' subject' + (s.subjectCount === 1 ? '' : 's');
+    const n = Number(s.subjectCount) || 0;
+    const subs = s.allSubjects ? 'All ' + n + ' subjects' : n + ' subject' + (n === 1 ? '' : 's');
+    const names = Array.isArray(s.subjectNames) ? s.subjectNames.filter(Boolean) : [];
+    const basis = s.allSubjects
+      ? 'Your dashboard opens every subject of your class, so the all-subjects fee applies.'
+      : (names.length ? 'Fee counted for: ' + names.join(', ') + '.' : '');
     return '<div class="up-current"><span>Your plan: <b>' + esc(s.currentTier) + '</b></span>' +
-      '<span>Monthly fee: <b>' + money(s.currentFee) + '</b></span><span>' + esc(subs) + '</span></div>';
+      '<span>Monthly fee: <b>' + money(s.currentFee) + '</b></span><span>' + esc(subs) + '</span>' +
+      (basis ? '<span class="up-basis">' + esc(basis) + '</span>' : '') + '</div>';
   }
 
   function dueBlock(o) {
