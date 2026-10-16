@@ -122,6 +122,11 @@
   .success h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.5rem;margin:0 0 10px}
   .success p{color:var(--muted);max-width:480px;margin:0 auto 10px}
   .success .mailed{font-weight:700;color:var(--ink)}
+  .success h2{justify-content:center}
+  .success .next-step{max-width:480px;margin:18px auto 6px;padding:14px 16px;border:1px solid #fed7aa;background:#fff7ed;border-radius:14px;text-align:left}
+  .success .next-step b{display:block;color:#9a3412;margin-bottom:4px}
+  .success .next-step p{margin:0 0 10px;color:#7c2d12;max-width:none;font-size:.9rem}
+  .success .wa-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:12px;background:#16a34a;color:#fff;font-weight:800;text-decoration:none;box-shadow:0 8px 20px rgba(22,163,74,.3)}
   .spin{width:18px;height:18px;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;display:none}
   @keyframes sp{to{transform:rotate(360deg)}}
   .is-loading .spin{display:inline-block}
@@ -158,13 +163,19 @@
     <!-- 1. Student & guardian -->
     <div class="card">
       <h2><span class="n">1</span> Student & Guardian Details</h2>
-      <p class="sub">Tell us who's enrolling. We'll email everything to the address you enter.</p>
+      <p class="sub">Tell us who's enrolling. We'll email everything to the address you enter and contact you on WhatsApp about your fee.</p>
       <div class="grid">
         <div class="full">
           <label for="email">Email <span class="req">*</span></label>
           <input type="email" id="email" name="email" placeholder="e.g. whacademy692@gmail.com" inputmode="email" />
           <p class="hint">Your Student ID and registration link will be sent here. Write it correctly.</p>
           <p class="err" id="e-email">Please enter a valid email address.</p>
+        </div>
+        <div class="full">
+          <label for="whatsapp">WhatsApp Number <span class="req">*</span></label>
+          <input type="tel" id="whatsapp" name="whatsapp" placeholder="e.g. 0300 1234567" inputmode="tel" autocomplete="tel" />
+          <p class="hint">Parent's or student's number. We message you here to confirm your fee &mdash; your account opens after the fee is confirmed.</p>
+          <p class="err" id="e-whatsapp">Please enter a valid WhatsApp number, for example 0300 1234567.</p>
         </div>
         <div>
           <label for="fullName">Student Full Name <span class="req">*</span></label>
@@ -268,6 +279,11 @@
     <h2>Enrollment received!</h2>
     <p>Thank you — your request is now <strong>pending fee confirmation</strong>.</p>
     <p>Once your fee is confirmed and your account is <strong>activated</strong>, your <strong>Student ID</strong> and a link to set your PIN will be emailed to <span class="mailed" id="mailedTo">your email</span>. Set your PIN, then log in.</p>
+    <div class="next-step">
+      <b>Next step: confirm your fee</b>
+      <p>Your dashboard account opens only <strong>after your fee is received and confirmed</strong>. Message us on WhatsApp and we will send the payment details.<span id="waNumNote"></span></p>
+      <a class="wa-btn" id="waBtn" href="https://wa.me/923295215703" target="_blank" rel="noopener">Message us on WhatsApp</a>
+    </div>
     <p>For fee details, contact us at <a href="tel:03295215703" style="color:var(--indigo);font-weight:700">0329-5215703</a>.</p>
     <p style="margin-top:22px"><a class="back" href="index.html" style="font-size:.95rem">← Back to home</a></p>
   </div>
@@ -428,13 +444,13 @@
     setStep();
   });
   document.getElementById('subjectChips').addEventListener('change',function(){clearErr('subjects');updateEstimate();setStep();});
-  ['email','fullName','fatherName','fatherOccupation','schoolName','address'].forEach(function(id){
+  ['email','whatsapp','fullName','fatherName','fatherOccupation','schoolName','address'].forEach(function(id){
     $(id).addEventListener('input',function(){clearErr(id);setStep();});
   });
 
   /* ---- progress bar ---- */
   function setStep(){
-    var s1 = $('email').value && $('fullName').value && $('fatherName').value && $('fatherOccupation').value && $('schoolName').value && $('address').value;
+    var s1 = $('email').value && $('whatsapp').value && $('fullName').value && $('fatherName').value && $('fatherOccupation').value && $('schoolName').value && $('address').value;
     var s2 = $('classLevel').value && $('stream').value;
     var s3 = $('tuitionMode').value && state.plan;
     var steps=document.querySelectorAll('.steps .s');
@@ -447,6 +463,17 @@
   function showErr(id,msg){ var e=$('e-'+id); if(e){ if(msg)e.textContent=msg; e.classList.add('show'); } var f=$(id); if(f)f.classList.add('bad'); }
   function clearErr(id){ var e=$('e-'+id); if(e)e.classList.remove('show'); var f=$(id); if(f)f.classList.remove('bad'); }
   function emailOk(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+  /* WhatsApp number -> "+923001234567" ('' if it is not a usable number). Same rule as the server. */
+  function normPhone(v){
+    var d=String(v||'').replace(/[\s\-().]/g,'');
+    if(!d) return '';
+    if(d.indexOf('00')===0) d='+'+d.slice(2);
+    if(/^03\d{9}$/.test(d)) d='+92'+d.slice(1);
+    else if(/^923\d{9}$/.test(d)) d='+'+d;
+    else if(/^3\d{9}$/.test(d)) d='+92'+d;
+    if(d.indexOf('+92')===0 && !/^\+923\d{9}$/.test(d)) return '';
+    return /^\+[1-9]\d{9,14}$/.test(d) ? d : '';
+  }
   function selectedSubjects(){ return Array.prototype.map.call(document.querySelectorAll('#subjectChips input:checked'),function(x){return x.value;}); }
 
   /* ---- submit ---- */
@@ -457,6 +484,7 @@
     function need(id,test){ if(!test){ showErr(id); ok=false; if(!firstBad)firstBad=$(id)||$('e-'+id); } }
 
     need('email', emailOk($('email').value.trim()));
+    need('whatsapp', normPhone($('whatsapp').value));
     need('fullName', $('fullName').value.trim());
     need('fatherName', $('fatherName').value.trim());
     need('fatherOccupation', $('fatherOccupation').value.trim());
@@ -483,6 +511,7 @@
     var payload = {
       operation:'enrollment/submit', apiKey:API_KEY,
       email:$('email').value.trim(),
+      whatsapp:normPhone($('whatsapp').value),
       fullName:$('fullName').value.trim(),
       fatherName:$('fatherName').value.trim(),
       fatherOccupation:$('fatherOccupation').value.trim(),
@@ -513,6 +542,8 @@
       if(!data.success){ throw new Error((data.error&&data.error.message)||'Something went wrong. Please try again.'); }
       // success
       $('mailedTo').textContent=payload.email;
+      $('waNumNote').textContent=' We will also message you on '+payload.whatsapp+'.';
+      $('waBtn').href='https://wa.me/923295215703?text='+encodeURIComponent('Assalam o Alaikum, I have submitted the W.H. Academy enrollment form for '+payload.fullName+' (Class '+payload.classLevel+', '+payload.planTier+' plan). Please share the fee payment details.');
       document.getElementById('enrollForm').style.display='none';
       document.querySelector('.steps').style.display='none';
       document.querySelector('.actions') && (document.querySelector('.actions').style.display='none');
