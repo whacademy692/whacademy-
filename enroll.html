@@ -126,6 +126,10 @@
   .success .next-step{max-width:480px;margin:18px auto 6px;padding:14px 16px;border:1px solid #fed7aa;background:#fff7ed;border-radius:14px;text-align:left}
   .success .next-step b{display:block;color:#9a3412;margin-bottom:4px}
   .success .next-step p{margin:0 0 10px;color:#7c2d12;max-width:none;font-size:.9rem}
+  .success .pay-row{display:flex;align-items:flex-start;gap:10px;margin:8px 0 4px}
+  .success .pay-row .pay-label{font-size:.78rem;color:#9a3412;font-weight:600;white-space:nowrap;padding-top:2px}
+  .success .pay-acct{font-size:1.22rem;font-weight:800;letter-spacing:.03em;color:#7c2d12;font-family:monospace}
+  .success .pay-note{font-size:.8rem;color:#9a3412;margin:0 0 10px}
   .success .wa-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:12px;background:#16a34a;color:#fff;font-weight:800;text-decoration:none;box-shadow:0 8px 20px rgba(22,163,74,.3)}
   .spin{width:18px;height:18px;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;display:none}
   @keyframes sp{to{transform:rotate(360deg)}}
@@ -279,11 +283,17 @@
     <p>Thank you — your request is now <strong>pending fee confirmation</strong>.</p>
     <p>Once your fee is confirmed and your account is <strong>activated</strong>, your <strong>Student ID</strong> and a link to set your PIN will be emailed to <span class="mailed" id="mailedTo">your email</span>. Set your PIN, then log in.</p>
     <div class="next-step">
-      <b>Next step: confirm your fee</b>
-      <p>Your dashboard account opens only <strong>after your fee is received and confirmed</strong>. Message us on WhatsApp and we will send the payment details.<span id="waNumNote"></span></p>
-      <a class="wa-btn" id="waBtn" href="https://wa.me/923295215703" target="_blank" rel="noopener">Message us on WhatsApp</a>
+      <b>Next step: pay your fee</b>
+      <p>Send your fee to either of these accounts via <strong>EasyPaisa or JazzCash</strong>:</p>
+      <div class="pay-row"><span class="pay-label">Account&nbsp;No.</span><span class="pay-acct">0340-0876011</span></div>
+      <p class="pay-note">(Both EasyPaisa and JazzCash use this number.)</p>
+      <p>After paying, send your <strong>payment screenshot</strong> on WhatsApp to <strong>0329-5215703</strong>.<span id="waNumNote"></span></p>
+      <p>Your account is created <strong>only after we confirm your payment</strong>.</p>
+      <a class="wa-btn" id="waBtn" href="https://wa.me/923295215703" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.523 5.853L0 24l6.29-1.507A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.37l-.359-.214-3.727.893.944-3.634-.234-.374A9.818 9.818 0 1112 21.818z"/></svg>
+        Send payment screenshot
+      </a>
     </div>
-    <p>For fee details, contact us at <a href="tel:03295215703" style="color:var(--indigo);font-weight:700">0329-5215703</a>.</p>
     <p style="margin-top:22px"><a class="back" href="index.html" style="font-size:.95rem">← Back to home</a></p>
   </div>
 </div>
@@ -541,8 +551,8 @@
       if(!data.success){ throw new Error((data.error&&data.error.message)||'Something went wrong. Please try again.'); }
       // success
       $('mailedTo').textContent=payload.email;
-      $('waNumNote').textContent=' We will also message you on '+payload.whatsapp+'.';
-      $('waBtn').href='https://wa.me/923295215703?text='+encodeURIComponent('Assalam o Alaikum, I have submitted the W.H. Academy enrollment form for '+payload.fullName+' (Class '+payload.classLevel+', '+payload.planTier+' plan). Please share the fee payment details.');
+      $('waNumNote').textContent=payload.whatsapp?' We will also message you on '+payload.whatsapp+' once confirmed.':'';
+      $('waBtn').href='https://wa.me/923295215703?text='+encodeURIComponent('Assalam o Alaikum, I have paid the W.H. Academy enrollment fee for '+payload.fullName+' (Class '+payload.classLevel+', '+payload.planTier+' plan). Please find my payment screenshot attached.');
       document.getElementById('enrollForm').style.display='none';
       document.querySelector('.steps').style.display='none';
       document.querySelector('.actions') && (document.querySelector('.actions').style.display='none');
