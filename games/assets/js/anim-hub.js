@@ -28,14 +28,21 @@
   var focusTab = null;               // [chapter number, key] to re-focus after a tab re-render
   var openCh = null;                 // {key, n} of the chapter the student opened, or null (show chapter cards)
 
+  function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+  /** profile from the dashboard cache, else the server — retried so a slow first load never shows an empty hub */
   async function resolveProfile() {
     if (profileCache) return profileCache;
-    var profile = null;
-    var cached = Storage.getCachedDashboard();
-    if (cached && cached.data && cached.data.profile) profile = cached.data.profile;
-    else {
-      try { var data = await Api.dashboard.compose(); Storage.setCachedDashboard(data); profile = data.profile; }
-      catch (e) { profile = null; }
+    var profile = null, gaps = [0, 600, 1400, 2800];
+    for (var i = 0; i < gaps.length && !profile; i++) {
+      if (gaps[i]) await sleep(gaps[i]);
+      var cached = null;
+      try { cached = Storage.getCachedDashboard(); } catch (e) { cached = null; }
+      if (cached && cached.data && cached.data.profile && cached.data.profile.enrolledScope) { profile = cached.data.profile; break; }
+      try {
+        var data = await Api.dashboard.compose();
+        if (data && data.profile) { try { Storage.setCachedDashboard(data); } catch (e) { /* ignore */ } profile = data.profile; }
+      } catch (e) { /* retry */ }
     }
     profileCache = profile;
     return profile;
@@ -243,19 +250,50 @@
     try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { /* ignore */ }
     render();
   }
+  /** the little picture at the top of a chapter card (pure SVG, animated in CSS) */
+  function chapterArt(ch) {
+    if (/pythag/i.test(ch.title || '')) {
+      return '<svg viewBox="0 0 150 96" class="anim-chart" focusable="false">' +
+        '<polygon class="anim-chart__fill" points="22,80 112,80 112,22"/>' +
+        '<polyline class="anim-chart__a" points="22,80 112,80"/><polyline class="anim-chart__b" points="112,80 112,22"/><polyline class="anim-chart__c" points="22,80 112,22"/>' +
+        '<polyline class="anim-chart__ra" points="100,80 100,68 112,68"/>' +
+        '<text x="67" y="93" class="anim-chart__t">a</text><text x="122" y="55" class="anim-chart__t">b</text><text x="56" y="44" class="anim-chart__t">c</text></svg>';
+    }
+    return '<svg viewBox="0 0 150 96" class="anim-chart" focusable="false"><polygon class="anim-chart__s1" points="30,74 62,74 46,44"/><circle class="anim-chart__s2" cx="92" cy="56" r="17"/><rect class="anim-chart__s3" x="104" y="26" width="28" height="28" rx="4"/></svg>';
+  }
+  function ring(pct) {
+    var C = 2 * Math.PI * 16, off = (C * (1 - pct / 100)).toFixed(1);
+    return '<svg viewBox="0 0 40 40" class="anim-ring" focusable="false"><circle class="anim-ring__bg" cx="20" cy="20" r="16"/><circle class="anim-ring__fg" cx="20" cy="20" r="16" stroke-dasharray="' + C.toFixed(1) + '" stroke-dashoffset="' + off + '" transform="rotate(-90 20 20)"/></svg><b class="anim-ring__n">' + pct + '<i>%</i></b>';
+  }
   function chapterCard(group, ch) {
     var total = ch.rows.length, done = doneCount(ch.rows);
     var pct = total ? Math.round(done / total * 100) : 0;
-    var secLabels = (ch.sections || []).map(function (s) { return s.label; }).join(' · ');
-    var card = Utils.createEl('button', { class: 'anim-chcard' + (done === total && total ? ' is-done' : ''), type: 'button', style: accentStyle(group.key) }, [
-      Utils.createEl('span', { class: 'anim-chcard__n', 'aria-hidden': 'true', text: 'Ch ' + ch.n }),
+    var secs = ch.sections || [];
+    var chips = secs.map(function (sc) {
+      var n = ch.rows.filter(function (r) { return (r.anim.section || secs[0].key) === sc.key; }).length;
+      return Utils.createEl('span', { class: 'anim-chip' + (n ? '' : ' is-soon'), title: sc.title || sc.label }, [
+        Utils.createEl('span', { text: sc.label }),
+        Utils.createEl('b', { text: n ? String(n) : '·' })
+      ]);
+    });
+    var cta = done === 0 ? 'Start playing' : (done >= total ? 'Play again' : 'Continue');
+    var art = Utils.createEl('span', { class: 'anim-chcard__art', 'aria-hidden': 'true' }, [
+      Utils.createEl('span', { class: 'anim-chcard__n', text: 'Ch ' + ch.n })
+    ]);
+    var pic = Utils.createEl('span', { class: 'anim-chcard__pic' }); pic.innerHTML = chapterArt(ch); art.appendChild(pic);
+    if (/pythag/i.test(ch.title || '')) art.appendChild(Utils.createEl('span', { class: 'anim-chcard__eq', text: 'a² + b² = c²' }));
+    var rg = Utils.createEl('span', { class: 'anim-chcard__ring', title: pct + '% done' }); rg.innerHTML = ring(pct); art.appendChild(rg);
+    var card = Utils.createEl('button', { class: 'anim-chcard' + (done === total && total ? ' is-done' : ''), type: 'button', style: accentStyle(group.key), 'aria-label': 'Chapter ' + ch.n + ' · ' + ch.title + ' — ' + total + ' animations, ' + done + ' done' }, [
+      art,
       Utils.createEl('span', { class: 'anim-chcard__body' }, [
         Utils.createEl('span', { class: 'anim-chcard__title', text: ch.title }),
-        Utils.createEl('span', { class: 'anim-chcard__meta', text: total + (total === 1 ? ' animation' : ' animations') + (secLabels ? ' · ' + secLabels : '') }),
-        Utils.createEl('span', { class: 'anim-chcard__bar' }, [Utils.createEl('span', { class: 'anim-chcard__fill', style: 'width:' + pct + '%' })]),
-        Utils.createEl('span', { class: 'anim-chcard__done', text: done + ' / ' + total + ' done' })
+        Utils.createEl('span', { class: 'anim-chcard__meta', text: total + (total === 1 ? ' animation' : ' animations') + ' · play, drag, see it move' }),
+        Utils.createEl('span', { class: 'anim-chcard__chips' }, chips)
       ]),
-      Utils.createEl('span', { class: 'anim-chcard__go', 'aria-hidden': 'true', text: '→' })
+      Utils.createEl('span', { class: 'anim-chcard__foot' }, [
+        Utils.createEl('span', { class: 'anim-chcard__done', text: done + ' of ' + total + ' done' + (done >= total && total ? ' 🎉' : '') }),
+        Utils.createEl('span', { class: 'anim-chcard__cta' }, [Utils.createEl('span', { text: cta }), Utils.createEl('span', { class: 'anim-chcard__go', 'aria-hidden': 'true', text: '→' })])
+      ])
     ]);
     card.addEventListener('click', function () { openChapter(group.key, ch.n); });
     return card;
@@ -357,6 +395,21 @@
   document.addEventListener('wha:ready', async function () {
     if (Router.currentPageName() !== 'animations.html') return;
     var profile = await resolveProfile();
+    if (!profile) {                       // slow / failed first load: never show an empty hub — offer a retry instead
+      var rb = Utils.qs('#anim-grid');
+      if (rb) {
+        rb.textContent = '';
+        var fb = Utils.createEl('div', { class: 'anim-fatal' }, [
+          Utils.createEl('p', { class: 'anim-fatal__t', text: 'Could not check your account' }),
+          Utils.createEl('p', { class: 'anim-fatal__s', text: 'The connection looks slow. Your animations are safe — tap Try again.' })
+        ]);
+        var rbt = Utils.createEl('button', { class: 'btn btn--primary btn--sm', type: 'button', text: 'Try again' });
+        rbt.style.marginTop = '12px'; rbt.addEventListener('click', function () { window.location.reload(); });
+        fb.appendChild(rbt); rb.appendChild(fb);
+      }
+      var rs = Utils.qs('#anim-searchwrap'); if (rs) rs.hidden = true;
+      return;
+    }
     // Animations are a Max-plan feature. Everyone else sees an upgrade card.
     if (!(await Plan.can('animations'))) {
       var lockBox = Utils.qs('#anim-grid');

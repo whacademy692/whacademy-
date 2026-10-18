@@ -103,16 +103,19 @@
     this._shown = on;
     this.el.style.display = on ? '' : 'none';
   };
-  Label.prototype.put = function (x, y, env, alpha) {
+  /** rot (optional, degrees): turn the label to lie ALONG a line — the text then reads in the line's direction. */
+  Label.prototype.put = function (x, y, env, alpha, rot) {
     var v = this.eng.view;
     if (!(x === x) || !(y === y)) { this.setShown(false); return; }
     if (this.visFn && !(this.visFn(env) > 0.5)) { this.setShown(false); return; }
     this.setShown(true);
-    // keep the whole label on the stage: clamp by half its measured size (falls back to the old 16 / 12 px margin)
-    var hw = Math.max(16, (this._w || 0) / 2 + 4), hh = Math.max(12, (this._h || 0) / 2 + 3);
+    // keep the whole label on the stage: clamp by half its measured (rotated) size
+    var r = (rot === rot && rot) ? rot * Math.PI / 180 : 0, ca = Math.abs(Math.cos(r)), sa = Math.abs(Math.sin(r));
+    var w2 = (this._w || 0) / 2, h2 = (this._h || 0) / 2;
+    var hw = Math.max(16, w2 * ca + h2 * sa + 4), hh = Math.max(12, w2 * sa + h2 * ca + 3);
     x = clamp(x + num(this.ld.dx, 0), hw, Math.max(hw, v.W - hw));
     y = clamp(y + num(this.ld.dy, 0), hh, Math.max(hh, v.H - hh));
-    this.el.style.transform = 'translate(' + f2(x) + 'px,' + f2(y) + 'px) translate(-50%,-50%)';
+    this.el.style.transform = 'translate(' + f2(x) + 'px,' + f2(y) + 'px) translate(-50%,-50%)' + (r ? ' rotate(' + f2(rot) + 'deg)' : '');
     this.el.style.opacity = alpha < 0.999 ? alpha.toFixed(3) : '';
     this.eng.renderRich(this.el, this.tpl, env);
     // remember the rendered size (re-measured only when the text changed) so callers can keep clear of lines
@@ -209,7 +212,7 @@
     this._depChecks = [];
     BUILTIN_LOCALS.forEach(function (n) { this.locals[n] = 1; }, this);
     this.roles = {}; this.roleOrder = []; this.customColors = {}; this.colorSig = '';
-    this.ui = { labels: true, grid: true, angles: true, thick: 1, labelSize: 1, fill: 0, speed: 1 };
+    this.ui = { labels: true, grid: true, angles: true, alignLabels: true, thick: 1, labelSize: 1, fill: 0, speed: 1 };
     this.uiDefaults = null;
     this.nodes = []; this.nodeById = Object.create(null); this.handles = [];
     this.steps = []; this.stepIndex = -1; this.mode = 'explore'; this.playing = false;
@@ -425,8 +428,12 @@
     this.worldPad = num(w.pad, 12);
     this.stageRatio = num(w.ratio, 0);
 
-    // 6. shapes
-    (spec.shapes || []).forEach(function (def, i) {
+    // 6. shapes — every drawing gets a graph-paper grid by default (spec.autoGrid:false opts out; the student can switch it off)
+    var shapeDefs = (spec.shapes || []).slice();
+    if (spec.autoGrid !== false && !shapeDefs.some(function (d) { return d && d.type === 'grid'; })) {
+      shapeDefs.unshift({ type: 'grid', id: '_autogrid', step: 'auto', major: 5, layer: 'back', uiToggle: 'grid', role: 'grid' });
+    }
+    shapeDefs.forEach(function (def, i) {
       var where = 'shapes[' + i + (def && def.id ? ':' + def.id : '') + ']';
       if (!def || !def.type) { self.issue('error', where, 'Shape needs a type'); return; }
       if (def.id && self.nodeById[def.id]) { self.issue('error', where, 'Duplicate shape id "' + def.id + '"'); return; }

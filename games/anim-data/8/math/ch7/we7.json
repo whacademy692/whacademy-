@@ -551,10 +551,10 @@
     "size": "l",
     "away": [
      27,
-     60
+     0
     ],
     "off": 5,
-    "t": 0.5
+    "t": 0.4
    },
    "layer": "front",
    "appear": "s0",
@@ -597,11 +597,11 @@
     "role": "ans",
     "size": "l",
     "away": [
-     70,
+     30,
      0
     ],
     "off": 5,
-    "t": 0.5
+    "t": 0.55
    },
    "layer": "front",
    "appear": "s0",
@@ -667,11 +667,11 @@
     "role": "legB",
     "size": "l",
     "away": [
-     27.0,
-     14.0
+     60,
+     0
     ],
     "off": 5,
-    "t": 0.5
+    "t": 0.78
    },
    "layer": "front",
    "appear": "s6",
@@ -690,11 +690,11 @@
     "role": "ans",
     "size": "l",
     "away": [
-     70,
+     30,
      0
     ],
     "off": 5,
-    "t": 0.5
+    "t": 0.55
    },
    "layer": "front",
    "appear": "s11",
@@ -829,5 +829,42 @@
    "title": "Grid tip",
    "text": "Put P at the origin. East and North are perpendicular, so any East leg and any North leg meet at **90°** — exactly what Pythagoras needs."
   }
- ]
+ ],
+ "scene3d": {
+  "type": "map",
+  "unit": "km",
+  "routes": [
+   {
+    "name": "Boat A",
+    "pts": [
+     "P",
+     "Q",
+     "R"
+    ],
+    "role": "legA"
+   },
+   {
+    "name": "Boat B",
+    "pts": [
+     "P",
+     "S",
+     "T"
+    ],
+    "role": "legB"
+   }
+  ],
+  "ties": [
+   [
+    "Q",
+    "S"
+   ],
+   [
+    "R",
+    "T"
+   ]
+  ],
+  "hidePoints": [
+   "X"
+  ]
+ }
 }

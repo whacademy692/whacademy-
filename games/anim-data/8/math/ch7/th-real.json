@@ -1,520 +1,531 @@
 {
-  "id": "g8-math-pyth-th-real",
-  "title": "Real-world right triangles",
-  "summary": "A ladder against a wall makes a right-angled triangle — spot it, then use Pythagoras to find its length.",
-  "alt": "A ladder of length {{L|2}} m leaning against a vertical wall: its top is {{h|1}} m high and its foot is {{d|1}} m from the wall.",
-  "uiDefaults": {
-    "angles": false
-  },
-  "defaultTab": "formula",
-  "world": {
-    "x": [
-      -1.9,
-      "max(d + 1.4, 3.0)"
-    ],
-    "y": [
-      -1.0,
-      "max(h + 1.0, 3.4)"
-    ],
-    "smooth": true,
-    "ratio": 0.9,
-    "pad": 10
-  },
-  "roles": {
-    "hyp": {
-      "label": "Hypotenuse",
-      "color": "#059669",
-      "text": "The side opposite the right angle. It is always the longest side."
-    },
-    "legA": {
-      "label": "Shorter side 1",
-      "color": "#2563eb",
-      "text": "One of the two sides that meet at the right angle."
-    },
-    "legB": {
-      "label": "Shorter side 2",
-      "color": "#e11d48",
-      "text": "The other side that meets at the right angle."
-    },
-    "ans": {
-      "label": "Answer",
-      "color": "#d97706",
-      "text": "The length we are finding."
-    }
-  },
-  "params": [
-    {
-      "id": "h",
-      "label": "Height up the wall  (h)",
-      "role": "legB",
-      "min": 0.5,
-      "max": 4,
-      "step": 0.1,
-      "default": 2.4,
-      "unit": "m",
-      "group": "The ladder"
-    },
-    {
-      "id": "d",
-      "label": "Foot from the wall  (d)",
-      "role": "legA",
-      "min": 0.2,
-      "max": 4,
-      "step": 0.1,
-      "default": 0.5,
-      "unit": "m"
-    },
-    {
-      "id": "askL",
-      "hidden": true,
-      "min": 0,
-      "max": 1,
-      "step": 1,
-      "default": 1
-    }
+ "id": "g8-math-pyth-th-real",
+ "title": "Real-world right triangles",
+ "summary": "A ladder against a wall makes a right-angled triangle — spot it, then use Pythagoras to find its length.",
+ "alt": "A ladder of length {{L|2}} m leaning against a vertical wall: its top is {{h|1}} m high and its foot is {{d|1}} m from the wall.",
+ "uiDefaults": {
+  "angles": false
+ },
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -1.9,
+   "max(d + 1.4, 3.0)"
   ],
-  "derived": {
-    "L": "sqrt(h^2 + d^2)",
-    "W": [
-      0,
-      0
+  "y": [
+   -1.0,
+   "max(h + 1.0, 3.4)"
+  ],
+  "smooth": true,
+  "ratio": 0.9,
+  "pad": 10
+ },
+ "roles": {
+  "hyp": {
+   "label": "Hypotenuse",
+   "color": "#059669",
+   "text": "The side opposite the right angle. It is always the longest side."
+  },
+  "legA": {
+   "label": "Shorter side 1",
+   "color": "#2563eb",
+   "text": "One of the two sides that meet at the right angle."
+  },
+  "legB": {
+   "label": "Shorter side 2",
+   "color": "#e11d48",
+   "text": "The other side that meets at the right angle."
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The length we are finding."
+  }
+ },
+ "params": [
+  {
+   "id": "h",
+   "label": "Height up the wall  (h)",
+   "role": "legB",
+   "min": 0.5,
+   "max": 4,
+   "step": 0.1,
+   "default": 2.4,
+   "unit": "m",
+   "group": "The ladder"
+  },
+  {
+   "id": "d",
+   "label": "Foot from the wall  (d)",
+   "role": "legA",
+   "min": 0.2,
+   "max": 4,
+   "step": 0.1,
+   "default": 0.5,
+   "unit": "m"
+  },
+  {
+   "id": "askL",
+   "hidden": true,
+   "min": 0,
+   "max": 1,
+   "step": 1,
+   "default": 1
+  }
+ ],
+ "derived": {
+  "L": "sqrt(h^2 + d^2)",
+  "W": [
+   0,
+   0
+  ],
+  "F": [
+   "d",
+   0
+  ],
+  "T": [
+   0,
+   "h"
+  ]
+ },
+ "presets": [
+  {
+   "name": "Worked Example 4",
+   "values": {
+    "h": 2.4,
+    "d": 0.5
+   }
+  },
+  {
+   "name": "3 · 4 · 5 ladder",
+   "values": {
+    "h": 3,
+    "d": 4
+   }
+  },
+  {
+   "name": "Steep ladder",
+   "values": {
+    "h": 4,
+    "d": 0.8
+   }
+  },
+  {
+   "name": "Gentle ladder",
+   "values": {
+    "h": 1.2,
+    "d": 3.5
+   }
+  }
+ ],
+ "shapes": [
+  {
+   "type": "polygon",
+   "id": "gnd",
+   "pts": [
+    [
+     -0.9,
+     0
     ],
-    "F": [
-      "d",
-      0
+    [
+     5.2,
+     0
     ],
-    "T": [
-      0,
-      "h"
+    [
+     5.2,
+     -0.3
+    ],
+    [
+     -0.9,
+     -0.3
     ]
+   ],
+   "role": "muted",
+   "fill": "muted",
+   "fillOpacity": 0.2,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s0",
+   "appearDur": 600
   },
-  "presets": [
+  {
+   "type": "polygon",
+   "id": "wal",
+   "pts": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     4.6
+    ],
+    [
+     -0.3,
+     4.6
+    ],
+    [
+     -0.3,
+     -0.3
+    ],
+    [
+     0,
+     -0.3
+    ]
+   ],
+   "role": "muted",
+   "fill": "muted",
+   "fillOpacity": 0.2,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s0",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "gl",
+   "from": [
+    -0.9,
+    0
+   ],
+   "to": [
+    5.2,
+    0
+   ],
+   "role": "ink",
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "draw",
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "wl",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    0,
+    4.6
+   ],
+   "role": "ink",
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "draw",
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "polygon",
+   "id": "tri",
+   "pts": [
+    "W",
+    "F",
+    "T"
+   ],
+   "role": "hyp",
+   "fill": "hyp",
+   "fillOpacity": 0.1,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s1",
+   "appearDur": 600
+  },
+  {
+   "type": "repeat",
+   "id": "rungs",
+   "role": "ink",
+   "layer": "mid",
+   "count": "floor((L - 0.3) / 0.5)",
+   "as": "i",
+   "appear": "s0",
+   "delay": 700,
+   "appearDur": 600,
+   "template": {
+    "type": "segment",
+    "role": "ink",
+    "strokeWidth": 1.6,
+    "opacity": 0.55,
+    "from": [
+     "d - d*(0.35+0.5*i)/L + 0.11*h/L",
+     "h*(0.35+0.5*i)/L + 0.11*d/L"
+    ],
+    "to": [
+     "d - d*(0.35+0.5*i)/L - 0.11*h/L",
+     "h*(0.35+0.5*i)/L - 0.11*d/L"
+    ]
+   }
+  },
+  {
+   "type": "segment",
+   "id": "ladder",
+   "from": "F",
+   "to": "T",
+   "role": "hyp",
+   "strokeWidth": 6,
+   "appear": "s0",
+   "effect": "draw",
+   "appearDur": 900,
+   "layer": "mid"
+  },
+  {
+   "type": "angle",
+   "id": "ra",
+   "at": "W",
+   "from": "F",
+   "to": "T",
+   "style": "square",
+   "r": 24,
+   "role": "ink",
+   "strokeWidth": 1.8,
+   "fill": false,
+   "appear": "s1",
+   "delay": 300,
+   "appearDur": 500
+  },
+  {
+   "type": "segment",
+   "id": "hseg",
+   "from": "W",
+   "to": "T",
+   "role": "legB",
+   "strokeWidth": 6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 700,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "dseg",
+   "from": "W",
+   "to": "F",
+   "role": "legA",
+   "strokeWidth": 6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 900,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "text",
+   "id": "hl",
+   "role": "legB",
+   "size": "l",
+   "text": "\\(h\\) = {{h|1}} m",
+   "at": [
+    -0.3,
+    "h/2"
+   ],
+   "dx": -44,
+   "appear": "s0",
+   "delay": 800,
+   "appearDur": 500
+  },
+  {
+   "type": "text",
+   "id": "dl",
+   "role": "legA",
+   "size": "l",
+   "text": "\\(d\\) = {{d|1}} m",
+   "at": [
+    "d/2",
+    -0.3
+   ],
+   "dy": 22,
+   "appear": "s0",
+   "delay": 800,
+   "appearDur": 500
+  },
+  {
+   "type": "text",
+   "id": "xq",
+   "role": "hyp",
+   "size": "l",
+   "text": "\\(x\\) = ?",
+   "at": [
+    "d/2 + 0.35*h/L",
+    "h/2 + 0.35*d/L"
+   ],
+   "dx": 34,
+   "visible": "askL > 0.5",
+   "appear": "s0",
+   "delay": 900,
+   "appearDur": 500
+  },
+  {
+   "type": "text",
+   "id": "xv",
+   "role": "hyp",
+   "size": "l",
+   "text": "\\(x\\) = {{L|2}} m",
+   "at": [
+    "d/2 + 0.35*h/L",
+    "h/2 + 0.35*d/L"
+   ],
+   "dx": 34,
+   "visible": "askL < 0.5",
+   "appear": "s0",
+   "delay": 0,
+   "appearDur": 300
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The situation",
+   "narration": "A construction worker is on a ladder placed against a **vertical wall**. The top of the ladder is **{{h|1}} m** above the ground and the foot of the ladder is **{{d|1}} m** from the wall. How **long** is the ladder?",
+   "actions": [
     {
-      "name": "Worked Example 4",
-      "values": {
-        "h": 2.4,
-        "d": 0.5
-      }
-    },
-    {
-      "name": "3 · 4 · 5 ladder",
-      "values": {
-        "h": 3,
-        "d": 4
-      }
-    },
-    {
-      "name": "Steep ladder",
-      "values": {
-        "h": 4,
-        "d": 0.8
-      }
-    },
-    {
-      "name": "Gentle ladder",
-      "values": {
-        "h": 1.2,
-        "d": 3.5
-      }
+     "set": {
+      "h": 2.4,
+      "d": 0.5,
+      "askL": 1
+     }
     }
-  ],
-  "shapes": [
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Spot the right triangle",
+   "narration": "A wall stands **straight up** from flat ground, so they meet at a **right angle**. That gives a **right-angled triangle**: the wall, the ground and the ladder. The ladder faces the right angle, so the ladder is the [[hyp|hypotenuse]]. Call its length **x**.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Write the theorem",
+   "narration": "Let the length of the ladder be **x m**. Using Pythagoras' Theorem, \\[ \\role{hyp}{x^2} = \\role{legB}{ {{h|1}}^2 } + \\role{legA}{ {{d|1}}^2 } \\]",
+   "actions": [
     {
-      "type": "polygon",
-      "id": "gnd",
-      "pts": [
-        [
-          -0.9,
-          0
-        ],
-        [
-          5.2,
-          0
-        ],
-        [
-          5.2,
-          -0.3
-        ],
-        [
-          -0.9,
-          -0.3
-        ]
-      ],
-      "role": "muted",
-      "fill": "muted",
-      "fillOpacity": 0.2,
-      "stroke": false,
-      "layer": "back",
-      "appear": "s0",
-      "appearDur": 600
-    },
-    {
-      "type": "polygon",
-      "id": "wal",
-      "pts": [
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          4.6
-        ],
-        [
-          -0.3,
-          4.6
-        ],
-        [
-          -0.3,
-          -0.3
-        ],
-        [
-          0,
-          -0.3
-        ]
-      ],
-      "role": "muted",
-      "fill": "muted",
-      "fillOpacity": 0.2,
-      "stroke": false,
-      "layer": "back",
-      "appear": "s0",
-      "appearDur": 600
-    },
-    {
-      "type": "segment",
-      "id": "gl",
-      "from": [
-        -0.9,
-        0
-      ],
-      "to": [
-        5.2,
-        0
-      ],
-      "role": "ink",
-      "strokeWidth": 3,
-      "appear": "s0",
-      "effect": "draw",
-      "appearDur": 700,
-      "layer": "mid"
-    },
-    {
-      "type": "segment",
-      "id": "wl",
-      "from": [
-        0,
-        0
-      ],
-      "to": [
-        0,
-        4.6
-      ],
-      "role": "ink",
-      "strokeWidth": 3,
-      "appear": "s0",
-      "effect": "draw",
-      "appearDur": 700,
-      "layer": "mid"
-    },
-    {
-      "type": "polygon",
-      "id": "tri",
-      "pts": [
-        "W",
-        "F",
-        "T"
-      ],
-      "role": "hyp",
-      "fill": "hyp",
-      "fillOpacity": 0.1,
-      "stroke": false,
-      "layer": "back",
-      "appear": "s1",
-      "appearDur": 600
-    },
-    {
-      "type": "repeat",
-      "id": "rungs",
-      "role": "ink",
-      "layer": "mid",
-      "count": "floor((L - 0.3) / 0.5)",
-      "as": "i",
-      "appear": "s0",
-      "delay": 700,
-      "appearDur": 600,
-      "template": {
-        "type": "segment",
-        "role": "ink",
-        "strokeWidth": 1.6,
-        "opacity": 0.55,
-        "from": [
-          "d - d*(0.35+0.5*i)/L + 0.11*h/L",
-          "h*(0.35+0.5*i)/L + 0.11*d/L"
-        ],
-        "to": [
-          "d - d*(0.35+0.5*i)/L - 0.11*h/L",
-          "h*(0.35+0.5*i)/L - 0.11*d/L"
-        ]
-      }
-    },
-    {
-      "type": "segment",
-      "id": "ladder",
-      "from": "F",
-      "to": "T",
-      "role": "hyp",
-      "strokeWidth": 6,
-      "appear": "s0",
-      "effect": "draw",
-      "appearDur": 900,
-      "layer": "mid"
-    },
-    {
-      "type": "angle",
-      "id": "ra",
-      "at": "W",
-      "from": "F",
-      "to": "T",
-      "style": "square",
-      "r": 24,
-      "role": "ink",
-      "strokeWidth": 1.8,
-      "fill": false,
-      "appear": "s1",
-      "delay": 300,
-      "appearDur": 500
-    },
-    {
-      "type": "segment",
-      "id": "hseg",
-      "from": "W",
-      "to": "T",
-      "role": "legB",
-      "strokeWidth": 6,
-      "appear": "s0",
-      "effect": "draw",
-      "delay": 700,
-      "appearDur": 700,
-      "layer": "mid"
-    },
-    {
-      "type": "segment",
-      "id": "dseg",
-      "from": "W",
-      "to": "F",
-      "role": "legA",
-      "strokeWidth": 6,
-      "appear": "s0",
-      "effect": "draw",
-      "delay": 900,
-      "appearDur": 700,
-      "layer": "mid"
-    },
-    {
-      "type": "text",
-      "id": "hl",
-      "role": "legB",
-      "size": "l",
-      "text": "\\(h\\) = {{h|1}} m",
-      "at": [
-        -0.3,
-        "h/2"
-      ],
-      "dx": -44,
-      "appear": "s0",
-      "delay": 800,
-      "appearDur": 500
-    },
-    {
-      "type": "text",
-      "id": "dl",
-      "role": "legA",
-      "size": "l",
-      "text": "\\(d\\) = {{d|1}} m",
-      "at": [
-        "d/2",
-        -0.3
-      ],
-      "dy": 22,
-      "appear": "s0",
-      "delay": 800,
-      "appearDur": 500
-    },
-    {
-      "type": "text",
-      "id": "xq",
-      "role": "hyp",
-      "size": "l",
-      "text": "\\(x\\) = ?",
-      "at": [
-        "d/2 + 0.35*h/L",
-        "h/2 + 0.35*d/L"
-      ],
-      "dx": 34,
-      "visible": "askL > 0.5",
-      "appear": "s0",
-      "delay": 900,
-      "appearDur": 500
-    },
-    {
-      "type": "text",
-      "id": "xv",
-      "role": "hyp",
-      "size": "l",
-      "text": "\\(x\\) = {{L|2}} m",
-      "at": [
-        "d/2 + 0.35*h/L",
-        "h/2 + 0.35*d/L"
-      ],
-      "dx": 34,
-      "visible": "askL < 0.5",
-      "appear": "s0",
-      "delay": 0,
-      "appearDur": 300
+     "pulse": "ladder",
+     "at": 500
     }
-  ],
-  "steps": [
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Calculate",
+   "narration": "Square each side and add: \\[\\begin{aligned} x^2 &= {{h^2|2}} + {{d^2|2}} \\\\ &= {{h^2+d^2|2}} \\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Take the square root",
+   "narration": "\\[ x = \\sqrt{ {{h^2+d^2|2}} } = \\role{ans}{ {{L|2}} } \\]The ladder is about **{{L|2}} m** long (3 s.f.). It is longer than the height ({{h|1}} m) — a sensible answer.",
+   "actions": [
     {
-      "id": "s0",
-      "title": "The situation",
-      "narration": "A construction worker is on a ladder placed against a **vertical wall**. The top of the ladder is **{{h|1}} m** above the ground and the foot of the ladder is **{{d|1}} m** from the wall. How **long** is the ladder?",
-      "actions": [
-        {
-          "set": {
-            "h": 2.4,
-            "d": 0.5,
-            "askL": 1
-          }
-        }
-      ]
+     "set": {
+      "askL": 0
+     }
     },
     {
-      "id": "s1",
-      "title": "Spot the right triangle",
-      "narration": "A wall stands **straight up** from flat ground, so they meet at a **right angle**. That gives a **right-angled triangle**: the wall, the ground and the ladder. The ladder faces the right angle, so the ladder is the [[hyp|hypotenuse]]. Call its length **x**.",
-      "actions": []
-    },
-    {
-      "id": "s2",
-      "title": "Write the theorem",
-      "narration": "Let the length of the ladder be **x m**. Using Pythagoras' Theorem, \\[ \\role{hyp}{x^2} = \\role{legB}{ {{h|1}}^2 } + \\role{legA}{ {{d|1}}^2 } \\]",
-      "actions": [
-        {
-          "pulse": "ladder",
-          "at": 500
-        }
-      ]
-    },
-    {
-      "id": "s3",
-      "title": "Calculate",
-      "narration": "Square each side and add: \\[\\begin{aligned} x^2 &= {{h^2|2}} + {{d^2|2}} \\\\ &= {{h^2+d^2|2}} \\end{aligned}\\]",
-      "actions": []
-    },
-    {
-      "id": "s4",
-      "title": "Take the square root",
-      "narration": "\\[ x = \\sqrt{ {{h^2+d^2|2}} } = \\role{ans}{ {{L|2}} } \\]The ladder is about **{{L|2}} m** long (3 s.f.). It is longer than the height ({{h|1}} m) — a sensible answer.",
-      "actions": [
-        {
-          "set": {
-            "askL": 0
-          }
-        },
-        {
-          "pulse": "ladder",
-          "at": 400
-        }
-      ]
-    },
-    {
-      "id": "s5",
-      "title": "The same idea everywhere",
-      "narration": "Ladders, poles, cables, distances on a map: **sketch a rough diagram**, mark the **right angle**, label the unknown as **x**, then use Pythagoras' Theorem. Drag the sliders to change the ladder, then try the challenges.",
-      "actions": [
-        {
-          "set": {
-            "askL": 0
-          }
-        }
-      ],
-      "challenge": "lad1"
+     "pulse": "ladder",
+     "at": 400
     }
-  ],
-  "formulas": [
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "The same idea everywhere",
+   "narration": "Ladders, poles, cables, distances on a map: **sketch a rough diagram**, mark the **right angle**, label the unknown as **x**, then use Pythagoras' Theorem. Drag the sliders to change the ladder, then try the challenges.",
+   "actions": [
     {
-      "title": "The ladder",
-      "tex": "\\role{hyp}{x^2} = \\role{legB}{h^2} + \\role{legA}{d^2}",
-      "filled": "\\role{hyp}{x} = \\sqrt{ {{h^2|2}} + {{d^2|2}} } = {{L|2}}",
-      "text": "The wall, the ground and the ladder form a right-angled triangle; the ladder is the hypotenuse."
+     "set": {
+      "askL": 0
+     }
     }
-  ],
-  "challenges": [
+   ],
+   "challenge": "lad1"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "The ladder",
+   "tex": "\\role{hyp}{x^2} = \\role{legB}{h^2} + \\role{legA}{d^2}",
+   "filled": "\\role{hyp}{x} = \\sqrt{ {{h^2|2}} + {{d^2|2}} } = {{L|2}}",
+   "text": "The wall, the ground and the ladder form a right-angled triangle; the ladder is the hypotenuse."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "lad1",
+   "type": "number",
+   "title": "Find the ladder",
+   "answer": 2.5,
+   "unit": "m",
+   "prompt": "A ladder reaches **2 m** up a wall and its foot is **1.5 m** from the wall. How long is the ladder?",
+   "hint": "The ladder is the hypotenuse: x² = 2² + 1.5².",
+   "explain": "2² + 1.5² = 4 + 2.25 = 6.25, and √6.25 = 2.5 m.",
+   "set": {
+    "h": 2,
+    "d": 1.5
+   },
+   "hold": {
+    "askL": 1
+   }
+  },
+  {
+   "id": "lad2",
+   "type": "number",
+   "title": "How high does it reach?",
+   "answer": 2.4,
+   "unit": "m",
+   "prompt": "A **2.5 m** ladder has its foot **0.7 m** from a wall. How high up the wall does it reach?",
+   "hint": "Now the ladder is the hypotenuse and the height is a shorter side — subtract: 2.5² − 0.7².",
+   "explain": "2.5² − 0.7² = 6.25 − 0.49 = 5.76, and √5.76 = 2.4 m."
+  },
+  {
+   "id": "lad3",
+   "type": "choice",
+   "title": "Which side is the hypotenuse?",
+   "answer": "lad",
+   "options": [
     {
-      "id": "lad1",
-      "type": "number",
-      "title": "Find the ladder",
-      "answer": 2.5,
-      "unit": "m",
-      "prompt": "A ladder reaches **2 m** up a wall and its foot is **1.5 m** from the wall. How long is the ladder?",
-      "hint": "The ladder is the hypotenuse: x² = 2² + 1.5².",
-      "explain": "2² + 1.5² = 4 + 2.25 = 6.25, and √6.25 = 2.5 m.",
-      "set": {
-        "h": 2,
-        "d": 1.5
-      },
-      "hold": {
-        "askL": 1
-      }
+     "id": "lad",
+     "label": "The ladder"
     },
     {
-      "id": "lad2",
-      "type": "number",
-      "title": "How high does it reach?",
-      "answer": 2.4,
-      "unit": "m",
-      "prompt": "A **2.5 m** ladder has its foot **0.7 m** from a wall. How high up the wall does it reach?",
-      "hint": "Now the ladder is the hypotenuse and the height is a shorter side — subtract: 2.5² − 0.7².",
-      "explain": "2.5² − 0.7² = 6.25 − 0.49 = 5.76, and √5.76 = 2.4 m."
+     "id": "wall",
+     "label": "The wall"
     },
     {
-      "id": "lad3",
-      "type": "choice",
-      "title": "Which side is the hypotenuse?",
-      "answer": "lad",
-      "options": [
-        {
-          "id": "lad",
-          "label": "The ladder"
-        },
-        {
-          "id": "wall",
-          "label": "The wall"
-        },
-        {
-          "id": "gnd",
-          "label": "The ground"
-        }
-      ],
-      "prompt": "In the ladder triangle, which side is the **hypotenuse**?",
-      "hint": "It faces the right angle between the wall and the ground.",
-      "explain": "The wall and the ground meet at the right angle, so the ladder — opposite it — is the hypotenuse."
+     "id": "gnd",
+     "label": "The ground"
     }
-  ],
-  "intro": "Pythagoras' Theorem helps with ladders, poles, cables and distances. The skill is **spotting the right-angled triangle** hidden in the picture.",
-  "takeaways": [
-    "Look for the **right angle** — a wall and the ground, two roads at a crossing, north and east.",
-    "**Sketch** a rough diagram and label every length, using **x** for the unknown.",
-    "The side opposite the right angle (the ladder, the cable, the straight-line distance) is the **hypotenuse**.",
-    "Check your answer is sensible: the hypotenuse must be the **longest** side."
-  ],
-  "notes": [
-    {
-      "title": "Journey problems",
-      "text": "For \"walks 5 km north then 12 km east\" draw the two legs at 90° — the straight-line distance back to the start is the hypotenuse."
-    }
-  ],
-  "challengeIntro": "Try a few ladders of your own.",
-  "scene3d": "ladder"
+   ],
+   "prompt": "In the ladder triangle, which side is the **hypotenuse**?",
+   "hint": "It faces the right angle between the wall and the ground.",
+   "explain": "The wall and the ground meet at the right angle, so the ladder — opposite it — is the hypotenuse."
+  }
+ ],
+ "intro": "Pythagoras' Theorem helps with ladders, poles, cables and distances. The skill is **spotting the right-angled triangle** hidden in the picture.",
+ "takeaways": [
+  "Look for the **right angle** — a wall and the ground, two roads at a crossing, north and east.",
+  "**Sketch** a rough diagram and label every length, using **x** for the unknown.",
+  "The side opposite the right angle (the ladder, the cable, the straight-line distance) is the **hypotenuse**.",
+  "Check your answer is sensible: the hypotenuse must be the **longest** side."
+ ],
+ "notes": [
+  {
+   "title": "Journey problems",
+   "text": "For \"walks 5 km north then 12 km east\" draw the two legs at 90° — the straight-line distance back to the start is the hypotenuse."
+  }
+ ],
+ "challengeIntro": "Try a few ladders of your own.",
+ "scene3d": {
+  "type": "ladder",
+  "hParam": "h",
+  "dParam": "d",
+  "unit": "m",
+  "names": {
+   "wall": "h",
+   "ground": "d",
+   "ladder": "L"
+  },
+  "letters": null
+ }
 }

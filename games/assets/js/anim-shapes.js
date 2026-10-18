@@ -146,8 +146,14 @@
             var g = away(c.env), gs = c.map(g[0], g[1]);
             if (ok2(gs) && ((mx - gs[0]) * nx + (my - gs[1]) * ny) < 0) sgn = -1;
           }
-          var dist = (gap + lab.ext(nx, ny)) * sgn;
-          lab.put(mx + nx * dist, my + ny * dist, c.env, c.alpha);
+          // labels lie ALONG their line (vertical line → upright-reading-bottom-to-top text) unless switched off
+          var rot = 0, along = eng.ui.alignLabels !== false && lab.ld.align !== false && L > 8;
+          if (along) {
+            rot = Math.atan2(dy, dx) * 180 / Math.PI;
+            if (rot > 88) rot -= 180; else if (rot < -92) rot += 180;     // never upside-down; near-vertical always reads bottom→top
+          }
+          var dist = (gap + (along ? (lab._h || 22) / 2 : lab.ext(nx, ny))) * sgn;
+          lab.put(mx + nx * dist, my + ny * dist, c.env, c.alpha, rot);
         }
       }
     };
@@ -369,7 +375,7 @@
 
   // --------------------------------------------------------------- grid / axes
   SHAPES.grid = function (def, eng, node, where) {
-    var step = eng.cx(def.step, where + '.step', 1), major = def.major | 0;
+    var step = eng.cx(def.step === 'auto' ? 1 : def.step, where + '.step', 1), major = def.major | 0;
     var minor = svg('path', {}, node.g), maj = major ? svg('path', {}, node.g) : null;
     var role = def.role || 'grid';
     [minor, maj].forEach(function (p, i) {
@@ -378,9 +384,16 @@
       p.style.strokeWidth = i ? 'calc(var(--anim-sw, 1) * 1.6px)' : 'calc(var(--anim-sw, 1) * 1px)';
       p.style.opacity = i ? '0.9' : '0.55';
     });
+    var auto = def.step === 'auto';
+    // a "nice" cell size (1 · 2 · 5 × 10ⁿ) giving roughly 8–10 cells across the longer side of the drawing
+    function niceStep(span) {
+      var raw = span / 9, p = Math.pow(10, Math.floor(Math.log(raw) / Math.LN10)), m = raw / p;
+      return (m < 1.5 ? 1 : m < 3.5 ? 2 : m < 7.5 ? 5 : 10) * p;
+    }
     return {
       update: function (c) {
-        var s = step(c.env), w = c.world, v = c.view;
+        var w = c.world, v = c.view;
+        var s = auto ? niceStep(Math.max(w.x1 - w.x0, w.y1 - w.y0)) : step(c.env);
         if (!(s > 0)) return false;
         var ix0 = Math.ceil(w.x0 / s - 1e-9), ix1 = Math.floor(w.x1 / s + 1e-9), iy0 = Math.ceil(w.y0 / s - 1e-9), iy1 = Math.floor(w.y1 / s + 1e-9);
         if (ix1 - ix0 > 160 || iy1 - iy0 > 160) return false;
@@ -401,9 +414,16 @@
       if (!texts[i]) { var t = svg('text', { 'class': 'anim-axis-num' }, node.g); t.style.fill = eng.roleCss('muted', where); texts[i] = t; }
       return texts[i];
     }
+    var auto = def.step === 'auto';
+    // a "nice" cell size (1 · 2 · 5 × 10ⁿ) giving roughly 8–10 cells across the longer side of the drawing
+    function niceStep(span) {
+      var raw = span / 9, p = Math.pow(10, Math.floor(Math.log(raw) / Math.LN10)), m = raw / p;
+      return (m < 1.5 ? 1 : m < 3.5 ? 2 : m < 7.5 ? 5 : 10) * p;
+    }
     return {
       update: function (c) {
-        var s = step(c.env), w = c.world, v = c.view;
+        var w = c.world, v = c.view;
+        var s = auto ? niceStep(Math.max(w.x1 - w.x0, w.y1 - w.y0)) : step(c.env);
         if (!(s > 0)) return false;
         var x0 = f2(v.ox + w.x0 * v.k), x1 = f2(v.ox + w.x1 * v.k), y0 = f2(v.oy - w.y0 * v.k), y1 = f2(v.oy - w.y1 * v.k);
         var ax = clamp(v.oy, 6, v.H - 6), ay = clamp(v.ox, 6, v.W - 6);

@@ -100,7 +100,11 @@
     function stageMax() {
       var vh = root.innerHeight || 700, vw = root.innerWidth || 400;
       if (vw < 760) return Math.max(210, Math.min(vh * 0.4, 380));
-      return Math.max(260, Math.min(vh * 0.72, 680));
+      // wide screen: leave room for the top bar, the question card, the play bar and the colour chips,
+      // so the drawing AND its controls fit on a laptop without scrolling
+      // (a real-world 3D scene adds a control deck under the drawing, so the drawing gives up some height)
+      var deck = stageBox.classList.contains('has-scene3d') ? 118 : 0;
+      return Math.max(280, Math.min(vh - 440 - deck, 680));
     }
 
     var eng = new A.Engine(spec, { stage: stage, root: R, store: opts.store || null, maxHeight: stageMax });

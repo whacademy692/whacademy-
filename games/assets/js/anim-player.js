@@ -11,11 +11,33 @@
 
   var host, titleEl, metaEl, qBox, qLabel, qText, qNav, backEl;
 
-  async function resolveProfile() {
-    var cached = Storage.getCachedDashboard();
-    if (cached && cached.data && cached.data.profile) return cached.data.profile;
-    try { var data = await Api.dashboard.compose(); Storage.setCachedDashboard(data); return data.profile; }
-    catch (e) { return null; }
+  function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+  /** the profile saved by the dashboard (only trusted when it carries a scope) */
+  function cachedProfile() {
+    var c = null;
+    try { c = Storage.getCachedDashboard(); } catch (e) { c = null; }
+    return (c && c.data && c.data.profile && c.data.profile.enrolledScope) ? c.data.profile : null;
+  }
+
+  /**
+   * The student's profile. First open of a link (new tab / cold cache / slow network) used to fail once and show
+   * "not available"; now it waits for the dashboard cache, asks the server again a few times, and only gives up
+   * (→ null, which shows "Try again", never "not available") after that. `force` skips the cache (stale-scope check).
+   */
+  async function resolveProfile(force) {
+    var p = force ? null : cachedProfile();
+    if (p) return p;
+    var gaps = [0, 600, 1400, 2800];
+    for (var i = 0; i < gaps.length; i++) {
+      if (gaps[i]) await sleep(gaps[i]);
+      if (!force) { p = cachedProfile(); if (p) return p; }     // another script may have filled the cache meanwhile
+      try {
+        var data = await Api.dashboard.compose();
+        if (data && data.profile) { try { Storage.setCachedDashboard(data); } catch (e) { /* ignore */ } return data.profile; }
+      } catch (e) { /* retry */ }
+    }
+    return null;
   }
 
   function findAllowed(profile, id) {
@@ -91,13 +113,18 @@
     host.appendChild(Utils.createEl('p', { class: 'anim-loading', text: 'Loading animation…' }));
     var id = Router.getQueryParam('a');
     if (!id) { message('No animation chosen', 'Go back and pick one from the list.'); return; }
-    var profile = await resolveProfile();
+    var profile = await resolveProfile(false);
+    if (!profile) { message('Could not check your account', 'Your connection may be slow. Please try again.', true); return; }
     if (!(await Plan.can('animations'))) {
       host.textContent = '';
       host.innerHTML = Plan.lockHtml('animations', { message: 'Interactive subject animations are part of the Max plan. Upgrade to Max to open them.' });
       return;
     }
     var found = findAllowed(profile, id);
+    if (!found) {                                   // the cached scope may be stale — ask the server once before saying "no"
+      var fresh = await resolveProfile(true);
+      if (fresh) found = findAllowed(fresh, id);
+    }
     if (!found) { message('This animation is not available for you', 'It may belong to another class or subject.'); return; }
 
     var a = found.anim, isQ = !!(a.question && a.label);
@@ -136,6 +163,20 @@
       catch (e) { if (window.console) console.warn('[anim] controls failed', e); }
     }
   }
+
+  // If the app never finishes starting (offline / a very slow first load) don't leave "Loading animation…" forever.
+  setTimeout(function () {
+    var h = Utils.qs('#anim-host');
+    if (!h || !h.querySelector('.anim-loading') || (window.__whaAnim && window.__whaAnim.engine)) return;
+    h.textContent = '';
+    var box = Utils.createEl('div', { class: 'anim-fatal' }, [
+      Utils.createEl('p', { class: 'anim-fatal__t', text: 'This is taking longer than usual' }),
+      Utils.createEl('p', { class: 'anim-fatal__s', text: 'Your connection may be slow or offline. Tap Try again.' })
+    ]);
+    var rb = Utils.createEl('button', { class: 'btn btn--primary btn--sm', type: 'button', text: 'Try again' });
+    rb.style.marginTop = '12px'; rb.addEventListener('click', function () { window.location.reload(); });
+    box.appendChild(rb); h.appendChild(box);
+  }, 15000);
 
   document.addEventListener('wha:ready', function () {
     if (Router.currentPageName() !== 'anim-player.html') return;
