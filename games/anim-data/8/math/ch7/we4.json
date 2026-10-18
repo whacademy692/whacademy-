@@ -1,0 +1,418 @@
+{
+ "id": "g8-math-pyth-we4",
+ "title": "Worked Example 4",
+ "summary": "A ladder against a wall makes a right-angled triangle — the ladder is the hypotenuse.",
+ "alt": "Worked Example 4: A ladder leans against a vertical wall. Its top is 2.4 m above the ground and its foot is 0.5 m from the wall. Calculate the length of the ladder.",
+ "uiDefaults": {
+  "angles": false
+ },
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -0.584,
+   1.084
+  ],
+  "y": [
+   -0.48,
+   2.98
+  ],
+  "pad": 10,
+  "ratio": 1.1
+ },
+ "roles": {
+  "hyp": {
+   "label": "Hypotenuse",
+   "color": "#059669",
+   "text": "The side opposite the right angle. It is always the longest side."
+  },
+  "legA": {
+   "label": "Shorter side 1",
+   "color": "#2563eb",
+   "text": "One of the two sides that meet at the right angle."
+  },
+  "legB": {
+   "label": "Shorter side 2",
+   "color": "#e11d48",
+   "text": "The other side that meets at the right angle."
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The length we are finding."
+  }
+ },
+ "params": [],
+ "derived": {
+  "p_C": [
+   0.0,
+   0.0
+  ],
+  "p_A": [
+   0.0,
+   2.4
+  ],
+  "p_B": [
+   0.5,
+   0.0
+  ]
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ln0",
+   "role": "ink",
+   "from": "p_A",
+   "to": "p_C",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 0,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln1",
+   "role": "ink",
+   "from": "p_C",
+   "to": "p_B",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 150,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln2",
+   "role": "ink",
+   "from": "p_A",
+   "to": "p_B",
+   "strokeWidth": 3.0,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 300,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "angle",
+   "id": "ra0",
+   "at": "p_C",
+   "from": "p_B",
+   "to": "p_A",
+   "style": "square",
+   "r": 26,
+   "role": "ink",
+   "strokeWidth": 1.8,
+   "fill": false,
+   "appear": "s0",
+   "delay": 700,
+   "appearDur": 400
+  },
+  {
+   "type": "point",
+   "id": "pt_C",
+   "at": "p_C",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "C",
+    "off": 0,
+    "dx": -3.5,
+    "dy": 16.6,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_A",
+   "at": "p_A",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "A",
+    "off": 0,
+    "dx": -1.8,
+    "dy": -16.9,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_B",
+   "at": "p_B",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "B",
+    "off": 0,
+    "dx": 6.5,
+    "dy": 15.7,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "polygon",
+   "id": "ov0",
+   "pts": [
+    "p_A",
+    "p_B",
+    "p_C"
+   ],
+   "role": "accent",
+   "fill": "accent",
+   "fillOpacity": 0.11,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s1",
+   "appearDur": 500,
+   "disappear": "s6"
+  },
+  {
+   "type": "segment",
+   "id": "ov1",
+   "role": "hyp",
+   "from": "p_A",
+   "to": "p_B",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s6"
+  },
+  {
+   "type": "segment",
+   "id": "ov2",
+   "role": "legA",
+   "from": "p_C",
+   "to": "p_B",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s6"
+  },
+  {
+   "type": "segment",
+   "id": "ov3",
+   "role": "legB",
+   "from": "p_A",
+   "to": "p_C",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s6"
+  },
+  {
+   "type": "segment",
+   "id": "lb0",
+   "from": "p_A",
+   "to": "p_C",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "2.4 m",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     0.5,
+     2.4
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb1",
+   "from": "p_C",
+   "to": "p_B",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "0.5 m",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     0.1667,
+     0.8
+    ],
+    "off": 5,
+    "t": 0.5,
+    "dy": 24
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb2",
+   "from": "p_A",
+   "to": "p_B",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "x = ?",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     0,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0,
+   "disappear": "s5"
+  },
+  {
+   "type": "segment",
+   "id": "lb3",
+   "from": "p_A",
+   "to": "p_B",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "x = 2.45 m",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     0,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s5",
+   "appearDur": 450,
+   "delay": 0
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "narration": "A ladder leans against a **vertical wall**. The top of the ladder is **2.4 m** above the ground (**AC**) and the foot is **0.5 m** from the wall (**CB**). The wall meets the ground at a right angle, **∠C = 90°**. Find the length **x** of the ladder (**AB**).",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Spot the right angle",
+   "narration": "In ΔABC, **∠C = 90°**, so the **hypotenuse** is the side opposite it: **the ladder**. The other two sides meet at the right angle. The ladder is the hypotenuse — the side opposite the right angle.",
+   "actions": [
+    {
+     "pulse": [
+      "ra0"
+     ],
+     "at": 700
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Pythagoras' theorem",
+   "narration": "**Pythagoras' theorem**: the square on the hypotenuse equals the sum of the squares on the other two sides.\\[\\begin{aligned}\\role{hyp}{x^2} &= \\role{legA}{CB^2} + \\role{legB}{AC^2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Substitute the lengths",
+   "narration": "Replace each side by its length.\\[\\begin{aligned}\\role{hyp}{x^2} &= \\role{legA}{CB^2} + \\role{legB}{AC^2} \\\\ &= \\role{legA}{0.5^2} + \\role{legB}{2.4^2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Square and add",
+   "narration": "Square each number, then add them.\\[\\begin{aligned}\\role{hyp}{x^2} &= \\role{legA}{CB^2} + \\role{legB}{AC^2} \\\\ &= \\role{legA}{0.5^2} + \\role{legB}{2.4^2} \\\\ &= \\role{legA}{0.25} + \\role{legB}{5.76} \\\\ &= \\role{hyp}{6.01}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s5",
+   "title": "Square root",
+   "narration": "6.01 is not a perfect square, so use a calculator and round to 3 significant figures.\\[\\begin{aligned}\\role{hyp}{x^2} &= \\role{legA}{CB^2} + \\role{legB}{AC^2} \\\\ &= \\role{legA}{0.5^2} + \\role{legB}{2.4^2} \\\\ &= \\role{legA}{0.25} + \\role{legB}{5.76} \\\\ &= \\role{hyp}{6.01} \\\\ \\role{hyp}{x} &= \\sqrt{6.01} = \\role{ans}{2.45\\ \\text{m}}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s6",
+   "title": "Turn it into 3D",
+   "narration": "Tap the **3D view** button on the drawing to see the ladder, wall and ground as a real 3D model, and drag to look around it.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Pythagoras' theorem",
+   "tex": "\\role{hyp}{c^2} = \\role{legA}{a^2} + \\role{legB}{b^2}",
+   "text": "In a right-angled triangle, the square on the hypotenuse equals the sum of the squares on the other two sides."
+  },
+  {
+   "title": "Finding the hypotenuse",
+   "tex": "\\role{hyp}{c} = \\sqrt{\\role{legA}{a^2} + \\role{legB}{b^2}}",
+   "text": "Add the two squares, then take the square root."
+  },
+  {
+   "title": "Finding a shorter side",
+   "tex": "\\role{legA}{a} = \\sqrt{\\role{hyp}{c^2} - \\role{legB}{b^2}}",
+   "text": "Subtract the known shorter side's square from the hypotenuse's square, then take the square root."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "twin",
+   "type": "number",
+   "title": "Now you try",
+   "answer": 10,
+   "unit": "m",
+   "prompt": "A right-angled triangle has shorter sides **6 m** and **8 m**. Find the **hypotenuse**.",
+   "hint": "Add the squares: 6² + 8².",
+   "explain": "6² + 8² = 36 + 64 = 100, and √100 = 10 m."
+  }
+ ],
+ "takeaways": [
+  "Find the **right angle** first — the side opposite it is the **hypotenuse**.",
+  "To find the hypotenuse: **add** the squares of the two shorter sides, then take the **square root**.",
+  "The hypotenuse is always the **longest** side, so check that your answer is bigger than both of the other sides."
+ ],
+ "notes": [
+  {
+   "title": "Exam tip",
+   "text": "Always begin with a line such as \"In ΔABC, ∠C = 90°. Using Pythagoras' Theorem,\" — it shows which triangle and which right angle you are using."
+  },
+  {
+   "title": "Rounding",
+   "text": "If the answer is not a whole number, give it to **3 significant figures** unless the question says otherwise."
+  }
+ ],
+ "scene3d": "ladder"
+}

@@ -1,0 +1,833 @@
+{
+ "id": "g8-math-pyth-we7",
+ "title": "Worked Example 7",
+ "summary": "Sketch the journeys on a grid, mark the right angles, then apply Pythagoras.",
+ "alt": "Worked Example 7: Boat A: East 36 km (P→Q) then South 24 km (Q→R). Boat B: North 36 km (P→S) then East 54 km (S→T). Find QS and RT.",
+ "uiDefaults": {
+  "angles": false
+ },
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -18.96,
+   72.96
+  ],
+  "y": [
+   -42.0,
+   52.0
+  ],
+  "pad": 10,
+  "ratio": 1.023
+ },
+ "roles": {
+  "hyp": {
+   "label": "Hypotenuse",
+   "color": "#059669",
+   "text": "The side opposite the right angle. It is always the longest side."
+  },
+  "legA": {
+   "label": "Shorter side 1",
+   "color": "#2563eb",
+   "text": "One of the two sides that meet at the right angle."
+  },
+  "legB": {
+   "label": "Shorter side 2",
+   "color": "#e11d48",
+   "text": "The other side that meets at the right angle."
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The length we are finding."
+  }
+ },
+ "params": [],
+ "derived": {
+  "p_P": [
+   0.0,
+   0.0
+  ],
+  "p_Q": [
+   36.0,
+   0.0
+  ],
+  "p_R": [
+   36.0,
+   -24.0
+  ],
+  "p_S": [
+   0.0,
+   36.0
+  ],
+  "p_T": [
+   54.0,
+   36.0
+  ],
+  "p_X": [
+   36.0,
+   36.0
+  ]
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ln0",
+   "role": "ink",
+   "from": "p_P",
+   "to": "p_Q",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 0,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln1",
+   "role": "ink",
+   "from": "p_Q",
+   "to": "p_R",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 150,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln2",
+   "role": "ink",
+   "from": "p_P",
+   "to": "p_S",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 300,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln3",
+   "role": "ink",
+   "from": "p_S",
+   "to": "p_T",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 450,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln4",
+   "role": "ink",
+   "from": "p_Q",
+   "to": "p_S",
+   "strokeWidth": 3.0,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 600,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln5",
+   "role": "ink",
+   "from": "p_R",
+   "to": "p_T",
+   "strokeWidth": 3.0,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 750,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln6",
+   "role": "ink",
+   "from": "p_Q",
+   "to": "p_X",
+   "strokeWidth": 1.8,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 900,
+   "appearDur": 700,
+   "layer": "mid",
+   "dash": [
+    7,
+    6
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "ln7",
+   "role": "ink",
+   "from": "p_R",
+   "to": "p_X",
+   "strokeWidth": 1.8,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 1050,
+   "appearDur": 700,
+   "layer": "mid",
+   "dash": [
+    7,
+    6
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "ln8",
+   "role": "ink",
+   "from": "p_X",
+   "to": "p_T",
+   "strokeWidth": 1.8,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 1200,
+   "appearDur": 700,
+   "layer": "mid",
+   "dash": [
+    7,
+    6
+   ]
+  },
+  {
+   "type": "angle",
+   "id": "ra0",
+   "at": "p_P",
+   "from": "p_Q",
+   "to": "p_S",
+   "style": "square",
+   "r": 26,
+   "role": "ink",
+   "strokeWidth": 1.8,
+   "fill": false,
+   "appear": "s0",
+   "delay": 700,
+   "appearDur": 400
+  },
+  {
+   "type": "angle",
+   "id": "ra1",
+   "at": "p_X",
+   "from": "p_T",
+   "to": "p_R",
+   "style": "square",
+   "r": 26,
+   "role": "ink",
+   "strokeWidth": 1.8,
+   "fill": false,
+   "appear": "s0",
+   "delay": 700,
+   "appearDur": 400
+  },
+  {
+   "type": "point",
+   "id": "pt_P",
+   "at": "p_P",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "P",
+    "off": 0,
+    "dx": -15.1,
+    "dy": 7.8,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_Q",
+   "at": "p_Q",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "Q",
+    "off": 0,
+    "dx": 9.2,
+    "dy": 14.3,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_R",
+   "at": "p_R",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "R",
+    "off": 0,
+    "dx": 10.2,
+    "dy": 13.6,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_S",
+   "at": "p_S",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "S",
+    "off": 0,
+    "dx": -13.2,
+    "dy": -10.7,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_T",
+   "at": "p_T",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "T",
+    "off": 0,
+    "dx": 13.2,
+    "dy": -10.7,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_X",
+   "at": "p_X",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front"
+  },
+  {
+   "type": "polygon",
+   "id": "ov0",
+   "pts": [
+    "p_Q",
+    "p_S",
+    "p_P"
+   ],
+   "role": "accent",
+   "fill": "accent",
+   "fillOpacity": 0.11,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s1",
+   "appearDur": 500,
+   "disappear": "s6"
+  },
+  {
+   "type": "segment",
+   "id": "ov1",
+   "role": "hyp",
+   "from": "p_Q",
+   "to": "p_S",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s6"
+  },
+  {
+   "type": "segment",
+   "id": "ov2",
+   "role": "legA",
+   "from": "p_P",
+   "to": "p_Q",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s6"
+  },
+  {
+   "type": "segment",
+   "id": "ov3",
+   "role": "legB",
+   "from": "p_P",
+   "to": "p_S",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s6"
+  },
+  {
+   "type": "segment",
+   "id": "ov4",
+   "role": "legA",
+   "from": "p_X",
+   "to": "p_T",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s6",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s7"
+  },
+  {
+   "type": "segment",
+   "id": "ov5",
+   "role": "legB",
+   "from": "p_R",
+   "to": "p_X",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s6",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s7"
+  },
+  {
+   "type": "polygon",
+   "id": "ov6",
+   "pts": [
+    "p_R",
+    "p_T",
+    "p_X"
+   ],
+   "role": "accent",
+   "fill": "accent",
+   "fillOpacity": 0.11,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s7",
+   "appearDur": 500
+  },
+  {
+   "type": "segment",
+   "id": "ov7",
+   "role": "hyp",
+   "from": "p_R",
+   "to": "p_T",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s7",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "ov8",
+   "role": "legA",
+   "from": "p_X",
+   "to": "p_T",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s7",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "ov9",
+   "role": "legB",
+   "from": "p_R",
+   "to": "p_X",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s7",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "lb0",
+   "from": "p_P",
+   "to": "p_Q",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "PQ = 36 km",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     27.0,
+     14.0
+    ],
+    "off": 5,
+    "t": 0.5,
+    "dy": 22
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb1",
+   "from": "p_Q",
+   "to": "p_R",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "QR = 24 km",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     70,
+     -24
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb2",
+   "from": "p_P",
+   "to": "p_S",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "PS = 36 km",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     -30,
+     18
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb3",
+   "from": "p_S",
+   "to": "p_T",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "ST = 54 km",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     27,
+     60
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb4",
+   "from": "p_Q",
+   "to": "p_S",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "QS = ?",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     0,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0,
+   "disappear": "s5"
+  },
+  {
+   "type": "segment",
+   "id": "lb5",
+   "from": "p_R",
+   "to": "p_T",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "RT = ?",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     70,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0,
+   "disappear": "s11"
+  },
+  {
+   "type": "segment",
+   "id": "lb6",
+   "from": "p_Q",
+   "to": "p_S",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "QS = 50.9 km",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     0,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s5",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb7",
+   "from": "p_X",
+   "to": "p_T",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "18 km",
+    "role": "legA",
+    "size": "l",
+    "away": [
+     27.0,
+     14.0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s6",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb8",
+   "from": "p_R",
+   "to": "p_X",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "60 km",
+    "role": "legB",
+    "size": "l",
+    "away": [
+     27.0,
+     14.0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s6",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb9",
+   "from": "p_R",
+   "to": "p_T",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "RT = 62.6 km",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     70,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s11",
+   "appearDur": 450,
+   "delay": 0
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "narration": "Boat A goes **East** from **P** to **Q** (**PQ = 36 km**), then **South** to **R** (**QR = 24 km**). Boat B goes **North** from **P** to **S** (**PS = 36 km**), then **East** to **T** (**ST = 54 km**). Find the shortest distance between (i) **Q and S**, (ii) **R and T**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Spot the right angle",
+   "narration": "In ΔPQS, **∠P = 90°**, so the **hypotenuse** is the side opposite it: **QS**. The other two sides meet at the right angle. East (PQ) and North (PS) are perpendicular, so ∠P = 90°.",
+   "actions": [
+    {
+     "pulse": [
+      "ra0"
+     ],
+     "at": 700
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Pythagoras' theorem",
+   "narration": "**Pythagoras' theorem**: the square on the hypotenuse equals the sum of the squares on the other two sides.\\[\\begin{aligned}\\role{hyp}{QS^2} &= \\role{legA}{PQ^2} + \\role{legB}{PS^2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Substitute the lengths",
+   "narration": "Replace each side by its length.\\[\\begin{aligned}\\role{hyp}{QS^2} &= \\role{legA}{PQ^2} + \\role{legB}{PS^2} \\\\ &= \\role{legA}{36^2} + \\role{legB}{36^2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Square and add",
+   "narration": "Square each number, then add them.\\[\\begin{aligned}\\role{hyp}{QS^2} &= \\role{legA}{PQ^2} + \\role{legB}{PS^2} \\\\ &= \\role{legA}{36^2} + \\role{legB}{36^2} \\\\ &= \\role{legA}{1296} + \\role{legB}{1296} \\\\ &= \\role{hyp}{2592}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s5",
+   "title": "Square root",
+   "narration": "2592 is not a perfect square, so use a calculator and round to 3 significant figures.\\[\\begin{aligned}\\role{hyp}{QS^2} &= \\role{legA}{PQ^2} + \\role{legB}{PS^2} \\\\ &= \\role{legA}{36^2} + \\role{legB}{36^2} \\\\ &= \\role{legA}{1296} + \\role{legB}{1296} \\\\ &= \\role{hyp}{2592} \\\\ \\role{hyp}{QS} &= \\sqrt{2592} = \\role{ans}{50.9\\ \\text{km}}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s6",
+   "title": "Set up for RT",
+   "narration": "Drop a perpendicular from **Q** to **ST**, meeting it at **X**. Then **∠X = 90°** in **ΔRTX**, with legs along the grid.\\[\\begin{aligned}\\role{legA}{TX} &= 54 - 36 = \\role{legA}{18}\\ \\text{km} \\\\ \\role{legB}{RX} &= 24 + 36 = \\role{legB}{60}\\ \\text{km}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s7",
+   "title": "Spot the right angle",
+   "narration": "In ΔRTX, **∠X = 90°**, so the **hypotenuse** is the side opposite it: **RT**. The other two sides meet at the right angle.",
+   "actions": [
+    {
+     "pulse": [
+      "ra0"
+     ],
+     "at": 700
+    }
+   ]
+  },
+  {
+   "id": "s8",
+   "title": "Pythagoras' theorem",
+   "narration": "**Pythagoras' theorem**: the square on the hypotenuse equals the sum of the squares on the other two sides.\\[\\begin{aligned}\\role{hyp}{RT^2} &= \\role{legA}{TX^2} + \\role{legB}{RX^2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s9",
+   "title": "Substitute the lengths",
+   "narration": "Replace each side by its length.\\[\\begin{aligned}\\role{hyp}{RT^2} &= \\role{legA}{TX^2} + \\role{legB}{RX^2} \\\\ &= \\role{legA}{18^2} + \\role{legB}{60^2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s10",
+   "title": "Square and add",
+   "narration": "Square each number, then add them.\\[\\begin{aligned}\\role{hyp}{RT^2} &= \\role{legA}{TX^2} + \\role{legB}{RX^2} \\\\ &= \\role{legA}{18^2} + \\role{legB}{60^2} \\\\ &= \\role{legA}{324} + \\role{legB}{3600} \\\\ &= \\role{hyp}{3924}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s11",
+   "title": "Square root",
+   "narration": "3924 is not a perfect square, so use a calculator and round to 3 significant figures.\\[\\begin{aligned}\\role{hyp}{RT^2} &= \\role{legA}{TX^2} + \\role{legB}{RX^2} \\\\ &= \\role{legA}{18^2} + \\role{legB}{60^2} \\\\ &= \\role{legA}{324} + \\role{legB}{3600} \\\\ &= \\role{hyp}{3924} \\\\ \\role{hyp}{RT} &= \\sqrt{3924} = \\role{ans}{62.6\\ \\text{km}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Pythagoras' theorem",
+   "tex": "\\role{hyp}{c^2} = \\role{legA}{a^2} + \\role{legB}{b^2}",
+   "text": "In a right-angled triangle, the square on the hypotenuse equals the sum of the squares on the other two sides."
+  },
+  {
+   "title": "Finding the hypotenuse",
+   "tex": "\\role{hyp}{c} = \\sqrt{\\role{legA}{a^2} + \\role{legB}{b^2}}",
+   "text": "Add the two squares, then take the square root."
+  },
+  {
+   "title": "Finding a shorter side",
+   "tex": "\\role{legA}{a} = \\sqrt{\\role{hyp}{c^2} - \\role{legB}{b^2}}",
+   "text": "Subtract the known shorter side's square from the hypotenuse's square, then take the square root."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "qs",
+   "type": "number",
+   "title": "Check QS",
+   "answer": "50.9",
+   "unit": "km",
+   "prompt": "Find **QS** when **PQ = PS = 36 km** with **∠P = 90°**.",
+   "hint": "QS² = 36² + 36².",
+   "explain": "QS² = 1296 + 1296 = 2592, so QS = √2592 = 50.9 km (3 s.f.)."
+  }
+ ],
+ "takeaways": [
+  "For journey problems, **sketch a grid** (East–West, North–South) and plot each leg before any calculation.",
+  "Make a **right-angled triangle** by dropping a perpendicular to a grid line; its legs are easy horizontal/vertical distances.",
+  "Round only the **final** distance (3 s.f.)."
+ ],
+ "notes": [
+  {
+   "title": "Grid tip",
+   "text": "Put P at the origin. East and North are perpendicular, so any East leg and any North leg meet at **90°** — exactly what Pythagoras needs."
+  }
+ ]
+}

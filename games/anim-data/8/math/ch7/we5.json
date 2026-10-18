@@ -1,0 +1,510 @@
+{
+ "id": "g8-math-pyth-we5",
+ "title": "Worked Example 5",
+ "summary": "The horizontal gap and the height difference are the two shorter sides.",
+ "alt": "Worked Example 5: A belt AB is stretched between two vertical columns 4 m apart of heights 5 m and 7 m. Calculate the length of the belt.",
+ "uiDefaults": {
+  "angles": false
+ },
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -1.52,
+   5.52
+  ],
+  "y": [
+   -1.6,
+   8.7
+  ],
+  "pad": 10,
+  "ratio": 1.1
+ },
+ "roles": {
+  "hyp": {
+   "label": "Hypotenuse",
+   "color": "#059669",
+   "text": "The side opposite the right angle. It is always the longest side."
+  },
+  "legA": {
+   "label": "Shorter side 1",
+   "color": "#2563eb",
+   "text": "One of the two sides that meet at the right angle."
+  },
+  "legB": {
+   "label": "Shorter side 2",
+   "color": "#e11d48",
+   "text": "The other side that meets at the right angle."
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The length we are finding."
+  }
+ },
+ "params": [],
+ "derived": {
+  "p_A": [
+   0.0,
+   5.0
+  ],
+  "p_B": [
+   4.0,
+   7.0
+  ],
+  "p_C": [
+   4.0,
+   5.0
+  ],
+  "p_P0": [
+   0.0,
+   0.0
+  ],
+  "p_P1": [
+   4.0,
+   0.0
+  ]
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ln0",
+   "role": "ink",
+   "from": "p_P0",
+   "to": "p_A",
+   "strokeWidth": 3.4,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 0,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln1",
+   "role": "ink",
+   "from": "p_P1",
+   "to": "p_B",
+   "strokeWidth": 3.4,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 150,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln2",
+   "role": "ink",
+   "from": "p_P0",
+   "to": "p_P1",
+   "strokeWidth": 1.8,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 300,
+   "appearDur": 700,
+   "layer": "mid",
+   "dash": [
+    7,
+    6
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "ln3",
+   "role": "ink",
+   "from": "p_A",
+   "to": "p_B",
+   "strokeWidth": 3.0,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 450,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln4",
+   "role": "ink",
+   "from": "p_A",
+   "to": "p_C",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 600,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "angle",
+   "id": "ra0",
+   "at": "p_C",
+   "from": "p_A",
+   "to": "p_B",
+   "style": "square",
+   "r": 26,
+   "role": "ink",
+   "strokeWidth": 1.8,
+   "fill": false,
+   "appear": "s0",
+   "delay": 700,
+   "appearDur": 400
+  },
+  {
+   "type": "point",
+   "id": "pt_A",
+   "at": "p_A",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "A",
+    "off": 0,
+    "dx": -14.1,
+    "dy": -9.4,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_B",
+   "at": "p_B",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "B",
+    "off": 0,
+    "dx": 6.9,
+    "dy": -15.5,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_C",
+   "at": "p_C",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "C",
+    "off": 0,
+    "dx": 16.3,
+    "dy": 4.9,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_P0",
+   "at": "p_P0",
+   "r": 0.01,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front"
+  },
+  {
+   "type": "point",
+   "id": "pt_P1",
+   "at": "p_P1",
+   "r": 0.01,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front"
+  },
+  {
+   "type": "segment",
+   "id": "ov0",
+   "role": "legB",
+   "from": "p_B",
+   "to": "p_C",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s2"
+  },
+  {
+   "type": "polygon",
+   "id": "ov1",
+   "pts": [
+    "p_A",
+    "p_B",
+    "p_C"
+   ],
+   "role": "accent",
+   "fill": "accent",
+   "fillOpacity": 0.11,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s2",
+   "appearDur": 500
+  },
+  {
+   "type": "segment",
+   "id": "ov2",
+   "role": "hyp",
+   "from": "p_A",
+   "to": "p_B",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s2",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "ov3",
+   "role": "legA",
+   "from": "p_A",
+   "to": "p_C",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s2",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "ov4",
+   "role": "legB",
+   "from": "p_B",
+   "to": "p_C",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s2",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "lb0",
+   "from": "p_A",
+   "to": "p_B",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "AB = ?",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     4,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0,
+   "disappear": "s6"
+  },
+  {
+   "type": "segment",
+   "id": "lb1",
+   "from": "p_A",
+   "to": "p_C",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "4 m",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     2.4,
+     3.4
+    ],
+    "off": 5,
+    "t": 0.5,
+    "dy": -24
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb2",
+   "from": "p_B",
+   "to": "p_C",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     0,
+     7
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0,
+   "disappear": "s1"
+  },
+  {
+   "type": "segment",
+   "id": "lb3",
+   "from": "p_B",
+   "to": "p_C",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "2 m",
+    "role": "legB",
+    "size": "l",
+    "away": [
+     0,
+     7
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s1",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb4",
+   "from": "p_A",
+   "to": "p_B",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "4.47 m",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     4,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s6",
+   "appearDur": 450,
+   "delay": 0
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "narration": "A belt **AB** is stretched between the tops of two vertical columns **4 m** apart, of heights **5 m** and **7 m**. Taking **C** level with **A**, **∠C = 90°**. Calculate the length of the belt **AB**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Height difference",
+   "narration": "First find the vertical side **BC** — the difference in the column heights.\\[\\begin{aligned}\\role{legB}{BC} &= 7 - 5 = \\role{legB}{2}\\ \\text{m}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Spot the right angle",
+   "narration": "In ΔABC, **∠C = 90°**, so the **hypotenuse** is the side opposite it: **the belt AB**. The other two sides meet at the right angle.",
+   "actions": [
+    {
+     "pulse": [
+      "ra0"
+     ],
+     "at": 700
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Pythagoras' theorem",
+   "narration": "**Pythagoras' theorem**: the square on the hypotenuse equals the sum of the squares on the other two sides.\\[\\begin{aligned}\\role{hyp}{AB^2} &= \\role{legA}{AC^2} + \\role{legB}{BC^2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Substitute the lengths",
+   "narration": "Replace each side by its length.\\[\\begin{aligned}\\role{hyp}{AB^2} &= \\role{legA}{AC^2} + \\role{legB}{BC^2} \\\\ &= \\role{legA}{4^2} + \\role{legB}{2^2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s5",
+   "title": "Square and add",
+   "narration": "Square each number, then add them.\\[\\begin{aligned}\\role{hyp}{AB^2} &= \\role{legA}{AC^2} + \\role{legB}{BC^2} \\\\ &= \\role{legA}{4^2} + \\role{legB}{2^2} \\\\ &= \\role{legA}{16} + \\role{legB}{4} \\\\ &= \\role{hyp}{20}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s6",
+   "title": "Square root",
+   "narration": "20 is not a perfect square, so use a calculator and round to 3 significant figures.\\[\\begin{aligned}\\role{hyp}{AB^2} &= \\role{legA}{AC^2} + \\role{legB}{BC^2} \\\\ &= \\role{legA}{4^2} + \\role{legB}{2^2} \\\\ &= \\role{legA}{16} + \\role{legB}{4} \\\\ &= \\role{hyp}{20} \\\\ \\role{hyp}{AB} &= \\sqrt{20} = \\role{ans}{4.47\\ \\text{m}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Pythagoras' theorem",
+   "tex": "\\role{hyp}{c^2} = \\role{legA}{a^2} + \\role{legB}{b^2}",
+   "text": "In a right-angled triangle, the square on the hypotenuse equals the sum of the squares on the other two sides."
+  },
+  {
+   "title": "Finding the hypotenuse",
+   "tex": "\\role{hyp}{c} = \\sqrt{\\role{legA}{a^2} + \\role{legB}{b^2}}",
+   "text": "Add the two squares, then take the square root."
+  },
+  {
+   "title": "Finding a shorter side",
+   "tex": "\\role{legA}{a} = \\sqrt{\\role{hyp}{c^2} - \\role{legB}{b^2}}",
+   "text": "Subtract the known shorter side's square from the hypotenuse's square, then take the square root."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "twin",
+   "type": "number",
+   "title": "Now you try",
+   "answer": "10",
+   "unit": "m",
+   "prompt": "Two columns **8 m** apart have heights **9 m** and **15 m**. Find the belt joining their tops.",
+   "hint": "Height difference = 15 − 9 = 6 m; horizontal gap = 8 m. Then use 8² + 6².",
+   "explain": "Height difference = 15 − 9 = 6 m, horizontal = 8 m, so belt = √(8² + 6²) = √100 = 10 m."
+  }
+ ],
+ "takeaways": [
+  "Find the **right angle** first — the side opposite it is the **hypotenuse**.",
+  "To find the hypotenuse: **add** the squares of the two shorter sides, then take the **square root**.",
+  "The hypotenuse is always the **longest** side, so check that your answer is bigger than both of the other sides."
+ ],
+ "notes": [
+  {
+   "title": "Exam tip",
+   "text": "Always begin with a line such as \"In ΔABC, ∠C = 90°. Using Pythagoras' Theorem,\" — it shows which triangle and which right angle you are using."
+  },
+  {
+   "title": "Rounding",
+   "text": "If the answer is not a whole number, give it to **3 significant figures** unless the question says otherwise."
+  }
+ ]
+}
