@@ -26,6 +26,7 @@
   var query = '';
   var tabState = {};                 // chapter number → open section key
   var focusTab = null;               // [chapter number, key] to re-focus after a tab re-render
+  var openCh = null;                 // {key, n} of the chapter the student opened, or null (show chapter cards)
 
   async function resolveProfile() {
     if (profileCache) return profileCache;
@@ -226,6 +227,40 @@
     return Utils.createEl('div', { class: 'anim-chapter anim-chapter--search' }, kids);
   }
 
+  /* ------------------------------------------------------------------ chapter card (landing) */
+  function isOpen(group, ch) {
+    return !!openCh && openCh.n === ch.n && (openCh.key === null || openCh.key === group.key);
+  }
+  function openChapter(key, n) {
+    openCh = { key: key, n: n };
+    var sec = tabState[n];
+    try { history.replaceState(null, '', '#' + n + (sec ? '-' + sec : '')); } catch (e) { /* ignore */ }
+    render();
+    try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { /* ignore */ }
+  }
+  function closeChapter() {
+    openCh = null;
+    try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { /* ignore */ }
+    render();
+  }
+  function chapterCard(group, ch) {
+    var total = ch.rows.length, done = doneCount(ch.rows);
+    var pct = total ? Math.round(done / total * 100) : 0;
+    var secLabels = (ch.sections || []).map(function (s) { return s.label; }).join(' · ');
+    var card = Utils.createEl('button', { class: 'anim-chcard' + (done === total && total ? ' is-done' : ''), type: 'button', style: accentStyle(group.key) }, [
+      Utils.createEl('span', { class: 'anim-chcard__n', 'aria-hidden': 'true', text: 'Ch ' + ch.n }),
+      Utils.createEl('span', { class: 'anim-chcard__body' }, [
+        Utils.createEl('span', { class: 'anim-chcard__title', text: ch.title }),
+        Utils.createEl('span', { class: 'anim-chcard__meta', text: total + (total === 1 ? ' animation' : ' animations') + (secLabels ? ' · ' + secLabels : '') }),
+        Utils.createEl('span', { class: 'anim-chcard__bar' }, [Utils.createEl('span', { class: 'anim-chcard__fill', style: 'width:' + pct + '%' })]),
+        Utils.createEl('span', { class: 'anim-chcard__done', text: done + ' / ' + total + ' done' })
+      ]),
+      Utils.createEl('span', { class: 'anim-chcard__go', 'aria-hidden': 'true', text: '→' })
+    ]);
+    card.addEventListener('click', function () { openChapter(group.key, ch.n); });
+    return card;
+  }
+
   /* ------------------------------------------------------------------ page */
   function section(group) {
     var head = Utils.createEl('div', { class: 'subject-group__head', style: accentStyle(group.key) }, [
@@ -236,14 +271,35 @@
       ])
     ]);
     var kids = [head];
-    group.chapters.forEach(function (ch) {
-      kids.push(Utils.createEl('h3', { class: 'anim-chapterhead', text: 'Chapter ' + ch.n + ' · ' + ch.title }));
-      if (ch.sections && ch.sections.length) {
-        kids.push(query ? chapterSearch(group, ch, ch.rows) : chapterTabs(group, ch));
-      } else {
-        kids.push(Utils.createEl('div', { class: 'card-grid' }, ch.rows.map(card)));
-      }
-    });
+
+    // While searching, show matching chapters' lists directly (no card step).
+    if (query) {
+      group.chapters.forEach(function (ch) {
+        kids.push(Utils.createEl('h3', { class: 'anim-chapterhead', text: 'Chapter ' + ch.n + ' · ' + ch.title }));
+        if (ch.sections && ch.sections.length) kids.push(chapterSearch(group, ch, ch.rows));
+        else kids.push(Utils.createEl('div', { class: 'card-grid' }, ch.rows.map(card)));
+      });
+      return Utils.createEl('section', { class: 'subject-group', style: accentStyle(group.key) }, kids);
+    }
+
+    // Did the student open one of this group's chapters?
+    var opened = group.chapters.filter(function (ch) { return isOpen(group, ch); })[0];
+    if (opened) {
+      var back = Utils.createEl('button', { class: 'anim-chback', type: 'button' }, [
+        Utils.createEl('span', { 'aria-hidden': 'true', text: '← ' }),
+        Utils.createEl('span', { text: 'All chapters' })
+      ]);
+      back.addEventListener('click', closeChapter);
+      kids.push(back);
+      kids.push(Utils.createEl('h3', { class: 'anim-chapterhead', text: 'Chapter ' + opened.n + ' · ' + opened.title }));
+      if (opened.sections && opened.sections.length) kids.push(chapterTabs(group, opened));
+      else kids.push(Utils.createEl('div', { class: 'card-grid' }, opened.rows.map(card)));
+      return Utils.createEl('section', { class: 'subject-group', style: accentStyle(group.key) }, kids);
+    }
+
+    // Otherwise: a grid of chapter cards to pick from.
+    kids.push(Utils.createEl('p', { class: 'anim-chhint', text: 'Pick a chapter to open its animations.' }));
+    kids.push(Utils.createEl('div', { class: 'anim-chgrid' }, group.chapters.map(function (ch) { return chapterCard(group, ch); })));
     return Utils.createEl('section', { class: 'subject-group', style: accentStyle(group.key) }, kids);
   }
 
@@ -288,10 +344,14 @@
     }
   }
 
-  /** "#7-7.1" → remember it so the right tab is open on arrival / after "Back" */
+  /** "#7-7.1" → open chapter 7 on tab 7.1 (so "Back" from the player lands right). */
   function readHash() {
-    var m = /^#(\d+)-(.+)$/.exec(window.location.hash || '');
-    if (m) tabState[parseInt(m[1], 10)] = decodeURIComponent(m[2]);
+    var h = window.location.hash || '';
+    var m = /^#(\d+)-(.+)$/.exec(h);
+    if (m) { var n = parseInt(m[1], 10); tabState[n] = decodeURIComponent(m[2]); openCh = { key: null, n: n }; return; }
+    var m2 = /^#(\d+)$/.exec(h);
+    if (m2) { openCh = { key: null, n: parseInt(m2[1], 10) }; return; }
+    openCh = null;
   }
 
   document.addEventListener('wha:ready', async function () {

@@ -189,7 +189,19 @@ const Router = (() => {
       '.wha-upg-strip{display:flex;justify-content:flex-end;padding:10px 16px 0}' +
       '.wha-upg-strip[hidden]{display:none!important}' +
       '@media(min-width:1024px){.wha-upg-strip{display:none!important}}' +
-      '@media(max-width:400px){.wha-upg--pill{padding:6px 10px;font-size:.72rem}.wha-upg--pill .wha-upg__icon{display:none}}';
+      '@media(max-width:400px){.wha-upg--pill{padding:6px 10px;font-size:.72rem}.wha-upg--pill .wha-upg__icon{display:none}}' +
+      // Basic/Plus: keep the bright gold AND run a moving gradient along the border to pull the eye.
+      '.wha-upg--promo{position:relative;isolation:isolate}' +
+      '.wha-upg--promo::after{content:"";position:absolute;inset:-2px;border-radius:inherit;z-index:-1;' +
+        'background:linear-gradient(90deg,#fbbf24,#ffffff,#f97316,#fde68a,#fbbf24);background-size:300% 100%;' +
+        'animation:wha-upg-slide 2.6s linear infinite;filter:saturate(1.1)}' +
+      '.wha-upg--promo.wha-upg--pill::after{inset:-2px}' +
+      '@keyframes wha-upg-slide{to{background-position:300% 0}}' +
+      // Max: nothing left to push, so a calm, light style (no animation, no shout).
+      '.wha-upg--max{background:linear-gradient(135deg,#eef2ff,#e0e7ff)!important;color:#3730a3!important;' +
+        'border:1px solid rgba(79,70,229,.22)!important;box-shadow:0 2px 8px rgba(79,70,229,.14),inset 0 1px 0 rgba(255,255,255,.6)!important}' +
+      '.wha-upg--max:hover{filter:brightness(1.02);box-shadow:0 3px 10px rgba(79,70,229,.2)!important}' +
+      '@media(prefers-reduced-motion:reduce){.wha-upg--promo::after{animation:none}}';
     document.head.appendChild(st);
   }
 
@@ -213,6 +225,8 @@ const Router = (() => {
     document.querySelectorAll('[data-upgrade-nav]').forEach((el) => {
       el.hidden = !known;
       const pill = el.classList.contains('wha-upg--pill');
+      el.classList.toggle('wha-upg--max', max);                 // calm, light for Max
+      el.classList.toggle('wha-upg--promo', known && !max);     // bright + moving border for Basic/Plus
       const t = el.querySelector('.wha-upg__t');
       if (t) t.textContent = max ? (pill ? 'Change plan' : 'Change Plan') : (pill ? 'Upgrade' : 'Upgrade Plan');
       if (el.parentElement && el.parentElement.classList.contains('wha-upg-strip')) el.parentElement.hidden = !known;

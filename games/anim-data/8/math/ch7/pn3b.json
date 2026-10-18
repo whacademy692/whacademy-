@@ -1,656 +1,696 @@
 {
- "id": "g8-math-pyth-pn3b",
- "title": "Practise Now 3(2)",
- "summary": "Find HI in ΔGIH, then IR = HI − RH, then GR in ΔGIR.",
- "alt": "Practise Now 3(2): In ΔGHI, GH = 61 cm, GI = 11 cm and ∠I = 90°. R lies on IH such that RH = 21 cm. Find the length of (i) HI, (ii) GR.",
- "uiDefaults": {
-  "angles": false
- },
- "defaultTab": "formula",
- "world": {
-  "x": [
-   -14.4,
-   74.4
-  ],
-  "y": [
-   -8.4,
-   30.4
-  ],
-  "pad": 10,
-  "ratio": 0.62
- },
- "roles": {
-  "hyp": {
-   "label": "Hypotenuse",
-   "color": "#059669",
-   "text": "The side opposite the right angle. It is always the longest side."
+  "id": "g8-math-pyth-pn3b",
+  "title": "Practise Now 3(2)",
+  "summary": "Find HI in ΔGIH, then IR = HI − RH, then GR in ΔGIR.",
+  "alt": "Practise Now 3(2): In ΔGHI, GH = 61 cm, GI = 11 cm and ∠I = 90°. R lies on IH such that RH = 21 cm. Find the length of (i) HI, (ii) GR.",
+  "uiDefaults": {
+    "angles": false
   },
-  "legA": {
-   "label": "Shorter side 1",
-   "color": "#2563eb",
-   "text": "One of the two sides that meet at the right angle."
+  "defaultTab": "formula",
+  "world": {
+    "x": [
+      -14.4,
+      74.4
+    ],
+    "y": [
+      -8.4,
+      30.4
+    ],
+    "pad": 10,
+    "ratio": 0.62
   },
-  "legB": {
-   "label": "Shorter side 2",
-   "color": "#e11d48",
-   "text": "The other side that meets at the right angle."
+  "roles": {
+    "hyp": {
+      "label": "Hypotenuse",
+      "color": "#059669",
+      "text": "The side opposite the right angle. It is always the longest side."
+    },
+    "legA": {
+      "label": "Shorter side 1",
+      "color": "#2563eb",
+      "text": "One of the two sides that meet at the right angle."
+    },
+    "legB": {
+      "label": "Shorter side 2",
+      "color": "#e11d48",
+      "text": "The other side that meets at the right angle."
+    },
+    "ans": {
+      "label": "Answer",
+      "color": "#d97706",
+      "text": "The length we are finding."
+    },
+    "region_a": {
+      "label": "Right triangle (GIR)",
+      "color": "#8b5cf6",
+      "legend": false,
+      "text": "Shade this triangle."
+    },
+    "region_b": {
+      "label": "Triangle GRH",
+      "color": "#14b8a6",
+      "legend": false,
+      "text": "Shade this part."
+    }
   },
-  "ans": {
-   "label": "Answer",
-   "color": "#d97706",
-   "text": "The length we are finding."
-  }
- },
- "params": [],
- "derived": {
-  "p_I": [
-   0.0,
-   0.0
+  "params": [],
+  "derived": {
+    "p_I": [
+      0.0,
+      0.0
+    ],
+    "p_G": [
+      0.0,
+      22.0
+    ],
+    "p_H": [
+      60.0,
+      0.0
+    ],
+    "p_R": [
+      39.0,
+      0.0
+    ]
+  },
+  "shapes": [
+    {
+      "type": "polygon",
+      "id": "reg_a",
+      "pts": [
+        "p_G",
+        "p_I",
+        "p_R"
+      ],
+      "role": "region_a",
+      "fill": "region_a",
+      "fillOpacity": 0,
+      "stroke": false,
+      "layer": "back"
+    },
+    {
+      "type": "polygon",
+      "id": "reg_b",
+      "pts": [
+        "p_G",
+        "p_R",
+        "p_H"
+      ],
+      "role": "region_b",
+      "fill": "region_b",
+      "fillOpacity": 0,
+      "stroke": false,
+      "layer": "back"
+    },
+    {
+      "type": "segment",
+      "id": "ln0",
+      "role": "ink",
+      "from": "p_G",
+      "to": "p_I",
+      "strokeWidth": 2.6,
+      "appear": "s0",
+      "effect": "draw",
+      "delay": 0,
+      "appearDur": 700,
+      "layer": "mid"
+    },
+    {
+      "type": "segment",
+      "id": "ln1",
+      "role": "ink",
+      "from": "p_I",
+      "to": "p_R",
+      "strokeWidth": 2.6,
+      "appear": "s0",
+      "effect": "draw",
+      "delay": 150,
+      "appearDur": 700,
+      "layer": "mid"
+    },
+    {
+      "type": "segment",
+      "id": "ln2",
+      "role": "ink",
+      "from": "p_R",
+      "to": "p_H",
+      "strokeWidth": 2.6,
+      "appear": "s0",
+      "effect": "draw",
+      "delay": 300,
+      "appearDur": 700,
+      "layer": "mid"
+    },
+    {
+      "type": "segment",
+      "id": "ln3",
+      "role": "ink",
+      "from": "p_G",
+      "to": "p_H",
+      "strokeWidth": 2.6,
+      "appear": "s0",
+      "effect": "draw",
+      "delay": 450,
+      "appearDur": 700,
+      "layer": "mid"
+    },
+    {
+      "type": "segment",
+      "id": "ln4",
+      "role": "ink",
+      "from": "p_G",
+      "to": "p_R",
+      "strokeWidth": 2.2,
+      "appear": "s0",
+      "effect": "draw",
+      "delay": 600,
+      "appearDur": 700,
+      "layer": "mid"
+    },
+    {
+      "type": "angle",
+      "id": "ra0",
+      "at": "p_I",
+      "from": "p_H",
+      "to": "p_G",
+      "style": "square",
+      "r": 18,
+      "role": "ink",
+      "strokeWidth": 1.8,
+      "fill": false,
+      "appear": "s0",
+      "delay": 700,
+      "appearDur": 400
+    },
+    {
+      "type": "point",
+      "id": "pt_I",
+      "at": "p_I",
+      "r": 3.2,
+      "role": "ink",
+      "appear": "s0",
+      "delay": 400,
+      "appearDur": 400,
+      "layer": "front",
+      "label": {
+        "text": "I",
+        "off": 0,
+        "dx": -16.6,
+        "dy": 3.7,
+        "size": "l",
+        "role": "ink"
+      }
+    },
+    {
+      "type": "point",
+      "id": "pt_G",
+      "at": "p_G",
+      "r": 3.2,
+      "role": "ink",
+      "appear": "s0",
+      "delay": 400,
+      "appearDur": 400,
+      "layer": "front",
+      "label": {
+        "text": "G",
+        "off": 0,
+        "dx": -14.1,
+        "dy": -9.4,
+        "size": "l",
+        "role": "ink"
+      }
+    },
+    {
+      "type": "point",
+      "id": "pt_H",
+      "at": "p_H",
+      "r": 3.2,
+      "role": "ink",
+      "appear": "s0",
+      "delay": 400,
+      "appearDur": 400,
+      "layer": "front",
+      "label": {
+        "text": "H",
+        "off": 0,
+        "dx": 16.8,
+        "dy": 2.6,
+        "size": "l",
+        "role": "ink"
+      }
+    },
+    {
+      "type": "point",
+      "id": "pt_R",
+      "at": "p_R",
+      "r": 3.2,
+      "role": "ink",
+      "appear": "s0",
+      "delay": 400,
+      "appearDur": 400,
+      "layer": "front",
+      "label": {
+        "text": "R",
+        "off": 0,
+        "dx": 15.9,
+        "dy": 6.1,
+        "size": "l",
+        "role": "ink"
+      }
+    },
+    {
+      "type": "polygon",
+      "id": "ov0",
+      "pts": [
+        "p_G",
+        "p_I",
+        "p_H"
+      ],
+      "role": "accent",
+      "fill": "accent",
+      "fillOpacity": 0.11,
+      "stroke": false,
+      "layer": "back",
+      "appear": "s1",
+      "appearDur": 500,
+      "disappear": "s7"
+    },
+    {
+      "type": "segment",
+      "id": "ov1",
+      "role": "hyp",
+      "from": "p_G",
+      "to": "p_H",
+      "strokeWidth": 6,
+      "layer": "mid",
+      "appear": "s1",
+      "effect": "draw",
+      "appearDur": 600,
+      "disappear": "s7"
+    },
+    {
+      "type": "segment",
+      "id": "ov2",
+      "role": "legA",
+      "from": "p_G",
+      "to": "p_I",
+      "strokeWidth": 6,
+      "layer": "mid",
+      "appear": "s1",
+      "effect": "draw",
+      "appearDur": 600,
+      "disappear": "s7"
+    },
+    {
+      "type": "segment",
+      "id": "ov3",
+      "role": "legB",
+      "from": "p_I",
+      "to": "p_H",
+      "strokeWidth": 6,
+      "layer": "mid",
+      "appear": "s1",
+      "effect": "draw",
+      "appearDur": 600,
+      "disappear": "s7"
+    },
+    {
+      "type": "segment",
+      "id": "ov4",
+      "role": "legA",
+      "from": "p_I",
+      "to": "p_R",
+      "strokeWidth": 6,
+      "layer": "mid",
+      "appear": "s7",
+      "effect": "draw",
+      "appearDur": 600,
+      "disappear": "s8"
+    },
+    {
+      "type": "polygon",
+      "id": "ov5",
+      "pts": [
+        "p_G",
+        "p_I",
+        "p_R"
+      ],
+      "role": "accent",
+      "fill": "accent",
+      "fillOpacity": 0.11,
+      "stroke": false,
+      "layer": "back",
+      "appear": "s8",
+      "appearDur": 500
+    },
+    {
+      "type": "segment",
+      "id": "ov6",
+      "role": "hyp",
+      "from": "p_G",
+      "to": "p_R",
+      "strokeWidth": 6,
+      "layer": "mid",
+      "appear": "s8",
+      "effect": "draw",
+      "appearDur": 600
+    },
+    {
+      "type": "segment",
+      "id": "ov7",
+      "role": "legA",
+      "from": "p_G",
+      "to": "p_I",
+      "strokeWidth": 6,
+      "layer": "mid",
+      "appear": "s8",
+      "effect": "draw",
+      "appearDur": 600
+    },
+    {
+      "type": "segment",
+      "id": "ov8",
+      "role": "legB",
+      "from": "p_I",
+      "to": "p_R",
+      "strokeWidth": 6,
+      "layer": "mid",
+      "appear": "s8",
+      "effect": "draw",
+      "appearDur": 600
+    },
+    {
+      "type": "segment",
+      "id": "lb0",
+      "from": "p_G",
+      "to": "p_I",
+      "role": "ink",
+      "strokeWidth": 0,
+      "label": {
+        "text": "11 cm",
+        "role": "ink",
+        "size": "l",
+        "away": [
+          24.75,
+          5.5
+        ],
+        "off": 5,
+        "t": 0.5
+      },
+      "layer": "front",
+      "appear": "s0",
+      "appearDur": 450,
+      "delay": 0
+    },
+    {
+      "type": "segment",
+      "id": "lb1",
+      "from": "p_G",
+      "to": "p_H",
+      "role": "ink",
+      "strokeWidth": 0,
+      "label": {
+        "text": "61 cm",
+        "role": "ink",
+        "size": "l",
+        "away": [
+          30,
+          -10
+        ],
+        "off": 5,
+        "t": 0.5
+      },
+      "layer": "front",
+      "appear": "s0",
+      "appearDur": 450,
+      "delay": 0
+    },
+    {
+      "type": "segment",
+      "id": "lb2",
+      "from": "p_R",
+      "to": "p_H",
+      "role": "ink",
+      "strokeWidth": 0,
+      "label": {
+        "text": "21 cm",
+        "role": "ink",
+        "size": "l",
+        "away": [
+          24.75,
+          5.5
+        ],
+        "off": 5,
+        "t": 0.5
+      },
+      "layer": "front",
+      "appear": "s0",
+      "appearDur": 450,
+      "delay": 0
+    },
+    {
+      "type": "segment",
+      "id": "lb3",
+      "from": "p_I",
+      "to": "p_H",
+      "role": "ink",
+      "strokeWidth": 0,
+      "label": {
+        "text": "HI = ?",
+        "role": "ans",
+        "size": "l",
+        "away": [
+          24.75,
+          5.5
+        ],
+        "off": 5,
+        "t": 0.5,
+        "dy": 22
+      },
+      "layer": "front",
+      "appear": "s0",
+      "appearDur": 450,
+      "delay": 0,
+      "disappear": "s6"
+    },
+    {
+      "type": "segment",
+      "id": "lb4",
+      "from": "p_G",
+      "to": "p_R",
+      "role": "ink",
+      "strokeWidth": 0,
+      "label": {
+        "text": "GR = ?",
+        "role": "ans",
+        "size": "l",
+        "away": [
+          30,
+          40
+        ],
+        "off": 5,
+        "t": 0.5
+      },
+      "layer": "front",
+      "appear": "s0",
+      "appearDur": 450,
+      "delay": 0,
+      "disappear": "s10"
+    },
+    {
+      "type": "segment",
+      "id": "lb5",
+      "from": "p_I",
+      "to": "p_H",
+      "role": "ink",
+      "strokeWidth": 0,
+      "label": {
+        "text": "HI = 60 cm",
+        "role": "ans",
+        "size": "l",
+        "away": [
+          24.75,
+          5.5
+        ],
+        "off": 5,
+        "t": 0.5,
+        "dy": 22
+      },
+      "layer": "front",
+      "appear": "s6",
+      "appearDur": 450,
+      "delay": 0
+    },
+    {
+      "type": "segment",
+      "id": "lb6",
+      "from": "p_I",
+      "to": "p_R",
+      "role": "ink",
+      "strokeWidth": 0,
+      "label": {
+        "text": "39 cm",
+        "role": "ink",
+        "size": "l",
+        "away": [
+          24.75,
+          5.5
+        ],
+        "off": 5,
+        "t": 0.5
+      },
+      "layer": "front",
+      "appear": "s7",
+      "appearDur": 450,
+      "delay": 0
+    },
+    {
+      "type": "segment",
+      "id": "lb7",
+      "from": "p_G",
+      "to": "p_R",
+      "role": "ink",
+      "strokeWidth": 0,
+      "label": {
+        "text": "GR = 40.5 cm",
+        "role": "ans",
+        "size": "l",
+        "away": [
+          30,
+          40
+        ],
+        "off": 5,
+        "t": 0.5
+      },
+      "layer": "front",
+      "appear": "s10",
+      "appearDur": 450,
+      "delay": 0
+    }
   ],
-  "p_G": [
-   0.0,
-   22.0
+  "steps": [
+    {
+      "id": "s0",
+      "title": "The question",
+      "narration": "In **ΔGHI**, **GH = 61 cm**, **GI = 11 cm** and **∠I = 90°**. **R** lies on **IH** such that **RH = 21 cm**. We have to find (i) **HI** and (ii) **GR**. (The figure is not drawn to scale.)",
+      "actions": []
+    },
+    {
+      "id": "s1",
+      "title": "Spot the right angle",
+      "narration": "In ΔGIH, **∠I = 90°**, so the **hypotenuse** is the side opposite it: **GH**. The other two sides meet at the right angle.",
+      "actions": [
+        {
+          "pulse": [
+            "ra0"
+          ],
+          "at": 700
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "title": "Pythagoras' theorem",
+      "narration": "**Pythagoras' theorem**: the square on the hypotenuse equals the sum of the squares on the other two sides.\\[\\begin{aligned}\\role{hyp}{GH^2} &= \\role{legA}{GI^2} + \\role{legB}{HI^2}\\end{aligned}\\]",
+      "actions": []
+    },
+    {
+      "id": "s3",
+      "title": "Make the unknown the subject",
+      "narration": "We want a **shorter side**, so subtract the known square from the hypotenuse square.\\[\\begin{aligned}\\role{hyp}{GH^2} &= \\role{legA}{GI^2} + \\role{legB}{HI^2} \\\\ \\role{legB}{HI^2} &= \\role{hyp}{GH^2} - \\role{legA}{GI^2}\\end{aligned}\\]",
+      "actions": []
+    },
+    {
+      "id": "s4",
+      "title": "Substitute the lengths",
+      "narration": "Replace each side by its length.\\[\\begin{aligned}\\role{hyp}{GH^2} &= \\role{legA}{GI^2} + \\role{legB}{HI^2} \\\\ \\role{legB}{HI^2} &= \\role{hyp}{GH^2} - \\role{legA}{GI^2} \\\\ &= \\role{hyp}{61^2} - \\role{legA}{11^2}\\end{aligned}\\]",
+      "actions": []
+    },
+    {
+      "id": "s5",
+      "title": "Square and subtract",
+      "narration": "Square each number, then subtract.\\[\\begin{aligned}\\role{hyp}{GH^2} &= \\role{legA}{GI^2} + \\role{legB}{HI^2} \\\\ \\role{legB}{HI^2} &= \\role{hyp}{GH^2} - \\role{legA}{GI^2} \\\\ &= \\role{hyp}{61^2} - \\role{legA}{11^2} \\\\ &= \\role{hyp}{3721} - \\role{legA}{121} \\\\ &= \\role{legB}{3600}\\end{aligned}\\]",
+      "actions": []
+    },
+    {
+      "id": "s6",
+      "title": "Square root",
+      "narration": "Take the square root of both sides (a length is positive).\\[\\begin{aligned}\\role{hyp}{GH^2} &= \\role{legA}{GI^2} + \\role{legB}{HI^2} \\\\ \\role{legB}{HI^2} &= \\role{hyp}{GH^2} - \\role{legA}{GI^2} \\\\ &= \\role{hyp}{61^2} - \\role{legA}{11^2} \\\\ &= \\role{hyp}{3721} - \\role{legA}{121} \\\\ &= \\role{legB}{3600} \\\\ \\role{legB}{HI} &= \\sqrt{3600} = \\role{ans}{60\\ \\text{cm}}\\end{aligned}\\]",
+      "actions": []
+    },
+    {
+      "id": "s7",
+      "title": "Find IR",
+      "narration": "Now find the shorter part **IR**.\\[\\begin{aligned}IR &= HI - RH \\\\ &= 60 - 21 = 39\\ \\text{cm}\\end{aligned}\\]",
+      "actions": []
+    },
+    {
+      "id": "s8",
+      "title": "Right angle and theorem",
+      "narration": "In ΔGIR, **∠I = 90°**, so the **hypotenuse** is the side opposite it: **GR**. The other two sides meet at the right angle. **Pythagoras' theorem**: the square on the hypotenuse equals the sum of the squares on the other two sides.\\[\\begin{aligned}\\role{hyp}{GR^2} &= \\role{legA}{GI^2} + \\role{legB}{IR^2}\\end{aligned}\\]",
+      "actions": [
+        {
+          "pulse": [
+            "ra0"
+          ],
+          "at": 700
+        }
+      ]
+    },
+    {
+      "id": "s9",
+      "title": "Substitute and add",
+      "narration": "Put in the lengths, square them and add.\\[\\begin{aligned}\\role{hyp}{GR^2} &= \\role{legA}{GI^2} + \\role{legB}{IR^2} \\\\ &= \\role{legA}{11^2} + \\role{legB}{39^2} \\\\ &= \\role{legA}{121} + \\role{legB}{1521} \\\\ &= \\role{hyp}{1642}\\end{aligned}\\]",
+      "actions": []
+    },
+    {
+      "id": "s10",
+      "title": "Square root",
+      "narration": "1642 is not a perfect square, so use a calculator and round to 3 significant figures.\\[\\begin{aligned}\\role{hyp}{GR^2} &= \\role{legA}{GI^2} + \\role{legB}{IR^2} \\\\ &= \\role{legA}{11^2} + \\role{legB}{39^2} \\\\ &= \\role{legA}{121} + \\role{legB}{1521} \\\\ &= \\role{hyp}{1642} \\\\ \\role{hyp}{GR} &= \\sqrt{1642} = \\role{ans}{40.5\\ \\text{cm}}\\end{aligned}\\]",
+      "actions": []
+    }
   ],
-  "p_H": [
-   60.0,
-   0.0
+  "formulas": [
+    {
+      "title": "Pythagoras' theorem",
+      "tex": "\\role{hyp}{c^2} = \\role{legA}{a^2} + \\role{legB}{b^2}",
+      "text": "In a right-angled triangle, the square on the hypotenuse equals the sum of the squares on the other two sides."
+    },
+    {
+      "title": "Finding the hypotenuse",
+      "tex": "\\role{hyp}{c} = \\sqrt{\\role{legA}{a^2} + \\role{legB}{b^2}}",
+      "text": "Add the two squares, then take the square root."
+    },
+    {
+      "title": "Finding a shorter side",
+      "tex": "\\role{legA}{a} = \\sqrt{\\role{hyp}{c^2} - \\role{legB}{b^2}}",
+      "text": "Subtract the known shorter side's square from the hypotenuse's square, then take the square root."
+    }
   ],
-  "p_R": [
-   39.0,
-   0.0
+  "challenges": [
+    {
+      "id": "ir",
+      "type": "number",
+      "title": "Check IR",
+      "answer": 39,
+      "unit": "cm",
+      "prompt": "HI = 60 cm and RH = 21 cm. How long is **IR**?",
+      "hint": "IR = HI − RH.",
+      "explain": "IR = 60 − 21 = 39 cm."
+    }
+  ],
+  "takeaways": [
+    "Pythagoras' theorem works only in **right-angled** triangles — mark every right angle in the figure first.",
+    "Split the figure into right-angled triangles and solve them **one at a time**; each answer feeds the next triangle.",
+    "Keep a few extra decimal places in the middle of a calculation and round only the **final** answer (3 s.f.)."
+  ],
+  "notes": [
+    {
+      "title": "Exam tip",
+      "text": "Always begin with a line such as \"In ΔABC, ∠C = 90°. Using Pythagoras' Theorem,\" — it shows which triangle and which right angle you are using."
+    },
+    {
+      "title": "Rounding",
+      "text": "If the answer is not a whole number, give it to **3 significant figures** unless the question says otherwise."
+    }
   ]
- },
- "shapes": [
-  {
-   "type": "segment",
-   "id": "ln0",
-   "role": "ink",
-   "from": "p_G",
-   "to": "p_I",
-   "strokeWidth": 2.6,
-   "appear": "s0",
-   "effect": "draw",
-   "delay": 0,
-   "appearDur": 700,
-   "layer": "mid"
-  },
-  {
-   "type": "segment",
-   "id": "ln1",
-   "role": "ink",
-   "from": "p_I",
-   "to": "p_R",
-   "strokeWidth": 2.6,
-   "appear": "s0",
-   "effect": "draw",
-   "delay": 150,
-   "appearDur": 700,
-   "layer": "mid"
-  },
-  {
-   "type": "segment",
-   "id": "ln2",
-   "role": "ink",
-   "from": "p_R",
-   "to": "p_H",
-   "strokeWidth": 2.6,
-   "appear": "s0",
-   "effect": "draw",
-   "delay": 300,
-   "appearDur": 700,
-   "layer": "mid"
-  },
-  {
-   "type": "segment",
-   "id": "ln3",
-   "role": "ink",
-   "from": "p_G",
-   "to": "p_H",
-   "strokeWidth": 2.6,
-   "appear": "s0",
-   "effect": "draw",
-   "delay": 450,
-   "appearDur": 700,
-   "layer": "mid"
-  },
-  {
-   "type": "segment",
-   "id": "ln4",
-   "role": "ink",
-   "from": "p_G",
-   "to": "p_R",
-   "strokeWidth": 2.2,
-   "appear": "s0",
-   "effect": "draw",
-   "delay": 600,
-   "appearDur": 700,
-   "layer": "mid"
-  },
-  {
-   "type": "angle",
-   "id": "ra0",
-   "at": "p_I",
-   "from": "p_H",
-   "to": "p_G",
-   "style": "square",
-   "r": 18,
-   "role": "ink",
-   "strokeWidth": 1.8,
-   "fill": false,
-   "appear": "s0",
-   "delay": 700,
-   "appearDur": 400
-  },
-  {
-   "type": "point",
-   "id": "pt_I",
-   "at": "p_I",
-   "r": 3.2,
-   "role": "ink",
-   "appear": "s0",
-   "delay": 400,
-   "appearDur": 400,
-   "layer": "front",
-   "label": {
-    "text": "I",
-    "off": 0,
-    "dx": -16.6,
-    "dy": 3.7,
-    "size": "l",
-    "role": "ink"
-   }
-  },
-  {
-   "type": "point",
-   "id": "pt_G",
-   "at": "p_G",
-   "r": 3.2,
-   "role": "ink",
-   "appear": "s0",
-   "delay": 400,
-   "appearDur": 400,
-   "layer": "front",
-   "label": {
-    "text": "G",
-    "off": 0,
-    "dx": -14.1,
-    "dy": -9.4,
-    "size": "l",
-    "role": "ink"
-   }
-  },
-  {
-   "type": "point",
-   "id": "pt_H",
-   "at": "p_H",
-   "r": 3.2,
-   "role": "ink",
-   "appear": "s0",
-   "delay": 400,
-   "appearDur": 400,
-   "layer": "front",
-   "label": {
-    "text": "H",
-    "off": 0,
-    "dx": 16.8,
-    "dy": 2.6,
-    "size": "l",
-    "role": "ink"
-   }
-  },
-  {
-   "type": "point",
-   "id": "pt_R",
-   "at": "p_R",
-   "r": 3.2,
-   "role": "ink",
-   "appear": "s0",
-   "delay": 400,
-   "appearDur": 400,
-   "layer": "front",
-   "label": {
-    "text": "R",
-    "off": 0,
-    "dx": 15.9,
-    "dy": 6.1,
-    "size": "l",
-    "role": "ink"
-   }
-  },
-  {
-   "type": "polygon",
-   "id": "ov0",
-   "pts": [
-    "p_G",
-    "p_I",
-    "p_H"
-   ],
-   "role": "accent",
-   "fill": "accent",
-   "fillOpacity": 0.11,
-   "stroke": false,
-   "layer": "back",
-   "appear": "s1",
-   "appearDur": 500,
-   "disappear": "s7"
-  },
-  {
-   "type": "segment",
-   "id": "ov1",
-   "role": "hyp",
-   "from": "p_G",
-   "to": "p_H",
-   "strokeWidth": 6,
-   "layer": "mid",
-   "appear": "s1",
-   "effect": "draw",
-   "appearDur": 600,
-   "disappear": "s7"
-  },
-  {
-   "type": "segment",
-   "id": "ov2",
-   "role": "legA",
-   "from": "p_G",
-   "to": "p_I",
-   "strokeWidth": 6,
-   "layer": "mid",
-   "appear": "s1",
-   "effect": "draw",
-   "appearDur": 600,
-   "disappear": "s7"
-  },
-  {
-   "type": "segment",
-   "id": "ov3",
-   "role": "legB",
-   "from": "p_I",
-   "to": "p_H",
-   "strokeWidth": 6,
-   "layer": "mid",
-   "appear": "s1",
-   "effect": "draw",
-   "appearDur": 600,
-   "disappear": "s7"
-  },
-  {
-   "type": "segment",
-   "id": "ov4",
-   "role": "legA",
-   "from": "p_I",
-   "to": "p_R",
-   "strokeWidth": 6,
-   "layer": "mid",
-   "appear": "s7",
-   "effect": "draw",
-   "appearDur": 600,
-   "disappear": "s8"
-  },
-  {
-   "type": "polygon",
-   "id": "ov5",
-   "pts": [
-    "p_G",
-    "p_I",
-    "p_R"
-   ],
-   "role": "accent",
-   "fill": "accent",
-   "fillOpacity": 0.11,
-   "stroke": false,
-   "layer": "back",
-   "appear": "s8",
-   "appearDur": 500
-  },
-  {
-   "type": "segment",
-   "id": "ov6",
-   "role": "hyp",
-   "from": "p_G",
-   "to": "p_R",
-   "strokeWidth": 6,
-   "layer": "mid",
-   "appear": "s8",
-   "effect": "draw",
-   "appearDur": 600
-  },
-  {
-   "type": "segment",
-   "id": "ov7",
-   "role": "legA",
-   "from": "p_G",
-   "to": "p_I",
-   "strokeWidth": 6,
-   "layer": "mid",
-   "appear": "s8",
-   "effect": "draw",
-   "appearDur": 600
-  },
-  {
-   "type": "segment",
-   "id": "ov8",
-   "role": "legB",
-   "from": "p_I",
-   "to": "p_R",
-   "strokeWidth": 6,
-   "layer": "mid",
-   "appear": "s8",
-   "effect": "draw",
-   "appearDur": 600
-  },
-  {
-   "type": "segment",
-   "id": "lb0",
-   "from": "p_G",
-   "to": "p_I",
-   "role": "ink",
-   "strokeWidth": 0,
-   "label": {
-    "text": "11 cm",
-    "role": "ink",
-    "size": "l",
-    "away": [
-     24.75,
-     5.5
-    ],
-    "off": 5,
-    "t": 0.5
-   },
-   "layer": "front",
-   "appear": "s0",
-   "appearDur": 450,
-   "delay": 0
-  },
-  {
-   "type": "segment",
-   "id": "lb1",
-   "from": "p_G",
-   "to": "p_H",
-   "role": "ink",
-   "strokeWidth": 0,
-   "label": {
-    "text": "61 cm",
-    "role": "ink",
-    "size": "l",
-    "away": [
-     30,
-     -10
-    ],
-    "off": 5,
-    "t": 0.5
-   },
-   "layer": "front",
-   "appear": "s0",
-   "appearDur": 450,
-   "delay": 0
-  },
-  {
-   "type": "segment",
-   "id": "lb2",
-   "from": "p_R",
-   "to": "p_H",
-   "role": "ink",
-   "strokeWidth": 0,
-   "label": {
-    "text": "21 cm",
-    "role": "ink",
-    "size": "l",
-    "away": [
-     24.75,
-     5.5
-    ],
-    "off": 5,
-    "t": 0.5
-   },
-   "layer": "front",
-   "appear": "s0",
-   "appearDur": 450,
-   "delay": 0
-  },
-  {
-   "type": "segment",
-   "id": "lb3",
-   "from": "p_I",
-   "to": "p_H",
-   "role": "ink",
-   "strokeWidth": 0,
-   "label": {
-    "text": "HI = ?",
-    "role": "ans",
-    "size": "l",
-    "away": [
-     24.75,
-     5.5
-    ],
-    "off": 5,
-    "t": 0.5,
-    "dy": 22
-   },
-   "layer": "front",
-   "appear": "s0",
-   "appearDur": 450,
-   "delay": 0,
-   "disappear": "s6"
-  },
-  {
-   "type": "segment",
-   "id": "lb4",
-   "from": "p_G",
-   "to": "p_R",
-   "role": "ink",
-   "strokeWidth": 0,
-   "label": {
-    "text": "GR = ?",
-    "role": "ans",
-    "size": "l",
-    "away": [
-     30,
-     40
-    ],
-    "off": 5,
-    "t": 0.5
-   },
-   "layer": "front",
-   "appear": "s0",
-   "appearDur": 450,
-   "delay": 0,
-   "disappear": "s10"
-  },
-  {
-   "type": "segment",
-   "id": "lb5",
-   "from": "p_I",
-   "to": "p_H",
-   "role": "ink",
-   "strokeWidth": 0,
-   "label": {
-    "text": "HI = 60 cm",
-    "role": "ans",
-    "size": "l",
-    "away": [
-     24.75,
-     5.5
-    ],
-    "off": 5,
-    "t": 0.5,
-    "dy": 22
-   },
-   "layer": "front",
-   "appear": "s6",
-   "appearDur": 450,
-   "delay": 0
-  },
-  {
-   "type": "segment",
-   "id": "lb6",
-   "from": "p_I",
-   "to": "p_R",
-   "role": "ink",
-   "strokeWidth": 0,
-   "label": {
-    "text": "39 cm",
-    "role": "ink",
-    "size": "l",
-    "away": [
-     24.75,
-     5.5
-    ],
-    "off": 5,
-    "t": 0.5
-   },
-   "layer": "front",
-   "appear": "s7",
-   "appearDur": 450,
-   "delay": 0
-  },
-  {
-   "type": "segment",
-   "id": "lb7",
-   "from": "p_G",
-   "to": "p_R",
-   "role": "ink",
-   "strokeWidth": 0,
-   "label": {
-    "text": "GR = 40.5 cm",
-    "role": "ans",
-    "size": "l",
-    "away": [
-     30,
-     40
-    ],
-    "off": 5,
-    "t": 0.5
-   },
-   "layer": "front",
-   "appear": "s10",
-   "appearDur": 450,
-   "delay": 0
-  }
- ],
- "steps": [
-  {
-   "id": "s0",
-   "title": "The question",
-   "narration": "In **ΔGHI**, **GH = 61 cm**, **GI = 11 cm** and **∠I = 90°**. **R** lies on **IH** such that **RH = 21 cm**. We have to find (i) **HI** and (ii) **GR**. (The figure is not drawn to scale.)",
-   "actions": []
-  },
-  {
-   "id": "s1",
-   "title": "Spot the right angle",
-   "narration": "In ΔGIH, **∠I = 90°**, so the **hypotenuse** is the side opposite it: **GH**. The other two sides meet at the right angle.",
-   "actions": [
-    {
-     "pulse": [
-      "ra0"
-     ],
-     "at": 700
-    }
-   ]
-  },
-  {
-   "id": "s2",
-   "title": "Pythagoras' theorem",
-   "narration": "**Pythagoras' theorem**: the square on the hypotenuse equals the sum of the squares on the other two sides.\\[\\begin{aligned}\\role{hyp}{GH^2} &= \\role{legA}{GI^2} + \\role{legB}{HI^2}\\end{aligned}\\]",
-   "actions": []
-  },
-  {
-   "id": "s3",
-   "title": "Make the unknown the subject",
-   "narration": "We want a **shorter side**, so subtract the known square from the hypotenuse square.\\[\\begin{aligned}\\role{hyp}{GH^2} &= \\role{legA}{GI^2} + \\role{legB}{HI^2} \\\\ \\role{legB}{HI^2} &= \\role{hyp}{GH^2} - \\role{legA}{GI^2}\\end{aligned}\\]",
-   "actions": []
-  },
-  {
-   "id": "s4",
-   "title": "Substitute the lengths",
-   "narration": "Replace each side by its length.\\[\\begin{aligned}\\role{hyp}{GH^2} &= \\role{legA}{GI^2} + \\role{legB}{HI^2} \\\\ \\role{legB}{HI^2} &= \\role{hyp}{GH^2} - \\role{legA}{GI^2} \\\\ &= \\role{hyp}{61^2} - \\role{legA}{11^2}\\end{aligned}\\]",
-   "actions": []
-  },
-  {
-   "id": "s5",
-   "title": "Square and subtract",
-   "narration": "Square each number, then subtract.\\[\\begin{aligned}\\role{hyp}{GH^2} &= \\role{legA}{GI^2} + \\role{legB}{HI^2} \\\\ \\role{legB}{HI^2} &= \\role{hyp}{GH^2} - \\role{legA}{GI^2} \\\\ &= \\role{hyp}{61^2} - \\role{legA}{11^2} \\\\ &= \\role{hyp}{3721} - \\role{legA}{121} \\\\ &= \\role{legB}{3600}\\end{aligned}\\]",
-   "actions": []
-  },
-  {
-   "id": "s6",
-   "title": "Square root",
-   "narration": "Take the square root of both sides (a length is positive).\\[\\begin{aligned}\\role{hyp}{GH^2} &= \\role{legA}{GI^2} + \\role{legB}{HI^2} \\\\ \\role{legB}{HI^2} &= \\role{hyp}{GH^2} - \\role{legA}{GI^2} \\\\ &= \\role{hyp}{61^2} - \\role{legA}{11^2} \\\\ &= \\role{hyp}{3721} - \\role{legA}{121} \\\\ &= \\role{legB}{3600} \\\\ \\role{legB}{HI} &= \\sqrt{3600} = \\role{ans}{60\\ \\text{cm}}\\end{aligned}\\]",
-   "actions": []
-  },
-  {
-   "id": "s7",
-   "title": "Find IR",
-   "narration": "Now find the shorter part **IR**.\\[\\begin{aligned}IR &= HI - RH \\\\ &= 60 - 21 = 39\\ \\text{cm}\\end{aligned}\\]",
-   "actions": []
-  },
-  {
-   "id": "s8",
-   "title": "Right angle and theorem",
-   "narration": "In ΔGIR, **∠I = 90°**, so the **hypotenuse** is the side opposite it: **GR**. The other two sides meet at the right angle. **Pythagoras' theorem**: the square on the hypotenuse equals the sum of the squares on the other two sides.\\[\\begin{aligned}\\role{hyp}{GR^2} &= \\role{legA}{GI^2} + \\role{legB}{IR^2}\\end{aligned}\\]",
-   "actions": [
-    {
-     "pulse": [
-      "ra0"
-     ],
-     "at": 700
-    }
-   ]
-  },
-  {
-   "id": "s9",
-   "title": "Substitute and add",
-   "narration": "Put in the lengths, square them and add.\\[\\begin{aligned}\\role{hyp}{GR^2} &= \\role{legA}{GI^2} + \\role{legB}{IR^2} \\\\ &= \\role{legA}{11^2} + \\role{legB}{39^2} \\\\ &= \\role{legA}{121} + \\role{legB}{1521} \\\\ &= \\role{hyp}{1642}\\end{aligned}\\]",
-   "actions": []
-  },
-  {
-   "id": "s10",
-   "title": "Square root",
-   "narration": "1642 is not a perfect square, so use a calculator and round to 3 significant figures.\\[\\begin{aligned}\\role{hyp}{GR^2} &= \\role{legA}{GI^2} + \\role{legB}{IR^2} \\\\ &= \\role{legA}{11^2} + \\role{legB}{39^2} \\\\ &= \\role{legA}{121} + \\role{legB}{1521} \\\\ &= \\role{hyp}{1642} \\\\ \\role{hyp}{GR} &= \\sqrt{1642} = \\role{ans}{40.5\\ \\text{cm}}\\end{aligned}\\]",
-   "actions": []
-  }
- ],
- "formulas": [
-  {
-   "title": "Pythagoras' theorem",
-   "tex": "\\role{hyp}{c^2} = \\role{legA}{a^2} + \\role{legB}{b^2}",
-   "text": "In a right-angled triangle, the square on the hypotenuse equals the sum of the squares on the other two sides."
-  },
-  {
-   "title": "Finding the hypotenuse",
-   "tex": "\\role{hyp}{c} = \\sqrt{\\role{legA}{a^2} + \\role{legB}{b^2}}",
-   "text": "Add the two squares, then take the square root."
-  },
-  {
-   "title": "Finding a shorter side",
-   "tex": "\\role{legA}{a} = \\sqrt{\\role{hyp}{c^2} - \\role{legB}{b^2}}",
-   "text": "Subtract the known shorter side's square from the hypotenuse's square, then take the square root."
-  }
- ],
- "challenges": [
-  {
-   "id": "ir",
-   "type": "number",
-   "title": "Check IR",
-   "answer": 39,
-   "unit": "cm",
-   "prompt": "HI = 60 cm and RH = 21 cm. How long is **IR**?",
-   "hint": "IR = HI − RH.",
-   "explain": "IR = 60 − 21 = 39 cm."
-  }
- ],
- "takeaways": [
-  "Pythagoras' theorem works only in **right-angled** triangles — mark every right angle in the figure first.",
-  "Split the figure into right-angled triangles and solve them **one at a time**; each answer feeds the next triangle.",
-  "Keep a few extra decimal places in the middle of a calculation and round only the **final** answer (3 s.f.)."
- ],
- "notes": [
-  {
-   "title": "Exam tip",
-   "text": "Always begin with a line such as \"In ΔABC, ∠C = 90°. Using Pythagoras' Theorem,\" — it shows which triangle and which right angle you are using."
-  },
-  {
-   "title": "Rounding",
-   "text": "If the answer is not a whole number, give it to **3 significant figures** unless the question says otherwise."
-  }
- ]
 }

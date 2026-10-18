@@ -18,11 +18,12 @@
   'use strict';
   var NS = 'http://www.w3.org/2000/svg';
 
+  // [key, label, page-bg, accent] — the swatch shows the theme's real base + accent.
   var THEMES = [
-    ['light', 'Light', '#f0f4ff'], ['dark', 'Dark', '#0e0d1f'], ['ocean', 'Ocean', '#eef6ff'],
-    ['forest', 'Forest', '#eefaf1'], ['sunset', 'Sunset', '#fff3ec'], ['grape', 'Grape', '#f6f0ff'],
-    ['rose', 'Rose', '#fff0f3'], ['candy', 'Candy', '#fdf1f8'], ['aurora', 'Aurora', '#ecfdf7'],
-    ['gold', 'Gold', '#fff8ec'], ['midnight', 'Midnight', '#0b1220']
+    ['light', 'Light', '#f0f4ff', '#3730a3'], ['dark', 'Dark', '#0e0d1f', '#818cf8'], ['ocean', 'Ocean', '#eef6ff', '#0369a1'],
+    ['forest', 'Forest', '#eefaf1', '#15803d'], ['sunset', 'Sunset', '#fff3ec', '#c2410c'], ['grape', 'Grape', '#f6f0ff', '#6d28d9'],
+    ['rose', 'Rose', '#fff0f3', '#be123c'], ['candy', 'Candy', '#fdf1f8', '#be185d'], ['aurora', 'Aurora', '#ecfdf7', '#0f766e'],
+    ['gold', 'Gold', '#fff8ec', '#a16207'], ['midnight', 'Midnight', '#0b1220', '#7dd3fc']
   ];
   var ICONS = {
     palette: 'M12 3a9 9 0 1 0 0 18c1.4 0 2-1 1.5-2-.6-1.2.1-2.5 1.6-2.5H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3z',
@@ -31,7 +32,11 @@
     close: 'M6 6l12 12M18 6L6 18',
     check: 'M5 12.5l4.5 4.5L19 7.5',
     help: 'M9 9a3 3 0 1 1 4 2.8c-.9.5-1.5 1.1-1.5 2.2M12 17h.01',
-    play: 'M8 5.5v13l11-6.5z', hand: 'M7 11V6a1.5 1.5 0 0 1 3 0v4m0 0V4.5a1.5 1.5 0 0 1 3 0V10m0 0V6a1.5 1.5 0 0 1 3 0v6a6 6 0 0 1-6 6h-1a5 5 0 0 1-3.6-1.5L4 14'
+    play: 'M8 5.5v13l11-6.5z', hand: 'M7 11V6a1.5 1.5 0 0 1 3 0v4m0 0V4.5a1.5 1.5 0 0 1 3 0V10m0 0V6a1.5 1.5 0 0 1 3 0v6a6 6 0 0 1-6 6h-1a5 5 0 0 1-3.6-1.5L4 14',
+    cube: 'M12 2.5l8 4.5v9l-8 4.5-8-4.5v-9l8-4.5zM12 2.5v19M4 7l8 4.5 8-4.5',
+    zin: 'M10.5 4a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM20 20l-4-4M10.5 7.5v6M7.5 10.5h6',
+    zout: 'M10.5 4a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM20 20l-4-4M7.5 10.5h6',
+    recenter: 'M12 3v3M12 18v3M3 12h3M18 12h3M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z'
   };
   function svgIcon(d, cls) {
     var s = document.createElementNS(NS, 'svg');
@@ -144,7 +149,9 @@
       var c = btn('anim-theme', grid, 'Use the ' + t[1] + ' theme', function () {
         setTheme(t[0]); syncTheme(); closePop();
       });
-      var sw = el('span', 'anim-theme__sw', c); sw.style.background = t[2];
+      var sw = el('span', 'anim-theme__sw', c);
+      sw.style.background = 'linear-gradient(135deg, ' + t[2] + ' 0, ' + t[2] + ' 50%, ' + t[3] + ' 100%)';
+      var dot = el('span', 'anim-theme__dot', sw); dot.style.background = t[3];
       el('span', null, c, t[1]);
       themeCells[t[0]] = c;
     });
@@ -156,7 +163,7 @@
     themeBtn.addEventListener('click', function () { syncTheme(); togglePop(themePop, themeBtn); });
 
     // 3D view controller (built first so the settings sheet can offer its toggle)
-    var td = (eng && playerEl) ? build3D(playerEl) : null;
+    var td = (eng && playerEl) ? buildStageView(playerEl, found, eng) : null;
 
     // SETTINGS -----------------------------------------------------------------
     if (eng) buildSettings(tools, eng, playerEl, td, found);
@@ -250,7 +257,7 @@
       var sw3 = el('button', 'anim-switch', lab3); sw3.type = 'button'; sw3.setAttribute('role', 'switch');
       el('span', 'anim-switch__k', sw3);
       function paint3() { var on = td.isOn(); sw3.classList.toggle('is-on', on); sw3.setAttribute('aria-checked', on ? 'true' : 'false'); }
-      sw3.addEventListener('click', function () { td.set(!td.isOn()); paint3(); });
+      sw3.addEventListener('click', function () { td.set3D(!td.isOn()); paint3(); });
       paint3();
       el('p', 'anim-set__hint', row3, 'Tilt the drawing into 3D — then drag it to look around (double-tap to reset).');
       // real-world / application figures: nudge the student to try it
@@ -263,7 +270,7 @@
       ['thick', 'labelSize', 'fill', 'grid', 'angles'].forEach(function (k) {
         if (eng.uiDefaults && k in eng.uiDefaults) eng.setUi(k, eng.uiDefaults[k]);
       });
-      if (td && td.isOn()) td.set(false);
+      if (td && td.isOn()) td.set3D(false);
       pop.querySelectorAll('.anim-range').forEach(function (r) { r.dispatchEvent(new Event('input')); });
       pop.querySelectorAll('.anim-switch').forEach(function (s) { /* repaint handled by their own state next open */ });
     }).textContent = 'Reset drawing';
@@ -315,43 +322,144 @@
     var cur = body.querySelector('.is-cur'); if (cur && cur.scrollIntoView) cur.scrollIntoView({ block: 'center' });
   }
 
-  // ------------------------------------------------------------------ 3D view
-  // A lightweight, uniform "look around in 3D" for any figure — especially the
-  // real-world ones (ladders, rectangles, buildings). The whole stage is tilted
-  // with CSS perspective; a transparent grab layer catches the drag so it never
-  // fights the engine's own point-dragging. Pure visual, mobile-friendly.
-  function build3D(playerEl) {
+  // -------------------------------------------------------- stage view (3D + zoom)
+  // One controller for: tilt-to-3D (drag to rotate, FREE — no angle limits, with a
+  // live X°/Y° read-out), and zoom + pan (wheel with Ctrl / pinch / on-screen ±).
+  // On-screen buttons sit in the stage corner so nobody has to dig into settings.
+  // A transparent grab layer catches drags only while a view mode is active, so it
+  // never fights the engine's own point-dragging in the normal (flat) view.
+  function buildStageView(playerEl, found, eng) {
     var box = playerEl.querySelector('.anim-stagebox');
     var stage = playerEl.querySelector('.anim-stage');
     if (!box || !stage) return null;
-    var rx = 16, ry = -22, on = false, grab = null, toastShown = false;
-    function apply() { stage.style.setProperty('--rx', rx.toFixed(1) + 'deg'); stage.style.setProperty('--ry', ry.toFixed(1) + 'deg'); }
+    var rx = 0, ry = 0, zoom = 1, tx = 0, ty = 0, is3d = false, grab = null, deg = null, b3 = null, hintShown = false;
+    function apply() {
+      stage.style.transform = 'translate(' + tx.toFixed(0) + 'px,' + ty.toFixed(0) + 'px) scale(' + zoom.toFixed(3) + ') rotateX(' + rx.toFixed(1) + 'deg) rotateY(' + ry.toFixed(1) + 'deg)';
+      box.classList.toggle('is-3d', is3d);
+      box.classList.toggle('is-zoom', zoom > 1.01 || !!tx || !!ty || is3d);
+      if (deg) { deg.hidden = !is3d; if (is3d) deg.textContent = 'X ' + Math.round(((rx % 360) + 360) % 360) + '°   Y ' + Math.round(((ry % 360) + 360) % 360) + '°'; }
+      updateGrab();
+    }
+    function updateGrab() {
+      var need = is3d || zoom > 1.01;
+      if (need) { if (!grab) { grab = el('div', 'anim-3d-grab', box); grab.setAttribute('aria-label', 'Drag to rotate or move the drawing'); wire(grab); } grab.hidden = false; grab.style.cursor = is3d ? 'grab' : 'move'; }
+      else if (grab) { grab.hidden = true; }
+    }
     function wire(g) {
-      var dragging = false, px = 0, py = 0;
-      g.addEventListener('pointerdown', function (e) { dragging = true; px = e.clientX; py = e.clientY; try { g.setPointerCapture(e.pointerId); } catch (x) { /* */ } e.preventDefault(); });
+      var drag = false, px = 0, py = 0;
+      g.addEventListener('pointerdown', function (e) { drag = true; px = e.clientX; py = e.clientY; try { g.setPointerCapture(e.pointerId); } catch (x) { /* */ } e.preventDefault(); });
       g.addEventListener('pointermove', function (e) {
-        if (!dragging) return;
-        ry = Math.max(-60, Math.min(60, ry + (e.clientX - px) * 0.45));
-        rx = Math.max(-20, Math.min(62, rx - (e.clientY - py) * 0.45));
-        px = e.clientX; py = e.clientY; apply();
+        if (!drag) return;
+        var dx = e.clientX - px, dy = e.clientY - py; px = e.clientX; py = e.clientY;
+        if (is3d) { ry += dx * 0.5; rx -= dy * 0.5; }   // FREE rotate — any angle, no clamp
+        else { tx += dx; ty += dy; }                     // pan the zoomed drawing
+        apply();
       });
-      function end() { dragging = false; }
+      var end = function () { drag = false; };
       g.addEventListener('pointerup', end); g.addEventListener('pointercancel', end); g.addEventListener('lostpointercapture', end);
-      g.addEventListener('dblclick', function () { rx = 16; ry = -22; apply(); });
+      g.addEventListener('dblclick', reset);
     }
-    function set(v) {
-      on = !!v; box.classList.toggle('is-3d', on);
-      if (on) {
-        if (!grab) { grab = el('div', 'anim-3d-grab', box); grab.setAttribute('aria-label', 'Drag to rotate the drawing'); wire(grab); }
-        grab.hidden = false; apply();
-        if (!toastShown) { toastShown = true; showHint3D(box); }
-      } else if (grab) { grab.hidden = true; }
+    function reset() { rx = 0; ry = 0; zoom = 1; tx = 0; ty = 0; apply(); }
+    function set3D(v) {
+      is3d = !!v;
+      if (is3d && rx === 0 && ry === 0) { rx = 14; ry = -22; }
+      if (!is3d) { rx = 0; ry = 0; }
+      if (b3) b3.classList.toggle('is-on', is3d);
+      if (scene) { scene.el.hidden = !is3d; box.classList.toggle('has-scene3d', is3d); if (is3d) scene.rebuild(); }
+      apply();
+      if (is3d && !hintShown) { hintShown = true; hint(box, scene ? 'A real 3D model — drag to walk around it' : 'Drag to rotate freely · pinch or ⌃-scroll to zoom'); }
     }
-    return { set: set, isOn: function () { return on; } };
+    function zoomBy(f) { zoom = Math.max(0.6, Math.min(3.2, zoom * f)); if (zoom <= 1.01 && !is3d) { tx = 0; ty = 0; } apply(); }
+
+    // wheel zoom — only with Ctrl, or once already zoomed / in 3D, so normal scroll still works
+    box.addEventListener('wheel', function (e) {
+      if (!(e.ctrlKey || zoom > 1.01 || is3d)) return;
+      e.preventDefault(); zoomBy(e.deltaY < 0 ? 1.12 : 0.89);
+    }, { passive: false });
+
+    // two-finger pinch zoom (touch)
+    var pts = {}, pinchBase = 0, pinchZoom = 1;
+    box.addEventListener('pointerdown', function (e) { if (e.pointerType === 'touch') pts[e.pointerId] = e; });
+    box.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'touch' || !pts[e.pointerId]) return;
+      pts[e.pointerId] = e; var ids = Object.keys(pts);
+      if (ids.length === 2) {
+        var a = pts[ids[0]], b = pts[ids[1]], d = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+        if (!pinchBase) { pinchBase = d; pinchZoom = zoom; }
+        else { zoom = Math.max(0.6, Math.min(3.2, pinchZoom * (d / pinchBase))); apply(); }
+      }
+    });
+    function dropPt(e) { delete pts[e.pointerId]; if (Object.keys(pts).length < 2) pinchBase = 0; }
+    box.addEventListener('pointerup', dropPt); box.addEventListener('pointercancel', dropPt);
+
+    // on-screen control cluster (corner of the stage)
+    var tools = el('div', 'anim-stage-tools', box);
+    b3 = btn('anim-stbtn', tools, '3D view (drag to rotate)', function () { set3D(!is3d); }); b3.appendChild(svgIcon(ICONS.cube));
+    btn('anim-stbtn', tools, 'Zoom in', function () { zoomBy(1.2); }).appendChild(svgIcon(ICONS.zin));
+    btn('anim-stbtn', tools, 'Zoom out', function () { zoomBy(0.83); }).appendChild(svgIcon(ICONS.zout));
+    btn('anim-stbtn', tools, 'Reset view', reset).appendChild(svgIcon(ICONS.recenter));
+    deg = el('div', 'anim-3d-deg', box); deg.hidden = true;
+
+    // a spec may ask for a proper real-world 3D model (wall + floor + ladder)
+    var scene = (eng && eng.spec && eng.spec.scene3d === 'ladder') ? buildLadderScene(stage, eng) : null;
+    if (scene && eng.on) eng.on('values', function () { if (is3d) scene.rebuild(); });
+
+    return { set3D: set3D, isOn: function () { return is3d; } };
   }
-  function showHint3D(box) {
-    var t = el('div', 'anim-3d-hint', box, 'Drag to rotate · double-tap to reset');
-    setTimeout(function () { if (t && t.parentNode) { t.style.opacity = '0'; setTimeout(function () { if (t.parentNode) t.parentNode.removeChild(t); }, 400); } }, 2600);
+
+  // A real, rotatable 3D model of "a ladder against a wall": a ground plane, a
+  // brick wall and a wooden ladder with rungs, built to the student's own h and d.
+  // It lives inside .anim-stage, so the stage-view orbit rotates the whole model.
+  function buildLadderScene(stage, eng) {
+    var S = 52;                                   // px per metre
+    var scene = el('div', 'anim-scene3d', stage); scene.hidden = true;
+    var base = el('div', 'anim-sc-base', scene);
+    function val(k, dflt) { try { return eng.values && isFinite(eng.values[k]) ? eng.values[k] : dflt; } catch (e) { return dflt; } }
+    function rebuild() {
+      base.textContent = '';
+      var h = Math.max(0.3, val('h', 2.4)), d = Math.max(0.2, val('d', 0.5));
+      var H = h * S, D = d * S, L = Math.hypot(H, D);
+      var ang = Math.atan2(D, H) * 180 / Math.PI;   // lean of the ladder from vertical
+      var wallW = 210, wallH = Math.max(H + 40, 150), depth = Math.max(150, D + 90);
+      // origin O = the corner where the wall meets the ground (bottom of wall, back of ground)
+
+      // wall — bottom-centre at O, standing up (z = 0)
+      var w = el('div', 'anim-sc-wall', base);
+      w.style.width = wallW + 'px'; w.style.height = wallH + 'px';
+      w.style.transform = 'translate(-50%, -100%)';
+
+      // ground — top-centre at O, lying flat toward the viewer (+z)
+      var g = el('div', 'anim-sc-ground', base);
+      g.style.width = wallW + 'px'; g.style.height = depth + 'px';
+      g.style.transform = 'translateX(-50%) rotateX(90deg)';
+
+      // ladder — a vertical bar whose foot sits on the ground at depth D, leaned back
+      // onto the wall by `ang`. A 0-size anchor places the foot; the bar rotates there.
+      var foot = el('div', 'anim-sc-foot', base);
+      foot.style.transform = 'translate3d(0, 0, ' + D.toFixed(1) + 'px)';
+      var lad = el('div', 'anim-sc-ladder', foot);
+      lad.style.height = L + 'px';
+      lad.style.transform = 'translate(-50%, 0) rotateX(' + ang.toFixed(2) + 'deg)';
+      el('div', 'anim-sc-rail anim-sc-rail--l', lad);
+      el('div', 'anim-sc-rail anim-sc-rail--r', lad);
+      var rungs = Math.max(3, Math.round(L / 24));
+      for (var i = 1; i < rungs; i++) { var r = el('div', 'anim-sc-rung', lad); r.style.bottom = (i / rungs * 100).toFixed(1) + '%'; }
+
+      // measurement labels
+      var lh = el('div', 'anim-sc-lab anim-sc-lab--h', base, 'h = ' + (+h.toFixed(2)) + ' m');
+      lh.style.transform = 'translate3d(calc(-100% - 6px), ' + (-H / 2 - 9).toFixed(0) + 'px, 2px)';
+      var ld = el('div', 'anim-sc-lab anim-sc-lab--d', base, 'd = ' + (+d.toFixed(2)) + ' m');
+      ld.style.transform = 'translate3d(-50%, 8px, ' + (D / 2).toFixed(0) + 'px) rotateX(90deg)';
+      var L2 = Math.hypot(h, d);
+      var lx = el('div', 'anim-sc-lab anim-sc-lab--x', base, 'ladder = ' + (+L2.toFixed(2)) + ' m');
+      lx.style.transform = 'translate3d(10px, ' + (-H / 2 - 7).toFixed(0) + 'px, ' + (D / 2).toFixed(0) + 'px)';
+    }
+    rebuild();
+    return { el: scene, rebuild: rebuild };
+  }
+  function hint(box, msg) {
+    var t = el('div', 'anim-3d-hint', box, msg);
+    setTimeout(function () { if (t && t.parentNode) { t.style.opacity = '0'; setTimeout(function () { if (t.parentNode) t.parentNode.removeChild(t); }, 400); } }, 2800);
   }
 
   // --------------------------------------------------------------- split handle
