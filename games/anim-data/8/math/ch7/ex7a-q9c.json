@@ -1,0 +1,601 @@
+{
+ "id": "g8-math-pyth-ex7a-q9c",
+ "title": "Exercise 7A · Q9(c)",
+ "summary": "Find AB² in ΔABC, then use it directly in ΔABD to get AD.",
+ "alt": "Exercise 7A · Q9(c): In the figure, AC = 19 cm, BD = 8 cm, DC = 6 cm and ∠B = 90°. Find the value of c, the length of AD.",
+ "uiDefaults": {
+  "angles": false
+ },
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -3.36,
+   17.36
+  ],
+  "y": [
+   -2.569,
+   15.414
+  ],
+  "pad": 10,
+  "ratio": 0.868
+ },
+ "roles": {
+  "hyp": {
+   "label": "Hypotenuse",
+   "color": "#059669",
+   "text": "The side opposite the right angle. It is always the longest side."
+  },
+  "legA": {
+   "label": "Shorter side 1",
+   "color": "#2563eb",
+   "text": "One of the two sides that meet at the right angle."
+  },
+  "legB": {
+   "label": "Shorter side 2",
+   "color": "#e11d48",
+   "text": "The other side that meets at the right angle."
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The length we are finding."
+  }
+ },
+ "params": [],
+ "derived": {
+  "p_B": [
+   0.0,
+   0.0
+  ],
+  "p_D": [
+   8.0,
+   0.0
+  ],
+  "p_C": [
+   14.0,
+   0.0
+  ],
+  "p_A": [
+   0.0,
+   12.845
+  ]
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ln0",
+   "role": "ink",
+   "from": "p_A",
+   "to": "p_B",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 0,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln1",
+   "role": "ink",
+   "from": "p_B",
+   "to": "p_D",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 150,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln2",
+   "role": "ink",
+   "from": "p_D",
+   "to": "p_C",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 300,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln3",
+   "role": "ink",
+   "from": "p_A",
+   "to": "p_C",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 450,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln4",
+   "role": "ink",
+   "from": "p_A",
+   "to": "p_D",
+   "strokeWidth": 2.0,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 600,
+   "appearDur": 700,
+   "layer": "mid",
+   "dash": [
+    7,
+    6
+   ]
+  },
+  {
+   "type": "angle",
+   "id": "ra0",
+   "at": "p_B",
+   "from": "p_C",
+   "to": "p_A",
+   "style": "square",
+   "r": 22,
+   "role": "ink",
+   "strokeWidth": 1.8,
+   "fill": false,
+   "appear": "s0",
+   "delay": 700,
+   "appearDur": 400
+  },
+  {
+   "type": "point",
+   "id": "pt_B",
+   "at": "p_B",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "B",
+    "off": 0,
+    "dx": -14.7,
+    "dy": 8.6,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_D",
+   "at": "p_D",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "D",
+    "off": 0,
+    "dx": 10.4,
+    "dy": 13.4,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_C",
+   "at": "p_C",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "C",
+    "off": 0,
+    "dx": 15.9,
+    "dy": 6.0,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_A",
+   "at": "p_A",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "A",
+    "off": 0,
+    "dx": -8.4,
+    "dy": -14.8,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "segment",
+   "id": "ov0",
+   "role": "legA",
+   "from": "p_B",
+   "to": "p_C",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s2"
+  },
+  {
+   "type": "polygon",
+   "id": "ov1",
+   "pts": [
+    "p_A",
+    "p_B",
+    "p_C"
+   ],
+   "role": "accent",
+   "fill": "accent",
+   "fillOpacity": 0.11,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s2",
+   "appearDur": 500,
+   "disappear": "s4"
+  },
+  {
+   "type": "segment",
+   "id": "ov2",
+   "role": "hyp",
+   "from": "p_A",
+   "to": "p_C",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s2",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s4"
+  },
+  {
+   "type": "segment",
+   "id": "ov3",
+   "role": "legA",
+   "from": "p_A",
+   "to": "p_B",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s2",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s4"
+  },
+  {
+   "type": "segment",
+   "id": "ov4",
+   "role": "legB",
+   "from": "p_B",
+   "to": "p_C",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s2",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s4"
+  },
+  {
+   "type": "polygon",
+   "id": "ov5",
+   "pts": [
+    "p_A",
+    "p_B",
+    "p_D"
+   ],
+   "role": "accent",
+   "fill": "accent",
+   "fillOpacity": 0.11,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s4",
+   "appearDur": 500
+  },
+  {
+   "type": "segment",
+   "id": "ov6",
+   "role": "hyp",
+   "from": "p_A",
+   "to": "p_D",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s4",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "ov7",
+   "role": "legA",
+   "from": "p_A",
+   "to": "p_B",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s4",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "ov8",
+   "role": "legB",
+   "from": "p_B",
+   "to": "p_D",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s4",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "lb0",
+   "from": "p_A",
+   "to": "p_C",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "19 cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     0,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb1",
+   "from": "p_B",
+   "to": "p_D",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "8 cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     5.5,
+     3.2113
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb2",
+   "from": "p_D",
+   "to": "p_C",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "6 cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     5.5,
+     3.2113
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb3",
+   "from": "p_A",
+   "to": "p_D",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "c = ?",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     14,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0,
+   "disappear": "s6"
+  },
+  {
+   "type": "segment",
+   "id": "lb4",
+   "from": "p_B",
+   "to": "p_C",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "14 cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     5.5,
+     3.2113
+    ],
+    "off": 5,
+    "t": 0.5,
+    "dy": 26
+   },
+   "layer": "front",
+   "appear": "s1",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb5",
+   "from": "p_A",
+   "to": "p_D",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "c = 15.1 cm",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     14,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s6",
+   "appearDur": 450,
+   "delay": 0
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "narration": "In the figure, **AC = 19 cm**, **BD = 8 cm**, **DC = 6 cm** and **∠B = 90°**. We have to find **c**, the length of **AD**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Find BC",
+   "narration": "To use ΔABC we need **BC**.\\[\\begin{aligned}BC &= BD + DC \\\\ &= 8 + 6 = 14\\ \\text{cm}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Right angle and theorem",
+   "narration": "In ΔABC, **∠B = 90°**, so the **hypotenuse** is the side opposite it: **AC**. The other two sides meet at the right angle. We only need **AB²** for the next triangle, so we stop before taking the square root. **Pythagoras' theorem**: the square on the hypotenuse equals the sum of the squares on the other two sides. We want a shorter side, so subtract.\\[\\begin{aligned}\\role{hyp}{AC^2} &= \\role{legA}{AB^2} + \\role{legB}{BC^2} \\\\ \\role{legA}{AB^2} &= \\role{hyp}{AC^2} - \\role{legB}{BC^2}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "ra0"
+     ],
+     "at": 700
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Substitute and subtract",
+   "narration": "Put in the lengths, square them and subtract.\\[\\begin{aligned}\\role{hyp}{AC^2} &= \\role{legA}{AB^2} + \\role{legB}{BC^2} \\\\ \\role{legA}{AB^2} &= \\role{hyp}{AC^2} - \\role{legB}{BC^2} \\\\ &= \\role{hyp}{19^2} - \\role{legB}{14^2} \\\\ &= \\role{hyp}{361} - \\role{legB}{196} \\\\ &= \\role{legA}{165}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Right angle and theorem",
+   "narration": "In ΔABD, **∠B = 90°**, so the **hypotenuse** is the side opposite it: **AD**. The other two sides meet at the right angle. Here **AB² = 165** from the last step. **Pythagoras' theorem**: the square on the hypotenuse equals the sum of the squares on the other two sides.\\[\\begin{aligned}\\role{hyp}{AD^2} &= \\role{legA}{AB^2} + \\role{legB}{BD^2}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "ra0"
+     ],
+     "at": 700
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Substitute and add",
+   "narration": "Put in the lengths, square them and add.\\[\\begin{aligned}\\role{hyp}{AD^2} &= \\role{legA}{AB^2} + \\role{legB}{BD^2} \\\\ &= \\role{legA}{165} + \\role{legB}{8^2} \\\\ &= \\role{legA}{165} + \\role{legB}{64} \\\\ &= \\role{hyp}{229}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s6",
+   "title": "Square root",
+   "narration": "229 is not a perfect square, so use a calculator and round to 3 significant figures.\\[\\begin{aligned}\\role{hyp}{AD^2} &= \\role{legA}{AB^2} + \\role{legB}{BD^2} \\\\ &= \\role{legA}{165} + \\role{legB}{8^2} \\\\ &= \\role{legA}{165} + \\role{legB}{64} \\\\ &= \\role{hyp}{229} \\\\ \\role{hyp}{AD} &= \\sqrt{229} = \\role{ans}{15.1\\ \\text{cm}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Pythagoras' theorem",
+   "tex": "\\role{hyp}{c^2} = \\role{legA}{a^2} + \\role{legB}{b^2}",
+   "text": "In a right-angled triangle, the square on the hypotenuse equals the sum of the squares on the other two sides."
+  },
+  {
+   "title": "Finding the hypotenuse",
+   "tex": "\\role{hyp}{c} = \\sqrt{\\role{legA}{a^2} + \\role{legB}{b^2}}",
+   "text": "Add the two squares, then take the square root."
+  },
+  {
+   "title": "Finding a shorter side",
+   "tex": "\\role{legA}{a} = \\sqrt{\\role{hyp}{c^2} - \\role{legB}{b^2}}",
+   "text": "Subtract the known shorter side's square from the hypotenuse's square, then take the square root."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "sq",
+   "type": "choice",
+   "title": "Do we need AB?",
+   "answer": "b",
+   "options": [
+    {
+     "id": "a",
+     "label": "Yes — we must find AB first"
+    },
+    {
+     "id": "b",
+     "label": "No — AB² is enough"
+    },
+    {
+     "id": "c",
+     "label": "No — AB is not needed at all"
+    }
+   ],
+   "prompt": "To find AD² we use AD² = AB² + BD². Do we need the value of **AB** itself?",
+   "hint": "Look at which quantity appears in the equation.",
+   "explain": "The equation uses AB², which we already have (165). Taking the square root and squaring again would just waste time."
+  }
+ ],
+ "takeaways": [
+  "Sometimes you need only a **square**, not the side itself — keep it as it is and use it in the next triangle.",
+  "Pythagoras' theorem works only in **right-angled** triangles — mark every right angle in the figure first.",
+  "Keep a few extra decimal places in the middle of a calculation and round only the **final** answer (3 s.f.)."
+ ],
+ "notes": [
+  {
+   "title": "Exam tip",
+   "text": "Always begin with a line such as \"In ΔABC, ∠C = 90°. Using Pythagoras' Theorem,\" — it shows which triangle and which right angle you are using."
+  },
+  {
+   "title": "Rounding",
+   "text": "If the answer is not a whole number, give it to **3 significant figures** unless the question says otherwise."
+  }
+ ]
+}

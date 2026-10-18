@@ -1,0 +1,893 @@
+{
+ "id": "g8-math-pyth-ex7a-q10d",
+ "title": "Exercise 7A · Q10(d)",
+ "summary": "Each hypotenuse squared grows by 7² — four triangles give 35² = 4(7²) + g².",
+ "alt": "Exercise 7A · Q10(d): The figure shows a spiral of four right-angled triangles. Each new triangle is built on the previous hypotenuse with a new perpendicular side of 7 cm. Given that the outermost hypotenuse is 35 cm, find the value of g.",
+ "uiDefaults": {
+  "angles": false
+ },
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -7.699,
+   39.777
+  ],
+  "y": [
+   -5.174,
+   31.045
+  ],
+  "pad": 10,
+  "ratio": 0.763
+ },
+ "roles": {
+  "hyp": {
+   "label": "Hypotenuse",
+   "color": "#059669",
+   "text": "The side opposite the right angle. It is always the longest side."
+  },
+  "legA": {
+   "label": "Shorter side 1",
+   "color": "#2563eb",
+   "text": "One of the two sides that meet at the right angle."
+  },
+  "legB": {
+   "label": "Shorter side 2",
+   "color": "#e11d48",
+   "text": "The other side that meets at the right angle."
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The length we are finding."
+  }
+ },
+ "params": [],
+ "derived": {
+  "p_O": [
+   0.0,
+   0.0
+  ],
+  "p_G": [
+   32.078,
+   0.0
+  ],
+  "p_V1": [
+   32.078,
+   7.0
+  ],
+  "p_V2": [
+   30.5856,
+   13.8391
+  ],
+  "p_V3": [
+   27.7,
+   20.2166
+  ],
+  "p_V4": [
+   23.5733,
+   25.8708
+  ]
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ln0",
+   "role": "ink",
+   "from": "p_O",
+   "to": "p_G",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 0,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln1",
+   "role": "ink",
+   "from": "p_G",
+   "to": "p_V1",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 150,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln2",
+   "role": "ink",
+   "from": "p_V1",
+   "to": "p_V2",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 300,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln3",
+   "role": "ink",
+   "from": "p_V2",
+   "to": "p_V3",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 450,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln4",
+   "role": "ink",
+   "from": "p_V3",
+   "to": "p_V4",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 600,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln5",
+   "role": "ink",
+   "from": "p_O",
+   "to": "p_V1",
+   "strokeWidth": 2.0,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 750,
+   "appearDur": 700,
+   "layer": "mid",
+   "dash": [
+    7,
+    6
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "ln6",
+   "role": "ink",
+   "from": "p_O",
+   "to": "p_V2",
+   "strokeWidth": 2.0,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 900,
+   "appearDur": 700,
+   "layer": "mid",
+   "dash": [
+    7,
+    6
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "ln7",
+   "role": "ink",
+   "from": "p_O",
+   "to": "p_V3",
+   "strokeWidth": 2.0,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 1050,
+   "appearDur": 700,
+   "layer": "mid",
+   "dash": [
+    7,
+    6
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "ln8",
+   "role": "ink",
+   "from": "p_O",
+   "to": "p_V4",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 1200,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "angle",
+   "id": "ra0",
+   "at": "p_G",
+   "from": "p_O",
+   "to": "p_V1",
+   "style": "square",
+   "r": 16,
+   "role": "ink",
+   "strokeWidth": 1.8,
+   "fill": false,
+   "appear": "s0",
+   "delay": 700,
+   "appearDur": 400
+  },
+  {
+   "type": "angle",
+   "id": "ra1",
+   "at": "p_V1",
+   "from": "p_O",
+   "to": "p_V2",
+   "style": "square",
+   "r": 16,
+   "role": "ink",
+   "strokeWidth": 1.8,
+   "fill": false,
+   "appear": "s0",
+   "delay": 700,
+   "appearDur": 400
+  },
+  {
+   "type": "angle",
+   "id": "ra2",
+   "at": "p_V2",
+   "from": "p_O",
+   "to": "p_V3",
+   "style": "square",
+   "r": 16,
+   "role": "ink",
+   "strokeWidth": 1.8,
+   "fill": false,
+   "appear": "s0",
+   "delay": 700,
+   "appearDur": 400
+  },
+  {
+   "type": "angle",
+   "id": "ra3",
+   "at": "p_V3",
+   "from": "p_O",
+   "to": "p_V4",
+   "style": "square",
+   "r": 16,
+   "role": "ink",
+   "strokeWidth": 1.8,
+   "fill": false,
+   "appear": "s0",
+   "delay": 700,
+   "appearDur": 400
+  },
+  {
+   "type": "point",
+   "id": "pt_O",
+   "at": "p_O",
+   "r": 0.01,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front"
+  },
+  {
+   "type": "point",
+   "id": "pt_G",
+   "at": "p_G",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front"
+  },
+  {
+   "type": "point",
+   "id": "pt_V1",
+   "at": "p_V1",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front"
+  },
+  {
+   "type": "point",
+   "id": "pt_V2",
+   "at": "p_V2",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front"
+  },
+  {
+   "type": "point",
+   "id": "pt_V3",
+   "at": "p_V3",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front"
+  },
+  {
+   "type": "point",
+   "id": "pt_V4",
+   "at": "p_V4",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front"
+  },
+  {
+   "type": "polygon",
+   "id": "ov0",
+   "pts": [
+    "p_O",
+    "p_G",
+    "p_V1"
+   ],
+   "role": "accent",
+   "fill": "accent",
+   "fillOpacity": 0.11,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s1",
+   "appearDur": 500,
+   "disappear": "s2"
+  },
+  {
+   "type": "segment",
+   "id": "ov1",
+   "role": "hyp",
+   "from": "p_O",
+   "to": "p_V1",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s2"
+  },
+  {
+   "type": "segment",
+   "id": "ov2",
+   "role": "legA",
+   "from": "p_O",
+   "to": "p_G",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s2"
+  },
+  {
+   "type": "segment",
+   "id": "ov3",
+   "role": "legB",
+   "from": "p_G",
+   "to": "p_V1",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s2"
+  },
+  {
+   "type": "polygon",
+   "id": "ov4",
+   "pts": [
+    "p_O",
+    "p_V1",
+    "p_V2"
+   ],
+   "role": "accent",
+   "fill": "accent",
+   "fillOpacity": 0.11,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s2",
+   "appearDur": 500,
+   "disappear": "s3"
+  },
+  {
+   "type": "segment",
+   "id": "ov5",
+   "role": "hyp",
+   "from": "p_O",
+   "to": "p_V2",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s2",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s3"
+  },
+  {
+   "type": "segment",
+   "id": "ov6",
+   "role": "legA",
+   "from": "p_O",
+   "to": "p_V1",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s2",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s3"
+  },
+  {
+   "type": "segment",
+   "id": "ov7",
+   "role": "legB",
+   "from": "p_V1",
+   "to": "p_V2",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s2",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s3"
+  },
+  {
+   "type": "polygon",
+   "id": "ov8",
+   "pts": [
+    "p_O",
+    "p_V2",
+    "p_V3"
+   ],
+   "role": "accent",
+   "fill": "accent",
+   "fillOpacity": 0.11,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s3",
+   "appearDur": 500,
+   "disappear": "s4"
+  },
+  {
+   "type": "segment",
+   "id": "ov9",
+   "role": "hyp",
+   "from": "p_O",
+   "to": "p_V3",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s3",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s4"
+  },
+  {
+   "type": "segment",
+   "id": "ov10",
+   "role": "legA",
+   "from": "p_O",
+   "to": "p_V2",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s3",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s4"
+  },
+  {
+   "type": "segment",
+   "id": "ov11",
+   "role": "legB",
+   "from": "p_V2",
+   "to": "p_V3",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s3",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s4"
+  },
+  {
+   "type": "polygon",
+   "id": "ov12",
+   "pts": [
+    "p_O",
+    "p_V3",
+    "p_V4"
+   ],
+   "role": "accent",
+   "fill": "accent",
+   "fillOpacity": 0.11,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s4",
+   "appearDur": 500,
+   "disappear": "s5"
+  },
+  {
+   "type": "segment",
+   "id": "ov13",
+   "role": "hyp",
+   "from": "p_O",
+   "to": "p_V4",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s4",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s5"
+  },
+  {
+   "type": "segment",
+   "id": "ov14",
+   "role": "legA",
+   "from": "p_O",
+   "to": "p_V3",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s4",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s5"
+  },
+  {
+   "type": "segment",
+   "id": "ov15",
+   "role": "legB",
+   "from": "p_V3",
+   "to": "p_V4",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s4",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s5"
+  },
+  {
+   "type": "segment",
+   "id": "lb0",
+   "from": "p_O",
+   "to": "p_G",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "g = ?",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     16.039,
+     20
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0,
+   "disappear": "s5"
+  },
+  {
+   "type": "segment",
+   "id": "lb1",
+   "from": "p_G",
+   "to": "p_V1",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "7 cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     0,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb2",
+   "from": "p_V1",
+   "to": "p_V2",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "7 cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     0,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb3",
+   "from": "p_V2",
+   "to": "p_V3",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "7 cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     0,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb4",
+   "from": "p_V3",
+   "to": "p_V4",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "7 cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     0,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb5",
+   "from": "p_O",
+   "to": "p_V1",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "\\(h_1\\)",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     32.078,
+     40
+    ],
+    "off": 5,
+    "t": 0.55
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb6",
+   "from": "p_O",
+   "to": "p_V2",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "\\(h_2\\)",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     32.078,
+     40
+    ],
+    "off": 5,
+    "t": 0.55
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb7",
+   "from": "p_O",
+   "to": "p_V3",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "\\(h_3\\)",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     32.078,
+     40
+    ],
+    "off": 5,
+    "t": 0.55
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb8",
+   "from": "p_O",
+   "to": "p_V4",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "35 cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     32.078,
+     40
+    ],
+    "off": 5,
+    "t": 0.55
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb9",
+   "from": "p_O",
+   "to": "p_G",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "g = 32.1 cm",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     16.039,
+     20
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s5",
+   "appearDur": 450,
+   "delay": 0
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "narration": "The figure shows a **spiral** of four right-angled triangles. Each new triangle is built on the previous hypotenuse with a new perpendicular side of **7 cm**. The first triangle has shorter sides **g** and **7 cm**, the hypotenuses are **h₁, h₂, h₃**, and the outermost hypotenuse is **35 cm**. We have to find **g**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Triangle 1",
+   "narration": "In the first triangle the right angle is at the end of **g**, so the hypotenuse is **h₁**.\\[\\begin{aligned}\\role{hyp}{h_1^2} &= \\role{legB}{7^2} + \\role{legA}{g^2}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "ra0"
+     ],
+     "at": 700
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Triangle 2",
+   "narration": "The next triangle is built on **h₁**: its shorter sides are **h₁** and **7 cm**.\\[\\begin{aligned}\\role{hyp}{h_2^2} &= 7^2 + \\role{legA}{h_1^2} \\\\ &= 7^2 + 7^2 + g^2 = 2(7^2) + g^2\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "ra1"
+     ],
+     "at": 700
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Triangle 3",
+   "narration": "Again add **7²** to the previous square.\\[\\begin{aligned}\\role{hyp}{h_3^2} &= 7^2 + \\role{legA}{h_2^2} \\\\ &= 7^2 + 2(7^2) + g^2 = 3(7^2) + g^2\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "ra2"
+     ],
+     "at": 700
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Triangle 4",
+   "narration": "The outermost hypotenuse is **35 cm**.\\[\\begin{aligned}\\role{hyp}{35^2} &= 7^2 + \\role{legA}{h_3^2} \\\\ &= 7^2 + 3(7^2) + g^2 = 4(7^2) + g^2\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "ra3"
+     ],
+     "at": 700
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Solve for g",
+   "narration": "Now put in the numbers and solve for **g²**.\\[\\begin{aligned}1225 &= 4(49) + g^2 \\\\ 1225 &= 196 + g^2 \\\\ g^2 &= 1225 - 196 = 1029 \\\\ g &= \\sqrt{1029} = 7\\sqrt{21} = \\role{ans}{32.1\\ \\text{cm}}\\ \\text{(3 s.f.)}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Pythagoras' theorem",
+   "tex": "\\role{hyp}{c^2} = \\role{legA}{a^2} + \\role{legB}{b^2}",
+   "text": "In a right-angled triangle, the square on the hypotenuse equals the sum of the squares on the other two sides."
+  },
+  {
+   "title": "Finding the hypotenuse",
+   "tex": "\\role{hyp}{c} = \\sqrt{\\role{legA}{a^2} + \\role{legB}{b^2}}",
+   "text": "Add the two squares, then take the square root."
+  },
+  {
+   "title": "Finding a shorter side",
+   "tex": "\\role{legA}{a} = \\sqrt{\\role{hyp}{c^2} - \\role{legB}{b^2}}",
+   "text": "Subtract the known shorter side's square from the hypotenuse's square, then take the square root."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "h2sq",
+   "type": "number",
+   "title": "Try the pattern",
+   "answer": 1127,
+   "unit": "",
+   "prompt": "Using h₂² = 2(7²) + g² and g² = 1029, find **h₂²**.",
+   "hint": "2(7²) = 98.",
+   "explain": "h₂² = 98 + 1029 = 1127."
+  }
+ ],
+ "takeaways": [
+  "Every new triangle adds **7²** to the square of the previous hypotenuse.",
+  "After 4 triangles: **35² = 4(7²) + g²**.",
+  "Keep a few extra decimal places in the middle of a calculation and round only the **final** answer (3 s.f.)."
+ ],
+ "notes": [
+  {
+   "title": "Exam tip",
+   "text": "Always begin with a line such as \"In ΔABC, ∠C = 90°. Using Pythagoras' Theorem,\" — it shows which triangle and which right angle you are using."
+  },
+  {
+   "title": "Rounding",
+   "text": "If the answer is not a whole number, give it to **3 significant figures** unless the question says otherwise."
+  }
+ ]
+}

@@ -108,13 +108,19 @@
     if (!(x === x) || !(y === y)) { this.setShown(false); return; }
     if (this.visFn && !(this.visFn(env) > 0.5)) { this.setShown(false); return; }
     this.setShown(true);
-    x = clamp(x + num(this.ld.dx, 0), 16, v.W - 16);
-    y = clamp(y + num(this.ld.dy, 0), 12, v.H - 12);
+    // keep the whole label on the stage: clamp by half its measured size (falls back to the old 16 / 12 px margin)
+    var hw = Math.max(16, (this._w || 0) / 2 + 4), hh = Math.max(12, (this._h || 0) / 2 + 3);
+    x = clamp(x + num(this.ld.dx, 0), hw, Math.max(hw, v.W - hw));
+    y = clamp(y + num(this.ld.dy, 0), hh, Math.max(hh, v.H - hh));
     this.el.style.transform = 'translate(' + f2(x) + 'px,' + f2(y) + 'px) translate(-50%,-50%)';
     this.el.style.opacity = alpha < 0.999 ? alpha.toFixed(3) : '';
     this.eng.renderRich(this.el, this.tpl, env);
     // remember the rendered size (re-measured only when the text changed) so callers can keep clear of lines
-    if (this.el.__rk !== this._mk) { this._mk = this.el.__rk; this._w = this.el.offsetWidth; this._h = this.el.offsetHeight; }
+    if (this.el.__rk !== this._mk) {
+      var ow = this._w, oh = this._h;
+      this._mk = this.el.__rk; this._w = this.el.offsetWidth; this._h = this.el.offsetHeight;
+      if (ow !== this._w || oh !== this._h) this.eng.invalidate();   // callers placed this frame with the old size: draw once more
+    }
   };
   /** Half the label's size measured along the direction (nx, ny): how far its centre must sit from a line to clear it. */
   Label.prototype.ext = function (nx, ny) {

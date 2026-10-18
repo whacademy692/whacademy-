@@ -640,7 +640,7 @@
     if ((spec.formulas || []).length) addTab('formula', 'Formula', 'formula', buildFormulas);
     if (eng.challengeList.length) addTab('try', 'Try it', 'target', buildChallenges);
     if (spec.intro || (spec.takeaways || []).length || (spec.notes || []).length) addTab('notes', 'Notes', 'book', buildNotes);
-    selectTab(tabDefs[0]);
+    selectTab(spec.defaultTab && panelEls[spec.defaultTab] ? spec.defaultTab : tabDefs[0]);   // spec.defaultTab: 'formula' | 'try' | 'notes' | 'colours'
     syncTabCounts();
 
     // ============================================================ events

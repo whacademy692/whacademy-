@@ -1,0 +1,412 @@
+{
+ "id": "g8-math-pyth-ex7a-q2d",
+ "title": "Exercise 7A · Q2(d)",
+ "summary": "Find the shorter side d from the hypotenuse 24.7 m and the other side 14.5 m.",
+ "alt": "Exercise 7A · Q2(d): Find the value of the unknown d. The hypotenuse is 24.7 m and the right angle is between the 14.5 m side and the side d.",
+ "uiDefaults": {
+  "angles": false
+ },
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -3.48,
+   17.98
+  ],
+  "y": [
+   -3.999,
+   23.995
+  ],
+  "pad": 10,
+  "ratio": 1.1
+ },
+ "roles": {
+  "hyp": {
+   "label": "Hypotenuse",
+   "color": "#059669",
+   "text": "The side opposite the right angle. It is always the longest side."
+  },
+  "legA": {
+   "label": "Shorter side 1",
+   "color": "#2563eb",
+   "text": "One of the two sides that meet at the right angle."
+  },
+  "legB": {
+   "label": "Shorter side 2",
+   "color": "#e11d48",
+   "text": "The other side that meets at the right angle."
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The length we are finding."
+  }
+ },
+ "params": [],
+ "derived": {
+  "p_R": [
+   0.0,
+   0.0
+  ],
+  "p_Q": [
+   14.5,
+   0.0
+  ],
+  "p_P": [
+   0.0,
+   19.996
+  ]
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ln0",
+   "role": "ink",
+   "from": "p_P",
+   "to": "p_R",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 0,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln1",
+   "role": "ink",
+   "from": "p_R",
+   "to": "p_Q",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 150,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln2",
+   "role": "ink",
+   "from": "p_P",
+   "to": "p_Q",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 300,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "angle",
+   "id": "ra0",
+   "at": "p_R",
+   "from": "p_Q",
+   "to": "p_P",
+   "style": "square",
+   "r": 26,
+   "role": "ink",
+   "strokeWidth": 1.8,
+   "fill": false,
+   "appear": "s0",
+   "delay": 700,
+   "appearDur": 400
+  },
+  {
+   "type": "point",
+   "id": "pt_R",
+   "at": "p_R",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "R",
+    "off": 0,
+    "dx": -10.0,
+    "dy": 13.8,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_Q",
+   "at": "p_Q",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "Q",
+    "off": 0,
+    "dx": 14.0,
+    "dy": 9.7,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_P",
+   "at": "p_P",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "P",
+    "off": 0,
+    "dx": -5.8,
+    "dy": -16.0,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "polygon",
+   "id": "ov0",
+   "pts": [
+    "p_P",
+    "p_R",
+    "p_Q"
+   ],
+   "role": "accent",
+   "fill": "accent",
+   "fillOpacity": 0.11,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s1",
+   "appearDur": 500
+  },
+  {
+   "type": "segment",
+   "id": "ov1",
+   "role": "hyp",
+   "from": "p_P",
+   "to": "p_Q",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "ov2",
+   "role": "legA",
+   "from": "p_P",
+   "to": "p_R",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "ov3",
+   "role": "legB",
+   "from": "p_R",
+   "to": "p_Q",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "lb0",
+   "from": "p_P",
+   "to": "p_Q",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "24.7 m",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     4.8333,
+     6.6653
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb1",
+   "from": "p_R",
+   "to": "p_Q",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "14.5 m",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     4.8333,
+     6.6653
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb2",
+   "from": "p_P",
+   "to": "p_R",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "d = ?",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     4.8333,
+     6.6653
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0,
+   "disappear": "s6"
+  },
+  {
+   "type": "segment",
+   "id": "lb3",
+   "from": "p_P",
+   "to": "p_R",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "d = 20.0 m",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     4.8333,
+     6.6653
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s6",
+   "appearDur": 450,
+   "delay": 0
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "narration": "The hypotenuse is **24.7 m** and one shorter side is **14.5 m**. The right angle is between the **14.5 m** side and the unknown side **d**. We have to find **d**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Spot the right angle",
+   "narration": "In the right-angled triangle, the right angle is at **R**. The **hypotenuse** is the side opposite the right angle — the longest side.",
+   "actions": [
+    {
+     "pulse": [
+      "ra0"
+     ],
+     "at": 700
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Pythagoras' theorem",
+   "narration": "**Pythagoras' theorem**: the square on the hypotenuse equals the sum of the squares on the other two sides.\\[\\begin{aligned}\\role{hyp}{\\text{hypotenuse}^2} &= \\role{legA}{\\text{leg}^2} + \\role{legB}{\\text{leg}^2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Substitute the lengths",
+   "narration": "Replace each side by its length. The unknown side stays as a letter.\\[\\begin{aligned}\\role{hyp}{\\text{hypotenuse}^2} &= \\role{legA}{\\text{leg}^2} + \\role{legB}{\\text{leg}^2} \\\\ \\role{hyp}{24.7^2} &= \\role{legA}{d^2} + \\role{legB}{14.5^2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Make the unknown the subject",
+   "narration": "We want a **shorter side**, so subtract the known square from the hypotenuse square.\\[\\begin{aligned}\\role{hyp}{\\text{hypotenuse}^2} &= \\role{legA}{\\text{leg}^2} + \\role{legB}{\\text{leg}^2} \\\\ \\role{hyp}{24.7^2} &= \\role{legA}{d^2} + \\role{legB}{14.5^2} \\\\ \\role{legA}{d^2} &= \\role{hyp}{24.7^2} - \\role{legB}{14.5^2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s5",
+   "title": "Square and subtract",
+   "narration": "Square each number, then subtract.\\[\\begin{aligned}\\role{hyp}{\\text{hypotenuse}^2} &= \\role{legA}{\\text{leg}^2} + \\role{legB}{\\text{leg}^2} \\\\ \\role{hyp}{24.7^2} &= \\role{legA}{d^2} + \\role{legB}{14.5^2} \\\\ \\role{legA}{d^2} &= \\role{hyp}{24.7^2} - \\role{legB}{14.5^2} \\\\ &= \\role{hyp}{610.09} - \\role{legB}{210.25} \\\\ &= \\role{legA}{399.84}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s6",
+   "title": "Square root",
+   "narration": "399.84 is not a perfect square, so use a calculator and round to 3 significant figures.\\[\\begin{aligned}\\role{hyp}{\\text{hypotenuse}^2} &= \\role{legA}{\\text{leg}^2} + \\role{legB}{\\text{leg}^2} \\\\ \\role{hyp}{24.7^2} &= \\role{legA}{d^2} + \\role{legB}{14.5^2} \\\\ \\role{legA}{d^2} &= \\role{hyp}{24.7^2} - \\role{legB}{14.5^2} \\\\ &= \\role{hyp}{610.09} - \\role{legB}{210.25} \\\\ &= \\role{legA}{399.84} \\\\ \\role{legA}{d} &= \\sqrt{399.84} = \\role{ans}{20.0\\ \\text{m}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Pythagoras' theorem",
+   "tex": "\\role{hyp}{c^2} = \\role{legA}{a^2} + \\role{legB}{b^2}",
+   "text": "In a right-angled triangle, the square on the hypotenuse equals the sum of the squares on the other two sides."
+  },
+  {
+   "title": "Finding the hypotenuse",
+   "tex": "\\role{hyp}{c} = \\sqrt{\\role{legA}{a^2} + \\role{legB}{b^2}}",
+   "text": "Add the two squares, then take the square root."
+  },
+  {
+   "title": "Finding a shorter side",
+   "tex": "\\role{legA}{a} = \\sqrt{\\role{hyp}{c^2} - \\role{legB}{b^2}}",
+   "text": "Subtract the known shorter side's square from the hypotenuse's square, then take the square root."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "twin",
+   "type": "number",
+   "title": "Now you try",
+   "answer": 24,
+   "unit": "m",
+   "prompt": "A right-angled triangle has hypotenuse **26 m** and one shorter side **10 m**. Find the other shorter side.",
+   "hint": "Subtract: 26² − 10².",
+   "explain": "26² − 10² = 676 − 100 = 576, and √576 = 24 m."
+  }
+ ],
+ "takeaways": [
+  "Find the **right angle** first — the side opposite it is the **hypotenuse**.",
+  "To find a shorter side: **subtract** the known shorter side's square from the hypotenuse's square, then take the **square root**.",
+  "A shorter side must be **smaller** than the hypotenuse — a quick check on your answer."
+ ],
+ "notes": [
+  {
+   "title": "Exam tip",
+   "text": "Always begin with a line such as \"In ΔABC, ∠C = 90°. Using Pythagoras' Theorem,\" — it shows which triangle and which right angle you are using."
+  },
+  {
+   "title": "Rounding",
+   "text": "If the answer is not a whole number, give it to **3 significant figures** unless the question says otherwise."
+  }
+ ]
+}

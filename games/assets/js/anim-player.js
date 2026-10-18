@@ -9,7 +9,7 @@
 (function () {
   'use strict';
 
-  var host, titleEl, metaEl;
+  var host, titleEl, metaEl, qBox, qLabel, qText, qNav, backEl;
 
   async function resolveProfile() {
     var cached = Storage.getCachedDashboard();
@@ -29,6 +29,46 @@
       });
     });
     return hit;
+  }
+
+  /** the tab (section) this animation lives under, e.g. { key: '7.1', label: '7.1', title: "Pythagoras' Theorem" } */
+  function sectionOf(found) {
+    var key = found.anim.section;
+    if (!key) return null;
+    var hit = null;
+    (found.chapter.sections || []).forEach(function (s) { if (s.key === key) hit = s; });
+    return hit || { key: key, label: key, title: '' };
+  }
+
+  function sectionName(found) {
+    var s = sectionOf(found);
+    return s ? (s.label === 'Theory' ? 'Theory' : s.label + (s.title ? ' ' + s.title : '')) : found.chapter.title;
+  }
+
+  /** Question card above the animation + Back → the same tab of the hub + Previous / Next question. */
+  function showQuestion(found) {
+    var a = found.anim, sec = sectionOf(found);
+    if (backEl && sec) backEl.setAttribute('href', 'animations.html#' + found.chapter.n + '-' + encodeURIComponent(sec.key));
+    if (!qBox) return;
+    if (!(a.question && a.label)) { qBox.hidden = true; return; }
+    qLabel.textContent = a.label;
+    qText.textContent = a.question;
+    qNav.textContent = '';
+    var list = (found.chapter.animations || []).filter(function (x) { return (x.section || '') === (a.section || ''); });
+    var i = list.indexOf(a);
+    // keep the order the hub shows: the registry order inside the section
+    function link(item, text, aria, arrowFirst) {
+      var el = Utils.createEl('a', { href: item ? 'anim-player.html?a=' + encodeURIComponent(item.id) : '#', text: text });
+      el.setAttribute('aria-label', item ? aria + ': ' + item.label : aria);
+      if (!item) el.setAttribute('aria-disabled', 'true');
+      return el;
+    }
+    if (i >= 0 && list.length > 1) {
+      qNav.appendChild(link(list[i - 1] || null, '‹ Prev', 'Previous question'));
+      qNav.appendChild(link(list[i + 1] || null, 'Next ›', 'Next question'));
+      qNav.hidden = false;
+    } else qNav.hidden = true;
+    qBox.hidden = false;
   }
 
   function message(title, sub, retry) {
@@ -60,9 +100,11 @@
     var found = findAllowed(profile, id);
     if (!found) { message('This animation is not available for you', 'It may belong to another class or subject.'); return; }
 
-    document.title = found.anim.title + ' — W.H. Academy';
-    titleEl.textContent = found.anim.title;
-    metaEl.textContent = 'Class ' + found.classLevel + ' · ' + found.subjectName + ' · Chapter ' + found.chapter.n + ' · ' + found.chapter.title;
+    var a = found.anim, isQ = !!(a.question && a.label);
+    document.title = (isQ ? a.label : a.title) + ' — W.H. Academy';
+    titleEl.textContent = isQ ? a.label : a.title;
+    metaEl.textContent = 'Class ' + found.classLevel + ' · ' + found.subjectName + ' · Chapter ' + found.chapter.n + ' · ' + sectionName(found);
+    showQuestion(found);
 
     var spec;
     try {
@@ -82,11 +124,17 @@
       store: Storage,
       debug: Router.getQueryParam('debug') === '1'
     });
+    // the question belongs with the drawing: on a wide screen it sits at the top of the LEFT column (above the figure,
+    // solution on the right); on a phone the same card stays above the figure.
+    var left = host.querySelector('.anim-left');
+    if (left && qBox && !qBox.hidden) left.insertBefore(qBox, left.firstChild);
   }
 
   document.addEventListener('wha:ready', function () {
     if (Router.currentPageName() !== 'anim-player.html') return;
     host = Utils.qs('#anim-host'); titleEl = Utils.qs('#anim-title'); metaEl = Utils.qs('#anim-meta');
+    qBox = Utils.qs('#anim-question'); qLabel = Utils.qs('#anim-question-label'); qText = Utils.qs('#anim-question-text');
+    qNav = Utils.qs('#anim-question-nav'); backEl = Utils.qs('#anim-back');
     start();
   });
 })();

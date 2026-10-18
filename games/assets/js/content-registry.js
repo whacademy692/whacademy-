@@ -625,9 +625,9 @@ window.WHA_CONTENT = {
           {
             "n": 7,
             "title": "Pythagoras Theorem",
-            "notes": null,
+            "notes": "https://whacademypk.com/notes/class-8/math/pythagoras-theorem.html",
             "quiz": null,
-            "game": null
+            "game": "https://whacademypk.com/games/chapter.html?ch=8/math/pythagoras_theorem"
           },
           {
             "n": 8,

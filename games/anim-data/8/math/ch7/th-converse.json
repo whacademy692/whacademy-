@@ -1,0 +1,975 @@
+{
+ "id": "g8-math-pyth-th-converse",
+ "title": "The Converse of Pythagoras' Theorem",
+ "summary": "Test whether a triangle is right-angled using only its three side lengths: is c² = a² + b²?",
+ "alt": "A triangle ABC with sides a = {{a|1}}, b = {{b|1}} and c = {{c|1}}; c² = {{c^2|2}} and a² + b² = {{a^2+b^2|2}}.",
+ "uiDefaults": {
+  "angles": false
+ },
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   "xmin - mx",
+   "a + mx"
+  ],
+  "y": [
+   "-0.5*mx",
+   "ymax + 0.6*mx"
+  ],
+  "smooth": true,
+  "ratio": 0.82,
+  "pad": 14
+ },
+ "roles": {
+  "hyp": {
+   "label": "Hypotenuse",
+   "color": "#059669",
+   "text": "The side opposite the right angle. It is always the longest side."
+  },
+  "legA": {
+   "label": "Shorter side 1",
+   "color": "#2563eb",
+   "text": "One of the two sides that meet at the right angle."
+  },
+  "legB": {
+   "label": "Shorter side 2",
+   "color": "#e11d48",
+   "text": "The other side that meets at the right angle."
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The length we are finding."
+  }
+ },
+ "params": [
+  {
+   "id": "a",
+   "label": "Side a  (BC)",
+   "role": "legA",
+   "min": 1,
+   "max": 40,
+   "step": 0.5,
+   "default": 4,
+   "unit": "units",
+   "group": "The three sides"
+  },
+  {
+   "id": "b",
+   "label": "Side b  (AC)",
+   "role": "legB",
+   "min": 1,
+   "max": 40,
+   "step": 0.5,
+   "default": 3,
+   "unit": "units"
+  },
+  {
+   "id": "c",
+   "label": "Side c  (AB)",
+   "role": "hyp",
+   "min": 1,
+   "max": 40,
+   "step": 0.5,
+   "default": 5,
+   "unit": "units",
+   "hint": "Keep c the longest side."
+  }
+ ],
+ "derived": {
+  "cosC": "clamp((a^2 + b^2 - c^2) / (2*a*b), -1, 1)",
+  "sinC": "sqrt(1 - cosC^2)",
+  "angC": "atan2(sinC, cosC)",
+  "valid": "(a + b > c + 0.001 && a + c > b + 0.001 && b + c > a + 0.001) ? 1 : 0",
+  "isR": "abs(c^2 - a^2 - b^2) < 0.001 ? 1 : 0",
+  "xmin": "min(0, b*cosC)",
+  "ymax": "b*sinC",
+  "mx": "0.2 * max(a, max(b, c)) + 0.7",
+  "C": [
+   0,
+   0
+  ],
+  "B": [
+   "a",
+   0
+  ],
+  "A": [
+   "b*cosC",
+   "b*sinC"
+  ]
+ },
+ "presets": [
+  {
+   "name": "3 · 4 · 5",
+   "values": {
+    "a": 4,
+    "b": 3,
+    "c": 5
+   }
+  },
+  {
+   "name": "5 · 12 · 13",
+   "values": {
+    "a": 12,
+    "b": 5,
+    "c": 13
+   }
+  },
+  {
+   "name": "8 · 15 · 17",
+   "values": {
+    "a": 15,
+    "b": 8,
+    "c": 17
+   }
+  },
+  {
+   "name": "7 · 24 · 25",
+   "values": {
+    "a": 24,
+    "b": 7,
+    "c": 25
+   }
+  },
+  {
+   "name": "Worked Example 8(a)",
+   "values": {
+    "a": 15,
+    "b": 36,
+    "c": 39
+   }
+  },
+  {
+   "name": "Worked Example 8(b)",
+   "values": {
+    "a": 20,
+    "b": 19,
+    "c": 28
+   }
+  },
+  {
+   "name": "Almost… 4 · 5 · 6",
+   "values": {
+    "a": 5,
+    "b": 4,
+    "c": 6
+   }
+  }
+ ],
+ "shapes": [
+  {
+   "type": "polygon",
+   "id": "tri",
+   "pts": [
+    "C",
+    "B",
+    "A"
+   ],
+   "role": "ink",
+   "strokeWidth": 3,
+   "fill": "accent",
+   "fillOpacity": 0.14,
+   "appear": "s0",
+   "effect": "draw",
+   "appearDur": 1200,
+   "visible": "valid > 0.5"
+  },
+  {
+   "type": "segment",
+   "id": "sa",
+   "from": "C",
+   "to": "B",
+   "role": "legA",
+   "strokeWidth": 5,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 500,
+   "appearDur": 600,
+   "visible": "valid > 0.5"
+  },
+  {
+   "type": "segment",
+   "id": "sb",
+   "from": "C",
+   "to": "A",
+   "role": "legB",
+   "strokeWidth": 5,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 700,
+   "appearDur": 600,
+   "visible": "valid > 0.5"
+  },
+  {
+   "type": "segment",
+   "id": "sc",
+   "from": "B",
+   "to": "A",
+   "role": "hyp",
+   "strokeWidth": 5,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 900,
+   "appearDur": 600,
+   "visible": "valid > 0.5"
+  },
+  {
+   "type": "angle",
+   "id": "ra",
+   "at": "C",
+   "from": "B",
+   "to": "A",
+   "style": "square",
+   "r": 28,
+   "role": "ink",
+   "strokeWidth": 1.8,
+   "fill": false,
+   "visible": "valid > 0.5 && isR > 0.5",
+   "appear": "s0",
+   "delay": 900,
+   "appearDur": 500
+  },
+  {
+   "type": "angle",
+   "id": "arc",
+   "at": "C",
+   "from": "B",
+   "to": "A",
+   "r": 30,
+   "role": "accent",
+   "strokeWidth": 2.2,
+   "label": "{{angC|1}}°",
+   "visible": "valid > 0.5 && isR < 0.5",
+   "appear": "s0",
+   "delay": 900,
+   "appearDur": 500
+  },
+  {
+   "type": "text",
+   "id": "warn",
+   "role": "ink",
+   "size": "l",
+   "text": "These lengths can't make a triangle",
+   "at": [
+    "a/2",
+    0
+   ],
+   "visible": "valid < 0.5",
+   "appear": "s0",
+   "appearDur": 300
+  },
+  {
+   "type": "point",
+   "id": "g1_C",
+   "at": "C",
+   "r": 3.2,
+   "role": "ink",
+   "layer": "front",
+   "appear": "s0",
+   "delay": 300,
+   "appearDur": 400,
+   "label": {
+    "text": "C",
+    "off": 0,
+    "dx": -15,
+    "dy": 15,
+    "size": "l",
+    "role": "ink"
+   },
+   "visible": "valid > 0.5",
+   "disappear": "s2"
+  },
+  {
+   "type": "point",
+   "id": "g1_B",
+   "at": "B",
+   "r": 3.2,
+   "role": "ink",
+   "layer": "front",
+   "appear": "s0",
+   "delay": 300,
+   "appearDur": 400,
+   "label": {
+    "text": "B",
+    "off": 0,
+    "dx": 15,
+    "dy": 14,
+    "size": "l",
+    "role": "ink"
+   },
+   "visible": "valid > 0.5",
+   "disappear": "s2"
+  },
+  {
+   "type": "point",
+   "id": "g1_A",
+   "at": "A",
+   "r": 3.2,
+   "role": "ink",
+   "layer": "front",
+   "appear": "s0",
+   "delay": 300,
+   "appearDur": 400,
+   "label": {
+    "text": "A",
+    "off": 0,
+    "dx": -4,
+    "dy": -17,
+    "size": "l",
+    "role": "ink"
+   },
+   "visible": "valid > 0.5",
+   "disappear": "s2"
+  },
+  {
+   "type": "segment",
+   "id": "g1_La",
+   "from": "C",
+   "to": "B",
+   "role": "ink",
+   "strokeWidth": 0,
+   "layer": "front",
+   "label": {
+    "text": "\\(a\\) = {{a|1}}",
+    "role": "legA",
+    "size": "l",
+    "away": [
+     "(a + b*cosC)/3",
+     "b*sinC/3"
+    ],
+    "off": 6,
+    "t": 0.5
+   },
+   "visible": "valid > 0.5",
+   "appearDur": 400,
+   "delay": 500,
+   "appear": "s0",
+   "disappear": "s2"
+  },
+  {
+   "type": "segment",
+   "id": "g1_Lb",
+   "from": "C",
+   "to": "A",
+   "role": "ink",
+   "strokeWidth": 0,
+   "layer": "front",
+   "label": {
+    "text": "\\(b\\) = {{b|1}}",
+    "role": "legB",
+    "size": "l",
+    "away": [
+     "(a + b*cosC)/3",
+     "b*sinC/3"
+    ],
+    "off": 6,
+    "t": 0.5
+   },
+   "visible": "valid > 0.5",
+   "appearDur": 400,
+   "delay": 500,
+   "appear": "s0",
+   "disappear": "s2"
+  },
+  {
+   "type": "segment",
+   "id": "g1_Lc",
+   "from": "B",
+   "to": "A",
+   "role": "ink",
+   "strokeWidth": 0,
+   "layer": "front",
+   "label": {
+    "text": "\\(c\\) = {{c|1}}",
+    "role": "hyp",
+    "size": "l",
+    "away": [
+     "(a + b*cosC)/3",
+     "b*sinC/3"
+    ],
+    "off": 6,
+    "t": 0.5
+   },
+   "visible": "valid > 0.5",
+   "appearDur": 400,
+   "delay": 500,
+   "appear": "s0",
+   "disappear": "s2"
+  },
+  {
+   "type": "point",
+   "id": "w8a_C",
+   "at": "C",
+   "r": 3.2,
+   "role": "ink",
+   "layer": "front",
+   "appear": "s2",
+   "delay": 300,
+   "appearDur": 400,
+   "label": {
+    "text": "C",
+    "off": 0,
+    "dx": -15,
+    "dy": 15,
+    "size": "l",
+    "role": "ink"
+   },
+   "visible": "valid > 0.5",
+   "disappear": "s3"
+  },
+  {
+   "type": "point",
+   "id": "w8a_B",
+   "at": "B",
+   "r": 3.2,
+   "role": "ink",
+   "layer": "front",
+   "appear": "s2",
+   "delay": 300,
+   "appearDur": 400,
+   "label": {
+    "text": "B",
+    "off": 0,
+    "dx": 15,
+    "dy": 14,
+    "size": "l",
+    "role": "ink"
+   },
+   "visible": "valid > 0.5",
+   "disappear": "s3"
+  },
+  {
+   "type": "point",
+   "id": "w8a_A",
+   "at": "A",
+   "r": 3.2,
+   "role": "ink",
+   "layer": "front",
+   "appear": "s2",
+   "delay": 300,
+   "appearDur": 400,
+   "label": {
+    "text": "A",
+    "off": 0,
+    "dx": -4,
+    "dy": -17,
+    "size": "l",
+    "role": "ink"
+   },
+   "visible": "valid > 0.5",
+   "disappear": "s3"
+  },
+  {
+   "type": "segment",
+   "id": "w8a_La",
+   "from": "C",
+   "to": "B",
+   "role": "ink",
+   "strokeWidth": 0,
+   "layer": "front",
+   "label": {
+    "text": "BC = {{a|1}}",
+    "role": "legA",
+    "size": "l",
+    "away": [
+     "(a + b*cosC)/3",
+     "b*sinC/3"
+    ],
+    "off": 6,
+    "t": 0.5
+   },
+   "visible": "valid > 0.5",
+   "appearDur": 400,
+   "delay": 500,
+   "appear": "s2",
+   "disappear": "s3"
+  },
+  {
+   "type": "segment",
+   "id": "w8a_Lb",
+   "from": "C",
+   "to": "A",
+   "role": "ink",
+   "strokeWidth": 0,
+   "layer": "front",
+   "label": {
+    "text": "AC = {{b|1}}",
+    "role": "legB",
+    "size": "l",
+    "away": [
+     "(a + b*cosC)/3",
+     "b*sinC/3"
+    ],
+    "off": 6,
+    "t": 0.5
+   },
+   "visible": "valid > 0.5",
+   "appearDur": 400,
+   "delay": 500,
+   "appear": "s2",
+   "disappear": "s3"
+  },
+  {
+   "type": "segment",
+   "id": "w8a_Lc",
+   "from": "B",
+   "to": "A",
+   "role": "ink",
+   "strokeWidth": 0,
+   "layer": "front",
+   "label": {
+    "text": "AB = {{c|1}}",
+    "role": "hyp",
+    "size": "l",
+    "away": [
+     "(a + b*cosC)/3",
+     "b*sinC/3"
+    ],
+    "off": 6,
+    "t": 0.5
+   },
+   "visible": "valid > 0.5",
+   "appearDur": 400,
+   "delay": 500,
+   "appear": "s2",
+   "disappear": "s3"
+  },
+  {
+   "type": "point",
+   "id": "w8b_C",
+   "at": "C",
+   "r": 3.2,
+   "role": "ink",
+   "layer": "front",
+   "appear": "s3",
+   "delay": 300,
+   "appearDur": 400,
+   "label": {
+    "text": "R",
+    "off": 0,
+    "dx": -15,
+    "dy": 15,
+    "size": "l",
+    "role": "ink"
+   },
+   "visible": "valid > 0.5",
+   "disappear": "s4"
+  },
+  {
+   "type": "point",
+   "id": "w8b_B",
+   "at": "B",
+   "r": 3.2,
+   "role": "ink",
+   "layer": "front",
+   "appear": "s3",
+   "delay": 300,
+   "appearDur": 400,
+   "label": {
+    "text": "Q",
+    "off": 0,
+    "dx": 15,
+    "dy": 14,
+    "size": "l",
+    "role": "ink"
+   },
+   "visible": "valid > 0.5",
+   "disappear": "s4"
+  },
+  {
+   "type": "point",
+   "id": "w8b_A",
+   "at": "A",
+   "r": 3.2,
+   "role": "ink",
+   "layer": "front",
+   "appear": "s3",
+   "delay": 300,
+   "appearDur": 400,
+   "label": {
+    "text": "P",
+    "off": 0,
+    "dx": -4,
+    "dy": -17,
+    "size": "l",
+    "role": "ink"
+   },
+   "visible": "valid > 0.5",
+   "disappear": "s4"
+  },
+  {
+   "type": "segment",
+   "id": "w8b_La",
+   "from": "C",
+   "to": "B",
+   "role": "ink",
+   "strokeWidth": 0,
+   "layer": "front",
+   "label": {
+    "text": "QR = {{a|1}}",
+    "role": "legA",
+    "size": "l",
+    "away": [
+     "(a + b*cosC)/3",
+     "b*sinC/3"
+    ],
+    "off": 6,
+    "t": 0.5
+   },
+   "visible": "valid > 0.5",
+   "appearDur": 400,
+   "delay": 500,
+   "appear": "s3",
+   "disappear": "s4"
+  },
+  {
+   "type": "segment",
+   "id": "w8b_Lb",
+   "from": "C",
+   "to": "A",
+   "role": "ink",
+   "strokeWidth": 0,
+   "layer": "front",
+   "label": {
+    "text": "PR = {{b|1}}",
+    "role": "legB",
+    "size": "l",
+    "away": [
+     "(a + b*cosC)/3",
+     "b*sinC/3"
+    ],
+    "off": 6,
+    "t": 0.5
+   },
+   "visible": "valid > 0.5",
+   "appearDur": 400,
+   "delay": 500,
+   "appear": "s3",
+   "disappear": "s4"
+  },
+  {
+   "type": "segment",
+   "id": "w8b_Lc",
+   "from": "B",
+   "to": "A",
+   "role": "ink",
+   "strokeWidth": 0,
+   "layer": "front",
+   "label": {
+    "text": "PQ = {{c|1}}",
+    "role": "hyp",
+    "size": "l",
+    "away": [
+     "(a + b*cosC)/3",
+     "b*sinC/3"
+    ],
+    "off": 6,
+    "t": 0.5
+   },
+   "visible": "valid > 0.5",
+   "appearDur": 400,
+   "delay": 500,
+   "appear": "s3",
+   "disappear": "s4"
+  },
+  {
+   "type": "point",
+   "id": "g2_C",
+   "at": "C",
+   "r": 3.2,
+   "role": "ink",
+   "layer": "front",
+   "appear": "s4",
+   "delay": 300,
+   "appearDur": 400,
+   "label": {
+    "text": "C",
+    "off": 0,
+    "dx": -15,
+    "dy": 15,
+    "size": "l",
+    "role": "ink"
+   },
+   "visible": "valid > 0.5"
+  },
+  {
+   "type": "point",
+   "id": "g2_B",
+   "at": "B",
+   "r": 3.2,
+   "role": "ink",
+   "layer": "front",
+   "appear": "s4",
+   "delay": 300,
+   "appearDur": 400,
+   "label": {
+    "text": "B",
+    "off": 0,
+    "dx": 15,
+    "dy": 14,
+    "size": "l",
+    "role": "ink"
+   },
+   "visible": "valid > 0.5"
+  },
+  {
+   "type": "point",
+   "id": "g2_A",
+   "at": "A",
+   "r": 3.2,
+   "role": "ink",
+   "layer": "front",
+   "appear": "s4",
+   "delay": 300,
+   "appearDur": 400,
+   "label": {
+    "text": "A",
+    "off": 0,
+    "dx": -4,
+    "dy": -17,
+    "size": "l",
+    "role": "ink"
+   },
+   "visible": "valid > 0.5"
+  },
+  {
+   "type": "segment",
+   "id": "g2_La",
+   "from": "C",
+   "to": "B",
+   "role": "ink",
+   "strokeWidth": 0,
+   "layer": "front",
+   "label": {
+    "text": "\\(a\\) = {{a|1}}",
+    "role": "legA",
+    "size": "l",
+    "away": [
+     "(a + b*cosC)/3",
+     "b*sinC/3"
+    ],
+    "off": 6,
+    "t": 0.5
+   },
+   "visible": "valid > 0.5",
+   "appearDur": 400,
+   "delay": 500,
+   "appear": "s4"
+  },
+  {
+   "type": "segment",
+   "id": "g2_Lb",
+   "from": "C",
+   "to": "A",
+   "role": "ink",
+   "strokeWidth": 0,
+   "layer": "front",
+   "label": {
+    "text": "\\(b\\) = {{b|1}}",
+    "role": "legB",
+    "size": "l",
+    "away": [
+     "(a + b*cosC)/3",
+     "b*sinC/3"
+    ],
+    "off": 6,
+    "t": 0.5
+   },
+   "visible": "valid > 0.5",
+   "appearDur": 400,
+   "delay": 500,
+   "appear": "s4"
+  },
+  {
+   "type": "segment",
+   "id": "g2_Lc",
+   "from": "B",
+   "to": "A",
+   "role": "ink",
+   "strokeWidth": 0,
+   "layer": "front",
+   "label": {
+    "text": "\\(c\\) = {{c|1}}",
+    "role": "hyp",
+    "size": "l",
+    "away": [
+     "(a + b*cosC)/3",
+     "b*sinC/3"
+    ],
+    "off": 6,
+    "t": 0.5
+   },
+   "visible": "valid > 0.5",
+   "appearDur": 400,
+   "delay": 500,
+   "appear": "s4"
+  }
+ ],
+ "readouts": [
+  {
+   "label": "a² + b²",
+   "role": "accent",
+   "value": "{{a^2|2}} + {{b^2|2}} = {{a^2+b^2|2}}"
+  },
+  {
+   "label": "c²",
+   "role": "hyp",
+   "value": "{{c^2|2}}"
+  },
+  {
+   "label": "Verdict",
+   "role": "ans",
+   "when": "valid > 0.5",
+   "value": "{{if isR > 0.5 | c² = a² + b²  so  ∠C = 90° | c² ≠ a² + b²  so  not right-angled}}"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Pythagoras' Theorem — one way",
+   "narration": "In **ΔABC**, if **∠C = 90°**, then \\[ \\role{hyp}{c^2} = \\role{legA}{a^2} + \\role{legB}{b^2} \\]Right angle first, then the squares. Here {{c^2|2}} = {{a^2|2}} + {{b^2|2}}.",
+   "actions": [
+    {
+     "set": {
+      "a": 4,
+      "b": 3,
+      "c": 5
+     }
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Turn it around — the Converse",
+   "narration": "The theorem also works **backwards**. In ΔABC, if \\[ \\role{hyp}{c^2} = \\role{legA}{a^2} + \\role{legB}{b^2} \\]then **∠C = 90°**. So we can **test** a triangle from its three side lengths alone — no protractor needed. The right angle is always **opposite the longest side**.",
+   "actions": [
+    {
+     "pulse": "sc",
+     "at": 600
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Test 1 — Worked Example 8(a)",
+   "narration": "ΔABC with **AB = 39 cm**, **BC = 15 cm**, **AC = 36 cm**. AB is the longest side. \\[\\begin{aligned} AB^2 &= 39^2 = 1521 \\\\ BC^2 + AC^2 &= 15^2 + 36^2 \\\\ &= 225 + 1296 = 1521 \\end{aligned}\\]Since AB² = BC² + AC², by the Converse ΔABC **is** right-angled, with **∠C = 90°**.",
+   "actions": [
+    {
+     "tween": {
+      "a": 15,
+      "b": 36,
+      "c": 39
+     },
+     "dur": 1800
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Test 2 — Worked Example 8(b)",
+   "narration": "ΔPQR with **PQ = 28 m**, **QR = 20 m**, **PR = 19 m**. PQ is the longest side. \\[\\begin{aligned} PQ^2 &= 28^2 = 784 \\\\ QR^2 + PR^2 &= 20^2 + 19^2 \\\\ &= 400 + 361 = 761 \\end{aligned}\\]Since 784 ≠ 761, PQ² ≠ QR² + PR², so ΔPQR is **not** right-angled.",
+   "actions": [
+    {
+     "tween": {
+      "a": 20,
+      "b": 19,
+      "c": 28
+     },
+     "dur": 1800
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Now you test!",
+   "narration": "Use the sliders to set three side lengths. If **c² = a² + b²** the right-angle mark appears and the verdict says **∠C = 90°**. Try 5, 12, 13 — and then nudge one side a little!",
+   "actions": [],
+   "challenge": "cv1"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Pythagoras' Theorem",
+   "tex": "\\angle C = 90^\\circ \\;\\Longrightarrow\\; \\role{hyp}{c^2} = \\role{legA}{a^2} + \\role{legB}{b^2}",
+   "text": "If a triangle has a right angle, the sides satisfy c² = a² + b²."
+  },
+  {
+   "title": "Converse of Pythagoras' Theorem",
+   "tex": "\\role{hyp}{c^2} = \\role{legA}{a^2} + \\role{legB}{b^2} \\;\\Longrightarrow\\; \\angle C = 90^\\circ",
+   "filled": "\\role{hyp}{ {{c^2|2}} } \\text{ vs } \\role{legA}{ {{a^2|2}} } + \\role{legB}{ {{b^2|2}} } = {{a^2+b^2|2}}",
+   "text": "If the square of the longest side equals the sum of the squares of the other two, the angle opposite the longest side is a right angle."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "cv1",
+   "type": "choice",
+   "title": "Which is right-angled?",
+   "answer": "a",
+   "options": [
+    {
+     "id": "a",
+     "label": "6, 8, 10"
+    },
+    {
+     "id": "b",
+     "label": "7, 8, 12"
+    },
+    {
+     "id": "c",
+     "label": "5, 6, 8"
+    }
+   ],
+   "prompt": "Which set of side lengths makes a **right-angled** triangle?",
+   "hint": "Square the two smaller sides, add them, and compare with the square of the largest.",
+   "explain": "6² + 8² = 36 + 64 = 100 = 10². The other sets do not satisfy c² = a² + b²."
+  },
+  {
+   "id": "cv2",
+   "type": "choice",
+   "title": "Where is the right angle?",
+   "answer": "y",
+   "options": [
+    {
+     "id": "x",
+     "label": "∠X"
+    },
+    {
+     "id": "y",
+     "label": "∠Y"
+    },
+    {
+     "id": "z",
+     "label": "∠Z"
+    }
+   ],
+   "prompt": "In ΔXYZ, XY = 20 cm, YZ = 21 cm and XZ = 29 cm. 20² + 21² = 29², so the triangle is right-angled. Where is the right angle?",
+   "hint": "The right angle is opposite the longest side, XZ.",
+   "explain": "The longest side XZ is opposite **Y**, so **∠Y = 90°**."
+  },
+  {
+   "id": "cv3",
+   "type": "number",
+   "title": "Find the missing side",
+   "answer": 15,
+   "unit": "cm",
+   "prompt": "ΔABC has AB = 17 cm, BC = 8 cm and **∠C = 90°**. Find **AC**.",
+   "hint": "AB is the hypotenuse: AC² = 17² − 8².",
+   "explain": "17² − 8² = 289 − 64 = 225, and √225 = 15 cm."
+  }
+ ],
+ "intro": "**Pythagoras:** right angle ⇒ c² = a² + b². **The Converse:** c² = a² + b² ⇒ right angle. It lets us check a triangle from its side lengths alone.",
+ "takeaways": [
+  "**Converse of Pythagoras' Theorem:** if the square of the longest side equals the sum of the squares of the other two sides, the angle opposite the longest side is a **right angle**.",
+  "To test a triangle: find the **longest** side, then compare its square with the **sum** of the other two squares.",
+  "If they are **equal** → right-angled (state where the right angle is). If they are **not equal** → not right-angled.",
+  "The right angle is **opposite the longest side**."
+ ],
+ "notes": [
+  {
+   "title": "Beyond the book",
+   "text": "If c² is **bigger** than a² + b² the angle opposite c is **more** than 90° (obtuse); if it is **smaller** the angle is **less** than 90° (acute). Drag a slider and watch the angle arc change."
+  }
+ ],
+ "challengeIntro": "Test yourself with the Converse."
+}

@@ -1,0 +1,637 @@
+{
+ "id": "g8-math-pyth-th-spot",
+ "title": "Spot the hypotenuse",
+ "summary": "Find the right angle, then look straight across — that side is the hypotenuse, however the triangle is turned.",
+ "alt": "Three right-angled triangles turned in different directions, each with its right angle marked and its hypotenuse highlighted.",
+ "uiDefaults": {
+  "angles": false
+ },
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -0.8,
+   9.8
+  ],
+  "y": [
+   -0.7,
+   7.0
+  ],
+  "ratio": 0.72,
+  "pad": 10
+ },
+ "roles": {
+  "hyp": {
+   "label": "Hypotenuse",
+   "color": "#059669",
+   "text": "The side opposite the right angle. It is always the longest side."
+  },
+  "legA": {
+   "label": "Shorter side 1",
+   "color": "#2563eb",
+   "text": "One of the two sides that meet at the right angle."
+  },
+  "legB": {
+   "label": "Shorter side 2",
+   "color": "#e11d48",
+   "text": "The other side that meets at the right angle."
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The length we are finding."
+  }
+ },
+ "params": [],
+ "derived": {
+  "p_C": [
+   1.2,
+   0.8
+  ],
+  "p_B": [
+   8.2,
+   0.8
+  ],
+  "p_A": [
+   1.2,
+   5.8
+  ],
+  "p_D": [
+   1.2,
+   5.8
+  ],
+  "p_F": [
+   8.2,
+   5.8
+  ],
+  "p_E": [
+   8.2,
+   0.8
+  ],
+  "p_R": [
+   2.7,
+   1.0
+  ],
+  "p_P": [
+   8.5275,
+   4.0985
+  ],
+  "p_Q": [
+   0.4935,
+   5.1499
+  ]
+ },
+ "shapes": [
+  {
+   "type": "polygon",
+   "id": "t1_tri",
+   "pts": [
+    "p_A",
+    "p_B",
+    "p_C"
+   ],
+   "role": "ink",
+   "strokeWidth": 3,
+   "fill": "accent",
+   "fillOpacity": 0.12,
+   "appear": "s0",
+   "disappear": "s2",
+   "effect": "draw",
+   "appearDur": 1300
+  },
+  {
+   "type": "point",
+   "id": "t1_ptA",
+   "at": "p_A",
+   "r": 3.2,
+   "role": "ink",
+   "layer": "front",
+   "appear": "s0",
+   "delay": 500,
+   "appearDur": 400,
+   "label": {
+    "text": "A",
+    "off": 0,
+    "dx": -10.3,
+    "dy": -14.7,
+    "size": "l",
+    "role": "ink"
+   },
+   "disappear": "s2"
+  },
+  {
+   "type": "point",
+   "id": "t1_ptB",
+   "at": "p_B",
+   "r": 3.2,
+   "role": "ink",
+   "layer": "front",
+   "appear": "s0",
+   "delay": 500,
+   "appearDur": 400,
+   "label": {
+    "text": "B",
+    "off": 0,
+    "dx": 17.0,
+    "dy": 6.1,
+    "size": "l",
+    "role": "ink"
+   },
+   "disappear": "s2"
+  },
+  {
+   "type": "point",
+   "id": "t1_ptC",
+   "at": "p_C",
+   "r": 3.2,
+   "role": "ink",
+   "layer": "front",
+   "appear": "s0",
+   "delay": 500,
+   "appearDur": 400,
+   "label": {
+    "text": "C",
+    "off": 0,
+    "dx": -14.6,
+    "dy": 10.5,
+    "size": "l",
+    "role": "ink"
+   },
+   "disappear": "s2"
+  },
+  {
+   "type": "angle",
+   "id": "t1_ra",
+   "at": "p_C",
+   "from": "p_A",
+   "to": "p_B",
+   "style": "square",
+   "r": 26,
+   "role": "ink",
+   "strokeWidth": 1.8,
+   "fill": false,
+   "appear": "s0",
+   "disappear": "s2",
+   "delay": 1100,
+   "appearDur": 500
+  },
+  {
+   "type": "segment",
+   "id": "t1_look",
+   "from": "p_C",
+   "to": [
+    4.7,
+    3.3
+   ],
+   "role": "accent",
+   "strokeWidth": 2.4,
+   "dash": [
+    6,
+    6
+   ],
+   "appear": "s1",
+   "disappear": "s2",
+   "effect": "draw",
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "t1_hyp",
+   "from": "p_A",
+   "to": "p_B",
+   "role": "hyp",
+   "strokeWidth": 6,
+   "appear": "s1",
+   "disappear": "s2",
+   "effect": "draw",
+   "appearDur": 800,
+   "delay": 500,
+   "label": {
+    "text": "AB = hypotenuse",
+    "role": "hyp",
+    "size": "l",
+    "away": [
+     3.533,
+     2.467
+    ],
+    "off": 8
+   }
+  },
+  {
+   "type": "polygon",
+   "id": "t2_tri",
+   "pts": [
+    "p_D",
+    "p_E",
+    "p_F"
+   ],
+   "role": "ink",
+   "strokeWidth": 3,
+   "fill": "accent",
+   "fillOpacity": 0.12,
+   "appear": "s2",
+   "disappear": "s4",
+   "effect": "draw",
+   "appearDur": 1300
+  },
+  {
+   "type": "point",
+   "id": "t2_ptD",
+   "at": "p_D",
+   "r": 3.2,
+   "role": "ink",
+   "layer": "front",
+   "appear": "s2",
+   "delay": 500,
+   "appearDur": 400,
+   "label": {
+    "text": "D",
+    "off": 0,
+    "dx": -17.0,
+    "dy": -6.1,
+    "size": "l",
+    "role": "ink"
+   },
+   "disappear": "s4"
+  },
+  {
+   "type": "point",
+   "id": "t2_ptE",
+   "at": "p_E",
+   "r": 3.2,
+   "role": "ink",
+   "layer": "front",
+   "appear": "s2",
+   "delay": 500,
+   "appearDur": 400,
+   "label": {
+    "text": "E",
+    "off": 0,
+    "dx": 10.3,
+    "dy": 14.7,
+    "size": "l",
+    "role": "ink"
+   },
+   "disappear": "s4"
+  },
+  {
+   "type": "point",
+   "id": "t2_ptF",
+   "at": "p_F",
+   "r": 3.2,
+   "role": "ink",
+   "layer": "front",
+   "appear": "s2",
+   "delay": 500,
+   "appearDur": 400,
+   "label": {
+    "text": "F",
+    "off": 0,
+    "dx": 14.6,
+    "dy": -10.5,
+    "size": "l",
+    "role": "ink"
+   },
+   "disappear": "s4"
+  },
+  {
+   "type": "angle",
+   "id": "t2_ra",
+   "at": "p_F",
+   "from": "p_D",
+   "to": "p_E",
+   "style": "square",
+   "r": 26,
+   "role": "ink",
+   "strokeWidth": 1.8,
+   "fill": false,
+   "appear": "s2",
+   "disappear": "s4",
+   "delay": 1100,
+   "appearDur": 500
+  },
+  {
+   "type": "segment",
+   "id": "t2_look",
+   "from": "p_F",
+   "to": [
+    4.7,
+    3.3
+   ],
+   "role": "accent",
+   "strokeWidth": 2.4,
+   "dash": [
+    6,
+    6
+   ],
+   "appear": "s3",
+   "disappear": "s4",
+   "effect": "draw",
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "t2_hyp",
+   "from": "p_D",
+   "to": "p_E",
+   "role": "hyp",
+   "strokeWidth": 6,
+   "appear": "s3",
+   "disappear": "s4",
+   "effect": "draw",
+   "appearDur": 800,
+   "delay": 500,
+   "label": {
+    "text": "DE = hypotenuse",
+    "role": "hyp",
+    "size": "l",
+    "away": [
+     5.867,
+     4.133
+    ],
+    "off": 8
+   }
+  },
+  {
+   "type": "polygon",
+   "id": "t3_tri",
+   "pts": [
+    "p_P",
+    "p_Q",
+    "p_R"
+   ],
+   "role": "ink",
+   "strokeWidth": 3,
+   "fill": "accent",
+   "fillOpacity": 0.12,
+   "appear": "s4",
+   "effect": "draw",
+   "appearDur": 1300
+  },
+  {
+   "type": "point",
+   "id": "t3_ptP",
+   "at": "p_P",
+   "r": 3.2,
+   "role": "ink",
+   "layer": "front",
+   "appear": "s4",
+   "delay": 500,
+   "appearDur": 400,
+   "label": {
+    "text": "P",
+    "off": 0,
+    "dx": 17.8,
+    "dy": -2.6,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "t3_ptQ",
+   "at": "p_Q",
+   "r": 3.2,
+   "role": "ink",
+   "layer": "front",
+   "appear": "s4",
+   "delay": 500,
+   "appearDur": 400,
+   "label": {
+    "text": "Q",
+    "off": 0,
+    "dx": -16.0,
+    "dy": -8.2,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "t3_ptR",
+   "at": "p_R",
+   "r": 3.2,
+   "role": "ink",
+   "layer": "front",
+   "appear": "s4",
+   "delay": 500,
+   "appearDur": 400,
+   "label": {
+    "text": "R",
+    "off": 0,
+    "dx": -8.0,
+    "dy": 16.1,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "angle",
+   "id": "t3_ra",
+   "at": "p_R",
+   "from": "p_P",
+   "to": "p_Q",
+   "style": "square",
+   "r": 26,
+   "role": "ink",
+   "strokeWidth": 1.8,
+   "fill": false,
+   "appear": "s4",
+   "delay": 1100,
+   "appearDur": 500
+  },
+  {
+   "type": "segment",
+   "id": "t3_look",
+   "from": "p_R",
+   "to": [
+    4.51,
+    4.624
+   ],
+   "role": "accent",
+   "strokeWidth": 2.4,
+   "dash": [
+    6,
+    6
+   ],
+   "appear": "s5",
+   "effect": "draw",
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "t3_hyp",
+   "from": "p_P",
+   "to": "p_Q",
+   "role": "hyp",
+   "strokeWidth": 6,
+   "appear": "s5",
+   "effect": "draw",
+   "appearDur": 800,
+   "delay": 500,
+   "label": {
+    "text": "PQ = hypotenuse",
+    "role": "hyp",
+    "size": "l",
+    "away": [
+     3.907,
+     3.416
+    ],
+    "off": 8
+   }
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Find the right angle",
+   "narration": "Look at **ΔABC**. One corner has a little square in it — that marks a **right angle**. Here it is at **C**, so **∠C = 90°**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "The side opposite it",
+   "narration": "Look straight across from the right angle. The side **opposite** ∠C is **AB** — the [[hyp|hypotenuse]]. It is also the **longest** side of ΔABC.",
+   "actions": [
+    {
+     "pulse": "t1_hyp",
+     "at": 900
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Now ΔDEF",
+   "narration": "A different triangle, turned a different way. Where is the right angle? The little square is at **F**, so **∠F = 90°**.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Opposite F is DE",
+   "narration": "The side opposite ∠F is **DE**, so **DE** is the [[hyp|hypotenuse]] of ΔDEF — even though it slopes the other way this time.",
+   "actions": [
+    {
+     "pulse": "t2_hyp",
+     "at": 900
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "And a tilted one",
+   "narration": "The triangle can be tilted too. In **ΔPQR** the right angle is at **R**.",
+   "actions": []
+  },
+  {
+   "id": "s5",
+   "title": "Opposite R is PQ",
+   "narration": "The side opposite ∠R is **PQ**, so **PQ** is the [[hyp|hypotenuse]] of ΔPQR. It does not matter how the triangle is turned — the hypotenuse is always the side **opposite the right angle**.",
+   "actions": [
+    {
+     "pulse": "t3_hyp",
+     "at": 900
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "title": "The rule",
+   "narration": "**Right angle first, then look across.** The side opposite the right angle is the **hypotenuse** — always the longest side. Only after you have found it can you use \\[ \\role{hyp}{\\text{hypotenuse}^2} = \\text{(side)}^2 + \\text{(side)}^2 \\]",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "The hypotenuse",
+   "tex": "\\role{hyp}{\\text{hypotenuse}} = \\text{the side opposite the right angle}",
+   "text": "In ΔABC with ∠C = 90°, the hypotenuse is AB. In ΔDEF with ∠F = 90° it is DE. In ΔPQR with ∠R = 90° it is PQ."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Name the hypotenuse",
+   "answer": "xz",
+   "options": [
+    {
+     "id": "xy",
+     "label": "XY"
+    },
+    {
+     "id": "yz",
+     "label": "YZ"
+    },
+    {
+     "id": "xz",
+     "label": "XZ"
+    }
+   ],
+   "prompt": "In ΔXYZ, **∠Y = 90°**. Which side is the hypotenuse?",
+   "hint": "Look straight across from the right angle at Y.",
+   "explain": "The side opposite Y is **XZ**, so XZ is the hypotenuse."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Find the right angle",
+   "answer": "l",
+   "options": [
+    {
+     "id": "k",
+     "label": "∠K"
+    },
+    {
+     "id": "l",
+     "label": "∠L"
+    },
+    {
+     "id": "m",
+     "label": "∠M"
+    }
+   ],
+   "prompt": "In ΔKLM the hypotenuse is **KM**. Where is the right angle?",
+   "hint": "The right angle is opposite the hypotenuse — the corner that is **not** on KM.",
+   "explain": "KM is opposite **L**, so **∠L = 90°**."
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "True or false?",
+   "answer": "a",
+   "options": [
+    {
+     "id": "a",
+     "label": "The hypotenuse is always the longest side"
+    },
+    {
+     "id": "b",
+     "label": "The hypotenuse is always the bottom side"
+    },
+    {
+     "id": "c",
+     "label": "The hypotenuse is always on the right"
+    }
+   ],
+   "prompt": "Which statement is **always** true?",
+   "hint": "Think about the triangles you just saw — they were turned in different directions.",
+   "explain": "The hypotenuse faces the right angle and is always the **longest** side, wherever it is drawn."
+  }
+ ],
+ "intro": "Before using Pythagoras' Theorem you must know which side is the **hypotenuse**. The trick: find the right angle, then look straight across.",
+ "takeaways": [
+  "Mark the **right angle** first.",
+  "The side **opposite** the right angle is the **hypotenuse**.",
+  "The hypotenuse is always the **longest** side — however the triangle is turned.",
+  "Pythagoras' Theorem can only be used in a **right-angled** triangle."
+ ],
+ "notes": [
+  {
+   "title": "Why \"opposite\"?",
+   "text": "The two shorter sides **meet at** the right angle; the hypotenuse is the only side that does not touch it."
+  }
+ ],
+ "challengeIntro": "Quick checks — pick the right answer."
+}

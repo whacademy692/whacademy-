@@ -1,0 +1,737 @@
+{
+ "id": "g8-math-pyth-th-findleg",
+ "title": "Finding a shorter side",
+ "summary": "Given the hypotenuse and one shorter side, subtract the squares to find the other shorter side.",
+ "alt": "Right-angled triangle ABC with the right angle at C: hypotenuse AB = {{c|1}}, BC = {{a|1}}, AC = {{b|2}}.",
+ "uiDefaults": {
+  "angles": false
+ },
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   "-zs*b - mg",
+   "a + zs*b + mg"
+  ],
+  "y": [
+   "-zs*a - mg",
+   "b + zs*a + mg"
+  ],
+  "smooth": true,
+  "ratio": 0.95,
+  "pad": 14
+ },
+ "roles": {
+  "legA": {
+   "label": "Side a = BC",
+   "color": "#2563eb",
+   "text": "The side opposite ∠A. It meets the right angle."
+  },
+  "legB": {
+   "label": "Side b = AC",
+   "color": "#e11d48",
+   "text": "The side opposite ∠B. It also meets the right angle."
+  },
+  "hyp": {
+   "label": "Hypotenuse c = AB",
+   "color": "#059669",
+   "text": "The side opposite the right angle — always the longest side."
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The length we are finding."
+  }
+ },
+ "params": [
+  {
+   "id": "c",
+   "label": "Hypotenuse c  (AB)",
+   "role": "hyp",
+   "min": 2,
+   "max": 13,
+   "step": 0.5,
+   "default": 5,
+   "unit": "units",
+   "hint": "The longest side.",
+   "group": "Known sides"
+  },
+  {
+   "id": "a",
+   "label": "Side a  (BC)",
+   "role": "legA",
+   "min": 1,
+   "max": 12,
+   "step": 0.5,
+   "default": 3,
+   "unit": "units",
+   "hint": "Must be shorter than c."
+  },
+  {
+   "id": "sq",
+   "hidden": true,
+   "min": 0,
+   "max": 1,
+   "step": 0.001,
+   "default": 0
+  },
+  {
+   "id": "kn",
+   "hidden": true,
+   "min": 0,
+   "max": 2,
+   "step": 1,
+   "default": 0
+  }
+ ],
+ "derived": {
+  "b": "sqrt(max(c^2 - a^2, 0.0001))",
+  "valid": "c > a + 0.01 ? 1 : 0",
+  "zs": "sq",
+  "mg": "1.3 + 0.5 * zs",
+  "C": [
+   0,
+   0
+  ],
+  "B": [
+   "a",
+   0
+  ],
+  "A": [
+   0,
+   "b"
+  ]
+ },
+ "presets": [
+  {
+   "name": "5 · 3 · 4",
+   "values": {
+    "c": 5,
+    "a": 3
+   }
+  },
+  {
+   "name": "13 · 5 · 12",
+   "values": {
+    "c": 13,
+    "a": 5
+   }
+  },
+  {
+   "name": "10 · 6 · 8",
+   "values": {
+    "c": 10,
+    "a": 6
+   }
+  },
+  {
+   "name": "13 · 12 · 5",
+   "values": {
+    "c": 13,
+    "a": 12
+   }
+  },
+  {
+   "name": "Not a whole number",
+   "values": {
+    "c": 9,
+    "a": 5
+   }
+  }
+ ],
+ "shapes": [
+  {
+   "type": "square",
+   "id": "sqB",
+   "role": "legB",
+   "from": "C",
+   "to": "A",
+   "side": 1,
+   "layer": "back",
+   "appear": "sqs",
+   "disappear": "root",
+   "effect": "draw",
+   "delay": 0,
+   "appearDur": 900,
+   "visible": "valid > 0.5"
+  },
+  {
+   "type": "square",
+   "id": "sqA",
+   "role": "legA",
+   "from": "C",
+   "to": "B",
+   "side": -1,
+   "layer": "back",
+   "appear": "sqs",
+   "disappear": "root",
+   "effect": "draw",
+   "delay": 500,
+   "appearDur": 900,
+   "visible": "valid > 0.5"
+  },
+  {
+   "type": "square",
+   "id": "sqC",
+   "role": "hyp",
+   "from": "B",
+   "to": "A",
+   "side": -1,
+   "layer": "back",
+   "appear": "sqs",
+   "disappear": "root",
+   "effect": "draw",
+   "delay": 1000,
+   "appearDur": 900,
+   "visible": "valid > 0.5"
+  },
+  {
+   "type": "polygon",
+   "id": "tri",
+   "role": "ink",
+   "pts": [
+    "C",
+    "B",
+    "A"
+   ],
+   "strokeWidth": 3,
+   "fill": "accent",
+   "fillOpacity": 0.16,
+   "appear": "tri",
+   "effect": "draw",
+   "appearDur": 1200,
+   "visible": "valid > 0.5"
+  },
+  {
+   "type": "angle",
+   "id": "corner",
+   "at": "C",
+   "from": "B",
+   "to": "A",
+   "style": "square",
+   "r": 28,
+   "role": "ink",
+   "strokeWidth": 2.2,
+   "label": {
+    "text": "90°",
+    "off": 42,
+    "visible": "zs < 0.5"
+   },
+   "appear": "tri",
+   "delay": 900,
+   "appearDur": 500,
+   "visible": "valid > 0.5"
+  },
+  {
+   "type": "point",
+   "id": "ptC",
+   "at": "C",
+   "r": 3.2,
+   "role": "ink",
+   "layer": "front",
+   "appear": "tri",
+   "delay": 400,
+   "appearDur": 400,
+   "label": {
+    "text": "C",
+    "off": 0,
+    "dx": -15,
+    "dy": 15,
+    "size": "l",
+    "role": "ink"
+   },
+   "visible": "valid > 0.5"
+  },
+  {
+   "type": "point",
+   "id": "ptB",
+   "at": "B",
+   "r": 3.2,
+   "role": "ink",
+   "layer": "front",
+   "appear": "tri",
+   "delay": 600,
+   "appearDur": 400,
+   "label": {
+    "text": "B",
+    "off": 0,
+    "dx": 15,
+    "dy": 14,
+    "size": "l",
+    "role": "ink"
+   },
+   "visible": "valid > 0.5"
+  },
+  {
+   "type": "point",
+   "id": "ptA",
+   "at": "A",
+   "r": 3.2,
+   "role": "ink",
+   "layer": "front",
+   "appear": "tri",
+   "delay": 800,
+   "appearDur": 400,
+   "label": {
+    "text": "A",
+    "off": 0,
+    "dx": -14,
+    "dy": -15,
+    "size": "l",
+    "role": "ink"
+   },
+   "visible": "valid > 0.5"
+  },
+  {
+   "type": "segment",
+   "id": "sideA",
+   "from": "C",
+   "to": "B",
+   "role": "legA",
+   "strokeWidth": 5,
+   "appear": "tri",
+   "effect": "draw",
+   "delay": 500,
+   "appearDur": 700,
+   "visible": "valid > 0.5"
+  },
+  {
+   "type": "segment",
+   "id": "sideB",
+   "from": "C",
+   "to": "A",
+   "role": "legB",
+   "strokeWidth": 5,
+   "appear": "tri",
+   "effect": "draw",
+   "delay": 700,
+   "appearDur": 700,
+   "visible": "valid > 0.5"
+  },
+  {
+   "type": "segment",
+   "id": "sideC",
+   "from": "B",
+   "to": "A",
+   "role": "hyp",
+   "strokeWidth": 5,
+   "appear": "tri",
+   "effect": "draw",
+   "delay": 900,
+   "appearDur": 700,
+   "visible": "valid > 0.5"
+  },
+  {
+   "type": "text",
+   "id": "pl_a",
+   "role": "legA",
+   "size": "l",
+   "text": "\\(a\\) = {{a|1}}",
+   "at": [
+    "a/2",
+    0
+   ],
+   "appear": "tri",
+   "delay": 1100,
+   "appearDur": 500,
+   "visible": "valid > 0.5 && zs < 0.5",
+   "dy": 17
+  },
+  {
+   "type": "text",
+   "id": "sq_a",
+   "role": "legA",
+   "size": "l",
+   "text": "\\(a\\) = {{a|1}}",
+   "at": [
+    "a/2",
+    "-a/2"
+   ],
+   "dy": -15,
+   "appear": "sqs",
+   "disappear": "root",
+   "delay": 900,
+   "appearDur": 500,
+   "visible": "valid > 0.5 && zs > 0.5"
+  },
+  {
+   "type": "text",
+   "id": "ar_a",
+   "role": "legA",
+   "size": "l",
+   "text": "\\(a^2\\) = {{a^2|2}}",
+   "at": [
+    "a/2",
+    "-a/2"
+   ],
+   "dy": 15,
+   "appear": "sqs",
+   "disappear": "root",
+   "delay": 900,
+   "appearDur": 500,
+   "visible": "valid > 0.5 && zs > 0.5"
+  },
+  {
+   "type": "text",
+   "id": "pl_bq",
+   "role": "legB",
+   "size": "l",
+   "text": "\\(b\\) = ?",
+   "at": [
+    0,
+    "b/2"
+   ],
+   "appear": "tri",
+   "delay": 1100,
+   "appearDur": 500,
+   "visible": "valid > 0.5 && zs < 0.5 && kn < 1.5",
+   "dx": -38
+  },
+  {
+   "type": "text",
+   "id": "pl_bv",
+   "role": "legB",
+   "size": "l",
+   "text": "\\(b\\) = {{b|2}}",
+   "at": [
+    0,
+    "b/2"
+   ],
+   "appear": "tri",
+   "delay": 0,
+   "appearDur": 500,
+   "visible": "valid > 0.5 && zs < 0.5 && kn > 1.5",
+   "dx": -38
+  },
+  {
+   "type": "text",
+   "id": "sq_bq",
+   "role": "legB",
+   "size": "l",
+   "text": "\\(b\\) = ?",
+   "at": [
+    "-b/2",
+    "b/2"
+   ],
+   "dy": -15,
+   "appear": "sqs",
+   "disappear": "root",
+   "delay": 900,
+   "appearDur": 500,
+   "visible": "valid > 0.5 && zs > 0.5"
+  },
+  {
+   "type": "text",
+   "id": "ar_bq",
+   "role": "legB",
+   "size": "l",
+   "text": "\\(b^2\\) = ?",
+   "at": [
+    "-b/2",
+    "b/2"
+   ],
+   "dy": 15,
+   "appear": "sqs",
+   "disappear": "root",
+   "delay": 900,
+   "appearDur": 500,
+   "visible": "valid > 0.5 && zs > 0.5 && kn < 0.5"
+  },
+  {
+   "type": "text",
+   "id": "ar_bv",
+   "role": "legB",
+   "size": "l",
+   "text": "\\(b^2\\) = {{b^2|2}}",
+   "at": [
+    "-b/2",
+    "b/2"
+   ],
+   "dy": 15,
+   "appear": "sqs",
+   "disappear": "root",
+   "delay": 0,
+   "appearDur": 500,
+   "visible": "valid > 0.5 && zs > 0.5 && kn > 0.5"
+  },
+  {
+   "type": "text",
+   "id": "pl_c",
+   "role": "hyp",
+   "size": "l",
+   "text": "\\(c\\) = {{c|1}}",
+   "at": [
+    "a/2 + 0.8*b/c",
+    "b/2 + 0.8*a/c"
+   ],
+   "appear": "tri",
+   "delay": 1100,
+   "appearDur": 500,
+   "visible": "valid > 0.5 && zs < 0.5"
+  },
+  {
+   "type": "text",
+   "id": "sq_c",
+   "role": "hyp",
+   "size": "l",
+   "text": "\\(c\\) = {{c|1}}",
+   "at": [
+    "(a+b)/2",
+    "(a+b)/2"
+   ],
+   "dy": -15,
+   "appear": "sqs",
+   "disappear": "root",
+   "delay": 900,
+   "appearDur": 500,
+   "visible": "valid > 0.5 && zs > 0.5"
+  },
+  {
+   "type": "text",
+   "id": "ar_c",
+   "role": "hyp",
+   "size": "l",
+   "text": "\\(c^2\\) = {{c^2|2}}",
+   "at": [
+    "(a+b)/2",
+    "(a+b)/2"
+   ],
+   "dy": 15,
+   "appear": "sqs",
+   "disappear": "root",
+   "delay": 900,
+   "appearDur": 500,
+   "visible": "valid > 0.5 && zs > 0.5"
+  },
+  {
+   "type": "text",
+   "id": "warn",
+   "role": "ink",
+   "size": "l",
+   "text": "c must be longer than a",
+   "at": [
+    0,
+    0
+   ],
+   "dy": -6,
+   "visible": "valid < 0.5",
+   "appear": "tri",
+   "appearDur": 300
+  }
+ ],
+ "steps": [
+  {
+   "id": "tri",
+   "title": "The problem",
+   "narration": "In **ΔABC**, **∠C = 90°**. This time we know the **hypotenuse** [[hyp|c = AB = {{c|1}}]] and one shorter side [[legA|a = BC = {{a|1}}]]. We want the other shorter side [[legB|b = AC]].",
+   "actions": [
+    {
+     "set": {
+      "sq": 0,
+      "kn": 0,
+      "c": 5,
+      "a": 3
+     }
+    }
+   ]
+  },
+  {
+   "id": "spot",
+   "title": "Step 1 — find the hypotenuse",
+   "narration": "The right angle is at **C**, so **AB** is the [[hyp|hypotenuse]] — it is the **longest** side, and it is the one we are given. The side we want, **AC**, is one of the shorter sides.",
+   "actions": [
+    {
+     "pulse": "sideC",
+     "at": 600
+    }
+   ]
+  },
+  {
+   "id": "write",
+   "title": "Step 2 — write the theorem",
+   "narration": "In ΔABC, ∠C = 90°. Using Pythagoras' Theorem, \\[ \\role{hyp}{c^2} = \\role{legA}{a^2} + \\role{legB}{b^2} \\]",
+   "actions": []
+  },
+  {
+   "id": "sub",
+   "title": "Step 3 — get the unknown alone",
+   "narration": "We want **b²**, so **subtract** a² from both sides: \\[\\begin{aligned} \\role{legB}{b^2} &= \\role{hyp}{c^2} - \\role{legA}{a^2} \\\\ &= \\role{hyp}{ {{c|1}}^2 } - \\role{legA}{ {{a|1}}^2 } \\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "sqs",
+   "title": "Step 4 — the squares",
+   "narration": "Picture it: the [[hyp|big square]] on AB has area [[hyp|{{c^2|2}}]] and the [[legA|square on BC]] has area [[legA|{{a^2|2}}]]. The square on [[legB|AC]] is what is left over — its area is **b²**.",
+   "actions": [
+    {
+     "tween": {
+      "sq": 1
+     },
+     "dur": 1000
+    },
+    {
+     "pulse": [
+      "sqC",
+      "sqA"
+     ],
+     "at": 1400
+    }
+   ]
+  },
+  {
+   "id": "add",
+   "title": "Step 5 — subtract",
+   "narration": "\\[ \\role{legB}{b^2} = {{c^2|2}} - {{a^2|2}} = \\role{legB}{ {{c^2-a^2|2}} } \\]The square on AC has area **{{c^2-a^2|2}}**.",
+   "actions": [
+    {
+     "set": {
+      "kn": 1
+     }
+    },
+    {
+     "pulse": "sqB",
+     "at": 500
+    }
+   ]
+  },
+  {
+   "id": "root",
+   "title": "Step 6 — square root",
+   "narration": "Take the square root: \\[ \\role{legB}{b} = \\sqrt{ {{c^2-a^2|2}} } = \\role{ans}{ {{b|2}} } \\]So **AC = {{b|2}}**. A shorter side must be **smaller** than the hypotenuse ({{c|1}}) — that is a good check.",
+   "actions": [
+    {
+     "tween": {
+      "sq": 0
+     },
+     "dur": 900
+    },
+    {
+     "set": {
+      "kn": 2
+     }
+    },
+    {
+     "pulse": "sideB",
+     "at": 900
+    }
+   ]
+  },
+  {
+   "id": "round",
+   "title": "Not a whole number?",
+   "narration": "Take c = {{c|1}} and a = {{a|1}}: \\[\\begin{aligned} b^2 &= {{c|1}}^2 - {{a|1}}^2 = {{c^2-a^2|2}} \\\\ b &= \\sqrt{ {{c^2-a^2|2}} } = \\role{ans}{ {{b|2}} } \\ \\text{(3 s.f.)} \\end{aligned}\\]Unless told otherwise, give the answer to **3 significant figures**.",
+   "actions": [
+    {
+     "tween": {
+      "c": 9,
+      "a": 5
+     },
+     "dur": 1500
+    }
+   ]
+  },
+  {
+   "id": "try",
+   "title": "Now you try!",
+   "narration": "Use the sliders to choose a hypotenuse and a shorter side — then follow the same six steps. Remember to **subtract**!",
+   "actions": [],
+   "challenge": "twin"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Finding the side  b = AC",
+   "tex": "\\role{legB}{b} = \\sqrt{\\role{hyp}{c^2} - \\role{legA}{a^2}}",
+   "filled": "\\role{legB}{ {{b|2}} } = \\sqrt{ {{c^2|2}} - {{a^2|2}} } = \\sqrt{ {{c^2-a^2|2}} }",
+   "text": "Looking for a shorter side? Subtract the other shorter side's square from the hypotenuse's square."
+  },
+  {
+   "title": "Finding the side  a = BC",
+   "tex": "\\role{legA}{a} = \\sqrt{\\role{hyp}{c^2} - \\role{legB}{b^2}}",
+   "filled": "\\role{legA}{ {{a|2}} } = \\sqrt{ {{c^2|2}} - {{b^2|2}} } = \\sqrt{ {{c^2-b^2|2}} }"
+  },
+  {
+   "title": "Pythagoras' Theorem",
+   "tex": "\\role{hyp}{c^2} = \\role{legA}{a^2} + \\role{legB}{b^2}",
+   "filled": "\\role{hyp}{ {{c^2|2}} } = \\role{legA}{ {{a^2|2}} } + \\role{legB}{ {{b^2|2}} }",
+   "text": "In ΔABC with ∠C = 90°:  AB² = BC² + AC². The square on the hypotenuse equals the sum of the squares on the other two sides."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "twin",
+   "type": "number",
+   "title": "Find a shorter side",
+   "answer": 15,
+   "unit": "units",
+   "set": {
+    "c": 17,
+    "a": 8
+   },
+   "hold": {
+    "kn": 0
+   },
+   "prompt": "In ΔABC, ∠C = 90°, the hypotenuse **AB = 17** and **BC = 8**. Find **AC**.",
+   "hint": "Subtract: 17² − 8² = 289 − 64. Then take the square root.",
+   "explain": "17² − 8² = 289 − 64 = 225, and √225 = 15."
+  },
+  {
+   "id": "round",
+   "type": "number",
+   "title": "Round it",
+   "answer": "sqrt(51)",
+   "unit": "units",
+   "set": {
+    "c": 10,
+    "a": 7
+   },
+   "hold": {
+    "kn": 0
+   },
+   "tolerance": 0.04,
+   "prompt": "The hypotenuse **AB = 10** and **BC = 7** with ∠C = 90°. Find **AC** to **3 significant figures**.",
+   "hint": "10² − 7² = 100 − 49 = 51. Use your calculator for √51.",
+   "explain": "√51 = 7.141…, which is **7.14** to 3 s.f."
+  },
+  {
+   "id": "first",
+   "type": "choice",
+   "title": "Add or subtract?",
+   "answer": "a",
+   "options": [
+    {
+     "id": "a",
+     "label": "√(13² − 5²)"
+    },
+    {
+     "id": "b",
+     "label": "√(13² + 5²)"
+    },
+    {
+     "id": "c",
+     "label": "13 − 5"
+    }
+   ],
+   "prompt": "The hypotenuse is **13** and one shorter side is **5**. Which calculation gives the other shorter side?",
+   "hint": "The hypotenuse is the biggest square: the other square is what is **left** after subtracting.",
+   "explain": "b² = c² − a², so b = √(13² − 5²) = √144 = 12."
+  }
+ ],
+ "intro": "The hypotenuse and one shorter side are known — find the other shorter side. Six small steps, and the same recipe works every time.",
+ "takeaways": [
+  "Mark the **right angle** first — the side opposite it is the hypotenuse **c** (the longest side).",
+  "Looking for a **shorter** side? **Subtract**: \\(b^2 = c^2 - a^2\\), then take the square root.",
+  "The answer must be **smaller** than the hypotenuse — use that to check.",
+  "If the answer is not a whole number, round to **3 significant figures** unless told otherwise."
+ ],
+ "notes": [
+  {
+   "title": "Exam tip",
+   "text": "Always begin with a line such as \"In ΔABC, ∠C = 90°. Using Pythagoras' Theorem,\" — it shows which triangle and which right angle you are using."
+  },
+  {
+   "title": "Rounding",
+   "text": "If the answer is not a whole number, give it to **3 significant figures** unless the question says otherwise."
+  }
+ ],
+ "challengeIntro": "Each challenge sets up the drawing for you — get it right to earn the tick."
+}

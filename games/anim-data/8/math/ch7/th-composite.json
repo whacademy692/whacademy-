@@ -1,0 +1,485 @@
+{
+ "id": "g8-math-pyth-th-composite",
+ "title": "Right triangles inside bigger figures",
+ "summary": "Spot which triangles in a composite figure are right-angled — then use Pythagoras one triangle at a time.",
+ "alt": "A figure with a right angle at C, a point P on BC, and the triangles APC, ABC and ABP.",
+ "uiDefaults": {
+  "angles": false
+ },
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -10.816,
+   2.416
+  ],
+  "y": [
+   -2.276,
+   5.576
+  ],
+  "pad": 10,
+  "ratio": 0.62
+ },
+ "roles": {
+  "hyp": {
+   "label": "Hypotenuse",
+   "color": "#059669",
+   "text": "The side opposite the right angle. It is always the longest side."
+  },
+  "legA": {
+   "label": "Shorter side 1",
+   "color": "#2563eb",
+   "text": "One of the two sides that meet at the right angle."
+  },
+  "legB": {
+   "label": "Shorter side 2",
+   "color": "#e11d48",
+   "text": "The other side that meets at the right angle."
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The length we are finding."
+  }
+ },
+ "params": [],
+ "derived": {
+  "p_C": [
+   0.0,
+   0.0
+  ],
+  "p_P": [
+   -3.2,
+   0.0
+  ],
+  "p_B": [
+   -8.4,
+   0.0
+  ],
+  "p_A": [
+   0.0,
+   4.2
+  ]
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ln0",
+   "role": "ink",
+   "from": "p_A",
+   "to": "p_B",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 0,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln1",
+   "role": "ink",
+   "from": "p_B",
+   "to": "p_P",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 150,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln2",
+   "role": "ink",
+   "from": "p_P",
+   "to": "p_C",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 300,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln3",
+   "role": "ink",
+   "from": "p_A",
+   "to": "p_C",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 450,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln4",
+   "role": "ink",
+   "from": "p_A",
+   "to": "p_P",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 600,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "angle",
+   "id": "ra0",
+   "at": "p_C",
+   "from": "p_P",
+   "to": "p_A",
+   "style": "square",
+   "r": 26,
+   "role": "ink",
+   "strokeWidth": 1.8,
+   "fill": false,
+   "appear": "s0",
+   "delay": 700,
+   "appearDur": 400
+  },
+  {
+   "type": "point",
+   "id": "pt_C",
+   "at": "p_C",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "C",
+    "off": 0,
+    "dx": 12.0,
+    "dy": 12.0,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_P",
+   "at": "p_P",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "P",
+    "off": 0,
+    "dx": 0.0,
+    "dy": 17.0,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_B",
+   "at": "p_B",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "B",
+    "off": 0,
+    "dx": -14.6,
+    "dy": 8.7,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_A",
+   "at": "p_A",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "A",
+    "off": 0,
+    "dx": 6.3,
+    "dy": -15.8,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "text",
+   "id": "ok1",
+   "role": "legA",
+   "size": "l",
+   "text": "ΔAPC  ✓ right-angled",
+   "at": [
+    -4.2,
+    -1.25
+   ],
+   "appear": "s1",
+   "disappear": "s2",
+   "appearDur": 400,
+   "delay": 500
+  },
+  {
+   "type": "text",
+   "id": "ok2",
+   "role": "legA",
+   "size": "l",
+   "text": "ΔABC  ✓ right-angled",
+   "at": [
+    -4.2,
+    -1.25
+   ],
+   "appear": "s2",
+   "disappear": "s3",
+   "appearDur": 400,
+   "delay": 500
+  },
+  {
+   "type": "text",
+   "id": "no3",
+   "role": "legB",
+   "size": "l",
+   "text": "ΔABP  ✗ not right-angled",
+   "at": [
+    -4.2,
+    -1.25
+   ],
+   "appear": "s3",
+   "disappear": "s4",
+   "appearDur": 400,
+   "delay": 500
+  },
+  {
+   "type": "polygon",
+   "id": "ov0",
+   "pts": [
+    "p_A",
+    "p_P",
+    "p_C"
+   ],
+   "role": "legA",
+   "fill": "legA",
+   "fillOpacity": 0.11,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s1",
+   "appearDur": 500,
+   "disappear": "s2"
+  },
+  {
+   "type": "segment",
+   "id": "ov1",
+   "role": "hyp",
+   "from": "p_A",
+   "to": "p_P",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s2"
+  },
+  {
+   "type": "polygon",
+   "id": "ov2",
+   "pts": [
+    "p_A",
+    "p_B",
+    "p_C"
+   ],
+   "role": "legA",
+   "fill": "legA",
+   "fillOpacity": 0.11,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s2",
+   "appearDur": 500,
+   "disappear": "s3"
+  },
+  {
+   "type": "segment",
+   "id": "ov3",
+   "role": "hyp",
+   "from": "p_A",
+   "to": "p_B",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s2",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s3"
+  },
+  {
+   "type": "polygon",
+   "id": "ov4",
+   "pts": [
+    "p_A",
+    "p_B",
+    "p_P"
+   ],
+   "role": "legB",
+   "fill": "legB",
+   "fillOpacity": 0.11,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s3",
+   "appearDur": 500,
+   "disappear": "s4"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A figure made of triangles",
+   "narration": "Here is a figure with a right angle at **C**, and a point **P** on the line **BC**. Joining **A** to **P** makes several triangles inside one figure: **ΔAPC**, **ΔABC** and **ΔABP**. Which of them can we use Pythagoras' Theorem on?",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "ΔAPC — right-angled",
+   "narration": "**ΔAPC** has the right angle at **C**, so it **is** right-angled. Its hypotenuse is **AP** (opposite C), so Pythagoras' Theorem works here: \\[ AP^2 = PC^2 + AC^2 \\]",
+   "actions": [
+    {
+     "pulse": [
+      "ov1"
+     ],
+     "at": 700
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "ΔABC — right-angled",
+   "narration": "**ΔABC** has the same right angle at **C** — it is the bigger triangle, and **BC = BP + PC**. Its hypotenuse is **AB**: \\[ AB^2 = BC^2 + AC^2 \\]",
+   "actions": [
+    {
+     "pulse": [
+      "ov3"
+     ],
+     "at": 700
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "ΔABP — NOT right-angled",
+   "narration": "**ΔABP** has **no** right angle (the angle at P is not 90°, and nothing else is marked). So we **cannot** use Pythagoras' Theorem directly in ΔABP.",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "One right triangle at a time",
+   "narration": "Strategy: split the figure into right-angled triangles and work through them **one at a time**. Start with the triangle whose two sides you know — its answer then feeds the next triangle.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "In ΔAPC  (∠C = 90°)",
+   "tex": "AP^2 = PC^2 + AC^2",
+   "text": "AP is the hypotenuse of ΔAPC."
+  },
+  {
+   "title": "In ΔABC  (∠C = 90°)",
+   "tex": "AB^2 = BC^2 + AC^2 \\qquad (BC = BP + PC)",
+   "text": "AB is the hypotenuse of ΔABC."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Which triangle is not right-angled?",
+   "answer": "abp",
+   "options": [
+    {
+     "id": "apc",
+     "label": "ΔAPC"
+    },
+    {
+     "id": "abc",
+     "label": "ΔABC"
+    },
+    {
+     "id": "abp",
+     "label": "ΔABP"
+    }
+   ],
+   "prompt": "In the figure, ∠C = 90° and P lies on BC. Which triangle is **not** right-angled?",
+   "hint": "Look for a triangle that has the marked right angle as one of its corners.",
+   "explain": "ΔAPC and ΔABC both have the right angle at C. ΔABP does not, so Pythagoras' Theorem cannot be used directly in it."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Hypotenuse of ΔAPC",
+   "answer": "ap",
+   "options": [
+    {
+     "id": "ac",
+     "label": "AC"
+    },
+    {
+     "id": "pc",
+     "label": "PC"
+    },
+    {
+     "id": "ap",
+     "label": "AP"
+    }
+   ],
+   "prompt": "Which side is the hypotenuse of **ΔAPC**?",
+   "hint": "It is opposite the right angle at C.",
+   "explain": "The side opposite ∠C in ΔAPC is **AP**."
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "The whole base",
+   "answer": "sum",
+   "options": [
+    {
+     "id": "sum",
+     "label": "BC = BP + PC"
+    },
+    {
+     "id": "diff",
+     "label": "BC = BP − PC"
+    },
+    {
+     "id": "same",
+     "label": "BC = BP"
+    }
+   ],
+   "prompt": "P lies on BC between B and C. How do the lengths on the base fit together?",
+   "hint": "BC is made of two pieces laid end to end.",
+   "explain": "BC = BP + PC — add the pieces before using Pythagoras in ΔABC."
+  }
+ ],
+ "intro": "Many problems give a figure made of several triangles. First find the **right angles**; only a right-angled triangle can use Pythagoras' Theorem.",
+ "takeaways": [
+  "Mark **every right angle** in the figure first.",
+  "Only triangles that contain a right angle can use Pythagoras' Theorem — ΔABP above cannot.",
+  "Work through the right-angled triangles **one at a time**; each answer feeds the next.",
+  "Lengths on a straight line add up: **BC = BP + PC**."
+ ],
+ "notes": [
+  {
+   "title": "Exam tip",
+   "text": "Write \"In ΔAPC, ∠C = 90°. Using Pythagoras' Theorem,\" before each calculation so it is clear which triangle you are using."
+  }
+ ]
+}

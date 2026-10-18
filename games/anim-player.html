@@ -38,7 +38,7 @@
 <body>
   <div class="anim-page">
     <header class="anim-page__top">
-      <a class="anim-page__back" href="animations.html" aria-label="Back to Animations">
+      <a class="anim-page__back" id="anim-back" href="animations.html" aria-label="Back to Animations">
         <svg class="anim-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
         Back
       </a>
@@ -48,6 +48,11 @@
       </div>
     </header>
     <main id="main-content" class="anim-page__body">
+      <section id="anim-question" class="anim-question" aria-label="Question" hidden>
+        <span class="anim-question__label" id="anim-question-label"></span>
+        <nav class="anim-question__nav" id="anim-question-nav" aria-label="Other questions" hidden></nav>
+        <p class="anim-question__text" id="anim-question-text"></p>
+      </section>
       <div id="anim-host"><p class="anim-loading">Loading animation…</p></div>
     </main>
   </div>

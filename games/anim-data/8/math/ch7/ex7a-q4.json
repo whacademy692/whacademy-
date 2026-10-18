@@ -1,0 +1,406 @@
+{
+ "id": "g8-math-pyth-ex7a-q4",
+ "title": "Exercise 7A · Q4",
+ "summary": "Find DF using decimal side lengths and round to 3 s.f.",
+ "alt": "Exercise 7A · Q4: A triangle DEF is right-angled at E, with DE = 6.7 m and EF = 5.5 m. Find the length of DF.",
+ "uiDefaults": {
+  "angles": false
+ },
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -1.608,
+   8.308
+  ],
+  "y": [
+   -1.1,
+   6.6
+  ],
+  "pad": 10,
+  "ratio": 0.777
+ },
+ "roles": {
+  "hyp": {
+   "label": "Hypotenuse",
+   "color": "#059669",
+   "text": "The side opposite the right angle. It is always the longest side."
+  },
+  "legA": {
+   "label": "Shorter side 1",
+   "color": "#2563eb",
+   "text": "One of the two sides that meet at the right angle."
+  },
+  "legB": {
+   "label": "Shorter side 2",
+   "color": "#e11d48",
+   "text": "The other side that meets at the right angle."
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The length we are finding."
+  }
+ },
+ "params": [],
+ "derived": {
+  "p_E": [
+   0.0,
+   0.0
+  ],
+  "p_D": [
+   6.7,
+   0.0
+  ],
+  "p_F": [
+   0.0,
+   5.5
+  ]
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ln0",
+   "role": "ink",
+   "from": "p_F",
+   "to": "p_E",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 0,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln1",
+   "role": "ink",
+   "from": "p_E",
+   "to": "p_D",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 150,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln2",
+   "role": "ink",
+   "from": "p_F",
+   "to": "p_D",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 300,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "angle",
+   "id": "ra0",
+   "at": "p_E",
+   "from": "p_D",
+   "to": "p_F",
+   "style": "square",
+   "r": 26,
+   "role": "ink",
+   "strokeWidth": 1.8,
+   "fill": false,
+   "appear": "s0",
+   "delay": 700,
+   "appearDur": 400
+  },
+  {
+   "type": "point",
+   "id": "pt_E",
+   "at": "p_E",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "E",
+    "off": 0,
+    "dx": -13.1,
+    "dy": 10.8,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_D",
+   "at": "p_D",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "D",
+    "off": 0,
+    "dx": 15.7,
+    "dy": 6.5,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_F",
+   "at": "p_F",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "F",
+    "off": 0,
+    "dx": -8.8,
+    "dy": -14.5,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "polygon",
+   "id": "ov0",
+   "pts": [
+    "p_D",
+    "p_E",
+    "p_F"
+   ],
+   "role": "accent",
+   "fill": "accent",
+   "fillOpacity": 0.11,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s1",
+   "appearDur": 500
+  },
+  {
+   "type": "segment",
+   "id": "ov1",
+   "role": "hyp",
+   "from": "p_D",
+   "to": "p_F",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "ov2",
+   "role": "legA",
+   "from": "p_D",
+   "to": "p_E",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "ov3",
+   "role": "legB",
+   "from": "p_E",
+   "to": "p_F",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "lb0",
+   "from": "p_D",
+   "to": "p_E",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "6.7 m",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     2.2333,
+     1.8333
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb1",
+   "from": "p_E",
+   "to": "p_F",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "5.5 m",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     2.2333,
+     1.8333
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb2",
+   "from": "p_D",
+   "to": "p_F",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "?",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     2.2333,
+     1.8333
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0,
+   "disappear": "s5"
+  },
+  {
+   "type": "segment",
+   "id": "lb3",
+   "from": "p_D",
+   "to": "p_F",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "8.67 m",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     2.2333,
+     1.8333
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s5",
+   "appearDur": 450,
+   "delay": 0
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "narration": "A triangle DEF is right-angled at **E**, with **DE = 6.7 m** and **EF = 5.5 m**. We have to find **DF**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Spot the right angle",
+   "narration": "In ΔDEF, **∠E = 90°**, so the **hypotenuse** is the side opposite it: **DF**. The other two sides meet at the right angle.",
+   "actions": [
+    {
+     "pulse": [
+      "ra0"
+     ],
+     "at": 700
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Pythagoras' theorem",
+   "narration": "**Pythagoras' theorem**: the square on the hypotenuse equals the sum of the squares on the other two sides.\\[\\begin{aligned}\\role{hyp}{DF^2} &= \\role{legA}{DE^2} + \\role{legB}{EF^2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Substitute the lengths",
+   "narration": "Replace each side by its length.\\[\\begin{aligned}\\role{hyp}{DF^2} &= \\role{legA}{DE^2} + \\role{legB}{EF^2} \\\\ &= \\role{legA}{6.7^2} + \\role{legB}{5.5^2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Square and add",
+   "narration": "Square each number, then add them.\\[\\begin{aligned}\\role{hyp}{DF^2} &= \\role{legA}{DE^2} + \\role{legB}{EF^2} \\\\ &= \\role{legA}{6.7^2} + \\role{legB}{5.5^2} \\\\ &= \\role{legA}{44.89} + \\role{legB}{30.25} \\\\ &= \\role{hyp}{75.14}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s5",
+   "title": "Square root",
+   "narration": "75.14 is not a perfect square, so use a calculator and round to 3 significant figures.\\[\\begin{aligned}\\role{hyp}{DF^2} &= \\role{legA}{DE^2} + \\role{legB}{EF^2} \\\\ &= \\role{legA}{6.7^2} + \\role{legB}{5.5^2} \\\\ &= \\role{legA}{44.89} + \\role{legB}{30.25} \\\\ &= \\role{hyp}{75.14} \\\\ \\role{hyp}{DF} &= \\sqrt{75.14} = \\role{ans}{8.67\\ \\text{m}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Pythagoras' theorem",
+   "tex": "\\role{hyp}{c^2} = \\role{legA}{a^2} + \\role{legB}{b^2}",
+   "text": "In a right-angled triangle, the square on the hypotenuse equals the sum of the squares on the other two sides."
+  },
+  {
+   "title": "Finding the hypotenuse",
+   "tex": "\\role{hyp}{c} = \\sqrt{\\role{legA}{a^2} + \\role{legB}{b^2}}",
+   "text": "Add the two squares, then take the square root."
+  },
+  {
+   "title": "Finding a shorter side",
+   "tex": "\\role{legA}{a} = \\sqrt{\\role{hyp}{c^2} - \\role{legB}{b^2}}",
+   "text": "Subtract the known shorter side's square from the hypotenuse's square, then take the square root."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "twin",
+   "type": "number",
+   "title": "Now you try",
+   "answer": 5,
+   "unit": "m",
+   "prompt": "A right-angled triangle has shorter sides **3 m** and **4 m**. Find the **hypotenuse**.",
+   "hint": "Add the squares: 3² + 4².",
+   "explain": "3² + 4² = 9 + 16 = 25, and √25 = 5 m."
+  }
+ ],
+ "takeaways": [
+  "Find the **right angle** first — the side opposite it is the **hypotenuse**.",
+  "To find the hypotenuse: **add** the squares of the two shorter sides, then take the **square root**.",
+  "The hypotenuse is always the **longest** side, so check that your answer is bigger than both of the other sides."
+ ],
+ "notes": [
+  {
+   "title": "Exam tip",
+   "text": "Always begin with a line such as \"In ΔABC, ∠C = 90°. Using Pythagoras' Theorem,\" — it shows which triangle and which right angle you are using."
+  },
+  {
+   "title": "Rounding",
+   "text": "If the answer is not a whole number, give it to **3 significant figures** unless the question says otherwise."
+  }
+ ]
+}
