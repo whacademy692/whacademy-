@@ -128,6 +128,13 @@
     // solution on the right); on a phone the same card stays above the figure.
     var left = host.querySelector('.anim-left');
     if (left && qBox && !qBox.hidden) left.insertBefore(qBox, left.firstChild);
+
+    // player chrome: theme menu, settings sheet, resizable split, auto/manual,
+    // first-run intro, and the "all questions" jump list (anim-controls.js)
+    if (window.WHA_AnimControls && window.__whaAnim && window.__whaAnim.engine) {
+      try { window.WHA_AnimControls.enhance({ engine: window.__whaAnim.engine, found: found, store: Storage }); }
+      catch (e) { if (window.console) console.warn('[anim] controls failed', e); }
+    }
   }
 
   document.addEventListener('wha:ready', function () {

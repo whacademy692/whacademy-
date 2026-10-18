@@ -179,18 +179,17 @@
 
     // ============================================================ play bar
     var hasSteps = eng.steps.length > 0;
-    var bPrev, bPlay, bNext, bExplore, speedSel, dotsEl, dots = [];
+    var bPrev, bPlay, bNext, speedSel, dotsEl, dots = [];
     if (hasSteps) {
       var grp = h('div', 'anim-bar__grp', bar);
       bPrev = iconBtn('anim-ib', grp, 'prev', 'Previous step', function () { eng.pause(); eng.prev(); });
       bPlay = iconBtn('anim-ib anim-ib--main', grp, 'play', 'Play lesson', function () { eng.toggle(); });
       bNext = iconBtn('anim-ib', grp, 'next', 'Next step', function () { eng.pause(); eng.next(); });
       var right2 = h('div', 'anim-bar__grp anim-bar__grp--end', bar);
-      bExplore = textBtn('anim-pill', right2, 'Free play', function () { eng.pause(); eng.explore(); }, 'spark');
       var sw = h('label', 'anim-speed', right2);
       h('span', 'sr-only', sw, 'Speed');
       speedSel = h('select', 'anim-select', sw);
-      [[0.5, '0.5×'], [1, '1×'], [1.5, '1.5×'], [2, '2×']].forEach(function (o) {
+      [[0.5, '0.5×'], [1, '1×'], [1.5, '1.5×'], [2, '2×'], [3, '3×']].forEach(function (o) {
         var op = h('option', null, speedSel, o[1]); op.value = String(o[0]);
       });
       speedSel.value = String(eng.ui.speed || 1);
@@ -284,6 +283,9 @@
             var tkt = h('span', 'anim-task__t', tk); eng.renderRich(tkt, st.untilHint, env);
           }
         }
+        if (eng.stepIndex === eng.steps.length - 1 && eng.stepDone && !eng.stepRunning && !eng.blocked) {
+          textBtn('btn btn--secondary btn--sm', narrAct, 'Watch the lesson again', function () { eng.replay(); }, 'replay');
+        }
       } else {
         var ex = spec.explore || {};
         badge.textContent = hasSteps ? '✨' : '';
@@ -307,9 +309,6 @@
       attr(bPlay, 'aria-label', playing ? 'Pause' : (guided ? 'Play lesson' : 'Watch the lesson'));
       bPlay.title = bPlay.getAttribute('aria-label');
       bPlay.classList.toggle('is-on', playing);
-      bExplore.classList.toggle('is-on', !guided);
-      var fpLocked = guided && !eng.unlocked();
-      bExplore.disabled = fpLocked; bExplore.title = fpLocked ? 'Finish the lesson to unlock Free play' : '';
       dots.forEach(function (d, i) {
         d.classList.toggle('is-cur', guided && i === eng.stepIndex);
         d.classList.toggle('is-past', !guided || i < eng.stepIndex);
@@ -665,7 +664,7 @@
     });
     eng.on('unblocked', function (e) { renderNarr(); if (e && e.kind === 'until') say('Nice! Press Next ▶ to continue', 'ok'); });
     eng.on('clock', function () { syncValues(); });
-    eng.on('complete', function () { syncBar(); });
+    eng.on('complete', function () { syncBar(); renderNarr(); });
     eng.on('invalid', function (e) { say(e.message, 'warn'); syncValues(); });
     eng.on('challenge', function (ch) { var r = cards[ch.id]; if (r && ch.type === 'pick') say('Tap the right part on the drawing 👆', 'info', true); });
     eng.on('challenge-result', onChallengeResult);

@@ -209,7 +209,7 @@
     this._depChecks = [];
     BUILTIN_LOCALS.forEach(function (n) { this.locals[n] = 1; }, this);
     this.roles = {}; this.roleOrder = []; this.customColors = {}; this.colorSig = '';
-    this.ui = { labels: true, grid: true, angles: true, thick: 1, labelSize: 1, speed: 1 };
+    this.ui = { labels: true, grid: true, angles: true, thick: 1, labelSize: 1, fill: 0, speed: 1 };
     this.uiDefaults = null;
     this.nodes = []; this.nodeById = Object.create(null); this.handles = [];
     this.steps = []; this.stepIndex = -1; this.mode = 'explore'; this.playing = false;
@@ -319,7 +319,9 @@
     var r = this.opts.root; if (!r) return;
     r.style.setProperty('--anim-sw', String(this.ui.thick));
     r.style.setProperty('--anim-fs', String(this.ui.labelSize));
+    r.style.setProperty('--anim-fill', String(this.ui.fill || 0));
     r.classList.toggle('anim--nolabels', this.ui.labels === false);
+    r.classList.toggle('anim--fill', (this.ui.fill || 0) > 0.001);
   };
 
   // ------------------------------------------------------------------- build
@@ -995,7 +997,7 @@
     this._applyTarget(this._computeTarget(this.stepIndex));
     this.stepRunning = false; this.stepDone = true; this.dwellT = 0;
     var chars = (st.text || '').length;
-    this.dwellMs = st.dwell !== undefined ? st.dwell : Math.min(9000, 1400 + chars * 38);
+    this.dwellMs = st.dwell !== undefined ? st.dwell : Math.min(2600, 650 + chars * 11);
     this.blocked = this._isBlocked();
     if (this.blocked) { this.playing = false; this._emit('blocked', st); this._emit('play', false); }
     this._emit('stepdone', st);
@@ -1032,7 +1034,7 @@
   };
   Engine.prototype._autoNext = function () {
     if (this.stepIndex < this.steps.length - 1) this.goto(this.stepIndex + 1, true);
-    else { this.playing = false; this._emit('play', false); this.explore(); }
+    else { this.playing = false; this._emit('play', false); this._complete(); }   // stop on the last step (no auto "free play")
   };
   Engine.prototype._pulse = function (nodes) {
     if (reducedMotion()) return;
@@ -1042,6 +1044,24 @@
       var t = setTimeout(function () { n.g.classList.remove('is-pulse'); }, 1500);
       self._timers.push(t);
     });
+  };
+  /** True when a step does something the student can SEE (reveal, move, pulse, spotlight). */
+  Engine.prototype._stepHasVisual = function (st) {
+    return !!st && st.ops.some(function (o) { return o.kind !== 'clock'; });
+  };
+  /** Safety net so no guided step feels frozen: when a step only changes the words,
+   *  give the drawing a gentle beat on the shapes that carry meaning (skip grid/axes). */
+  Engine.prototype._pulseFigure = function () {
+    if (reducedMotion()) return;
+    var pick = [];
+    for (var i = 0; i < this.nodes.length; i++) {
+      var n = this.nodes[i];
+      if (!n._on) continue;
+      if (n.type === 'grid' || n.type === 'axes' || n.type === 'numberline') continue;
+      if (!n.role || NEUTRAL.indexOf(n.role) !== -1) continue;
+      pick.push(n);
+    }
+    if (pick.length) this._pulse(pick);
   };
 
   /** Jump to step k. animate=true plays its reveal; false snaps to its finished state. */
@@ -1061,14 +1081,17 @@
     st.ops.forEach(function (o) { o.started = false; o.last = -1; });
     if (st.focus) this.setFocus(st.focus);
     this.dwellT = 0; this.stepT = 0;
-    if (animate && !reducedMotion() && st.total > 0) { this.stepRunning = true; this.stepDone = false; this.blocked = false; }
-    else {
+    if (animate && !reducedMotion() && st.total > 0) {
+      this.stepRunning = true; this.stepDone = false; this.blocked = false;
+      if (!this._stepHasVisual(st)) this._pulseFigure();    // words-only step: still give the drawing a beat
+    } else {
       this.stepRunning = false; this.stepDone = true;
       this._applyTarget(this._computeTarget(k));
+      if (animate && !this._stepHasVisual(st)) this._pulseFigure();
       var last = st.ops.filter(function (o) { return o.kind === 'focus'; }).pop();
       if (last) this.setFocus(last.role);
       var chars = (st.text || '').length;
-      this.dwellMs = st.dwell !== undefined ? st.dwell : Math.min(9000, 1400 + chars * 38);
+      this.dwellMs = st.dwell !== undefined ? st.dwell : Math.min(2600, 650 + chars * 11);
       this.blocked = this._isBlocked();
       if (this.blocked) { this.playing = false; this._emit('blocked', st); }
       if (k === this.steps.length - 1 && !this.blocked) this._complete();
@@ -1092,7 +1115,7 @@
     if (this.stepRunning) { this._finishStep(); this.invalidate(); return; }
     if (this.blocked) { this._emit('blocked-try', this.steps[this.stepIndex]); return; }
     if (this.stepIndex < this.steps.length - 1) this.goto(this.stepIndex + 1, true);
-    else this.explore();
+    else this._complete();          // last step: finish, stay put (no auto "free play")
   };
   Engine.prototype.prev = function () {
     if (!this.steps.length) return;

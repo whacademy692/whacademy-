@@ -163,6 +163,10 @@
       var el = svg(closed ? 'polygon' : 'polyline', {}, node.g);
       strokeStyle(el, def, eng, where);
       var fo = closed ? fillStyle(el, def, eng, where, fillDefault) : 0;
+      // Let the student's "Fill shapes" control tint any closed figure, even ones the
+      // author drew unfilled — so multi-triangle diagrams can be coloured in. The fill
+      // colour follows the shape's role (recolourable in the Colours tab).
+      if (closed && fo === 0) { el.style.fill = eng.roleCss(def.role, where); el.style.fillOpacity = '0'; }
       if (def.stroke === false) el.style.stroke = 'none';
       var ld = labelDef(def.label), lab = ld ? node.addLabel(ld) : null;
       if (lab) eng.lintTemplate(lab.tpl, where + '.label');
@@ -180,7 +184,9 @@
           for (i = 0; i < pts.length; i++) pstr += (i ? ' ' : '') + f2(pts[i][0]) + ',' + f2(pts[i][1]);
           el.setAttribute('points', pstr);
           applyDraw(el, c.d, dash);
-          if (fo) el.style.fillOpacity = String(fo * fillFade(c.d));
+          var efo = closed ? Math.max(fo, eng.ui.fill || 0) : fo;
+          if (efo) el.style.fillOpacity = String(efo * fillFade(c.d));
+          else if (closed) el.style.fillOpacity = '0';
           if (lab) {
             if (labAt) { var q = labAt(c.env), qs = c.map(q[0], q[1]); lab.put(qs[0], qs[1], c.env, c.alpha); }
             else lab.put(cx0 / pts.length, cy0 / pts.length, c.env, c.alpha);

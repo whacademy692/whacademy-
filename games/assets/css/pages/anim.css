@@ -9,14 +9,19 @@
    ========================================================================== */
 
 .anim-player {
-  --anim-c-ink: #0f172a;
-  --anim-c-muted: #64748b;
-  --anim-c-grid: #d3daf0;
-  --anim-c-accent: #4f46e5;
-  --anim-c-surface: #ffffff;
-  --anim-paper: #fbfcff;
+  /* Drawing neutrals follow the app theme so the stage is never a glaring white
+     sheet in a bright theme and flips to a calm dark sheet in a dark theme.
+     The role colours (perp/base/hyp …) stay vivid on top in every theme. */
+  --anim-c-ink: var(--color-text-primary);
+  --anim-c-muted: var(--color-text-secondary);
+  --anim-c-grid: var(--color-border-strong);
+  --anim-c-accent: var(--color-brand-ink, #4f46e5);
+  --anim-c-surface: var(--color-bg-surface-solid);
+  /* soft, theme-tinted "paper" — not pure #fff — so it is easy on the eyes */
+  --anim-paper: color-mix(in srgb, var(--color-bg-surface-solid) 62%, var(--color-bg-app) 38%);
   --anim-sw: 1;
   --anim-fs: 1;
+  --anim-fill: 0;
   position: relative;
   color: var(--color-text-primary);
 }
@@ -75,7 +80,7 @@
 .anim--picking [data-pick], .anim--picking [data-pick] * { pointer-events: auto; cursor: pointer; }
 .anim--picking [data-pick] { animation: animlab-glow 1.1s ease-in-out infinite alternate; }
 .anim--picking .anim-handle { display: none; }
-.is-pulse { animation: animlab-pulse 1.3s ease-out; }
+.is-pulse { transform-box: fill-box; transform-origin: center; animation: animlab-pulse 0.95s ease-out; }
 
 .anim-handle { cursor: grab; touch-action: none; outline: none; }
 .anim-handle.is-drag { cursor: grabbing; }
@@ -87,7 +92,7 @@
 @keyframes animlab-breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.18); } }
 @keyframes animlab-pulse {
   0% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(250, 204, 21, 0)); }
-  30% { transform: scale(1.06); filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.95)); }
+  35% { transform: scale(1.07); filter: drop-shadow(0 0 9px rgba(245, 158, 11, 0.98)); }
   100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(250, 204, 21, 0)); }
 }
 @keyframes animlab-glow { from { filter: drop-shadow(0 0 0 rgba(79, 70, 229, 0)); } to { filter: drop-shadow(0 0 6px rgba(79, 70, 229, 0.7)); } }
@@ -105,14 +110,14 @@
 .anim-toast--info { background: #3730a3; }
 
 /* ---- play bar ------------------------------------------------------------- */
-.anim-bar { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; padding: 8px 10px; border-top: 1px solid var(--color-border); background: color-mix(in srgb, var(--anim-paper) 88%, #4f46e5 12%); color: #1e293b; }
+.anim-bar { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; padding: 8px 10px; border-top: 1px solid var(--color-border); background: color-mix(in srgb, var(--color-bg-surface-solid) 82%, var(--color-brand-ink, #4f46e5) 18%); color: var(--color-text-primary); }
 .anim-bar__grp { display: flex; align-items: center; gap: 4px; }
 .anim-bar__grp--end { margin-left: auto; gap: 8px; }
 .anim-ib {
   display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 0; cursor: pointer;
-  background: transparent; color: #3730a3; transition: background var(--motion-quick), transform var(--motion-instant);
+  background: transparent; color: var(--color-brand-ink, #3730a3); transition: background var(--motion-quick), transform var(--motion-instant);
 }
-.anim-ib:hover:not(:disabled) { background: rgba(79, 70, 229, 0.12); }
+.anim-ib:hover:not(:disabled) { background: var(--color-brand-ink-tint, rgba(79, 70, 229, 0.12)); }
 .anim-ib:active:not(:disabled) { transform: scale(0.92); }
 .anim-ib:disabled { opacity: 0.35; cursor: default; }
 .anim-ib:focus-visible, .anim-pill:focus-visible, .anim-sdot:focus-visible, .anim-tab:focus-visible, .anim-chip:focus-visible, .anim-lchip:focus-visible, .anim-opt:focus-visible, .anim-seg__b:focus-visible, .anim-sw:focus-visible, .anim-switch:focus-visible, .anim-step:focus-visible {
@@ -128,12 +133,12 @@
 .anim-sdot.is-cur::before { background: #4f46e5; width: 16px; height: 16px; box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.22); }
 .anim-pill {
   display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 14px; border-radius: var(--radius-pill); cursor: pointer;
-  border: 1.5px solid #4f46e5; background: #fff; color: #3730a3; font: var(--type-button-md);
+  border: 1.5px solid var(--color-brand-ink, #4f46e5); background: var(--color-bg-surface-solid); color: var(--color-brand-ink, #3730a3); font: var(--type-button-md);
 }
 .anim-pill .anim-ico { width: 16px; height: 16px; }
-.anim-pill.is-on { background: #4f46e5; color: #fff; }
+.anim-pill.is-on { background: var(--color-brand-ink, #4f46e5); color: #fff; }
 .anim-speed { display: inline-flex; }
-.anim-select { min-height: 40px; border-radius: var(--radius-sm); border: 1.5px solid #cbd5e1; background: #fff; color: #1e293b; font: var(--type-button-md); padding: 0 8px; }
+.anim-select { min-height: 40px; border-radius: var(--radius-sm); border: 1.5px solid var(--color-border-strong); background: var(--color-bg-surface-solid); color: var(--color-text-primary); font: var(--type-button-md); padding: 0 8px; }
 
 /* ---- legend + read-outs ---------------------------------------------------- */
 .anim-legend { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -412,4 +417,159 @@
 @media (prefers-reduced-motion: reduce) {
   .anim-handle__ring, .is-pulse, .anim--picking [data-pick] { animation: none !important; }
   .anim-toast, .anim-switch__k, .anim-sdot::before { transition: none; }
+}
+
+/* ================================================================================
+   v104 — Animation player enhancements
+   theme menu · settings sheet · resizable split · no horizontal scroll ·
+   first-run intro · question-list sheet · auto/manual · prominent nav · fill
+   ============================================================================= */
+
+/* ---- never let the PAGE scroll sideways; long maths scrolls inside its own box -- */
+.anim-page__body { overflow-x: clip; }
+.anim-player, .anim-main, .anim-left, .anim-right, .anim-narr, .anim-panels { min-width: 0; max-width: 100%; }
+/* JS (fitMath in anim-controls.js) shrinks any wide formula to fit, so these
+   never need a sideways scrollbar — clip as a hard backstop. */
+.anim-fcard__g, .anim-fcard__f, .anim-math--block { max-width: 100%; overflow: hidden; }
+.anim-fcard__g { font-size: 1.06em; }
+.anim-narr__text .anim-math--block { font-size: 1.06em; }
+.anim-narr__text { overflow-wrap: anywhere; }
+
+/* ---- top-bar control cluster (theme + settings + list live here) ------------- */
+.anim-page__tools { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+.anim-tbtn {
+  display: inline-grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid var(--color-border-strong);
+  background: var(--color-bg-surface-solid); color: var(--color-text-primary); cursor: pointer; flex: none;
+  transition: background var(--motion-quick), border-color var(--motion-quick), transform var(--motion-instant);
+}
+.anim-tbtn:hover { border-color: var(--color-brand-ink); background: var(--color-brand-ink-tint); }
+.anim-tbtn:active { transform: scale(0.92); }
+.anim-tbtn:focus-visible { outline: 3px solid var(--brand-primary-light); outline-offset: 2px; }
+.anim-tbtn .anim-ico { width: 20px; height: 20px; }
+.anim-tbtn--list { width: auto; padding: 0 14px; gap: 7px; border-radius: var(--radius-pill); font: var(--type-button-md); }
+@media (max-width: 560px) { .anim-tbtn--list .anim-tbtn__l { display: none; } .anim-tbtn--list { width: 42px; padding: 0; } }
+
+/* ---- popover menus (theme + settings) --------------------------------------- */
+.anim-pop {
+  position: fixed; z-index: 1200; width: min(320px, calc(100vw - 20px)); max-height: min(78vh, 560px); overflow: auto;
+  background: var(--color-bg-surface-solid); border: 1px solid var(--color-border-strong); border-radius: var(--radius-lg);
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.28); padding: 14px;
+}
+.anim-pop[hidden] { display: none; }
+.anim-pop__t { margin: 0 0 10px; font: var(--type-h5, 700 15px var(--font-body)); color: var(--color-text-primary); }
+.anim-pop__sub { margin: 14px 0 8px; font: var(--type-caption); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-secondary); }
+.anim-pop__sub:first-child { margin-top: 0; }
+.anim-scrim { position: fixed; inset: 0; z-index: 1150; background: rgba(15, 23, 42, 0.32); }
+.anim-scrim[hidden] { display: none; }
+
+/* theme swatch grid (mirrors the dashboard theme picker) */
+.anim-themes { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 8px; }
+.anim-theme {
+  display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 6px; border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-border-strong); background: var(--color-bg-app); color: var(--color-text-primary);
+  cursor: pointer; font: 600 12px var(--font-body);
+}
+.anim-theme.is-on { border-color: var(--color-brand-ink); box-shadow: 0 0 0 3px var(--brand-glow, rgba(79,70,229,.25)); }
+.anim-theme__sw { width: 100%; height: 26px; border-radius: 7px; border: 1px solid rgba(0,0,0,.08); }
+
+/* settings rows reuse .anim-prm / .anim-tg from the tabs */
+.anim-set__row { padding: 10px 0; border-bottom: 1px dashed var(--color-border); }
+.anim-set__row:last-child { border-bottom: 0; }
+.anim-set__lab { display: flex; align-items: center; justify-content: space-between; gap: 10px; font: 700 14px var(--font-body); color: var(--color-text-primary); margin-bottom: 6px; }
+.anim-set__val { font: 700 13px var(--font-body); color: var(--color-brand-ink); }
+.anim-set__hint { margin: 4px 0 0; font-size: 12.5px; color: var(--color-text-secondary); }
+
+/* ---- resizable split handle (desktop only) ----------------------------------- */
+@media (min-width: 760px) {
+  .anim-main.anim-main--split {
+    grid-template-columns: var(--anim-split, 1.3fr) 10px minmax(300px, var(--anim-split-r, 0.7fr));
+  }
+  .anim-split-handle {
+    align-self: stretch; width: 10px; cursor: col-resize; position: relative; z-index: 15;
+    display: grid; place-items: center; touch-action: none; min-height: 180px;
+  }
+  .anim-split-handle::before {
+    content: ''; width: 4px; height: 56px; border-radius: 4px; background: var(--color-border-strong);
+    transition: background var(--motion-quick), height var(--motion-quick);
+  }
+  .anim-split-handle:hover::before, .anim-split-handle.is-drag::before { background: var(--color-brand-ink); height: 92px; }
+  .anim-split-handle:focus-visible { outline: 3px solid var(--brand-primary-light); outline-offset: 2px; border-radius: 6px; }
+}
+.anim-split-handle { display: none; }
+@media (min-width: 760px) { .anim-main--split .anim-split-handle { display: grid; } }
+
+/* ---- auto / manual segmented toggle in the play bar -------------------------- */
+.anim-mode { display: inline-flex; border: 1.5px solid var(--color-border-strong); border-radius: var(--radius-pill); overflow: hidden; }
+.anim-mode__b { min-height: 36px; padding: 0 12px; border: 0; background: var(--color-bg-surface-solid); color: var(--color-text-secondary); font: 700 13px var(--font-body); cursor: pointer; }
+.anim-mode__b.is-on { background: var(--color-brand-ink); color: #fff; }
+
+/* ---- first-run intro + manual popup (shared card) ---------------------------- */
+.anim-modal { position: fixed; inset: 0; z-index: 1300; display: grid; place-items: center; padding: 16px; }
+.anim-modal[hidden] { display: none; }
+.anim-modal__bg { position: absolute; inset: 0; background: rgba(15, 23, 42, 0.5); }
+.anim-modal__card {
+  position: relative; z-index: 1; width: min(460px, 100%); max-height: 86vh; overflow: auto; background: var(--color-bg-surface-solid);
+  border-radius: var(--radius-lg); box-shadow: 0 24px 64px rgba(15, 23, 42, 0.4); padding: 22px 20px;
+}
+.anim-modal__t { margin: 0 0 4px; font: var(--type-h3, 800 20px var(--font-display, var(--font-body))); color: var(--color-text-primary); }
+.anim-modal__s { margin: 0 0 14px; color: var(--color-text-secondary); font: var(--type-body-md); }
+.anim-guide { display: grid; gap: 12px; margin: 0 0 18px; }
+.anim-guide__row { display: grid; grid-template-columns: 40px 1fr; gap: 12px; align-items: start; }
+.anim-guide__ic { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: var(--color-brand-ink-tint); color: var(--color-brand-ink); }
+.anim-guide__ic .anim-ico { width: 22px; height: 22px; }
+.anim-guide__h { margin: 0; font: 700 15px var(--font-body); color: var(--color-text-primary); }
+.anim-guide__p { margin: 2px 0 0; font: var(--type-body-sm); color: var(--color-text-secondary); }
+.anim-modal__act { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; }
+
+/* ---- question-list sheet ----------------------------------------------------- */
+.anim-sheet { position: fixed; inset: 0; z-index: 1300; display: flex; justify-content: flex-end; }
+.anim-sheet[hidden] { display: none; }
+.anim-sheet__bg { position: absolute; inset: 0; background: rgba(15, 23, 42, 0.45); }
+.anim-sheet__panel {
+  position: relative; z-index: 1; width: min(400px, 100%); height: 100%; background: var(--color-bg-surface-solid);
+  box-shadow: -18px 0 50px rgba(15, 23, 42, 0.3); display: flex; flex-direction: column;
+}
+.anim-sheet__head { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-bottom: 1px solid var(--color-border); }
+.anim-sheet__head h2 { margin: 0; font: var(--type-h4); flex: 1; }
+.anim-sheet__body { overflow: auto; padding: 10px 12px 24px; }
+.anim-sheet__grp { margin: 14px 2px 6px; font: 700 12px var(--font-body); letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text-secondary); }
+.anim-sheet__grp:first-child { margin-top: 2px; }
+.anim-sheet__row {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px; width: 100%; text-align: left;
+  padding: 11px 12px; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-bg-surface-solid);
+  color: var(--color-text-primary); cursor: pointer; margin-bottom: 7px; text-decoration: none; font: inherit;
+}
+.anim-sheet__row:hover { border-color: var(--color-brand-ink); background: var(--color-brand-ink-tint); }
+.anim-sheet__row.is-cur { border-color: var(--color-brand-ink); box-shadow: 0 0 0 2px var(--brand-glow, rgba(79,70,229,.25)); }
+.anim-sheet__chip { padding: 3px 9px; border-radius: var(--radius-pill); background: var(--color-brand-ink-tint); color: var(--color-brand-ink); font: 700 11.5px var(--font-body); white-space: nowrap; }
+.anim-sheet__ttl { min-width: 0; font: 600 14px var(--font-body); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.anim-sheet__tick { width: 20px; height: 20px; color: var(--color-success); }
+.anim-sheet__tick[hidden] { visibility: hidden; display: inline-block; }
+
+/* ---- prominent prev/next on the question card -------------------------------- */
+.anim-question__nav a { font-weight: 700; }
+.anim-question__nav a:not([aria-disabled="true"]) { border-color: var(--color-brand-ink); background: var(--color-brand-ink-tint); }
+
+/* ---- "Fill shapes" control ---------------------------------------------------- */
+.anim-fillrow { padding-top: 6px; }
+
+/* ---- 3D view (drag to rotate) ------------------------------------------------- */
+.anim-stagebox.is-3d { perspective: 1100px; }
+.anim-stagebox.is-3d .anim-stage {
+  transform: rotateX(var(--rx, 16deg)) rotateY(var(--ry, -22deg));
+  transform-style: preserve-3d; transition: transform 0.08s linear; will-change: transform;
+}
+.anim-3d-grab { position: absolute; inset: 0; z-index: 26; cursor: grab; touch-action: none; }
+.anim-3d-grab:active { cursor: grabbing; }
+.anim-3d-grab[hidden] { display: none; }
+.anim-3d-hint {
+  position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%); z-index: 30;
+  padding: 7px 14px; border-radius: var(--radius-pill); background: rgba(15, 23, 42, 0.82); color: #fff;
+  font: 700 12.5px var(--font-body); white-space: nowrap; pointer-events: none; transition: opacity 0.4s;
+}
+@media (prefers-reduced-motion: reduce) { .anim-stagebox.is-3d .anim-stage { transition: none; } }
+
+@media (max-width: 759px) {
+  .anim-pop { position: fixed; left: 10px; right: 10px; bottom: 10px; top: auto; width: auto; max-height: 72vh; }
+  .anim-modal__card { padding: 18px 16px; }
 }
