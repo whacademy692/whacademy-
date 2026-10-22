@@ -54,16 +54,7 @@ const Router = (() => {
         sidebar.querySelector('[data-nav-page="profile.html"]');
       if (anchor) sidebar.insertBefore(a, anchor); else sidebar.appendChild(a);
     }
-    const bottom = document.querySelector('.bottom-nav');
-    if (bottom && !bottom.querySelector('[data-nav-page="badges.html"]')) {
-      const b = document.createElement('a');
-      b.className = 'bottom-nav__item';
-      b.href = 'badges.html';
-      b.setAttribute('data-nav-page', 'badges.html');
-      b.innerHTML = icon + ' Badges';
-      const anchorB = bottom.querySelector('[data-nav-page="profile.html"]');
-      if (anchorB) bottom.insertBefore(b, anchorB); else bottom.appendChild(b);
-    }
+    // Phone: Badges lives in the hamburger drawer (built in buildMobileShell), not the bottom bar.
   }
 
   /**
@@ -83,16 +74,7 @@ const Router = (() => {
       const anchor = sidebar.querySelector('[data-nav-page="profile.html"]');
       if (anchor) sidebar.insertBefore(a, anchor); else sidebar.appendChild(a);
     }
-    const bottom = document.querySelector('.bottom-nav');
-    if (bottom && !bottom.querySelector('[data-nav-page="progress.html"]')) {
-      const b = document.createElement('a');
-      b.className = 'bottom-nav__item';
-      b.href = 'progress.html';
-      b.setAttribute('data-nav-page', 'progress.html');
-      b.innerHTML = icon + ' Progress';
-      const anchorB = bottom.querySelector('[data-nav-page="profile.html"]');
-      if (anchorB) bottom.insertBefore(b, anchorB); else bottom.appendChild(b);
-    }
+    // Phone: Progress is one of the three fixed bottom-bar tabs (built in buildMobileShell).
   }
 
   /**
@@ -112,16 +94,7 @@ const Router = (() => {
       const anchor = sidebar.querySelector('[data-nav-page="profile.html"]');
       if (anchor) sidebar.insertBefore(a, anchor); else sidebar.appendChild(a);
     }
-    const bottom = document.querySelector('.bottom-nav');
-    if (bottom && !bottom.querySelector('[data-nav-page="guide.html"]')) {
-      const b = document.createElement('a');
-      b.className = 'bottom-nav__item';
-      b.href = 'guide.html';
-      b.setAttribute('data-nav-page', 'guide.html');
-      b.innerHTML = icon + ' Guide';
-      const anchorB = bottom.querySelector('[data-nav-page="profile.html"]');
-      if (anchorB) bottom.insertBefore(b, anchorB); else bottom.appendChild(b);
-    }
+    // Phone: Guide lives in the hamburger drawer (built in buildMobileShell).
   }
 
   /**
@@ -145,17 +118,7 @@ const Router = (() => {
       if (after && after.nextSibling) sidebar.insertBefore(a, after.nextSibling);
       else sidebar.appendChild(a);
     }
-    const bottom = document.querySelector('.bottom-nav');
-    if (bottom && !bottom.querySelector('[data-nav-page="animations.html"]')) {
-      const b = document.createElement('a');
-      b.className = 'bottom-nav__item';
-      b.href = 'animations.html';
-      b.setAttribute('data-nav-page', 'animations.html');
-      b.innerHTML = icon + ' Animate';
-      const afterB = bottom.querySelector('[data-nav-page="games.html"]');
-      if (afterB && afterB.nextSibling) bottom.insertBefore(b, afterB.nextSibling);
-      else bottom.appendChild(b);
-    }
+    // Phone: Animate lives in the hamburger drawer (built in buildMobileShell).
   }
 
   /**
@@ -244,20 +207,9 @@ const Router = (() => {
     if (side && !side.querySelector('[data-upgrade-nav]')) {
       side.insertBefore(makeUpgradeLink('wha-upg--side'), side.firstChild);
     }
-    if (top && !top.querySelector('[data-upgrade-nav]')) {
-      const holder = top.querySelector('.top-bar__actions') || top;
-      holder.insertBefore(makeUpgradeLink('wha-upg--pill'), holder.firstChild);
-    } else if (!top && side && !document.querySelector('.wha-upg--pill')) {
-      // A page with a sidebar but no phone top bar (e.g. Badges): give the pill a slim strip of its own.
-      const main = document.querySelector('main');
-      if (main) {
-        const strip = document.createElement('div');
-        strip.className = 'wha-upg-strip';
-        strip.hidden = true;
-        strip.appendChild(makeUpgradeLink('wha-upg--pill'));
-        main.insertBefore(strip, main.firstChild);
-      }
-    }
+    // Phone: Change/Upgrade Plan now lives inside the hamburger drawer (built in
+    // buildMobileShell) instead of a pill crowding the top bar. setUpgradePlan()
+    // below shows/labels every [data-upgrade-nav] element, the drawer item included.
     // Plan comes from the cached dashboard when it has one; otherwise it is fetched
     // once. The dashboard page reports its own fresh plan through setUpgradePlan,
     // so it never needs this extra lookup.
@@ -269,12 +221,128 @@ const Router = (() => {
     }
   }
 
+  /* =====================================================================
+     Mobile app shell (phones) — built app-wide so every page is identical.
+     Bottom bar = three fixed tabs (Classes · Home(center) · Progress).
+     Everything else (Animate, Boss, Revision, Ranks, Badges, Support,
+     Guide, Profile, Change Plan, Theme, Log out) lives in a hamburger
+     drawer opened from a fixed button in the top-right corner.
+     This replaces the old 10-tab sideways-scrolling bar.
+     ===================================================================== */
+  const NAV_SVG = {
+    home: '<path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10h14V10"/>',
+    classes: '<rect x="3" y="4" width="18" height="16" rx="2"/><path stroke-linecap="round" d="M7 9h4M7 13h7"/>',
+    progress: '<path stroke-linecap="round" stroke-linejoin="round" d="M4 20V10M10 20V4M16 20v-6M20 20H3"/>',
+    animate: '<circle cx="12" cy="12" r="9"/><path stroke-linecap="round" stroke-linejoin="round" d="M10 8.6l5.4 3.4-5.4 3.4V8.6z"/>',
+    boss: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.5 12l1.8 1.8L15 9.8"/>',
+    revision: '<path stroke-linecap="round" stroke-linejoin="round" d="M4 4v16l4-4h12V4H4z"/>',
+    ranks: '<path stroke-linecap="round" stroke-linejoin="round" d="M8 21h8M12 17v4M6 3h12v6a6 6 0 01-12 0V3z"/>',
+    badges: '<circle cx="12" cy="8" r="5"/><path stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.5L7 21l5-3 5 3-1.5-8.5"/>',
+    support: '<path stroke-linecap="round" stroke-linejoin="round" d="M4 5.5A2.5 2.5 0 016.5 3h11A2.5 2.5 0 0120 5.5v8a2.5 2.5 0 01-2.5 2.5H11l-4.5 4v-4A2.5 2.5 0 014 13.5v-8z"/><path stroke-linecap="round" d="M8 8h8M8 11.5h5"/>',
+    guide: '<circle cx="12" cy="12" r="9"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.6 9a2.4 2.4 0 114.6 1c0 1.4-2.2 1.8-2.2 3.3M12 17h.01"/>',
+    profile: '<circle cx="12" cy="8" r="4"/><path stroke-linecap="round" d="M4 21c0-4 4-6 8-6s8 2 8 6"/>',
+    theme: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 3a9 9 0 100 18h1.4a1.9 1.9 0 001.6-3 1.9 1.9 0 011.5-3H19a3 3 0 003-3c0-4.5-5-8-11-5.6"/><circle cx="7.5" cy="11" r="1.1" fill="currentColor" stroke="none"/><circle cx="12" cy="7.8" r="1.1" fill="currentColor" stroke="none"/><circle cx="16.3" cy="11" r="1.1" fill="currentColor" stroke="none"/>',
+    logout: '<path stroke-linecap="round" stroke-linejoin="round" d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/>',
+    upgrade: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5M5 12l7-7 7 7"/>',
+    menu: '<path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/>',
+    close: '<path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18"/>'
+  };
+  function navSvg(d) { return '<svg viewBox="0 0 24 24" stroke-width="2" fill="none" aria-hidden="true">' + d + '</svg>'; }
+  function navTab(href, label, icon) {
+    return '<a class="bottom-nav__item" href="' + href + '" data-nav-page="' + href + '">' + navSvg(icon) + label + '</a>';
+  }
+  function drawerLink(href, label, icon) {
+    return '<a class="wha-drawer__item" href="' + href + '" data-nav-page="' + href + '">' + navSvg(icon) + label + '</a>';
+  }
+  function openDrawer() {
+    const d = document.querySelector('.wha-drawer');
+    if (d) { d.classList.add('is-open'); document.body.classList.add('wha-drawer-open'); }
+  }
+  function closeDrawer() {
+    const d = document.querySelector('.wha-drawer');
+    if (d) { d.classList.remove('is-open'); document.body.classList.remove('wha-drawer-open'); }
+  }
+  function updateThemeLabel() {
+    try {
+      const t = (typeof Storage !== 'undefined' && Storage.getSettings) ? (Storage.getSettings().theme || 'light') : 'light';
+      document.querySelectorAll('[data-theme-label]').forEach((el) => { el.textContent = t; });
+    } catch (e) {}
+  }
+
+  function buildMobileShell() {
+    const page = currentPageName();
+    if (PUBLIC_PAGES.includes(page)) return;
+    if (!document.querySelector('.bottom-nav, .sidebar__nav')) return;
+
+    // 1. Bottom bar — rebuilt to exactly three tabs so every page matches.
+    let bn = document.querySelector('.bottom-nav');
+    if (!bn) {
+      bn = document.createElement('nav');
+      bn.className = 'bottom-nav';
+      bn.setAttribute('aria-label', 'Primary');
+      document.body.appendChild(bn);
+    }
+    if (!bn.dataset.whaRebuilt) {
+      bn.innerHTML =
+        navTab('games.html', 'Classes', NAV_SVG.classes) +
+        '<a class="bottom-nav__item bottom-nav__item--home" href="dashboard.html" data-nav-page="dashboard.html">' +
+          '<span class="wha-navcircle">' + navSvg(NAV_SVG.home) + '</span>Home</a>' +
+        navTab('progress.html', 'Progress', NAV_SVG.progress);
+      bn.dataset.whaRebuilt = '1';
+    }
+
+    // 2. Hamburger button (fixed top-right).
+    if (!document.querySelector('.wha-burger')) {
+      const burger = document.createElement('button');
+      burger.type = 'button';
+      burger.className = 'wha-burger';
+      burger.setAttribute('aria-label', 'Open menu');
+      burger.setAttribute('aria-haspopup', 'dialog');
+      burger.innerHTML = navSvg(NAV_SVG.menu);
+      document.body.appendChild(burger);
+      burger.addEventListener('click', openDrawer);
+    }
+
+    // 3. Hamburger drawer — everything else.
+    if (!document.querySelector('.wha-drawer')) {
+      const items = [
+        drawerLink('animations.html', 'Animate', NAV_SVG.animate),
+        drawerLink('boss-battle.html', 'Boss Battle', NAV_SVG.boss),
+        drawerLink('revision.html', 'Revision', NAV_SVG.revision),
+        drawerLink('leaderboard.html', 'Ranks', NAV_SVG.ranks),
+        drawerLink('badges.html', 'Badges', NAV_SVG.badges),
+        drawerLink('rechecking.html', 'Support &amp; Rechecking', NAV_SVG.support),
+        drawerLink('guide.html', 'Guide', NAV_SVG.guide),
+        drawerLink('profile.html', 'Profile', NAV_SVG.profile),
+        '<div class="wha-drawer__sep"></div>',
+        '<a class="wha-drawer__item" href="upgrade.html" data-upgrade-nav hidden>' + navSvg(NAV_SVG.upgrade) + '<span class="wha-upg__t">Upgrade Plan</span></a>',
+        '<button type="button" class="wha-drawer__item" data-action="toggle-theme">' + navSvg(NAV_SVG.theme) + 'Theme<span class="wha-drawer__sub" data-theme-label></span></button>',
+        '<button type="button" class="wha-drawer__item wha-drawer__item--danger" data-action="logout">' + navSvg(NAV_SVG.logout) + 'Log out</button>'
+      ].join('');
+      const drawer = document.createElement('div');
+      drawer.className = 'wha-drawer';
+      drawer.innerHTML =
+        '<div class="wha-drawer__backdrop" data-drawer-close></div>' +
+        '<aside class="wha-drawer__panel" role="dialog" aria-label="Menu" aria-modal="true">' +
+          '<div class="wha-drawer__head"><span class="wha-drawer__title">Study Hub</span>' +
+          '<button type="button" class="wha-drawer__close" data-drawer-close aria-label="Close menu">' + navSvg(NAV_SVG.close) + '</button></div>' +
+          items +
+        '</aside>';
+      document.body.appendChild(drawer);
+      drawer.addEventListener('click', (e) => { if (e.target.closest('[data-drawer-close]')) closeDrawer(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
+    }
+
+    updateThemeLabel();
+  }
+
   /** Marks the correct bottom-nav / sidebar item as aria-current. */
   function highlightActiveNav() {
     injectBadgesNav();
     injectProgressNav();
     injectGuideNav();
     injectAnimationsNav();
+    buildMobileShell();   // phone 3-tab bar + drawer; before upgrade so its drawer item exists
     injectUpgradeNav();
     const page = currentPageName();
     Utils.qsa('[data-nav-page]').forEach((el) => {
@@ -284,10 +352,6 @@ const Router = (() => {
         el.removeAttribute('aria-current');
       }
     });
-    // The bottom bar scrolls sideways on phones: bring the current tab into view.
-    const bn = document.querySelector('.bottom-nav');
-    const cur = bn && bn.querySelector('[aria-current="page"]');
-    if (bn && cur) bn.scrollLeft = Math.max(0, cur.offsetLeft - (bn.clientWidth - cur.offsetWidth) / 2);
   }
 
   /** Renders a breadcrumb trail from a simple {label, href}[] descriptor. */

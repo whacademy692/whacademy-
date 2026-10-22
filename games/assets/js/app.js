@@ -67,24 +67,33 @@
     }
   }
 
+  function cycleTheme() {
+    const current = Storage.getSettings().theme;
+    const currentIndex = VALID_THEMES.indexOf(current);
+    const nextIndex = currentIndex >= 0 ? (currentIndex + 1) % VALID_THEMES.length : 0;
+    const next = VALID_THEMES[nextIndex];
+    Storage.setSettings({ theme: next });
+    applySettings({ instant: true });
+    document.querySelectorAll('[data-action="toggle-theme"]').forEach((button) => {
+      button.setAttribute('title', 'Theme: ' + next);
+      button.setAttribute('aria-label', 'Current theme ' + next + '. Switch to next theme');
+    });
+    // Mobile hamburger drawer shows the live theme name next to the Theme item.
+    document.querySelectorAll('[data-theme-label]').forEach((el) => { el.textContent = next; });
+  }
+
   function wireCommonChrome() {
-    const logoutBtn = Utils.qs('[data-action="logout"]');
-    if (logoutBtn) logoutBtn.addEventListener('click', () => Router.logoutAndRedirect());
-    const themeToggle = Utils.qs('[data-action="toggle-theme"]');
-    if (themeToggle) {
-      themeToggle.addEventListener('click', () => {
-        const current = Storage.getSettings().theme;
-        const currentIndex = VALID_THEMES.indexOf(current);
-        const nextIndex = currentIndex >= 0 ? (currentIndex + 1) % VALID_THEMES.length : 0;
-        const next = VALID_THEMES[nextIndex];
-        Storage.setSettings({ theme: next });
-        applySettings({ instant: true });
-        document.querySelectorAll('[data-action="toggle-theme"]').forEach((button) => {
-          button.setAttribute('title', 'Theme: ' + next);
-          button.setAttribute('aria-label', 'Current theme ' + next + '. Switch to next theme');
-        });
-      });
-    }
+    // Delegated click handling (not per-element wiring). This fixes two things:
+    //  1) The phone theme button was dead — the old code wired only the FIRST
+    //     [data-action="toggle-theme"] in the DOM, which is the hidden desktop
+    //     sidebar button, so tapping the visible phone control did nothing.
+    //  2) The hamburger drawer's Theme / Log out items are built later by
+    //     router.js; delegation means they work without re-wiring.
+    document.addEventListener('click', (e) => {
+      if (!e.target || !e.target.closest) return;
+      if (e.target.closest('[data-action="toggle-theme"]')) { e.preventDefault(); cycleTheme(); return; }
+      if (e.target.closest('[data-action="logout"]')) { e.preventDefault(); Router.logoutAndRedirect(); }
+    });
     ensureSupportNav();
     Router.highlightActiveNav();
   }

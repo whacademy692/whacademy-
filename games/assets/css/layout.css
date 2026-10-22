@@ -424,3 +424,91 @@
 .section { padding-block: var(--space-6); }
 @media (min-width: 1024px) { .section { padding-block: var(--space-8); } }
 .reading-column { max-width: 680px; }
+
+/* =====================================================================
+   MOBILE APP SHELL v110 (2026-10-22)
+   Phone navigation rebuilt into: a clean 3-tab bottom bar (Classes ·
+   Home(center, raised) · Progress) + a hamburger drawer (top-right) that
+   holds every other destination, Change Plan, Theme and Log out.
+   Built app-wide from router.js so every page is identical (fixes the old
+   sideways-scrolling 10-tab bar and the per-page tab-count differences).
+   Everything here is phone-only; desktop keeps the sidebar untouched.
+   ===================================================================== */
+@media (max-width: 1023px) {
+  /* ---- 3-tab bottom bar ---- */
+  .bottom-nav {
+    justify-content: space-around;
+    overflow: visible;                 /* no more sideways scroll */
+    padding-top: 8px;
+  }
+  .bottom-nav__item { flex: 1 1 0; min-width: 0; }
+  .bottom-nav__item--home { margin-top: -24px; justify-content: flex-end; }
+  .bottom-nav__item--home .wha-navcircle {
+    width: 56px; height: 56px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: #fff; color: var(--brand-primary);
+    box-shadow: 0 6px 16px rgba(0,0,0,.28); margin-bottom: 3px;
+  }
+  .bottom-nav__item--home .wha-navcircle svg { width: 26px; height: 26px; }
+  .bottom-nav__item--home[aria-current="page"] .wha-navcircle { color: var(--brand-primary-mid); }
+  .bottom-nav__item--home[aria-current="page"] { color: #fff; }
+
+  /* ---- Hamburger (fixed top-right, consistent on every page) ---- */
+  .wha-burger {
+    position: fixed; top: .75rem; right: .85rem; z-index: 1205;
+    width: 42px; height: 42px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--color-bg-surface-solid);
+    border: 1px solid var(--color-border-strong);
+    color: var(--brand-primary); cursor: pointer;
+    box-shadow: 0 2px 10px rgba(15,23,42,.14);
+  }
+  .wha-burger svg { width: 23px; height: 23px; stroke: currentColor; fill: none; }
+  /* On the dashboard the notification bell shares this corner — nudge it left of the burger. */
+  .wha-dashboard-notification-host { right: 4.2rem !important; }
+  /* The old phone top-bar sun/theme button is replaced by the Theme item in the drawer. */
+  .top-bar.hide-desktop [data-action="toggle-theme"] { display: none !important; }
+  /* Reserve room for the bell + burger so the wordmark never runs under them,
+     and make the two-line wordmark stack cleanly (ACADEMY over MATHEMATICS). */
+  .top-bar.hide-desktop { padding-right: 104px; }
+  .top-bar.hide-desktop .top-bar__brand { min-width: 0; }
+  .top-bar.hide-desktop .top-bar__brand .wh-text { display: inline-flex; flex-direction: column; line-height: 1.05; }
+
+  /* ---- Slide-in drawer ---- */
+  .wha-drawer { position: fixed; inset: 0; z-index: 1210; visibility: hidden; }
+  .wha-drawer.is-open { visibility: visible; }
+  .wha-drawer__backdrop { position: absolute; inset: 0; background: rgba(15,23,42,.48); opacity: 0; transition: opacity .2s ease; }
+  .wha-drawer.is-open .wha-drawer__backdrop { opacity: 1; }
+  .wha-drawer__panel {
+    position: absolute; top: 0; right: 0; height: 100%; width: min(84vw, 330px);
+    background: var(--color-bg-surface-solid);
+    box-shadow: -10px 0 30px rgba(15,23,42,.28);
+    transform: translateX(102%); transition: transform .24s ease;
+    display: flex; flex-direction: column;
+    padding: 14px 12px calc(16px + env(safe-area-inset-bottom, 0px)) 12px;
+    overflow-y: auto; -webkit-overflow-scrolling: touch;
+  }
+  .wha-drawer.is-open .wha-drawer__panel { transform: translateX(0); }
+  .wha-drawer__head { display: flex; align-items: center; justify-content: space-between; padding: 4px 6px 10px; }
+  .wha-drawer__title { font-family: var(--font-display); font-weight: 800; color: var(--color-brand-ink); font-size: 1.05rem; letter-spacing: .01em; }
+  .wha-drawer__close { width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--color-border); background: transparent; color: var(--color-brand-ink); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .wha-drawer__close svg { width: 22px; height: 22px; stroke: currentColor; fill: none; }
+  .wha-drawer__item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 12px; border-radius: 12px; margin: 1px 0;
+    color: var(--color-text-primary); text-decoration: none; font-weight: 600; font-size: .98rem;
+    background: transparent; border: 0; width: 100%; text-align: left; cursor: pointer; font-family: inherit;
+  }
+  .wha-drawer__item:hover, .wha-drawer__item:focus-visible { background: var(--color-brand-ink-tint); }
+  .wha-drawer__item[aria-current="page"] { background: var(--color-brand-ink-tint); color: var(--brand-primary); }
+  .wha-drawer__item svg { width: 22px; height: 22px; stroke: currentColor; fill: none; flex: 0 0 22px; }
+  .wha-drawer__item[hidden] { display: none !important; }
+  .wha-drawer__sub { margin-left: auto; font-size: .76rem; color: var(--color-text-secondary); font-weight: 700; text-transform: capitalize; }
+  .wha-drawer__sep { height: 1px; background: var(--color-border); margin: 8px 6px; }
+  .wha-drawer__item--danger { color: #dc2626; }
+  :is([data-theme="dark"], [data-theme="midnight"]) .wha-drawer__item--danger { color: #fca5a5; }
+  body.wha-drawer-open { overflow: hidden; }
+}
+@media (min-width: 1024px) {
+  .wha-burger, .wha-drawer { display: none !important; }
+}
