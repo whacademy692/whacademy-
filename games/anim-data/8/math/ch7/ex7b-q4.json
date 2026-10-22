@@ -1,0 +1,429 @@
+{
+ "id": "g8-math-pyth-ex7b-q4",
+ "title": "Exercise 7B · Q4",
+ "summary": "The height up the wall is a shorter side — subtract the squares.",
+ "alt": "Exercise 7B · Q4: A ladder of length 5 m is placed against a vertical wall with its foot 1.8 m away from the base of the wall. How far up the wall does the ladder reach?",
+ "uiDefaults": {
+  "angles": false
+ },
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -1.046,
+   2.846
+  ],
+  "y": [
+   -0.933,
+   5.898
+  ],
+  "pad": 10,
+  "ratio": 1.1
+ },
+ "roles": {
+  "hyp": {
+   "label": "Hypotenuse",
+   "color": "#059669",
+   "text": "The side opposite the right angle. It is always the longest side."
+  },
+  "legA": {
+   "label": "Shorter side 1",
+   "color": "#2563eb",
+   "text": "One of the two sides that meet at the right angle."
+  },
+  "legB": {
+   "label": "Shorter side 2",
+   "color": "#e11d48",
+   "text": "The other side that meets at the right angle."
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The length we are finding."
+  }
+ },
+ "params": [],
+ "derived": {
+  "p_C": [
+   0.0,
+   0.0
+  ],
+  "p_A": [
+   0.0,
+   4.6648
+  ],
+  "p_F": [
+   1.8,
+   0.0
+  ]
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ln0",
+   "role": "ink",
+   "from": "p_A",
+   "to": "p_C",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 0,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln1",
+   "role": "ink",
+   "from": "p_C",
+   "to": "p_F",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 150,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln2",
+   "role": "ink",
+   "from": "p_A",
+   "to": "p_F",
+   "strokeWidth": 3.0,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 300,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "angle",
+   "id": "ra0",
+   "at": "p_C",
+   "from": "p_F",
+   "to": "p_A",
+   "style": "square",
+   "r": 26,
+   "role": "ink",
+   "strokeWidth": 1.8,
+   "fill": false,
+   "appear": "s0",
+   "delay": 700,
+   "appearDur": 400
+  },
+  {
+   "type": "point",
+   "id": "pt_C",
+   "at": "p_C",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "C",
+    "off": 0,
+    "dx": -6.1,
+    "dy": 15.9,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_A",
+   "at": "p_A",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "A",
+    "off": 0,
+    "dx": -3.2,
+    "dy": -16.7,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_F",
+   "at": "p_F",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "F",
+    "off": 0,
+    "dx": 10.4,
+    "dy": 13.5,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "polygon",
+   "id": "ov0",
+   "pts": [
+    "p_A",
+    "p_F",
+    "p_C"
+   ],
+   "role": "accent",
+   "fill": "accent",
+   "fillOpacity": 0.11,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s1",
+   "appearDur": 500
+  },
+  {
+   "type": "segment",
+   "id": "ov1",
+   "role": "hyp",
+   "from": "p_A",
+   "to": "p_F",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "ov2",
+   "role": "legA",
+   "from": "p_C",
+   "to": "p_F",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "ov3",
+   "role": "legB",
+   "from": "p_A",
+   "to": "p_C",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "lb0",
+   "from": "p_A",
+   "to": "p_F",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "5 m",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     0,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb1",
+   "from": "p_C",
+   "to": "p_F",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "1.8 m",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     0.6,
+     1.5549
+    ],
+    "off": 5,
+    "t": 0.5,
+    "dy": 24
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb2",
+   "from": "p_A",
+   "to": "p_C",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "?",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     1.8,
+     4.6648
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0,
+   "disappear": "s6"
+  },
+  {
+   "type": "segment",
+   "id": "lb3",
+   "from": "p_A",
+   "to": "p_C",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "4.66 m",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     1.8,
+     4.6648
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s6",
+   "appearDur": 450,
+   "delay": 0
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "narration": "A ladder **AF** of length **5 m** is placed against a vertical wall with its foot **F**, **1.8 m** from the base **C** of the wall. **∠C = 90°**. How far up the wall does the ladder reach (**AC**)?",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Spot the right angle",
+   "narration": "In ΔACF, **∠C = 90°**, so the **hypotenuse** is the side opposite it: **AF**. The other two sides meet at the right angle.",
+   "actions": [
+    {
+     "pulse": [
+      "ra0"
+     ],
+     "at": 700
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Pythagoras' theorem",
+   "narration": "**Pythagoras' theorem**: the square on the hypotenuse equals the sum of the squares on the other two sides.\\[\\begin{aligned}\\role{hyp}{AF^2} &= \\role{legA}{CF^2} + \\role{legB}{AC^2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Make the unknown the subject",
+   "narration": "We want a **shorter side**, so subtract the known square from the hypotenuse square.\\[\\begin{aligned}\\role{hyp}{AF^2} &= \\role{legA}{CF^2} + \\role{legB}{AC^2} \\\\ \\role{legB}{AC^2} &= \\role{hyp}{AF^2} - \\role{legA}{CF^2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Substitute the lengths",
+   "narration": "Replace each side by its length.\\[\\begin{aligned}\\role{hyp}{AF^2} &= \\role{legA}{CF^2} + \\role{legB}{AC^2} \\\\ \\role{legB}{AC^2} &= \\role{hyp}{AF^2} - \\role{legA}{CF^2} \\\\ &= \\role{hyp}{5^2} - \\role{legA}{1.8^2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s5",
+   "title": "Square and subtract",
+   "narration": "Square each number, then subtract.\\[\\begin{aligned}\\role{hyp}{AF^2} &= \\role{legA}{CF^2} + \\role{legB}{AC^2} \\\\ \\role{legB}{AC^2} &= \\role{hyp}{AF^2} - \\role{legA}{CF^2} \\\\ &= \\role{hyp}{5^2} - \\role{legA}{1.8^2} \\\\ &= \\role{hyp}{25} - \\role{legA}{3.24} \\\\ &= \\role{legB}{21.76}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s6",
+   "title": "Square root",
+   "narration": "21.76 is not a perfect square, so use a calculator and round to 3 significant figures.\\[\\begin{aligned}\\role{hyp}{AF^2} &= \\role{legA}{CF^2} + \\role{legB}{AC^2} \\\\ \\role{legB}{AC^2} &= \\role{hyp}{AF^2} - \\role{legA}{CF^2} \\\\ &= \\role{hyp}{5^2} - \\role{legA}{1.8^2} \\\\ &= \\role{hyp}{25} - \\role{legA}{3.24} \\\\ &= \\role{legB}{21.76} \\\\ \\role{legB}{AC} &= \\sqrt{21.76} = \\role{ans}{4.66\\ \\text{m}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Pythagoras' theorem",
+   "tex": "\\role{hyp}{c^2} = \\role{legA}{a^2} + \\role{legB}{b^2}",
+   "text": "In a right-angled triangle, the square on the hypotenuse equals the sum of the squares on the other two sides."
+  },
+  {
+   "title": "Finding the hypotenuse",
+   "tex": "\\role{hyp}{c} = \\sqrt{\\role{legA}{a^2} + \\role{legB}{b^2}}",
+   "text": "Add the two squares, then take the square root."
+  },
+  {
+   "title": "Finding a shorter side",
+   "tex": "\\role{legA}{a} = \\sqrt{\\role{hyp}{c^2} - \\role{legB}{b^2}}",
+   "text": "Subtract the known shorter side's square from the hypotenuse's square, then take the square root."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "twin",
+   "type": "number",
+   "title": "Now you try",
+   "answer": 12,
+   "unit": "m",
+   "prompt": "A right-angled triangle has hypotenuse **13 m** and one shorter side **5 m**. Find the other shorter side.",
+   "hint": "Subtract: 13² − 5².",
+   "explain": "13² − 5² = 169 − 25 = 144, and √144 = 12 m."
+  }
+ ],
+ "takeaways": [
+  "Find the **right angle** first — the side opposite it is the **hypotenuse**.",
+  "To find a shorter side: **subtract** the known shorter side's square from the hypotenuse's square, then take the **square root**.",
+  "A shorter side must be **smaller** than the hypotenuse — a quick check on your answer."
+ ],
+ "notes": [
+  {
+   "title": "Exam tip",
+   "text": "Always begin with a line such as \"In ΔABC, ∠C = 90°. Using Pythagoras' Theorem,\" — it shows which triangle and which right angle you are using."
+  },
+  {
+   "title": "Rounding",
+   "text": "If the answer is not a whole number, give it to **3 significant figures** unless the question says otherwise."
+  }
+ ],
+ "scene3d": {
+  "type": "ladder",
+  "h": 4.66,
+  "d": 1.8,
+  "unit": "m",
+  "names": {
+   "wall": "AC",
+   "ground": "CF",
+   "ladder": "AF"
+  },
+  "letters": {
+   "top": "A",
+   "foot": "F",
+   "corner": "C"
+  }
+ }
+}

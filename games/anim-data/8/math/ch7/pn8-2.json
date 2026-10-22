@@ -1,0 +1,516 @@
+{
+ "id": "g8-math-pyth-pn8-2",
+ "title": "Practise Now 8(2)",
+ "summary": "Prove the right angle with the Converse, then use it to find TX.",
+ "alt": "Practise Now 8(2): XYZ is a plot of land such that XY = 45 m, YZ = 24 m and XZ = 51 m. (i) Show that ∠XYZ = 90°. (ii) A tree T is located on ZY such that ZT = 14 m. Find TX, the distance of the tree from X.",
+ "uiDefaults": {
+  "angles": false
+ },
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -7.5,
+   31.6
+  ],
+  "y": [
+   -16.0,
+   54.3
+  ],
+  "pad": 10,
+  "ratio": 1.1
+ },
+ "roles": {
+  "hyp": {
+   "label": "Hypotenuse",
+   "color": "#059669",
+   "text": "The side opposite the right angle. It is always the longest side."
+  },
+  "legA": {
+   "label": "Shorter side 1",
+   "color": "#2563eb",
+   "text": "One of the two sides that meet at the right angle."
+  },
+  "legB": {
+   "label": "Shorter side 2",
+   "color": "#e11d48",
+   "text": "The other side that meets at the right angle."
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The length we are finding."
+  }
+ },
+ "params": [],
+ "derived": {
+  "p_Y": [
+   0.0,
+   0.0
+  ],
+  "p_X": [
+   0.0,
+   45.0
+  ],
+  "p_Z": [
+   24.0,
+   0.0
+  ],
+  "p_T": [
+   10.0,
+   0.0
+  ]
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ln0",
+   "role": "ink",
+   "from": "p_X",
+   "to": "p_Y",
+   "strokeWidth": 3.0,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 0,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln1",
+   "role": "ink",
+   "from": "p_Y",
+   "to": "p_Z",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 150,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln2",
+   "role": "ink",
+   "from": "p_X",
+   "to": "p_Z",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 300,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln3",
+   "role": "ink",
+   "from": "p_X",
+   "to": "p_T",
+   "strokeWidth": 1.8,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 450,
+   "appearDur": 700,
+   "layer": "mid",
+   "dash": [
+    7,
+    6
+   ]
+  },
+  {
+   "type": "point",
+   "id": "pt_Y",
+   "at": "p_Y",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "Y",
+    "off": 0,
+    "dx": -12.0,
+    "dy": 12.0,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_X",
+   "at": "p_X",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "X",
+    "off": 0,
+    "dx": 0.0,
+    "dy": -17.0,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_Z",
+   "at": "p_Z",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "Z",
+    "off": 0,
+    "dx": 16.3,
+    "dy": 4.9,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_T",
+   "at": "p_T",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "T",
+    "off": 0,
+    "dx": 0.0,
+    "dy": 17.0,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "angle",
+   "id": "raX",
+   "at": "p_Y",
+   "from": "p_Z",
+   "to": "p_X",
+   "style": "square",
+   "r": 22,
+   "role": "hyp",
+   "strokeWidth": 2.2,
+   "fill": false,
+   "appear": "s4",
+   "appearDur": 500
+  },
+  {
+   "type": "segment",
+   "id": "ov0",
+   "role": "legA",
+   "from": "p_T",
+   "to": "p_Y",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s5",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s6"
+  },
+  {
+   "type": "polygon",
+   "id": "ov1",
+   "pts": [
+    "p_X",
+    "p_Y",
+    "p_T"
+   ],
+   "role": "accent",
+   "fill": "accent",
+   "fillOpacity": 0.11,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s6",
+   "appearDur": 500
+  },
+  {
+   "type": "segment",
+   "id": "ov2",
+   "role": "hyp",
+   "from": "p_X",
+   "to": "p_T",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s6",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "ov3",
+   "role": "legA",
+   "from": "p_X",
+   "to": "p_Y",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s6",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "ov4",
+   "role": "legB",
+   "from": "p_Y",
+   "to": "p_T",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s6",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "lb0",
+   "from": "p_X",
+   "to": "p_Y",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "45 m",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     24,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb1",
+   "from": "p_Y",
+   "to": "p_Z",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "24 m",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     12,
+     -30
+    ],
+    "off": 16,
+    "t": 0.6
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb2",
+   "from": "p_X",
+   "to": "p_Z",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "51 m",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     0,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb3",
+   "from": "p_X",
+   "to": "p_T",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "TX = ?",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     8.5,
+     11.25
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0,
+   "disappear": "s8"
+  },
+  {
+   "type": "segment",
+   "id": "lb4",
+   "from": "p_Y",
+   "to": "p_T",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "TY = 10 m",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     8.5,
+     11.25
+    ],
+    "off": 40,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s5",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb5",
+   "from": "p_X",
+   "to": "p_T",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "TX = 46.1 m",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     8.5,
+     11.25
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s8",
+   "appearDur": 450,
+   "delay": 0
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "narration": "**XYZ** is a plot of land with **XY = 45 m**, **YZ = 24 m** and **XZ = 51 m**. (i) Show that **∠XYZ = 90°**. (ii) A tree **T** lies on **ZY** such that **ZT = 14 m**. Find **TX**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Find the longest side",
+   "narration": "The **longest side** is **XZ = 51 m**. If ΔXYZ is right-angled, XZ must be the **hypotenuse** — the side opposite the right angle.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Square the longest side",
+   "narration": "Square **XZ**.\\[\\begin{aligned}XZ^2 &= 51^2 = 2601\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Square and add the other two sides",
+   "narration": "Square **XY** and **YZ**, then add them.\\[\\begin{aligned}XY^2 + YZ^2 &= 45^2 + 24^2 \\\\ &= 2025 + 576 = 2601\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Compare and conclude",
+   "narration": "Since **XZ^2 = XY^2 + YZ^2** (2601 = 2601), by the **Converse of Pythagoras' Theorem**, ΔXYZ **is** a right-angled triangle, where **∠Y = 90°**.",
+   "actions": []
+  },
+  {
+   "id": "s5",
+   "title": "(ii) Find TY",
+   "narration": "**T** lies on **ZY** with **ZT = 14 m**, so **TY** is what is left of **ZY**.\\[\\begin{aligned}TY &= ZY - ZT \\\\ &= 24 - 14 = 10\\ \\text{m}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s6",
+   "title": "Right angle and theorem",
+   "narration": "In ΔXYT, **∠Y = 90°**, so the **hypotenuse** is the side opposite it: **TX**. The other two sides meet at the right angle. (∠XYT is the same right angle as ∠XYZ, since T lies on ZY.) **Pythagoras' theorem**: the square on the hypotenuse equals the sum of the squares on the other two sides.\\[\\begin{aligned}\\role{hyp}{TX^2} &= \\role{legA}{XY^2} + \\role{legB}{TY^2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s7",
+   "title": "Substitute and add",
+   "narration": "Put in the lengths, square them and add.\\[\\begin{aligned}\\role{hyp}{TX^2} &= \\role{legA}{XY^2} + \\role{legB}{TY^2} \\\\ &= \\role{legA}{45^2} + \\role{legB}{10^2} \\\\ &= \\role{legA}{2025} + \\role{legB}{100} \\\\ &= \\role{hyp}{2125}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s8",
+   "title": "Square root",
+   "narration": "2125 is not a perfect square, so use a calculator and round to 3 significant figures.\\[\\begin{aligned}\\role{hyp}{TX^2} &= \\role{legA}{XY^2} + \\role{legB}{TY^2} \\\\ &= \\role{legA}{45^2} + \\role{legB}{10^2} \\\\ &= \\role{legA}{2025} + \\role{legB}{100} \\\\ &= \\role{hyp}{2125} \\\\ \\role{hyp}{TX} &= \\sqrt{2125} = \\role{ans}{46.1\\ \\text{m}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Pythagoras' theorem",
+   "tex": "\\role{hyp}{c^2} = \\role{legA}{a^2} + \\role{legB}{b^2}",
+   "text": "In a right-angled triangle, the square on the hypotenuse equals the sum of the squares on the other two sides."
+  },
+  {
+   "title": "Finding the hypotenuse",
+   "tex": "\\role{hyp}{c} = \\sqrt{\\role{legA}{a^2} + \\role{legB}{b^2}}",
+   "text": "Add the two squares, then take the square root."
+  },
+  {
+   "title": "Finding a shorter side",
+   "tex": "\\role{legA}{a} = \\sqrt{\\role{hyp}{c^2} - \\role{legB}{b^2}}",
+   "text": "Subtract the known shorter side's square from the hypotenuse's square, then take the square root."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "ty",
+   "type": "number",
+   "title": "Check TY",
+   "answer": 10,
+   "unit": "m",
+   "prompt": "ZY = 24 m and ZT = 14 m. Find TY.",
+   "hint": "TY = ZY − ZT.",
+   "explain": "TY = 24 − 14 = 10 m."
+  }
+ ],
+ "takeaways": [
+  "Find the **longest side** first — if the triangle is right-angled, that side must be the hypotenuse.",
+  "Test it: does the longest side's **square** equal the **sum of the squares** of the other two sides?",
+  "If the squares match, the triangle **is** right-angled (opposite the longest side); if not, it isn't.",
+  "Once the right angle is confirmed, Pythagoras' theorem works in **any** right-angled triangle built from it."
+ ],
+ "notes": [
+  {
+   "title": "Exam tip",
+   "text": "Always find the **longest side** first — only that side could possibly be the hypotenuse."
+  },
+  {
+   "title": "Rounding",
+   "text": "If the answer is not a whole number, give it to **3 significant figures** unless the question says otherwise."
+  }
+ ]
+}

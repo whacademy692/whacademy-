@@ -1,0 +1,205 @@
+{
+ "id": "g8-math-pyth-ex7b-q15",
+ "title": "Exercise 7B · Q15",
+ "summary": "Compare the areas of a square, a circle and an equilateral triangle, all with the same perimeter.",
+ "alt": "A designer makes tabletops of the same perimeter, 132 cm, as a square, a circle and an equilateral triangle, and compares their areas.",
+ "uiDefaults": {},
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -2,
+   46
+  ],
+  "y": [
+   -2,
+   24
+  ],
+  "pad": 10,
+  "ratio": 0.55
+ },
+ "roles": {
+  "sq": {
+   "label": "Square",
+   "color": "#2563eb",
+   "text": "Perimeter 132 cm."
+  },
+  "ci": {
+   "label": "Circle",
+   "color": "#059669",
+   "text": "Perimeter (circumference) 132 cm."
+  },
+  "tr": {
+   "label": "Triangle",
+   "color": "#e11d48",
+   "text": "Perimeter 132 cm."
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The value we are finding."
+  }
+ },
+ "params": [],
+ "derived": {},
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "sqshape",
+   "x": 2,
+   "y": 2,
+   "w": 11,
+   "h": 11,
+   "role": "sq",
+   "fill": "sq",
+   "fillOpacity": 0.15,
+   "strokeWidth": 2.4,
+   "appear": "s0",
+   "effect": "draw",
+   "appearDur": 600,
+   "label": {
+    "text": "side = 33 cm",
+    "role": "sq",
+    "dy": -8,
+    "size": "m"
+   }
+  },
+  {
+   "type": "circle",
+   "id": "cishape",
+   "c": [
+    23,
+    7.5
+   ],
+   "r": 6.5,
+   "role": "ci",
+   "fill": "ci",
+   "fillOpacity": 0.15,
+   "strokeWidth": 2.4,
+   "appear": "s0",
+   "effect": "draw",
+   "appearDur": 600,
+   "label": {
+    "text": "r = 21 cm",
+    "role": "ci",
+    "dy": -9,
+    "size": "m"
+   }
+  },
+  {
+   "type": "regular",
+   "id": "trshape",
+   "c": [
+    37,
+    6
+   ],
+   "r": 7.5,
+   "n": 3,
+   "rot": 90,
+   "role": "tr",
+   "fill": "tr",
+   "fillOpacity": 0.15,
+   "strokeWidth": 2.4,
+   "appear": "s0",
+   "effect": "draw",
+   "appearDur": 600,
+   "label": {
+    "text": "side = 44 cm",
+    "role": "tr",
+    "dy": -10,
+    "size": "m"
+   }
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "narration": "A designer makes three children's tabletops — a **square**, a **circle** and an **equilateral triangle** — each with the same **perimeter, 132 cm**. (Take π = 22/7.) We compare their areas to see which shape gives the most tabletop for the same amount of edging.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "(a)(i) Side of the square",
+   "narration": "A square has **4 equal sides**, so divide the perimeter by 4.\\[\\begin{aligned}\\role{sq}{\\text{side}} &= 132 \\div 4 = \\role{ans}{33\\ \\text{cm}}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "(a)(ii) Radius of the circle",
+   "narration": "The circumference is **2πr = 132**.\\[\\begin{aligned}2\\pi r &= 132\\\\ r &= 132 \\div \\left(2\\times\\tfrac{22}{7}\\right) = 132 \\times \\tfrac{7}{44} = \\role{ans}{21\\ \\text{cm}}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "(b) Areas of the square and circle",
+   "narration": "Square: **side²**. Circle: **πr²**.\\[\\begin{aligned}\\text{Area of square} &= 33^2 = \\role{ans}{1089\\ \\text{cm}^2}\\\\ \\text{Area of circle} &= \\tfrac{22}{7}\\times 21^2 = \\tfrac{22}{7}\\times 441 = \\role{ans}{1386\\ \\text{cm}^2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "(c)(i) Side of the equilateral triangle",
+   "narration": "An equilateral triangle has **3 equal sides**.\\[\\begin{aligned}\\role{tr}{\\text{side}} &= 132 \\div 3 = \\role{ans}{44\\ \\text{cm}}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s5",
+   "title": "(c)(ii) Area of the equilateral triangle",
+   "narration": "An equilateral triangle of side **s** has area **(√3/4)s²**.\\[\\begin{aligned}\\text{Area} &= \\tfrac{\\sqrt3}{4}\\times 44^2 = \\tfrac{\\sqrt3}{4}\\times 1936 = 484\\sqrt3 = \\role{ans}{838\\ \\text{cm}^2}\\ \\text{(3 s.f.)}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s6",
+   "title": "(d) Which shape wins?",
+   "narration": "Compare the three areas for the **same perimeter** of 132 cm.\\[\\begin{aligned}\\role{ci}{\\text{circle}}&: 1386\\ \\text{cm}^2 \\;>\\; \\role{sq}{\\text{square}}: 1089\\ \\text{cm}^2 \\;>\\; \\role{tr}{\\text{triangle}}: 838\\ \\text{cm}^2\\end{aligned}\\]The designer should choose the **circular (round)** tabletop — it gives the **greatest area** for the same perimeter.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Perimeter → side/radius",
+   "tex": "\\text{side} = \\tfrac{P}{n},\\quad r = \\tfrac{P}{2\\pi}",
+   "text": "Divide the perimeter by the number of equal sides (square, triangle); for a circle, solve the circumference formula for r."
+  },
+  {
+   "title": "Areas",
+   "tex": "\\text{square} = s^2,\\ \\ \\text{circle} = \\pi r^2,\\ \\ \\text{equilateral } \\triangle = \\tfrac{\\sqrt3}{4}s^2",
+   "text": "Three different area formulas for the same perimeter."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "which",
+   "type": "choice",
+   "title": "Greatest area?",
+   "answer": "c",
+   "options": [
+    {
+     "id": "a",
+     "label": "Square"
+    },
+    {
+     "id": "b",
+     "label": "Triangle"
+    },
+    {
+     "id": "c",
+     "label": "Circle"
+    }
+   ],
+   "prompt": "For the same perimeter, which of the three shapes has the greatest area?",
+   "hint": "Compare 1089, 838 and 1386 cm².",
+   "explain": "The circle's 1386 cm² beats the square's 1089 cm² and the triangle's 838 cm² — for a fixed perimeter, a circle always encloses the most area."
+  }
+ ],
+ "takeaways": [
+  "For a **fixed perimeter**, different shapes enclose very different **areas**.",
+  "Among simple shapes, a **circle** always gives the greatest area for a given perimeter — and a shape with more sides beats one with fewer.",
+  "This question uses **perimeter and area formulas**, not Pythagoras' theorem — not every real-world question in this exercise needs a right-angled triangle."
+ ],
+ "notes": [
+  {
+   "title": "Why no Pythagoras here?",
+   "text": "This question is about **perimeter and area**, a different (but related) topic. It is included in Exercise 7B because real-world problem-solving often mixes several kinds of formulas."
+  }
+ ]
+}
