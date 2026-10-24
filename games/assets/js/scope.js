@@ -7,6 +7,14 @@
  *   Class 1-8    FULL-C08                       -> the whole class, every subject
  *   Class 9-12   SUBJ-PHYS-C09, SUBJ-CHEM-C09   -> only these subjects
  *
+ * Optional board token (Class 9-12 only):
+ *
+ *   BOARD-KPK    SUBJ-BIO-C10, BOARD-KPK        -> KPK Board student: reads the
+ *                                                 registry's `kpk` branch instead
+ *                                                 of `classes`.
+ *
+ * No board token (every existing student) -> behaviour is exactly as before.
+ *
  * This module is the ONLY place that interprets that string. Everything else
  * (dashboard, games list) asks it "is this subject allowed?" and trusts the
  * answer, so the gating rule lives in exactly one testable spot.
@@ -66,15 +74,17 @@
    */
   function parseScope(enrolledScope) {
     var raw = String(enrolledScope || '').trim();
-    var result = { classLevel: null, fullClass: false, subjectKeys: [], raw: raw };
+    var result = { classLevel: null, fullClass: false, subjectKeys: [], board: null, raw: raw };
     if (!raw) return result;   // fail closed
     var tokens = raw.split(',').map(function (t) { return t.trim().toUpperCase(); })
                     .filter(Boolean);
 
     tokens.forEach(function (tok) {
-      var parts = tok.split('-');   // FULL | C08   or   SUBJ | PHYS | C09
+      var parts = tok.split('-');   // FULL | C08   or   SUBJ | PHYS | C09   or   BOARD | KPK
 
-      if (parts[0] === 'FULL' && parts[1]) {
+      if (parts[0] === 'BOARD' && parts[1] === 'KPK') {
+        result.board = 'kpk';
+      } else if (parts[0] === 'FULL' && parts[1]) {
         result.fullClass = true;
         result.classLevel = classFromCode(parts[1]);
       } else if (parts[0] === 'SUBJ' && parts[1] && parts[2]) {
@@ -102,7 +112,10 @@
    */
   function allowedSubjects(scope, registry) {
     if (scope.classLevel === null) return [];
-    var classData = registry && registry.classes && registry.classes[String(scope.classLevel)];
+    // KPK Board students read the registry's separate `kpk` branch; everyone
+    // else reads `classes` exactly as before.
+    var tree = (scope.board === 'kpk') ? (registry && registry.kpk) : registry;
+    var classData = tree && tree.classes && tree.classes[String(scope.classLevel)];
     if (!classData) return [];
     var out = [];
     Object.keys(classData).forEach(function (skey) {

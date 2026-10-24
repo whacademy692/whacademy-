@@ -1291,5 +1291,90 @@ window.WHA_CONTENT = {
         ]
       }
     }
+  },
+  "kpk": {
+    "_note": "KPK Board content. Separate from 'classes' (Federal/APSACS) so existing scope logic is unchanged. Add chapters here only when content is explicitly KPK.",
+    "classes": {
+      "10": {
+        "bio": {
+          "name": "Biology",
+          "code": "BIO",
+          "chapters": [
+            {
+              "n": 1,
+              "unit": 10,
+              "title": "Gaseous Exchange",
+              "notes": "https://whacademypk.com/notes/kpk/class-10/biology/gaseous-exchange.html",
+              "quiz": null,
+              "game": "https://whacademypk.com/games/chapter.html?ch=10/bio/kpk_gaseous_exchange"
+            },
+            {
+              "n": 2,
+              "unit": 11,
+              "title": "Homeostasis",
+              "notes": null,
+              "quiz": null,
+              "game": null
+            },
+            {
+              "n": 3,
+              "unit": 12,
+              "title": "Coordination and Control",
+              "notes": null,
+              "quiz": null,
+              "game": null
+            },
+            {
+              "n": 4,
+              "unit": 13,
+              "title": "Support and Movement",
+              "notes": null,
+              "quiz": null,
+              "game": null
+            },
+            {
+              "n": 5,
+              "unit": 14,
+              "title": "Reproduction",
+              "notes": null,
+              "quiz": null,
+              "game": null
+            },
+            {
+              "n": 6,
+              "unit": 15,
+              "title": "Inheritance",
+              "notes": null,
+              "quiz": null,
+              "game": null
+            },
+            {
+              "n": 7,
+              "unit": 16,
+              "title": "Man and His Environment",
+              "notes": null,
+              "quiz": null,
+              "game": null
+            },
+            {
+              "n": 8,
+              "unit": 17,
+              "title": "Biotechnology",
+              "notes": null,
+              "quiz": null,
+              "game": null
+            },
+            {
+              "n": 9,
+              "unit": 18,
+              "title": "Pharmacology",
+              "notes": null,
+              "quiz": null,
+              "game": null
+            }
+          ]
+        }
+      }
+    }
   }
 };

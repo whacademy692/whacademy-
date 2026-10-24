@@ -147,7 +147,7 @@
   <section class="hero">
     <span class="tag">Enrollment</span>
     <h1>Enroll at W.H. Academy</h1>
-    <p>Online & home tutoring for FBISE / Federal Board students, Class 6–12. Fill the form below. Once your fee is confirmed and your account is activated, we email your <strong>Student ID</strong> and a link to set your PIN — then you log in.</p>
+    <p>Online & home tutoring for APSACS (Class 6–8), and Federal (FBISE) or KPK Board (Class 9–12) students. Fill the form below. Once your fee is confirmed and your account is activated, we email your <strong>Student ID</strong> and a link to set your PIN — then you log in.</p>
     <div class="notebar">
       <span>⚠️</span>
       <div><b>Important:</b> Select only the subjects and plan that match your class and stream. Requests with an incorrect subject or plan selection will not be processed.</div>
@@ -219,6 +219,13 @@
             <option value="">— Select class —</option>
           </select>
           <p class="err" id="e-classLevel">Please select your class.</p>
+        </div>
+        <div>
+          <label for="board">Board <span class="req">*</span></label>
+          <select id="board" name="board">
+            <option value="">— Select class first —</option>
+          </select>
+          <p class="err" id="e-board">Please select your board.</p>
         </div>
         <div>
           <label for="stream">Select Stream <span class="req">*</span></label>
@@ -387,6 +394,12 @@
       if(k==='low'){ ss.value='Not applicable'; ss.disabled=true; } else { ss.disabled=false; ss.insertAdjacentHTML('afterbegin','<option value="">— Select stream —</option>'); ss.value=''; }
     }
 
+    // board: Class 6-8 = APSACS (fixed); Class 9-12 = Federal or KPK
+    var bs=$('board'); bs.innerHTML=''; clearErr('board');
+    if(!cls){ bs.innerHTML='<option value="">— Select class first —</option>'; bs.disabled=false; }
+    else if(Number(cls)<=8){ bs.innerHTML='<option value="APSACS">APSACS</option>'; bs.value='APSACS'; bs.disabled=true; }
+    else { bs.disabled=false; bs.innerHTML='<option value="">— Select board —</option><option value="Federal">Federal Board (FBISE)</option><option value="KPK">KPK Board</option>'; bs.value=''; }
+
     // subjects (depend on the chosen stream for 9-12)
     renderSubjects(cls, $('stream').value);
 
@@ -446,6 +459,7 @@
     updateEstimate();
   }
 
+  $('board').addEventListener('change',function(){clearErr('board');setStep();});
   $('stream').addEventListener('change',function(){clearErr('stream');renderSubjects($('classLevel').value, this.value);updateEstimate();setStep();});
   $('tuitionMode').addEventListener('change',function(){
     clearErr('tuitionMode');
@@ -460,7 +474,7 @@
   /* ---- progress bar ---- */
   function setStep(){
     var s1 = $('email').value && $('whatsapp').value && $('fullName').value && $('fatherName').value && $('fatherOccupation').value && $('schoolName').value && $('address').value;
-    var s2 = $('classLevel').value && $('stream').value;
+    var s2 = $('classLevel').value && $('board').value && $('stream').value;
     var s3 = $('tuitionMode').value && state.plan;
     var steps=document.querySelectorAll('.steps .s');
     steps[0].className='s '+(s1?'done':'active');
@@ -500,6 +514,7 @@
     need('schoolName', $('schoolName').value.trim());
     need('address', $('address').value.trim());
     need('classLevel', $('classLevel').value);
+    need('board', $('board').value);
     need('stream', $('stream').value);
     need('tuitionMode', $('tuitionMode').value);
     need('plan', !!state.plan);
@@ -527,6 +542,7 @@
       schoolName:$('schoolName').value.trim(),
       address:$('address').value.trim(),
       classLevel:cls,
+      board:$('board').value,
       stream:$('stream').value,
       subjects:subs,
       otherSubject:other,
