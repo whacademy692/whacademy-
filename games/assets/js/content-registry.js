@@ -1290,6 +1290,21 @@ window.WHA_CONTENT = {
           }
         ]
       }
+    },
+    "10": {
+      "chem": {
+        "name": "Chemistry",
+        "code": "CHEM",
+        "chapters": [
+          {
+            "n": 8,
+            "title": "Organic Chemistry",
+            "notes": "https://whacademypk.com/notes/class-10/chemistry/organic-chemistry.html",
+            "quiz": null,
+            "game": "https://whacademypk.com/games/chapter.html?ch=10/chem/organic_chemistry"
+          }
+        ]
+      }
     }
   },
   "kpk": {

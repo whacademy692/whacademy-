@@ -650,6 +650,14 @@
                 <div class="cw-note"><i class="fas fa-info-circle" aria-hidden="true"></i> Physics Chapter 1 notes are free for everyone. Remaining chapters will be linked as they are completed.</div>
             </div>
 
+            <!-- CLASS 10 CHEMISTRY: Resources -->
+            <div id="resC10Chem" style="display:none;">
+                <div class="cw-chapters-grid">
+                    <div class="cw-chapter-card"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-flask" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 8</div></div><div class="cw-chapter-title">Organic Chemistry</div><div class="cw-chapter-actions"><a href="/notes/class-10/chemistry/organic-chemistry.html" class="cw-chapter-btn active-btn" aria-label="View Class 10 Chemistry Ch 8 Notes"><i class="fas fa-book-open" aria-hidden="true"></i> View Notes</a></div></div>
+                </div>
+                <div class="cw-note"><i class="fas fa-info-circle" aria-hidden="true"></i> Chemistry Unit 8 notes (Federal Board, FBISE) are free for everyone. Remaining chapters will be linked as they are completed.</div>
+            </div>
+
         <!-- Prompt if nothing selected yet -->
         <div id="resPrompt" class="cw-coming-soon-box" style="margin-top:0;">
             <div class="cw-cs-icon"><i class="fas fa-hand-point-up" aria-hidden="true"></i></div>
@@ -744,7 +752,8 @@ function hideAllResPanels() {
              'resC6Math','resC6Sci','resC6Geo','resC6Hist',
              'resC7Math','resC7Sci','resC7Geo','resC7Hist',
              'resC8Geo','resC8Hist',
-             'resC9Math','resC9Phy','resC9Chem','resC9Bio','resC9CS'
+             'resC9Math','resC9Phy','resC9Chem','resC9Bio','resC9CS',
+             'resC10Chem'
             ].forEach(id => { const el = document.getElementById(id); if(el) el.style.display = 'none'; });
         }
 
@@ -823,6 +832,9 @@ function handleResSubject(val) {
                 else if (val === 'chemistry')         target = document.getElementById('resC9Chem');
                 else if (val === 'biology')           target = document.getElementById('resC9Bio');
                 else if (val === 'computer-science')  target = document.getElementById('resC9CS');
+                else                                  target = document.getElementById('resLocked');
+            } else if (level === 'mat10') {
+                if (val === 'chemistry')              target = document.getElementById('resC10Chem');
                 else                                  target = document.getElementById('resLocked');
             } else {
                 target = document.getElementById('resLocked');

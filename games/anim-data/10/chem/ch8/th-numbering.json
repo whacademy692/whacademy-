@@ -1,0 +1,2456 @@
+{
+ "id": "g10-chem-c8-th-numbering",
+ "title": "Numbering the chain: the smaller number wins",
+ "summary": "Count the carbons from either end; the position number in the name is the smaller one.",
+ "alt": "Hex-2-ene, pent-1-yne and pentan-2-ol numbered from the left and from the right.",
+ "autoGrid": false,
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -8.35,
+   8.35
+  ],
+  "y": [
+   -6.25,
+   7.35
+  ],
+  "pad": 10
+ },
+ "roles": {
+  "stem": {
+   "label": "Stem (how many C)",
+   "color": "#16a34a",
+   "text": "The first part of the name. It tells you how many carbon atoms are in the chain."
+  },
+  "ane": {
+   "label": "-ane · alkane",
+   "color": "#64748b",
+   "text": "Only single bonds between the carbons. No functional group."
+  },
+  "num": {
+   "label": "Position number",
+   "color": "#ca8a04",
+   "text": "The number in the name. It tells you where the double bond, triple bond or –OH sits."
+  },
+  "ene": {
+   "label": "-ene · C=C",
+   "color": "#dc2626",
+   "text": "A carbon–carbon DOUBLE bond (red box in the book)."
+  },
+  "yne": {
+   "label": "-yne · C≡C",
+   "color": "#7c3aed",
+   "text": "A carbon–carbon TRIPLE bond (purple box in the book)."
+  },
+  "ol": {
+   "label": "-ol · –OH",
+   "color": "#2563eb",
+   "text": "The hydroxyl group of an alcohol."
+  },
+  "atomO": {
+   "label": "Oxygen",
+   "color": "#ef4444",
+   "text": "Every oxygen atom makes two bonds.",
+   "legend": false
+  },
+  "hyd": {
+   "label": "Hydrogen",
+   "color": "#64748b",
+   "text": "Every hydrogen atom makes exactly one bond.",
+   "legend": false
+  },
+  "bad": {
+   "label": "Mistake",
+   "color": "#dc2626",
+   "text": "The part that breaks a rule."
+  },
+  "good": {
+   "label": "Correct",
+   "color": "#16a34a",
+   "text": "The part that follows the rules."
+  }
+ },
+ "params": [
+  {
+   "id": "mol",
+   "label": "Compound",
+   "type": "choice",
+   "options": [
+    {
+     "value": 1,
+     "label": "C=C in a six-carbon chain"
+    },
+    {
+     "value": 2,
+     "label": "C≡C in a five-carbon chain"
+    },
+    {
+     "value": 3,
+     "label": "–OH in a five-carbon chain"
+    }
+   ],
+   "default": 1,
+   "role": "num"
+  },
+  {
+   "id": "dir",
+   "label": "Count from",
+   "type": "choice",
+   "options": [
+    {
+     "value": 0,
+     "label": "the left"
+    },
+    {
+     "value": 1,
+     "label": "the right"
+    }
+   ],
+   "default": 0,
+   "role": "num"
+  }
+ ],
+ "derived": {
+  "LL": "round(mol)==1?4:(round(mol)==2?1:2)",
+  "RR": "round(mol)==1?2:(round(mol)==2?4:4)"
+ },
+ "readouts": [
+  {
+   "label": "Number from the left",
+   "value": "{{LL}}",
+   "role": "num"
+  },
+  {
+   "label": "Number from the right",
+   "value": "{{RR}}",
+   "role": "num"
+  },
+  {
+   "label": "Use the smaller",
+   "value": "{{min(LL,RR)}}",
+   "role": "good"
+  }
+ ],
+ "shapes": [
+  {
+   "type": "text",
+   "id": "tm1_0",
+   "at": [
+    -5.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm1_1",
+   "at": [
+    -3.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm1_2",
+   "at": [
+    -1.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm1_3",
+   "at": [
+    1.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm1_4",
+   "at": [
+    3.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm1_5",
+   "at": [
+    5.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm1_6",
+   "at": [
+    -7.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm1_7",
+   "at": [
+    -5.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm1_8",
+   "at": [
+    -5.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm1_9",
+   "at": [
+    -3.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm1_10",
+   "at": [
+    -3.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm1_11",
+   "at": [
+    -1.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm1_12",
+   "at": [
+    -1.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm1_13",
+   "at": [
+    1.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm1_14",
+   "at": [
+    3.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm1_15",
+   "at": [
+    7.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm1_16",
+   "at": [
+    5.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm1_17",
+   "at": [
+    5.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm1_0_0",
+   "from": [
+    -4.48,
+    0.0
+   ],
+   "to": [
+    -3.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm1_1_0",
+   "from": [
+    -2.48,
+    0.0
+   ],
+   "to": [
+    -1.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm1_2_0",
+   "from": [
+    -0.48,
+    0.0
+   ],
+   "to": [
+    0.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm1_3_0",
+   "from": [
+    1.52,
+    -0.15
+   ],
+   "to": [
+    2.48,
+    -0.15
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm1_3_1",
+   "from": [
+    1.52,
+    0.15
+   ],
+   "to": [
+    2.48,
+    0.15
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm1_4_0",
+   "from": [
+    3.52,
+    0.0
+   ],
+   "to": [
+    4.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm1_5_0",
+   "from": [
+    -5.52,
+    0.0
+   ],
+   "to": [
+    -6.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm1_6_0",
+   "from": [
+    -5.0,
+    0.52
+   ],
+   "to": [
+    -5.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm1_7_0",
+   "from": [
+    -5.0,
+    -0.52
+   ],
+   "to": [
+    -5.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm1_8_0",
+   "from": [
+    -3.0,
+    0.52
+   ],
+   "to": [
+    -3.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm1_9_0",
+   "from": [
+    -3.0,
+    -0.52
+   ],
+   "to": [
+    -3.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm1_10_0",
+   "from": [
+    -1.0,
+    0.52
+   ],
+   "to": [
+    -1.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm1_11_0",
+   "from": [
+    -1.0,
+    -0.52
+   ],
+   "to": [
+    -1.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm1_12_0",
+   "from": [
+    1.0,
+    0.52
+   ],
+   "to": [
+    1.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm1_13_0",
+   "from": [
+    3.0,
+    0.52
+   ],
+   "to": [
+    3.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm1_14_0",
+   "from": [
+    5.52,
+    0.0
+   ],
+   "to": [
+    6.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm1_15_0",
+   "from": [
+    5.0,
+    0.52
+   ],
+   "to": [
+    5.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm1_16_0",
+   "from": [
+    5.0,
+    -0.52
+   ],
+   "to": [
+    5.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "rect",
+   "id": "bx1",
+   "x": 0.34,
+   "y": -0.66,
+   "w": 3.32,
+   "h": 1.32,
+   "role": "ene",
+   "fill": "ene",
+   "fillOpacity": 0.13,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "round(mol)==1"
+  },
+  {
+   "type": "text",
+   "id": "nm1d0_0",
+   "at": [
+    -5.0,
+    -3.05
+   ],
+   "text": "1",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==1&&round(dir)==0"
+  },
+  {
+   "type": "text",
+   "id": "nm1d0_1",
+   "at": [
+    -3.0,
+    -3.05
+   ],
+   "text": "2",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==1&&round(dir)==0"
+  },
+  {
+   "type": "text",
+   "id": "nm1d0_2",
+   "at": [
+    -1.0,
+    -3.05
+   ],
+   "text": "3",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==1&&round(dir)==0"
+  },
+  {
+   "type": "text",
+   "id": "nm1d0_3",
+   "at": [
+    1.0,
+    -3.05
+   ],
+   "text": "4",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==1&&round(dir)==0"
+  },
+  {
+   "type": "text",
+   "id": "nm1d0_4",
+   "at": [
+    3.0,
+    -3.05
+   ],
+   "text": "5",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==1&&round(dir)==0"
+  },
+  {
+   "type": "text",
+   "id": "nm1d0_5",
+   "at": [
+    5.0,
+    -3.05
+   ],
+   "text": "6",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==1&&round(dir)==0"
+  },
+  {
+   "type": "text",
+   "id": "nm10",
+   "at": [
+    0,
+    6.0
+   ],
+   "text": "[[stem|hex]]-[[num|4]]-[[ene|ene]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==1&&round(dir)==0"
+  },
+  {
+   "type": "text",
+   "id": "vd10",
+   "at": [
+    0,
+    -4.9
+   ],
+   "text": "from the left: [[bad|4 is larger — not allowed]]",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==1&&round(dir)==0"
+  },
+  {
+   "type": "text",
+   "id": "nm1d1_0",
+   "at": [
+    -5.0,
+    -3.05
+   ],
+   "text": "6",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==1&&round(dir)==1"
+  },
+  {
+   "type": "text",
+   "id": "nm1d1_1",
+   "at": [
+    -3.0,
+    -3.05
+   ],
+   "text": "5",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==1&&round(dir)==1"
+  },
+  {
+   "type": "text",
+   "id": "nm1d1_2",
+   "at": [
+    -1.0,
+    -3.05
+   ],
+   "text": "4",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==1&&round(dir)==1"
+  },
+  {
+   "type": "text",
+   "id": "nm1d1_3",
+   "at": [
+    1.0,
+    -3.05
+   ],
+   "text": "3",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==1&&round(dir)==1"
+  },
+  {
+   "type": "text",
+   "id": "nm1d1_4",
+   "at": [
+    3.0,
+    -3.05
+   ],
+   "text": "2",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==1&&round(dir)==1"
+  },
+  {
+   "type": "text",
+   "id": "nm1d1_5",
+   "at": [
+    5.0,
+    -3.05
+   ],
+   "text": "1",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==1&&round(dir)==1"
+  },
+  {
+   "type": "text",
+   "id": "nm11",
+   "at": [
+    0,
+    6.0
+   ],
+   "text": "[[stem|hex]]-[[num|2]]-[[ene|ene]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==1&&round(dir)==1"
+  },
+  {
+   "type": "text",
+   "id": "vd11",
+   "at": [
+    0,
+    -4.9
+   ],
+   "text": "from the right: [[good|2 is smaller — correct]]",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==1&&round(dir)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm2_0",
+   "at": [
+    -4.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm2_1",
+   "at": [
+    -2.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm2_2",
+   "at": [
+    0.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm2_3",
+   "at": [
+    2.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm2_4",
+   "at": [
+    4.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm2_5",
+   "at": [
+    -6.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm2_6",
+   "at": [
+    0.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm2_7",
+   "at": [
+    0.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm2_8",
+   "at": [
+    2.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm2_9",
+   "at": [
+    2.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm2_10",
+   "at": [
+    6.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm2_11",
+   "at": [
+    4.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm2_12",
+   "at": [
+    4.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm2_0_0",
+   "from": [
+    -3.48,
+    -0.27
+   ],
+   "to": [
+    -2.52,
+    -0.27
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm2_0_1",
+   "from": [
+    -3.48,
+    0.0
+   ],
+   "to": [
+    -2.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm2_0_2",
+   "from": [
+    -3.48,
+    0.27
+   ],
+   "to": [
+    -2.52,
+    0.27
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm2_1_0",
+   "from": [
+    -1.48,
+    0.0
+   ],
+   "to": [
+    -0.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm2_2_0",
+   "from": [
+    0.52,
+    0.0
+   ],
+   "to": [
+    1.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm2_3_0",
+   "from": [
+    2.52,
+    0.0
+   ],
+   "to": [
+    3.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm2_4_0",
+   "from": [
+    -4.52,
+    0.0
+   ],
+   "to": [
+    -5.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm2_5_0",
+   "from": [
+    0.0,
+    0.52
+   ],
+   "to": [
+    0.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm2_6_0",
+   "from": [
+    0.0,
+    -0.52
+   ],
+   "to": [
+    0.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm2_7_0",
+   "from": [
+    2.0,
+    0.52
+   ],
+   "to": [
+    2.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm2_8_0",
+   "from": [
+    2.0,
+    -0.52
+   ],
+   "to": [
+    2.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm2_9_0",
+   "from": [
+    4.52,
+    0.0
+   ],
+   "to": [
+    5.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm2_10_0",
+   "from": [
+    4.0,
+    0.52
+   ],
+   "to": [
+    4.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm2_11_0",
+   "from": [
+    4.0,
+    -0.52
+   ],
+   "to": [
+    4.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "rect",
+   "id": "bx2",
+   "x": -4.66,
+   "y": -0.66,
+   "w": 3.32,
+   "h": 1.32,
+   "role": "yne",
+   "fill": "yne",
+   "fillOpacity": 0.13,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "round(mol)==2"
+  },
+  {
+   "type": "text",
+   "id": "nm2d0_0",
+   "at": [
+    -4.0,
+    -3.05
+   ],
+   "text": "1",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==2&&round(dir)==0"
+  },
+  {
+   "type": "text",
+   "id": "nm2d0_1",
+   "at": [
+    -2.0,
+    -3.05
+   ],
+   "text": "2",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==2&&round(dir)==0"
+  },
+  {
+   "type": "text",
+   "id": "nm2d0_2",
+   "at": [
+    0.0,
+    -3.05
+   ],
+   "text": "3",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==2&&round(dir)==0"
+  },
+  {
+   "type": "text",
+   "id": "nm2d0_3",
+   "at": [
+    2.0,
+    -3.05
+   ],
+   "text": "4",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==2&&round(dir)==0"
+  },
+  {
+   "type": "text",
+   "id": "nm2d0_4",
+   "at": [
+    4.0,
+    -3.05
+   ],
+   "text": "5",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==2&&round(dir)==0"
+  },
+  {
+   "type": "text",
+   "id": "nm20",
+   "at": [
+    0,
+    6.0
+   ],
+   "text": "[[stem|pent]]-[[num|1]]-[[yne|yne]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==2&&round(dir)==0"
+  },
+  {
+   "type": "text",
+   "id": "vd20",
+   "at": [
+    0,
+    -4.9
+   ],
+   "text": "from the left: [[good|1 is smaller — correct]]",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==2&&round(dir)==0"
+  },
+  {
+   "type": "text",
+   "id": "nm2d1_0",
+   "at": [
+    -4.0,
+    -3.05
+   ],
+   "text": "5",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==2&&round(dir)==1"
+  },
+  {
+   "type": "text",
+   "id": "nm2d1_1",
+   "at": [
+    -2.0,
+    -3.05
+   ],
+   "text": "4",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==2&&round(dir)==1"
+  },
+  {
+   "type": "text",
+   "id": "nm2d1_2",
+   "at": [
+    0.0,
+    -3.05
+   ],
+   "text": "3",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==2&&round(dir)==1"
+  },
+  {
+   "type": "text",
+   "id": "nm2d1_3",
+   "at": [
+    2.0,
+    -3.05
+   ],
+   "text": "2",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==2&&round(dir)==1"
+  },
+  {
+   "type": "text",
+   "id": "nm2d1_4",
+   "at": [
+    4.0,
+    -3.05
+   ],
+   "text": "1",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==2&&round(dir)==1"
+  },
+  {
+   "type": "text",
+   "id": "nm21",
+   "at": [
+    0,
+    6.0
+   ],
+   "text": "[[stem|pent]]-[[num|4]]-[[yne|yne]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==2&&round(dir)==1"
+  },
+  {
+   "type": "text",
+   "id": "vd21",
+   "at": [
+    0,
+    -4.9
+   ],
+   "text": "from the right: [[bad|4 is larger — not allowed]]",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==2&&round(dir)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm3_0",
+   "at": [
+    -4.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm3_1",
+   "at": [
+    -2.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm3_2",
+   "at": [
+    0.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm3_3",
+   "at": [
+    2.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm3_4",
+   "at": [
+    4.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm3_5",
+   "at": [
+    -6.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm3_6",
+   "at": [
+    -4.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm3_7",
+   "at": [
+    -4.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm3_8",
+   "at": [
+    -2.0,
+    2.0
+   ],
+   "text": "O",
+   "role": "atomO",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm3_9",
+   "at": [
+    -2.0,
+    4.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm3_10",
+   "at": [
+    -2.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm3_11",
+   "at": [
+    0.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm3_12",
+   "at": [
+    0.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm3_13",
+   "at": [
+    2.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm3_14",
+   "at": [
+    2.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm3_15",
+   "at": [
+    6.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm3_16",
+   "at": [
+    4.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm3_17",
+   "at": [
+    4.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm3_0_0",
+   "from": [
+    -3.48,
+    0.0
+   ],
+   "to": [
+    -2.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm3_1_0",
+   "from": [
+    -1.48,
+    0.0
+   ],
+   "to": [
+    -0.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm3_2_0",
+   "from": [
+    0.52,
+    0.0
+   ],
+   "to": [
+    1.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm3_3_0",
+   "from": [
+    2.52,
+    0.0
+   ],
+   "to": [
+    3.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm3_4_0",
+   "from": [
+    -4.52,
+    0.0
+   ],
+   "to": [
+    -5.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm3_5_0",
+   "from": [
+    -4.0,
+    0.52
+   ],
+   "to": [
+    -4.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm3_6_0",
+   "from": [
+    -4.0,
+    -0.52
+   ],
+   "to": [
+    -4.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm3_7_0",
+   "from": [
+    -2.0,
+    0.52
+   ],
+   "to": [
+    -2.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm3_8_0",
+   "from": [
+    -2.0,
+    2.52
+   ],
+   "to": [
+    -2.0,
+    3.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm3_9_0",
+   "from": [
+    -2.0,
+    -0.52
+   ],
+   "to": [
+    -2.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm3_10_0",
+   "from": [
+    0.0,
+    0.52
+   ],
+   "to": [
+    0.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm3_11_0",
+   "from": [
+    0.0,
+    -0.52
+   ],
+   "to": [
+    0.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm3_12_0",
+   "from": [
+    2.0,
+    0.52
+   ],
+   "to": [
+    2.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm3_13_0",
+   "from": [
+    2.0,
+    -0.52
+   ],
+   "to": [
+    2.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm3_14_0",
+   "from": [
+    4.52,
+    0.0
+   ],
+   "to": [
+    5.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm3_15_0",
+   "from": [
+    4.0,
+    0.52
+   ],
+   "to": [
+    4.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm3_16_0",
+   "from": [
+    4.0,
+    -0.52
+   ],
+   "to": [
+    4.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "rect",
+   "id": "bx3",
+   "x": -2.66,
+   "y": 1.34,
+   "w": 1.32,
+   "h": 3.32,
+   "role": "ol",
+   "fill": "ol",
+   "fillOpacity": 0.13,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "round(mol)==3"
+  },
+  {
+   "type": "text",
+   "id": "nm3d0_0",
+   "at": [
+    -4.0,
+    -3.05
+   ],
+   "text": "1",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==3&&round(dir)==0"
+  },
+  {
+   "type": "text",
+   "id": "nm3d0_1",
+   "at": [
+    -2.0,
+    -3.05
+   ],
+   "text": "2",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==3&&round(dir)==0"
+  },
+  {
+   "type": "text",
+   "id": "nm3d0_2",
+   "at": [
+    0.0,
+    -3.05
+   ],
+   "text": "3",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==3&&round(dir)==0"
+  },
+  {
+   "type": "text",
+   "id": "nm3d0_3",
+   "at": [
+    2.0,
+    -3.05
+   ],
+   "text": "4",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==3&&round(dir)==0"
+  },
+  {
+   "type": "text",
+   "id": "nm3d0_4",
+   "at": [
+    4.0,
+    -3.05
+   ],
+   "text": "5",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==3&&round(dir)==0"
+  },
+  {
+   "type": "text",
+   "id": "nm30",
+   "at": [
+    0,
+    6.0
+   ],
+   "text": "[[stem|pent]][[ane|an]]-[[num|2]]-[[ol|ol]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==3&&round(dir)==0"
+  },
+  {
+   "type": "text",
+   "id": "vd30",
+   "at": [
+    0,
+    -4.9
+   ],
+   "text": "from the left: [[good|2 is smaller — correct]]",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==3&&round(dir)==0"
+  },
+  {
+   "type": "text",
+   "id": "nm3d1_0",
+   "at": [
+    -4.0,
+    -3.05
+   ],
+   "text": "5",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==3&&round(dir)==1"
+  },
+  {
+   "type": "text",
+   "id": "nm3d1_1",
+   "at": [
+    -2.0,
+    -3.05
+   ],
+   "text": "4",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==3&&round(dir)==1"
+  },
+  {
+   "type": "text",
+   "id": "nm3d1_2",
+   "at": [
+    0.0,
+    -3.05
+   ],
+   "text": "3",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==3&&round(dir)==1"
+  },
+  {
+   "type": "text",
+   "id": "nm3d1_3",
+   "at": [
+    2.0,
+    -3.05
+   ],
+   "text": "2",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==3&&round(dir)==1"
+  },
+  {
+   "type": "text",
+   "id": "nm3d1_4",
+   "at": [
+    4.0,
+    -3.05
+   ],
+   "text": "1",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==3&&round(dir)==1"
+  },
+  {
+   "type": "text",
+   "id": "nm31",
+   "at": [
+    0,
+    6.0
+   ],
+   "text": "[[stem|pent]][[ane|an]]-[[num|4]]-[[ol|ol]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==3&&round(dir)==1"
+  },
+  {
+   "type": "text",
+   "id": "vd31",
+   "at": [
+    0,
+    -4.9
+   ],
+   "text": "from the right: [[bad|4 is larger — not allowed]]",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(mol)==3&&round(dir)==1"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Count from the left",
+   "narration": "Number the carbons **from the left**. The double bond starts at C-4, so this numbering gives **hex-4-ene**. But we may count from either end…",
+   "actions": [
+    {
+     "set": {
+      "mol": 1,
+      "dir": 0
+     }
+    },
+    {
+     "pulse": [
+      "bx1"
+     ],
+     "at": 500
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Count from the right",
+   "narration": "Number the same molecule **from the right**. Now the double bond starts at C-2: **hex-2-ene**. It is the same molecule, only counted from the other end.",
+   "actions": [
+    {
+     "set": {
+      "mol": 1,
+      "dir": 1
+     }
+    },
+    {
+     "pulse": [
+      "bx1"
+     ],
+     "at": 500
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Choose the smaller number",
+   "narration": "The rule: **number from the end that gives the smaller number** to the double bond. 2 is smaller than 4, so the correct name is **hex-2-ene**.",
+   "actions": [
+    {
+     "set": {
+      "mol": 1,
+      "dir": 1
+     }
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "The same rule for a triple bond",
+   "narration": "**Pent-1-yne**: from the left the triple bond starts at C-1, from the right at C-4. Choose the smaller: **1**. Check in the Values tab: set “Count from” to the right to see the wrong name.",
+   "actions": [
+    {
+     "set": {
+      "mol": 2,
+      "dir": 0
+     }
+    },
+    {
+     "pulse": [
+      "bx2"
+     ],
+     "at": 500
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "And for the –OH group",
+   "narration": "**Pentan-2-ol**: the –OH is on C-2 counting from the left but on C-4 from the right. The smaller number, **2**, goes in the name.",
+   "actions": [
+    {
+     "set": {
+      "mol": 3,
+      "dir": 0
+     }
+    },
+    {
+     "pulse": [
+      "bx3"
+     ],
+     "at": 500
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "The rule for every position number",
+   "narration": "For a double bond, a triple bond or an –OH group: **number the main chain from the end that gives the smaller number**. The number written in the name is where the group **starts**.",
+   "actions": [
+    {
+     "set": {
+      "mol": 3,
+      "dir": 0
+     }
+    }
+   ]
+  }
+ ],
+ "formulas": [
+  {
+   "title": "The numbering rule",
+   "tex": "\\role{num}{\\text{smaller number}}\\ \\Rightarrow\\ \\text{number the chain from that end}",
+   "text": "Try both ends, compare the two numbers, choose the smaller."
+  },
+  {
+   "title": "The number in the name",
+   "tex": "\\text{stem}\\text{-}\\role{num}{p}\\text{-}\\text{ending}",
+   "text": "p is the carbon where the double bond, triple bond or –OH starts."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which name is correct for **CH₃CH₂CH₂C≡CCH₃**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "hex-1-yne"
+    },
+    {
+     "id": "b",
+     "label": "hex-2-yne"
+    },
+    {
+     "id": "c",
+     "label": "hex-4-yne"
+    },
+    {
+     "id": "d",
+     "label": "hex-3-yne"
+    }
+   ],
+   "answer": "b",
+   "hint": "Count from both ends and take the smaller number.",
+   "explain": "From the left the triple bond starts at C-4, from the right at C-2. Smaller: hex-2-yne."
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "Which position number goes in the name of **CH₃CH₂CH₂CH₂CH=CH₂** (hex-?-ene)?",
+   "answer": 1,
+   "hint": "Count from the end nearest the double bond.",
+   "explain": "From the right the double bond starts at C-1 (from the left it would be C-5). Name: hex-1-ene."
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which name is correct for **CH₃CH₂CH₂CH(OH)CH₃**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "pentan-3-ol"
+    },
+    {
+     "id": "b",
+     "label": "pentan-1-ol"
+    },
+    {
+     "id": "c",
+     "label": "pentan-2-ol"
+    },
+    {
+     "id": "d",
+     "label": "pentan-4-ol"
+    }
+   ],
+   "answer": "c",
+   "hint": "Number from the end nearer to the –OH.",
+   "explain": "From the right the –OH is on C-2, from the left on C-4. Smaller: pentan-2-ol."
+  }
+ ],
+ "takeaways": [
+  "Count the chain from **both ends**; use the end that gives the **smaller** number.",
+  "The number is where the double bond, triple bond or –OH **starts**.",
+  "The same molecule can be counted two ways, but it has only **one** correct name."
+ ],
+ "notes": [
+  {
+   "title": "Exam tip",
+   "text": "Write both numbers on scrap paper (for example 2 or 4), then circle the smaller one. This takes five seconds and saves a mark."
+  }
+ ]
+}

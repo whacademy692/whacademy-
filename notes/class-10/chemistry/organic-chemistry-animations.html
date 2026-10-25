@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Class 10 Chemistry Ch 8 Organic Chemistry: Animated Diagrams &amp; IUPAC Naming Rules | W.H. Academy</title>
+<meta name="description" content="Animated step-by-step diagrams for FBISE Class 10 Chemistry Chapter 8 Organic Chemistry: alkanes, alkenes, alkynes, alcohols, carboxylic acids, esterification, plus the 8 IUPAC naming rules. By W.H. Academy Rawalpindi.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="author" content="M. Rehan Safdar — W.H. Academy">
+<link rel="canonical" href="https://whacademypk.com/notes/class-10/chemistry/organic-chemistry-animations.html">
+<script>
+(function(){try{if(/[?&]embed=1/.test(location.search)){var d=document.documentElement;d.classList.add('embed');d.setAttribute('data-theme','light');}}catch(e){}})();
+</script>
+<style>
+:root{
+  --bg:#f6f4ee; --card:#fffdf8; --ink:#1b2333; --muted:#657089; --line:#ddd7c8; --head:#1f3864; --accent:#2e75b6; --soft:#efece3;
+  --acid:#c4600c; --alc:#2468a8; --new:#13804a; --red:#c93636; --pur:#7240b8; --ox:#b83a27;
+  --ease-out:cubic-bezier(0.23,1,0.32,1); --ease-io:cubic-bezier(0.77,0,0.175,1);
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --spd:1; color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#111622; --card:#192033; --ink:#e7ebf4; --muted:#98a3bb; --line:#2b3550; --head:#a9c4f2; --accent:#6aa9e6; --soft:#202a41;
+  --acid:#f29a4c; --alc:#6fb2ee; --new:#4fcb87; --red:#f27373; --pur:#b99cf2; --ox:#f08c74; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#111622; --card:#192033; --ink:#e7ebf4; --muted:#98a3bb; --line:#2b3550; --head:#a9c4f2; --accent:#6aa9e6; --soft:#202a41;
+  --acid:#f29a4c; --alc:#6fb2ee; --new:#4fcb87; --red:#f27373; --pur:#b99cf2; --ox:#f08c74; color-scheme:dark;}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--sans);padding-block:0 56px}
+.wrap{max-width:780px;margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left)) max(16px,env(safe-area-inset-right))}
+header.top{padding-block:28px 12px}
+.kicker{font:600 12px/1.6 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font:700 clamp(28px,7vw,40px)/1.1 var(--serif);color:var(--head);margin:10px 0 10px;letter-spacing:-.01em}
+.sub{margin:0;color:var(--muted);max-width:58ch}
+nav.toc{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin-top:14px}
+nav.toc .wrap{display:flex;gap:8px;overflow-x:auto;padding-block:10px;scrollbar-width:thin}
+nav.toc a{flex:none;font:600 13px/1 var(--sans);color:var(--head);text-decoration:none;padding:9px 12px;border:1px solid var(--line);border-radius:999px;background:var(--card);min-height:36px;display:inline-flex;align-items:center}
+.part{font:700 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:44px 0 -8px;display:flex;align-items:center;gap:10px}
+.part::after{content:"";flex:1;height:1px;background:var(--line)}
+section.mod{margin-top:26px;scroll-margin-top:64px}
+.mod h2{font:700 clamp(21px,5vw,27px)/1.2 var(--serif);color:var(--head);margin:0 0 6px}
+.mod h2 .num{font:600 12px/1 var(--mono);color:var(--card);background:var(--head);border-radius:6px;padding:4px 7px;margin-right:10px;vertical-align:3px;letter-spacing:.04em}
+.lead{margin:0 0 14px;color:var(--ink);max-width:62ch}
+.lead b{color:var(--head)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.params{display:flex;flex-wrap:wrap;gap:6px 14px;padding:12px 14px 0;align-items:center}
+.params .pl{font:600 12px/1 var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-right:2px}
+.seg{display:inline-flex;flex-wrap:wrap;gap:6px}
+.chip{font:600 14px/1 var(--sans);color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:0 12px;min-height:40px;min-width:40px;cursor:pointer;transition:background-color .15s ease,color .15s ease,border-color .15s ease,transform .16s var(--ease-out)}
+.chip:active{transform:scale(.97)}
+.params .chip{min-height:36px;font-size:13.5px;padding:0 10px;min-width:36px}
+.chip[aria-pressed="true"]{background:var(--head);color:var(--card);border-color:var(--head)}
+.chip:focus-visible,.btn:focus-visible,.dot:focus-visible,.opt:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.chip[disabled]{opacity:.35;cursor:not-allowed}
+.stage{padding:8px 8px 4px;touch-action:manipulation}
+svg.fig{display:block;width:100%;max-width:540px;margin-inline:auto;height:auto;overflow:visible;color:var(--ink)}
+.cap{min-height:5.2em;padding:10px 16px 6px;border-top:1px dashed var(--line);font-size:15.5px;line-height:1.5}
+.cap .st{display:block;font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.cap b{color:var(--head)}
+.ctl{display:flex;align-items:center;gap:8px;padding:8px 12px 14px;flex-wrap:wrap}
+.btn{font:600 14px/1 var(--sans);min-height:44px;min-width:44px;padding:0 14px;border-radius:12px;border:1px solid var(--line);background:var(--soft);color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px;transition:background-color .15s ease,transform .16s var(--ease-out),opacity .15s ease}
+.btn:active{transform:scale(.97)}
+.btn.pri{background:var(--head);border-color:var(--head);color:var(--card);padding:0 18px}
+.btn[disabled]{opacity:.4;cursor:default}
+.dots{display:flex;gap:6px;margin-left:auto;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.dot{width:12px;height:12px;border-radius:50%;border:0;padding:0;background:var(--line);cursor:pointer;position:relative;transition:background-color .2s ease,transform .25s var(--ease-out)}
+.dot::after{content:"";position:absolute;inset:-14px -3px}
+.dot.on{background:var(--head)} .dot.cur{transform:scale(1.35);background:var(--accent)}
+@media (hover:hover) and (pointer:fine){.chip:hover{border-color:var(--accent)}.btn:hover:not([disabled]){background:color-mix(in srgb,var(--accent) 14%,var(--soft))}.btn.pri:hover:not([disabled]){background:var(--accent);border-color:var(--accent)}}
+
+/* ---------- SVG scene ---------- */
+.fig{--tm:calc(850ms / var(--spd));--tf:calc(520ms / var(--spd))}
+.fig .el{transition:transform var(--tm) var(--ease-io),opacity var(--tf) var(--ease-out);will-change:transform,opacity}
+.fig.snap .el{transition:none}
+.fig text{font:600 13px/1 var(--sans);text-anchor:middle;dominant-baseline:central;fill:currentColor;paint-order:stroke;stroke:var(--card);stroke-width:5px;stroke-linejoin:round}
+.fig text.h{fill:var(--muted);font-weight:500}
+.fig text.o{fill:var(--ox)}
+.fig .mono text.h,.fig .mono text.o{fill:currentColor;font-weight:600}
+.fig line,.fig path.ln{stroke:currentColor;stroke-width:2;stroke-linecap:round;fill:none}
+.fig .arm{stroke-dasharray:3 5;opacity:.7}
+.fig text.lb{font:600 12.5px var(--sans);stroke-width:4px}
+.fig text.lb.big{font-size:17px}
+.fig text.lb.sm{font-size:11px;font-weight:500;fill:var(--muted)}
+.fig text.lb.l{text-anchor:start}
+.fig text.num{font:700 11px var(--mono);fill:var(--muted);stroke-width:3px}
+.fig text.badge{font:700 12px var(--mono);stroke-width:0}
+.bx{fill:color-mix(in srgb,currentColor 13%,transparent);stroke:currentColor;stroke-width:1.6}
+.bx.dash{stroke-dasharray:5 4}
+.c-acid{color:var(--acid)} .c-alc{color:var(--alc)} .c-new{color:var(--new)} .c-red{color:var(--red)} .c-pur{color:var(--pur)} .c-mut{color:var(--muted)} .c-ink{color:var(--ink)} .c-head{color:var(--head)}
+.fig .newb line{stroke-width:3.4}
+.tick{fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.t-acid{color:var(--acid)} .t-alc{color:var(--alc)} .t-new{color:var(--new)} .t-red{color:var(--red)} .t-pur{color:var(--pur)}
+
+/* ---------- rules ---------- */
+.rules{display:grid;gap:12px;margin-top:6px}
+.rule{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px 14px 16px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px}
+.rule .rb{display:grid;gap:4px}.rule .rn{font:700 13px/1 var(--mono);color:var(--card);background:var(--head);border-radius:9px;width:40px;height:40px;display:flex;align-items:center;justify-content:center}
+.rule>*{min-width:0}.rule .ex,.rule p,.rule .warn{overflow-wrap:anywhere}
+.rule h3{margin:0;font:700 17px/1.3 var(--serif);color:var(--head)}
+.rule p{margin:0;font-size:15px}
+.rule .ex{font:600 15px/1.5 var(--sans);background:var(--soft);border-radius:10px;padding:8px 10px;margin-top:4px}
+.rule .warn{font-size:14px;color:var(--ox);margin-top:2px}
+.rule .warn::before{content:"Careful: ";font-weight:700}
+.nm .s{color:var(--head)} .nm .p{color:var(--acid)} .nm .f{color:var(--alc)}
+.stems{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:8px 0 2px}
+.stems div{background:var(--soft);border:1px solid var(--line);border-radius:10px;text-align:center;padding:6px 2px;font:600 13px/1.25 var(--sans)}
+.stems b{display:block;font:700 11px var(--mono);color:var(--muted)}
+.checks{display:grid;gap:8px;margin:14px 0 0;padding:0;list-style:none;counter-reset:c}
+.checks li{counter-increment:c;display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 14px;font-size:15px}
+.checks li::before{content:counter(c);flex:none;width:26px;height:26px;border-radius:50%;background:var(--accent);color:var(--card);font:700 13px/26px var(--mono);text-align:center}
+.fmt{margin-top:14px;border:1px dashed var(--line);border-radius:12px;padding:12px 14px;background:var(--card)}
+.fmt h3{margin:0 0 6px;font:700 15px var(--serif);color:var(--head)}
+.fmt ul{margin:0;padding-left:20px;font-size:15px}
+.fmt li{margin:3px 0}
+
+/* ---------- name machine ---------- */
+.tiles{display:flex;flex-wrap:wrap;gap:6px;align-items:flex-end;padding:6px 16px 0}
+.tile{border-radius:10px;padding:8px 12px 6px;font:700 clamp(19px,5.4vw,26px)/1.1 var(--serif);border:1.5px solid currentColor;background:color-mix(in srgb,currentColor 10%,transparent);display:flex;flex-direction:column;gap:4px;transition:opacity .35s var(--ease-out),transform .35s var(--ease-out)}
+.tile small{font:600 10px var(--mono);letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+.tile.pre{opacity:0;transform:translateY(8px)}
+.info{padding:6px 16px 10px;display:grid;gap:4px;font-size:14.5px}
+.info code{font:600 14.5px var(--mono);color:var(--head)}
+.trace{margin:0;padding:0 16px 12px 36px;font-size:14px;color:var(--muted)}
+.trace li{margin:3px 0} .trace b{color:var(--ink)}
+
+/* ---------- identify + quiz ---------- */
+.qlist{list-style:none;margin:0;padding:6px 14px 10px;display:grid;gap:6px}
+.qrow{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:9px 12px;font-size:14.5px;background:var(--soft);transition:background-color .3s ease,border-color .3s ease,opacity .3s ease}
+.qrow .yn{margin-left:auto;font:700 12px var(--mono);min-width:34px;text-align:center;border-radius:6px;padding:4px 6px;opacity:0;transition:opacity .3s ease}
+.qrow.no{opacity:.6} .qrow.no .yn{opacity:1;background:var(--line);color:var(--muted)}
+.qrow.yes{background:color-mix(in srgb,var(--new) 16%,var(--card));border-color:var(--new)} .qrow.yes .yn{opacity:1;background:var(--new);color:var(--card)}
+.qrow.skip{opacity:.35}
+.opts{display:grid;gap:8px;padding:6px 14px 6px}
+.opt{font:600 15px/1.2 var(--sans);text-align:left;min-height:48px;padding:10px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--soft);color:var(--ink);cursor:pointer;transition:background-color .2s ease,border-color .2s ease,transform .16s var(--ease-out)}
+.opt:active{transform:scale(.985)}
+.opt.ok{border-color:var(--new);background:color-mix(in srgb,var(--new) 18%,var(--card))}
+.opt.bad{border-color:var(--red);background:color-mix(in srgb,var(--red) 14%,var(--card))}
+.opt[disabled]{cursor:default}
+.fb{padding:6px 16px 4px;min-height:3.4em;font-size:15px}
+.score{margin-left:auto;font:700 13px var(--mono);color:var(--muted)}
+footer.end{margin-top:44px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:420px){.stems{grid-template-columns:repeat(2,1fr)}.cap{font-size:15px}}
+@media (prefers-reduced-motion:reduce){
+  .fig{--tm:0.01ms}
+  .fig .el{transition:opacity .25s ease}
+  .tile.pre{transform:none}
+}
+</style>
+<style>.fig .mm,.fig .bb{transition:opacity .45s var(--ease-out)}.fig .pre{opacity:0}.fig .bb{transition-delay:.3s}.fig .num.big{font-size:14px}</style>
+<style>html.embed{color-scheme:light}html.embed body{background:transparent;padding-block:0 8px}html.embed header.top,html.embed footer.end{display:none}html.embed nav.toc{position:static;margin-top:0;background:transparent}html.embed section.mod{scroll-margin-top:0}</style>
+</head><body>
+<header class="top"><div class="wrap"><div class="kicker">W.H. Academy · FBISE Class 10 Chemistry · Chapter 8</div><h1>Organic Chemistry, in motion</h1><p class="sub">Press <b>Play</b> on any figure, or step through it with the arrows. Every diagram is drawn live, so what you see follows the textbook rules exactly.</p></div></header>
+<nav class="toc" aria-label="Sections"><div class="wrap" id="tocl"></div></nav>
+<main class="wrap" id="mods"></main>
+<footer class="wrap end">W.H. Academy · whacademypk.com · Class 10 Chemistry, Chapter 8: Organic Chemistry (FBISE)</footer>
+<script>(()=>{
+/* ===== helpers ===== */
+const MODS=[]; const reg=d=>MODS.push(d);
+const $=(s,r=document)=>r.querySelector(s);
+const subDigits=f=>f.replace(/([A-Za-z\)])(\d+)/g,'$1<sub>$2</sub>').replace(/~([^~]+)~/g,'<sub>$1</sub>');
+const rich=s=>s.replace(/\{([^}]+)\}/g,(m,f)=>subDigits(f)).replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>');
+const fmtS=s=>s.replace(/\{([^}]+)\}/g,(m,f)=>f.replace(/([A-Za-z\)])(\d+)/g,'$1~$2~')).split('~').map((p,i)=>i%2?`<tspan font-size="0.74em" dy="3.5">${p}</tspan><tspan dy="-3.5">​</tspan>`:p).join('');
+const f1=n=>(Math.round(n*10)/10);
+const STEM=['','meth','eth','prop','but','pent','hex','hept','oct','non','dec'];
+const ALK=['','methane','ethane','propane','butane','pentane','hexane','heptane','octane','nonane','decane'];
+const ALKYL=['','methyl','ethyl','propyl','butyl','pentyl'];
+
+/* ===== drawing primitives ===== */
+function bond(x1,y1,x2,y2,order=1,g=10,cls=''){
+  const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy)||1,ux=dx/L,uy=dy/L,nx=-uy,ny=ux;
+  const g1=Array.isArray(g)?g[0]:g,g2=Array.isArray(g)?g[1]:g;
+  const ax=x1+ux*g1,ay=y1+uy*g1,bx=x2-ux*g2,by=y2-uy*g2;
+  const offs=order===1?[0]:order===2?[-3.4,3.4]:[-5,0,5];
+  return offs.map(o=>`<line class="${cls}" x1="${f1(ax+nx*o)}" y1="${f1(ay+ny*o)}" x2="${f1(bx+nx*o)}" y2="${f1(by+ny*o)}"/>`).join('');
+}
+const TX=(x,y,t,c='')=>`<text class="${c}" x="${f1(x)}" y="${f1(y)}">${t}</text>`;
+const LB=(x,y,t,c='',extra='')=>`<text class="lb ${c}" x="${f1(x)}" y="${f1(y)}" ${extra}>${fmtS(t)}</text>`;
+const BOX=(cx,cy,w,h,c='')=>`<rect class="bx ${c}" x="${f1(cx-w/2)}" y="${f1(cy-h/2)}" width="${f1(w)}" height="${f1(h)}" rx="9"/>`;
+const BOXR=(x1,y1,x2,y2,c='')=>BOX((x1+x2)/2,(y1+y2)/2,Math.abs(x2-x1),Math.abs(y2-y1),c);
+const E=(id,svg,o={})=>({id,svg,x:o.x||0,y:o.y||0,o:o.o===undefined?1:o.o});
+const G=(c,inner)=>`<g class="${c}">${inner}</g>`;
+const VEC=(d,S)=>({up:[0,-S],down:[0,S],left:[-S,0],right:[S,0]})[d];
+
+/* chain("C-C=C-C^OH") : displayed formula of a straight chain.
+   atoms C/O/H joined by - = # ; sub-groups ^ (up) or v (down): @ (=O), OH, H, X (reserved/empty).
+   returns {svg,pos,subs,S,D,n,W}; local origin = first atom. */
+function chain(spec,o={}){
+  const D=o.D||44,S=D*.86,g=o.g===undefined?10:o.g,cls=o.cls||[];
+  const bs=[],ts=[];
+  spec.split(/([-=#])/).forEach((p,i)=>i%2?bs.push({'-':1,'=':2,'#':3}[p]):ts.push(p));
+  const n=ts.length,sv={'@':2,OH:1,H:1,X:1};
+  const A=ts.map(t=>{const m=t.match(/^([COH])(.*)$/);const s={};m[2].replace(/([\^v])(@|OH|H|X)/g,(q,d,k)=>{s[d==='^'?'up':'down']=k;return q});return{e:m[1],s}});
+  const pos=A.map((a,i)=>({x:i*D,y:0,e:a.e}));
+  let bsv='',asv='';const subs=[],at=[],bd=[];
+  for(let i=0;i<n-1;i++){bd[i]=bond(pos[i].x,0,pos[i+1].x,0,bs[i],g);bsv+=bd[i]}
+  A.forEach((a,i)=>{
+    const x=pos[i].x;let used=(i>0?bs[i-1]:0)+(i<n-1?bs[i]:0);
+    for(const d in a.s)used+=sv[a.s[d]];
+    const h=a.e==='C'?4-used:0,slots=[];
+    if(i===0)slots.push('left');if(i===n-1)slots.push('right');if(!a.s.up)slots.push('up');if(!a.s.down)slots.push('down');
+    if(h>slots.length||h<0)console.warn('valence problem',spec,i,h,slots);
+    let b='',t=TX(x,0,a.e,a.e==='O'?'o':a.e==='H'?'h':'');
+    slots.slice(0,Math.max(h,0)).forEach(d=>{const[v,w]=VEC(d,S);b+=bond(x,0,x+v,w,1,9);t+=TX(x+v,w,'H','h');subs.push({i,dir:d,type:'H',x:x+v,y:w,x2:x+v,y2:w})});
+    for(const d in a.s){
+      const k=a.s[d];if(k==='X')continue;const[v,w]=VEC(d,S);
+      if(k==='@'){b+=bond(x,0,x+v,w,2,9);t+=TX(x+v,w,'O','o');subs.push({i,dir:d,type:'@',x:x+v,y:w,x2:x+v,y2:w})}
+      else if(k==='H'){b+=bond(x,0,x+v,w,1,9);t+=TX(x+v,w,'H','h');subs.push({i,dir:d,type:'H',x:x+v,y:w,x2:x+v,y2:w})}
+      else{b+=bond(x,0,x+v,w,1,9)+bond(x+v,w,x+2*v,2*w,1,9);t+=TX(x+v,w,'O','o')+TX(x+2*v,2*w,'H','h');subs.push({i,dir:d,type:'OH',x:x+v,y:w,x2:x+2*v,y2:2*w})}
+    }
+    at[i]=b+t;const c=cls[i];
+    if(c){bsv+=`<g class="${c} mono">${b}${t}</g>`}else{bsv+=b;asv+=t}
+  });
+  return{svg:bsv+asv,pos,subs,S,D,n,W:(n-1)*D,at,bd};
+}
+/* small number labels under the carbons */
+const NUMS=(pos,labels,y,c='num')=>pos.map((p,i)=>labels[i]==null?'':`<text class="${c}" x="${f1(p.x)}" y="${f1(y)}">${labels[i]}</text>`).join('');
+const TICK=(x,y,c='')=>`<path class="tick ${c}" d="M${x-7} ${y} l5 6 l10 -12"/>`;
+const CROSS=(x,y,c='')=>`<path class="tick ${c}" d="M${x-6} ${y-6} l12 12 M${x+6} ${y-6} l-12 12"/>`;
+
+/* ===== step player ===== */
+const ICON={
+  play:'<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>',
+  pause:'<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5h3v11H4zM9 2.5h3v11H9z" fill="currentColor"/></svg>',
+  replay:'<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8a5 5 0 1 0 1.6-3.7M3 2.5v3h3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  prev:'<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  next:'<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+};
+function shell(def){
+  const s=document.createElement('section');s.className='mod';s.id=def.id;
+  s.innerHTML=`<h2><span class="num">${def.num}</span>${def.title}</h2><p class="lead">${rich(def.lead)}</p><div class="card"></div>`;
+  return s;
+}
+function mountSteps(def,card){
+  card.innerHTML=`<div class="params" hidden></div><div class="stage" tabindex="0"><svg class="fig snap" role="img" xmlns="http://www.w3.org/2000/svg"></svg></div><div class="cap" aria-live="polite"></div>
+  <div class="ctl"><button class="btn" data-a="prev" aria-label="Previous step">${ICON.prev}</button><button class="btn pri" data-a="play"></button><button class="btn" data-a="next" aria-label="Next step">${ICON.next}</button><button class="btn" data-a="spd" aria-label="Speed">1×</button><div class="dots"></div></div>`;
+  const svg=$('svg',card),cap=$('.cap',card),dots=$('.dots',card),pb=$('[data-a=play]',card),prev=$('[data-a=prev]',card),next=$('[data-a=next]',card),spdB=$('[data-a=spd]',card),pbox=$('.params',card);
+  let P={},cur=0,N=1,cum=[],steps=[],ids=[],nodes={},timer=null,playing=false,spd=1;
+  (def.params||[]).forEach(p=>{P[p.k]=p.def});
+  const SPD=[1,2,.5];
+  function drawParams(){
+    if(!def.params)return;pbox.hidden=false;pbox.innerHTML='';
+    def.params.forEach(p=>{
+      const opts=typeof p.opts==='function'?p.opts(P):p.opts;
+      if(!opts.some(o=>o.v===P[p.k]))P[p.k]=opts[0].v;
+      const w=document.createElement('div');w.className='seg';w.setAttribute('role','group');w.setAttribute('aria-label',p.label);
+      const l=document.createElement('span');l.className='pl';l.textContent=p.label;
+      w.appendChild(l);
+      opts.forEach(o=>{const b=document.createElement('button');b.className='chip';b.type='button';b.innerHTML=rich(o.t);b.setAttribute('aria-pressed',String(o.v===P[p.k]));
+        b.onclick=()=>{P[p.k]=o.v;drawParams();build(true)};w.appendChild(b)});
+      pbox.appendChild(w);
+    });
+  }
+  function build(){
+    stop();const sc=def.make(P);steps=sc.steps;N=steps.length;
+    svg.setAttribute('viewBox',`0 0 ${sc.vb[0]} ${sc.vb[1]}`);svg.setAttribute('aria-label',sc.alt||def.alt||def.title);
+    svg.innerHTML=sc.els.map(e=>`<g class="el" data-id="${e.id}">${e.svg}</g>`).join('');
+    nodes={};ids=sc.els.map(e=>e.id);svg.querySelectorAll(':scope > .el').forEach(n=>nodes[n.dataset.id]=n);
+    let s={};sc.els.forEach(e=>s[e.id]={x:e.x,y:e.y,o:e.o,d:0});cum=[];
+    steps.forEach(st=>{
+      const n={};ids.forEach(i=>n[i]={...s[i],d:0});
+      const ch=st.st||{};
+      (st.show||[]).forEach(i=>{n[i].o=1;});(st.hide||[]).forEach(i=>{n[i].o=0;});
+      for(const i in ch){if(!n[i]){console.warn('unknown id',def.id,i);continue}Object.assign(n[i],ch[i])}
+      cum.push(n);s=n;
+    });
+    dots.innerHTML='';steps.forEach((st,i)=>{const b=document.createElement('button');b.className='dot';b.type='button';b.setAttribute('aria-label','Go to step '+(i+1));b.onclick=()=>{stop();go(i)};dots.appendChild(b)});
+    cur=0;apply(0,true);
+  }
+  function apply(i,instant){
+    if(instant)svg.classList.add('snap');
+    const st=cum[i];
+    for(const id of ids){const n=nodes[id],v=st[id];n.style.transform=`translate(${v.x}px,${v.y}px)`;n.style.opacity=v.o;n.style.transitionDelay=instant?'0ms':(v.d||0)+'ms'}
+    if(instant){svg.getBoundingClientRect();requestAnimationFrame(()=>svg.classList.remove('snap'))}
+    cur=i;cap.innerHTML=`<span class="st">Step ${i+1} of ${N}</span>${rich(steps[i].cap)}`;
+    [...dots.children].forEach((d,k)=>{d.className='dot'+(k<i?' on':'')+(k===i?' cur':'')});
+    prev.disabled=i===0;next.disabled=i===N-1;setPB();
+  }
+  function go(i){apply(Math.max(0,Math.min(N-1,i)),false)}
+  function setPB(){pb.innerHTML=playing?ICON.pause+'Pause':(cur>=N-1?ICON.replay+'Replay':ICON.play+'Play')}
+  function stop(){clearTimeout(timer);playing=false;setPB()}
+  function tick(){if(!playing)return;if(cur<N-1){go(cur+1);timer=setTimeout(tick,(steps[cur].hold||2800)/spd)}else stop()}
+  function play(){
+    if(playing){stop();return}
+    playing=true;
+    if(cur>=N-1){apply(0,true);setPB();timer=setTimeout(()=>{go(1);timer=setTimeout(tick,(steps[1].hold||2800)/spd)},350)}
+    else{go(cur+1);setPB();timer=setTimeout(tick,(steps[cur].hold||2800)/spd)}
+  }
+  pb.onclick=play;prev.onclick=()=>{stop();go(cur-1)};next.onclick=()=>{stop();go(cur+1)};
+  spdB.onclick=()=>{spd=SPD[(SPD.indexOf(spd)+1)%3];spdB.textContent=spd+'×';svg.style.setProperty('--spd',spd)};
+  $('.stage',card).addEventListener('keydown',e=>{if(e.key==='ArrowRight'){stop();go(cur+1)}else if(e.key==='ArrowLeft'){stop();go(cur-1)}});
+  drawParams();build();
+}
+/* ================= PART A : STRUCTURE BASICS ================= */
+reg({id:'bonds',part:'Part A · Drawing structures',nav:'4 bonds',num:'8.1',title:'Carbon always makes four bonds',
+lead:'Every carbon atom shares **four** pairs of electrons. Watch methane being built, then see what goes wrong when you draw five.',
+alt:'Carbon atom with four bonding arms being filled by four hydrogen atoms to make methane',
+make(){
+  const cx=200,cy=118,R=72,dirs=[[0,-R],[R,0],[0,R],[-R,0]],nm=['up','right','down','left'];
+  const els=[
+    E('c',`<text style="font-size:28px;font-weight:700" x="${cx}" y="${cy}">C</text>`),
+  ];
+  dirs.forEach((d,i)=>{
+    const ex=cx+d[0],ey=cy+d[1],ox=d[0]*.4,oy=d[1]*.4;
+    els.push(E('a'+i,bond(cx,cy,ex,ey,1,[17,6],'arm')+`<text class="num" x="${ex+d[0]*.18}" y="${ey+d[1]*.18+(d[1]?0:-12)}">${i+1}</text>`));
+    els.push(E('h'+i,bond(cx,cy,ex,ey,1,[17,11])+TX(ex,ey,'H','h'),{x:ox,y:oy,o:0}));
+  });
+  els.push(E('h5',`<line class="arm" x1="${cx+14}" y1="${cy-14}" x2="${cx+52}" y2="${cy-52}"/>`+TX(cx+62,cy-62,'H','h'),{x:20,y:-20,o:0}));
+  els.push(E('ringbad',`<circle cx="${cx}" cy="${cy}" r="40" fill="none" stroke="var(--red)" stroke-width="2.4" stroke-dasharray="5 4"/>`,{o:0}));
+  els.push(E('ringok',`<circle cx="${cx}" cy="${cy}" r="40" fill="none" stroke="var(--new)" stroke-width="2.4"/>`,{o:0}));
+  for(let i=0;i<4;i++){
+    els.push(E('v'+i,`<circle cx="${cx-48+i*32}" cy="252" r="9" fill="none" stroke="var(--muted)" stroke-width="1.6"/>`));
+    els.push(E('f'+i,`<circle cx="${cx-48+i*32}" cy="252" r="9" fill="var(--head)"/>`,{o:0}));
+  }
+  els.push(E('t0',LB(cx,282,'bonds used: 0 of 4','c-mut'),{}));
+  els.push(E('t4',LB(cx,282,'bonds used: 4 of 4  ✓  methane, {CH4}','c-new'),{o:0}));
+  els.push(E('t5',LB(cx,282,'bonds used: 5 of 4  ✗  impossible','c-red'),{o:0}));
+  const S=[
+    {cap:'Carbon has **4** electrons to share, so it forms exactly **four** covalent bonds. Four open arms, each waiting for a partner.',hold:3200},
+    {cap:'Hydrogen has **1** electron to share, so each H takes **one** arm. First H joins.',st:{h0:{x:0,y:0,o:1},a0:{o:0},f0:{o:1}}},
+    {cap:'Second H joins arm 2.',st:{h1:{x:0,y:0,o:1},a1:{o:0},f1:{o:1}}},
+    {cap:'Third H joins arm 3.',st:{h2:{x:0,y:0,o:1},a2:{o:0},f2:{o:1}}},
+    {cap:'Fourth H joins arm 4. All four bonds are used: **methane**, {CH4}. Stable.',st:{h3:{x:0,y:0,o:1},a3:{o:0},f3:{o:1},ringok:{o:1},t0:{o:0},t4:{o:1}}},
+    {cap:'**Mistake 1:** drawing a fifth bond. Carbon has only four arms, so a fifth H has nowhere to attach.',st:{h5:{x:0,y:0,o:1},ringok:{o:0},ringbad:{o:1},t4:{o:0},t5:{o:1}}},
+    {cap:'Rule: **count the bonds on every carbon.** It must be 4 – no more, no less. The extra H is removed.',st:{h5:{x:22,y:-22,o:0},ringbad:{o:0},ringok:{o:1},t5:{o:0},t4:{o:1}}}
+  ];
+  return{vb:[400,300],els,steps:S};
+}});
+
+reg({id:'ways',nav:'3 formulas',num:'8.1',title:'Three ways to write one molecule',
+lead:'Propane written as a molecular, condensed and displayed formula. The colours show which atoms belong to the same carbon.',
+alt:'Propane drawn as molecular formula, condensed formula and displayed formula with matching colours',
+make(){
+  const cl=['c-acid','c-alc','c-new'],els=[];
+  els.push(E('l1',LB(16,18,'1 · MOLECULAR FORMULA','sm l')));
+  els.push(E('m',`<text class="lb big" style="font-size:26px" x="200" y="56">${fmtS('{C3H8}')}</text><text class="lb sm" x="200" y="82">3 carbons + 8 hydrogens</text>`));
+  els.push(E('ar1',`<path class="ln c-mut" d="M200 96 v22 m-6 -6 l6 6 l6 -6"/>`+LB(212,106,'group the atoms','sm l'),{o:0}));
+  els.push(E('l2',LB(16,142,'2 · CONDENSED FORMULA','sm l'),{o:0}));
+  ['CH3','CH2','CH3'].forEach((t,i)=>els.push(E('g'+i,`<text class="lb ${cl[i]}" style="font-size:25px" x="${142+i*58}" y="176">${fmtS('{'+t+'}')}</text>`,{y:-52,o:0})));
+  els.push(E('ar2',`<path class="ln c-mut" d="M200 196 v22 m-6 -6 l6 6 l6 -6"/>`+LB(212,206,'draw every bond','sm l'),{o:0}));
+  els.push(E('l3',LB(16,232,'3 · DISPLAYED FORMULA','sm l'),{o:0}));
+  const c=chain('C-C-C',{D:58,cls:cl});
+  els.push(E('d',c.svg,{x:142,y:322,o:0}));
+  [0,1,2].forEach(i=>els.push(E('k'+i,LB(142+i*58,388,'4 ✓','badge c-new'),{o:0})));
+  const S=[
+    {cap:'**Molecular formula** {C3H8} only counts atoms. It does not show how they are joined.'},
+    {cap:'**Condensed formula** groups the atoms carbon by carbon: {CH3}–{CH2}–{CH3}. Each colour is one carbon with its hydrogens.',
+      st:{ar1:{o:1},l2:{o:1},g0:{y:0,o:1},g1:{y:0,o:1,d:140},g2:{y:0,o:1,d:280}}},
+    {cap:'**Displayed formula** shows every atom and every bond. Same colour, same carbon.',st:{ar2:{o:1},l3:{o:1},d:{y:322-20,o:1}}},
+    {cap:'Check: every carbon has **4 bonds**. If the exam says "draw the structure", give the displayed formula.',st:{k0:{o:1},k1:{o:1,d:120},k2:{o:1,d:240}}}
+  ];
+  return{vb:[400,404],els,steps:S};
+}});
+
+reg({id:'families',nav:'Families',num:'8.1',title:'Six families, six functional groups',
+lead:'A **functional group** decides the family and the chemistry. Tap Play and watch each group get boxed.',
+alt:'Six families: alkane, alkene, alkyne, alcohol, carboxylic acid, ester, each with a boxed functional group',
+make(){
+  const R=[
+    {n:'Alkane',e:'ending -ane',spec:'C-C-C',tag:'C–C only',c:'c-mut',box:m=>null,cap:'**Alkanes**: only single C–C bonds, no special group. Example: propane. Ending **-ane**.'},
+    {n:'Alkene',e:'ending -ene',spec:'C=C-C',tag:'C=C',c:'c-red',box:m=>BOXR(m.pos[0].x-14,-15,m.pos[1].x+14,15,'c-red'),cap:'**Alkenes** contain a carbon–carbon **double bond** C=C. Example: propene. Ending **-ene**.'},
+    {n:'Alkyne',e:'ending -yne',spec:'C#C-C',tag:'C≡C',c:'c-pur',box:m=>BOXR(m.pos[0].x-14,-16,m.pos[1].x+14,16,'c-pur'),cap:'**Alkynes** contain a carbon–carbon **triple bond** C≡C. Example: propyne. Ending **-yne**.'},
+    {n:'Alcohol',e:'ending -ol',spec:'C-C-O-H',tag:'–OH',c:'c-alc',box:m=>BOXR(m.pos[2].x-14,-15,m.pos[3].x+14,15,'c-alc'),cap:'**Alcohols** carry the hydroxyl group **–OH**. Example: ethanol. Ending **-ol**.'},
+    {n:'Carboxylic acid',e:'ending -oic acid',spec:'C-C^@-O-H',tag:'–COOH',c:'c-acid',box:m=>BOXR(m.pos[1].x-14,-m.S-14,m.pos[3].x+14,15,'c-acid'),cap:'**Carboxylic acids** carry **–COOH**: a C=O and an O–H on the same carbon. Example: ethanoic acid. Ending **-oic acid**.'},
+    {n:'Ester',e:'ending -yl …oate',spec:'C-C^@-O-C',tag:'–COO–',c:'c-new',box:m=>BOXR(m.pos[1].x-14,-m.S-14,m.pos[2].x+14,15,'c-new'),cap:'**Esters** have **–COO–** joining an acid part to an alcohol part. Example: methyl ethanoate. Ending **-yl … -oate**.'}
+  ];
+  const els=[],S=[],P=86,y0=54,st0={};
+  R.forEach((r,i)=>{
+    const y=y0+i*P,m=chain(r.spec,{D:31});
+    els.push(E('r'+i,`<text class="lb l" style="font-size:14px" x="14" y="${y-8}">${r.n}</text><text class="lb sm l" x="14" y="${y+12}">${r.e}</text><g transform="translate(176 ${y+4})">${m.svg}</g>`,{x:-26,o:0}));
+    const b=r.box(m);
+    if(b)els.push(E('b'+i,`<g transform="translate(176 ${y+4})">${b}</g>`,{o:0}));
+    els.push(E('t'+i,`<text class="lb ${r.c}" style="font-size:14px;text-anchor:end" x="388" y="${y+4}">${r.tag}</text>`,{o:0}));
+    const st={['r'+i]:{x:0,o:1},['t'+i]:{o:1,d:500}};if(b)st['b'+i]={o:1,d:380};
+    S.push({cap:r.cap,st,hold:3000});
+  });
+  els.push(E('sum',LB(200,y0+6*P-12,'Spot the group → name the family','c-head','style="font-size:15px"'),{o:0}));
+  S.push({cap:'Find the group first, then you know the family and its ending. This is how every compound in this chapter is identified.',st:{sum:{o:1}}});
+  return{vb:[400,y0+6*P+16],els,steps:S};
+}});
+
+reg({id:'alkanes',part:'Part B · Naming',nav:'Alkanes',num:'8.2',title:'Alkanes grow by one CH₂ at a time',
+lead:'Add one carbon and two hydrogens and you get the next alkane. The formula pattern is {C~n~H~2n+2~}.',
+alt:'Methane to pentane, each new member adding one carbon, with a formula chip row',
+make(){
+  const els=[],S=[],nm=['methane','ethane','propane','butane','pentane'];
+  for(let k=1;k<=5;k++){
+    const cl=Array(k).fill('');cl[k-1]='c-new';
+    const m=chain(Array(k).fill('C').join('-'),{D:42,cls:cl});
+    els.push(E('m'+k,m.svg,{x:200-m.W/2+(k===1?0:0),y:112,o:k===1?1:0}));
+    const cx=44+(k-1)*78;
+    els.push(E('c'+k,BOX(cx,0,70,52,'c-head')+`<text class="lb" style="font-size:14px" x="${cx}" y="-8">${fmtS(k===1?'{CH4}':'{C'+k+'H'+(2*k+2)+'}')}</text><text class="lb sm" x="${cx}" y="12">${nm[k-1]}</text>`,{y:262,o:k===1?1:0}));
+    if(k>1)els.push(E('p'+k,LB(cx-39,228,'+CH₂','badge c-new'),{o:0}));
+  }
+  els.push(E('pat',`<text class="lb c-head" style="font-size:19px" x="200" y="340">${fmtS('{C~n~H~2n+2~}')}</text><text class="lb sm" x="200" y="364">n carbons → 2n + 2 hydrogens</text>`,{o:0}));
+  S.push({cap:'**Methane**, {CH4}: one carbon with four hydrogens. The green carbon is the newest member.'});
+  for(let k=2;k<=5;k++){
+    S.push({cap:`**${nm[k-1][0].toUpperCase()+nm[k-1].slice(1)}**, {${k===1?'CH4':'C'+k+'H'+(2*k+2)}}: one more carbon and two more hydrogens (+{CH2}). Name = stem **${STEM[k]}** + **ane**.`,
+      st:{['m'+(k-1)]:{o:0,x:200-chain(Array(k-1).fill('C').join('-'),{D:42}).W/2-18},['m'+k]:{o:1},['c'+k]:{o:1,d:180},['p'+k]:{o:1,d:260}}});
+  }
+  S.push({cap:'Pattern: hydrogens = **2n + 2**. Check: butane has n = 4 → 2(4) + 2 = 10 H, so {C4H10}.',st:{pat:{o:1}}});
+  return{vb:[400,380],els,steps:S};
+}});
+/* ================= alkenes / alkynes ================= */
+reg({id:'unsat',nav:'Double & triple',num:'8.2',title:'Remove hydrogens, add bonds',
+lead:'Alkenes and alkynes have fewer hydrogens than the alkane. The carbons make up the difference by sharing more electron pairs.',
+alt:'Ethane losing hydrogen to become ethene with a double bond, then ethyne with a triple bond',
+make(){
+  const x1=140,x2=260,y=128,S=46,els=[];
+  const hb=(cx,cy,dx,dy)=>bond(cx,cy,cx+dx,cy+dy,1,[10,10])+TX(cx+dx,cy+dy,'H','h');
+  els.push(E('cc',TX(x1,y,'C')+TX(x2,y,'C')));
+  const L=(oy,id,o)=>E(id,`<line x1="${x1+10}" y1="${y}" x2="${x2-10}" y2="${y}"/>`,{y:oy,o});
+  els.push(L(0,'bc',1),L(0,'bu',0),L(0,'bd',0));
+  els.push(E('hL',hb(x1,y,-S,0)),E('hR',hb(x2,y,S,0)));
+  els.push(E('hu1',hb(x1,y,0,-S)),E('hu2',hb(x2,y,0,-S)),E('hd1',hb(x1,y,0,S)),E('hd2',hb(x2,y,0,S)));
+  els.push(E('h2b',LB(200,y+S+36,'{H2}','c-mut','style="font-size:15px"'),{o:0}));
+  els.push(E('h2t',LB(200,y-S-36,'{H2}','c-mut','style="font-size:15px"'),{o:0}));
+  els.push(E('bxe',BOXR(x1-20,y-17,x2+20,y+17,'c-red'),{o:0}));
+  els.push(E('bxy',BOXR(x1-20,y-19,x2+20,y+19,'c-pur'),{o:0}));
+  const nm=(id,t,d,c)=>E(id,`<text class="lb ${c}" style="font-size:19px" x="200" y="262">${fmtS(t)}</text><text class="lb sm" x="200" y="286">${fmtS(d)}</text>`,{o:0});
+  els.push(nm('n0','Ethane  {C2H6}','alkane · only single bonds · ends in -ane','c-ink'),nm('n1','Ethene  {C2H4}','alkene · C=C double bond · ends in -ene','c-red'),nm('n2','Ethyne  {C2H2}','alkyne · C≡C triple bond · ends in -yne','c-pur'));
+  els[els.length-3].o=1;
+  const S1=[
+    {cap:'**Ethane**, {C2H6}: one C–C single bond and six hydrogens. Every carbon has 4 bonds (1 + 3 H).'},
+    {cap:'Remove **one H from each carbon**. Each carbon now has a free arm, and the two H atoms leave as {H2}.',
+      st:{hd1:{x:56,y:30,o:0},hd2:{x:-56,y:30,o:0,d:0},h2b:{o:1,d:420}}},
+    {cap:'The carbons share a **second pair** of electrons: a **double bond**, C=C. Check: 2 + 1 + 1 = **4** bonds on each carbon. Name: eth + **ene** = **ethene**.',
+      st:{bc:{o:0},bu:{y:-3.6,o:1},bd:{y:3.6,o:1},bxe:{o:1,d:300},h2b:{o:0,y:34},n0:{o:0},n1:{o:1,d:200}}},
+    {cap:'Remove **one more H from each carbon**. Two more free arms, and two more H atoms leave.',
+      st:{hu1:{x:56,y:-30,o:0},hu2:{x:-56,y:-30,o:0},h2t:{o:1,d:420}}},
+    {cap:'Now the carbons share a **third pair**: a **triple bond**, C≡C. Check: 3 + 1 = **4** bonds on each carbon. Name: eth + **yne** = **ethyne**.',
+      st:{bc:{o:1},bu:{y:-5.4},bd:{y:5.4},bxe:{o:0},bxy:{o:1,d:300},h2t:{o:0,y:-34},n1:{o:0},n2:{o:1,d:200}}},
+    {cap:'Fewer hydrogens, more bonds between carbons: **single → double → triple** gives **-ane → -ene → -yne**.',hold:3600}
+  ];
+  return{vb:[400,306],els,steps:S1};
+}});
+
+/* ================= numbering ================= */
+const NUMEX={
+  '1':{spec:'C-C=C-C-C',i:1,t:'pent-2-ene'},'2':{spec:'C-C-C=C-C',i:2,t:'pent-2-ene'},
+  '3':{spec:'C=C-C-C',i:0,t:'but-1-ene'},'4':{spec:'C-C-C=C',i:2,t:'but-1-ene'},'5':{spec:'C-C=C-C',i:1,t:'but-2-ene'}
+};
+reg({id:'numbering',nav:'Numbering',num:'8.2',title:'Which end do you number from?',
+lead:'Try both ends and keep the **smaller** number for the double bond. Pick an example and press Play.',
+alt:'A carbon chain numbered from the left and from the right to find the smaller position for the double bond',
+params:[{k:'ex',label:'Example',def:'1',opts:Object.keys(NUMEX).map(k=>({v:k,t:k}))}],
+make(P){
+  const m=NUMEX[P.ex],n=m.spec.split('-').join('=').split('=').length,i=m.i;
+  const D=n===5?62:72,x0=(400-(n-1)*D)/2,y=100;
+  const ch=chain(m.spec,{D});
+  const lA=i+1,rA=n-(i+1),win=lA<rA?'A':lA>rA?'B':'AB';
+  const els=[E('mol',`<g transform="translate(${x0} ${y})">${ch.svg}</g>`)];
+  els.push(E('bx',`<g transform="translate(${x0} ${y})">${BOXR(ch.pos[i].x-16,-17,ch.pos[i+1].x+16,17,'c-red')}</g>`));
+  const rowA=176,rowB=232;
+  for(let k=0;k<n;k++){
+    els.push(E('a'+k,`<text class="num c-acid" style="font-size:15px;fill:var(--acid)" x="${x0+k*D}" y="${rowA}">${k+1}</text>`,{o:0}));
+    els.push(E('b'+k,`<text class="num c-alc" style="font-size:15px;fill:var(--alc)" x="${x0+k*D}" y="${rowB}">${n-k}</text>`,{o:0}));
+  }
+  els.push(E('ba',LB(200,rowA+24,'numbered from the left: bond starts at C'+lA,'c-acid'),{o:0}));
+  els.push(E('bb',LB(200,rowB+24,'numbered from the right: bond starts at C'+rA,'c-alc'),{o:0}));
+  const mk=(x,yy,ok)=>ok?`<g transform="translate(${x} ${yy})">${TICK(0,0,'c-new')}</g>`:`<g transform="translate(${x} ${yy})">${CROSS(0,0,'c-red')}</g>`;
+  els.push(E('mA',mk(28,rowA+2,win.includes('A')),{o:0}),E('mB',mk(28,rowB+2,win.includes('B')),{o:0}));
+  els.push(E('win',LB(200,296,win==='AB'?'Same from both ends: the position is '+lA:'Smaller number wins: use '+Math.min(lA,rA),'c-new','style="font-size:14px"'),{o:0}));
+  const parts=m.t.split('-');
+  els.push(E('nm',`<text class="lb" style="font-size:30px;font-family:var(--serif);font-weight:700" x="200" y="344"><tspan fill="var(--head)">${parts[0]}-</tspan><tspan fill="var(--acid)">${parts[1]}</tspan><tspan fill="var(--alc)">-${parts[2]}</tspan></text>`,{o:0}));
+  const S=[
+    {cap:`This chain has **${n} carbons** (stem **${STEM[n]}**) and one C=C. Numbering may start from **either** end, so try both.`},
+    {cap:`**From the left:** the double bond starts on carbon **${lA}**.`,st:Object.assign({ba:{o:1,d:300},mA:{o:1,d:300}},...[...Array(n).keys()].map(k=>({['a'+k]:{o:1,d:k*70}})))},
+    {cap:`**From the right:** the double bond starts on carbon **${rA}**.`,st:Object.assign({bb:{o:1,d:300},mB:{o:1,d:300}},...[...Array(n).keys()].map(k=>({['b'+k]:{o:1,d:k*70}})))},
+    {cap:win==='AB'?`Both ends give **${lA}**, so there is no difference. Use ${lA}.`:`Compare **${lA}** and **${rA}**. The rule: choose the end that gives the **smaller number**, so the position is **${Math.min(lA,rA)}**.`,st:{win:{o:1}}},
+    {cap:`Name = stem **${parts[0]}** + position **${parts[1]}** + ending **ene** = **${m.t}**.`,st:{nm:{o:1}},hold:3400}
+  ];
+  return{vb:[400,370],els,steps:S};
+}});
+/* ================= alcohols: the OH hop ================= */
+reg({id:'alcohol',nav:'Alcohols',num:'8.2.3',title:'Where is the –OH? Position matters',
+lead:'Propan-1-ol and propan-2-ol have the same atoms. Watch the –OH hop from carbon 1 to carbon 2.',
+alt:'Propane skeleton where a hydroxyl group moves from the end carbon to the middle carbon, turning propan-1-ol into propan-2-ol',
+make(){
+  const D=56,S=D*.86,x0=144,y0=196,els=[];
+  const sk=chain('C^X-C^X-C',{D});
+  const T=(inner)=>`<g transform="translate(${x0} ${y0})">${inner}</g>`;
+  els.push(E('sk',T(sk.svg)));
+  const ohg=bond(0,0,0,-S,1,[10,10])+bond(0,-S,0,-2*S,1,[10,10])+TX(0,-S,'O','o')+TX(0,-2*S,'H','h');
+  const hg=bond(0,0,0,-S,1,[10,10])+TX(0,-S,'H','h');
+  els.push(E('oh',T(ohg)));
+  els.push(E('bxo',T(BOXR(-17,-2*S-14,17,-S+15,'c-alc'))));
+  els.push(E('hh',`<g transform="translate(${x0+D} ${y0})">${hg}</g>`));
+  els.push(E('nu',T(NUMS(sk.pos,[1,2,3],S+30))));
+  const nm=(id,loc,o)=>E(id,`<text class="lb" style="font-size:26px;font-family:var(--serif);font-weight:700" x="200" y="${y0+S+78}"><tspan fill="var(--head)">propan-</tspan><tspan fill="var(--acid)">${loc}</tspan><tspan fill="var(--alc)">-ol</tspan></text>`,{o});
+  els.push(nm('nA','1',1),nm('nB','2',0));
+  els.push(E('same',LB(200,y0+S+112,'both are {C3H8O} · same formula, different structure','c-new'),{o:0}));
+  const S1=[
+    {cap:'**Propan-1-ol.** The –OH is on **carbon 1**, an end carbon. Numbering starts from the –OH end, so the name carries **-1-**.'},
+    {cap:'Now imagine the –OH lets go of carbon 1 and lifts away.',st:{oh:{y:-56},bxo:{y:-56}}},
+    {cap:'It slides across to **carbon 2**, while the H that sat there moves to carbon 1. Every carbon still has four bonds.',st:{oh:{x:D,y:-56},bxo:{x:D,y:-56},hh:{x:-D}}},
+    {cap:'The –OH settles on the **middle carbon**: **propan-2-ol**. The number in the name tells you where the –OH is.',st:{oh:{x:D,y:0},bxo:{x:D,y:0},nA:{o:0},nB:{o:1}}},
+    {cap:'Both compounds are {C3H8O}. Same molecular formula, **different structure**, so they are different compounds with different names.',st:{same:{o:1}},hold:3600}
+  ];
+  return{vb:[400,y0+S+132],els,steps:S1};
+}});
+
+/* ================= carboxylic acids ================= */
+reg({id:'acid',nav:'Acids',num:'8.2.4',title:'Building the –COOH group',
+lead:'The carboxyl group is **two** things on the **same carbon**: a C=O and an O–H. Choose a chain length and step through.',
+alt:'A carboxylic acid with its C=O and O-H highlighted, numbered from the carboxyl carbon',
+params:[{k:'n',label:'Carbons',def:4,opts:[1,2,3,4,5].map(v=>({v,t:String(v)}))}],
+make(P){
+  const n=P.n,spec=(Array(n-1).fill('C').concat(['C^@'])).join('-')+'-O-H',cnt=n+2;
+  const D=Math.min(48,Math.floor(300/cnt)),ch=chain(spec,{D}),S=ch.S,x0=(400-ch.W)/2,y0=118,els=[];
+  const T=i=>`<g transform="translate(${x0} ${y0})">${i}</g>`;
+  els.push(E('mol',T(ch.svg)));
+  const px=ch.pos;
+  els.push(E('bO',T(BOX(px[n-1].x,-S,30,30,'c-red')),{o:0}));
+  els.push(E('bH',T(BOXR(px[n].x-15,-16,px[n+1].x+15,16,'c-alc')),{o:0}));
+  els.push(E('bA',T(BOXR(px[n-1].x-17,-S-17,px[n+1].x+16,17,'c-acid')),{o:0}));
+  for(let k=0;k<n;k++)els.push(E('u'+k,T(`<text class="num" style="font-size:15px;fill:var(--head)" x="${px[k].x}" y="${S+30}">${n-k}</text>`),{o:0}));
+  const nmT=STEM[n]+'an';
+  els.push(E('nm',`<text class="lb" style="font-size:27px;font-family:var(--serif);font-weight:700" x="200" y="226"><tspan fill="var(--head)">${STEM[n]}</tspan><tspan fill="var(--muted)">an</tspan><tspan fill="var(--acid)">oic acid</tspan></text>`,{o:0}));
+  const w=chain('C-O-O-H',{D:38}),wx=(400-w.W)/2;
+  els.push(E('wr',`<g transform="translate(${wx} 292)">${w.svg}</g><g transform="translate(${wx-34} 292)">${CROSS(0,0,'c-red')}</g>`+LB(200,330,'WRONG: two O atoms in a row','c-red'),{o:0}));
+  const nums=[...Array(n).keys()].map(k=>({['u'+k]:{o:1,d:(n-1-k)*120}}));
+  const S1=[
+    {cap:`A carboxylic acid ends in **–COOH**. Here is **${ALK[n].replace('ane','anoic acid')}**. The group is made of two parts.`},
+    {cap:'**Part 1:** a **C=O**. The last carbon is double-bonded to one oxygen.',st:{bO:{o:1}}},
+    {cap:'**Part 2:** an **O–H**. The same carbon is also single-bonded to an oxygen that carries a hydrogen.',st:{bO:{o:0},bH:{o:1}}},
+    {cap:'Together: **C(=O)–O–H**, written –COOH. Both parts hang from the **same carbon**.',st:{bH:{o:0},bA:{o:1}}},
+    {cap:'**Numbering.** The –COOH carbon is always **C1** and it counts as one of the chain carbons. So no position number is ever written.',st:Object.assign({},...nums)},
+    {cap:`Name = stem **${STEM[n]}** + **an** + **oic acid** = **${ALK[n].replace('ane','anoic acid')}**. The final “e” of ${ALK[n]} is replaced by “oic acid”.`,st:{nm:{o:1}}},
+    {cap:'**Mistake:** –COOH is not C–O–O–H. One oxygen is double-bonded (C=O); only the other oxygen carries the H.',st:{wr:{o:1}},hold:3600}
+  ];
+  return{vb:[400,350],els,steps:S1};
+}});
+/* ================= NAMING RULES (written page section) ================= */
+const NM=(s,p,f)=>`<span class="nm"><span class="s">${s}</span>${p?`-<span class="p">${p}</span>-`:''}<span class="f">${f}</span></span>`;
+const RULES=[
+ {n:'R1',t:'Count the carbons: that gives the stem',stems:true,
+  p:'Find the **longest unbroken chain** of carbon atoms. For acids and esters the carbon of –COOH or –COO– is part of the chain, so it is counted.',
+  ex:'4 carbons → stem <span class="nm"><span class="s">but</span></span>',w:'Leaving out the –COOH carbon. {CH3COOH} has **two** carbons (ethanoic acid), not one.'},
+ {n:'R2',t:'Find the family: that gives the ending',
+  p:'Look for the functional group. Only single bonds → **-ane**. C=C → **-ene**. C≡C → **-yne**. –OH → **-ol**. –COOH → **-oic acid**. –COO– → **-yl … -oate**.',
+  ex:'stem + ending: <span class="nm"><span class="s">prop</span><span class="f">ene</span></span> = propene',w:'Choosing the ending from the formula’s first letters. Look for the group, not the order of atoms.'},
+ {n:'R3',t:'Alkanes: stem + ane',p:'No functional group, so **no position number** is ever needed.',
+  ex:`meth + ane = methane · ${NM('but','','ane')}`,w:null},
+ {n:'R4',t:'Alkenes and alkynes: stem + position + ene / yne',
+  p:'Ethene, propene, ethyne and propyne have only one possible place for the multiple bond, so **no number**. From four carbons up, write the number of the carbon where the bond **starts**, between hyphens.',
+  ex:`${NM('but','1','ene')} · ${NM('but','2','ene')} · ${NM('pent','2','yne')}`,w:'Writing “butene” or “but-ene” with no number. From but- onwards the position must be shown.'},
+ {n:'R5',t:'Numbering direction: the smaller number wins',
+  p:'Number the chain from the end that gives the double bond, triple bond or –OH the **smaller** number. Check both ends every time. If both ends give the same number, either is fine.',
+  ex:`{CH3CH2CH=CHCH3} → ${NM('pent','2','ene')}`,w:'Always numbering from the left. {CH3CH2CH=CHCH3} is pent-**2**-ene, never pent-3-ene.'},
+ {n:'R6',t:'Alcohols: alkane name, drop the e, add ol',
+  p:'methane → methanol, ethane → ethanol. From three carbons up put the –OH position before “ol”, numbered by R5. The “an” stays.',
+  ex:`${NM('propan','1','ol')} · ${NM('propan','2','ol')}`,w:'Writing “propanol” with no number, or propan-3-ol for {CH3CH2CH2OH} (it is propan-**1**-ol).'},
+ {n:'R7',t:'Carboxylic acids: alkane name, drop the e, add oic acid',
+  p:'The –COOH carbon is always **C1** and counts in the chain, so **no number** is written. ethane → ethanoic acid, butane → butanoic acid.',
+  ex:`{CH3COOH} → <span class="nm"><span class="s">eth</span>an<span class="f">oic acid</span></span>`,w:'Writing “propan-1-oic acid”. The position of –COOH is always 1, so it is never written.'},
+ {n:'R8',t:'Esters: two words, alcohol part first',
+  p:'**Word 1** = alkyl group from the alcohol (methanol → methyl, ethanol → ethyl, propan-1-ol → propyl). **Word 2** = the acid’s name with “-ic acid” changed to **-ate** (ethanoic acid → ethanoate).',
+  ex:'ethanoic acid + methanol → <span class="nm"><span class="p">methyl</span> <span class="f">ethanoate</span></span>',w:'Naming in the order the formula is written. {CH3COOCH3} is methyl ethanoate, not “ethanoate methyl”.'}
+];
+const STEMNAMES=[['Meth','1'],['Eth','2'],['Prop','3'],['But','4'],['Pent','5'],['Hex','6'],['Hept','7'],['Oct','8'],['Non','9'],['Dec','10']];
+reg({id:'rules',part:'Naming rules',nav:'8 rules',num:'8.2',title:'The naming rules, in order',
+lead:'Eight rules cover every compound in this chapter. Read them once, then use the name machine and the quiz to make them automatic.',
+raw(){
+  const d=document.createElement('div');
+  d.innerHTML=`<div class="rules">${RULES.map(r=>`<article class="rule"><div class="rn">${r.n}</div><div class="rb"><h3>${r.t}</h3><p>${rich(r.p)}</p>${r.stems?`<div class="stems">${STEMNAMES.map(s=>`<div><b>${s[1]} C</b>${s[0]}</div>`).join('')}</div>`:''}<div class="ex">${rich(r.ex)}</div>${r.w?`<div class="warn">${rich(r.w)}</div>`:''}</div></article>`).join('')}</div>
+  <h3 style="margin:22px 0 0;font:700 19px var(--serif);color:var(--head)">The four-question check</h3>
+  <ol class="checks"><li><span>How many carbons are in the chain? → the <b>stem</b>.</span></li><li><span>Which functional group is present? → the <b>family and ending</b>.</span></li><li><span>Does the position need writing (ene/yne from but-, alcohols from prop-)? Number from <b>both ends</b> and keep the smaller number.</span></li><li><span>Put it together and check the spelling: hyphens around the number, the “e” dropped for -ol and -oic acid, esters in two words.</span></li></ol>
+  <div class="fmt"><h3>Writing it correctly</h3><ul><li>Hyphens go on <b>both sides</b> of a number, with no spaces: but-1-ene, propan-2-ol.</li><li>Alkenes and alkynes: stem + position + ending (but-1-ene). Alcohols keep the “an” (propan-1-ol).</li><li>Names are written in lower case. “Ethanoic acid” and “methyl ethanoate” are each <b>two words</b>.</li></ul></div>`;
+  return d;
+}});
+/* ================= NAME MACHINE (interactive) ================= */
+(()=>{
+const FAM={alkane:{t:'Alkane',min:1},alkene:{t:'Alkene',min:2},alkyne:{t:'Alkyne',min:2},alcohol:{t:'Alcohol',min:1},acid:{t:'Acid',min:1}};
+const posOpts=(f,n)=>(f==='alkene'||f==='alkyne')?(n>=4?Array.from({length:Math.floor(n/2)},(_,i)=>i+1):[]):f==='alcohol'?(n>=3?Array.from({length:Math.ceil(n/2)},(_,i)=>i+1):[]):[];
+const specOf=(f,n,p)=>{
+  const t=Array(n).fill('C'),b=Array(Math.max(n-1,0)).fill('-');
+  if(f==='alcohol')t[p-1]='C^OH';if(f==='acid')t[n-1]='C^@';
+  if(f==='alkene')b[p-1]='=';if(f==='alkyne')b[p-1]='#';
+  return t.map((x,i)=>x+(i<n-1?b[i]:'')).join('')+(f==='acid'?'-O-H':'');
+};
+const parts=(f,n,p)=>{
+  const needP=posOpts(f,n).length>0,P=[{t:STEM[n],k:'s',l:'stem · '+n+' C'}];
+  if(f==='alkane')P.push({t:'ane',k:'f',l:'alkane'});
+  if(f==='alkene'||f==='alkyne'){if(needP)P.push({t:'-'+p+'-',k:'p',l:'position'});P.push({t:f==='alkene'?'ene':'yne',k:'f',l:f})}
+  if(f==='alcohol'){P.push({t:'an',k:'a',l:'alkane base'});if(needP)P.push({t:'-'+p+'-',k:'p',l:'position'});P.push({t:'ol',k:'f',l:'alcohol'})}
+  if(f==='acid'){P.push({t:'an',k:'a',l:'alkane base'});P.push({t:'oic acid',k:'f',l:'carboxylic acid'})}
+  return P;
+};
+const condensed=(f,n,p)=>{
+  const ord=Array(Math.max(n-1,0)).fill(1);if(f==='alkene')ord[p-1]=2;if(f==='alkyne')ord[p-1]=3;
+  let tok=[];
+  for(let i=0;i<n;i++){
+    if(f==='acid'&&i===n-1){tok.push(n===1?'HCOOH':'COOH');continue}
+    const used=(i>0?ord[i-1]:0)+(i<n-1?ord[i]:0)+(f==='alcohol'&&i===p-1?1:0),h=4-used;
+    let s='C'+(h>0?'H'+(h>1?h:''):'');
+    if(f==='alcohol'&&i===p-1)s+=(i===0||i===n-1)?'OH':'(OH)';
+    tok.push(s);
+  }
+  if(f==='alcohol'&&p===1&&n>1)tok.reverse();
+  return tok.map((s,i)=>s+(i<n-1&&(f==='alkene'||f==='alkyne')?(ord[i]===2?'=':ord[i]===3?'≡':''):'')).join('');
+};
+const molF=(f,n)=>{const h=f==='alkane'||f==='alcohol'?2*n+2:f==='alkyne'?2*n-2:2*n,o=f==='alcohol'?'O':f==='acid'?'O2':'';return 'C'+(n>1?n:'')+'H'+h+o};
+const fullName=(f,n,p)=>parts(f,n,p).map(x=>x.t).join('');
+const trace=(f,n,p)=>{
+  const np=posOpts(f,n).length>0,R=[`**R1** · Count the carbons in the chain: **${n}** → stem **${STEM[n]}**.`];
+  if(f==='alkane')R.push('**R2/R3** · Only single bonds, so the ending is **-ane**. No number is needed.');
+  if(f==='alkene'||f==='alkyne'){const e=f==='alkene'?'-ene (C=C)':'-yne (C≡C)';R.push(`**R2** · Family: ${f}. Ending **${e}**.`);
+    R.push(np?`**R5** · Number from the end that gives the bond the smaller number. It starts on **C${p}**.`:'**R4** · Only one position is possible, so **no number** is written.');
+    if(np)R.push(`**R4** · Write the position between hyphens: **-${p}-**.`)}
+  if(f==='alcohol'){R.push('**R2** · Family: alcohol (–OH). Ending **-ol**; drop the final “e” of the alkane name, keep the “an”.');
+    R.push(np?`**R5/R6** · Number so the –OH carbon gets the smaller number. It is on **C${p}** → **-${p}-**.`:'**R6** · Only one position is possible, so **no number** is written.')}
+  if(f==='acid')R.push('**R2/R7** · Family: carboxylic acid (–COOH). The –COOH carbon is always C1 and counts in the chain, so **no number**. Drop the “e”, add **oic acid**.');
+  return R;
+};
+const sel=(lab,opts,cur,pick)=>{
+  const w=document.createElement('div');w.className='seg';w.setAttribute('role','group');w.setAttribute('aria-label',lab);
+  const l=document.createElement('span');l.className='pl';l.textContent=lab;w.appendChild(l);
+  opts.forEach(o=>{const b=document.createElement('button');b.type='button';b.className='chip';b.textContent=o.t;b.disabled=!!o.dis;b.setAttribute('aria-pressed',String(o.v===cur));b.onclick=()=>pick(o.v);w.appendChild(b)});
+  return w;
+};
+reg({id:'machine',nav:'Name machine',num:'8.2',title:'Name machine',
+lead:'Choose a family, a chain length and a position. The molecule is drawn, then the name is assembled from its parts, exactly as the rules say.',
+alt:'Interactive builder that draws a molecule and assembles its IUPAC name',
+mount(card){
+  card.innerHTML=`<div class="params"></div><div class="stage"><svg class="fig" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"></svg></div><div class="tiles" role="status" aria-live="polite"></div><div class="info"></div><ol class="trace"></ol>`;
+  const pb=$('.params',card),svg=$('svg',card),tiles=$('.tiles',card),info=$('.info',card),tr=$('.trace',card);
+  const st={f:'alkene',n:4,p:1};
+  function render(){
+    const{f}=st;if(st.n<FAM[f].min)st.n=FAM[f].min;
+    const po=posOpts(f,st.n);st.p=po.length?(po.includes(st.p)?st.p:po[0]):1;
+    pb.innerHTML='';
+    pb.append(sel('Family',Object.keys(FAM).map(k=>({v:k,t:FAM[k].t})),f,v=>{st.f=v;render()}),
+      sel('Carbons',[1,2,3,4,5,6,7,8].map(v=>({v,t:String(v),dis:v<FAM[f].min})),st.n,v=>{st.n=v;render()}));
+    if(po.length)pb.append(sel('Position',po.map(v=>({v,t:String(v)})),st.p,v=>{st.p=v;render()}));
+    const{n,p}=st,spec=specOf(f,n,p),cnt=n+(f==='acid'?2:0),D=Math.min(44,Math.floor(340/(cnt+1))),ch=chain(spec,{D}),S=ch.S,x0=(400-ch.W)/2,y0=112,px=ch.pos;
+    let box='';
+    if(f==='alkene')box=BOXR(px[p-1].x-16,-17,px[p].x+16,17,'c-red');
+    if(f==='alkyne')box=BOXR(px[p-1].x-16,-18,px[p].x+16,18,'c-pur');
+    if(f==='alcohol')box=BOXR(px[p-1].x-16,-2*S-14,px[p-1].x+16,-S+14,'c-alc');
+    if(f==='acid')box=BOXR(px[n-1].x-17,-S-17,px[n+1].x+16,17,'c-acid');
+    const labs=f==='alkane'?[]:px.slice(0,n).map((q,i)=>`<text class="num" style="font-size:14px;fill:var(--head)" x="${f1(q.x)}" y="${f1(S+30)}">${f==='acid'?n-i:i+1}</text>`);
+    const name=fullName(f,n,p);
+    svg.setAttribute('aria-label','Displayed formula of '+name);
+    svg.innerHTML=`<g class="mm pre" transform="translate(${x0} ${y0})">${ch.svg}${labs.join('')}</g>${box?`<g class="bb pre" transform="translate(${x0} ${y0})">${box}</g>`:''}`;
+    tiles.innerHTML='';tiles.setAttribute('aria-label','Name: '+name);
+    parts(f,n,p).forEach((q,i)=>{const t=document.createElement('div');t.className='tile pre';t.style.color=({s:'var(--head)',p:'var(--acid)',f:'var(--alc)',a:'var(--muted)'})[q.k];t.style.transitionDelay=(i*110+120)+'ms';t.innerHTML=`${q.t.replace(' ','&nbsp;')}<small>${q.l}</small>`;tiles.appendChild(t)});
+    info.innerHTML=`<div>Molecular formula: <code>${rich('{'+molF(f,n)+'}')}</code></div><div>Condensed formula: <code>${rich('{'+condensed(f,n,p)+'}')}</code></div>`;
+    tr.innerHTML=trace(f,n,p).map(x=>`<li>${rich(x)}</li>`).join('');
+    svg.getBoundingClientRect();
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{svg.querySelectorAll('.pre').forEach(e=>e.classList.remove('pre'));tiles.querySelectorAll('.pre').forEach(e=>e.classList.remove('pre'))}));
+  }
+  render();
+}});
+})();
+/* ================= PART C : ESTERS ================= */
+const ACIDN=['','Methanoic','Ethanoic','Propanoic','Butanoic'],ALCN=['','Methanol','Ethanol','Propan-1-ol','Butan-1-ol'];
+reg({id:'ester',part:'Part C · Esters',nav:'Esterification',num:'8.3',title:'Esterification, atom by atom',
+lead:'An acid and an alcohol join and lose water. Pick any pair, press Play, and watch which atoms leave and which bond forms.',
+alt:'A carboxylic acid and an alcohol reacting: the acid OH and alcohol H leave as water and a new C-O bond forms the ester',
+params:[{k:'a',label:'Acid',def:2,opts:[1,2,3,4].map(v=>({v,t:ACIDN[v]}))},{k:'m',label:'Alcohol',def:1,opts:[1,2,3,4].map(v=>({v,t:ALCN[v]}))}],
+make(P){
+  const a=P.a,m=P.m,D=Math.min(44,Math.floor(340/(a+m+2))),S=D*.86;
+  const x0=(400-((a+m)*D+2*S))/2+S,yA=96,yB=246,yM=(yA+yB)/2,dY=yB-yA;
+  const ac=chain(Array(a).fill('C').map((c,i)=>i===a-1?'C^@':c).join('-')+'-O-H',{D});
+  const al=chain('H-O-'+Array(m).fill('C').join('-'),{D});
+  const TA=i=>`<g transform="translate(${f1(x0)} ${yA})">${i}</g>`,TB=i=>`<g transform="translate(${f1(x0+(a-1)*D)} ${yB})">${i}</g>`;
+  const ctr=(c,i)=>`<g class="${c} mono">${i}</g>`;
+  const body=ac.bd.slice(0,a-1).join('')+ac.at.slice(0,a).join('');
+  const oh=ac.at[a]+ac.at[a+1]+ac.bd[a];
+  const hb=al.at[0]+al.bd[0],albody=al.at.slice(1).join('')+al.bd.slice(1).join('');
+  const els=[];
+  els.push(E('acid',TA(ctr('c-acid',body))));
+  els.push(E('stub',TA(ctr('c-acid',ac.bd[a-1]))));
+  els.push(E('newb',TA(`<g class="c-new newb">${ac.bd[a-1]}</g>`),{o:0}));
+  els.push(E('oh',TA(ctr('c-acid',oh))),E('ohr',TA(ctr('c-red',oh)),{o:0}));
+  els.push(E('hb',TB(ctr('c-alc',hb))),E('hbr',TB(ctr('c-red',hb)),{o:0}));
+  els.push(E('alc',TB(ctr('c-alc',albody))));
+  els.push(E('bx1',TA(BOXR(a*D-15,-15,(a+1)*D+15,15,'c-red dash')),{o:0}),E('bx2',TB(BOX(0,0,30,30,'c-red dash')),{o:0}));
+  els.push(E('cat',LB(200,yM,'few drops of H₂SO₄ as catalyst, with heating','c-mut'),{}));
+  els.push(E('wl',LB(x0+a*D,yM-26,'water, {H2O}','c-red'),{o:0}));
+  els.push(E('l1',LB(14,18,'CARBOXYLIC ACID','sm l c-acid')),E('l2',LB(14,yB+S+36,'ALCOHOL','sm l c-alc')));
+  const w1=ALKYL[m],w2=STEM[a]+'anoate',yN=yA+104;
+  els.push(E('nm',`<text class="lb" style="font-size:27px;font-family:var(--serif);font-weight:700;text-anchor:end" x="196" y="${yN}" fill="var(--alc)"><tspan fill="var(--alc)">${w1}</tspan></text><text class="lb" style="font-size:27px;font-family:var(--serif);font-weight:700;text-anchor:start" x="204" y="${yN}"><tspan fill="var(--acid)">${w2}</tspan></text><text class="lb sm c-alc" style="text-anchor:end" x="196" y="${yN+24}">from the alcohol</text><text class="lb sm c-acid" style="text-anchor:start" x="204" y="${yN+24}">from the acid</text>`,{o:0}));
+  const nn=a+m;
+  els.push(E('eq',LB(200,yN+64,'RCOOH + R′OH  →  RCOOR′ + {H2O}','c-head','style="font-size:14px"')+LB(200,yN+90,`ester = {C${nn}H${2*nn}O2}  ·  {C~n~H~2n~O2}, n = ${a} + ${m} = ${nn}`,'c-ink'),{o:0}));
+  const both={ohr:{o:1},oh:{o:0},hbr:{o:1},hb:{o:0}};
+  const mv=(dy1,dy2,ex={})=>({oh:{y:dy1,o:0,...ex},ohr:{y:dy1,o:1,...ex},hb:{y:dy2,o:0},hbr:{y:dy2,o:1}});
+  const S1=[
+    {cap:`**Reactants:** ${ACIDN[a].toLowerCase()} acid (orange) and ${ALCN[m].toLowerCase()} (blue). A few drops of sulphuric acid act as the catalyst.`,hold:3200},
+    {cap:'**What leaves?** The **–OH** of the acid and the **H** of the alcohol OH (both marked red). Everything else stays.',st:{...both,bx1:{o:1},bx2:{o:1,d:150}}},
+    {cap:'The two red pieces move together and form **water**, {H2O}.',st:{...mv(yM-yA,yM-yB),bx1:{o:0},bx2:{o:0},cat:{o:0},wl:{o:1,d:700}}},
+    {cap:'Water leaves. Now the acid carbon has **one free bond** and the alcohol oxygen has **one free bond**.',st:{ohr:{x:D*1.2,y:yM-yA+8,o:0},hbr:{x:D*1.2,y:yM-yB+8,o:0},wl:{o:0}}},
+    {cap:'The alcohol part moves up and its oxygen bonds to the acid carbon. The **new C–O bond (green)** is the ester link.',st:{alc:{y:-dY},l2:{o:0},newb:{o:1,d:850}},hold:3400},
+    {cap:`**Naming:** the alcohol part gives the **first word** (${ALCN[m].toLowerCase()} → ${w1}); the acid gives the **second word** (${ACIDN[a].toLowerCase()} acid → ${w2}). The ester is **${w1} ${w2}**.`,st:{nm:{o:1}},hold:4200},
+    {cap:`In the formula {RCOOR′} the acid part comes first, but in the **name** the alcohol part comes first. Formula check: every such ester is {C~n~H~2n~O2}; here n = ${a} + ${m} = ${nn}.`,st:{eq:{o:1}},hold:4200}
+  ];
+  return{vb:[400,Math.max(yB+S+52,yN+108)],els,steps:S1};
+}});
+
+/* ================= isomers C3H6O2 ================= */
+reg({id:'iso',nav:'Same formula',num:'8.3',title:'One formula, three compounds',
+lead:'{C3H6O2} can be an acid or an ester. Only the displayed formula tells you which one you have.',
+alt:'Propanoic acid, methyl ethanoate and ethyl methanoate, all with formula C3H6O2',
+make(){
+  const D=38,rows=[
+    {n:'Propanoic acid',k:'carboxylic acid',c:'c-acid',spec:'C-C-C^@-O-H',cls:['','','c-acid','c-acid','c-acid'],box:(p,S)=>BOXR(p[2].x-15,-S-15,p[4].x+15,15,'c-acid'),
+     cap:'**Propanoic acid** is an **acid**: it has –COOH, with an O–H on the carbonyl carbon.'},
+    {n:'Methyl ethanoate',k:'ester',c:'c-new',spec:'C-C^@-O-C',cls:['c-acid','c-acid','c-alc','c-alc'],box:(p,S)=>BOXR(p[1].x-15,-S-15,p[2].x+15,15,'c-new'),
+     cap:'**Methyl ethanoate** is an **ester**. Same atoms, but the H of –COOH is replaced by a methyl group, so the group is –COO–.'},
+    {n:'Ethyl methanoate',k:'ester',c:'c-new',spec:'C^@-O-C-C',cls:['c-acid','c-alc','c-alc','c-alc'],box:(p,S)=>BOXR(p[0].x-15,-S-15,p[1].x+15,15,'c-new'),
+     cap:'**Ethyl methanoate** is also an ester: the acid part is only one carbon (methanoate) and the alcohol part has two (ethyl).'}
+  ],els=[],S1=[];
+  els.push(E('ft',`<text class="lb c-head" style="font-size:24px" x="200" y="30">${fmtS('{C3H6O2}')}</text>`));
+  rows.forEach((r,i)=>{
+    const ch=chain(r.spec,{D,cls:r.cls}),y=118+i*116,x0=(400-ch.W)/2;
+    els.push(E('r'+i,`<text class="lb l" style="font-size:15px" x="14" y="${y-56}">${r.n}</text><text class="lb sm l c-mut" style="text-anchor:end" x="386" y="${y-56}">${r.k}</text><g transform="translate(${f1(x0)} ${y})">${ch.svg}</g>`,{x:-24,o:0}));
+    els.push(E('b'+i,`<g transform="translate(${f1(x0)} ${y})">${r.box(ch.pos,ch.S)}</g>`,{o:0}));
+    S1.push({cap:r.cap,st:{['r'+i]:{x:0,o:1},['b'+i]:{o:1,d:350}},hold:3400});
+  });
+  S1.unshift({cap:'The formula {C3H6O2} (3 C, 6 H, 2 O) fits more than one structure. Let us draw three.'});
+  els.push(E('end',LB(200,y=118+3*116-42,'orange = acid part · blue = alcohol part · green box = ester link','c-mut'),{o:0}));
+  S1.push({cap:'**Same molecular formula, different structures, different compounds.** Compare the –COOH group with the –COO– group to tell an acid from an ester.',st:{end:{o:1}},hold:3600});
+  return{vb:[400,118+3*116-16],els,steps:S1};
+}});
+/* ================= PART D : IDENTIFY + PRACTICE ================= */
+const mkSel=(lab,opts,cur,pick)=>{
+  const w=document.createElement('div');w.className='seg';w.setAttribute('role','group');w.setAttribute('aria-label',lab);
+  const l=document.createElement('span');l.className='pl';l.textContent=lab;w.appendChild(l);
+  opts.forEach(o=>{const b=document.createElement('button');b.type='button';b.className='chip';b.textContent=o.t;b.setAttribute('aria-pressed',String(o.v===cur));b.onclick=()=>pick(o.v);w.appendChild(b)});
+  return w;
+};
+const reduceMotion=()=>window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+const CHECKS=[
+  {q:'Is there a <b>C=C</b> double bond?',fam:'alkene',end:'-ene'},
+  {q:'Is there a <b>C≡C</b> triple bond?',fam:'alkyne',end:'-yne'},
+  {q:'Is there a <b>C=O with –O–H</b> on the same carbon (–COOH)?',fam:'carboxylic acid',end:'-oic acid'},
+  {q:'Is there a <b>C=O with –O–C</b> on the same carbon (–COO–)?',fam:'ester',end:'-yl … -oate'},
+  {q:'Is there an <b>–OH</b> group on its own?',fam:'alcohol',end:'-ol'},
+  {q:'<b>None</b> of these, only single C–C and C–H bonds?',fam:'alkane',end:'-ane'}
+];
+const IDMOL={
+  ethane:{t:'Ethane',spec:'C-C',ans:5,box:()=>''},
+  propene:{t:'Propene',spec:'C=C-C',ans:0,box:(p)=>BOXR(p[0].x-16,-17,p[1].x+16,17,'c-red')},
+  propyne:{t:'Propyne',spec:'C#C-C',ans:1,box:(p)=>BOXR(p[0].x-16,-18,p[1].x+16,18,'c-pur')},
+  ethanol:{t:'Ethanol',spec:'C-C^OH',ans:4,box:(p,S)=>BOXR(p[1].x-16,-2*S-14,p[1].x+16,-S+14,'c-alc')},
+  acid:{t:'Ethanoic acid',spec:'C-C^@-O-H',ans:2,box:(p,S)=>BOXR(p[1].x-17,-S-17,p[3].x+16,17,'c-acid')},
+  ester:{t:'Methyl ethanoate',spec:'C-C^@-O-C',ans:3,box:(p,S)=>BOXR(p[1].x-17,-S-17,p[2].x+16,17,'c-new')}
+};
+reg({id:'identify',part:'Part D · Identify and practise',nav:'Identify',num:'8.4',title:'Which family is it?',
+lead:'Ask the questions in this order. The first “yes” gives the family. Choose a molecule and watch the checks run.',
+alt:'Checklist that finds the family of a molecule from its functional group',
+mount(card){
+  card.innerHTML=`<div class="params"></div><div class="stage"><svg class="fig" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 170"></svg></div><ol class="qlist"></ol><div class="fb" role="status" aria-live="polite"></div><div class="ctl"><button class="btn pri" type="button">Check again</button></div>`;
+  const pb=$('.params',card),svg=$('svg',card),ql=$('.qlist',card),fb=$('.fb',card),btn=$('.btn',card);
+  let cur='ethanol',timers=[];
+  const clear=()=>{timers.forEach(clearTimeout);timers=[]};
+  function run(){
+    clear();const m=IDMOL[cur];
+    pb.innerHTML='';pb.append(mkSel('Molecule',Object.keys(IDMOL).map(k=>({v:k,t:IDMOL[k].t})),cur,v=>{cur=v;run()}));
+    const ch=chain(m.spec,{D:44}),x0=(400-ch.W)/2,y0=104;
+    svg.setAttribute('aria-label','Displayed formula of '+m.t.toLowerCase());
+    svg.innerHTML=`<g transform="translate(${f1(x0)} ${y0})">${ch.svg}</g><g class="bb pre" transform="translate(${f1(x0)} ${y0})">${m.box(ch.pos,ch.S)}</g>`;
+    ql.innerHTML=CHECKS.map((c,i)=>`<li class="qrow" data-i="${i}"><span>${i+1}. ${c.q}</span><span class="yn"></span></li>`).join('');
+    fb.innerHTML='';
+    const rows=[...ql.children],gap=reduceMotion()?0:650;
+    const step=i=>{
+      const r=rows[i],yes=i===m.ans;
+      r.classList.add(yes?'yes':'no');r.querySelector('.yn').textContent=yes?'YES':'NO';
+      if(yes){
+        rows.slice(i+1).forEach(x=>x.classList.add('skip'));
+        const bb=svg.querySelector('.bb');bb.classList.remove('pre');
+        fb.innerHTML=rich(`**${m.t}** belongs to the **${CHECKS[i].fam}** family. Ending: **${CHECKS[i].end}**.`);
+      }else timers.push(setTimeout(()=>step(i+1),gap));
+    };
+    timers.push(setTimeout(()=>step(0),gap?500:0));
+  }
+  btn.onclick=run;run();
+}});
+
+/* ================= QUIZ ================= */
+const QZ=[
+ {spec:'C-C-C-C',ans:'butane',opts:['butane','propane','butanol','but-1-ene'],why:'**R1, R3:** four carbons → stem **but**; only single bonds → **-ane**.'},
+ {spec:'C-C=C-C',ans:'but-2-ene',opts:['but-2-ene','but-1-ene','but-3-ene','butane'],why:'**R4, R5:** the double bond starts on C2 from either end, so the name is but-**2**-ene.'},
+ {spec:'C-C-C^OH',ans:'propan-1-ol',opts:['propan-1-ol','propan-2-ol','propan-3-ol','propanol'],why:'**R5, R6:** number from the –OH end so –OH gets the smaller number (1). “Propanol” alone is incomplete.'},
+ {spec:'C-C^OH-C',ans:'propan-2-ol',opts:['propan-2-ol','propan-1-ol','propanol','propanoic acid'],why:'**R6:** the –OH is on the middle carbon, C2, from either end.'},
+ {spec:'C-C^@-O-H',ans:'ethanoic acid',opts:['ethanoic acid','ethanol','methanoic acid','propanoic acid'],why:'**R7:** the –COOH carbon is counted, so there are **2** carbons: eth + an + oic acid.'},
+ {spec:'C-C^@-O-C',ans:'methyl ethanoate',opts:['methyl ethanoate','ethyl methanoate','ethanoate methyl','methyl methanoate'],why:'**R8:** –O–CH₃ comes from methanol → **methyl** (first word); CH₃C(=O)– is the ethanoic acid part → **ethanoate**.'},
+ {spec:'C-C-C=C-C',ans:'pent-2-ene',opts:['pent-2-ene','pent-3-ene','pent-1-ene','pentene'],why:'**R5:** from the right the double bond starts on C2; from the left it would be C3. The smaller number wins.'},
+ {spec:'C#C-C',ans:'propyne',opts:['propyne','propene','propane','butyne'],why:'**R4:** triple bond → **-yne**. Three carbons, one possible position, so no number.'},
+ {spec:'C-C^@-O-C-C',ans:'ethyl ethanoate',opts:['ethyl ethanoate','ethanoate ethyl','methyl propanoate','ethyl methanoate'],why:'**R8:** –O–C₂H₅ from ethanol → **ethyl** first; CH₃C(=O)– from ethanoic acid → **ethanoate** second.'}
+];
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+reg({id:'quiz',nav:'Quiz',num:'8.4',title:'Name it',
+lead:'Nine molecules. Pick the correct IUPAC name; the explanation points to the rule you needed.',
+alt:'Quiz: name the molecule shown',
+mount(card){
+  card.innerHTML=`<div class="params" style="justify-content:space-between"><span class="pl" id="qn"></span><span class="score" id="qs"></span></div><div class="stage"><svg class="fig" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 170"></svg></div><div class="opts"></div><div class="fb" role="status" aria-live="polite"></div><div class="ctl"><button class="btn pri" type="button" hidden>Next</button></div>`;
+  const qn=$('#qn',card),qs=$('#qs',card),svg=$('svg',card),op=$('.opts',card),fb=$('.fb',card),nx=$('.btn',card);
+  let i=0,score=0,order=shuffle(QZ.map((q,k)=>k));
+  function show(){
+    if(i>=QZ.length){
+      qn.textContent='Finished';svg.innerHTML=`<text class="lb c-head" style="font-size:34px" x="200" y="86">${score} / ${QZ.length}</text>`;svg.setAttribute('aria-label','Score '+score+' out of '+QZ.length);
+      op.innerHTML='';fb.innerHTML=rich(score===QZ.length?'**Perfect.** Every name followed the rules.':score>=6?'**Good work.** Re-read the rules behind the ones you missed.':'**Keep going.** Go back to the rules (R1 to R8) and try again.');
+      nx.hidden=false;nx.textContent='Try again';nx.onclick=()=>{i=0;score=0;order=shuffle(order);show()};return;
+    }
+    const q=QZ[order[i]];nx.hidden=true;
+    qn.textContent=`Question ${i+1} of ${QZ.length}`;qs.textContent=`Score ${score}`;
+    const D=Math.min(46,Math.floor(330/(q.spec.split(/[-=#]/).length+1))),ch=chain(q.spec,{D}),x0=(400-ch.W)/2;
+    svg.innerHTML=`<g transform="translate(${f1(x0)} 104)">${ch.svg}</g>`;svg.setAttribute('aria-label','Molecule to name');
+    op.innerHTML='';fb.innerHTML=rich('Which name is correct?');
+    shuffle(q.opts).forEach(t=>{
+      const b=document.createElement('button');b.type='button';b.className='opt';b.textContent=t;
+      b.onclick=()=>{
+        const ok=t===q.ans;if(ok)score++;
+        [...op.children].forEach(x=>{x.disabled=true;if(x.textContent===q.ans)x.classList.add('ok')});
+        if(!ok)b.classList.add('bad');
+        qs.textContent=`Score ${score}`;
+        fb.innerHTML=rich((ok?'**Correct.** ':`**Not quite.** The answer is **${q.ans}**. `)+q.why);
+        nx.hidden=false;nx.textContent=i===QZ.length-1?'See score':'Next';nx.onclick=()=>{i++;show()};
+      };
+      op.appendChild(b);
+    });
+  }
+  show();
+}});
+/* ===== boot ===== */
+(()=>{
+  const host=$('#mods'),toc=$('#tocl');let lastPart='';
+  MODS.forEach(d=>{
+    if(d.part&&d.part!==lastPart){const h=document.createElement('div');h.className='part';h.textContent=d.part;host.appendChild(h);lastPart=d.part}
+    const s=shell(d);host.appendChild(s);const card=$('.card',s);
+    try{
+      if(d.raw)card.replaceWith(d.raw());else if(d.mount)d.mount(card);else mountSteps(d,card);
+    }catch(e){console.error('module failed',d.id,e);card.textContent='This figure could not load.'}
+    const a=document.createElement('a');a.href='#'+d.id;a.textContent=d.nav||d.title;toc.appendChild(a);
+  });
+})();
+})();</script>
+<script>
+(function(){
+  if(!document.documentElement.classList.contains('embed')||window.parent===window)return;
+  var last=0,origin=location.origin;
+  function send(){
+    var h=Math.ceil(document.body.getBoundingClientRect().height)+8;
+    if(Math.abs(h-last)<2)return; last=h;
+    try{window.parent.postMessage({whaEmbed:'height',h:h},origin);}catch(e){}
+  }
+  if('ResizeObserver' in window){new ResizeObserver(send).observe(document.body);}
+  window.addEventListener('load',send);setTimeout(send,300);setTimeout(send,1200);
+  document.addEventListener('click',function(ev){
+    var a=ev.target.closest&&ev.target.closest('nav.toc a');
+    if(!a)return;
+    var t=document.getElementById((a.getAttribute('href')||'').slice(1));
+    if(!t)return;
+    ev.preventDefault();
+    var y=t.getBoundingClientRect().top+window.pageYOffset;
+    try{window.parent.postMessage({whaEmbed:'scroll',y:y},origin);}catch(e){}
+  });
+})();
+</script>
+</body></html>

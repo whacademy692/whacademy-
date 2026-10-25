@@ -1,0 +1,2538 @@
+{
+ "id": "g10-chem-c8-th-isomers",
+ "title": "Isomers: same atoms, different arrangement",
+ "summary": "But-1-ene and but-2-ene, propan-1-ol and propan-2-ol, but-1-yne and but-2-yne.",
+ "alt": "Three pairs of isomers drawn one above the other: the double bond, the triple bond or the –OH group sits in a different position.",
+ "autoGrid": false,
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -7.35,
+   6.35
+  ],
+  "y": [
+   -10.95,
+   10.45
+  ],
+  "pad": 10
+ },
+ "roles": {
+  "stem": {
+   "label": "Stem (how many C)",
+   "color": "#16a34a",
+   "text": "The first part of the name. It tells you how many carbon atoms are in the chain."
+  },
+  "ane": {
+   "label": "-ane · alkane",
+   "color": "#64748b",
+   "text": "Only single bonds between the carbons. No functional group."
+  },
+  "num": {
+   "label": "Position number",
+   "color": "#ca8a04",
+   "text": "The number in the name. It tells you where the double bond, triple bond or –OH sits."
+  },
+  "ene": {
+   "label": "-ene · C=C",
+   "color": "#dc2626",
+   "text": "A carbon–carbon DOUBLE bond (red box in the book)."
+  },
+  "yne": {
+   "label": "-yne · C≡C",
+   "color": "#7c3aed",
+   "text": "A carbon–carbon TRIPLE bond (purple box in the book)."
+  },
+  "ol": {
+   "label": "-ol · –OH",
+   "color": "#2563eb",
+   "text": "The hydroxyl group of an alcohol."
+  },
+  "atomO": {
+   "label": "Oxygen",
+   "color": "#ef4444",
+   "text": "Every oxygen atom makes two bonds.",
+   "legend": false
+  },
+  "hyd": {
+   "label": "Hydrogen",
+   "color": "#64748b",
+   "text": "Every hydrogen atom makes exactly one bond.",
+   "legend": false
+  },
+  "good": {
+   "label": "Correct",
+   "color": "#16a34a",
+   "text": "The part that follows the rules."
+  },
+  "bad": {
+   "label": "Mistake",
+   "color": "#dc2626",
+   "text": "The part that breaks a rule."
+  }
+ },
+ "params": [
+  {
+   "id": "pair",
+   "label": "Pair",
+   "type": "choice",
+   "options": [
+    {
+     "value": 1,
+     "label": "but-1-ene / but-2-ene"
+    },
+    {
+     "value": 2,
+     "label": "propan-1-ol / propan-2-ol"
+    },
+    {
+     "value": 3,
+     "label": "but-1-yne / but-2-yne"
+    }
+   ],
+   "default": 1,
+   "role": "num"
+  },
+  {
+   "id": "both",
+   "label": "Show both isomers",
+   "type": "toggle",
+   "default": 0,
+   "role": "num"
+  }
+ ],
+ "shapes": [
+  {
+   "type": "text",
+   "id": "tm10_0",
+   "at": [
+    -3.0,
+    5.2
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm10_1",
+   "at": [
+    -1.0,
+    5.2
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm10_2",
+   "at": [
+    1.0,
+    5.2
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm10_3",
+   "at": [
+    3.0,
+    5.2
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm10_4",
+   "at": [
+    -3.0,
+    7.2
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm10_5",
+   "at": [
+    -3.0,
+    3.2
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm10_6",
+   "at": [
+    -1.0,
+    7.2
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm10_7",
+   "at": [
+    1.0,
+    7.2
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm10_8",
+   "at": [
+    1.0,
+    3.2
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm10_9",
+   "at": [
+    5.0,
+    5.2
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm10_10",
+   "at": [
+    3.0,
+    7.2
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm10_11",
+   "at": [
+    3.0,
+    3.2
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm10_0_0",
+   "from": [
+    -2.48,
+    5.05
+   ],
+   "to": [
+    -1.52,
+    5.05
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm10_0_1",
+   "from": [
+    -2.48,
+    5.35
+   ],
+   "to": [
+    -1.52,
+    5.35
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm10_1_0",
+   "from": [
+    -0.48,
+    5.2
+   ],
+   "to": [
+    0.48,
+    5.2
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm10_2_0",
+   "from": [
+    1.52,
+    5.2
+   ],
+   "to": [
+    2.48,
+    5.2
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm10_3_0",
+   "from": [
+    -3.0,
+    5.72
+   ],
+   "to": [
+    -3.0,
+    6.68
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm10_4_0",
+   "from": [
+    -3.0,
+    4.68
+   ],
+   "to": [
+    -3.0,
+    3.72
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm10_5_0",
+   "from": [
+    -1.0,
+    5.72
+   ],
+   "to": [
+    -1.0,
+    6.68
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm10_6_0",
+   "from": [
+    1.0,
+    5.72
+   ],
+   "to": [
+    1.0,
+    6.68
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm10_7_0",
+   "from": [
+    1.0,
+    4.68
+   ],
+   "to": [
+    1.0,
+    3.72
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm10_8_0",
+   "from": [
+    3.52,
+    5.2
+   ],
+   "to": [
+    4.48,
+    5.2
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm10_9_0",
+   "from": [
+    3.0,
+    5.72
+   ],
+   "to": [
+    3.0,
+    6.68
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm10_10_0",
+   "from": [
+    3.0,
+    4.68
+   ],
+   "to": [
+    3.0,
+    3.72
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "rect",
+   "id": "bx10",
+   "x": -3.66,
+   "y": 4.54,
+   "w": 3.32,
+   "h": 1.32,
+   "role": "ene",
+   "fill": "ene",
+   "fillOpacity": 0.14,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "text",
+   "id": "nm10",
+   "at": [
+    0,
+    9.1
+   ],
+   "text": "[[stem|but]]-[[num|1]]-[[ene|ene]]   CH₂=CHCH₂CH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm11_0",
+   "at": [
+    -3.0,
+    -3.4
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm11_1",
+   "at": [
+    -1.0,
+    -3.4
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm11_2",
+   "at": [
+    1.0,
+    -3.4
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm11_3",
+   "at": [
+    3.0,
+    -3.4
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm11_4",
+   "at": [
+    -5.0,
+    -3.4
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm11_5",
+   "at": [
+    -3.0,
+    -1.4
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm11_6",
+   "at": [
+    -3.0,
+    -5.4
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm11_7",
+   "at": [
+    -1.0,
+    -1.4
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm11_8",
+   "at": [
+    1.0,
+    -1.4
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm11_9",
+   "at": [
+    5.0,
+    -3.4
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm11_10",
+   "at": [
+    3.0,
+    -1.4
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm11_11",
+   "at": [
+    3.0,
+    -5.4
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm11_0_0",
+   "from": [
+    -2.48,
+    -3.4
+   ],
+   "to": [
+    -1.52,
+    -3.4
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm11_1_0",
+   "from": [
+    -0.48,
+    -3.55
+   ],
+   "to": [
+    0.48,
+    -3.55
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm11_1_1",
+   "from": [
+    -0.48,
+    -3.25
+   ],
+   "to": [
+    0.48,
+    -3.25
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm11_2_0",
+   "from": [
+    1.52,
+    -3.4
+   ],
+   "to": [
+    2.48,
+    -3.4
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm11_3_0",
+   "from": [
+    -3.52,
+    -3.4
+   ],
+   "to": [
+    -4.48,
+    -3.4
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm11_4_0",
+   "from": [
+    -3.0,
+    -2.88
+   ],
+   "to": [
+    -3.0,
+    -1.92
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm11_5_0",
+   "from": [
+    -3.0,
+    -3.92
+   ],
+   "to": [
+    -3.0,
+    -4.88
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm11_6_0",
+   "from": [
+    -1.0,
+    -2.88
+   ],
+   "to": [
+    -1.0,
+    -1.92
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm11_7_0",
+   "from": [
+    1.0,
+    -2.88
+   ],
+   "to": [
+    1.0,
+    -1.92
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm11_8_0",
+   "from": [
+    3.52,
+    -3.4
+   ],
+   "to": [
+    4.48,
+    -3.4
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm11_9_0",
+   "from": [
+    3.0,
+    -2.88
+   ],
+   "to": [
+    3.0,
+    -1.92
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm11_10_0",
+   "from": [
+    3.0,
+    -3.92
+   ],
+   "to": [
+    3.0,
+    -4.88
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "rect",
+   "id": "bx11",
+   "x": -1.66,
+   "y": -4.06,
+   "w": 3.32,
+   "h": 1.32,
+   "role": "ene",
+   "fill": "ene",
+   "fillOpacity": 0.14,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "nm11",
+   "at": [
+    0,
+    -7.3
+   ],
+   "text": "[[stem|but]]-[[num|2]]-[[ene|ene]]   CH₃CH=CHCH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "same1",
+   "at": [
+    0,
+    -9.6
+   ],
+   "text": "both **C₄H₈**: different arrangement",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==1&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm20_0",
+   "at": [
+    -4.0,
+    5.2
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm20_1",
+   "at": [
+    -2.0,
+    5.2
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm20_2",
+   "at": [
+    0.0,
+    5.2
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm20_3",
+   "at": [
+    2.0,
+    5.2
+   ],
+   "text": "O",
+   "role": "atomO",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm20_4",
+   "at": [
+    4.0,
+    5.2
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm20_5",
+   "at": [
+    -6.0,
+    5.2
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm20_6",
+   "at": [
+    -4.0,
+    7.2
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm20_7",
+   "at": [
+    -4.0,
+    3.2
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm20_8",
+   "at": [
+    -2.0,
+    7.2
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm20_9",
+   "at": [
+    -2.0,
+    3.2
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm20_10",
+   "at": [
+    0.0,
+    7.2
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm20_11",
+   "at": [
+    0.0,
+    3.2
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm20_0_0",
+   "from": [
+    -3.48,
+    5.2
+   ],
+   "to": [
+    -2.52,
+    5.2
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm20_1_0",
+   "from": [
+    -1.48,
+    5.2
+   ],
+   "to": [
+    -0.52,
+    5.2
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm20_2_0",
+   "from": [
+    0.52,
+    5.2
+   ],
+   "to": [
+    1.48,
+    5.2
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm20_3_0",
+   "from": [
+    2.52,
+    5.2
+   ],
+   "to": [
+    3.48,
+    5.2
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm20_4_0",
+   "from": [
+    -4.52,
+    5.2
+   ],
+   "to": [
+    -5.48,
+    5.2
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm20_5_0",
+   "from": [
+    -4.0,
+    5.72
+   ],
+   "to": [
+    -4.0,
+    6.68
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm20_6_0",
+   "from": [
+    -4.0,
+    4.68
+   ],
+   "to": [
+    -4.0,
+    3.72
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm20_7_0",
+   "from": [
+    -2.0,
+    5.72
+   ],
+   "to": [
+    -2.0,
+    6.68
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm20_8_0",
+   "from": [
+    -2.0,
+    4.68
+   ],
+   "to": [
+    -2.0,
+    3.72
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm20_9_0",
+   "from": [
+    0.0,
+    5.72
+   ],
+   "to": [
+    0.0,
+    6.68
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm20_10_0",
+   "from": [
+    0.0,
+    4.68
+   ],
+   "to": [
+    0.0,
+    3.72
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==2"
+  },
+  {
+   "type": "rect",
+   "id": "bx20",
+   "x": 1.34,
+   "y": 4.54,
+   "w": 3.32,
+   "h": 1.32,
+   "role": "ol",
+   "fill": "ol",
+   "fillOpacity": 0.14,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "round(pair)==2"
+  },
+  {
+   "type": "text",
+   "id": "nm20",
+   "at": [
+    0,
+    9.1
+   ],
+   "text": "[[stem|prop]][[ane|an]]-[[num|1]]-[[ol|ol]]   CH₃CH₂CH₂OH",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm21_0",
+   "at": [
+    -2.0,
+    -3.4
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm21_1",
+   "at": [
+    0.0,
+    -3.4
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm21_2",
+   "at": [
+    2.0,
+    -3.4
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm21_3",
+   "at": [
+    -4.0,
+    -3.4
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm21_4",
+   "at": [
+    -2.0,
+    -1.4
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm21_5",
+   "at": [
+    -2.0,
+    -5.4
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm21_6",
+   "at": [
+    0.0,
+    -1.4
+   ],
+   "text": "O",
+   "role": "atomO",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm21_7",
+   "at": [
+    0.0,
+    0.6
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm21_8",
+   "at": [
+    0.0,
+    -5.4
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm21_9",
+   "at": [
+    4.0,
+    -3.4
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm21_10",
+   "at": [
+    2.0,
+    -1.4
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm21_11",
+   "at": [
+    2.0,
+    -5.4
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm21_0_0",
+   "from": [
+    -1.48,
+    -3.4
+   ],
+   "to": [
+    -0.52,
+    -3.4
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm21_1_0",
+   "from": [
+    0.52,
+    -3.4
+   ],
+   "to": [
+    1.48,
+    -3.4
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm21_2_0",
+   "from": [
+    -2.52,
+    -3.4
+   ],
+   "to": [
+    -3.48,
+    -3.4
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm21_3_0",
+   "from": [
+    -2.0,
+    -2.88
+   ],
+   "to": [
+    -2.0,
+    -1.92
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm21_4_0",
+   "from": [
+    -2.0,
+    -3.92
+   ],
+   "to": [
+    -2.0,
+    -4.88
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm21_5_0",
+   "from": [
+    0.0,
+    -2.88
+   ],
+   "to": [
+    0.0,
+    -1.92
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm21_6_0",
+   "from": [
+    0.0,
+    -0.88
+   ],
+   "to": [
+    0.0,
+    0.08
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm21_7_0",
+   "from": [
+    0.0,
+    -3.92
+   ],
+   "to": [
+    0.0,
+    -4.88
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm21_8_0",
+   "from": [
+    2.52,
+    -3.4
+   ],
+   "to": [
+    3.48,
+    -3.4
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm21_9_0",
+   "from": [
+    2.0,
+    -2.88
+   ],
+   "to": [
+    2.0,
+    -1.92
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm21_10_0",
+   "from": [
+    2.0,
+    -3.92
+   ],
+   "to": [
+    2.0,
+    -4.88
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "rect",
+   "id": "bx21",
+   "x": -0.66,
+   "y": -2.06,
+   "w": 1.32,
+   "h": 3.32,
+   "role": "ol",
+   "fill": "ol",
+   "fillOpacity": 0.14,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "nm21",
+   "at": [
+    0,
+    -7.3
+   ],
+   "text": "[[stem|prop]][[ane|an]]-[[num|2]]-[[ol|ol]]   CH₃CH(OH)CH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "same2",
+   "at": [
+    0,
+    -9.6
+   ],
+   "text": "both **C₃H₈O**: different arrangement",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==2&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm30_0",
+   "at": [
+    -3.0,
+    5.2
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm30_1",
+   "at": [
+    -1.0,
+    5.2
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm30_2",
+   "at": [
+    1.0,
+    5.2
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm30_3",
+   "at": [
+    3.0,
+    5.2
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm30_4",
+   "at": [
+    -5.0,
+    5.2
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm30_5",
+   "at": [
+    1.0,
+    7.2
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm30_6",
+   "at": [
+    1.0,
+    3.2
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm30_7",
+   "at": [
+    5.0,
+    5.2
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm30_8",
+   "at": [
+    3.0,
+    7.2
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm30_9",
+   "at": [
+    3.0,
+    3.2
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm30_0_0",
+   "from": [
+    -2.48,
+    4.93
+   ],
+   "to": [
+    -1.52,
+    4.93
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm30_0_1",
+   "from": [
+    -2.48,
+    5.2
+   ],
+   "to": [
+    -1.52,
+    5.2
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm30_0_2",
+   "from": [
+    -2.48,
+    5.47
+   ],
+   "to": [
+    -1.52,
+    5.47
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm30_1_0",
+   "from": [
+    -0.48,
+    5.2
+   ],
+   "to": [
+    0.48,
+    5.2
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm30_2_0",
+   "from": [
+    1.52,
+    5.2
+   ],
+   "to": [
+    2.48,
+    5.2
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm30_3_0",
+   "from": [
+    -3.52,
+    5.2
+   ],
+   "to": [
+    -4.48,
+    5.2
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm30_4_0",
+   "from": [
+    1.0,
+    5.72
+   ],
+   "to": [
+    1.0,
+    6.68
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm30_5_0",
+   "from": [
+    1.0,
+    4.68
+   ],
+   "to": [
+    1.0,
+    3.72
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm30_6_0",
+   "from": [
+    3.52,
+    5.2
+   ],
+   "to": [
+    4.48,
+    5.2
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm30_7_0",
+   "from": [
+    3.0,
+    5.72
+   ],
+   "to": [
+    3.0,
+    6.68
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bm30_8_0",
+   "from": [
+    3.0,
+    4.68
+   ],
+   "to": [
+    3.0,
+    3.72
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==3"
+  },
+  {
+   "type": "rect",
+   "id": "bx30",
+   "x": -3.66,
+   "y": 4.54,
+   "w": 3.32,
+   "h": 1.32,
+   "role": "yne",
+   "fill": "yne",
+   "fillOpacity": 0.14,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "round(pair)==3"
+  },
+  {
+   "type": "text",
+   "id": "nm30",
+   "at": [
+    0,
+    9.1
+   ],
+   "text": "[[stem|but]]-[[num|1]]-[[yne|yne]]   CH≡CCH₂CH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==3"
+  },
+  {
+   "type": "text",
+   "id": "tm31_0",
+   "at": [
+    -3.0,
+    -3.4
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==3&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm31_1",
+   "at": [
+    -1.0,
+    -3.4
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==3&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm31_2",
+   "at": [
+    1.0,
+    -3.4
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==3&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm31_3",
+   "at": [
+    3.0,
+    -3.4
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==3&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm31_4",
+   "at": [
+    -5.0,
+    -3.4
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==3&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm31_5",
+   "at": [
+    -3.0,
+    -1.4
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==3&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm31_6",
+   "at": [
+    -3.0,
+    -5.4
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==3&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm31_7",
+   "at": [
+    5.0,
+    -3.4
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==3&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm31_8",
+   "at": [
+    3.0,
+    -1.4
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==3&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "tm31_9",
+   "at": [
+    3.0,
+    -5.4
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(pair)==3&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm31_0_0",
+   "from": [
+    -2.48,
+    -3.4
+   ],
+   "to": [
+    -1.52,
+    -3.4
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==3&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm31_1_0",
+   "from": [
+    -0.48,
+    -3.67
+   ],
+   "to": [
+    0.48,
+    -3.67
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==3&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm31_1_1",
+   "from": [
+    -0.48,
+    -3.4
+   ],
+   "to": [
+    0.48,
+    -3.4
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==3&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm31_1_2",
+   "from": [
+    -0.48,
+    -3.13
+   ],
+   "to": [
+    0.48,
+    -3.13
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==3&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm31_2_0",
+   "from": [
+    1.52,
+    -3.4
+   ],
+   "to": [
+    2.48,
+    -3.4
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==3&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm31_3_0",
+   "from": [
+    -3.52,
+    -3.4
+   ],
+   "to": [
+    -4.48,
+    -3.4
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==3&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm31_4_0",
+   "from": [
+    -3.0,
+    -2.88
+   ],
+   "to": [
+    -3.0,
+    -1.92
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==3&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm31_5_0",
+   "from": [
+    -3.0,
+    -3.92
+   ],
+   "to": [
+    -3.0,
+    -4.88
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==3&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm31_6_0",
+   "from": [
+    3.52,
+    -3.4
+   ],
+   "to": [
+    4.48,
+    -3.4
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==3&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm31_7_0",
+   "from": [
+    3.0,
+    -2.88
+   ],
+   "to": [
+    3.0,
+    -1.92
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==3&&round(both)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bm31_8_0",
+   "from": [
+    3.0,
+    -3.92
+   ],
+   "to": [
+    3.0,
+    -4.88
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(pair)==3&&round(both)==1"
+  },
+  {
+   "type": "rect",
+   "id": "bx31",
+   "x": -1.66,
+   "y": -4.06,
+   "w": 3.32,
+   "h": 1.32,
+   "role": "yne",
+   "fill": "yne",
+   "fillOpacity": 0.14,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "round(pair)==3&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "nm31",
+   "at": [
+    0,
+    -7.3
+   ],
+   "text": "[[stem|but]]-[[num|2]]-[[yne|yne]]   CH₃C≡CCH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==3&&round(both)==1"
+  },
+  {
+   "type": "text",
+   "id": "same3",
+   "at": [
+    0,
+    -9.6
+   ],
+   "text": "both **C₄H₆**: different arrangement",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(pair)==3&&round(both)==1"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "One alkene, but-1-ene",
+   "narration": "**But-1-ene**: four carbons, a C=C between C-1 and C-2. Molecular formula **C₄H₈**, condensed formula CH₂=CHCH₂CH₃.",
+   "actions": [
+    {
+     "set": {
+      "pair": 1,
+      "both": 0
+     }
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Move the double bond",
+   "narration": "Keep the four carbons but put the double bond in the **middle**: **but-2-ene**, CH₃CH=CHCH₃. Count the atoms again: still **C₄H₈**. Only the **arrangement** is different.",
+   "actions": [
+    {
+     "set": {
+      "pair": 1,
+      "both": 1
+     }
+    },
+    {
+     "pulse": [
+      "bx11"
+     ],
+     "at": 500
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Isomers",
+   "narration": "Compounds with the **same molecular formula** but **different structural formulae** are called **isomers**. They are different compounds with their own names.",
+   "actions": [
+    {
+     "set": {
+      "pair": 1,
+      "both": 1
+     }
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Alcohol isomers",
+   "narration": "The same thing happens with alcohols: **propan-1-ol** (–OH on the end carbon) and **propan-2-ol** (–OH on the middle carbon) both have the formula **C₃H₈O**.",
+   "actions": [
+    {
+     "set": {
+      "pair": 2,
+      "both": 1
+     }
+    },
+    {
+     "pulse": [
+      "bx20",
+      "bx21"
+     ],
+     "at": 500
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Alkyne isomers",
+   "narration": "**But-1-yne** and **but-2-yne** are isomers too: **C₄H₆**, with the triple bond in different positions.",
+   "actions": [
+    {
+     "set": {
+      "pair": 3,
+      "both": 1
+     }
+    },
+    {
+     "pulse": [
+      "bx30",
+      "bx31"
+     ],
+     "at": 500
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Why the number matters",
+   "narration": "Because the compounds are different, the **position number** is part of the name. Writing just “butene” or “propanol” would not tell you which compound you mean.",
+   "actions": [
+    {
+     "set": {
+      "pair": 1,
+      "both": 1
+     }
+    }
+   ]
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Isomers",
+   "tex": "\\text{same }\\role{stem}{\\text{molecular formula}},\\ \\text{different }\\role{num}{\\text{arrangement}}",
+   "text": "The atoms are the same; they are joined in a different way."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which pair are **isomers** of each other?",
+   "options": [
+    {
+     "id": "a",
+     "label": "CH₃CH₂CH₃ and CH₃CH₂CH₂OH"
+    },
+    {
+     "id": "b",
+     "label": "CH₃CH₂CH₂CH₃ and CH₃CH=CHCH₃"
+    },
+    {
+     "id": "c",
+     "label": "CH₂=CH₂ and CH₃CH₃"
+    },
+    {
+     "id": "d",
+     "label": "CH₃CH₂CH₂OH and CH₃CH(OH)CH₃"
+    }
+   ],
+   "answer": "d",
+   "hint": "They must have the same molecular formula.",
+   "explain": "Both are C₃H₈O. The other pairs have different molecular formulae."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "What is the **same** in but-1-ene and but-2-ene?",
+   "options": [
+    {
+     "id": "a",
+     "label": "the molecular formula C₄H₈"
+    },
+    {
+     "id": "b",
+     "label": "the condensed formula"
+    },
+    {
+     "id": "c",
+     "label": "the name"
+    },
+    {
+     "id": "d",
+     "label": "the position of the double bond"
+    }
+   ],
+   "answer": "a",
+   "hint": "Count the atoms.",
+   "explain": "Both are C₄H₈; the double bond is in a different place, so the names and condensed formulae differ."
+  },
+  {
+   "id": "c3",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "How many **different alcohols** have 3 carbons in a straight chain and one –OH group?",
+   "answer": 2,
+   "hint": "The –OH can be on the end carbon or the middle carbon.",
+   "explain": "Propan-1-ol and propan-2-ol: two."
+  }
+ ],
+ "takeaways": [
+  "**Isomers** have the same molecular formula but different structures.",
+  "The **position** of a double bond, triple bond or –OH makes a different compound.",
+  "That is why the **position number** is written in the name."
+ ],
+ "notes": [
+  {
+   "title": "In the book",
+   "text": "Worked Examples 8.2 and 8.3 draw both but-1-ene / but-2-ene and but-1-yne / but-2-yne."
+  }
+ ]
+}

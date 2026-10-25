@@ -1,0 +1,1383 @@
+{
+ "id": "g10-chem-c8-th-rules",
+ "title": "Name any compound from its formula in four steps",
+ "summary": "Longest chain, family, numbering, assemble: hept-3-ene from its displayed formula.",
+ "alt": "Naming a seven-carbon alkene: count carbons for the stem, find the functional group, number from the end giving the smaller number, then write the name.",
+ "autoGrid": false,
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -4.35,
+   15.35
+  ],
+  "y": [
+   -7.65,
+   5.95
+  ],
+  "pad": 10
+ },
+ "roles": {
+  "stem": {
+   "label": "Stem (how many C)",
+   "color": "#16a34a",
+   "text": "The first part of the name. It tells you how many carbon atoms are in the chain."
+  },
+  "ane": {
+   "label": "-ane · alkane",
+   "color": "#64748b",
+   "text": "Only single bonds between the carbons. No functional group."
+  },
+  "num": {
+   "label": "Position number",
+   "color": "#ca8a04",
+   "text": "The number in the name. It tells you where the double bond, triple bond or –OH sits."
+  },
+  "ene": {
+   "label": "-ene · C=C",
+   "color": "#dc2626",
+   "text": "A carbon–carbon DOUBLE bond (red box in the book)."
+  },
+  "hyd": {
+   "label": "Hydrogen",
+   "color": "#64748b",
+   "text": "Every hydrogen atom makes exactly one bond.",
+   "legend": false
+  },
+  "good": {
+   "label": "Correct",
+   "color": "#16a34a",
+   "text": "The part that follows the rules."
+  },
+  "bad": {
+   "label": "Mistake",
+   "color": "#dc2626",
+   "text": "The part that breaks a rule."
+  }
+ },
+ "shapes": [
+  {
+   "type": "text",
+   "id": "tm_0",
+   "at": [
+    0.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tm_1",
+   "at": [
+    2.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420,
+   "delay": 70
+  },
+  {
+   "type": "text",
+   "id": "tm_2",
+   "at": [
+    4.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420,
+   "delay": 140
+  },
+  {
+   "type": "text",
+   "id": "tm_3",
+   "at": [
+    6.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420,
+   "delay": 210
+  },
+  {
+   "type": "text",
+   "id": "tm_4",
+   "at": [
+    8.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420,
+   "delay": 280
+  },
+  {
+   "type": "text",
+   "id": "tm_5",
+   "at": [
+    10.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420,
+   "delay": 350
+  },
+  {
+   "type": "text",
+   "id": "tm_6",
+   "at": [
+    12.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420,
+   "delay": 420
+  },
+  {
+   "type": "text",
+   "id": "tm_7",
+   "at": [
+    -2.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tm_8",
+   "at": [
+    0.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tm_9",
+   "at": [
+    0.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tm_10",
+   "at": [
+    2.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tm_11",
+   "at": [
+    2.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tm_12",
+   "at": [
+    4.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tm_13",
+   "at": [
+    6.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tm_14",
+   "at": [
+    8.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tm_15",
+   "at": [
+    8.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tm_16",
+   "at": [
+    10.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tm_17",
+   "at": [
+    10.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tm_18",
+   "at": [
+    14.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tm_19",
+   "at": [
+    12.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tm_20",
+   "at": [
+    12.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "segment",
+   "id": "bm_0_0",
+   "from": [
+    0.52,
+    0.0
+   ],
+   "to": [
+    1.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "bm_1_0",
+   "from": [
+    2.52,
+    0.0
+   ],
+   "to": [
+    3.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 70
+  },
+  {
+   "type": "segment",
+   "id": "bm_2_0",
+   "from": [
+    4.52,
+    -0.15
+   ],
+   "to": [
+    5.48,
+    -0.15
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 140
+  },
+  {
+   "type": "segment",
+   "id": "bm_2_1",
+   "from": [
+    4.52,
+    0.15
+   ],
+   "to": [
+    5.48,
+    0.15
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 140
+  },
+  {
+   "type": "segment",
+   "id": "bm_3_0",
+   "from": [
+    6.52,
+    0.0
+   ],
+   "to": [
+    7.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 210
+  },
+  {
+   "type": "segment",
+   "id": "bm_4_0",
+   "from": [
+    8.52,
+    0.0
+   ],
+   "to": [
+    9.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 280
+  },
+  {
+   "type": "segment",
+   "id": "bm_5_0",
+   "from": [
+    10.52,
+    0.0
+   ],
+   "to": [
+    11.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 350
+  },
+  {
+   "type": "segment",
+   "id": "bm_6_0",
+   "from": [
+    -0.52,
+    0.0
+   ],
+   "to": [
+    -1.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "bm_7_0",
+   "from": [
+    0.0,
+    0.52
+   ],
+   "to": [
+    0.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "bm_8_0",
+   "from": [
+    0.0,
+    -0.52
+   ],
+   "to": [
+    0.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "bm_9_0",
+   "from": [
+    2.0,
+    0.52
+   ],
+   "to": [
+    2.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 70
+  },
+  {
+   "type": "segment",
+   "id": "bm_10_0",
+   "from": [
+    2.0,
+    -0.52
+   ],
+   "to": [
+    2.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 70
+  },
+  {
+   "type": "segment",
+   "id": "bm_11_0",
+   "from": [
+    4.0,
+    0.52
+   ],
+   "to": [
+    4.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 140
+  },
+  {
+   "type": "segment",
+   "id": "bm_12_0",
+   "from": [
+    6.0,
+    0.52
+   ],
+   "to": [
+    6.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 210
+  },
+  {
+   "type": "segment",
+   "id": "bm_13_0",
+   "from": [
+    8.0,
+    0.52
+   ],
+   "to": [
+    8.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 280
+  },
+  {
+   "type": "segment",
+   "id": "bm_14_0",
+   "from": [
+    8.0,
+    -0.52
+   ],
+   "to": [
+    8.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 280
+  },
+  {
+   "type": "segment",
+   "id": "bm_15_0",
+   "from": [
+    10.0,
+    0.52
+   ],
+   "to": [
+    10.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 350
+  },
+  {
+   "type": "segment",
+   "id": "bm_16_0",
+   "from": [
+    10.0,
+    -0.52
+   ],
+   "to": [
+    10.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 350
+  },
+  {
+   "type": "segment",
+   "id": "bm_17_0",
+   "from": [
+    12.52,
+    0.0
+   ],
+   "to": [
+    13.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 420
+  },
+  {
+   "type": "segment",
+   "id": "bm_18_0",
+   "from": [
+    12.0,
+    0.52
+   ],
+   "to": [
+    12.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 420
+  },
+  {
+   "type": "segment",
+   "id": "bm_19_0",
+   "from": [
+    12.0,
+    -0.52
+   ],
+   "to": [
+    12.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 420
+  },
+  {
+   "type": "text",
+   "id": "nmc_0",
+   "at": [
+    0.0,
+    -3.5
+   ],
+   "text": "1",
+   "role": "muted",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s1",
+   "disappear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "nmc_1",
+   "at": [
+    2.0,
+    -3.5
+   ],
+   "text": "2",
+   "role": "muted",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s1",
+   "disappear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "nmc_2",
+   "at": [
+    4.0,
+    -3.5
+   ],
+   "text": "3",
+   "role": "muted",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s1",
+   "disappear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "nmc_3",
+   "at": [
+    6.0,
+    -3.5
+   ],
+   "text": "4",
+   "role": "muted",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s1",
+   "disappear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "nmc_4",
+   "at": [
+    8.0,
+    -3.5
+   ],
+   "text": "5",
+   "role": "muted",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s1",
+   "disappear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "nmc_5",
+   "at": [
+    10.0,
+    -3.5
+   ],
+   "text": "6",
+   "role": "muted",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s1",
+   "disappear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "nmc_6",
+   "at": [
+    12.0,
+    -3.5
+   ],
+   "text": "7",
+   "role": "muted",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s1",
+   "disappear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "nmL_0",
+   "at": [
+    0.0,
+    -3.5
+   ],
+   "text": "1",
+   "role": "muted",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "nmL_1",
+   "at": [
+    2.0,
+    -3.5
+   ],
+   "text": "2",
+   "role": "muted",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "nmL_2",
+   "at": [
+    4.0,
+    -3.5
+   ],
+   "text": "3",
+   "role": "muted",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "nmL_3",
+   "at": [
+    6.0,
+    -3.5
+   ],
+   "text": "4",
+   "role": "muted",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "nmL_4",
+   "at": [
+    8.0,
+    -3.5
+   ],
+   "text": "5",
+   "role": "muted",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "nmL_5",
+   "at": [
+    10.0,
+    -3.5
+   ],
+   "text": "6",
+   "role": "muted",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "nmL_6",
+   "at": [
+    12.0,
+    -3.5
+   ],
+   "text": "7",
+   "role": "muted",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "nmR_0",
+   "at": [
+    0.0,
+    -4.8
+   ],
+   "text": "7",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "nmR_1",
+   "at": [
+    2.0,
+    -4.8
+   ],
+   "text": "6",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "nmR_2",
+   "at": [
+    4.0,
+    -4.8
+   ],
+   "text": "5",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "nmR_3",
+   "at": [
+    6.0,
+    -4.8
+   ],
+   "text": "4",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "nmR_4",
+   "at": [
+    8.0,
+    -4.8
+   ],
+   "text": "3",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "nmR_5",
+   "at": [
+    10.0,
+    -4.8
+   ],
+   "text": "2",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "nmR_6",
+   "at": [
+    12.0,
+    -4.8
+   ],
+   "text": "1",
+   "role": "num",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "rect",
+   "id": "chainbx",
+   "x": -0.8,
+   "y": -0.8,
+   "w": 13.6,
+   "h": 1.6,
+   "role": "stem",
+   "fill": "stem",
+   "fillOpacity": 0.1,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "dash": true,
+   "appear": "s1",
+   "disappear": "s2",
+   "appearDur": 500
+  },
+  {
+   "type": "rect",
+   "id": "grp",
+   "x": 3.34,
+   "y": -0.66,
+   "w": 3.32,
+   "h": 1.32,
+   "role": "ene",
+   "fill": "ene",
+   "fillOpacity": 0.13,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "appear": "s2",
+   "appearDur": 500
+  },
+  {
+   "type": "text",
+   "id": "capL",
+   "at": [
+    -3.0,
+    -3.05
+   ],
+   "text": "from left",
+   "role": "muted",
+   "size": "s",
+   "bold": false,
+   "layer": "front",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "capR",
+   "at": [
+    -3.0,
+    -4.5
+   ],
+   "text": "from right",
+   "role": "num",
+   "size": "s",
+   "bold": false,
+   "layer": "front",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "t_q",
+   "at": [
+    6.0,
+    4.6
+   ],
+   "text": "?",
+   "role": "muted",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "disappear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "t_stem",
+   "at": [
+    6.0,
+    4.6
+   ],
+   "text": "[[stem|hept]]…",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "appear": "s1",
+   "disappear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "t_ene",
+   "at": [
+    6.0,
+    4.6
+   ],
+   "text": "[[stem|hept]]…[[ene|ene]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "appear": "s2",
+   "disappear": "s4",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "t_name",
+   "at": [
+    6.0,
+    4.6
+   ],
+   "text": "[[stem|hept]]-[[num|3]]-[[ene|ene]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "appear": "s4",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "f_chk",
+   "at": [
+    6.0,
+    -6.3
+   ],
+   "text": "C₇H₁₄  ·  CH₃CH₂CH=CHCH₂CH₂CH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "appear": "s5",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "narration": "**Name this compound** from its displayed formula. Follow the four rules **in order**: 1 chain · 2 family · 3 numbering · 4 write the name.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Rule 1 · Count the carbons (stem)",
+   "narration": "Find the **longest chain** of carbons and count it: **7 carbons**, so the stem is [[stem|hept]]. (Mice Eat Peanut Butter: 1–4; then pent 5, hex 6, hept 7.)",
+   "actions": [
+    {
+     "pulse": [
+      "chainbx"
+     ],
+     "at": 500
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Rule 2 · Find the functional group (ending)",
+   "narration": "Look for the group that decides the family. There is a **C=C double bond**, so this is an **alkene** and the ending is [[ene|-ene]].",
+   "actions": [
+    {
+     "pulse": [
+      "grp"
+     ],
+     "at": 500
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Rule 3 · Number the chain",
+   "narration": "Number from **both ends**. From the left the C=C starts at C-3, from the right at C-4. Take the **smaller**: [[num|3]].",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Rule 4 · Write the name",
+   "narration": "Put the parts together in the order **stem – number – ending**: [[stem|hept]]-[[num|3]]-[[ene|ene]].",
+   "actions": [
+    {
+     "pulse": [
+      "t_name"
+     ],
+     "at": 500
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Check with the formula",
+   "narration": "An alkene has CₙH₂ₙ: n = 7 gives H = 14. Count in the drawing: **C₇H₁₄**, condensed **CH₃CH₂CH=CHCH₂CH₂CH₃**. They agree.",
+   "actions": [
+    {
+     "pulse": [
+      "f_chk"
+     ],
+     "at": 500
+    }
+   ]
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Four rules, in order",
+   "tex": "\\role{stem}{1.\\ \\text{chain}}\\ \\to\\ \\role{ene}{2.\\ \\text{group}}\\ \\to\\ \\role{num}{3.\\ \\text{number}}\\ \\to\\ 4.\\ \\text{name}",
+   "text": "Stem from the carbons, ending from the group, number from the smaller end, then write stem-number-ending."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Name **CH₃CH₂CH₂C≡CCH₃**.",
+   "options": [
+    {
+     "id": "a",
+     "label": "hex-2-yne"
+    },
+    {
+     "id": "b",
+     "label": "pent-2-yne"
+    },
+    {
+     "id": "c",
+     "label": "hex-2-ene"
+    },
+    {
+     "id": "d",
+     "label": "hex-4-yne"
+    }
+   ],
+   "answer": "a",
+   "hint": "Stem from the carbons, ending from the group, number from the smaller end.",
+   "explain": "6 carbons (hex), a C≡C (-yne), smaller number 2: hex-2-yne."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Name **CH₃CH₂CH₂CH₂CH(OH)CH₃**.",
+   "options": [
+    {
+     "id": "a",
+     "label": "hexan-1-ol"
+    },
+    {
+     "id": "b",
+     "label": "hexane"
+    },
+    {
+     "id": "c",
+     "label": "hexan-2-ol"
+    },
+    {
+     "id": "d",
+     "label": "hexan-5-ol"
+    }
+   ],
+   "answer": "c",
+   "hint": "Number so that the –OH gets the smaller number.",
+   "explain": "6 carbons (hex), –OH (-ol); from the right it is on C-2, from the left on C-5: hexan-2-ol."
+  },
+  {
+   "id": "c3",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "In **CH₃CH₂CH₂CH₂CH=CH₂** the double bond is between C-5 and C-6 counting from the left. Which number goes in the name?",
+   "answer": 1,
+   "hint": "Count from the other end.",
+   "explain": "From the right the double bond starts at C-1: hex-1-ene."
+  }
+ ],
+ "takeaways": [
+  "**1** count the carbons (stem) · **2** find the group (ending) · **3** number from the end giving the **smaller** number · **4** write stem-number-ending.",
+  "Always check the final name against the **formula** (CₙH₂ₙ₊₂, CₙH₂ₙ, CₙH₂ₙ₋₂)."
+ ],
+ "notes": [
+  {
+   "title": "Exam tip",
+   "text": "Show the four rules in your answer: examiners award marks for the stem, the ending and the position number separately."
+  }
+ ]
+}

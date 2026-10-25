@@ -2666,10 +2666,30 @@
     ]));
   }
 
+  /**
+   * Board guard (Class 10 only). A KPK Board student must not open a Federal chapter, and a Federal student must not
+   * open a KPK chapter (KPK chapters are named kpk_…). It only uses the profile the dashboard already cached: when
+   * there is no cached profile it does nothing, so a slow network can never lock a student out.
+   */
+  function boardMismatch(path) {
+    var parts = String(path || '').split('/');
+    if (parts[0] !== '10') return false;
+    var prof = null;
+    try { var c = Storage.getCachedDashboard(); prof = c && c.data && c.data.profile; } catch (e) { prof = null; }
+    if (!prof || !prof.enrolledScope) return false;
+    var kpkStudent = /(^|,)\s*BOARD-KPK\s*(,|$)/i.test(String(prof.enrolledScope));
+    var kpkChapter = /^kpk_/i.test(parts[2] || '');
+    return kpkStudent !== kpkChapter;
+  }
+
   async function init() {
     chapterPath = chapterPathFromQuery();
     if (!chapterPath) {
       showFatal('No chapter selected', 'Open a chapter from your Classes list.');
+      return;
+    }
+    if (boardMismatch(chapterPath)) {          // wrong board for this student: back to the dashboard, nothing is loaded
+      window.location.replace('dashboard.html');
       return;
     }
 

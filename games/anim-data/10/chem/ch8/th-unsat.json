@@ -1,0 +1,2127 @@
+{
+ "id": "g10-chem-c8-th-unsat",
+ "title": "Single, double and triple bonds change the hydrogen count",
+ "summary": "Ethane, ethene, ethyne (and the four-carbon family): more bonds between carbons means fewer hydrogens.",
+ "alt": "Alkane, alkene and alkyne with two or four carbons; the number of hydrogen atoms falls by two for each extra bond between carbons.",
+ "autoGrid": false,
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -6.35,
+   6.35
+  ],
+  "y": [
+   -7.05,
+   5.45
+  ],
+  "pad": 10
+ },
+ "roles": {
+  "stem": {
+   "label": "Stem (how many C)",
+   "color": "#16a34a",
+   "text": "The first part of the name. It tells you how many carbon atoms are in the chain."
+  },
+  "ane": {
+   "label": "-ane · alkane",
+   "color": "#64748b",
+   "text": "Only single bonds between the carbons. No functional group."
+  },
+  "ene": {
+   "label": "-ene · C=C",
+   "color": "#dc2626",
+   "text": "A carbon–carbon DOUBLE bond (red box in the book)."
+  },
+  "yne": {
+   "label": "-yne · C≡C",
+   "color": "#7c3aed",
+   "text": "A carbon–carbon TRIPLE bond (purple box in the book)."
+  },
+  "hyd": {
+   "label": "Hydrogen",
+   "color": "#64748b",
+   "text": "Every hydrogen atom makes exactly one bond.",
+   "legend": false
+  },
+  "num": {
+   "label": "Position number",
+   "color": "#ca8a04",
+   "text": "The number in the name. It tells you where the double bond, triple bond or –OH sits."
+  },
+  "good": {
+   "label": "Correct",
+   "color": "#16a34a",
+   "text": "The part that follows the rules."
+  }
+ },
+ "params": [
+  {
+   "id": "b",
+   "label": "Bond between C and C",
+   "type": "choice",
+   "options": [
+    {
+     "value": 1,
+     "label": "single (alkane)"
+    },
+    {
+     "value": 2,
+     "label": "double (alkene)"
+    },
+    {
+     "value": 3,
+     "label": "triple (alkyne)"
+    }
+   ],
+   "default": 1,
+   "role": "ane"
+  },
+  {
+   "id": "k",
+   "label": "Carbons in the chain",
+   "type": "choice",
+   "options": [
+    {
+     "value": 2,
+     "label": "2 carbons"
+    },
+    {
+     "value": 4,
+     "label": "4 carbons"
+    }
+   ],
+   "default": 2,
+   "role": "stem"
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Carbons n",
+   "value": "{{k}}",
+   "role": "stem"
+  },
+  {
+   "label": "Hydrogens",
+   "value": "{{2*round(k)+2-2*(round(b)-1)}}",
+   "role": "hyd"
+  }
+ ],
+ "shapes": [
+  {
+   "type": "text",
+   "id": "tm12_0",
+   "at": [
+    -1.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==1&&round(k)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm12_1",
+   "at": [
+    1.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==1&&round(k)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm12_2",
+   "at": [
+    -3.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==1&&round(k)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm12_3",
+   "at": [
+    -1.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==1&&round(k)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm12_4",
+   "at": [
+    -1.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==1&&round(k)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm12_5",
+   "at": [
+    3.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==1&&round(k)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm12_6",
+   "at": [
+    1.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==1&&round(k)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm12_7",
+   "at": [
+    1.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==1&&round(k)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm12_0_0",
+   "from": [
+    -0.48,
+    0.0
+   ],
+   "to": [
+    0.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==1&&round(k)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm12_1_0",
+   "from": [
+    -1.52,
+    0.0
+   ],
+   "to": [
+    -2.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==1&&round(k)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm12_2_0",
+   "from": [
+    -1.0,
+    0.52
+   ],
+   "to": [
+    -1.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==1&&round(k)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm12_3_0",
+   "from": [
+    -1.0,
+    -0.52
+   ],
+   "to": [
+    -1.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==1&&round(k)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm12_4_0",
+   "from": [
+    1.52,
+    0.0
+   ],
+   "to": [
+    2.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==1&&round(k)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm12_5_0",
+   "from": [
+    1.0,
+    0.52
+   ],
+   "to": [
+    1.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==1&&round(k)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm12_6_0",
+   "from": [
+    1.0,
+    -0.52
+   ],
+   "to": [
+    1.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==1&&round(k)==2"
+  },
+  {
+   "type": "text",
+   "id": "nm12",
+   "at": [
+    0,
+    4.1
+   ],
+   "text": "[[ane|Ethane]]   C₂H₆",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==1&&round(k)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm22_0",
+   "at": [
+    -1.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==2&&round(k)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm22_1",
+   "at": [
+    1.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==2&&round(k)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm22_2",
+   "at": [
+    -1.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==2&&round(k)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm22_3",
+   "at": [
+    -1.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==2&&round(k)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm22_4",
+   "at": [
+    1.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==2&&round(k)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm22_5",
+   "at": [
+    1.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==2&&round(k)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm22_0_0",
+   "from": [
+    -0.48,
+    -0.15
+   ],
+   "to": [
+    0.48,
+    -0.15
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==2&&round(k)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm22_0_1",
+   "from": [
+    -0.48,
+    0.15
+   ],
+   "to": [
+    0.48,
+    0.15
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==2&&round(k)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm22_1_0",
+   "from": [
+    -1.0,
+    0.52
+   ],
+   "to": [
+    -1.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==2&&round(k)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm22_2_0",
+   "from": [
+    -1.0,
+    -0.52
+   ],
+   "to": [
+    -1.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==2&&round(k)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm22_3_0",
+   "from": [
+    1.0,
+    0.52
+   ],
+   "to": [
+    1.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==2&&round(k)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm22_4_0",
+   "from": [
+    1.0,
+    -0.52
+   ],
+   "to": [
+    1.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==2&&round(k)==2"
+  },
+  {
+   "type": "rect",
+   "id": "bx22",
+   "x": -1.66,
+   "y": -0.66,
+   "w": 3.32,
+   "h": 1.32,
+   "role": "ene",
+   "fill": "ene",
+   "fillOpacity": 0.14,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "round(b)==2&&round(k)==2"
+  },
+  {
+   "type": "text",
+   "id": "nm22",
+   "at": [
+    0,
+    4.1
+   ],
+   "text": "[[ene|Ethene]]   C₂H₄",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==2&&round(k)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm32_0",
+   "at": [
+    -1.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==3&&round(k)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm32_1",
+   "at": [
+    1.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==3&&round(k)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm32_2",
+   "at": [
+    -3.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==3&&round(k)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm32_3",
+   "at": [
+    3.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==3&&round(k)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm32_0_0",
+   "from": [
+    -0.48,
+    -0.27
+   ],
+   "to": [
+    0.48,
+    -0.27
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==3&&round(k)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm32_0_1",
+   "from": [
+    -0.48,
+    0.0
+   ],
+   "to": [
+    0.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==3&&round(k)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm32_0_2",
+   "from": [
+    -0.48,
+    0.27
+   ],
+   "to": [
+    0.48,
+    0.27
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==3&&round(k)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm32_1_0",
+   "from": [
+    -1.52,
+    0.0
+   ],
+   "to": [
+    -2.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==3&&round(k)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bm32_2_0",
+   "from": [
+    1.52,
+    0.0
+   ],
+   "to": [
+    2.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==3&&round(k)==2"
+  },
+  {
+   "type": "rect",
+   "id": "bx32",
+   "x": -1.66,
+   "y": -0.66,
+   "w": 3.32,
+   "h": 1.32,
+   "role": "yne",
+   "fill": "yne",
+   "fillOpacity": 0.14,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "round(b)==3&&round(k)==2"
+  },
+  {
+   "type": "text",
+   "id": "nm32",
+   "at": [
+    0,
+    4.1
+   ],
+   "text": "[[yne|Ethyne]]   C₂H₂",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==3&&round(k)==2"
+  },
+  {
+   "type": "text",
+   "id": "tm14_0",
+   "at": [
+    -3.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm14_1",
+   "at": [
+    -1.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm14_2",
+   "at": [
+    1.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm14_3",
+   "at": [
+    3.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm14_4",
+   "at": [
+    -5.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm14_5",
+   "at": [
+    -3.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm14_6",
+   "at": [
+    -3.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm14_7",
+   "at": [
+    -1.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm14_8",
+   "at": [
+    -1.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm14_9",
+   "at": [
+    1.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm14_10",
+   "at": [
+    1.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm14_11",
+   "at": [
+    5.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm14_12",
+   "at": [
+    3.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm14_13",
+   "at": [
+    3.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm14_0_0",
+   "from": [
+    -2.48,
+    0.0
+   ],
+   "to": [
+    -1.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm14_1_0",
+   "from": [
+    -0.48,
+    0.0
+   ],
+   "to": [
+    0.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm14_2_0",
+   "from": [
+    1.52,
+    0.0
+   ],
+   "to": [
+    2.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm14_3_0",
+   "from": [
+    -3.52,
+    0.0
+   ],
+   "to": [
+    -4.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm14_4_0",
+   "from": [
+    -3.0,
+    0.52
+   ],
+   "to": [
+    -3.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm14_5_0",
+   "from": [
+    -3.0,
+    -0.52
+   ],
+   "to": [
+    -3.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm14_6_0",
+   "from": [
+    -1.0,
+    0.52
+   ],
+   "to": [
+    -1.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm14_7_0",
+   "from": [
+    -1.0,
+    -0.52
+   ],
+   "to": [
+    -1.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm14_8_0",
+   "from": [
+    1.0,
+    0.52
+   ],
+   "to": [
+    1.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm14_9_0",
+   "from": [
+    1.0,
+    -0.52
+   ],
+   "to": [
+    1.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm14_10_0",
+   "from": [
+    3.52,
+    0.0
+   ],
+   "to": [
+    4.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm14_11_0",
+   "from": [
+    3.0,
+    0.52
+   ],
+   "to": [
+    3.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm14_12_0",
+   "from": [
+    3.0,
+    -0.52
+   ],
+   "to": [
+    3.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "nm14",
+   "at": [
+    0,
+    4.1
+   ],
+   "text": "[[ane|Butane]]   C₄H₁₀",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==1&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm24_0",
+   "at": [
+    -3.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm24_1",
+   "at": [
+    -1.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm24_2",
+   "at": [
+    1.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm24_3",
+   "at": [
+    3.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm24_4",
+   "at": [
+    -3.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm24_5",
+   "at": [
+    -3.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm24_6",
+   "at": [
+    -1.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm24_7",
+   "at": [
+    1.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm24_8",
+   "at": [
+    1.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm24_9",
+   "at": [
+    5.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm24_10",
+   "at": [
+    3.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm24_11",
+   "at": [
+    3.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm24_0_0",
+   "from": [
+    -2.48,
+    -0.15
+   ],
+   "to": [
+    -1.52,
+    -0.15
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm24_0_1",
+   "from": [
+    -2.48,
+    0.15
+   ],
+   "to": [
+    -1.52,
+    0.15
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm24_1_0",
+   "from": [
+    -0.48,
+    0.0
+   ],
+   "to": [
+    0.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm24_2_0",
+   "from": [
+    1.52,
+    0.0
+   ],
+   "to": [
+    2.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm24_3_0",
+   "from": [
+    -3.0,
+    0.52
+   ],
+   "to": [
+    -3.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm24_4_0",
+   "from": [
+    -3.0,
+    -0.52
+   ],
+   "to": [
+    -3.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm24_5_0",
+   "from": [
+    -1.0,
+    0.52
+   ],
+   "to": [
+    -1.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm24_6_0",
+   "from": [
+    1.0,
+    0.52
+   ],
+   "to": [
+    1.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm24_7_0",
+   "from": [
+    1.0,
+    -0.52
+   ],
+   "to": [
+    1.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm24_8_0",
+   "from": [
+    3.52,
+    0.0
+   ],
+   "to": [
+    4.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm24_9_0",
+   "from": [
+    3.0,
+    0.52
+   ],
+   "to": [
+    3.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm24_10_0",
+   "from": [
+    3.0,
+    -0.52
+   ],
+   "to": [
+    3.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "rect",
+   "id": "bx24",
+   "x": -3.66,
+   "y": -0.66,
+   "w": 3.32,
+   "h": 1.32,
+   "role": "ene",
+   "fill": "ene",
+   "fillOpacity": 0.14,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "nm24",
+   "at": [
+    0,
+    4.1
+   ],
+   "text": "[[ene|But-1-ene]]   C₄H₈",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==2&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm34_0",
+   "at": [
+    -3.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==3&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm34_1",
+   "at": [
+    -1.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==3&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm34_2",
+   "at": [
+    1.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==3&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm34_3",
+   "at": [
+    3.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==3&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm34_4",
+   "at": [
+    -5.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==3&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm34_5",
+   "at": [
+    1.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==3&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm34_6",
+   "at": [
+    1.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==3&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm34_7",
+   "at": [
+    5.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==3&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm34_8",
+   "at": [
+    3.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==3&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "tm34_9",
+   "at": [
+    3.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(b)==3&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm34_0_0",
+   "from": [
+    -2.48,
+    -0.27
+   ],
+   "to": [
+    -1.52,
+    -0.27
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==3&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm34_0_1",
+   "from": [
+    -2.48,
+    0.0
+   ],
+   "to": [
+    -1.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==3&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm34_0_2",
+   "from": [
+    -2.48,
+    0.27
+   ],
+   "to": [
+    -1.52,
+    0.27
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==3&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm34_1_0",
+   "from": [
+    -0.48,
+    0.0
+   ],
+   "to": [
+    0.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==3&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm34_2_0",
+   "from": [
+    1.52,
+    0.0
+   ],
+   "to": [
+    2.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==3&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm34_3_0",
+   "from": [
+    -3.52,
+    0.0
+   ],
+   "to": [
+    -4.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==3&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm34_4_0",
+   "from": [
+    1.0,
+    0.52
+   ],
+   "to": [
+    1.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==3&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm34_5_0",
+   "from": [
+    1.0,
+    -0.52
+   ],
+   "to": [
+    1.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==3&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm34_6_0",
+   "from": [
+    3.52,
+    0.0
+   ],
+   "to": [
+    4.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==3&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm34_7_0",
+   "from": [
+    3.0,
+    0.52
+   ],
+   "to": [
+    3.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==3&&round(k)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bm34_8_0",
+   "from": [
+    3.0,
+    -0.52
+   ],
+   "to": [
+    3.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(b)==3&&round(k)==4"
+  },
+  {
+   "type": "rect",
+   "id": "bx34",
+   "x": -3.66,
+   "y": -0.66,
+   "w": 3.32,
+   "h": 1.32,
+   "role": "yne",
+   "fill": "yne",
+   "fillOpacity": 0.14,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "round(b)==3&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "nm34",
+   "at": [
+    0,
+    4.1
+   ],
+   "text": "[[yne|But-1-yne]]   C₄H₆",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==3&&round(k)==4"
+  },
+  {
+   "type": "text",
+   "id": "gen1",
+   "at": [
+    0,
+    -4.2
+   ],
+   "text": "[[ane|CₙH₂ₙ₊₂]]   →   H = 2 × {{k}} + 2 = **{{2*k+2}}**",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==1"
+  },
+  {
+   "type": "text",
+   "id": "gen2",
+   "at": [
+    0,
+    -4.2
+   ],
+   "text": "[[ene|CₙH₂ₙ]]   →   H = 2 × {{k}} = **{{2*k}}**",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==2"
+  },
+  {
+   "type": "text",
+   "id": "gen3",
+   "at": [
+    0,
+    -4.2
+   ],
+   "text": "[[yne|CₙH₂ₙ₋₂]]   →   H = 2 × {{k}} − 2 = **{{2*k-2}}**",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(b)==3"
+  },
+  {
+   "type": "text",
+   "id": "cap",
+   "at": [
+    0,
+    -5.7
+   ],
+   "text": "every C keeps 4 bonds",
+   "role": "muted",
+   "size": "s",
+   "bold": false,
+   "layer": "front"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Alkane: all single bonds",
+   "narration": "**Ethane, C₂H₆**. Each carbon: 1 bond to the other carbon + 3 to hydrogen = 4. The alkane holds the **most hydrogens** it can, so it is called **saturated**. General formula: [[ane|CₙH₂ₙ₊₂]].",
+   "actions": [
+    {
+     "set": {
+      "b": 1,
+      "k": 2
+     }
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Alkene: one double bond",
+   "narration": "Make the C–C bond a **double bond**. It uses 2 of carbon’s 4 bonds, so each carbon loses one H: **ethene, C₂H₄**. Fewer hydrogens than the alkane makes it **unsaturated**. General formula: [[ene|CₙH₂ₙ]].",
+   "actions": [
+    {
+     "set": {
+      "b": 2,
+      "k": 2
+     }
+    },
+    {
+     "pulse": [
+      "bx22"
+     ],
+     "at": 500
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Alkyne: one triple bond",
+   "narration": "A **triple bond** uses 3 bonds, so each carbon keeps just one H: **ethyne, C₂H₂**. General formula: [[yne|CₙH₂ₙ₋₂]]. Two H fewer again.",
+   "actions": [
+    {
+     "set": {
+      "b": 3,
+      "k": 2
+     }
+    },
+    {
+     "pulse": [
+      "bx32"
+     ],
+     "at": 500
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Longer chain: butane",
+   "narration": "The same idea works for any length. **Butane** (4 carbons, all single bonds): C₄H₁₀ = 2 × 4 + 2.",
+   "actions": [
+    {
+     "set": {
+      "b": 1,
+      "k": 4
+     }
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Butene",
+   "narration": "A C=C in a four-carbon chain makes **but-1-ene**: C₄H₈ = 2 × 4. The double bond removes two hydrogens from the alkane.",
+   "actions": [
+    {
+     "set": {
+      "b": 2,
+      "k": 4
+     }
+    },
+    {
+     "pulse": [
+      "bx24"
+     ],
+     "at": 500
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Butyne",
+   "narration": "A C≡C makes **but-1-yne**: C₄H₆ = 2 × 4 − 2. Compare the three formulas: C₄H₁₀ → C₄H₈ → C₄H₆. Try the choices in the Values tab.",
+   "actions": [
+    {
+     "set": {
+      "b": 3,
+      "k": 4
+     }
+    },
+    {
+     "pulse": [
+      "bx34"
+     ],
+     "at": 500
+    }
+   ]
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Three hydrocarbon families",
+   "tex": "\\role{ane}{\\mathrm{C}_n\\mathrm{H}_{2n+2}} \\quad \\role{ene}{\\mathrm{C}_n\\mathrm{H}_{2n}} \\quad \\role{yne}{\\mathrm{C}_n\\mathrm{H}_{2n-2}}",
+   "text": "Alkane, alkene, alkyne: two hydrogens fewer for each extra bond."
+  },
+  {
+   "title": "Carbon always has four bonds",
+   "tex": "4 = \\text{(bonds to C)} + \\text{(bonds to H)} + \\dots",
+   "text": "A double or triple bond uses up some of the four, leaving less room for H."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "An **alkyne** has **5 carbon atoms**. How many **hydrogen atoms** does it have?",
+   "answer": 8,
+   "hint": "Alkynes: H = 2n − 2.",
+   "explain": "2 × 5 − 2 = 8, so the alkyne is C₅H₈ (pentyne)."
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "An **alkene** has **6 carbon atoms**. How many **hydrogen atoms** does it have?",
+   "answer": 12,
+   "hint": "Alkenes: H = 2n.",
+   "explain": "2 × 6 = 12, so the alkene is C₆H₁₂ (hexene)."
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which general formula belongs to **alkenes**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "CₙH₂ₙ"
+    },
+    {
+     "id": "b",
+     "label": "CₙH₂ₙ₊₂"
+    },
+    {
+     "id": "c",
+     "label": "CₙHₙ"
+    },
+    {
+     "id": "d",
+     "label": "CₙH₂ₙ₋₂"
+    }
+   ],
+   "answer": "a",
+   "hint": "One double bond, two H fewer than the alkane.",
+   "explain": "Alkenes have CₙH₂ₙ."
+  },
+  {
+   "id": "c4",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which compound is **saturated** (the most hydrogens possible)?",
+   "options": [
+    {
+     "id": "a",
+     "label": "C₃H₄"
+    },
+    {
+     "id": "b",
+     "label": "C₂H₄"
+    },
+    {
+     "id": "c",
+     "label": "C₃H₈"
+    },
+    {
+     "id": "d",
+     "label": "C₃H₆"
+    }
+   ],
+   "answer": "c",
+   "hint": "Which one fits CₙH₂ₙ₊₂?",
+   "explain": "C₃H₈ fits CₙH₂ₙ₊₂, so it is an alkane: saturated."
+  }
+ ],
+ "takeaways": [
+  "**Saturated** = only single bonds (alkane). **Unsaturated** = a double or triple bond.",
+  "Alkane CₙH₂ₙ₊₂ → alkene CₙH₂ₙ → alkyne CₙH₂ₙ₋₂.",
+  "Each extra bond between carbons removes **two** hydrogens."
+ ],
+ "notes": [
+  {
+   "title": "Check yourself",
+   "text": "If the carbons are joined by a double bond, count 2 lines between them and make up the rest with hydrogens: every carbon must end with 4 lines."
+  }
+ ]
+}

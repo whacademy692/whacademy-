@@ -251,7 +251,15 @@
     render();
   }
   /** the little picture at the top of a chapter card (pure SVG, animated in CSS) */
-  function chapterArt(ch) {
+  function chapterArt(ch, group) {
+    if (group && group.key === 'chem') {
+      // a little skeletal formula that draws itself: zig-zag chain, a C=C double bond and an –OH branch
+      return '<svg viewBox="0 0 150 96" class="anim-chart anim-chart__mol" focusable="false">' +
+        '<polyline class="anim-chart__a" points="14,76 42,52 70,76 98,52"/>' +
+        '<polyline class="anim-chart__b" points="98,52 126,76"/><polyline class="anim-chart__b" points="104,46 132,70"/>' +
+        '<polyline class="anim-chart__c" points="42,52 42,26"/>' +
+        '<text x="42" y="18" text-anchor="middle" class="anim-chart__t">OH</text></svg>';
+    }
     if (/pythag/i.test(ch.title || '')) {
       return '<svg viewBox="0 0 150 96" class="anim-chart" focusable="false">' +
         '<polygon class="anim-chart__fill" points="22,80 112,80 112,22"/>' +
@@ -280,8 +288,9 @@
     var art = Utils.createEl('span', { class: 'anim-chcard__art', 'aria-hidden': 'true' }, [
       Utils.createEl('span', { class: 'anim-chcard__n', text: 'Ch ' + ch.n })
     ]);
-    var pic = Utils.createEl('span', { class: 'anim-chcard__pic' }); pic.innerHTML = chapterArt(ch); art.appendChild(pic);
+    var pic = Utils.createEl('span', { class: 'anim-chcard__pic' }); pic.innerHTML = chapterArt(ch, group); art.appendChild(pic);
     if (/pythag/i.test(ch.title || '')) art.appendChild(Utils.createEl('span', { class: 'anim-chcard__eq', text: 'a² + b² = c²' }));
+    else if (group.key === 'chem') art.appendChild(Utils.createEl('span', { class: 'anim-chcard__eq', text: 'CₙH₂ₙ₊₂' }));
     var rg = Utils.createEl('span', { class: 'anim-chcard__ring', title: pct + '% done' }); rg.innerHTML = ring(pct); art.appendChild(rg);
     var card = Utils.createEl('button', { class: 'anim-chcard' + (done === total && total ? ' is-done' : ''), type: 'button', style: accentStyle(group.key), 'aria-label': 'Chapter ' + ch.n + ' · ' + ch.title + ' — ' + total + ' animations, ' + done + ' done' }, [
       art,
