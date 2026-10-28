@@ -1327,9 +1327,9 @@ window.WHA_CONTENT = {
               "n": 2,
               "unit": 11,
               "title": "Homeostasis",
-              "notes": null,
+              "notes": "https://whacademypk.com/notes/kpk/class-10/biology/homeostasis.html",
               "quiz": null,
-              "game": null
+              "game": "https://whacademypk.com/games/chapter.html?ch=10/bio/kpk_homeostasis"
             },
             {
               "n": 3,
