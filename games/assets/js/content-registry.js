@@ -1335,9 +1335,9 @@ window.WHA_CONTENT = {
               "n": 3,
               "unit": 12,
               "title": "Coordination and Control",
-              "notes": null,
+              "notes": "https://whacademypk.com/notes/kpk/class-10/biology/coordination-and-control.html",
               "quiz": null,
-              "game": null
+              "game": "https://whacademypk.com/games/chapter.html?ch=10/bio/kpk_coordination_and_control"
             },
             {
               "n": 4,
