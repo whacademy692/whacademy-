@@ -1,0 +1,60 @@
+/* ============================================================================
+   W.H. Academy — public-site chrome (navbar + page background)
+   PUBLIC PAGES ONLY. This file is NOT linked by the /games/ student app,
+   so it never touches the app's themes or its background.
+   Link it in <head> AFTER brand.css so these rules win.
+
+   Gives every public page:
+     - the brand gradient navbar (same indigo as the homepage),
+     - a white wordmark + white nav links on that navbar,
+     - a soft indigo page background (#f0f4ff) instead of bright white.
+
+   What it deliberately does NOT touch:
+     - breadcrumb bars  <nav aria-label="Breadcrumb">
+     - in-page TOC / jump navs (.toc, .jump, .px-jump, .dx-glance)
+     - the homepage-style marketing navbar (<nav class="navbar">), which
+       manages its own scroll-state (.scrolled) in JS.
+   ========================================================================== */
+
+/* ---- Soft page background (was bright white / near-white) ---- */
+body{ background:#f0f4ff !important; }
+
+/* ---- Top navbar -> brand gradient (notes + secondary pages) ---- */
+nav[aria-label="Page navigation"],
+nav.top,
+nav.top-nav{
+  background:linear-gradient(135deg,#312e81,#4f46e5,#6d28d9) !important;
+  border-bottom:none !important;
+  box-shadow:0 2px 16px rgba(49,46,129,.28) !important;
+}
+
+/* Wordmark turns white on the gradient */
+nav[aria-label="Page navigation"] .wh-logo,
+nav.top .wh-logo,
+nav.top-nav .wh-logo{ color:#fff !important; }
+
+/* "Back to Home" pill -> readable on the gradient */
+nav[aria-label="Page navigation"] .nav-back,
+nav.top-nav .nav-back{
+  color:#fff !important;
+  border-color:rgba(255,255,255,.55) !important;
+  background:rgba(255,255,255,.08) !important;
+}
+nav[aria-label="Page navigation"] .nav-back:hover,
+nav.top-nav .nav-back:hover{
+  background:rgba(255,255,255,.2) !important;
+  color:#fff !important;
+}
+/* older "a.home" back link (KPK bio pages) */
+nav.top a.home{ color:rgba(255,255,255,.92) !important; }
+nav.top a.home:hover{ color:#fff !important; }
+
+/* ---- Baseline nav layout (NO !important) so the standard nav also renders
+   correctly on simple pages that never styled it (privacy, terms, the
+   animations showcase). Pages with their own layout keep theirs. ---- */
+nav[aria-label="Page navigation"]{ position:sticky; top:0; z-index:100; padding:0 5%; }
+.nav-inner{ max-width:1200px; margin:0 auto; display:flex; align-items:center;
+  justify-content:space-between; min-height:64px; gap:14px; }
+.nav-back{ display:inline-flex; align-items:center; gap:8px; text-decoration:none;
+  font-weight:600; font-size:.9rem; padding:8px 16px; border:1.5px solid;
+  border-radius:50px; transition:all .2s; }
