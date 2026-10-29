@@ -371,7 +371,7 @@
         '<h1 style="margin:0 0 8px;font-size:1.35rem;color:#dc2626;">Fee pending — dashboard locked</h1>' +
         '<p style="color:#475569;line-height:1.55;margin:0 0 10px;">You have not submitted your <strong>' + promoEsc(fl.label) + '</strong> fee ' +
           '(total <strong>' + feeMoney(fl.total) + '</strong>). Fee is due between the <strong>' + fl.dueFrom + '–' + fl.dueTo + '</strong> of each month.</p>' +
-        '<p style="color:#475569;line-height:1.55;margin:0 0 16px;">If you have already paid, message W.H. Academy on WhatsApp with your <strong>Name, Student ID and Father name</strong>. Once it is confirmed, your dashboard opens automatically.</p>' +
+        '<p style="color:#475569;line-height:1.55;margin:0 0 16px;">If you have already paid, message W.H. Academy on WhatsApp with your <strong>Name, Father name and Class</strong> (Student ID too if you know it) and your <strong>payment screenshot</strong>. Once it is confirmed, your dashboard opens automatically.</p>' +
         wa +
         '<p style="color:#64748b;font-size:.85rem;margin-top:16px;">You can also open <a href="fee.html">My Fee</a> to see each month.</p>' +
       '</div>';
