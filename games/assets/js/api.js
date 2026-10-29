@@ -197,6 +197,10 @@ const Api = (() => {
     compose: () => request('dashboard/compose', {})
   };
 
+  const fee = {
+    mine: () => request('student/fee', {})
+  };
+
   const progress = {
     sessionStart: (chapterRef, mechanicIds) => request('progress/sessionStart', { chapterRef, mechanicIds }),
     sessionEnd: (sessionId) => request('progress/sessionEnd', { sessionId }),
@@ -303,7 +307,7 @@ const Api = (() => {
 
   return {
     request, flushPendingQueue, ApiError,
-    auth, otp, registration, dashboard, progress, revision, wrongAnswers,
+    auth, otp, registration, dashboard, fee, progress, revision, wrongAnswers,
     bookmarks, favorites, coins, xp, achievements, certificates,
     leaderboard, analytics, notifications: notificationsApi, admin, bossBattle
   };

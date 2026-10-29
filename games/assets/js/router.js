@@ -57,6 +57,22 @@ const Router = (() => {
     // Phone: Badges lives in the hamburger drawer (built in buildMobileShell), not the bottom bar.
   }
 
+  /** Adds the "Fee" item to the desktop sidebar (phone: in the drawer). Idempotent. */
+  function injectFeeNav() {
+    const icon = '<svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/>' +
+      '<path stroke-linecap="round" d="M3 10h18M7 15h4"/></svg>';
+    const sidebar = document.querySelector('.sidebar__nav');
+    if (sidebar && !sidebar.querySelector('[data-nav-page="fee.html"]')) {
+      const a = document.createElement('a');
+      a.className = 'sidebar__item';
+      a.href = 'fee.html';
+      a.setAttribute('data-nav-page', 'fee.html');
+      a.innerHTML = icon + ' Fee';
+      const anchor = sidebar.querySelector('[data-nav-page="profile.html"]');
+      if (anchor) sidebar.insertBefore(a, anchor); else sidebar.appendChild(a);
+    }
+  }
+
   /**
    * Adds the "My Progress" item to the sidebar + bottom-nav on every page with
    * the app shell — same app-wide injection approach as Badges. Idempotent.
@@ -241,6 +257,7 @@ const Router = (() => {
     support: '<path stroke-linecap="round" stroke-linejoin="round" d="M4 5.5A2.5 2.5 0 016.5 3h11A2.5 2.5 0 0120 5.5v8a2.5 2.5 0 01-2.5 2.5H11l-4.5 4v-4A2.5 2.5 0 014 13.5v-8z"/><path stroke-linecap="round" d="M8 8h8M8 11.5h5"/>',
     guide: '<circle cx="12" cy="12" r="9"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.6 9a2.4 2.4 0 114.6 1c0 1.4-2.2 1.8-2.2 3.3M12 17h.01"/>',
     profile: '<circle cx="12" cy="8" r="4"/><path stroke-linecap="round" d="M4 21c0-4 4-6 8-6s8 2 8 6"/>',
+    fee: '<rect x="3" y="5" width="18" height="14" rx="2"/><path stroke-linecap="round" d="M3 10h18M7 15h4"/>',
     theme: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 3a9 9 0 100 18h1.4a1.9 1.9 0 001.6-3 1.9 1.9 0 011.5-3H19a3 3 0 003-3c0-4.5-5-8-11-5.6"/><circle cx="7.5" cy="11" r="1.1" fill="currentColor" stroke="none"/><circle cx="12" cy="7.8" r="1.1" fill="currentColor" stroke="none"/><circle cx="16.3" cy="11" r="1.1" fill="currentColor" stroke="none"/>',
     logout: '<path stroke-linecap="round" stroke-linejoin="round" d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/>',
     upgrade: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5M5 12l7-7 7 7"/>',
@@ -313,6 +330,7 @@ const Router = (() => {
         drawerLink('badges.html', 'Badges', NAV_SVG.badges),
         drawerLink('rechecking.html', 'Support &amp; Rechecking', NAV_SVG.support),
         drawerLink('guide.html', 'Guide', NAV_SVG.guide),
+        drawerLink('fee.html', 'Fee', NAV_SVG.fee),
         drawerLink('profile.html', 'Profile', NAV_SVG.profile),
         '<div class="wha-drawer__sep"></div>',
         '<a class="wha-drawer__item" href="upgrade.html" data-upgrade-nav hidden>' + navSvg(NAV_SVG.upgrade) + '<span class="wha-upg__t">Upgrade Plan</span></a>',
@@ -342,6 +360,7 @@ const Router = (() => {
     injectProgressNav();
     injectGuideNav();
     injectAnimationsNav();
+    injectFeeNav();
     buildMobileShell();   // phone 3-tab bar + drawer; before upgrade so its drawer item exists
     injectUpgradeNav();
     const page = currentPageName();

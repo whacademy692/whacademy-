@@ -331,6 +331,51 @@
     var el = Utils.qs('#promotion-lock');
     if (el) { el.hidden = true; el.innerHTML = ''; }
   }
+
+  // ---- Fee lock (v12.20) — mirrors the promotion lock -----------------------
+  var _feePoll = null;
+  function stopFeePoll(){ if (_feePoll) { clearInterval(_feePoll); _feePoll = null; } }
+  function startFeePoll(){
+    stopFeePoll();
+    _feePoll = setInterval(function(){
+      Api.dashboard.compose().then(function(data){
+        try { Storage.setCachedDashboard(data); } catch (e) {}
+        var fl = data && data.feeLock;
+        if (!fl || !fl.locked) { renderAll(data || {}); }
+      }).catch(function(){});
+    }, 25000);
+  }
+  function hideFeeLock(){
+    stopFeePoll();
+    var el = Utils.qs('#fee-lock');
+    if (el) { el.hidden = true; el.innerHTML = ''; }
+  }
+  function feeMoney(n){ n = Number(n) || 0; return 'Rs ' + n.toLocaleString('en-US'); }
+  function showFeeLock(fl){
+    var el = Utils.qs('#fee-lock');
+    if (!el) return;
+    var sk = Utils.qs('#dashboard-skeleton'); if (sk) sk.hidden = true;
+    var c = Utils.qs('#dashboard-content'); if (c) c.hidden = true;
+    var er = Utils.qs('#dashboard-error'); if (er) er.hidden = true;
+    el.style.cssText = 'position:fixed;inset:0;z-index:9999;overflow:auto;background:var(--surface,#f8fafc);display:flex;align-items:flex-start;justify-content:center;padding:24px 16px;';
+    el.hidden = false;
+    startFeePoll();
+    var wa = fl.whatsappUrl
+      ? '<a href="' + promoEsc(fl.whatsappUrl) + '" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#25d366;color:#fff;font-weight:700;padding:13px 22px;border-radius:12px;text-decoration:none;margin-top:6px;">' +
+        '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.1 1.5 5.9L0 24l6.3-1.5c1.7.9 3.7 1.5 5.7 1.5 6.6 0 12-5.4 12-12S18.6 0 12 0z"/></svg>' +
+        'I have paid — message on WhatsApp</a>'
+      : '';
+    el.innerHTML =
+      '<div style="max-width:520px;width:100%;background:#fff;border:1px solid #fecaca;border-radius:16px;padding:28px;margin-top:40px;box-shadow:0 10px 30px rgba(2,6,23,.08);">' +
+        '<div style="font-size:2rem;margin-bottom:6px;">🔒</div>' +
+        '<h1 style="margin:0 0 8px;font-size:1.35rem;color:#dc2626;">Fee pending — dashboard locked</h1>' +
+        '<p style="color:#475569;line-height:1.55;margin:0 0 10px;">You have not submitted your <strong>' + promoEsc(fl.label) + '</strong> fee ' +
+          '(total <strong>' + feeMoney(fl.total) + '</strong>). Fee is due between the <strong>' + fl.dueFrom + '–' + fl.dueTo + '</strong> of each month.</p>' +
+        '<p style="color:#475569;line-height:1.55;margin:0 0 16px;">If you have already paid, message W.H. Academy on WhatsApp with your <strong>Name, Student ID and Father name</strong>. Once it is confirmed, your dashboard opens automatically.</p>' +
+        wa +
+        '<p style="color:#64748b;font-size:.85rem;margin-top:16px;">You can also open <a href="fee.html">My Fee</a> to see each month.</p>' +
+      '</div>';
+  }
   function showPromotionLock(promo){
     var el = Utils.qs('#promotion-lock');
     if (!el) return;
@@ -422,6 +467,9 @@
     var promo = data && data.promotion;
     if (promo && promo.required) { showPromotionLock(promo); return; }
     hidePromotionLock();
+    var fl = data && data.feeLock;
+    if (fl && fl.locked) { showFeeLock(fl); return; }
+    hideFeeLock();
     renderIdentity(data.profile, data.plan);
     if (typeof Router !== 'undefined' && Router.setUpgradePlan) Router.setUpgradePlan(data.plan);
     renderRecommendation(data.recommendation);

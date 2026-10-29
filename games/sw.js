@@ -5,13 +5,13 @@
  * offline fallback for chapter content.
  */
 // Bump on every frontend deploy.
-const CACHE_VERSION = 'wha-v115';
+const CACHE_VERSION = 'wha-v116';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
 const STATIC_ASSETS = [
   'welcome.html', 'login.html', 'dashboard.html', 'profile.html', 'settings.html',
   'games.html', 'leaderboard.html', 'revision.html', 'achievements.html', 'boss-battle.html', 'badges.html',
-  'progress.html', 'guide.html', 'animations.html', 'anim-player.html', 'upgrade.html',
+  'progress.html', 'guide.html', 'animations.html', 'anim-player.html', 'upgrade.html', 'fee.html',
   'assets/css/pages/upgrade.css', 'assets/js/upgrade.js',
   'assets/css/pages/anim.css', 'assets/js/anim-registry.js', 'assets/js/anim-hub.js', 'assets/js/anim-player.js',
   'assets/js/anim-expr.js', 'assets/js/anim-engine.js', 'assets/js/anim-shapes.js', 'assets/js/anim-ui.js',
@@ -28,7 +28,7 @@ const STATIC_ASSETS = [
   'assets/js/auth.js', 'assets/js/dashboard.js', 'assets/js/games.js', 'assets/js/profile.js',
   'assets/js/leaderboard.js', 'assets/js/revision.js', 'assets/js/progress.js', 'assets/js/animations.js',
   'assets/js/notifications.js', 'assets/js/notifications-center.js', 'assets/js/app.js',
-  'assets/js/scope.js', 'assets/js/content-registry.js',
+  'assets/js/scope.js', 'assets/js/content-registry.js', 'assets/js/fee.js',
   'manifest.json'
 ];
 
