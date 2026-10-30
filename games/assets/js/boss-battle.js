@@ -415,6 +415,16 @@
   function renderAttempt(data) {
     currentPaper = data.paper;
     const paper = data.paper;
+    const stu = data.student || {};
+    // Board-style roll-number strip (class 9-12). OMR circle-filling comes later.
+    const rollHtml = stu.rollNumber
+      ? '<div class="bb-paper-roll" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:12px;padding:10px 14px;border:1.5px solid var(--border,#cbd5e1);border-radius:10px;background:var(--surface-2,#f8fafc);font-size:.9rem">' +
+          '<span><b>Roll No:</b> <span style="font-family:monospace;font-weight:800;letter-spacing:2px;font-size:1.05rem">' + esc(stu.rollNumber) + '</span></span>' +
+          (stu.fullName ? '<span><b>Name:</b> ' + esc(stu.fullName) + '</span>' : '') +
+          (paper.classLevel ? '<span><b>Class:</b> ' + esc(paper.classLevel) + '</span>' : '') +
+          '<span style="color:var(--text-muted,#64748b)"><b>Paper ID:</b> ' + esc(paper.paperId) + '</span>' +
+        '</div>'
+      : '';
     const readOnly = !!data.readOnly;
     const saved = (data.submission && data.submission.items) ? {} : null;
     if (data.submission && data.submission.items) {
@@ -464,6 +474,7 @@
             esc(paper.level) + ' · ' + esc(LEVEL_META[paper.level] ? LEVEL_META[paper.level].tag : '') + '</span>' +
           '<h2 class="bb-paper-head__title">' + esc(paper.title) + '</h2>' +
           (paper.description ? '<p class="bb-paper-head__desc">' + esc(paper.description) + '</p>' : '') +
+          rollHtml +
         '</header>' +
         banner +
         '<div class="bb-paper-body">' + bodyHtml + '</div>' +
