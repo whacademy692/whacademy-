@@ -5,7 +5,7 @@
  * offline fallback for chapter content.
  */
 // Bump on every frontend deploy.
-const CACHE_VERSION = 'wha-v120';
+const CACHE_VERSION = 'wha-v121';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
 const STATIC_ASSETS = [

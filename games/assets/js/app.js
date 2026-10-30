@@ -251,7 +251,7 @@
   // Presence heartbeat: tells the backend the student is online (admin "last seen").
   let presenceTimer = null;
   function pingPresence() {
-    if (!isProtectedStudentPage() || !Storage.getToken() || document.hidden) return;
+    if (!isProtectedStudentPage() || !Storage.getToken()) return;
     if (Api.presence && Api.presence.ping) Api.presence.ping().catch(() => {});
   }
   function goOffline() {
@@ -261,9 +261,12 @@
   function startPresenceHeartbeat() {
     if (!isProtectedStudentPage() || !Storage.getToken()) return;
     pingPresence();
-    presenceTimer = window.setInterval(pingPresence, 60000);
-    // When the tab becomes visible again -> online; when hidden / closing -> offline at once.
-    document.addEventListener('visibilitychange', () => { if (document.hidden) goOffline(); else pingPresence(); });
+    presenceTimer = window.setInterval(pingPresence, 30000);
+    // Becoming visible again -> ping immediately. We deliberately do NOT mark the
+    // student offline when the tab is merely hidden: switching to another tab is
+    // not "closing the dashboard". Only a real close / navigate-away (pagehide /
+    // beforeunload) sends the offline beacon.
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) pingPresence(); });
     window.addEventListener('focus', pingPresence);
     window.addEventListener('pagehide', goOffline);
     window.addEventListener('beforeunload', () => { goOffline(); if (presenceTimer) window.clearInterval(presenceTimer); }, { once: true });
