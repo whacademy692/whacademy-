@@ -254,13 +254,19 @@
     if (!isProtectedStudentPage() || !Storage.getToken() || document.hidden) return;
     if (Api.presence && Api.presence.ping) Api.presence.ping().catch(() => {});
   }
+  function goOffline() {
+    if (!isProtectedStudentPage() || !Storage.getToken()) return;
+    if (Api.presence && Api.presence.offlineBeacon) Api.presence.offlineBeacon();
+  }
   function startPresenceHeartbeat() {
     if (!isProtectedStudentPage() || !Storage.getToken()) return;
     pingPresence();
     presenceTimer = window.setInterval(pingPresence, 60000);
-    document.addEventListener('visibilitychange', () => { if (!document.hidden) pingPresence(); });
+    // When the tab becomes visible again -> online; when hidden / closing -> offline at once.
+    document.addEventListener('visibilitychange', () => { if (document.hidden) goOffline(); else pingPresence(); });
     window.addEventListener('focus', pingPresence);
-    window.addEventListener('beforeunload', () => { if (presenceTimer) window.clearInterval(presenceTimer); }, { once: true });
+    window.addEventListener('pagehide', goOffline);
+    window.addEventListener('beforeunload', () => { goOffline(); if (presenceTimer) window.clearInterval(presenceTimer); }, { once: true });
   }
 
   function init() {

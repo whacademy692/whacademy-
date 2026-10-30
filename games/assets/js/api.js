@@ -202,7 +202,16 @@ const Api = (() => {
   };
 
   const presence = {
-    ping: () => request('student/ping', {})
+    ping: () => request('student/ping', {}),
+    // Fire-and-forget "going offline" on tab close / navigate away. Uses
+    // sendBeacon so it still sends while the page is unloading.
+    offlineBeacon: () => {
+      try {
+        if (!navigator.sendBeacon) return;
+        const body = JSON.stringify(buildBody('student/offline', {}));
+        navigator.sendBeacon(API_BASE_URL, new Blob([body], { type: 'text/plain;charset=utf-8' }));
+      } catch (e) { /* non-fatal */ }
+    }
   };
 
   const progress = {
