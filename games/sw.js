@@ -5,7 +5,7 @@
  * offline fallback for chapter content.
  */
 // Bump on every frontend deploy.
-const CACHE_VERSION = 'wha-v121';
+const CACHE_VERSION = 'wha-v122';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
 const STATIC_ASSETS = [
@@ -18,6 +18,7 @@ const STATIC_ASSETS = [
   'assets/js/anim-controls.js', 'assets/js/anim-scenes.js', 'assets/css/pages/anim-scenes.css',
   'assets/css/pages/boss-battle.css', 'assets/js/boss-battle.js', 'assets/js/badges.js',
   'assets/css/pages/boss-steps.css', 'assets/css/pages/boss-badges.css', 'assets/js/katex-render.js',
+  'assets/css/pages/boss-kpk-exam.css', 'assets/js/boss-kpk-exam.js',
   'assets/vendor/katex/katex.min.js', 'assets/vendor/katex/katex.min.css',
   'assets/css/variables.css', 'assets/css/main.css', 'assets/css/layout.css',
   'assets/css/components.css', 'assets/css/animations.css', 'assets/css/responsive.css',

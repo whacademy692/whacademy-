@@ -81,6 +81,7 @@
           '<h4 class="bb-paper-card__title">' + esc(paper.title) + '</h4>' +
           '<p class="bb-paper-card__meta">' + paperMetaLine(paper) + '</p>' +
           statusPill(paper) +
+          (window.BossKpkExam ? window.BossKpkExam.cardNote(paper) : '') +
         '</div>' +
         '<button class="btn ' + (attempted ? 'btn--secondary' : 'btn--primary') + ' bb-open-btn" ' +
           'data-paper-id="' + esc(paper.paperId) + '">' + btnLabel + '</button>' +
@@ -791,15 +792,26 @@
 
   async function openPaper(paperId) {
     showView('bb-skeleton');
+    const kx = window.BossKpkExam;
+    // Board-exam (KPK pattern) papers use their own timed screen — boss-kpk-exam.js.
+    const kxHooks = { showView: showView, onDone: openPaper, onBack: loadList };
     try {
       const data = await Api.bossBattle.paper(paperId);
       // Already submitted an active paper (or a graded one) → straight to result.
       if (data.submission) {
+        if (kx && data.submission.boardExam) {
+          kx.discard(paperId);
+          kx.renderResult(data.submission, el('bb-result-view'), kxHooks);
+          return;
+        }
         renderResult(data.submission, data.paper.title);
         return;
       }
+      if (kx && kx.isBoardPaper(data.paper) && !data.readOnly) { kx.start(data, kxHooks); return; }
       renderAttempt(data);
     } catch (err) {
+      // No internet but an exam is already open on this device → resume it from the saved copy.
+      if (kx && err && err.isNetworkError && kx.tryOffline(paperId, kxHooks)) return;
       Notifications.toast((err && err.message) || 'Could not open this paper.', 'error');
       loadList();
     }
