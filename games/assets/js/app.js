@@ -248,6 +248,21 @@
     }
   }
 
+  // Presence heartbeat: tells the backend the student is online (admin "last seen").
+  let presenceTimer = null;
+  function pingPresence() {
+    if (!isProtectedStudentPage() || !Storage.getToken() || document.hidden) return;
+    if (Api.presence && Api.presence.ping) Api.presence.ping().catch(() => {});
+  }
+  function startPresenceHeartbeat() {
+    if (!isProtectedStudentPage() || !Storage.getToken()) return;
+    pingPresence();
+    presenceTimer = window.setInterval(pingPresence, 60000);
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) pingPresence(); });
+    window.addEventListener('focus', pingPresence);
+    window.addEventListener('beforeunload', () => { if (presenceTimer) window.clearInterval(presenceTimer); }, { once: true });
+  }
+
   function init() {
     applySettings();
     if (!Router.guardAuthenticatedPage()) return;
@@ -261,6 +276,7 @@
     // On authenticated pages this starts immediate status/session enforcement.
     showStoredAuthNotice();
     startStudentSessionHeartbeat();
+    startPresenceHeartbeat();
     loadNotificationCenterAssets();
 
     document.dispatchEvent(new CustomEvent('wha:ready'));

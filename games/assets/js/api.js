@@ -201,6 +201,10 @@ const Api = (() => {
     mine: () => request('student/fee', {})
   };
 
+  const presence = {
+    ping: () => request('student/ping', {})
+  };
+
   const progress = {
     sessionStart: (chapterRef, mechanicIds) => request('progress/sessionStart', { chapterRef, mechanicIds }),
     sessionEnd: (sessionId) => request('progress/sessionEnd', { sessionId }),
@@ -307,7 +311,7 @@ const Api = (() => {
 
   return {
     request, flushPendingQueue, ApiError,
-    auth, otp, registration, dashboard, fee, progress, revision, wrongAnswers,
+    auth, otp, registration, dashboard, fee, presence, progress, revision, wrongAnswers,
     bookmarks, favorites, coins, xp, achievements, certificates,
     leaderboard, analytics, notifications: notificationsApi, admin, bossBattle
   };
