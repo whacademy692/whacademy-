@@ -1343,25 +1343,25 @@ window.WHA_CONTENT = {
               "n": 4,
               "unit": 13,
               "title": "Support and Movement",
-              "notes": null,
+              "notes": "https://whacademypk.com/notes/kpk/class-10/biology/support-and-movement.html",
               "quiz": null,
-              "game": null
+              "game": "https://whacademypk.com/games/chapter.html?ch=10/bio/kpk_support_and_movement"
             },
             {
               "n": 5,
               "unit": 14,
               "title": "Reproduction",
-              "notes": null,
+              "notes": "https://whacademypk.com/notes/kpk/class-10/biology/reproduction.html",
               "quiz": null,
-              "game": null
+              "game": "https://whacademypk.com/games/chapter.html?ch=10/bio/kpk_reproduction"
             },
             {
               "n": 6,
               "unit": 15,
               "title": "Inheritance",
-              "notes": null,
+              "notes": "https://whacademypk.com/notes/kpk/class-10/biology/inheritance.html",
               "quiz": null,
-              "game": null
+              "game": "https://whacademypk.com/games/chapter.html?ch=10/bio/kpk_inheritance"
             },
             {
               "n": 7,
