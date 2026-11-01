@@ -808,6 +808,13 @@
         return;
       }
       if (kx && kx.isBoardPaper(data.paper) && !data.readOnly) { kx.start(data, kxHooks); return; }
+      // A board paper must never fall back to the generic one-page view (no timers, no autosave, no roll number).
+      // If the exam script did not load (old cached files), say so instead of showing a broken paper.
+      if (!kx && data.paper && data.paper.layout && data.paper.layout.format === 'board-exam' && !data.readOnly) {
+        Notifications.toast('This board exam needs the latest app files. Please close the app completely, open it again, then refresh once (or clear site data).', 'error');
+        loadList();
+        return;
+      }
       renderAttempt(data);
     } catch (err) {
       // No internet but an exam is already open on this device → resume it from the saved copy.

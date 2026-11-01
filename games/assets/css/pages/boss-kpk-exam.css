@@ -7,7 +7,23 @@
 .kx-sheet { position: relative; }
 .kx-title { margin: var(--space-4) 0 var(--space-3); }
 
-/* ---------- sticky bar: timer + tabs ---------- */
+/* ---------- fixed clock (top-right, always visible) ---------- */
+.kx-clock {
+  position: fixed; top: 14px; right: 16px; z-index: 1300;
+  display: inline-flex; align-items: baseline; gap: 8px; padding: 7px 14px; white-space: nowrap;
+  border-radius: 999px; background: var(--color-brand-ink-tint); color: var(--color-brand-ink);
+  border: 1px solid var(--color-border-strong); font-size: 12.5px; font-weight: 700; font-variant-numeric: tabular-nums;
+  box-shadow: 0 8px 22px -10px rgba(30, 27, 75, .55);
+}
+.kx-clock b { font-size: 20px; letter-spacing: .02em; }
+.kx-clock--warn { background: var(--color-warning-surface); color: var(--color-warning); }
+.kx-clock--crit { background: var(--color-error-surface); color: var(--color-error); animation: kx-blink 1s steps(2) infinite; }
+@keyframes kx-blink { 50% { opacity: .6; } }
+/* on phones/tablets the burger + bell sit fixed in the top-right corner: the clock goes just left of them */
+@media (max-width: 1023px) { .kx-clock { top: 10px; right: 108px; padding: 5px 11px; } .kx-clock b { font-size: 18px; } }
+@media (max-width: 420px) { .kx-clock { right: 100px; padding: 4px 9px; } #kx-timer-label { display: none; } .kx-clock b { font-size: 17px; } }
+
+/* ---------- sticky bar: tabs ---------- */
 .kx-bar {
   position: sticky; top: 0; z-index: 20;
   background: var(--color-bg-surface-solid);
@@ -15,16 +31,10 @@
   padding: var(--space-3); margin-bottom: var(--space-3);
   box-shadow: 0 8px 24px -16px rgba(30, 27, 75, .45);
 }
+/* keep the tab bar clear of the fixed clock on desktop; on mobile the page's own sticky top-bar sits above */
+@media (min-width: 1024px) { .kx-bar { top: 56px; } }
+@media (max-width: 1023px) { .kx-bar { top: 58px; } }
 .kx-bar__row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); flex-wrap: wrap; }
-.kx-timer {
-  display: inline-flex; align-items: baseline; gap: 6px; padding: 6px 14px;
-  border-radius: var(--radius-pill, 999px); background: var(--color-brand-ink-tint); color: var(--color-brand-ink);
-  font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums;
-}
-.kx-timer b { font-size: 20px; letter-spacing: .02em; }
-.kx-timer--warn { background: var(--color-warning-surface); color: var(--color-warning); }
-.kx-timer--crit { background: var(--color-error-surface); color: var(--color-error); animation: kx-blink 1s steps(2) infinite; }
-@keyframes kx-blink { 50% { opacity: .55; } }
 .kx-tabs { display: flex; gap: 6px; margin-top: var(--space-3); }
 .kx-tab {
   flex: 1; min-width: 0; padding: 9px 6px; border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer;
@@ -33,7 +43,7 @@
 .kx-tab small { display: block; font-weight: 600; opacity: .85; font-size: 11px; }
 .kx-tab--on { background: var(--color-interactive); border-color: var(--color-interactive); color: #fff; }
 .kx-tab--locked { opacity: .5; }
-.kx-save { margin-top: 6px; font-size: 11.5px; color: var(--color-text-secondary); min-height: 16px; }
+.kx-save { font-size: 11.5px; color: var(--color-text-secondary); min-height: 16px; }
 .kx-save--ok { color: var(--color-success); }
 .kx-save--bad { color: var(--color-error); font-weight: 700; }
 .kx-banner { margin-bottom: var(--space-3); padding: var(--space-3) var(--space-4); border-radius: 12px; font-size: 14px;
@@ -45,11 +55,9 @@
   .kx-bar { padding: 8px; }
   .kx-bar__row { flex-wrap: nowrap; gap: 6px; }
   .kx-bar__row .btn { padding-left: 10px; padding-right: 10px; white-space: nowrap; }
-  .kx-timer { padding: 4px 10px; font-size: 11.5px; }
-  .kx-timer b { font-size: 17px; }
+  .kx-save { font-size: 10.5px; text-align: center; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .kx-tabs { margin-top: 8px; }
   .kx-tab { padding: 6px 4px; }
-  .kx-save { margin-top: 4px; }
 }
 
 /* ---------- section heads ---------- */
@@ -120,6 +128,46 @@
 .kx-model summary { cursor: pointer; font-weight: 700; font-size: 13px; color: var(--color-brand-ink); }
 .kx-model__body { font-size: 13.5px; line-height: 1.6; color: var(--color-text-secondary); margin-top: 8px; }
 .kx-model__body ul { margin: 6px 0 0; padding-left: 18px; }
-@media print { .kx-bar, .kx-nav { display: none; } }
-.kx-timer { white-space: nowrap; }
-@media (max-width: 420px) { #kx-timer-label { display: none; } }
+@media print { .kx-bar, .kx-nav, .kx-clock { display: none; } }
+
+
+/* ---------- roll number OMR grid ---------- */
+.kx-roll { margin-bottom: var(--space-5); padding: var(--space-3); border: 1px solid var(--color-border-strong); border-radius: 14px; background: var(--color-bg-surface-solid); }
+.kx-roll .kx-sec-head { margin-top: 0; }
+.kx-roll__no { color: var(--color-brand-ink); letter-spacing: .12em; }
+.kx-roll__sheet { max-width: 360px; margin: var(--space-3) auto 0; }
+.kx-roll__boxes, .kx-roll__grid { display: grid; grid-template-columns: repeat(var(--kx-cols, 6), 1fr); gap: 6px; }
+.kx-roll__box {
+  height: 44px; display: grid; place-items: center; font-size: 22px; font-weight: 800; font-variant-numeric: tabular-nums;
+  border: 2px solid var(--color-text-primary); border-radius: 6px; background: var(--color-bg-app); color: var(--color-text-primary);
+}
+.kx-roll__grid { margin-top: 8px; padding: 8px 0; border-top: 2px dashed var(--color-border-strong); }
+.kx-roll__col { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.kx-bubble--roll { width: 26px; height: 26px; margin: 0; }
+.kx-bubble--roll::before { font-size: 11.5px; }
+.kx-roll__msg { margin: var(--space-2) 0 0; text-align: center; font-size: 13px; font-weight: 700; color: var(--color-text-secondary); }
+.kx-roll__msg--ok { color: var(--color-success); }
+.kx-roll__msg--bad { color: var(--color-error); }
+.kx-rollline { margin: 0 0 var(--space-3); font-size: 14px; color: var(--color-text-secondary); }
+@media (max-width: 380px) { .kx-bubble--roll { width: 23px; height: 23px; } .kx-roll__box { height: 38px; font-size: 19px; } }
+
+/* ---------- rich answer box ---------- */
+.kx-tip { margin: 0 0 8px; font-size: 12.5px; line-height: 1.5; color: var(--color-brand-ink); background: var(--color-brand-ink-tint); padding: 6px 10px; border-radius: 8px; }
+.kx-tb { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; padding: 6px; border: 1px solid var(--color-border-strong); border-bottom: 0; border-radius: 10px 10px 0 0; background: var(--color-bg-app); }
+.kx-tb button { min-width: 34px; height: 32px; padding: 0 9px; border-radius: 8px; cursor: pointer; font-size: 14px; line-height: 1;
+  border: 1px solid var(--color-border-strong); background: var(--color-bg-surface-solid); color: var(--color-text-primary); }
+.kx-tb button:hover { border-color: var(--color-interactive); }
+.kx-tb__h { font-weight: 900; font-size: 15px; color: var(--color-brand-ink); }
+.kx-tb__sep { width: 1px; height: 22px; background: var(--color-border-strong); margin: 0 3px; }
+.kx-tb .kx-tb__c { min-width: 24px; width: 24px; height: 24px; padding: 0; border-radius: 50%; background: var(--c); border-color: var(--c); }
+.kx-rt {
+  min-height: 150px; max-height: 70vh; overflow-y: auto; padding: 10px 12px; border: 1px solid var(--color-border-strong); border-radius: 0 0 10px 10px;
+  background: var(--color-bg-surface-solid); color: var(--color-text-primary); font-size: 15px; line-height: 1.65; outline: none;
+  white-space: pre-wrap; word-break: break-word;
+}
+.kx-rt:focus { border-color: var(--color-interactive); box-shadow: 0 0 0 3px var(--color-brand-ink-tint); }
+.kx-rt:empty::before { content: attr(data-ph); color: var(--color-text-secondary); opacity: .7; pointer-events: none; }
+.kx-rt[contenteditable="false"] { background: var(--color-bg-app); cursor: not-allowed; }
+.kx-rt h4, .kx-rich h4, .rt-h { margin: 6px 0 4px; font-size: 16px; font-weight: 800; color: var(--color-brand-ink); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.kx-rt ul { margin: 4px 0; padding-left: 22px; }
+.kx-rich { white-space: normal; word-break: break-word; line-height: 1.65; }
