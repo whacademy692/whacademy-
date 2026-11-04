@@ -659,6 +659,18 @@
                 <div class="cw-note"><i class="fas fa-info-circle" aria-hidden="true"></i> Chemistry Unit 8 notes (Federal Board, FBISE) are free for everyone. Remaining chapters will be linked as they are completed.</div>
             </div>
 
+            <!-- CLASS 12 PHYSICS (Federal Board, FBISE): Resources — shown for FSc Pre-Engineering Part 2 and ICS Part 2 -->
+            <div id="resC12Phy" style="display:none;">
+                <div class="cw-chapters-grid">
+                    <div class="cw-chapter-card"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-earth-americas" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 1</div></div><div class="cw-chapter-title">Gravitation</div><div class="cw-chapter-actions"><a href="/notes/class-12/physics/gravitation.html" class="cw-chapter-btn active-btn" aria-label="View Class 12 Physics Ch 1 Notes"><i class="fas fa-book-open" aria-hidden="true"></i> View Notes</a></div></div>
+                    <div class="cw-chapter-card"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-temperature-half" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 2</div></div><div class="cw-chapter-title">Statistical Mechanics and Thermodynamics</div><div class="cw-chapter-actions"><a href="/notes/class-12/physics/statistical-mechanics-thermodynamics.html" class="cw-chapter-btn active-btn" aria-label="View Class 12 Physics Ch 2 Notes"><i class="fas fa-book-open" aria-hidden="true"></i> View Notes</a></div></div>
+                    <div class="cw-chapter-card"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-wave-square" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 3</div></div><div class="cw-chapter-title">Simple Harmonic Motion</div><div class="cw-chapter-actions"><a href="/notes/class-12/physics/simple-harmonic-motion.html" class="cw-chapter-btn active-btn" aria-label="View Class 12 Physics Ch 3 Notes"><i class="fas fa-book-open" aria-hidden="true"></i> View Notes</a></div></div>
+                    <div class="cw-chapter-card"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-water" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 4</div></div><div class="cw-chapter-title">Diffraction and Interference</div><div class="cw-chapter-actions"><a href="/notes/class-12/physics/diffraction-and-interference.html" class="cw-chapter-btn active-btn" aria-label="View Class 12 Physics Ch 4 Notes"><i class="fas fa-book-open" aria-hidden="true"></i> View Notes</a></div></div>
+                    <div class="cw-chapter-card"><div class="cw-chapter-top"><div class="cw-chapter-icon"><i class="fas fa-bolt" aria-hidden="true"></i></div><div class="cw-chapter-num">Ch 5</div></div><div class="cw-chapter-title">Electric Potential and Capacitor</div><div class="cw-chapter-actions"><a href="/notes/class-12/physics/electric-potential-capacitor.html" class="cw-chapter-btn active-btn" aria-label="View Class 12 Physics Ch 5 Notes"><i class="fas fa-book-open" aria-hidden="true"></i> View Notes</a></div></div>
+                </div>
+                <div class="cw-note"><i class="fas fa-info-circle" aria-hidden="true"></i> Class 12 Physics notes (Federal Board, FBISE) are free for everyone. Remaining chapters will be linked as they are completed.</div>
+            </div>
+
         <!-- Prompt if nothing selected yet -->
         <div id="resPrompt" class="cw-coming-soon-box" style="margin-top:0;">
             <div class="cw-cs-icon"><i class="fas fa-hand-point-up" aria-hidden="true"></i></div>
@@ -754,7 +766,7 @@ function hideAllResPanels() {
              'resC7Math','resC7Sci','resC7Geo','resC7Hist',
              'resC8Geo','resC8Hist',
              'resC9Math','resC9Phy','resC9Chem','resC9Bio','resC9CS',
-             'resC10Chem'
+             'resC10Chem','resC12Phy'
             ].forEach(id => { const el = document.getElementById(id); if(el) el.style.display = 'none'; });
         }
 
@@ -836,6 +848,10 @@ function handleResSubject(val) {
                 else                                  target = document.getElementById('resLocked');
             } else if (level === 'mat10') {
                 if (val === 'chemistry')              target = document.getElementById('resC10Chem');
+                else                                  target = document.getElementById('resLocked');
+            } else if (level === 'fsc_pe_2' || level === 'ics2') {
+                // Part 2 = Class 12 (Federal Board). Physics is the same course for both groups.
+                if (val === 'physics')                target = document.getElementById('resC12Phy');
                 else                                  target = document.getElementById('resLocked');
             } else {
                 target = document.getElementById('resLocked');
