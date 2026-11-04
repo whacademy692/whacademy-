@@ -1305,6 +1305,53 @@ window.WHA_CONTENT = {
           }
         ]
       }
+    },
+    "12": {
+      "phys": {
+        "name": "Physics",
+        "code": "PHYS",
+        "chapters": [
+          {
+            "n": 1,
+            "title": "Gravitation",
+            "notes": "https://whacademypk.com/notes/class-12/physics/gravitation.html",
+            "quiz": null,
+            "game": "https://whacademypk.com/games/chapter.html?ch=12/phys/gravitation"
+          },
+          {
+            "n": 2,
+            "unit": 16,
+            "title": "Statistical Mechanics and Thermodynamics",
+            "notes": "https://whacademypk.com/notes/class-12/physics/statistical-mechanics-thermodynamics.html",
+            "quiz": null,
+            "game": "https://whacademypk.com/games/chapter.html?ch=12/phys/statistical_mechanics_and_thermodynamics"
+          },
+          {
+            "n": 3,
+            "unit": 17,
+            "title": "Simple Harmonic Motion",
+            "notes": "https://whacademypk.com/notes/class-12/physics/simple-harmonic-motion.html",
+            "quiz": null,
+            "game": "https://whacademypk.com/games/chapter.html?ch=12/phys/simple_harmonic_motion"
+          },
+          {
+            "n": 4,
+            "unit": 18,
+            "title": "Diffraction and Interference",
+            "notes": "https://whacademypk.com/notes/class-12/physics/diffraction-and-interference.html",
+            "quiz": null,
+            "game": "https://whacademypk.com/games/chapter.html?ch=12/phys/diffraction_and_interference"
+          },
+          {
+            "n": 5,
+            "unit": 19,
+            "title": "Electric Potential and Capacitor",
+            "notes": "https://whacademypk.com/notes/class-12/physics/electric-potential-capacitor.html",
+            "quiz": null,
+            "game": "https://whacademypk.com/games/chapter.html?ch=12/phys/electric_potential_and_capacitor"
+          }
+        ]
+      }
     }
   },
   "kpk": {
