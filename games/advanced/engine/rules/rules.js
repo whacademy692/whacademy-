@@ -3,7 +3,7 @@
 // Wraps progression.js so a ranked run advances XP/level/rank/gate with the same answer stream.
 
 import { TRACKS, bandOfRank, gateN } from '../progression/ranks.js';
-import { createState, startRun as progStart, applyAnswer, endRun as progEnd, rankIdx } from '../progression/progression.js';
+import { createState, startRun as progStart, applyAnswer, endRun as progEnd, rankIdx, clone } from '../progression/progression.js';
 
 export const MAX_HEARTS = 3;
 export const HEAL_STREAK = 10;
@@ -35,14 +35,19 @@ export class RunRules {
    * @param {'ranked'|'practice'|'endless'|'daily'|'revenge'} [o.mode]
    * @param {function} [o.rng]     0..1
    * @param {object} [o.powerups]  charges per run
+   * @param {number} [o.timeMult]  think-window multiplier (1 normal, 1.5 extra time)
    */
   constructor(o) {
     this.trackId = o.trackId;
     this.track = TRACKS[o.trackId];
     this.mode = o.mode || 'ranked';
     this.rng = o.rng || Math.random;
-    this.prog = o.prog || createState(o.trackId);
-    this.progEvents = progStart(this.prog);
+    this.timeMult = o.timeMult || 1;            // accessibility: 'extra reading time' = 1.5
+    // Ranked runs mutate the real progression state. Other modes play on a private copy so practice
+    // can never start a gate, move the bar or demote anyone.
+    const base = o.prog || createState(o.trackId);
+    this.prog = this.mode === 'ranked' ? base : clone(base);
+    this.progEvents = this.mode === 'ranked' ? progStart(this.prog) : [];
     this.hearts = MAX_HEARTS;
     this.charges = { fifty: 1, freeze: 1, heal: 1, skip: 1, ...(o.powerups || {}) };
     this.over = false;
@@ -62,7 +67,7 @@ export class RunRules {
   }
 
   get ranked() { return this.mode === 'ranked'; }
-  get rank() { return this.ranked ? rankIdx(this.prog) : (this.rankOverride || 0); }
+  get rank() { return rankIdx(this.prog); }
   get inGate() { return this.ranked && this.prog.gateActive; }
   get streak() { return this.prog.streak; }
   /** Speed of the game world: 1 normally, slowed while thinking, 0 when Time Freeze is active. */
@@ -83,7 +88,7 @@ export class RunRules {
     this.q = q;
     this.hidden = [];
     this.frozen = false;
-    this.timeTotalMs = thinkWindowMs(this.trackId, q.tier, q.calc, this.rank);
+    this.timeTotalMs = Math.round(thinkWindowMs(this.trackId, q.tier, q.calc, this.rank) * this.timeMult);
     this.timeLeftMs = this.timeTotalMs;
     this.askedAtMs = this.elapsedMs;
     return { thinkMs: this.timeTotalMs, timeScale: this.timeScale };
