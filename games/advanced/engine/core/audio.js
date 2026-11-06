@@ -29,7 +29,7 @@ export const RECIPES = {
 };
 
 export class Sfx {
-  constructor() { this.ctx = null; this.volume = 0.8; this.muted = false; this.played = 0; this._noise = null; this._env = null; this._amb = null; this.ambStarts = 0; }
+  constructor() { this.ctx = null; this.volume = 0.8; this.muted = false; this.played = 0; this._noise = null; this._env = null; this._amb = null; this.ambStarts = 0; this._eng = null; this.engineStarts = 0; }
 
   /** Call from a user gesture (first tap). Safe to call repeatedly. */
   unlock() {
@@ -49,7 +49,7 @@ export class Sfx {
   setVolume(v) { this.volume = Math.max(0, Math.min(1, v)); this._ambLevel(); }
 
   // ---- ambience: a quiet, looping environment bed (never loud, never static) ----
-  // 'day'   = soft wind + the odd bird.   'night' = low breeze + faint crickets.   null = off.
+  // 'day'   = the odd soft bird only (no wind: it was noisy).   'night' = low breeze + faint crickets.   null = off.
   ambience(env) {
     this._env = env || null;
     if (!this.ctx) return;                                   // starts on unlock()
@@ -62,9 +62,9 @@ export class Sfx {
     const filt = c.createBiquadFilter();
     filt.type = env === 'day' ? 'bandpass' : 'lowpass';
     filt.frequency.value = env === 'day' ? 520 : 230; filt.Q.value = env === 'day' ? 0.6 : 0.4;
-    const windGain = c.createGain(); windGain.gain.value = env === 'day' ? 0.5 : 0.4;
+    const windGain = c.createGain(); windGain.gain.value = env === 'day' ? 0 : 0.4;          // day = NO wind bed (only soft birds); night keeps a faint low breeze
     const lfo = c.createOscillator(), lfoGain = c.createGain();            // slow swell, like gusts
-    lfo.frequency.value = 0.11; lfoGain.gain.value = env === 'day' ? 0.28 : 0.2;
+    lfo.frequency.value = 0.11; lfoGain.gain.value = env === 'day' ? 0 : 0.2;
     lfo.connect(lfoGain); lfoGain.connect(windGain.gain);
     src.connect(filt); filt.connect(windGain); windGain.connect(master);
     src.start(); lfo.start();
@@ -87,6 +87,38 @@ export class Sfx {
     const a = this._amb; if (!a) return;
     clearTimeout(a.timer); this._amb = null;
     try { a.master.gain.setTargetAtTime(0.0001, this.ctx.currentTime, 0.15); a.src.stop(this.ctx.currentTime + 0.6); a.lfo.stop(this.ctx.currentTime + 0.6); } catch (e) { /* already stopped */ }
+  }
+
+  // ---- car engine: a low, smooth hum whose pitch follows `level` (0..1). Call every frame while driving; it stops by itself
+  // when not refreshed for a moment (pause, menu, tab hidden) and when level is null/0. ----
+  engine(level) {
+    if (level === null || level === undefined || level <= 0) { this._engStop(); return; }
+    if (!this.ctx) return;
+    const c = this.ctx, k = Math.max(0, Math.min(1, level));
+    if (!this._eng) {
+      const master = c.createGain(); master.gain.value = 0.0001; master.connect(c.destination);
+      const lp = c.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 420; lp.Q.value = 0.7; lp.connect(master);
+      const o1 = c.createOscillator(); o1.type = 'sawtooth';
+      const o2 = c.createOscillator(); o2.type = 'square';
+      const g1 = c.createGain(); g1.gain.value = 0.55; const g2 = c.createGain(); g2.gain.value = 0.22;
+      o1.connect(g1); g1.connect(lp); o2.connect(g2); g2.connect(lp);
+      const lfo = c.createOscillator(), lg = c.createGain(); lfo.frequency.value = 27; lg.gain.value = 0.18; lfo.connect(lg); lg.connect(master.gain);   // cylinder pulse
+      o1.start(); o2.start(); lfo.start();
+      const e = { master, lp, o1, o2, lfo, t: 0, iv: 0 };
+      e.iv = setInterval(() => { if (this._eng === e && Date.now() - e.t > 280) this._engStop(); }, 140);
+      this._eng = e; this.engineStarts++;
+    }
+    const e = this._eng, now = c.currentTime; e.t = Date.now();
+    const f = 52 + k * 70;                                     // 52..122 Hz fundamental
+    e.o1.frequency.setTargetAtTime(f, now, 0.08); e.o2.frequency.setTargetAtTime(f * 0.5, now, 0.08);
+    e.lfo.frequency.setTargetAtTime(18 + k * 30, now, 0.1); e.lp.frequency.setTargetAtTime(300 + k * 520, now, 0.1);
+    const v = this.muted ? 0 : this.volume * (0.045 + k * 0.05);
+    e.master.gain.setTargetAtTime(Math.max(0.0001, v), now, 0.1);
+  }
+  _engStop() {
+    const e = this._eng; if (!e) return;
+    clearInterval(e.iv); this._eng = null;
+    try { const t = this.ctx.currentTime; e.master.gain.setTargetAtTime(0.0001, t, 0.08); e.o1.stop(t + 0.4); e.o2.stop(t + 0.4); e.lfo.stop(t + 0.4); } catch (err) { /* already stopped */ }
   }
   _tone(type, f, f2, at, dur, gain) {
     const c = this.ctx, t0 = c.currentTime + at, o = c.createOscillator(), g = c.createGain();

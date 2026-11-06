@@ -426,7 +426,7 @@ function showResult(rep, coins, gateFailed, placed) {
     if (e.type === 'rankDown') add('Rank dropped. Comeback boost is on for your next 10 correct answers.', '#ff4d6d');
   }
   const acc = rep.answered ? Math.round(100 * rep.accuracy) : 0;
-  $('r-stats').innerHTML = [['Correct', `${rep.correct}/${rep.answered} (${acc}%)`], ['Score', rep.score], ['Best streak', rep.maxStreak], ['Level', `${run.startLevel} → ${prog.level}`], ['Coins earned', `${icon('coin', { size: 16 })} ${coins}`]]
+  $('r-stats').innerHTML = [['Correct', `${rep.correct}/${rep.answered} (${acc}%)`], ['Score', rep.score], ['Best streak', rep.maxStreak], ['Level', `${run.startLevel} to ${prog.level}`], ['Coins earned', `${icon('coin', { size: 16 })} ${coins}`]]
     .map(([k, v]) => `<div class="kv"><span>${k}</span><b>${v}</b></div>`).join('');
   const w = $('r-wrongs'); w.innerHTML = '';
   if (rep.wrongs.length) { const h = document.createElement('h3'); h.textContent = 'Review your mistakes'; w.appendChild(h); }

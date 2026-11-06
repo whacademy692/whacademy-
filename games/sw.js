@@ -5,7 +5,7 @@
  * offline fallback for chapter content.
  */
 // Bump on every frontend deploy.
-const CACHE_VERSION = 'wha-v129';
+const CACHE_VERSION = 'wha-v130';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
 const STATIC_ASSETS = [
@@ -131,7 +131,11 @@ self.addEventListener('fetch', (event) => {
 
   // Chapter content and animation specs: network-first so a corrected lesson
   // reaches students immediately; the cached copy is only the offline fallback.
-  const isChapterContent = (url.pathname.includes('/games/classes/') || url.pathname.includes('/games/anim-data/')) &&
+  // Advanced games (Neon Racer / Auto Defense) are a module graph: every file must come from the SAME deploy,
+  // so they are network-first too (cache-first would mix an old racer/scene.js with a new defense.js and break the game).
+  const isAdvGame = url.pathname.includes('/games/advanced/') || /\/assets\/js\/adv-(games|ranks)\.js$/.test(url.pathname) ||
+    url.pathname.endsWith('/assets/css/pages/adv.css') || /\/advanced-(games|ranks)\.html$/.test(url.pathname);
+  const isChapterContent = isAdvGame || (url.pathname.includes('/games/classes/') || url.pathname.includes('/games/anim-data/')) &&
     (url.pathname.endsWith('.json') || url.pathname.endsWith('.html') ||
      url.pathname.endsWith('.css') || url.pathname.endsWith('.js'));
 

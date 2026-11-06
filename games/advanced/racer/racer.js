@@ -378,7 +378,7 @@ function showResult(rep, coins, gateFailed, placed) {
     if (e.type === 'rankDown') add('Rank dropped. Comeback boost is on for your next 10 correct answers.', '#ff4d6d');
   }
   const acc = rep.answered ? Math.round(100 * rep.accuracy) : 0;
-  $('r-stats').innerHTML = [['Correct', `${rep.correct}/${rep.answered} (${acc}%)`], ['Score', rep.score], ['Best streak', rep.maxStreak], ['Level', `${run.startLevel} → ${prog.level}`], ['Coins earned', `${icon('coin', { size: 16 })} ${coins}`]]
+  $('r-stats').innerHTML = [['Correct', `${rep.correct}/${rep.answered} (${acc}%)`], ['Score', rep.score], ['Best streak', rep.maxStreak], ['Level', `${run.startLevel} to ${prog.level}`], ['Coins earned', `${icon('coin', { size: 16 })} ${coins}`]]
     .map(([k, v]) => `<div class="kv"><span>${k}</span><b>${v}</b></div>`).join('');
   const w = $('r-wrongs'); w.innerHTML = '';
   if (rep.wrongs.length) { const h = document.createElement('h3'); h.textContent = 'Review your mistakes'; w.appendChild(h); }
@@ -461,7 +461,7 @@ function update(dt, realDt) {
   S.t = fx.t; S.scroll = scroll; S.boost = boost;
   lightningT -= realDt; if (lightningT < 0) { lightning = 1; lightningT = 2 + Math.random() * 5; } lightning = Math.max(0, lightning - realDt * 3); S.flash = lightning;
   if (phase === 'ask' && rules) {
-    // The gates drift toward the car slowly; the player may also drive up to them (PC: hold ↑/W; touch: swipe up).
+    // The gates drift toward the car slowly; the player may also drive up to them (PC: hold Up or W; touch: swipe up).
     G.k = GATE_K0 + (CAR_K - GATE_K0) * (1 - rules.thinkFraction); G.pass = 0; G.result = null;
     const drive = (held.up || car.go ? 1 : 0) - (held.down ? 1 : 0);
     if (drive) car.z = clampN(car.z - drive * (car.go ? 0.75 : 0.36) * realDt, CAR_MIN_K, CAR_MAX_K);
@@ -484,6 +484,12 @@ function update(dt, realDt) {
     }
   }
   loop.timeScale = (phase === 'ask' && rules ? rules.timeScale : 1) * fx.slow;
+  // Engine hum: only while driving (a question is up or the result is playing); it dies on a crash and idles when the world is slowed.
+  if ((phase === 'ask' || phase === 'result') && rules) {
+    const crashed = phase === 'result' && lastResult && !lastResult.correct;
+    const spd = Math.min(1, (baseSpeed(S.theme ? curRankLive() : 0) / 3) * 0.55 + boost * 0.35 + (held.up || car.go ? 0.25 : 0) + (phase === 'ask' ? 0.15 : 0));
+    sfx.engine(crashed ? (phaseT < 0.4 ? 0.2 : 0) : Math.max(0.12, spd * (rules.timeScale < 1 && phase === 'ask' ? 0.8 : 1)));
+  }
 }
 const curRankLive = () => (rules && (phase === 'ask' || phase === 'result') ? rules.rank : curRank());
 
@@ -599,5 +605,5 @@ if (server) bootServer();
 
 window.__racer = {
   get state() { return { phase, hearts: rules && rules.hearts, over: rules && rules.over, level: store.prog.level, meter: store.prog.meter, streak: rules ? rules.streak : 0, score, fps: perf.fps, quality: perf.preset.name, timeScale: loop.timeScale, qcorrect: q && q.correct, inGate: rules && rules.inGate, cls: store.profile.cls, track: store.profile.track, rank: rankIdx(store.prog), asked: run && run.asked, hits: run && run.hits, env, carZ: car.z, damage: car.damage, gateK: G.k, mode: server ? 'server' : 'local', nick, coins: store.profile.coins }; },
-  store, loop, perf, choose, startRun, setEnv, rules: () => rules, run: () => run,
+  store, loop, perf, choose, startRun, setEnv, sfx, rules: () => rules, run: () => run,
 };
