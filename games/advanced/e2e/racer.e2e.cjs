@@ -134,7 +134,7 @@ const out = process.argv[3] || '.';
   await page.reload();
   await page.waitForFunction(() => window.__racer && window.__racer.loop.updates > 5);
   assert.equal((await st()).cls, 8); assert.equal((await st()).rank, 1);
-  await page.goto(base + '?class=11');
+  await page.goto(base + '?class=11&local=1');
   await page.waitForFunction(() => window.__racer && window.__racer.loop.updates > 5);
   assert.equal((await st()).track, 'senior'); assert.equal((await st()).level, 1);
 

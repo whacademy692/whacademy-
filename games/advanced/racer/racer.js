@@ -12,7 +12,8 @@ import { normalizeAll, QuestionPool } from '../engine/mcq/adapter.js';
 import { DUMMY_RAW } from '../engine/mcq/dummy.js';
 import { TRACKS, rankName, rankColor, rankOfLevel, rankFloor, rankLast, difficultyMix, blockPosition, pickTier, levelTarget, rankCount } from '../engine/progression/ranks.js';
 import { rankIdx, placementNextTier, placementLevel, PLACEMENT_QUESTIONS } from '../engine/progression/progression.js';
-import { ProfileStore } from '../engine/ui/store.js';
+import { ProfileStore, memoryStorage } from '../engine/ui/store.js';
+import { GameServer, findStudentToken, answersFromLog } from '../engine/net/server.js';
 import { sanitizeSettings, timeMultiplier, graphicsLevel, laneColors } from '../engine/ui/settings.js';
 import { badgeSVG } from '../engine/ui/badge.js';
 import { themeForRank, baseSpeed, trafficInterval } from './themes.js';
@@ -27,8 +28,15 @@ const LETTER = ['A', 'B', 'C', 'D'];
 const PU_LABEL = { fifty: '50:50', freeze: '❄ Freeze', heal: '♥ Heal', skip: '⏭ Skip' };
 
 // ---------- state ----------
-const store = new ProfileStore();
-if (qs.get('class')) store.setClass(Number(qs.get('class')));
+// LOCAL = sandbox (no server): ?dev=1 or ?local=1, progress kept in this browser only.
+// Otherwise the game runs against the backend: the student's real class, Max-plan check and progress all come from the server.
+const LOCAL = DEV || qs.get('local') === '1';
+const safeStorages = () => { const a = []; try { a.push(localStorage); } catch (e) { /* blocked */ } try { a.push(sessionStorage); } catch (e) { /* blocked */ } return a; };
+const server = LOCAL ? null : new GameServer({ game: 'racer', getToken: () => findStudentToken(safeStorages()) });
+const store = new ProfileStore(LOCAL ? {} : { storage: memoryStorage() });
+if (LOCAL && qs.get('class')) store.setClass(Number(qs.get('class')));
+let nick = '', hydrated = false, ticket = null, snapshot = null, starting = false, resultNote = '', syncTimer = 0;
+const clone = (x) => JSON.parse(JSON.stringify(x));
 let settings = store.profile.settings;
 let phase = 'menu';          // menu | ask | result | rankup | pause | over
 let phaseT = 0;
@@ -70,6 +78,7 @@ function applySettings() {
   const gl = graphicsLevel(settings);
   if (gl === null) perf.setAuto(true); else { perf.setAuto(false); perf.setFallback30(false, 'manual'); perf.setLevel(gl); applyQuality({ preset: perf.preset }); }
   store.save();
+  if (server && hydrated) scheduleSync();
 }
 const track = () => TRACKS[store.profile.track];
 const curRank = () => rankIdx(store.prog);
@@ -82,8 +91,20 @@ function rawQuestions(cls) {
   if (Array.isArray(p)) return p;
   return DUMMY_RAW;
 }
-function startRun(mode) {
+async function startRun(mode) {
   sfx.unlock();
+  if (server) {
+    if (starting) return;
+    starting = true;
+    try {
+      const r = await server.startRun(mode);
+      ticket = r; snapshot = clone(r.state); store.setProg(clone(r.state));
+    } catch (e) { starting = false; failMsg(e); return; }
+    starting = false;
+  }
+  beginRun(mode);
+}
+function beginRun(mode) {
   pool = new QuestionPool(normalizeAll(rawQuestions(store.profile.cls)));
   if (!pool.size) { toast('No questions available', '#ff4d6d'); return; }
   const prog = store.prog;
@@ -189,27 +210,63 @@ function lock(lane) {
   G.result = { correct: res.correctIndex, picked: lane };
   setHud();
 }
-function endRun() {
+async function endRun() {
   if (!rules) return;
   const rep = rules.over && lastResult && lastResult.report ? lastResult.report : rules.finish();
   phase = 'over'; $('hud').classList.remove('on');
   sfx.play('gameover');
   const wasGateRun = run.gateFailed;
-  let placed = null;
-  if (run.mode === 'placement') {
-    placed = placementLevel(run.history);
-    const prog = store.prog;
-    if (prog.answers === 0) { prog.level = placed; prog.maxLevel = placed; prog.meter = 0; }
-    store.profile.placementDone = true;
+  let placed = null, coins = 0;
+  resultNote = '';
+  if (!server) {
+    if (run.mode === 'placement') {
+      placed = placementLevel(run.history);
+      const prog = store.prog;
+      if (prog.answers === 0) { prog.level = placed; prog.maxLevel = placed; prog.meter = 0; }
+      store.profile.placementDone = true;
+    }
+    coins = run.mode === 'placement' ? 0 : coinsForRun({ correct: rep.correct, trafficHits: run.hits, rankUps: run.rankUps });
+    store.recordRun(rep, coins);
+    store.save();
+    showResult(rep, coins, wasGateRun, placed);
+    return;
   }
-  const coins = run.mode === 'placement' ? 0 : coinsForRun({ correct: rep.correct, trafficHits: run.hits, rankUps: run.rankUps });
-  store.recordRun(rep, coins);
-  store.save();
+  // Server mode: the server replays the answer log and decides level / rank / coins. Its answer wins.
+  const answers = answersFromLog(rep.log);
+  const restore = () => { if (snapshot) store.setProg(clone(snapshot)); run.rankUps = 0; };
+  if (!answers.length) { restore(); showResult(rep, 0, wasGateRun, null); return; }
+  showMsg('Saving your run…', '', null);
+  const extra = { trafficHits: run.hits, healsUsed: Math.max(0, 1 - (rules.charges.heal || 0)), score: Math.round(score) };
+  try {
+    let res = null;
+    for (let attempt = 0; attempt < 3 && !res; attempt++) {
+      try { res = await server.submitRun(ticket, answers, extra); }
+      catch (e) { if (!e.network || attempt === 2) throw e; await new Promise((r) => setTimeout(r, 900 * (attempt + 1))); }
+    }
+    if (res.accepted) {
+      store.setProg(clone(res.state));
+      run.rankUps = (res.events || []).filter((e) => e.type === 'rankUp').length;
+      rep.events = res.events || [];
+      coins = res.coins || 0;
+      store.recordRun(rep, 0);
+      store.profile.coins = res.coinsTotal != null ? res.coinsTotal : store.profile.coins + coins;
+      if (run.mode === 'placement') { placed = res.level; store.profile.placementDone = true; }
+      if (res.flags && res.flags.length) resultNote = '';
+    } else {
+      restore(); coins = 0;
+      resultNote = 'This run could not be saved, so your progress was not changed.';
+      if (res.state) store.setProg(clone(res.state));
+    }
+  } catch (e) {
+    restore(); coins = 0;
+    resultNote = e.auth ? 'Your session ended. Please log in again; this run was not saved.' : (e.network ? 'No connection. This run was not saved.' : 'This run could not be saved, so your progress was not changed.');
+    try { hydrate(await server.profile()); } catch (e2) { /* keep the restored state */ }
+  }
   showResult(rep, coins, wasGateRun, placed);
 }
 
 // ---------- screens ----------
-const SCREENS = ['home', 'settings', 'garage', 'pause', 'rankup', 'result'];
+const SCREENS = ['home', 'settings', 'garage', 'pause', 'rankup', 'result', 'msg'];
 function showScreen(name) { for (const s of SCREENS) $('s-' + s).classList.toggle('show', s === name); }
 function geom() { const hz = R.h * 0.3, hw = (t) => R.w * (0.025 + 0.455 * t); return { laneX: (l, t) => R.w / 2 + (l - 1.5) * (hw(t) * 2 / 4) }; }
 
@@ -224,6 +281,7 @@ function renderHome() {
   }
   $('ladder-name').textContent = `Class ${p.cls} · ${t.id === 'middle' ? 'Middle' : 'Senior'} ladder (${t.maxLevel} levels, ${rankCount(t)} ranks)`;
   $('theme-name').textContent = themeForRank(r).name;
+  $('h-nick').textContent = nick ? 'Player: ' + nick : '';
   $('home-badge').innerHTML = badgeSVG(r, { size: 84 });
   $('h-rank').textContent = rankName(r); $('h-rank').style.color = rankColor(r); $('h-lvl').textContent = prog.level;
   const full = prog.gatePending || prog.gateActive;
@@ -258,7 +316,7 @@ function renderGarage() {
       const b = document.createElement('button'), ok = isUnlocked(it, mr);
       b.innerHTML = (swatch ? `<span class="sw ${cur[key].id === it.id ? 'pick' : ''}" style="background:${it.color}"></span>` : '') + it.name + (ok ? '' : ` 🔒 ${rankName(it.unlockRank)}`);
       b.className = cur[key].id === it.id ? 'on' : ''; b.disabled = !ok;
-      b.onclick = () => { store.profile.garage[key] = it.id; store.save(); S.garage = resolveGarage(store.profile.garage, mr); renderGarage(); };
+      b.onclick = () => { store.profile.garage[key] = it.id; store.save(); if (server && hydrated) scheduleSync(); S.garage = resolveGarage(store.profile.garage, mr); renderGarage(); };
       row.appendChild(b);
     }
   };
@@ -273,11 +331,13 @@ function showRankUp(rankIdx0) {
   showScreen('rankup');
 }
 function showResult(rep, coins, gateFailed, placed) {
+  $('toast').style.opacity = 0;
   const prog = store.prog, t = track();
   const title = run.mode === 'placement' ? 'Placement complete' : run.mode === 'practice' ? 'Practice finished' : gateFailed ? 'RANK GATE FAILED' : rep.wrongs.length && rules.hearts <= 0 ? 'GAME OVER' : 'Run finished';
   const el = $('r-title'); el.textContent = title; el.style.color = /FAILED|OVER/.test(title) ? 'var(--red)' : 'var(--teal)';
   const ban = $('r-banners'); ban.innerHTML = '';
   const add = (txt, col) => { const d = document.createElement('div'); d.className = 'card'; d.style.cssText = `border-color:${col};color:${col};margin-bottom:8px;font-weight:700`; d.textContent = txt; ban.appendChild(d); };
+  if (resultNote) add(resultNote, '#ff9d3d');
   if (placed) add(`Placed at Level ${placed} · ${rankName(rankOfLevel(t, placed))}`, '#19e6c1');
   if (run.rankUps) add(`Rank up ×${run.rankUps}! Now ${rankName(rankIdx(prog))}`, '#ffc83d');
   if (gateFailed) add('Bar stays full. Retry the Rank Gate any time.', '#ff9d3d');
@@ -314,7 +374,7 @@ function setHud() {
   S.theme = themeForRank(r);
 }
 let toastTimer = 0;
-function toast(txt, col) { const t = $('toast'); t.textContent = txt; t.style.color = col; t.style.opacity = 1; clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.style.opacity = 0; }, 900); }
+function toast(txt, col, ms = 900) { const t = $('toast'); t.textContent = txt; t.style.color = col; t.style.opacity = 1; clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.style.opacity = 0; }, ms); }
 
 function showPause() { if (phase !== 'ask' && phase !== 'result') return; prevPhase = phase; phase = 'pause'; loop.pause(); showScreen('pause'); }
 let prevPhase = 'ask';
@@ -405,13 +465,57 @@ addEventListener('resize', fit); addEventListener('orientationchange', fit);
 document.addEventListener('visibilitychange', () => store.save());
 function fit() { R.resize(innerWidth, innerHeight); }
 
+// ---------- server mode ----------
+function showMsg(title, text, label, onClick) {
+  $('m-title').textContent = title; $('m-text').textContent = text || '';
+  const b = $('m-btn'); b.style.display = label ? '' : 'none'; b.textContent = label || ''; b.onclick = onClick || null;
+  showScreen('msg');
+}
+const LOGIN_URL = '../../login.html';
+function failMsg(e) {
+  if (e && (e.auth || e.noToken)) showMsg('Please log in', 'Open the game from your W.H. Academy dashboard, or log in first.', 'Go to login', () => { location.href = LOGIN_URL; });
+  else if (e && e.network) toast(e.message, '#ff4d6d', 3500);
+  else toast((e && e.message) || 'Something went wrong.', '#ff4d6d', 3500);
+}
+function hydrate(p) {
+  store.setClass(p.classLevel);
+  const g = p.games.racer;
+  store.setProg(clone(g.state));
+  const pf = store.profile;
+  pf.coins = p.coins || 0; pf.placementDone = !!g.placementDone;
+  pf.stats = { runs: g.runs, answers: g.totalAnswers, correct: g.totalCorrect, bestStreak: g.bestStreak, bestScore: g.bestScore };
+  pf.settings = sanitizeSettings(p.settings); pf.garage = { ...pf.garage, ...p.garage };
+  nick = p.nickname || '';
+  hydrated = false; applySettings(); hydrated = true;
+}
+function scheduleSync() {
+  clearTimeout(syncTimer);
+  syncTimer = setTimeout(() => { server.saveSettings(store.profile.settings, store.profile.garage).catch(() => { /* retried on the next change */ }); }, 1200);
+}
+async function bootServer() {
+  showMsg('Loading…', '', null);
+  try {
+    const p = await server.profile();
+    if (!p.eligible) {
+      showMsg(p.reason === 'class' ? 'Not available for your class' : 'Advanced Games are part of the Max plan',
+        p.reason === 'class' ? 'Advanced Games are for Class 6 to 12.' : 'Ask W.H. Academy about upgrading to the Max plan to unlock Neon Racer and Auto Defense.', 'Back to dashboard', () => { location.href = '../../dashboard.html'; });
+      return;
+    }
+    hydrate(p); renderHome(); showScreen('home');
+  } catch (e) {
+    if (e.network) showMsg('Could not connect', e.message, 'Try again', () => bootServer());
+    else failMsg(e);
+  }
+}
+
 // ---------- boot ----------
 fit(); applySettings(); applyQuality({ preset: perf.preset }); renderHome();
 loop = new GameLoop({ update, render });
 loop.autoPause(() => { if (phase === 'ask' || phase === 'result') showPause(); });
 loop.start();
+if (server) bootServer();
 
 window.__racer = {
-  get state() { return { phase, hearts: rules && rules.hearts, over: rules && rules.over, level: store.prog.level, meter: store.prog.meter, streak: rules ? rules.streak : 0, score, fps: perf.fps, quality: perf.preset.name, timeScale: loop.timeScale, qcorrect: q && q.correct, inGate: rules && rules.inGate, cls: store.profile.cls, track: store.profile.track, rank: rankIdx(store.prog), asked: run && run.asked, hits: run && run.hits, trafficCars: traffic.cars.length }; },
+  get state() { return { phase, hearts: rules && rules.hearts, over: rules && rules.over, level: store.prog.level, meter: store.prog.meter, streak: rules ? rules.streak : 0, score, fps: perf.fps, quality: perf.preset.name, timeScale: loop.timeScale, qcorrect: q && q.correct, inGate: rules && rules.inGate, cls: store.profile.cls, track: store.profile.track, rank: rankIdx(store.prog), asked: run && run.asked, hits: run && run.hits, trafficCars: traffic.cars.length, mode: server ? 'server' : 'local', nick, coins: store.profile.coins }; },
   store, loop, perf, choose, startRun, rules: () => rules, run: () => run,
 };
