@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Engine Lab · WHA Advanced Games</title>
+<style>
+:root{--bg:#05060f;--ink:#e8ecff;--mute:#8d96c4;--teal:#19e6c1;--violet:#9b6bff;--mag:#ff3fb4;--gold:#ffc83d;--red:#ff4d6d;--green:#3dffa0;--glass:rgba(10,12,32,.72);--line:rgba(155,107,255,.35)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font:15px/1.35 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow:hidden;touch-action:manipulation}
+#cv{position:fixed;inset:0;width:100%;height:100%;display:block}
+.hud{position:fixed;inset:0;pointer-events:none;display:flex;flex-direction:column;padding:max(10px,env(safe-area-inset-top)) 12px max(10px,env(safe-area-inset-bottom));gap:8px}
+.top{display:flex;align-items:center;gap:5px;justify-content:space-between}
+.chip{background:var(--glass);border:1px solid var(--line);border-radius:999px;padding:3px 8px;font-weight:600;font-size:13px;white-space:nowrap;backdrop-filter:blur(6px)}
+#hearts{letter-spacing:1px;color:var(--red);font-size:18px;text-shadow:0 0 10px var(--red)}
+#hearts .off{color:#3a3f66;text-shadow:none}
+#rank{color:var(--teal)}
+#streak b{color:var(--gold)}
+#fps{font:600 11px ui-monospace,Menlo,monospace;color:var(--mute)}
+.card{background:var(--glass);border:1px solid var(--line);border-radius:16px;padding:12px 14px;backdrop-filter:blur(8px);box-shadow:0 0 24px rgba(155,107,255,.18)}
+#q{font-size:clamp(16px,4.2vw,22px);font-weight:650}
+#meta{font-size:12px;color:var(--mute);margin-top:4px;display:flex;gap:10px;flex-wrap:wrap}
+#bar{height:6px;border-radius:9px;background:#161a3a;overflow:hidden;margin-top:8px}
+#bar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--teal),var(--violet));transform-origin:left}
+.spacer{flex:1}
+.pw{display:flex;gap:8px;justify-content:center;pointer-events:auto}
+.pw button{pointer-events:auto;background:var(--glass);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-weight:600;min-height:44px}
+.pw button:disabled{opacity:.35}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;pointer-events:auto}
+.opt{display:flex;align-items:center;gap:9px;text-align:left;background:var(--glass);color:var(--ink);border:1.5px solid var(--c);border-radius:14px;padding:10px 12px;min-height:56px;font:inherit;font-weight:600;box-shadow:0 0 14px color-mix(in srgb,var(--c) 30%,transparent)}
+.opt b{display:grid;place-items:center;width:28px;height:28px;border-radius:8px;background:var(--c);color:#06070f;flex:none}
+.opt.hide{visibility:hidden}
+.opt.good{background:rgba(61,255,160,.25);border-color:var(--green)}
+.opt.bad{background:rgba(255,77,109,.25);border-color:var(--red)}
+.opt:disabled{cursor:default}
+#gear{position:fixed;right:12px;bottom:calc(max(10px,env(safe-area-inset-bottom)) + 4px);z-index:5;display:none}
+#panel{position:fixed;right:10px;top:max(52px,calc(env(safe-area-inset-top) + 44px));z-index:6;width:min(300px,calc(100vw - 20px));max-height:calc(100vh - 70px);overflow:auto;display:none}
+#panel.open{display:block}
+#panel h4{margin:8px 0 4px;font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.08em}
+.row{display:flex;gap:6px;flex-wrap:wrap}
+.row button,#lab-btn{background:#12163a;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:7px 10px;font:inherit;font-weight:600;min-height:38px}
+.row button.on{background:var(--violet);color:#07081a}
+#lab-btn{pointer-events:auto;padding:4px 10px!important;min-height:0!important;border-radius:999px!important}
+input[type=range]{width:100%}
+#over{position:fixed;inset:0;z-index:20;display:none;background:rgba(3,4,12,.88);backdrop-filter:blur(6px);padding:max(14px,env(safe-area-inset-top)) 14px 14px;overflow:auto}
+#over.show{display:block}
+#over h2{margin:6px 0 2px;font-size:26px;color:var(--red);text-shadow:0 0 18px var(--red)}
+.wr{margin:10px 0;padding:10px 12px;border-left:3px solid var(--red);background:#0c0f2a;border-radius:0 12px 12px 0}
+.wr small{color:var(--mute);display:block;margin-top:3px}
+.wr .ok{color:var(--green)}.wr .no{color:var(--red)}
+.big{width:100%;margin-top:10px;padding:14px;border-radius:14px;border:0;background:linear-gradient(90deg,var(--teal),var(--violet));color:#05060f;font:700 17px system-ui;min-height:52px}
+#toast{position:fixed;left:50%;top:38%;transform:translateX(-50%);z-index:9;font-weight:800;font-size:clamp(20px,6vw,34px);text-shadow:0 0 18px currentColor;opacity:0;pointer-events:none;transition:opacity .25s}
+@media (prefers-reduced-motion:reduce){#toast{transition:none}}
+</style>
+</head>
+<body>
+<canvas id="cv"></canvas>
+
+<div class="hud">
+  <div class="top">
+    <div class="chip" id="hearts" aria-label="hearts"></div>
+    <div class="chip"><span id="rank">Spark</span> · L<span id="lvl">1</span></div>
+    <div class="chip" id="streak">🔥 <b id="stv">0</b> · <span id="score">0</span></div>
+    <div class="chip" id="fps">-- fps</div>
+    <button id="lab-btn">Lab</button>
+  </div>
+  <div class="card" id="qcard">
+    <div id="q">Loading…</div>
+    <div id="meta"></div>
+    <div id="bar"><i id="barfill"></i></div>
+  </div>
+  <div class="spacer"></div>
+  <div class="pw" id="pw"></div>
+  <div class="opts" id="opts"></div>
+</div>
+
+<div id="toast"></div>
+<div id="panel" class="card">
+  <h4>Track</h4>
+  <div class="row" id="r-track"><button data-v="middle">Middle 6–8</button><button data-v="senior">Senior 9–12</button></div>
+  <h4>Start at rank: <span id="rk-name"></span></h4>
+  <input type="range" id="rk" min="0" max="19" value="0">
+  <h4>Mode</h4>
+  <div class="row" id="r-mode"><button data-v="ranked">Ranked</button><button data-v="practice">Practice</button></div>
+  <h4>Graphics: <span id="q-name"></span></h4>
+  <div class="row" id="r-q"><button data-v="auto">Auto</button><button data-v="0">Low</button><button data-v="1">Medium</button><button data-v="2">High</button></div>
+  <h4>Test helpers</h4>
+  <div class="row"><button id="b-gate">Jump to gate</button><button id="b-restart">Restart run</button><button id="b-mute">Sound: on</button></div>
+  <p style="color:var(--mute);font-size:12px;margin:8px 0 0">Keys: 1–4 answer · ←/→ steer (gate locks the lane you are in) · F 50:50 · T freeze · H heal · S skip</p>
+</div>
+
+<div id="over">
+  <h2>GAME OVER</h2>
+  <div id="over-sum" style="color:var(--mute)"></div>
+  <div id="over-list"></div>
+  <button class="big" id="retry">Retry</button>
+</div>
+
+<script type="module" src="./lab.js"></script>
+</body>
+</html>
