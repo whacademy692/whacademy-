@@ -17,7 +17,7 @@
     return BAND_COLORS[Math.min(3, Math.max(0, Math.floor((i < 0 ? 0 : i) / 5)))];
   }
 
-  var GAMES = [{ id: 'racer', label: '🏎️ Neon Racer' }, { id: 'defense', label: '🛡️ Auto Defense' }];
+  var GAMES = [{ id: 'racer', label: 'Neon Racer' }, { id: 'defense', label: 'Auto Defense' }];
   var current = 'racer';
   var tabsEl, boardEl;
 
@@ -42,7 +42,7 @@
     if (!rows.length) {
       boardEl.innerHTML = '<div class="card adv-empty">' + (current === 'defense'
         ? 'Auto Defense is coming soon — the board opens when the game does.'
-        : 'No one is on the board yet. Play ' + esc(game.label.replace(/^\S+\s/, '')) + ' and be the first!') + '</div>';
+        : 'No one is on the board yet. Play ' + esc(game.label) + ' and be the first!') + '</div>';
       return;
     }
     var mine = d.me || {};

@@ -1,7 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { THEMES, themeForRank, baseSpeed, trafficInterval } from '../racer/themes.js';
-import { Traffic, HIT_Z } from '../racer/traffic.js';
+import { THEMES, themeForRank, baseSpeed } from '../racer/themes.js';
 import { PAINTS, GLOWS, TRAILS, resolveGarage, isUnlocked, coinsForRun } from '../racer/garage.js';
 import { ProfileStore, memoryStorage, sanitizeProfile, newProfile } from '../engine/ui/store.js';
 import { sanitizeSettings, DEFAULT_SETTINGS, timeMultiplier, graphicsLevel, laneColors, LANE_COLORS_CB } from '../engine/ui/settings.js';
@@ -21,42 +20,6 @@ test('20 themes, unique names, valid colours, speed grows with rank', () => {
   }
   assert.equal(themeForRank(99), THEMES[19]);
   assert.ok(baseSpeed(19) > baseSpeed(0));
-  assert.ok(trafficInterval(19, false) < trafficInterval(0, false));
-  assert.ok(trafficInterval(0, true) < trafficInterval(0, false));
-});
-
-test('traffic: spawns, moves toward the player, hits only the occupied lane', () => {
-  let s = 4; const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
-  const t = new Traffic({ rng: rnd });
-  t.cars.push({ lane: 2, z: 0.3, hit: false, hue: 0 });
-  let hits = 0;
-  for (let i = 0; i < 120; i++) { const r = t.step(1 / 60, 1, 0, 2); if (r.hit) hits++; }
-  assert.equal(hits, 1);                                     // exactly one hit, not one per frame
-  assert.equal(t.hits, 1);
-  const u = new Traffic({ rng: rnd });
-  u.cars.push({ lane: 1, z: 0.3, hit: false, hue: 0 });
-  let miss = 0, passed = 0;
-  for (let i = 0; i < 120; i++) { const r = u.step(1 / 60, 1, 0, 3); if (r.hit) miss++; passed += r.passed; }
-  assert.equal(miss, 0);
-  assert.equal(passed, 1);
-  assert.equal(u.cars.length, 0);                            // cleaned up after passing
-});
-
-test('traffic: spawn rate follows the interval and never fills the road', () => {
-  const t = new Traffic({ rng: Math.random });
-  let n = 0;
-  for (let i = 0; i < 60 * 30; i++) { const before = t.cars.length; t.step(1 / 60, 1, 2, -1); if (t.cars.length > before) n++; }
-  assert.ok(n >= 8 && n <= 25, 'spawned ' + n);
-  assert.ok(HIT_Z > 0);
-});
-
-test('traffic never costs a heart: rules are untouched by traffic hits', () => {
-  const r = new RunRules({ trackId: 'middle' });
-  const hearts = r.hearts;
-  const t = new Traffic();
-  t.cars.push({ lane: 0, z: 0.1, hit: false, hue: 1 });
-  for (let i = 0; i < 30; i++) t.step(1 / 60, 1, 0, 0);
-  assert.equal(r.hearts, hearts);
 });
 
 test('garage: unlock by rank, locked choice falls back, coins formula', () => {
@@ -67,8 +30,8 @@ test('garage: unlock by rank, locked choice falls back, coins formula', () => {
   assert.equal(g.paint.id, 'cyan'); assert.equal(g.glow.id, 'lane'); assert.equal(g.trail.id, 'none');
   const g2 = resolveGarage({ paint: 'ice', glow: 'rainbow', trail: 'rainbow' }, 19);
   assert.equal(g2.paint.id, 'ice'); assert.equal(g2.trail.id, 'rainbow');
-  assert.equal(coinsForRun({ correct: 10, trafficHits: 3, rankUps: 1 }), 52);
-  assert.equal(coinsForRun({ correct: 0, trafficHits: 5, rankUps: 0 }), 0);
+  assert.equal(coinsForRun({ correct: 10, rankUps: 1 }), 55);
+  assert.equal(coinsForRun({ correct: 0, rankUps: 0 }), 0);
   assert.ok(GLOWS.length && TRAILS.length);
 });
 

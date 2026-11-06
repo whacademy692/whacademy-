@@ -3,21 +3,33 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#05060f">
+<meta name="theme-color" content="#070a1a">
 <title>Neon Racer · W.H. Academy</title>
 <link rel="stylesheet" href="../engine/ui/ui.css">
 </head>
 <body>
 <canvas id="cv" class="stage"></canvas>
 
+<!-- Three-line menu: every dashboard tab, reachable between runs -->
+<button class="navbtn" id="nav-btn" aria-label="Open menu" data-i="menu" data-s="24" hidden></button>
+<div class="navdrawer" id="nav-drawer">
+  <div class="navshade" id="nav-shade"></div>
+  <aside class="navpanel" role="dialog" aria-label="Dashboard menu">
+    <div class="navhead"><b>Study Hub</b><button id="nav-close" aria-label="Close menu" data-i="close" data-s="22"></button></div>
+    <nav id="nav-list"></nav>
+  </aside>
+</div>
+
 <!-- In-run HUD -->
 <div class="hud" id="hud">
   <div class="top">
-    <div class="chip" id="hearts" aria-label="hearts"></div>
-    <div class="chip"><span id="rank">Spark</span> · L<span id="lvl">1</span></div>
-    <div class="chip">🔥 <b id="stv" style="color:var(--gold)">0</b> · <span id="score">0</span></div>
-    <div class="chip" id="fps" hidden>-- fps</div>
-    <button class="chip btn" id="pause-btn" aria-label="Pause">❚❚</button>
+    <div class="hearts" id="hearts" aria-label="hearts"></div>
+    <div class="topr">
+      <div class="chip rankchip"><span id="rank">Spark</span><i>L<span id="lvl">1</span></i></div>
+      <div class="chip"><span class="ico fire" data-i="flame" data-s="16"></span><b id="stv">0</b><i id="score">0</i></div>
+      <div class="chip" id="fps" hidden>-- fps</div>
+      <button class="chip btn" id="pause-btn" aria-label="Pause" data-i="pause" data-s="18"></button>
+    </div>
   </div>
   <div class="card" id="qcard">
     <div id="q"></div>
@@ -33,8 +45,8 @@
 <!-- Home -->
 <div class="screen show" id="s-home">
   <div class="stack">
-    <h1>NEON RACER</h1>
-    <div style="color:var(--mute)">Lane chuno, answer chuno. Galat jawab = crash.</div>
+    <div class="titlebar"><h1><span class="ico" data-i="bolt" data-s="30"></span>NEON RACER</h1><button class="iconbtn" id="env-quick" aria-label="Day or night scenery"></button></div>
+    <div class="sub">Steer into the gate with the right answer. A wrong gate is a crash.</div>
 
     <div id="cls-wrap" hidden>
       <h3>Playing as class (test only)</h3>
@@ -48,7 +60,7 @@
         <div style="font-size:1.25em;font-weight:700"><span id="h-rank"></span> · Level <span id="h-lvl"></span></div>
         <div id="h-nick" style="color:var(--mute);font-size:.85em"></div>
         <div class="bar"><i id="h-bar"></i></div>
-        <div class="kv" style="margin-top:6px"><span id="h-barlabel"></span><span>🪙 <b id="h-coins">0</b></span></div>
+        <div class="kv" style="margin-top:6px"><span id="h-barlabel"></span><span class="coinline"><span class="ico gold" data-i="coin" data-s="16"></span><b id="h-coins">0</b></span></div>
         <div class="kv"><span>Best streak <b id="h-bs">0</b></span><span>Accuracy <b id="h-acc">–</b></span></div>
       </div>
     </div>
@@ -57,7 +69,7 @@
     <button class="big alt" id="b-practice">Practice (no game over)</button>
     <button class="big alt" id="b-placement">Placement Run (15 questions)</button>
     <div class="row"><button id="b-garage" style="flex:1">Garage</button><button id="b-settings" style="flex:1">Settings</button></div>
-    <div style="color:var(--mute);font-size:.8em;text-align:center">Keys: 1–4 answer · ←/→ steer · Space lock · F 50:50 · T freeze · H heal · S skip · P pause</div>
+    <div class="hint">Keys: 1–4 answer · ←/→ steer · ↑/↓ drive to the gate · Space lock · F 50:50 · T freeze · H heal · S skip · P pause<br>Phone: tap left/right to steer, swipe up to drive, or tap an answer.</div>
   </div>
 </div>
 
@@ -74,6 +86,8 @@
 <div class="screen" id="s-settings">
   <div class="stack">
     <h2>Settings</h2>
+    <h3>Scenery</h3>
+    <div class="row seg" id="set-env"></div>
     <h3>Graphics</h3>
     <div class="row" id="set-graphics"></div>
     <div id="set-toggles"></div>
@@ -93,7 +107,7 @@
 <div class="screen" id="s-garage">
   <div class="stack">
     <h2>Garage</h2>
-    <div style="color:var(--mute);font-size:.9em">Sirf look badalta hai, jawab par koi asar nahi. Items rank se unlock hote hain.</div>
+    <div style="color:var(--mute);font-size:.9em">Only changes the look, never the answers. Items unlock with your rank.</div>
     <h3>Paint</h3><div class="row" id="g-paint"></div>
     <h3>Underglow</h3><div class="row" id="g-glow"></div>
     <h3>Trail</h3><div class="row" id="g-trail"></div>

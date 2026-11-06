@@ -26,8 +26,9 @@ export function keyToIntent(key, { steerWithAD = false } = {}) {
  * down/up = {x,y,t}. width = canvas CSS width. mode 'halves' (left/right half = one lane step),
  * 'targets' (host hit-tests), swipe optional.
  */
-export function classifyPointer(down, up, { width, swipe = true, swipePx = 40, swipeMs = 450, tapPx = 14 } = {}) {
+export function classifyPointer(down, up, { width, swipe = true, swipePx = 40, swipeMs = 450, tapPx = 14, vertical = false } = {}) {
   const dx = up.x - down.x, dy = up.y - down.y, dt = up.t - down.t;
+  if (vertical && dy <= -swipePx && Math.abs(dy) > Math.abs(dx) * 1.5 && dt <= swipeMs) return { kind: 'swipe', intent: { type: 'forward' } };   // swipe up = drive forward
   if (swipe && Math.abs(dx) >= swipePx && Math.abs(dx) > Math.abs(dy) * 1.5 && dt <= swipeMs) {
     return { kind: 'swipe', intent: { type: dx < 0 ? 'left' : 'right' } };
   }
@@ -55,7 +56,7 @@ export class Input {
     this._onUp = (e) => {
       if (!this._down || !this.enabled) return;
       const up = { x: e.offsetX ?? e.clientX, y: e.offsetY ?? e.clientY, t: performance.now() };
-      const r = classifyPointer(this._down, up, { width: this.o.width ? this.o.width() : el.clientWidth, swipe: this.o.swipe });
+      const r = classifyPointer(this._down, up, { width: this.o.width ? this.o.width() : el.clientWidth, swipe: this.o.swipe, vertical: !!this.o.vertical });
       this._down = null;
       if (r.kind === 'swipe') this.emit(r.intent);
       else if (r.kind === 'tap') {

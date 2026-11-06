@@ -30,9 +30,3 @@ export const themeForRank = (rankIdx) => THEMES[Math.max(0, Math.min(THEMES.leng
 
 /** World speed multiplier by rank: later ranks feel faster. */
 export const baseSpeed = (rankIdx) => 1.0 + 0.035 * rankIdx;
-
-/** Traffic density: seconds between cars (real world seconds at speed 1). None for the first two ranks' early levels. */
-export function trafficInterval(rankIdx, inGate) {
-  if (inGate) return 1.1;                                   // rival traffic during the gate race
-  return Math.max(1.4, 3.2 - 0.09 * rankIdx);
-}

@@ -29,14 +29,13 @@
       'Recorded lectures and WhatsApp support',
       'Monthly mock tests',
       'Rechecking of your Boss Battle marking',
-      'Past Papers shelf',
-      'New advanced games as they arrive'
+      'Past Papers shelf'
     ],
     Max: [
+      'Advanced Games: Neon Racer and Auto Defense',
       'Interactive subject Animations',
       'Weekly tests and past-paper sessions',
-      'Detailed notes',
-      'One free live class every week for each of your subjects'
+      'Detailed notes'
     ]
   };
 

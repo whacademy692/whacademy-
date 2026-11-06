@@ -164,46 +164,82 @@ const Router = (() => {
     document.head.appendChild(st);
   }
   function addAdvNavItems() {
-    ensureAdvNavStyle();
+    try { ensureAdvNavStyle(); } catch (e) { /* icons only */ }
     const page = currentPageName();
-    const side = document.querySelector('.sidebar__nav');
-    if (side) {
-      const anchor = side.querySelector('[data-nav-page="leaderboard.html"]');
-      const before = anchor ? anchor.nextSibling : (side.querySelector('[data-nav-page="profile.html"]') || null);
+    const place = (container, make, anchorSel, fallbackSel) => {
+      if (!container) return;
+      let last = null;   // keep Games before Ranks: each new item goes right after the previous one
       ADV_NAV.forEach((it) => {
-        if (side.querySelector('[data-nav-page="' + it.page + '"]')) return;
-        const a = document.createElement('a');
-        a.className = 'sidebar__item';
-        a.href = it.page;
-        a.setAttribute('data-nav-page', it.page);
-        a.innerHTML = navSvg(it.icon) + ' ' + it.label;
-        if (it.page === page) a.setAttribute('aria-current', 'page');
-        side.insertBefore(a, before);
+        const have = container.querySelector('[data-nav-page="' + it.page + '"]');
+        if (have) { last = have; return; }
+        try {
+          const a = make(it);
+          if (it.page === page) a.setAttribute('aria-current', 'page');
+          // Insert after "Ranks" (or before Profile); fall back to appending. Never throw: a failed
+          // placement must not make the tabs vanish.
+          const anchor = last || container.querySelector(anchorSel);
+          const ref = anchor && anchor.parentNode === container ? anchor.nextSibling : container.querySelector(fallbackSel);
+          if (ref && ref.parentNode === container) container.insertBefore(a, ref); else container.appendChild(a);
+          last = a;
+        } catch (e) {
+          try { container.appendChild(make(it)); } catch (e2) { console.warn('adv nav', e2); }
+        }
       });
-    }
-    const panel = document.querySelector('.wha-drawer__panel');
-    if (panel) {
-      const anchor = panel.querySelector('[data-nav-page="leaderboard.html"]');
-      const before = anchor ? anchor.nextSibling : (panel.querySelector('.wha-drawer__sep') || null);
-      ADV_NAV.forEach((it) => {
-        if (panel.querySelector('[data-nav-page="' + it.page + '"]')) return;
-        const tpl = document.createElement('div');
-        tpl.innerHTML = drawerLink(it.page, it.label, it.icon);
-        const a = tpl.firstChild;
-        if (it.page === page) a.setAttribute('aria-current', 'page');
-        panel.insertBefore(a, before);
-      });
-    }
+    };
+    place(document.querySelector('.sidebar__nav'), (it) => {
+      const a = document.createElement('a');
+      a.className = 'sidebar__item';
+      a.href = it.page;
+      a.setAttribute('data-nav-page', it.page);
+      a.innerHTML = navSvg(it.icon) + ' ' + it.label;
+      return a;
+    }, '[data-nav-page="leaderboard.html"]', '[data-nav-page="profile.html"]');
+    place(document.querySelector('.wha-drawer__panel'), (it) => {
+      const tpl = document.createElement('div');
+      tpl.innerHTML = drawerLink(it.page, it.label, it.icon);
+      return tpl.firstChild;
+    }, '[data-nav-page="leaderboard.html"]', '.wha-drawer__sep');
+  }
+  function removeAdvNavItems() {
+    ADV_NAV.forEach((it) => document.querySelectorAll('[data-nav-page="' + it.page + '"]').forEach((el) => el.remove()));
+  }
+
+  // The tabs must never blink out. We remember "this student has the Max plan" and keep the tabs
+  // on EVERY page: drawn immediately from the remembered flag, re-checked against the live plan,
+  // and re-added if some other script rebuilds the menus later.
+  let advNavOn = false;
+  let advNavTimer = null;
+  function setAdvNav(on) {
+    advNavOn = !!on;
+    try { Storage.set('adv_tabs', advNavOn); } catch (e) { /* ignore */ }
+    if (advNavOn) addAdvNavItems(); else removeAdvNavItems();
   }
   function injectAdvNav() {
     if (!Storage.getToken() || typeof Plan === 'undefined') return;
-    const show = (plan) => { if (Plan.allows(plan, 'advGames')) addAdvNavItems(); };
+    let remembered = false;
+    try { remembered = Storage.get('adv_tabs', false) === true; } catch (e) { /* ignore */ }
+    if (remembered) setAdvNav(true);                       // instant, no flicker
+    const decide = (plan) => setAdvNav(Plan.allows(plan, 'advGames'));
     const cached = Storage.getCachedDashboard();
-    if (cached && cached.data && Object.prototype.hasOwnProperty.call(cached.data, 'plan')) show(cached.data.plan);
-    else if (currentPageName() !== 'dashboard.html') Plan.get().then(show).catch(() => {});
-    // The dashboard page reports its fresh plan through setUpgradePlan -> also refresh this.
-    advNavPlanHook = show;
+    if (cached && cached.data && Object.prototype.hasOwnProperty.call(cached.data, 'plan')) decide(cached.data.plan);
+    else if (currentPageName() !== 'dashboard.html') Plan.get().then(decide).catch(() => {});
+    advNavPlanHook = decide;                               // dashboard page reports its fresh plan via setUpgradePlan
+    if (typeof MutationObserver === 'function' && !advNavObserver) {
+      advNavObserver = new MutationObserver(() => {
+        if (!advNavOn || advNavTimer) return;
+        advNavTimer = setTimeout(() => { advNavTimer = null; if (advNavOn) addAdvNavItems(); }, 60);
+      });
+      const watch = () => {
+        ['.sidebar__nav', '.wha-drawer__panel'].forEach((sel) => {
+          const el = document.querySelector(sel);
+          if (el && !el.dataset.advWatched) { el.dataset.advWatched = '1'; advNavObserver.observe(el, { childList: true }); }
+        });
+      };
+      watch(); setTimeout(watch, 500); setTimeout(watch, 2000);
+    }
+    window.addEventListener('pageshow', () => { if (advNavOn) addAdvNavItems(); });
   }
+  let advNavObserver = null;
   let advNavPlanHook = null;
 
   /**
@@ -545,7 +581,7 @@ const Plan = (() => {
     animations:    { min: 'Max',  label: 'Animations' },
     rechecking:    { min: 'Plus', label: 'Rechecking' },
     pastPapers:    { min: 'Plus', label: 'Past Papers' },
-    advancedGames: { min: 'Plus', label: 'Advanced games' },
+    advancedGames: { min: 'Max',  label: 'Advanced games' },
     advGames:      { min: 'Max',  label: 'Advanced Games' },
     advRanks:      { min: 'Max',  label: 'Advanced Ranks' }
   };

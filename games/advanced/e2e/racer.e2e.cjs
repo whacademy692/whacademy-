@@ -64,7 +64,20 @@ const out = process.argv[3] || '.';
   await page.click('#b-settings'); await page.click('#dev-reset'); await page.click('#set-back');
   await page.click('#cls-row button:has-text("8")');
 
-  // ---- ranked run: extra time active, correct answers, traffic, power-ups, pause ----
+  // ---- three-line menu on the home screen: opens, lists every dashboard tab, closes ----
+  await page.click('#nav-btn'); await page.waitForTimeout(400);
+  await page.waitForFunction(() => document.querySelector('.navdrawer').classList.contains('open'));
+  assert.ok((await page.$$eval('.navitem', (a) => a.length)) >= 8, 'dashboard links present');
+  assert.ok((await page.$$eval('.navitem', (a) => a.map((x) => x.getAttribute('href')))).every((h) => /^\.\.\/\.\.\//.test(h)));
+  await shot('racer_3b_menu.png');
+  await page.click('.navshade', { position: { x: 375, y: 400 } });
+  await page.waitForFunction(() => !document.querySelector('.navdrawer').classList.contains('open'));
+  // ---- day / night switch ----
+  const e0 = (await st()).env; await page.click('#env-quick');
+  assert.notEqual((await st()).env, e0);
+  await page.click('#env-quick');
+
+  // ---- ranked run: extra time active, correct answers, power-ups, pause ----
   await page.click('#b-ranked');
   await waitPhase('ask');
   await page.waitForFunction(() => window.__racer.state.timeScale < 0.5, null, { timeout: 3000 });   // think-slow engages within a frame
@@ -82,8 +95,12 @@ const out = process.argv[3] || '.';
   await page.keyboard.press('f');
   assert.equal(await page.$$eval('.opt.hide', (n) => n.length), 2);
   await page.waitForTimeout(2500);
-  assert.ok((await st()).trafficCars >= 0);
+  { const g = await st(); assert.ok(g.gateK >= 0); assert.ok(g.carZ > 0.3 && g.carZ < 0.9); }
   await shot('racer_6_run.png');
+  await page.keyboard.down('ArrowUp'); await page.waitForTimeout(600); await page.keyboard.up('ArrowUp');
+  assert.ok((await st()).carZ > 0.5, 'car drives forward');
+  await page.evaluate(() => window.__racer.setEnv && window.__racer.setEnv('night')); await page.waitForTimeout(300);
+  await shot('racer_6b_night.png');
   await answer(true);
   for (let i = 0; i < 6; i++) await answer(true);                       // streak builds
   // three wrong answers -> game over, wrongs reviewed, coins

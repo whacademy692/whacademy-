@@ -32,7 +32,7 @@ export function resolveGarage(garage, maxRank) {
   return { paint: pick(PAINTS, garage && garage.paint), glow: pick(GLOWS, garage && garage.glow), trail: pick(TRAILS, garage && garage.trail) };
 }
 
-/** Game coins for a finished run: 3 per correct answer, minus 1 per traffic hit, +25 for a rank-up. */
-export function coinsForRun({ correct, trafficHits = 0, rankUps = 0 }) {
-  return Math.max(0, correct * 3 - trafficHits + rankUps * 25);
+/** Game coins for a finished run: 3 per correct answer, +25 for a rank-up. */
+export function coinsForRun({ correct, rankUps = 0 }) {
+  return Math.max(0, correct * 3 + rankUps * 25);
 }

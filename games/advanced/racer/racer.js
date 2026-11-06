@@ -16,16 +16,19 @@ import { ProfileStore, memoryStorage } from '../engine/ui/store.js';
 import { GameServer, findStudentToken, answersFromLog } from '../engine/net/server.js';
 import { sanitizeSettings, timeMultiplier, graphicsLevel, laneColors } from '../engine/ui/settings.js';
 import { badgeSVG } from '../engine/ui/badge.js';
-import { themeForRank, baseSpeed, trafficInterval } from './themes.js';
-import { Traffic } from './traffic.js';
+import { themeForRank, baseSpeed } from './themes.js';
+import { icon } from '../engine/ui/icons.js';
 import { PAINTS, GLOWS, TRAILS, resolveGarage, isUnlocked, coinsForRun } from './garage.js';
-import { drawScene, CAR_K } from './scene.js';
+import { drawScene, geom as sceneGeom, CAR_K, CAR_MIN_K, CAR_MAX_K, GATE_K0, GATE_COLORS } from './scene.js';
 
 const $ = (id) => document.getElementById(id);
 const qs = new URLSearchParams(location.search);
 const DEV = qs.get('dev') === '1';
 const LETTER = ['A', 'B', 'C', 'D'];
-const PU_LABEL = { fifty: '50:50', freeze: '❄ Freeze', heal: '♥ Heal', skip: '⏭ Skip' };
+const PU_LABEL = { fifty: ['fifty', '50:50'], freeze: ['snow', 'Freeze'], heal: ['heart', 'Heal'], skip: ['skip', 'Skip'] };
+const clampN = (x, a, b) => Math.max(a, Math.min(b, x));
+const ENV_KEY = 'wha_adv_env';          // day / night is a per-device look, kept locally (not part of the server profile)
+let env = 'day'; try { env = localStorage.getItem(ENV_KEY) === 'night' ? 'night' : 'day'; } catch (e) { /* blocked */ }
 
 // ---------- state ----------
 // LOCAL = sandbox (no server): ?dev=1 or ?local=1, progress kept in this browser only.
@@ -50,15 +53,17 @@ const fx = new Fx({ reduceMotion: false });
 const sfx = new Sfx();
 const parts = new ParticlePool(QUALITY[1].particles);
 const trail = new Trail(16);
-const traffic = new Traffic();
-const car = { x: new Spring(1, 120, 15), body: new Body(0, 0), lane: 1 };
+const car = { x: new Spring(1, 120, 15), body: new Body(0, 0), lane: 1, z: CAR_K, go: false, damage: 0 };
+const held = { up: false, down: false };
+const smoke = [];
+let contacted = true, lockZ = CAR_K, smokeT = 0;
 car.body.drag = 0.9; car.body.angDrag = 2.2;
 const perf = new PerfManager({ auto: true, level: 1, onChange: applyQuality });
 let loop;
 
 // Scene state handed to drawScene each frame.
-const S = { t: 0, scroll: 0, preset: perf.preset, theme: themeForRank(0), lanes: laneColors(settings), letters: LETTER, colorBlind: false, reduceMotion: false, flash: 0,
-  car: { x: 1, lane: 1, bx: 0, by: 0, rot: 0 }, trail, parts, traffic: traffic.cars, boost: 0, gates: null, think: null,
+const S = { t: 0, scroll: 0, env, preset: perf.preset, theme: themeForRank(0), lanes: laneColors(settings), letters: LETTER, colorBlind: false, reduceMotion: false, flash: 0,
+  car: { x: 1, lane: 1, z: CAR_K, bx: 0, by: 0, rot: 0, damage: 0 }, trail, parts, smoke, boost: 0, gates: null, think: null,
   garage: resolveGarage(store.profile.garage, 0) };
 
 function applyQuality(c) {
@@ -66,12 +71,20 @@ function applyQuality(c) {
   R.setDprCap(p.dpr); R.glowOn = p.glow; parts.resize(p.particles); fx.shakeScale = p.shake; S.preset = p;
   if (loop) loop.renderEvery = perf.fallback30 ? 2 : 1;
 }
+function setEnv(e, save = true) {
+  env = e === 'night' ? 'night' : 'day'; S.env = env;
+  document.body.dataset.env = env;
+  document.documentElement.style.setProperty('--g1', GATE_COLORS[env][0]); document.documentElement.style.setProperty('--g2', GATE_COLORS[env][1]);
+  if (save) { try { localStorage.setItem(ENV_KEY, env); } catch (err) { /* blocked */ } }
+  sfx.ambience(env);
+  const q = $('env-quick'); if (q) { q.innerHTML = icon(env === 'day' ? 'sun' : 'moon', { size: 20 }); q.setAttribute('aria-label', env === 'day' ? 'Day scenery (tap for night)' : 'Night scenery (tap for day)'); }
+}
 function applySettings() {
   settings = store.profile.settings = sanitizeSettings(store.profile.settings);
   document.body.classList.remove('ts-s', 'ts-l'); if (settings.textSize !== 'm') document.body.classList.add('ts-' + settings.textSize);
   document.body.classList.toggle('lefty', settings.leftHanded);
   document.body.classList.toggle('rm', settings.reduceMotion);
-  sfx.setMuted(!settings.sound); sfx.setVolume(settings.volume);
+  sfx.setMuted(!settings.sound); sfx.setVolume(settings.volume); sfx.ambience(env);
   input.haptics = settings.vibration; input.o.swipe = settings.swipe;
   fx.reduceMotion = settings.reduceMotion || matchMedia('(prefers-reduced-motion: reduce)').matches;
   S.lanes = laneColors(settings); S.colorBlind = settings.colorBlind; S.reduceMotion = fx.reduceMotion;
@@ -109,10 +122,12 @@ function beginRun(mode) {
   if (!pool.size) { toast('No questions available', '#ff4d6d'); return; }
   const prog = store.prog;
   run = { mode, history: [], rankUps: 0, hits: 0, asked: 0, gateFailed: false, startLevel: prog.level, startRank: rankIdx(prog), pendingRankUp: null, events: [] };
+  lastHearts = null;
   rules = new RunRules({ trackId: store.profile.track, prog, mode: mode === 'ranked' ? 'ranked' : 'practice', timeMult: timeMultiplier(settings) });
   score = 0; boost = 0; lastResult = null;
-  traffic.clear(); parts.clear();
-  car.lane = 1; car.x.snap(1); car.body.x = car.body.y = car.body.rot = car.body.vx = car.body.vr = 0;
+  parts.clear(); smoke.length = 0;
+  car.lane = 1; car.x.snap(1); car.z = CAR_K; car.go = false; car.damage = 0; contacted = true;
+  car.body.x = car.body.y = car.body.rot = car.body.vx = car.body.vr = 0;
   S.garage = resolveGarage(store.profile.garage, maxRank());
   showScreen(null); $('hud').classList.add('on');
   for (const e of rules.progEvents) if (e.type === 'gateStart') toast(`RANK GATE · ${e.need} to pass`, '#ffc83d');
@@ -130,7 +145,8 @@ function nextQuestion() {
   if (!q) return endRun();
   run.asked++;
   rules.present(q);
-  phase = 'ask'; phaseT = 0; rush = 0;
+  phase = 'ask'; phaseT = 0; rush = 0; car.go = false;
+  G.k = GATE_K0; G.pass = 0; G.result = null;
   renderQuestion();
 }
 function renderQuestion() {
@@ -143,7 +159,7 @@ function renderQuestion() {
   const box = $('opts'); box.innerHTML = '';
   q.options.forEach((o, i) => {
     const b = document.createElement('button');
-    b.className = 'opt'; b.style.setProperty('--c', S.lanes[i]); b.dataset.i = i;
+    b.className = 'opt'; b.dataset.i = i;
     b.innerHTML = `<b>${LETTER[i]}</b><span></span>`; b.lastChild.textContent = o;
     b.onclick = () => { sfx.unlock(); choose(i); };
     box.appendChild(b);
@@ -155,7 +171,7 @@ function renderPowerups() {
   if (run.mode === 'placement') return;
   for (const p of POWERUPS) {
     const b = document.createElement('button'), c = rules.canUse(p);
-    b.textContent = `${PU_LABEL[p]} ×${rules.charges[p]}`;
+    b.innerHTML = `${icon(PU_LABEL[p][0], { size: 18 })}<span>${PU_LABEL[p][1]}</span><em>×${rules.charges[p]}</em>`;
     b.disabled = !c.ok || phase !== 'ask'; b.title = c.reason || '';
     b.onclick = () => { sfx.unlock(); usePower(p); };
     box.appendChild(b);
@@ -169,6 +185,7 @@ function usePower(name) {
   input.vibrate(10);
   if (name === 'fifty') document.querySelectorAll('.opt').forEach((b) => { if (u.hidden.includes(+b.dataset.i)) b.classList.add('hide'); });
   if (name === 'freeze') { fx.flash('#7fd6ff', 0.25); toast(`FREEZE +${u.extraMs / 1000}s`, '#7fd6ff'); }
+  if (name === 'heal') car.damage = Math.max(0, car.damage - 1);
   if (name === 'skip') { nextQuestion(); return; }
   renderPowerups(); setHud();
 }
@@ -180,21 +197,9 @@ function choose(i) {
 function lock(lane) {
   const res = rules.answer(lane);
   if (!res) return;
-  lastResult = res; phase = 'result'; phaseT = 0; rush = 0; gateK0 = S.gates ? S.gates.k : 0.1;
+  lastResult = res; phase = 'result'; phaseT = 0; rush = 0; gateK0 = G.k; lockZ = car.z; contacted = false; car.go = false;
   if (run.mode === 'placement') run.history.push({ tier: q.tier, correct: res.correct });
   document.querySelectorAll('.opt').forEach((b) => { b.disabled = true; if (+b.dataset.i === res.correctIndex) b.classList.add('good'); else if (+b.dataset.i === lane) b.classList.add('bad'); });
-  const g = geom(), cx = g.laneX(lane, 0.7);
-  if (res.correct) {
-    sfx.play('correct'); boost = 1; fx.flash('#3dffa0', 0.18); input.vibrate(15);
-    parts.burst(cx, R.h * 0.62, 38, 260, 0.8, 3.2, 160, 0);
-    toast(res.streak >= 3 ? `CLEAN PASS ×${res.streak}` : 'CLEAN PASS', '#3dffa0');
-  } else {
-    sfx.play(res.timeout ? 'wrong' : 'crash'); input.vibrate([40, 30, 60]);
-    fx.shake(0.9); fx.slowmo(0.25, 0.7); fx.flash('#ff4d6d', 0.35);
-    car.body.impulse((lane % 2 ? -1 : 1) * 140, -120, 9);
-    parts.burst(cx, R.h * 0.66, 60, 320, 0.9, 3.6, 340, 220);
-    toast(run.mode === 'ranked' ? 'CRASH  −1 ♥' : 'CRASH', '#ff4d6d');
-  }
   for (const e of res.events) {
     run.events.push(e);
     if (e.type === 'rankUp') { run.rankUps++; run.pendingRankUp = e.rank; sfx.play('rankup'); fx.flash('#ffc83d', 0.4); }
@@ -205,10 +210,29 @@ function lock(lane) {
     else if (e.type === 'comeback') toast('COMEBACK BOOST ×10', '#ffc83d');
     else if (e.type === 'streakTier') sfx.play('boost');
   }
-  if (res.healed) { sfx.play('heart'); toast('+1 ♥', '#ff4d6d'); }
+  if (res.healed) { sfx.play('heart'); toast(`+1 ${icon('heart', { size: 30 })}`, '#ff4d6d'); car.damage = Math.max(0, car.damage - 1); }
   score = rules.score;
   G.result = { correct: res.correctIndex, picked: lane };
   setHud();
+}
+// The moment the car meets the gate (a beat after the answer is locked): green pass-through or a crash.
+function contactFx() {
+  const res = lastResult; if (!res) return;
+  const sc = S.car.scale || 1, cx = S.car.sx || R.w / 2, cy = (S.car.sy || R.h * 0.7) - 24 * sc;
+  if (res.correct) {
+    sfx.play('correct'); sfx.play('whoosh'); boost = 1; fx.flash('#3dffa0', 0.16); input.vibrate(15);
+    parts.burst(cx, cy, 38, 260, 0.8, 3.2, 140, 0);
+    toast(res.streak >= 3 ? `CLEAN PASS ×${res.streak}` : 'CLEAN PASS', '#3dffa0');
+  } else {
+    const lane = G.result ? G.result.picked : car.lane;
+    sfx.play(res.timeout ? 'wrong' : 'crash'); input.vibrate([40, 30, 60]);
+    fx.shake(0.9); fx.slowmo(0.25, 0.7); fx.flash('#ff4d6d', 0.35);
+    car.body.impulse((lane % 2 ? -1 : 1) * 140, 90, 9);
+    car.damage = Math.min(run.mode === 'practice' ? 2 : 3, car.damage + 1);
+    parts.burst(cx, cy, 46, 320, 0.9, 3.6, 25, 240); parts.burst(cx, cy, 24, 200, 0.7, 3, 0, 160);
+    for (let i = 0; i < 9; i++) smoke.push({ x: cx + (Math.random() - 0.5) * 30 * sc, y: cy + (Math.random() - 0.3) * 16 * sc, r: 5 + Math.random() * 6, a: 0.7, vx: (Math.random() - 0.5) * 60, vy: -40 - Math.random() * 40, fire: i < 3 });
+    toast(run.mode === 'ranked' ? `CRASH  −1 ${icon('heart', { size: 30 })}` : 'CRASH', '#ff4d6d');
+  }
 }
 async function endRun() {
   if (!rules) return;
@@ -225,7 +249,7 @@ async function endRun() {
       if (prog.answers === 0) { prog.level = placed; prog.maxLevel = placed; prog.meter = 0; }
       store.profile.placementDone = true;
     }
-    coins = run.mode === 'placement' ? 0 : coinsForRun({ correct: rep.correct, trafficHits: run.hits, rankUps: run.rankUps });
+    coins = run.mode === 'placement' ? 0 : coinsForRun({ correct: rep.correct, rankUps: run.rankUps });
     store.recordRun(rep, coins);
     store.save();
     showResult(rep, coins, wasGateRun, placed);
@@ -267,8 +291,11 @@ async function endRun() {
 
 // ---------- screens ----------
 const SCREENS = ['home', 'settings', 'garage', 'pause', 'rankup', 'result', 'msg'];
-function showScreen(name) { for (const s of SCREENS) $('s-' + s).classList.toggle('show', s === name); }
-function geom() { const hz = R.h * 0.3, hw = (t) => R.w * (0.025 + 0.455 * t); return { laneX: (l, t) => R.w / 2 + (l - 1.5) * (hw(t) * 2 / 4) }; }
+function showScreen(name) {
+  for (const s of SCREENS) $('s-' + s).classList.toggle('show', s === name);
+  $('nav-btn').hidden = !(name === 'home' || name === 'pause' || name === 'result' || name === 'msg');   // menu is reachable between runs, not mid-run
+  if (name !== 'home' && name !== 'pause' && name !== 'result' && name !== 'msg') closeNav();
+}
 
 function renderHome() {
   const p = store.profile, prog = store.prog, t = track(), r = rankIdx(prog);
@@ -303,6 +330,11 @@ function renderSettings() {
     tg.appendChild(d);
   }
   const mk = (id, list, key) => { const row = $(id); row.innerHTML = ''; for (const [v, label] of list) { const b = document.createElement('button'); b.textContent = label; b.className = settings[key] === v ? 'on' : ''; b.onclick = () => { store.profile.settings[key] = v; applySettings(); renderSettings(); }; row.appendChild(b); } };
+  const se = $('set-env'); se.innerHTML = '';
+  for (const [v, label, ic] of [['day', 'Day', 'sun'], ['night', 'Night', 'moon']]) {
+    const b = document.createElement('button'); b.innerHTML = `${icon(ic, { size: 18 })}<span>${label}</span>`; b.className = env === v ? 'on' : '';
+    b.onclick = () => { sfx.unlock(); setEnv(v); renderSettings(); }; se.appendChild(b);
+  }
   mk('set-graphics', [['auto', 'Auto'], ['low', 'Low'], ['medium', 'Medium'], ['high', 'High']], 'graphics');
   mk('set-text', [['s', 'Small'], ['m', 'Normal'], ['l', 'Large']], 'textSize');
   $('dev').hidden = !DEV;
@@ -314,7 +346,7 @@ function renderGarage() {
     const row = $(id); row.innerHTML = '';
     for (const it of list) {
       const b = document.createElement('button'), ok = isUnlocked(it, mr);
-      b.innerHTML = (swatch ? `<span class="sw ${cur[key].id === it.id ? 'pick' : ''}" style="background:${it.color}"></span>` : '') + it.name + (ok ? '' : ` 🔒 ${rankName(it.unlockRank)}`);
+      b.innerHTML = (swatch ? `<span class="sw ${cur[key].id === it.id ? 'pick' : ''}" style="background:${it.color}"></span>` : '') + it.name + (ok ? '' : ` ${icon('lock', { size: 14 })} ${rankName(it.unlockRank)}`);
       b.className = cur[key].id === it.id ? 'on' : ''; b.disabled = !ok;
       b.onclick = () => { store.profile.garage[key] = it.id; store.save(); if (server && hydrated) scheduleSync(); S.garage = resolveGarage(store.profile.garage, mr); renderGarage(); };
       row.appendChild(b);
@@ -346,7 +378,7 @@ function showResult(rep, coins, gateFailed, placed) {
     if (e.type === 'rankDown') add('Rank dropped. Comeback boost is on for your next 10 correct answers.', '#ff4d6d');
   }
   const acc = rep.answered ? Math.round(100 * rep.accuracy) : 0;
-  $('r-stats').innerHTML = [['Correct', `${rep.correct}/${rep.answered} (${acc}%)`], ['Score', rep.score], ['Best streak', rep.maxStreak], ['Level', `${run.startLevel} → ${prog.level}`], ['Traffic hits', run.hits], ['Coins earned', '🪙 ' + coins]]
+  $('r-stats').innerHTML = [['Correct', `${rep.correct}/${rep.answered} (${acc}%)`], ['Score', rep.score], ['Best streak', rep.maxStreak], ['Level', `${run.startLevel} → ${prog.level}`], ['Coins earned', `${icon('coin', { size: 16 })} ${coins}`]]
     .map(([k, v]) => `<div class="kv"><span>${k}</span><b>${v}</b></div>`).join('');
   const w = $('r-wrongs'); w.innerHTML = '';
   if (rep.wrongs.length) { const h = document.createElement('h3'); h.textContent = 'Review your mistakes'; w.appendChild(h); }
@@ -364,7 +396,9 @@ function showResult(rep, coins, gateFailed, placed) {
 
 function setHud() {
   const h = rules.hearts;
-  $('hearts').innerHTML = [0, 1, 2].map((i) => `<span class="${i < h ? '' : 'off'}">♥</span>`).join('');
+  $('hearts').innerHTML = [0, 1, 2].map((i) => `<span class="hh ${i < h ? '' : 'off'}">${icon(i < h ? 'heart' : 'heartOutline', { size: 34 })}</span>`).join('');
+  if (lastHearts !== null && h < lastHearts) { const hb = $('hearts'); hb.classList.remove('hit'); void hb.offsetWidth; hb.classList.add('hit'); }
+  lastHearts = h;
   const r = rules.rank;
   $('rank').textContent = rankName(r); $('rank').style.color = rankColor(r);
   $('lvl').textContent = rules.prog.level; $('stv').textContent = rules.streak; $('score').textContent = Math.round(score);
@@ -373,8 +407,8 @@ function setHud() {
   $('barfill').style.background = rules.inGate ? 'linear-gradient(90deg,#ffc83d,#ff3fb4)' : run.mode !== 'ranked' ? '#2a2f66' : '';
   S.theme = themeForRank(r);
 }
-let toastTimer = 0;
-function toast(txt, col, ms = 900) { const t = $('toast'); t.textContent = txt; t.style.color = col; t.style.opacity = 1; clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.style.opacity = 0; }, ms); }
+let lastHearts = null, toastTimer = 0;
+function toast(txt, col, ms = 900) { const t = $('toast'); t.innerHTML = txt; t.style.color = col; t.style.opacity = 1; clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.style.opacity = 0; }, ms); }
 
 function showPause() { if (phase !== 'ask' && phase !== 'result') return; prevPhase = phase; phase = 'pause'; loop.pause(); showScreen('pause'); }
 let prevPhase = 'ask';
@@ -389,35 +423,61 @@ const input = new Input(canvas, (it) => {
   else if (it.type === 'left') steer(-1);
   else if (it.type === 'right') steer(1);
   else if (it.type === 'confirm') lock(car.lane);
+  else if (it.type === 'forward') { car.go = true; sfx.play('tap'); }
   else if (it.type === 'power') usePower(it.name);
-}, { halves: true, swipe: true, width: () => R.w });
+}, { halves: true, swipe: true, vertical: true, width: () => R.w });
+// PC: hold ArrowUp / W to drive the car up the road toward the gates, ArrowDown to come back. (Touch: left/right as before; swipe up drives to the gate.)
+addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W') { held.up = true; if (phase === 'ask') e.preventDefault(); }
+  else if (e.key === 'ArrowDown') { held.down = true; if (phase === 'ask') e.preventDefault(); }
+});
+addEventListener('keyup', (e) => {
+  if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W') held.up = false;
+  else if (e.key === 'ArrowDown') held.down = false;
+});
+addEventListener('blur', () => { held.up = held.down = false; });
 function steer(d) { car.lane = Math.max(0, Math.min(3, car.lane + d)); car.x.target = car.lane; sfx.play('tap'); input.vibrate(8); }
 
 // ---------- loop ----------
-const G = { k: 0.1, hidden: [], result: null };
+const G = { k: GATE_K0, hidden: [], result: null, pass: 0 };
+function updateSmoke(dt) {
+  smokeT -= dt;
+  if (car.damage > 0 && smokeT <= 0 && S.car.sx && (phase === 'ask' || phase === 'result')) {
+    const sc = S.car.scale || 1;
+    smokeT = car.damage >= 3 ? 0.06 : car.damage === 2 ? 0.14 : 0.32;
+    smoke.push({ x: S.car.sx + (Math.random() - 0.5) * 14 * sc, y: S.car.sy - 30 * sc, r: 3 + Math.random() * 3, a: 0.5, vx: (Math.random() - 0.5) * 16, vy: -26 - Math.random() * 22, fire: car.damage >= 3 && Math.random() < 0.25 });
+  }
+  for (const p of smoke) { p.x += p.vx * dt; p.y += p.vy * dt; p.r += 13 * dt; p.a -= (p.fire ? 1.6 : 0.65) * dt; }
+  for (let i = smoke.length - 1; i >= 0; i--) if (smoke[i].a <= 0) smoke.splice(i, 1);
+  if (smoke.length > 70) smoke.splice(0, smoke.length - 70);
+}
 function update(dt, realDt) {
   scroll += (baseSpeed(S.theme ? curRankLive() : 0) + boost * 2.2) * dt;
   boost = Math.max(0, boost - realDt * 0.9);
   car.x.step(dt); car.body.step(dt);
   const decay = 1 - Math.min(1, 1.5 * realDt);
-  car.body.x *= decay; car.body.y *= decay; car.body.rot += (0 - car.body.rot) * Math.min(1, 1.2 * dt);
-  parts.step(dt); fx.update(realDt);
+  car.body.x *= decay; car.body.y *= decay; car.body.rot += (car.damage * 0.035 - car.body.rot) * Math.min(1, 1.2 * dt);   // a damaged car sits a little crooked
+  parts.step(dt); fx.update(realDt); updateSmoke(dt);
   S.t = fx.t; S.scroll = scroll; S.boost = boost;
   lightningT -= realDt; if (lightningT < 0) { lightning = 1; lightningT = 2 + Math.random() * 5; } lightning = Math.max(0, lightning - realDt * 3); S.flash = lightning;
-  const live = (phase === 'ask' || phase === 'result') && rules;
-  if (live) {
-    const r = rules.rank, tr = traffic.step(dt, baseSpeed(r) + boost, trafficInterval(r, rules.inGate), Math.round(car.x.x));
-    if (tr.hit) { boost = 0; run.hits++; fx.shake(0.3); sfx.play('crash'); input.vibrate(25); car.body.impulse(0, 0, 4); toast('TRAFFIC! speed lost', '#ff9d3d'); }
-  } else if (phase === 'menu') { if (!traffic.cars.length || Math.random() < 0.01) traffic.step(dt, 1, 2.2, -1); else traffic.step(dt, 1, 2.2, -1); }
-  if (phase === 'ask') {
-    if (rules.timeLeftMs - realDt * 1000 <= 0) lock(car.lane);            // gate reached the car: the lane you are in is locked
+  if (phase === 'ask' && rules) {
+    // The gates drift toward the car slowly; the player may also drive up to them (PC: hold ↑/W; touch: swipe up).
+    G.k = GATE_K0 + (CAR_K - GATE_K0) * (1 - rules.thinkFraction); G.pass = 0; G.result = null;
+    const drive = (held.up || car.go ? 1 : 0) - (held.down ? 1 : 0);
+    if (drive) car.z = clampN(car.z - drive * (car.go ? 0.75 : 0.36) * realDt, CAR_MIN_K, CAR_MAX_K);
+    if (G.k >= car.z - 0.016 || rules.timeLeftMs - realDt * 1000 <= 0) lock(car.lane);       // reached the gate (or time ran out): the lane you are in is locked
     else {
       rules.tick(realDt * 1000);
       if (rules.timeLeftMs < 4000 && !rules.frozen && Math.floor(rules.timeLeftMs / 1000) !== Math.floor((rules.timeLeftMs + realDt * 1000) / 1000)) sfx.play('tick');
     }
   } else if (phase === 'result') {
-    phaseT += realDt; rush = Math.min(1, phaseT / 0.3);
-    if (phaseT > (lastResult && lastResult.gameOver ? 1.3 : 1.0)) {
+    phaseT += realDt;
+    const RD = 0.28;                                                     // beat for the gate to reach the car after a tap/lock
+    if (!contacted && phaseT >= RD) { contacted = true; contactFx(); }
+    G.k = phaseT < RD ? gateK0 + (lockZ - gateK0) * (phaseT / RD) : lockZ + (1.2 - lockZ) * Math.pow(Math.min(1, (phaseT - RD) / 0.95), 2);
+    G.pass = Math.max(0, Math.min(1, (phaseT - RD) / 0.7));
+    car.z += (CAR_K - car.z) * Math.min(1, 1.6 * realDt);                // settle back to the normal row between questions
+    if (phaseT > (lastResult && lastResult.gameOver ? 1.5 : 1.15)) {
       if (lastResult.gameOver || (run.mode === 'placement' && run.asked >= PLACEMENT_QUESTIONS)) endRun();
       else if (run.pendingRankUp !== null) { const r = run.pendingRankUp; run.pendingRankUp = null; showRankUp(r); }
       else nextQuestion();
@@ -429,11 +489,9 @@ const curRankLive = () => (rules && (phase === 'ask' || phase === 'result') ? ru
 
 function render(alpha, realDt) {
   if (realDt) perf.frame(realDt * 1000);
-  S.car.x = car.x.x; S.car.lane = car.lane; S.car.bx = car.body.x; S.car.by = car.body.y; S.car.rot = car.body.rot;
-  S.traffic = traffic.cars;
+  S.car.x = car.x.x; S.car.lane = car.lane; S.car.z = car.z; S.car.damage = car.damage; S.car.bx = car.body.x; S.car.by = car.body.y; S.car.rot = car.body.rot;
+  S.smoke = smoke;
   if (rules && phase !== 'menu' && phase !== 'over' && (rules.q || phase === 'result')) {
-    if (phase === 'ask') { G.k = 0.1 + (CAR_K - 0.1) * (1 - rules.thinkFraction); G.result = null; }
-    else G.k = gateK0 + (CAR_K - gateK0) * rush;
     G.hidden = rules.hidden;
     S.gates = G;
     S.think = phase === 'ask' ? { frac: rules.thinkFraction, leftMs: rules.timeLeftMs, frozen: rules.frozen } : null;
@@ -442,6 +500,27 @@ function render(alpha, realDt) {
   if (++frameN % 20 === 0 && !$('fps').hidden) $('fps').textContent = `${perf.fps.toFixed(0)} fps · ${perf.preset.name}`;
 }
 let frameN = 0;
+
+// ---------- dashboard menu (three lines): the student can leave for any dashboard tab ----------
+const NAV_LINKS = [['Dashboard', 'dashboard.html', 'home'], ['Chapters', 'games.html', 'list'], ['Animations', 'animations.html', 'play'], ['Boss Battle', 'boss-battle.html', 'shield'],
+  ['Badges', 'badges.html', 'medal'], ['Revision', 'revision.html', 'target'], ['Ranks', 'leaderboard.html', 'trophy'], ['Advanced Games', 'advanced-games.html', 'bolt'],
+  ['Advanced Ranks', 'advanced-ranks.html', 'star'], ['Support & Rechecking', 'rechecking.html', 'flag'], ['My Progress', 'progress.html', 'gauge'], ['Guide', 'guide.html', 'check'],
+  ['Fee', 'fee.html', 'coin'], ['Profile', 'profile.html', 'user'], ['Upgrade Plan', 'upgrade.html', 'up']];
+function buildNav() {
+  const box = $('nav-list'); box.innerHTML = '';
+  for (const [label, href, ic] of NAV_LINKS) {
+    const a = document.createElement('a'); a.href = '../../' + href; a.className = 'navitem';
+    a.innerHTML = `${icon(ic, { size: 20 })}<span></span>`; a.lastChild.textContent = label; box.appendChild(a);
+  }
+}
+function openNav() { $('nav-drawer').classList.add('open'); }
+function closeNav() { $('nav-drawer').classList.remove('open'); }
+$('nav-btn').onclick = openNav; $('nav-close').onclick = closeNav; $('nav-shade').onclick = closeNav;
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeNav(); });
+buildNav();
+document.querySelectorAll('[data-i]').forEach((el) => { el.innerHTML = icon(el.dataset.i, { size: +el.dataset.s || 18 }); });
+$('env-quick').onclick = () => { sfx.unlock(); setEnv(env === 'day' ? 'night' : 'day'); };
+setEnv(env, false);
 
 // ---------- wiring ----------
 $('b-ranked').onclick = () => startRun('ranked');
@@ -456,7 +535,7 @@ $('p-resume').onclick = resume;
 $('p-quit').onclick = () => { showScreen(null); loop.resume(); phase = prevPhase; endRun(); };
 $('ru-go').onclick = () => { showScreen(null); phase = 'result'; phaseT = 99; };
 $('r-again').onclick = () => startRun(run.mode === 'placement' ? 'ranked' : run.mode);
-$('r-home').onclick = () => { phase = 'menu'; traffic.clear(); renderHome(); showScreen('home'); };
+$('r-home').onclick = () => { phase = 'menu'; renderHome(); showScreen('home'); };
 $('dev-rank').oninput = (e) => { const r = +e.target.value, t = track(); const p = store.prog; p.level = rankFloor(t, r); p.maxLevel = Math.max(p.maxLevel, p.level); p.meter = 0; p.gatePending = false; p.gateActive = false; $('dev-rank-name').textContent = rankName(r); store.save(); };
 $('dev-gate').onclick = () => { const t = track(), p = store.prog, r = Math.min(rankIdx(p), rankCount(t) - 2); p.level = rankLast(t, r); p.maxLevel = Math.max(p.maxLevel, p.level); p.meter = levelTarget(t, p.level) - 1; p.gatePending = false; p.gateActive = false; store.save(); toast('Next correct answer starts the gate', '#ffc83d'); };
 $('dev-reset').onclick = () => { store.reset(); applySettings(); renderSettings(); toast('Progress reset', '#ff9d3d'); };
@@ -513,9 +592,10 @@ fit(); applySettings(); applyQuality({ preset: perf.preset }); renderHome();
 loop = new GameLoop({ update, render });
 loop.autoPause(() => { if (phase === 'ask' || phase === 'result') showPause(); });
 loop.start();
+showScreen('home');
 if (server) bootServer();
 
 window.__racer = {
-  get state() { return { phase, hearts: rules && rules.hearts, over: rules && rules.over, level: store.prog.level, meter: store.prog.meter, streak: rules ? rules.streak : 0, score, fps: perf.fps, quality: perf.preset.name, timeScale: loop.timeScale, qcorrect: q && q.correct, inGate: rules && rules.inGate, cls: store.profile.cls, track: store.profile.track, rank: rankIdx(store.prog), asked: run && run.asked, hits: run && run.hits, trafficCars: traffic.cars.length, mode: server ? 'server' : 'local', nick, coins: store.profile.coins }; },
-  store, loop, perf, choose, startRun, rules: () => rules, run: () => run,
+  get state() { return { phase, hearts: rules && rules.hearts, over: rules && rules.over, level: store.prog.level, meter: store.prog.meter, streak: rules ? rules.streak : 0, score, fps: perf.fps, quality: perf.preset.name, timeScale: loop.timeScale, qcorrect: q && q.correct, inGate: rules && rules.inGate, cls: store.profile.cls, track: store.profile.track, rank: rankIdx(store.prog), asked: run && run.asked, hits: run && run.hits, env, carZ: car.z, damage: car.damage, gateK: G.k, mode: server ? 'server' : 'local', nick, coins: store.profile.coins }; },
+  store, loop, perf, choose, startRun, setEnv, rules: () => rules, run: () => run,
 };
