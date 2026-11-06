@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#070a1a">
+<title>Auto Defense · W.H. Academy</title>
+<link rel="stylesheet" href="../engine/ui/ui.css">
+</head>
+<body>
+<canvas id="cv" class="stage"></canvas>
+
+<!-- Three-line menu: every dashboard tab, reachable between runs -->
+<button class="navbtn" id="nav-btn" aria-label="Open menu" data-i="menu" data-s="24" hidden></button>
+<div class="navdrawer" id="nav-drawer">
+  <div class="navshade" id="nav-shade"></div>
+  <aside class="navpanel" role="dialog" aria-label="Dashboard menu">
+    <div class="navhead"><b>Study Hub</b><button id="nav-close" aria-label="Close menu" data-i="close" data-s="22"></button></div>
+    <nav id="nav-list"></nav>
+  </aside>
+</div>
+
+<!-- In-run HUD -->
+<div class="hud" id="hud">
+  <div class="top">
+    <div class="hearts" id="hearts" aria-label="hearts"></div>
+    <div class="topr">
+      <div class="chip rankchip"><span id="rank">Spark</span><i>L<span id="lvl">1</span></i></div>
+      <div class="chip"><span class="ico fire" data-i="flame" data-s="16"></span><b id="stv">0</b><i id="score">0</i></div>
+      <div class="chip" id="fps" hidden>-- fps</div>
+      <button class="chip btn" id="env-hud" aria-label="Day or night scenery"></button>
+      <button class="chip btn" id="pause-btn" aria-label="Pause" data-i="pause" data-s="18"></button>
+    </div>
+  </div>
+  <div class="card" id="qcard">
+    <div id="q"></div>
+    <div class="meta" id="meta"></div>
+    <div class="bar"><i id="barfill"></i></div>
+    <div class="tline"><span id="tsec">0</span><div class="tbar"><i id="tfill"></i></div></div>
+  </div>
+  <div class="spacer"></div>
+  <div class="pw" id="pw"></div>
+  <div class="opts" id="opts"></div>
+</div>
+<div id="toast"></div>
+
+<!-- Home -->
+<div class="screen show" id="s-home">
+  <div class="stack">
+    <div class="titlebar"><h1><span class="ico" data-i="shield" data-s="30"></span>AUTO DEFENSE</h1><button class="iconbtn" id="env-quick" aria-label="Day or night scenery"></button></div>
+    <div class="sub">Four drones are coming. Find the one carrying the right answer and lock your turrets on it. Miss and your base takes the hit.</div>
+
+    <div id="cls-wrap" hidden>
+      <h3>Playing as class (test only)</h3>
+      <div class="row" id="cls-row"></div>
+    </div>
+    <div class="kv"><span id="ladder-name"></span><span id="theme-name"></span></div>
+
+    <div class="card badge-row">
+      <div id="home-badge"></div>
+      <div class="info">
+        <div style="font-size:1.25em;font-weight:700"><span id="h-rank"></span> · Level <span id="h-lvl"></span></div>
+        <div id="h-nick" style="color:var(--mute);font-size:.85em"></div>
+        <div class="bar"><i id="h-bar"></i></div>
+        <div class="kv" style="margin-top:6px"><span id="h-barlabel"></span><span class="coinline"><span class="ico gold" data-i="coin" data-s="16"></span><b id="h-coins">0</b></span></div>
+        <div class="kv"><span>Best streak <b id="h-bs">0</b></span><span>Accuracy <b id="h-acc">–</b></span></div>
+      </div>
+    </div>
+
+    <button class="big" id="b-ranked">Ranked Run</button>
+    <button class="big alt" id="b-practice">Practice (no game over)</button>
+    <button class="big alt" id="b-placement">Placement Run (15 questions)</button>
+    <div class="row"><button id="b-garage" style="flex:1">Armory</button><button id="b-settings" style="flex:1">Settings</button></div>
+    <div class="hint">Keys: 1–4 pick a drone · ←/→ move the aim · Space fire · F 50:50 · T freeze · H heal · S skip · P pause · N day/night<br>Phone: tap a drone or an answer to aim; tap again to fire (when Confirm tap is on).</div>
+  </div>
+</div>
+
+<!-- Loading / login / plan messages (server mode) -->
+<div class="screen" id="s-msg" style="align-items:center;justify-content:center;text-align:center">
+  <div class="stack" style="align-items:center">
+    <h2 id="m-title"></h2>
+    <div id="m-text" style="color:var(--mute)"></div>
+    <button class="big" id="m-btn" style="display:none"></button>
+  </div>
+</div>
+
+<!-- Settings -->
+<div class="screen" id="s-settings">
+  <div class="stack">
+    <h2>Settings</h2>
+    <h3>Scenery</h3>
+    <div class="row seg" id="set-env"></div>
+    <h3>Graphics</h3>
+    <div class="row" id="set-graphics"></div>
+    <div id="set-toggles"></div>
+    <h3>Text size</h3>
+    <div class="row" id="set-text"></div>
+    <div id="dev" hidden>
+      <h3>Test tools (dev)</h3>
+      <div class="kv"><span>Start at rank</span><b id="dev-rank-name"></b></div>
+      <input type="range" id="dev-rank" min="0" max="19" value="0" style="width:100%">
+      <div class="row" style="margin-top:8px"><button id="dev-gate">Jump to rank gate</button><button id="dev-reset">Reset my progress</button></div>
+    </div>
+    <button class="big" id="set-back">Done</button>
+  </div>
+</div>
+
+<!-- Garage -->
+<div class="screen" id="s-garage">
+  <div class="stack">
+    <h2>Armory</h2>
+    <div style="color:var(--mute);font-size:.9em">Only changes the look, never the answers. Items unlock with your rank.</div>
+    <h3>Turret paint</h3><div class="row" id="g-paint"></div>
+    <h3>Beam colour</h3><div class="row" id="g-glow"></div>
+    <h3>Shot effect</h3><div class="row" id="g-trail"></div>
+    <button class="big" id="g-back">Done</button>
+  </div>
+</div>
+
+<!-- Pause -->
+<div class="screen" id="s-pause">
+  <div class="stack">
+    <h2>Paused</h2>
+    <button class="big" id="p-resume">Resume</button>
+    <button class="big alt" id="p-quit">End run and see result</button>
+  </div>
+</div>
+
+<!-- Rank up -->
+<div class="screen" id="s-rankup" style="align-items:center;justify-content:center;text-align:center">
+  <div class="stack" style="align-items:center">
+    <div style="color:var(--gold);font-weight:800;letter-spacing:.2em">RANK UP</div>
+    <div id="ru-badge" class="up"></div>
+    <h2 id="ru-name"></h2>
+    <div id="ru-theme" style="color:var(--mute)"></div>
+    <button class="big" id="ru-go">Continue</button>
+  </div>
+</div>
+
+<!-- Result -->
+<div class="screen" id="s-result">
+  <div class="stack">
+    <h2 id="r-title">Run over</h2>
+    <div id="r-banners"></div>
+    <div class="card" id="r-stats"></div>
+    <div id="r-wrongs"></div>
+    <button class="big" id="r-again">Play again</button>
+    <button class="big alt" id="r-home">Home</button>
+  </div>
+</div>
+
+<script type="module" src="./defense.js"></script>
+</body>
+</html>

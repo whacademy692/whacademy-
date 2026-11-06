@@ -19,6 +19,8 @@ export const RECIPES = {
   freeze:  [{ type: 'sine', f: 1200, f2: 300, at: 0, dur: 0.5, gain: 0.15 }, { type: 'triangle', f: 600, f2: 150, at: 0, dur: 0.5, gain: 0.1 }],
   rankup:  [523.25, 659.25, 783.99, 1046.5].map((f, i) => ({ type: 'triangle', f, at: i * 0.11, dur: 0.3, gain: 0.2 })),
   whoosh:  [{ type: 'noise', f: 400, f2: 3200, at: 0, dur: 0.35, gain: 0.1 }],
+  laser:   [{ type: 'sawtooth', f: 1500, f2: 260, at: 0, dur: 0.16, gain: 0.1 }, { type: 'square', f: 900, f2: 200, at: 0.02, dur: 0.12, gain: 0.05 }],
+  explode: [{ type: 'noise', f: 2600, f2: 120, at: 0, dur: 0.5, gain: 0.26 }, { type: 'sawtooth', f: 120, f2: 36, at: 0, dur: 0.45, gain: 0.16 }],
   gameover: [
     { type: 'sawtooth', f: 330, f2: 330, at: 0, dur: 0.2, gain: 0.16 },
     { type: 'sawtooth', f: 262, f2: 262, at: 0.2, dur: 0.2, gain: 0.16 },

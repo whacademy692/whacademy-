@@ -19,7 +19,7 @@
 
   var GAMES = [
     { id: 'racer',   icon: 'car', title: 'Neon Racer', desc: 'Drive down the road and pick the right answer gate. Wrong gate = crash and a lost heart.', href: 'advanced/racer/racer.html', live: true },
-    { id: 'defense', icon: 'shield', title: 'Auto Defense', desc: 'Your tower fires only when you answer right. Hold the line for as many waves as you can.', href: '', live: false }
+    { id: 'defense', icon: 'shield', title: 'Auto Defense', desc: 'Four drones attack your base. Aim your turrets at the drone carrying the right answer. Miss and the base takes the hit.', href: 'advanced/defense/defense.html', live: true }
   ];
 
   function lock(opts) { root.innerHTML = Plan.lockHtml('advGames', opts); }

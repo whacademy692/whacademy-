@@ -40,9 +40,7 @@
     var rows = (d && d.rows) || [];
     var game = GAMES.filter(function (g) { return g.id === current; })[0];
     if (!rows.length) {
-      boardEl.innerHTML = '<div class="card adv-empty">' + (current === 'defense'
-        ? 'Auto Defense is coming soon — the board opens when the game does.'
-        : 'No one is on the board yet. Play ' + esc(game.label) + ' and be the first!') + '</div>';
+      boardEl.innerHTML = '<div class="card adv-empty">' + 'No one is on the board yet. Play ' + esc(game.label) + ' and be the first!' + '</div>';
       return;
     }
     var mine = d.me || {};

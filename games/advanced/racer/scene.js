@@ -20,11 +20,11 @@ export function geom(R) {
 
 // ---------- small helpers ----------
 const clamp01 = (x) => Math.max(0, Math.min(1, x));
-function hex(c) { const n = parseInt(c.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; }
-function mix(a, b, t) { const A = hex(a), B = hex(b); return `rgb(${Math.round(A[0] + (B[0] - A[0]) * t)},${Math.round(A[1] + (B[1] - A[1]) * t)},${Math.round(A[2] + (B[2] - A[2]) * t)})`; }
-const lighten = (c, t) => mix(c, '#ffffff', t);
-const darken = (c, t) => mix(c, '#000000', t);
-const hash = (n) => { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+export function hex(c) { const n = parseInt(c.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; }
+export function mix(a, b, t) { const A = hex(a), B = hex(b); return `rgb(${Math.round(A[0] + (B[0] - A[0]) * t)},${Math.round(A[1] + (B[1] - A[1]) * t)},${Math.round(A[2] + (B[2] - A[2]) * t)})`; }
+export const lighten = (c, t) => mix(c, '#ffffff', t);
+export const darken = (c, t) => mix(c, '#000000', t);
+export const hash = (n) => { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
 
 // Gate colours: ONE vivid colour for all four boxes (the letter tells them apart). Day = orange, night = electric blue.
 export const GATE_COLORS = { day: ['#ff6a00', '#ffc400'], night: ['#00c8ff', '#3b5bff'] };
@@ -33,13 +33,13 @@ const GOOD = ['#00c853', '#7dff9c'], BAD = ['#e5173a', '#ff6b6b'];
 const STAR_POS = Array.from({ length: 160 }, (_, i) => ({ x: ((i * 9301 + 49297) % 233280) / 233280, y: ((i * 4621 + 7919) % 233280) / 233280, s: 0.5 + (i % 5) * 0.35 }));
 
 // ---------- sky + far scenery ----------
-function ridge(c, w, y0, amp, freq, phase, fill) {
+export function ridge(c, w, y0, amp, freq, phase, fill) {
   c.fillStyle = fill; c.beginPath(); c.moveTo(0, y0 + 40);
   for (let x = 0; x <= w + 16; x += 16) c.lineTo(x, y0 - amp * (0.55 + 0.45 * Math.sin(x * freq + phase) * Math.sin(x * freq * 0.37 + phase * 1.7)));
   c.lineTo(w, y0 + 40); c.closePath(); c.fill();
 }
 
-function drawSkyDay(R, S, g) {
+export function drawSkyDay(R, S, g) {
   const c = R.ctx, w = R.w, hz = g.hz;
   const grd = c.createLinearGradient(0, 0, 0, hz);
   grd.addColorStop(0, '#2f8cf0'); grd.addColorStop(0.65, '#8fd0ff'); grd.addColorStop(1, '#dff3ff');
@@ -59,7 +59,7 @@ function drawSkyDay(R, S, g) {
   ridge(c, w, hz + 2, hz * 0.2, 0.011, 4.2, '#5fa66a');
 }
 
-function drawSkyNight(R, S, g) {
+export function drawSkyNight(R, S, g) {
   const c = R.ctx, w = R.w, hz = g.hz, th = S.theme;
   const grd = c.createLinearGradient(0, 0, 0, hz);
   grd.addColorStop(0, th.sky[0]); grd.addColorStop(1, th.sky[1]);
@@ -91,7 +91,7 @@ function drawSkyNight(R, S, g) {
 }
 
 // ---------- ground (grass / water) ----------
-function drawGroundDay(R, S, g) {
+export function drawGroundDay(R, S, g) {
   const c = R.ctx, w = R.w, h = R.h, hz = g.hz;
   const grd = c.createLinearGradient(0, hz, 0, h);
   grd.addColorStop(0, '#78c653'); grd.addColorStop(1, '#2f8a34');
@@ -106,7 +106,7 @@ function drawGroundDay(R, S, g) {
   }
 }
 
-function drawGroundNight(R, S, g) {
+export function drawGroundNight(R, S, g) {
   const c = R.ctx, w = R.w, h = R.h, hz = g.hz, th = S.theme;
   const grd = c.createLinearGradient(0, hz, 0, h);
   grd.addColorStop(0, '#13587f'); grd.addColorStop(0.5, '#0b3558'); grd.addColorStop(1, '#061a33');
@@ -190,7 +190,7 @@ function drawRoad(R, S, g) {
 }
 
 // ---------- roadside: trees + bushes (day), street lamps + railings (night) ----------
-function tree(c, x, y, s, kind, shade) {
+export function tree(c, x, y, s, kind, shade) {
   c.fillStyle = 'rgba(0,0,0,.22)'; c.beginPath(); c.ellipse(x, y, s * 0.55, s * 0.12, 0, 0, 7); c.fill();
   c.fillStyle = '#6b4423'; c.fillRect(x - s * 0.06, y - s * 0.4, s * 0.12, s * 0.4);
   if (kind === 0) {                                                   // conifer
@@ -239,7 +239,7 @@ function drawSide(R, S, g) {
 }
 
 // ---------- gates ----------
-function roundRect(c, x, y, w, h, r) { c.beginPath(); c.moveTo(x + r, y); c.arcTo(x + w, y, x + w, y + h, r); c.arcTo(x + w, y + h, x, y + h, r); c.arcTo(x, y + h, x, y, r); c.arcTo(x, y, x + w, y, r); c.closePath(); }
+export function roundRect(c, x, y, w, h, r) { c.beginPath(); c.moveTo(x + r, y); c.arcTo(x + w, y, x + w, y + h, r); c.arcTo(x + w, y + h, x, y + h, r); c.arcTo(x, y + h, x, y, r); c.arcTo(x, y, x + w, y, r); c.closePath(); }
 
 function drawGates(R, S, g) {
   const G = S.gates; if (!G) return;
@@ -318,7 +318,7 @@ export function drawCarShape(c, paint, opts = {}) {
   if (dmg >= 3) { c.strokeStyle = 'rgba(0,0,0,.6)'; c.lineWidth = 1.6; c.beginPath(); c.moveTo(-10, -9); c.lineTo(-4, -22); c.lineTo(4, -12); c.stroke(); }
 }
 
-function drawSmoke(R, S) {
+export function drawSmoke(R, S) {
   const c = R.ctx;
   for (const p of S.smoke || []) {
     c.globalAlpha = Math.max(0, p.a); c.fillStyle = p.fire ? `hsl(${20 + 20 * p.a},100%,55%)` : '#5a5f6e';
@@ -376,7 +376,7 @@ function drawSpeedLines(R, S, g) {
   c.globalAlpha = 1;
 }
 
-function drawVignette(R, S) {
+export function drawVignette(R, S) {
   const c = R.ctx, w = R.w, h = R.h, grd = c.createRadialGradient(w / 2, h * 0.55, Math.min(w, h) * 0.35, w / 2, h * 0.55, Math.max(w, h) * 0.75);
   grd.addColorStop(0, 'rgba(0,0,0,0)'); grd.addColorStop(1, S.env === 'day' ? 'rgba(10,30,20,.22)' : 'rgba(0,0,12,.5)');
   c.fillStyle = grd; c.fillRect(0, 0, w, h);
