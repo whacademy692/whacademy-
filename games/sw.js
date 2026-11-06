@@ -5,13 +5,15 @@
  * offline fallback for chapter content.
  */
 // Bump on every frontend deploy.
-const CACHE_VERSION = 'wha-v126';
+const CACHE_VERSION = 'wha-v127';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
 const STATIC_ASSETS = [
   'welcome.html', 'login.html', 'dashboard.html', 'profile.html', 'settings.html',
   'games.html', 'leaderboard.html', 'revision.html', 'achievements.html', 'boss-battle.html', 'badges.html',
-  'progress.html', 'guide.html', 'animations.html', 'anim-player.html', 'upgrade.html', 'fee.html',
+  'progress.html', 'guide.html', 'advanced-games.html', 'advanced-ranks.html',
+  'assets/css/pages/adv.css', 'assets/js/adv-games.js', 'assets/js/adv-ranks.js',
+  'animations.html', 'anim-player.html', 'upgrade.html', 'fee.html',
   'assets/css/pages/upgrade.css', 'assets/js/upgrade.js',
   'assets/css/pages/anim.css', 'assets/js/anim-registry.js', 'assets/js/anim-hub.js', 'assets/js/anim-player.js',
   'assets/js/anim-expr.js', 'assets/js/anim-engine.js', 'assets/js/anim-shapes.js', 'assets/js/anim-ui.js',

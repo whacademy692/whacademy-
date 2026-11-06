@@ -137,6 +137,75 @@ const Router = (() => {
     // Phone: Animate lives in the hamburger drawer (built in buildMobileShell).
   }
 
+
+  /**
+   * Adds the Max-only "Advanced Games" and "Advanced Ranks" items. They are a SEPARATE
+   * pair from the normal "Ranks" tab (leaderboard.html = XP of the basic games, all plans):
+   * Advanced Ranks is the Game-Rank ladder of Neon Racer / Auto Defense and never mixes with XP.
+   * Shown only when the plan is Max (an unknown plan keeps the app's usual "full access" rule;
+   * the server is the real gate). Idempotent. Phone: items go in the hamburger drawer.
+   */
+  const ADV_NAV = [
+    { page: 'advanced-games.html', label: 'Advanced Games', feature: 'advGames',
+      icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/>' },
+    { page: 'advanced-ranks.html', label: 'Advanced Ranks', feature: 'advRanks',
+      icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 3l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.3 6.8 19.1l1-5.8L3.5 9.2l5.9-.8L12 3z"/>' }
+  ];
+  /** Sidebar icons are CSS masks keyed by href suffix; "advanced-games.html" would wrongly match the Chapters (games.html) rule, so give both new items their own icons. */
+  function ensureAdvNavStyle() {
+    if (document.getElementById('wha-adv-nav-style')) return;
+    const mask = (d) => 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\'%3E%3Cpath fill=\'black\' d=\'' + d + '\'/%3E%3C/svg%3E")';
+    const bolt = mask('M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8L13.5 2Z');
+    const star = mask('M12 2.5l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4 6.2 20.4l1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z');
+    const rule = (page, img) => '.sidebar .sidebar__item[data-nav-page="' + page + '"]::before{-webkit-mask-image:' + img + ';mask-image:' + img + '}';
+    const st = document.createElement('style');
+    st.id = 'wha-adv-nav-style';
+    st.textContent = rule('advanced-games.html', bolt) + rule('advanced-ranks.html', star);
+    document.head.appendChild(st);
+  }
+  function addAdvNavItems() {
+    ensureAdvNavStyle();
+    const page = currentPageName();
+    const side = document.querySelector('.sidebar__nav');
+    if (side) {
+      const anchor = side.querySelector('[data-nav-page="leaderboard.html"]');
+      const before = anchor ? anchor.nextSibling : (side.querySelector('[data-nav-page="profile.html"]') || null);
+      ADV_NAV.forEach((it) => {
+        if (side.querySelector('[data-nav-page="' + it.page + '"]')) return;
+        const a = document.createElement('a');
+        a.className = 'sidebar__item';
+        a.href = it.page;
+        a.setAttribute('data-nav-page', it.page);
+        a.innerHTML = navSvg(it.icon) + ' ' + it.label;
+        if (it.page === page) a.setAttribute('aria-current', 'page');
+        side.insertBefore(a, before);
+      });
+    }
+    const panel = document.querySelector('.wha-drawer__panel');
+    if (panel) {
+      const anchor = panel.querySelector('[data-nav-page="leaderboard.html"]');
+      const before = anchor ? anchor.nextSibling : (panel.querySelector('.wha-drawer__sep') || null);
+      ADV_NAV.forEach((it) => {
+        if (panel.querySelector('[data-nav-page="' + it.page + '"]')) return;
+        const tpl = document.createElement('div');
+        tpl.innerHTML = drawerLink(it.page, it.label, it.icon);
+        const a = tpl.firstChild;
+        if (it.page === page) a.setAttribute('aria-current', 'page');
+        panel.insertBefore(a, before);
+      });
+    }
+  }
+  function injectAdvNav() {
+    if (!Storage.getToken() || typeof Plan === 'undefined') return;
+    const show = (plan) => { if (Plan.allows(plan, 'advGames')) addAdvNavItems(); };
+    const cached = Storage.getCachedDashboard();
+    if (cached && cached.data && Object.prototype.hasOwnProperty.call(cached.data, 'plan')) show(cached.data.plan);
+    else if (currentPageName() !== 'dashboard.html') Plan.get().then(show).catch(() => {});
+    // The dashboard page reports its fresh plan through setUpgradePlan -> also refresh this.
+    advNavPlanHook = show;
+  }
+  let advNavPlanHook = null;
+
   /**
    * "Upgrade Plan" button. Sits at the very top of the sidebar (above Dashboard)
    * and as a small pill in the phone top bar, on every page that has the app
@@ -198,6 +267,7 @@ const Router = (() => {
 
   /** Shows / labels the button for a plan name ('' = unknown -> hidden). */
   function setUpgradePlan(plan) {
+    if (typeof advNavPlanHook === 'function') { try { advNavPlanHook(plan); } catch (e) {} }
     const tier = (typeof Plan !== 'undefined' && Plan.normalize) ? Plan.normalize(plan) : String(plan || '');
     const known = tier === 'Basic' || tier === 'Plus' || tier === 'Max';
     const max = tier === 'Max';
@@ -363,6 +433,7 @@ const Router = (() => {
     injectFeeNav();
     buildMobileShell();   // phone 3-tab bar + drawer; before upgrade so its drawer item exists
     injectUpgradeNav();
+    injectAdvNav();       // Max-only Advanced Games / Advanced Ranks (separate from Ranks)
     const page = currentPageName();
     Utils.qsa('[data-nav-page]').forEach((el) => {
       if (el.dataset.navPage === page) {
@@ -474,7 +545,9 @@ const Plan = (() => {
     animations:    { min: 'Max',  label: 'Animations' },
     rechecking:    { min: 'Plus', label: 'Rechecking' },
     pastPapers:    { min: 'Plus', label: 'Past Papers' },
-    advancedGames: { min: 'Plus', label: 'Advanced games' }
+    advancedGames: { min: 'Plus', label: 'Advanced games' },
+    advGames:      { min: 'Max',  label: 'Advanced Games' },
+    advRanks:      { min: 'Max',  label: 'Advanced Ranks' }
   };
 
   let pending = null;
