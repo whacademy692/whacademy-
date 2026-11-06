@@ -99,7 +99,7 @@ const out = process.argv[3] || '.';
   await shot('racer_6_run.png');
   await page.keyboard.down('ArrowUp'); await page.waitForTimeout(600); await page.keyboard.up('ArrowUp');
   assert.ok((await st()).carZ > 0.5, 'car drives forward');
-  await page.evaluate(() => window.__racer.setEnv && window.__racer.setEnv('night')); await page.waitForTimeout(300);
+  { const e1 = (await st()).env; await page.click('#env-hud'); assert.notEqual((await st()).env, e1, 'HUD day/night button works mid-run'); await page.keyboard.press('n'); assert.equal((await st()).env, e1); await page.click('#env-hud'); } await page.waitForTimeout(300);
   await shot('racer_6b_night.png');
   await answer(true);
   for (let i = 0; i < 6; i++) await answer(true);                       // streak builds

@@ -77,7 +77,7 @@ function setEnv(e, save = true) {
   document.documentElement.style.setProperty('--g1', GATE_COLORS[env][0]); document.documentElement.style.setProperty('--g2', GATE_COLORS[env][1]);
   if (save) { try { localStorage.setItem(ENV_KEY, env); } catch (err) { /* blocked */ } }
   sfx.ambience(env);
-  const q = $('env-quick'); if (q) { q.innerHTML = icon(env === 'day' ? 'sun' : 'moon', { size: 20 }); q.setAttribute('aria-label', env === 'day' ? 'Day scenery (tap for night)' : 'Night scenery (tap for day)'); }
+  for (const id of ['env-quick', 'env-hud']) { const q = $(id); if (q) { q.innerHTML = icon(env === 'day' ? 'sun' : 'moon', { size: id === 'env-hud' ? 18 : 20 }); q.setAttribute('aria-label', env === 'day' ? 'Day scenery (tap for night)' : 'Night scenery (tap for day)'); } }
 }
 function applySettings() {
   settings = store.profile.settings = sanitizeSettings(store.profile.settings);
@@ -519,7 +519,9 @@ $('nav-btn').onclick = openNav; $('nav-close').onclick = closeNav; $('nav-shade'
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeNav(); });
 buildNav();
 document.querySelectorAll('[data-i]').forEach((el) => { el.innerHTML = icon(el.dataset.i, { size: +el.dataset.s || 18 }); });
-$('env-quick').onclick = () => { sfx.unlock(); setEnv(env === 'day' ? 'night' : 'day'); };
+const flipEnv = () => { sfx.unlock(); setEnv(env === 'day' ? 'night' : 'day'); };
+$('env-quick').onclick = flipEnv; $('env-hud').onclick = flipEnv;
+document.addEventListener('keydown', (e) => { if ((e.key === 'n' || e.key === 'N') && !e.ctrlKey && !e.metaKey && !e.altKey) flipEnv(); });
 setEnv(env, false);
 
 // ---------- wiring ----------
