@@ -24,11 +24,13 @@ export const TRAILS = [
 ];
 
 const find = (list, id) => list.find((x) => x.id === id);
-export const isUnlocked = (item, maxRank) => maxRank >= item.unlockRank;
+/** unlockRank is written on the 20-rank (Senior) scale; Middle has only 12 ranks, so it is scaled to the ladder length. */
+export const needRank = (item, total = 20) => Math.round(item.unlockRank * (Math.max(2, total) - 1) / 19);
+export const isUnlocked = (item, maxRank, total = 20) => maxRank >= needRank(item, total);
 
 /** Return a valid choice: if the stored one is unknown or locked, fall back to the default. */
-export function resolveGarage(garage, maxRank) {
-  const pick = (list, id) => { const it = find(list, id); return it && isUnlocked(it, maxRank) ? it : list[0]; };
+export function resolveGarage(garage, maxRank, total = 20) {
+  const pick = (list, id) => { const it = find(list, id); return it && isUnlocked(it, maxRank, total) ? it : list[0]; };
   return { paint: pick(PAINTS, garage && garage.paint), glow: pick(GLOWS, garage && garage.glow), trail: pick(TRAILS, garage && garage.trail) };
 }
 

@@ -127,3 +127,58 @@ body.rm .up,body.rm .hearts.hit{animation:none}
   .chip{padding:4px 8px;font-size:.84em;gap:4px}
   .chip.btn{min-width:34px;min-height:34px;padding:4px 7px}
 }
+
+/* ---------- on-screen steering buttons (Left / GO / Right), shown during a question when enabled ---------- */
+.ctl{display:flex;gap:10px;justify-content:center;align-items:stretch;pointer-events:none;padding:0 2px}
+.ctl[hidden]{display:none!important}
+.ctl button{pointer-events:auto;touch-action:none;display:flex;align-items:center;justify-content:center;gap:6px;min-height:58px;border-radius:16px;border:1.5px solid #4a58b8;font-weight:900;letter-spacing:.04em;color:#fff;
+  background:linear-gradient(180deg,#2c3796,#171f5e);box-shadow:0 5px 0 #0a0f2c,0 8px 16px rgba(0,0,0,.35)}
+.ctl button:active{transform:translateY(3px);box-shadow:0 2px 0 #0a0f2c}
+.ctl #ctl-l,.ctl #ctl-r{flex:1 1 0;max-width:34%}
+.ctl #ctl-go{flex:1.2 1 0;max-width:36%;background:linear-gradient(180deg,#ffd45a,#ff8a1f);border-color:#ffe08a;color:#3a1800;box-shadow:0 5px 0 #a24a05,0 8px 16px rgba(0,0,0,.35)}
+.ctl #ctl-go:active{box-shadow:0 2px 0 #a24a05}
+.lefty .ctl{flex-direction:row-reverse}
+
+/* ---------- menu: games, shortcuts, section titles ---------- */
+.navsec{padding:12px 12px 4px;color:var(--mute);font-size:.72em;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+button.navitem{width:100%;background:none;border:0;text-align:left;font:inherit;color:var(--ink)}
+.navitem span{flex:1}
+.navitem em{font-style:normal;font-size:.7em;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#032421;background:var(--teal);border-radius:6px;padding:2px 7px}
+.navitem.here{background:#1c2565}
+.swgame{display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;color:#fff;font-weight:800;min-height:42px;border-radius:11px;border:1.5px solid #34408f;background:linear-gradient(180deg,#232c66,#141b46);padding:8px 13px;flex:1}
+.swgame.big{width:100%}
+.swgame .ic{color:var(--gold)}
+#b-how,#set-how,#p-switch{display:inline-flex;align-items:center;justify-content:center;gap:8px}
+#b-how{background:linear-gradient(180deg,#232c66,#141b46);border:1.5px solid #34408f;border-radius:11px;font-weight:700;min-height:42px;padding:8px 13px}
+#p-switch .ic,#set-how .ic,#b-how .ic{color:var(--gold)}
+
+/* ---------- "How to play" card ---------- */
+.coach ol{margin:0;padding-left:20px;line-height:1.5}
+.coach li{margin:9px 0}
+.kbd{display:inline-grid;place-items:center;min-width:30px;height:26px;padding:0 6px;border-radius:8px;background:#232c66;border:1.5px solid #4a58b8;vertical-align:middle;color:var(--gold)}
+#ru-unlock:empty{display:none}
+
+/* ---------- landscape phones: question + power-ups on the left, answers on the right, the road stays in the middle ---------- */
+@media (orientation:landscape) and (max-height:560px){
+  .hud.on{display:grid;grid-template-columns:minmax(0,29%) 1fr minmax(0,29%);grid-template-rows:auto 1fr auto;column-gap:10px;row-gap:6px;
+    padding:max(6px,env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) max(6px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left))}
+  .hud .top{grid-column:1/-1;grid-row:1}
+  .hud #qcard{grid-column:1;grid-row:2;align-self:start;padding:8px 10px 8px 14px;max-height:calc(100vh - 140px);overflow:auto}
+  .hud #q{font-size:clamp(12px,2.4vw,16px)}
+  .hud .spacer{grid-column:2;grid-row:2}
+  .hud .ctl{grid-column:2;grid-row:3;align-self:end}
+  .hud .ctl button{min-height:50px}
+  .hud .pw{grid-column:1;grid-row:3;align-self:end;gap:5px;display:grid;grid-template-columns:1fr 1fr}
+  .hud .pw button{min-height:38px;max-width:none;font-size:.76em;padding:4px 3px}
+  .hud .opts{grid-column:3;grid-row:2/4;grid-template-columns:1fr;align-self:end;gap:6px}
+  .hud .opt{min-height:42px;padding:5px 9px 5px 7px;font-size:.92em}
+  .hud .opt b{width:28px;height:28px}
+  .hearts .hh{width:26px!important;height:26px!important}
+  .screen{padding-top:max(10px,env(safe-area-inset-top));padding-bottom:max(10px,env(safe-area-inset-bottom))}
+  .screen h1{font-size:1.4em}
+  #toast{top:26%}
+}
+
+/* the three-line menu button sits top-left: keep the titles of Pause / Result / Message clear of it */
+#s-pause .stack,#s-result .stack,#s-msg .stack{padding-top:56px}
+@media (orientation:landscape) and (max-height:560px){#s-pause .stack,#s-result .stack,#s-msg .stack{padding-top:50px}}

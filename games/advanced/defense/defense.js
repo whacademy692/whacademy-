@@ -18,7 +18,8 @@ import { sanitizeSettings, timeMultiplier, graphicsLevel } from '../engine/ui/se
 import { badgeSVG } from '../engine/ui/badge.js';
 import { themeForRank } from '../racer/themes.js';
 import { icon } from '../engine/ui/icons.js';
-import { PAINTS, GLOWS, TRAILS, resolveGarage, isUnlocked, coinsForRun } from '../racer/garage.js';
+import { PAINTS, GLOWS, TRAILS, resolveGarage, isUnlocked, needRank, coinsForRun } from '../racer/garage.js';
+import { loadPrefs, savePrefs } from '../engine/ui/prefs.js';
 import { drawScene, geom as sceneGeom, muzzle, DRONE_COLORS, TL } from './scene.js';
 
 const $ = (id) => document.getElementById(id);
@@ -26,6 +27,7 @@ const qs = new URLSearchParams(location.search);
 const DEV = qs.get('dev') === '1';
 const LETTER = ['A', 'B', 'C', 'D'];
 const PU_LABEL = { fifty: ['fifty', '50:50'], freeze: ['snow', 'Freeze'], heal: ['heart', 'Heal'], skip: ['skip', 'Skip'] };
+const prefs = loadPrefs();                 // device-only options (ambient sound, "how to play" seen)
 const clampN = (x, a, b) => Math.max(a, Math.min(b, x));
 const ENV_KEY = 'wha_adv_env';          // day / night is a per-device look, kept locally (not part of the server profile)
 let env = 'day'; try { env = localStorage.getItem(ENV_KEY) === 'night' ? 'night' : 'day'; } catch (e) { /* blocked */ }
@@ -63,7 +65,7 @@ let loop;
 // Scene state handed to drawScene each frame.
 const S = { t: 0, scroll: 0, env, preset: perf.preset, theme: themeForRank(0), letters: LETTER, colorBlind: false, reduceMotion: false, flash: 0,
   parts, smoke, base, D, minions, dronePos: [null, null, null, null], droneColors: DRONE_COLORS[env], think: null,
-  garage: resolveGarage(store.profile.garage, 0) };
+  garage: resolveGarage(store.profile.garage, 0, 20) };
 
 function applyQuality(c) {
   const p = (c && c.preset) || perf.preset;
@@ -83,7 +85,7 @@ function applySettings() {
   document.body.classList.remove('ts-s', 'ts-l'); if (settings.textSize !== 'm') document.body.classList.add('ts-' + settings.textSize);
   document.body.classList.toggle('lefty', settings.leftHanded);
   document.body.classList.toggle('rm', settings.reduceMotion);
-  sfx.setMuted(!settings.sound); sfx.setVolume(settings.volume); sfx.ambience(env);
+  sfx.setMuted(!settings.sound); sfx.setVolume(settings.volume); sfx.setAmbientOn(prefs.ambient); sfx.ambience(env);
   input.haptics = settings.vibration;
   fx.reduceMotion = settings.reduceMotion || matchMedia('(prefers-reduced-motion: reduce)').matches;
   S.colorBlind = settings.colorBlind; S.reduceMotion = fx.reduceMotion;
@@ -105,6 +107,7 @@ function rawQuestions(cls) {
 }
 async function startRun(mode) {
   sfx.unlock();
+  if (!prefs.coach.defense) { showCoach(() => startRun(mode)); return; }
   if (server) {
     if (starting) return;
     starting = true;
@@ -125,7 +128,7 @@ function beginRun(mode) {
   rules = new RunRules({ trackId: store.profile.track, prog, mode: mode === 'ranked' ? 'ranked' : 'practice', timeMult: timeMultiplier(settings) });
   score = 0; lastResult = null;
   parts.clear(); smoke.length = 0; minions.length = 0; resetBase();
-  S.garage = resolveGarage(store.profile.garage, maxRank());
+  S.garage = resolveGarage(store.profile.garage, maxRank(), rankCount(track()));
   showScreen(null); $('hud').classList.add('on');
   for (const e of rules.progEvents) if (e.type === 'gateStart') toast(`RANK GATE · ${e.need} to pass`, '#ffc83d');
   nextQuestion();
@@ -338,8 +341,10 @@ async function endRun() {
 }
 
 // ---------- screens ----------
-const SCREENS = ['home', 'settings', 'garage', 'pause', 'rankup', 'result', 'msg'];
+const SCREENS = ['home', 'settings', 'garage', 'pause', 'rankup', 'result', 'msg', 'coach'];
+let curScreen = 'home', backTo = 'home', coachNext = null;
 function showScreen(name) {
+  curScreen = name;
   for (const s of SCREENS) $('s-' + s).classList.toggle('show', s === name);
   $('nav-btn').hidden = !(name === 'home' || name === 'pause' || name === 'result' || name === 'msg');   // menu is reachable between runs, not mid-run
   if (name !== 'home' && name !== 'pause' && name !== 'result' && name !== 'msg') closeNav();
@@ -377,6 +382,9 @@ function renderSettings() {
     d.lastChild.onclick = () => { store.profile.settings[k] = !settings[k]; applySettings(); renderSettings(); if (k === 'sound' && settings.sound) { sfx.unlock(); sfx.play('correct'); } };
     tg.appendChild(d);
   }
+  const sp = $('set-prefs'); sp.innerHTML = '';
+  { const d = document.createElement('div'); d.className = 'toggle'; d.innerHTML = `<span>Ambient sounds (birds, breeze, crickets)</span><button class="${prefs.ambient ? 'on' : ''}">${prefs.ambient ? 'On' : 'Off'}</button>`;
+    d.lastChild.onclick = () => { prefs.ambient = !prefs.ambient; savePrefs(prefs); sfx.unlock(); sfx.setAmbientOn(prefs.ambient); renderSettings(); }; sp.appendChild(d); }
   const mk = (id, list, key) => { const row = $(id); row.innerHTML = ''; for (const [v, label] of list) { const b = document.createElement('button'); b.textContent = label; b.className = settings[key] === v ? 'on' : ''; b.onclick = () => { store.profile.settings[key] = v; applySettings(); renderSettings(); }; row.appendChild(b); } };
   const se = $('set-env'); se.innerHTML = '';
   for (const [v, label, ic] of [['day', 'Day', 'sun'], ['night', 'Night', 'moon']]) {
@@ -389,14 +397,14 @@ function renderSettings() {
   const t = track(); $('dev-rank').max = t.starts.length - 1; $('dev-rank').value = rankIdx(store.prog); $('dev-rank-name').textContent = rankName(+$('dev-rank').value);
 }
 function renderGarage() {
-  const mr = maxRank(), cur = resolveGarage(store.profile.garage, mr);
+  const mr = maxRank(), tt = rankCount(track()), cur = resolveGarage(store.profile.garage, mr, tt);
   const fill = (id, list, key, swatch) => {
     const row = $(id); row.innerHTML = '';
     for (const it of list) {
-      const b = document.createElement('button'), ok = isUnlocked(it, mr);
-      b.innerHTML = (swatch ? `<span class="sw ${cur[key].id === it.id ? 'pick' : ''}" style="background:${it.color}"></span>` : '') + it.name + (ok ? '' : ` ${icon('lock', { size: 14 })} ${rankName(it.unlockRank)}`);
+      const b = document.createElement('button'), ok = isUnlocked(it, mr, tt);
+      b.innerHTML = (swatch ? `<span class="sw ${cur[key].id === it.id ? 'pick' : ''}" style="background:${it.color}"></span>` : '') + it.name + (ok ? '' : ` ${icon('lock', { size: 14 })} ${rankName(needRank(it, tt))}`);
       b.className = cur[key].id === it.id ? 'on' : ''; b.disabled = !ok;
-      b.onclick = () => { store.profile.garage[key] = it.id; store.save(); if (server && hydrated) scheduleSync(); S.garage = resolveGarage(store.profile.garage, mr); renderGarage(); };
+      b.onclick = () => { store.profile.garage[key] = it.id; store.save(); if (server && hydrated) scheduleSync(); S.garage = resolveGarage(store.profile.garage, mr, tt); renderGarage(); };
       row.appendChild(b);
     }
   };
@@ -408,6 +416,9 @@ function showRankUp(rankIdx0) {
   $('ru-badge').innerHTML = badgeSVG(rankIdx0, { size: 150 });
   $('ru-name').textContent = rankName(rankIdx0); $('ru-name').style.color = rankColor(rankIdx0);
   $('ru-theme').textContent = 'New sector: ' + themeForRank(rankIdx0).name;
+  const tt = rankCount(track()), news = [];
+  for (const [list, kind] of [[PAINTS, 'paint'], [GLOWS, 'beam colour'], [TRAILS, 'shot effect']]) for (const it of list) if (it.unlockRank > 0 && needRank(it, tt) === rankIdx0) news.push(`${it.name} ${kind}`);
+  $('ru-unlock').textContent = news.length ? 'Unlocked in the Armory: ' + news.join(', ') : '';
   showScreen('rankup');
 }
 function showResult(rep, coins, gateFailed, placed) {
@@ -542,7 +553,7 @@ function update(dt, realDt) {
 
 function render(alpha, realDt) {
   if (realDt) perf.frame(realDt * 1000);
-  S.garage = S.garage || resolveGarage(store.profile.garage, 0);
+  S.garage = S.garage || resolveGarage(store.profile.garage, 0, 20);
   if (rules && phase !== 'menu' && phase !== 'over') { D.hidden = rules.hidden; S.think = phase === 'ask' ? { frac: rules.thinkFraction, leftMs: rules.timeLeftMs, frozen: rules.frozen } : null; if (phase === 'ask') updateTimerBar(); }
   else S.think = null;
   R.begin(fx); drawScene(R, S); R.end(fx);
@@ -561,13 +572,33 @@ const NAV_LINKS = [['Dashboard', 'dashboard.html', 'home'], ['Chapters', 'games.
   ['Badges', 'badges.html', 'medal'], ['Revision', 'revision.html', 'target'], ['Ranks', 'leaderboard.html', 'trophy'], ['Advanced Games', 'advanced-games.html', 'bolt'],
   ['Advanced Ranks', 'advanced-ranks.html', 'star'], ['Support & Rechecking', 'rechecking.html', 'flag'], ['My Progress', 'progress.html', 'gauge'], ['Guide', 'guide.html', 'check'],
   ['Fee', 'fee.html', 'coin'], ['Profile', 'profile.html', 'user'], ['Upgrade Plan', 'upgrade.html', 'up']];
+const leaveOk = () => curScreen !== 'pause' || !run || confirm('Leave now? This run will not be saved.');   // only a paused run can be abandoned from the menu
 function buildNav() {
   const box = $('nav-list'); box.innerHTML = '';
+  const sec = (t) => { const h = document.createElement('div'); h.className = 'navsec'; h.textContent = t; box.appendChild(h); };
+  sec('Advanced games');
+  for (const [label, href, ic, here] of [['Neon Racer', '../racer/racer.html', 'car', false], ['Auto Defense', 'defense.html', 'shield', true]]) {
+    const a = document.createElement('a'); a.href = href; a.className = 'navitem' + (here ? ' here' : '');
+    a.innerHTML = `${icon(ic, { size: 20 })}<span></span>${here ? '<em>playing</em>' : ''}`; a.children[1].textContent = label;
+    a.onclick = (e) => { if (here) { e.preventDefault(); closeNav(); } else if (!leaveOk()) e.preventDefault(); };
+    box.appendChild(a);
+  }
+  for (const [label, ic, fn] of [['Settings', 'sliders', () => openSettings()], ['Armory', 'shield', () => openGarage()], ['How to play', 'help', () => showCoach(null)]]) {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'navitem'; b.innerHTML = `${icon(ic, { size: 20 })}<span></span>`; b.lastChild.textContent = label;
+    b.onclick = () => { closeNav(); fn(); }; box.appendChild(b);
+  }
+  sec('Dashboard');
   for (const [label, href, ic] of NAV_LINKS) {
     const a = document.createElement('a'); a.href = '../../' + href; a.className = 'navitem';
-    a.innerHTML = `${icon(ic, { size: 20 })}<span></span>`; a.lastChild.textContent = label; box.appendChild(a);
+    a.innerHTML = `${icon(ic, { size: 20 })}<span></span>`; a.lastChild.textContent = label;
+    a.onclick = (e) => { if (!leaveOk()) e.preventDefault(); };
+    box.appendChild(a);
   }
 }
+function openSettings() { backTo = (curScreen === 'pause' || curScreen === 'result') ? curScreen : 'home'; renderSettings(); showScreen('settings'); }
+function openGarage() { backTo = (curScreen === 'pause' || curScreen === 'result') ? curScreen : 'home'; renderGarage(); showScreen('garage'); }
+const backFromSub = () => { const t = backTo || 'home'; backTo = 'home'; showScreen(t); if (t === 'home') renderHome(); };
+function showCoach(next) { coachNext = next || null; backTo = (curScreen === 'coach' ? 'home' : curScreen); showScreen('coach'); }
 function openNav() { $('nav-drawer').classList.add('open'); }
 function closeNav() { $('nav-drawer').classList.remove('open'); }
 $('nav-btn').onclick = openNav; $('nav-close').onclick = closeNav; $('nav-shade').onclick = closeNav;
@@ -583,10 +614,17 @@ setEnv(env, false);
 $('b-ranked').onclick = () => startRun('ranked');
 $('b-practice').onclick = () => startRun('practice');
 $('b-placement').onclick = () => startRun('placement');
-$('b-settings').onclick = () => { renderSettings(); showScreen('settings'); };
-$('set-back').onclick = () => { showScreen('home'); renderHome(); };
-$('b-garage').onclick = () => { renderGarage(); showScreen('garage'); };
-$('g-back').onclick = () => showScreen('home');
+$('b-settings').onclick = () => openSettings();
+$('set-back').onclick = backFromSub;
+$('b-garage').onclick = () => openGarage();
+$('g-back').onclick = backFromSub;
+$('b-how').innerHTML = `${icon('help', { size: 18 })}<span>How to play</span>`; $('b-how').className = 'swgame'; $('b-how').onclick = () => showCoach(null);
+$('set-how').innerHTML = `${icon('help', { size: 18 })}<span>How to play</span>`; $('set-how').onclick = () => showCoach(null);
+$('p-settings').onclick = () => openSettings();
+for (const id of ['b-switch', 'r-switch', 'p-switch']) $(id).innerHTML = `${icon('swap', { size: 18 })}<span>Switch to Neon Racer</span>`;
+$('p-switch').onclick = () => { if (leaveOk()) location.href = '../racer/racer.html'; };
+$('b-switch').onclick = (e) => { if (!leaveOk()) e.preventDefault(); }; $('r-switch').onclick = (e) => { if (!leaveOk()) e.preventDefault(); };
+$('co-go-btn').onclick = () => { prefs.coach.defense = true; savePrefs(prefs); if (coachNext) { const n = coachNext; coachNext = null; n(); } else backFromSub(); };
 $('pause-btn').onclick = () => showPause();
 $('p-resume').onclick = resume;
 $('p-quit').onclick = () => { showScreen(null); loop.resume(); phase = prevPhase; endRun(); };
@@ -604,6 +642,12 @@ function measureUi() {
   const qc = $('qcard'), pw = $('pw'), hud = $('hud');
   if (!hud.classList.contains('on')) return;
   const a = qc.getBoundingClientRect(), b = pw.getBoundingClientRect();
+  if (matchMedia('(orientation:landscape) and (max-height:560px)').matches) {          // landscape phone: question + power-ups on the left, answers on the right, the battlefield in the middle
+    const tp = hud.querySelector('.top').getBoundingClientRect(), op = $('opts').getBoundingClientRect();
+    R.uiTop = tp.bottom; R.uiBot = innerHeight - 8; R.uiL = Math.max(a.right, b.right) + 8; R.uiR = op.left - 8;
+    return;
+  }
+  R.uiL = 0; R.uiR = 0;
   if (a.height && b.top) { R.uiTop = a.bottom; R.uiBot = b.top - 6; }
 }
 

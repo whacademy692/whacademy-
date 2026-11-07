@@ -14,11 +14,12 @@ export function geom(R) {
   const W = R.w, H = R.h;
   const top = R.uiTop > 0 ? R.uiTop : H * 0.27, bot = R.uiBot > top + 150 ? R.uiBot : H * 0.78;   // free area between the question card and the power-up row (measured by the host)
   const avail = bot - top;
-  const span = Math.min(W * 0.94, H * 0.92);
+  const cx = R.uiR > R.uiL ? (R.uiL + R.uiR) / 2 : W / 2, room = R.uiR > R.uiL ? R.uiR - R.uiL : W * 0.94;   // landscape: the free strip between the left and right panels
+  const span = Math.min(W * 0.94, H * 0.92, room);
   const bs = Math.max(0.5, Math.min(1.5, span / 390, avail * 0.45 / 215));       // base scale
   const s = Math.max(0.5, Math.min(1.4, span / 280, avail / 430));                 // drone scale
-  const hz = Math.min(H * 0.4, top + avail * 0.2), baseX = W / 2, baseY = bot - 58 * bs;
-  const colX = (i) => W / 2 + (i - 1.5) * span / 4;
+  const hz = Math.min(H * 0.4, top + avail * 0.2), baseX = cx, baseY = bot - 58 * bs;
+  const colX = (i) => cx + (i - 1.5) * span / 4;
   const domeTop = baseY - 172 * bs, y1 = domeTop - 30 * s, y0 = Math.min(top + 62 * s, y1 - 40);
   const towerTop = baseY - 128 * bs;
   const tur = [{ x: baseX - 124 * bs, y: baseY - 8 * bs }, { x: baseX, y: towerTop }, { x: baseX + 124 * bs, y: baseY - 8 * bs }];

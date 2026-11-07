@@ -18,8 +18,11 @@ import { sanitizeSettings, timeMultiplier, graphicsLevel, laneColors } from '../
 import { badgeSVG } from '../engine/ui/badge.js';
 import { themeForRank, baseSpeed } from './themes.js';
 import { icon } from '../engine/ui/icons.js';
-import { PAINTS, GLOWS, TRAILS, resolveGarage, isUnlocked, coinsForRun } from './garage.js';
-import { drawScene, geom as sceneGeom, CAR_K, CAR_MIN_K, CAR_MAX_K, GATE_K0, GATE_COLORS } from './scene.js';
+import { PAINTS, GLOWS, TRAILS, resolveGarage, isUnlocked, needRank, coinsForRun } from './garage.js';
+import { geom as sceneGeom, CAR_K, CAR_MIN_K, CAR_MAX_K, GATE_K0, GATE_COLORS } from './scene.js';
+import { drawRacerScene, crashPose, PLACES } from './world.js';
+import { CARS } from './cars.js';
+import { loadPrefs, savePrefs, touchButtonsOn } from '../engine/ui/prefs.js';
 
 const $ = (id) => document.getElementById(id);
 const qs = new URLSearchParams(location.search);
@@ -41,6 +44,9 @@ if (LOCAL && qs.get('class')) store.setClass(Number(qs.get('class')));
 let nick = '', hydrated = false, ticket = null, snapshot = null, starting = false, resultNote = '', syncTimer = 0;
 const clone = (x) => JSON.parse(JSON.stringify(x));
 let settings = store.profile.settings;
+const prefs = loadPrefs();                 // device-only options: engine / ambient sound, on-screen buttons, car, scenery, headlights
+const LIGHTS_UNLOCK = 4;                   // headlights unlock rank (20-rank scale)
+let curScreen = 'home', backTo = 'home', coachNext = null, ctlOn = false;
 let phase = 'menu';          // menu | ask | result | rankup | pause | over
 let phaseT = 0;
 let rules = null, run = null, pool = null, q = null, lastResult = null, score = 0;
@@ -53,7 +59,7 @@ const fx = new Fx({ reduceMotion: false });
 const sfx = new Sfx();
 const parts = new ParticlePool(QUALITY[1].particles);
 const trail = new Trail(16);
-const car = { x: new Spring(1, 120, 15), body: new Body(0, 0), lane: 1, z: CAR_K, go: false, damage: 0 };
+const car = { x: new Spring(1, 120, 15), body: new Body(0, 0), lane: 1, z: CAR_K, go: false, damage: 0, crashT: 9, crashDir: 1 };
 const held = { up: false, down: false };
 const smoke = [];
 let contacted = true, lockZ = CAR_K, smokeT = 0;
@@ -62,8 +68,8 @@ const perf = new PerfManager({ auto: true, level: 1, onChange: applyQuality });
 let loop;
 
 // Scene state handed to drawScene each frame.
-const S = { t: 0, scroll: 0, env, preset: perf.preset, theme: themeForRank(0), lanes: laneColors(settings), letters: LETTER, colorBlind: false, reduceMotion: false, flash: 0,
-  car: { x: 1, lane: 1, z: CAR_K, bx: 0, by: 0, rot: 0, damage: 0 }, trail, parts, smoke, boost: 0, gates: null, think: null,
+const S = { t: 0, scroll: 0, env, place: prefs.place, headlights: false, preset: perf.preset, theme: themeForRank(0), lanes: laneColors(settings), letters: LETTER, colorBlind: false, reduceMotion: false, flash: 0,
+  car: { x: 1, lane: 1, z: CAR_K, bx: 0, by: 0, rot: 0, sq: 0, model: 'street', damage: 0 }, trail, parts, smoke, boost: 0, gates: null, think: null,
   garage: resolveGarage(store.profile.garage, 0) };
 
 function applyQuality(c) {
@@ -91,11 +97,22 @@ function applySettings() {
   const gl = graphicsLevel(settings);
   if (gl === null) perf.setAuto(true); else { perf.setAuto(false); perf.setFallback30(false, 'manual'); perf.setLevel(gl); applyQuality({ preset: perf.preset }); }
   store.save();
+  applyPrefs();
   if (server && hydrated) scheduleSync();
 }
 const track = () => TRACKS[store.profile.track];
 const curRank = () => rankIdx(store.prog);
 const maxRank = () => rankOfLevel(track(), store.prog.maxLevel || store.prog.level);
+const total = () => rankCount(track());
+/** Device options -> engine. Locked choices (car, scenery, headlights) quietly fall back to the default until the rank is reached. */
+function applyPrefs() {
+  const mr = maxRank(), tt = total();
+  const okId = (list, id) => { const it = list.find((x) => x.id === id); return it && isUnlocked(it, mr, tt) ? it.id : list[0].id; };
+  S.place = okId(PLACES, prefs.place); S.car.model = okId(CARS, prefs.car);
+  S.headlights = !!prefs.lights && isUnlocked({ unlockRank: LIGHTS_UNLOCK }, mr, tt);
+  sfx.setEngineOn(prefs.engine); sfx.setAmbientOn(prefs.ambient);
+}
+const ctlWanted = () => touchButtonsOn(prefs) && phase === 'ask';
 
 // ---------- run ----------
 function rawQuestions(cls) {
@@ -106,6 +123,7 @@ function rawQuestions(cls) {
 }
 async function startRun(mode) {
   sfx.unlock();
+  if (!prefs.coach.racer) { showCoach(() => startRun(mode)); return; }
   if (server) {
     if (starting) return;
     starting = true;
@@ -127,8 +145,8 @@ function beginRun(mode) {
   score = 0; boost = 0; lastResult = null;
   parts.clear(); smoke.length = 0;
   car.lane = 1; car.x.snap(1); car.z = CAR_K; car.go = false; car.damage = 0; contacted = true;
-  car.body.x = car.body.y = car.body.rot = car.body.vx = car.body.vr = 0;
-  S.garage = resolveGarage(store.profile.garage, maxRank());
+  car.crashT = 9; applyPrefs();
+  S.garage = resolveGarage(store.profile.garage, maxRank(), total());
   showScreen(null); $('hud').classList.add('on');
   for (const e of rules.progEvents) if (e.type === 'gateStart') toast(`RANK GATE · ${e.need} to pass`, '#ffc83d');
   nextQuestion();
@@ -226,8 +244,8 @@ function contactFx() {
   } else {
     const lane = G.result ? G.result.picked : car.lane;
     sfx.play(res.timeout ? 'wrong' : 'crash'); input.vibrate([40, 30, 60]);
-    fx.shake(0.9); fx.slowmo(0.25, 0.7); fx.flash('#ff4d6d', 0.35);
-    car.body.impulse((lane % 2 ? -1 : 1) * 140, 90, 9);
+    fx.shake(0.9); fx.slowmo(0.45, 0.26); fx.flash('#ff4d6d', 0.35);
+    car.crashT = 0; car.crashDir = lane < 2 ? 1 : -1;                     // knocked back toward the middle of the road
     car.damage = Math.min(run.mode === 'practice' ? 2 : 3, car.damage + 1);
     parts.burst(cx, cy, 46, 320, 0.9, 3.6, 25, 240); parts.burst(cx, cy, 24, 200, 0.7, 3, 0, 160);
     for (let i = 0; i < 9; i++) smoke.push({ x: cx + (Math.random() - 0.5) * 30 * sc, y: cy + (Math.random() - 0.3) * 16 * sc, r: 5 + Math.random() * 6, a: 0.7, vx: (Math.random() - 0.5) * 60, vy: -40 - Math.random() * 40, fire: i < 3 });
@@ -290,8 +308,9 @@ async function endRun() {
 }
 
 // ---------- screens ----------
-const SCREENS = ['home', 'settings', 'garage', 'pause', 'rankup', 'result', 'msg'];
+const SCREENS = ['home', 'settings', 'garage', 'pause', 'rankup', 'result', 'msg', 'coach'];
 function showScreen(name) {
+  curScreen = name;
   for (const s of SCREENS) $('s-' + s).classList.toggle('show', s === name);
   $('nav-btn').hidden = !(name === 'home' || name === 'pause' || name === 'result' || name === 'msg');   // menu is reachable between runs, not mid-run
   if (name !== 'home' && name !== 'pause' && name !== 'result' && name !== 'msg') closeNav();
@@ -337,22 +356,53 @@ function renderSettings() {
   }
   mk('set-graphics', [['auto', 'Auto'], ['low', 'Low'], ['medium', 'Medium'], ['high', 'High']], 'graphics');
   mk('set-text', [['s', 'Small'], ['m', 'Normal'], ['l', 'Large']], 'textSize');
+  const sp = $('set-prefs'); sp.innerHTML = '';
+  for (const [k, label] of [['engine', 'Car engine sound'], ['ambient', 'Birds and night ambience']]) {
+    const d = document.createElement('div'); d.className = 'toggle'; d.innerHTML = `<span>${label}</span><button class="${prefs[k] ? 'on' : ''}">${prefs[k] ? 'On' : 'Off'}</button>`;
+    d.lastChild.onclick = () => { prefs[k] = !prefs[k]; savePrefs(prefs); applyPrefs(); renderSettings(); };
+    sp.appendChild(d);
+  }
+  const sc = $('set-ctl'); sc.innerHTML = '';
+  for (const [v, label] of [[null, 'Auto'], [true, 'Always show'], [false, 'Hide']]) {
+    const b = document.createElement('button'); b.textContent = label; b.className = prefs.touchButtons === v ? 'on' : '';
+    b.onclick = () => { prefs.touchButtons = v; savePrefs(prefs); renderSettings(); }; sc.appendChild(b);
+  }
   $('dev').hidden = !DEV;
   const t = track(); $('dev-rank').max = t.starts.length - 1; $('dev-rank').value = rankIdx(store.prog); $('dev-rank-name').textContent = rankName(+$('dev-rank').value);
 }
 function renderGarage() {
-  const mr = maxRank(), cur = resolveGarage(store.profile.garage, mr);
+  const mr = maxRank(), tt = total(), cur = resolveGarage(store.profile.garage, mr, tt);
   const fill = (id, list, key, swatch) => {
     const row = $(id); row.innerHTML = '';
     for (const it of list) {
-      const b = document.createElement('button'), ok = isUnlocked(it, mr);
-      b.innerHTML = (swatch ? `<span class="sw ${cur[key].id === it.id ? 'pick' : ''}" style="background:${it.color}"></span>` : '') + it.name + (ok ? '' : ` ${icon('lock', { size: 14 })} ${rankName(it.unlockRank)}`);
+      const b = document.createElement('button'), ok = isUnlocked(it, mr, tt);
+      b.innerHTML = (swatch ? `<span class="sw ${cur[key].id === it.id ? 'pick' : ''}" style="background:${it.color}"></span>` : '') + it.name + (ok ? '' : ` ${icon('lock', { size: 14 })} ${rankName(needRank(it, tt))}`);
       b.className = cur[key].id === it.id ? 'on' : ''; b.disabled = !ok;
-      b.onclick = () => { store.profile.garage[key] = it.id; store.save(); if (server && hydrated) scheduleSync(); S.garage = resolveGarage(store.profile.garage, mr); renderGarage(); };
+      b.onclick = () => { store.profile.garage[key] = it.id; store.save(); if (server && hydrated) scheduleSync(); S.garage = resolveGarage(store.profile.garage, mr, tt); renderGarage(); };
       row.appendChild(b);
     }
   };
   fill('g-paint', PAINTS, 'paint', true); fill('g-glow', GLOWS, 'glow', false); fill('g-trail', TRAILS, 'trail', false);
+  // device-only choices: car body, scenery, headlights
+  const pick = (id, noteId, list, key) => {
+    const row = $(id); row.innerHTML = '';
+    const curId = key === 'car' ? S.car.model : S.place;
+    for (const it of list) {
+      const ok = isUnlocked(it, mr, tt), b = document.createElement('button');
+      b.textContent = it.name; if (!ok) b.insertAdjacentHTML('beforeend', ` ${icon('lock', { size: 14 })} ${rankName(needRank(it, tt))}`);
+      b.className = curId === it.id ? 'on' : ''; b.disabled = !ok;
+      b.onclick = () => { prefs[key] = it.id; savePrefs(prefs); applyPrefs(); renderGarage(); };
+      row.appendChild(b);
+    }
+    const it = list.find((x) => x.id === curId); $(noteId).textContent = it ? it.blurb : '';
+  };
+  pick('g-car', 'g-car-note', CARS, 'car'); pick('g-place', 'g-place-note', PLACES, 'place');
+  const lr = $('g-lights'); lr.innerHTML = ''; const lok = isUnlocked({ unlockRank: LIGHTS_UNLOCK }, mr, tt);
+  for (const [v, label] of [[false, 'Off'], [true, 'Beams']]) {
+    const b = document.createElement('button'); b.textContent = label; b.className = (prefs.lights && lok) === v ? 'on' : ''; b.disabled = v && !lok;
+    if (v && !lok) b.insertAdjacentHTML('beforeend', ` ${icon('lock', { size: 14 })} ${rankName(needRank({ unlockRank: LIGHTS_UNLOCK }, tt))}`);
+    b.onclick = () => { prefs.lights = v; savePrefs(prefs); applyPrefs(); renderGarage(); }; lr.appendChild(b);
+  }
   S.garage = cur;
 }
 function showRankUp(rankIdx0) {
@@ -360,6 +410,10 @@ function showRankUp(rankIdx0) {
   $('ru-badge').innerHTML = badgeSVG(rankIdx0, { size: 150 });
   $('ru-name').textContent = rankName(rankIdx0); $('ru-name').style.color = rankColor(rankIdx0);
   $('ru-theme').textContent = 'New track: ' + themeForRank(rankIdx0).name;
+  const tt = total(), news = [];
+  for (const [list, kind] of [[CARS, 'car'], [PLACES, 'scenery'], [PAINTS, 'paint'], [GLOWS, 'underglow'], [TRAILS, 'trail']]) for (const it of list) if (it.unlockRank > 0 && needRank(it, tt) === rankIdx0) news.push(`${it.name} ${kind}`);
+  if (needRank({ unlockRank: LIGHTS_UNLOCK }, tt) === rankIdx0) news.push('Headlights');
+  $('ru-unlock').textContent = news.length ? 'Unlocked in the Garage: ' + news.join(', ') : '';
   showScreen('rankup');
 }
 function showResult(rep, coins, gateFailed, placed) {
@@ -454,9 +508,7 @@ function updateSmoke(dt) {
 function update(dt, realDt) {
   scroll += (baseSpeed(S.theme ? curRankLive() : 0) + boost * 2.2) * dt;
   boost = Math.max(0, boost - realDt * 0.9);
-  car.x.step(dt); car.body.step(dt);
-  const decay = 1 - Math.min(1, 1.5 * realDt);
-  car.body.x *= decay; car.body.y *= decay; car.body.rot += (car.damage * 0.035 - car.body.rot) * Math.min(1, 1.2 * dt);   // a damaged car sits a little crooked
+  car.x.step(dt); car.crashT += realDt;          // the crash jolt runs on real time (not slow-mo) so the car is straight again within ~0.6 s
   parts.step(dt); fx.update(realDt); updateSmoke(dt);
   S.t = fx.t; S.scroll = scroll; S.boost = boost;
   lightningT -= realDt; if (lightningT < 0) { lightning = 1; lightningT = 2 + Math.random() * 5; } lightning = Math.max(0, lightning - realDt * 3); S.flash = lightning;
@@ -495,14 +547,16 @@ const curRankLive = () => (rules && (phase === 'ask' || phase === 'result') ? ru
 
 function render(alpha, realDt) {
   if (realDt) perf.frame(realDt * 1000);
-  S.car.x = car.x.x; S.car.lane = car.lane; S.car.z = car.z; S.car.damage = car.damage; S.car.bx = car.body.x; S.car.by = car.body.y; S.car.rot = car.body.rot;
+  const cp = crashPose(car.crashT, car.crashDir);
+  S.car.x = car.x.x; S.car.lane = car.lane; S.car.z = car.z; S.car.damage = car.damage; S.car.bx = cp.bx; S.car.by = 0; S.car.rot = cp.rot; S.car.sq = cp.sq;
+  const cw = ctlWanted(); if (cw !== ctlOn) { ctlOn = cw; $('ctl').hidden = !cw; }
   S.smoke = smoke;
   if (rules && phase !== 'menu' && phase !== 'over' && (rules.q || phase === 'result')) {
     G.hidden = rules.hidden;
     S.gates = G;
     S.think = phase === 'ask' ? { frac: rules.thinkFraction, leftMs: rules.timeLeftMs, frozen: rules.frozen } : null;
   } else { S.gates = null; S.think = null; }
-  R.begin(fx); drawScene(R, S); R.end(fx);
+  R.begin(fx); drawRacerScene(R, S); R.end(fx);
   if (++frameN % 20 === 0 && !$('fps').hidden) $('fps').textContent = `${perf.fps.toFixed(0)} fps · ${perf.preset.name}`;
 }
 let frameN = 0;
@@ -512,13 +566,38 @@ const NAV_LINKS = [['Dashboard', 'dashboard.html', 'home'], ['Chapters', 'games.
   ['Badges', 'badges.html', 'medal'], ['Revision', 'revision.html', 'target'], ['Ranks', 'leaderboard.html', 'trophy'], ['Advanced Games', 'advanced-games.html', 'bolt'],
   ['Advanced Ranks', 'advanced-ranks.html', 'star'], ['Support & Rechecking', 'rechecking.html', 'flag'], ['My Progress', 'progress.html', 'gauge'], ['Guide', 'guide.html', 'check'],
   ['Fee', 'fee.html', 'coin'], ['Profile', 'profile.html', 'user'], ['Upgrade Plan', 'upgrade.html', 'up']];
+const leaveOk = () => phase !== 'pause' || !run || confirm('Leave now? This run will not be saved.');   // only a paused run can be abandoned from the menu
 function buildNav() {
   const box = $('nav-list'); box.innerHTML = '';
+  const sec = (t) => { const h = document.createElement('div'); h.className = 'navsec'; h.textContent = t; box.appendChild(h); };
+  sec('Advanced games');
+  for (const [label, href, ic, here] of [['Neon Racer', 'racer.html', 'car', true], ['Auto Defense', '../defense/defense.html', 'shield', false]]) {
+    const a = document.createElement('a'); a.href = href; a.className = 'navitem' + (here ? ' here' : '');
+    a.innerHTML = `${icon(ic, { size: 20 })}<span></span>${here ? '<em>playing</em>' : ''}`; a.children[1].textContent = label;
+    a.onclick = (e) => { if (here) { e.preventDefault(); closeNav(); } else if (!leaveOk()) e.preventDefault(); };
+    box.appendChild(a);
+  }
+  for (const [label, ic, fn] of [['Settings', 'sliders', () => openSettings()], ['Garage', 'car', () => openGarage()], ['How to play', 'help', () => showCoach(null)]]) {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'navitem'; b.innerHTML = `${icon(ic, { size: 20 })}<span></span>`; b.lastChild.textContent = label;
+    b.onclick = () => { closeNav(); fn(); }; box.appendChild(b);
+  }
+  sec('Dashboard');
   for (const [label, href, ic] of NAV_LINKS) {
     const a = document.createElement('a'); a.href = '../../' + href; a.className = 'navitem';
-    a.innerHTML = `${icon(ic, { size: 20 })}<span></span>`; a.lastChild.textContent = label; box.appendChild(a);
+    a.innerHTML = `${icon(ic, { size: 20 })}<span></span>`; a.lastChild.textContent = label;
+    a.onclick = (e) => { if (!leaveOk()) e.preventDefault(); };
+    box.appendChild(a);
   }
 }
+function openSettings() { backTo = (curScreen === 'pause' || curScreen === 'result') ? curScreen : 'home'; renderSettings(); showScreen('settings'); }
+function openGarage() { backTo = (curScreen === 'pause' || curScreen === 'result') ? curScreen : 'home'; renderGarage(); showScreen('garage'); }
+const backFromSub = () => { const t = backTo || 'home'; backTo = 'home'; showScreen(t); if (t === 'home') renderHome(); };
+// "How to play" card: shown once before the first run on a device, and any time from Settings / the menu
+function renderCoach() {
+  $('co-l').innerHTML = icon('left', { size: 18 }); $('co-r').innerHTML = icon('right', { size: 18 }); $('co-go').innerHTML = icon('go', { size: 18 });
+  const on = touchButtonsOn(prefs), b = $('co-btns'); b.textContent = on ? 'On' : 'Off'; b.className = on ? 'on' : '';
+}
+function showCoach(next) { coachNext = next || null; backTo = (curScreen === 'coach' ? 'home' : curScreen); renderCoach(); showScreen('coach'); }
 function openNav() { $('nav-drawer').classList.add('open'); }
 function closeNav() { $('nav-drawer').classList.remove('open'); }
 $('nav-btn').onclick = openNav; $('nav-close').onclick = closeNav; $('nav-shade').onclick = closeNav;
@@ -534,10 +613,22 @@ setEnv(env, false);
 $('b-ranked').onclick = () => startRun('ranked');
 $('b-practice').onclick = () => startRun('practice');
 $('b-placement').onclick = () => startRun('placement');
-$('b-settings').onclick = () => { renderSettings(); showScreen('settings'); };
-$('set-back').onclick = () => { showScreen('home'); renderHome(); };
-$('b-garage').onclick = () => { renderGarage(); showScreen('garage'); };
-$('g-back').onclick = () => showScreen('home');
+$('b-settings').onclick = () => openSettings();
+$('set-back').onclick = backFromSub;
+$('b-garage').onclick = () => openGarage();
+$('g-back').onclick = backFromSub;
+$('b-how').onclick = () => showCoach(null); $('set-how').onclick = () => showCoach(null);
+$('p-settings').onclick = () => openSettings();
+$('p-switch').onclick = () => { if (leaveOk()) location.href = '../defense/defense.html'; };
+$('b-switch').onclick = (e) => { if (!leaveOk()) e.preventDefault(); }; $('r-switch').onclick = (e) => { if (!leaveOk()) e.preventDefault(); };
+$('co-go-btn').onclick = () => { prefs.coach.racer = true; savePrefs(prefs); if (coachNext) { const n = coachNext; coachNext = null; n(); } else backFromSub(); };
+$('co-btns').onclick = () => { prefs.touchButtons = !touchButtonsOn(prefs); savePrefs(prefs); renderCoach(); };
+// on-screen steering buttons (shown during a question when enabled; Settings > On-screen buttons)
+const press = (id, fn) => { $(id).addEventListener('pointerdown', (e) => { e.preventDefault(); e.stopPropagation(); sfx.unlock(); if (phase === 'ask') fn(); }); };
+press('ctl-l', () => steer(-1)); press('ctl-r', () => steer(1)); press('ctl-go', () => { car.go = true; sfx.play('tap'); input.vibrate(8); });
+$('ctl-l').innerHTML = icon('left', { size: 30 }); $('ctl-r').innerHTML = icon('right', { size: 30 }); $('ctl-go').innerHTML = `${icon('go', { size: 26 })}<span>GO</span>`;
+$('b-switch').innerHTML = `${icon('swap', { size: 18 })}<span>Switch to Auto Defense</span>`; $('r-switch').innerHTML = `${icon('swap', { size: 18 })}<span>Switch to Auto Defense</span>`; $('p-switch').innerHTML = `${icon('swap', { size: 18 })}<span>Switch to Auto Defense</span>`;
+$('b-how').innerHTML = `${icon('help', { size: 18 })}<span>How to play</span>`; $('set-how').innerHTML = `${icon('help', { size: 20 })}<span>How to play</span>`;
 $('pause-btn').onclick = () => showPause();
 $('p-resume').onclick = resume;
 $('p-quit').onclick = () => { showScreen(null); loop.resume(); phase = prevPhase; endRun(); };
@@ -605,5 +696,5 @@ if (server) bootServer();
 
 window.__racer = {
   get state() { return { phase, hearts: rules && rules.hearts, over: rules && rules.over, level: store.prog.level, meter: store.prog.meter, streak: rules ? rules.streak : 0, score, fps: perf.fps, quality: perf.preset.name, timeScale: loop.timeScale, qcorrect: q && q.correct, inGate: rules && rules.inGate, cls: store.profile.cls, track: store.profile.track, rank: rankIdx(store.prog), asked: run && run.asked, hits: run && run.hits, env, carZ: car.z, damage: car.damage, gateK: G.k, mode: server ? 'server' : 'local', nick, coins: store.profile.coins }; },
-  store, loop, perf, choose, startRun, setEnv, sfx, rules: () => rules, run: () => run,
+  store, loop, perf, choose, startRun, setEnv, sfx, rules: () => rules, run: () => run, prefs, S, car, applyPrefs, crashPose,
 };

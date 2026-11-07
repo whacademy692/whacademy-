@@ -38,6 +38,11 @@
     <div class="bar"><i id="barfill"></i></div>
   </div>
   <div class="spacer"></div>
+  <div class="ctl" id="ctl" hidden>
+    <button id="ctl-l" aria-label="Steer left"></button>
+    <button id="ctl-go" aria-label="Drive to the gate"></button>
+    <button id="ctl-r" aria-label="Steer right"></button>
+  </div>
   <div class="pw" id="pw"></div>
   <div class="opts" id="opts"></div>
 </div>
@@ -70,7 +75,8 @@
     <button class="big alt" id="b-practice">Practice (no game over)</button>
     <button class="big alt" id="b-placement">Placement Run (15 questions)</button>
     <div class="row"><button id="b-garage" style="flex:1">Garage</button><button id="b-settings" style="flex:1">Settings</button></div>
-    <div class="hint">Keys: 1–4 answer · Left/Right arrows steer · Up/Down arrows drive to the gate · Space lock · F 50:50 · T freeze · H heal · S skip · P pause · N day/night<br>Phone: tap left/right to steer, swipe up to drive, or tap an answer.</div>
+    <div class="row"><a class="swgame" href="../defense/defense.html" id="b-switch"></a><button id="b-how" style="flex:1"></button></div>
+    <div class="hint">Keys: 1–4 answer · Left/Right arrows steer · Up/Down arrows drive to the gate · Space lock · F 50:50 · T freeze · H heal · S skip · P pause · N day/night<br>Phone: use the LEFT / RIGHT buttons (or tap the left or right side of the screen), GO to drive to the gates, or tap an answer.</div>
   </div>
 </div>
 
@@ -92,6 +98,10 @@
     <h3>Graphics</h3>
     <div class="row" id="set-graphics"></div>
     <div id="set-toggles"></div>
+    <h3>Sound and controls on this device</h3>
+    <div id="set-prefs"></div>
+    <h3>On-screen buttons</h3>
+    <div class="row seg" id="set-ctl"></div>
     <h3>Text size</h3>
     <div class="row" id="set-text"></div>
     <div id="dev" hidden>
@@ -100,6 +110,7 @@
       <input type="range" id="dev-rank" min="0" max="19" value="0" style="width:100%">
       <div class="row" style="margin-top:8px"><button id="dev-gate">Jump to rank gate</button><button id="dev-reset">Reset my progress</button></div>
     </div>
+    <button class="big alt" id="set-how"></button>
     <button class="big" id="set-back">Done</button>
   </div>
 </div>
@@ -109,6 +120,9 @@
   <div class="stack">
     <h2>Garage</h2>
     <div style="color:var(--mute);font-size:.9em">Only changes the look, never the answers. Items unlock with your rank.</div>
+    <h3>Car</h3><div class="row" id="g-car"></div><div class="hint" id="g-car-note"></div>
+    <h3>Scenery</h3><div class="row" id="g-place"></div><div class="hint" id="g-place-note"></div>
+    <h3>Headlights (night)</h3><div class="row" id="g-lights"></div>
     <h3>Paint</h3><div class="row" id="g-paint"></div>
     <h3>Underglow</h3><div class="row" id="g-glow"></div>
     <h3>Trail</h3><div class="row" id="g-trail"></div>
@@ -121,6 +135,8 @@
   <div class="stack">
     <h2>Paused</h2>
     <button class="big" id="p-resume">Resume</button>
+    <button class="big alt" id="p-settings">Settings</button>
+    <button class="big alt" id="p-switch"></button>
     <button class="big alt" id="p-quit">End run and see result</button>
   </div>
 </div>
@@ -132,6 +148,7 @@
     <div id="ru-badge" class="up"></div>
     <h2 id="ru-name"></h2>
     <div id="ru-theme" style="color:var(--mute)"></div>
+    <div id="ru-unlock" style="color:var(--gold);font-weight:700;max-width:340px"></div>
     <button class="big" id="ru-go">Continue</button>
   </div>
 </div>
@@ -145,6 +162,25 @@
     <div id="r-wrongs"></div>
     <button class="big" id="r-again">Play again</button>
     <button class="big alt" id="r-home">Home</button>
+    <a class="swgame big alt" href="../defense/defense.html" id="r-switch"></a>
+  </div>
+</div>
+
+<!-- First-time "how to play" card (also from Settings > How to play) -->
+<div class="screen" id="s-coach">
+  <div class="stack">
+    <h2>How to play Neon Racer</h2>
+    <div class="card coach">
+      <ol>
+        <li><b>Read the question</b> at the top. Each of the four gates (A to D) carries one answer.</li>
+        <li><b>Pick your lane:</b> press the <span class="kbd" id="co-l"></span> and <span class="kbd" id="co-r"></span> buttons, or tap the left or right side of the screen. On a computer use the arrow keys.</li>
+        <li><b>Press <span class="kbd" id="co-go"></span> GO</b> to drive up to the gates. You can also just tap the answer you want.</li>
+        <li><b>Right gate</b> = clean pass and a speed boost. <b>Wrong gate</b> = a crash and one heart less. Lose all three hearts and the run ends.</li>
+        <li>You can switch the on-screen buttons on or off any time in <b>Settings</b>.</li>
+      </ol>
+    </div>
+    <div class="toggle"><span>Show on-screen buttons</span><button id="co-btns"></button></div>
+    <button class="big" id="co-go-btn">Got it, start</button>
   </div>
 </div>
 

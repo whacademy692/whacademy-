@@ -30,7 +30,7 @@ export const hash = (n) => { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453;
 export const GATE_COLORS = { day: ['#ff6a00', '#ffc400'], night: ['#00c8ff', '#3b5bff'] };
 const GOOD = ['#00c853', '#7dff9c'], BAD = ['#e5173a', '#ff6b6b'];
 
-const STAR_POS = Array.from({ length: 160 }, (_, i) => ({ x: ((i * 9301 + 49297) % 233280) / 233280, y: ((i * 4621 + 7919) % 233280) / 233280, s: 0.5 + (i % 5) * 0.35 }));
+export const STAR_POS = Array.from({ length: 160 }, (_, i) => ({ x: ((i * 9301 + 49297) % 233280) / 233280, y: ((i * 4621 + 7919) % 233280) / 233280, s: 0.5 + (i % 5) * 0.35 }));
 
 // ---------- sky + far scenery ----------
 export function ridge(c, w, y0, amp, freq, phase, fill) {
@@ -190,18 +190,18 @@ function drawRoad(R, S, g) {
 }
 
 // ---------- roadside: trees + bushes (day), street lamps + railings (night) ----------
-export function tree(c, x, y, s, kind, shade) {
+export function tree(c, x, y, s, kind, shade, night = false) {
   c.fillStyle = 'rgba(0,0,0,.22)'; c.beginPath(); c.ellipse(x, y, s * 0.55, s * 0.12, 0, 0, 7); c.fill();
-  c.fillStyle = '#6b4423'; c.fillRect(x - s * 0.06, y - s * 0.4, s * 0.12, s * 0.4);
+  c.fillStyle = night ? '#2a1d14' : '#6b4423'; c.fillRect(x - s * 0.06, y - s * 0.4, s * 0.12, s * 0.4);
   if (kind === 0) {                                                   // conifer
     for (let i = 0; i < 3; i++) {
       const yy = y - s * (0.3 + i * 0.3), ww = s * (0.5 - i * 0.12);
-      c.fillStyle = mix('#1f7a3a', '#0e4d24', shade * 0.5 + i * 0.15);
+      c.fillStyle = night ? mix('#123d2a', '#08201a', i * 0.25) : mix('#1f7a3a', '#0e4d24', shade * 0.5 + i * 0.15);
       c.beginPath(); c.moveTo(x, yy - s * 0.42); c.lineTo(x + ww, yy); c.lineTo(x - ww, yy); c.closePath(); c.fill();
     }
   } else {                                                            // round crown
-    c.fillStyle = mix('#2f9e44', '#14602c', shade * 0.6); c.beginPath(); c.arc(x, y - s * 0.72, s * 0.42, 0, 7); c.fill();
-    c.fillStyle = mix('#52c25f', '#2f9e44', shade * 0.6); c.beginPath(); c.arc(x - s * 0.14, y - s * 0.82, s * 0.26, 0, 7); c.fill();
+    c.fillStyle = night ? '#0f3322' : mix('#2f9e44', '#14602c', shade * 0.6); c.beginPath(); c.arc(x, y - s * 0.72, s * 0.42, 0, 7); c.fill();
+    c.fillStyle = night ? '#16452e' : mix('#52c25f', '#2f9e44', shade * 0.6); c.beginPath(); c.arc(x - s * 0.14, y - s * 0.82, s * 0.26, 0, 7); c.fill();
   }
 }
 
@@ -241,7 +241,7 @@ function drawSide(R, S, g) {
 // ---------- gates ----------
 export function roundRect(c, x, y, w, h, r) { c.beginPath(); c.moveTo(x + r, y); c.arcTo(x + w, y, x + w, y + h, r); c.arcTo(x + w, y + h, x, y + h, r); c.arcTo(x, y + h, x, y, r); c.arcTo(x, y, x + w, y, r); c.closePath(); }
 
-function drawGates(R, S, g) {
+export function drawGates(R, S, g) {
   const G = S.gates; if (!G) return;
   const c = R.ctx, k = Math.min(1.15, G.k), t = rowT(Math.min(1, k)), y = g.rowY(rowT(k)), lw = g.roadHalf(t) * 2 / 4, gh = 26 + 150 * t;
   const base = GATE_COLORS[S.env === 'day' ? 'day' : 'night'];
@@ -352,7 +352,7 @@ function drawPlayer(R, S, g) {
   R.glow(px - 22 * s, py - 19 * s, 22 * s + 8, '#ff2a40', 0.35 + 0.4 * S.boost); R.glow(px + 22 * s, py - 19 * s, 22 * s + 8, '#ff2a40', 0.35 + 0.4 * S.boost);
 }
 
-function drawRing(R, S) {
+export function drawRing(R, S) {
   const c = R.ctx, T = S.think; if (!T) return;
   const cx = R.w - 36, cy = R.h * 0.32 + 38;
   c.fillStyle = 'rgba(8,12,34,.82)'; c.beginPath(); c.arc(cx, cy, 25, 0, 7); c.fill();
@@ -364,7 +364,7 @@ function drawRing(R, S) {
   if (T.frozen) { c.fillStyle = 'rgba(127,214,255,.08)'; c.fillRect(0, 0, R.w, R.h); }
 }
 
-function drawSpeedLines(R, S, g) {
+export function drawSpeedLines(R, S, g) {
   if (S.boost < 0.15 || S.reduceMotion) return;
   const c = R.ctx, cx = R.w / 2, cy = g.hz + 14;
   c.strokeStyle = '#ffffff'; c.lineWidth = 1.5;

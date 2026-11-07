@@ -71,6 +71,7 @@
     <button class="big alt" id="b-practice">Practice (no game over)</button>
     <button class="big alt" id="b-placement">Placement Run (15 questions)</button>
     <div class="row"><button id="b-garage" style="flex:1">Armory</button><button id="b-settings" style="flex:1">Settings</button></div>
+    <div class="row"><a class="swgame" href="../racer/racer.html" id="b-switch"></a><button id="b-how" style="flex:1"></button></div>
     <div class="hint">Keys: 1–4 pick a drone · Left/Right arrows move the aim · Space fire · F 50:50 · T freeze · H heal · S skip · P pause · N day/night<br>Phone: tap a drone or an answer to aim; tap again to fire (when Confirm tap is on).</div>
   </div>
 </div>
@@ -93,6 +94,8 @@
     <h3>Graphics</h3>
     <div class="row" id="set-graphics"></div>
     <div id="set-toggles"></div>
+    <h3>Sound on this device</h3>
+    <div id="set-prefs"></div>
     <h3>Text size</h3>
     <div class="row" id="set-text"></div>
     <div id="dev" hidden>
@@ -101,6 +104,7 @@
       <input type="range" id="dev-rank" min="0" max="19" value="0" style="width:100%">
       <div class="row" style="margin-top:8px"><button id="dev-gate">Jump to rank gate</button><button id="dev-reset">Reset my progress</button></div>
     </div>
+    <button class="big alt" id="set-how"></button>
     <button class="big" id="set-back">Done</button>
   </div>
 </div>
@@ -122,6 +126,8 @@
   <div class="stack">
     <h2>Paused</h2>
     <button class="big" id="p-resume">Resume</button>
+    <button class="big alt" id="p-settings">Settings</button>
+    <button class="big alt" id="p-switch"></button>
     <button class="big alt" id="p-quit">End run and see result</button>
   </div>
 </div>
@@ -133,6 +139,7 @@
     <div id="ru-badge" class="up"></div>
     <h2 id="ru-name"></h2>
     <div id="ru-theme" style="color:var(--mute)"></div>
+    <div id="ru-unlock" style="color:var(--gold);font-weight:700"></div>
     <button class="big" id="ru-go">Continue</button>
   </div>
 </div>
@@ -146,6 +153,24 @@
     <div id="r-wrongs"></div>
     <button class="big" id="r-again">Play again</button>
     <button class="big alt" id="r-home">Home</button>
+    <a class="swgame big alt" href="../racer/racer.html" id="r-switch"></a>
+  </div>
+</div>
+
+<!-- How to play (shown once before the first run on a device, and any time from the menu / Settings) -->
+<div class="screen" id="s-coach">
+  <div class="stack">
+    <h2>How to play Auto Defense</h2>
+    <div class="card coach">
+      <ol>
+        <li><b>Read the question</b> at the top. Four drones (A to D) come down slowly, each carrying one answer.</li>
+        <li><b>Aim:</b> tap the drone, or its answer button, to lock your turrets on it. On a computer press 1 to 4.</li>
+        <li><b>Fire:</b> with Confirm tap on, tap the same drone again to fire. Turn it off in Settings to fire with a single tap.</li>
+        <li><b>Right drone</b> = destroyed, streak grows. <b>Wrong drone</b> = your base is hit and you lose a heart. Lose all three and the run ends.</li>
+        <li>Stuck? Use a power-up: <b>50:50</b>, <b>Freeze</b>, <b>Heal</b> or <b>Skip</b>.</li>
+      </ol>
+    </div>
+    <button class="big" id="co-go-btn">Got it, start</button>
   </div>
 </div>
 
