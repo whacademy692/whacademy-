@@ -10,6 +10,8 @@ import { PerfManager, QUALITY } from '../engine/core/perf.js';
 import { RunRules, POWERUPS } from '../engine/rules/rules.js';
 import { normalizeAll, QuestionPool } from '../engine/mcq/adapter.js';
 import { DUMMY_RAW } from '../engine/mcq/dummy.js';
+import { loadBankQuestions } from '../engine/mcq/bank.js';
+import { setMath, fitQuestionUi } from '../engine/ui/mathtext.js';
 import { TRACKS, rankName, rankColor, rankOfLevel, rankFloor, rankLast, difficultyMix, blockPosition, pickTier, levelTarget, rankCount } from '../engine/progression/ranks.js';
 import { rankIdx, placementNextTier, placementLevel, PLACEMENT_QUESTIONS } from '../engine/progression/progression.js';
 import { ProfileStore, memoryStorage } from '../engine/ui/store.js';
@@ -100,15 +102,28 @@ const curRank = () => rankIdx(store.prog);
 const maxRank = () => rankOfLevel(track(), store.prog.maxLevel || store.prog.level);
 
 // ---------- run ----------
+let rawCache = null, bankP = null;
+/** Questions for this class: a host-provided set (tests) or the real banks. Resolves to a raw array. */
 function rawQuestions(cls) {
   const p = window.WHA_ADV_QUESTIONS;
   if (typeof p === 'function') return p(cls);
   if (Array.isArray(p)) return p;
-  return DUMMY_RAW;
+  return rawCache || DUMMY_RAW;
 }
+async function ensureQuestions() {
+  if (window.WHA_ADV_QUESTIONS) return true;
+  if (rawCache) return true;
+  try {
+    bankP = bankP || loadBankQuestions(store.profile.cls);
+    if (!rawCache) toast('Loading questions…', '#7fd6ff', 1500);
+    rawCache = await bankP; return true;
+  } catch (e) { bankP = null; toast('Could not load questions. Check your connection and try again.', '#ff4d6d', 3500); return false; }
+}
+const preloadBank = () => { if (!bankP && !window.WHA_ADV_QUESTIONS) { bankP = loadBankQuestions(store.profile.cls); bankP.then((r) => { rawCache = r; }).catch(() => { bankP = null; }); } };
 async function startRun(mode) {
   sfx.unlock();
   if (!prefs.coach.defense) { showCoach(() => startRun(mode)); return; }
+  if (!(await ensureQuestions())) return;
   if (server) {
     if (starting) return;
     starting = true;
@@ -151,20 +166,21 @@ function nextQuestion() {
   renderQuestion();
 }
 function renderQuestion() {
-  $('q').textContent = q.stem;
+  setMath($('q'), q.stem);
   const t = rules.timeTotalMs / 1000, tier = q.tier === 'E' ? 'Easy' : q.tier === 'M' ? 'Medium' : 'Hard';
   const where = run.mode === 'placement' ? `Placement ${run.asked}/${PLACEMENT_QUESTIONS}`
     : rules.inGate ? `GATE ${rules.gate.done}/${rules.gate.need} · ${rules.gate.wrong}/3 wrong`
     : run.mode === 'practice' ? 'Practice' : `bar ${Math.round(store.prog.meter)}/${Math.round(levelTarget(track(), store.prog.level))}`;
-  $('meta').innerHTML = `<span>${tier}${q.calc ? ' · calc' : ''}</span><span>${t.toFixed(0)} s</span><span>${where}</span>`;
+  $('meta').innerHTML = `<span>${q.subject && q.subject !== 'Mixed' ? q.subject + ' · ' : ''}${tier}${q.calc ? ' · calc' : ''}</span><span>${t.toFixed(0)} s</span><span>${where}</span>`;
   const box = $('opts'); box.innerHTML = '';
   q.options.forEach((o, i) => {
     const b = document.createElement('button');
     b.className = 'opt'; b.dataset.i = i;
-    b.innerHTML = `<b>${LETTER[i]}</b><span></span>`; b.lastChild.textContent = o;
+    b.innerHTML = `<b>${LETTER[i]}</b><span></span>`; setMath(b.lastChild, o);
     b.onclick = () => { sfx.unlock(); choose(i); };
     box.appendChild(b);
   });
+  fitQuestionUi($('q'), box);
   renderPowerups(); setHud(); measureUi();
 }
 function renderPowerups() {
@@ -352,6 +368,7 @@ function showScreen(name) {
 }
 
 function renderHome() {
+  preloadBank();
   const p = store.profile, prog = store.prog, t = track(), r = rankIdx(prog);
   $('cls-wrap').hidden = !DEV;                                   // class picker is a test tool; the dashboard will pass the student's real class
   $('cls-row').innerHTML = '';
@@ -445,9 +462,9 @@ function showResult(rep, coins, gateFailed, placed) {
   for (const x of rep.wrongs) {
     const d = document.createElement('div'); d.className = 'wr';
     d.innerHTML = '<strong></strong><small>Your answer: <span class="no"></span></small><small>Correct: <span class="ok"></span></small><small class="ex"></small>';
-    d.querySelector('strong').textContent = x.stem;
-    d.querySelector('.no').textContent = x.picked === null ? '— (time ran out)' : x.options[x.picked];
-    d.querySelector('.ok').textContent = x.options[x.correct]; d.querySelector('.ex').textContent = x.explanation;
+    setMath(d.querySelector('strong'), x.stem);
+    setMath(d.querySelector('.no'), x.picked === null ? '— (time ran out)' : x.options[x.picked]);
+    setMath(d.querySelector('.ok'), x.options[x.correct]); setMath(d.querySelector('.ex'), x.explanation);
     w.appendChild(d);
   }
   $('r-again').textContent = run.mode === 'ranked' && prog.gatePending ? 'Retry Rank Gate' : 'Play again';
@@ -705,6 +722,6 @@ showScreen('home');
 if (server) bootServer();
 
 window.__defense = {
-  get state() { return { phase, hearts: rules && rules.hearts, over: rules && rules.over, level: store.prog.level, meter: store.prog.meter, streak: rules ? rules.streak : 0, score, fps: perf.fps, quality: perf.preset.name, timeScale: loop.timeScale, qcorrect: q && q.correct, inGate: rules && rules.inGate, cls: store.profile.cls, track: store.profile.track, rank: rankIdx(store.prog), asked: run && run.asked, env, damage: base.damage, p: D.p, sel: D.sel, hidden: rules ? rules.hidden.slice() : [], mode: server ? 'server' : 'local', nick, coins: store.profile.coins, minions: minions.length }; },
+  get state() { return { phase, hearts: rules && rules.hearts, over: rules && rules.over, level: store.prog.level, meter: store.prog.meter, streak: rules ? rules.streak : 0, score, fps: perf.fps, quality: perf.preset.name, timeScale: loop.timeScale, qcorrect: q && q.correct, question: q ? { id: q.id, stem: q.stem, subject: q.subject, chapter: q.chapter, options: q.options } : null, inGate: rules && rules.inGate, cls: store.profile.cls, track: store.profile.track, rank: rankIdx(store.prog), asked: run && run.asked, env, damage: base.damage, p: D.p, sel: D.sel, hidden: rules ? rules.hidden.slice() : [], mode: server ? 'server' : 'local', nick, coins: store.profile.coins, minions: minions.length }; },
   store, loop, perf, choose, startRun, setEnv, rules: () => rules, run: () => run,
 };

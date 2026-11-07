@@ -182,3 +182,13 @@ button.navitem{width:100%;background:none;border:0;text-align:left;font:inherit;
 /* the three-line menu button sits top-left: keep the titles of Pause / Result / Message clear of it */
 #s-pause .stack,#s-result .stack,#s-msg .stack{padding-top:56px}
 @media (orientation:landscape) and (max-height:560px){#s-pause .stack,#s-result .stack,#s-msg .stack{padding-top:50px}}
+
+/* maths (KaTeX) inside question text and answer buttons: keep it the same size as the words around it */
+.katex { font-size: 1.04em; }
+.opt > span .katex, #q .katex { white-space: nowrap; }
+.opt > span { overflow-wrap: anywhere; min-width: 0; }
+/* text shrinks (--fit set by fitQuestionUi) when a question or its answers are very long */
+#q { font-size: calc(clamp(16px, 4.2vw, 22px) * var(--fit, 1)); }
+.hud #q { font-size: calc(clamp(12px, 2.4vw, 16px) * var(--fit, 1)); }
+.opt > span { font-size: calc(1em * var(--fit, 1)); }
+.opts { --fit: 1; }
