@@ -82,6 +82,7 @@ function setEnv(e, save = true) {
 }
 function applySettings() {
   settings = store.profile.settings = sanitizeSettings(store.profile.settings);
+  { let mid = false; try { mid = track().id === 'middle'; } catch (e) {} if (mid && !prefs.confirmChosen) settings.confirmTap = true; }   // younger students: a second tap fires (fewer mis-taps) until they choose otherwise
   document.body.classList.remove('ts-s', 'ts-l'); if (settings.textSize !== 'm') document.body.classList.add('ts-' + settings.textSize);
   document.body.classList.toggle('lefty', settings.leftHanded);
   document.body.classList.toggle('rm', settings.reduceMotion);
@@ -379,7 +380,7 @@ function renderSettings() {
   const defs = [['sound', 'Sound'], ['vibration', 'Vibration'], ['confirmTap', 'Confirm tap (second tap fires)'], ['leftHanded', 'Left-handed layout'], ['extraTime', 'Extra reading time (×1.5)'], ['colorBlind', 'Colour-blind mode'], ['reduceMotion', 'Reduce motion']];
   for (const [k, label] of defs) {
     const d = document.createElement('div'); d.className = 'toggle'; d.innerHTML = `<span>${label}</span><button class="${settings[k] ? 'on' : ''}">${settings[k] ? 'On' : 'Off'}</button>`;
-    d.lastChild.onclick = () => { store.profile.settings[k] = !settings[k]; applySettings(); renderSettings(); if (k === 'sound' && settings.sound) { sfx.unlock(); sfx.play('correct'); } };
+    d.lastChild.onclick = () => { if (k === 'confirmTap') { prefs.confirmChosen = true; savePrefs(prefs); } store.profile.settings[k] = !settings[k]; applySettings(); renderSettings(); if (k === 'sound' && settings.sound) { sfx.unlock(); sfx.play('correct'); } };
     tg.appendChild(d);
   }
   const sp = $('set-prefs'); sp.innerHTML = '';
@@ -556,6 +557,7 @@ function render(alpha, realDt) {
   S.garage = S.garage || resolveGarage(store.profile.garage, 0, 20);
   if (rules && phase !== 'menu' && phase !== 'over') { D.hidden = rules.hidden; S.think = phase === 'ask' ? { frac: rules.thinkFraction, leftMs: rules.timeLeftMs, frozen: rules.frozen } : null; if (phase === 'ask') updateTimerBar(); }
   else S.think = null;
+  S.gate = rules && rules.inGate && phase !== 'menu' && phase !== 'over' ? { done: rules.gate.done, need: rules.gate.need, wrong: rules.gate.wrong } : null;
   R.begin(fx); drawScene(R, S); R.end(fx);
   if (frameN % 30 === 0) measureUi();
   if (++frameN % 20 === 0 && !$('fps').hidden) $('fps').textContent = `${perf.fps.toFixed(0)} fps · ${perf.preset.name}`;

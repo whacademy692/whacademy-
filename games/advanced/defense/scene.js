@@ -4,6 +4,7 @@
 import { drawSkyDay, drawSkyNight, drawGroundDay, drawGroundNight, tree, roundRect, mix, lighten, darken, hash, drawParticles, drawVignette } from '../racer/scene.js';
 
 export const DRONE_COLORS = { day: ['#ff6a00', '#ffc400'], night: ['#00c8ff', '#3b5bff'] };
+export const BOSS = ['#b3122e', '#ffb02e'];            // Rank Gate: armoured crimson + gold drones
 export const GOOD = ['#00c853', '#7dff9c'], BAD = ['#e5173a', '#ff6b6b'];
 export { drawParticles };
 
@@ -12,7 +13,7 @@ export const TL = { fire: 0.06, hit: 0.34, dive: 0.5, end: 1.0 };
 
 export function geom(R) {
   const W = R.w, H = R.h;
-  const top = R.uiTop > 0 ? R.uiTop : H * 0.27, bot = R.uiBot > top + 150 ? R.uiBot : H * 0.78;   // free area between the question card and the power-up row (measured by the host)
+  const top = (R.uiTop > 0 ? R.uiTop : H * 0.27) + (R.gateBar ? 34 : 0), bot = R.uiBot > top + 150 ? R.uiBot : H * 0.78;   // free area between the question card and the power-up row (measured by the host)
   const avail = bot - top;
   const cx = R.uiR > R.uiL ? (R.uiL + R.uiR) / 2 : W / 2, room = R.uiR > R.uiL ? R.uiR - R.uiL : W * 0.94;   // landscape: the free strip between the left and right panels
   const span = Math.min(W * 0.94, H * 0.92, room);
@@ -164,7 +165,8 @@ function drawShield(R, S, g) {
 function drawDrone(R, S, g, i, P, label) {
   const c = R.ctx, s = g.s, pal = S.droneColors, { x, y } = P, t = S.t;
   const good = S.D.result && S.D.result.correctIndex === i, bad = S.D.result && S.D.result.picked === i && !S.D.result.correct;
-  const col = P.mode === 'locked' && S.D.result ? (bad ? BAD : pal) : pal;
+  const boss = !!S.gate && !(P.mode === 'locked' && S.D.result && bad);
+  const col = P.mode === 'locked' && S.D.result ? (bad ? BAD : (boss ? BOSS : pal)) : (boss ? BOSS : pal);
   c.save(); c.translate(x + (P.shake ? Math.sin(t * 90 + i) * 2 : 0), y); c.scale(s, s);
   if (P.mode === 'dive') c.rotate(0.35 * Math.sin(t * 6 + i) + (g.baseX - x) * 0.002);
   // shadow glow
@@ -180,6 +182,15 @@ function drawDrone(R, S, g, i, P, label) {
   c.fillStyle = bg; roundRect(c, -24, -18, 48, 34, 14); c.fill();
   c.strokeStyle = darken(col[0], 0.5); c.lineWidth = 2.2; c.stroke();
   c.fillStyle = 'rgba(255,255,255,.3)'; roundRect(c, -18, -15, 36, 7, 4); c.fill();
+  if (S.gate) {                                                           // boss armour: shoulder plates, horns and a gold crest
+    c.fillStyle = '#2a0f1c'; c.strokeStyle = '#ffd36b'; c.lineWidth = 1.8;
+    for (const sx of [-1, 1]) {
+      c.beginPath(); c.moveTo(sx * 22, -16); c.lineTo(sx * 36, -6); c.lineTo(sx * 33, 10); c.lineTo(sx * 22, 12); c.closePath(); c.fill(); c.stroke();
+      c.beginPath(); c.moveTo(sx * 12, -18); c.lineTo(sx * 17, -34); c.lineTo(sx * 22, -17); c.closePath(); c.fill(); c.stroke();
+    }
+    c.fillStyle = '#ffd36b'; c.beginPath(); c.moveTo(-6, -18); c.lineTo(0, -28); c.lineTo(6, -18); c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(255,211,107,.75)'; c.lineWidth = 1.6; c.beginPath(); c.moveTo(-16, 8); c.lineTo(16, 8); c.stroke();
+  }
   // underside thruster
   c.fillStyle = darken(col[0], 0.55); roundRect(c, -12, 12, 24, 7, 3); c.fill();
   R.glow(0, 22, 20, '#ffe08a', 0.55 + 0.25 * Math.sin(t * 12 + i));
@@ -248,7 +259,27 @@ function drawSmokeD(R, S) {
   c.globalAlpha = 1;
 }
 
+function c0(R) { const c = R.ctx, g = c.createRadialGradient(R.w / 2, R.h * 0.5, R.h * 0.2, R.w / 2, R.h * 0.5, R.h * 0.75); g.addColorStop(0, 'rgba(120,0,30,0)'); g.addColorStop(1, 'rgba(140,0,30,.28)'); c.fillStyle = g; c.fillRect(0, 0, R.w, R.h); }   // red edge glow while a gate is open
+function drawGateBar(R, S, g) {
+  const G = S.gate; if (!G) return;
+  const c = R.ctx, t = S.t, w = Math.min(R.w * 0.9, g.span), h = 26, x = g.baseX - w / 2, y = Math.max(6, (R.uiTop > 0 ? R.uiTop : g.hz) - 2);
+  c.save();
+  c.fillStyle = 'rgba(30,6,16,.88)'; roundRect(c, x, y, w, h, 9); c.fill();
+  c.strokeStyle = `rgba(255,${176 + (S.reduceMotion ? 0 : Math.round(40 * Math.sin(t * 5)))},46,.95)`; c.lineWidth = 2; c.stroke();
+  c.fillStyle = '#ffd36b'; c.font = '900 11px system-ui, sans-serif'; c.textAlign = 'left'; c.textBaseline = 'middle';
+  c.fillText('RANK GATE', x + 10, y + h / 2 + 1);
+  const x0 = x + 92, x1 = x + w - 58, n = Math.max(1, G.need), gap = 3, sw = (x1 - x0 - gap * (n - 1)) / n;
+  for (let i = 0; i < n; i++) { c.fillStyle = i < G.done ? '#3dffa0' : 'rgba(255,255,255,.18)'; roundRect(c, x0 + i * (sw + gap), y + 8, Math.max(2, sw), h - 16, 2); c.fill(); }
+  for (let k = 0; k < 3; k++) {                                              // three strike marks: the gate fails on the third mistake
+    const mx = x + w - 44 + k * 14, my = y + h / 2;
+    c.strokeStyle = k < G.wrong ? '#ff4d6d' : 'rgba(255,255,255,.28)'; c.lineWidth = k < G.wrong ? 3 : 2;
+    c.beginPath(); c.moveTo(mx - 4, my - 4); c.lineTo(mx + 4, my + 4); c.moveTo(mx + 4, my - 4); c.lineTo(mx - 4, my + 4); c.stroke();
+  }
+  c.restore();
+}
+
 export function drawScene(R, S) {
+  R.gateBar = !!S.gate;                                             // geom() leaves room under the question card for the Rank Gate bar
   const g = geom(R);
   drawBackdrop(R, S, g); drawPlatform(R, S, g);
   drawMinions(R, S, g);
@@ -266,6 +297,7 @@ export function drawScene(R, S) {
   }
   drawBeams(R, S, g);
   drawSmokeD(R, S); drawVignette(R, S); drawTimerFrost(R, S);
+  if (S.gate) { c0(R); drawGateBar(R, S, g); }
   drawParticles(R, S.parts);
   return g;
 }

@@ -13,6 +13,7 @@ export const DEFAULT_PREFS = {
   car: 'street',         // Racer car body (unlocks with rank)
   lights: false,         // Racer: headlight beams at night (unlocks with rank)
   coach: { racer: false, defense: false },   // "how to play" card already shown once on this device
+  confirmChosen: false,  // Defense: the student has set "Confirm tap" themselves (until then classes 6-8 get it ON by default)
 };
 
 const PLACES = ['highway', 'city', 'offroad', 'snow', 'coast'];
@@ -27,6 +28,7 @@ export function sanitizePrefs(p) {
   if (PLACES.includes(p.place)) out.place = p.place;
   if (CARS.includes(p.car)) out.car = p.car;
   if (typeof p.lights === 'boolean') out.lights = p.lights;
+  if (typeof p.confirmChosen === 'boolean') out.confirmChosen = p.confirmChosen;
   if (p.coach && typeof p.coach === 'object') { out.coach.racer = !!p.coach.racer; out.coach.defense = !!p.coach.defense; }
   return out;
 }
