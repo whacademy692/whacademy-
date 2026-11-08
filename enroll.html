@@ -98,6 +98,13 @@
   input:focus,select:focus,textarea:focus{outline:none;border-color:var(--indigo-soft);box-shadow:0 0 0 4px rgba(99,102,241,.14)}
   input.bad,select.bad,textarea.bad{border-color:var(--err);box-shadow:0 0 0 4px rgba(220,38,38,.1)}
   .hint{font-size:.76rem;color:var(--muted);margin:6px 0 0}
+  .phone-row{display:flex;gap:10px}
+  .phone-row select{flex:0 0 44%;max-width:240px}
+  .phone-row input{flex:1 1 auto;min-width:0}
+  #waCcOther{flex:0 0 90px;display:none}
+  .consent-box{background:#f8faff;border:1.5px solid var(--line);border-radius:12px;padding:14px 15px}
+  .consent-box label.chk{display:flex;gap:11px;align-items:flex-start;margin:0;font-weight:500;font-size:.84rem;line-height:1.55;color:#334155;cursor:pointer}
+  .consent-box input[type=checkbox]{width:18px;height:18px;flex:0 0 18px;margin-top:2px;padding:0}
   .err{font-size:.76rem;color:var(--err);margin:6px 0 0;display:none;font-weight:600}
   .err.show{display:block}
   /* ---- subject chips ---- */
@@ -201,8 +208,13 @@
         </div>
         <div class="full">
           <label for="whatsapp">WhatsApp Number <span class="req">*</span></label>
-          <input type="tel" id="whatsapp" name="whatsapp" placeholder="e.g. 0300 1234567" inputmode="tel" autocomplete="tel" />
-          <p class="err" id="e-whatsapp">Please enter a valid WhatsApp number, for example 0300 1234567.</p>
+          <div class="phone-row">
+            <select id="waCc" aria-label="Country code"></select>
+            <input type="text" id="waCcOther" inputmode="numeric" maxlength="4" placeholder="Code" aria-label="Country code digits" />
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="3001234567" inputmode="numeric" autocomplete="tel-national" maxlength="14" />
+          </div>
+          <p class="hint" id="waHint"></p>
+          <p class="err" id="e-whatsapp">Please enter a valid WhatsApp number.</p>
         </div>
         <div>
           <label for="fullName">Student Full Name <span class="req">*</span></label>
@@ -295,6 +307,24 @@
           <div class="plans" id="plans"></div>
           <p class="fee-estimate" id="feeEstimate"></p>
           <p class="err" id="e-plan">Please select a plan.</p>
+        </div>
+        <div class="full">
+          <label for="filledBy">Who is filling this form? <span class="req">*</span></label>
+          <select id="filledBy" name="filledBy">
+            <option value="">— Select —</option>
+            <option value="Parent/Guardian">Parent / Guardian</option>
+            <option value="Student (18+)">Student (18 years or older)</option>
+          </select>
+          <p class="err" id="e-filledBy">Please select who is filling this form.</p>
+        </div>
+        <div class="full">
+          <div class="consent-box">
+            <label class="chk" for="consent">
+              <input type="checkbox" id="consent" name="consent" />
+              <span>I confirm the details above are correct and that I have read the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a> and the <a href="terms.html" target="_blank" rel="noopener">Terms</a>, including the fee and refund policy. If the student is under 18, I am the student's parent or legal guardian and I consent to W.H. Academy collecting and using the student's information as described, and to the student using the academy's services.</span>
+            </label>
+          </div>
+          <p class="err" id="e-consent">Please tick the box to give your consent.</p>
         </div>
       </div>
     </div>
@@ -461,7 +491,7 @@
     var dim=new Date(Date.UTC(y,m+1,0)).getUTCDate(), left=dim-d+1;
     if(left>=dim||!fee) return '';
     var amt=Math.round(fee*left/dim/10)*10;
-    return '<span class="fe-note">If you join today: <b>PKR '+amt.toLocaleString()+'</b> for the rest of '+MONTHS[m]+' '+y+' ('+left+' day'+(left===1?'':'s')+', today counts), then PKR '+fee.toLocaleString()+' a month from 1 '+MONTHS[(m+1)%12]+' '+(m===11?y+1:y)+'. The exact amount is confirmed on your fee voucher.</span>';
+    return '<span class="fe-note">If your account is activated today: <b>PKR '+amt.toLocaleString()+'</b> for the rest of '+MONTHS[m]+' '+y+' ('+left+' day'+(left===1?'':'s')+', today counts), then PKR '+fee.toLocaleString()+' a month from 1 '+MONTHS[(m+1)%12]+' '+(m===11?y+1:y)+'. Your first month is always calculated from the day your account is activated; the exact amount is confirmed on WhatsApp and your fee voucher.</span>';
   }
 
   /* ---- render plan cards ---- */
@@ -493,6 +523,8 @@
     $('homeNote').classList.toggle('show', this.value==='Home Tuition');
     setStep();
   });
+  $('filledBy').addEventListener('change',function(){clearErr('filledBy');});
+  $('consent').addEventListener('change',function(){clearErr('consent');});
   document.getElementById('subjectChips').addEventListener('change',function(){clearErr('subjects');updateEstimate();setStep();});
   ['email','whatsapp','fullName','fatherName','fatherOccupation','schoolName','address'].forEach(function(id){
     $(id).addEventListener('input',function(){clearErr(id);setStep();});
@@ -513,17 +545,40 @@
   function showErr(id,msg){ var e=$('e-'+id); if(e){ if(msg)e.textContent=msg; e.classList.add('show'); } var f=$(id); if(f)f.classList.add('bad'); }
   function clearErr(id){ var e=$('e-'+id); if(e)e.classList.remove('show'); var f=$(id); if(f)f.classList.remove('bad'); }
   function emailOk(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
-  /* WhatsApp number -> "+923001234567" ('' if it is not a usable number). Same rule as the server. */
-  function normPhone(v){
-    var d=String(v||'').replace(/[\s\-().]/g,'');
-    if(!d) return '';
-    if(d.indexOf('00')===0) d='+'+d.slice(2);
-    if(/^03\d{9}$/.test(d)) d='+92'+d.slice(1);
-    else if(/^923\d{9}$/.test(d)) d='+'+d;
-    else if(/^3\d{9}$/.test(d)) d='+92'+d;
-    if(d.indexOf('+92')===0 && !/^\+923\d{9}$/.test(d)) return '';
-    return /^\+[1-9]\d{9,14}$/.test(d) ? d : '';
+  /* WhatsApp number: country-code dropdown + digits only -> "+923001234567" ('' if not usable). Same rule as the server.
+     [name, dial code, min digits, max digits]. Pakistan must be exactly 10 digits starting with 3. */
+  var COUNTRIES=[['Pakistan','92',10,10],['United Arab Emirates','971',9,9],['Saudi Arabia','966',9,9],['United Kingdom','44',10,10],['United States','1',10,10],['Canada','1',10,10],['Australia','61',9,9],['Qatar','974',8,8],['Oman','968',8,8],['Kuwait','965',8,8],['Bahrain','973',8,8],['Germany','49',10,11],['Malaysia','60',9,10],['Turkey','90',10,10],['Other country','',6,13]];
+  (function(){ var sel=$('waCc'); COUNTRIES.forEach(function(c,i){ var o=document.createElement('option'); o.value=String(i); o.textContent=c[0]+(c[1]?' (+'+c[1]+')':''); sel.appendChild(o); }); })();
+  function waRule(){ var c=COUNTRIES[Number($('waCc').value)||0]; var cc=c[1]; if(!cc) cc=($('waCcOther').value||'').replace(/\D/g,''); return {name:c[0],cc:cc,min:c[2],max:c[3],other:!c[1]}; }
+  function waHint(){
+    var r=waRule(), h=$('waHint'), e=$('e-whatsapp');
+    $('waCcOther').style.display=r.other?'block':'none';
+    var msg = r.cc==='92' ? 'Pakistan: 10 digits starting with 3, e.g. 300 1234567 (no leading 0).'
+            : r.other ? 'Type the country code in the small box, then the number without the leading 0.'
+            : r.name+': '+(r.min===r.max?r.min:r.min+'–'+r.max)+' digits, without the leading 0.';
+    h.textContent=msg;
+    e.textContent='Please enter a valid WhatsApp number. '+msg;
   }
+  function waClean(){
+    var r=waRule(), el=$('whatsapp'), d=String(el.value||'').replace(/\D/g,'');
+    d=d.replace(/^00/,'');
+    if(r.cc && d.indexOf(r.cc)===0 && d.length>r.max) d=d.slice(r.cc.length);
+    d=d.replace(/^0+/,'');
+    if(r.cc==='92' && d.length && d.charAt(0)!=='3') d='';
+    if(d.length>r.max) d=d.slice(0,r.max);
+    if(el.value!==d) el.value=d;
+  }
+  function normPhone(){
+    var r=waRule(), d=String($('whatsapp').value||'').replace(/\D/g,'');
+    if(!r.cc||d.length<r.min||d.length>r.max) return '';
+    if(r.cc==='92' && d.charAt(0)!=='3') return '';
+    if((r.cc+d).length>15) return '';
+    return '+'+r.cc+d;
+  }
+  $('waCc').addEventListener('change',function(){ clearErr('whatsapp'); waHint(); waClean(); setStep(); });
+  $('waCcOther').addEventListener('input',function(){ this.value=this.value.replace(/\D/g,'').slice(0,4); clearErr('whatsapp'); waHint(); waClean(); setStep(); });
+  $('whatsapp').addEventListener('input',function(){ waClean(); });
+  waHint();
   function selectedSubjects(){ return Array.prototype.map.call(document.querySelectorAll('#subjectChips input:checked'),function(x){return x.value;}); }
 
   /* ---- submit ---- */
@@ -545,6 +600,8 @@
     need('stream', $('stream').value);
     need('tuitionMode', $('tuitionMode').value);
     need('plan', !!state.plan);
+    need('filledBy', !!$('filledBy').value);
+    need('consent', $('consent').checked);
 
     var cls=Number($('classLevel').value);
     var subs=selectedSubjects();
@@ -570,6 +627,7 @@
     var payload = {
       operation:'enrollment/submit', apiKey:API_KEY,
       captchaToken:captchaToken,
+      filledBy:$('filledBy').value, consent:true,
       email:$('email').value.trim(),
       whatsapp:normPhone($('whatsapp').value),
       fullName:$('fullName').value.trim(),
