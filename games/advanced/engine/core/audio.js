@@ -42,7 +42,20 @@ export class Sfx {
     const d = buf.getChannelData(0);
     for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
     this._noise = buf;
+    this._bindLifecycle();
     if (this._env) this.ambience(this._env);
+  }
+
+  // Silence everything when the page is hidden, backgrounded, or left (tab switch, app switch, back button, bfcache).
+  // Without this the bird chirps kept firing from the background timer after the game was closed.
+  _bindLifecycle() {
+    if (this._lc || typeof document === 'undefined') return;
+    this._lc = true;
+    const hush = () => { try { this._engStop(); if (this.ctx && this.ctx.state === 'running') this.ctx.suspend(); } catch (e) { /* ignore */ } };
+    const wake = () => { try { if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume(); } catch (e) { /* ignore */ } };
+    document.addEventListener('visibilitychange', () => { if (document.hidden) hush(); else wake(); });
+    addEventListener('pagehide', hush);
+    addEventListener('pageshow', () => { if (!document.hidden) wake(); });
   }
 
   setMuted(m) { this.muted = !!m; this._ambLevel(); }
@@ -74,7 +87,7 @@ export class Sfx {
     this._amb = amb; this.ambStarts++;
     const loop = () => {
       if (this._amb !== amb) return;
-      if (!this.muted && this.volume > 0 && c.state === 'running') (want === 'day' ? this._bird() : this._crickets());
+      if (!this.muted && this.volume > 0 && c.state === 'running' && !(typeof document !== 'undefined' && document.hidden)) (want === 'day' ? this._bird() : this._crickets());
       amb.timer = setTimeout(loop, want === 'day' ? 2200 + Math.random() * 4200 : 700 + Math.random() * 1500);
     };
     amb.timer = setTimeout(loop, 900);
