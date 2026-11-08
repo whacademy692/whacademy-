@@ -11,6 +11,29 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+<!-- Cloudflare Turnstile (anti-spam). SITE key is public by design; same widget as login / insights. -->
+<script>
+  window.WHA_TURNSTILE_SITE_KEY = '0x4AAAAAAEKa85ts_mWrcild';
+  (function(){
+    var wid;
+    window.whaEnrollCaptchaRender = function(){
+      if (wid !== undefined || !window.turnstile) return;
+      var el = document.getElementById('enrollCaptcha'); if (!el) return;
+      try { wid = window.turnstile.render('#enrollCaptcha', { sitekey: window.WHA_TURNSTILE_SITE_KEY }); } catch (e) { /* retried by onload / DOMContentLoaded */ }
+    };
+    window.whaEnrollCaptchaToken = function(){
+      if (wid === undefined || !window.turnstile) return '';
+      try { return window.turnstile.getResponse(wid) || ''; } catch (e) { return ''; }
+    };
+    window.whaEnrollCaptchaReset = function(){
+      if (wid === undefined || !window.turnstile) return;
+      try { window.turnstile.reset(wid); } catch (e) { /* ignore */ }
+    };
+    window.whaEnrollTurnstileOnload = function(){ window.whaEnrollCaptchaRender(); };
+    document.addEventListener('DOMContentLoaded', function(){ window.whaEnrollCaptchaRender(); });
+  })();
+</script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=whaEnrollTurnstileOnload&render=explicit" async defer></script>
 <style>
   /* =========================================================================
      enroll.html — W.H. Academy first-party enrollment form
@@ -276,6 +299,8 @@
       </div>
     </div>
 
+    <div id="enrollCaptcha" style="display:flex;justify-content:center;margin:18px 0 6px"></div>
+
     <div class="actions">
       <button type="submit" class="btn" id="submitBtn">
         <span class="spin"></span><span class="label">Submit Enrollment</span>
@@ -527,6 +552,14 @@
     if(subs.length===0){ showErr('subjects'); ok=false; if(!firstBad)firstBad=$('subjectChips'); }
 
 
+    var captchaToken = (window.whaEnrollCaptchaToken && window.whaEnrollCaptchaToken()) || '';
+    if(ok && !captchaToken){
+      $('formErr').textContent='Please complete the verification check above the Submit button, then submit again.';
+      $('formErr').classList.add('show');
+      var capEl=$('enrollCaptcha'); if(capEl && capEl.scrollIntoView) capEl.scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+
     if(!ok){
       $('formErr').textContent='Please fill in the highlighted fields before submitting.';
       $('formErr').classList.add('show');
@@ -536,6 +569,7 @@
 
     var payload = {
       operation:'enrollment/submit', apiKey:API_KEY,
+      captchaToken:captchaToken,
       email:$('email').value.trim(),
       whatsapp:normPhone($('whatsapp').value),
       fullName:$('fullName').value.trim(),
@@ -581,6 +615,7 @@
       $('formErr').textContent=e.message||'Could not submit. Please try again.';
       $('formErr').classList.add('show');
       $('formErr').scrollIntoView({behavior:'smooth',block:'center'});
+      if(window.whaEnrollCaptchaReset) window.whaEnrollCaptchaReset();
       btn.disabled=false; btn.classList.remove('is-loading'); btn.querySelector('.label').textContent='Submit Enrollment';
     });
   });
