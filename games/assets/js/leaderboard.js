@@ -138,7 +138,9 @@
     var redCards = (typeof data.redCards === 'number') ? data.redCards : countRedCards();
 
     // --- Overall summary card ---
-    container.appendChild(Utils.createEl('div', { class: 'card rank-summary' }, [
+    var side = Utils.createEl('aside', { class: 'rank-side' });
+    var main = Utils.createEl('section', { class: 'rank-main' });
+    side.appendChild(Utils.createEl('div', { class: 'card rank-summary' }, [
       Utils.createEl('p', { class: 'card--stat__label', text: 'Total XP earned' }),
       Utils.createEl('span', { class: 'rank-summary__xp', text: String(Number(data.totalXp) || 0) }),
       Utils.createEl('div', { class: 'rank-summary__meta' }, [
@@ -161,11 +163,11 @@
     ]));
 
     // --- Per-game-type list ---
-    container.appendChild(Utils.createEl('h2', { class: 'rank-h2', text: 'XP by game type' }));
+    main.appendChild(Utils.createEl('h2', { class: 'rank-h2', text: 'XP by game type' }));
 
     var byId = {};
     (data.perType || []).forEach(function (t) { byId[t.mechanicId] = t; });
-    var list = Utils.createEl('div', { class: 'stack-sm' });
+    var list = Utils.createEl('div', { class: 'rank-grid' });
     GAME_TYPES.forEach(function (gt) {
       var t = byId[gt.id] || { xp: 0, maxXp: gt.count * 5, percent: 0 };
       list.appendChild(Utils.createEl('div', { class: 'card rank-row' }, [
@@ -178,7 +180,8 @@
           text: (Number(t.percent) || 0) + '% of ' + (Number(t.maxXp) || 0) + ' max XP' })
       ]));
     });
-    container.appendChild(list);
+    main.appendChild(list);
+    container.appendChild(Utils.createEl('div', { class: 'rank-layout' }, [side, main]));
   }
 
   function renderError() {

@@ -8,6 +8,10 @@
   padding: var(--space-4); border: 1.5px solid var(--color-border-strong); border-radius: var(--radius-md, 14px);
   background: var(--color-bg-surface-solid); color: var(--color-text-primary); font: inherit; cursor: pointer;
 }
+.rq-card { position: relative; overflow: hidden; }
+.rq-card::before { content: ''; position: absolute; inset: 0 auto 0 0; width: 4px; background: var(--color-interactive); }
+.rq-card--leave::before { background: var(--color-warning); }
+.rq-card--deletion::before { background: var(--color-error); }
 .rq-card:hover:not(:disabled) { border-color: var(--color-interactive); }
 .rq-card.is-open { border-color: var(--color-interactive); box-shadow: 0 8px 22px rgba(79, 70, 229, .14); }
 .rq-card:disabled { cursor: default; opacity: .85; }
@@ -60,4 +64,21 @@
 .rq-item__admin { margin: 8px 0 0; padding: 8px 10px; border-radius: 10px; font-size: .88rem; background: var(--color-info-surface); }
 .rq-item .btn { margin-top: var(--space-2); }
 
-@media (min-width: 640px) { .rq-grid { grid-template-columns: 1fr; } }
+@media (min-width: 760px) { .rq-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* --- correction: tick several things, each with its own correct value --- */
+.rq-help { margin: 0 0 var(--space-3); font-size: .92rem; line-height: 1.5; color: var(--color-text-secondary); }
+.rq-fields { display: grid; gap: var(--space-2); grid-template-columns: 1fr; }
+@media (min-width: 760px) { .rq-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.rq-fld { border: 1.5px solid var(--color-border-strong); border-radius: 12px; background: var(--color-bg-surface-solid); padding: 10px 12px; }
+.rq-fld.is-on { border-color: var(--color-interactive); background: var(--color-brand-ink-tint); }
+.rq-fld__head { display: grid; grid-template-columns: auto 1fr; column-gap: .6rem; row-gap: 1px; align-items: center; cursor: pointer; }
+.rq-fld__head input { grid-row: 1 / span 2; width: 1.15rem; height: 1.15rem; accent-color: var(--color-interactive); }
+.rq-fld__name { font-weight: 700; font-size: .95rem; }
+.rq-fld__cur { font-size: .8rem; color: var(--color-text-secondary); overflow-wrap: anywhere; }
+.rq-fld__input { width: 100%; box-sizing: border-box; margin-top: 8px; font: inherit; }
+.rq-fld__other { min-height: 3.4rem; resize: vertical; }
+.rq-count { margin: var(--space-2) 2px 0; font-size: .8rem; color: var(--color-text-secondary); }
+.rq-note--danger { background: var(--color-error-surface); border-color: var(--color-error); color: var(--color-text-primary); }
+.rq-item__changes { margin: 6px 0 0; padding-left: 1.1rem; list-style: disc; font-size: .9rem; line-height: 1.5; overflow-wrap: anywhere; }
+.rq-item__changes s { color: var(--color-text-secondary); }

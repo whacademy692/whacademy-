@@ -59,11 +59,12 @@
       </header>
 
       <main id="main-content" class="app-main">
-        <div class="container section" style="max-width: 560px;">
+        <div class="container section">
           <h1 class="hide-mobile">Settings</h1>
 
-          <form id="settings-form" method="post" class="stack-lg" style="margin-top: var(--space-5);">
-            <section>
+          <div class="set-grid">
+          <form id="settings-form" method="post" class="stack-lg">
+            <section class="set-card">
               <h2>Appearance</h2>
               <div class="stack" style="margin-top: var(--space-3);">
                 <div class="field">
@@ -95,7 +96,7 @@
 
           </form>
 
-          <section style="margin-top: var(--space-6);">
+          <section class="set-card">
             <h2>Account</h2>
             <p class="text-body-sm">Change the PIN you use to sign in.</p>
             <form id="change-pin-form" method="post" class="stack" style="margin-top: var(--space-3);">
@@ -132,8 +133,9 @@
               </div>
             </form>
           </section>
+          </div>
 
-          <section id="requests-section" style="margin-top: var(--space-6);">
+          <section id="requests-section" class="set-card set-card--wide">
             <h2>Requests</h2>
             <p class="text-body-sm rq-intro">Want to leave, fix wrong information or have your data deleted? Send a request here. W.H. Academy handles it and tells you the result on this page.</p>
             <div id="requests-root" aria-live="polite"><p class="rq-empty">Loading…</p></div>

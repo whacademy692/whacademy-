@@ -8,3 +8,16 @@
   border-top: 1px solid var(--color-border);
 }
 #settings-form h2 { font: var(--type-h4); }
+
+/* --- page layout: use the width, instead of one narrow centred column --- */
+.set-grid { display: grid; gap: var(--space-5); grid-template-columns: 1fr; align-items: stretch; margin-top: var(--space-5); }
+@media (min-width: 900px) { .set-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.set-grid > form { display: flex; margin: 0; }
+.set-grid > form > .set-card { flex: 1; }
+.set-card {
+  background: var(--color-bg-surface-solid); border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-lg, 18px); padding: var(--space-5); box-shadow: 0 10px 28px rgba(15, 23, 42, .06);
+  min-width: 0;
+}
+.set-card h2 { margin: 0 0 var(--space-1); font: var(--type-h4); }
+.set-card--wide { margin-top: var(--space-5); }

@@ -22,39 +22,56 @@
     { id: 'defense', icon: 'shield', title: 'Auto Defense', desc: 'Four drones attack your base. Aim your turrets at the drone carrying the right answer. Miss and the base takes the hit.', href: 'advanced/defense/defense.html', live: true }
   ];
 
+  var RANK_NAMES = ['Spark','Ember','Glow','Pulse','Flux','Volt','Surge','Blaze','Storm','Vortex','Aura','Nebula','Eclipse','Phantom','Zenith','Titan','Cosmic','Quantum','Infinity','Omega'];
+  var BAND_COLORS = ['#0d9488', '#7c3aed', '#c026d3', '#d97706'];
+  var SKIN = { racer: 'speed', defense: 'core' };
+  var badgeMod = null;
+
+  // The proper rank shield comes from the game engine (ES module). If it cannot load, a plain shield is drawn instead.
+  function loadBadge() {
+    try { return import('../../advanced/engine/ui/badge.js').then(function (m) { badgeMod = m; }, function () { badgeMod = null; }); }
+    catch (e) { return Promise.resolve(); }
+  }
+  function shield(gameId, rankName, size) {
+    var i = RANK_NAMES.indexOf(rankName); if (i < 0) i = 0;
+    if (badgeMod && badgeMod.badgeSVG) { try { return badgeMod.badgeSVG(i, { skin: SKIN[gameId] || 'speed', size: size, label: false }); } catch (e) { /* fall through */ } }
+    var c = BAND_COLORS[Math.min(3, Math.floor(i / 5))];
+    return '<svg viewBox="0 0 100 100" width="' + size + '" height="' + size + '" aria-hidden="true"><path d="M50 5 90 18v34C90 74 72 88 50 96 28 88 10 74 10 52V18z" fill="#11143a" stroke="' + c + '" stroke-width="4"/></svg>';
+  }
+
   function lock(opts) { root.innerHTML = Plan.lockHtml('advGames', opts); }
 
   function gameCard(g, prog) {
-    var lvl = '';
+    var rank = '';
     if (g.live && prog) {
-      lvl = '<p class="adv-game__lvl">' + (prog.placementDone ? ('Level ' + esc(prog.level) + ' · ' + esc(prog.rankName)) : 'Not placed yet — your first run finds your level') + '</p>';
+      rank = prog.placementDone
+        ? '<div class="adv-card__rank">' + shield(g.id, prog.rankName, 38) + '<div><b>' + esc(prog.rankName) + '</b><small>Level ' + esc(prog.level) + (prog.runs ? ' · ' + esc(prog.runs) + ' runs' : '') + '</small></div></div>'
+        : '<div class="adv-card__rank adv-card__rank--new">Not placed yet — your first run finds your level.</div>';
     }
     var act = g.live
-      ? '<a class="btn btn--primary" href="' + g.href + '">' + (prog && prog.runs ? 'Play' : 'Start') + '</a>'
+      ? '<a class="btn btn--primary" href="' + g.href + '">' + (prog && prog.runs ? 'Play ' : 'Start ') + esc(g.title) + '</a>'
       : '<span class="adv-pill">Coming soon</span>';
-    return '<div class="card adv-game adv-game--' + g.id + (g.live ? '' : ' adv-soon') + '">' +
-      '<div class="adv-game__art" aria-hidden="true">' + SVG[g.icon] + '</div>' +
-      '<div class="adv-game__body"><h2 class="adv-game__title">' + esc(g.title) + '</h2><p class="adv-game__desc">' + esc(g.desc) + '</p>' + lvl + '</div>' +
-      '<div class="adv-game__act">' + act + '</div></div>';
+    return '<article class="adv-card adv-card--' + g.id + (g.live ? '' : ' adv-soon') + '">' +
+      '<div class="adv-card__head"><div class="adv-card__art" aria-hidden="true">' + SVG[g.icon] + '</div>' +
+      '<div><h2 class="adv-card__title">' + esc(g.title) + '</h2><p class="adv-card__desc">' + esc(g.desc) + '</p></div></div>' +
+      rank + act + '</article>';
   }
 
   function render(p) {
-    var best = p.games && p.games.racer;
     root.innerHTML =
-      '<div class="card adv-me"><div><div class="adv-me__nick">' + esc(p.nickname || '—') + '</div>' +
-      '<div class="adv-me__meta">Your game name · Class ' + esc(p.classLevel) + ' ladder (' + (p.track === 'middle' ? 'Classes 6–8' : 'Classes 9–12') + ')</div></div>' +
+      '<section class="adv-hero"><div><div class="adv-hero__label">Your game name</div><div class="adv-hero__nick">' + esc(p.nickname || '—') + '</div>' +
+      '<div class="adv-hero__meta">Class ' + esc(p.classLevel) + ' ladder (' + (p.track === 'middle' ? 'Classes 6–8' : 'Classes 9–12') + ')</div></div>' +
       '<div class="adv-stats"><div class="adv-stat">' + SVG.coin + '<div><b>' + esc(p.coins || 0) + '</b><span>Coins</span></div></div>' +
-      '<div class="adv-stat">' + SVG.bolt + '<div><b>' + esc(p.gameXp || 0) + '</b><span>Game XP</span></div></div></div></div>' +
-      GAMES.map(function (g) { return gameCard(g, p.games && p.games[g.id]); }).join('') +
+      '<div class="adv-stat">' + SVG.bolt + '<div><b>' + esc(p.gameXp || 0) + '</b><span>Game XP</span></div></div></div></section>' +
+      '<div class="adv-games">' + GAMES.map(function (g) { return gameCard(g, p.games && p.games[g.id]); }).join('') + '</div>' +
       '<p class="adv-note">Game Rank, Game XP and coins here are separate from your normal XP and Ranks. ' +
       'Your Game Rank is shown to other students by your nickname only — never your real name. ' +
       '<a href="advanced-ranks.html">See the Advanced Ranks leaderboard</a>.</p>';
-    void best;
   }
 
   function fail(e) {
     var msg = (e && e.message) || 'Could not load. Please try again.';
-    root.innerHTML = '<div class="card adv-empty"><p>' + esc(msg) + '</p><button type="button" class="btn btn--secondary btn--sm" id="adv-retry">Try again</button></div>';
+    root.innerHTML = '<div class="adv-surface adv-empty"><p>' + esc(msg) + '</p><button type="button" class="btn btn--secondary btn--sm" id="adv-retry">Try again</button></div>';
     var b = document.getElementById('adv-retry'); if (b) b.addEventListener('click', load);
   }
 
@@ -64,11 +81,11 @@
       if (!Plan.allows(plan, 'advGames')) { lock(); return; }
       return Api.request('game/profile', {}).then(function (p) {
         if (!p || !p.eligible) {
-          if (p && p.reason === 'class') root.innerHTML = '<div class="card adv-empty"><h3>Advanced Games are for Class 6 to 12</h3><p>Your class is not in this range yet.</p></div>';
+          if (p && p.reason === 'class') root.innerHTML = '<div class="adv-surface adv-empty"><h3>Advanced Games are for Class 6 to 12</h3><p>Your class is not in this range yet.</p></div>';
           else lock();
           return;
         }
-        render(p);
+        return loadBadge().then(function () { render(p); });
       });
     }).catch(fail);
   }

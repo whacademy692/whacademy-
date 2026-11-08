@@ -44,6 +44,11 @@
       height: 8px; border-radius: 999px; overflow: hidden; margin-top: 8px;
       background: var(--color-border, #e5e7eb);
     }
+    .rank-layout { display: grid; gap: var(--space-5, 24px); grid-template-columns: 1fr; align-items: start; }
+    @media (min-width: 960px) { .rank-layout { grid-template-columns: 340px minmax(0, 1fr); } .rank-side { position: sticky; top: var(--space-5, 24px); } }
+    .rank-layout .rank-h2 { margin-top: 0; }
+    .rank-grid { display: grid; gap: var(--space-3, 12px); grid-template-columns: 1fr; }
+    @media (min-width: 640px) { .rank-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     .rank-bar__fill {
       height: 100%; border-radius: 999px; transition: width 0.3s ease;
       background: var(--color-primary, #3730a3);
@@ -77,7 +82,7 @@
       <header class="top-bar hide-desktop"><span class="top-bar__brand wh-logo"><span class="wh-mark">W.H.</span><span class="wh-text"><span class="wh-l1">ACADEMY</span><span class="wh-l2">MATHEMATICS</span></span></span></header>
 
       <main id="main-content" class="app-main">
-        <div class="container section" style="max-width: 620px;">
+        <div class="container section">
           <h1>Ranks</h1>
           <p class="text-body-sm" style="margin-bottom: var(--space-5);">
             Your XP in each game type, plus your average toward the Boss Battle.
