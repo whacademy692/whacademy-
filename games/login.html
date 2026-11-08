@@ -59,7 +59,7 @@
       <!-- ===== LOGIN ===== -->
       <section data-step="login">
         <h1 tabindex="-1">Log in</h1>
-        <form id="login-form" novalidate>
+        <form id="login-form" method="post" novalidate>
           <div class="field" data-field="studentId">
             <label class="field__label" for="login-student-id">Student ID</label>
             <input class="input text-mono" id="login-student-id" name="studentId" type="text" autocomplete="username"
@@ -98,7 +98,7 @@
         <button type="button" class="btn btn--tertiary btn--sm" data-goto-step="login" aria-label="Back to log in">&larr; Back</button>
         <h1 tabindex="-1">Reset your PIN</h1>
         <p class="text-body-sm">Enter your Student ID and the email on file — we'll send you a verification code.</p>
-        <form id="forgot-pin-form" novalidate>
+        <form id="forgot-pin-form" method="post" novalidate>
           <div class="field">
             <label class="field__label" for="forgot-student-id">Student ID</label>
             <input class="input text-mono" id="forgot-student-id" name="studentId" type="text" placeholder="Your Student ID" required>
@@ -120,7 +120,7 @@
         <button type="button" class="btn btn--tertiary btn--sm" data-goto-step="login" aria-label="Back to log in">&larr; Back</button>
         <h1 tabindex="-1">Register</h1>
         <p class="text-body-sm">Use the Student ID emailed to you once your enrollment was activated.</p>
-        <form id="registration-form" novalidate>
+        <form id="registration-form" method="post" novalidate>
           <div class="field">
             <label class="field__label" for="reg-student-id">Student ID</label>
             <input class="input text-mono" id="reg-student-id" name="studentId" type="text" placeholder="Your Student ID" required>
@@ -148,7 +148,7 @@
       <section data-step="otp-verification" hidden>
         <h1 tabindex="-1">Check your email</h1>
         <p class="text-body-sm">Enter the 6-digit code we just sent you. It expires in 15 minutes.</p>
-        <form id="otp-form" novalidate>
+        <form id="otp-form" method="post" novalidate>
           <div class="field">
             <span class="field__label" id="otp-group-label">Verification code</span>
             <div class="cluster" role="group" aria-labelledby="otp-group-label" style="justify-content:center; gap: var(--space-2);">
@@ -175,7 +175,7 @@
       <section data-step="set-pin" hidden>
         <h1 tabindex="-1">Create your PIN</h1>
         <p class="text-body-sm">Create your login PIN. You'll use it with your Student ID to log in.</p>
-        <form id="set-pin-form" novalidate>
+        <form id="set-pin-form" method="post" novalidate>
 
           <!-- Student ID.
                Shown when the student came straight to the site and typed nothing yet
@@ -223,7 +223,7 @@
       <section data-step="set-new-pin" hidden>
         <h1 tabindex="-1">Choose a new PIN</h1>
         <p class="text-body-sm">Create a strong PIN below.</p>
-        <form id="set-new-pin-form" novalidate>
+        <form id="set-new-pin-form" method="post" novalidate>
           <div class="field">
             <label class="field__label" for="reset-new-pin">New PIN</label>
             <input class="input input--pin wha-pin-input" id="reset-new-pin" data-eye name="pin" type="password" autocomplete="new-password" minlength="8" maxlength="16" required data-rules="#reset-pin-rules" data-confirm="#reset-confirm-pin">
