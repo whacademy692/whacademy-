@@ -23,7 +23,8 @@
     Broadcast: 'Announcement',
     BossResult: 'Boss Battle',
     Recheck: 'Rechecking',
-    StreakReminder: 'Streak'
+    StreakReminder: 'Streak',
+    StudentRequest: 'Request'
   };
 
   let state = {

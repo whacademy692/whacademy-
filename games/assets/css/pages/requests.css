@@ -1,0 +1,63 @@
+/* requests.css — "Requests" section of games/settings.html (leave / correct info / delete data).
+   Uses the shared theme tokens, so every theme (light, dark, midnight, ocean ...) is covered. */
+.rq-intro { margin: var(--space-2) 0 var(--space-4); }
+
+.rq-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-3); }
+.rq-card {
+  display: flex; flex-direction: column; gap: 2px; text-align: left; width: 100%;
+  padding: var(--space-4); border: 1.5px solid var(--color-border-strong); border-radius: var(--radius-md, 14px);
+  background: var(--color-bg-surface-solid); color: var(--color-text-primary); font: inherit; cursor: pointer;
+}
+.rq-card:hover:not(:disabled) { border-color: var(--color-interactive); }
+.rq-card.is-open { border-color: var(--color-interactive); box-shadow: 0 8px 22px rgba(79, 70, 229, .14); }
+.rq-card:disabled { cursor: default; opacity: .85; }
+.rq-card__top { display: flex; justify-content: space-between; align-items: center; gap: var(--space-2); }
+.rq-card__title { font-weight: 800; font-size: 1rem; }
+.rq-card__sub { font-size: .88rem; color: var(--color-text-secondary); line-height: 1.45; }
+
+.rq-form {
+  margin-top: var(--space-4); padding: var(--space-4); border: 1.5px solid var(--color-interactive);
+  border-radius: var(--radius-md, 14px); background: var(--color-bg-surface-solid);
+}
+.rq-form h3 { margin: 0 0 var(--space-2); font-size: 1.1rem; }
+.rq-field { display: block; margin: var(--space-3) 0; }
+.rq-field > span { display: block; margin-bottom: 4px; font-size: .85rem; font-weight: 700; }
+.rq-field em { font-weight: 500; font-style: normal; color: var(--color-text-secondary); }
+.rq-field .input, .rq-field select, .rq-field textarea { width: 100%; box-sizing: border-box; font: inherit; }
+.rq-text { min-height: 5.5rem; resize: vertical; line-height: 1.5; }
+.rq-hint { display: block; margin-top: 4px; font-size: .78rem; color: var(--color-text-secondary); }
+
+.rq-note {
+  margin: var(--space-3) 0; padding: var(--space-3); border-radius: 12px; font-size: .88rem; line-height: 1.55;
+  background: var(--color-info-surface); color: var(--color-text-primary); border: 1px solid var(--color-border-strong);
+}
+.rq-note ul { margin: 6px 0 0; padding-left: 1.2rem; list-style: disc; }
+.rq-note li { margin: 2px 0; }
+.rq-note--warn { background: var(--color-warning-surface); }
+.rq-note b { font-weight: 800; }
+
+.rq-check { display: flex; gap: .6rem; align-items: flex-start; margin: var(--space-3) 0; font-weight: 600; font-size: .92rem; line-height: 1.45; }
+.rq-check input { margin-top: .2rem; width: 1.1rem; height: 1.1rem; flex: none; accent-color: var(--color-interactive); }
+
+.rq-error {
+  margin: var(--space-3) 0 0; padding: var(--space-3); border-radius: 12px; font-size: .9rem; line-height: 1.45;
+  background: var(--color-error-surface); color: var(--color-error); border: 1px solid var(--color-error);
+}
+.rq-error[hidden] { display: none; }
+.rq-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; margin-top: var(--space-3); }
+
+.rq-h { margin: var(--space-6) 0 var(--space-3); font-size: 1.05rem; font-weight: 800; }
+.rq-empty { color: var(--color-text-secondary); font-size: .9rem; }
+.rq-list { display: grid; gap: var(--space-3); }
+.rq-item {
+  padding: var(--space-3) var(--space-4); border: 1px solid var(--color-border-strong); border-radius: 12px;
+  background: var(--color-bg-surface-solid);
+}
+.rq-item__top { display: flex; justify-content: space-between; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
+.rq-item__title { font-weight: 800; }
+.rq-item__when { font-size: .8rem; color: var(--color-text-secondary); }
+.rq-item__body { margin: 6px 0 0; font-size: .9rem; line-height: 1.5; overflow-wrap: anywhere; white-space: pre-wrap; }
+.rq-item__admin { margin: 8px 0 0; padding: 8px 10px; border-radius: 10px; font-size: .88rem; background: var(--color-info-surface); }
+.rq-item .btn { margin-top: var(--space-2); }
+
+@media (min-width: 640px) { .rq-grid { grid-template-columns: 1fr; } }
