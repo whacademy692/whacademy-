@@ -88,6 +88,11 @@
 /* ---- Badges / Chips / Pills ---- */
 .badge { display: inline-flex; align-items: center; gap: var(--space-1); padding: 2px var(--space-3); border-radius: var(--radius-xs); font: var(--type-caption); }
 .badge--success { background: var(--color-success-surface); color: var(--color-success); }
+/* Light themes: darker text on the pale pill (Dark/Midnight already use light text on dark pills). */
+html:not([data-theme="dark"]):not([data-theme="midnight"]) .badge--success { color: color-mix(in srgb, var(--color-success) 70%, #000); }
+html:not([data-theme="dark"]):not([data-theme="midnight"]) .badge--warning { color: color-mix(in srgb, var(--color-warning) 72%, #000); }
+html:not([data-theme="dark"]):not([data-theme="midnight"]) .badge--info { color: color-mix(in srgb, var(--color-info) 72%, #000); }
+html:not([data-theme="dark"]):not([data-theme="midnight"]) .badge--error { color: color-mix(in srgb, var(--color-error) 75%, #000); }
 .badge--error { background: var(--color-error-surface); color: var(--color-error); }
 .badge--warning { background: var(--color-warning-surface); color: var(--color-warning); }
 .badge--info { background: var(--color-info-surface); color: var(--color-info); }
@@ -344,17 +349,17 @@
 /* Primary button — brand gradient + glow, driven by the active theme tokens so
    every theme (ocean, sunset, grape, …) recolours the button, not just indigo. */
 .btn--primary {
-  background: linear-gradient(135deg, var(--brand-primary-light), var(--brand-primary-mid));
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-deep-mid));   /* both ends keep white text >= 4.5:1 */
   color: #fff;
   box-shadow: 0 4px 18px var(--brand-glow);
   border: none;
 }
 .btn--primary:hover {
-  background: linear-gradient(135deg, var(--brand-primary-mid), var(--brand-primary));
+  background: linear-gradient(135deg, var(--brand-deep-mid), var(--brand-deep));
   box-shadow: 0 8px 26px var(--brand-glow);
   transform: translateY(-1px);
 }
-:is([data-theme="dark"], [data-theme="midnight"]) .btn--primary { color: #fff; }
+:is([data-theme="dark"], [data-theme="midnight"]) .btn--primary { color: #fff; background: linear-gradient(135deg, var(--brand-deep-mid), var(--brand-deep)); }
 
 .btn--secondary {
   background: rgba(255, 255, 255, 0.6);

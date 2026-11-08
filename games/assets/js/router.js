@@ -149,14 +149,14 @@ const Router = (() => {
     { page: 'advanced-games.html', label: 'Advanced Games', feature: 'advGames',
       icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/>' },
     { page: 'advanced-ranks.html', label: 'Advanced Ranks', feature: 'advRanks',
-      icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 3l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.3 6.8 19.1l1-5.8L3.5 9.2l5.9-.8L12 3z"/>' }
+      icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 11H5L3 7zM5 21h14"/>' }
   ];
   /** Sidebar icons are CSS masks keyed by href suffix; "advanced-games.html" would wrongly match the Chapters (games.html) rule, so give both new items their own icons. */
   function ensureAdvNavStyle() {
     if (document.getElementById('wha-adv-nav-style')) return;
     const mask = (d) => 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\'%3E%3Cpath fill=\'black\' d=\'' + d + '\'/%3E%3C/svg%3E")';
     const bolt = mask('M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8L13.5 2Z');
-    const star = mask('M12 2.5l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4 6.2 20.4l1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z');
+    const star = mask('M3 6.5 7.6 10 12 3.5 16.4 10 21 6.5 19.2 18H4.8L3 6.5ZM5 20h14v2H5v-2Z');   // crown (kept the old name)
     const rule = (page, img) => '.sidebar .sidebar__item[data-nav-page="' + page + '"]::before{-webkit-mask-image:' + img + ';mask-image:' + img + '}';
     const st = document.createElement('style');
     st.id = 'wha-adv-nav-style';
@@ -361,7 +361,8 @@ const Router = (() => {
     ranks: '<path stroke-linecap="round" stroke-linejoin="round" d="M8 21h8M12 17v4M6 3h12v6a6 6 0 01-12 0V3z"/>',
     badges: '<circle cx="12" cy="8" r="5"/><path stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.5L7 21l5-3 5 3-1.5-8.5"/>',
     support: '<path stroke-linecap="round" stroke-linejoin="round" d="M4 5.5A2.5 2.5 0 016.5 3h11A2.5 2.5 0 0120 5.5v8a2.5 2.5 0 01-2.5 2.5H11l-4.5 4v-4A2.5 2.5 0 014 13.5v-8z"/><path stroke-linecap="round" d="M8 8h8M8 11.5h5"/>',
-    guide: '<circle cx="12" cy="12" r="9"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.6 9a2.4 2.4 0 114.6 1c0 1.4-2.2 1.8-2.2 3.3M12 17h.01"/>',
+    guide: '<circle cx="12" cy="12" r="9"/><path stroke-linecap="round" stroke-linejoin="round" d="M15.8 8.2l-2.2 5.4-5.4 2.2 2.2-5.4 5.4-2.2z"/>',
+    settings: '<circle cx="12" cy="12" r="3.2"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.4 13.5a7.6 7.6 0 000-3l2-1.6-2-3.4-2.4 1a7.3 7.3 0 00-2.6-1.5L14 2.4h-4l-.4 2.6A7.3 7.3 0 007 6.5l-2.4-1-2 3.4 2 1.6a7.6 7.6 0 000 3l-2 1.6 2 3.4 2.4-1a7.3 7.3 0 002.6 1.5l.4 2.6h4l.4-2.6a7.3 7.3 0 002.6-1.5l2.4 1 2-3.4-2-1.6z"/>',
     profile: '<circle cx="12" cy="8" r="4"/><path stroke-linecap="round" d="M4 21c0-4 4-6 8-6s8 2 8 6"/>',
     fee: '<rect x="3" y="5" width="18" height="14" rx="2"/><path stroke-linecap="round" d="M3 10h18M7 15h4"/>',
     theme: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 3a9 9 0 100 18h1.4a1.9 1.9 0 001.6-3 1.9 1.9 0 011.5-3H19a3 3 0 003-3c0-4.5-5-8-11-5.6"/><circle cx="7.5" cy="11" r="1.1" fill="currentColor" stroke="none"/><circle cx="12" cy="7.8" r="1.1" fill="currentColor" stroke="none"/><circle cx="16.3" cy="11" r="1.1" fill="currentColor" stroke="none"/>',
@@ -438,6 +439,7 @@ const Router = (() => {
         drawerLink('guide.html', 'Guide', NAV_SVG.guide),
         drawerLink('fee.html', 'Fee', NAV_SVG.fee),
         drawerLink('profile.html', 'Profile', NAV_SVG.profile),
+        drawerLink('settings.html', 'Settings', NAV_SVG.settings),
         '<div class="wha-drawer__sep"></div>',
         '<a class="wha-drawer__item" href="upgrade.html" data-upgrade-nav hidden>' + navSvg(NAV_SVG.upgrade) + '<span class="wha-upg__t">Upgrade Plan</span></a>',
         '<button type="button" class="wha-drawer__item" data-action="toggle-theme">' + navSvg(NAV_SVG.theme) + 'Theme<span class="wha-drawer__sub" data-theme-label></span></button>',
@@ -460,6 +462,48 @@ const Router = (() => {
     updateThemeLabel();
   }
 
+  /**
+   * Settings · Theme · Log out are pinned at the bottom of the desktop sidebar on EVERY page.
+   * Pages used to ship different footers (some had no Settings, some no Theme), so this makes them
+   * all the same without editing each page. Idempotent.
+   */
+  function injectSidebarFooter() {
+    const side = document.querySelector('.sidebar');
+    if (!side) return;
+    let foot = side.querySelector(':scope > div[style*="margin-top:auto"]') || side.querySelector(':scope > .sidebar__footer');
+    if (!foot) { foot = document.createElement('div'); foot.style.marginTop = 'auto'; side.appendChild(foot); }
+    foot.classList.add('sidebar__footer');
+    let settings = side.querySelector('a[href$="settings.html"]');
+    if (!settings) {
+      settings = document.createElement('a');
+      settings.className = 'sidebar__item';
+      settings.href = 'settings.html';
+      settings.setAttribute('data-nav-page', 'settings.html');
+      settings.textContent = 'Settings';
+    }
+    let theme = foot.querySelector('[data-action="toggle-theme"]') || side.querySelector('[data-action="toggle-theme"]');
+    if (!theme) {
+      theme = document.createElement('button');
+      theme.type = 'button';
+      theme.className = 'sidebar__item';
+      theme.style.width = '100%';
+      theme.setAttribute('data-action', 'toggle-theme');
+      theme.textContent = 'Theme';
+    } else {
+      theme.textContent = 'Theme';                           // was "Toggle theme"; one name everywhere
+    }
+    let out = foot.querySelector('[data-action="logout"]') || side.querySelector('[data-action="logout"]');
+    if (!out) {
+      out = document.createElement('button');
+      out.type = 'button';
+      out.className = 'sidebar__item';
+      out.style.width = '100%';
+      out.setAttribute('data-action', 'logout');
+      out.textContent = 'Log Out';
+    }
+    [settings, theme, out].forEach((el) => foot.appendChild(el));   // appendChild moves existing nodes: order = Settings, Theme, Log out
+  }
+
   /** Marks the correct bottom-nav / sidebar item as aria-current. */
   function highlightActiveNav() {
     injectBadgesNav();
@@ -470,6 +514,7 @@ const Router = (() => {
     buildMobileShell();   // phone 3-tab bar + drawer; before upgrade so its drawer item exists
     injectUpgradeNav();
     injectAdvNav();       // Max-only Advanced Games / Advanced Ranks (separate from Ranks)
+    injectSidebarFooter();
     const page = currentPageName();
     Utils.qsa('[data-nav-page]').forEach((el) => {
       if (el.dataset.navPage === page) {

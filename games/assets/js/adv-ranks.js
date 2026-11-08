@@ -111,7 +111,7 @@
   function rowHtml(p) {
     var multi = game === 'all';
     var skins = p.skins.map(function (s) {
-      return '<span class="adv-skin" title="' + esc(s.game.label) + '">' + shield(s.game, s.rankName, 34) +
+      return '<span class="adv-skin" style="--rk:' + BAND_COLORS[bandOf(s.rankName)] + '" title="' + esc(s.game.label) + '">' + shield(s.game, s.rankName, 46) +
         '<span><b>' + esc(s.rankName) + '</b><small>Level ' + esc(s.level) + (multi ? ' · ' + esc(s.game.label) : '') + '</small></span></span>';
     }).join('');
     return '<li class="adv-row' + (p.me ? ' adv-row--me' : '') + '">' +

@@ -45,7 +45,7 @@
     var rank = '';
     if (g.live && prog) {
       rank = prog.placementDone
-        ? '<div class="adv-card__rank">' + shield(g.id, prog.rankName, 38) + '<div><b>' + esc(prog.rankName) + '</b><small>Level ' + esc(prog.level) + (prog.runs ? ' · ' + esc(prog.runs) + ' runs' : '') + '</small></div></div>'
+        ? '<div class="adv-card__rank" style="--rk:' + BAND_COLORS[Math.min(3, Math.floor(RANK_NAMES.indexOf(prog.rankName) / 5))] + '">' + shield(g.id, prog.rankName, 48) + '<div><b>' + esc(prog.rankName) + '</b><small>Level ' + esc(prog.level) + (prog.runs ? ' · ' + esc(prog.runs) + ' runs' : '') + '</small></div></div>'
         : '<div class="adv-card__rank adv-card__rank--new">Not placed yet — your first run finds your level.</div>';
     }
     var act = g.live

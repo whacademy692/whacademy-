@@ -13,24 +13,24 @@
 .adv-stage .skeleton { border-radius: 20px; }
 .adv-pill { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: .72rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; background: var(--color-brand-ink-tint); color: var(--color-brand-ink); }
 .adv-note { font-size: .82rem; line-height: 1.55; margin: 2px 2px 0; color: var(--color-text-secondary); }
-.adv-note a { font-weight: 700; color: var(--color-interactive); }
+.adv-note a { font-weight: 700; color: var(--color-brand-ink); }
 .adv-empty { text-align: center; padding: 2rem 1rem; color: var(--color-text-secondary); }
 
 /* ---- Advanced Games: player banner ---- */
 .adv-hero {
   display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; justify-content: space-between;
   padding: 20px 24px; border-radius: 22px; color: #fff;
-  background: linear-gradient(135deg, var(--brand-primary, #3730a3), var(--brand-primary-mid, #4f46e5));
+  background: linear-gradient(135deg, var(--brand-deep, #3730a3), var(--brand-deep-mid, #4f46e5));
   box-shadow: var(--elevation-primary, 0 14px 34px rgba(55, 48, 163, .25));
 }
-.adv-hero__label { font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; opacity: .8; }
+.adv-hero__label { font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; opacity: 1; }
 .adv-hero__nick { font-size: 1.7rem; font-weight: 800; line-height: 1.15; letter-spacing: .005em; overflow-wrap: anywhere; }
 .adv-hero__meta { margin-top: 2px; font-size: .9rem; opacity: .9; }
 .adv-stats { display: flex; gap: 10px; }
-.adv-stat { display: flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, .16); border: 1px solid rgba(255, 255, 255, .28); border-radius: 14px; padding: 9px 16px; }
+.adv-stat { display: flex; align-items: center; gap: 10px; background: rgba(7, 10, 24, .36); border: 1px solid rgba(255, 255, 255, .30); border-radius: 14px; padding: 9px 16px; }
 .adv-stat svg { flex: none; }
 .adv-stat b { display: block; font-size: 1.15rem; font-weight: 800; line-height: 1.1; }
-.adv-stat span { display: block; font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; opacity: .85; }
+.adv-stat span { display: block; font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; opacity: 1; }
 
 /* ---- Advanced Games: game cards ---- */
 .adv-games { display: grid; gap: var(--space-4, 16px); grid-template-columns: 1fr; }
@@ -46,7 +46,8 @@
 .adv-card__title { margin: 0; font-size: 1.2rem; font-weight: 800; }
 .adv-card__desc { margin: 4px 0 0; font-size: .9rem; line-height: 1.5; color: var(--color-text-secondary); }
 .adv-card__rank { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: 14px; background: var(--color-bg-app); border: 1px solid var(--color-border); min-height: 58px; }
-.adv-card__rank svg { flex: none; width: 38px; height: auto; }
+.adv-card__rank { --rk: var(--color-interactive); }
+.adv-card__rank svg { flex: none; width: 48px; height: auto; filter: drop-shadow(0 2px 5px color-mix(in srgb, var(--rk) 55%, transparent)); }
 .adv-card__rank b { display: block; font-size: .98rem; line-height: 1.2; }
 .adv-card__rank small { display: block; font-size: .76rem; color: var(--color-text-secondary); margin-top: 1px; }
 .adv-card__rank--new { color: var(--color-text-secondary); font-size: .88rem; }
@@ -67,7 +68,7 @@
 /* ---- Advanced Ranks: my position ---- */
 .adv-mine { display: flex; flex-wrap: wrap; gap: 12px; }
 .adv-mine__chip { display: flex; align-items: center; gap: 14px; padding: 12px 18px; border-radius: 16px; background: var(--color-brand-ink-tint); border: 1px solid var(--color-border-strong); }
-.adv-mine__pos { font-size: 1.9rem; font-weight: 800; line-height: 1; color: var(--color-interactive); }
+.adv-mine__pos { font-size: 1.9rem; font-weight: 800; line-height: 1; color: var(--color-brand-ink); }
 .adv-mine__txt b { display: block; font-size: .92rem; }
 .adv-mine__txt small { display: block; font-size: .78rem; color: var(--color-text-secondary); }
 
@@ -85,10 +86,10 @@
 .adv-pos--2 { background: linear-gradient(180deg, #e8ecf6, #a3aecb); color: #1b2340; border-color: transparent; }
 .adv-pos--3 { background: linear-gradient(180deg, #f1ae7a, #b9672f); color: #2d1405; border-color: transparent; }
 .adv-nick { font-weight: 800; font-size: 1.02rem; line-height: 1.25; overflow-wrap: anywhere; min-width: 0; }
-.adv-you { font-size: .64rem; font-weight: 800; color: #fff; background: var(--color-interactive); border-radius: 6px; padding: 2px 7px; margin-left: 8px; letter-spacing: .06em; vertical-align: middle; }
+.adv-you { font-size: .64rem; font-weight: 800; color: #fff; background: var(--brand-deep, #3730a3); border-radius: 6px; padding: 2px 7px; margin-left: 8px; letter-spacing: .06em; vertical-align: middle; }
 .adv-skins { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
-.adv-skin { display: flex; align-items: center; gap: 10px; padding: 5px 14px 5px 8px; border-radius: 14px; background: var(--color-bg-app); border: 1px solid var(--color-border); }
-.adv-skin svg { flex: none; width: 34px; height: auto; }
+.adv-skin { --rk: var(--color-interactive); display: flex; align-items: center; gap: 12px; padding: 6px 16px 6px 10px; border-radius: 16px; background: var(--color-bg-app); border: 1px solid color-mix(in srgb, var(--rk) 40%, var(--color-border)); }
+.adv-skin svg { flex: none; width: 46px; height: auto; filter: drop-shadow(0 2px 5px color-mix(in srgb, var(--rk) 55%, transparent)); }
 .adv-skin b { display: block; font-size: .9rem; line-height: 1.15; }
 .adv-skin small { display: block; font-size: .72rem; line-height: 1.2; color: var(--color-text-secondary); }
 @media (max-width: 640px) {

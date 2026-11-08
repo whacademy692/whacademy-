@@ -18,6 +18,12 @@
   --brand-primary-mid: #4f46e5;
   --brand-primary-light: #818cf8;
   --brand-glow: rgba(79, 70, 229, 0.35);
+  /* "Deep" brand shades for any surface that carries WHITE text (sidebar, hero banners).
+     Mixed with near-black so white text keeps >= 4.5:1 in every theme, whatever the theme's
+     bright accent colours are. Surfaces use these instead of brand-primary-mid / brand-secondary. */
+  --brand-deep: color-mix(in srgb, var(--brand-primary) 84%, #070a18);
+  --brand-deep-mid: color-mix(in srgb, var(--brand-primary-mid) 58%, #070a18);
+  --brand-deep-end: color-mix(in srgb, var(--brand-secondary) 46%, #070a18);
   --brand-secondary: #0ea5e9;
   --brand-accent: #f59e0b;
   --brand-pink: #ec4899;
@@ -89,6 +95,28 @@
   /* ---- Text ---- */
   --color-text-primary: #0f172a;
   --color-text-secondary: #475569;
+  --color-text-muted: #4b5563;          /* was undefined, so pages fell back to a fixed grey that failed on tinted/dark themes */
+
+  /* ---- Legacy aliases ------------------------------------------------------
+     Older page styles use names such as var(--surface, #fff) or var(--muted, #667085) that no theme
+     ever defined, so they always painted the LIGHT fallback - white boxes with light text on Dark and
+     Midnight. They now follow the active theme. */
+  --color-surface: var(--color-bg-surface-solid);
+  --surface: var(--color-bg-surface-solid);
+  --surface-2: color-mix(in srgb, var(--color-bg-surface-solid) 90%, var(--color-brand-ink));
+  --color-surface-alt: var(--surface-2);
+  --color-surface-sunken: color-mix(in srgb, var(--color-bg-surface-solid) 93%, var(--color-text-primary));
+  --color-surface-hover: color-mix(in srgb, var(--color-bg-surface-solid) 88%, var(--color-brand-ink));
+  --color-surface-raised: var(--color-bg-surface-solid);
+  --color-bg-subtle: color-mix(in srgb, var(--color-bg-surface-solid) 92%, var(--color-text-primary));
+  --color-text: var(--color-text-primary);
+  --muted: var(--color-text-muted);
+  --text-muted: var(--color-text-muted);
+  --border: var(--color-border-strong);
+  --line: var(--color-border);
+  --interactive: var(--color-interactive);
+  --color-primary: var(--color-brand-ink);
+  --color-danger: var(--color-error);
   --color-text-placeholder: #94a3b8;
 
   --color-interactive: #4f46e5;
@@ -178,14 +206,15 @@
   --color-bg-surface-solid: #1e1b4b;
   --color-text-primary: #eef1ff;
   --color-text-secondary: #a5b0d0;
+  --color-text-muted: #a5b0d0;
   --color-text-placeholder: #6b7699;
   --color-border: rgba(129, 140, 248, 0.18);
   --color-border-strong: rgba(129, 140, 248, 0.32);
 
-  --color-brand-ink: #818cf8;
+  --color-brand-ink: #a5b4fc;
   --color-brand-ink-light: #a5b4fc;
   --color-brand-ink-tint: rgba(129, 140, 248, 0.14);
-  --color-interactive: #818cf8;
+  --color-interactive: #a5b4fc;
   --color-interactive-hover: #a5b4fc;
 
   --color-success: #34d399;
@@ -194,7 +223,7 @@
   --color-error-surface: rgba(225, 29, 72, 0.16);
   --color-warning: #fbbf24;
   --color-warning-surface: rgba(180, 83, 9, 0.18);
-  --color-info: #818cf8;
+  --color-info: #a5b4fc;
   --color-info-surface: rgba(129, 140, 248, 0.14);
 
   --neutral-100: #262450;
@@ -219,7 +248,7 @@
   --color-brand-ink: #0369a1;
   --color-brand-ink-light: #0ea5e9;
   --color-brand-ink-tint: #dcefff;
-  --color-interactive: #0284c7;
+  --color-interactive: #0369a1;  /* = ink so link/active text keeps >= 4.5:1 */
   --color-interactive-hover: #0369a1;
   --color-info: #0369a1;
   --color-info-surface: #dcefff;
@@ -237,12 +266,12 @@
   --brand-primary-light: #4ade80;
   --brand-glow: rgba(34, 197, 94, 0.32);
   --brand-secondary: #10b981;
-  --color-brand-ink: #15803d;
+  --color-brand-ink: #166534;
   --color-brand-ink-light: #16a34a;
   --color-brand-ink-tint: #d7f5df;
-  --color-interactive: #16a34a;
-  --color-interactive-hover: #15803d;
-  --color-info: #15803d;
+  --color-interactive: #166534;  /* = ink so link/active text keeps >= 4.5:1 */
+  --color-interactive-hover: #166534;
+  --color-info: #166534;
   --color-info-surface: #d7f5df;
   --color-bg-app: #eefaf1;
   --color-bg-surface: rgba(255, 255, 255, 0.82);
@@ -258,12 +287,12 @@
   --brand-primary-light: #fb923c;
   --brand-glow: rgba(249, 115, 22, 0.32);
   --brand-secondary: #ec4899;
-  --color-brand-ink: #c2410c;
+  --color-brand-ink: #b23a0b;
   --color-brand-ink-light: #ea580c;
   --color-brand-ink-tint: #ffe4d3;
-  --color-interactive: #ea580c;
-  --color-interactive-hover: #c2410c;
-  --color-info: #c2410c;
+  --color-interactive: #b23a0b;  /* = ink so link/active text keeps >= 4.5:1 */
+  --color-interactive-hover: #b23a0b;
+  --color-info: #b23a0b;
   --color-info-surface: #ffe4d3;
   --color-bg-app: #fff3ec;
   --color-bg-surface: rgba(255, 255, 255, 0.82);
@@ -303,7 +332,7 @@
   --color-brand-ink: #be123c;
   --color-brand-ink-light: #e11d48;
   --color-brand-ink-tint: #ffe0e6;
-  --color-interactive: #e11d48;
+  --color-interactive: #be123c;  /* = ink so link/active text keeps >= 4.5:1 */
   --color-interactive-hover: #be123c;
   --color-info: #be123c;
   --color-info-surface: #ffe0e6;
@@ -324,7 +353,7 @@
   --color-brand-ink: #be185d;
   --color-brand-ink-light: #db2777;
   --color-brand-ink-tint: #fbe0ef;
-  --color-interactive: #db2777;
+  --color-interactive: #be185d;  /* = ink so link/active text keeps >= 4.5:1 */
   --color-interactive-hover: #be185d;
   --color-info: #be185d;
   --color-info-surface: #fbe0ef;
@@ -345,7 +374,7 @@
   --color-brand-ink: #0f766e;
   --color-brand-ink-light: #0d9488;
   --color-brand-ink-tint: #d1faf0;
-  --color-interactive: #0d9488;
+  --color-interactive: #0f766e;  /* = ink so link/active text keeps >= 4.5:1 */
   --color-interactive-hover: #0f766e;
   --color-info: #0f766e;
   --color-info-surface: #d1faf0;
@@ -358,17 +387,17 @@
 
 /* ---- Gold (warm amber / honey gradient) ---- */
 [data-theme="gold"] {
-  --brand-primary: #a16207;
+  --brand-primary: #8a5206;
   --brand-primary-mid: #f59e0b;
   --brand-primary-light: #fbbf24;
   --brand-glow: rgba(245, 158, 11, 0.34);
   --brand-secondary: #f97316;
-  --color-brand-ink: #a16207;
+  --color-brand-ink: #8a5206;
   --color-brand-ink-light: #ca8a04;
   --color-brand-ink-tint: #fcefcf;
-  --color-interactive: #ca8a04;
-  --color-interactive-hover: #a16207;
-  --color-info: #a16207;
+  --color-interactive: #8a5206;  /* = ink so link/active text keeps >= 4.5:1 */
+  --color-interactive-hover: #8a5206;
+  --color-info: #8a5206;
   --color-info-surface: #fcefcf;
   --color-bg-app: #fff8ec;
   --color-bg-surface: rgba(255, 255, 255, 0.84);
@@ -384,11 +413,15 @@
   --color-bg-surface-solid: #0f172a;
   --color-text-primary: #e8eeff;
   --color-text-secondary: #9fb0d0;
+  --color-text-muted: #9fb0d0;
   --color-text-placeholder: #64748b;
   --color-border: rgba(56, 189, 248, 0.18);
   --color-border-strong: rgba(56, 189, 248, 0.32);
 
   --brand-primary: #38bdf8;
+  --brand-deep: #0b3c5d;            /* midnight's accent is light, so its white-text surfaces use this */
+  --brand-deep-mid: #0f5a85;
+  --brand-deep-end: #0b4a63;
   --brand-primary-mid: #60a5fa;
   --brand-primary-light: #93c5fd;
   --brand-glow: rgba(56, 189, 248, 0.35);
