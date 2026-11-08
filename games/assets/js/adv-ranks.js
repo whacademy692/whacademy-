@@ -77,6 +77,15 @@
 
   // One list of players. Each player: { nickname, me, skins:[{game, level, rankName}], best, sum }.
   function buildPlayers() {
+    if (game === 'all') {
+      // the server sends one list; each player already carries every game's rank
+      var ad = boards && boards.all;
+      return ((ad && ad.rows) || []).map(function (r) {
+        return { nickname: r.nickname, me: !!r.me, position: r.position, skins: (r.skins || []).map(function (k) {
+          return { game: gameById(k.game) || GAMES[0], level: +k.level || 0, rankName: k.rankName };
+        }) };
+      });
+    }
     var by = {}, order = [];
     GAMES.forEach(function (g) {
       var d = boards && boards[g.id]; if (!d) return;
@@ -89,11 +98,7 @@
         p.best = Math.max(p.best, +r.level || 0); p.sum += (+r.level || 0);
       });
     });
-    if (game === 'all') {
-      order.sort(function (a, b) { return b.best - a.best || b.sum - a.sum || String(a.nickname).localeCompare(String(b.nickname)); });
-      order = order.slice(0, limit);
-      order.forEach(function (p, i) { p.position = i + 1; });
-    } else {
+    {
       // single game: keep the server's order and positions
       var d = boards[game];
       var pos = {}; ((d && d.rows) || []).forEach(function (r) { pos[String(r.nickname || '').toLowerCase()] = r.position; });
@@ -138,14 +143,15 @@
   function mineChips() {
     var show = game === 'all' ? GAMES : [gameById(game)];
     return '<div class="adv-mine">' + show.map(function (g) {
-      var d = boards[g.id] || {}, m = d.me || {};
+      var d = game === 'all' ? (boards.all || {}) : (boards[g.id] || {});
+      var m = game === 'all' ? ((d.me && d.me.games && d.me.games[g.id]) || {}) : (d.me || {});
       return '<div class="adv-mine__chip"><span class="adv-mine__pos">#' + esc(m.position || '—') + '</span><span class="adv-mine__txt"><b>' + esc(g.label) + '</b><small>Level ' + esc(m.level || 1) + ' · ' +
         (d.track === 'middle' ? 'Classes 6–8' : 'Classes 9–12') + ' ladder</small></span></div>';
     }).join('') + '</div>';
   }
 
   function renderBoard() {
-    var empty = GAMES.every(function (g) { return !boards[g.id] || !(boards[g.id].rows || []).length; });
+    var empty = !(boards[game] && (boards[game].rows || []).length);
     if (empty) {
       boardEl.innerHTML = '<div class="adv-surface adv-empty">No one is on the board yet. Play ' + (game === 'all' ? 'a game' : esc(gameById(game).label)) + ' and be the first!</div>';
       listEl = null; return;
@@ -154,7 +160,7 @@
       '<div class="adv-boardcard"><div class="adv-count" id="adv-count"></div><div id="adv-list"></div></div>' +
       '<div id="adv-notice"></div>' +
       '<p class="adv-note">Only game nicknames are shown, never real names. Everyone here is on the same class ladder as you.' +
-      (game === 'all' ? ' A shield appears for each game where the player is in that game’s top ' + limit + '.' : '') + '</p>';
+      '</p>';
     listEl = document.getElementById('adv-list');
     renderList();
   }
@@ -163,7 +169,7 @@
   function loadBoard() {
     var my = ++token;
     boardEl.innerHTML = '<div class="skeleton skeleton--card"></div>';
-    var ids = game === 'all' ? GAMES.map(function (g) { return g.id; }) : [game];
+    var ids = [game];
     Promise.all([loadBadge()].concat(ids.map(function (id) { return Api.request('game/leaderboard', { game: id, limit: limit }); }))).then(function (res) {
       if (my !== token) return;
       boards = {}; ids.forEach(function (id, i) { boards[id] = res[i + 1]; });
