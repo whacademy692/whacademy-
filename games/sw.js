@@ -5,7 +5,10 @@
  * offline fallback for chapter content.
  */
 // Bump on every frontend deploy.
-const CACHE_VERSION = 'wha-v141';
+// v142: GitHub Pages sends max-age=600, and cache.add()/fetch() inside a worker honour that browser cache, so a
+// just-deployed site kept serving the OLD files (new look for a second after a hard refresh, then old again).
+// Fix: pre-cache and revalidate with cache:'reload' / 'no-cache', and app files (html/css/js) are NETWORK-FIRST.
+const CACHE_VERSION = 'wha-v142';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
 const STATIC_ASSETS = [
@@ -40,7 +43,7 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(STATIC_CACHE).then((cache) =>
       Promise.all(STATIC_ASSETS.map((asset) =>
-        cache.add(asset).catch(() => {
+        cache.add(new Request(asset, { cache: 'reload' })).catch(() => {
           console.warn('[sw] could not pre-cache:', asset);
         })
       ))
@@ -142,7 +145,7 @@ self.addEventListener('fetch', (event) => {
 
   if (isChapterContent) {
     event.respondWith(
-      fetch(event.request)
+      fetch(event.request, { cache: 'no-cache' })
         .then((response) => {
           const clone = response.clone();
           caches.open(STATIC_CACHE).then((cache) => cache.put(event.request, clone));
@@ -153,9 +156,28 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  // App shell (pages, styles, scripts, manifest): network-first so a deploy shows at once; the cache is only the offline fallback.
+  // 'no-cache' = always revalidate with the server (a cheap 304 when nothing changed), ignoring GitHub's 10-minute max-age.
+  const isAppFile = event.request.mode === 'navigate' || /\.(html|css|js|json)$/.test(url.pathname);
+  if (isAppFile) {
+    event.respondWith(
+      fetch(event.request, { cache: 'no-cache' })
+        .then((response) => {
+          if (response && response.ok) {
+            const clone = response.clone();
+            caches.open(STATIC_CACHE).then((cache) => cache.put(event.request, clone));
+          }
+          return response;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
+  // Everything else (images, fonts): cache-first, refreshed in the background.
   event.respondWith(
     caches.match(event.request).then((cached) => {
-      const networked = fetch(event.request)
+      const networked = fetch(event.request, { cache: 'no-cache' })
         .then((response) => {
           if (response && response.ok) {
             const clone = response.clone();
