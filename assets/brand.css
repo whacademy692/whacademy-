@@ -25,6 +25,8 @@ h1,h2,h3,h4,h5,h6{font-family:'Montserrat','Plus Jakarta Sans',sans-serif !impor
 .nav-logo.wh-logo,.nav-brand.wh-logo,.brand.wh-logo{color:#1e293b}
 .navbar .wh-logo{color:#fff !important}
 footer .wh-logo,.site-footer .wh-logo,.footer .wh-logo{color:#fff !important}
+/* The logo picture sits to the LEFT of the "W.H. ACADEMY" wordmark on every page (navbar, footer, student app). */
+.wh-logo::before{content:'';flex:0 0 auto;width:46px;height:46px;background:url(logo-mark.png) center/contain no-repeat}
 .wh-logo .wh-mark{font-family:'Apropal',serif;font-weight:400;font-size:1.95rem;line-height:.78;letter-spacing:-1px;white-space:nowrap;color:currentColor}
 .wh-logo .wh-text{display:inline-flex;flex-direction:column;align-items:flex-start;text-align:left}
 .wh-logo .wh-l1{font-family:'Poppins',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:3px;color:currentColor;-webkit-text-fill-color:currentColor}
@@ -33,11 +35,24 @@ footer .wh-logo,.site-footer .wh-logo,.footer .wh-logo{color:#fff !important}
 /* Games student-app top bar: keep it compact */
 .top-bar__brand.wh-logo{gap:9px}
 .top-bar__brand .wh-mark{font-size:1.5rem}
+.top-bar__brand.wh-logo::before{width:36px;height:36px}
 .top-bar__brand .wh-l1{font-size:.78rem;letter-spacing:2.5px}
 .top-bar__brand .wh-l2{font-size:.46rem}
 
 /* Small screens: trim the wordmark a touch */
 @media(max-width:560px){
   .wh-logo .wh-mark{font-size:1.7rem}
+  .wh-logo::before{width:40px;height:40px}
+  .top-bar__brand.wh-logo::before{width:34px;height:34px}
   .wh-logo .wh-l1{font-size:.85rem}
+}
+
+/* Very small phones: keep the logo + wordmark compact so the header buttons next to it do not wrap */
+@media(max-width:480px){
+  .wh-logo{gap:6px}
+  .wh-logo::before{width:30px;height:30px}
+  .wh-logo .wh-mark{font-size:1.2rem;letter-spacing:-.5px}
+  .wh-logo .wh-l1{font-size:.64rem;letter-spacing:1.6px}
+  .wh-logo .wh-l2{font-size:.38rem;letter-spacing:1.3px}
+  .top-bar__brand.wh-logo::before{width:28px;height:28px}
 }

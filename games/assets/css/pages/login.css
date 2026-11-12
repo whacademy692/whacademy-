@@ -21,13 +21,17 @@
 }
 
 .auth-card__brand {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   text-align: center;
   color: var(--color-brand-ink);
   margin-bottom: var(--space-6);
   font-size: 24px;
 }
 :is([data-theme="dark"], [data-theme="midnight"]) .auth-card__brand { color: var(--color-interactive); }
+.auth-card__brand::before { content: ''; flex: 0 0 auto; width: 44px; height: 44px; background: url(/assets/logo-mark.png) center / contain no-repeat; }
 
 .auth-card section h1 { margin-bottom: var(--space-2); }
 .auth-card section > p.text-body-sm { color: var(--color-text-secondary); margin-bottom: var(--space-5); }
