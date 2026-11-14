@@ -2667,7 +2667,7 @@
   }
 
   /**
-   * Board guard (Class 9-10). Each board's chapters live under their own slug prefix: KPK = kpk_…, Punjab = punjab_…,
+   * Board guard (Class 9-12; a KPK/Punjab student stays on their board's ladder when promoted). Each board's chapters live under their own slug prefix: KPK = kpk_…, Punjab = punjab_…,
    * Federal = no prefix. A student may only open a chapter of THEIR board: a KPK/Punjab student must not open a
    * Federal chapter, a Federal student must not open a KPK/Punjab chapter, and KPK <-> Punjab are kept apart too
    * (Class 9 Math/Chemistry exist for both Federal and Punjab). It only uses the profile the dashboard already cached:
@@ -2686,7 +2686,7 @@
   }
   function boardMismatch(path) {
     var parts = String(path || '').split('/');
-    if (parts[0] !== '9' && parts[0] !== '10') return false;
+    if (!(Number(parts[0]) >= 9)) return false;
     var prof = null;
     try { var c = Storage.getCachedDashboard(); prof = c && c.data && c.data.profile; } catch (e) { prof = null; }
     if (!prof || !prof.enrolledScope) return false;

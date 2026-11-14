@@ -180,7 +180,7 @@
   <section class="hero">
     <span class="tag">Enrollment</span>
     <h1>Enroll at W.H. Academy</h1>
-    <p>Online & home tutoring for APSACS (Class 6–8), and Federal (FBISE) or KPK Board (Class 9–12) students. Fill the form below. Once your fee is confirmed and your account is activated, we email your <strong>Student ID</strong> and a link to set your PIN — then you log in.</p>
+    <p>Online & home tutoring for APSACS (Class 6–8), Federal (FBISE) Class 9–12, KPK Board (Class 10) and Punjab Board — Sargodha (Class 9–10, Mathematics &amp; Chemistry) students. Fill the form below. Once your fee is confirmed and your account is activated, we email your <strong>Student ID</strong> and a link to set your PIN — then you log in.</p>
     <div class="notebar">
       <span>⚠️</span>
       <div><b>Important:</b> Select only the subjects and plan that match your class and stream. Requests with an incorrect subject or plan selection will not be processed.</div>
@@ -264,6 +264,7 @@
             <option value="">— Select class first —</option>
           </select>
           <p class="err" id="e-board">Please select your board.</p>
+          <p class="hint" id="boardNote" style="display:none"></p>
         </div>
         <div>
           <label for="stream">Select Stream <span class="req">*</span></label>
@@ -412,8 +413,11 @@
     'Pre-Engineering': ['Physics','Chemistry','Mathematics'],
     'ICS':             ['Physics','Mathematics','Computer']
   };
+  /* Punjab Board (Sargodha) — Class 9-10: only Mathematics + Chemistry are offered for now (no stream). */
+  var SUBJECTS_PUNJAB = ['Mathematics','Chemistry'];
   function subjectsFor(cls, stream){
     if (Number(cls) <= 8) return SUBJECTS_MIDDLE;
+    if (Number(cls) >= 9 && $('board') && $('board').value === 'Punjab') return SUBJECTS_PUNJAB;
     if (Number(cls) >= 11) return ['Mathematics','Physics'];   // Intermediate: Math & Physics only
     return SUBJECTS_BY_STREAM[String(stream||'')] || [];        // 9-10: by group (includes Computer)
   }
@@ -432,6 +436,39 @@
       : 'Charges apply per subject — tick each subject you want to enroll in.';
   }
 
+  /* ---- Boards offered per class (keep in sync with BOARD_CLASSES in the admin panel).
+         Federal is always offered for Class 9-12; the others only for the classes listed here. ---- */
+  var BOARD_CLASSES = { KPK:[10], Punjab:[9,10] };
+  var BOARD_LABEL   = { Federal:'Federal Board (FBISE)', KPK:'KPK Board', Punjab:'Punjab Board — Sargodha' };
+  function boardChoices(cls){
+    var out=[['Federal',BOARD_LABEL.Federal]];
+    ['KPK','Punjab'].forEach(function(b){ if(BOARD_CLASSES[b].indexOf(Number(cls))!==-1) out.push([b,BOARD_LABEL[b]]); });
+    return out;
+  }
+  /* Stream list for a class. Punjab Board has no stream (fixed "Not applicable"). */
+  function buildStream(cls){
+    var ss=$('stream'); ss.innerHTML='';
+    if(!cls){ ss.innerHTML='<option value="">— Select class first —</option>'; ss.disabled=false; return; }
+    var k=keyOf(cls);
+    STREAMS[k].forEach(function(s){ var o=document.createElement('option'); o.value=s; o.textContent=(s==='Not applicable'?'Class 1–8 — Not applicable':s); ss.appendChild(o); });
+    if(k==='low'){ ss.value='Not applicable'; ss.disabled=true; } else { ss.disabled=false; ss.insertAdjacentHTML('afterbegin','<option value="">— Select stream —</option>'); ss.value=''; }
+  }
+  /* Called when the Board changes: Punjab locks the stream and limits the subjects; leaving Punjab restores both. */
+  function applyBoardRules(){
+    var cls=$('classLevel').value, ss=$('stream'), note=$('boardNote');
+    if(cls && Number(cls)>=9 && $('board').value==='Punjab'){
+      ss.innerHTML='<option value="Not applicable">Not applicable (Punjab Board)</option>'; ss.value='Not applicable'; ss.disabled=true;
+      note.textContent='Punjab Board (Sargodha) is open for Class 9 and 10 — Mathematics and Chemistry only for now. More subjects will be added later.';
+      note.style.display='';
+    } else {
+      note.style.display='none';
+      if(cls && Number(cls)>=9 && ss.disabled){ buildStream(cls); }   // coming back from Punjab
+    }
+    clearErr('stream');
+    renderSubjects(cls, ss.value);
+    updateEstimate();
+  }
+
   var state = { plan:null, price:null };
 
   /* ---- populate class dropdown ---- */
@@ -446,18 +483,18 @@
     var k = cls ? keyOf(cls) : null;
 
     // stream
-    var ss=$('stream'); ss.innerHTML='';
-    if(!cls){ ss.innerHTML='<option value="">— Select class first —</option>'; }
-    else {
-      STREAMS[k].forEach(function(s){ var o=document.createElement('option'); o.value=s; o.textContent=(s==='Not applicable'?'Class 1–8 — Not applicable':s); ss.appendChild(o); });
-      if(k==='low'){ ss.value='Not applicable'; ss.disabled=true; } else { ss.disabled=false; ss.insertAdjacentHTML('afterbegin','<option value="">— Select stream —</option>'); ss.value=''; }
-    }
+    buildStream(cls);
 
-    // board: Class 6-8 = APSACS (fixed); Class 9-12 = Federal or KPK
+    // board: Class 6-8 = APSACS (fixed); Class 9 = Federal / Punjab; Class 10 = Federal / KPK / Punjab; Class 11-12 = Federal (fixed)
     var bs=$('board'); bs.innerHTML=''; clearErr('board');
     if(!cls){ bs.innerHTML='<option value="">— Select class first —</option>'; bs.disabled=false; }
     else if(Number(cls)<=8){ bs.innerHTML='<option value="APSACS">APSACS</option>'; bs.value='APSACS'; bs.disabled=true; }
-    else { bs.disabled=false; bs.innerHTML='<option value="">— Select board —</option><option value="Federal">Federal Board (FBISE)</option><option value="KPK">KPK Board</option>'; bs.value=''; }
+    else {
+      var ch=boardChoices(Number(cls));
+      if(ch.length===1){ bs.innerHTML='<option value="Federal">Federal Board (FBISE)</option>'; bs.value='Federal'; bs.disabled=true; }
+      else { bs.disabled=false; bs.innerHTML='<option value="">— Select board —</option>'+ch.map(function(b){return '<option value="'+b[0]+'">'+b[1]+'</option>';}).join(''); bs.value=''; }
+    }
+    $('boardNote').style.display='none';
 
     // subjects (depend on the chosen stream for 9-12)
     renderSubjects(cls, $('stream').value);
@@ -518,7 +555,7 @@
     updateEstimate();
   }
 
-  $('board').addEventListener('change',function(){clearErr('board');setStep();});
+  $('board').addEventListener('change',function(){clearErr('board');applyBoardRules();setStep();});
   $('stream').addEventListener('change',function(){clearErr('stream');renderSubjects($('classLevel').value, this.value);updateEstimate();setStep();});
   $('tuitionMode').addEventListener('change',function(){
     clearErr('tuitionMode');
@@ -639,6 +676,7 @@
       address:$('address').value.trim(),
       classLevel:cls,
       board:$('board').value,
+      boardBody:($('board').value==='Punjab'?'Sargodha':''),
       stream:$('stream').value,
       subjects:subs,
       otherSubject:other,
