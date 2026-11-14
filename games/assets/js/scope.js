@@ -12,6 +12,13 @@
  *   BOARD-KPK    SUBJ-BIO-C10, BOARD-KPK        -> KPK Board student: reads the
  *                                                 registry's `kpk` branch instead
  *                                                 of `classes`.
+ *   BOARD-PUNJAB SUBJ-MATH-C09, BOARD-PUNJAB,   -> Punjab Board student: reads the
+ *                BOARD-PUNJAB-SARGODHA             registry's `punjab` branch. The
+ *                                                 BOARD-PUNJAB-<BODY> token only
+ *                                                 names the sub-board (it gates Boss
+ *                                                 Battle papers on the server); the
+ *                                                 notes/games are shared by all
+ *                                                 Punjab boards.
  *
  * No board token (every existing student) -> behaviour is exactly as before.
  *
@@ -74,7 +81,7 @@
    */
   function parseScope(enrolledScope) {
     var raw = String(enrolledScope || '').trim();
-    var result = { classLevel: null, fullClass: false, subjectKeys: [], board: null, raw: raw };
+    var result = { classLevel: null, fullClass: false, subjectKeys: [], board: null, boardBody: null, raw: raw };
     if (!raw) return result;   // fail closed
     var tokens = raw.split(',').map(function (t) { return t.trim().toUpperCase(); })
                     .filter(Boolean);
@@ -84,6 +91,9 @@
 
       if (parts[0] === 'BOARD' && parts[1] === 'KPK') {
         result.board = 'kpk';
+      } else if (parts[0] === 'BOARD' && parts[1] === 'PUNJAB') {
+        result.board = 'punjab';                       // content branch (shared by every Punjab board)
+        if (parts[2]) result.boardBody = parts[2].toLowerCase();   // e.g. 'sargodha' (Boss Battle only)
       } else if (parts[0] === 'FULL' && parts[1]) {
         result.fullClass = true;
         result.classLevel = classFromCode(parts[1]);
@@ -112,9 +122,11 @@
    */
   function allowedSubjects(scope, registry) {
     if (scope.classLevel === null) return [];
-    // KPK Board students read the registry's separate `kpk` branch; everyone
-    // else reads `classes` exactly as before.
-    var tree = (scope.board === 'kpk') ? (registry && registry.kpk) : registry;
+    // KPK / Punjab Board students read the registry's separate `kpk` / `punjab`
+    // branch; everyone else reads `classes` exactly as before. A board whose
+    // branch is missing from the registry reveals nothing (fail closed).
+    var tree = (scope.board === 'kpk' || scope.board === 'punjab')
+      ? (registry && registry[scope.board]) : registry;
     var classData = tree && tree.classes && tree.classes[String(scope.classLevel)];
     if (!classData) return [];
     var out = [];

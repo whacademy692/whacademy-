@@ -2667,19 +2667,30 @@
   }
 
   /**
-   * Board guard (Class 10 only). A KPK Board student must not open a Federal chapter, and a Federal student must not
-   * open a KPK chapter (KPK chapters are named kpk_…). It only uses the profile the dashboard already cached: when
-   * there is no cached profile it does nothing, so a slow network can never lock a student out.
+   * Board guard (Class 9-10). Each board's chapters live under their own slug prefix: KPK = kpk_…, Punjab = punjab_…,
+   * Federal = no prefix. A student may only open a chapter of THEIR board: a KPK/Punjab student must not open a
+   * Federal chapter, a Federal student must not open a KPK/Punjab chapter, and KPK <-> Punjab are kept apart too
+   * (Class 9 Math/Chemistry exist for both Federal and Punjab). It only uses the profile the dashboard already cached:
+   * when there is no cached profile it does nothing, so a slow network can never lock a student out.
    */
+  function boardOfScope(scopeStr) {
+    var s = String(scopeStr || '');
+    if (/(^|,)\s*BOARD-KPK\s*(,|$)/i.test(s)) return 'kpk';
+    if (/(^|,)\s*BOARD-PUNJAB(-[A-Z0-9]+)?\s*(,|$)/i.test(s)) return 'punjab';
+    return 'federal';
+  }
+  function boardOfChapterSlug(slug) {
+    if (/^kpk_/i.test(slug || '')) return 'kpk';
+    if (/^punjab_/i.test(slug || '')) return 'punjab';
+    return 'federal';
+  }
   function boardMismatch(path) {
     var parts = String(path || '').split('/');
-    if (parts[0] !== '10') return false;
+    if (parts[0] !== '9' && parts[0] !== '10') return false;
     var prof = null;
     try { var c = Storage.getCachedDashboard(); prof = c && c.data && c.data.profile; } catch (e) { prof = null; }
     if (!prof || !prof.enrolledScope) return false;
-    var kpkStudent = /(^|,)\s*BOARD-KPK\s*(,|$)/i.test(String(prof.enrolledScope));
-    var kpkChapter = /^kpk_/i.test(parts[2] || '');
-    return kpkStudent !== kpkChapter;
+    return boardOfScope(prof.enrolledScope) !== boardOfChapterSlug(parts[2] || '');
   }
 
   async function init() {

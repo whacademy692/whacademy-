@@ -1438,5 +1438,34 @@ window.WHA_CONTENT = {
         }
       }
     }
+  },
+  "punjab": {
+    "_note": "Punjab Board content (Sargodha first; the textbooks are the Punjab Textbook Board books shared by every Punjab board). Separate from 'classes' (Federal/APSACS) and 'kpk' so existing scope logic is unchanged. Chapter slugs are prefixed punjab_ (games/classes/<class>/<subject>/punjab_<slug>/content.json) so the chapter-player board guard can tell them apart. Notes live under notes/punjab/sargodha/class-<n>/<subject>/. Add a chapter here (n, title, notes, game) only when its content is published.",
+    "classes": {
+      "9": {
+        "math": {
+          "name": "Mathematics",
+          "code": "MATH",
+          "chapters": []
+        },
+        "chem": {
+          "name": "Chemistry",
+          "code": "CHEM",
+          "chapters": []
+        }
+      },
+      "10": {
+        "math": {
+          "name": "Mathematics",
+          "code": "MATH",
+          "chapters": []
+        },
+        "chem": {
+          "name": "Chemistry",
+          "code": "CHEM",
+          "chapters": []
+        }
+      }
+    }
   }
 };

@@ -158,6 +158,18 @@
       // Enrolled class/subjects have no content in the registry yet (e.g. Class
       // 10-12), OR the scope was empty. Either way, show nothing rather than
       // leaking other classes' material.
+      // Exception: a KPK / Punjab Board student whose board has no content for their class yet gets a friendly note.
+      if (scope.board && scope.classLevel !== null) {
+        section.hidden = false;
+        if (intro) intro.textContent = 'Your study material is being prepared.';
+        if (tag) tag.textContent = 'Class ' + scope.classLevel;
+        list.innerHTML = '';
+        list.appendChild(Utils.createEl('div', { class: 'empty-state' }, [
+          Utils.createEl('p', { class: 'empty-state__title', text: 'Your content is being added' }),
+          Utils.createEl('p', { text: 'Notes and games for your board are being added chapter by chapter. Check back soon.' })
+        ]));
+        return;
+      }
       section.hidden = true;
       return;
     }
@@ -207,7 +219,7 @@
         style: '--sc-primary:' + c.primary + '; --sc-secondary:' + c.secondary + ';'
       }, [
         Utils.createEl('span', { class: 'subject-card__name', text: subject.name }),
-        Utils.createEl('span', { class: 'subject-card__count', text: subject.chapters.length + ' chapters' }),
+        Utils.createEl('span', { class: 'subject-card__count', text: subject.chapters.length ? (subject.chapters.length + ' chapters') : 'Content coming soon' }),
         Utils.createEl('span', { class: 'subject-card__go', text: 'View chapters →' })
       ]);
       card.addEventListener('click', () => renderSubjectChapters(subject, container, subjects));
@@ -230,10 +242,16 @@
 
     container.appendChild(Utils.createEl('div', { class: 'subject-chapters__header', style: vars }, [
       Utils.createEl('h3', { class: 'subject-chapters__title', text: subject.name }),
-      Utils.createEl('span', { class: 'subject-chapters__count', text: subject.chapters.length + ' chapters' })
+      Utils.createEl('span', { class: 'subject-chapters__count', text: subject.chapters.length ? (subject.chapters.length + ' chapters') : 'Coming soon' })
     ]));
 
     const listWrap = Utils.createEl('div', { class: 'chapter-list', style: vars });
+    if (!subject.chapters.length) {
+      listWrap.appendChild(Utils.createEl('div', { class: 'empty-state' }, [
+        Utils.createEl('p', { class: 'empty-state__title', text: 'Content is being added' }),
+        Utils.createEl('p', { text: 'The chapters for this subject will appear here very soon.' })
+      ]));
+    }
     subject.chapters.forEach((ch) => listWrap.appendChild(renderChapterRow(ch)));
     container.appendChild(listWrap);
   }

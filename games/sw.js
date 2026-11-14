@@ -8,7 +8,7 @@
 // v142: GitHub Pages sends max-age=600, and cache.add()/fetch() inside a worker honour that browser cache, so a
 // just-deployed site kept serving the OLD files (new look for a second after a hard refresh, then old again).
 // Fix: pre-cache and revalidate with cache:'reload' / 'no-cache', and app files (html/css/js) are NETWORK-FIRST.
-const CACHE_VERSION = 'wha-v142';
+const CACHE_VERSION = 'wha-v143';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
 const STATIC_ASSETS = [
