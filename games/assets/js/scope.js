@@ -20,6 +20,12 @@
  *                                                 notes/games are shared by all
  *                                                 Punjab boards.
  *
+ *   BOARD-OLEVEL SUBJ-MATH-C07, BOARD-OLEVEL    -> Cambridge O Level student (Mathematics only): reads the
+ *                                                 registry's `olevel` branch, which holds the four books
+ *                                                 (D1-D4). The student sees EVERY uploaded O Level book and
+ *                                                 chapter — no per-book ticks — and the class number does not
+ *                                                 pick the content (a Class 7 student may work from Book 2).
+ *
  * No board token (every existing student) -> behaviour is exactly as before.
  *
  * This module is the ONLY place that interprets that string. Everything else
@@ -91,6 +97,8 @@
 
       if (parts[0] === 'BOARD' && parts[1] === 'KPK') {
         result.board = 'kpk';
+      } else if (parts[0] === 'BOARD' && parts[1] === 'OLEVEL') {
+        result.board = 'olevel';
       } else if (parts[0] === 'BOARD' && parts[1] === 'PUNJAB') {
         result.board = 'punjab';                       // content branch (shared by every Punjab board)
         if (parts[2]) result.boardBody = parts[2].toLowerCase();   // e.g. 'sargodha' (Boss Battle only)
@@ -122,6 +130,16 @@
    */
   function allowedSubjects(scope, registry) {
     if (scope.classLevel === null) return [];
+    // Cambridge O Level: the registry's `olevel.books` (D1-D4) are shown as the "subjects" (book cards). Only a
+    // student who is enrolled for Mathematics sees them (fails closed otherwise).
+    if (scope.board === 'olevel') {
+      var ol = registry && registry.olevel && registry.olevel.books;
+      if (!ol || scope.subjectKeys.indexOf('math') === -1) return [];
+      return Object.keys(ol).map(function (bkey) {
+        var book = ol[bkey];
+        return { key: bkey, name: book.name, code: book.code, book: true, chapters: localizeChapters(book.chapters) };
+      });
+    }
     // KPK / Punjab Board students read the registry's separate `kpk` / `punjab`
     // branch; everyone else reads `classes` exactly as before. A board whose
     // branch is missing from the registry reveals nothing (fail closed).

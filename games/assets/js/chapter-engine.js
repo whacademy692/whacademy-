@@ -2677,20 +2677,29 @@
     var s = String(scopeStr || '');
     if (/(^|,)\s*BOARD-KPK\s*(,|$)/i.test(s)) return 'kpk';
     if (/(^|,)\s*BOARD-PUNJAB(-[A-Z0-9]+)?\s*(,|$)/i.test(s)) return 'punjab';
+    if (/(^|,)\s*BOARD-OLEVEL\s*(,|$)/i.test(s)) return 'olevel';
     return 'federal';
   }
   function boardOfChapterSlug(slug) {
     if (/^kpk_/i.test(slug || '')) return 'kpk';
     if (/^punjab_/i.test(slug || '')) return 'punjab';
+    if (/^ol_/i.test(slug || '')) return 'olevel';
     return 'federal';
   }
   function boardMismatch(path) {
     var parts = String(path || '').split('/');
-    if (!(Number(parts[0]) >= 9)) return false;
+    var chapBoard = boardOfChapterSlug(parts[2] || '');
+    // Cambridge O Level chapters (ol_…) are kept apart in BOTH directions and for every class (an O Level student can be in Class 6-12).
+    var olevelPath = chapBoard === 'olevel';
+    if (!olevelPath && !(Number(parts[0]) >= 9) && !/(^|,)\s*BOARD-OLEVEL\s*(,|$)/i.test(cachedScope_())) return false;
+    var scopeStr = cachedScope_();
+    if (!scopeStr) return false;
+    return boardOfScope(scopeStr) !== chapBoard;
+  }
+  function cachedScope_() {
     var prof = null;
     try { var c = Storage.getCachedDashboard(); prof = c && c.data && c.data.profile; } catch (e) { prof = null; }
-    if (!prof || !prof.enrolledScope) return false;
-    return boardOfScope(prof.enrolledScope) !== boardOfChapterSlug(parts[2] || '');
+    return (prof && prof.enrolledScope) ? String(prof.enrolledScope) : '';
   }
 
   async function init() {

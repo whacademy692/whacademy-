@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cambridge O Level Enrollment — W.H. Academy</title>
+<meta name="description" content="Private enrollment form for Cambridge O Level Mathematics at W.H. Academy (invitation link only)." />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="referrer" content="no-referrer" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+<!-- Cloudflare Turnstile (anti-spam). SITE key is public by design; same widget as login / insights. -->
+<script>
+  window.WHA_TURNSTILE_SITE_KEY = '0x4AAAAAAEKa85ts_mWrcild';
+  (function(){
+    var wid;
+    window.whaEnrollCaptchaRender = function(){
+      if (wid !== undefined || !window.turnstile) return;
+      var el = document.getElementById('enrollCaptcha'); if (!el) return;
+      try { wid = window.turnstile.render('#enrollCaptcha', { sitekey: window.WHA_TURNSTILE_SITE_KEY }); } catch (e) { /* retried by onload / DOMContentLoaded */ }
+    };
+    window.whaEnrollCaptchaToken = function(){
+      if (wid === undefined || !window.turnstile) return '';
+      try { return window.turnstile.getResponse(wid) || ''; } catch (e) { return ''; }
+    };
+    window.whaEnrollCaptchaReset = function(){
+      if (wid === undefined || !window.turnstile) return;
+      try { window.turnstile.reset(wid); } catch (e) { /* ignore */ }
+    };
+    window.whaEnrollTurnstileOnload = function(){ window.whaEnrollCaptchaRender(); };
+    document.addEventListener('DOMContentLoaded', function(){ window.whaEnrollCaptchaRender(); });
+  })();
+</script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=whaEnrollTurnstileOnload&render=explicit" async defer></script>
+<style>
+  /* =========================================================================
+     enroll.html — W.H. Academy first-party enrollment form
+     Self-contained. Submits to the Supabase Edge Function `enrollment/submit`,
+     which creates a PENDING Enrollments row. Student ID is emailed after the
+     admin confirms the fee. Replaces the old Google Form.
+     ========================================================================= */
+  :root{
+    --indigo:#4f46e5; --indigo-deep:#3730a3; --indigo-soft:#6366f1;
+    --ink:#0f172a; --muted:#64748b; --line:#e2e8f0; --line-soft:#eef2f7;
+    --bg:#f6f7fb; --card:#ffffff; --ok:#16a34a; --err:#dc2626;
+    --cta:linear-gradient(135deg,#f97316 0%,#ef4444 55%,#ec4899 100%);
+    --radius:16px; --shadow:0 10px 30px rgba(15,23,42,.08);
+    --shadow-lg:0 24px 60px rgba(49,55,163,.18);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    color:var(--ink); background:var(--bg); line-height:1.55;
+    background-image:
+      radial-gradient(circle at 10% -5%, rgba(99,102,241,.12), transparent 42%),
+      radial-gradient(circle at 95% 0%, rgba(236,72,153,.08), transparent 45%);
+    background-attachment:fixed; min-height:100vh;
+  }
+  .wrap{max-width:860px; margin:0 auto; padding:24px 18px 80px}
+  /* ---- header ---- */
+  .top{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:6px 2px 18px}
+  .brand{display:flex; align-items:center; gap:11px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:1.15rem; color:var(--indigo-deep); text-decoration:none}
+  .brand .mark{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--indigo) 0%,var(--indigo-deep) 100%);color:#fff;display:grid;place-items:center;font-weight:800;box-shadow:0 6px 16px rgba(79,70,229,.35)}
+  .back{font-size:.86rem;color:var(--muted);text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+  .back:hover{color:var(--indigo)}
+  /* ---- hero ---- */
+  .hero{background:linear-gradient(135deg,#4f46e5 0%,#3730a3 100%); color:#fff; border-radius:22px; padding:30px 28px; box-shadow:var(--shadow-lg); position:relative; overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:auto -40px -60px auto;width:220px;height:220px;background:radial-gradient(circle,rgba(255,255,255,.14),transparent 70%)}
+  .hero h1{font-family:'Plus Jakarta Sans',sans-serif; margin:0 0 8px; font-size:1.7rem; line-height:1.2}
+  .hero p{margin:0; opacity:.92; font-size:.96rem; max-width:620px}
+  .hero .tag{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);padding:4px 12px;border-radius:999px;font-size:.72rem;font-weight:700;letter-spacing:.4px;text-transform:uppercase;margin-bottom:12px}
+  .notebar{margin-top:16px;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:14px;padding:12px 15px;font-size:.84rem;display:flex;gap:9px;align-items:flex-start}
+  .notebar b{color:#7c2d12}
+  /* ---- progress ---- */
+  .steps{display:flex;gap:8px;margin:22px 2px 10px}
+  .steps .s{flex:1;height:5px;border-radius:999px;background:var(--line);transition:.3s}
+  .steps .s.active{background:linear-gradient(90deg,var(--indigo),var(--indigo-soft))}
+  .steps .s.done{background:var(--indigo-deep)}
+  /* ---- card / sections ---- */
+  form{margin-top:10px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px 22px;margin-bottom:18px}
+  .card h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.08rem;margin:0 0 4px;display:flex;align-items:center;gap:10px}
+  .card h2 .n{width:26px;height:26px;border-radius:8px;background:#eef2ff;color:var(--indigo-deep);display:grid;place-items:center;font-size:.82rem;font-weight:800}
+  .card .sub{color:var(--muted);font-size:.85rem;margin:0 0 18px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+  @media(max-width:600px){.grid{grid-template-columns:1fr}}
+  .full{grid-column:1/-1}
+  label{display:block;font-size:.82rem;font-weight:600;color:#334155;margin:0 0 6px}
+  label .req{color:var(--err)}
+  input,select,textarea{
+    width:100%;font:inherit;font-size:.92rem;color:var(--ink);background:#fff;
+    border:1.5px solid var(--line);border-radius:11px;padding:11px 13px;transition:.15s;
+  }
+  textarea{resize:vertical;min-height:70px}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--indigo-soft);box-shadow:0 0 0 4px rgba(99,102,241,.14)}
+  input.bad,select.bad,textarea.bad{border-color:var(--err);box-shadow:0 0 0 4px rgba(220,38,38,.1)}
+  .hint{font-size:.76rem;color:var(--muted);margin:6px 0 0}
+  .phone-row{display:flex;gap:10px}
+  .phone-row select{flex:0 0 44%;max-width:240px}
+  .phone-row input{flex:1 1 auto;min-width:0}
+  #waCcOther{flex:0 0 90px;display:none}
+  .consent-box{background:#f8faff;border:1.5px solid var(--line);border-radius:12px;padding:14px 15px}
+  .consent-box label.chk{display:flex;gap:11px;align-items:flex-start;margin:0;font-weight:500;font-size:.84rem;line-height:1.55;color:#334155;cursor:pointer}
+  .consent-box input[type=checkbox]{width:18px;height:18px;flex:0 0 18px;margin-top:2px;padding:0}
+  .err{font-size:.76rem;color:var(--err);margin:6px 0 0;display:none;font-weight:600}
+  .err.show{display:block}
+  /* ---- subject chips ---- */
+  .chips{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{position:relative;cursor:pointer;user-select:none}
+  .chip input{position:absolute;opacity:0;pointer-events:none}
+  .chip span{display:inline-flex;align-items:center;gap:7px;padding:9px 15px;border:1.5px solid var(--line);border-radius:999px;font-size:.85rem;font-weight:600;color:#475569;background:#fff;transition:.15s}
+  .chip input:checked+span{background:#eef2ff;border-color:var(--indigo-soft);color:var(--indigo-deep)}
+  .chip span::before{content:"+";font-weight:800;color:#94a3b8}
+  .chip input:checked+span::before{content:"✓";color:var(--indigo)}
+  /* ---- plan cards ---- */
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+  @media(max-width:600px){.plans{grid-template-columns:1fr}}
+  .plan{cursor:pointer;position:relative;border:1.8px solid var(--line);border-radius:15px;padding:18px 16px;background:#fff;transition:.18s;text-align:left}
+  .plan:hover{border-color:var(--indigo-soft);transform:translateY(-2px);box-shadow:var(--shadow)}
+  .plan.sel{border-color:var(--indigo);background:linear-gradient(180deg,#f5f3ff,#fff);box-shadow:0 10px 26px rgba(79,70,229,.18)}
+  .plan .tier{font-weight:800;font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;color:var(--ink)}
+  .plan .price{font-size:1.5rem;font-weight:800;color:var(--indigo-deep);margin:6px 0 2px}
+  .plan .price small{font-size:.72rem;color:var(--muted);font-weight:600}
+  .plan .per{font-size:.72rem;color:var(--muted)}
+  .plan .peralt{font-size:.7rem;color:var(--muted);margin-top:4px;line-height:1.3}
+  .fee-estimate{margin:12px 0 0;font-size:.9rem;color:var(--indigo-deep);font-weight:600;line-height:1.5}
+  .fee-estimate .fe-note{display:block;margin-top:2px;font-weight:500;color:var(--muted);font-size:.8rem}
+  .plan .pick{position:absolute;top:12px;right:12px;width:20px;height:20px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:.7rem;color:#fff}
+  .plan.sel .pick{background:var(--indigo);border-color:var(--indigo)}
+  .plan.sel .pick::after{content:"✓"}
+  .band-note{font-size:.8rem;color:var(--muted);margin:0 0 13px;padding:9px 12px;background:#f8fafc;border-radius:10px;border:1px dashed var(--line)}
+  /* ---- home tuition note ---- */
+  .home-note{display:none;margin-top:14px;background:#f0f9ff;border:1px solid #bae6fd;color:#075985;border-radius:12px;padding:13px 15px;font-size:.83rem}
+  .home-note.show{display:block}
+  .home-note b{color:#0c4a6e}
+  /* ---- submit ---- */
+  .actions{display:flex;flex-direction:column;gap:12px;align-items:center;margin-top:4px}
+  .btn{appearance:none;border:0;cursor:pointer;font:inherit;font-weight:800;font-size:1rem;color:#fff;background:var(--cta);padding:15px 20px;border-radius:14px;width:100%;box-shadow:0 10px 26px rgba(249,115,22,.4);transition:.15s;display:inline-flex;align-items:center;justify-content:center;gap:9px}
+  .btn:hover:not(:disabled){transform:translateY(-1px);filter:brightness(1.03)}
+  .btn:disabled{opacity:.6;cursor:not-allowed;box-shadow:none}
+  .mini{font-size:.78rem;color:var(--muted);text-align:center;max-width:520px}
+  .mini a{color:var(--indigo);font-weight:600;text-decoration:none}
+  .formerr{display:none;background:#fef2f2;border:1px solid #fecaca;color:#991b1b;border-radius:12px;padding:12px 15px;font-size:.86rem;font-weight:600;margin-bottom:6px}
+  .formerr.show{display:block}
+  /* ---- success ---- */
+  .success{display:none;text-align:center;padding:40px 24px}
+  .success.show{display:block}
+  .success .ico{width:78px;height:78px;border-radius:50%;background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;display:grid;place-items:center;font-size:2.2rem;margin:0 auto 18px;box-shadow:0 14px 34px rgba(22,163,74,.35)}
+  .success h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.5rem;margin:0 0 10px}
+  .success p{color:var(--muted);max-width:480px;margin:0 auto 10px}
+  .success .mailed{font-weight:700;color:var(--ink)}
+  .success h2{justify-content:center}
+  .success .next-step{max-width:480px;margin:18px auto 6px;padding:14px 16px;border:1px solid #fed7aa;background:#fff7ed;border-radius:14px;text-align:left}
+  .success .next-step b{display:block;color:#9a3412;margin-bottom:4px}
+  .success .next-step p{margin:0 0 10px;color:#7c2d12;max-width:none;font-size:.9rem}
+  .success .pay-row{display:flex;align-items:flex-start;gap:10px;margin:8px 0 4px}
+  .success .pay-row .pay-label{font-size:.78rem;color:#9a3412;font-weight:600;white-space:nowrap;padding-top:2px}
+  .success .pay-acct{font-size:1.22rem;font-weight:800;letter-spacing:.03em;color:#7c2d12;font-family:monospace}
+  .success .pay-note{font-size:.8rem;color:#9a3412;margin:0 0 10px}
+  .success .wa-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:12px;background:#16a34a;color:#fff;font-weight:800;text-decoration:none;box-shadow:0 8px 20px rgba(22,163,74,.3)}
+  .spin{width:18px;height:18px;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;display:none}
+  @keyframes sp{to{transform:rotate(360deg)}}
+  .is-loading .spin{display:inline-block}
+
+  /* ---- O Level invite form additions ---- */
+  .linkbar{margin:16px 0 0;background:#ecfdf5;border:1px solid #bbf7d0;color:#166534;border-radius:14px;padding:11px 15px;font-size:.86rem;display:none;gap:9px;align-items:flex-start}
+  .linkbar.show{display:flex}
+  .linkbar.warn{background:#fff7ed;border-color:#fed7aa;color:#9a3412}
+  .infobox{margin:14px 0 0;background:#eef2ff;border:1px solid #c7d2fe;color:#312e81;border-radius:14px;padding:13px 15px;font-size:.88rem;line-height:1.55}
+  .infobox b{color:#1e1b4b}
+  .course{display:flex;gap:12px;align-items:center;padding:13px 15px;border:1.5px solid var(--indigo-soft);background:#eef2ff;border-radius:14px;margin-bottom:6px}
+  .course .ci{font-size:1.5rem}
+  .course b{display:block;color:var(--indigo-deep);font-size:.98rem}
+  .course span{font-size:.82rem;color:#475569}
+  .gate{text-align:center;padding:38px 22px}
+  .gate .gi{font-size:2.4rem;margin-bottom:8px}
+  .gate h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.35rem;margin:0 0 8px;justify-content:center}
+  .gate p{color:var(--muted);max-width:480px;margin:0 auto 10px}
+  .gate .retry{display:inline-block;margin-top:8px;padding:10px 22px;border-radius:12px;border:0;background:var(--indigo);color:#fff;font-weight:700;cursor:pointer;font-size:.92rem}
+  #appWrap{display:none}
+</style>
+    <link rel="stylesheet" href="/assets/brand.css">
+<link rel="stylesheet" href="/assets/public-chrome.css">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="brand wh-logo" href="index.html"><span class="wh-mark">W.H.</span><span class="wh-text"><span class="wh-l1">ACADEMY</span><span class="wh-l2">MATHEMATICS</span></span></a>
+    <a class="back" href="index.html">← Back to home</a>
+  </div>
+
+  <!-- link check (shown until the invitation link is verified) -->
+  <div class="card gate" id="gateWait"><div class="gi">⏳</div><h2>Checking your link…</h2><p>Please wait a moment.</p></div>
+  <div class="card gate" id="gateDead" style="display:none"><div class="gi">🔒</div><h2 id="deadTitle">This link cannot be used</h2><p id="deadMsg"></p>
+    <p>Please message the academy on WhatsApp <b>0329-5215703</b> and we will send you a new link.</p>
+    <a class="wa-btn" href="https://wa.me/923295215703?text=Assalam%20o%20Alaikum%2C%20my%20Cambridge%20O%20Level%20enrollment%20link%20has%20expired.%20Please%20send%20me%20a%20new%20link." target="_blank" rel="noopener" style="display:inline-flex;margin-top:6px">Ask for a new link on WhatsApp</a></div>
+  <div class="card gate" id="gateRetry" style="display:none"><div class="gi">📡</div><h2>Could not check your link</h2><p id="retryMsg">The server did not answer. Please check your internet and try again.</p><button type="button" class="retry" id="retryBtn">Try again</button></div>
+
+  <div id="appWrap">
+  <section class="hero">
+    <span class="tag">Cambridge O Level</span>
+    <h1>Enroll — O Level Mathematics</h1>
+    <p>This is your private enrollment form for <strong>Cambridge O Level Mathematics</strong> at W.H. Academy. Fill it once. After your fee is confirmed and your account is activated, we email your <strong>Student ID</strong> and a link to set your PIN — then you log in to your dashboard.</p>
+    <div class="linkbar show" id="linkBar"><span>🔗</span><div id="linkBarTxt"></div></div>
+  </section>
+
+  <div class="steps" aria-hidden="true">
+    <div class="s active" data-s="1"></div>
+    <div class="s" data-s="2"></div>
+    <div class="s" data-s="3"></div>
+  </div>
+
+  <div class="formerr" id="formErr"></div>
+
+  <form id="enrollForm" method="post" novalidate autocomplete="on">
+
+    <!-- 1. Student & guardian -->
+    <div class="card">
+      <h2><span class="n">1</span> Student & Guardian Details</h2>
+      <p class="sub">Tell us who's enrolling. We'll email everything to the address you enter and contact you on WhatsApp about your fee.</p>
+      <div class="grid">
+        <div class="full">
+          <label for="email">Email <span class="req">*</span></label>
+          <input type="email" id="email" name="email" placeholder="e.g. whacademy692@gmail.com" inputmode="email" />
+          <p class="hint">Your Student ID and registration link will be sent here. Write it correctly.</p>
+          <p class="err" id="e-email">Please enter a valid email address.</p>
+        </div>
+        <div class="full">
+          <label for="whatsapp">WhatsApp Number <span class="req">*</span></label>
+          <div class="phone-row">
+            <select id="waCc" aria-label="Country code"></select>
+            <input type="text" id="waCcOther" inputmode="numeric" maxlength="4" placeholder="Code" aria-label="Country code digits" />
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="3001234567" inputmode="numeric" autocomplete="tel-national" maxlength="14" />
+          </div>
+          <p class="hint" id="waHint"></p>
+          <p class="err" id="e-whatsapp">Please enter a valid WhatsApp number.</p>
+        </div>
+        <div>
+          <label for="fullName">Student Full Name <span class="req">*</span></label>
+          <input type="text" id="fullName" name="fullName" placeholder="Student's full name" />
+          <p class="err" id="e-fullName">Required.</p>
+        </div>
+        <div>
+          <label for="fatherName">Father's Full Name <span class="req">*</span></label>
+          <input type="text" id="fatherName" name="fatherName" placeholder="Father's full name" />
+          <p class="err" id="e-fatherName">Required.</p>
+        </div>
+        <div>
+          <label for="fatherOccupation">Father's Occupation & Designation <span class="req">*</span></label>
+          <input type="text" id="fatherOccupation" name="fatherOccupation" placeholder="e.g. Teacher, Govt. School" />
+          <p class="err" id="e-fatherOccupation">Required.</p>
+        </div>
+        <div>
+          <label for="schoolName">School Full Name <span class="req">*</span></label>
+          <input type="text" id="schoolName" name="schoolName" placeholder="Student's school name" />
+          <p class="err" id="e-schoolName">Required.</p>
+        </div>
+        <div class="full">
+          <label for="address">Student Address <span class="req">*</span></label>
+          <textarea id="address" name="address" placeholder="Complete home address"></textarea>
+          <p class="err" id="e-address">Required.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Course & plan -->
+    <div class="card">
+      <h2><span class="n">2</span> Your Course & Plan</h2>
+      <p class="sub">Your course is already set — you only need to choose a plan.</p>
+      <div class="course"><span class="ci">📐</span><div><b>Cambridge O Level — Mathematics</b><span>You will see all O Level Mathematics books and chapters that are uploaded on your dashboard.</span></div></div>
+      <div class="grid">
+        <div class="full">
+          <label>Select Plan <span class="req">*</span></label>
+          <div class="plans" id="plans"></div>
+          <p class="fee-estimate" id="feeEstimate"></p>
+          <div class="infobox"><b>This is the Dashboard fee.</b> If you also want <b>live classes</b>, please talk to the admin on WhatsApp <b>0329-5215703</b> — the fee for live classes is agreed with the admin and your <b>final fee</b> will be told to you. Your <b>invoice</b> is also shown on your student dashboard, along with the fee for every coming month.</div>
+          <p class="err" id="e-plan">Please select a plan.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Mode & confirmation -->
+    <div class="card">
+      <h2><span class="n">3</span> Tuition Mode & Confirmation</h2>
+      <p class="sub">Tell us how you'd like to study and confirm who is filling this form.</p>
+      <div class="grid">
+        <div class="full">
+          <label for="tuitionMode">Select Tuition Mode <span class="req">*</span></label>
+          <select id="tuitionMode" name="tuitionMode">
+            <option value="">— Select mode —</option>
+            <option value="Online">Online</option>
+            <option value="Home Tuition">Home Tuition</option>
+          </select>
+          <p class="err" id="e-tuitionMode">Please select a tuition mode.</p>
+          <div class="home-note" id="homeNote">
+            <b>Home Tuition:</b> currently available only in selected areas of Rawalpindi. Please also text the required details to
+            <b>0329-5215703</b> (text messages only): student name, father's name, father's occupation, complete address, school name, class, subject(s).
+          </div>
+        </div>
+        </div>
+        <div class="full">
+          <label for="filledBy">Who is filling this form? <span class="req">*</span></label>
+          <select id="filledBy" name="filledBy">
+            <option value="">— Select —</option>
+            <option value="Parent/Guardian">Parent / Guardian</option>
+            <option value="Student (18+)">Student (18 years or older)</option>
+          </select>
+          <p class="err" id="e-filledBy">Please select who is filling this form.</p>
+        </div>
+        <div class="full">
+          <div class="consent-box">
+            <label class="chk" for="consent">
+              <input type="checkbox" id="consent" name="consent" />
+              <span>I confirm the details above are correct and that I have read the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a> and the <a href="terms.html" target="_blank" rel="noopener">Terms</a>, including the fee and refund policy. If the student is under 18, I am the student's parent or legal guardian and I consent to W.H. Academy collecting and using the student's information as described, and to the student using the academy's services.</span>
+            </label>
+          </div>
+          <p class="err" id="e-consent">Please tick the box to give your consent.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="enrollCaptcha" style="display:flex;justify-content:center;margin:18px 0 6px"></div>
+
+    <div class="actions">
+      <button type="submit" class="btn" id="submitBtn">
+        <span class="spin"></span><span class="label">Submit Enrollment</span>
+      </button>
+      <p class="mini">By submitting you confirm the details are correct. Your Student ID is emailed <b>once your account is activated</b> (after fee confirmation). Questions? Call <a href="tel:03295215703">0329-5215703</a>.</p>
+    </div>
+  </form>
+
+  <!-- success -->
+  <div class="card success" id="success">
+    <div class="ico">✓</div>
+    <h2>Enrollment received!</h2>
+    <p>Thank you — your request is now <strong>pending fee confirmation</strong>.</p>
+    <p>Once your fee is confirmed and your account is <strong>activated</strong>, your <strong>Student ID</strong> and a link to set your PIN will be emailed to <span class="mailed" id="mailedTo">your email</span>. Set your PIN, then log in.</p>
+    <div class="next-step">
+      <b>Next step: pay your fee</b>
+      <p>Send your fee to either of these accounts via <strong>EasyPaisa or JazzCash</strong>:</p>
+      <div class="pay-row"><span class="pay-label">Account&nbsp;No.</span><span class="pay-acct">0340-0876011</span></div>
+      <div class="pay-row"><span class="pay-label">Account&nbsp;Title</span><span class="pay-acct">Muhammad Rehan Safdar</span></div>
+      <p class="pay-note">(Both EasyPaisa and JazzCash use this number.)</p>
+      <p>After paying, send your <strong>payment screenshot</strong> on WhatsApp to <strong>0329-5215703</strong>.<span id="waNumNote"></span></p>
+      <p>Your account is created <strong>only after we confirm your payment</strong>.</p>
+      <a class="wa-btn" id="waBtn" href="https://wa.me/923295215703" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.523 5.853L0 24l6.29-1.507A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.37l-.359-.214-3.727.893.944-3.634-.234-.374A9.818 9.818 0 1112 21.818z"/></svg>
+        Send payment screenshot
+      </a>
+    </div>
+    <p style="margin-top:22px"><a class="back" href="index.html" style="font-size:.95rem">← Back to home</a></p>
+  </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var API_BASE_URL = 'https://gbgcaonmdekumluwgwvn.supabase.co/functions/v1/api';
+  var API_KEY      = 'Jdb-iJByoQ-WA0UwlQrorQOH77buDQjepPH0y2SsDyo';
+
+  /* Cambridge O Level is Mathematics only, priced like the Middle band per subject (one subject). Same numbers as enroll.html. */
+  var PLANS = [ {tier:'Basic',per:999}, {tier:'Plus',per:1700}, {tier:'Max',per:2500} ];
+  function $(id){ return document.getElementById(id); }
+  var state = { plan:null, token:'', expiresAt:0, dead:false };
+  function planOf(tier){ var r=null; PLANS.forEach(function(x){ if(x.tier===tier) r=x; }); return r; }
+  function computeFee(tier){ var p=planOf(tier); return p ? p.per : 0; }
+
+  /* ---- first month: same rule as plan upgrades. Calendar months; joining part-way pays for the days left
+         (today counts, Pakistan time), rounded to the nearest PKR 10; the next month is the full fee. ---- */
+  var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  function firstMonthNote(fee){
+    var t=new Date(Date.now()+5*3600*1000), y=t.getUTCFullYear(), m=t.getUTCMonth(), d=t.getUTCDate();
+    var dim=new Date(Date.UTC(y,m+1,0)).getUTCDate(), left=dim-d+1;
+    if(left>=dim||!fee) return '';
+    var amt=Math.round(fee*left/dim/10)*10;
+    return '<span class="fe-note">If your account is activated today: <b>PKR '+amt.toLocaleString()+'</b> for the rest of '+MONTHS[m]+' '+y+' ('+left+' day'+(left===1?'':'s')+', today counts), then PKR '+fee.toLocaleString()+' a month from 1 '+MONTHS[(m+1)%12]+' '+(m===11?y+1:y)+'. Your first month is always calculated from the day your account is activated; the exact amount is confirmed on WhatsApp and your fee voucher.</span>';
+  }
+
+
+  function updateEstimate(){
+    var el=$('feeEstimate'); if(!el) return;
+    if(!state.plan){ el.innerHTML='<b>Select a plan</b> to see the monthly Dashboard fee.'; return; }
+    var fee=computeFee(state.plan);
+    el.innerHTML='Monthly Dashboard fee: <b>PKR '+fee.toLocaleString()+'</b> ('+state.plan+' · Mathematics). '+firstMonthNote(fee)+'<span class="fe-note">Live classes, if you want them, are agreed with the admin on WhatsApp.</span>';
+  }
+  function renderPlans(){
+    var wrap=$('plans'); wrap.innerHTML='';
+    PLANS.forEach(function(p){
+      var d=document.createElement('button'); d.type='button'; d.className='plan'; d.dataset.tier=p.tier;
+      d.innerHTML='<span class="pick"></span><div class="tier">'+p.tier+'</div><div class="price">PKR '+p.per.toLocaleString()+'</div><div class="per">per month · Mathematics</div>';
+      d.addEventListener('click', function(){
+        wrap.querySelectorAll('.plan').forEach(function(x){x.classList.remove('sel');});
+        d.classList.add('sel'); state.plan=p.tier; clearErr('plan'); updateEstimate(); setStep();
+      });
+      wrap.appendChild(d);
+    });
+    updateEstimate();
+  }
+  $('tuitionMode').addEventListener('change',function(){
+    clearErr('tuitionMode');
+    $('homeNote').classList.toggle('show', this.value==='Home Tuition');
+    setStep();
+  });
+  $('filledBy').addEventListener('change',function(){clearErr('filledBy');setStep();});
+  $('consent').addEventListener('change',function(){clearErr('consent');setStep();});
+  ['email','whatsapp','fullName','fatherName','fatherOccupation','schoolName','address'].forEach(function(id){
+    $(id).addEventListener('input',function(){clearErr(id);setStep();});
+  });
+  function setStep(){
+    var s1 = $('email').value && $('whatsapp').value && $('fullName').value && $('fatherName').value && $('fatherOccupation').value && $('schoolName').value && $('address').value;
+    var s2 = !!state.plan;
+    var s3 = $('tuitionMode').value && $('filledBy').value && $('consent').checked;
+    var steps=document.querySelectorAll('.steps .s');
+    steps[0].className='s '+(s1?'done':'active');
+    steps[1].className='s '+(s2?'done':(s1?'active':''));
+    steps[2].className='s '+(s3?'done':(s2?'active':''));
+  }
+
+  /* ---- validation helpers ---- */
+  function showErr(id,msg){ var e=$('e-'+id); if(e){ if(msg)e.textContent=msg; e.classList.add('show'); } var f=$(id); if(f)f.classList.add('bad'); }
+  function clearErr(id){ var e=$('e-'+id); if(e)e.classList.remove('show'); var f=$(id); if(f)f.classList.remove('bad'); }
+  function emailOk(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+  /* WhatsApp number: country-code dropdown + digits only -> "+923001234567" ('' if not usable). Same rule as the server.
+     [name, dial code, min digits, max digits]. Pakistan must be exactly 10 digits starting with 3. */
+  var COUNTRIES=[['Pakistan','92',10,10],['United Arab Emirates','971',9,9],['Saudi Arabia','966',9,9],['United Kingdom','44',10,10],['United States','1',10,10],['Canada','1',10,10],['Australia','61',9,9],['Qatar','974',8,8],['Oman','968',8,8],['Kuwait','965',8,8],['Bahrain','973',8,8],['Germany','49',10,11],['Malaysia','60',9,10],['Turkey','90',10,10],['Other country','',6,13]];
+  (function(){ var sel=$('waCc'); COUNTRIES.forEach(function(c,i){ var o=document.createElement('option'); o.value=String(i); o.textContent=c[0]+(c[1]?' (+'+c[1]+')':''); sel.appendChild(o); }); })();
+  function waRule(){ var c=COUNTRIES[Number($('waCc').value)||0]; var cc=c[1]; if(!cc) cc=($('waCcOther').value||'').replace(/\D/g,''); return {name:c[0],cc:cc,min:c[2],max:c[3],other:!c[1]}; }
+  function waHint(){
+    var r=waRule(), h=$('waHint'), e=$('e-whatsapp');
+    $('waCcOther').style.display=r.other?'block':'none';
+    var msg = r.cc==='92' ? 'Pakistan: 10 digits starting with 3, e.g. 300 1234567 (no leading 0).'
+            : r.other ? 'Type the country code in the small box, then the number without the leading 0.'
+            : r.name+': '+(r.min===r.max?r.min:r.min+'–'+r.max)+' digits, without the leading 0.';
+    h.textContent=msg;
+    e.textContent='Please enter a valid WhatsApp number. '+msg;
+  }
+  function waClean(){
+    var r=waRule(), el=$('whatsapp'), d=String(el.value||'').replace(/\D/g,'');
+    d=d.replace(/^00/,'');
+    if(r.cc && d.indexOf(r.cc)===0 && d.length>r.max) d=d.slice(r.cc.length);
+    d=d.replace(/^0+/,'');
+    if(r.cc==='92' && d.length && d.charAt(0)!=='3') d='';
+    if(d.length>r.max) d=d.slice(0,r.max);
+    if(el.value!==d) el.value=d;
+  }
+  function normPhone(){
+    var r=waRule(), d=String($('whatsapp').value||'').replace(/\D/g,'');
+    if(!r.cc||d.length<r.min||d.length>r.max) return '';
+    if(r.cc==='92' && d.charAt(0)!=='3') return '';
+    if((r.cc+d).length>15) return '';
+    return '+'+r.cc+d;
+  }
+  $('waCc').addEventListener('change',function(){ clearErr('whatsapp'); waHint(); waClean(); setStep(); });
+  $('waCcOther').addEventListener('input',function(){ this.value=this.value.replace(/\D/g,'').slice(0,4); clearErr('whatsapp'); waHint(); waClean(); setStep(); });
+  $('whatsapp').addEventListener('input',function(){ waClean(); });
+  waHint();
+
+  function post(payload){
+    return fetch(API_BASE_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)})
+      .then(function(r){return r.text();})
+      .then(function(t){ var data=null; try{data=JSON.parse(t);}catch(e){} if(data===null||typeof data!=='object'||typeof data.success!=='boolean'){ var er=new Error('The server is waking up — please try again in a moment.'); er.net=true; throw er; } return data; });
+  }
+
+  /* ---- link check: the FIRST open starts the 24 hours (server side) ---- */
+  var PK = 'Asia/Karachi';
+  function fmt(ms){
+    try{ return new Date(ms).toLocaleString('en-GB',{timeZone:PK,weekday:'short',day:'numeric',month:'short',hour:'numeric',minute:'2-digit',hour12:true}); }
+    catch(e){ return new Date(ms).toString(); }
+  }
+  function leftText(ms){
+    var m=Math.max(0,Math.floor(ms/60000)), h=Math.floor(m/60); m=m%60;
+    return h>0 ? h+' hour'+(h===1?'':'s')+' '+m+' min' : m+' min';
+  }
+  function showOnly(id){ ['gateWait','gateDead','gateRetry'].forEach(function(g){ $(g).style.display=(g===id)?'':'none'; }); $('appWrap').style.display=(id==='app')?'block':'none'; }
+  function dead(msg,title){ state.dead=true; $('deadTitle').textContent=title||'This link cannot be used'; $('deadMsg').textContent=msg||'This link is not valid.'; showOnly('gateDead'); }
+  function tickBar(){
+    if(!state.expiresAt) return;
+    var left=state.expiresAt-Date.now();
+    if(left<=0){ dead('This link has expired, so the form can no longer be sent.','This link has expired'); return; }
+    $('linkBarTxt').innerHTML='This private link is valid until <b>'+fmt(state.expiresAt)+'</b> (Pakistan time) — about <b>'+leftText(left)+'</b> left. Please fill and submit the form before then.';
+    $('linkBar').className='linkbar show'+(left<3600000?' warn':'');
+  }
+  function checkLink(){
+    var t=''; try{ t=(new URLSearchParams(location.search).get('t')||'').trim(); }catch(e){}
+    if(!/^[A-Za-z0-9_-]{20,64}$/.test(t)){ dead('This page needs the private link that the academy sent you. Please open that link again.','Link not valid'); return; }
+    state.token=t; showOnly('gateWait');
+    post({operation:'olevel/invite/open',apiKey:API_KEY,inviteToken:t}).then(function(d){
+      if(!d.success){ dead((d.error&&d.error.message)||'This link is not valid.', /expired/i.test((d.error&&d.error.message)||'')?'This link has expired':(/already been used/i.test((d.error&&d.error.message)||'')?'This link was already used':'This link cannot be used')); return; }
+      state.expiresAt=Date.parse(d.data.expiresAt)||0;
+      showOnly('app'); tickBar(); setInterval(function(){ if(!state.dead) tickBar(); },30000);
+      if(window.whaEnrollCaptchaRender) window.whaEnrollCaptchaRender();
+    }).catch(function(e){ $('retryMsg').textContent=e.message||'The server did not answer. Please check your internet and try again.'; showOnly('gateRetry'); });
+  }
+  $('retryBtn').addEventListener('click',checkLink);
+
+  /* ---- submit ---- */
+  $('enrollForm').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    if(state.dead) return;
+    $('formErr').classList.remove('show');
+    var ok=true, firstBad=null;
+    function need(id,test){ if(!test){ showErr(id); ok=false; if(!firstBad)firstBad=$(id)||$('e-'+id); } }
+    need('email', emailOk($('email').value.trim()));
+    need('whatsapp', normPhone($('whatsapp').value));
+    need('fullName', $('fullName').value.trim());
+    need('fatherName', $('fatherName').value.trim());
+    need('fatherOccupation', $('fatherOccupation').value.trim());
+    need('schoolName', $('schoolName').value.trim());
+    need('address', $('address').value.trim());
+    need('plan', !!state.plan);
+    need('tuitionMode', $('tuitionMode').value);
+    need('filledBy', !!$('filledBy').value);
+    need('consent', $('consent').checked);
+
+    var captchaToken = (window.whaEnrollCaptchaToken && window.whaEnrollCaptchaToken()) || '';
+    if(ok && !captchaToken){
+      $('formErr').textContent='Please complete the verification check above the Submit button, then submit again.';
+      $('formErr').classList.add('show');
+      var capEl=$('enrollCaptcha'); if(capEl && capEl.scrollIntoView) capEl.scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+    if(!ok){
+      $('formErr').textContent='Please fill in the highlighted fields before submitting.';
+      $('formErr').classList.add('show');
+      if(firstBad && firstBad.scrollIntoView) firstBad.scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+    /* Board / class / stream / subject are fixed by the server for an invitation link (O Level, Mathematics). */
+    var payload = {
+      operation:'enrollment/submit', apiKey:API_KEY, inviteToken:state.token,
+      captchaToken:captchaToken,
+      filledBy:$('filledBy').value, consent:true,
+      email:$('email').value.trim(),
+      whatsapp:normPhone($('whatsapp').value),
+      fullName:$('fullName').value.trim(),
+      fatherName:$('fatherName').value.trim(),
+      fatherOccupation:$('fatherOccupation').value.trim(),
+      schoolName:$('schoolName').value.trim(),
+      address:$('address').value.trim(),
+      classLevel:8, board:'OLevel', stream:'Not applicable', subjects:['Mathematics'], otherSubject:'',
+      tuitionMode:$('tuitionMode').value,
+      planTier:state.plan,
+      planPrice: computeFee(state.plan),
+      submittedAtLocal:new Date().toString()
+    };
+    var btn=$('submitBtn'); btn.disabled=true; btn.classList.add('is-loading');
+    btn.querySelector('.label').textContent='Submitting…';
+    post(payload).then(function(data){
+      if(!data.success){ throw new Error((data.error&&data.error.message)||'Something went wrong. Please try again.'); }
+      state.dead=true;
+      $('mailedTo').textContent=payload.email;
+      $('waNumNote').textContent=payload.whatsapp?' We will also message you on '+payload.whatsapp+' once confirmed.':'';
+      $('waBtn').href='https://wa.me/923295215703?text='+encodeURIComponent('Assalam o Alaikum, I have paid the W.H. Academy enrollment fee for '+payload.fullName+' (Cambridge O Level Mathematics, '+payload.planTier+' plan). Please find my payment screenshot attached.');
+      $('enrollForm').style.display='none';
+      document.querySelector('.steps').style.display='none';
+      $('linkBar').style.display='none';
+      $('success').classList.add('show');
+      window.scrollTo({top:0,behavior:'smooth'});
+    }).catch(function(e){
+      var m=e.message||'Could not submit. Please try again.';
+      if(/expired|already been used|no longer valid|not valid/i.test(m) && !e.net){ dead(m, /expired/i.test(m)?'This link has expired':(/already been used/i.test(m)?'This link was already used':'This link cannot be used')); return; }
+      $('formErr').textContent=m;
+      $('formErr').classList.add('show');
+      $('formErr').scrollIntoView({behavior:'smooth',block:'center'});
+      if(window.whaEnrollCaptchaReset) window.whaEnrollCaptchaReset();
+      btn.disabled=false; btn.classList.remove('is-loading'); btn.querySelector('.label').textContent='Submit Enrollment';
+    });
+  });
+
+  renderPlans(); setStep(); checkLink();
+})();
+</script>
+</body>
+</html>

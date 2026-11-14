@@ -176,12 +176,15 @@
     section.hidden = false;
 
     const subjectNames = subjects.map((x) => x.name);
-    if (intro) {
+    const isOLevel = scope.board === 'olevel';
+    if (intro && isOLevel) {
+      intro.textContent = 'Cambridge O Level Mathematics. Choose your book below; every chapter that is uploaded is yours to open.';
+    } else if (intro) {
       intro.textContent = scope.fullClass
         ? 'You are enrolled in Class ' + scope.classLevel + '. Everything below is yours to explore.'
         : 'You have enrolled for these subjects: ' + subjectNames.join(', ') + '.';
     }
-    if (tag) tag.textContent = 'Class ' + (scope.classLevel || '');
+    if (tag) tag.textContent = isOLevel ? 'Cambridge O Level' : ('Class ' + (scope.classLevel || ''));
 
     list.innerHTML = '';
     renderSubjectGrid(subjects, list);
@@ -236,12 +239,12 @@
     const vars = '--sc-primary:' + c.primary + '; --sc-secondary:' + c.secondary + ';';
 
     const back = Utils.createEl('button', { class: 'btn btn--secondary btn--sm', type: 'button' },
-      [Utils.createEl('span', { text: '← All subjects' })]);
+      [Utils.createEl('span', { text: subject.book ? '← All books' : '← All subjects' })]);
     back.addEventListener('click', () => renderSubjectGrid(allSubjects, container));
     container.appendChild(back);
 
     container.appendChild(Utils.createEl('div', { class: 'subject-chapters__header', style: vars }, [
-      Utils.createEl('h3', { class: 'subject-chapters__title', text: subject.name }),
+      Utils.createEl('h3', { class: 'subject-chapters__title', text: subject.book ? ('Mathematics · ' + subject.name) : subject.name }),
       Utils.createEl('span', { class: 'subject-chapters__count', text: subject.chapters.length ? (subject.chapters.length + ' chapters') : 'Coming soon' })
     ]));
 
@@ -249,7 +252,7 @@
     if (!subject.chapters.length) {
       listWrap.appendChild(Utils.createEl('div', { class: 'empty-state' }, [
         Utils.createEl('p', { class: 'empty-state__title', text: 'Content is being added' }),
-        Utils.createEl('p', { text: 'The chapters for this subject will appear here very soon.' })
+        Utils.createEl('p', { text: subject.book ? 'The chapters for this book will appear here very soon.' : 'The chapters for this subject will appear here very soon.' })
       ]));
     }
     subject.chapters.forEach((ch) => listWrap.appendChild(renderChapterRow(ch)));

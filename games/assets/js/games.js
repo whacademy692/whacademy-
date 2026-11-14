@@ -75,6 +75,7 @@
           subjectKey: subject.key,
           subjectName: subject.name,
           classLevel: scope.classLevel,
+          board: scope.board,
           title: ch.title,
           n: ch.n,
           game: ch.game,
@@ -105,7 +106,7 @@
       Utils.createEl('div', { class: 'card--nav__body' }, [
         Utils.createEl('p', { class: 'card--nav__title', text: row.title }),
         Utils.createEl('p', { class: 'card--nav__meta',
-          text: 'Class ' + row.classLevel + ' · ' + row.subjectName })
+          text: (row.board === 'olevel' ? 'O Level · Mathematics · ' : ('Class ' + row.classLevel + ' · ')) + row.subjectName })
       ])
     ];
 
@@ -129,7 +130,7 @@
     var buckets = {};
     rows.forEach(function (r) {
       if (!buckets[r.subjectKey]) {
-        buckets[r.subjectKey] = { key: r.subjectKey, name: r.subjectName, classLevel: r.classLevel, rows: [] };
+        buckets[r.subjectKey] = { key: r.subjectKey, name: r.subjectName, classLevel: r.classLevel, board: r.board, rows: [] };
         order.push(r.subjectKey);
       }
       buckets[r.subjectKey].rows.push(r);
@@ -157,7 +158,7 @@
       Utils.createEl('div', { class: 'subject-group__titles' }, [
         Utils.createEl('h2', { class: 'subject-group__name', text: group.name }),
         Utils.createEl('p', { class: 'subject-group__meta',
-          text: 'Class ' + group.classLevel + ' · ' + rows.length + ' chapters' +
+          text: (group.board === 'olevel' ? 'Cambridge O Level' : ('Class ' + group.classLevel)) + ' · ' + rows.length + ' chapters' +
                 (playableCount ? ' · ' + playableCount + ' ready to play' : '') })
       ])
     ]);

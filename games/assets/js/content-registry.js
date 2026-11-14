@@ -1467,5 +1467,14 @@ window.WHA_CONTENT = {
         }
       }
     }
+  },
+  "olevel": {
+    "_note": "Cambridge O Level Mathematics (syllabus 4024). The book is Oxford 'think! New Syllabus Mathematics' Book 1-4 = D1-D4 (8th edition chapter lists). Every O Level student sees ALL books/chapters listed here (no per-book enrolment); the dashboard shows the four books as cards and each card opens that book's chapters. Chapter slugs are prefixed ol_ (games/classes/ol/math/ol_<slug>/content.json, game url ?ch=ol/math/ol_<slug>) so the chapter-player board guard can tell them apart. Notes live under notes/olevel/math/book-<n>/. Add a chapter to a book (n, title, notes, game) only when its content is published; an empty book shows 'Content coming soon'.",
+    "books": {
+      "b1": { "name": "Book 1 (D1)", "code": "MATH", "chapters": [] },
+      "b2": { "name": "Book 2 (D2)", "code": "MATH", "chapters": [] },
+      "b3": { "name": "Book 3 (D3)", "code": "MATH", "chapters": [] },
+      "b4": { "name": "Book 4 (D4)", "code": "MATH", "chapters": [] }
+    }
   }
 };
