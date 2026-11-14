@@ -1,13 +1,9 @@
-# v12.38 — STUDENT/PUBLIC SITE (repo whacademy692/whacademy-) — logo consistency, login lockup, favicons
+# Image optimisation — STUDENT repo (whacademy-)
+Extract at repo root, overwrite, commit.
 
-Upload everything in this zip at the same paths (repo root). ~121 files: 6 new, the rest are changed.
-(115 of them are .html pages: ONLY their favicon <link> lines changed — all pages now use the same absolute icon links.)
+NEW: logo-256.webp, og-image.jpg, owner_pic.webp, assets/logo-mark.webp
+CHANGED: index.html, faculty.html, games/login.html, games/welcome.html, assets/brand.css, owner_pic.jpg (recompressed), images/*.webp (122 re-encoded, same names)
 
-NEW:   favicon-48.png, favicon-192.png
-CHANGED (real changes): assets/brand.css (login/welcome logo lockup), games/login.html, games/welcome.html,
-        games/assets/css/pages/login.css, manifest.json, games/manifest.json
-CHANGED (favicon links only): every other .html page
-
-After upload: Ctrl+Shift+R.
-GOOGLE: it shows the logo next to whacademypk.com only after it re-crawls. Fast way: Google Search Console >
-URL inspection > https://whacademypk.com/ > Request indexing. Usually a few days; Google needs favicon >= 48x48 (now done).
+After deploy you may delete (no longer used by pages): og-image.png (keep until social previews refresh if you like), assets/logo-mark.png.
+KEEP: logo-512.png, favicon*.png, apple-touch-icon.png, favicon.ico (manifest / Google / iOS need PNG).
+Then Search Console / WhatsApp: og image URL changed to /og-image.jpg.
