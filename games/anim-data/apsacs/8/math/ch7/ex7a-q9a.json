@@ -1,0 +1,625 @@
+{
+ "id": "g8-math-pyth-ex7a-q9a",
+ "title": "Exercise 7A · Q9(a)",
+ "summary": "Find TH in ΔTHV; the tick marks give UH = TH; then find TU in ΔTUH.",
+ "alt": "Exercise 7A · Q9(a): In the figure, TH ⊥ UV, UH = TH, TV = 34 cm and HV = 30 cm. Find the value of a, the length of TU.",
+ "uiDefaults": {
+  "angles": false
+ },
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -27.04,
+   41.04
+  ],
+  "y": [
+   -6.44,
+   22.44
+  ],
+  "pad": 10,
+  "ratio": 0.62
+ },
+ "roles": {
+  "hyp": {
+   "label": "Hypotenuse",
+   "color": "#059669",
+   "text": "The side opposite the right angle. It is always the longest side."
+  },
+  "legA": {
+   "label": "Shorter side 1",
+   "color": "#2563eb",
+   "text": "One of the two sides that meet at the right angle."
+  },
+  "legB": {
+   "label": "Shorter side 2",
+   "color": "#e11d48",
+   "text": "The other side that meets at the right angle."
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The length we are finding."
+  }
+ },
+ "params": [],
+ "derived": {
+  "p_H": [
+   0.0,
+   0.0
+  ],
+  "p_U": [
+   -16.0,
+   0.0
+  ],
+  "p_V": [
+   30.0,
+   0.0
+  ],
+  "p_T": [
+   0.0,
+   16.0
+  ]
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ln0",
+   "role": "ink",
+   "from": "p_T",
+   "to": "p_U",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 0,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln1",
+   "role": "ink",
+   "from": "p_T",
+   "to": "p_V",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 150,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln2",
+   "role": "ink",
+   "from": "p_U",
+   "to": "p_H",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 300,
+   "appearDur": 700,
+   "layer": "mid",
+   "ticks": 1
+  },
+  {
+   "type": "segment",
+   "id": "ln3",
+   "role": "ink",
+   "from": "p_H",
+   "to": "p_V",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 450,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln4",
+   "role": "ink",
+   "from": "p_T",
+   "to": "p_H",
+   "strokeWidth": 2.0,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 600,
+   "appearDur": 700,
+   "layer": "mid",
+   "ticks": 1,
+   "dash": [
+    7,
+    6
+   ]
+  },
+  {
+   "type": "angle",
+   "id": "ra0",
+   "at": "p_H",
+   "from": "p_V",
+   "to": "p_T",
+   "style": "square",
+   "r": 22,
+   "role": "ink",
+   "strokeWidth": 1.8,
+   "fill": false,
+   "appear": "s0",
+   "delay": 700,
+   "appearDur": 400
+  },
+  {
+   "type": "angle",
+   "id": "ra1",
+   "at": "p_H",
+   "from": "p_U",
+   "to": "p_T",
+   "style": "square",
+   "r": 22,
+   "role": "ink",
+   "strokeWidth": 1.8,
+   "fill": false,
+   "appear": "s0",
+   "delay": 700,
+   "appearDur": 400
+  },
+  {
+   "type": "point",
+   "id": "pt_H",
+   "at": "p_H",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "H",
+    "off": 0,
+    "dx": 0.0,
+    "dy": 17.0,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_U",
+   "at": "p_U",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "U",
+    "off": 0,
+    "dx": -16.7,
+    "dy": 3.4,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_V",
+   "at": "p_V",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "V",
+    "off": 0,
+    "dx": 16.8,
+    "dy": 2.5,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_T",
+   "at": "p_T",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "T",
+    "off": 0,
+    "dx": -4.8,
+    "dy": -16.3,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "polygon",
+   "id": "ov0",
+   "pts": [
+    "p_T",
+    "p_H",
+    "p_V"
+   ],
+   "role": "accent",
+   "fill": "accent",
+   "fillOpacity": 0.11,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s1",
+   "appearDur": 500,
+   "disappear": "s4"
+  },
+  {
+   "type": "segment",
+   "id": "ov1",
+   "role": "hyp",
+   "from": "p_T",
+   "to": "p_V",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s4"
+  },
+  {
+   "type": "segment",
+   "id": "ov2",
+   "role": "legA",
+   "from": "p_H",
+   "to": "p_V",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s4"
+  },
+  {
+   "type": "segment",
+   "id": "ov3",
+   "role": "legB",
+   "from": "p_T",
+   "to": "p_H",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s4"
+  },
+  {
+   "type": "segment",
+   "id": "ov4",
+   "role": "legA",
+   "from": "p_U",
+   "to": "p_H",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s4",
+   "effect": "draw",
+   "appearDur": 600,
+   "ticks": 1,
+   "disappear": "s5"
+  },
+  {
+   "type": "segment",
+   "id": "ov5",
+   "role": "legA",
+   "from": "p_T",
+   "to": "p_H",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s4",
+   "effect": "draw",
+   "appearDur": 600,
+   "ticks": 1,
+   "disappear": "s5"
+  },
+  {
+   "type": "polygon",
+   "id": "ov6",
+   "pts": [
+    "p_T",
+    "p_U",
+    "p_H"
+   ],
+   "role": "accent",
+   "fill": "accent",
+   "fillOpacity": 0.11,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s5",
+   "appearDur": 500
+  },
+  {
+   "type": "segment",
+   "id": "ov7",
+   "role": "hyp",
+   "from": "p_T",
+   "to": "p_U",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s5",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "ov8",
+   "role": "legA",
+   "from": "p_T",
+   "to": "p_H",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s5",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "ov9",
+   "role": "legB",
+   "from": "p_U",
+   "to": "p_H",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s5",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "lb0",
+   "from": "p_T",
+   "to": "p_V",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "34 cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     3.5,
+     4.0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb1",
+   "from": "p_H",
+   "to": "p_V",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "30 cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     15,
+     10
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb2",
+   "from": "p_T",
+   "to": "p_U",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "a = ?",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     15,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0,
+   "disappear": "s7"
+  },
+  {
+   "type": "segment",
+   "id": "lb3",
+   "from": "p_T",
+   "to": "p_H",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "16 cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     8,
+     8
+    ],
+    "off": 13,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s3",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb4",
+   "from": "p_U",
+   "to": "p_H",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "16 cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     -8,
+     -8
+    ],
+    "off": 13,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s4",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb5",
+   "from": "p_T",
+   "to": "p_U",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "a = 22.6 cm",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     15,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s7",
+   "appearDur": 450,
+   "delay": 0
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "narration": "In the figure, **TH ⊥ UV** and the tick marks show that **UH = TH**. **TV = 34 cm** and **HV = 30 cm**. We have to find **a**, the length of **TU**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Right angle and theorem",
+   "narration": "In ΔTHV, **∠H = 90°**, so the **hypotenuse** is the side opposite it: **TV**. The other two sides meet at the right angle. **Pythagoras' theorem**: the square on the hypotenuse equals the sum of the squares on the other two sides. We want a shorter side, so subtract.\\[\\begin{aligned}\\role{hyp}{TV^2} &= \\role{legA}{HV^2} + \\role{legB}{TH^2} \\\\ \\role{legB}{TH^2} &= \\role{hyp}{TV^2} - \\role{legA}{HV^2}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "ra0"
+     ],
+     "at": 700
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Substitute and subtract",
+   "narration": "Put in the lengths, square them and subtract.\\[\\begin{aligned}\\role{hyp}{TV^2} &= \\role{legA}{HV^2} + \\role{legB}{TH^2} \\\\ \\role{legB}{TH^2} &= \\role{hyp}{TV^2} - \\role{legA}{HV^2} \\\\ &= \\role{hyp}{34^2} - \\role{legA}{30^2} \\\\ &= \\role{hyp}{1156} - \\role{legA}{900} \\\\ &= \\role{legB}{256}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Square root",
+   "narration": "Take the square root of both sides (a length is positive).\\[\\begin{aligned}\\role{hyp}{TV^2} &= \\role{legA}{HV^2} + \\role{legB}{TH^2} \\\\ \\role{legB}{TH^2} &= \\role{hyp}{TV^2} - \\role{legA}{HV^2} \\\\ &= \\role{hyp}{34^2} - \\role{legA}{30^2} \\\\ &= \\role{hyp}{1156} - \\role{legA}{900} \\\\ &= \\role{legB}{256} \\\\ \\role{legB}{TH} &= \\sqrt{256} = 16\\ \\text{cm}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Use the tick marks",
+   "narration": "The tick marks say **UH = TH**, so **UH = 16 cm** as well.\\[\\begin{aligned}UH = TH = 16\\ \\text{cm}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s5",
+   "title": "Right angle and theorem",
+   "narration": "In ΔTUH, **∠H = 90°**, so the **hypotenuse** is the side opposite it: **TU**. The other two sides meet at the right angle. **Pythagoras' theorem**: the square on the hypotenuse equals the sum of the squares on the other two sides.\\[\\begin{aligned}\\role{hyp}{TU^2} &= \\role{legA}{TH^2} + \\role{legB}{UH^2}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "ra1"
+     ],
+     "at": 700
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "title": "Substitute and add",
+   "narration": "Put in the lengths, square them and add.\\[\\begin{aligned}\\role{hyp}{TU^2} &= \\role{legA}{TH^2} + \\role{legB}{UH^2} \\\\ &= \\role{legA}{16^2} + \\role{legB}{16^2} \\\\ &= \\role{legA}{256} + \\role{legB}{256} \\\\ &= \\role{hyp}{512}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s7",
+   "title": "Square root",
+   "narration": "512 is not a perfect square, so use a calculator and round to 3 significant figures.\\[\\begin{aligned}\\role{hyp}{TU^2} &= \\role{legA}{TH^2} + \\role{legB}{UH^2} \\\\ &= \\role{legA}{16^2} + \\role{legB}{16^2} \\\\ &= \\role{legA}{256} + \\role{legB}{256} \\\\ &= \\role{hyp}{512} \\\\ \\role{hyp}{TU} &= \\sqrt{512} = 16\\sqrt{2} = \\role{ans}{22.6\\ \\text{cm}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Pythagoras' theorem",
+   "tex": "\\role{hyp}{c^2} = \\role{legA}{a^2} + \\role{legB}{b^2}",
+   "text": "In a right-angled triangle, the square on the hypotenuse equals the sum of the squares on the other two sides."
+  },
+  {
+   "title": "Finding the hypotenuse",
+   "tex": "\\role{hyp}{c} = \\sqrt{\\role{legA}{a^2} + \\role{legB}{b^2}}",
+   "text": "Add the two squares, then take the square root."
+  },
+  {
+   "title": "Finding a shorter side",
+   "tex": "\\role{legA}{a} = \\sqrt{\\role{hyp}{c^2} - \\role{legB}{b^2}}",
+   "text": "Subtract the known shorter side's square from the hypotenuse's square, then take the square root."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "th",
+   "type": "number",
+   "title": "Check TH",
+   "answer": 16,
+   "unit": "cm",
+   "prompt": "In ΔTHV, TV = 34 cm and HV = 30 cm. Find **TH**.",
+   "hint": "TH² = 34² − 30².",
+   "explain": "34² − 30² = 1156 − 900 = 256, and √256 = 16 cm."
+  }
+ ],
+ "takeaways": [
+  "Pythagoras' theorem works only in **right-angled** triangles — mark every right angle in the figure first.",
+  "Split the figure into right-angled triangles and solve them **one at a time**; each answer feeds the next triangle.",
+  "Keep a few extra decimal places in the middle of a calculation and round only the **final** answer (3 s.f.)."
+ ],
+ "notes": [
+  {
+   "title": "Exam tip",
+   "text": "Always begin with a line such as \"In ΔABC, ∠C = 90°. Using Pythagoras' Theorem,\" — it shows which triangle and which right angle you are using."
+  },
+  {
+   "title": "Rounding",
+   "text": "If the answer is not a whole number, give it to **3 significant figures** unless the question says otherwise."
+  }
+ ]
+}

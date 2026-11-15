@@ -1,0 +1,459 @@
+{
+ "id": "g8-math-pyth-ex7b-q2",
+ "title": "Exercise 7B · Q2",
+ "summary": "The diagonal of a square is the hypotenuse of a right-angled triangle with two equal legs.",
+ "alt": "Exercise 7B · Q2: Each side of a square field is 50 m long. A barricade is to be placed along the diagonal of the field. Find the length of the barricade.",
+ "uiDefaults": {
+  "angles": false
+ },
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -12.3,
+   62.3
+  ],
+  "y": [
+   -10.3,
+   60.3
+  ],
+  "pad": 10,
+  "ratio": 0.946
+ },
+ "roles": {
+  "hyp": {
+   "label": "Hypotenuse",
+   "color": "#059669",
+   "text": "The side opposite the right angle. It is always the longest side."
+  },
+  "legA": {
+   "label": "Shorter side 1",
+   "color": "#2563eb",
+   "text": "One of the two sides that meet at the right angle."
+  },
+  "legB": {
+   "label": "Shorter side 2",
+   "color": "#e11d48",
+   "text": "The other side that meets at the right angle."
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The length we are finding."
+  }
+ },
+ "params": [],
+ "derived": {
+  "p_P": [
+   0.0,
+   0.0
+  ],
+  "p_Q": [
+   50.0,
+   0.0
+  ],
+  "p_R": [
+   50.0,
+   50.0
+  ],
+  "p_S": [
+   0.0,
+   50.0
+  ]
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ln0",
+   "role": "ink",
+   "from": "p_P",
+   "to": "p_Q",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 0,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln1",
+   "role": "ink",
+   "from": "p_Q",
+   "to": "p_R",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 150,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln2",
+   "role": "ink",
+   "from": "p_R",
+   "to": "p_S",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 300,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln3",
+   "role": "ink",
+   "from": "p_S",
+   "to": "p_P",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 450,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln4",
+   "role": "ink",
+   "from": "p_P",
+   "to": "p_R",
+   "strokeWidth": 2.4,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 600,
+   "appearDur": 700,
+   "layer": "mid",
+   "dash": [
+    7,
+    6
+   ]
+  },
+  {
+   "type": "angle",
+   "id": "ra0",
+   "at": "p_Q",
+   "from": "p_R",
+   "to": "p_P",
+   "style": "square",
+   "r": 26,
+   "role": "ink",
+   "strokeWidth": 1.8,
+   "fill": false,
+   "appear": "s0",
+   "delay": 700,
+   "appearDur": 400
+  },
+  {
+   "type": "point",
+   "id": "pt_P",
+   "at": "p_P",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "P",
+    "off": 0,
+    "dx": -12.0,
+    "dy": 12.0,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_Q",
+   "at": "p_Q",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "Q",
+    "off": 0,
+    "dx": 12.0,
+    "dy": 12.0,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_R",
+   "at": "p_R",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "R",
+    "off": 0,
+    "dx": 12.0,
+    "dy": -12.0,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_S",
+   "at": "p_S",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "S",
+    "off": 0,
+    "dx": -12.0,
+    "dy": -12.0,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "polygon",
+   "id": "ov0",
+   "pts": [
+    "p_P",
+    "p_Q",
+    "p_R"
+   ],
+   "role": "accent",
+   "fill": "accent",
+   "fillOpacity": 0.11,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s1",
+   "appearDur": 500
+  },
+  {
+   "type": "segment",
+   "id": "ov1",
+   "role": "hyp",
+   "from": "p_P",
+   "to": "p_R",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "ov2",
+   "role": "legA",
+   "from": "p_P",
+   "to": "p_Q",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "ov3",
+   "role": "legB",
+   "from": "p_Q",
+   "to": "p_R",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "lb0",
+   "from": "p_P",
+   "to": "p_Q",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "50 m",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     25.0,
+     25.0
+    ],
+    "off": 16,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb1",
+   "from": "p_Q",
+   "to": "p_R",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "50 m",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     70,
+     25
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb2",
+   "from": "p_P",
+   "to": "p_R",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "?",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     50,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0,
+   "disappear": "s5"
+  },
+  {
+   "type": "segment",
+   "id": "lb3",
+   "from": "p_P",
+   "to": "p_R",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "70.7 m",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     50,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s5",
+   "appearDur": 450,
+   "delay": 0
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "narration": "Each side of a **square field PQRS** is **50 m** long. A barricade is to be placed along the diagonal **PR** of the field. Find the length of the barricade.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Spot the right angle",
+   "narration": "In ΔPQR, **∠Q = 90°**, so the **hypotenuse** is the side opposite it: **the diagonal PR**. The other two sides meet at the right angle.",
+   "actions": [
+    {
+     "pulse": [
+      "ra0"
+     ],
+     "at": 700
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Pythagoras' theorem",
+   "narration": "**Pythagoras' theorem**: the square on the hypotenuse equals the sum of the squares on the other two sides.\\[\\begin{aligned}\\role{hyp}{PR^2} &= \\role{legA}{PQ^2} + \\role{legB}{QR^2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Substitute the lengths",
+   "narration": "Replace each side by its length.\\[\\begin{aligned}\\role{hyp}{PR^2} &= \\role{legA}{PQ^2} + \\role{legB}{QR^2} \\\\ &= \\role{legA}{50^2} + \\role{legB}{50^2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Square and add",
+   "narration": "Square each number, then add them.\\[\\begin{aligned}\\role{hyp}{PR^2} &= \\role{legA}{PQ^2} + \\role{legB}{QR^2} \\\\ &= \\role{legA}{50^2} + \\role{legB}{50^2} \\\\ &= \\role{legA}{2500} + \\role{legB}{2500} \\\\ &= \\role{hyp}{5000}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s5",
+   "title": "Square root",
+   "narration": "5000 is not a perfect square, so use a calculator and round to 3 significant figures.\\[\\begin{aligned}\\role{hyp}{PR^2} &= \\role{legA}{PQ^2} + \\role{legB}{QR^2} \\\\ &= \\role{legA}{50^2} + \\role{legB}{50^2} \\\\ &= \\role{legA}{2500} + \\role{legB}{2500} \\\\ &= \\role{hyp}{5000} \\\\ \\role{hyp}{PR} &= \\sqrt{5000} = 50\\sqrt{2} = \\role{ans}{70.7\\ \\text{m}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Pythagoras' theorem",
+   "tex": "\\role{hyp}{c^2} = \\role{legA}{a^2} + \\role{legB}{b^2}",
+   "text": "In a right-angled triangle, the square on the hypotenuse equals the sum of the squares on the other two sides."
+  },
+  {
+   "title": "Finding the hypotenuse",
+   "tex": "\\role{hyp}{c} = \\sqrt{\\role{legA}{a^2} + \\role{legB}{b^2}}",
+   "text": "Add the two squares, then take the square root."
+  },
+  {
+   "title": "Finding a shorter side",
+   "tex": "\\role{legA}{a} = \\sqrt{\\role{hyp}{c^2} - \\role{legB}{b^2}}",
+   "text": "Subtract the known shorter side's square from the hypotenuse's square, then take the square root."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "twin",
+   "type": "number",
+   "title": "Now you try",
+   "answer": "sqrt(50)",
+   "unit": "m",
+   "prompt": "A square has sides of **5 m**. Find the length of its **diagonal** (3 s.f.).",
+   "hint": "Add the squares: 5² + 5².",
+   "explain": "5² + 5² = 25 + 25 = 50, and √50 = 5√2 = 7.07 m (3 s.f.)."
+  }
+ ],
+ "takeaways": [
+  "Find the **right angle** first — the side opposite it is the **hypotenuse**.",
+  "To find the hypotenuse: **add** the squares of the two shorter sides, then take the **square root**.",
+  "The hypotenuse is always the **longest** side, so check that your answer is bigger than both of the other sides."
+ ],
+ "notes": [
+  {
+   "title": "Exam tip",
+   "text": "Always begin with a line such as \"In ΔABC, ∠C = 90°. Using Pythagoras' Theorem,\" — it shows which triangle and which right angle you are using."
+  },
+  {
+   "title": "Rounding",
+   "text": "If the answer is not a whole number, give it to **3 significant figures** unless the question says otherwise."
+  }
+ ]
+}

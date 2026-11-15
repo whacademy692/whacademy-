@@ -1,0 +1,305 @@
+{
+ "id": "g8-math-pyth-ex7c-q3",
+ "title": "Exercise 7C · Q3",
+ "summary": "Convert to a common denominator first, then compare the squares.",
+ "alt": "Exercise 7C · Q3: In ΔSTU, ST = 7/12 cm, TU = 5/6 cm and SU = 1/3 cm. Is ΔSTU a right-angled triangle?",
+ "uiDefaults": {
+  "angles": false
+ },
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -2.7,
+   12.7
+  ],
+  "y": [
+   -1.6,
+   3.886
+  ],
+  "pad": 10,
+  "ratio": 0.62
+ },
+ "roles": {
+  "hyp": {
+   "label": "Hypotenuse",
+   "color": "#059669",
+   "text": "The side opposite the right angle. It is always the longest side."
+  },
+  "legA": {
+   "label": "Shorter side 1",
+   "color": "#2563eb",
+   "text": "One of the two sides that meet at the right angle."
+  },
+  "legB": {
+   "label": "Shorter side 2",
+   "color": "#e11d48",
+   "text": "The other side that meets at the right angle."
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The length we are finding."
+  }
+ },
+ "params": [],
+ "derived": {
+  "p_T": [
+   0.0,
+   0.0
+  ],
+  "p_U": [
+   10.0,
+   0.0
+  ],
+  "p_S": [
+   6.65,
+   2.1857
+  ]
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ln0",
+   "role": "ink",
+   "from": "p_T",
+   "to": "p_U",
+   "strokeWidth": 3.0,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 0,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln1",
+   "role": "ink",
+   "from": "p_T",
+   "to": "p_S",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 150,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln2",
+   "role": "ink",
+   "from": "p_U",
+   "to": "p_S",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 300,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "point",
+   "id": "pt_T",
+   "at": "p_T",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "T",
+    "off": 0,
+    "dx": -4.9,
+    "dy": 16.3,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_U",
+   "at": "p_U",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "U",
+    "off": 0,
+    "dx": 4.9,
+    "dy": 16.3,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_S",
+   "at": "p_S",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "S",
+    "off": 0,
+    "dx": 0.0,
+    "dy": -17.0,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "segment",
+   "id": "lb0",
+   "from": "p_S",
+   "to": "p_T",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "7/12 cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     10.0,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb1",
+   "from": "p_T",
+   "to": "p_U",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "5/6 cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     5.55,
+     0.7286
+    ],
+    "off": 16,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb2",
+   "from": "p_S",
+   "to": "p_U",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "1/3 cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     0,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "narration": "**ΔSTU** has **ST = 7/12 cm**, **TU = 5/6 cm** and **SU = 1/3 cm**. Is **ΔSTU** a right-angled triangle?",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Use a common denominator",
+   "narration": "Write every side over **12**.\\[\\begin{aligned}ST &= \\tfrac{7}{12} \\\\ TU &= \\tfrac{5}{6} = \\tfrac{10}{12} \\\\ SU &= \\tfrac{1}{3} = \\tfrac{4}{12}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Find the longest side",
+   "narration": "The **longest side** is **TU = 10/12 cm**. If ΔSTU is right-angled, TU must be the hypotenuse.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Square the longest side",
+   "narration": "Square **TU**.\\[\\begin{aligned}TU^2 &= \\left(\\tfrac{10}{12}\\right)^2 = \\tfrac{100}{144}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Square and add the other two",
+   "narration": "Square **ST** and **SU**, then add.\\[\\begin{aligned}ST^2 + SU^2 &= \\left(\\tfrac{7}{12}\\right)^2 + \\left(\\tfrac{4}{12}\\right)^2 \\\\ &= \\tfrac{49}{144} + \\tfrac{16}{144} = \\tfrac{65}{144}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s5",
+   "title": "Compare and conclude",
+   "narration": "Since **100/144 ≠ 65/144**, **ΔSTU is not** a right-angled triangle.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Pythagoras' theorem",
+   "tex": "\\role{hyp}{c^2} = \\role{legA}{a^2} + \\role{legB}{b^2}",
+   "text": "In a right-angled triangle, the square on the hypotenuse equals the sum of the squares on the other two sides."
+  },
+  {
+   "title": "Finding the hypotenuse",
+   "tex": "\\role{hyp}{c} = \\sqrt{\\role{legA}{a^2} + \\role{legB}{b^2}}",
+   "text": "Add the two squares, then take the square root."
+  },
+  {
+   "title": "Finding a shorter side",
+   "tex": "\\role{legA}{a} = \\sqrt{\\role{hyp}{c^2} - \\role{legB}{b^2}}",
+   "text": "Subtract the known shorter side's square from the hypotenuse's square, then take the square root."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "cd",
+   "type": "number",
+   "title": "Common denominator",
+   "answer": 10,
+   "unit": "",
+   "prompt": "Write TU = 5/6 as twelfths: TU = ?/12.",
+   "hint": "5/6 = (5×2)/(6×2).",
+   "explain": "5/6 = 10/12, so the numerator is 10."
+  }
+ ],
+ "takeaways": [
+  "Find the **longest side** first — if the triangle is right-angled, that side must be the hypotenuse.",
+  "Test it: does the longest side's **square** equal the **sum of the squares** of the other two sides?",
+  "If the squares match, the triangle **is** right-angled (opposite the longest side); if not, it isn't.",
+  "With **different denominators**, convert every side to a **common denominator** before squaring and comparing."
+ ],
+ "notes": [
+  {
+   "title": "Exam tip",
+   "text": "Always find the **longest side** first — only that side could possibly be the hypotenuse."
+  }
+ ]
+}

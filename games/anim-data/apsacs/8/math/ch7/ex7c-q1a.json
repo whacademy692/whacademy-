@@ -1,0 +1,325 @@
+{
+ "id": "g8-math-pyth-ex7c-q1a",
+ "title": "Exercise 7C · Q1(a)",
+ "summary": "16² + 63² = 65², so ΔABC is right-angled at B.",
+ "alt": "Exercise 7C · Q1(a): Determine if ΔABC, given that AB = 16 cm, BC = 63 cm and AC = 65 cm, is a right-angled triangle. State the right angle if so.",
+ "uiDefaults": {
+  "angles": false
+ },
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -15.9,
+   80.9
+  ],
+  "y": [
+   -9.3,
+   24.908
+  ],
+  "pad": 10,
+  "ratio": 0.62
+ },
+ "roles": {
+  "hyp": {
+   "label": "Hypotenuse",
+   "color": "#059669",
+   "text": "The side opposite the right angle. It is always the longest side."
+  },
+  "legA": {
+   "label": "Shorter side 1",
+   "color": "#2563eb",
+   "text": "One of the two sides that meet at the right angle."
+  },
+  "legB": {
+   "label": "Shorter side 2",
+   "color": "#e11d48",
+   "text": "The other side that meets at the right angle."
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The length we are finding."
+  }
+ },
+ "params": [],
+ "derived": {
+  "p_A": [
+   0.0,
+   0.0
+  ],
+  "p_C": [
+   65.0,
+   0.0
+  ],
+  "p_B": [
+   3.9385,
+   15.5077
+  ]
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ln0",
+   "role": "ink",
+   "from": "p_A",
+   "to": "p_C",
+   "strokeWidth": 3.0,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 0,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln1",
+   "role": "ink",
+   "from": "p_A",
+   "to": "p_B",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 150,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln2",
+   "role": "ink",
+   "from": "p_C",
+   "to": "p_B",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 300,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "point",
+   "id": "pt_A",
+   "at": "p_A",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "A",
+    "off": 0,
+    "dx": -4.9,
+    "dy": 16.3,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_C",
+   "at": "p_C",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "C",
+    "off": 0,
+    "dx": 4.9,
+    "dy": 16.3,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_B",
+   "at": "p_B",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "B",
+    "off": 0,
+    "dx": 0.0,
+    "dy": -17.0,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "angle",
+   "id": "raX",
+   "at": "p_B",
+   "from": "p_A",
+   "to": "p_C",
+   "style": "square",
+   "r": 22,
+   "role": "hyp",
+   "strokeWidth": 2.2,
+   "fill": false,
+   "appear": "s4",
+   "appearDur": 500
+  },
+  {
+   "type": "segment",
+   "id": "lb0",
+   "from": "p_A",
+   "to": "p_B",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "16 cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     65.0,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb1",
+   "from": "p_B",
+   "to": "p_C",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "63 cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     0,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb2",
+   "from": "p_A",
+   "to": "p_C",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "65 cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     22.9795,
+     5.1692
+    ],
+    "off": 16,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "narration": "**ΔABC** has **AB = 16 cm**, **BC = 63 cm** and **AC = 65 cm**. Determine if it is a right-angled triangle. State the right angle if so.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Find the longest side",
+   "narration": "The **longest side** is **AC = 65 cm**. If ΔABC is right-angled, AC must be the **hypotenuse** — the side opposite the right angle.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Square the longest side",
+   "narration": "Square **AC**.\\[\\begin{aligned}AC^2 &= 65^2 = 4225\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Square and add the other two sides",
+   "narration": "Square **AB** and **BC**, then add them.\\[\\begin{aligned}AB^2 + BC^2 &= 16^2 + 63^2 \\\\ &= 256 + 3969 = 4225\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Compare and conclude",
+   "narration": "Since **AC^2 = AB^2 + BC^2** (4225 = 4225), by the **Converse of Pythagoras' Theorem**, ΔABC **is** a right-angled triangle, where **∠B = 90°**.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Pythagoras' theorem",
+   "tex": "\\role{hyp}{c^2} = \\role{legA}{a^2} + \\role{legB}{b^2}",
+   "text": "In a right-angled triangle, the square on the hypotenuse equals the sum of the squares on the other two sides."
+  },
+  {
+   "title": "Finding the hypotenuse",
+   "tex": "\\role{hyp}{c} = \\sqrt{\\role{legA}{a^2} + \\role{legB}{b^2}}",
+   "text": "Add the two squares, then take the square root."
+  },
+  {
+   "title": "Finding a shorter side",
+   "tex": "\\role{legA}{a} = \\sqrt{\\role{hyp}{c^2} - \\role{legB}{b^2}}",
+   "text": "Subtract the known shorter side's square from the hypotenuse's square, then take the square root."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "t",
+   "type": "choice",
+   "title": "Right angle?",
+   "answer": "c",
+   "options": [
+    {
+     "id": "a",
+     "label": "∠A"
+    },
+    {
+     "id": "b",
+     "label": "∠C"
+    },
+    {
+     "id": "c",
+     "label": "∠B"
+    }
+   ],
+   "prompt": "AC is the longest side. Which angle is opposite AC?",
+   "hint": "The right angle is opposite the longest side.",
+   "explain": "AC is opposite ∠B, so ∠B = 90°."
+  }
+ ],
+ "takeaways": [
+  "Find the **longest side** first — if the triangle is right-angled, that side must be the hypotenuse.",
+  "Test it: does the longest side's **square** equal the **sum of the squares** of the other two sides?",
+  "If the squares match, the triangle **is** right-angled (opposite the longest side); if not, it isn't."
+ ],
+ "notes": [
+  {
+   "title": "Exam tip",
+   "text": "Always find the **longest side** first — only that side could possibly be the hypotenuse."
+  }
+ ]
+}

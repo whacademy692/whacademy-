@@ -1,0 +1,690 @@
+{
+ "id": "g8-math-pyth-ex7b-q13",
+ "title": "Exercise 7B · Q13",
+ "summary": "Find OH with Pythagoras, then use two area formulas for ΔONH to find NK.",
+ "alt": "Exercise 7B · Q13: The top surface of a pouch is in the shape of a rectangle LMNO with sides 9 cm and 6 cm. (i) A zip is to be sewn along OH such that H is a point on LM and HM = 2 cm. Find the length of the zip. (ii) A second zip is to be sewn along NK such that NK is the perpendicular from N to OH. Calculate the length of the second zip.",
+ "uiDefaults": {
+  "angles": false
+ },
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -2.46,
+   11.46
+  ],
+  "y": [
+   -1.56,
+   7.66
+  ],
+  "pad": 10,
+  "ratio": 0.662
+ },
+ "roles": {
+  "hyp": {
+   "label": "Hypotenuse",
+   "color": "#059669",
+   "text": "The side opposite the right angle. It is always the longest side."
+  },
+  "legA": {
+   "label": "Shorter side 1",
+   "color": "#2563eb",
+   "text": "One of the two sides that meet at the right angle."
+  },
+  "legB": {
+   "label": "Shorter side 2",
+   "color": "#e11d48",
+   "text": "The other side that meets at the right angle."
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The length we are finding."
+  },
+  "region_a": {
+   "label": "Triangle OLH",
+   "color": "#8b5cf6",
+   "legend": false,
+   "text": "Shade this part."
+  },
+  "region_b": {
+   "label": "Triangle ONH",
+   "color": "#14b8a6",
+   "legend": false,
+   "text": "Shade the rest."
+  }
+ },
+ "params": [],
+ "derived": {
+  "p_O": [
+   0.0,
+   0.0
+  ],
+  "p_N": [
+   9.0,
+   0.0
+  ],
+  "p_L": [
+   0.0,
+   6.0
+  ],
+  "p_M": [
+   9.0,
+   6.0
+  ],
+  "p_H": [
+   7.0,
+   6.0
+  ],
+  "p_K": [
+   5.1882,
+   4.4471
+  ]
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ln0",
+   "role": "ink",
+   "from": "p_O",
+   "to": "p_N",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 0,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln1",
+   "role": "ink",
+   "from": "p_N",
+   "to": "p_M",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 150,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln2",
+   "role": "ink",
+   "from": "p_M",
+   "to": "p_H",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 300,
+   "appearDur": 700,
+   "layer": "mid",
+   "ticks": 1
+  },
+  {
+   "type": "segment",
+   "id": "ln3",
+   "role": "ink",
+   "from": "p_H",
+   "to": "p_L",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 450,
+   "appearDur": 700,
+   "layer": "mid",
+   "ticks": 1
+  },
+  {
+   "type": "segment",
+   "id": "ln4",
+   "role": "ink",
+   "from": "p_L",
+   "to": "p_O",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 600,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln5",
+   "role": "ink",
+   "from": "p_O",
+   "to": "p_H",
+   "strokeWidth": 3.0,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 750,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln6",
+   "role": "ink",
+   "from": "p_N",
+   "to": "p_K",
+   "strokeWidth": 1.8,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 900,
+   "appearDur": 700,
+   "layer": "mid",
+   "dash": [
+    7,
+    6
+   ]
+  },
+  {
+   "type": "angle",
+   "id": "ra0",
+   "at": "p_K",
+   "from": "p_O",
+   "to": "p_N",
+   "style": "square",
+   "r": 16,
+   "role": "ink",
+   "strokeWidth": 1.8,
+   "fill": false,
+   "appear": "s0",
+   "delay": 700,
+   "appearDur": 400
+  },
+  {
+   "type": "angle",
+   "id": "ra1",
+   "at": "p_L",
+   "from": "p_O",
+   "to": "p_H",
+   "style": "square",
+   "r": 22,
+   "role": "ink",
+   "strokeWidth": 1.8,
+   "fill": false,
+   "appear": "s0",
+   "delay": 700,
+   "appearDur": 400
+  },
+  {
+   "type": "point",
+   "id": "pt_O",
+   "at": "p_O",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "O",
+    "off": 0,
+    "dx": -12.0,
+    "dy": 12.0,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_N",
+   "at": "p_N",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "N",
+    "off": 0,
+    "dx": 12.0,
+    "dy": 12.0,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_L",
+   "at": "p_L",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "L",
+    "off": 0,
+    "dx": -12.0,
+    "dy": -12.0,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_M",
+   "at": "p_M",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "M",
+    "off": 0,
+    "dx": 4.9,
+    "dy": -16.3,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_H",
+   "at": "p_H",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "H",
+    "off": 0,
+    "dx": 0.0,
+    "dy": -17.0,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_K",
+   "at": "p_K",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "K",
+    "off": 0,
+    "dx": -12.0,
+    "dy": -12.0,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "polygon",
+   "id": "reg_a",
+   "pts": [
+    "p_O",
+    "p_L",
+    "p_H"
+   ],
+   "role": "region_a",
+   "fill": "region_a",
+   "fillOpacity": 0,
+   "stroke": false,
+   "layer": "back"
+  },
+  {
+   "type": "polygon",
+   "id": "reg_b",
+   "pts": [
+    "p_O",
+    "p_N",
+    "p_H"
+   ],
+   "role": "region_b",
+   "fill": "region_b",
+   "fillOpacity": 0,
+   "stroke": false,
+   "layer": "back"
+  },
+  {
+   "type": "polygon",
+   "id": "ov0",
+   "pts": [
+    "p_O",
+    "p_L",
+    "p_H"
+   ],
+   "role": "accent",
+   "fill": "accent",
+   "fillOpacity": 0.11,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s1",
+   "appearDur": 500,
+   "disappear": "s4"
+  },
+  {
+   "type": "segment",
+   "id": "ov1",
+   "role": "hyp",
+   "from": "p_O",
+   "to": "p_H",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s4"
+  },
+  {
+   "type": "segment",
+   "id": "ov2",
+   "role": "legA",
+   "from": "p_L",
+   "to": "p_O",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s4"
+  },
+  {
+   "type": "segment",
+   "id": "ov3",
+   "role": "legB",
+   "from": "p_H",
+   "to": "p_L",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600,
+   "disappear": "s4"
+  },
+  {
+   "type": "polygon",
+   "id": "ov4",
+   "pts": [
+    "p_O",
+    "p_N",
+    "p_H"
+   ],
+   "role": "legB",
+   "fill": "legB",
+   "fillOpacity": 0.11,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s4",
+   "appearDur": 500,
+   "disappear": "s5"
+  },
+  {
+   "type": "segment",
+   "id": "ov5",
+   "role": "ans",
+   "from": "p_N",
+   "to": "p_K",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s5",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "lb0",
+   "from": "p_O",
+   "to": "p_N",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "9 cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     5.0314,
+     3.7412
+    ],
+    "off": 16,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb1",
+   "from": "p_L",
+   "to": "p_O",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "6 cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     -20,
+     3
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb2",
+   "from": "p_H",
+   "to": "p_L",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "7 cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     5.0314,
+     3.7412
+    ],
+    "off": 16,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb3",
+   "from": "p_O",
+   "to": "p_H",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "OH = ?",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     0,
+     6
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0,
+   "disappear": "s3"
+  },
+  {
+   "type": "segment",
+   "id": "lb4",
+   "from": "p_N",
+   "to": "p_K",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "NK = ?",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     0,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0,
+   "disappear": "s5"
+  },
+  {
+   "type": "segment",
+   "id": "lb5",
+   "from": "p_O",
+   "to": "p_H",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "(i) OH = 9.22 cm",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     0,
+     6
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s3",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb6",
+   "from": "p_N",
+   "to": "p_K",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "NK = 5.86 cm",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     0,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s5",
+   "appearDur": 450,
+   "delay": 0
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "narration": "The top of a pouch **LMNO** is a rectangle with **LM = 9 cm** and **MN = 6 cm**. **H** lies on **LM** with **HM = 2 cm** (so **LH = 7 cm**). (i) A zip is sewn along **OH**: find its length. (ii) A second zip **NK** is the perpendicular from **N** to **OH**: find its length.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Right angle and theorem",
+   "narration": "In ΔOLH, **∠L = 90°**, so the **hypotenuse** is the side opposite it: **OH**. The other two sides meet at the right angle. **Pythagoras' theorem**: the square on the hypotenuse equals the sum of the squares on the other two sides.\\[\\begin{aligned}\\role{hyp}{OH^2} &= \\role{legA}{OL^2} + \\role{legB}{LH^2}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "ra0"
+     ],
+     "at": 700
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Substitute and add",
+   "narration": "Put in the lengths, square them and add.\\[\\begin{aligned}\\role{hyp}{OH^2} &= \\role{legA}{OL^2} + \\role{legB}{LH^2} \\\\ &= \\role{legA}{6^2} + \\role{legB}{7^2} \\\\ &= \\role{legA}{36} + \\role{legB}{49} \\\\ &= \\role{hyp}{85}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Square root",
+   "narration": "85 is not a perfect square, so use a calculator and round to 3 significant figures.\\[\\begin{aligned}\\role{hyp}{OH^2} &= \\role{legA}{OL^2} + \\role{legB}{LH^2} \\\\ &= \\role{legA}{6^2} + \\role{legB}{7^2} \\\\ &= \\role{legA}{36} + \\role{legB}{49} \\\\ &= \\role{hyp}{85} \\\\ \\role{hyp}{OH} &= \\sqrt{85} = \\sqrt{85} = \\role{ans}{9.22\\ \\text{cm}}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "(ii) Area of ΔONH two ways",
+   "narration": "**ΔONH** has base **ON = 9 cm** and height **6 cm** (the rectangle's height). It also has base **OH** and height **NK**.\\[\\begin{aligned}\\text{Area} &= \\tfrac{1}{2}\\times ON \\times 6 = \\tfrac{1}{2}\\times 9 \\times 6 = 27\\ \\text{cm}^2 \\\\ \\text{Area} &= \\tfrac{1}{2}\\times OH \\times NK\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s5",
+   "title": "Solve for NK",
+   "narration": "Set the two areas equal and solve for **NK**.\\[\\begin{aligned}27 &= \\tfrac{1}{2}\\times 9.22 \\times NK \\\\ NK &= \\frac{54}{9.22} = \\role{ans}{5.86\\ \\text{cm}}\\ \\text{(3 s.f.)}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Pythagoras' theorem",
+   "tex": "\\role{hyp}{c^2} = \\role{legA}{a^2} + \\role{legB}{b^2}",
+   "text": "In a right-angled triangle, the square on the hypotenuse equals the sum of the squares on the other two sides."
+  },
+  {
+   "title": "Finding the hypotenuse",
+   "tex": "\\role{hyp}{c} = \\sqrt{\\role{legA}{a^2} + \\role{legB}{b^2}}",
+   "text": "Add the two squares, then take the square root."
+  },
+  {
+   "title": "Finding a shorter side",
+   "tex": "\\role{legA}{a} = \\sqrt{\\role{hyp}{c^2} - \\role{legB}{b^2}}",
+   "text": "Subtract the known shorter side's square from the hypotenuse's square, then take the square root."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "area",
+   "type": "number",
+   "title": "Check the area",
+   "answer": 27,
+   "unit": "cm²",
+   "prompt": "ON = 9 cm and the rectangle's height is 6 cm. Find the area of ΔONH using base ON.",
+   "hint": "Area = ½ × base × height.",
+   "explain": "Area = ½ × 9 × 6 = 27 cm²."
+  }
+ ],
+ "takeaways": [
+  "Writing one triangle's **area two different ways** is a powerful trick for finding a height (or a perpendicular) you can't reach directly.",
+  "Keep a few extra decimal places in the middle of a calculation and round only the **final** answer (3 s.f.)."
+ ],
+ "notes": [
+  {
+   "title": "Exam tip",
+   "text": "Always begin with a line such as \"In ΔABC, ∠C = 90°. Using Pythagoras' Theorem,\" — it shows which triangle and which right angle you are using."
+  },
+  {
+   "title": "Rounding",
+   "text": "If the answer is not a whole number, give it to **3 significant figures** unless the question says otherwise."
+  }
+ ]
+}

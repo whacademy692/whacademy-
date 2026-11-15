@@ -1,0 +1,327 @@
+{
+ "id": "g8-math-pyth-ex7b-q12",
+ "title": "Exercise 7B · Q12",
+ "summary": "The longest side (x + 2) must be the hypotenuse — form and solve a quadratic.",
+ "alt": "Exercise 7B · Q12: A folded napkin has a triangular cross section of sides x cm, (x + 1) cm and (x + 2) cm. If one of the angles of the triangle is 90°, find the value of x.",
+ "uiDefaults": {
+  "angles": false
+ },
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -1.26,
+   5.26
+  ],
+  "y": [
+   -0.6,
+   3.9
+  ],
+  "pad": 10,
+  "ratio": 0.69
+ },
+ "roles": {
+  "hyp": {
+   "label": "Hypotenuse",
+   "color": "#059669",
+   "text": "The side opposite the right angle. It is always the longest side."
+  },
+  "legA": {
+   "label": "Shorter side 1",
+   "color": "#2563eb",
+   "text": "One of the two sides that meet at the right angle."
+  },
+  "legB": {
+   "label": "Shorter side 2",
+   "color": "#e11d48",
+   "text": "The other side that meets at the right angle."
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The length we are finding."
+  }
+ },
+ "params": [],
+ "derived": {
+  "p_A": [
+   0.0,
+   0.0
+  ],
+  "p_B": [
+   4.0,
+   0.0
+  ],
+  "p_C": [
+   0.0,
+   3.0
+  ]
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ln0",
+   "role": "ink",
+   "from": "p_A",
+   "to": "p_B",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 0,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln1",
+   "role": "ink",
+   "from": "p_A",
+   "to": "p_C",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 150,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln2",
+   "role": "ink",
+   "from": "p_B",
+   "to": "p_C",
+   "strokeWidth": 3.0,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 300,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "angle",
+   "id": "ra0",
+   "at": "p_A",
+   "from": "p_B",
+   "to": "p_C",
+   "style": "square",
+   "r": 26,
+   "role": "ink",
+   "strokeWidth": 1.8,
+   "fill": false,
+   "appear": "s0",
+   "delay": 700,
+   "appearDur": 400
+  },
+  {
+   "type": "point",
+   "id": "pt_A",
+   "at": "p_A",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "A",
+    "off": 0,
+    "dx": -13.6,
+    "dy": 10.2,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_B",
+   "at": "p_B",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "B",
+    "off": 0,
+    "dx": 15.9,
+    "dy": 6.0,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_C",
+   "at": "p_C",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "C",
+    "off": 0,
+    "dx": -9.4,
+    "dy": -14.1,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "polygon",
+   "id": "ov0",
+   "pts": [
+    "p_A",
+    "p_B",
+    "p_C"
+   ],
+   "role": "accent",
+   "fill": "accent",
+   "fillOpacity": 0.11,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s1",
+   "appearDur": 500,
+   "disappear": "s2"
+  },
+  {
+   "type": "segment",
+   "id": "lb0",
+   "from": "p_A",
+   "to": "p_B",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "x cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     1.3333,
+     1.0
+    ],
+    "off": 5,
+    "t": 0.5,
+    "dy": 24
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb1",
+   "from": "p_A",
+   "to": "p_C",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "(x + 1) cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     4,
+     3
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb2",
+   "from": "p_B",
+   "to": "p_C",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "(x + 2) cm",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     0,
+     0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "narration": "A folded napkin has a triangular cross section of sides **x cm**, **(x + 1) cm** and **(x + 2) cm**. One angle of the triangle is **90°**. Find the value of **x**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "The longest side is the hypotenuse",
+   "narration": "**(x + 2) cm** is the longest side, so it must be the **hypotenuse**.\\[\\begin{aligned}\\role{hyp}{(x+2)^2} &= \\role{legA}{x^2} + \\role{legB}{(x+1)^2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Expand each bracket",
+   "narration": "Multiply out the squares.\\[\\begin{aligned}x^2 + 4x + 4 &= x^2 + (x^2 + 2x + 1)\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Form a quadratic equation",
+   "narration": "Bring every term to one side.\\[\\begin{aligned}x^2 - 2x - 3 &= 0\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Factorise and solve",
+   "narration": "Factorise, then read off the roots.\\[\\begin{aligned}(x - 3)(x + 1) &= 0 \\\\ x = 3 \\;&\\text{or}\\; x = -1\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s5",
+   "title": "Choose the valid value",
+   "narration": "A length can't be negative, so reject **x = −1**.\\[\\begin{aligned}\\therefore x = \\role{ans}{3}\\quad(\\text{since } x > 0)\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Pythagoras' theorem",
+   "tex": "\\role{hyp}{c^2} = \\role{legA}{a^2} + \\role{legB}{b^2}",
+   "text": "In a right-angled triangle, the square on the hypotenuse equals the sum of the squares on the other two sides."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "check",
+   "type": "number",
+   "title": "Check x = 3",
+   "answer": 5,
+   "unit": "",
+   "prompt": "If x = 3, the sides are 3, 4 and 5. What is the longest side (the hypotenuse)?",
+   "hint": "x + 2 when x = 3.",
+   "explain": "x + 2 = 3 + 2 = 5 — the classic 3-4-5 right-angled triangle!"
+  }
+ ],
+ "takeaways": [
+  "When sides are given as **x, x+1, x+2**, the **longest** expression is always the hypotenuse.",
+  "Split the figure into right-angled triangles and solve them **one at a time**; each answer feeds the next triangle.",
+  "Keep a few extra decimal places in the middle of a calculation and round only the **final** answer (3 s.f.)."
+ ],
+ "notes": [
+  {
+   "title": "A famous triple",
+   "text": "x = 3 gives sides **3, 4, 5** — the smallest and most famous Pythagorean triple."
+  }
+ ]
+}

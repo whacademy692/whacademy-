@@ -1,0 +1,408 @@
+{
+ "id": "g8-math-pyth-ex7a-q5",
+ "title": "Exercise 7A · Q5",
+ "summary": "Find HI — the right angle is at H, so GI is the hypotenuse.",
+ "alt": "Exercise 7A · Q5: In ΔGHI, GH = 33 cm, GI = 65 cm and ∠H = 90°. Find the length of HI.",
+ "uiDefaults": {
+  "angles": false
+ },
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -13.44,
+   69.44
+  ],
+  "y": [
+   -7.84,
+   40.84
+  ],
+  "pad": 10,
+  "ratio": 0.62
+ },
+ "roles": {
+  "hyp": {
+   "label": "Hypotenuse",
+   "color": "#059669",
+   "text": "The side opposite the right angle. It is always the longest side."
+  },
+  "legA": {
+   "label": "Shorter side 1",
+   "color": "#2563eb",
+   "text": "One of the two sides that meet at the right angle."
+  },
+  "legB": {
+   "label": "Shorter side 2",
+   "color": "#e11d48",
+   "text": "The other side that meets at the right angle."
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The length we are finding."
+  }
+ },
+ "params": [],
+ "derived": {
+  "p_H": [
+   0.0,
+   0.0
+  ],
+  "p_I": [
+   56.0,
+   0.0
+  ],
+  "p_G": [
+   0.0,
+   33.0
+  ]
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ln0",
+   "role": "ink",
+   "from": "p_G",
+   "to": "p_H",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 0,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln1",
+   "role": "ink",
+   "from": "p_H",
+   "to": "p_I",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 150,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "segment",
+   "id": "ln2",
+   "role": "ink",
+   "from": "p_G",
+   "to": "p_I",
+   "strokeWidth": 2.6,
+   "appear": "s0",
+   "effect": "draw",
+   "delay": 300,
+   "appearDur": 700,
+   "layer": "mid"
+  },
+  {
+   "type": "angle",
+   "id": "ra0",
+   "at": "p_H",
+   "from": "p_I",
+   "to": "p_G",
+   "style": "square",
+   "r": 26,
+   "role": "ink",
+   "strokeWidth": 1.8,
+   "fill": false,
+   "appear": "s0",
+   "delay": 700,
+   "appearDur": 400
+  },
+  {
+   "type": "point",
+   "id": "pt_H",
+   "at": "p_H",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "H",
+    "off": 0,
+    "dx": -14.6,
+    "dy": 8.6,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_I",
+   "at": "p_I",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "I",
+    "off": 0,
+    "dx": 16.3,
+    "dy": 4.8,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pt_G",
+   "at": "p_G",
+   "r": 3.2,
+   "role": "ink",
+   "appear": "s0",
+   "delay": 400,
+   "appearDur": 400,
+   "layer": "front",
+   "label": {
+    "text": "G",
+    "off": 0,
+    "dx": -11.0,
+    "dy": -13.0,
+    "size": "l",
+    "role": "ink"
+   }
+  },
+  {
+   "type": "polygon",
+   "id": "ov0",
+   "pts": [
+    "p_G",
+    "p_H",
+    "p_I"
+   ],
+   "role": "accent",
+   "fill": "accent",
+   "fillOpacity": 0.11,
+   "stroke": false,
+   "layer": "back",
+   "appear": "s1",
+   "appearDur": 500
+  },
+  {
+   "type": "segment",
+   "id": "ov1",
+   "role": "hyp",
+   "from": "p_G",
+   "to": "p_I",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "ov2",
+   "role": "legA",
+   "from": "p_G",
+   "to": "p_H",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "ov3",
+   "role": "legB",
+   "from": "p_H",
+   "to": "p_I",
+   "strokeWidth": 6,
+   "layer": "mid",
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 600
+  },
+  {
+   "type": "segment",
+   "id": "lb0",
+   "from": "p_G",
+   "to": "p_H",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "33 cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     18.6667,
+     11.0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb1",
+   "from": "p_G",
+   "to": "p_I",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "65 cm",
+    "role": "ink",
+    "size": "l",
+    "away": [
+     18.6667,
+     11.0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0
+  },
+  {
+   "type": "segment",
+   "id": "lb2",
+   "from": "p_H",
+   "to": "p_I",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "?",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     18.6667,
+     11.0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 450,
+   "delay": 0,
+   "disappear": "s6"
+  },
+  {
+   "type": "segment",
+   "id": "lb3",
+   "from": "p_H",
+   "to": "p_I",
+   "role": "ink",
+   "strokeWidth": 0,
+   "label": {
+    "text": "56 cm",
+    "role": "ans",
+    "size": "l",
+    "away": [
+     18.6667,
+     11.0
+    ],
+    "off": 5,
+    "t": 0.5
+   },
+   "layer": "front",
+   "appear": "s6",
+   "appearDur": 450,
+   "delay": 0
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "narration": "We are told **GH = 33 cm**, **GI = 65 cm** and **∠H = 90°**. We have to find **HI**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Spot the right angle",
+   "narration": "In ΔGHI, **∠H = 90°**, so the **hypotenuse** is the side opposite it: **GI**. The other two sides meet at the right angle.",
+   "actions": [
+    {
+     "pulse": [
+      "ra0"
+     ],
+     "at": 700
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Pythagoras' theorem",
+   "narration": "**Pythagoras' theorem**: the square on the hypotenuse equals the sum of the squares on the other two sides.\\[\\begin{aligned}\\role{hyp}{GI^2} &= \\role{legA}{GH^2} + \\role{legB}{HI^2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Make the unknown the subject",
+   "narration": "We want a **shorter side**, so subtract the known square from the hypotenuse square.\\[\\begin{aligned}\\role{hyp}{GI^2} &= \\role{legA}{GH^2} + \\role{legB}{HI^2} \\\\ \\role{legB}{HI^2} &= \\role{hyp}{GI^2} - \\role{legA}{GH^2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Substitute the lengths",
+   "narration": "Replace each side by its length.\\[\\begin{aligned}\\role{hyp}{GI^2} &= \\role{legA}{GH^2} + \\role{legB}{HI^2} \\\\ \\role{legB}{HI^2} &= \\role{hyp}{GI^2} - \\role{legA}{GH^2} \\\\ &= \\role{hyp}{65^2} - \\role{legA}{33^2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s5",
+   "title": "Square and subtract",
+   "narration": "Square each number, then subtract.\\[\\begin{aligned}\\role{hyp}{GI^2} &= \\role{legA}{GH^2} + \\role{legB}{HI^2} \\\\ \\role{legB}{HI^2} &= \\role{hyp}{GI^2} - \\role{legA}{GH^2} \\\\ &= \\role{hyp}{65^2} - \\role{legA}{33^2} \\\\ &= \\role{hyp}{4225} - \\role{legA}{1089} \\\\ &= \\role{legB}{3136}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s6",
+   "title": "Square root",
+   "narration": "Take the square root of both sides (a length is positive).\\[\\begin{aligned}\\role{hyp}{GI^2} &= \\role{legA}{GH^2} + \\role{legB}{HI^2} \\\\ \\role{legB}{HI^2} &= \\role{hyp}{GI^2} - \\role{legA}{GH^2} \\\\ &= \\role{hyp}{65^2} - \\role{legA}{33^2} \\\\ &= \\role{hyp}{4225} - \\role{legA}{1089} \\\\ &= \\role{legB}{3136} \\\\ \\role{legB}{HI} &= \\sqrt{3136} = \\role{ans}{56\\ \\text{cm}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Pythagoras' theorem",
+   "tex": "\\role{hyp}{c^2} = \\role{legA}{a^2} + \\role{legB}{b^2}",
+   "text": "In a right-angled triangle, the square on the hypotenuse equals the sum of the squares on the other two sides."
+  },
+  {
+   "title": "Finding the hypotenuse",
+   "tex": "\\role{hyp}{c} = \\sqrt{\\role{legA}{a^2} + \\role{legB}{b^2}}",
+   "text": "Add the two squares, then take the square root."
+  },
+  {
+   "title": "Finding a shorter side",
+   "tex": "\\role{legA}{a} = \\sqrt{\\role{hyp}{c^2} - \\role{legB}{b^2}}",
+   "text": "Subtract the known shorter side's square from the hypotenuse's square, then take the square root."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "twin",
+   "type": "number",
+   "title": "Now you try",
+   "answer": 35,
+   "unit": "cm",
+   "prompt": "A right-angled triangle has hypotenuse **37 cm** and one shorter side **12 cm**. Find the other shorter side.",
+   "hint": "Subtract: 37² − 12².",
+   "explain": "37² − 12² = 1369 − 144 = 1225, and √1225 = 35 cm."
+  }
+ ],
+ "takeaways": [
+  "Find the **right angle** first — the side opposite it is the **hypotenuse**.",
+  "To find a shorter side: **subtract** the known shorter side's square from the hypotenuse's square, then take the **square root**.",
+  "A shorter side must be **smaller** than the hypotenuse — a quick check on your answer."
+ ],
+ "notes": [
+  {
+   "title": "Exam tip",
+   "text": "Always begin with a line such as \"In ΔABC, ∠C = 90°. Using Pythagoras' Theorem,\" — it shows which triangle and which right angle you are using."
+  }
+ ]
+}
