@@ -2,16 +2,13 @@
 // The questions come from the same banks as the regular chapter games (games/classes/**/banks/{mcq-arena,speed-challenge}.json),
 // pre-converted by tools/build_questions.py into small per-subject files under games/advanced/questions/ (+ index.json).
 //
-// Which subjects does a student get?
-//   Class 6-8  -> every subject of the class (they are enrolled in the whole class).
-//   Class 9-12 -> only the subjects in their enrolledScope (SUBJ-PHYS-C12 ...), read from the dashboard cache the rest of the site uses.
-//                 If the scope is unknown (e.g. the local sandbox) every subject we have is used.
-// Class 9 and 11 have no banks yet: they borrow the nearest class of the same stage (9 -> 10, 11 -> 10/12), per subject.
-// A student whose enrolled subjects have no bank at all still gets the nearest class's subjects (never an empty game).
-//
-// Boards: a Punjab Board student (scope carries BOARD-PUNJAB) gets the board's OWN question file for a subject when the index lists one
-//   (index.json -> boards.punjab[class][subject], files under questions/punjab/). Every other student never sees those files, and a
-//   Punjab student's subjects that have no Punjab file fall back to the rules above, exactly as before.
+// Which questions does a student get?  Strictly their OWN board, their OWN class, their ENROLLED subjects. Nothing is borrowed.
+//   Board    : BOARD-PUNJAB* -> punjab, BOARD-KPK -> kpk, BOARD-OLEVEL -> olevel; no board token -> class 6-8 = apsacs, class 9-12 = federal.
+//   Class    : exactly the student's class (no "nearest class" borrowing).
+//   Subjects : Class 6-8 (FULL-Cxx) -> every subject the board has for that class. Class 9-12 -> only the subjects in the enrolledScope
+//              (SUBJ-PHYS-C12 ...), read from the dashboard cache the rest of the site uses. Scope unknown -> every subject the board has.
+// Files live in games/advanced/questions/<board>/<class>-<subject>.json and are listed in index.json -> boards.<board>.<class>.<subject>.
+// A student whose board/class/subjects have no question file gets a friendly "not ready yet" message (error.noBank) - never another board's questions.
 
 const BASE = new URL('../../questions/', import.meta.url);
 const CODE_TO_KEY = { PHYS: 'phys', CHEM: 'chem', BIO: 'bio', MATH: 'math', CS: 'cs', SCI: 'science', GEO: 'geography', HIST: 'history' };
@@ -39,9 +36,15 @@ export function parseScope(scope) {
   return full ? null : keys.length ? keys : null;
 }
 
-/** 'punjab' when the scope string carries BOARD-PUNJAB (or BOARD-PUNJAB-<BODY>), else null. Pure. */
+/** Board named by a scope string: 'punjab' | 'kpk' | 'olevel', or null when it carries no board token. Pure. */
 export function parseBoard(scope) {
-  return /(^|,)\s*BOARD-PUNJAB(-[A-Z]+)?\s*(?=,|$)/.test(String(scope || '').toUpperCase()) ? 'punjab' : null;
+  const m = /(^|,)\s*BOARD-(PUNJAB|KPK|OLEVEL)(-[A-Z]+)?\s*(?=,|$)/.exec(String(scope || '').toUpperCase());
+  return m ? m[2].toLowerCase() : null;
+}
+
+/** The board whose question files a student reads: the scope's board, else apsacs (class 6-8) / federal (class 9-12). Pure. */
+export function boardFor(scope, cls) {
+  return parseBoard(scope) || (Number(cls) <= 8 ? 'apsacs' : 'federal');
 }
 
 function storedScope() {
@@ -51,24 +54,12 @@ function storedScope() {
   } catch (e) { return ''; }
 }
 
-/** Decide which (class, subject) files to load. Pure: index + class + subject keys (or null). */
+/** Decide which (class, subject) files to load. Pure: index + class + subject keys (or null = all) + board. Own board and class only. */
 export function planFiles(index, cls, subjectKeys, board) {
-  const own = (board && index.boards && index.boards[board] && index.boards[board][cls]) || null;
-  if (own) {
-    const want = subjectKeys && subjectKeys.length ? subjectKeys : Object.keys(own);
-    const ownFiles = want.filter((k) => own[k]).map((k) => ({ cls, key: k, board, ...own[k] }));
-    const rest = want.filter((k) => !own[k]);
-    return ownFiles.concat(rest.length ? planFiles(index, cls, rest) : []);
-  }
-  const have = index.classes || {};
-  const classes = Object.keys(have).map(Number);
-  const near = (c) => classes.filter((x) => (c >= 9 ? x >= 9 : x === c)).sort((a, b) => Math.abs(a - c) - Math.abs(b - c) || a - b);
-  const order = near(cls);
-  const allKeys = [...new Set(order.flatMap((c) => Object.keys(have[c])))];
-  const pickFor = (keys) => keys.map((k) => { const c = order.find((x) => have[x][k]); return c ? { cls: c, key: k, ...have[c][k] } : null; }).filter(Boolean);
-  let files = pickFor(subjectKeys && subjectKeys.length ? subjectKeys : allKeys);
-  if (!files.length && order.length) files = Object.keys(have[order[0]]).map((k) => ({ cls: order[0], key: k, ...have[order[0]][k] }));
-  return files;
+  const own = (index.boards && index.boards[board] && index.boards[board][cls]) || null;
+  if (!own) return [];
+  const want = subjectKeys && subjectKeys.length ? subjectKeys : Object.keys(own);
+  return want.filter((k) => own[k]).map((k) => ({ cls, key: k, board, ...own[k] }));
 }
 
 function toRaw(file, data) {
@@ -79,8 +70,8 @@ function toRaw(file, data) {
 export async function loadBankQuestions(cls, scope) {
   const index = await getIndex();
   const sc = scope === undefined ? storedScope() : scope;
-  const files = planFiles(index, Number(cls), parseScope(sc), parseBoard(sc));
-  if (!files.length) throw new Error('No questions available for this class yet.');
+  const files = planFiles(index, Number(cls), parseScope(sc), boardFor(sc, cls));
+  if (!files.length) { const e = new Error('Advanced Games questions for your subjects are not ready yet. We are adding them soon.'); e.noBank = true; throw e; }
   const key = files.map((f) => f.file).join('|');
   if (!cache.has(key)) cache.set(key, Promise.all(files.map(async (f) => toRaw(f, await getJson(f.file)))).then((a) => a.flat()).catch((e) => { cache.delete(key); throw e; }));
   return cache.get(key);

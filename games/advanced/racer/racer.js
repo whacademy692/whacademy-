@@ -132,7 +132,7 @@ async function ensureQuestions() {
     bankP = bankP || loadBankQuestions(store.profile.cls);
     if (!rawCache) toast('Loading questions…', '#7fd6ff', 1500);
     rawCache = await bankP; return true;
-  } catch (e) { bankP = null; toast('Could not load questions. Check your connection and try again.', '#ff4d6d', 3500); return false; }
+  } catch (e) { bankP = null; toast(e && e.noBank ? e.message : 'Could not load questions. Check your connection and try again.', '#ff4d6d', 3500); return false; }
 }
 const preloadBank = () => { if (!bankP && !window.WHA_ADV_QUESTIONS) { bankP = loadBankQuestions(store.profile.cls); bankP.then((r) => { rawCache = r; }).catch(() => { bankP = null; }); } };
 async function startRun(mode) {
