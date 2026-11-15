@@ -1,0 +1,746 @@
+{
+ "title": "Is it a function? Arrow diagrams",
+ "summary": "Follow the arrows: a function gives every input exactly one output. See domain and range.",
+ "alt": "An arrow diagram from set X to set Y. Four relations show which are functions and which are not.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -4.0,
+   4.0
+  ],
+  "y": [
+   -6.5,
+   5.0
+  ],
+  "ratio": 1.44,
+  "pad": 6
+ },
+ "roles": {
+  "xs": {
+   "label": "Inputs (domain)",
+   "color": "#2563eb",
+   "text": "The set X.",
+   "legend": true
+  },
+  "ys": {
+   "label": "Outputs",
+   "color": "#7c3aed",
+   "text": "The set Y.",
+   "legend": true
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Arrows that follow the function rule.",
+   "legend": true
+  },
+  "no": {
+   "label": "Breaks the rule",
+   "color": "#e11d48",
+   "text": "Arrows or inputs that break the rule.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "rel",
+   "label": "Relation",
+   "type": "choice",
+   "default": 0,
+   "options": [
+    {
+     "value": 0,
+     "label": "x → x+2"
+    },
+    {
+     "value": 1,
+     "label": "Shared"
+    },
+    {
+     "value": 2,
+     "label": "Two outputs"
+    },
+    {
+     "value": 3,
+     "label": "Missing"
+    }
+   ]
+  }
+ ],
+ "derived": {},
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "bx",
+   "x": -3.6,
+   "y": -3.9,
+   "w": 1.6,
+   "h": 7.8,
+   "role": "xs",
+   "fill": false,
+   "strokeWidth": 2.4
+  },
+  {
+   "type": "rect",
+   "id": "by",
+   "x": 2.0,
+   "y": -3.9,
+   "w": 1.6,
+   "h": 7.8,
+   "role": "ys",
+   "fill": false,
+   "strokeWidth": 2.4
+  },
+  {
+   "type": "text",
+   "id": "hx",
+   "at": [
+    -2.8,
+    4.45
+   ],
+   "text": "X (inputs)",
+   "role": "xs",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "hy",
+   "at": [
+    2.8,
+    4.45
+   ],
+   "text": "Y (outputs)",
+   "role": "ys",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "x1",
+   "at": [
+    -2.8,
+    2.4
+   ],
+   "text": "1",
+   "role": "xs",
+   "size": "l",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "x2",
+   "at": [
+    -2.8,
+    0.8
+   ],
+   "text": "2",
+   "role": "xs",
+   "size": "l",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "x3",
+   "at": [
+    -2.8,
+    -0.8
+   ],
+   "text": "3",
+   "role": "xs",
+   "size": "l",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "x4",
+   "at": [
+    -2.8,
+    -2.4
+   ],
+   "text": "4",
+   "role": "xs",
+   "size": "l",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "y2",
+   "at": [
+    2.8,
+    3.4
+   ],
+   "text": "2",
+   "role": "ys",
+   "size": "l",
+   "bold": true,
+   "opacity": "1"
+  },
+  {
+   "type": "text",
+   "id": "y3",
+   "at": [
+    2.8,
+    2.04
+   ],
+   "text": "3",
+   "role": "ys",
+   "size": "l",
+   "bold": true,
+   "opacity": "1"
+  },
+  {
+   "type": "text",
+   "id": "y4",
+   "at": [
+    2.8,
+    0.68
+   ],
+   "text": "4",
+   "role": "ys",
+   "size": "l",
+   "bold": true,
+   "opacity": "1"
+  },
+  {
+   "type": "text",
+   "id": "y5",
+   "at": [
+    2.8,
+    -0.68
+   ],
+   "text": "5",
+   "role": "ys",
+   "size": "l",
+   "bold": true,
+   "opacity": "1"
+  },
+  {
+   "type": "text",
+   "id": "y6",
+   "at": [
+    2.8,
+    -2.04
+   ],
+   "text": "6",
+   "role": "ys",
+   "size": "l",
+   "bold": true,
+   "opacity": "1"
+  },
+  {
+   "type": "text",
+   "id": "y7",
+   "at": [
+    2.8,
+    -3.4
+   ],
+   "text": "7",
+   "role": "ys",
+   "size": "l",
+   "bold": true,
+   "opacity": "1"
+  },
+  {
+   "type": "segment",
+   "id": "ar0_1_3",
+   "from": [
+    -2.0,
+    2.4
+   ],
+   "to": [
+    2.0,
+    2.04
+   ],
+   "role": "ok",
+   "strokeWidth": 3,
+   "visible": "rel==0",
+   "arrow": true
+  },
+  {
+   "type": "segment",
+   "id": "ar0_2_4",
+   "from": [
+    -2.0,
+    0.8
+   ],
+   "to": [
+    2.0,
+    0.68
+   ],
+   "role": "ok",
+   "strokeWidth": 3,
+   "visible": "rel==0",
+   "arrow": true
+  },
+  {
+   "type": "segment",
+   "id": "ar0_3_5",
+   "from": [
+    -2.0,
+    -0.8
+   ],
+   "to": [
+    2.0,
+    -0.68
+   ],
+   "role": "ok",
+   "strokeWidth": 3,
+   "visible": "rel==0",
+   "arrow": true
+  },
+  {
+   "type": "segment",
+   "id": "ar0_4_6",
+   "from": [
+    -2.0,
+    -2.4
+   ],
+   "to": [
+    2.0,
+    -2.04
+   ],
+   "role": "ok",
+   "strokeWidth": 3,
+   "visible": "rel==0",
+   "arrow": true
+  },
+  {
+   "type": "segment",
+   "id": "ar1_1_3",
+   "from": [
+    -2.0,
+    2.4
+   ],
+   "to": [
+    2.0,
+    2.04
+   ],
+   "role": "ok",
+   "strokeWidth": 3,
+   "visible": "rel==1",
+   "arrow": true
+  },
+  {
+   "type": "segment",
+   "id": "ar1_2_3",
+   "from": [
+    -2.0,
+    0.8
+   ],
+   "to": [
+    2.0,
+    2.04
+   ],
+   "role": "ok",
+   "strokeWidth": 3,
+   "visible": "rel==1",
+   "arrow": true
+  },
+  {
+   "type": "segment",
+   "id": "ar1_3_5",
+   "from": [
+    -2.0,
+    -0.8
+   ],
+   "to": [
+    2.0,
+    -0.68
+   ],
+   "role": "ok",
+   "strokeWidth": 3,
+   "visible": "rel==1",
+   "arrow": true
+  },
+  {
+   "type": "segment",
+   "id": "ar1_4_5",
+   "from": [
+    -2.0,
+    -2.4
+   ],
+   "to": [
+    2.0,
+    -0.68
+   ],
+   "role": "ok",
+   "strokeWidth": 3,
+   "visible": "rel==1",
+   "arrow": true
+  },
+  {
+   "type": "segment",
+   "id": "ar2_1_3",
+   "from": [
+    -2.0,
+    2.4
+   ],
+   "to": [
+    2.0,
+    2.04
+   ],
+   "role": "no",
+   "strokeWidth": 3,
+   "visible": "rel==2",
+   "arrow": true
+  },
+  {
+   "type": "segment",
+   "id": "ar2_1_4",
+   "from": [
+    -2.0,
+    2.4
+   ],
+   "to": [
+    2.0,
+    0.68
+   ],
+   "role": "no",
+   "strokeWidth": 3,
+   "visible": "rel==2",
+   "arrow": true
+  },
+  {
+   "type": "segment",
+   "id": "ar2_2_4",
+   "from": [
+    -2.0,
+    0.8
+   ],
+   "to": [
+    2.0,
+    0.68
+   ],
+   "role": "ok",
+   "strokeWidth": 3,
+   "visible": "rel==2",
+   "arrow": true
+  },
+  {
+   "type": "segment",
+   "id": "ar2_3_5",
+   "from": [
+    -2.0,
+    -0.8
+   ],
+   "to": [
+    2.0,
+    -0.68
+   ],
+   "role": "ok",
+   "strokeWidth": 3,
+   "visible": "rel==2",
+   "arrow": true
+  },
+  {
+   "type": "segment",
+   "id": "ar2_4_6",
+   "from": [
+    -2.0,
+    -2.4
+   ],
+   "to": [
+    2.0,
+    -2.04
+   ],
+   "role": "ok",
+   "strokeWidth": 3,
+   "visible": "rel==2",
+   "arrow": true
+  },
+  {
+   "type": "segment",
+   "id": "ar3_1_3",
+   "from": [
+    -2.0,
+    2.4
+   ],
+   "to": [
+    2.0,
+    2.04
+   ],
+   "role": "ok",
+   "strokeWidth": 3,
+   "visible": "rel==3",
+   "arrow": true
+  },
+  {
+   "type": "segment",
+   "id": "ar3_2_4",
+   "from": [
+    -2.0,
+    0.8
+   ],
+   "to": [
+    2.0,
+    0.68
+   ],
+   "role": "ok",
+   "strokeWidth": 3,
+   "visible": "rel==3",
+   "arrow": true
+  },
+  {
+   "type": "segment",
+   "id": "ar3_4_6",
+   "from": [
+    -2.0,
+    -2.4
+   ],
+   "to": [
+    2.0,
+    -2.04
+   ],
+   "role": "ok",
+   "strokeWidth": 3,
+   "visible": "rel==3",
+   "arrow": true
+  },
+  {
+   "type": "circle",
+   "id": "ring3",
+   "c": [
+    -2.8,
+    -0.8
+   ],
+   "r": 0.55,
+   "role": "no",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "rel==3"
+  },
+  {
+   "type": "text",
+   "id": "v0",
+   "at": [
+    0,
+    -4.55
+   ],
+   "text": "FUNCTION: every input has exactly one output",
+   "role": "ok",
+   "size": "m",
+   "bold": true,
+   "visible": "rel<=1"
+  },
+  {
+   "type": "text",
+   "id": "v2",
+   "at": [
+    0,
+    -4.55
+   ],
+   "text": "NOT a function: 1 has two outputs",
+   "role": "no",
+   "size": "m",
+   "bold": true,
+   "visible": "rel==2"
+  },
+  {
+   "type": "text",
+   "id": "v3",
+   "at": [
+    0,
+    -4.55
+   ],
+   "text": "NOT a function: 3 has no output",
+   "role": "no",
+   "size": "m",
+   "bold": true,
+   "visible": "rel==3"
+  },
+  {
+   "type": "text",
+   "id": "dm",
+   "at": [
+    0,
+    -5.35
+   ],
+   "text": "Domain = {1, 2, 3, 4}",
+   "role": "xs",
+   "size": "m",
+   "bold": true,
+   "visible": "rel<=1"
+  },
+  {
+   "type": "text",
+   "id": "rg0",
+   "at": [
+    0,
+    -6.05
+   ],
+   "text": "Range = {3, 4, 5, 6}",
+   "role": "ys",
+   "size": "m",
+   "bold": true,
+   "visible": "rel==0"
+  },
+  {
+   "type": "text",
+   "id": "rg1",
+   "at": [
+    0,
+    -6.05
+   ],
+   "text": "Range = {3, 5}",
+   "role": "ys",
+   "size": "m",
+   "bold": true,
+   "visible": "rel==1"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Arrows from inputs to outputs",
+   "narration": "A **relation** pairs inputs from set X with outputs in set Y. Each arrow is one pair. Here every input has **one** arrow: \\( x \\to x + 2 \\).",
+   "actions": [
+    {
+     "set": {
+      "rel": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "That is a function",
+   "narration": "A **function** gives each input **exactly one** output. The set of inputs is the **domain** \\( \\{1,2,3,4\\} \\); the outputs used form the **range** \\( \\{3,4,5,6\\} \\).",
+   "actions": [
+    {
+     "set": {
+      "rel": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Two inputs, one output: fine",
+   "narration": "Here 1 and 2 both go to 3, and 3 and 4 both go to 5. Different inputs may share an output, so this is still a function. The range is only \\( \\{3, 5\\} \\).",
+   "actions": [
+    {
+     "set": {
+      "rel": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "One input, two outputs: not allowed",
+   "narration": "The input 1 has **two** arrows, to 3 and to 4. One input must not give two outputs, so this is **not** a function.",
+   "actions": [
+    {
+     "set": {
+      "rel": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "An input left out: not allowed",
+   "narration": "The input 3 has **no** arrow. Every input in the domain needs an output, so this is **not** a function.",
+   "actions": [
+    {
+     "set": {
+      "rel": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "The test",
+   "narration": "Check each input: **exactly one arrow**. Try the four relations again with the buttons.",
+   "actions": [
+    {
+     "set": {
+      "rel": 0
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Function",
+   "tex": "f: X \\to Y",
+   "text": "Every x in X has exactly one image f(x) in Y."
+  },
+  {
+   "title": "Domain and range",
+   "tex": "\\text{domain} = X,\\quad \\text{range} = \\{f(x)\\}",
+   "text": "Domain: all inputs. Range: the outputs actually reached."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Function?",
+   "answer": "b",
+   "options": [
+    {
+     "id": "a",
+     "label": "Yes, it is a function"
+    },
+    {
+     "id": "b",
+     "label": "No, it is not a function"
+    }
+   ],
+   "prompt": "\\( \\{(1,2),\\ (2,3),\\ (1,4)\\} \\). Is this a function?",
+   "hint": "Look at the input 1.",
+   "explain": "The input 1 is paired with both 2 and 4, so it is **not** a function."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Function?",
+   "answer": "a",
+   "options": [
+    {
+     "id": "a",
+     "label": "Yes, it is a function"
+    },
+    {
+     "id": "b",
+     "label": "No, it is not a function"
+    }
+   ],
+   "prompt": "\\( \\{(1,5),\\ (2,5),\\ (3,5)\\} \\). Is this a function?",
+   "hint": "Can different inputs share one output?",
+   "explain": "Each input has exactly one output (all happen to be 5). It **is** a function."
+  },
+  {
+   "id": "c3",
+   "type": "number",
+   "title": "Size of the range",
+   "answer": 4,
+   "prompt": "\\( f(x) = x + 2 \\) with inputs \\( \\{1, 2, 3, 4\\} \\). How many different outputs are in the range?",
+   "hint": "Compute f(1), f(2), f(3), f(4).",
+   "explain": "The outputs are 3, 4, 5, 6: four values."
+  }
+ ],
+ "intro": "A function is a relation in which every input has one and only one output.",
+ "takeaways": [
+  "Function: each input has exactly one arrow.",
+  "Two inputs may share an output.",
+  "One input may not give two outputs."
+ ],
+ "notes": [
+  {
+   "title": "Domain, codomain, range",
+   "text": "Y is the codomain. The range is only the part of Y that is actually reached by an arrow."
+  }
+ ],
+ "challengeIntro": "Now you try. Each question uses the picture above."
+}

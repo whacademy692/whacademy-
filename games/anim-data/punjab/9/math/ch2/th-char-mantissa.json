@@ -1,0 +1,303 @@
+{
+ "title": "Characteristic and mantissa",
+ "summary": "Split log N into a whole part (the power of 10) and a decimal part (the digits).",
+ "alt": "A number line from -4 to 5 with log N marked, split into a characteristic and a mantissa.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -4.6,
+   5.8
+  ],
+  "y": [
+   -3.0,
+   3.2
+  ],
+  "ratio": 0.62,
+  "pad": 6
+ },
+ "roles": {
+  "ch": {
+   "label": "Characteristic",
+   "color": "#2563eb",
+   "text": "The whole-number part of the log.",
+   "legend": true
+  },
+  "ma": {
+   "label": "Mantissa",
+   "color": "#e11d48",
+   "text": "The decimal part of the log.",
+   "legend": true
+  },
+  "res": {
+   "label": "log N",
+   "color": "#059669",
+   "text": "The full logarithm.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "m",
+   "label": "Digits  m",
+   "min": 1,
+   "max": 9.9,
+   "step": 0.1,
+   "default": 4.5,
+   "role": "ma"
+  },
+  {
+   "id": "pw",
+   "label": "Power of 10  (e)",
+   "min": -3,
+   "max": 4,
+   "step": 1,
+   "default": 2,
+   "role": "ch"
+  }
+ ],
+ "derived": {
+  "lm": "log(m)",
+  "LN": "pw+log(m)",
+  "N": "m*10^pw"
+ },
+ "shapes": [
+  {
+   "type": "numberline",
+   "id": "nl",
+   "from": -4,
+   "to": 5,
+   "y": 0,
+   "step": 1,
+   "role": "ink",
+   "marks": [
+    {
+     "at": "LN",
+     "role": "res",
+     "r": 6
+    }
+   ],
+   "jumps": [
+    {
+     "from": 0,
+     "to": "pw",
+     "role": "ch",
+     "label": "characteristic {{pw|int}}",
+     "h": 1
+    },
+    {
+     "from": "pw",
+     "to": "LN",
+     "role": "ma",
+     "label": "mantissa {{lm|=3}}",
+     "h": -1
+    }
+   ]
+  },
+  {
+   "type": "text",
+   "id": "t1",
+   "at": [
+    0.5,
+    2.5
+   ],
+   "text": "N = {{m|1}} × 10^{{pw|int}} = {{N|6}}",
+   "role": "ink",
+   "size": "l",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t2",
+   "at": [
+    0.5,
+    1.95
+   ],
+   "text": "log N = {{pw|int}} + {{lm|=3}} = {{LN|=3}}",
+   "role": "res",
+   "size": "l",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t3",
+   "at": [
+    0.5,
+    -1.9
+   ],
+   "text": "Mantissa {{lm|=3}} depends only on the digits",
+   "role": "ma",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t4",
+   "at": [
+    0.5,
+    -2.45
+   ],
+   "text": "{{if pw<0 | Negative characteristic: write it with a bar | Characteristic = digits before the point minus 1}}",
+   "role": "ch",
+   "size": "m",
+   "bold": true
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A number in standard form",
+   "narration": "Write the number as \\( m \\times 10^e \\) with \\( 1 \\le m < 10 \\). Here \\( N = {{m|1}} \\times 10^{ {{pw|int}} } = {{N|6}} \\).",
+   "actions": [
+    {
+     "set": {
+      "m": 4.5,
+      "pw": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Where is its logarithm?",
+   "narration": "\\( \\log N = \\log m + e \\). The point sits between **{{pw|int}}** and **{{pw+1|int}}** on the number line.",
+   "actions": [
+    {
+     "set": {
+      "m": 4.5,
+      "pw": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Characteristic",
+   "narration": "The whole-number part is the [[ch|characteristic]]. It is just the power of 10: **{{pw|int}}**.",
+   "actions": [
+    {
+     "set": {
+      "m": 4.5,
+      "pw": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Mantissa",
+   "narration": "The decimal part is the [[ma|mantissa]]: \\( \\log {{m|1}} = {{lm|=3}} \\). It is always between 0 and 1.",
+   "actions": [
+    {
+     "set": {
+      "m": 4.5,
+      "pw": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Move the decimal point",
+   "narration": "Now \\( N = {{4.5*10^(-2)|3}} \\). The digits are the same, so the **mantissa is the same**; only the characteristic changes to **−2**.",
+   "actions": [
+    {
+     "set": {
+      "m": 4.5,
+      "pw": -2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Your turn",
+   "narration": "Change the digits **m** and the power **e**. Watch which part moves.",
+   "actions": [
+    {
+     "set": {
+      "m": 4.5,
+      "pw": 2
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Standard form",
+   "tex": "N = m \\times 10^{e},\\quad 1 \\le m < 10",
+   "text": "Move the decimal point until one non-zero digit is before it."
+  },
+  {
+   "title": "Split the log",
+   "tex": "\\log N = e + \\log m",
+   "text": "e is the characteristic and log m is the mantissa."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Characteristic",
+   "answer": 3,
+   "prompt": "What is the characteristic of \\( \\log 3200 \\)?",
+   "hint": "3200 = 3.2 × 10 to the power ?",
+   "explain": "\\( 3200 = 3.2 \\times 10^3 \\), so the characteristic is 3."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Same digits, same mantissa",
+   "answer": "a",
+   "options": [
+    {
+     "id": "a",
+     "label": "The mantissa"
+    },
+    {
+     "id": "b",
+     "label": "The characteristic"
+    },
+    {
+     "id": "c",
+     "label": "Nothing"
+    }
+   ],
+   "prompt": "\\( \\log 45 \\) and \\( \\log 4500 \\) have the same … ?",
+   "hint": "Both numbers have the digits 4 and 5.",
+   "explain": "Same digits mean the same mantissa. Only the characteristic changes (1 and 3)."
+  },
+  {
+   "id": "c3",
+   "type": "number",
+   "title": "Mantissa",
+   "answer": 0.505,
+   "prompt": "Set the digits to 3.2. What is the mantissa, \\( \\log 3.2 \\)? (3 decimal places)",
+   "hint": "Use the value shown in the picture or a calculator.",
+   "explain": "\\( \\log 3.2 = 0.505 \\).",
+   "set": {
+    "m": 3.2,
+    "pw": 3
+   }
+  }
+ ],
+ "intro": "Every common logarithm has two parts. One tells the size, the other tells the digits.",
+ "takeaways": [
+  "Characteristic = the power of 10 (a whole number).",
+  "Mantissa = log of the digits (between 0 and 1).",
+  "Moving the decimal point changes only the characteristic."
+ ],
+ "notes": [
+  {
+   "title": "Bar notation",
+   "text": "For N < 1 the characteristic is negative but the mantissa stays positive, so we write the minus sign as a bar over the number."
+  }
+ ],
+ "challengeIntro": "Now you try. Each question uses the picture above."
+}

@@ -1,0 +1,400 @@
+{
+ "title": "A logarithm is an exponent",
+ "summary": "Flip the curve y = b^x over the line y = x and you get the logarithm curve.",
+ "alt": "Graphs of y = b to the power x and y = log base b of x, mirror images over the line y = x, with one point on each.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -3.4,
+   9.4
+  ],
+  "y": [
+   -3.4,
+   9.4
+  ],
+  "ratio": 1,
+  "pad": 6
+ },
+ "roles": {
+  "ex": {
+   "label": "Exponential",
+   "color": "#2563eb",
+   "text": "y = b to the power x.",
+   "legend": true
+  },
+  "lg": {
+   "label": "Logarithm",
+   "color": "#e11d48",
+   "text": "y = log base b of x.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "b",
+   "label": "Base  b",
+   "type": "choice",
+   "default": 2,
+   "options": [
+    {
+     "value": 2,
+     "label": "2"
+    },
+    {
+     "value": 3,
+     "label": "3"
+    }
+   ]
+  },
+  {
+   "id": "n",
+   "label": "Exponent  n",
+   "min": -2,
+   "max": 3,
+   "step": 0.5,
+   "default": 1,
+   "role": "ex"
+  }
+ ],
+ "derived": {
+  "N": "b^n",
+  "E": [
+   "n",
+   "N"
+  ],
+  "L": [
+   "N",
+   "n"
+  ],
+  "Ex": [
+   "n",
+   0
+  ],
+  "Ey": [
+   0,
+   "N"
+  ],
+  "Lx": [
+   "N",
+   0
+  ],
+  "Ly": [
+   0,
+   "n"
+  ]
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 1,
+   "numbers": true
+  },
+  {
+   "type": "segment",
+   "id": "diag",
+   "from": [
+    -3,
+    -3
+   ],
+   "to": [
+    9,
+    9
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": true
+  },
+  {
+   "type": "plot",
+   "id": "pe",
+   "fn": "b^x",
+   "domain": [
+    -3.4,
+    4
+   ],
+   "samples": 200,
+   "role": "ex",
+   "strokeWidth": 3.5
+  },
+  {
+   "type": "plot",
+   "id": "pl",
+   "fn": "log(x)/log(b)",
+   "domain": [
+    0.04,
+    9.4
+   ],
+   "samples": 240,
+   "role": "lg",
+   "strokeWidth": 3.5
+  },
+  {
+   "type": "segment",
+   "id": "de1",
+   "from": "E",
+   "to": "Ex",
+   "role": "ex",
+   "strokeWidth": 1.8,
+   "dash": true
+  },
+  {
+   "type": "segment",
+   "id": "de2",
+   "from": "E",
+   "to": "Ey",
+   "role": "ex",
+   "strokeWidth": 1.8,
+   "dash": true
+  },
+  {
+   "type": "segment",
+   "id": "dl1",
+   "from": "L",
+   "to": "Lx",
+   "role": "lg",
+   "strokeWidth": 1.8,
+   "dash": true
+  },
+  {
+   "type": "segment",
+   "id": "dl2",
+   "from": "L",
+   "to": "Ly",
+   "role": "lg",
+   "strokeWidth": 1.8,
+   "dash": true
+  },
+  {
+   "type": "segment",
+   "id": "mir",
+   "from": "E",
+   "to": "L",
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": true
+  },
+  {
+   "type": "point",
+   "id": "pE",
+   "at": "E",
+   "role": "ex",
+   "r": 6,
+   "layer": "front",
+   "label": {
+    "text": "({{n|2}}, {{N|2}})",
+    "dx": 4,
+    "dy": -18,
+    "role": "ex",
+    "size": "s"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pL",
+   "at": "L",
+   "role": "lg",
+   "r": 6,
+   "layer": "front",
+   "label": {
+    "text": "({{N|2}}, {{n|2}})",
+    "dx": 24,
+    "dy": 18,
+    "role": "lg",
+    "size": "s"
+   }
+  },
+  {
+   "type": "text",
+   "id": "eq",
+   "at": [
+    3.6,
+    -1.9
+   ],
+   "text": "{{b|int}}^{{n|2}} = {{N|2}}",
+   "role": "ex",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "eq2",
+   "at": [
+    3.6,
+    -2.8
+   ],
+   "text": "log base {{b|int}} of {{N|2}} = {{n|2}}",
+   "role": "lg",
+   "size": "m",
+   "bold": true
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "An exponential curve",
+   "narration": "The blue curve is \\( y = {{b|int}}^x \\). Each x (the **exponent**) gives a y (the **power**).",
+   "actions": [
+    {
+     "set": {
+      "b": 2,
+      "n": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "One point on it",
+   "narration": "At \\( x = {{n|int}} \\) the curve is at \\( y = {{b|int}}^{{{n|int}}} = {{N|2}} \\). So the blue point is \\( ({{n|int}}, {{N|2}}) \\).",
+   "actions": [
+    {
+     "tween": {
+      "n": 3
+     },
+     "dur": 1400
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Flip it over",
+   "narration": "A **logarithm** asks the question the other way round: \\( {{b|int}}^{?} = {{N|2}} \\). Swap x and y: the red curve is \\( y = \\log_{{{b|int}}} x \\), the blue curve flipped over the dashed line y = x.",
+   "actions": [
+    {
+     "set": {
+      "n": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "The log is the exponent",
+   "narration": "The red point is \\( ({{N|2}}, {{n|2}}) \\), so \\( \\log_{{{b|int}}} {{N|2}} = {{n|2}} \\). **A logarithm is an exponent.**",
+   "actions": [
+    {
+     "set": {
+      "n": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Special values",
+   "narration": "At \\( n = 0 \\): \\( {{b|int}}^0 = 1 \\), so \\( \\log_{{{b|int}}} 1 = 0 \\). The red curve crosses the x-axis at 1.",
+   "actions": [
+    {
+     "tween": {
+      "n": 0
+     },
+     "dur": 1200
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Negative exponents",
+   "narration": "At \\( n = -1 \\): \\( {{b|int}}^{-1} = \\frac{1}{{{b|int}}} \\), so the log is negative for numbers below 1.",
+   "actions": [
+    {
+     "tween": {
+      "n": -1
+     },
+     "dur": 1200
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "title": "Your turn",
+   "narration": "Slide **n** and switch the **base**. Read both the power and the log.",
+   "actions": [
+    {
+     "set": {
+      "n": 2
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "formulas": [
+  {
+   "title": "The link",
+   "tex": "b^{n} = N \\iff \\log_b N = n",
+   "text": "Same three numbers, written two ways."
+  },
+  {
+   "title": "Two special logs",
+   "tex": "\\log_b 1 = 0,\\quad \\log_b b = 1",
+   "text": "Because b to the power 0 is 1 and b to the power 1 is b."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Read a logarithm",
+   "answer": 2,
+   "prompt": "What is \\( \\log_3 9 \\)?",
+   "hint": "Ask: 3 to which power gives 9?",
+   "explain": "\\( 3^2 = 9 \\), so \\( \\log_3 9 = 2 \\)."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Change the form",
+   "answer": "a",
+   "options": [
+    {
+     "id": "a",
+     "label": "log₅ 25 = 2"
+    },
+    {
+     "id": "b",
+     "label": "log₂ 5 = 25"
+    },
+    {
+     "id": "c",
+     "label": "log₂₅ 5 = 2"
+    }
+   ],
+   "prompt": "Which statement means the same as \\( 5^2 = 25 \\)?",
+   "hint": "The base stays the base. The exponent becomes the log.",
+   "explain": "\\( 5^2 = 25 \\iff \\log_5 25 = 2 \\)."
+  },
+  {
+   "id": "c3",
+   "type": "number",
+   "title": "Log of 1",
+   "answer": 0,
+   "prompt": "What is \\( \\log_2 1 \\)?",
+   "hint": "2 to which power gives 1?",
+   "explain": "\\( 2^0 = 1 \\), so \\( \\log_2 1 = 0 \\). This is true for every base."
+  }
+ ],
+ "intro": "Powers and logarithms are two ways of writing the same fact.",
+ "takeaways": [
+  "b^n = N is the same as log_b N = n.",
+  "The log is the exponent.",
+  "The two curves are mirror images over y = x."
+ ],
+ "notes": [
+  {
+   "title": "Why only bases 2 and 3 here?",
+   "text": "They keep the numbers small enough to draw. Base 10 (common logs) is on the next animation."
+  }
+ ],
+ "challengeIntro": "Now you try. Each question uses the picture above.",
+ "constraints": [
+  {
+   "when": "b^n<=9.01",
+   "message": "Keep b to the power n at most 9 so the graph fits."
+  }
+ ]
+}

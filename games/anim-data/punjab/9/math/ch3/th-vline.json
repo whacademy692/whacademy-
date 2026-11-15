@@ -1,0 +1,396 @@
+{
+ "title": "The vertical line test",
+ "summary": "Slide a vertical line across a graph: if it ever cuts the curve twice, the graph is not a function.",
+ "alt": "A graph with a movable vertical line. The number of points where the line cuts the curve tells whether it is a function.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -4.6,
+   4.6
+  ],
+  "y": [
+   -5.6,
+   5.6
+  ],
+  "ratio": 1.2,
+  "pad": 6
+ },
+ "roles": {
+  "cv": {
+   "label": "Curve",
+   "color": "#2563eb",
+   "text": "The graph being tested.",
+   "legend": true
+  },
+  "vln": {
+   "label": "Vertical line",
+   "color": "#7c3aed",
+   "text": "The line x = c.",
+   "legend": true
+  },
+  "hit": {
+   "label": "Cuts",
+   "color": "#e11d48",
+   "text": "Where the line meets the curve.",
+   "legend": true
+  },
+  "ok": {
+   "label": "Function",
+   "color": "#059669",
+   "text": "Passes at this c.",
+   "legend": true
+  },
+  "no": {
+   "label": "Not a function",
+   "color": "#e11d48",
+   "text": "Fails at this c.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "g",
+   "label": "Graph",
+   "type": "choice",
+   "default": 0,
+   "options": [
+    {
+     "value": 0,
+     "label": "y = 2x−1"
+    },
+    {
+     "value": 1,
+     "label": "y = x²"
+    },
+    {
+     "value": 2,
+     "label": "x = y²"
+    },
+    {
+     "value": 3,
+     "label": "Circle"
+    }
+   ]
+  },
+  {
+   "id": "c",
+   "label": "Vertical line  x = c",
+   "type": "clock",
+   "min": -3.5,
+   "max": 3.5,
+   "step": 0.1,
+   "speed": 0.9,
+   "loop": "bounce",
+   "default": 1
+  }
+ ],
+ "derived": {
+  "y1": "g==0 ? 2*c-1 : (g==1 ? c^2 : (g==2 ? sqrt(max(c,0)) : sqrt(max(9-c^2,0))))",
+  "y2": "g==2 ? -sqrt(max(c,0)) : -sqrt(max(9-c^2,0))",
+  "cnt": "g<=1 ? ((g==1 && abs(c)>2.2) ? 0 : 1) : (g==2 ? (c>0 ? ((c>4.4) ? 0 : 2) : (c==0 ? 1 : 0)) : (abs(c)<3 ? 2 : (abs(c)==3 ? 1 : 0)))",
+  "P1": [
+   "c",
+   "y1"
+  ],
+  "P2": [
+   "c",
+   "y2"
+  ]
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 1,
+   "numbers": true
+  },
+  {
+   "type": "plot",
+   "id": "g0",
+   "fn": "2*x-1",
+   "domain": [
+    -4,
+    4
+   ],
+   "role": "cv",
+   "strokeWidth": 3.5,
+   "visible": "g==0"
+  },
+  {
+   "type": "plot",
+   "id": "g1",
+   "fn": "x^2",
+   "domain": [
+    -2.2,
+    2.2
+   ],
+   "samples": 200,
+   "role": "cv",
+   "strokeWidth": 3.5,
+   "visible": "g==1"
+  },
+  {
+   "type": "plot",
+   "id": "g2",
+   "x": "u^2",
+   "y": "u",
+   "var": "u",
+   "domain": [
+    -2.1,
+    2.1
+   ],
+   "samples": 200,
+   "role": "cv",
+   "strokeWidth": 3.5,
+   "visible": "g==2"
+  },
+  {
+   "type": "plot",
+   "id": "g3",
+   "x": "3*cos(u)",
+   "y": "3*sin(u)",
+   "var": "u",
+   "domain": [
+    0,
+    360
+   ],
+   "samples": 240,
+   "role": "cv",
+   "strokeWidth": 3.5,
+   "visible": "g==3"
+  },
+  {
+   "type": "segment",
+   "id": "vl",
+   "from": [
+    "c",
+    -4.4
+   ],
+   "to": [
+    "c",
+    4.4
+   ],
+   "role": "vln",
+   "strokeWidth": 2.6,
+   "dash": true
+  },
+  {
+   "type": "point",
+   "id": "p1",
+   "at": "P1",
+   "role": "hit",
+   "r": 7,
+   "layer": "front",
+   "visible": "cnt>=1"
+  },
+  {
+   "type": "point",
+   "id": "p2",
+   "at": "P2",
+   "role": "hit",
+   "r": 7,
+   "layer": "front",
+   "visible": "cnt>=2"
+  },
+  {
+   "type": "text",
+   "id": "res",
+   "at": [
+    0,
+    5.0
+   ],
+   "text": "The line cuts the curve {{cnt|int}} time(s)",
+   "role": "hit",
+   "size": "l",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "ver",
+   "at": [
+    0,
+    -5.0
+   ],
+   "text": "Still a function here",
+   "role": "ok",
+   "size": "m",
+   "bold": true,
+   "visible": "cnt<=1"
+  },
+  {
+   "type": "text",
+   "id": "ver2",
+   "at": [
+    0,
+    -5.0
+   ],
+   "text": "More than one output: NOT a function",
+   "role": "no",
+   "size": "m",
+   "bold": true,
+   "visible": "cnt>=2"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A graph and a vertical line",
+   "narration": "Every vertical line \\( x = c \\) stands for **one input**. Where it meets the curve you read the **outputs**. Here the curve is a straight line, \\( y = 2x - 1 \\).",
+   "actions": [
+    {
+     "set": {
+      "g": 0,
+      "c": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Sweep the line",
+   "narration": "Slide the vertical line (or press play on **c**). It always meets this curve at exactly **one** point: one input, one output. This is a function.",
+   "actions": [
+    {
+     "set": {
+      "g": 0,
+      "c": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "The parabola y = x²",
+   "narration": "\\( y = x^2 \\) is also cut **once** by every vertical line, so it is a function.",
+   "actions": [
+    {
+     "set": {
+      "g": 1,
+      "c": 1.5
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Turn it sideways: x = y²",
+   "narration": "Now \\( x = y^2 \\). At \\( x = {{c|1}} \\) the line meets the curve **twice**: one input gives two outputs. **Not a function.**",
+   "actions": [
+    {
+     "set": {
+      "g": 2,
+      "c": 1.5
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "A circle",
+   "narration": "A circle is cut twice by most vertical lines, so it is **not** a function either.",
+   "actions": [
+    {
+     "set": {
+      "g": 3,
+      "c": 1.5
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "The vertical line test",
+   "narration": "If **any** vertical line cuts a graph more than once, the graph is not a function. Choose a curve and test it.",
+   "actions": [
+    {
+     "set": {
+      "g": 0,
+      "c": 1
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Vertical line test",
+   "tex": "\\text{function} \\iff \\text{every vertical line cuts the graph at most once}",
+   "text": "More than one cut means one input gives two outputs."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Test the graph",
+   "answer": "b",
+   "options": [
+    {
+     "id": "a",
+     "label": "Yes"
+    },
+    {
+     "id": "b",
+     "label": "No"
+    }
+   ],
+   "prompt": "A vertical line cuts a graph at two points. Can the graph be a function?",
+   "hint": "One input would have two outputs.",
+   "explain": "No. The same x would give two different y values."
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Count the outputs",
+   "answer": 2,
+   "prompt": "For \\( x = y^2 \\) at \\( x = 1 \\), how many values of y are there?",
+   "hint": "\\( y^2 = 1 \\) has two solutions.",
+   "explain": "\\( y = 1 \\) and \\( y = -1 \\): two outputs, so it is not a function.",
+   "set": {
+    "g": 2,
+    "c": 1
+   }
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Which is a function?",
+   "answer": "a",
+   "options": [
+    {
+     "id": "a",
+     "label": "y = x²"
+    },
+    {
+     "id": "b",
+     "label": "x = y²"
+    },
+    {
+     "id": "c",
+     "label": "x² + y² = 9"
+    }
+   ],
+   "prompt": "Which one passes the vertical line test?",
+   "hint": "Which one is never cut twice by a vertical line?",
+   "explain": "\\( y = x^2 \\) is a function. The other two are cut twice."
+  }
+ ],
+ "intro": "A graph is a function only if no vertical line cuts it twice.",
+ "takeaways": [
+  "One input, one output means one cut per vertical line.",
+  "If a vertical line cuts twice, the relation is not a function."
+ ],
+ "notes": [
+  {
+   "title": "Press play",
+   "text": "Press the play button on c to sweep the line across and watch the number of cuts."
+  }
+ ],
+ "challengeIntro": "Now you try. Each question uses the picture above."
+}

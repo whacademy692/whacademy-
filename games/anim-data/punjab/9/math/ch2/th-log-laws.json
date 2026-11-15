@@ -1,0 +1,598 @@
+{
+ "title": "Logs turn multiplying into adding",
+ "summary": "On a log ruler, adding lengths multiplies numbers. See the three laws of logarithms.",
+ "alt": "A logarithmic ruler with bars for log a and log b placed end to end to show log(ab) = log a + log b.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -0.2,
+   3.2
+  ],
+  "y": [
+   -1.3,
+   1.6
+  ],
+  "ratio": 0.6,
+  "pad": 6
+ },
+ "roles": {
+  "la": {
+   "label": "log a",
+   "color": "#2563eb",
+   "text": "The length that stands for a.",
+   "legend": true
+  },
+  "lb": {
+   "label": "log b",
+   "color": "#e11d48",
+   "text": "The length that stands for b.",
+   "legend": true
+  },
+  "res": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "Where the answer sits on the ruler.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "law",
+   "label": "Law",
+   "type": "choice",
+   "default": 0,
+   "options": [
+    {
+     "value": 0,
+     "label": "a × b"
+    },
+    {
+     "value": 1,
+     "label": "a ÷ b"
+    },
+    {
+     "value": 2,
+     "label": "a^p"
+    }
+   ]
+  },
+  {
+   "id": "a",
+   "label": "Number  a",
+   "min": 1,
+   "max": 9,
+   "step": 0.5,
+   "default": 2,
+   "role": "la"
+  },
+  {
+   "id": "b",
+   "label": "Number  b",
+   "min": 1,
+   "max": 9,
+   "step": 0.5,
+   "default": 3,
+   "role": "lb",
+   "enabledWhen": "law<2"
+  },
+  {
+   "id": "p",
+   "label": "Power  p",
+   "min": 1,
+   "max": 3,
+   "step": 1,
+   "default": 2,
+   "role": "la",
+   "enabledWhen": "law==2"
+  }
+ ],
+ "derived": {
+  "la": "log(a)",
+  "lb": "log(b)",
+  "R": "law==0 ? log(a)+log(b) : (law==1 ? log(a)-log(b) : p*log(a))",
+  "V": "law==0 ? a*b : (law==1 ? a/b : a^p)"
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "rul",
+   "from": [
+    0,
+    1.0
+   ],
+   "to": [
+    3,
+    1.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.4
+  },
+  {
+   "type": "repeat",
+   "id": "tk",
+   "count": 27,
+   "as": "i",
+   "template": {
+    "type": "segment",
+    "from": [
+     "floor(i/9)+log(mod(i,9)+1)",
+     0.94
+    ],
+    "to": [
+     "floor(i/9)+log(mod(i,9)+1)",
+     1.06
+    ],
+    "role": "muted",
+    "strokeWidth": 1.6
+   }
+  },
+  {
+   "type": "text",
+   "id": "lb1",
+   "at": [
+    0.0,
+    1.26
+   ],
+   "text": "1",
+   "role": "muted",
+   "size": "s"
+  },
+  {
+   "type": "text",
+   "id": "lb2",
+   "at": [
+    0.301,
+    1.26
+   ],
+   "text": "2",
+   "role": "muted",
+   "size": "s"
+  },
+  {
+   "type": "text",
+   "id": "lb3",
+   "at": [
+    0.4771,
+    1.26
+   ],
+   "text": "3",
+   "role": "muted",
+   "size": "s"
+  },
+  {
+   "type": "text",
+   "id": "lb5",
+   "at": [
+    0.699,
+    1.26
+   ],
+   "text": "5",
+   "role": "muted",
+   "size": "s"
+  },
+  {
+   "type": "text",
+   "id": "lb10",
+   "at": [
+    1.0,
+    1.26
+   ],
+   "text": "10",
+   "role": "muted",
+   "size": "s"
+  },
+  {
+   "type": "text",
+   "id": "lb20",
+   "at": [
+    1.301,
+    1.26
+   ],
+   "text": "20",
+   "role": "muted",
+   "size": "s"
+  },
+  {
+   "type": "text",
+   "id": "lb50",
+   "at": [
+    1.699,
+    1.26
+   ],
+   "text": "50",
+   "role": "muted",
+   "size": "s"
+  },
+  {
+   "type": "text",
+   "id": "lb100",
+   "at": [
+    2.0,
+    1.26
+   ],
+   "text": "100",
+   "role": "muted",
+   "size": "s"
+  },
+  {
+   "type": "text",
+   "id": "lb300",
+   "at": [
+    2.4771,
+    1.26
+   ],
+   "text": "300",
+   "role": "muted",
+   "size": "s"
+  },
+  {
+   "type": "text",
+   "id": "lb1000",
+   "at": [
+    3.0,
+    1.26
+   ],
+   "text": "1000",
+   "role": "muted",
+   "size": "s"
+  },
+  {
+   "type": "segment",
+   "id": "ba",
+   "from": [
+    0,
+    0.45
+   ],
+   "to": [
+    "la",
+    0.45
+   ],
+   "role": "la",
+   "strokeWidth": 9,
+   "visible": "law<2"
+  },
+  {
+   "type": "segment",
+   "id": "bb",
+   "from": [
+    "la",
+    0.45
+   ],
+   "to": [
+    "R",
+    0.45
+   ],
+   "role": "lb",
+   "strokeWidth": 9,
+   "visible": "law<2"
+  },
+  {
+   "type": "repeat",
+   "id": "bp",
+   "count": "law==2 ? p : 0",
+   "as": "i",
+   "template": {
+    "type": "segment",
+    "from": [
+     "i*la",
+     0.45
+    ],
+    "to": [
+     "(i+1)*la",
+     0.45
+    ],
+    "role": "la",
+    "strokeWidth": 9,
+    "opacity": "mod(i,2)==0 ? 1 : 0.55"
+   }
+  },
+  {
+   "type": "segment",
+   "id": "da",
+   "from": [
+    "la",
+    0.45
+   ],
+   "to": [
+    "la",
+    1.0
+   ],
+   "role": "la",
+   "strokeWidth": 1.5,
+   "dash": true
+  },
+  {
+   "type": "segment",
+   "id": "dr",
+   "from": [
+    "R",
+    0.45
+   ],
+   "to": [
+    "R",
+    1.0
+   ],
+   "role": "res",
+   "strokeWidth": 1.8,
+   "dash": true
+  },
+  {
+   "type": "point",
+   "id": "pa",
+   "at": [
+    "la",
+    1.0
+   ],
+   "role": "la",
+   "r": 5,
+   "layer": "front",
+   "label": {
+    "text": "{{a|1}}",
+    "dy": 22,
+    "role": "la",
+    "size": "l"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pr",
+   "at": [
+    "R",
+    1.0
+   ],
+   "role": "res",
+   "r": 6,
+   "layer": "front",
+   "label": {
+    "text": "{{V|2}}",
+    "dy": 22,
+    "role": "res",
+    "size": "l"
+   }
+  },
+  {
+   "type": "text",
+   "id": "ta",
+   "at": [
+    "la/2",
+    0.1
+   ],
+   "text": "log a = {{log(a)|=3}}",
+   "role": "la",
+   "size": "m",
+   "bold": true,
+   "visible": "law<2"
+  },
+  {
+   "type": "text",
+   "id": "tb",
+   "at": [
+    "(la+R)/2",
+    -0.2
+   ],
+   "text": "{{if law==0 | log b | log b taken back}} = {{log(b)|=3}}",
+   "role": "lb",
+   "size": "m",
+   "bold": true,
+   "visible": "law<2"
+  },
+  {
+   "type": "text",
+   "id": "tp",
+   "at": [
+    "p*la/2",
+    0.1
+   ],
+   "text": "{{p|int}} copies of log a = {{la|=3}} each",
+   "role": "la",
+   "size": "m",
+   "bold": true,
+   "visible": "law==2"
+  },
+  {
+   "type": "text",
+   "id": "e0",
+   "at": [
+    1.5,
+    -0.75
+   ],
+   "text": "{{log(a)|=3}} + {{log(b)|=3}} = {{log(a*b)|=3}}   so   {{a|1}} × {{b|1}} = {{a*b|2}}",
+   "role": "res",
+   "size": "m",
+   "bold": true,
+   "visible": "law==0"
+  },
+  {
+   "type": "text",
+   "id": "e1",
+   "at": [
+    1.5,
+    -0.75
+   ],
+   "text": "{{log(a)|=3}} − {{log(b)|=3}} = {{log(a/b)|=3}}   so   {{a|1}} ÷ {{b|1}} = {{a/b|2}}",
+   "role": "res",
+   "size": "m",
+   "bold": true,
+   "visible": "law==1"
+  },
+  {
+   "type": "text",
+   "id": "e2",
+   "at": [
+    1.5,
+    -0.75
+   ],
+   "text": "{{p|int}} × {{log(a)|=3}} = {{p*log(a)|=3}}   so   {{a|1}} to the power {{p|int}} = {{a^p|2}}",
+   "role": "res",
+   "size": "m",
+   "bold": true,
+   "visible": "law==2"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A ruler of logarithms",
+   "narration": "On this ruler the position of a number is its **logarithm**. 1 is at 0, 10 is at 1, 100 is at 2. Equal steps along the ruler mean multiplying by the same amount.",
+   "actions": [
+    {
+     "set": {
+      "law": 0,
+      "a": 2,
+      "b": 3,
+      "p": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Lengths for a and b",
+   "narration": "The blue bar is \\( \\log {{a|1}} = {{log(a)|=3}} \\) long. Place the red bar after it: its length is \\( \\log {{b|1}} = {{log(b)|=3}} \\).",
+   "actions": [
+    {
+     "set": {
+      "law": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Add the lengths",
+   "narration": "The two bars together reach \\( {{log(a*b)|=3}} \\). Look at the ruler: that is the position of \\( {{a*b|2}} = {{a|1}} \\times {{b|1}} \\). So \\( \\log(ab) = \\log a + \\log b \\).",
+   "actions": [
+    {
+     "set": {
+      "law": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Take a length back",
+   "narration": "For a quotient, go **back** along the ruler by \\( \\log b \\). You land on \\( \\log \\frac{a}{b} \\). So \\( \\log \\frac{a}{b} = \\log a - \\log b \\).",
+   "actions": [
+    {
+     "set": {
+      "law": 1,
+      "a": 6,
+      "b": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Repeat a length",
+   "narration": "A power repeats the same bar: \\( \\log a^p = p \\log a \\).",
+   "actions": [
+    {
+     "set": {
+      "law": 2,
+      "a": 2,
+      "p": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Your turn",
+   "narration": "Change **a**, **b** and the law. Does the ruler always agree?",
+   "actions": [
+    {
+     "set": {
+      "law": 0
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Product law",
+   "tex": "\\log(ab) = \\log a + \\log b",
+   "text": "Multiplying numbers adds their logs."
+  },
+  {
+   "title": "Quotient law",
+   "tex": "\\log\\dfrac{a}{b} = \\log a - \\log b",
+   "text": "Dividing numbers subtracts their logs."
+  },
+  {
+   "title": "Power law",
+   "tex": "\\log a^{p} = p \\log a",
+   "text": "A power brings the exponent down in front."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Product",
+   "answer": 1,
+   "prompt": "What is the value of \\( \\log 2 + \\log 5 \\)?",
+   "hint": "Add the logs means multiply the numbers: log 2 + log 5 = log (2 × 5).",
+   "explain": "\\( \\log 2 + \\log 5 = \\log 10 = 1 \\)."
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Power",
+   "answer": 2,
+   "prompt": "\\( \\log 8 = 3 \\log ? \\). Fill in the missing number.",
+   "hint": "Think: 8 is what number cubed?",
+   "explain": "\\( 8 = 2^3 \\), so \\( \\log 8 = 3 \\log 2 \\)."
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Which law?",
+   "answer": "b",
+   "options": [
+    {
+     "id": "a",
+     "label": "log(a + b) = log a + log b"
+    },
+    {
+     "id": "b",
+     "label": "log(a × b) = log a + log b"
+    },
+    {
+     "id": "c",
+     "label": "log(a × b) = log a × log b"
+    }
+   ],
+   "prompt": "Which statement is correct?",
+   "hint": "Lengths add when numbers multiply.",
+   "explain": "Only the product law: **log(ab) = log a + log b**."
+  }
+ ],
+ "intro": "Logarithms were invented to turn hard multiplication into easy addition.",
+ "takeaways": [
+  "log(ab) = log a + log b",
+  "log(a/b) = log a − log b",
+  "log a^p = p log a"
+ ],
+ "notes": [
+  {
+   "title": "Same base",
+   "text": "These laws work for any base as long as every log uses the same base. Here the base is 10."
+  }
+ ],
+ "challengeIntro": "Now you try. Each question uses the picture above.",
+ "constraints": [
+  {
+   "when": "law!=1 || a>=b",
+   "message": "For a ÷ b keep a at least as big as b."
+  }
+ ]
+}
