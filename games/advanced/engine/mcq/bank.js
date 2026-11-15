@@ -8,6 +8,10 @@
 //                 If the scope is unknown (e.g. the local sandbox) every subject we have is used.
 // Class 9 and 11 have no banks yet: they borrow the nearest class of the same stage (9 -> 10, 11 -> 10/12), per subject.
 // A student whose enrolled subjects have no bank at all still gets the nearest class's subjects (never an empty game).
+//
+// Boards: a Punjab Board student (scope carries BOARD-PUNJAB) gets the board's OWN question file for a subject when the index lists one
+//   (index.json -> boards.punjab[class][subject], files under questions/punjab/). Every other student never sees those files, and a
+//   Punjab student's subjects that have no Punjab file fall back to the rules above, exactly as before.
 
 const BASE = new URL('../../questions/', import.meta.url);
 const CODE_TO_KEY = { PHYS: 'phys', CHEM: 'chem', BIO: 'bio', MATH: 'math', CS: 'cs', SCI: 'science', GEO: 'geography', HIST: 'history' };
@@ -35,6 +39,11 @@ export function parseScope(scope) {
   return full ? null : keys.length ? keys : null;
 }
 
+/** 'punjab' when the scope string carries BOARD-PUNJAB (or BOARD-PUNJAB-<BODY>), else null. Pure. */
+export function parseBoard(scope) {
+  return /(^|,)\s*BOARD-PUNJAB(-[A-Z]+)?\s*(?=,|$)/.test(String(scope || '').toUpperCase()) ? 'punjab' : null;
+}
+
 function storedScope() {
   try {
     const c = JSON.parse(localStorage.getItem('wha:dashboard_cache') || 'null');
@@ -43,7 +52,14 @@ function storedScope() {
 }
 
 /** Decide which (class, subject) files to load. Pure: index + class + subject keys (or null). */
-export function planFiles(index, cls, subjectKeys) {
+export function planFiles(index, cls, subjectKeys, board) {
+  const own = (board && index.boards && index.boards[board] && index.boards[board][cls]) || null;
+  if (own) {
+    const want = subjectKeys && subjectKeys.length ? subjectKeys : Object.keys(own);
+    const ownFiles = want.filter((k) => own[k]).map((k) => ({ cls, key: k, board, ...own[k] }));
+    const rest = want.filter((k) => !own[k]);
+    return ownFiles.concat(rest.length ? planFiles(index, cls, rest) : []);
+  }
   const have = index.classes || {};
   const classes = Object.keys(have).map(Number);
   const near = (c) => classes.filter((x) => (c >= 9 ? x >= 9 : x === c)).sort((a, b) => Math.abs(a - c) - Math.abs(b - c) || a - b);
@@ -62,7 +78,8 @@ function toRaw(file, data) {
 /** Load the raw question list for a class (cached). Rejects if the files cannot be fetched. */
 export async function loadBankQuestions(cls, scope) {
   const index = await getIndex();
-  const files = planFiles(index, Number(cls), parseScope(scope === undefined ? storedScope() : scope));
+  const sc = scope === undefined ? storedScope() : scope;
+  const files = planFiles(index, Number(cls), parseScope(sc), parseBoard(sc));
   if (!files.length) throw new Error('No questions available for this class yet.');
   const key = files.map((f) => f.file).join('|');
   if (!cache.has(key)) cache.set(key, Promise.all(files.map(async (f) => toRaw(f, await getJson(f.file)))).then((a) => a.flat()).catch((e) => { cache.delete(key); throw e; }));
