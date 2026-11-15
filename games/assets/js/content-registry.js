@@ -1446,7 +1446,30 @@ window.WHA_CONTENT = {
         "math": {
           "name": "Mathematics",
           "code": "MATH",
-          "chapters": []
+          "chapters": [
+            {
+              "n": 1,
+              "title": "Real Numbers",
+              "notes": "https://whacademypk.com/notes/punjab/sargodha/class-9/math/real-numbers.html",
+              "quiz": null,
+              "game": "https://whacademypk.com/games/chapter.html?ch=9/math/punjab_real_numbers"
+            },
+            {
+              "n": 2,
+              "title": "Logarithms",
+              "notes": "https://whacademypk.com/notes/punjab/sargodha/class-9/math/logarithms.html",
+              "quiz": null,
+              "game": "https://whacademypk.com/games/chapter.html?ch=9/math/punjab_logarithms"
+            },
+            {
+              "n": 3,
+              "unit": 3,
+              "title": "Sets and Functions",
+              "notes": "https://whacademypk.com/notes/punjab/sargodha/class-9/math/sets-and-functions.html",
+              "quiz": null,
+              "game": "https://whacademypk.com/games/chapter.html?ch=9/math/punjab_sets_and_functions"
+            }
+          ]
         },
         "chem": {
           "name": "Chemistry",
