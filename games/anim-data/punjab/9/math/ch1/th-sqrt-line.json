@@ -1,0 +1,358 @@
+{
+ "title": "Place a square root on the number line",
+ "summary": "Build a right triangle and swing the slanted side onto the line to see where the square root of k sits.",
+ "alt": "A right triangle with legs sqrt(k-1) and 1. Its hypotenuse sqrt(k) is swung onto the number line.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -0.7,
+   3.9
+  ],
+  "y": [
+   -1.1,
+   2.0
+  ],
+  "ratio": 0.67,
+  "pad": 8
+ },
+ "roles": {
+  "leg": {
+   "label": "Base",
+   "color": "#e11d48",
+   "text": "The side along the number line.",
+   "legend": true
+  },
+  "one": {
+   "label": "Height 1",
+   "color": "#2563eb",
+   "text": "The unit height.",
+   "legend": true
+  },
+  "hyp": {
+   "label": "Square root",
+   "color": "#059669",
+   "text": "The hypotenuse, swung onto the line.",
+   "legend": true
+  },
+  "tri": {
+   "label": "Triangle",
+   "color": "#64748b",
+   "text": "The right triangle.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "k",
+   "label": "Square root of  k",
+   "min": 2,
+   "max": 10,
+   "step": 1,
+   "default": 2,
+   "role": "hyp"
+  }
+ ],
+ "derived": {
+  "a": "sqrt(k-1)",
+  "h": "sqrt(k)",
+  "O": [
+   0,
+   0
+  ],
+  "A": [
+   "a",
+   0
+  ],
+  "B": [
+   "a",
+   1
+  ],
+  "P": [
+   "h",
+   0
+  ]
+ },
+ "shapes": [
+  {
+   "type": "numberline",
+   "id": "nl",
+   "from": -0.4,
+   "to": 3.6,
+   "y": 0,
+   "step": 1,
+   "role": "ink"
+  },
+  {
+   "type": "polygon",
+   "id": "tri",
+   "pts": [
+    "O",
+    "A",
+    "B"
+   ],
+   "role": "tri",
+   "fill": "tri",
+   "fillOpacity": 0.12,
+   "stroke": false,
+   "layer": "back"
+  },
+  {
+   "type": "segment",
+   "id": "oa",
+   "from": "O",
+   "to": "A",
+   "role": "leg",
+   "strokeWidth": 4
+  },
+  {
+   "type": "segment",
+   "id": "ab",
+   "from": "A",
+   "to": "B",
+   "role": "one",
+   "strokeWidth": 4,
+   "label": {
+    "text": "1",
+    "off": 12
+   }
+  },
+  {
+   "type": "segment",
+   "id": "ob",
+   "from": "O",
+   "to": "B",
+   "role": "hyp",
+   "strokeWidth": 4
+  },
+  {
+   "type": "angle",
+   "id": "ra",
+   "at": "A",
+   "from": "O",
+   "to": "B",
+   "style": "square",
+   "r": 14,
+   "role": "ink",
+   "strokeWidth": 1.6,
+   "fill": false
+  },
+  {
+   "type": "arc",
+   "id": "sw",
+   "c": "O",
+   "r": "h",
+   "from": 0,
+   "to": "atan2(1,a)",
+   "role": "hyp",
+   "strokeWidth": 3,
+   "dash": true
+  },
+  {
+   "type": "point",
+   "id": "pp",
+   "at": "P",
+   "role": "hyp",
+   "r": 7,
+   "layer": "front",
+   "label": {
+    "text": "√{{k|int}}",
+    "dy": 26,
+    "size": "l",
+    "role": "hyp"
+   }
+  },
+  {
+   "type": "point",
+   "id": "po",
+   "at": "O",
+   "role": "ink",
+   "r": 4,
+   "layer": "front",
+   "label": {
+    "text": "0",
+    "dy": 22
+   }
+  },
+  {
+   "type": "text",
+   "id": "legt",
+   "at": [
+    "a/2",
+    -0.5
+   ],
+   "text": "leg = {{a|3}}",
+   "role": "leg",
+   "size": "m",
+   "bold": true,
+   "visible": "k>2"
+  },
+  {
+   "type": "text",
+   "id": "hyt",
+   "at": [
+    0.75,
+    1.55
+   ],
+   "text": "√{{k|int}} ≈ {{h|3}}",
+   "role": "hyp",
+   "size": "l",
+   "bold": true
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Draw a number line",
+   "narration": "We want to **see** \\( \\sqrt{2} \\) as a point on the number line. Start with the points 0 and 1.",
+   "actions": [
+    {
+     "set": {
+      "k": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Build a right triangle",
+   "narration": "At 1, stand a segment of length **1** straight up. The triangle has two sides of length 1 and a right angle.",
+   "actions": [
+    {
+     "set": {
+      "k": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Pythagoras gives the slanted side",
+   "narration": "The slanted side is \\( \\sqrt{1^2 + 1^2} = \\sqrt{2} \\). It is the [[hyp|hypotenuse]], and it has length \\( \\sqrt{2} \\).",
+   "actions": [
+    {
+     "set": {
+      "k": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Swing it down",
+   "narration": "Put the compass point on 0 and swing the hypotenuse down onto the line. It lands at \\( \\sqrt{2} \\approx 1.414 \\). Now \\( \\sqrt{2} \\) has an exact place on the number line.",
+   "actions": [
+    {
+     "set": {
+      "k": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Keep going: root 3",
+   "narration": "Use that new length \\( \\sqrt{2} \\) as the base and 1 as the height: \\( \\sqrt{(\\sqrt{2})^2 + 1^2} = \\sqrt{3} \\). Swing again and you reach \\( \\sqrt{3} \\).",
+   "actions": [
+    {
+     "tween": {
+      "k": 3
+     },
+     "dur": 1200
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Any square root",
+   "narration": "Each new triangle adds 1 under the root: \\( \\sqrt{4}, \\sqrt{5}, \\ldots \\). Drag **k** to place any \\( \\sqrt{k} \\) yourself.",
+   "actions": [
+    {
+     "tween": {
+      "k": 5
+     },
+     "dur": 1200
+    }
+   ]
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Hypotenuse",
+   "tex": "\\sqrt{(\\sqrt{k-1})^2 + 1^2} = \\sqrt{k}",
+   "text": "A base of √(k−1) and a height of 1 give a hypotenuse of √k."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Find the slanted side",
+   "answer": 3,
+   "prompt": "Base \\( \\sqrt{8} \\), height 1. How long is the hypotenuse?",
+   "hint": "Square the base, add 1, then take the square root.",
+   "explain": "\\( \\sqrt{(\\sqrt{8})^2 + 1^2} = \\sqrt{9} = 3 \\).",
+   "set": {
+    "k": 9
+   }
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Where does it land?",
+   "answer": "b",
+   "options": [
+    {
+     "id": "a",
+     "label": "Between 1 and 2"
+    },
+    {
+     "id": "b",
+     "label": "Between 2 and 3"
+    },
+    {
+     "id": "c",
+     "label": "Between 3 and 4"
+    }
+   ],
+   "prompt": "Where on the number line does \\( \\sqrt{5} \\) land?",
+   "hint": "Compare with 2 and 3: 4 < 5 < 9.",
+   "explain": "\\( \\sqrt{4} = 2 \\) and \\( \\sqrt{9} = 3 \\), so \\( \\sqrt{5} \\) lies between 2 and 3 (about 2.236)."
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Is it exact?",
+   "answer": "a",
+   "options": [
+    {
+     "id": "a",
+     "label": "Yes, a real point on the line"
+    },
+    {
+     "id": "b",
+     "label": "No, it is only an approximation"
+    }
+   ],
+   "prompt": "Is the point P in the picture exactly \\( \\sqrt{2} \\)?",
+   "hint": "The compass swings an exact length.",
+   "explain": "The length of the hypotenuse is exactly \\( \\sqrt{2} \\), so P is exactly \\( \\sqrt{2} \\). Only the decimal 1.414 is an approximation."
+  }
+ ],
+ "intro": "An irrational number like the square root of 2 is a real point on the number line. We can build it.",
+ "takeaways": [
+  "Irrational numbers have exact places on the number line.",
+  "Pythagoras plus a compass turns √(k−1) into √k.",
+  "√2 ≈ 1.414 is only a decimal approximation of that exact point."
+ ],
+ "notes": [
+  {
+   "title": "Spiral of roots",
+   "text": "Repeating the construction gives √2, √3, √4, √5, … one after another. It is called the square root spiral."
+  }
+ ],
+ "challengeIntro": "Now you try. Each question uses the picture above."
+}

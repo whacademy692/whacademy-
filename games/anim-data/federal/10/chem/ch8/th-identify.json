@@ -1,0 +1,2683 @@
+{
+ "id": "g10-chem-c8-th-identify",
+ "title": "Identify the family from the structure",
+ "summary": "Six compounds, each with three carbons: find the functional group and name the family.",
+ "alt": "Propane, propene, propyne, propan-1-ol, propanoic acid and methyl ethanoate, each with its functional group boxed and its family named.",
+ "autoGrid": false,
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -10.55,
+   10.55
+  ],
+  "y": [
+   -7.35,
+   7.15
+  ],
+  "pad": 10
+ },
+ "roles": {
+  "stem": {
+   "label": "Stem (how many C)",
+   "color": "#16a34a",
+   "text": "The first part of the name. It tells you how many carbon atoms are in the chain."
+  },
+  "ane": {
+   "label": "-ane · alkane",
+   "color": "#64748b",
+   "text": "Only single bonds between the carbons. No functional group."
+  },
+  "num": {
+   "label": "Position number",
+   "color": "#ca8a04",
+   "text": "The number in the name. It tells you where the double bond, triple bond or –OH sits."
+  },
+  "ene": {
+   "label": "-ene · C=C",
+   "color": "#dc2626",
+   "text": "A carbon–carbon DOUBLE bond (red box in the book)."
+  },
+  "yne": {
+   "label": "-yne · C≡C",
+   "color": "#7c3aed",
+   "text": "A carbon–carbon TRIPLE bond (purple box in the book)."
+  },
+  "ol": {
+   "label": "-ol · –OH",
+   "color": "#2563eb",
+   "text": "The hydroxyl group of an alcohol."
+  },
+  "acid": {
+   "label": "-oic acid · –COOH",
+   "color": "#ea580c",
+   "text": "The carboxyl group of a carboxylic acid (orange box in the book)."
+  },
+  "ester": {
+   "label": "-oate · –COO–",
+   "color": "#0d9488",
+   "text": "The ester link."
+  },
+  "atomO": {
+   "label": "Oxygen",
+   "color": "#ef4444",
+   "text": "Every oxygen atom makes two bonds.",
+   "legend": false
+  },
+  "hyd": {
+   "label": "Hydrogen",
+   "color": "#64748b",
+   "text": "Every hydrogen atom makes exactly one bond.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "who",
+   "label": "Compound",
+   "min": 0,
+   "max": 7,
+   "step": 1,
+   "default": 1,
+   "hidden": true
+  },
+  {
+   "id": "r",
+   "label": "Reveal",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "text",
+   "id": "tmane_0",
+   "at": [
+    -2.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==1"
+  },
+  {
+   "type": "text",
+   "id": "tmane_1",
+   "at": [
+    0.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==1"
+  },
+  {
+   "type": "text",
+   "id": "tmane_2",
+   "at": [
+    2.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==1"
+  },
+  {
+   "type": "text",
+   "id": "tmane_3",
+   "at": [
+    -4.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==1"
+  },
+  {
+   "type": "text",
+   "id": "tmane_4",
+   "at": [
+    -2.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==1"
+  },
+  {
+   "type": "text",
+   "id": "tmane_5",
+   "at": [
+    -2.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==1"
+  },
+  {
+   "type": "text",
+   "id": "tmane_6",
+   "at": [
+    0.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==1"
+  },
+  {
+   "type": "text",
+   "id": "tmane_7",
+   "at": [
+    0.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==1"
+  },
+  {
+   "type": "text",
+   "id": "tmane_8",
+   "at": [
+    4.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==1"
+  },
+  {
+   "type": "text",
+   "id": "tmane_9",
+   "at": [
+    2.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==1"
+  },
+  {
+   "type": "text",
+   "id": "tmane_10",
+   "at": [
+    2.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bmane_0_0",
+   "from": [
+    -1.48,
+    0.0
+   ],
+   "to": [
+    -0.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bmane_1_0",
+   "from": [
+    0.52,
+    0.0
+   ],
+   "to": [
+    1.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bmane_2_0",
+   "from": [
+    -2.52,
+    0.0
+   ],
+   "to": [
+    -3.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bmane_3_0",
+   "from": [
+    -2.0,
+    0.52
+   ],
+   "to": [
+    -2.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bmane_4_0",
+   "from": [
+    -2.0,
+    -0.52
+   ],
+   "to": [
+    -2.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bmane_5_0",
+   "from": [
+    0.0,
+    0.52
+   ],
+   "to": [
+    0.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bmane_6_0",
+   "from": [
+    0.0,
+    -0.52
+   ],
+   "to": [
+    0.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bmane_7_0",
+   "from": [
+    2.52,
+    0.0
+   ],
+   "to": [
+    3.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bmane_8_0",
+   "from": [
+    2.0,
+    0.52
+   ],
+   "to": [
+    2.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==1"
+  },
+  {
+   "type": "segment",
+   "id": "bmane_9_0",
+   "from": [
+    2.0,
+    -0.52
+   ],
+   "to": [
+    2.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==1"
+  },
+  {
+   "type": "text",
+   "id": "fane",
+   "at": [
+    0,
+    -4.1
+   ],
+   "text": "Group: only C–C single bonds",
+   "role": "ane",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==1&&r>=0.4"
+  },
+  {
+   "type": "text",
+   "id": "eane",
+   "at": [
+    0,
+    -5.6
+   ],
+   "text": "ending -ane",
+   "role": "ane",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==1&&r>=0.6"
+  },
+  {
+   "type": "text",
+   "id": "nane",
+   "at": [
+    0,
+    4.9
+   ],
+   "text": "Propane  ·  alkane",
+   "role": "ane",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==1&&r>=0.8"
+  },
+  {
+   "type": "text",
+   "id": "qane",
+   "at": [
+    0,
+    4.9
+   ],
+   "text": "Which family?",
+   "role": "muted",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==1&&r<0.8"
+  },
+  {
+   "type": "text",
+   "id": "tmene_0",
+   "at": [
+    -2.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==2"
+  },
+  {
+   "type": "text",
+   "id": "tmene_1",
+   "at": [
+    0.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==2"
+  },
+  {
+   "type": "text",
+   "id": "tmene_2",
+   "at": [
+    2.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==2"
+  },
+  {
+   "type": "text",
+   "id": "tmene_3",
+   "at": [
+    -2.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==2"
+  },
+  {
+   "type": "text",
+   "id": "tmene_4",
+   "at": [
+    -2.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==2"
+  },
+  {
+   "type": "text",
+   "id": "tmene_5",
+   "at": [
+    0.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==2"
+  },
+  {
+   "type": "text",
+   "id": "tmene_6",
+   "at": [
+    4.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==2"
+  },
+  {
+   "type": "text",
+   "id": "tmene_7",
+   "at": [
+    2.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==2"
+  },
+  {
+   "type": "text",
+   "id": "tmene_8",
+   "at": [
+    2.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bmene_0_0",
+   "from": [
+    -1.48,
+    -0.15
+   ],
+   "to": [
+    -0.52,
+    -0.15
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bmene_0_1",
+   "from": [
+    -1.48,
+    0.15
+   ],
+   "to": [
+    -0.52,
+    0.15
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bmene_1_0",
+   "from": [
+    0.52,
+    0.0
+   ],
+   "to": [
+    1.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bmene_2_0",
+   "from": [
+    -2.0,
+    0.52
+   ],
+   "to": [
+    -2.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bmene_3_0",
+   "from": [
+    -2.0,
+    -0.52
+   ],
+   "to": [
+    -2.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bmene_4_0",
+   "from": [
+    0.0,
+    0.52
+   ],
+   "to": [
+    0.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bmene_5_0",
+   "from": [
+    2.52,
+    0.0
+   ],
+   "to": [
+    3.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bmene_6_0",
+   "from": [
+    2.0,
+    0.52
+   ],
+   "to": [
+    2.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==2"
+  },
+  {
+   "type": "segment",
+   "id": "bmene_7_0",
+   "from": [
+    2.0,
+    -0.52
+   ],
+   "to": [
+    2.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==2"
+  },
+  {
+   "type": "rect",
+   "id": "gene",
+   "x": -2.66,
+   "y": -0.66,
+   "w": 3.32,
+   "h": 1.32,
+   "role": "ene",
+   "fill": "ene",
+   "fillOpacity": 0.13,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "round(who)==2&&r>=0.2"
+  },
+  {
+   "type": "text",
+   "id": "fene",
+   "at": [
+    0,
+    -4.1
+   ],
+   "text": "Group: a C=C double bond",
+   "role": "ene",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==2&&r>=0.4"
+  },
+  {
+   "type": "text",
+   "id": "eene",
+   "at": [
+    0,
+    -5.6
+   ],
+   "text": "ending -ene",
+   "role": "ene",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==2&&r>=0.6"
+  },
+  {
+   "type": "text",
+   "id": "nene",
+   "at": [
+    0,
+    4.9
+   ],
+   "text": "Propene  ·  alkene",
+   "role": "ene",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==2&&r>=0.8"
+  },
+  {
+   "type": "text",
+   "id": "qene",
+   "at": [
+    0,
+    4.9
+   ],
+   "text": "Which family?",
+   "role": "muted",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==2&&r<0.8"
+  },
+  {
+   "type": "text",
+   "id": "tmyne_0",
+   "at": [
+    -2.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==3"
+  },
+  {
+   "type": "text",
+   "id": "tmyne_1",
+   "at": [
+    0.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==3"
+  },
+  {
+   "type": "text",
+   "id": "tmyne_2",
+   "at": [
+    2.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==3"
+  },
+  {
+   "type": "text",
+   "id": "tmyne_3",
+   "at": [
+    -4.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==3"
+  },
+  {
+   "type": "text",
+   "id": "tmyne_4",
+   "at": [
+    4.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==3"
+  },
+  {
+   "type": "text",
+   "id": "tmyne_5",
+   "at": [
+    2.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==3"
+  },
+  {
+   "type": "text",
+   "id": "tmyne_6",
+   "at": [
+    2.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bmyne_0_0",
+   "from": [
+    -1.48,
+    -0.27
+   ],
+   "to": [
+    -0.52,
+    -0.27
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bmyne_0_1",
+   "from": [
+    -1.48,
+    0.0
+   ],
+   "to": [
+    -0.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bmyne_0_2",
+   "from": [
+    -1.48,
+    0.27
+   ],
+   "to": [
+    -0.52,
+    0.27
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bmyne_1_0",
+   "from": [
+    0.52,
+    0.0
+   ],
+   "to": [
+    1.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bmyne_2_0",
+   "from": [
+    -2.52,
+    0.0
+   ],
+   "to": [
+    -3.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bmyne_3_0",
+   "from": [
+    2.52,
+    0.0
+   ],
+   "to": [
+    3.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bmyne_4_0",
+   "from": [
+    2.0,
+    0.52
+   ],
+   "to": [
+    2.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==3"
+  },
+  {
+   "type": "segment",
+   "id": "bmyne_5_0",
+   "from": [
+    2.0,
+    -0.52
+   ],
+   "to": [
+    2.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==3"
+  },
+  {
+   "type": "rect",
+   "id": "gyne",
+   "x": -2.66,
+   "y": -0.66,
+   "w": 3.32,
+   "h": 1.32,
+   "role": "yne",
+   "fill": "yne",
+   "fillOpacity": 0.13,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "round(who)==3&&r>=0.2"
+  },
+  {
+   "type": "text",
+   "id": "fyne",
+   "at": [
+    0,
+    -4.1
+   ],
+   "text": "Group: a C≡C triple bond",
+   "role": "yne",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==3&&r>=0.4"
+  },
+  {
+   "type": "text",
+   "id": "eyne",
+   "at": [
+    0,
+    -5.6
+   ],
+   "text": "ending -yne",
+   "role": "yne",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==3&&r>=0.6"
+  },
+  {
+   "type": "text",
+   "id": "nyne",
+   "at": [
+    0,
+    4.9
+   ],
+   "text": "Propyne  ·  alkyne",
+   "role": "yne",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==3&&r>=0.8"
+  },
+  {
+   "type": "text",
+   "id": "qyne",
+   "at": [
+    0,
+    4.9
+   ],
+   "text": "Which family?",
+   "role": "muted",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==3&&r<0.8"
+  },
+  {
+   "type": "text",
+   "id": "tmol_0",
+   "at": [
+    -4.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==4"
+  },
+  {
+   "type": "text",
+   "id": "tmol_1",
+   "at": [
+    -2.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==4"
+  },
+  {
+   "type": "text",
+   "id": "tmol_2",
+   "at": [
+    0.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==4"
+  },
+  {
+   "type": "text",
+   "id": "tmol_3",
+   "at": [
+    2.0,
+    0.0
+   ],
+   "text": "O",
+   "role": "atomO",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==4"
+  },
+  {
+   "type": "text",
+   "id": "tmol_4",
+   "at": [
+    4.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==4"
+  },
+  {
+   "type": "text",
+   "id": "tmol_5",
+   "at": [
+    -6.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==4"
+  },
+  {
+   "type": "text",
+   "id": "tmol_6",
+   "at": [
+    -4.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==4"
+  },
+  {
+   "type": "text",
+   "id": "tmol_7",
+   "at": [
+    -4.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==4"
+  },
+  {
+   "type": "text",
+   "id": "tmol_8",
+   "at": [
+    -2.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==4"
+  },
+  {
+   "type": "text",
+   "id": "tmol_9",
+   "at": [
+    -2.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==4"
+  },
+  {
+   "type": "text",
+   "id": "tmol_10",
+   "at": [
+    0.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==4"
+  },
+  {
+   "type": "text",
+   "id": "tmol_11",
+   "at": [
+    0.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bmol_0_0",
+   "from": [
+    -3.48,
+    0.0
+   ],
+   "to": [
+    -2.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bmol_1_0",
+   "from": [
+    -1.48,
+    0.0
+   ],
+   "to": [
+    -0.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bmol_2_0",
+   "from": [
+    0.52,
+    0.0
+   ],
+   "to": [
+    1.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bmol_3_0",
+   "from": [
+    2.52,
+    0.0
+   ],
+   "to": [
+    3.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bmol_4_0",
+   "from": [
+    -4.52,
+    0.0
+   ],
+   "to": [
+    -5.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bmol_5_0",
+   "from": [
+    -4.0,
+    0.52
+   ],
+   "to": [
+    -4.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bmol_6_0",
+   "from": [
+    -4.0,
+    -0.52
+   ],
+   "to": [
+    -4.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bmol_7_0",
+   "from": [
+    -2.0,
+    0.52
+   ],
+   "to": [
+    -2.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bmol_8_0",
+   "from": [
+    -2.0,
+    -0.52
+   ],
+   "to": [
+    -2.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bmol_9_0",
+   "from": [
+    0.0,
+    0.52
+   ],
+   "to": [
+    0.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==4"
+  },
+  {
+   "type": "segment",
+   "id": "bmol_10_0",
+   "from": [
+    0.0,
+    -0.52
+   ],
+   "to": [
+    0.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==4"
+  },
+  {
+   "type": "rect",
+   "id": "gol",
+   "x": 1.34,
+   "y": -0.66,
+   "w": 3.32,
+   "h": 1.32,
+   "role": "ol",
+   "fill": "ol",
+   "fillOpacity": 0.13,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "round(who)==4&&r>=0.2"
+  },
+  {
+   "type": "text",
+   "id": "fol",
+   "at": [
+    0,
+    -4.1
+   ],
+   "text": "Group: an –OH group",
+   "role": "ol",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==4&&r>=0.4"
+  },
+  {
+   "type": "text",
+   "id": "eol",
+   "at": [
+    0,
+    -5.6
+   ],
+   "text": "ending -ol",
+   "role": "ol",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==4&&r>=0.6"
+  },
+  {
+   "type": "text",
+   "id": "nol",
+   "at": [
+    0,
+    4.9
+   ],
+   "text": "Propan-1-ol  ·  alcohol",
+   "role": "ol",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==4&&r>=0.8"
+  },
+  {
+   "type": "text",
+   "id": "qol",
+   "at": [
+    0,
+    4.9
+   ],
+   "text": "Which family?",
+   "role": "muted",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==4&&r<0.8"
+  },
+  {
+   "type": "text",
+   "id": "tmacid_0",
+   "at": [
+    -4.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==5"
+  },
+  {
+   "type": "text",
+   "id": "tmacid_1",
+   "at": [
+    -2.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==5"
+  },
+  {
+   "type": "text",
+   "id": "tmacid_2",
+   "at": [
+    0.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==5"
+  },
+  {
+   "type": "text",
+   "id": "tmacid_3",
+   "at": [
+    2.0,
+    0.0
+   ],
+   "text": "O",
+   "role": "atomO",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==5"
+  },
+  {
+   "type": "text",
+   "id": "tmacid_4",
+   "at": [
+    4.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==5"
+  },
+  {
+   "type": "text",
+   "id": "tmacid_5",
+   "at": [
+    -6.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==5"
+  },
+  {
+   "type": "text",
+   "id": "tmacid_6",
+   "at": [
+    -4.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==5"
+  },
+  {
+   "type": "text",
+   "id": "tmacid_7",
+   "at": [
+    -4.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==5"
+  },
+  {
+   "type": "text",
+   "id": "tmacid_8",
+   "at": [
+    -2.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==5"
+  },
+  {
+   "type": "text",
+   "id": "tmacid_9",
+   "at": [
+    -2.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==5"
+  },
+  {
+   "type": "text",
+   "id": "tmacid_10",
+   "at": [
+    0.0,
+    2.0
+   ],
+   "text": "O",
+   "role": "atomO",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==5"
+  },
+  {
+   "type": "segment",
+   "id": "bmacid_0_0",
+   "from": [
+    -3.48,
+    0.0
+   ],
+   "to": [
+    -2.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==5"
+  },
+  {
+   "type": "segment",
+   "id": "bmacid_1_0",
+   "from": [
+    -1.48,
+    0.0
+   ],
+   "to": [
+    -0.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==5"
+  },
+  {
+   "type": "segment",
+   "id": "bmacid_2_0",
+   "from": [
+    0.52,
+    0.0
+   ],
+   "to": [
+    1.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==5"
+  },
+  {
+   "type": "segment",
+   "id": "bmacid_3_0",
+   "from": [
+    2.52,
+    0.0
+   ],
+   "to": [
+    3.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==5"
+  },
+  {
+   "type": "segment",
+   "id": "bmacid_4_0",
+   "from": [
+    -4.52,
+    0.0
+   ],
+   "to": [
+    -5.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==5"
+  },
+  {
+   "type": "segment",
+   "id": "bmacid_5_0",
+   "from": [
+    -4.0,
+    0.52
+   ],
+   "to": [
+    -4.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==5"
+  },
+  {
+   "type": "segment",
+   "id": "bmacid_6_0",
+   "from": [
+    -4.0,
+    -0.52
+   ],
+   "to": [
+    -4.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==5"
+  },
+  {
+   "type": "segment",
+   "id": "bmacid_7_0",
+   "from": [
+    -2.0,
+    0.52
+   ],
+   "to": [
+    -2.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==5"
+  },
+  {
+   "type": "segment",
+   "id": "bmacid_8_0",
+   "from": [
+    -2.0,
+    -0.52
+   ],
+   "to": [
+    -2.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==5"
+  },
+  {
+   "type": "segment",
+   "id": "bmacid_9_0",
+   "from": [
+    0.15,
+    0.52
+   ],
+   "to": [
+    0.15,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==5"
+  },
+  {
+   "type": "segment",
+   "id": "bmacid_9_1",
+   "from": [
+    -0.15,
+    0.52
+   ],
+   "to": [
+    -0.15,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==5"
+  },
+  {
+   "type": "rect",
+   "id": "gacid",
+   "x": -0.66,
+   "y": -0.66,
+   "w": 5.32,
+   "h": 3.32,
+   "role": "acid",
+   "fill": "acid",
+   "fillOpacity": 0.13,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "round(who)==5&&r>=0.2"
+  },
+  {
+   "type": "text",
+   "id": "facid",
+   "at": [
+    0,
+    -4.1
+   ],
+   "text": "Group: a –COOH group (C=O + –OH)",
+   "role": "acid",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==5&&r>=0.4"
+  },
+  {
+   "type": "text",
+   "id": "eacid",
+   "at": [
+    0,
+    -5.6
+   ],
+   "text": "ending -oic acid",
+   "role": "acid",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==5&&r>=0.6"
+  },
+  {
+   "type": "text",
+   "id": "nacid",
+   "at": [
+    0,
+    4.9
+   ],
+   "text": "Propanoic acid  ·  carboxylic acid",
+   "role": "acid",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==5&&r>=0.8"
+  },
+  {
+   "type": "text",
+   "id": "qacid",
+   "at": [
+    0,
+    4.9
+   ],
+   "text": "Which family?",
+   "role": "muted",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==5&&r<0.8"
+  },
+  {
+   "type": "text",
+   "id": "tmester_0",
+   "at": [
+    -3.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==6"
+  },
+  {
+   "type": "text",
+   "id": "tmester_1",
+   "at": [
+    -1.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==6"
+  },
+  {
+   "type": "text",
+   "id": "tmester_2",
+   "at": [
+    1.0,
+    0.0
+   ],
+   "text": "O",
+   "role": "atomO",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==6"
+  },
+  {
+   "type": "text",
+   "id": "tmester_3",
+   "at": [
+    3.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==6"
+  },
+  {
+   "type": "text",
+   "id": "tmester_4",
+   "at": [
+    -5.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==6"
+  },
+  {
+   "type": "text",
+   "id": "tmester_5",
+   "at": [
+    -3.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==6"
+  },
+  {
+   "type": "text",
+   "id": "tmester_6",
+   "at": [
+    -3.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==6"
+  },
+  {
+   "type": "text",
+   "id": "tmester_7",
+   "at": [
+    -1.0,
+    2.0
+   ],
+   "text": "O",
+   "role": "atomO",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==6"
+  },
+  {
+   "type": "text",
+   "id": "tmester_8",
+   "at": [
+    5.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==6"
+  },
+  {
+   "type": "text",
+   "id": "tmester_9",
+   "at": [
+    3.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==6"
+  },
+  {
+   "type": "text",
+   "id": "tmester_10",
+   "at": [
+    3.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "visible": "round(who)==6"
+  },
+  {
+   "type": "segment",
+   "id": "bmester_0_0",
+   "from": [
+    -2.48,
+    0.0
+   ],
+   "to": [
+    -1.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==6"
+  },
+  {
+   "type": "segment",
+   "id": "bmester_1_0",
+   "from": [
+    -0.48,
+    0.0
+   ],
+   "to": [
+    0.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==6"
+  },
+  {
+   "type": "segment",
+   "id": "bmester_2_0",
+   "from": [
+    1.52,
+    0.0
+   ],
+   "to": [
+    2.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==6"
+  },
+  {
+   "type": "segment",
+   "id": "bmester_3_0",
+   "from": [
+    -3.52,
+    0.0
+   ],
+   "to": [
+    -4.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==6"
+  },
+  {
+   "type": "segment",
+   "id": "bmester_4_0",
+   "from": [
+    -3.0,
+    0.52
+   ],
+   "to": [
+    -3.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==6"
+  },
+  {
+   "type": "segment",
+   "id": "bmester_5_0",
+   "from": [
+    -3.0,
+    -0.52
+   ],
+   "to": [
+    -3.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==6"
+  },
+  {
+   "type": "segment",
+   "id": "bmester_6_0",
+   "from": [
+    -0.85,
+    0.52
+   ],
+   "to": [
+    -0.85,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==6"
+  },
+  {
+   "type": "segment",
+   "id": "bmester_6_1",
+   "from": [
+    -1.15,
+    0.52
+   ],
+   "to": [
+    -1.15,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==6"
+  },
+  {
+   "type": "segment",
+   "id": "bmester_7_0",
+   "from": [
+    3.52,
+    0.0
+   ],
+   "to": [
+    4.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==6"
+  },
+  {
+   "type": "segment",
+   "id": "bmester_8_0",
+   "from": [
+    3.0,
+    0.52
+   ],
+   "to": [
+    3.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==6"
+  },
+  {
+   "type": "segment",
+   "id": "bmester_9_0",
+   "from": [
+    3.0,
+    -0.52
+   ],
+   "to": [
+    3.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "round(who)==6"
+  },
+  {
+   "type": "rect",
+   "id": "gester",
+   "x": -1.66,
+   "y": -0.66,
+   "w": 3.32,
+   "h": 3.32,
+   "role": "ester",
+   "fill": "ester",
+   "fillOpacity": 0.13,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "round(who)==6&&r>=0.2"
+  },
+  {
+   "type": "text",
+   "id": "fester",
+   "at": [
+    0,
+    -4.1
+   ],
+   "text": "Group: a –COO– link",
+   "role": "ester",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==6&&r>=0.4"
+  },
+  {
+   "type": "text",
+   "id": "eester",
+   "at": [
+    0,
+    -5.6
+   ],
+   "text": "ending -oate",
+   "role": "ester",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==6&&r>=0.6"
+  },
+  {
+   "type": "text",
+   "id": "nester",
+   "at": [
+    0,
+    4.9
+   ],
+   "text": "Methyl ethanoate  ·  ester",
+   "role": "ester",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==6&&r>=0.8"
+  },
+  {
+   "type": "text",
+   "id": "qester",
+   "at": [
+    0,
+    4.9
+   ],
+   "text": "Which family?",
+   "role": "muted",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==6&&r<0.8"
+  },
+  {
+   "type": "text",
+   "id": "gd0",
+   "at": [
+    0,
+    4.4
+   ],
+   "text": "only C–C bonds → alkane (-ane)",
+   "role": "ane",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==7&&r>=0.05"
+  },
+  {
+   "type": "text",
+   "id": "gd1",
+   "at": [
+    0,
+    2.8500000000000005
+   ],
+   "text": "C=C → alkene (-ene)",
+   "role": "ene",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==7&&r>=0.15"
+  },
+  {
+   "type": "text",
+   "id": "gd2",
+   "at": [
+    0,
+    1.3000000000000003
+   ],
+   "text": "C≡C → alkyne (-yne)",
+   "role": "yne",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==7&&r>=0.25"
+  },
+  {
+   "type": "text",
+   "id": "gd3",
+   "at": [
+    0,
+    -0.25
+   ],
+   "text": "–OH on a carbon → alcohol (-ol)",
+   "role": "ol",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==7&&r>=0.35"
+  },
+  {
+   "type": "text",
+   "id": "gd4",
+   "at": [
+    0,
+    -1.7999999999999998
+   ],
+   "text": "C=O + –OH on one C → acid (-oic acid)",
+   "role": "acid",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==7&&r>=0.45"
+  },
+  {
+   "type": "text",
+   "id": "gd5",
+   "at": [
+    0,
+    -3.3499999999999996
+   ],
+   "text": "–COO– between chains → ester (-oate)",
+   "role": "ester",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "round(who)==7&&r>=0.55"
+  },
+  {
+   "type": "rect",
+   "id": "gdbox",
+   "x": -9.2,
+   "y": -6.0,
+   "w": 18.4,
+   "h": 11.8,
+   "role": "muted",
+   "fill": "muted",
+   "fillOpacity": 0.04,
+   "strokeWidth": 1.2,
+   "layer": "back",
+   "visible": "round(who)==7"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Propane: no functional group",
+   "narration": "Look at the bonds. All are **C–C single bonds** and every other atom is hydrogen. There is **no functional group**: this is an **alkane**, ending [[ane|-ane]]: **propane**.",
+   "actions": [
+    {
+     "set": {
+      "who": 1,
+      "r": 0
+     }
+    },
+    {
+     "tween": {
+      "r": 1
+     },
+     "dur": 3000,
+     "at": 80
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Propene: a C=C",
+   "narration": "The functional group is a **C=C double bond** (boxed). Family: **alkene**. The ending is [[ene|-ene]]: **propene** (prop-1-ene). The double bond is at the end of the chain, so it starts at C-1.",
+   "actions": [
+    {
+     "set": {
+      "who": 2,
+      "r": 0
+     }
+    },
+    {
+     "tween": {
+      "r": 1
+     },
+     "dur": 3000,
+     "at": 80
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Propyne: a C≡C",
+   "narration": "A **C≡C triple bond** (boxed) means an **alkyne**. The ending is [[yne|-yne]]: **propyne** (prop-1-yne).",
+   "actions": [
+    {
+     "set": {
+      "who": 3,
+      "r": 0
+     }
+    },
+    {
+     "tween": {
+      "r": 1
+     },
+     "dur": 3000,
+     "at": 80
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Propan-1-ol: an –OH group",
+   "narration": "An **–OH group** joined to carbon (boxed) means an **alcohol**. The ending is [[ol|-ol]]: **propan-1-ol**.",
+   "actions": [
+    {
+     "set": {
+      "who": 4,
+      "r": 0
+     }
+    },
+    {
+     "tween": {
+      "r": 1
+     },
+     "dur": 3000,
+     "at": 80
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Propanoic acid: –COOH",
+   "narration": "A carbon with **C=O and –OH together** is the **carboxyl group** (boxed): a **carboxylic acid**, ending [[acid|-oic acid]]: **propanoic acid**.",
+   "actions": [
+    {
+     "set": {
+      "who": 5,
+      "r": 0
+     }
+    },
+    {
+     "tween": {
+      "r": 1
+     },
+     "dur": 3000,
+     "at": 80
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Methyl ethanoate: –COO–",
+   "narration": "The group **–COO–** links two carbon chains (boxed): an **ester**. The name has the alkyl part first and ends in [[ester|-oate]]: **methyl ethanoate**.",
+   "actions": [
+    {
+     "set": {
+      "who": 6,
+      "r": 0
+     }
+    },
+    {
+     "tween": {
+      "r": 1
+     },
+     "dur": 3000,
+     "at": 80
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "title": "Decision guide",
+   "narration": "To name a compound from its structure, find **the group** first. This list gives the **family** and the **ending** for every compound in this unit.",
+   "actions": [
+    {
+     "set": {
+      "who": 7,
+      "r": 0
+     }
+    },
+    {
+     "tween": {
+      "r": 1
+     },
+     "dur": 3000,
+     "at": 80
+    }
+   ]
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Family and ending",
+   "tex": "\\role{ane}{\\text{-ane}}\\ \\role{ene}{\\text{-ene}}\\ \\role{yne}{\\text{-yne}}\\ \\role{ol}{\\text{-ol}}\\ \\role{acid}{\\text{-oic acid}}\\ \\role{ester}{\\text{-oate}}",
+   "text": "The ending of the name always matches the functional group."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "To which family does **CH₃CH₂COOH** belong?",
+   "options": [
+    {
+     "id": "a",
+     "label": "alcohol"
+    },
+    {
+     "id": "b",
+     "label": "ester"
+    },
+    {
+     "id": "c",
+     "label": "carboxylic acid"
+    },
+    {
+     "id": "d",
+     "label": "alkane"
+    }
+   ],
+   "answer": "c",
+   "hint": "Look at the last carbon.",
+   "explain": "–COOH is the carboxyl group: a carboxylic acid (propanoic acid)."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "To which family does **CH₃COOCH₃** belong?",
+   "options": [
+    {
+     "id": "a",
+     "label": "alkene"
+    },
+    {
+     "id": "b",
+     "label": "carboxylic acid"
+    },
+    {
+     "id": "c",
+     "label": "ester"
+    },
+    {
+     "id": "d",
+     "label": "alcohol"
+    }
+   ],
+   "answer": "c",
+   "hint": "There is a –COO– between two carbon groups.",
+   "explain": "–COO– between two chains: an ester (methyl ethanoate)."
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which ending belongs to a compound containing a **C≡C** bond?",
+   "options": [
+    {
+     "id": "a",
+     "label": "-ane"
+    },
+    {
+     "id": "b",
+     "label": "-yne"
+    },
+    {
+     "id": "c",
+     "label": "-ene"
+    },
+    {
+     "id": "d",
+     "label": "-ol"
+    }
+   ],
+   "answer": "b",
+   "hint": "Triple bond.",
+   "explain": "Alkynes end in -yne."
+  },
+  {
+   "id": "c4",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which compound is an **alcohol**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "CH₃COOCH₃"
+    },
+    {
+     "id": "b",
+     "label": "CH₃CH=CH₂"
+    },
+    {
+     "id": "c",
+     "label": "CH₃CH₂COOH"
+    },
+    {
+     "id": "d",
+     "label": "CH₃CH₂CH₂OH"
+    }
+   ],
+   "answer": "d",
+   "hint": "Look for –OH on a carbon chain (not –COOH).",
+   "explain": "CH₃CH₂CH₂OH has an –OH on the chain: propan-1-ol."
+  }
+ ],
+ "takeaways": [
+  "**Find the group first**, then name the family and the ending.",
+  "No group, only single bonds → **alkane**.",
+  "**–OH** alcohol · **–COOH** acid · **–COO–** ester · **C=C** alkene · **C≡C** alkyne."
+ ],
+ "notes": [
+  {
+   "title": "Common mistake",
+   "text": "Do not confuse –OH (alcohol) with –COOH (acid): the acid has an extra C=O on the same carbon."
+  }
+ ]
+}

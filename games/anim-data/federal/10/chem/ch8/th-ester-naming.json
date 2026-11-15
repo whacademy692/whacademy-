@@ -1,0 +1,2960 @@
+{
+ "id": "g10-chem-c8-th-ester-naming",
+ "title": "Naming an ester from its two parts",
+ "summary": "The alkyl part (from the alcohol) comes first; the acid part ends in -oate.",
+ "alt": "An ester explorer for acids with 1 to 4 carbons and alkyl groups with 1 to 4 carbons, giving methyl ethanoate, ethyl propanoate, propyl butanoate and others.",
+ "autoGrid": false,
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -12.01,
+   12.01
+  ],
+  "y": [
+   -8.25,
+   6.35
+  ],
+  "pad": 10
+ },
+ "roles": {
+  "acid": {
+   "label": "-oic acid · –COOH",
+   "color": "#ea580c",
+   "text": "The carboxyl group of a carboxylic acid (orange box in the book)."
+  },
+  "ol": {
+   "label": "-ol · –OH",
+   "color": "#2563eb",
+   "text": "The hydroxyl group of an alcohol."
+  },
+  "ester": {
+   "label": "-oate · –COO–",
+   "color": "#0d9488",
+   "text": "The ester link."
+  },
+  "stem": {
+   "label": "Stem (how many C)",
+   "color": "#16a34a",
+   "text": "The first part of the name. It tells you how many carbon atoms are in the chain."
+  },
+  "atomO": {
+   "label": "Oxygen",
+   "color": "#ef4444",
+   "text": "Every oxygen atom makes two bonds.",
+   "legend": false
+  },
+  "hyd": {
+   "label": "Hydrogen",
+   "color": "#64748b",
+   "text": "Every hydrogen atom makes exactly one bond.",
+   "legend": false
+  },
+  "num": {
+   "label": "Position number",
+   "color": "#ca8a04",
+   "text": "The number in the name. It tells you where the double bond, triple bond or –OH sits."
+  },
+  "good": {
+   "label": "Correct",
+   "color": "#16a34a",
+   "text": "The part that follows the rules."
+  }
+ },
+ "params": [
+  {
+   "id": "a",
+   "label": "Carbons in the acid part",
+   "min": 1,
+   "max": 4,
+   "step": 1,
+   "default": 2,
+   "role": "acid"
+  },
+  {
+   "id": "k",
+   "label": "Carbons in the alkyl part",
+   "min": 1,
+   "max": 4,
+   "step": 1,
+   "default": 1,
+   "role": "ol"
+  }
+ ],
+ "derived": {
+  "A": "round(a)",
+  "K": "round(k)"
+ },
+ "readouts": [
+  {
+   "label": "Carbons in the ester",
+   "value": "{{A+K}}",
+   "role": "stem"
+  }
+ ],
+ "shapes": [
+  {
+   "type": "text",
+   "id": "eO",
+   "at": [
+    0.0,
+    0.0
+   ],
+   "text": "O",
+   "role": "atomO",
+   "size": "m",
+   "bold": true,
+   "layer": "front"
+  },
+  {
+   "type": "text",
+   "id": "ta1x_0",
+   "at": [
+    -2.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==1"
+  },
+  {
+   "type": "text",
+   "id": "ta1x_3",
+   "at": [
+    -2.0,
+    2.0
+   ],
+   "text": "O",
+   "role": "atomO",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==1"
+  },
+  {
+   "type": "text",
+   "id": "ta1x_4",
+   "at": [
+    -4.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "A==1"
+  },
+  {
+   "type": "segment",
+   "id": "ba1x_0_0",
+   "from": [
+    -1.48,
+    0.0
+   ],
+   "to": [
+    -0.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==1"
+  },
+  {
+   "type": "segment",
+   "id": "ba1x_2_0",
+   "from": [
+    -1.85,
+    0.52
+   ],
+   "to": [
+    -1.85,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==1"
+  },
+  {
+   "type": "segment",
+   "id": "ba1x_2_1",
+   "from": [
+    -2.15,
+    0.52
+   ],
+   "to": [
+    -2.15,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==1"
+  },
+  {
+   "type": "segment",
+   "id": "ba1x_3_0",
+   "from": [
+    -2.52,
+    0.0
+   ],
+   "to": [
+    -3.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==1"
+  },
+  {
+   "type": "rect",
+   "id": "ab1",
+   "x": -4.66,
+   "y": -0.66,
+   "w": 3.32,
+   "h": 3.32,
+   "role": "acid",
+   "fill": "acid",
+   "fillOpacity": 0.12,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "A==1"
+  },
+  {
+   "type": "text",
+   "id": "an1",
+   "at": [
+    -3.0,
+    -3.7
+   ],
+   "text": "from methanoic acid",
+   "role": "acid",
+   "size": "s",
+   "bold": false,
+   "layer": "front",
+   "visible": "A==1"
+  },
+  {
+   "type": "text",
+   "id": "ta2x_0",
+   "at": [
+    -4.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==2"
+  },
+  {
+   "type": "text",
+   "id": "ta2x_1",
+   "at": [
+    -2.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==2"
+  },
+  {
+   "type": "text",
+   "id": "ta2x_4",
+   "at": [
+    -6.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "A==2"
+  },
+  {
+   "type": "text",
+   "id": "ta2x_5",
+   "at": [
+    -4.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "A==2"
+  },
+  {
+   "type": "text",
+   "id": "ta2x_6",
+   "at": [
+    -4.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "A==2"
+  },
+  {
+   "type": "text",
+   "id": "ta2x_7",
+   "at": [
+    -2.0,
+    2.0
+   ],
+   "text": "O",
+   "role": "atomO",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==2"
+  },
+  {
+   "type": "segment",
+   "id": "ba2x_0_0",
+   "from": [
+    -3.48,
+    0.0
+   ],
+   "to": [
+    -2.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==2"
+  },
+  {
+   "type": "segment",
+   "id": "ba2x_1_0",
+   "from": [
+    -1.48,
+    0.0
+   ],
+   "to": [
+    -0.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==2"
+  },
+  {
+   "type": "segment",
+   "id": "ba2x_3_0",
+   "from": [
+    -4.52,
+    0.0
+   ],
+   "to": [
+    -5.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==2"
+  },
+  {
+   "type": "segment",
+   "id": "ba2x_4_0",
+   "from": [
+    -4.0,
+    0.52
+   ],
+   "to": [
+    -4.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==2"
+  },
+  {
+   "type": "segment",
+   "id": "ba2x_5_0",
+   "from": [
+    -4.0,
+    -0.52
+   ],
+   "to": [
+    -4.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==2"
+  },
+  {
+   "type": "segment",
+   "id": "ba2x_6_0",
+   "from": [
+    -1.85,
+    0.52
+   ],
+   "to": [
+    -1.85,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==2"
+  },
+  {
+   "type": "segment",
+   "id": "ba2x_6_1",
+   "from": [
+    -2.15,
+    0.52
+   ],
+   "to": [
+    -2.15,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==2"
+  },
+  {
+   "type": "rect",
+   "id": "ab2",
+   "x": -6.66,
+   "y": -2.66,
+   "w": 5.32,
+   "h": 5.32,
+   "role": "acid",
+   "fill": "acid",
+   "fillOpacity": 0.12,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "A==2"
+  },
+  {
+   "type": "text",
+   "id": "an2",
+   "at": [
+    -4.0,
+    -3.7
+   ],
+   "text": "from ethanoic acid",
+   "role": "acid",
+   "size": "s",
+   "bold": false,
+   "layer": "front",
+   "visible": "A==2"
+  },
+  {
+   "type": "text",
+   "id": "ta3x_0",
+   "at": [
+    -6.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==3"
+  },
+  {
+   "type": "text",
+   "id": "ta3x_1",
+   "at": [
+    -4.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==3"
+  },
+  {
+   "type": "text",
+   "id": "ta3x_2",
+   "at": [
+    -2.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==3"
+  },
+  {
+   "type": "text",
+   "id": "ta3x_5",
+   "at": [
+    -8.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "A==3"
+  },
+  {
+   "type": "text",
+   "id": "ta3x_6",
+   "at": [
+    -6.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "A==3"
+  },
+  {
+   "type": "text",
+   "id": "ta3x_7",
+   "at": [
+    -6.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "A==3"
+  },
+  {
+   "type": "text",
+   "id": "ta3x_8",
+   "at": [
+    -4.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "A==3"
+  },
+  {
+   "type": "text",
+   "id": "ta3x_9",
+   "at": [
+    -4.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "A==3"
+  },
+  {
+   "type": "text",
+   "id": "ta3x_10",
+   "at": [
+    -2.0,
+    2.0
+   ],
+   "text": "O",
+   "role": "atomO",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==3"
+  },
+  {
+   "type": "segment",
+   "id": "ba3x_0_0",
+   "from": [
+    -5.48,
+    0.0
+   ],
+   "to": [
+    -4.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==3"
+  },
+  {
+   "type": "segment",
+   "id": "ba3x_1_0",
+   "from": [
+    -3.48,
+    0.0
+   ],
+   "to": [
+    -2.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==3"
+  },
+  {
+   "type": "segment",
+   "id": "ba3x_2_0",
+   "from": [
+    -1.48,
+    0.0
+   ],
+   "to": [
+    -0.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==3"
+  },
+  {
+   "type": "segment",
+   "id": "ba3x_4_0",
+   "from": [
+    -6.52,
+    0.0
+   ],
+   "to": [
+    -7.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==3"
+  },
+  {
+   "type": "segment",
+   "id": "ba3x_5_0",
+   "from": [
+    -6.0,
+    0.52
+   ],
+   "to": [
+    -6.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==3"
+  },
+  {
+   "type": "segment",
+   "id": "ba3x_6_0",
+   "from": [
+    -6.0,
+    -0.52
+   ],
+   "to": [
+    -6.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==3"
+  },
+  {
+   "type": "segment",
+   "id": "ba3x_7_0",
+   "from": [
+    -4.0,
+    0.52
+   ],
+   "to": [
+    -4.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==3"
+  },
+  {
+   "type": "segment",
+   "id": "ba3x_8_0",
+   "from": [
+    -4.0,
+    -0.52
+   ],
+   "to": [
+    -4.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==3"
+  },
+  {
+   "type": "segment",
+   "id": "ba3x_9_0",
+   "from": [
+    -1.85,
+    0.52
+   ],
+   "to": [
+    -1.85,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==3"
+  },
+  {
+   "type": "segment",
+   "id": "ba3x_9_1",
+   "from": [
+    -2.15,
+    0.52
+   ],
+   "to": [
+    -2.15,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==3"
+  },
+  {
+   "type": "rect",
+   "id": "ab3",
+   "x": -8.66,
+   "y": -2.66,
+   "w": 7.32,
+   "h": 5.32,
+   "role": "acid",
+   "fill": "acid",
+   "fillOpacity": 0.12,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "A==3"
+  },
+  {
+   "type": "text",
+   "id": "an3",
+   "at": [
+    -5.0,
+    -3.7
+   ],
+   "text": "from propanoic acid",
+   "role": "acid",
+   "size": "s",
+   "bold": false,
+   "layer": "front",
+   "visible": "A==3"
+  },
+  {
+   "type": "text",
+   "id": "ta4x_0",
+   "at": [
+    -8.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==4"
+  },
+  {
+   "type": "text",
+   "id": "ta4x_1",
+   "at": [
+    -6.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==4"
+  },
+  {
+   "type": "text",
+   "id": "ta4x_2",
+   "at": [
+    -4.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==4"
+  },
+  {
+   "type": "text",
+   "id": "ta4x_3",
+   "at": [
+    -2.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==4"
+  },
+  {
+   "type": "text",
+   "id": "ta4x_6",
+   "at": [
+    -10.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "A==4"
+  },
+  {
+   "type": "text",
+   "id": "ta4x_7",
+   "at": [
+    -8.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "A==4"
+  },
+  {
+   "type": "text",
+   "id": "ta4x_8",
+   "at": [
+    -8.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "A==4"
+  },
+  {
+   "type": "text",
+   "id": "ta4x_9",
+   "at": [
+    -6.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "A==4"
+  },
+  {
+   "type": "text",
+   "id": "ta4x_10",
+   "at": [
+    -6.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "A==4"
+  },
+  {
+   "type": "text",
+   "id": "ta4x_11",
+   "at": [
+    -4.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "A==4"
+  },
+  {
+   "type": "text",
+   "id": "ta4x_12",
+   "at": [
+    -4.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "A==4"
+  },
+  {
+   "type": "text",
+   "id": "ta4x_13",
+   "at": [
+    -2.0,
+    2.0
+   ],
+   "text": "O",
+   "role": "atomO",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==4"
+  },
+  {
+   "type": "segment",
+   "id": "ba4x_0_0",
+   "from": [
+    -7.48,
+    0.0
+   ],
+   "to": [
+    -6.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==4"
+  },
+  {
+   "type": "segment",
+   "id": "ba4x_1_0",
+   "from": [
+    -5.48,
+    0.0
+   ],
+   "to": [
+    -4.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==4"
+  },
+  {
+   "type": "segment",
+   "id": "ba4x_2_0",
+   "from": [
+    -3.48,
+    0.0
+   ],
+   "to": [
+    -2.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==4"
+  },
+  {
+   "type": "segment",
+   "id": "ba4x_3_0",
+   "from": [
+    -1.48,
+    0.0
+   ],
+   "to": [
+    -0.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==4"
+  },
+  {
+   "type": "segment",
+   "id": "ba4x_5_0",
+   "from": [
+    -8.52,
+    0.0
+   ],
+   "to": [
+    -9.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==4"
+  },
+  {
+   "type": "segment",
+   "id": "ba4x_6_0",
+   "from": [
+    -8.0,
+    0.52
+   ],
+   "to": [
+    -8.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==4"
+  },
+  {
+   "type": "segment",
+   "id": "ba4x_7_0",
+   "from": [
+    -8.0,
+    -0.52
+   ],
+   "to": [
+    -8.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==4"
+  },
+  {
+   "type": "segment",
+   "id": "ba4x_8_0",
+   "from": [
+    -6.0,
+    0.52
+   ],
+   "to": [
+    -6.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==4"
+  },
+  {
+   "type": "segment",
+   "id": "ba4x_9_0",
+   "from": [
+    -6.0,
+    -0.52
+   ],
+   "to": [
+    -6.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==4"
+  },
+  {
+   "type": "segment",
+   "id": "ba4x_10_0",
+   "from": [
+    -4.0,
+    0.52
+   ],
+   "to": [
+    -4.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==4"
+  },
+  {
+   "type": "segment",
+   "id": "ba4x_11_0",
+   "from": [
+    -4.0,
+    -0.52
+   ],
+   "to": [
+    -4.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==4"
+  },
+  {
+   "type": "segment",
+   "id": "ba4x_12_0",
+   "from": [
+    -1.85,
+    0.52
+   ],
+   "to": [
+    -1.85,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==4"
+  },
+  {
+   "type": "segment",
+   "id": "ba4x_12_1",
+   "from": [
+    -2.15,
+    0.52
+   ],
+   "to": [
+    -2.15,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "A==4"
+  },
+  {
+   "type": "rect",
+   "id": "ab4",
+   "x": -10.66,
+   "y": -2.66,
+   "w": 9.32,
+   "h": 5.32,
+   "role": "acid",
+   "fill": "acid",
+   "fillOpacity": 0.12,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "A==4"
+  },
+  {
+   "type": "text",
+   "id": "an4",
+   "at": [
+    -6.0,
+    -3.7
+   ],
+   "text": "from butanoic acid",
+   "role": "acid",
+   "size": "s",
+   "bold": false,
+   "layer": "front",
+   "visible": "A==4"
+  },
+  {
+   "type": "text",
+   "id": "tk1y_2",
+   "at": [
+    2.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "K==1"
+  },
+  {
+   "type": "text",
+   "id": "tk1y_5",
+   "at": [
+    4.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==1"
+  },
+  {
+   "type": "text",
+   "id": "tk1y_6",
+   "at": [
+    2.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==1"
+  },
+  {
+   "type": "text",
+   "id": "tk1y_7",
+   "at": [
+    2.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==1"
+  },
+  {
+   "type": "segment",
+   "id": "bk1y_1_0",
+   "from": [
+    0.52,
+    0.0
+   ],
+   "to": [
+    1.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==1"
+  },
+  {
+   "type": "segment",
+   "id": "bk1y_4_0",
+   "from": [
+    2.52,
+    0.0
+   ],
+   "to": [
+    3.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==1"
+  },
+  {
+   "type": "segment",
+   "id": "bk1y_5_0",
+   "from": [
+    2.0,
+    0.52
+   ],
+   "to": [
+    2.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==1"
+  },
+  {
+   "type": "segment",
+   "id": "bk1y_6_0",
+   "from": [
+    2.0,
+    -0.52
+   ],
+   "to": [
+    2.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==1"
+  },
+  {
+   "type": "rect",
+   "id": "kb1",
+   "x": -0.66,
+   "y": -2.66,
+   "w": 5.32,
+   "h": 5.32,
+   "role": "ol",
+   "fill": "ol",
+   "fillOpacity": 0.12,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "K==1"
+  },
+  {
+   "type": "text",
+   "id": "kn1",
+   "at": [
+    2,
+    -4.9
+   ],
+   "text": "from methanol",
+   "role": "ol",
+   "size": "s",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==1"
+  },
+  {
+   "type": "text",
+   "id": "tk2y_2",
+   "at": [
+    2.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "K==2"
+  },
+  {
+   "type": "text",
+   "id": "tk2y_3",
+   "at": [
+    4.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "K==2"
+  },
+  {
+   "type": "text",
+   "id": "tk2y_6",
+   "at": [
+    2.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==2"
+  },
+  {
+   "type": "text",
+   "id": "tk2y_7",
+   "at": [
+    2.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==2"
+  },
+  {
+   "type": "text",
+   "id": "tk2y_8",
+   "at": [
+    6.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==2"
+  },
+  {
+   "type": "text",
+   "id": "tk2y_9",
+   "at": [
+    4.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==2"
+  },
+  {
+   "type": "text",
+   "id": "tk2y_10",
+   "at": [
+    4.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==2"
+  },
+  {
+   "type": "segment",
+   "id": "bk2y_1_0",
+   "from": [
+    0.52,
+    0.0
+   ],
+   "to": [
+    1.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==2"
+  },
+  {
+   "type": "segment",
+   "id": "bk2y_2_0",
+   "from": [
+    2.52,
+    0.0
+   ],
+   "to": [
+    3.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==2"
+  },
+  {
+   "type": "segment",
+   "id": "bk2y_5_0",
+   "from": [
+    2.0,
+    0.52
+   ],
+   "to": [
+    2.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==2"
+  },
+  {
+   "type": "segment",
+   "id": "bk2y_6_0",
+   "from": [
+    2.0,
+    -0.52
+   ],
+   "to": [
+    2.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==2"
+  },
+  {
+   "type": "segment",
+   "id": "bk2y_7_0",
+   "from": [
+    4.52,
+    0.0
+   ],
+   "to": [
+    5.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==2"
+  },
+  {
+   "type": "segment",
+   "id": "bk2y_8_0",
+   "from": [
+    4.0,
+    0.52
+   ],
+   "to": [
+    4.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==2"
+  },
+  {
+   "type": "segment",
+   "id": "bk2y_9_0",
+   "from": [
+    4.0,
+    -0.52
+   ],
+   "to": [
+    4.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==2"
+  },
+  {
+   "type": "rect",
+   "id": "kb2",
+   "x": -0.66,
+   "y": -2.66,
+   "w": 7.32,
+   "h": 5.32,
+   "role": "ol",
+   "fill": "ol",
+   "fillOpacity": 0.12,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "K==2"
+  },
+  {
+   "type": "text",
+   "id": "kn2",
+   "at": [
+    3,
+    -4.9
+   ],
+   "text": "from ethanol",
+   "role": "ol",
+   "size": "s",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==2"
+  },
+  {
+   "type": "text",
+   "id": "tk3y_2",
+   "at": [
+    2.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "K==3"
+  },
+  {
+   "type": "text",
+   "id": "tk3y_3",
+   "at": [
+    4.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "K==3"
+  },
+  {
+   "type": "text",
+   "id": "tk3y_4",
+   "at": [
+    6.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "K==3"
+  },
+  {
+   "type": "text",
+   "id": "tk3y_7",
+   "at": [
+    2.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==3"
+  },
+  {
+   "type": "text",
+   "id": "tk3y_8",
+   "at": [
+    2.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==3"
+  },
+  {
+   "type": "text",
+   "id": "tk3y_9",
+   "at": [
+    4.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==3"
+  },
+  {
+   "type": "text",
+   "id": "tk3y_10",
+   "at": [
+    4.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==3"
+  },
+  {
+   "type": "text",
+   "id": "tk3y_11",
+   "at": [
+    8.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==3"
+  },
+  {
+   "type": "text",
+   "id": "tk3y_12",
+   "at": [
+    6.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==3"
+  },
+  {
+   "type": "text",
+   "id": "tk3y_13",
+   "at": [
+    6.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==3"
+  },
+  {
+   "type": "segment",
+   "id": "bk3y_1_0",
+   "from": [
+    0.52,
+    0.0
+   ],
+   "to": [
+    1.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==3"
+  },
+  {
+   "type": "segment",
+   "id": "bk3y_2_0",
+   "from": [
+    2.52,
+    0.0
+   ],
+   "to": [
+    3.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==3"
+  },
+  {
+   "type": "segment",
+   "id": "bk3y_3_0",
+   "from": [
+    4.52,
+    0.0
+   ],
+   "to": [
+    5.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==3"
+  },
+  {
+   "type": "segment",
+   "id": "bk3y_6_0",
+   "from": [
+    2.0,
+    0.52
+   ],
+   "to": [
+    2.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==3"
+  },
+  {
+   "type": "segment",
+   "id": "bk3y_7_0",
+   "from": [
+    2.0,
+    -0.52
+   ],
+   "to": [
+    2.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==3"
+  },
+  {
+   "type": "segment",
+   "id": "bk3y_8_0",
+   "from": [
+    4.0,
+    0.52
+   ],
+   "to": [
+    4.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==3"
+  },
+  {
+   "type": "segment",
+   "id": "bk3y_9_0",
+   "from": [
+    4.0,
+    -0.52
+   ],
+   "to": [
+    4.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==3"
+  },
+  {
+   "type": "segment",
+   "id": "bk3y_10_0",
+   "from": [
+    6.52,
+    0.0
+   ],
+   "to": [
+    7.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==3"
+  },
+  {
+   "type": "segment",
+   "id": "bk3y_11_0",
+   "from": [
+    6.0,
+    0.52
+   ],
+   "to": [
+    6.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==3"
+  },
+  {
+   "type": "segment",
+   "id": "bk3y_12_0",
+   "from": [
+    6.0,
+    -0.52
+   ],
+   "to": [
+    6.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==3"
+  },
+  {
+   "type": "rect",
+   "id": "kb3",
+   "x": -0.66,
+   "y": -2.66,
+   "w": 9.32,
+   "h": 5.32,
+   "role": "ol",
+   "fill": "ol",
+   "fillOpacity": 0.12,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "K==3"
+  },
+  {
+   "type": "text",
+   "id": "kn3",
+   "at": [
+    4,
+    -4.9
+   ],
+   "text": "from propan-1-ol",
+   "role": "ol",
+   "size": "s",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==3"
+  },
+  {
+   "type": "text",
+   "id": "tk4y_2",
+   "at": [
+    2.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "K==4"
+  },
+  {
+   "type": "text",
+   "id": "tk4y_3",
+   "at": [
+    4.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "K==4"
+  },
+  {
+   "type": "text",
+   "id": "tk4y_4",
+   "at": [
+    6.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "K==4"
+  },
+  {
+   "type": "text",
+   "id": "tk4y_5",
+   "at": [
+    8.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "K==4"
+  },
+  {
+   "type": "text",
+   "id": "tk4y_8",
+   "at": [
+    2.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==4"
+  },
+  {
+   "type": "text",
+   "id": "tk4y_9",
+   "at": [
+    2.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==4"
+  },
+  {
+   "type": "text",
+   "id": "tk4y_10",
+   "at": [
+    4.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==4"
+  },
+  {
+   "type": "text",
+   "id": "tk4y_11",
+   "at": [
+    4.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==4"
+  },
+  {
+   "type": "text",
+   "id": "tk4y_12",
+   "at": [
+    6.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==4"
+  },
+  {
+   "type": "text",
+   "id": "tk4y_13",
+   "at": [
+    6.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==4"
+  },
+  {
+   "type": "text",
+   "id": "tk4y_14",
+   "at": [
+    10.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==4"
+  },
+  {
+   "type": "text",
+   "id": "tk4y_15",
+   "at": [
+    8.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==4"
+  },
+  {
+   "type": "text",
+   "id": "tk4y_16",
+   "at": [
+    8.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==4"
+  },
+  {
+   "type": "segment",
+   "id": "bk4y_1_0",
+   "from": [
+    0.52,
+    0.0
+   ],
+   "to": [
+    1.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==4"
+  },
+  {
+   "type": "segment",
+   "id": "bk4y_2_0",
+   "from": [
+    2.52,
+    0.0
+   ],
+   "to": [
+    3.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==4"
+  },
+  {
+   "type": "segment",
+   "id": "bk4y_3_0",
+   "from": [
+    4.52,
+    0.0
+   ],
+   "to": [
+    5.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==4"
+  },
+  {
+   "type": "segment",
+   "id": "bk4y_4_0",
+   "from": [
+    6.52,
+    0.0
+   ],
+   "to": [
+    7.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==4"
+  },
+  {
+   "type": "segment",
+   "id": "bk4y_7_0",
+   "from": [
+    2.0,
+    0.52
+   ],
+   "to": [
+    2.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==4"
+  },
+  {
+   "type": "segment",
+   "id": "bk4y_8_0",
+   "from": [
+    2.0,
+    -0.52
+   ],
+   "to": [
+    2.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==4"
+  },
+  {
+   "type": "segment",
+   "id": "bk4y_9_0",
+   "from": [
+    4.0,
+    0.52
+   ],
+   "to": [
+    4.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==4"
+  },
+  {
+   "type": "segment",
+   "id": "bk4y_10_0",
+   "from": [
+    4.0,
+    -0.52
+   ],
+   "to": [
+    4.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==4"
+  },
+  {
+   "type": "segment",
+   "id": "bk4y_11_0",
+   "from": [
+    6.0,
+    0.52
+   ],
+   "to": [
+    6.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==4"
+  },
+  {
+   "type": "segment",
+   "id": "bk4y_12_0",
+   "from": [
+    6.0,
+    -0.52
+   ],
+   "to": [
+    6.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==4"
+  },
+  {
+   "type": "segment",
+   "id": "bk4y_13_0",
+   "from": [
+    8.52,
+    0.0
+   ],
+   "to": [
+    9.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==4"
+  },
+  {
+   "type": "segment",
+   "id": "bk4y_14_0",
+   "from": [
+    8.0,
+    0.52
+   ],
+   "to": [
+    8.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==4"
+  },
+  {
+   "type": "segment",
+   "id": "bk4y_15_0",
+   "from": [
+    8.0,
+    -0.52
+   ],
+   "to": [
+    8.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "K==4"
+  },
+  {
+   "type": "rect",
+   "id": "kb4",
+   "x": -0.66,
+   "y": -2.66,
+   "w": 11.32,
+   "h": 5.32,
+   "role": "ol",
+   "fill": "ol",
+   "fillOpacity": 0.12,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "visible": "K==4"
+  },
+  {
+   "type": "text",
+   "id": "kn4",
+   "at": [
+    5,
+    -4.9
+   ],
+   "text": "from butan-1-ol",
+   "role": "ol",
+   "size": "s",
+   "bold": false,
+   "layer": "front",
+   "visible": "K==4"
+  },
+  {
+   "type": "text",
+   "id": "nm1_1",
+   "at": [
+    0.0,
+    5.0
+   ],
+   "text": "[[ol|methyl]] [[acid|methanoate]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==1&&K==1"
+  },
+  {
+   "type": "text",
+   "id": "fm1_1",
+   "at": [
+    0.0,
+    -6.9
+   ],
+   "text": "C₂H₄O₂  ·  HCOOCH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==1&&K==1"
+  },
+  {
+   "type": "text",
+   "id": "nm1_2",
+   "at": [
+    0.0,
+    5.0
+   ],
+   "text": "[[ol|ethyl]] [[acid|methanoate]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==1&&K==2"
+  },
+  {
+   "type": "text",
+   "id": "fm1_2",
+   "at": [
+    0.0,
+    -6.9
+   ],
+   "text": "C₃H₆O₂  ·  HCOOCH₂CH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==1&&K==2"
+  },
+  {
+   "type": "text",
+   "id": "nm1_3",
+   "at": [
+    0.0,
+    5.0
+   ],
+   "text": "[[ol|propyl]] [[acid|methanoate]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==1&&K==3"
+  },
+  {
+   "type": "text",
+   "id": "fm1_3",
+   "at": [
+    0.0,
+    -6.9
+   ],
+   "text": "C₄H₈O₂  ·  HCOOCH₂CH₂CH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==1&&K==3"
+  },
+  {
+   "type": "text",
+   "id": "nm1_4",
+   "at": [
+    0.0,
+    5.0
+   ],
+   "text": "[[ol|butyl]] [[acid|methanoate]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==1&&K==4"
+  },
+  {
+   "type": "text",
+   "id": "fm1_4",
+   "at": [
+    0.0,
+    -6.9
+   ],
+   "text": "C₅H₁₀O₂  ·  HCOOCH₂CH₂CH₂CH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==1&&K==4"
+  },
+  {
+   "type": "text",
+   "id": "nm2_1",
+   "at": [
+    0.0,
+    5.0
+   ],
+   "text": "[[ol|methyl]] [[acid|ethanoate]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==2&&K==1"
+  },
+  {
+   "type": "text",
+   "id": "fm2_1",
+   "at": [
+    0.0,
+    -6.9
+   ],
+   "text": "C₃H₆O₂  ·  CH₃COOCH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==2&&K==1"
+  },
+  {
+   "type": "text",
+   "id": "nm2_2",
+   "at": [
+    0.0,
+    5.0
+   ],
+   "text": "[[ol|ethyl]] [[acid|ethanoate]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==2&&K==2"
+  },
+  {
+   "type": "text",
+   "id": "fm2_2",
+   "at": [
+    0.0,
+    -6.9
+   ],
+   "text": "C₄H₈O₂  ·  CH₃COOCH₂CH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==2&&K==2"
+  },
+  {
+   "type": "text",
+   "id": "nm2_3",
+   "at": [
+    0.0,
+    5.0
+   ],
+   "text": "[[ol|propyl]] [[acid|ethanoate]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==2&&K==3"
+  },
+  {
+   "type": "text",
+   "id": "fm2_3",
+   "at": [
+    0.0,
+    -6.9
+   ],
+   "text": "C₅H₁₀O₂  ·  CH₃COOCH₂CH₂CH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==2&&K==3"
+  },
+  {
+   "type": "text",
+   "id": "nm2_4",
+   "at": [
+    0.0,
+    5.0
+   ],
+   "text": "[[ol|butyl]] [[acid|ethanoate]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==2&&K==4"
+  },
+  {
+   "type": "text",
+   "id": "fm2_4",
+   "at": [
+    0.0,
+    -6.9
+   ],
+   "text": "C₆H₁₂O₂  ·  CH₃COOCH₂CH₂CH₂CH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==2&&K==4"
+  },
+  {
+   "type": "text",
+   "id": "nm3_1",
+   "at": [
+    0.0,
+    5.0
+   ],
+   "text": "[[ol|methyl]] [[acid|propanoate]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==3&&K==1"
+  },
+  {
+   "type": "text",
+   "id": "fm3_1",
+   "at": [
+    0.0,
+    -6.9
+   ],
+   "text": "C₄H₈O₂  ·  CH₃CH₂COOCH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==3&&K==1"
+  },
+  {
+   "type": "text",
+   "id": "nm3_2",
+   "at": [
+    0.0,
+    5.0
+   ],
+   "text": "[[ol|ethyl]] [[acid|propanoate]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==3&&K==2"
+  },
+  {
+   "type": "text",
+   "id": "fm3_2",
+   "at": [
+    0.0,
+    -6.9
+   ],
+   "text": "C₅H₁₀O₂  ·  CH₃CH₂COOCH₂CH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==3&&K==2"
+  },
+  {
+   "type": "text",
+   "id": "nm3_3",
+   "at": [
+    0.0,
+    5.0
+   ],
+   "text": "[[ol|propyl]] [[acid|propanoate]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==3&&K==3"
+  },
+  {
+   "type": "text",
+   "id": "fm3_3",
+   "at": [
+    0.0,
+    -6.9
+   ],
+   "text": "C₆H₁₂O₂  ·  CH₃CH₂COOCH₂CH₂CH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==3&&K==3"
+  },
+  {
+   "type": "text",
+   "id": "nm3_4",
+   "at": [
+    0.0,
+    5.0
+   ],
+   "text": "[[ol|butyl]] [[acid|propanoate]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==3&&K==4"
+  },
+  {
+   "type": "text",
+   "id": "fm3_4",
+   "at": [
+    0.0,
+    -6.9
+   ],
+   "text": "C₇H₁₄O₂  ·  CH₃CH₂COOCH₂CH₂CH₂CH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==3&&K==4"
+  },
+  {
+   "type": "text",
+   "id": "nm4_1",
+   "at": [
+    0.0,
+    5.0
+   ],
+   "text": "[[ol|methyl]] [[acid|butanoate]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==4&&K==1"
+  },
+  {
+   "type": "text",
+   "id": "fm4_1",
+   "at": [
+    0.0,
+    -6.9
+   ],
+   "text": "C₅H₁₀O₂  ·  CH₃CH₂CH₂COOCH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==4&&K==1"
+  },
+  {
+   "type": "text",
+   "id": "nm4_2",
+   "at": [
+    0.0,
+    5.0
+   ],
+   "text": "[[ol|ethyl]] [[acid|butanoate]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==4&&K==2"
+  },
+  {
+   "type": "text",
+   "id": "fm4_2",
+   "at": [
+    0.0,
+    -6.9
+   ],
+   "text": "C₆H₁₂O₂  ·  CH₃CH₂CH₂COOCH₂CH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==4&&K==2"
+  },
+  {
+   "type": "text",
+   "id": "nm4_3",
+   "at": [
+    0.0,
+    5.0
+   ],
+   "text": "[[ol|propyl]] [[acid|butanoate]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==4&&K==3"
+  },
+  {
+   "type": "text",
+   "id": "fm4_3",
+   "at": [
+    0.0,
+    -6.9
+   ],
+   "text": "C₇H₁₄O₂  ·  CH₃CH₂CH₂COOCH₂CH₂CH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==4&&K==3"
+  },
+  {
+   "type": "text",
+   "id": "nm4_4",
+   "at": [
+    0.0,
+    5.0
+   ],
+   "text": "[[ol|butyl]] [[acid|butanoate]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==4&&K==4"
+  },
+  {
+   "type": "text",
+   "id": "fm4_4",
+   "at": [
+    0.0,
+    -6.9
+   ],
+   "text": "C₈H₁₆O₂  ·  CH₃CH₂CH₂COOCH₂CH₂CH₂CH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "A==4&&K==4"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Two parts, two names",
+   "narration": "An ester has **two parts** joined through –COO–. Here: an acid part with 2 carbons (orange) and an alkyl part with 1 carbon (blue). The blue part comes from the **alcohol**, the orange part from the **acid**. Name: **methyl ethanoate**.",
+   "actions": [
+    {
+     "set": {
+      "a": 2,
+      "k": 1
+     }
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Alkyl part first",
+   "narration": "The name starts with the **alkyl group** from the alcohol ([[ol|methyl]], [[ol|ethyl]], [[ol|propyl]] …) and ends with the **acid stem + “oate”**. Here: 3-carbon acid part + 2-carbon alkyl part = **ethyl propanoate**.",
+   "actions": [
+    {
+     "set": {
+      "a": 3,
+      "k": 2
+     }
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Longer chains",
+   "narration": "4-carbon acid part + 3-carbon alkyl part: **propyl butanoate**. The acid-part stem is **but** (4 carbons, counting the C=O carbon); the alkyl group is **propyl**.",
+   "actions": [
+    {
+     "set": {
+      "a": 4,
+      "k": 3
+     }
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Swap the two parts",
+   "narration": "Swap the sizes: 1-carbon acid part and 3-carbon alkyl part gives **propyl methanoate**. Same pieces but a **different ester**. Which part is which matters!",
+   "actions": [
+    {
+     "set": {
+      "a": 1,
+      "k": 3
+     }
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Read the formula backwards",
+   "narration": "**CH₃CH₂COOCH₃**: the part with C=O belongs to the acid: CH₃CH₂CO = 3 carbons = **propanoate**; the part after the O is **methyl**. Name: **methyl propanoate** (made from propanoic acid + methanol).",
+   "actions": [
+    {
+     "set": {
+      "a": 3,
+      "k": 1
+     }
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "The rule",
+   "narration": "**alkyl (from the alcohol)** + **stem + “oate” (from the acid)**. To find the parent compounds, replace “oate” by “oic acid” and “alkyl” by the alcohol: ethyl ethanoate comes from ethanoic acid + ethanol.",
+   "actions": [
+    {
+     "set": {
+      "a": 2,
+      "k": 2
+     }
+    }
+   ]
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Naming an ester",
+   "tex": "\\role{ol}{\\text{alkyl}}\\ \\ \\role{acid}{\\text{stem}\\,+\\,\\text{oate}}",
+   "text": "Alkyl group of the alcohol first, then the acid stem with the ending -oate."
+  },
+  {
+   "title": "The ester group",
+   "tex": "\\role{ester}{\\mathrm{RCOOR\\prime}}",
+   "text": "R comes from the acid, R′ from the alcohol."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "What is the name of **CH₃CH₂CH₂COOCH₃**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "butyl methanoate"
+    },
+    {
+     "id": "b",
+     "label": "methyl propanoate"
+    },
+    {
+     "id": "c",
+     "label": "methyl butanoate"
+    },
+    {
+     "id": "d",
+     "label": "butyl ethanoate"
+    }
+   ],
+   "answer": "c",
+   "hint": "The part with C=O is the acid part; the part after the O is the alkyl group.",
+   "explain": "CH₃CH₂CH₂CO = 4 carbons (butanoate); OCH₃ = methyl. Methyl butanoate."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which two compounds react to make **ethyl methanoate**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "methanol and ethanol"
+    },
+    {
+     "id": "b",
+     "label": "methanoic acid and ethanol"
+    },
+    {
+     "id": "c",
+     "label": "ethanoic acid and methanol"
+    },
+    {
+     "id": "d",
+     "label": "ethanoic acid and ethanol"
+    }
+   ],
+   "answer": "b",
+   "hint": "Alkyl part = alcohol; “…oate” = acid.",
+   "explain": "ethyl → ethanol; methanoate → methanoic acid."
+  },
+  {
+   "id": "c3",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "How many **carbon atoms** are in one molecule of **propyl ethanoate**?",
+   "answer": 5,
+   "hint": "Acid part (ethan-) + alkyl part (propyl).",
+   "explain": "2 + 3 = 5 carbons: CH₃COOCH₂CH₂CH₃."
+  },
+  {
+   "id": "c4",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "In **ethyl propanoate**, which part comes from the **alcohol**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "propanoate"
+    },
+    {
+     "id": "b",
+     "label": "ethyl"
+    },
+    {
+     "id": "c",
+     "label": "the whole name"
+    },
+    {
+     "id": "d",
+     "label": "the C=O group"
+    }
+   ],
+   "answer": "b",
+   "hint": "The first word.",
+   "explain": "The first word, the alkyl group, comes from the alcohol (ethanol)."
+  }
+ ],
+ "takeaways": [
+  "Ester name = **alkyl** (from the alcohol) **+ stem + oate** (from the acid).",
+  "The part with **C=O** is the acid part; the part joined to the single-bonded **O** is the alkyl part.",
+  "To find the parents: **-oate → -oic acid**, **alkyl → alcohol**."
+ ],
+ "notes": [
+  {
+   "title": "Explore",
+   "text": "Use the two sliders in the Values tab to make any of the 16 esters and read their names."
+  }
+ ]
+}

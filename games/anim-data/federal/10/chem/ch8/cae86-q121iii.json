@@ -1,0 +1,1093 @@
+{
+ "id": "g10-chem-c8-cae86-q121iii",
+ "title": "Exercise 8.6 · Q121 (iii)",
+ "summary": "Ethanoic acid and ethanol make ethyl ethanoate (a fruity-smelling ester) and water.",
+ "alt": "Exercise 8.6 · Q121 (iii): Complete the following reactions and write the names of the reactants and the products: (iii) CH₃COOH + CH₃CH₂OH →",
+ "autoGrid": false,
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -6.01,
+   10.01
+  ],
+  "y": [
+   -9.65,
+   8.45
+  ],
+  "pad": 10
+ },
+ "roles": {
+  "acid": {
+   "label": "-oic acid · –COOH",
+   "color": "#ea580c",
+   "text": "The carboxyl group of a carboxylic acid (orange box in the book)."
+  },
+  "ol": {
+   "label": "-ol · –OH",
+   "color": "#2563eb",
+   "text": "The hydroxyl group of an alcohol."
+  },
+  "ester": {
+   "label": "-oate · –COO–",
+   "color": "#0d9488",
+   "text": "The ester link."
+  },
+  "stem": {
+   "label": "Stem (how many C)",
+   "color": "#16a34a",
+   "text": "The first part of the name. It tells you how many carbon atoms are in the chain."
+  },
+  "atomO": {
+   "label": "Oxygen",
+   "color": "#ef4444",
+   "text": "Every oxygen atom makes two bonds.",
+   "legend": false
+  },
+  "hyd": {
+   "label": "Hydrogen",
+   "color": "#64748b",
+   "text": "Every hydrogen atom makes exactly one bond.",
+   "legend": false
+  },
+  "num": {
+   "label": "Position number",
+   "color": "#ca8a04",
+   "text": "The number in the name. It tells you where the double bond, triple bond or –OH sits."
+  },
+  "ane": {
+   "label": "-ane · alkane",
+   "color": "#64748b",
+   "text": "Only single bonds between the carbons. No functional group."
+  }
+ },
+ "params": [
+  {
+   "id": "t",
+   "label": "Water leaves",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0,
+   "role": "acid"
+  },
+  {
+   "id": "u",
+   "label": "Pieces join",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0,
+   "role": "ol"
+  }
+ ],
+ "shapes": [
+  {
+   "type": "text",
+   "id": "ta_0",
+   "at": [
+    -2.0,
+    3.3
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "ta_1",
+   "at": [
+    0.0,
+    3.3
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420,
+   "delay": 70
+  },
+  {
+   "type": "text",
+   "id": "ta_2",
+   "at": [
+    "2.0+t*(-4.0)",
+    "3.3+t*(-3.3)"
+   ],
+   "text": "O",
+   "role": "atomO",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420,
+   "delay": 140
+  },
+  {
+   "type": "text",
+   "id": "ta_3",
+   "at": [
+    "4.0+t*(-4.0)",
+    "3.3+t*(-3.3)"
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420,
+   "delay": 210
+  },
+  {
+   "type": "text",
+   "id": "ta_4",
+   "at": [
+    -4.0,
+    3.3
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "ta_5",
+   "at": [
+    -2.0,
+    5.3
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "ta_6",
+   "at": [
+    -2.0,
+    1.3
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "ta_7",
+   "at": [
+    0.0,
+    5.3
+   ],
+   "text": "O",
+   "role": "atomO",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "segment",
+   "id": "ba_0_0",
+   "from": [
+    -1.48,
+    3.3
+   ],
+   "to": [
+    -0.52,
+    3.3
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "ba_1_0",
+   "from": [
+    0.52,
+    3.3
+   ],
+   "to": [
+    1.48,
+    3.3
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 70,
+   "disappear": "s3"
+  },
+  {
+   "type": "segment",
+   "id": "ba_2_0",
+   "from": [
+    "2.52+t*(-4.0)",
+    "3.3+t*(-3.3)"
+   ],
+   "to": [
+    "3.48+t*(-4.0)",
+    "3.3+t*(-3.3)"
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 140
+  },
+  {
+   "type": "segment",
+   "id": "ba_3_0",
+   "from": [
+    -2.52,
+    3.3
+   ],
+   "to": [
+    -3.48,
+    3.3
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "ba_4_0",
+   "from": [
+    -2.0,
+    3.82
+   ],
+   "to": [
+    -2.0,
+    4.78
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "ba_5_0",
+   "from": [
+    -2.0,
+    2.78
+   ],
+   "to": [
+    -2.0,
+    1.82
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "ba_6_0",
+   "from": [
+    0.15,
+    3.82
+   ],
+   "to": [
+    0.15,
+    4.78
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 70
+  },
+  {
+   "type": "segment",
+   "id": "ba_6_1",
+   "from": [
+    -0.15,
+    3.82
+   ],
+   "to": [
+    -0.15,
+    4.78
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 70
+  },
+  {
+   "type": "text",
+   "id": "tb_0",
+   "at": [
+    "0.0+t*(-4.0)",
+    "-3.3+t*(3.3)"
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tb_1",
+   "at": [
+    2.0,
+    "-3.3+u*(6.6)"
+   ],
+   "text": "O",
+   "role": "atomO",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420,
+   "delay": 70
+  },
+  {
+   "type": "text",
+   "id": "tb_2",
+   "at": [
+    4.0,
+    "-3.3+u*(6.6)"
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420,
+   "delay": 140
+  },
+  {
+   "type": "text",
+   "id": "tb_3",
+   "at": [
+    6.0,
+    "-3.3+u*(6.6)"
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420,
+   "delay": 210
+  },
+  {
+   "type": "text",
+   "id": "tb_4",
+   "at": [
+    4.0,
+    "-1.3+u*(6.6)"
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tb_5",
+   "at": [
+    4.0,
+    "-5.3+u*(6.6)"
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tb_6",
+   "at": [
+    8.0,
+    "-3.3+u*(6.6)"
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tb_7",
+   "at": [
+    6.0,
+    "-1.3+u*(6.6)"
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tb_8",
+   "at": [
+    6.0,
+    "-5.3+u*(6.6)"
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "appear": "s0",
+   "appearDur": 420
+  },
+  {
+   "type": "segment",
+   "id": "bb_0_0",
+   "from": [
+    0.52,
+    -3.3
+   ],
+   "to": [
+    1.48,
+    -3.3
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "disappear": "s3"
+  },
+  {
+   "type": "segment",
+   "id": "bb_1_0",
+   "from": [
+    2.52,
+    "-3.3+u*(6.6)"
+   ],
+   "to": [
+    3.48,
+    "-3.3+u*(6.6)"
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 70
+  },
+  {
+   "type": "segment",
+   "id": "bb_2_0",
+   "from": [
+    4.52,
+    "-3.3+u*(6.6)"
+   ],
+   "to": [
+    5.48,
+    "-3.3+u*(6.6)"
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 140
+  },
+  {
+   "type": "segment",
+   "id": "bb_3_0",
+   "from": [
+    4.0,
+    "-2.78+u*(6.6)"
+   ],
+   "to": [
+    4.0,
+    "-1.82+u*(6.6)"
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 140
+  },
+  {
+   "type": "segment",
+   "id": "bb_4_0",
+   "from": [
+    4.0,
+    "-3.82+u*(6.6)"
+   ],
+   "to": [
+    4.0,
+    "-4.78+u*(6.6)"
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 140
+  },
+  {
+   "type": "segment",
+   "id": "bb_5_0",
+   "from": [
+    6.52,
+    "-3.3+u*(6.6)"
+   ],
+   "to": [
+    7.48,
+    "-3.3+u*(6.6)"
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 210
+  },
+  {
+   "type": "segment",
+   "id": "bb_6_0",
+   "from": [
+    6.0,
+    "-2.78+u*(6.6)"
+   ],
+   "to": [
+    6.0,
+    "-1.82+u*(6.6)"
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 210
+  },
+  {
+   "type": "segment",
+   "id": "bb_7_0",
+   "from": [
+    6.0,
+    "-3.82+u*(6.6)"
+   ],
+   "to": [
+    6.0,
+    "-4.78+u*(6.6)"
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 520,
+   "delay": 210
+  },
+  {
+   "type": "segment",
+   "id": "wb",
+   "from": [
+    -3.48,
+    0.0
+   ],
+   "to": [
+    -2.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.4,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s3",
+   "appearDur": 500,
+   "delay": 1500
+  },
+  {
+   "type": "text",
+   "id": "wlab",
+   "at": [
+    -2.0,
+    -1.55
+   ],
+   "text": "H₂O",
+   "role": "stem",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s3",
+   "appearDur": 450,
+   "delay": 1500
+  },
+  {
+   "type": "segment",
+   "id": "jb",
+   "from": [
+    0.52,
+    3.3
+   ],
+   "to": [
+    1.48,
+    3.3
+   ],
+   "role": "ink",
+   "strokeWidth": 2.4,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s4",
+   "appearDur": 500,
+   "delay": 1500
+  },
+  {
+   "type": "text",
+   "id": "plus",
+   "at": [
+    1.0,
+    0.0
+   ],
+   "text": "+",
+   "role": "muted",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "appear": "s0",
+   "disappear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "rect",
+   "id": "bxA",
+   "x": -0.66,
+   "y": 2.64,
+   "w": 5.32,
+   "h": 3.32,
+   "role": "acid",
+   "fill": "acid",
+   "fillOpacity": 0.13,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "appear": "s1",
+   "disappear": "s3",
+   "appearDur": 500
+  },
+  {
+   "type": "rect",
+   "id": "bxB",
+   "x": -0.66,
+   "y": -3.96,
+   "w": 3.32,
+   "h": 1.32,
+   "role": "ol",
+   "fill": "ol",
+   "fillOpacity": 0.13,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "appear": "s1",
+   "disappear": "s3",
+   "appearDur": 500
+  },
+  {
+   "type": "rect",
+   "id": "bxA2",
+   "x": 1.45,
+   "y": 2.75,
+   "w": 3.1,
+   "h": 1.1,
+   "role": "acid",
+   "fill": "acid",
+   "fillOpacity": 0.3,
+   "strokeWidth": 2.6,
+   "layer": "back",
+   "appear": "s2",
+   "disappear": "s3",
+   "appearDur": 500
+  },
+  {
+   "type": "rect",
+   "id": "bxB2",
+   "x": -0.55,
+   "y": -3.85,
+   "w": 1.1,
+   "h": 1.1,
+   "role": "ol",
+   "fill": "ol",
+   "fillOpacity": 0.3,
+   "strokeWidth": 2.6,
+   "layer": "back",
+   "appear": "s2",
+   "disappear": "s3",
+   "appearDur": 500
+  },
+  {
+   "type": "rect",
+   "id": "fxA",
+   "x": -4.66,
+   "y": 0.64,
+   "w": 5.32,
+   "h": 5.32,
+   "role": "acid",
+   "fill": "acid",
+   "fillOpacity": 0.12,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "appear": "s5",
+   "appearDur": 500
+  },
+  {
+   "type": "rect",
+   "id": "fxB",
+   "x": 1.34,
+   "y": 0.64,
+   "w": 7.32,
+   "h": 5.32,
+   "role": "ol",
+   "fill": "ol",
+   "fillOpacity": 0.12,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "appear": "s5",
+   "appearDur": 500
+  },
+  {
+   "type": "text",
+   "id": "nameA",
+   "at": [
+    0.0,
+    6.9
+   ],
+   "text": "Ethanoic acid",
+   "role": "acid",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s1",
+   "disappear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "nameB",
+   "at": [
+    4.0,
+    -6.9
+   ],
+   "text": "Ethanol",
+   "role": "ol",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s1",
+   "disappear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "nameE",
+   "at": [
+    2.0,
+    6.9
+   ],
+   "text": "Ethyl ethanoate",
+   "role": "ester",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "appear": "s5",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "eq1",
+   "at": [
+    2.0,
+    -6.5
+   ],
+   "text": "CH₃COOH + CH₃CH₂OH",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s6",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "eq2",
+   "at": [
+    2.0,
+    -8.1
+   ],
+   "text": "→ CH₃COOCH₂CH₃ + H₂O",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "appear": "s6",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "narration": "**Complete the reaction and name the reactants and the products:** CH₃COOH + CH₃CH₂OH → ?",
+   "actions": [
+    {
+     "set": {
+      "t": 0,
+      "u": 0
+     }
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Name the reactants",
+   "narration": "CH₃COOH has the –COOH group (orange): it is **ethanoic acid**. CH₃CH₂OH has the –OH group (blue): it is **ethanol**.",
+   "actions": [
+    {
+     "set": {
+      "t": 0,
+      "u": 0
+     }
+    },
+    {
+     "pulse": [
+      "bxA",
+      "bxB"
+     ],
+     "at": 500
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "The esterification rule",
+   "narration": "In esterification **the ACID gives its –OH and the ALCOHOL gives its H**. These three atoms (O, H and H) are about to leave together.",
+   "actions": [
+    {
+     "set": {
+      "t": 0,
+      "u": 0
+     }
+    },
+    {
+     "pulse": [
+      "bxA2",
+      "bxB2"
+     ],
+     "at": 500
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Water leaves",
+   "narration": "The –OH from the acid and the H from the alcohol join to make **water, H₂O**. The C–O bond of the acid and the O–H bond of the alcohol are broken.",
+   "actions": [
+    {
+     "set": {
+      "u": 0
+     }
+    },
+    {
+     "tween": {
+      "t": 1
+     },
+     "dur": 1500,
+     "at": 0
+    },
+    {
+     "pulse": [
+      "wlab"
+     ],
+     "at": 1700
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "The pieces join",
+   "narration": "The oxygen of the alcohol is now free. It bonds to the carbonyl carbon of the acid, so the two pieces are **joined through an O atom**: the ester link **–COO–**.",
+   "actions": [
+    {
+     "set": {
+      "t": 1
+     }
+    },
+    {
+     "tween": {
+      "u": 1
+     },
+     "dur": 1500,
+     "at": 0
+    },
+    {
+     "pulse": [
+      "jb"
+     ],
+     "at": 1700
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Name the ester",
+   "narration": "The part from the **alcohol** is named first ([[ol|ethyl]]), the part from the **acid** comes second and ends in **-oate** ([[acid|ethanoate]]). So the ester is **ethyl ethanoate**, CH₃COOCH₂CH₃.",
+   "actions": [
+    {
+     "set": {
+      "t": 1,
+      "u": 1
+     }
+    },
+    {
+     "pulse": [
+      "nameE"
+     ],
+     "at": 500
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "title": "The complete equation",
+   "narration": "CH₃COOH + CH₃CH₂OH → CH₃COOCH₂CH₃ + H₂O.  Products: **ethyl ethanoate** and **water**.",
+   "actions": [
+    {
+     "set": {
+      "t": 1,
+      "u": 1
+     }
+    },
+    {
+     "pulse": [
+      "eq1",
+      "eq2"
+     ],
+     "at": 500
+    }
+   ]
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Esterification",
+   "tex": "\\role{acid}{\\mathrm{RCOOH}} + \\role{ol}{\\mathrm{R'OH}} \\rightarrow \\role{ester}{\\mathrm{RCOOR'}} + \\mathrm{H_2O}",
+   "text": "An acid and an alcohol make an ester and water. R and R′ are the carbon chains of the acid and the alcohol."
+  },
+  {
+   "title": "Naming an ester",
+   "tex": "\\role{ol}{\\text{alkyl (from the alcohol)}}\\ \\ \\role{acid}{\\text{stem + oate (from the acid)}}",
+   "text": "Alkyl group first (methyl, ethyl, propyl …), then the acid stem with the ending -oate."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "twin",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which ester is made from **butanoic acid** and **propan-1-ol**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "butyl propanoate"
+    },
+    {
+     "id": "b",
+     "label": "propyl butanoate"
+    },
+    {
+     "id": "c",
+     "label": "propyl butanoic acid"
+    },
+    {
+     "id": "d",
+     "label": "propyl butane"
+    }
+   ],
+   "answer": "b",
+   "hint": "Alcohol part first (alkyl), then the acid part ending in -oate.",
+   "explain": "butanoic acid + propan-1-ol → propyl butanoate + water."
+  },
+  {
+   "id": "twin2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "How many **carbon atoms** are in one molecule of **propyl butanoate**?",
+   "answer": 7,
+   "hint": "Add the carbons of the acid part (butanoate = 4) and of the alkyl part (propyl = 3).",
+   "explain": "4 from the acid + 3 from the alcohol = 7."
+  }
+ ],
+ "takeaways": [
+  "**The ACID gives –OH, the ALCOHOL gives H** — together they leave as water.",
+  "The ester link is **–COO–**; the two chains are joined through the O of the alcohol.",
+  "Name = **alkyl** (from the alcohol) + **stem + oate** (from the acid), e.g. ethyl ethanoate."
+ ],
+ "notes": [
+  {
+   "title": "Exam tip",
+   "text": "Write “+ water” (H₂O) on the right-hand side of every esterification equation, and name the ester starting from the alcohol part."
+  }
+ ]
+}

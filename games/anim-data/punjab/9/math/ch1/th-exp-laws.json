@@ -1,0 +1,425 @@
+{
+ "title": "Laws of exponents with boxes",
+ "summary": "Count the factors: multiplying powers adds exponents, dividing subtracts, a power of a power multiplies.",
+ "alt": "Boxes show the factors of b^m and b^n. The three laws of exponents are read off by counting the boxes.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -0.6,
+   10.6
+  ],
+  "y": [
+   0.4,
+   6.9
+  ],
+  "ratio": 0.58,
+  "pad": 6
+ },
+ "roles": {
+  "ma": {
+   "label": "First power",
+   "color": "#2563eb",
+   "text": "The factors of b to the m.",
+   "legend": true
+  },
+  "nb": {
+   "label": "Second power",
+   "color": "#e11d48",
+   "text": "The factors of b to the n.",
+   "legend": true
+  },
+  "res": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "The result of the law.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "law",
+   "label": "Law",
+   "type": "choice",
+   "default": 0,
+   "options": [
+    {
+     "value": 0,
+     "label": "a^m × a^n"
+    },
+    {
+     "value": 1,
+     "label": "a^m ÷ a^n"
+    },
+    {
+     "value": 2,
+     "label": "(a^m)^n"
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "label": "Base  b",
+   "min": 2,
+   "max": 5,
+   "step": 1,
+   "default": 2
+  },
+  {
+   "id": "m",
+   "label": "Exponent  m",
+   "min": 1,
+   "max": 5,
+   "step": 1,
+   "default": 4,
+   "role": "ma"
+  },
+  {
+   "id": "n",
+   "label": "Exponent  n",
+   "min": 1,
+   "max": 5,
+   "step": 1,
+   "default": 3,
+   "role": "nb"
+  }
+ ],
+ "derived": {},
+ "shapes": [
+  {
+   "type": "repeat",
+   "id": "g1",
+   "count": "law==2 ? m*n : m",
+   "as": "i",
+   "template": {
+    "type": "rect",
+    "x": "law==2 ? mod(i,m) : i",
+    "y": "law==2 ? 5.2-floor(i/m) : 3",
+    "w": 0.8,
+    "h": 0.8,
+    "role": "ma",
+    "fill": "ma",
+    "fillOpacity": 0.35,
+    "opacity": "law==1 && i>=m-n ? 0.25 : 1"
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "g2",
+   "count": "law==0 ? n : 0",
+   "as": "i",
+   "template": {
+    "type": "rect",
+    "x": "m+i",
+    "y": 3,
+    "w": 0.8,
+    "h": 0.8,
+    "role": "nb",
+    "fill": "nb",
+    "fillOpacity": 0.35
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "xs",
+   "count": "law==1 ? n : 0",
+   "as": "i",
+   "template": {
+    "type": "segment",
+    "from": [
+     "m-n+i+0.05",
+     3.05
+    ],
+    "to": [
+     "m-n+i+0.75",
+     3.75
+    ],
+    "role": "nb",
+    "strokeWidth": 3
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "xs2",
+   "count": "law==1 ? n : 0",
+   "as": "i",
+   "template": {
+    "type": "segment",
+    "from": [
+     "m-n+i+0.05",
+     3.75
+    ],
+    "to": [
+     "m-n+i+0.75",
+     3.05
+    ],
+    "role": "nb",
+    "strokeWidth": 3
+   }
+  },
+  {
+   "type": "text",
+   "id": "t0a",
+   "at": [
+    "(m-1)/2",
+    4.3
+   ],
+   "text": "{{b|int}}^{{m|int}}",
+   "role": "ma",
+   "size": "l",
+   "bold": true,
+   "visible": "law==0"
+  },
+  {
+   "type": "text",
+   "id": "t0b",
+   "at": [
+    "m+(n-1)/2",
+    4.3
+   ],
+   "text": "{{b|int}}^{{n|int}}",
+   "role": "nb",
+   "size": "l",
+   "bold": true,
+   "visible": "law==0"
+  },
+  {
+   "type": "text",
+   "id": "t0c",
+   "at": [
+    "(m+n-1)/2",
+    2.1
+   ],
+   "text": "{{b|int}}^{{m|int}} × {{b|int}}^{{n|int}} = {{b|int}}^{{m+n|int}}",
+   "role": "res",
+   "size": "l",
+   "bold": true,
+   "visible": "law==0"
+  },
+  {
+   "type": "text",
+   "id": "t0d",
+   "at": [
+    "(m+n-1)/2",
+    1.2
+   ],
+   "text": "{{pow(b,m)|int}} × {{pow(b,n)|int}} = {{pow(b,m+n)|int}}",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "visible": "law==0"
+  },
+  {
+   "type": "text",
+   "id": "t1a",
+   "at": [
+    "(m-1)/2",
+    4.3
+   ],
+   "text": "cross out {{n|int}} factors",
+   "role": "nb",
+   "size": "m",
+   "bold": true,
+   "visible": "law==1"
+  },
+  {
+   "type": "text",
+   "id": "t1c",
+   "at": [
+    "(m-1)/2",
+    2.1
+   ],
+   "text": "{{b|int}}^{{m|int}} ÷ {{b|int}}^{{n|int}} = {{b|int}}^{{m-n|int}}",
+   "role": "res",
+   "size": "l",
+   "bold": true,
+   "visible": "law==1"
+  },
+  {
+   "type": "text",
+   "id": "t1d",
+   "at": [
+    "(m-1)/2",
+    1.2
+   ],
+   "text": "{{pow(b,m)|int}} ÷ {{pow(b,n)|int}} = {{pow(b,m-n)|int}}",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "visible": "law==1"
+  },
+  {
+   "type": "text",
+   "id": "t2a",
+   "at": [
+    "(m-1)/2",
+    6.5
+   ],
+   "text": "{{n|int}} rows of {{m|int}}",
+   "role": "ma",
+   "size": "m",
+   "bold": true,
+   "visible": "law==2"
+  },
+  {
+   "type": "text",
+   "id": "t2c",
+   "at": [
+    "(m-1)/2",
+    2.1
+   ],
+   "text": "({{b|int}}^{{m|int}})^{{n|int}} = {{b|int}}^{{m*n|int}}",
+   "role": "res",
+   "size": "l",
+   "bold": true,
+   "visible": "law==2"
+  },
+  {
+   "type": "text",
+   "id": "t2d",
+   "at": [
+    "(m-1)/2",
+    1.2
+   ],
+   "text": "= {{pow(pow(b,m),n)|int}}",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "visible": "law==2"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "What does a power mean?",
+   "narration": "\\( {{b|int}}^{{m|int}} \\) means **{{m|int}} copies of {{b|int}} multiplied together**. Each box in the picture is one factor of {{b|int}}.",
+   "actions": [
+    {
+     "set": {
+      "law": 0,
+      "b": 2,
+      "m": 4,
+      "n": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Multiply two powers",
+   "narration": "\\( {{b|int}}^{{m|int}} \\times {{b|int}}^{{n|int}} \\): put the two rows side by side. Now there are \\( {{m|int}} + {{n|int}} = {{m+n|int}} \\) factors, so the result is \\( {{b|int}}^{{m+n|int}} \\). **Add the exponents.**",
+   "actions": [
+    {
+     "set": {
+      "law": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Divide two powers",
+   "narration": "\\( {{b|int}}^{{m|int}} \\div {{b|int}}^{{n|int}} \\): {{n|int}} factors cancel. What is left is \\( {{b|int}}^{{m-n|int}} \\). **Subtract the exponents.**",
+   "actions": [
+    {
+     "set": {
+      "law": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Power of a power",
+   "narration": "\\( ({{b|int}}^{{m|int}})^{{n|int}} \\) means {{n|int}} rows of {{m|int}} factors. That is \\( {{m|int}} \\times {{n|int}} = {{m*n|int}} \\) factors. **Multiply the exponents.**",
+   "actions": [
+    {
+     "set": {
+      "law": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Try your own numbers",
+   "narration": "Change **b**, **m** and **n** and switch between the three laws.",
+   "actions": [
+    {
+     "set": {
+      "law": 0
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Product law",
+   "tex": "a^m \\times a^n = a^{m+n}",
+   "text": "Same base: add the exponents."
+  },
+  {
+   "title": "Quotient law",
+   "tex": "\\dfrac{a^m}{a^n} = a^{m-n}",
+   "text": "Same base: subtract the exponents."
+  },
+  {
+   "title": "Power of a power",
+   "tex": "(a^m)^n = a^{mn}",
+   "text": "Multiply the exponents."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Product",
+   "answer": 7,
+   "prompt": "\\( 2^4 \\times 2^3 = 2^{?} \\). What is the missing exponent?",
+   "hint": "Add the exponents.",
+   "explain": "\\( 2^{4+3} = 2^7 \\)"
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Quotient",
+   "answer": 3,
+   "prompt": "\\( 3^5 \\div 3^2 = 3^{?} \\). What is the missing exponent?",
+   "hint": "Subtract the exponents.",
+   "explain": "\\( 3^{5-2} = 3^3 \\)"
+  },
+  {
+   "id": "c3",
+   "type": "number",
+   "title": "Power of a power",
+   "answer": 6,
+   "prompt": "\\( (5^2)^3 = 5^{?} \\). What is the missing exponent?",
+   "hint": "Multiply the exponents.",
+   "explain": "\\( 5^{2 \\times 3} = 5^6 \\)"
+  }
+ ],
+ "intro": "A power is just a count of factors. The laws of exponents come from counting.",
+ "takeaways": [
+  "a^m × a^n = a^(m+n)",
+  "a^m ÷ a^n = a^(m−n)",
+  "(a^m)^n = a^(mn)"
+ ],
+ "notes": [
+  {
+   "title": "Keep n at most m",
+   "text": "For the division law keep n at most m so the exponent stays positive in this picture."
+  }
+ ],
+ "challengeIntro": "Now you try. Each question uses the picture above.",
+ "constraints": [
+  {
+   "when": "law!=1 || n<=m",
+   "message": "For a division keep n at most m."
+  }
+ ]
+}

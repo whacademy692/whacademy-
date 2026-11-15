@@ -1,0 +1,299 @@
+{
+ "title": "There is always another number between",
+ "summary": "Keep taking the middle of a gap on the number line: you never run out of numbers.",
+ "alt": "A number line segment from a to a+d with the middle points marked as the student halves the gap.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   "a-0.3*d",
+   "a+1.3*d"
+  ],
+  "y": [
+   "-0.55*d",
+   "0.55*d"
+  ],
+  "ratio": 0.69,
+  "pad": 8
+ },
+ "roles": {
+  "ends": {
+   "label": "The two numbers",
+   "color": "#e11d48",
+   "text": "The numbers we start with.",
+   "legend": true
+  },
+  "mid": {
+   "label": "Numbers in between",
+   "color": "#059669",
+   "text": "New numbers found by halving.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "a",
+   "label": "Start  a",
+   "min": -3,
+   "max": 3,
+   "step": 0.5,
+   "default": 1,
+   "role": "ends"
+  },
+  {
+   "id": "d",
+   "label": "Gap  d",
+   "min": 0.5,
+   "max": 4,
+   "step": 0.5,
+   "default": 1,
+   "role": "ends"
+  },
+  {
+   "id": "L",
+   "label": "Times halved  L",
+   "min": 0,
+   "max": 4,
+   "step": 1,
+   "default": 2,
+   "role": "mid"
+  }
+ ],
+ "derived": {},
+ "shapes": [
+  {
+   "type": "numberline",
+   "id": "nl",
+   "from": "a-0.25*d",
+   "to": "a+1.25*d",
+   "y": 0,
+   "step": 1,
+   "numbers": false,
+   "role": "ink"
+  },
+  {
+   "type": "repeat",
+   "id": "divs",
+   "count": "2^L-1",
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "a+d*(i+1)/2^L",
+     0
+    ],
+    "r": 5,
+    "role": "mid",
+    "layer": "front",
+    "label": {
+     "text": "{{a+d*(i+1)/2^L|3}}",
+     "dy": -22,
+     "visible": "L<=2",
+     "role": "mid",
+     "size": "s"
+    }
+   }
+  },
+  {
+   "type": "point",
+   "id": "pa",
+   "at": [
+    "a",
+    0
+   ],
+   "role": "ends",
+   "r": 7,
+   "layer": "front",
+   "label": {
+    "text": "{{a|2}}",
+    "dy": 24,
+    "size": "l",
+    "role": "ends"
+   }
+  },
+  {
+   "type": "point",
+   "id": "pb",
+   "at": [
+    "a+d",
+    0
+   ],
+   "role": "ends",
+   "r": 7,
+   "layer": "front",
+   "label": {
+    "text": "{{a+d|2}}",
+    "dy": 24,
+    "size": "l",
+    "role": "ends"
+   }
+  },
+  {
+   "type": "text",
+   "id": "cnt",
+   "at": [
+    "a+d/2",
+    "0.38*d"
+   ],
+   "text": "{{2^L-1|int}} numbers in between",
+   "role": "mid",
+   "size": "l",
+   "bold": true,
+   "visible": "L>0"
+  },
+  {
+   "type": "text",
+   "id": "inf",
+   "at": [
+    "a+d/2",
+    "-0.38*d"
+   ],
+   "text": "and we can always halve again!",
+   "role": "ends",
+   "size": "m",
+   "bold": true,
+   "visible": "L>=4"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Two numbers",
+   "narration": "Here are two numbers on the number line, {{a|2}} and {{a+d|2}}. Is there anything between them?",
+   "actions": [
+    {
+     "set": {
+      "L": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "The middle number",
+   "narration": "Yes: the **average** \\( \\frac{a+b}{2} = {{a+d/2|3}} \\) is exactly in the middle.",
+   "actions": [
+    {
+     "tween": {
+      "L": 1
+     },
+     "dur": 900
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Halve again",
+   "narration": "Take the middle of each half. Now there are {{2^L-1|int}} numbers between them.",
+   "actions": [
+    {
+     "tween": {
+      "L": 2
+     },
+     "dur": 900
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "And again",
+   "narration": "Halving once more gives {{2^L-1|int}} numbers. The gaps get smaller but there is always a new middle.",
+   "actions": [
+    {
+     "tween": {
+      "L": 3
+     },
+     "dur": 900
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "It never stops",
+   "narration": "Keep halving and you never run out. Between **any** two different numbers there are **infinitely many** rational numbers, and irrational ones too.",
+   "actions": [
+    {
+     "tween": {
+      "L": 4
+     },
+     "dur": 900
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Your turn",
+   "narration": "Change **a** and **d** and slide **L**. Try two numbers that are very close together.",
+   "actions": [
+    {
+     "set": {
+      "L": 2
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Midpoint",
+   "tex": "\\dfrac{a+b}{2}",
+   "text": "The average of two numbers lies exactly between them."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Find the middle",
+   "answer": 2.5,
+   "prompt": "Find the number exactly halfway between 2 and 3.",
+   "hint": "Add them and divide by 2.",
+   "explain": "\\( \\frac{2+3}{2} = 2.5 \\)",
+   "set": {
+    "a": 2,
+    "d": 1,
+    "L": 0
+   }
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "How many?",
+   "answer": "d",
+   "options": [
+    {
+     "id": "a",
+     "label": "None"
+    },
+    {
+     "id": "b",
+     "label": "Exactly 1"
+    },
+    {
+     "id": "c",
+     "label": "9"
+    },
+    {
+     "id": "d",
+     "label": "Infinitely many"
+    }
+   ],
+   "prompt": "How many rational numbers lie between 2 and 3?",
+   "hint": "Keep halving. Does it ever stop?",
+   "explain": "You can always take the middle of any gap, so there are **infinitely many**."
+  }
+ ],
+ "intro": "Rational numbers are packed together so tightly that no gap on the number line is ever empty.",
+ "takeaways": [
+  "The midpoint of two numbers is between them.",
+  "Halving can go on for ever, so there are infinitely many numbers between any two."
+ ],
+ "notes": [
+  {
+   "title": "Dense",
+   "text": "We say the rational numbers are dense: between any two there is another."
+  }
+ ],
+ "challengeIntro": "Now you try. Each question uses the picture above."
+}

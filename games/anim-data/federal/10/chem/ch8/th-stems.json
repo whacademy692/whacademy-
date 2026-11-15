@@ -1,0 +1,1136 @@
+{
+ "id": "g10-chem-c8-th-stems",
+ "title": "Stems 1 to 10: counting carbons in a name",
+ "summary": "The first part of an organic name tells you how many carbons are in the chain.",
+ "alt": "A chain of 1 to 10 carbons with the stems meth, eth, prop, but, pent, hex, hept, oct, non and dec.",
+ "autoGrid": false,
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -1.4,
+   18.0
+  ],
+  "y": [
+   -9.35,
+   6.55
+  ],
+  "pad": 10
+ },
+ "roles": {
+  "stem": {
+   "label": "Stem (how many C)",
+   "color": "#16a34a",
+   "text": "The first part of the name. It tells you how many carbon atoms are in the chain."
+  },
+  "ane": {
+   "label": "-ane · alkane",
+   "color": "#64748b",
+   "text": "Only single bonds between the carbons. No functional group."
+  },
+  "num": {
+   "label": "Position number",
+   "color": "#ca8a04",
+   "text": "The number in the name. It tells you where the double bond, triple bond or –OH sits."
+  },
+  "good": {
+   "label": "Correct",
+   "color": "#16a34a",
+   "text": "The part that follows the rules."
+  }
+ },
+ "params": [
+  {
+   "id": "n",
+   "label": "Carbon atoms",
+   "min": 1,
+   "max": 10,
+   "step": 1,
+   "default": 1,
+   "role": "stem"
+  }
+ ],
+ "derived": {
+  "N": "round(n)"
+ },
+ "readouts": [
+  {
+   "label": "Carbons",
+   "value": "{{N}}",
+   "role": "stem"
+  }
+ ],
+ "shapes": [
+  {
+   "type": "text",
+   "id": "c0",
+   "at": [
+    0.0,
+    2.3
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=1"
+  },
+  {
+   "type": "text",
+   "id": "k0",
+   "at": [
+    0.0,
+    0.9
+   ],
+   "text": "1",
+   "role": "num",
+   "size": "s",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=1"
+  },
+  {
+   "type": "segment",
+   "id": "b0_0",
+   "from": [
+    0.42,
+    2.3
+   ],
+   "to": [
+    1.28,
+    2.3
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=2"
+  },
+  {
+   "type": "text",
+   "id": "c1",
+   "at": [
+    1.7,
+    2.3
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=2"
+  },
+  {
+   "type": "text",
+   "id": "k1",
+   "at": [
+    1.7,
+    0.9
+   ],
+   "text": "2",
+   "role": "num",
+   "size": "s",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=2"
+  },
+  {
+   "type": "segment",
+   "id": "b1_0",
+   "from": [
+    2.12,
+    2.3
+   ],
+   "to": [
+    2.98,
+    2.3
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=3"
+  },
+  {
+   "type": "text",
+   "id": "c2",
+   "at": [
+    3.4,
+    2.3
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=3"
+  },
+  {
+   "type": "text",
+   "id": "k2",
+   "at": [
+    3.4,
+    0.9
+   ],
+   "text": "3",
+   "role": "num",
+   "size": "s",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=3"
+  },
+  {
+   "type": "segment",
+   "id": "b2_0",
+   "from": [
+    3.82,
+    2.3
+   ],
+   "to": [
+    4.68,
+    2.3
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=4"
+  },
+  {
+   "type": "text",
+   "id": "c3",
+   "at": [
+    5.1,
+    2.3
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=4"
+  },
+  {
+   "type": "text",
+   "id": "k3",
+   "at": [
+    5.1,
+    0.9
+   ],
+   "text": "4",
+   "role": "num",
+   "size": "s",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=4"
+  },
+  {
+   "type": "segment",
+   "id": "b3_0",
+   "from": [
+    5.52,
+    2.3
+   ],
+   "to": [
+    6.38,
+    2.3
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=5"
+  },
+  {
+   "type": "text",
+   "id": "c4",
+   "at": [
+    6.8,
+    2.3
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=5"
+  },
+  {
+   "type": "text",
+   "id": "k4",
+   "at": [
+    6.8,
+    0.9
+   ],
+   "text": "5",
+   "role": "num",
+   "size": "s",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=5"
+  },
+  {
+   "type": "segment",
+   "id": "b4_0",
+   "from": [
+    7.22,
+    2.3
+   ],
+   "to": [
+    8.08,
+    2.3
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=6"
+  },
+  {
+   "type": "text",
+   "id": "c5",
+   "at": [
+    8.5,
+    2.3
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=6"
+  },
+  {
+   "type": "text",
+   "id": "k5",
+   "at": [
+    8.5,
+    0.9
+   ],
+   "text": "6",
+   "role": "num",
+   "size": "s",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=6"
+  },
+  {
+   "type": "segment",
+   "id": "b5_0",
+   "from": [
+    8.92,
+    2.3
+   ],
+   "to": [
+    9.78,
+    2.3
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=7"
+  },
+  {
+   "type": "text",
+   "id": "c6",
+   "at": [
+    10.2,
+    2.3
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=7"
+  },
+  {
+   "type": "text",
+   "id": "k6",
+   "at": [
+    10.2,
+    0.9
+   ],
+   "text": "7",
+   "role": "num",
+   "size": "s",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=7"
+  },
+  {
+   "type": "segment",
+   "id": "b6_0",
+   "from": [
+    10.62,
+    2.3
+   ],
+   "to": [
+    11.48,
+    2.3
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=8"
+  },
+  {
+   "type": "text",
+   "id": "c7",
+   "at": [
+    11.9,
+    2.3
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=8"
+  },
+  {
+   "type": "text",
+   "id": "k7",
+   "at": [
+    11.9,
+    0.9
+   ],
+   "text": "8",
+   "role": "num",
+   "size": "s",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=8"
+  },
+  {
+   "type": "segment",
+   "id": "b7_0",
+   "from": [
+    12.32,
+    2.3
+   ],
+   "to": [
+    13.18,
+    2.3
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=9"
+  },
+  {
+   "type": "text",
+   "id": "c8",
+   "at": [
+    13.6,
+    2.3
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=9"
+  },
+  {
+   "type": "text",
+   "id": "k8",
+   "at": [
+    13.6,
+    0.9
+   ],
+   "text": "9",
+   "role": "num",
+   "size": "s",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=9"
+  },
+  {
+   "type": "segment",
+   "id": "b8_0",
+   "from": [
+    14.02,
+    2.3
+   ],
+   "to": [
+    14.88,
+    2.3
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=10"
+  },
+  {
+   "type": "text",
+   "id": "c9",
+   "at": [
+    15.299999999999999,
+    2.3
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=10"
+  },
+  {
+   "type": "text",
+   "id": "k9",
+   "at": [
+    15.299999999999999,
+    0.9
+   ],
+   "text": "10",
+   "role": "num",
+   "size": "s",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=10"
+  },
+  {
+   "type": "text",
+   "id": "nm1",
+   "at": [
+    7.6499999999999995,
+    5.2
+   ],
+   "text": "[[stem|meth]][[ane|ane]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "N==1"
+  },
+  {
+   "type": "text",
+   "id": "nm2",
+   "at": [
+    7.6499999999999995,
+    5.2
+   ],
+   "text": "[[stem|eth]][[ane|ane]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "N==2"
+  },
+  {
+   "type": "text",
+   "id": "nm3",
+   "at": [
+    7.6499999999999995,
+    5.2
+   ],
+   "text": "[[stem|prop]][[ane|ane]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "N==3"
+  },
+  {
+   "type": "text",
+   "id": "nm4",
+   "at": [
+    7.6499999999999995,
+    5.2
+   ],
+   "text": "[[stem|but]][[ane|ane]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "N==4"
+  },
+  {
+   "type": "text",
+   "id": "nm5",
+   "at": [
+    7.6499999999999995,
+    5.2
+   ],
+   "text": "[[stem|pent]][[ane|ane]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "N==5"
+  },
+  {
+   "type": "text",
+   "id": "nm6",
+   "at": [
+    7.6499999999999995,
+    5.2
+   ],
+   "text": "[[stem|hex]][[ane|ane]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "N==6"
+  },
+  {
+   "type": "text",
+   "id": "nm7",
+   "at": [
+    7.6499999999999995,
+    5.2
+   ],
+   "text": "[[stem|hept]][[ane|ane]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "N==7"
+  },
+  {
+   "type": "text",
+   "id": "nm8",
+   "at": [
+    7.6499999999999995,
+    5.2
+   ],
+   "text": "[[stem|oct]][[ane|ane]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "N==8"
+  },
+  {
+   "type": "text",
+   "id": "nm9",
+   "at": [
+    7.6499999999999995,
+    5.2
+   ],
+   "text": "[[stem|non]][[ane|ane]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "N==9"
+  },
+  {
+   "type": "text",
+   "id": "nm10",
+   "at": [
+    7.6499999999999995,
+    5.2
+   ],
+   "text": "[[stem|dec]][[ane|ane]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "N==10"
+  },
+  {
+   "type": "text",
+   "id": "ls1",
+   "at": [
+    1.5,
+    -1.7
+   ],
+   "text": "[[num|1]] [[stem|meth]]",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "layer": "front"
+  },
+  {
+   "type": "rect",
+   "id": "hl1",
+   "x": -0.05,
+   "y": -2.55,
+   "w": 3.1,
+   "h": 1.7,
+   "role": "stem",
+   "fill": "stem",
+   "fillOpacity": 0.14,
+   "strokeWidth": 2.0,
+   "layer": "back",
+   "visible": "N==1"
+  },
+  {
+   "type": "text",
+   "id": "ls2",
+   "at": [
+    4.9,
+    -1.7
+   ],
+   "text": "[[num|2]] [[stem|eth]]",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "layer": "front"
+  },
+  {
+   "type": "rect",
+   "id": "hl2",
+   "x": 3.35,
+   "y": -2.55,
+   "w": 3.1,
+   "h": 1.7,
+   "role": "stem",
+   "fill": "stem",
+   "fillOpacity": 0.14,
+   "strokeWidth": 2.0,
+   "layer": "back",
+   "visible": "N==2"
+  },
+  {
+   "type": "text",
+   "id": "ls3",
+   "at": [
+    8.3,
+    -1.7
+   ],
+   "text": "[[num|3]] [[stem|prop]]",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "layer": "front"
+  },
+  {
+   "type": "rect",
+   "id": "hl3",
+   "x": 6.75,
+   "y": -2.55,
+   "w": 3.1,
+   "h": 1.7,
+   "role": "stem",
+   "fill": "stem",
+   "fillOpacity": 0.14,
+   "strokeWidth": 2.0,
+   "layer": "back",
+   "visible": "N==3"
+  },
+  {
+   "type": "text",
+   "id": "ls4",
+   "at": [
+    11.7,
+    -1.7
+   ],
+   "text": "[[num|4]] [[stem|but]]",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "layer": "front"
+  },
+  {
+   "type": "rect",
+   "id": "hl4",
+   "x": 10.15,
+   "y": -2.55,
+   "w": 3.1,
+   "h": 1.7,
+   "role": "stem",
+   "fill": "stem",
+   "fillOpacity": 0.14,
+   "strokeWidth": 2.0,
+   "layer": "back",
+   "visible": "N==4"
+  },
+  {
+   "type": "text",
+   "id": "ls5",
+   "at": [
+    15.1,
+    -1.7
+   ],
+   "text": "[[num|5]] [[stem|pent]]",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "layer": "front"
+  },
+  {
+   "type": "rect",
+   "id": "hl5",
+   "x": 13.55,
+   "y": -2.55,
+   "w": 3.1,
+   "h": 1.7,
+   "role": "stem",
+   "fill": "stem",
+   "fillOpacity": 0.14,
+   "strokeWidth": 2.0,
+   "layer": "back",
+   "visible": "N==5"
+  },
+  {
+   "type": "text",
+   "id": "ls6",
+   "at": [
+    1.5,
+    -3.5999999999999996
+   ],
+   "text": "[[num|6]] [[stem|hex]]",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "layer": "front"
+  },
+  {
+   "type": "rect",
+   "id": "hl6",
+   "x": -0.05,
+   "y": -4.45,
+   "w": 3.1,
+   "h": 1.7,
+   "role": "stem",
+   "fill": "stem",
+   "fillOpacity": 0.14,
+   "strokeWidth": 2.0,
+   "layer": "back",
+   "visible": "N==6"
+  },
+  {
+   "type": "text",
+   "id": "ls7",
+   "at": [
+    4.9,
+    -3.5999999999999996
+   ],
+   "text": "[[num|7]] [[stem|hept]]",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "layer": "front"
+  },
+  {
+   "type": "rect",
+   "id": "hl7",
+   "x": 3.35,
+   "y": -4.45,
+   "w": 3.1,
+   "h": 1.7,
+   "role": "stem",
+   "fill": "stem",
+   "fillOpacity": 0.14,
+   "strokeWidth": 2.0,
+   "layer": "back",
+   "visible": "N==7"
+  },
+  {
+   "type": "text",
+   "id": "ls8",
+   "at": [
+    8.3,
+    -3.5999999999999996
+   ],
+   "text": "[[num|8]] [[stem|oct]]",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "layer": "front"
+  },
+  {
+   "type": "rect",
+   "id": "hl8",
+   "x": 6.75,
+   "y": -4.45,
+   "w": 3.1,
+   "h": 1.7,
+   "role": "stem",
+   "fill": "stem",
+   "fillOpacity": 0.14,
+   "strokeWidth": 2.0,
+   "layer": "back",
+   "visible": "N==8"
+  },
+  {
+   "type": "text",
+   "id": "ls9",
+   "at": [
+    11.7,
+    -3.5999999999999996
+   ],
+   "text": "[[num|9]] [[stem|non]]",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "layer": "front"
+  },
+  {
+   "type": "rect",
+   "id": "hl9",
+   "x": 10.15,
+   "y": -4.45,
+   "w": 3.1,
+   "h": 1.7,
+   "role": "stem",
+   "fill": "stem",
+   "fillOpacity": 0.14,
+   "strokeWidth": 2.0,
+   "layer": "back",
+   "visible": "N==9"
+  },
+  {
+   "type": "text",
+   "id": "ls10",
+   "at": [
+    15.1,
+    -3.5999999999999996
+   ],
+   "text": "[[num|10]] [[stem|dec]]",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "layer": "front"
+  },
+  {
+   "type": "rect",
+   "id": "hl10",
+   "x": 13.55,
+   "y": -4.45,
+   "w": 3.1,
+   "h": 1.7,
+   "role": "stem",
+   "fill": "stem",
+   "fillOpacity": 0.14,
+   "strokeWidth": 2.0,
+   "layer": "back",
+   "visible": "N==10"
+  },
+  {
+   "type": "text",
+   "id": "mnem",
+   "at": [
+    7.6499999999999995,
+    -6.3
+   ],
+   "text": "**M**ice **E**at **P**eanut **B**utter  →  meth, eth, prop, but",
+   "role": "muted",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "greek",
+   "at": [
+    7.6499999999999995,
+    -8.0
+   ],
+   "text": "From 5 on:  pent · hex · hept · oct · non · dec",
+   "role": "muted",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "appear": "s4",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "1 carbon: meth",
+   "narration": "The **stem** of a name is the number of carbons. One carbon = [[stem|meth]]. Add the ending of the family: meth + [[ane|ane]] = **methane**.",
+   "actions": [
+    {
+     "set": {
+      "n": 1
+     }
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "2 carbons: eth",
+   "narration": "Two carbons = [[stem|eth]]: **ethane** (CH₃CH₃). The row of numbers under the chain counts the carbons.",
+   "actions": [
+    {
+     "tween": {
+      "n": 2
+     },
+     "dur": 600,
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "3 carbons: prop",
+   "narration": "Three carbons = [[stem|prop]]: **propane** (CH₃CH₂CH₃).",
+   "actions": [
+    {
+     "tween": {
+      "n": 3
+     },
+     "dur": 600,
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "4 carbons: but",
+   "narration": "Four carbons = [[stem|but]]: **butane**. The first four stems are only names, so learn them with the sentence “**M**ice **E**at **P**eanut **B**utter”.",
+   "actions": [
+    {
+     "tween": {
+      "n": 4
+     },
+     "dur": 600,
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "5 carbons: pent — Greek numbers start",
+   "narration": "From five carbons onwards the stems come from **Greek numbers**: [[stem|pent]] = 5, hex = 6, hept = 7, oct = 8, non = 9, dec = 10. **Pentane** has 5 carbons.",
+   "actions": [
+    {
+     "tween": {
+      "n": 5
+     },
+     "dur": 600,
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "6 carbons: hex",
+   "narration": "Six carbons = [[stem|hex]]: **hexane**. Notice the pattern: stem + ending. The stem never changes for the same chain length.",
+   "actions": [
+    {
+     "tween": {
+      "n": 6
+     },
+     "dur": 600,
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "title": "10 carbons: dec",
+   "narration": "Ten carbons = [[stem|dec]]: **decane**, C₁₀H₂₂. Use the slider to build every chain from 1 to 10 carbons and say the stem out loud.",
+   "actions": [
+    {
+     "tween": {
+      "n": 10
+     },
+     "dur": 600,
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Name = stem + ending",
+   "tex": "\\role{stem}{\\text{stem}} + \\role{ane}{\\text{ending}} = \\text{name}",
+   "text": "The stem tells the number of carbons. The ending tells the family (-ane, -ene, -yne, -ol …)."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which stem means **7 carbon atoms**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "hept"
+    },
+    {
+     "id": "b",
+     "label": "pent"
+    },
+    {
+     "id": "c",
+     "label": "oct"
+    },
+    {
+     "id": "d",
+     "label": "hex"
+    }
+   ],
+   "answer": "a",
+   "hint": "Greek: hex 6, hept …",
+   "explain": "6 = hex, 7 = hept, 8 = oct."
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "How many carbon atoms are in a molecule of **octane**?",
+   "answer": 8,
+   "hint": "oct = 8 (an octopus has 8 arms).",
+   "explain": "oct = 8, so octane has 8 carbons: C₈H₁₈."
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "What is the name of the alkane with **9 carbons**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "nonane"
+    },
+    {
+     "id": "b",
+     "label": "hexane"
+    },
+    {
+     "id": "c",
+     "label": "octane"
+    },
+    {
+     "id": "d",
+     "label": "decane"
+    }
+   ],
+   "answer": "a",
+   "hint": "non = 9.",
+   "explain": "9 carbons: stem non + ending ane = nonane."
+  },
+  {
+   "id": "c4",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which stem means **3 carbon atoms**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "pent"
+    },
+    {
+     "id": "b",
+     "label": "prop"
+    },
+    {
+     "id": "c",
+     "label": "eth"
+    },
+    {
+     "id": "d",
+     "label": "but"
+    }
+   ],
+   "answer": "b",
+   "hint": "Mice Eat Peanut Butter.",
+   "explain": "Meth 1, eth 2, prop 3, but 4."
+  }
+ ],
+ "takeaways": [
+  "The **stem** = number of carbons: meth 1, eth 2, prop 3, but 4, pent 5, hex 6, hept 7, oct 8, non 9, dec 10.",
+  "Learn 1–4 with **Mice Eat Peanut Butter**; from 5 they are Greek numbers.",
+  "Name = **stem + ending**."
+ ],
+ "notes": [
+  {
+   "title": "In the book",
+   "text": "The unit lists the stems meth to dec; the exercises in this chapter use up to six carbons (hexane)."
+  }
+ ]
+}

@@ -1,0 +1,1194 @@
+{
+ "id": "g10-chem-c8-th-alkane-grow",
+ "title": "Growing the alkane chain",
+ "summary": "Add one CH₂ at a time and watch the hydrogen count: H = 2n + 2.",
+ "alt": "Alkane chains from methane to hexane drawn by a slider for the number of carbons, with the formula CnH2n+2.",
+ "autoGrid": false,
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -3.35,
+   13.35
+  ],
+  "y": [
+   -7.85,
+   6.25
+  ],
+  "pad": 10
+ },
+ "roles": {
+  "stem": {
+   "label": "Stem (how many C)",
+   "color": "#16a34a",
+   "text": "The first part of the name. It tells you how many carbon atoms are in the chain."
+  },
+  "ane": {
+   "label": "-ane · alkane",
+   "color": "#64748b",
+   "text": "Only single bonds between the carbons. No functional group."
+  },
+  "num": {
+   "label": "Position number",
+   "color": "#ca8a04",
+   "text": "The number in the name. It tells you where the double bond, triple bond or –OH sits."
+  },
+  "hyd": {
+   "label": "Hydrogen",
+   "color": "#64748b",
+   "text": "Every hydrogen atom makes exactly one bond.",
+   "legend": false
+  },
+  "good": {
+   "label": "Correct",
+   "color": "#16a34a",
+   "text": "The part that follows the rules."
+  }
+ },
+ "params": [
+  {
+   "id": "n",
+   "label": "Carbon atoms (n)",
+   "min": 1,
+   "max": 6,
+   "step": 1,
+   "default": 1,
+   "role": "stem"
+  }
+ ],
+ "derived": {
+  "N": "round(n)"
+ },
+ "readouts": [
+  {
+   "label": "Carbons n",
+   "value": "{{N}}",
+   "role": "stem"
+  },
+  {
+   "label": "Hydrogens 2n + 2",
+   "value": "{{2*N+2}}",
+   "role": "hyd"
+  }
+ ],
+ "shapes": [
+  {
+   "type": "text",
+   "id": "hL",
+   "at": [
+    -2.0,
+    0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front"
+  },
+  {
+   "type": "segment",
+   "id": "bL_0",
+   "from": [
+    -0.52,
+    0.0
+   ],
+   "to": [
+    -1.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid"
+  },
+  {
+   "type": "text",
+   "id": "c0",
+   "at": [
+    0.0,
+    0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=1"
+  },
+  {
+   "type": "text",
+   "id": "hu0",
+   "at": [
+    0.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "N>=1"
+  },
+  {
+   "type": "segment",
+   "id": "bu0_0",
+   "from": [
+    0.0,
+    0.52
+   ],
+   "to": [
+    0.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=1"
+  },
+  {
+   "type": "text",
+   "id": "hd0",
+   "at": [
+    0.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "N>=1"
+  },
+  {
+   "type": "segment",
+   "id": "bd0_0",
+   "from": [
+    0.0,
+    -0.52
+   ],
+   "to": [
+    0.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=1"
+  },
+  {
+   "type": "segment",
+   "id": "br0_0",
+   "from": [
+    0.52,
+    0.0
+   ],
+   "to": [
+    1.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=1"
+  },
+  {
+   "type": "text",
+   "id": "he0",
+   "at": [
+    2.0,
+    0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "N==1"
+  },
+  {
+   "type": "text",
+   "id": "c1",
+   "at": [
+    2.0,
+    0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=2"
+  },
+  {
+   "type": "text",
+   "id": "hu1",
+   "at": [
+    2.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "N>=2"
+  },
+  {
+   "type": "segment",
+   "id": "bu1_0",
+   "from": [
+    2.0,
+    0.52
+   ],
+   "to": [
+    2.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=2"
+  },
+  {
+   "type": "text",
+   "id": "hd1",
+   "at": [
+    2.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "N>=2"
+  },
+  {
+   "type": "segment",
+   "id": "bd1_0",
+   "from": [
+    2.0,
+    -0.52
+   ],
+   "to": [
+    2.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=2"
+  },
+  {
+   "type": "segment",
+   "id": "br1_0",
+   "from": [
+    2.52,
+    0.0
+   ],
+   "to": [
+    3.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=2"
+  },
+  {
+   "type": "text",
+   "id": "he1",
+   "at": [
+    4.0,
+    0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "N==2"
+  },
+  {
+   "type": "text",
+   "id": "c2",
+   "at": [
+    4.0,
+    0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=3"
+  },
+  {
+   "type": "text",
+   "id": "hu2",
+   "at": [
+    4.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "N>=3"
+  },
+  {
+   "type": "segment",
+   "id": "bu2_0",
+   "from": [
+    4.0,
+    0.52
+   ],
+   "to": [
+    4.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=3"
+  },
+  {
+   "type": "text",
+   "id": "hd2",
+   "at": [
+    4.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "N>=3"
+  },
+  {
+   "type": "segment",
+   "id": "bd2_0",
+   "from": [
+    4.0,
+    -0.52
+   ],
+   "to": [
+    4.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=3"
+  },
+  {
+   "type": "segment",
+   "id": "br2_0",
+   "from": [
+    4.52,
+    0.0
+   ],
+   "to": [
+    5.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=3"
+  },
+  {
+   "type": "text",
+   "id": "he2",
+   "at": [
+    6.0,
+    0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "N==3"
+  },
+  {
+   "type": "text",
+   "id": "c3",
+   "at": [
+    6.0,
+    0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=4"
+  },
+  {
+   "type": "text",
+   "id": "hu3",
+   "at": [
+    6.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "N>=4"
+  },
+  {
+   "type": "segment",
+   "id": "bu3_0",
+   "from": [
+    6.0,
+    0.52
+   ],
+   "to": [
+    6.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=4"
+  },
+  {
+   "type": "text",
+   "id": "hd3",
+   "at": [
+    6.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "N>=4"
+  },
+  {
+   "type": "segment",
+   "id": "bd3_0",
+   "from": [
+    6.0,
+    -0.52
+   ],
+   "to": [
+    6.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=4"
+  },
+  {
+   "type": "segment",
+   "id": "br3_0",
+   "from": [
+    6.52,
+    0.0
+   ],
+   "to": [
+    7.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=4"
+  },
+  {
+   "type": "text",
+   "id": "he3",
+   "at": [
+    8.0,
+    0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "N==4"
+  },
+  {
+   "type": "text",
+   "id": "c4",
+   "at": [
+    8.0,
+    0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=5"
+  },
+  {
+   "type": "text",
+   "id": "hu4",
+   "at": [
+    8.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "N>=5"
+  },
+  {
+   "type": "segment",
+   "id": "bu4_0",
+   "from": [
+    8.0,
+    0.52
+   ],
+   "to": [
+    8.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=5"
+  },
+  {
+   "type": "text",
+   "id": "hd4",
+   "at": [
+    8.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "N>=5"
+  },
+  {
+   "type": "segment",
+   "id": "bd4_0",
+   "from": [
+    8.0,
+    -0.52
+   ],
+   "to": [
+    8.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=5"
+  },
+  {
+   "type": "segment",
+   "id": "br4_0",
+   "from": [
+    8.52,
+    0.0
+   ],
+   "to": [
+    9.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=5"
+  },
+  {
+   "type": "text",
+   "id": "he4",
+   "at": [
+    10.0,
+    0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "N==5"
+  },
+  {
+   "type": "text",
+   "id": "c5",
+   "at": [
+    10.0,
+    0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "layer": "front",
+   "visible": "N>=6"
+  },
+  {
+   "type": "text",
+   "id": "hu5",
+   "at": [
+    10.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "N>=6"
+  },
+  {
+   "type": "segment",
+   "id": "bu5_0",
+   "from": [
+    10.0,
+    0.52
+   ],
+   "to": [
+    10.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=6"
+  },
+  {
+   "type": "text",
+   "id": "hd5",
+   "at": [
+    10.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "N>=6"
+  },
+  {
+   "type": "segment",
+   "id": "bd5_0",
+   "from": [
+    10.0,
+    -0.52
+   ],
+   "to": [
+    10.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=6"
+  },
+  {
+   "type": "segment",
+   "id": "br5_0",
+   "from": [
+    10.52,
+    0.0
+   ],
+   "to": [
+    11.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "visible": "N>=6"
+  },
+  {
+   "type": "text",
+   "id": "he5",
+   "at": [
+    12.0,
+    0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "visible": "N==6"
+  },
+  {
+   "type": "rect",
+   "id": "add1",
+   "x": 1.0,
+   "y": -2.75,
+   "w": 2.0,
+   "h": 5.5,
+   "role": "stem",
+   "fill": "stem",
+   "fillOpacity": 0.1,
+   "strokeWidth": 2.0,
+   "layer": "back",
+   "dash": true,
+   "visible": "N==2"
+  },
+  {
+   "type": "rect",
+   "id": "add2",
+   "x": 3.0,
+   "y": -2.75,
+   "w": 2.0,
+   "h": 5.5,
+   "role": "stem",
+   "fill": "stem",
+   "fillOpacity": 0.1,
+   "strokeWidth": 2.0,
+   "layer": "back",
+   "dash": true,
+   "visible": "N==3"
+  },
+  {
+   "type": "rect",
+   "id": "add3",
+   "x": 5.0,
+   "y": -2.75,
+   "w": 2.0,
+   "h": 5.5,
+   "role": "stem",
+   "fill": "stem",
+   "fillOpacity": 0.1,
+   "strokeWidth": 2.0,
+   "layer": "back",
+   "dash": true,
+   "visible": "N==4"
+  },
+  {
+   "type": "rect",
+   "id": "add4",
+   "x": 7.0,
+   "y": -2.75,
+   "w": 2.0,
+   "h": 5.5,
+   "role": "stem",
+   "fill": "stem",
+   "fillOpacity": 0.1,
+   "strokeWidth": 2.0,
+   "layer": "back",
+   "dash": true,
+   "visible": "N==5"
+  },
+  {
+   "type": "rect",
+   "id": "add5",
+   "x": 9.0,
+   "y": -2.75,
+   "w": 2.0,
+   "h": 5.5,
+   "role": "stem",
+   "fill": "stem",
+   "fillOpacity": 0.1,
+   "strokeWidth": 2.0,
+   "layer": "back",
+   "dash": true,
+   "visible": "N==6"
+  },
+  {
+   "type": "text",
+   "id": "nm1",
+   "at": [
+    5.0,
+    4.9
+   ],
+   "text": "[[stem|meth]][[ane|ane]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "N==1"
+  },
+  {
+   "type": "text",
+   "id": "mf1",
+   "at": [
+    5.0,
+    -4.7
+   ],
+   "text": "CH₄",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "N==1"
+  },
+  {
+   "type": "text",
+   "id": "nm2",
+   "at": [
+    5.0,
+    4.9
+   ],
+   "text": "[[stem|eth]][[ane|ane]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "N==2"
+  },
+  {
+   "type": "text",
+   "id": "mf2",
+   "at": [
+    5.0,
+    -4.7
+   ],
+   "text": "C₂H₆   ·   CH₃CH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "N==2"
+  },
+  {
+   "type": "text",
+   "id": "nm3",
+   "at": [
+    5.0,
+    4.9
+   ],
+   "text": "[[stem|prop]][[ane|ane]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "N==3"
+  },
+  {
+   "type": "text",
+   "id": "mf3",
+   "at": [
+    5.0,
+    -4.7
+   ],
+   "text": "C₃H₈   ·   CH₃CH₂CH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "N==3"
+  },
+  {
+   "type": "text",
+   "id": "nm4",
+   "at": [
+    5.0,
+    4.9
+   ],
+   "text": "[[stem|but]][[ane|ane]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "N==4"
+  },
+  {
+   "type": "text",
+   "id": "mf4",
+   "at": [
+    5.0,
+    -4.7
+   ],
+   "text": "C₄H₁₀   ·   CH₃CH₂CH₂CH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "N==4"
+  },
+  {
+   "type": "text",
+   "id": "nm5",
+   "at": [
+    5.0,
+    4.9
+   ],
+   "text": "[[stem|pent]][[ane|ane]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "N==5"
+  },
+  {
+   "type": "text",
+   "id": "mf5",
+   "at": [
+    5.0,
+    -4.7
+   ],
+   "text": "C₅H₁₂   ·   CH₃CH₂CH₂CH₂CH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "N==5"
+  },
+  {
+   "type": "text",
+   "id": "nm6",
+   "at": [
+    5.0,
+    4.9
+   ],
+   "text": "[[stem|hex]][[ane|ane]]",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "layer": "front",
+   "visible": "N==6"
+  },
+  {
+   "type": "text",
+   "id": "mf6",
+   "at": [
+    5.0,
+    -4.7
+   ],
+   "text": "C₆H₁₄   ·   CH₃CH₂CH₂CH₂CH₂CH₃",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "visible": "N==6"
+  },
+  {
+   "type": "text",
+   "id": "rule_t",
+   "at": [
+    5.0,
+    -6.5
+   ],
+   "text": "n = {{N}}  →  H = 2 × {{N}} + 2 = **{{2*N+2}}**",
+   "role": "muted",
+   "size": "m",
+   "bold": false,
+   "layer": "front"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Start with methane",
+   "narration": "**Methane, CH₄**: one carbon with four hydrogens. It is the smallest alkane (n = 1). Use the slider or the steps to add carbons.",
+   "actions": [
+    {
+     "set": {
+      "n": 1
+     }
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Add one CH₂",
+   "narration": "Put one more carbon in the chain. It brings **2 hydrogens** with it (the dashed box is the new **–CH₂–** unit). The chain is now **ethane, C₂H₆**: H = 2 × 2 + 2 = 6.",
+   "actions": [
+    {
+     "tween": {
+      "n": 2
+     },
+     "dur": 700,
+     "at": 0
+    },
+    {
+     "pulse": [
+      "add1"
+     ],
+     "at": 800
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Again: propane",
+   "narration": "Another CH₂ gives **propane, C₃H₈**. The formula grew by exactly **CH₂** (one C and two H). A family where each member differs by CH₂ is a **homologous series**.",
+   "actions": [
+    {
+     "tween": {
+      "n": 3
+     },
+     "dur": 700,
+     "at": 0
+    },
+    {
+     "pulse": [
+      "add2"
+     ],
+     "at": 800
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Butane",
+   "narration": "**Butane, C₄H₁₀**. Every extra carbon adds 2 hydrogens, so the hydrogen count goes 4, 6, 8, 10 … the same “+2” each time.",
+   "actions": [
+    {
+     "tween": {
+      "n": 4
+     },
+     "dur": 700,
+     "at": 0
+    },
+    {
+     "pulse": [
+      "add3"
+     ],
+     "at": 800
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Pentane",
+   "narration": "**Pentane, C₅H₁₂**. From here the stems are the Greek numbers: pent (5), hex (6) … The pattern H = 2n + 2 keeps working: 2 × 5 + 2 = 12.",
+   "actions": [
+    {
+     "tween": {
+      "n": 5
+     },
+     "dur": 700,
+     "at": 0
+    },
+    {
+     "pulse": [
+      "add4"
+     ],
+     "at": 800
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "The rule: CₙH₂ₙ₊₂",
+   "narration": "**Hexane, C₆H₁₄**: 2 × 6 + 2 = 14. For any alkane with **n carbons** there are **2n + 2 hydrogens**: the two extra H are the ones on the ends of the chain.",
+   "actions": [
+    {
+     "tween": {
+      "n": 6
+     },
+     "dur": 700,
+     "at": 0
+    },
+    {
+     "pulse": [
+      "add5"
+     ],
+     "at": 800
+    }
+   ]
+  }
+ ],
+ "formulas": [
+  {
+   "title": "General formula of alkanes",
+   "tex": "\\role{ane}{\\mathrm{C}_{n}\\mathrm{H}_{2n+2}}",
+   "text": "n is the number of carbon atoms. Hydrogen atoms = 2n + 2."
+  },
+  {
+   "title": "Homologous series",
+   "tex": "\\text{each member} = \\text{previous} + \\role{stem}{\\mathrm{CH_2}}",
+   "text": "Methane → ethane → propane → butane … each step adds one CH₂."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "An alkane has **8 carbon atoms**. How many **hydrogen atoms** does it have?",
+   "answer": 18,
+   "hint": "H = 2n + 2 with n = 8.",
+   "explain": "2 × 8 + 2 = 18, so the alkane is octane, C₈H₁₈."
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "An alkane has **22 hydrogen atoms**. How many **carbon atoms** does it have?",
+   "answer": 10,
+   "hint": "Work backwards: 2n + 2 = 22.",
+   "explain": "2n = 20, so n = 10: decane, C₁₀H₂₂."
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which of these is **not** an alkane?",
+   "options": [
+    {
+     "id": "a",
+     "label": "C₅H₁₂"
+    },
+    {
+     "id": "b",
+     "label": "C₉H₂₀"
+    },
+    {
+     "id": "c",
+     "label": "C₇H₁₆"
+    },
+    {
+     "id": "d",
+     "label": "C₇H₁₄"
+    }
+   ],
+   "answer": "d",
+   "hint": "Test each with H = 2n + 2.",
+   "explain": "C₇H₁₄ has 14 H, but an alkane with 7 C needs 16 H. C₇H₁₄ fits CₙH₂ₙ, an alkene."
+  },
+  {
+   "id": "c4",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "What is added to an alkane to get the next member of the series?",
+   "options": [
+    {
+     "id": "a",
+     "label": "H₂"
+    },
+    {
+     "id": "b",
+     "label": "CH₄"
+    },
+    {
+     "id": "c",
+     "label": "C₂H₄"
+    },
+    {
+     "id": "d",
+     "label": "CH₂"
+    }
+   ],
+   "answer": "d",
+   "hint": "One carbon, and the hydrogens that come with it.",
+   "explain": "Each member differs from the one before by CH₂."
+  }
+ ],
+ "takeaways": [
+  "Alkanes: **CₙH₂ₙ₊₂**.",
+  "Each step in the series adds **CH₂** (one carbon, two hydrogens).",
+  "Check any alkane formula: H must equal **2 × C + 2**."
+ ],
+ "notes": [
+  {
+   "title": "Exam tip",
+   "text": "If a question gives an alkane formula, test it with H = 2C + 2 before you write the name."
+  }
+ ]
+}

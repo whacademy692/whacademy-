@@ -1,0 +1,1408 @@
+{
+ "id": "g10-chem-c8-th-four-bonds",
+ "title": "Carbon makes four bonds",
+ "summary": "Count the lines on carbon in methane, ethane, ethene and ethyne: always four.",
+ "alt": "Carbon always makes four bonds: methane, ethane, ethene and ethyne drawn as displayed formulae.",
+ "autoGrid": false,
+ "defaultTab": "formula",
+ "world": {
+  "x": [
+   -5.35,
+   4.35
+  ],
+  "y": [
+   -4.85,
+   5.25
+  ],
+  "pad": 10
+ },
+ "roles": {
+  "ane": {
+   "label": "-ane · alkane",
+   "color": "#64748b",
+   "text": "Only single bonds between the carbons. No functional group."
+  },
+  "ene": {
+   "label": "-ene · C=C",
+   "color": "#dc2626",
+   "text": "A carbon–carbon DOUBLE bond (red box in the book)."
+  },
+  "yne": {
+   "label": "-yne · C≡C",
+   "color": "#7c3aed",
+   "text": "A carbon–carbon TRIPLE bond (purple box in the book)."
+  },
+  "hyd": {
+   "label": "Hydrogen",
+   "color": "#64748b",
+   "text": "Every hydrogen atom makes exactly one bond.",
+   "legend": false
+  },
+  "atomO": {
+   "label": "Oxygen",
+   "color": "#ef4444",
+   "text": "Every oxygen atom makes two bonds.",
+   "legend": false
+  },
+  "good": {
+   "label": "Correct",
+   "color": "#16a34a",
+   "text": "The part that follows the rules."
+  }
+ },
+ "shapes": [
+  {
+   "type": "text",
+   "id": "ta_0",
+   "at": [
+    0.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "appear": "s0",
+   "disappear": "s2",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "ta_1",
+   "at": [
+    -2.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s1",
+   "disappear": "s2",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "ta_2",
+   "at": [
+    2.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s1",
+   "disappear": "s2",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "ta_3",
+   "at": [
+    0.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s1",
+   "disappear": "s2",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "ta_4",
+   "at": [
+    0.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s1",
+   "disappear": "s2",
+   "appearDur": 420
+  },
+  {
+   "type": "segment",
+   "id": "ba_0_0",
+   "from": [
+    -0.52,
+    0.0
+   ],
+   "to": [
+    -1.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s1",
+   "disappear": "s2",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "ba_1_0",
+   "from": [
+    0.52,
+    0.0
+   ],
+   "to": [
+    1.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s1",
+   "disappear": "s2",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "ba_2_0",
+   "from": [
+    0.0,
+    0.52
+   ],
+   "to": [
+    0.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s1",
+   "disappear": "s2",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "ba_3_0",
+   "from": [
+    0.0,
+    -0.52
+   ],
+   "to": [
+    0.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s1",
+   "disappear": "s2",
+   "appearDur": 520
+  },
+  {
+   "type": "text",
+   "id": "tb_0",
+   "at": [
+    -1.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "appear": "s2",
+   "disappear": "s3",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tb_1",
+   "at": [
+    1.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "appear": "s2",
+   "disappear": "s3",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tb_2",
+   "at": [
+    -3.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s2",
+   "disappear": "s3",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tb_3",
+   "at": [
+    -1.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s2",
+   "disappear": "s3",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tb_4",
+   "at": [
+    -1.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s2",
+   "disappear": "s3",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tb_5",
+   "at": [
+    3.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s2",
+   "disappear": "s3",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tb_6",
+   "at": [
+    1.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s2",
+   "disappear": "s3",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tb_7",
+   "at": [
+    1.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s2",
+   "disappear": "s3",
+   "appearDur": 420
+  },
+  {
+   "type": "segment",
+   "id": "bb_0_0",
+   "from": [
+    -0.48,
+    0.0
+   ],
+   "to": [
+    0.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s2",
+   "disappear": "s3",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "bb_1_0",
+   "from": [
+    -1.52,
+    0.0
+   ],
+   "to": [
+    -2.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s2",
+   "disappear": "s3",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "bb_2_0",
+   "from": [
+    -1.0,
+    0.52
+   ],
+   "to": [
+    -1.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s2",
+   "disappear": "s3",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "bb_3_0",
+   "from": [
+    -1.0,
+    -0.52
+   ],
+   "to": [
+    -1.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s2",
+   "disappear": "s3",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "bb_4_0",
+   "from": [
+    1.52,
+    0.0
+   ],
+   "to": [
+    2.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s2",
+   "disappear": "s3",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "bb_5_0",
+   "from": [
+    1.0,
+    0.52
+   ],
+   "to": [
+    1.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s2",
+   "disappear": "s3",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "bb_6_0",
+   "from": [
+    1.0,
+    -0.52
+   ],
+   "to": [
+    1.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s2",
+   "disappear": "s3",
+   "appearDur": 520
+  },
+  {
+   "type": "text",
+   "id": "tc_0",
+   "at": [
+    -1.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "appear": "s3",
+   "disappear": "s4",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tc_1",
+   "at": [
+    1.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "appear": "s3",
+   "disappear": "s4",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tc_2",
+   "at": [
+    -1.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s3",
+   "disappear": "s4",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tc_3",
+   "at": [
+    -1.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s3",
+   "disappear": "s4",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tc_4",
+   "at": [
+    1.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s3",
+   "disappear": "s4",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "tc_5",
+   "at": [
+    1.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s3",
+   "disappear": "s4",
+   "appearDur": 420
+  },
+  {
+   "type": "segment",
+   "id": "bc_0_0",
+   "from": [
+    -0.48,
+    -0.15
+   ],
+   "to": [
+    0.48,
+    -0.15
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s3",
+   "disappear": "s4",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "bc_0_1",
+   "from": [
+    -0.48,
+    0.15
+   ],
+   "to": [
+    0.48,
+    0.15
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s3",
+   "disappear": "s4",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "bc_1_0",
+   "from": [
+    -1.0,
+    0.52
+   ],
+   "to": [
+    -1.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s3",
+   "disappear": "s4",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "bc_2_0",
+   "from": [
+    -1.0,
+    -0.52
+   ],
+   "to": [
+    -1.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s3",
+   "disappear": "s4",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "bc_3_0",
+   "from": [
+    1.0,
+    0.52
+   ],
+   "to": [
+    1.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s3",
+   "disappear": "s4",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "bc_4_0",
+   "from": [
+    1.0,
+    -0.52
+   ],
+   "to": [
+    1.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s3",
+   "disappear": "s4",
+   "appearDur": 520
+  },
+  {
+   "type": "text",
+   "id": "td_0",
+   "at": [
+    -1.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "appear": "s4",
+   "disappear": "s5",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "td_1",
+   "at": [
+    1.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "appear": "s4",
+   "disappear": "s5",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "td_2",
+   "at": [
+    -3.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s4",
+   "disappear": "s5",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "td_3",
+   "at": [
+    3.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s4",
+   "disappear": "s5",
+   "appearDur": 420
+  },
+  {
+   "type": "segment",
+   "id": "bd_0_0",
+   "from": [
+    -0.48,
+    -0.27
+   ],
+   "to": [
+    0.48,
+    -0.27
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s4",
+   "disappear": "s5",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "bd_0_1",
+   "from": [
+    -0.48,
+    0.0
+   ],
+   "to": [
+    0.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s4",
+   "disappear": "s5",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "bd_0_2",
+   "from": [
+    -0.48,
+    0.27
+   ],
+   "to": [
+    0.48,
+    0.27
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s4",
+   "disappear": "s5",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "bd_1_0",
+   "from": [
+    -1.52,
+    0.0
+   ],
+   "to": [
+    -2.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s4",
+   "disappear": "s5",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "bd_2_0",
+   "from": [
+    1.52,
+    0.0
+   ],
+   "to": [
+    2.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s4",
+   "disappear": "s5",
+   "appearDur": 520
+  },
+  {
+   "type": "text",
+   "id": "te_0",
+   "at": [
+    -2.0,
+    0.0
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "appear": "s5",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "te_1",
+   "at": [
+    0.0,
+    0.0
+   ],
+   "text": "O",
+   "role": "atomO",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "appear": "s5",
+   "appearDur": 420,
+   "delay": 70
+  },
+  {
+   "type": "text",
+   "id": "te_2",
+   "at": [
+    2.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s5",
+   "appearDur": 420,
+   "delay": 140
+  },
+  {
+   "type": "text",
+   "id": "te_3",
+   "at": [
+    -4.0,
+    0.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s5",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "te_4",
+   "at": [
+    -2.0,
+    2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s5",
+   "appearDur": 420
+  },
+  {
+   "type": "text",
+   "id": "te_5",
+   "at": [
+    -2.0,
+    -2.0
+   ],
+   "text": "H",
+   "role": "hyd",
+   "size": "l",
+   "bold": false,
+   "layer": "front",
+   "appear": "s5",
+   "appearDur": 420
+  },
+  {
+   "type": "segment",
+   "id": "be_0_0",
+   "from": [
+    -1.48,
+    0.0
+   ],
+   "to": [
+    -0.52,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s5",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "be_1_0",
+   "from": [
+    0.52,
+    0.0
+   ],
+   "to": [
+    1.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s5",
+   "appearDur": 520,
+   "delay": 70
+  },
+  {
+   "type": "segment",
+   "id": "be_2_0",
+   "from": [
+    -2.52,
+    0.0
+   ],
+   "to": [
+    -3.48,
+    0.0
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s5",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "be_3_0",
+   "from": [
+    -2.0,
+    0.52
+   ],
+   "to": [
+    -2.0,
+    1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s5",
+   "appearDur": 520
+  },
+  {
+   "type": "segment",
+   "id": "be_4_0",
+   "from": [
+    -2.0,
+    -0.52
+   ],
+   "to": [
+    -2.0,
+    -1.48
+   ],
+   "role": "ink",
+   "strokeWidth": 2.5,
+   "layer": "mid",
+   "effect": "draw",
+   "appear": "s5",
+   "appearDur": 520
+  },
+  {
+   "type": "rect",
+   "id": "bx3",
+   "x": -1.66,
+   "y": -0.66,
+   "w": 3.32,
+   "h": 1.32,
+   "role": "ene",
+   "fill": "ene",
+   "fillOpacity": 0.13,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "appear": "s3",
+   "disappear": "s4",
+   "appearDur": 500
+  },
+  {
+   "type": "rect",
+   "id": "bx4",
+   "x": -1.66,
+   "y": -0.66,
+   "w": 3.32,
+   "h": 1.32,
+   "role": "yne",
+   "fill": "yne",
+   "fillOpacity": 0.13,
+   "strokeWidth": 2.2,
+   "layer": "back",
+   "appear": "s4",
+   "disappear": "s5",
+   "appearDur": 500
+  },
+  {
+   "type": "text",
+   "id": "ct_c",
+   "at": [
+    0,
+    3.9
+   ],
+   "text": "Carbon",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "appear": "s0",
+   "disappear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "ct_meth",
+   "at": [
+    0,
+    3.9
+   ],
+   "text": "Methane  CH₄",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "appear": "s1",
+   "disappear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "cb_meth",
+   "at": [
+    0,
+    -3.5
+   ],
+   "text": "4 lines on C: 4 single bonds",
+   "role": "muted",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "appear": "s1",
+   "disappear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "ct_eth",
+   "at": [
+    0,
+    3.9
+   ],
+   "text": "Ethane  C₂H₆",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "appear": "s2",
+   "disappear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "cb_eth",
+   "at": [
+    0,
+    -3.5
+   ],
+   "text": "each C: 1 (C–C) + 3 (C–H) = 4",
+   "role": "muted",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "appear": "s2",
+   "disappear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "ct_ethene",
+   "at": [
+    0,
+    3.9
+   ],
+   "text": "Ethene  C₂H₄",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "appear": "s3",
+   "disappear": "s4",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "cb_ethene",
+   "at": [
+    0,
+    -3.5
+   ],
+   "text": "each C: 2 (C=C) + 2 (C–H) = 4",
+   "role": "muted",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "appear": "s3",
+   "disappear": "s4",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "ct_ethyne",
+   "at": [
+    0,
+    3.9
+   ],
+   "text": "Ethyne  C₂H₂",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "appear": "s4",
+   "disappear": "s5",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "cb_ethyne",
+   "at": [
+    0,
+    -3.5
+   ],
+   "text": "each C: 3 (C≡C) + 1 (C–H) = 4",
+   "role": "muted",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "appear": "s4",
+   "disappear": "s5",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "ct_hetero",
+   "at": [
+    0,
+    3.9
+   ],
+   "text": "Methanol  CH₃OH",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "layer": "front",
+   "appear": "s5",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "cb_hetero",
+   "at": [
+    0,
+    -3.5
+   ],
+   "text": "C: 4 · O: 2 · H: 1",
+   "role": "muted",
+   "size": "m",
+   "bold": false,
+   "layer": "front",
+   "appear": "s5",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Four hands",
+   "narration": "Carbon is the key atom of organic chemistry. **Every carbon atom forms four bonds** — never three, never five. Think of it as having four “hands”.",
+   "actions": [
+    {
+     "pulse": [
+      "ta_0"
+     ],
+     "at": 500
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Methane: four single bonds",
+   "narration": "In **methane, CH₄**, carbon holds hands with four hydrogen atoms: four single bonds, four lines. Every **H makes exactly one bond**.",
+   "actions": [
+    {
+     "pulse": [
+      "ba_0_0",
+      "ba_1_0",
+      "ba_2_0",
+      "ba_3_0"
+     ],
+     "at": 500
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Ethane: carbon joins carbon",
+   "narration": "In **ethane, C₂H₆**, the carbons are joined by one C–C bond. Each carbon has **1** line to the other carbon and **3** to hydrogen: 1 + 3 = **4**.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Ethene: a double bond",
+   "narration": "In **ethene, C₂H₄**, the carbons share **two** pairs of electrons — a **double bond**, drawn as two lines. A double bond uses **2** of the four bonds, so each carbon has room for only **2** H: 2 + 2 = **4**.",
+   "actions": [
+    {
+     "pulse": [
+      "bx3"
+     ],
+     "at": 500
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Ethyne: a triple bond",
+   "narration": "In **ethyne, C₂H₂**, the carbons share **three** pairs of electrons — a **triple bond** (three lines). That uses **3** of the four bonds, so each carbon holds just **1** H: 3 + 1 = **4**.",
+   "actions": [
+    {
+     "pulse": [
+      "bx4"
+     ],
+     "at": 500
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Hydrogen and oxygen",
+   "narration": "Other atoms have their own numbers: **H makes 1 bond, O makes 2, C makes 4**. In methanol the O is joined to C and to H: 1 + 1 = **2** lines. Always count the lines on every atom.",
+   "actions": [
+    {
+     "pulse": [
+      "te_0",
+      "te_1",
+      "te_2",
+      "te_3",
+      "te_4",
+      "te_5"
+     ],
+     "at": 500
+    }
+   ]
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Bonds per atom",
+   "tex": "\\mathrm{C}:\\ 4 \\qquad \\mathrm{O}:\\ 2 \\qquad \\mathrm{H}:\\ 1",
+   "text": "Count the lines on every atom in a displayed formula."
+  },
+  {
+   "title": "Multiple bonds",
+   "tex": "\\role{ene}{\\mathrm{C{=}C}} = 2\\ \\text{lines} \\qquad \\role{yne}{\\mathrm{C{\\equiv}C}} = 3\\ \\text{lines}",
+   "text": "A double bond counts as two of the four bonds, a triple bond as three."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A carbon atom is joined to another carbon by a **triple bond**. How many **hydrogen atoms** can it also hold?",
+   "answer": 1,
+   "hint": "A triple bond uses 3 of the 4 bonds.",
+   "explain": "4 − 3 = 1, so only one H (as in ethyne, H–C≡C–H)."
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "Each carbon of **ethene** is joined to the other carbon by a double bond. How many **hydrogen atoms** does each carbon hold?",
+   "answer": 2,
+   "hint": "A double bond uses 2 of the 4 bonds.",
+   "explain": "4 − 2 = 2 hydrogens on each carbon, so ethene is C₂H₄."
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "How many bonds does an **oxygen** atom make?",
+   "options": [
+    {
+     "id": "a",
+     "label": "2"
+    },
+    {
+     "id": "b",
+     "label": "1"
+    },
+    {
+     "id": "c",
+     "label": "4"
+    },
+    {
+     "id": "d",
+     "label": "3"
+    }
+   ],
+   "answer": "a",
+   "hint": "C = 4, H = 1 … and O?",
+   "explain": "Oxygen makes two bonds (two lines), e.g. in the –OH group: C–O–H."
+  },
+  {
+   "id": "c4",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "A student draws a carbon atom with only **three** lines. What is missing?",
+   "options": [
+    {
+     "id": "a",
+     "label": "nothing — three is fine"
+    },
+    {
+     "id": "b",
+     "label": "one more bond (usually a hydrogen atom)"
+    },
+    {
+     "id": "c",
+     "label": "a double bond to oxygen"
+    },
+    {
+     "id": "d",
+     "label": "one oxygen atom"
+    }
+   ],
+   "answer": "b",
+   "hint": "Every carbon needs four bonds.",
+   "explain": "Carbon needs four bonds. A carbon with three lines is missing a bond, normally a hydrogen atom."
+  }
+ ],
+ "takeaways": [
+  "**C = 4 bonds, O = 2, H = 1.**",
+  "A double bond counts as **two** of carbon’s four bonds, a triple bond as **three**.",
+  "After drawing any formula, **count the lines on every carbon**."
+ ],
+ "notes": [
+  {
+   "title": "Exam tip",
+   "text": "A carbon with three or five lines is the most common way to lose marks in this unit. Count before you write the final answer."
+  }
+ ]
+}

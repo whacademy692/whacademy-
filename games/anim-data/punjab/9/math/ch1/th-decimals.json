@@ -1,0 +1,496 @@
+{
+ "title": "Decimal detective: rational or irrational?",
+ "summary": "Watch the digits of a number: stops or repeats means rational, neither means irrational.",
+ "alt": "Decimal digits of {{if n==0 | 3/4 | the chosen number}} with the repeating block highlighted.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   13.2
+  ],
+  "y": [
+   0.3,
+   6.5
+  ],
+  "ratio": 0.5,
+  "pad": 6
+ },
+ "roles": {
+  "rat": {
+   "label": "Rational",
+   "color": "#059669",
+   "text": "Terminates or recurs.",
+   "legend": true
+  },
+  "irr": {
+   "label": "Irrational",
+   "color": "#e11d48",
+   "text": "Never ends and never repeats.",
+   "legend": true
+  },
+  "pat": {
+   "label": "Repeating block",
+   "color": "#2563eb",
+   "text": "The digits that repeat.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "n",
+   "label": "Number",
+   "type": "choice",
+   "default": 0,
+   "options": [
+    {
+     "value": 0,
+     "label": "3/4"
+    },
+    {
+     "value": 1,
+     "label": "1/3"
+    },
+    {
+     "value": 2,
+     "label": "5/11"
+    },
+    {
+     "value": 3,
+     "label": "7/8"
+    },
+    {
+     "value": 4,
+     "label": "√2"
+    },
+    {
+     "value": 5,
+     "label": "π"
+    }
+   ]
+  }
+ ],
+ "derived": {
+  "V": "n==0 ? 0.75 : (n==1 ? 1/3 : (n==2 ? 5/11 : (n==3 ? 0.875 : (n==4 ? sqrt(2) : pi))))",
+  "P": "n==1 ? 1 : (n==2 ? 2 : 0)",
+  "Tn": "n==0 ? 2 : (n==3 ? 3 : 99)"
+ },
+ "shapes": [
+  {
+   "type": "text",
+   "id": "nm0",
+   "at": [
+    6.5,
+    5.7
+   ],
+   "text": "3 ÷ 4",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "visible": "n==0"
+  },
+  {
+   "type": "text",
+   "id": "nm1",
+   "at": [
+    6.5,
+    5.7
+   ],
+   "text": "1 ÷ 3",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "visible": "n==1"
+  },
+  {
+   "type": "text",
+   "id": "nm2",
+   "at": [
+    6.5,
+    5.7
+   ],
+   "text": "5 ÷ 11",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "visible": "n==2"
+  },
+  {
+   "type": "text",
+   "id": "nm3",
+   "at": [
+    6.5,
+    5.7
+   ],
+   "text": "7 ÷ 8",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "visible": "n==3"
+  },
+  {
+   "type": "text",
+   "id": "nm4",
+   "at": [
+    6.5,
+    5.7
+   ],
+   "text": "√2",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "visible": "n==4"
+  },
+  {
+   "type": "text",
+   "id": "nm5",
+   "at": [
+    6.5,
+    5.7
+   ],
+   "text": "π",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "visible": "n==5"
+  },
+  {
+   "type": "text",
+   "id": "ip",
+   "at": [
+    1.0,
+    3.6
+   ],
+   "text": "{{floor(V)|int}} .",
+   "role": "ink",
+   "size": "xl",
+   "bold": true
+  },
+  {
+   "type": "repeat",
+   "id": "blk",
+   "count": "P>0 ? floor(12/P) : 0",
+   "as": "j",
+   "layer": "back",
+   "template": {
+    "type": "rect",
+    "x": "1.65+0.85*P*j",
+    "y": 3.0,
+    "w": "0.85*P",
+    "h": 1.2,
+    "role": "pat",
+    "fill": "pat",
+    "stroke": false,
+    "fillOpacity": 0.2,
+    "opacity": "mod(j,2)==0 ? 1 : 0.5"
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "dig",
+   "count": 12,
+   "as": "i",
+   "template": {
+    "type": "text",
+    "at": [
+     "2.05+0.85*i",
+     3.6
+    ],
+    "text": "{{mod(floor(V*10^(i+1)),10)|int}}",
+    "role": "ink",
+    "size": "xl",
+    "bold": true,
+    "opacity": "i>=Tn ? 0.3 : 1"
+   }
+  },
+  {
+   "type": "text",
+   "id": "dots",
+   "at": [
+    12.6,
+    3.45
+   ],
+   "text": "…",
+   "role": "ink",
+   "size": "xl",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "rep",
+   "at": [
+    "1.65+0.425*P",
+    4.6
+   ],
+   "text": "this block repeats for ever",
+   "role": "pat",
+   "size": "m",
+   "bold": true,
+   "visible": "P>0"
+  },
+  {
+   "type": "segment",
+   "id": "endl",
+   "from": [
+    "1.65+0.85*Tn",
+    2.95
+   ],
+   "to": [
+    "1.65+0.85*Tn",
+    4.25
+   ],
+   "role": "rat",
+   "strokeWidth": 3,
+   "visible": "Tn<12"
+  },
+  {
+   "type": "text",
+   "id": "endt",
+   "at": [
+    "1.65+0.85*Tn",
+    2.45
+   ],
+   "text": "ends here, then only zeros",
+   "role": "rat",
+   "size": "m",
+   "bold": true,
+   "visible": "Tn<12"
+  },
+  {
+   "type": "text",
+   "id": "noru",
+   "at": [
+    6.5,
+    2.35
+   ],
+   "text": "it never ends and no block repeats",
+   "role": "irr",
+   "size": "m",
+   "bold": true,
+   "visible": "n>=4"
+  },
+  {
+   "type": "text",
+   "id": "v1",
+   "at": [
+    6.5,
+    1.05
+   ],
+   "text": "Terminating decimal  →  RATIONAL",
+   "role": "rat",
+   "size": "m",
+   "bold": true,
+   "visible": "n==0 || n==3"
+  },
+  {
+   "type": "text",
+   "id": "v2",
+   "at": [
+    6.5,
+    1.05
+   ],
+   "text": "Recurring decimal  →  RATIONAL",
+   "role": "rat",
+   "size": "m",
+   "bold": true,
+   "visible": "n==1 || n==2"
+  },
+  {
+   "type": "text",
+   "id": "v3",
+   "at": [
+    6.5,
+    1.05
+   ],
+   "text": "Never ends, never repeats  →  IRRATIONAL",
+   "role": "irr",
+   "size": "m",
+   "bold": true,
+   "visible": "n>=4"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Every number has a decimal",
+   "narration": "Every real number can be written as a **decimal**. Use the buttons to pick a number and watch its digits. We start with \\( \\frac{3}{4} \\): divide 3 by 4.",
+   "actions": [
+    {
+     "set": {
+      "n": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "It stops: terminating",
+   "narration": "\\( \\frac{3}{4} = 0.75 \\). After the 5 only zeros follow, so the decimal **terminates**. Every terminating decimal is a [[rat|rational]] number.",
+   "actions": [
+    {
+     "set": {
+      "n": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "It repeats: recurring",
+   "narration": "\\( \\frac{1}{3} = 0.333\\ldots \\) never stops, but one digit **repeats** again and again. A recurring decimal is also [[rat|rational]].",
+   "actions": [
+    {
+     "set": {
+      "n": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "A longer repeating block",
+   "narration": "\\( \\frac{5}{11} = 0.4545\\ldots \\). The block **45** repeats. Longer block, same rule: it repeats, so it is [[rat|rational]].",
+   "actions": [
+    {
+     "set": {
+      "n": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Never stops, never repeats",
+   "narration": "\\( \\sqrt{2} = 1.41421356\\ldots \\). The digits go on for ever and **no block ever repeats**. That is an [[irr|irrational]] number.",
+   "actions": [
+    {
+     "set": {
+      "n": 4
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Another one: pi",
+   "narration": "\\( \\pi = 3.14159265\\ldots \\) is irrational too: no end, no repeating block.",
+   "actions": [
+    {
+     "set": {
+      "n": 5
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "title": "The rule",
+   "narration": "If the decimal **terminates or recurs**, the number is [[rat|rational]] (it can be written as \\( \\frac{p}{q} \\) with \\( q \\neq 0 \\)). If it does **neither**, it is [[irr|irrational]]. Try the other numbers yourself.",
+   "actions": [
+    {
+     "set": {
+      "n": 3
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Rational numbers",
+   "tex": "\\dfrac{p}{q},\\; q \\neq 0",
+   "text": "A rational number can be written as a fraction. Its decimal terminates or recurs."
+  },
+  {
+   "title": "Irrational numbers",
+   "tex": "\\sqrt{2},\\ \\pi,\\ \\ldots",
+   "text": "An irrational number cannot be written as p/q. Its decimal never ends and never repeats."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Spot the type",
+   "answer": "a",
+   "options": [
+    {
+     "id": "a",
+     "label": "Rational: the block 21 repeats"
+    },
+    {
+     "id": "b",
+     "label": "Irrational: it never ends"
+    }
+   ],
+   "prompt": "Is \\( 0.212121\\ldots \\) rational or irrational?",
+   "hint": "Look for a block of digits that repeats.",
+   "explain": "The block 21 repeats for ever, so the decimal recurs. It is **rational** (it equals 7/33)."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Which one is irrational?",
+   "answer": "c",
+   "options": [
+    {
+     "id": "a",
+     "label": "0.125"
+    },
+    {
+     "id": "b",
+     "label": "0.666666…"
+    },
+    {
+     "id": "c",
+     "label": "√3"
+    },
+    {
+     "id": "d",
+     "label": "1/7"
+    }
+   ],
+   "prompt": "Pick the irrational number.",
+   "hint": "0.125 stops. 0.666… and 1/7 repeat.",
+   "explain": "\\( \\sqrt{3} = 1.7320508\\ldots \\) never ends and never repeats. The others terminate or recur."
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "A tricky pattern",
+   "answer": "b",
+   "options": [
+    {
+     "id": "a",
+     "label": "Rational, because there is a pattern"
+    },
+    {
+     "id": "b",
+     "label": "Irrational, because no block repeats"
+    }
+   ],
+   "prompt": "\\( 0.1010010001\\ldots \\) (one more 0 each time). Rational or irrational?",
+   "hint": "A pattern is not enough: a **fixed block** must repeat.",
+   "explain": "The number of zeros keeps growing, so no fixed block repeats. It never ends, so it is **irrational**."
+  }
+ ],
+ "intro": "Pick a number and read its decimal. The way the digits behave tells you if it is rational.",
+ "takeaways": [
+  "Terminating or recurring decimal: rational.",
+  "Non-terminating and non-recurring: irrational.",
+  "A pattern like 0.1010010001… is not a repeating block, so it is irrational."
+ ],
+ "notes": [
+  {
+   "title": "Why do rationals repeat?",
+   "text": "When you divide p by q the remainder can only be one of q possible values, so after at most q steps a remainder comes back and the digits repeat."
+  }
+ ],
+ "challengeIntro": "Now you try. Each question uses the picture above."
+}
