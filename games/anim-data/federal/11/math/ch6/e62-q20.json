@@ -1,0 +1,712 @@
+{
+ "id": "g11-math-c6-e62-q20",
+ "title": "Exercise 6.2 · Q20",
+ "summary": "Find the number of ways that 6 men and 6 women seated at a round table such that they occupy alternative…",
+ "alt": "Exercise 6.2 · Q20: Find the number of ways that 6 men and 6 women seated at a round table such that they occupy alternative seats.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -3,
+   112
+  ],
+  "y": [
+   0,
+   64
+  ],
+  "pad": 6
+ },
+ "roles": {
+  "a": {
+   "label": "Choice",
+   "color": "#2563eb",
+   "text": "Items being chosen or arranged.",
+   "legend": false
+  },
+  "b": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "Counted result.",
+   "legend": false
+  },
+  "c": {
+   "label": "Focus",
+   "color": "#d97706",
+   "text": "The part being counted now.",
+   "legend": false
+  },
+  "d": {
+   "label": "Remove",
+   "color": "#e11d48",
+   "text": "Cases that are taken away.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "cur",
+   "label": "Current step",
+   "min": 0,
+   "max": 20,
+   "step": 1,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "circle",
+   "c": [
+    27,
+    32
+   ],
+   "r": 13.68,
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": false,
+   "id": "cir1",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    27.0,
+    51.0
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.22,
+   "id": "cir2",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    27.0,
+    51.0
+   ],
+   "text": "M",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex3",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    36.5,
+    48.45448267190433
+   ],
+   "r": 3.2,
+   "role": "muted",
+   "strokeWidth": 1.6,
+   "effect": "pop",
+   "fill": false,
+   "dash": true,
+   "id": "cir4",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "cur<=1"
+  },
+  {
+   "type": "circle",
+   "c": [
+    36.5,
+    48.45448267190433
+   ],
+   "r": 3.2,
+   "role": "c",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.22,
+   "id": "cir5",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    36.5,
+    48.45448267190433
+   ],
+   "text": "W",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex6",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    43.45448267190434,
+    41.5
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.22,
+   "id": "cir7",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    43.45448267190434,
+    41.5
+   ],
+   "text": "M",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex8",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    46.0,
+    32.0
+   ],
+   "r": 3.2,
+   "role": "muted",
+   "strokeWidth": 1.6,
+   "effect": "pop",
+   "fill": false,
+   "dash": true,
+   "id": "cir9",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "cur<=1"
+  },
+  {
+   "type": "circle",
+   "c": [
+    46.0,
+    32.0
+   ],
+   "r": 3.2,
+   "role": "c",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.22,
+   "id": "cir10",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    46.0,
+    32.0
+   ],
+   "text": "W",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex11",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    43.45448267190434,
+    22.5
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.22,
+   "id": "cir12",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    43.45448267190434,
+    22.5
+   ],
+   "text": "M",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex13",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    36.5,
+    15.545517328095666
+   ],
+   "r": 3.2,
+   "role": "muted",
+   "strokeWidth": 1.6,
+   "effect": "pop",
+   "fill": false,
+   "dash": true,
+   "id": "cir14",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "cur<=1"
+  },
+  {
+   "type": "circle",
+   "c": [
+    36.5,
+    15.545517328095666
+   ],
+   "r": 3.2,
+   "role": "c",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.22,
+   "id": "cir15",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    36.5,
+    15.545517328095666
+   ],
+   "text": "W",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex16",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    27.0,
+    13.0
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.22,
+   "id": "cir17",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    27.0,
+    13.0
+   ],
+   "text": "M",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex18",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    17.500000000000004,
+    15.545517328095663
+   ],
+   "r": 3.2,
+   "role": "muted",
+   "strokeWidth": 1.6,
+   "effect": "pop",
+   "fill": false,
+   "dash": true,
+   "id": "cir19",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "cur<=1"
+  },
+  {
+   "type": "circle",
+   "c": [
+    17.500000000000004,
+    15.545517328095663
+   ],
+   "r": 3.2,
+   "role": "c",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.22,
+   "id": "cir20",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    17.500000000000004,
+    15.545517328095663
+   ],
+   "text": "W",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex21",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    10.545517328095663,
+    22.5
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.22,
+   "id": "cir22",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    10.545517328095663,
+    22.5
+   ],
+   "text": "M",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex23",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    8.0,
+    31.999999999999996
+   ],
+   "r": 3.2,
+   "role": "muted",
+   "strokeWidth": 1.6,
+   "effect": "pop",
+   "fill": false,
+   "dash": true,
+   "id": "cir24",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "cur<=1"
+  },
+  {
+   "type": "circle",
+   "c": [
+    8.0,
+    31.999999999999996
+   ],
+   "r": 3.2,
+   "role": "c",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.22,
+   "id": "cir25",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    8.0,
+    31.999999999999996
+   ],
+   "text": "W",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex26",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    10.545517328095666,
+    41.5
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.22,
+   "id": "cir27",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    10.545517328095666,
+    41.5
+   ],
+   "text": "M",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex28",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    17.499999999999993,
+    48.45448267190433
+   ],
+   "r": 3.2,
+   "role": "muted",
+   "strokeWidth": 1.6,
+   "effect": "pop",
+   "fill": false,
+   "dash": true,
+   "id": "cir29",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "cur<=1"
+  },
+  {
+   "type": "circle",
+   "c": [
+    17.499999999999993,
+    48.45448267190433
+   ],
+   "r": 3.2,
+   "role": "c",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.22,
+   "id": "cir30",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    17.499999999999993,
+    48.45448267190433
+   ],
+   "text": "W",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex31",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    80,
+    50
+   ],
+   "text": "6 men sit first",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex32",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    80,
+    44
+   ],
+   "text": "(6 − 1)! = 120",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex33",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    80,
+    34
+   ],
+   "text": "6 gaps appear",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex34",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    80,
+    28
+   ],
+   "text": "(dashed seats)",
+   "role": "muted",
+   "size": "s",
+   "bold": false,
+   "keep": true,
+   "id": "tex35",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    80,
+    20
+   ],
+   "text": "6 women: 6! = 720",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex36",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    80,
+    9
+   ],
+   "text": "120 × 720",
+   "role": "b",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex37",
+   "appear": "s3",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    80,
+    2
+   ],
+   "text": "= 86400",
+   "role": "b",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex38",
+   "appear": "s3",
+   "appearDur": 380
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Seat the men first",
+   "text": "\\[\\begin{aligned}&(6-1)!=5!=120\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Count the gaps",
+   "text": "\\[\\begin{aligned}&\\text{The 6 men leave 6 gaps, one between each}\\\\[5pt]&\\text{pair of neighbours.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Seat the women in the gaps",
+   "text": "\\[\\begin{aligned}&6!=720\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Multiply",
+   "text": "\\[\\begin{aligned}&120\\times720=86400\\\\[5pt]&\\textcolor{#047857}{\\mathbf{86400}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 3
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

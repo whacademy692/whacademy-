@@ -1,0 +1,614 @@
+{
+ "id": "g11-math-c6-e62-q13",
+ "title": "Exercise 6.2 · Q13",
+ "summary": "In how many ways can letters of word MACHINE be arranged so that all the vowels are never together?",
+ "alt": "Exercise 6.2 · Q13: In how many ways can letters of word MACHINE be arranged so that all the vowels are never together?",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -3,
+   112
+  ],
+  "y": [
+   0,
+   64
+  ],
+  "pad": 6
+ },
+ "roles": {
+  "a": {
+   "label": "Choice",
+   "color": "#2563eb",
+   "text": "Items being chosen or arranged.",
+   "legend": false
+  },
+  "b": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "Counted result.",
+   "legend": false
+  },
+  "c": {
+   "label": "Focus",
+   "color": "#d97706",
+   "text": "The part being counted now.",
+   "legend": false
+  },
+  "d": {
+   "label": "Remove",
+   "color": "#e11d48",
+   "text": "Cases that are taken away.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "cur",
+   "label": "Current step",
+   "min": 0,
+   "max": 20,
+   "step": 1,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "rect",
+   "x": 15.75,
+   "y": 44.5,
+   "w": 8.5,
+   "h": 9,
+   "role": "a",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.14,
+   "id": "rec1",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    20,
+    49
+   ],
+   "text": "M",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex2",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 25.75,
+   "y": 44.5,
+   "w": 8.5,
+   "h": 9,
+   "role": "c",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.14,
+   "id": "rec3",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    30,
+    49
+   ],
+   "text": "A",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex4",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 35.75,
+   "y": 44.5,
+   "w": 8.5,
+   "h": 9,
+   "role": "a",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.14,
+   "id": "rec5",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    40,
+    49
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex6",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 45.75,
+   "y": 44.5,
+   "w": 8.5,
+   "h": 9,
+   "role": "a",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.14,
+   "id": "rec7",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50,
+    49
+   ],
+   "text": "H",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex8",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 55.75,
+   "y": 44.5,
+   "w": 8.5,
+   "h": 9,
+   "role": "c",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.14,
+   "id": "rec9",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    60,
+    49
+   ],
+   "text": "I",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex10",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 65.75,
+   "y": 44.5,
+   "w": 8.5,
+   "h": 9,
+   "role": "a",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.14,
+   "id": "rec11",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    70,
+    49
+   ],
+   "text": "N",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex12",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 75.75,
+   "y": 44.5,
+   "w": 8.5,
+   "h": 9,
+   "role": "c",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.14,
+   "id": "rec13",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    80,
+    49
+   ],
+   "text": "E",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex14",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50,
+    59
+   ],
+   "text": "All arrangements: 7! = 5040",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex15",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 11.75,
+   "y": 26.5,
+   "w": 8.5,
+   "h": 9,
+   "role": "a",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.14,
+   "id": "rec16",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    16,
+    31
+   ],
+   "text": "M",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex17",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 22.75,
+   "y": 26.5,
+   "w": 8.5,
+   "h": 9,
+   "role": "a",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.14,
+   "id": "rec18",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    27,
+    31
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex19",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 33.75,
+   "y": 26.5,
+   "w": 8.5,
+   "h": 9,
+   "role": "a",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.14,
+   "id": "rec20",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    38,
+    31
+   ],
+   "text": "H",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex21",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 44.75,
+   "y": 26.5,
+   "w": 8.5,
+   "h": 9,
+   "role": "a",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.14,
+   "id": "rec22",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    49,
+    31
+   ],
+   "text": "N",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex23",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 62,
+   "y": 25,
+   "w": 30,
+   "h": 12,
+   "role": "c",
+   "strokeWidth": 2.6,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.12,
+   "dash": true,
+   "id": "rec24",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 64.0,
+   "y": 26.75,
+   "w": 8,
+   "h": 8.5,
+   "role": "c",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.14,
+   "id": "rec25",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    68,
+    31
+   ],
+   "text": "A",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex26",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 73.0,
+   "y": 26.75,
+   "w": 8,
+   "h": 8.5,
+   "role": "c",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.14,
+   "id": "rec27",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    77,
+    31
+   ],
+   "text": "I",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex28",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 82.0,
+   "y": 26.75,
+   "w": 8,
+   "h": 8.5,
+   "role": "c",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.14,
+   "id": "rec29",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    86,
+    31
+   ],
+   "text": "E",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex30",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50,
+    20
+   ],
+   "text": "Vowels as 1 block: 5 objects, 5! = 120",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex31",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50,
+    13
+   ],
+   "text": "Inside the block: 3! = 6  →  120 × 6 = 720",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex32",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50,
+    4
+   ],
+   "text": "5040 − 720 = 4320",
+   "role": "b",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex33",
+   "appear": "s3",
+   "appearDur": 380
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "All arrangements",
+   "text": "\\[\\begin{aligned}&\\text{MACHINE has 7 different letters. The}\\\\[5pt]&\\text{vowels are A, I, E.}\\\\[5pt]&7!=5040\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Vowels together: make one block",
+   "text": "\\[\\begin{aligned}&\\text{Treat A, I, E as one block. Now there}\\\\[5pt]&\\text{are 5 objects: M, C, H, N and the block.}\\\\[5pt]&5!=120\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Arrange the vowels inside the block",
+   "text": "\\[\\begin{aligned}&3!=6\\;\\Rightarrow\\;120\\times6=720\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Never together",
+   "text": "\\[\\begin{aligned}&5040-720=4320\\\\[5pt]&\\textcolor{#047857}{\\mathbf{4320}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 3
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

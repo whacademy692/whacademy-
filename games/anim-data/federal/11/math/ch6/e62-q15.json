@@ -1,0 +1,448 @@
+{
+ "id": "g11-math-c6-e62-q15",
+ "title": "Exercise 6.2 · Q15",
+ "summary": "Fatima wants to arrange 5 Mathematics, 3 English and 2 Urdu books on book shelf. If the books on the same…",
+ "alt": "Exercise 6.2 · Q15: Fatima wants to arrange 5 Mathematics, 3 English and 2 Urdu books on book shelf. If the books on the same subjects are together, find all possible arrangements.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -3,
+   112
+  ],
+  "y": [
+   0,
+   64
+  ],
+  "pad": 6
+ },
+ "roles": {
+  "a": {
+   "label": "Choice",
+   "color": "#2563eb",
+   "text": "Items being chosen or arranged.",
+   "legend": false
+  },
+  "b": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "Counted result.",
+   "legend": false
+  },
+  "c": {
+   "label": "Focus",
+   "color": "#d97706",
+   "text": "The part being counted now.",
+   "legend": false
+  },
+  "d": {
+   "label": "Remove",
+   "color": "#e11d48",
+   "text": "Cases that are taken away.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "cur",
+   "label": "Current step",
+   "min": 0,
+   "max": 20,
+   "step": 1,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "rect",
+   "x": 5.0,
+   "y": 36,
+   "w": 5,
+   "h": 14,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.3,
+   "id": "rec1",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 11.2,
+   "y": 36,
+   "w": 5,
+   "h": 14,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.3,
+   "id": "rec2",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 17.4,
+   "y": 36,
+   "w": 5,
+   "h": 14,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.3,
+   "id": "rec3",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 23.6,
+   "y": 36,
+   "w": 5,
+   "h": 14,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.3,
+   "id": "rec4",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 29.8,
+   "y": 36,
+   "w": 5,
+   "h": 14,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.3,
+   "id": "rec5",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 42.0,
+   "y": 36,
+   "w": 5,
+   "h": 14,
+   "role": "b",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "b",
+   "fillOpacity": 0.3,
+   "id": "rec6",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 48.2,
+   "y": 36,
+   "w": 5,
+   "h": 14,
+   "role": "b",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "b",
+   "fillOpacity": 0.3,
+   "id": "rec7",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 54.4,
+   "y": 36,
+   "w": 5,
+   "h": 14,
+   "role": "b",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "b",
+   "fillOpacity": 0.3,
+   "id": "rec8",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 66.6,
+   "y": 36,
+   "w": 5,
+   "h": 14,
+   "role": "c",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.3,
+   "id": "rec9",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 72.8,
+   "y": 36,
+   "w": 5,
+   "h": 14,
+   "role": "c",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.3,
+   "id": "rec10",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50,
+    58
+   ],
+   "text": "10 books: 5 Maths, 3 English, 2 Urdu",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex11",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 3.5,
+   "y": 33,
+   "w": 31.5,
+   "h": 20,
+   "role": "a",
+   "strokeWidth": 2.6,
+   "effect": "pop",
+   "fill": false,
+   "dash": true,
+   "id": "rec12",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    19.2,
+    28
+   ],
+   "text": "Maths",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex13",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 40.5,
+   "y": 33,
+   "w": 19.1,
+   "h": 20,
+   "role": "b",
+   "strokeWidth": 2.6,
+   "effect": "pop",
+   "fill": false,
+   "dash": true,
+   "id": "rec14",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50.0,
+    28
+   ],
+   "text": "English",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex15",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 65.1,
+   "y": 33,
+   "w": 12.9,
+   "h": 20,
+   "role": "c",
+   "strokeWidth": 2.6,
+   "effect": "pop",
+   "fill": false,
+   "dash": true,
+   "id": "rec16",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    71.5,
+    28
+   ],
+   "text": "Urdu",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex17",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50,
+    17
+   ],
+   "text": "3 blocks: 3! = 6 ways",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex18",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    19.2,
+    22
+   ],
+   "text": "5! = 120",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex19",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50.0,
+    22
+   ],
+   "text": "3! = 6",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex20",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    71.5,
+    22
+   ],
+   "text": "2! = 2",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex21",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50,
+    8
+   ],
+   "text": "3! × 5! × 3! × 2! = 6 × 120 × 6 × 2 = 8640",
+   "role": "b",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex22",
+   "appear": "s3",
+   "appearDur": 380
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Make blocks",
+   "text": "\\[\\begin{aligned}&\\text{Books of one subject stay together:}\\\\[5pt]&\\text{Mathematics block (5), English block}\\\\[5pt]&\\text{(3), Urdu block (2).}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Arrange the 3 blocks",
+   "text": "\\[\\begin{aligned}&3!=6\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Arrange the books inside each block",
+   "text": "\\[\\begin{aligned}&5!=120,\\qquad3!=6,\\qquad2!=2\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Multiply",
+   "text": "\\[\\begin{aligned}&3!\\times5!\\times3!\\times2!=6\\times120\\times6\\times2\\\\[5pt]&\\textcolor{#047857}{\\mathbf{=8640}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 3
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

@@ -1,0 +1,783 @@
+{
+ "id": "g11-math-c6-e62-q22",
+ "title": "Exercise 6.2 · Q22",
+ "summary": "Encrypt the word LAHORE by using the permutation: (3 4 6 1 5 2) By labelling L as 1, A as 2 and so on.",
+ "alt": "Exercise 6.2 · Q22: Encrypt the word LAHORE by using the permutation: (3 4 6 1 5 2) By labelling L as 1, A as 2 and so on.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -3,
+   112
+  ],
+  "y": [
+   0,
+   64
+  ],
+  "pad": 6
+ },
+ "roles": {
+  "a": {
+   "label": "Choice",
+   "color": "#2563eb",
+   "text": "Items being chosen or arranged.",
+   "legend": false
+  },
+  "b": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "Counted result.",
+   "legend": false
+  },
+  "c": {
+   "label": "Focus",
+   "color": "#d97706",
+   "text": "The part being counted now.",
+   "legend": false
+  },
+  "d": {
+   "label": "Remove",
+   "color": "#e11d48",
+   "text": "Cases that are taken away.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "cur",
+   "label": "Current step",
+   "min": 0,
+   "max": 20,
+   "step": 1,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "rect",
+   "x": 15.75,
+   "y": 41.5,
+   "w": 8.5,
+   "h": 9,
+   "role": "a",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.14,
+   "id": "rec1",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    20,
+    46
+   ],
+   "text": "L",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex2",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    20,
+    37.5
+   ],
+   "text": "1",
+   "role": "c",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex3",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 27.75,
+   "y": 41.5,
+   "w": 8.5,
+   "h": 9,
+   "role": "a",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.14,
+   "id": "rec4",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    32,
+    46
+   ],
+   "text": "A",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex5",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    32,
+    37.5
+   ],
+   "text": "2",
+   "role": "c",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex6",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 39.75,
+   "y": 41.5,
+   "w": 8.5,
+   "h": 9,
+   "role": "a",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.14,
+   "id": "rec7",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    44,
+    46
+   ],
+   "text": "H",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex8",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    44,
+    37.5
+   ],
+   "text": "3",
+   "role": "c",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex9",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 51.75,
+   "y": 41.5,
+   "w": 8.5,
+   "h": 9,
+   "role": "a",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.14,
+   "id": "rec10",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    56,
+    46
+   ],
+   "text": "O",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex11",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    56,
+    37.5
+   ],
+   "text": "4",
+   "role": "c",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex12",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 63.75,
+   "y": 41.5,
+   "w": 8.5,
+   "h": 9,
+   "role": "a",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.14,
+   "id": "rec13",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    68,
+    46
+   ],
+   "text": "R",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex14",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    68,
+    37.5
+   ],
+   "text": "5",
+   "role": "c",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex15",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 75.75,
+   "y": 41.5,
+   "w": 8.5,
+   "h": 9,
+   "role": "a",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.14,
+   "id": "rec16",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    80,
+    46
+   ],
+   "text": "E",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex17",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    80,
+    37.5
+   ],
+   "text": "6",
+   "role": "c",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex18",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50,
+    59
+   ],
+   "text": "L A H O R E  =  1 2 3 4 5 6",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex19",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 15.75,
+   "y": 15.5,
+   "w": 8.5,
+   "h": 9,
+   "role": "c",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.14,
+   "id": "rec20",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    20,
+    20
+   ],
+   "text": "H",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex21",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    44,
+    41.5
+   ],
+   "to": [
+    20,
+    24.5
+   ],
+   "role": "c",
+   "strokeWidth": 1.8,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg22",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    20,
+    12
+   ],
+   "text": "3",
+   "role": "c",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex23",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 27.75,
+   "y": 15.5,
+   "w": 8.5,
+   "h": 9,
+   "role": "c",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.14,
+   "id": "rec24",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    32,
+    20
+   ],
+   "text": "O",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex25",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    56,
+    41.5
+   ],
+   "to": [
+    32,
+    24.5
+   ],
+   "role": "c",
+   "strokeWidth": 1.8,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg26",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    32,
+    12
+   ],
+   "text": "4",
+   "role": "c",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex27",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 39.75,
+   "y": 15.5,
+   "w": 8.5,
+   "h": 9,
+   "role": "c",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.14,
+   "id": "rec28",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    44,
+    20
+   ],
+   "text": "E",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex29",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    80,
+    41.5
+   ],
+   "to": [
+    44,
+    24.5
+   ],
+   "role": "c",
+   "strokeWidth": 1.8,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg30",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    44,
+    12
+   ],
+   "text": "6",
+   "role": "c",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex31",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 51.75,
+   "y": 15.5,
+   "w": 8.5,
+   "h": 9,
+   "role": "c",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.14,
+   "id": "rec32",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    56,
+    20
+   ],
+   "text": "L",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex33",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    20,
+    41.5
+   ],
+   "to": [
+    56,
+    24.5
+   ],
+   "role": "c",
+   "strokeWidth": 1.8,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg34",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    56,
+    12
+   ],
+   "text": "1",
+   "role": "c",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex35",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 63.75,
+   "y": 15.5,
+   "w": 8.5,
+   "h": 9,
+   "role": "c",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.14,
+   "id": "rec36",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    68,
+    20
+   ],
+   "text": "R",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex37",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    68,
+    41.5
+   ],
+   "to": [
+    68,
+    24.5
+   ],
+   "role": "c",
+   "strokeWidth": 1.8,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg38",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    68,
+    12
+   ],
+   "text": "5",
+   "role": "c",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex39",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "rect",
+   "x": 75.75,
+   "y": 15.5,
+   "w": 8.5,
+   "h": 9,
+   "role": "c",
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.14,
+   "id": "rec40",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    80,
+    20
+   ],
+   "text": "A",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex41",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    32,
+    41.5
+   ],
+   "to": [
+    80,
+    24.5
+   ],
+   "role": "c",
+   "strokeWidth": 1.8,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg42",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    80,
+    12
+   ],
+   "text": "2",
+   "role": "c",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex43",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50,
+    3
+   ],
+   "text": "HOELRA",
+   "role": "b",
+   "size": "xl",
+   "bold": true,
+   "keep": true,
+   "id": "tex44",
+   "appear": "s2",
+   "appearDur": 380
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Label the letters",
+   "text": "\\[\\begin{aligned}&L=1,\\ A=2,\\ H=3,\\ O=4,\\ R=5,\\ E=6\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Follow the permutation",
+   "text": "\\[\\begin{aligned}&\\text{The permutation (3 4 6 1 5 2) says: take}\\\\[5pt]&\\text{label 3, then 4, then 6, then 1, then 5,}\\\\[5pt]&\\text{then 2.}\\\\[5pt]&3\\to H,\\ 4\\to O,\\ 6\\to E,\\ 1\\to L,\\ 5\\to R,\\ 2\\to A\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Encrypted word",
+   "text": "\\[\\begin{aligned}&\\textcolor{#047857}{\\mathbf{\\text{HOELRA}}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 2
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}
