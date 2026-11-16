@@ -1306,6 +1306,86 @@ window.WHA_CONTENT = {
         ]
       }
     },
+    "11": {
+      "math": {
+        "name": "Mathematics",
+        "code": "MATH",
+        "chapters": [
+          {
+            "n": 1,
+            "unit": 1,
+            "title": "Complex Numbers",
+            "notes": null,
+            "quiz": null,
+            "game": null
+          },
+          {
+            "n": 2,
+            "unit": 2,
+            "title": "Matrices and Determinants",
+            "notes": null,
+            "quiz": null,
+            "game": null
+          },
+          {
+            "n": 3,
+            "unit": 3,
+            "title": "Vectors",
+            "notes": null,
+            "quiz": null,
+            "game": null
+          },
+          {
+            "n": 4,
+            "unit": 4,
+            "title": "Sequences and Series",
+            "notes": null,
+            "quiz": null,
+            "game": null
+          },
+          {
+            "n": 5,
+            "unit": 5,
+            "title": "Division of Polynomials",
+            "notes": null,
+            "quiz": null,
+            "game": null
+          },
+          {
+            "n": 6,
+            "unit": 6,
+            "title": "Permutation and Combination",
+            "notes": "https://whacademypk.com/notes/class-11/math/permutation-and-combination.html",
+            "quiz": null,
+            "game": "https://whacademypk.com/games/chapter.html?ch=11/math/permutation_and_combination"
+          },
+          {
+            "n": 7,
+            "unit": 7,
+            "title": "Mathematical Induction and Binomial Theorem",
+            "notes": null,
+            "quiz": null,
+            "game": null
+          },
+          {
+            "n": 8,
+            "unit": 8,
+            "title": "Fundamental Laws of Trigonometry",
+            "notes": null,
+            "quiz": null,
+            "game": null
+          },
+          {
+            "n": 9,
+            "unit": 9,
+            "title": "Trigonometric Functions",
+            "notes": null,
+            "quiz": null,
+            "game": null
+          }
+        ]
+      }
+    },
     "12": {
       "phys": {
         "name": "Physics",
