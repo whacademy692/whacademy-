@@ -1,0 +1,661 @@
+{
+ "id": "g11-math-c6-rev-q5",
+ "title": "Review Exercise 6 · Q5",
+ "summary": "The number of arranging 7 keys in a key chain.",
+ "alt": "Review Exercise 6 · Q5: The number of arranging 7 keys in a key chain.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -3,
+   112
+  ],
+  "y": [
+   0,
+   64
+  ],
+  "pad": 6
+ },
+ "roles": {
+  "a": {
+   "label": "Choice",
+   "color": "#2563eb",
+   "text": "Items being chosen or arranged.",
+   "legend": false
+  },
+  "b": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "Counted result.",
+   "legend": false
+  },
+  "c": {
+   "label": "Focus",
+   "color": "#d97706",
+   "text": "The part being counted now.",
+   "legend": false
+  },
+  "d": {
+   "label": "Remove",
+   "color": "#e11d48",
+   "text": "Cases that are taken away.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "cur",
+   "label": "Current step",
+   "min": 0,
+   "max": 20,
+   "step": 1,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "circle",
+   "c": [
+    27,
+    32
+   ],
+   "r": 13,
+   "role": "muted",
+   "strokeWidth": 2.6,
+   "effect": "pop",
+   "fill": false,
+   "id": "cir1",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    27.0,
+    45.0
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir2",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    27.0,
+    45.0
+   ],
+   "text": "1",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex3",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    37.163809272084386,
+    40.10536742416353
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir4",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    37.163809272084386,
+    40.10536742416353
+   ],
+   "text": "2",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex5",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    39.674062858363705,
+    29.10722785856791
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir6",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    39.674062858363705,
+    29.10722785856791
+   ],
+   "text": "3",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex7",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    32.64048860852826,
+    20.28740471726855
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir8",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    32.64048860852826,
+    20.28740471726855
+   ],
+   "text": "4",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex9",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    21.359511391471745,
+    20.28740471726855
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir10",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    21.359511391471745,
+    20.28740471726855
+   ],
+   "text": "5",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex11",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    14.325937141636292,
+    29.107227858567917
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir12",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    14.325937141636292,
+    29.107227858567917
+   ],
+   "text": "6",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex13",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    16.83619072791561,
+    40.10536742416353
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir14",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    16.83619072791561,
+    40.10536742416353
+   ],
+   "text": "7",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex15",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    27,
+    9
+   ],
+   "text": "ring seen from the front",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex16",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50,
+    59
+   ],
+   "text": "7 keys on a key ring",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex17",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "abs(cur-0)<0.5"
+  },
+  {
+   "type": "text",
+   "at": [
+    50,
+    59
+   ],
+   "text": "Circular: (7 − 1)! = 720",
+   "role": "a",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex18",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "abs(cur-1)<0.5"
+  },
+  {
+   "type": "circle",
+   "c": [
+    73,
+    32
+   ],
+   "r": 13,
+   "role": "muted",
+   "strokeWidth": 2.6,
+   "effect": "pop",
+   "fill": false,
+   "id": "cir19",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    73.0,
+    45.0
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir20",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    73.0,
+    45.0
+   ],
+   "text": "1",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex21",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    62.83619072791561,
+    40.10536742416353
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir22",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    62.83619072791561,
+    40.10536742416353
+   ],
+   "text": "2",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex23",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    60.325937141636295,
+    29.107227858567914
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir24",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    60.325937141636295,
+    29.107227858567914
+   ],
+   "text": "3",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex25",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    67.35951139147174,
+    20.28740471726855
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir26",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    67.35951139147174,
+    20.28740471726855
+   ],
+   "text": "4",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex27",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    78.64048860852826,
+    20.28740471726855
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir28",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    78.64048860852826,
+    20.28740471726855
+   ],
+   "text": "5",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex29",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    85.67406285836371,
+    29.10722785856792
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir30",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    85.67406285836371,
+    29.10722785856792
+   ],
+   "text": "6",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex31",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    83.16380927208439,
+    40.10536742416353
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir32",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    83.16380927208439,
+    40.10536742416353
+   ],
+   "text": "7",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex33",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    73,
+    9
+   ],
+   "text": "same ring flipped over",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex34",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50,
+    32
+   ],
+   "text": "=",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "keep": true,
+   "id": "tex35",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50,
+    59
+   ],
+   "text": "720 ÷ 2 = 360",
+   "role": "b",
+   "size": "l",
+   "bold": true,
+   "keep": true,
+   "id": "tex36",
+   "appear": "s2",
+   "appearDur": 380
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A key ring",
+   "text": "\\[\\begin{aligned}&\\text{A key ring is a circle that can also be}\\\\[5pt]&\\text{flipped over.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Circular arrangements",
+   "text": "\\[\\begin{aligned}&(7-1)!=720\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Flipping gives the same ring",
+   "text": "\\[\\begin{aligned}&\\dfrac{720}{2}=360\\\\[5pt]&\\textcolor{#047857}{\\mathbf{360}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 2
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

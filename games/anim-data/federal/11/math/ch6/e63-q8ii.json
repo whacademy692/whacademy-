@@ -1,0 +1,603 @@
+{
+ "id": "g11-math-c6-e63-q8ii",
+ "title": "Exercise 6.3 · Q8(ii)",
+ "summary": "There are 10 points on a circle. Find the number of triangles that can be drawn.",
+ "alt": "Exercise 6.3 · Q8(ii): There are 10 points on a circle. Find the number of triangles that can be drawn.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -3,
+   112
+  ],
+  "y": [
+   0,
+   64
+  ],
+  "pad": 6
+ },
+ "roles": {
+  "a": {
+   "label": "Choice",
+   "color": "#2563eb",
+   "text": "Items being chosen or arranged.",
+   "legend": false
+  },
+  "b": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "Counted result.",
+   "legend": false
+  },
+  "c": {
+   "label": "Focus",
+   "color": "#d97706",
+   "text": "The part being counted now.",
+   "legend": false
+  },
+  "d": {
+   "label": "Remove",
+   "color": "#e11d48",
+   "text": "Cases that are taken away.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "cur",
+   "label": "Current step",
+   "min": 0,
+   "max": 20,
+   "step": 1,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "circle",
+   "c": [
+    50,
+    31
+   ],
+   "r": 22,
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": false,
+   "id": "cir1",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    50.0,
+    53.0
+   ],
+   "r": 1.7,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.5,
+   "id": "cir2",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50.0,
+    58.0
+   ],
+   "text": "A",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex3",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    62.93127555043441,
+    48.798373876248846
+   ],
+   "r": 1.7,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.5,
+   "id": "cir4",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    65.87020181189678,
+    52.84345884812358
+   ],
+   "text": "B",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex5",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    70.92324335849338,
+    37.798373876248846
+   ],
+   "r": 1.7,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.5,
+   "id": "cir6",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    75.67852593996915,
+    39.34345884812358
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex7",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    70.92324335849338,
+    24.201626123751158
+   ],
+   "r": 1.7,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.5,
+   "id": "cir8",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    75.67852593996915,
+    22.656541151876418
+   ],
+   "text": "D",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex9",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    62.93127555043441,
+    13.201626123751154
+   ],
+   "r": 1.7,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.5,
+   "id": "cir10",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    65.87020181189678,
+    9.156541151876418
+   ],
+   "text": "E",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex11",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    50.0,
+    9.0
+   ],
+   "r": 1.7,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.5,
+   "id": "cir12",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50.0,
+    4.0
+   ],
+   "text": "F",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex13",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    37.06872444956559,
+    13.201626123751154
+   ],
+   "r": 1.7,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.5,
+   "id": "cir14",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    34.12979818810323,
+    9.156541151876418
+   ],
+   "text": "G",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex15",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    29.076756641506623,
+    24.201626123751154
+   ],
+   "r": 1.7,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.5,
+   "id": "cir16",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    24.321474060030855,
+    22.656541151876418
+   ],
+   "text": "H",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex17",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    29.07675664150662,
+    37.79837387624884
+   ],
+   "r": 1.7,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.5,
+   "id": "cir18",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    24.32147406003085,
+    39.343458848123575
+   ],
+   "text": "I",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex19",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    37.068724449565586,
+    48.798373876248846
+   ],
+   "r": 1.7,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.5,
+   "id": "cir20",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    34.12979818810322,
+    52.843458848123575
+   ],
+   "text": "J",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex21",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50,
+    61
+   ],
+   "text": "10 points on a circle (no three on a line)",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex22",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "abs(cur-0)<0.5"
+  },
+  {
+   "type": "polygon",
+   "pts": [
+    [
+     50.0,
+     53.0
+    ],
+    [
+     70.92324335849338,
+     24.201626123751158
+    ],
+    [
+     29.076756641506623,
+     24.201626123751154
+    ]
+   ],
+   "role": "c",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "fill": "c",
+   "fillOpacity": 0.2,
+   "id": "pol23",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50,
+    61
+   ],
+   "text": "One triangle needs any 3 points: A, D, H",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex24",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "abs(cur-1)<0.5"
+  },
+  {
+   "type": "polygon",
+   "pts": [
+    [
+     62.93127555043441,
+     48.798373876248846
+    ],
+    [
+     62.93127555043441,
+     13.201626123751154
+    ],
+    [
+     29.07675664150662,
+     37.79837387624884
+    ]
+   ],
+   "role": "a",
+   "strokeWidth": 1.6,
+   "effect": "draw",
+   "fill": "a",
+   "fillOpacity": 0.05,
+   "id": "pol25",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "polygon",
+   "pts": [
+    [
+     70.92324335849338,
+     37.798373876248846
+    ],
+    [
+     37.06872444956559,
+     13.201626123751154
+    ],
+    [
+     37.068724449565586,
+     48.798373876248846
+    ]
+   ],
+   "role": "a",
+   "strokeWidth": 1.6,
+   "effect": "draw",
+   "fill": "a",
+   "fillOpacity": 0.05,
+   "id": "pol26",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "polygon",
+   "pts": [
+    [
+     50.0,
+     53.0
+    ],
+    [
+     62.93127555043441,
+     13.201626123751154
+    ],
+    [
+     37.06872444956559,
+     13.201626123751154
+    ]
+   ],
+   "role": "a",
+   "strokeWidth": 1.6,
+   "effect": "draw",
+   "fill": "a",
+   "fillOpacity": 0.05,
+   "id": "pol27",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "polygon",
+   "pts": [
+    [
+     70.92324335849338,
+     24.201626123751158
+    ],
+    [
+     50.0,
+     9.0
+    ],
+    [
+     37.068724449565586,
+     48.798373876248846
+    ]
+   ],
+   "role": "a",
+   "strokeWidth": 1.6,
+   "effect": "draw",
+   "fill": "a",
+   "fillOpacity": 0.05,
+   "id": "pol28",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50,
+    61
+   ],
+   "text": "¹⁰C₃ = 120 triangles",
+   "role": "b",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex29",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "abs(cur-2)<0.5"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Draw the points",
+   "text": "\\[\\begin{aligned}&\\text{There are 10 points on the circle. No}\\\\[5pt]&\\text{three of them lie on a line.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "A triangle needs 3 points",
+   "text": "\\[\\begin{aligned}&\\text{Order does not matter, and any 3 points}\\\\[5pt]&\\text{make a triangle.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Count",
+   "text": "\\[\\begin{aligned}&{}^{10}C_{3}=\\dfrac{10\\times9\\times8}{3\\times2\\times1}=\\dfrac{720}{6}\\\\[5pt]&\\textcolor{#047857}{\\mathbf{=120}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 2
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

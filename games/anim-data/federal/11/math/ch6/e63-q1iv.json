@@ -1,0 +1,667 @@
+{
+ "id": "g11-math-c6-e63-q1iv",
+ "title": "Exercise 6.3 · Q1(iv)",
+ "summary": "Prove: ⁿ⁻¹C₍ᵣ₋₁₎ + ⁿ⁻¹Cᵣ = ⁿCᵣ",
+ "alt": "Exercise 6.3 · Q1(iv): Prove: ⁿ⁻¹C₍ᵣ₋₁₎ + ⁿ⁻¹Cᵣ = ⁿCᵣ",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -3,
+   112
+  ],
+  "y": [
+   0,
+   64
+  ],
+  "pad": 6
+ },
+ "roles": {
+  "a": {
+   "label": "Choice",
+   "color": "#2563eb",
+   "text": "Items being chosen or arranged.",
+   "legend": false
+  },
+  "b": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "Counted result.",
+   "legend": false
+  },
+  "c": {
+   "label": "Focus",
+   "color": "#d97706",
+   "text": "The part being counted now.",
+   "legend": false
+  },
+  "d": {
+   "label": "Remove",
+   "color": "#e11d48",
+   "text": "Cases that are taken away.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "cur",
+   "label": "Current step",
+   "min": 0,
+   "max": 20,
+   "step": 1,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "text",
+   "at": [
+    7,
+    55
+   ],
+   "text": "n=0",
+   "role": "muted",
+   "size": "s",
+   "bold": false,
+   "keep": true,
+   "id": "tex1",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50.0,
+    55
+   ],
+   "text": "1",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex2",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    7,
+    46
+   ],
+   "text": "n=1",
+   "role": "muted",
+   "size": "s",
+   "bold": false,
+   "keep": true,
+   "id": "tex3",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    43.5,
+    46
+   ],
+   "text": "1",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex4",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    56.5,
+    46
+   ],
+   "text": "1",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex5",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    7,
+    37
+   ],
+   "text": "n=2",
+   "role": "muted",
+   "size": "s",
+   "bold": false,
+   "keep": true,
+   "id": "tex6",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    37.0,
+    37
+   ],
+   "text": "1",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex7",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50.0,
+    37
+   ],
+   "text": "2",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex8",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    63.0,
+    37
+   ],
+   "text": "1",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex9",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    7,
+    28
+   ],
+   "text": "n=3",
+   "role": "muted",
+   "size": "s",
+   "bold": false,
+   "keep": true,
+   "id": "tex10",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    30.5,
+    28
+   ],
+   "text": "1",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex11",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    43.5,
+    28
+   ],
+   "text": "3",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex12",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    56.5,
+    28
+   ],
+   "text": "3",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex13",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    69.5,
+    28
+   ],
+   "text": "1",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex14",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    7,
+    19
+   ],
+   "text": "n=4",
+   "role": "muted",
+   "size": "s",
+   "bold": false,
+   "keep": true,
+   "id": "tex15",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    24.0,
+    19
+   ],
+   "text": "1",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex16",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    37.0,
+    19
+   ],
+   "text": "4",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex17",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50.0,
+    19
+   ],
+   "text": "6",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex18",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    63.0,
+    19
+   ],
+   "text": "4",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex19",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    76.0,
+    19
+   ],
+   "text": "1",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex20",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    7,
+    10
+   ],
+   "text": "n=5",
+   "role": "muted",
+   "size": "s",
+   "bold": false,
+   "keep": true,
+   "id": "tex21",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    17.5,
+    10
+   ],
+   "text": "1",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex22",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    30.5,
+    10
+   ],
+   "text": "5",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex23",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    43.5,
+    10
+   ],
+   "text": "10",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex24",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    56.5,
+    10
+   ],
+   "text": "10",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex25",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    69.5,
+    10
+   ],
+   "text": "5",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex26",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    82.5,
+    10
+   ],
+   "text": "1",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex27",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    37.0,
+    19
+   ],
+   "r": 3.8,
+   "role": "a",
+   "strokeWidth": 2.6,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.18,
+   "id": "cir28",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    50.0,
+    19
+   ],
+   "r": 3.8,
+   "role": "b",
+   "strokeWidth": 2.6,
+   "effect": "pop",
+   "fill": "b",
+   "fillOpacity": 0.18,
+   "id": "cir29",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    43.5,
+    10
+   ],
+   "r": 3.8,
+   "role": "c",
+   "strokeWidth": 2.8,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.2,
+   "id": "cir30",
+   "appear": "s3",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    20,
+    4
+   ],
+   "text": "⁴C₁ = 4",
+   "role": "a",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex31",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50,
+    4
+   ],
+   "text": "+ ⁴C₂ = 6",
+   "role": "b",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex32",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    80,
+    4
+   ],
+   "text": "= ⁵C₂ = 10",
+   "role": "c",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex33",
+   "appear": "s3",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    39.0,
+    15.6
+   ],
+   "to": [
+    41.5,
+    13.4
+   ],
+   "role": "a",
+   "strokeWidth": 2.4,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg34",
+   "appear": "s3",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    48.0,
+    15.6
+   ],
+   "to": [
+    45.5,
+    13.4
+   ],
+   "role": "b",
+   "strokeWidth": 2.4,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg35",
+   "appear": "s3",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50,
+    61
+   ],
+   "text": "Example: n = 5, r = 2",
+   "role": "muted",
+   "size": "s",
+   "bold": false,
+   "keep": true,
+   "id": "tex36",
+   "appear": "s0",
+   "appearDur": 380
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "First term",
+   "text": "\\[\\begin{aligned}&{}^{n-1}C_{r-1}=\\dfrac{(n-1)!}{(r-1)!\\,(n-r)!}=\\dfrac{(n-1)!\\;r}{r!\\,(n-r)!}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Second term",
+   "text": "\\[\\begin{aligned}&{}^{n-1}C_{r}=\\dfrac{(n-1)!}{r!\\,(n-1-r)!}=\\dfrac{(n-1)!\\,(n-r)}{r!\\,(n-r)!}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Add the stacked fractions",
+   "text": "\\[\\begin{aligned}&\\text{Sum}=\\dfrac{(n-1)!\\,[\\,r+(n-r)\\,]}{r!\\,(n-r)!}=\\dfrac{n\\,(n-1)!}{r!\\,(n-r)!}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Result",
+   "text": "\\[\\begin{aligned}&\\textcolor{#047857}{\\mathbf{=\\dfrac{n!}{r!\\,(n-r)!}={}^{n}C_{r}\\ \\checkmark}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 3
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

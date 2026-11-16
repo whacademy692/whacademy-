@@ -1,0 +1,771 @@
+{
+ "id": "g11-math-c6-e63-q9",
+ "title": "Exercise 6.3 · Q9",
+ "summary": "Find the number of diagonals in n sided polygon?",
+ "alt": "Exercise 6.3 · Q9: Find the number of diagonals in n sided polygon?",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -3,
+   112
+  ],
+  "y": [
+   0,
+   64
+  ],
+  "pad": 6
+ },
+ "roles": {
+  "a": {
+   "label": "Choice",
+   "color": "#2563eb",
+   "text": "Items being chosen or arranged.",
+   "legend": false
+  },
+  "b": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "Counted result.",
+   "legend": false
+  },
+  "c": {
+   "label": "Focus",
+   "color": "#d97706",
+   "text": "The part being counted now.",
+   "legend": false
+  },
+  "d": {
+   "label": "Remove",
+   "color": "#e11d48",
+   "text": "Cases that are taken away.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "cur",
+   "label": "Current step",
+   "min": 0,
+   "max": 20,
+   "step": 1,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "segment",
+   "from": [
+    50.0,
+    53.0
+   ],
+   "to": [
+    69.05255888325766,
+    42.0
+   ],
+   "role": "a",
+   "strokeWidth": 3.2,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg1",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    50.0,
+    53.0
+   ],
+   "r": 1.8,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.6,
+   "id": "cir2",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50.0,
+    58.0
+   ],
+   "text": "1",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex3",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    69.05255888325766,
+    42.0
+   ],
+   "to": [
+    69.05255888325766,
+    20.0
+   ],
+   "role": "a",
+   "strokeWidth": 3.2,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg4",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    69.05255888325766,
+    42.0
+   ],
+   "r": 1.8,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.6,
+   "id": "cir5",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    73.38268590217984,
+    44.5
+   ],
+   "text": "2",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex6",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    69.05255888325766,
+    20.0
+   ],
+   "to": [
+    50.0,
+    9.0
+   ],
+   "role": "a",
+   "strokeWidth": 3.2,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg7",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    69.05255888325766,
+    20.0
+   ],
+   "r": 1.8,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.6,
+   "id": "cir8",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    73.38268590217984,
+    17.5
+   ],
+   "text": "3",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex9",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    50.0,
+    9.0
+   ],
+   "to": [
+    30.947441116742347,
+    20.0
+   ],
+   "role": "a",
+   "strokeWidth": 3.2,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg10",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    50.0,
+    9.0
+   ],
+   "r": 1.8,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.6,
+   "id": "cir11",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50.0,
+    4.0
+   ],
+   "text": "4",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex12",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    30.947441116742347,
+    20.0
+   ],
+   "to": [
+    30.94744111674235,
+    42.0
+   ],
+   "role": "a",
+   "strokeWidth": 3.2,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg13",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    30.947441116742347,
+    20.0
+   ],
+   "r": 1.8,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.6,
+   "id": "cir14",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    26.617314097820156,
+    17.5
+   ],
+   "text": "5",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex15",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    30.94744111674235,
+    42.0
+   ],
+   "to": [
+    50.0,
+    53.0
+   ],
+   "role": "a",
+   "strokeWidth": 3.2,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg16",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    30.94744111674235,
+    42.0
+   ],
+   "r": 1.8,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.6,
+   "id": "cir17",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    26.61731409782016,
+    44.5
+   ],
+   "text": "6",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex18",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50,
+    61
+   ],
+   "text": "Hexagon: n = 6 vertices, 6 sides",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex19",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "abs(cur-0)<0.5"
+  },
+  {
+   "type": "segment",
+   "from": [
+    50.0,
+    53.0
+   ],
+   "to": [
+    69.05255888325766,
+    20.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.6,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg20",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    50.0,
+    53.0
+   ],
+   "to": [
+    50.0,
+    9.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.6,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg21",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    50.0,
+    53.0
+   ],
+   "to": [
+    30.947441116742347,
+    20.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.6,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg22",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    69.05255888325766,
+    42.0
+   ],
+   "to": [
+    50.0,
+    9.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.6,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg23",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    69.05255888325766,
+    42.0
+   ],
+   "to": [
+    30.947441116742347,
+    20.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.6,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg24",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    69.05255888325766,
+    42.0
+   ],
+   "to": [
+    30.94744111674235,
+    42.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.6,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg25",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    69.05255888325766,
+    20.0
+   ],
+   "to": [
+    30.947441116742347,
+    20.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.6,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg26",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    69.05255888325766,
+    20.0
+   ],
+   "to": [
+    30.94744111674235,
+    42.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.6,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg27",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    50.0,
+    9.0
+   ],
+   "to": [
+    30.94744111674235,
+    42.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.6,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg28",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50,
+    61
+   ],
+   "text": "Join every pair: ⁶C₂ = 15 lines",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex29",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "abs(cur-1)<0.5"
+  },
+  {
+   "type": "segment",
+   "from": [
+    50.0,
+    53.0
+   ],
+   "to": [
+    69.05255888325766,
+    20.0
+   ],
+   "role": "c",
+   "strokeWidth": 2.6,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg30",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    50.0,
+    53.0
+   ],
+   "to": [
+    50.0,
+    9.0
+   ],
+   "role": "c",
+   "strokeWidth": 2.6,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg31",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    50.0,
+    53.0
+   ],
+   "to": [
+    30.947441116742347,
+    20.0
+   ],
+   "role": "c",
+   "strokeWidth": 2.6,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg32",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    69.05255888325766,
+    42.0
+   ],
+   "to": [
+    50.0,
+    9.0
+   ],
+   "role": "c",
+   "strokeWidth": 2.6,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg33",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    69.05255888325766,
+    42.0
+   ],
+   "to": [
+    30.947441116742347,
+    20.0
+   ],
+   "role": "c",
+   "strokeWidth": 2.6,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg34",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    69.05255888325766,
+    42.0
+   ],
+   "to": [
+    30.94744111674235,
+    42.0
+   ],
+   "role": "c",
+   "strokeWidth": 2.6,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg35",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    69.05255888325766,
+    20.0
+   ],
+   "to": [
+    30.947441116742347,
+    20.0
+   ],
+   "role": "c",
+   "strokeWidth": 2.6,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg36",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    69.05255888325766,
+    20.0
+   ],
+   "to": [
+    30.94744111674235,
+    42.0
+   ],
+   "role": "c",
+   "strokeWidth": 2.6,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg37",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    50.0,
+    9.0
+   ],
+   "to": [
+    30.94744111674235,
+    42.0
+   ],
+   "role": "c",
+   "strokeWidth": 2.6,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg38",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50,
+    61
+   ],
+   "text": "15 − 6 sides = 9 diagonals = 6 × 3 ÷ 2",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex39",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "abs(cur-2)<0.5"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Join every pair of vertices",
+   "text": "\\[\\begin{aligned}&\\text{The n vertices give nC2 lines.}\\\\[5pt]&{}^{n}C_{2}=\\dfrac{n(n-1)}{2}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Remove the sides",
+   "text": "\\[\\begin{aligned}&\\text{n of these lines are the sides of the}\\\\[5pt]&\\text{polygon. The rest are diagonals.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Subtract",
+   "text": "\\[\\begin{aligned}&\\dfrac{n(n-1)}{2}-n=\\dfrac{n(n-1)-2n}{2}=\\dfrac{n(n-3)}{2}\\\\[5pt]&\\textcolor{#047857}{\\mathbf{\\text{Diagonals}=\\dfrac{n(n-3)}{2}}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 2
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

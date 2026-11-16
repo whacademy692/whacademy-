@@ -1,0 +1,632 @@
+{
+ "id": "g11-math-c6-rev-q6",
+ "title": "Review Exercise 6 · Q6",
+ "summary": "Twelve persons are seated at a round table. Find the number of ways of their arrangement if two particular…",
+ "alt": "Review Exercise 6 · Q6: Twelve persons are seated at a round table. Find the number of ways of their arrangement if two particular persons don't want to sit together.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -3,
+   112
+  ],
+  "y": [
+   0,
+   64
+  ],
+  "pad": 6
+ },
+ "roles": {
+  "a": {
+   "label": "Choice",
+   "color": "#2563eb",
+   "text": "Items being chosen or arranged.",
+   "legend": false
+  },
+  "b": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "Counted result.",
+   "legend": false
+  },
+  "c": {
+   "label": "Focus",
+   "color": "#d97706",
+   "text": "The part being counted now.",
+   "legend": false
+  },
+  "d": {
+   "label": "Remove",
+   "color": "#e11d48",
+   "text": "Cases that are taken away.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "cur",
+   "label": "Current step",
+   "min": 0,
+   "max": 20,
+   "step": 1,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "circle",
+   "c": [
+    30,
+    32
+   ],
+   "r": 14.399999999999999,
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": false,
+   "id": "cir1",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    30.0,
+    52.0
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir2",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    30.0,
+    52.0
+   ],
+   "text": "1",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex3",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    40.0,
+    49.32050807568877
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir4",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    40.0,
+    49.32050807568877
+   ],
+   "text": "2",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex5",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    47.32050807568878,
+    42.0
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir6",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    47.32050807568878,
+    42.0
+   ],
+   "text": "3",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex7",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    50.0,
+    32.0
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir8",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50.0,
+    32.0
+   ],
+   "text": "4",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex9",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    47.32050807568878,
+    22.0
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir10",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    47.32050807568878,
+    22.0
+   ],
+   "text": "5",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex11",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    40.0,
+    14.679491924311229
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir12",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    40.0,
+    14.679491924311229
+   ],
+   "text": "6",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex13",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    30.0,
+    12.0
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir14",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    30.0,
+    12.0
+   ],
+   "text": "7",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex15",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    20.000000000000004,
+    14.679491924311225
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir16",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    20.000000000000004,
+    14.679491924311225
+   ],
+   "text": "8",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex17",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    12.679491924311225,
+    22.0
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir18",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    12.679491924311225,
+    22.0
+   ],
+   "text": "9",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex19",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    10.0,
+    31.999999999999996
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir20",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    10.0,
+    31.999999999999996
+   ],
+   "text": "10",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex21",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    12.679491924311229,
+    42.0
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir22",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    12.679491924311229,
+    42.0
+   ],
+   "text": "11",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex23",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    19.999999999999993,
+    49.320508075688764
+   ],
+   "r": 3.2,
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "cir24",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    19.999999999999993,
+    49.320508075688764
+   ],
+   "text": "12",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex25",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    30.0,
+    52.0
+   ],
+   "r": 3.6,
+   "role": "c",
+   "strokeWidth": 2.8,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.45,
+   "id": "cir26",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    40.0,
+    49.32050807568877
+   ],
+   "r": 3.6,
+   "role": "c",
+   "strokeWidth": 2.8,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.45,
+   "id": "cir27",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    30.0,
+    52.0
+   ],
+   "to": [
+    40.0,
+    49.32050807568877
+   ],
+   "role": "c",
+   "strokeWidth": 3.6,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg28",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    82,
+    50
+   ],
+   "text": "12 persons",
+   "role": "a",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex29",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    82,
+    44
+   ],
+   "text": "(12 − 1)! = 11!",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex30",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    82,
+    32
+   ],
+   "text": "Two together:",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex31",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    82,
+    26
+   ],
+   "text": "2 × 10!",
+   "role": "c",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex32",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    82,
+    14
+   ],
+   "text": "11! − 2 × 10!",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex33",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    82,
+    8
+   ],
+   "text": "= 32659200",
+   "role": "b",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex34",
+   "appear": "s2",
+   "appearDur": 380
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "All arrangements",
+   "text": "\\[\\begin{aligned}&(12-1)!=11!=39916800\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Two persons together",
+   "text": "\\[\\begin{aligned}&\\text{Treat the two as one block: 11 objects,}\\\\[5pt]&\\text{so (11$-$1)! ways. The two can swap in 2!}\\\\[5pt]&\\text{ways.}\\\\[5pt]&2\\times10!=7257600\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Subtract",
+   "text": "\\[\\begin{aligned}&11!-2\\times10!=39916800-7257600\\\\[5pt]&\\textcolor{#047857}{\\mathbf{=32659200}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 2
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

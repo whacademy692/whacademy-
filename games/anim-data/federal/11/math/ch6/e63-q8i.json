@@ -1,0 +1,1306 @@
+{
+ "id": "g11-math-c6-e63-q8i",
+ "title": "Exercise 6.3 · Q8(i)",
+ "summary": "There are 10 points on a circle. Find the number of lines that can be drawn.",
+ "alt": "Exercise 6.3 · Q8(i): There are 10 points on a circle. Find the number of lines that can be drawn.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -3,
+   112
+  ],
+  "y": [
+   0,
+   64
+  ],
+  "pad": 6
+ },
+ "roles": {
+  "a": {
+   "label": "Choice",
+   "color": "#2563eb",
+   "text": "Items being chosen or arranged.",
+   "legend": false
+  },
+  "b": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "Counted result.",
+   "legend": false
+  },
+  "c": {
+   "label": "Focus",
+   "color": "#d97706",
+   "text": "The part being counted now.",
+   "legend": false
+  },
+  "d": {
+   "label": "Remove",
+   "color": "#e11d48",
+   "text": "Cases that are taken away.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "cur",
+   "label": "Current step",
+   "min": 0,
+   "max": 20,
+   "step": 1,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "circle",
+   "c": [
+    50,
+    31
+   ],
+   "r": 22,
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": false,
+   "id": "cir1",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    50.0,
+    53.0
+   ],
+   "r": 1.7,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.5,
+   "id": "cir2",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50.0,
+    58.0
+   ],
+   "text": "A",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex3",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    62.93127555043441,
+    48.798373876248846
+   ],
+   "r": 1.7,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.5,
+   "id": "cir4",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    65.87020181189678,
+    52.84345884812358
+   ],
+   "text": "B",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex5",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    70.92324335849338,
+    37.798373876248846
+   ],
+   "r": 1.7,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.5,
+   "id": "cir6",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    75.67852593996915,
+    39.34345884812358
+   ],
+   "text": "C",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex7",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    70.92324335849338,
+    24.201626123751158
+   ],
+   "r": 1.7,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.5,
+   "id": "cir8",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    75.67852593996915,
+    22.656541151876418
+   ],
+   "text": "D",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex9",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    62.93127555043441,
+    13.201626123751154
+   ],
+   "r": 1.7,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.5,
+   "id": "cir10",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    65.87020181189678,
+    9.156541151876418
+   ],
+   "text": "E",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex11",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    50.0,
+    9.0
+   ],
+   "r": 1.7,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.5,
+   "id": "cir12",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50.0,
+    4.0
+   ],
+   "text": "F",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex13",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    37.06872444956559,
+    13.201626123751154
+   ],
+   "r": 1.7,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.5,
+   "id": "cir14",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    34.12979818810323,
+    9.156541151876418
+   ],
+   "text": "G",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex15",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    29.076756641506623,
+    24.201626123751154
+   ],
+   "r": 1.7,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.5,
+   "id": "cir16",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    24.321474060030855,
+    22.656541151876418
+   ],
+   "text": "H",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex17",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    29.07675664150662,
+    37.79837387624884
+   ],
+   "r": 1.7,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.5,
+   "id": "cir18",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    24.32147406003085,
+    39.343458848123575
+   ],
+   "text": "I",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex19",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    37.068724449565586,
+    48.798373876248846
+   ],
+   "r": 1.7,
+   "role": "a",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.5,
+   "id": "cir20",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    34.12979818810322,
+    52.843458848123575
+   ],
+   "text": "J",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex21",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50,
+    61
+   ],
+   "text": "10 points on a circle (no three on a line)",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex22",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "abs(cur-0)<0.5"
+  },
+  {
+   "type": "segment",
+   "from": [
+    50.0,
+    53.0
+   ],
+   "to": [
+    70.92324335849338,
+    24.201626123751158
+   ],
+   "role": "c",
+   "strokeWidth": 3.2,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg23",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50,
+    61
+   ],
+   "text": "One line needs any 2 points: AD = DA",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex24",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "abs(cur-1)<0.5"
+  },
+  {
+   "type": "segment",
+   "from": [
+    50.0,
+    53.0
+   ],
+   "to": [
+    62.93127555043441,
+    48.798373876248846
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg25",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    50.0,
+    53.0
+   ],
+   "to": [
+    70.92324335849338,
+    37.798373876248846
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg26",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    50.0,
+    53.0
+   ],
+   "to": [
+    70.92324335849338,
+    24.201626123751158
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg27",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    50.0,
+    53.0
+   ],
+   "to": [
+    62.93127555043441,
+    13.201626123751154
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg28",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    50.0,
+    53.0
+   ],
+   "to": [
+    50.0,
+    9.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg29",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    50.0,
+    53.0
+   ],
+   "to": [
+    37.06872444956559,
+    13.201626123751154
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg30",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    50.0,
+    53.0
+   ],
+   "to": [
+    29.076756641506623,
+    24.201626123751154
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg31",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    50.0,
+    53.0
+   ],
+   "to": [
+    29.07675664150662,
+    37.79837387624884
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg32",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    50.0,
+    53.0
+   ],
+   "to": [
+    37.068724449565586,
+    48.798373876248846
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg33",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    62.93127555043441,
+    48.798373876248846
+   ],
+   "to": [
+    70.92324335849338,
+    37.798373876248846
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg34",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    62.93127555043441,
+    48.798373876248846
+   ],
+   "to": [
+    70.92324335849338,
+    24.201626123751158
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg35",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    62.93127555043441,
+    48.798373876248846
+   ],
+   "to": [
+    62.93127555043441,
+    13.201626123751154
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg36",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    62.93127555043441,
+    48.798373876248846
+   ],
+   "to": [
+    50.0,
+    9.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg37",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    62.93127555043441,
+    48.798373876248846
+   ],
+   "to": [
+    37.06872444956559,
+    13.201626123751154
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg38",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    62.93127555043441,
+    48.798373876248846
+   ],
+   "to": [
+    29.076756641506623,
+    24.201626123751154
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg39",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    62.93127555043441,
+    48.798373876248846
+   ],
+   "to": [
+    29.07675664150662,
+    37.79837387624884
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg40",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    62.93127555043441,
+    48.798373876248846
+   ],
+   "to": [
+    37.068724449565586,
+    48.798373876248846
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg41",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    70.92324335849338,
+    37.798373876248846
+   ],
+   "to": [
+    70.92324335849338,
+    24.201626123751158
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg42",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    70.92324335849338,
+    37.798373876248846
+   ],
+   "to": [
+    62.93127555043441,
+    13.201626123751154
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg43",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    70.92324335849338,
+    37.798373876248846
+   ],
+   "to": [
+    50.0,
+    9.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg44",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    70.92324335849338,
+    37.798373876248846
+   ],
+   "to": [
+    37.06872444956559,
+    13.201626123751154
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg45",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    70.92324335849338,
+    37.798373876248846
+   ],
+   "to": [
+    29.076756641506623,
+    24.201626123751154
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg46",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    70.92324335849338,
+    37.798373876248846
+   ],
+   "to": [
+    29.07675664150662,
+    37.79837387624884
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg47",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    70.92324335849338,
+    37.798373876248846
+   ],
+   "to": [
+    37.068724449565586,
+    48.798373876248846
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg48",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    70.92324335849338,
+    24.201626123751158
+   ],
+   "to": [
+    62.93127555043441,
+    13.201626123751154
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg49",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    70.92324335849338,
+    24.201626123751158
+   ],
+   "to": [
+    50.0,
+    9.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg50",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    70.92324335849338,
+    24.201626123751158
+   ],
+   "to": [
+    37.06872444956559,
+    13.201626123751154
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg51",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    70.92324335849338,
+    24.201626123751158
+   ],
+   "to": [
+    29.076756641506623,
+    24.201626123751154
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg52",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    70.92324335849338,
+    24.201626123751158
+   ],
+   "to": [
+    29.07675664150662,
+    37.79837387624884
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg53",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    70.92324335849338,
+    24.201626123751158
+   ],
+   "to": [
+    37.068724449565586,
+    48.798373876248846
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg54",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    62.93127555043441,
+    13.201626123751154
+   ],
+   "to": [
+    50.0,
+    9.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg55",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    62.93127555043441,
+    13.201626123751154
+   ],
+   "to": [
+    37.06872444956559,
+    13.201626123751154
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg56",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    62.93127555043441,
+    13.201626123751154
+   ],
+   "to": [
+    29.076756641506623,
+    24.201626123751154
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg57",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    62.93127555043441,
+    13.201626123751154
+   ],
+   "to": [
+    29.07675664150662,
+    37.79837387624884
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg58",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    62.93127555043441,
+    13.201626123751154
+   ],
+   "to": [
+    37.068724449565586,
+    48.798373876248846
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg59",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    50.0,
+    9.0
+   ],
+   "to": [
+    37.06872444956559,
+    13.201626123751154
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg60",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    50.0,
+    9.0
+   ],
+   "to": [
+    29.076756641506623,
+    24.201626123751154
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg61",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    50.0,
+    9.0
+   ],
+   "to": [
+    29.07675664150662,
+    37.79837387624884
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg62",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    50.0,
+    9.0
+   ],
+   "to": [
+    37.068724449565586,
+    48.798373876248846
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg63",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    37.06872444956559,
+    13.201626123751154
+   ],
+   "to": [
+    29.076756641506623,
+    24.201626123751154
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg64",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    37.06872444956559,
+    13.201626123751154
+   ],
+   "to": [
+    29.07675664150662,
+    37.79837387624884
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg65",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    37.06872444956559,
+    13.201626123751154
+   ],
+   "to": [
+    37.068724449565586,
+    48.798373876248846
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg66",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    29.076756641506623,
+    24.201626123751154
+   ],
+   "to": [
+    29.07675664150662,
+    37.79837387624884
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg67",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    29.076756641506623,
+    24.201626123751154
+   ],
+   "to": [
+    37.068724449565586,
+    48.798373876248846
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg68",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    29.07675664150662,
+    37.79837387624884
+   ],
+   "to": [
+    37.068724449565586,
+    48.798373876248846
+   ],
+   "role": "muted",
+   "strokeWidth": 1.1,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg69",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    50,
+    61
+   ],
+   "text": "¹⁰C₂ = 45 lines",
+   "role": "b",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex70",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "abs(cur-2)<0.5"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Draw the points",
+   "text": "\\[\\begin{aligned}&\\text{There are 10 points on the circle.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "A line needs 2 points",
+   "text": "\\[\\begin{aligned}&\\text{Line AB and line BA are the same line,}\\\\[5pt]&\\text{so order does not matter. This is a}\\\\[5pt]&\\text{combination.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Count",
+   "text": "\\[\\begin{aligned}&{}^{10}C_{2}=\\dfrac{10\\times9}{2\\times1}\\\\[5pt]&\\textcolor{#047857}{\\mathbf{=45}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 2
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}
