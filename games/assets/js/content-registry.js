@@ -1474,7 +1474,31 @@ window.WHA_CONTENT = {
         "chem": {
           "name": "Chemistry",
           "code": "CHEM",
-          "chapters": []
+          "chapters": [
+            {
+              "n": 1,
+              "title": "States of Matter and Phase Changes",
+              "notes": "https://whacademypk.com/notes/punjab/sargodha/class-9/chemistry/states-of-matter-and-phase-changes.html",
+              "quiz": null,
+              "game": "https://whacademypk.com/games/chapter.html?ch=9/chem/punjab_states_of_matter_and_phase_changes"
+            },
+            {
+              "n": 2,
+              "unit": 2,
+              "title": "Atomic Structure",
+              "notes": "https://whacademypk.com/notes/punjab/sargodha/class-9/chemistry/atomic-structure.html",
+              "quiz": null,
+              "game": "https://whacademypk.com/games/chapter.html?ch=9/chem/punjab_atomic_structure"
+            },
+            {
+              "n": 3,
+              "unit": 3,
+              "title": "Chemical Bonding",
+              "notes": "https://whacademypk.com/notes/punjab/sargodha/class-9/chemistry/chemical-bonding.html",
+              "quiz": null,
+              "game": "https://whacademypk.com/games/chapter.html?ch=9/chem/punjab_chemical_bonding"
+            }
+          ]
         }
       },
       "10": {
