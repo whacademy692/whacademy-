@@ -1,0 +1,158 @@
+{
+ "chapterId": "class11-math-permutation_and_combination",
+ "classLevel": 11,
+ "subject": "Mathematics",
+ "subjectKey": "math",
+ "title": "Permutation and Combination",
+ "chapterRef": "class11/subjects/math/permutation_and_combination",
+ "schemaVersion": "1.0.0",
+ "learningOutcomes": [
+  "Explain and use the fundamental counting principle (rule of product) to count outcomes without listing them.",
+  "Define the factorial \\(n!\\), state that \\(0!=1\\), and simplify factorial expressions and equations.",
+  "Explain permutations and evaluate \\({}^{n}P_{r}=\\frac{n!}{(n-r)!}\\); handle alike objects, circular arrangements and key-chain (necklace) arrangements.",
+  "Explain combinations and evaluate \\({}^{n}C_{r}=\\frac{n!}{r!\\,(n-r)!}\\); use \\({}^{n}C_{r}={}^{n}C_{n-r}\\) to shorten work.",
+  "Decide correctly between permutation and combination by asking whether order matters.",
+  "Apply permutation and combination to real-world problems: number plates, seating, committees, cryptography, lottery odds and sets of songs."
+ ],
+ "theory": {
+  "sections": [
+   {
+    "heading": "Rule of Product (Fundamental Counting Principle)",
+    "body": "If one job can be done in \\(m\\) ways and, after it, a second job can be done in \\(n\\) ways, then both jobs together can be done in \\(m\\times n\\) ways. It extends to any number of jobs: multiply the number of choices at each stage. Example: \\(4\\) shirts and \\(3\\) trousers give \\(4\\times3=12\\) outfits."
+   },
+   {
+    "heading": "Factorial Notation",
+    "body": "For a positive integer \\(n\\), \\(n!=n(n-1)(n-2)\\cdots3\\cdot2\\cdot1\\), and by definition \\(0!=1\\). A factorial can always be opened one step: \\(n!=n\\,(n-1)!\\). Ratios are solved by opening the larger factorial: \\(\\frac{8!}{5!}=\\frac{8\\times7\\times6\\times5!}{5!}=336\\)."
+   },
+   {
+    "heading": "Permutation: order matters",
+    "body": "A permutation is an arrangement of objects in a definite order. The number of permutations of \\(n\\) different objects taken \\(r\\) at a time is \\({}^{n}P_{r}=\\frac{n!}{(n-r)!}\\), where \\(0\\le r\\le n\\). Taking all objects, \\({}^{n}P_{n}=n!\\). Example: \\({}^{7}P_{3}=7\\times6\\times5=210\\)."
+   },
+   {
+    "heading": "Permutation when some objects are alike",
+    "body": "The number of different arrangements of \\(n\\) objects in which \\(p\\) are alike of one kind, \\(q\\) alike of another kind, and so on, is \\(\\frac{n!}{p!\\,q!\\cdots}\\). Example: the letters of EVENING (7 letters, E twice, N twice) can be arranged in \\(\\frac{7!}{2!\\,2!}=1260\\) ways."
+   },
+   {
+    "heading": "Circular permutation and key-chain arrangements",
+    "body": "Around a circle there is no fixed starting place, so \\(n\\) different objects can be arranged in \\((n-1)!\\) ways. If the circle can be turned over (a necklace or key chain), clockwise and anti-clockwise arrangements look the same and the number is \\(\\frac{(n-1)!}{2}\\). Two persons together: treat them as one block, then multiply by \\(2!\\)."
+   },
+   {
+    "heading": "Permutation in Cryptography",
+    "body": "A permutation of the letter positions can be used as a secret code: the word is split into letters, the letters are labelled and then re-written in the order given by the code. Knowing the code, the receiver reverses the arrangement to recover the message. This is a real use of permutation in keeping information secure."
+   },
+   {
+    "heading": "Combination: order does not matter",
+    "body": "A combination is a selection in which the order of the chosen objects does not matter. The number of combinations of \\(n\\) different objects taken \\(r\\) at a time is \\({}^{n}C_{r}=\\frac{n!}{r!\\,(n-r)!}=\\frac{{}^{n}P_{r}}{r!}\\). Useful facts: \\({}^{n}C_{0}={}^{n}C_{n}=1\\) and \\({}^{n}C_{r}={}^{n}C_{n-r}\\). Example: \\({}^{10}C_{3}=\\frac{10\\times9\\times8}{3\\times2\\times1}=120\\)."
+   },
+   {
+    "heading": "Permutation or Combination? The three decisions",
+    "body": "Ask in this order: (1) Does the order matter? If yes use \\({}^{n}P_{r}\\), if only the chosen group matters use \\({}^{n}C_{r}\\). (2) Are all objects different, or are some alike? (3) Is the arrangement in a line or around a circle? Trigger words: arrange, seat, line up, form numbers or words point to permutation; choose, select, committee, team, hand of cards point to combination."
+   }
+  ],
+  "definitions": [
+   {
+    "term": "Rule of product",
+    "definition": "If jobs are done one after another in \\(m\\) and \\(n\\) ways, together they can be done in \\(m\\times n\\) ways."
+   },
+   {
+    "term": "Factorial",
+    "definition": "\\(n!=n(n-1)(n-2)\\cdots2\\cdot1\\) for a positive integer \\(n\\), with \\(0!=1\\)."
+   },
+   {
+    "term": "Permutation",
+    "definition": "An arrangement of objects in a definite order."
+   },
+   {
+    "term": "Combination",
+    "definition": "A selection of objects in which the order does not matter."
+   },
+   {
+    "term": "\\({}^{n}P_{r}\\)",
+    "definition": "Number of permutations of \\(n\\) different objects taken \\(r\\) at a time: \\(\\frac{n!}{(n-r)!}\\)."
+   },
+   {
+    "term": "\\({}^{n}C_{r}\\)",
+    "definition": "Number of combinations of \\(n\\) different objects taken \\(r\\) at a time: \\(\\frac{n!}{r!\\,(n-r)!}\\)."
+   },
+   {
+    "term": "Circular permutation",
+    "definition": "An arrangement of objects around a circle; \\(n\\) different objects give \\((n-1)!\\) arrangements."
+   },
+   {
+    "term": "Key-chain (necklace) arrangement",
+    "definition": "A circular arrangement that can be turned over; the count is \\(\\frac{(n-1)!}{2}\\)."
+   },
+   {
+    "term": "Alike objects",
+    "definition": "Objects that cannot be told apart; repeats are divided out: \\(\\frac{n!}{p!\\,q!\\cdots}\\)."
+   },
+   {
+    "term": "Cryptography",
+    "definition": "Writing a message in a secret code, here by re-ordering its letters with a permutation."
+   }
+  ],
+  "examTips": [
+   "Ask first: does the order matter? Order matters, use \\({}^{n}P_{r}\\); only the group matters, use \\({}^{n}C_{r}\\).",
+   "Write \\(\\frac{n!}{(n-r)!}\\) first, then cancel. Open only the larger factorial and let the smaller one cancel.",
+   "Remember \\(0!=1\\). It is the most common factorial mistake.",
+   "For \"always together\" tie the group into one block and multiply by the arrangements inside it. For \"never together\" subtract the together count from the total.",
+   "In a restricted-place question, fill the restricted place first (units digit of an even number, first digit of a number with a zero).",
+   "\"At least one\" is easiest as total minus none. Use \\({}^{n}C_{r}={}^{n}C_{n-r}\\) when \\(r\\) is more than half of \\(n\\)."
+  ]
+ },
+ "achievementHooks": [
+  "first-chapter-complete",
+  "ninety-percent-accuracy-subject"
+ ],
+ "notesUrl": "https://whacademypk.com/notes/class-11/math/permutation-and-combination.html",
+ "practiceBanks": [
+  {
+   "mechanicId": "mcq-arena",
+   "name": "Multiple Choice",
+   "description": "Pick the correct answer. A quick way to check what you know.",
+   "count": 300
+  },
+  {
+   "mechanicId": "speed-challenge",
+   "name": "Speed Quiz",
+   "description": "Answer before the timer runs out. Quick recall practice.",
+   "count": 300
+  },
+  {
+   "mechanicId": "rapid-fire",
+   "name": "Rapid Fire",
+   "description": "Even faster! Short timer, back-to-back questions.",
+   "count": 300
+  },
+  {
+   "mechanicId": "true-false-sprint",
+   "name": "True or False",
+   "description": "Read the statement and tap True or False.",
+   "count": 300
+  },
+  {
+   "mechanicId": "fill-in-the-blank",
+   "name": "Fill in the Blank",
+   "description": "Type the missing word or number to complete the sentence.",
+   "count": 300
+  },
+  {
+   "mechanicId": "matching-grid",
+   "name": "Match the Pairs",
+   "description": "Match each item to its correct partner.",
+   "count": 300
+  },
+  {
+   "mechanicId": "drag-drop-classification",
+   "name": "Sort into Groups",
+   "description": "Drag each item into the correct group.",
+   "count": 300
+  },
+  {
+   "mechanicId": "ordering-sequencing",
+   "name": "Put in Order",
+   "description": "Arrange the steps in the correct sequence.",
+   "count": 300
+  }
+ ]
+}
