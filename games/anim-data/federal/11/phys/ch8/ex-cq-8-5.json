@@ -1,0 +1,460 @@
+{
+ "id": "g11-phys-c8-ex-cq-8-5",
+ "title": "Ex CQ 8.5 · How a heat engine works",
+ "summary": "Explain the working of a heat engine.",
+ "alt": "Ex CQ 8.5: Explain the working of a heat engine.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "hotR",
+   "x": 2.0,
+   "y": 12.2,
+   "w": 8.8,
+   "h": 1.3,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "coldR",
+   "x": 2.0,
+   "y": 1.7,
+   "w": 8.8,
+   "h": 1.3,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "hotL",
+   "at": [
+    6.45,
+    12.85
+   ],
+   "text": "Hot source",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "coldL",
+   "at": [
+    6.45,
+    2.35
+   ],
+   "text": "Cold sink",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "sct",
+   "at": [
+    6.45,
+    14.3
+   ],
+   "text": "example numbers: 100 J in",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "mach",
+   "x": 3.7,
+   "y": 6.0,
+   "w": 5.4,
+   "h": 2.9,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 4,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "machT",
+   "at": [
+    6.45,
+    7.45
+   ],
+   "text": "WORKING GAS",
+   "role": "wall",
+   "size": "m",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bH",
+   "x": 5.0,
+   "y": 8.9,
+   "w": 2.8,
+   "h": 3.3,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 1.5,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bC",
+   "x": 5.5600000000000005,
+   "y": 3.0,
+   "w": 1.68,
+   "h": 3.0,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 1.5,
+   "appear": "s4",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bW",
+   "x": 9.1,
+   "y": 6.890000000000001,
+   "w": 3.2,
+   "h": 1.1199999999999999,
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 1.5,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "aH",
+   "from": [
+    6.4,
+    12.2
+   ],
+   "to": [
+    6.4,
+    9.0
+   ],
+   "role": "hot",
+   "strokeWidth": 4,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "aC",
+   "from": [
+    6.4,
+    6.0
+   ],
+   "to": [
+    6.4,
+    3.1
+   ],
+   "role": "cold",
+   "strokeWidth": 4,
+   "appear": "s4",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "aW",
+   "from": [
+    9.1,
+    7.45
+   ],
+   "to": [
+    12.4,
+    7.45
+   ],
+   "role": "work",
+   "strokeWidth": 4,
+   "appear": "s3",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "q1q",
+   "at": [
+    10.25,
+    10.6
+   ],
+   "text": "Q₁ = ?",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "disappear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "q1",
+   "at": [
+    10.25,
+    10.6
+   ],
+   "text": "Q₁ = 100 J",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "q2q",
+   "at": [
+    10.25,
+    4.5
+   ],
+   "text": "Q₂ = ?",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "disappear": "s4"
+  },
+  {
+   "type": "text",
+   "id": "q2",
+   "at": [
+    10.25,
+    4.5
+   ],
+   "text": "Q₂ = 60 J",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s4"
+  },
+  {
+   "type": "text",
+   "id": "wwq",
+   "at": [
+    10.9,
+    8.56
+   ],
+   "text": "W = ?",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "disappear": "s3"
+  },
+  {
+   "type": "text",
+   "id": "ww",
+   "at": [
+    10.9,
+    8.56
+   ],
+   "text": "W = 40 J",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s3"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 0.29999999999999993,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s5",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    0.85
+   ],
+   "text": "W = Q₁ − Q₂   (here η = 40 %)",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s5",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "Explain how a **heat engine** works.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "The three parts",
+   "text": "A heat engine needs a **hot reservoir** (temperature \\( T_1 \\)), a **cold reservoir** (\\( T_2 \\)) and a **working substance**, usually a gas.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Heat in",
+   "text": "The working substance takes heat \\( Q_1 \\) from the hot reservoir (here 100 J).",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Work out",
+   "text": "It turns part of that heat into mechanical **work** \\( W \\) (40 J) by pushing a piston or a turbine.",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Heat rejected, then repeat",
+   "text": "The rest, \\( Q_2 \\) (60 J), is **rejected** to the cold reservoir and the substance returns to its initial state. This is **one cycle**; the engine repeats it again and again.",
+   "actions": []
+  },
+  {
+   "id": "s5",
+   "title": "Energy balance and efficiency",
+   "text": "\\[ W = Q_1 - Q_2,\\qquad \\eta = \\dfrac{W}{Q_1} \\] The working principle is the **second law**: useful work can be got while heat passes from hot to cold. Example: the four-stroke petrol engine (intake, compression, power, exhaust).",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Heat engine",
+   "tex": "\\role{work}{W} = \\role{hot}{Q_1} - \\role{cold}{Q_2}, \\quad \\eta = \\dfrac{\\role{work}{W}}{\\role{hot}{Q_1}}",
+   "text": "Per cycle."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "An engine takes **500 J** from the hot reservoir and rejects **300 J**. What is its efficiency (%)?",
+   "answer": 40,
+   "hint": "W = Q₁ − Q₂ = 200 J.",
+   "explain": "\\( \\eta = 200/500 = 0.40 = 40\\% \\).",
+   "tolerance": 0.5,
+   "unit": "%"
+  }
+ ],
+ "takeaways": [
+  "Hot reservoir → working substance → work + heat rejected to the cold reservoir: \\( W = Q_1 - Q_2 \\)."
+ ]
+}

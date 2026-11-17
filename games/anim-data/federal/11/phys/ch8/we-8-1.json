@@ -1,0 +1,340 @@
+{
+ "id": "g11-phys-c8-we-8-1",
+ "title": "Example 8.1 · Kinetic energy of gas molecules",
+ "summary": "Calculate the average translational kinetic energy of molecules in a gas at room temperature (25 °C).",
+ "alt": "Example 8.1: Calculate the average translational kinetic energy of molecules in a gas at room temperature (25 °C).",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "n",
+   "label": "n",
+   "type": "number",
+   "min": 2,
+   "max": 80,
+   "step": 0.01,
+   "default": 30,
+   "hidden": true
+  },
+  {
+   "id": "T",
+   "label": "T",
+   "type": "number",
+   "min": 100,
+   "max": 900,
+   "step": 0.01,
+   "default": 298,
+   "hidden": true
+  },
+  {
+   "id": "L",
+   "label": "L",
+   "type": "number",
+   "min": 2,
+   "max": 10.2,
+   "step": 0.01,
+   "default": 8.0,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "v": "2.2*sqrt(T/300)"
+ },
+ "shapes": [
+  {
+   "type": "polyline",
+   "id": "cyl",
+   "pts": [
+    [
+     10.649999999999999,
+     13.6
+    ],
+    [
+     0,
+     13.6
+    ],
+    [
+     0,
+     9.0
+    ],
+    [
+     10.649999999999999,
+     9.0
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 4
+  },
+  {
+   "type": "rect",
+   "id": "pis",
+   "x": "L",
+   "y": 8.95,
+   "w": 0.45,
+   "h": 4.699999999999999,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "segment",
+   "id": "rod",
+   "from": [
+    "(L)+0.45",
+    11.3
+   ],
+   "to": [
+    "(L)+2.3",
+    11.3
+   ],
+   "role": "pis",
+   "strokeWidth": 5
+  },
+  {
+   "type": "rect",
+   "id": "hdl",
+   "x": "(L)+2.3",
+   "y": 10.700000000000001,
+   "w": 0.3,
+   "h": 1.2,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.7,
+   "strokeWidth": 2
+  },
+  {
+   "type": "gas",
+   "id": "g",
+   "x0": 0,
+   "x1": "L",
+   "y0": 9.0,
+   "y1": 13.6,
+   "n": "n",
+   "v": "v",
+   "bath": 1,
+   "vref": 2.2,
+   "seed": 7,
+   "out": {
+    "vrms": "gv",
+    "P": "gp"
+   }
+  },
+  {
+   "type": "text",
+   "id": "g1",
+   "at": [
+    6.45,
+    8.2
+   ],
+   "text": "T = 25 + 273 = 298 K",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "g2",
+   "at": [
+    6.45,
+    7.1
+   ],
+   "text": "average K.E. = (3/2) k T",
+   "role": "u",
+   "size": "m",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "g3",
+   "at": [
+    6.45,
+    6.0
+   ],
+   "text": "= 1.5 × 1.38×10⁻²³ × 298",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 1.6500000000000001,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s4",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    2.2
+   ],
+   "text": "average K.E. = 6.17 × 10⁻²¹ J",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s4",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "Find the **average translational kinetic energy** of a gas molecule at room temperature, \\( 25\\ \\text{°C} \\). Boltzmann constant \\( k = 1.38\\times10^{-23}\\ \\text{J K}^{-1} \\).",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Change to kelvin",
+   "text": "Gas formulas need the **absolute** temperature: \\( T = 25 + 273 = 298 \\) K.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Choose the formula",
+   "text": "Kinetic theory gives the mean translational kinetic energy of one molecule: \\[ \\langle \\text{K.E.} \\rangle = \\tfrac{3}{2}\\,kT \\] It depends **only on the temperature**, not on the kind of gas.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Substitute",
+   "text": "\\[ \\langle \\text{K.E.} \\rangle = \\tfrac{3}{2} \\times 1.38\\times10^{-23} \\times 298 \\]",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Answer",
+   "text": "\\( \\langle \\text{K.E.} \\rangle = 6.17\\times10^{-21} \\) J per molecule. A tiny energy, but there are about \\( 10^{25} \\) molecules in a cubic metre of air.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Mean kinetic energy",
+   "tex": "\\langle \\text{K.E.} \\rangle = \\tfrac{3}{2}\\,\\role{hot}{k}\\,\\role{u}{T}",
+   "text": "T in kelvin; k = 1.38 × 10⁻²³ J/K."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "What is the average translational K.E. of a molecule at **27 °C**, in units of 10⁻²¹ J?",
+   "answer": 6.21,
+   "hint": "T = 300 K.",
+   "explain": "\\( \\tfrac{3}{2}\\times1.38\\times10^{-23}\\times300 = 6.21\\times10^{-21} \\) J.",
+   "tolerance": 0.03,
+   "unit": "×10⁻²¹ J"
+  }
+ ],
+ "takeaways": [
+  "\\( \\langle \\text{K.E.} \\rangle = \\tfrac{3}{2}kT \\): proportional to the **kelvin temperature**."
+ ]
+}

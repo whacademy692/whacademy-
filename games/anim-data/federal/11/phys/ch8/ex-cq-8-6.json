@@ -1,0 +1,701 @@
+{
+ "id": "g11-phys-c8-ex-cq-8-6",
+ "title": "Ex CQ 8.6 · The second law of thermodynamics",
+ "summary": "Define and explain second law thermodynamics.",
+ "alt": "Ex CQ 8.6: Define and explain second law thermodynamics.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "text",
+   "id": "kt",
+   "at": [
+    6.45,
+    14.35
+   ],
+   "text": "KELVIN-PLANCK",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "klh",
+   "x": 1.1,
+   "y": 12.4,
+   "w": 4.2,
+   "h": 1.2,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "klht",
+   "at": [
+    3.2,
+    13.0
+   ],
+   "text": "hot",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "kle",
+   "x": 1.8000000000000003,
+   "y": 9.9,
+   "w": 2.8,
+   "h": 1.5,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 3,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "klq",
+   "from": [
+    3.2,
+    12.4
+   ],
+   "to": [
+    3.2,
+    11.45
+   ],
+   "role": "hot",
+   "strokeWidth": 4,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "klw",
+   "from": [
+    4.6,
+    10.65
+   ],
+   "to": [
+    5.800000000000001,
+    10.65
+   ],
+   "role": "work",
+   "strokeWidth": 4,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "klwt",
+   "at": [
+    5.6,
+    11.15
+   ],
+   "text": "W",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "krh",
+   "x": 7.6,
+   "y": 12.4,
+   "w": 4.2,
+   "h": 1.2,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "krht",
+   "at": [
+    9.7,
+    13.0
+   ],
+   "text": "hot",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "kre",
+   "x": 8.299999999999999,
+   "y": 9.9,
+   "w": 2.8,
+   "h": 1.5,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 3,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "krq",
+   "from": [
+    9.7,
+    12.4
+   ],
+   "to": [
+    9.7,
+    11.45
+   ],
+   "role": "hot",
+   "strokeWidth": 4,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "krw",
+   "from": [
+    11.1,
+    10.65
+   ],
+   "to": [
+    12.299999999999999,
+    10.65
+   ],
+   "role": "work",
+   "strokeWidth": 4,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "krwt",
+   "at": [
+    12.1,
+    11.15
+   ],
+   "text": "W",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "krc",
+   "x": 7.6,
+   "y": 8.5,
+   "w": 4.2,
+   "h": 0.9,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "krd",
+   "from": [
+    9.7,
+    9.9
+   ],
+   "to": [
+    9.7,
+    9.45
+   ],
+   "role": "cold",
+   "strokeWidth": 4,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "krct",
+   "at": [
+    9.7,
+    8.95
+   ],
+   "text": "cold",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "kln",
+   "at": [
+    3.2,
+    8.9
+   ],
+   "text": "all heat → work",
+   "role": "no",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "krn",
+   "at": [
+    9.799999999999999,
+    8.0
+   ],
+   "text": "some heat rejected",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "kxa",
+   "from": [
+    2.3000000000000003,
+    9.75
+   ],
+   "to": [
+    4.1000000000000005,
+    11.55
+   ],
+   "role": "no",
+   "strokeWidth": 6,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "segment",
+   "id": "kxb",
+   "from": [
+    2.3000000000000003,
+    11.55
+   ],
+   "to": [
+    4.1000000000000005,
+    9.75
+   ],
+   "role": "no",
+   "strokeWidth": 6,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "ct",
+   "at": [
+    6.45,
+    7.3
+   ],
+   "text": "CLAUSIUS",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "clh",
+   "x": 1.6,
+   "y": 5.8,
+   "w": 3.2,
+   "h": 0.9,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "clc",
+   "x": 1.6,
+   "y": 3.0,
+   "w": 3.2,
+   "h": 0.9,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "clq",
+   "from": [
+    3.2,
+    3.9
+   ],
+   "to": [
+    3.2,
+    5.7
+   ],
+   "role": "hot",
+   "strokeWidth": 4,
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "rect",
+   "id": "crh",
+   "x": 8.1,
+   "y": 5.8,
+   "w": 3.2,
+   "h": 0.9,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "crc",
+   "x": 8.1,
+   "y": 3.0,
+   "w": 3.2,
+   "h": 0.9,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "crq",
+   "from": [
+    9.7,
+    3.9
+   ],
+   "to": [
+    9.7,
+    5.7
+   ],
+   "role": "hot",
+   "strokeWidth": 4,
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "cw",
+   "from": [
+    12.299999999999999,
+    4.8
+   ],
+   "to": [
+    9.899999999999999,
+    4.8
+   ],
+   "role": "work",
+   "strokeWidth": 4,
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "cwt",
+   "at": [
+    11.7,
+    5.3
+   ],
+   "text": "W",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "cln",
+   "at": [
+    3.2,
+    2.45
+   ],
+   "text": "cold → hot alone",
+   "role": "no",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "crn",
+   "at": [
+    9.7,
+    2.45
+   ],
+   "text": "only with work",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "cxa",
+   "from": [
+    2.4000000000000004,
+    4.0
+   ],
+   "to": [
+    4.0,
+    5.6
+   ],
+   "role": "no",
+   "strokeWidth": 6,
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "segment",
+   "id": "cxb",
+   "from": [
+    2.4000000000000004,
+    5.6
+   ],
+   "to": [
+    4.0,
+    4.0
+   ],
+   "role": "no",
+   "strokeWidth": 6,
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "ent",
+   "at": [
+    6.45,
+    1.65
+   ],
+   "text": "entropy: S(system + surroundings) never decreases",
+   "role": "ent",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": -0.050000000000000044,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s4",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    0.5
+   ],
+   "text": "Heat flows hot → cold; work needs both",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s4",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "Define and explain the **second law of thermodynamics**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Kelvin's statement",
+   "text": "It is **impossible** for a heat engine to take heat from a **single reservoir** and convert it **entirely into work** with no other change. Some heat must be rejected to a **cold** reservoir.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Clausius's statement",
+   "text": "It is **impossible** to make heat flow from a **cold** body to a **hotter** body **without work** being done. A refrigerator needs a motor.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "The entropy form",
+   "text": "A natural process goes in the direction in which the **entropy** of the system **plus** its surroundings **increases**. This is why heat flows from hot to cold, never the other way by itself.",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Why we need it",
+   "text": "The first law only says energy is conserved; it does not say whether a conversion can happen. The **second law** gives the **direction** of heat flow and shows that **both a hot and a cold reservoir** are essential to get work from heat.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Direction of heat flow",
+   "tex": "\\role{hot}{T_{\\text{hot}}} \\;\\xrightarrow{\\ \\text{heat flows by itself}\\ }\\; \\role{cold}{T_{\\text{cold}}}",
+   "text": "The reverse needs work (a refrigerator)."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which machine would break Kelvin's statement?",
+   "options": [
+    {
+     "id": "a",
+     "label": "An engine that turns all the heat from one reservoir into work"
+    },
+    {
+     "id": "b",
+     "label": "An engine that rejects heat to a cold sink"
+    },
+    {
+     "id": "c",
+     "label": "A refrigerator driven by a motor"
+    },
+    {
+     "id": "d",
+     "label": "A heat pump driven by electricity"
+    }
+   ],
+   "answer": "a",
+   "hint": "Kelvin: you cannot get work from a single reservoir with no heat rejected.",
+   "explain": "Converting all the heat of a single reservoir into work violates Kelvin's statement."
+  }
+ ],
+ "takeaways": [
+  "Kelvin: no engine converts heat from one reservoir entirely into work. Clausius: heat does not go cold → hot without work."
+ ]
+}

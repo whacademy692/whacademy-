@@ -1,0 +1,362 @@
+{
+ "id": "g11-phys-c8-ex-mcq-01",
+ "title": "Ex MCQ 1 · When is a real gas ideal?",
+ "summary": "A real gas can be approximated to as ideal gas at: (A) low density (B) high pressure (C) high density (D) low…",
+ "alt": "Ex MCQ 1: A real gas can be approximated to as ideal gas at: (A) low density (B) high pressure (C) high density (D) low temperature",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "polyline",
+   "id": "bxL",
+   "pts": [
+    [
+     0.5,
+     13.7
+    ],
+    [
+     5.7,
+     13.7
+    ],
+    [
+     5.7,
+     9.2
+    ],
+    [
+     0.5,
+     9.2
+    ],
+    [
+     0.5,
+     13.7
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 3,
+   "appear": "s1"
+  },
+  {
+   "type": "polyline",
+   "id": "bxR",
+   "pts": [
+    [
+     7.2,
+     13.7
+    ],
+    [
+     12.4,
+     13.7
+    ],
+    [
+     12.4,
+     9.2
+    ],
+    [
+     7.2,
+     9.2
+    ],
+    [
+     7.2,
+     13.7
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 3,
+   "appear": "s2"
+  },
+  {
+   "type": "gas",
+   "id": "gL",
+   "x0": 0.5,
+   "x1": 5.7,
+   "y0": 9.2,
+   "y1": 13.7,
+   "n": 8,
+   "v": "2.2",
+   "bath": 1,
+   "vref": 1.4,
+   "seed": 4,
+   "out": {
+    "vrms": "gvL"
+   },
+   "bind": "0",
+   "cols": 6,
+   "r": 4.2,
+   "visible": "1"
+  },
+  {
+   "type": "gas",
+   "id": "gR",
+   "x0": 7.2,
+   "x1": 12.4,
+   "y0": 9.2,
+   "y1": 13.7,
+   "n": 44,
+   "v": "2.2",
+   "bath": 1,
+   "vref": 1.4,
+   "seed": 9,
+   "out": {
+    "vrms": "gvR"
+   },
+   "bind": "0",
+   "cols": 6,
+   "r": 4.2,
+   "visible": "1"
+  },
+  {
+   "type": "vector",
+   "id": "arO",
+   "from": [
+    5.9,
+    11.45
+   ],
+   "to": [
+    7.0,
+    11.45
+   ],
+   "role": "ent",
+   "strokeWidth": 4,
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "lL",
+   "at": [
+    3.1,
+    14.25
+   ],
+   "text": "LOW density",
+   "role": "gas",
+   "size": "s",
+   "bold": true,
+   "appear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "lR",
+   "at": [
+    9.8,
+    14.25
+   ],
+   "text": "HIGH density",
+   "role": "ent",
+   "size": "s",
+   "bold": true,
+   "appear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "c1",
+   "at": [
+    6.45,
+    8.3
+   ],
+   "text": "far apart: forces negligible",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "c2",
+   "at": [
+    6.45,
+    7.3
+   ],
+   "text": "crowded: attraction matters",
+   "role": "no",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 2.6500000000000004,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s4",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    3.2
+   ],
+   "text": "Low density   →   (A)",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s4",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "When does a **real** gas behave like the **ideal** gas of the gas laws?",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "What makes a gas ideal?",
+   "text": "An ideal gas has molecules that take up no space and **exert no forces on each other** except in collisions. Real molecules do attract each other, but that attraction is tiny when the molecules are **far apart**: this is **low density**.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "High density spoils it",
+   "text": "When the gas is **crowded** (high density or high pressure) or **cold and slow** (low temperature) the molecules sit close together and their attraction matters. Such a gas can even turn into a liquid.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Compare the options",
+   "text": "High pressure (B), high density (C) and low temperature (D) all push the molecules **closer or slow them down**, so the gas becomes less ideal.",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Answer: (A) low density",
+   "text": "A real gas is nearly ideal at **low density** (low pressure and high temperature).",
+   "actions": []
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which condition makes a real gas behave **most like an ideal gas**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Low pressure, high temperature"
+    },
+    {
+     "id": "b",
+     "label": "High pressure, low temperature"
+    },
+    {
+     "id": "c",
+     "label": "High pressure, high temperature"
+    },
+    {
+     "id": "d",
+     "label": "Low pressure, low temperature"
+    }
+   ],
+   "answer": "a",
+   "hint": "You want the molecules far apart and fast.",
+   "explain": "Low pressure keeps molecules far apart; high temperature makes them move so fast that attractions hardly matter."
+  }
+ ],
+ "takeaways": [
+  "Real gas ≈ ideal gas at **low density** (low pressure, high temperature)."
+ ]
+}

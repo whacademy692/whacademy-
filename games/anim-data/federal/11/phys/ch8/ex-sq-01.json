@@ -1,0 +1,387 @@
+{
+ "id": "g11-phys-c8-ex-sq-01",
+ "title": "Ex SQ 8.1 · Why tyre pressure rises on a drive",
+ "summary": "Why does the gas pressure in the tires rise when a car runs on a road through some distance?",
+ "alt": "Ex SQ 8.1: Why does the gas pressure in the tires rise when a car runs on a road through some distance?",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "n",
+   "label": "n",
+   "type": "number",
+   "min": 2,
+   "max": 80,
+   "step": 0.01,
+   "default": 40,
+   "hidden": true
+  },
+  {
+   "id": "T",
+   "label": "T",
+   "type": "number",
+   "min": 100,
+   "max": 900,
+   "step": 0.01,
+   "default": 300,
+   "hidden": true
+  },
+  {
+   "id": "L",
+   "label": "L",
+   "type": "number",
+   "min": 2,
+   "max": 10.2,
+   "step": 0.01,
+   "default": 8.0,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "v": "2.2*sqrt(T/300)"
+ },
+ "shapes": [
+  {
+   "type": "polyline",
+   "id": "cyl",
+   "pts": [
+    [
+     10.649999999999999,
+     13.6
+    ],
+    [
+     0,
+     13.6
+    ],
+    [
+     0,
+     9.0
+    ],
+    [
+     10.649999999999999,
+     9.0
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 4
+  },
+  {
+   "type": "rect",
+   "id": "pis",
+   "x": "L",
+   "y": 8.95,
+   "w": 0.45,
+   "h": 4.699999999999999,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "segment",
+   "id": "rod",
+   "from": [
+    "(L)+0.45",
+    11.3
+   ],
+   "to": [
+    "(L)+2.3",
+    11.3
+   ],
+   "role": "pis",
+   "strokeWidth": 5
+  },
+  {
+   "type": "rect",
+   "id": "hdl",
+   "x": "(L)+2.3",
+   "y": 10.700000000000001,
+   "w": 0.3,
+   "h": 1.2,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.7,
+   "strokeWidth": 2
+  },
+  {
+   "type": "gas",
+   "id": "g",
+   "x0": 0,
+   "x1": "L",
+   "y0": 9.0,
+   "y1": 13.6,
+   "n": "n",
+   "v": "v",
+   "bath": 1,
+   "vref": 2.2,
+   "seed": 7,
+   "out": {
+    "vrms": "gv",
+    "P": "gp"
+   }
+  },
+  {
+   "type": "text",
+   "id": "ty",
+   "at": [
+    6.45,
+    14.35
+   ],
+   "text": "air inside the tyre (volume fixed)",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "f1",
+   "at": [
+    6.45,
+    8.2
+   ],
+   "text": "friction with the road heats the tyre",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "f2",
+   "at": [
+    6.45,
+    7.1
+   ],
+   "text": "T up  →  P up  (V fixed)",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 1.45,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s4",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    2.0
+   ],
+   "text": "P ∝ T at constant volume",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s4",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "After a long drive a car tyre feels warm and its pressure reading is **higher**. Why?",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Friction heats the tyre",
+   "text": "As the tyre rolls, it flexes and rubs on the road. **Friction** turns some of the car's energy into heat, so the tyre and the air inside get **hotter**.",
+   "actions": [
+    {
+     "set": {
+      "T": 300
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "The air molecules speed up",
+   "text": "Hotter air means its molecules move **faster** (higher average kinetic energy).",
+   "actions": [
+    {
+     "set": {
+      "T": 300
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "T": 345
+     },
+     "at": 0,
+     "dur": 3500
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Faster molecules push harder",
+   "text": "Faster molecules hit the tyre wall **harder** and **more often**. The tyre is nearly rigid, so the volume hardly changes and the pressure **rises**.",
+   "actions": [
+    {
+     "set": {
+      "T": 345
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Gay-Lussac's law",
+   "text": "At constant volume \\( P \\propto T \\) (kelvin). So the pressure of the air rises in proportion to its temperature.",
+   "actions": [
+    {
+     "set": {
+      "T": 345
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Air temperature (K)",
+   "value": "{{T|0}}",
+   "role": "hot"
+  },
+  {
+   "label": "Pressure (× P₀)",
+   "value": "{{gp/2.42|2}}",
+   "role": "me"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Constant volume",
+   "tex": "\\dfrac{\\role{u}{P_1}}{\\role{hot}{T_1}} = \\dfrac{\\role{u}{P_2}}{\\role{hot}{T_2}}",
+   "text": "Pressure ∝ kelvin temperature when V and the amount of gas are fixed."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A tyre at **27 °C** has a pressure of **200 kPa**. After driving, the air is at **57 °C** (volume fixed). What is the new pressure in kPa?",
+   "answer": 220,
+   "hint": "T₁ = 300 K, T₂ = 330 K; P₂ = P₁T₂/T₁.",
+   "explain": "\\( P_2 = 200 \\times 330/300 = 220 \\) kPa.",
+   "tolerance": 1,
+   "unit": "kPa"
+  }
+ ],
+ "takeaways": [
+  "Hotter air, faster molecules, harder and more frequent hits: \\( P \\propto T \\) at constant V."
+ ]
+}

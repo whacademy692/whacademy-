@@ -1,0 +1,491 @@
+{
+ "id": "g11-phys-c8-ex-sq-08",
+ "title": "Ex SQ 8.8 · Why isothermal slow, adiabatic fast?",
+ "summary": "Why isothermal processes typically slow and adiabatic processes fast?",
+ "alt": "Ex SQ 8.8: Why isothermal processes typically slow and adiabatic processes fast?",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "Ls",
+   "label": "Ls",
+   "type": "number",
+   "min": 3,
+   "max": 8,
+   "step": 0.01,
+   "default": 8,
+   "hidden": true
+  },
+  {
+   "id": "Lf",
+   "label": "Lf",
+   "type": "number",
+   "min": 3,
+   "max": 8,
+   "step": 0.01,
+   "default": 8,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "xl": "0.3+Ls*0.62",
+  "xr": "7.0+Lf*0.62",
+  "vr": "2.2*pow(8/Lf,0.2)"
+ },
+ "shapes": [
+  {
+   "type": "polyline",
+   "id": "c1",
+   "pts": [
+    [
+     5.9,
+     13.5
+    ],
+    [
+     0.3,
+     13.5
+    ],
+    [
+     0.3,
+     9.7
+    ],
+    [
+     5.9,
+     9.7
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 4,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "p1",
+   "x": "xl",
+   "y": 9.65,
+   "w": 0.4,
+   "h": 3.9,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.5,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "gas",
+   "id": "g1",
+   "x0": 0.3,
+   "x1": "xl",
+   "y0": 9.7,
+   "y1": 13.5,
+   "n": 14,
+   "v": "2.2",
+   "bath": 1,
+   "vref": 2.2,
+   "seed": 2,
+   "out": {
+    "vrms": "gv1"
+   }
+  },
+  {
+   "type": "polyline",
+   "id": "c2",
+   "pts": [
+    [
+     12.6,
+     13.5
+    ],
+    [
+     7.0,
+     13.5
+    ],
+    [
+     7.0,
+     9.7
+    ],
+    [
+     12.6,
+     9.7
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 4,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ins",
+   "x": 6.8,
+   "y": 9.5,
+   "w": 0.25,
+   "h": 4.2,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 1,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "p2",
+   "x": "xr",
+   "y": 9.65,
+   "w": 0.4,
+   "h": 3.9,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.5,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "gas",
+   "id": "g2",
+   "x0": 7.0,
+   "x1": "xr",
+   "y0": 9.7,
+   "y1": 13.5,
+   "n": 14,
+   "v": "vr",
+   "bath": 0,
+   "vref": 2.2,
+   "seed": 5,
+   "out": {
+    "vrms": "gv2"
+   }
+  },
+  {
+   "type": "text",
+   "id": "t1",
+   "at": [
+    3.1,
+    14.3
+   ],
+   "text": "ISOTHERMAL",
+   "role": "cold",
+   "size": "m",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t1b",
+   "at": [
+    3.1,
+    8.9
+   ],
+   "text": "heat bath: T constant",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t2",
+   "at": [
+    9.8,
+    14.3
+   ],
+   "text": "ADIABATIC",
+   "role": "hot",
+   "size": "m",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t2b",
+   "at": [
+    9.8,
+    8.9
+   ],
+   "text": "insulated: Q = 0",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "z1",
+   "at": [
+    6.45,
+    7.4
+   ],
+   "text": "heat needs TIME to flow through the walls",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "z2",
+   "at": [
+    6.45,
+    6.4
+   ],
+   "text": "no time to escape: Q ≈ 0",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 1.45,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s4",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    2.0
+   ],
+   "text": "Isothermal: slow   ·   Adiabatic: fast",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s4",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "Why is an **isothermal** process usually **slow** and an **adiabatic** process usually **fast**?",
+   "actions": [
+    {
+     "set": {
+      "Ls": 8,
+      "Lf": 8
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Isothermal: T must stay constant",
+   "text": "While the gas is squeezed it tends to heat up. To keep \\( T \\) constant, that heat has to **flow out through the walls into a bath**. Heat flow takes time, so the compression must be **slow**.",
+   "actions": [
+    {
+     "set": {
+      "Ls": 8,
+      "Lf": 8
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "Ls": 4
+     },
+     "at": 0,
+     "dur": 7000
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Adiabatic: no heat may flow",
+   "text": "For \\( Q = 0 \\) the gas must be insulated **or** the change must happen so quickly that heat has **no time** to leave or enter. A rapid compression does just that, and the gas heats up.",
+   "actions": [
+    {
+     "set": {
+      "Ls": 8,
+      "Lf": 8
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "Lf": 4
+     },
+     "at": 0,
+     "dur": 1300
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Compare",
+   "text": "The right-hand gas has finished compressing in a moment and its molecules are faster (hotter). The left-hand gas needed a long time to stay at the bath temperature.",
+   "actions": [
+    {
+     "set": {
+      "Ls": 4,
+      "Lf": 4
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Answer",
+   "text": "An **isothermal** change must be **slow** so heat can flow and keep \\( T \\) constant; an **adiabatic** change is done **fast** so there is no time for heat to enter or leave.",
+   "actions": [
+    {
+     "set": {
+      "Ls": 4,
+      "Lf": 4
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "formulas": [
+  {
+   "title": "The two ideal limits",
+   "tex": "\\text{isothermal: } \\Delta T = 0 \\;(\\text{slow}) \\qquad \\text{adiabatic: } \\role{hot}{Q} = 0 \\;(\\text{fast})",
+   "text": "Real processes lie in between."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Pumping up a bicycle tyre quickly makes the pump hot. This is nearly:",
+   "options": [
+    {
+     "id": "a",
+     "label": "adiabatic"
+    },
+    {
+     "id": "b",
+     "label": "isothermal"
+    },
+    {
+     "id": "c",
+     "label": "isobaric"
+    },
+    {
+     "id": "d",
+     "label": "isochoric"
+    }
+   ],
+   "answer": "a",
+   "hint": "Fast compression: no time for heat to escape.",
+   "explain": "A quick compression leaves no time for heat to leave, so Q ≈ 0 and the temperature rises: adiabatic."
+  }
+ ],
+ "takeaways": [
+  "Heat flow takes time: **isothermal = slow**, **adiabatic = fast** (or insulated)."
+ ]
+}

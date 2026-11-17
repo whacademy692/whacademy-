@@ -1,0 +1,697 @@
+{
+ "id": "g11-phys-c8-ex-sq-04",
+ "title": "Ex SQ 8.4 · Work or heat? Telling them apart",
+ "summary": "The internal energy of a system is increased as a result of some process, how can one tell that the increase was…",
+ "alt": "Ex SQ 8.4: The internal energy of a system is increased as a result of some process, how can one tell that the increase was due to orderly macroscopic work W or due to the flow of disorderly microscopic energy 'Q'?",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  },
+  "fire": {
+   "label": "Flame core",
+   "color": "#f59e0b",
+   "text": "The hot core of the flame.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "pp",
+   "label": "pp",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "xp": "3.6-1.0*pp",
+  "vv": "1.8+0.3*pp"
+ },
+ "shapes": [
+  {
+   "type": "polyline",
+   "id": "c1",
+   "pts": [
+    [
+     5.6,
+     13.4
+    ],
+    [
+     0.4,
+     13.4
+    ],
+    [
+     0.4,
+     9.6
+    ],
+    [
+     5.6,
+     9.6
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 4,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "p1",
+   "x": "xp",
+   "y": 9.55,
+   "w": 0.4,
+   "h": 3.9,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.5,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "gas",
+   "id": "g1",
+   "x0": 0.4,
+   "x1": "xp",
+   "y0": 9.6,
+   "y1": 13.4,
+   "n": 14,
+   "v": "vv",
+   "bath": 1,
+   "vref": 2.2,
+   "seed": 2,
+   "out": {
+    "vrms": "gv1"
+   }
+  },
+  {
+   "type": "vector",
+   "id": "wa",
+   "from": [
+    5.5,
+    11.5
+   ],
+   "to": [
+    4.2,
+    11.5
+   ],
+   "role": "work",
+   "strokeWidth": 5,
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "wt",
+   "at": [
+    3.0,
+    14.3
+   ],
+   "text": "WORK W",
+   "role": "work",
+   "size": "m",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "wt2",
+   "at": [
+    3.0,
+    8.9
+   ],
+   "text": "piston pushes in",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "polyline",
+   "id": "c2",
+   "pts": [
+    [
+     7.2,
+     13.4
+    ],
+    [
+     7.2,
+     9.6
+    ],
+    [
+     12.4,
+     9.6
+    ],
+    [
+     12.4,
+     13.4
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 4,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "gas",
+   "id": "g2",
+   "x0": 7.2,
+   "x1": 12.4,
+   "y0": 9.6,
+   "y1": 13.4,
+   "n": 14,
+   "v": "vv",
+   "bath": 1,
+   "vref": 2.2,
+   "seed": 6,
+   "out": {
+    "vrms": "gv2"
+   },
+   "visible": "1"
+  },
+  {
+   "type": "text",
+   "id": "ht",
+   "at": [
+    9.8,
+    14.3
+   ],
+   "text": "HEAT Q",
+   "role": "hot",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ht2",
+   "at": [
+    9.8,
+    8.9
+   ],
+   "text": "flows from hot body",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "polygon",
+   "id": "fl1",
+   "pts": [
+    [
+     7.844,
+     7.684
+    ],
+    [
+     7.76,
+     8.127
+    ],
+    [
+     7.995,
+     8.468
+    ],
+    [
+     8.138,
+     8.253
+    ],
+    [
+     8.348,
+     8.696
+    ],
+    [
+     8.6,
+     8.949
+    ],
+    [
+     8.785,
+     8.62
+    ],
+    [
+     8.953,
+     8.316
+    ],
+    [
+     9.154,
+     8.519
+    ],
+    [
+     9.423,
+     8.063
+    ],
+    [
+     9.322,
+     7.684
+    ]
+   ],
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.75,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "fade",
+   "appearDur": 600
+  },
+  {
+   "type": "polygon",
+   "id": "fl1i",
+   "pts": [
+    [
+     8.222,
+     7.81
+    ],
+    [
+     8.18,
+     8.076
+    ],
+    [
+     8.298,
+     8.281
+    ],
+    [
+     8.369,
+     8.152
+    ],
+    [
+     8.474,
+     8.417
+    ],
+    [
+     8.6,
+     8.569
+    ],
+    [
+     8.692,
+     8.372
+    ],
+    [
+     8.776,
+     8.19
+    ],
+    [
+     8.877,
+     8.311
+    ],
+    [
+     9.012,
+     8.038
+    ],
+    [
+     8.961,
+     7.81
+    ]
+   ],
+   "role": "fire",
+   "fill": true,
+   "fillOpacity": 0.9,
+   "strokeWidth": 1,
+   "appear": "s3",
+   "effect": "fade",
+   "appearDur": 600
+  },
+  {
+   "type": "polygon",
+   "id": "fl2",
+   "pts": [
+    [
+     10.144,
+     7.684
+    ],
+    [
+     10.06,
+     8.127
+    ],
+    [
+     10.295,
+     8.468
+    ],
+    [
+     10.438,
+     8.253
+    ],
+    [
+     10.648,
+     8.696
+    ],
+    [
+     10.9,
+     8.949
+    ],
+    [
+     11.085,
+     8.62
+    ],
+    [
+     11.253,
+     8.316
+    ],
+    [
+     11.454,
+     8.519
+    ],
+    [
+     11.723,
+     8.063
+    ],
+    [
+     11.622,
+     7.684
+    ]
+   ],
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.75,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "fade",
+   "appearDur": 600
+  },
+  {
+   "type": "polygon",
+   "id": "fl2i",
+   "pts": [
+    [
+     10.522,
+     7.81
+    ],
+    [
+     10.48,
+     8.076
+    ],
+    [
+     10.598,
+     8.281
+    ],
+    [
+     10.669,
+     8.152
+    ],
+    [
+     10.774,
+     8.417
+    ],
+    [
+     10.9,
+     8.569
+    ],
+    [
+     10.992,
+     8.372
+    ],
+    [
+     11.076,
+     8.19
+    ],
+    [
+     11.177,
+     8.311
+    ],
+    [
+     11.312,
+     8.038
+    ],
+    [
+     11.261,
+     7.81
+    ]
+   ],
+   "role": "fire",
+   "fill": true,
+   "fillOpacity": 0.9,
+   "strokeWidth": 1,
+   "appear": "s3",
+   "effect": "fade",
+   "appearDur": 600
+  },
+  {
+   "type": "text",
+   "id": "k1",
+   "at": [
+    6.45,
+    6.4
+   ],
+   "text": "Final state alone: U₂ − U₁ is the same",
+   "role": "u",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "k2",
+   "at": [
+    6.45,
+    5.4
+   ],
+   "text": "Look at the PROCESS, not at the result",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 2.05,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s5",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    2.6
+   ],
+   "text": "Work: boundary moves · Heat: ΔT drives it",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s5",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "The internal energy has risen. How could you tell whether the cause was **work** \\( W \\) or **heat** \\( Q \\)?",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "The result cannot tell you",
+   "text": "Internal energy is a **function of state**: \\( \\Delta U = U_2 - U_1 \\) depends only on the final and initial states. A rise of 100 J looks identical whether work or heat produced it.",
+   "actions": [
+    {
+     "set": {
+      "pp": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Work: orderly",
+   "text": "**Work** is energy transferred by a force moving the **boundary** of the system, such as a piston pushed inward. All the molecules at the piston are shoved the **same way**: orderly, macroscopic motion.",
+   "actions": [
+    {
+     "set": {
+      "pp": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "pp": 1
+     },
+     "at": 0,
+     "dur": 2800
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Heat: disorderly",
+   "text": "**Heat** is energy that flows across the boundary **because of a temperature difference**, with no visible motion of the boundary. It is passed on by random molecular collisions: disorderly, microscopic energy.",
+   "actions": [
+    {
+     "set": {
+      "pp": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "So look at the process",
+   "text": "To decide, examine **how** the energy entered: a force moving a boundary (work) or a temperature difference driving flow (heat).",
+   "actions": [
+    {
+     "set": {
+      "pp": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Answer",
+   "text": "From the final state alone one cannot tell; the **process** tells. The first law \\( \\Delta U = Q - W \\) counts both.",
+   "actions": [
+    {
+     "set": {
+      "pp": 1
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "formulas": [
+  {
+   "title": "First law",
+   "tex": "\\role{u}{\\Delta U} = \\role{hot}{Q} - \\role{work}{W}",
+   "text": "Both heat and work can change U; only the process distinguishes them."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which of these changes the gas's internal energy by **work**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "A piston compressing the gas"
+    },
+    {
+     "id": "b",
+     "label": "A flame under the container"
+    },
+    {
+     "id": "c",
+     "label": "Hot walls touching the gas"
+    },
+    {
+     "id": "d",
+     "label": "Warm air around a jar"
+    }
+   ],
+   "answer": "a",
+   "hint": "Work needs a moving boundary.",
+   "explain": "A moving piston does work on the gas; the other three transfer heat because of a temperature difference."
+  }
+ ],
+ "takeaways": [
+  "**Work** = organised energy via a moving boundary. **Heat** = disorganised energy via a temperature difference."
+ ]
+}

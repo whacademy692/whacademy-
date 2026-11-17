@@ -1,0 +1,383 @@
+{
+ "id": "g11-phys-c8-ex-sq-11",
+ "title": "Ex SQ 8.11 · Friction and entropy",
+ "summary": "Does entropy of a system increases or decreases due to friction?",
+ "alt": "Ex SQ 8.11: Does entropy of a system increases or decreases due to friction?",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "polyline",
+   "id": "bxL",
+   "pts": [
+    [
+     0.5,
+     13.7
+    ],
+    [
+     5.7,
+     13.7
+    ],
+    [
+     5.7,
+     9.2
+    ],
+    [
+     0.5,
+     9.2
+    ],
+    [
+     0.5,
+     13.7
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 3,
+   "appear": "s1"
+  },
+  {
+   "type": "polyline",
+   "id": "bxR",
+   "pts": [
+    [
+     7.2,
+     13.7
+    ],
+    [
+     12.4,
+     13.7
+    ],
+    [
+     12.4,
+     9.2
+    ],
+    [
+     7.2,
+     9.2
+    ],
+    [
+     7.2,
+     13.7
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 3,
+   "appear": "s2"
+  },
+  {
+   "type": "gas",
+   "id": "gL",
+   "x0": 0.5,
+   "x1": 5.7,
+   "y0": 9.2,
+   "y1": 13.7,
+   "n": 28,
+   "v": "0.5",
+   "bath": 1,
+   "vref": 1.4,
+   "seed": 4,
+   "out": {
+    "vrms": "gvL"
+   },
+   "bind": "1",
+   "cols": 6,
+   "r": 4.2,
+   "visible": "1"
+  },
+  {
+   "type": "gas",
+   "id": "gR",
+   "x0": 7.2,
+   "x1": 12.4,
+   "y0": 9.2,
+   "y1": 13.7,
+   "n": 28,
+   "v": "2.1",
+   "bath": 1,
+   "vref": 1.4,
+   "seed": 9,
+   "out": {
+    "vrms": "gvR"
+   },
+   "bind": "1",
+   "cols": 6,
+   "r": 4.2,
+   "visible": "1"
+  },
+  {
+   "type": "vector",
+   "id": "arO",
+   "from": [
+    5.9,
+    11.45
+   ],
+   "to": [
+    7.0,
+    11.45
+   ],
+   "role": "ent",
+   "strokeWidth": 4,
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "lL",
+   "at": [
+    3.1,
+    14.25
+   ],
+   "text": "before: cooler",
+   "role": "gas",
+   "size": "s",
+   "bold": true,
+   "appear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "lR",
+   "at": [
+    9.8,
+    14.25
+   ],
+   "text": "after: warmer",
+   "role": "ent",
+   "size": "s",
+   "bold": true,
+   "appear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "f1",
+   "at": [
+    6.45,
+    8.2
+   ],
+   "text": "friction: motion → heat",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "f2",
+   "at": [
+    6.45,
+    7.1
+   ],
+   "text": "molecules jiggle harder: more disorder",
+   "role": "ent",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "f3",
+   "at": [
+    6.45,
+    6.0
+   ],
+   "text": "ΔS = Q / T  > 0",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 1.45,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s4",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    2.0
+   ],
+   "text": "Friction increases entropy",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s4",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "When two surfaces rub together, does their entropy go up or down?",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Friction makes heat",
+   "text": "Rubbing surfaces turn organised **motion** (mechanical energy) into **heat**: the surfaces get warmer.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "More random motion",
+   "text": "The extra energy makes the molecules of the surfaces **jiggle harder in random directions**: the disorder has increased.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "It cannot be undone",
+   "text": "Friction is **irreversible**: the heat never turns back into neat motion by itself. For every irreversible process the entropy **increases**.",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Answer",
+   "text": "The entropy **increases**: heat \\( Q \\) is added to the surfaces, so \\( \\Delta S = Q/T > 0 \\).",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Entropy and heat",
+   "tex": "\\role{ent}{\\Delta S} = \\dfrac{\\role{hot}{Q}}{T} > 0",
+   "text": "Heat produced by friction is positive, so entropy rises."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "A rolling ball slows down and stops because of friction. The entropy of the ball plus floor:",
+   "options": [
+    {
+     "id": "a",
+     "label": "increases"
+    },
+    {
+     "id": "b",
+     "label": "decreases"
+    },
+    {
+     "id": "c",
+     "label": "stays the same"
+    },
+    {
+     "id": "d",
+     "label": "becomes zero"
+    }
+   ],
+   "answer": "a",
+   "hint": "The motion energy became heat.",
+   "explain": "The ball's organised kinetic energy turns into random heat in the floor and ball: entropy increases."
+  }
+ ],
+ "takeaways": [
+  "Friction is **irreversible** and turns work into heat: entropy **increases**."
+ ]
+}

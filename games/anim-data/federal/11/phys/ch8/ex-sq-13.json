@@ -1,0 +1,472 @@
+{
+ "id": "g11-phys-c8-ex-sq-13",
+ "title": "Ex SQ 8.13 · A shaken coffee thermos",
+ "summary": "When a coffee filled thermos is vigorously shaken: (i) is the work done on coffee? (ii) Does the internal energy…",
+ "alt": "Ex SQ 8.13: When a coffee filled thermos is vigorously shaken: (i) is the work done on coffee? (ii) Does the internal energy of coffee increase? (iii) Does the temperature of coffee rise? (iv) Does the coffee get heat from outside?",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "thO",
+   "x": 4.2,
+   "y": 10.3,
+   "w": 4.4,
+   "h": 3.6,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 4,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "thC",
+   "x": 4.5,
+   "y": 10.55,
+   "w": 3.8,
+   "h": 2.3,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.3,
+   "strokeWidth": 1.5,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "thT",
+   "at": [
+    6.4,
+    14.35
+   ],
+   "text": "THERMOS: insulated, Q = 0",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "thL",
+   "at": [
+    6.4,
+    11.7
+   ],
+   "text": "liquid",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "shk1",
+   "from": [
+    3.0,
+    12.1
+   ],
+   "to": [
+    3.9,
+    12.1
+   ],
+   "role": "work",
+   "strokeWidth": 4,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "shk2",
+   "from": [
+    9.8,
+    12.1
+   ],
+   "to": [
+    8.9,
+    12.1
+   ],
+   "role": "work",
+   "strokeWidth": 4,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "segment",
+   "id": "bbase",
+   "from": [
+    0.7,
+    6.6
+   ],
+   "to": [
+    12.2,
+    6.6
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0"
+  },
+  {
+   "type": "rect",
+   "id": "bar0",
+   "x": 1.9499999999999997,
+   "y": 6.6,
+   "w": 2.2,
+   "h": 0.05,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s4",
+   "effect": "fade",
+   "appearDur": 800
+  },
+  {
+   "type": "text",
+   "id": "bn0",
+   "at": [
+    3.05,
+    9.899999999999999
+   ],
+   "text": "Heat Q",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "bv0",
+   "at": [
+    3.05,
+    7.1499999999999995
+   ],
+   "text": "0",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "bs0",
+   "at": [
+    3.05,
+    3.1999999999999997
+   ],
+   "text": "none",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s4",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bar1",
+   "x": 5.4,
+   "y": 4.84,
+   "w": 2.2,
+   "h": 1.7600000000000002,
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s1",
+   "effect": "fade",
+   "appearDur": 800
+  },
+  {
+   "type": "text",
+   "id": "bn1",
+   "at": [
+    6.5,
+    9.899999999999999
+   ],
+   "text": "Work on it",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "bv1",
+   "at": [
+    6.5,
+    4.29
+   ],
+   "text": "yes",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "bs1",
+   "at": [
+    6.5,
+    3.1999999999999997
+   ],
+   "text": "shaking",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bar2",
+   "x": 8.85,
+   "y": 6.6,
+   "w": 2.2,
+   "h": 1.7600000000000002,
+   "role": "u",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s2",
+   "effect": "fade",
+   "appearDur": 800
+  },
+  {
+   "type": "text",
+   "id": "bn2",
+   "at": [
+    9.95,
+    9.899999999999999
+   ],
+   "text": "Change ΔU",
+   "role": "u",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "bv2",
+   "at": [
+    9.95,
+    8.91
+   ],
+   "text": "+",
+   "role": "u",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "bs2",
+   "at": [
+    9.95,
+    3.1999999999999997
+   ],
+   "text": "T rises",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 0.6499999999999999,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s4",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    1.2
+   ],
+   "text": "(i) Yes   (ii) Yes   (iii) Yes   (iv) No",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s4",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "A thermos of coffee is shaken hard. Answer the four parts.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "(i) Work done on the coffee?",
+   "text": "**Yes.** The shaking pushes and stirs the coffee, so work is done **on** it (\\( W < 0 \\) for the coffee as the system).",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "(ii) Does U increase?",
+   "text": "**Yes.** The work done on it is stored as internal energy: \\( \\Delta U = -W > 0 \\).",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "(iii) Does the temperature rise?",
+   "text": "**Yes.** A larger internal energy means faster molecules, so the coffee is slightly **warmer**.",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "(iv) Heat from outside?",
+   "text": "**No.** The thermos is insulated, so \\( Q = 0 \\) (an **adiabatic** change). The warming comes from the **work** alone.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "First law with Q = 0",
+   "tex": "\\role{hot}{Q} = 0 \\;\\Rightarrow\\; \\role{u}{\\Delta U} = -\\role{work}{W}",
+   "text": "Work done on the system raises its internal energy."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "You shake a closed thermos for a minute. What gives the coffee its extra internal energy?",
+   "options": [
+    {
+     "id": "a",
+     "label": "The work done by shaking"
+    },
+    {
+     "id": "b",
+     "label": "Heat from the room"
+    },
+    {
+     "id": "c",
+     "label": "The thermos walls"
+    },
+    {
+     "id": "d",
+     "label": "Cooling of the air"
+    }
+   ],
+   "answer": "a",
+   "hint": "Q = 0 in an insulated flask.",
+   "explain": "No heat enters, so the added internal energy comes from the work done on the coffee."
+  }
+ ],
+ "takeaways": [
+  "Insulated: \\( Q = 0 \\); shaking does work on the liquid, so \\( U \\) and \\( T \\) rise."
+ ]
+}

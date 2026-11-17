@@ -1,0 +1,474 @@
+{
+ "id": "g11-phys-c8-ex-cq-8-1",
+ "title": "Ex CQ 8.1 · Internal energy and temperature",
+ "summary": "Define internal energy of a system and find its relation with absolute temperature.",
+ "alt": "Ex CQ 8.1: Define internal energy of a system and find its relation with absolute temperature.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "n",
+   "label": "n",
+   "type": "number",
+   "min": 2,
+   "max": 80,
+   "step": 0.01,
+   "default": 30,
+   "hidden": true
+  },
+  {
+   "id": "T",
+   "label": "T",
+   "type": "number",
+   "min": 100,
+   "max": 900,
+   "step": 0.01,
+   "default": 300,
+   "hidden": true
+  },
+  {
+   "id": "L",
+   "label": "L",
+   "type": "number",
+   "min": 2,
+   "max": 10.2,
+   "step": 0.01,
+   "default": 8.0,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "v": "2.2*sqrt(T/300)"
+ },
+ "shapes": [
+  {
+   "type": "polyline",
+   "id": "cyl",
+   "pts": [
+    [
+     10.649999999999999,
+     13.6
+    ],
+    [
+     0,
+     13.6
+    ],
+    [
+     0,
+     9.0
+    ],
+    [
+     10.649999999999999,
+     9.0
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 4
+  },
+  {
+   "type": "rect",
+   "id": "pis",
+   "x": "L",
+   "y": 8.95,
+   "w": 0.45,
+   "h": 4.699999999999999,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "segment",
+   "id": "rod",
+   "from": [
+    "(L)+0.45",
+    11.3
+   ],
+   "to": [
+    "(L)+2.3",
+    11.3
+   ],
+   "role": "pis",
+   "strokeWidth": 5
+  },
+  {
+   "type": "rect",
+   "id": "hdl",
+   "x": "(L)+2.3",
+   "y": 10.700000000000001,
+   "w": 0.3,
+   "h": 1.2,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.7,
+   "strokeWidth": 2
+  },
+  {
+   "type": "gas",
+   "id": "g",
+   "x0": 0,
+   "x1": "L",
+   "y0": 9.0,
+   "y1": 13.6,
+   "n": "n",
+   "v": "v",
+   "bath": 1,
+   "vref": 2.2,
+   "seed": 7,
+   "out": {
+    "vrms": "gv",
+    "P": "gp"
+   }
+  },
+  {
+   "type": "text",
+   "id": "ul",
+   "at": [
+    1.6,
+    7.6
+   ],
+   "text": "U",
+   "role": "u",
+   "size": "m",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ub",
+   "x": 2.4,
+   "y": 7.2,
+   "w": "T/450*9.4",
+   "h": 0.75,
+   "role": "u",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "tl",
+   "at": [
+    1.6,
+    6.3
+   ],
+   "text": "T",
+   "role": "hot",
+   "size": "m",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "tb",
+   "x": 2.4,
+   "y": 5.9,
+   "w": "T/450*9.4",
+   "h": 0.75,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "tv",
+   "at": [
+    6.45,
+    5.0
+   ],
+   "text": "T = {{T|0}} K",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "r1",
+   "at": [
+    6.45,
+    4.6
+   ],
+   "text": "ideal gas:  U = N × (3/2) k T",
+   "role": "u",
+   "size": "m",
+   "bold": true,
+   "appear": "s4",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "r2",
+   "at": [
+    6.45,
+    3.5
+   ],
+   "text": "so  U ∝ T",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s4",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 0.95,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s5",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    1.5
+   ],
+   "text": "U is directly proportional to T",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s5",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "Define the **internal energy** of a system and show how it is related to the absolute temperature.",
+   "actions": [
+    {
+     "set": {
+      "T": 300
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Definition",
+   "text": "**Internal energy** \\( U \\) is the **sum of all the molecular energies**, kinetic and potential, of the substance.",
+   "actions": [
+    {
+     "set": {
+      "T": 300
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Ideal gas: kinetic only",
+   "text": "In an **ideal gas** the collisions are perfectly elastic and the molecules exert **no forces** on each other, so there is no potential energy. \\( U \\) is just the **translational kinetic energy** of the molecules.",
+   "actions": [
+    {
+     "set": {
+      "T": 300
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Energy of one molecule",
+   "text": "Kinetic theory gives the mean kinetic energy of one molecule: \\[ \\left\\langle \\tfrac{1}{2}mv^{2} \\right\\rangle = \\tfrac{3}{2}\\,kT \\] so it is proportional to the **kelvin** temperature.",
+   "actions": [
+    {
+     "set": {
+      "T": 300
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Energy of N molecules",
+   "text": "\\[ U = N \\cdot \\tfrac{3}{2}kT \\quad\\Rightarrow\\quad U \\propto T \\] Raise \\( T \\) and watch the bar of \\( U \\) grow in proportion.",
+   "actions": [
+    {
+     "set": {
+      "T": 300
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "T": 450
+     },
+     "at": 0,
+     "dur": 4500
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Sign of ΔU, and real gases",
+   "text": "\\( \\Delta U = U_2 - U_1 \\) is **positive** when \\( T \\) rises, **negative** when \\( T \\) falls and **zero** when \\( T \\) is constant. For a **real** gas, \\( U \\) also contains potential energy, so it depends on \\( T \\) and \\( V \\).",
+   "actions": [
+    {
+     "set": {
+      "T": 450
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Temperature (K)",
+   "value": "{{T|0}}",
+   "role": "hot"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Internal energy of an ideal gas",
+   "tex": "\\role{u}{U} = \\tfrac{3}{2}\\,N\\,k\\,\\role{hot}{T}",
+   "text": "N molecules, T in kelvin: U ∝ T."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "The absolute temperature of an ideal gas **doubles**. Its internal energy:",
+   "options": [
+    {
+     "id": "a",
+     "label": "doubles"
+    },
+    {
+     "id": "b",
+     "label": "halves"
+    },
+    {
+     "id": "c",
+     "label": "stays the same"
+    },
+    {
+     "id": "d",
+     "label": "becomes four times"
+    }
+   ],
+   "answer": "a",
+   "hint": "U ∝ T.",
+   "explain": "For an ideal gas U = (3/2)NkT, directly proportional to T."
+  }
+ ],
+ "takeaways": [
+  "\\( U \\) = molecular kinetic + potential energy. For an ideal gas \\( U = \\tfrac{3}{2}NkT \\propto T \\)."
+ ]
+}

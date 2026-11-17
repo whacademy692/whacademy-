@@ -1,0 +1,472 @@
+{
+ "id": "g11-phys-c8-we-8-5",
+ "title": "Example 8.5 · Heat delivered by a refrigerator",
+ "summary": "The temperature inside a refrigerator is 6 °C and the room temperature is 37 °C. How many joules of heat will be…",
+ "alt": "Example 8.5: The temperature inside a refrigerator is 6 °C and the room temperature is 37 °C. How many joules of heat will be delivered to the room for each joule of electricity consumed? Assume the refrigerator is ideal.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "hotR",
+   "x": 2.0,
+   "y": 12.2,
+   "w": 8.8,
+   "h": 1.3,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "coldR",
+   "x": 2.0,
+   "y": 1.7,
+   "w": 8.8,
+   "h": 1.3,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "hotLq",
+   "at": [
+    6.4,
+    12.85
+   ],
+   "text": "Room (hot)  T₁ = ?",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "disappear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "hotL",
+   "at": [
+    6.4,
+    12.85
+   ],
+   "text": "Room (hot)  T₁ = 310 K",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "coldLq",
+   "at": [
+    6.4,
+    2.35
+   ],
+   "text": "Inside (cold)  T₂ = ?",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "disappear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "coldL",
+   "at": [
+    6.4,
+    2.35
+   ],
+   "text": "Inside (cold)  T₂ = 279 K",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "sct",
+   "at": [
+    6.45,
+    14.3
+   ],
+   "text": "ideal refrigerator",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "mach",
+   "x": 3.7,
+   "y": 6.0,
+   "w": 5.4,
+   "h": 2.9,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 4,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "machT",
+   "at": [
+    6.45,
+    7.45
+   ],
+   "text": "REFRIGERATOR",
+   "role": "wall",
+   "size": "m",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bC",
+   "x": 5.140000000000001,
+   "y": 3.0,
+   "w": 2.52,
+   "h": 3.0,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 1.5,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bH",
+   "x": 5.0,
+   "y": 8.9,
+   "w": 2.8,
+   "h": 3.3,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 1.5,
+   "appear": "s4",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bW",
+   "x": 9.1,
+   "y": 7.3100000000000005,
+   "w": 3.2,
+   "h": 0.27999999999999997,
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 1.5,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "aC",
+   "from": [
+    6.4,
+    3.0
+   ],
+   "to": [
+    6.4,
+    5.9
+   ],
+   "role": "cold",
+   "strokeWidth": 4,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "aH",
+   "from": [
+    6.4,
+    8.9
+   ],
+   "to": [
+    6.4,
+    12.1
+   ],
+   "role": "hot",
+   "strokeWidth": 4,
+   "appear": "s4",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "aW",
+   "from": [
+    12.4,
+    7.45
+   ],
+   "to": [
+    9.2,
+    7.45
+   ],
+   "role": "work",
+   "strokeWidth": 4,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "q1q",
+   "at": [
+    10.25,
+    10.6
+   ],
+   "text": "Q₁ = ?",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "disappear": "s4"
+  },
+  {
+   "type": "text",
+   "id": "q1",
+   "at": [
+    10.25,
+    10.6
+   ],
+   "text": "Q₁ = 10 J",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s4"
+  },
+  {
+   "type": "text",
+   "id": "q2q",
+   "at": [
+    10.25,
+    4.5
+   ],
+   "text": "Q₂ = ?",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "disappear": "s3"
+  },
+  {
+   "type": "text",
+   "id": "q2",
+   "at": [
+    10.25,
+    4.5
+   ],
+   "text": "Q₂ = 9 J",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s3"
+  },
+  {
+   "type": "text",
+   "id": "ww",
+   "at": [
+    10.9,
+    8.14
+   ],
+   "text": "W = 1 J",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 0.29999999999999993,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s5",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    0.85
+   ],
+   "text": "Q₁ = 10 J for each 1 J of electricity",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s5",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "An ideal refrigerator: inside \\( 6\\ \\text{°C} \\), room \\( 37\\ \\text{°C} \\). Each joule of electrical work \\( W = 1 \\) J delivers how much heat \\( Q_1 \\) to the room?",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Change to kelvin",
+   "text": "\\( T_2 = 6 + 273 = 279 \\) K (inside) and \\( T_1 = 37 + 273 = 310 \\) K (room).",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Coefficient of performance",
+   "text": "How much heat is moved per joule of work: \\[ \\text{CP} = \\dfrac{T_2}{T_1 - T_2} = \\dfrac{279}{310 - 279} = \\dfrac{279}{31} = 9 \\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Heat taken from inside",
+   "text": "\\( Q_2 = \\text{CP} \\times W = 9 \\times 1 = 9 \\) J is pulled out of the cold interior for every joule of work.",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Heat delivered to the room",
+   "text": "Energy is conserved: \\[ Q_1 = Q_2 + W = 9 + 1 = 10\\ \\text{J} \\]",
+   "actions": []
+  },
+  {
+   "id": "s5",
+   "title": "Answer",
+   "text": "**10 J** of heat reach the room for each joule of electricity. The room warms by more than the electrical energy supplied, because the fridge also dumps the heat it removed from inside.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Refrigerator",
+   "tex": "\\text{CP} = \\dfrac{\\role{cold}{Q_2}}{\\role{work}{W}} = \\dfrac{\\role{cold}{T_2}}{\\role{hot}{T_1} - \\role{cold}{T_2}}, \\quad \\role{hot}{Q_1} = \\role{cold}{Q_2} + \\role{work}{W}",
+   "text": "Ideal (reversible) refrigerator; temperatures in kelvin."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "An ideal refrigerator keeps its inside at **0 °C** in a **27 °C** room. How much heat (J) goes to the room per joule of work?",
+   "answer": 11.1,
+   "hint": "Q₁ / W = T₁ / (T₁ − T₂).",
+   "explain": "\\( Q_1/W = 300/(300 - 273) = 300/27 = 11.1 \\) J.",
+   "tolerance": 0.1,
+   "unit": "J"
+  }
+ ],
+ "takeaways": [
+  "Ideal fridge: \\( Q_1/W = T_1/(T_1 - T_2) \\) and \\( Q_1 = Q_2 + W \\)."
+ ]
+}

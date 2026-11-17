@@ -1,0 +1,476 @@
+{
+ "id": "g11-phys-c8-ex-mcq-13",
+ "title": "Ex MCQ 13 · Thermal equilibrium",
+ "summary": "If two objects are in thermal equilibrium with each other, they cannot: (A) be moving. (B) be undergoing an…",
+ "alt": "Ex MCQ 13: If two objects are in thermal equilibrium with each other, they cannot: (A) be moving. (B) be undergoing an elastic collision. (C) have different pressures. (D) be at different temperatures.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "polyline",
+   "id": "bxL",
+   "pts": [
+    [
+     0.5,
+     13.7
+    ],
+    [
+     5.7,
+     13.7
+    ],
+    [
+     5.7,
+     9.2
+    ],
+    [
+     0.5,
+     9.2
+    ],
+    [
+     0.5,
+     13.7
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 3,
+   "appear": "s0"
+  },
+  {
+   "type": "polyline",
+   "id": "bxR",
+   "pts": [
+    [
+     7.2,
+     13.7
+    ],
+    [
+     12.4,
+     13.7
+    ],
+    [
+     12.4,
+     9.2
+    ],
+    [
+     7.2,
+     9.2
+    ],
+    [
+     7.2,
+     13.7
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 3,
+   "appear": "s0"
+  },
+  {
+   "type": "gas",
+   "id": "gL",
+   "x0": 0.5,
+   "x1": 5.7,
+   "y0": 9.2,
+   "y1": 13.7,
+   "n": 20,
+   "v": "2.2",
+   "bath": 1,
+   "vref": 1.4,
+   "seed": 4,
+   "out": {
+    "vrms": "gvL"
+   },
+   "bind": "0",
+   "cols": 6,
+   "r": 4.2,
+   "visible": "1"
+  },
+  {
+   "type": "gas",
+   "id": "gR",
+   "x0": 7.2,
+   "x1": 12.4,
+   "y0": 9.2,
+   "y1": 13.7,
+   "n": 20,
+   "v": "2.2",
+   "bath": 1,
+   "vref": 1.4,
+   "seed": 9,
+   "out": {
+    "vrms": "gvR"
+   },
+   "bind": "0",
+   "cols": 6,
+   "r": 4.2,
+   "visible": "1"
+  },
+  {
+   "type": "vector",
+   "id": "arO",
+   "from": [
+    5.9,
+    11.45
+   ],
+   "to": [
+    7.0,
+    11.45
+   ],
+   "role": "ent",
+   "strokeWidth": 4,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "lL",
+   "at": [
+    3.1,
+    14.25
+   ],
+   "text": "Object A: 300 K",
+   "role": "gas",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "lR",
+   "at": [
+    9.8,
+    14.25
+   ],
+   "text": "Object B: 300 K",
+   "role": "ent",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "eq",
+   "at": [
+    6.45,
+    8.3
+   ],
+   "text": "equal temperature: no net heat flow",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "o0",
+   "at": [
+    3.1,
+    6.6
+   ],
+   "text": "A  be moving",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade",
+   "appearDur": 400
+  },
+  {
+   "type": "text",
+   "id": "or0",
+   "at": [
+    9.6,
+    6.6
+   ],
+   "text": "allowed",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "pop",
+   "appearDur": 400,
+   "delay": 150
+  },
+  {
+   "type": "text",
+   "id": "o1",
+   "at": [
+    3.1,
+    5.5
+   ],
+   "text": "B  elastic collision",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade",
+   "appearDur": 400,
+   "delay": 300
+  },
+  {
+   "type": "text",
+   "id": "or1",
+   "at": [
+    9.6,
+    5.5
+   ],
+   "text": "allowed",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "pop",
+   "appearDur": 400,
+   "delay": 450
+  },
+  {
+   "type": "text",
+   "id": "o2",
+   "at": [
+    3.1,
+    4.3999999999999995
+   ],
+   "text": "C  different pressures",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade",
+   "appearDur": 400,
+   "delay": 600
+  },
+  {
+   "type": "text",
+   "id": "or2",
+   "at": [
+    9.6,
+    4.3999999999999995
+   ],
+   "text": "allowed",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "pop",
+   "appearDur": 400,
+   "delay": 750
+  },
+  {
+   "type": "text",
+   "id": "o3",
+   "at": [
+    3.1,
+    3.2999999999999994
+   ],
+   "text": "D  different temperatures",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade",
+   "appearDur": 400,
+   "delay": 900
+  },
+  {
+   "type": "text",
+   "id": "or3",
+   "at": [
+    9.6,
+    3.2999999999999994
+   ],
+   "text": "IMPOSSIBLE",
+   "role": "no",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "pop",
+   "appearDur": 400,
+   "delay": 1050
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 0.6499999999999999,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    1.2
+   ],
+   "text": "They cannot differ in temperature   →   (D)",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "Two objects are in **thermal equilibrium**. Which thing can they **not** do?",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "What thermal equilibrium means",
+   "text": "Objects in thermal equilibrium have the **same temperature**, so there is **no net heat flow** between them. That is the only thing the condition fixes.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Test each option",
+   "text": "Moving, colliding elastically or having different pressures say nothing about temperature, so equilibrium does not forbid them. Different temperatures would make heat flow, so they would **not** be in equilibrium.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Answer: (D)",
+   "text": "They **cannot be at different temperatures**.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Thermal equilibrium",
+   "tex": "\\role{hot}{T_A} = \\role{cold}{T_B} \\;\\Leftrightarrow\\; \\text{no net heat flow}",
+   "text": "Equal temperature is what thermal equilibrium means."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Two bodies are placed in contact and **no heat flows** between them. What must be true?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Their temperatures are equal"
+    },
+    {
+     "id": "b",
+     "label": "Their masses are equal"
+    },
+    {
+     "id": "c",
+     "label": "Their pressures are equal"
+    },
+    {
+     "id": "d",
+     "label": "Their volumes are equal"
+    }
+   ],
+   "answer": "a",
+   "hint": "Heat flows because of a temperature difference.",
+   "explain": "No net heat flow means thermal equilibrium: equal temperatures."
+  }
+ ],
+ "takeaways": [
+  "Thermal equilibrium means **equal temperature** (no net heat flow); nothing else is fixed."
+ ]
+}

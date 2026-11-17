@@ -1,0 +1,376 @@
+{
+ "id": "g11-phys-c8-ex-mcq-04",
+ "title": "Ex MCQ 4 · Heat into a rigid container",
+ "summary": "Change in internal energy of a gas kept in rigid container when 'Q' J energy is added to it is: (A) Q/2 (B) Q/3…",
+ "alt": "Ex MCQ 4: Change in internal energy of a gas kept in rigid container when 'Q' J energy is added to it is: (A) Q/2 (B) Q/3 (C) Q (D) 2Q",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "bbase",
+   "from": [
+    0.7,
+    8.0
+   ],
+   "to": [
+    12.2,
+    8.0
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0"
+  },
+  {
+   "type": "rect",
+   "id": "bar0",
+   "x": 1.9499999999999997,
+   "y": 8.0,
+   "w": 2.2,
+   "h": 2.8800000000000003,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "fade",
+   "appearDur": 800
+  },
+  {
+   "type": "text",
+   "id": "bn0",
+   "at": [
+    3.05,
+    11.3
+   ],
+   "text": "Heat added Q",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "bv0",
+   "at": [
+    3.05,
+    11.430000000000001
+   ],
+   "text": "Q",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "bs0",
+   "at": [
+    3.05,
+    4.6
+   ],
+   "text": "goes in",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bar1",
+   "x": 5.4,
+   "y": 8.0,
+   "w": 2.2,
+   "h": 0.05,
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s1",
+   "effect": "fade",
+   "appearDur": 800
+  },
+  {
+   "type": "text",
+   "id": "bn1",
+   "at": [
+    6.5,
+    11.3
+   ],
+   "text": "Work W",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "bv1",
+   "at": [
+    6.5,
+    8.55
+   ],
+   "text": "0",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "bs1",
+   "at": [
+    6.5,
+    4.6
+   ],
+   "text": "piston cannot move",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bar2",
+   "x": 8.85,
+   "y": 8.0,
+   "w": 2.2,
+   "h": 2.8800000000000003,
+   "role": "u",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s3",
+   "effect": "fade",
+   "appearDur": 800
+  },
+  {
+   "type": "text",
+   "id": "bn2",
+   "at": [
+    9.95,
+    11.3
+   ],
+   "text": "Change ΔU",
+   "role": "u",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "bv2",
+   "at": [
+    9.95,
+    11.430000000000001
+   ],
+   "text": "Q",
+   "role": "u",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "bs2",
+   "at": [
+    9.95,
+    4.6
+   ],
+   "text": "all of it stays",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "rg",
+   "at": [
+    6.45,
+    12.9
+   ],
+   "text": "RIGID container: V is fixed",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 0.6499999999999999,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    1.2
+   ],
+   "text": "ΔU = Q   →   (C)",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "Gas sits in a **rigid** container and gets **Q** joules of heat. Find the change in internal energy \\( \\Delta U \\).",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Rigid means no work",
+   "text": "A rigid wall cannot move, so the volume stays fixed: \\( \\Delta V = 0 \\). Work \\( W = P\\,\\Delta V = 0 \\).",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Use the first law",
+   "text": "First law: \\( Q = \\Delta U + W \\). With \\( W = 0 \\) it becomes \\( Q = \\Delta U + 0 \\).",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Answer: (C) Q",
+   "text": "So \\( \\Delta U = Q \\): **every joule of heat goes into internal energy** (the gas just gets hotter). Options A, B and D would need some of the heat to vanish or to appear from nowhere.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "First law",
+   "tex": "\\role{hot}{Q} = \\role{u}{\\Delta U} + \\role{work}{W}",
+   "text": "Heat added = rise in internal energy + work done by the gas."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A gas in a rigid box receives **250 J** of heat. What is its change in internal energy (J)?",
+   "answer": 250,
+   "hint": "W = 0 in a rigid box.",
+   "explain": "\\( \\Delta U = Q - W = 250 - 0 = 250 \\) J.",
+   "tolerance": 1,
+   "unit": "J"
+  }
+ ],
+ "takeaways": [
+  "Constant volume (**isochoric**): \\( W = 0 \\), so \\( Q = \\Delta U \\)."
+ ]
+}

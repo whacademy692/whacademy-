@@ -1,0 +1,361 @@
+{
+ "id": "g11-phys-c8-we-8-2",
+ "title": "Example 8.2 · Pressure of argon in a cylinder",
+ "summary": "A 2 kg of argon gas is heated to 30 °C. If it is contained in a cylinder of radius 1 m and height 2 m, what is the…",
+ "alt": "Example 8.2: A 2 kg of argon gas is heated to 30 °C. If it is contained in a cylinder of radius 1 m and height 2 m, what is the pressure of the gas? (Molar mass of argon = 40 g mol⁻¹)",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "n",
+   "label": "n",
+   "type": "number",
+   "min": 2,
+   "max": 80,
+   "step": 0.01,
+   "default": 30,
+   "hidden": true
+  },
+  {
+   "id": "T",
+   "label": "T",
+   "type": "number",
+   "min": 100,
+   "max": 900,
+   "step": 0.01,
+   "default": 303,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "v": "2.2*sqrt(T/300)"
+ },
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "cy",
+   "x": 3.0,
+   "y": 8.4,
+   "w": 4.4,
+   "h": 5.2,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.06,
+   "strokeWidth": 4,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "gas",
+   "id": "g",
+   "x0": 3.0,
+   "x1": 7.4,
+   "y0": 8.4,
+   "y1": 13.6,
+   "n": "n",
+   "v": "v",
+   "bath": 1,
+   "vref": 2.2,
+   "seed": 6,
+   "out": {
+    "vrms": "gv"
+   }
+  },
+  {
+   "type": "text",
+   "id": "m0",
+   "at": [
+    5.2,
+    14.3
+   ],
+   "text": "argon: m = 2 kg, T = 303 K",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "dr",
+   "from": [
+    3.0,
+    8.0
+   ],
+   "to": [
+    7.4,
+    8.0
+   ],
+   "role": "ent",
+   "strokeWidth": 2,
+   "appear": "s3",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "dr_t",
+   "at": [
+    5.2,
+    7.5
+   ],
+   "text": "r = 1 m",
+   "role": "ent",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "dh",
+   "from": [
+    8.0,
+    8.4
+   ],
+   "to": [
+    8.0,
+    13.6
+   ],
+   "role": "ent",
+   "strokeWidth": 2,
+   "appear": "s3",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "dh_t",
+   "at": [
+    9.4,
+    11.0
+   ],
+   "text": "h = 2 m",
+   "role": "ent",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "l1",
+   "at": [
+    6.45,
+    6.6
+   ],
+   "text": "n = 2000 g ÷ 40 g/mol = 50 mol",
+   "role": "u",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "l2",
+   "at": [
+    6.45,
+    5.6
+   ],
+   "text": "V = πr²h = 3.142 × 1² × 2 = 6.28 m³",
+   "role": "ent",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "l3",
+   "at": [
+    6.45,
+    4.6
+   ],
+   "text": "P = nRT / V",
+   "role": "wall",
+   "size": "m",
+   "bold": true,
+   "appear": "s4",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 1.45,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s5",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    2.0
+   ],
+   "text": "P ≈ 2.0 × 10⁴ Pa",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s5",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "**2 kg** of argon at \\( 30\\ \\text{°C} \\) fill a cylinder of radius \\( 1 \\) m and height \\( 2 \\) m. Find the pressure. Molar mass of argon: \\( 40\\ \\text{g mol}^{-1} \\).",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Temperature in kelvin",
+   "text": "\\( T = 30 + 273 = 303 \\) K.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Number of moles",
+   "text": "\\[ n = \\dfrac{2000\\ \\text{g}}{40\\ \\text{g mol}^{-1}} = 50\\ \\text{mol} \\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Volume of the cylinder",
+   "text": "\\[ V = \\pi r^{2} h = 3.142 \\times 1^{2} \\times 2 = 6.28\\ \\text{m}^{3} \\]",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Use the ideal gas equation",
+   "text": "\\( PV = nRT \\), so \\[ P = \\dfrac{nRT}{V} = \\dfrac{50 \\times 8.314 \\times 303}{6.28} \\]",
+   "actions": []
+  },
+  {
+   "id": "s5",
+   "title": "Answer",
+   "text": "\\( P \\approx 2.0\\times10^{4} \\) Pa (20 044 Pa), about one fifth of atmospheric pressure, because the gas has a large volume.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Ideal gas equation",
+   "tex": "\\role{u}{P}\\,\\role{ent}{V} = n\\,R\\,\\role{hot}{T}",
+   "text": "R = 8.314 J mol⁻¹ K⁻¹; SI units; T in kelvin."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "The same **2 kg of argon at 30 °C** is put into a **10 m³** tank. What is the pressure in kPa?",
+   "answer": 12.6,
+   "hint": "n = 50 mol; P = nRT/V.",
+   "explain": "\\( P = 50 \\times 8.314 \\times 303 / 10 = 12\\,595 \\) Pa ≈ 12.6 kPa.",
+   "tolerance": 0.15,
+   "unit": "kPa"
+  }
+ ],
+ "takeaways": [
+  "Moles \\( n = m/M \\), volume of a cylinder \\( \\pi r^{2} h \\), then \\( P = nRT/V \\)."
+ ]
+}

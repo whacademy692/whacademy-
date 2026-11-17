@@ -1,0 +1,532 @@
+{
+ "id": "g11-phys-c8-ex-sq-05",
+ "title": "Ex SQ 8.5 · When does the volume double?",
+ "summary": "At what temperature (in °C) does the volume of a gas at 0 °C become double, while pressure remains constant?",
+ "alt": "Ex SQ 8.5: At what temperature (in °C) does the volume of a gas at 0 °C become double, while pressure remains constant?",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "pax",
+   "from": [
+    2.1,
+    5.4
+   ],
+   "to": [
+    12.0,
+    5.4
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5,
+   "appear": "s0"
+  },
+  {
+   "type": "vector",
+   "id": "pay",
+   "from": [
+    2.1,
+    5.4
+   ],
+   "to": [
+    2.1,
+    13.100000000000001
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "pxl",
+   "at": [
+    12.05,
+    4.9
+   ],
+   "text": "T (K)",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "pyl",
+   "at": [
+    1.9000000000000001,
+    13.55
+   ],
+   "text": "V (in V₀)",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "segment",
+   "id": "xt0",
+   "from": [
+    6.048,
+    5.4
+   ],
+   "to": [
+    6.048,
+    5.2
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "xtl0",
+   "at": [
+    6.048,
+    4.75
+   ],
+   "text": "273",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s0"
+  },
+  {
+   "type": "segment",
+   "id": "xt1",
+   "from": [
+    9.996,
+    5.4
+   ],
+   "to": [
+    9.996,
+    5.2
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "xtl1",
+   "at": [
+    9.996,
+    4.75
+   ],
+   "text": "546",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s0"
+  },
+  {
+   "type": "segment",
+   "id": "yt0",
+   "from": [
+    2.1,
+    8.28
+   ],
+   "to": [
+    1.9000000000000001,
+    8.28
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "ytl0",
+   "at": [
+    1.1500000000000001,
+    8.28
+   ],
+   "text": "1",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s0"
+  },
+  {
+   "type": "segment",
+   "id": "yt1",
+   "from": [
+    2.1,
+    11.16
+   ],
+   "to": [
+    1.9000000000000001,
+    11.16
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "ytl1",
+   "at": [
+    1.1500000000000001,
+    11.16
+   ],
+   "text": "2",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s0"
+  },
+  {
+   "type": "polyline",
+   "id": "pc1",
+   "pts": [
+    [
+     2.1,
+     5.4
+    ],
+    [
+     11.066,
+     11.941
+    ]
+   ],
+   "role": "th",
+   "strokeWidth": 4,
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 900
+  },
+  {
+   "type": "text",
+   "id": "pt2",
+   "at": [
+    9.042,
+    8.424
+   ],
+   "text": "V ∝ T",
+   "role": "th",
+   "size": "m",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "gx3",
+   "from": [
+    6.048,
+    5.4
+   ],
+   "to": [
+    6.048,
+    8.28
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    5,
+    5
+   ],
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "segment",
+   "id": "gy4",
+   "from": [
+    2.1,
+    8.28
+   ],
+   "to": [
+    6.048,
+    8.28
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    5,
+    5
+   ],
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "point",
+   "id": "pd5",
+   "at": [
+    6.048,
+    8.28
+   ],
+   "role": "me",
+   "r": 7,
+   "appear": "s2",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "pl6",
+   "at": [
+    6.498,
+    7.93
+   ],
+   "text": "0 °C",
+   "role": "me",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "gx7",
+   "from": [
+    9.996,
+    5.4
+   ],
+   "to": [
+    9.996,
+    11.16
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    5,
+    5
+   ],
+   "appear": "s3",
+   "effect": "draw"
+  },
+  {
+   "type": "segment",
+   "id": "gy8",
+   "from": [
+    2.1,
+    11.16
+   ],
+   "to": [
+    9.996,
+    11.16
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    5,
+    5
+   ],
+   "appear": "s3",
+   "effect": "draw"
+  },
+  {
+   "type": "point",
+   "id": "pd9",
+   "at": [
+    9.996,
+    11.16
+   ],
+   "role": "ans",
+   "r": 7,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "pt10",
+   "at": [
+    8.897,
+    12.312
+   ],
+   "text": "546 K = 273 °C",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "u1",
+   "at": [
+    6.45,
+    3.7
+   ],
+   "text": "V₂/V₁ = T₂/T₁  →  2 = T₂/273",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 0.75,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s4",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "T₂ = 546 K = 273 °C",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s4",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "A gas at \\( 0\\ \\text{°C} \\) is heated at **constant pressure** until its volume is **double**. Find the new temperature in °C.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Use Charles's law",
+   "text": "At constant pressure \\( V \\propto T \\) (kelvin): \\[ \\dfrac{V_1}{T_1} = \\dfrac{V_2}{T_2} \\] The graph of V against T (kelvin) is a straight line through the origin.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Starting point",
+   "text": "\\( T_1 = 0 + 273 = 273 \\) K and \\( V_1 \\) is the starting volume (take it as 1 unit).",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Doubling the volume",
+   "text": "\\( V_2 = 2V_1 \\), so \\( \\dfrac{V_2}{V_1} = \\dfrac{T_2}{T_1} \\Rightarrow 2 = \\dfrac{T_2}{273} \\) and \\( T_2 = 546 \\) K.",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Back to °C",
+   "text": "\\( t = 546 - 273 = 273\\ \\text{°C} \\). The volume doubles when the **kelvin** temperature doubles, i.e. at **273 °C**.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Charles's law",
+   "tex": "\\dfrac{\\role{ent}{V_1}}{\\role{hot}{T_1}} = \\dfrac{\\role{ent}{V_2}}{\\role{hot}{T_2}}",
+   "text": "T in kelvin, pressure constant."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A gas at **27 °C** is heated at constant pressure until its volume doubles. What is the final temperature in °C?",
+   "answer": 327,
+   "hint": "T₁ = 300 K; T₂ = 2 × 300.",
+   "explain": "\\( T_2 = 600 \\) K = 327 °C.",
+   "tolerance": 1,
+   "unit": "°C"
+  }
+ ],
+ "takeaways": [
+  "Volume doubles when the **kelvin** temperature doubles (not the Celsius one)."
+ ]
+}

@@ -1,0 +1,470 @@
+{
+ "id": "g11-phys-c8-ex-cq-8-11",
+ "title": "Ex CQ 8.11 · Entropy and the degradation of energy",
+ "summary": "Explain that entropy is the degradation of energy.",
+ "alt": "Ex CQ 8.11: Explain that entropy is the degradation of energy.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "hotR",
+   "x": 2.0,
+   "y": 12.2,
+   "w": 8.8,
+   "h": 1.3,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "coldR",
+   "x": 2.0,
+   "y": 1.7,
+   "w": 8.8,
+   "h": 1.3,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "hotL",
+   "at": [
+    6.45,
+    12.85
+   ],
+   "text": "Fuel (hot)",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "coldL",
+   "at": [
+    6.45,
+    2.35
+   ],
+   "text": "Atmosphere (cold)",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "sct",
+   "at": [
+    6.45,
+    14.3
+   ],
+   "text": "a car engine: energy of the fuel",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "mach",
+   "x": 3.7,
+   "y": 6.0,
+   "w": 5.4,
+   "h": 2.9,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 4,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "machT",
+   "at": [
+    6.45,
+    7.45
+   ],
+   "text": "CAR ENGINE",
+   "role": "wall",
+   "size": "m",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bH",
+   "x": 5.0,
+   "y": 8.9,
+   "w": 2.8,
+   "h": 3.3,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 1.5,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bC",
+   "x": 5.3500000000000005,
+   "y": 3.0,
+   "w": 2.0999999999999996,
+   "h": 3.0,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 1.5,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bW",
+   "x": 9.1,
+   "y": 7.1000000000000005,
+   "w": 3.2,
+   "h": 0.7,
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 1.5,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "aH",
+   "from": [
+    6.4,
+    12.2
+   ],
+   "to": [
+    6.4,
+    9.0
+   ],
+   "role": "hot",
+   "strokeWidth": 4,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "aC",
+   "from": [
+    6.4,
+    6.0
+   ],
+   "to": [
+    6.4,
+    3.1
+   ],
+   "role": "cold",
+   "strokeWidth": 4,
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "aW",
+   "from": [
+    9.1,
+    7.45
+   ],
+   "to": [
+    12.4,
+    7.45
+   ],
+   "role": "work",
+   "strokeWidth": 4,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "q1",
+   "at": [
+    10.25,
+    10.6
+   ],
+   "text": "Q₁ = 100 %",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "q2q",
+   "at": [
+    10.25,
+    4.5
+   ],
+   "text": "Q₂ = ?",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "disappear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "q2",
+   "at": [
+    10.25,
+    4.5
+   ],
+   "text": "Q₂ = 75 %",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "wwq",
+   "at": [
+    10.9,
+    8.35
+   ],
+   "text": "W = ?",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "disappear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "ww",
+   "at": [
+    10.9,
+    8.35
+   ],
+   "text": "W = 25 %",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "dg",
+   "at": [
+    2.6,
+    4.5
+   ],
+   "text": "lost: degraded",
+   "role": "no",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 0.29999999999999993,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s4",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    0.85
+   ],
+   "text": "More entropy = more degraded energy",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s4",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "Explain why an increase of entropy means the **degradation of energy**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Entropy and lost chances",
+   "text": "Whenever entropy increases, an **opportunity to convert heat into work is lost**. The energy is still there, but it is spread out and cannot be fully used.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "A car engine",
+   "text": "Only part of the fuel's energy does useful work (the green-amber band, 25 %). The rest is released into the atmosphere, where it is **no longer available** to do work.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Refrigerators and air conditioners",
+   "text": "A refrigerator cools its inside only by **heating** the room more than it cools the inside. The entropy of the universe **still increases**.",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Conclusion",
+   "text": "An increase in entropy means **degradation of energy**, and energy is degraded in **all natural processes**.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Energy used and wasted",
+   "tex": "\\role{hot}{Q_{\\text{fuel}}} = \\role{work}{W} + \\role{cold}{Q_{\\text{lost}}}",
+   "text": "The lost part is degraded: it cannot be converted back to work."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "When fuel burns in a car engine, most of its energy:",
+   "options": [
+    {
+     "id": "a",
+     "label": "is released as heat that can no longer do work"
+    },
+    {
+     "id": "b",
+     "label": "is destroyed"
+    },
+    {
+     "id": "c",
+     "label": "becomes useful work"
+    },
+    {
+     "id": "d",
+     "label": "is stored in the tyres"
+    }
+   ],
+   "answer": "a",
+   "hint": "Energy is conserved, but it is degraded.",
+   "explain": "Energy is not destroyed: most is released to the atmosphere as heat, which is degraded energy that can no longer be used for work."
+  }
+ ],
+ "takeaways": [
+  "Entropy up = energy **degraded**: it still exists but cannot be turned into work."
+ ]
+}

@@ -1,0 +1,1033 @@
+{
+ "id": "g11-phys-c8-ex-cq-8-4",
+ "title": "Ex CQ 8.4 · The four thermodynamic processes",
+ "summary": "Define and explain: (a) Isothermal process (b) Isobaric process (c) adiabatic process (d) isochoric process.",
+ "alt": "Ex CQ 8.4: Define and explain: (a) Isothermal process (b) Isobaric process (c) adiabatic process (d) isochoric process.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "iapax",
+   "from": [
+    0.9,
+    9.7
+   ],
+   "to": [
+    6.300000000000001,
+    9.7
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5,
+   "appear": "s1"
+  },
+  {
+   "type": "vector",
+   "id": "iapay",
+   "from": [
+    0.9,
+    9.7
+   ],
+   "to": [
+    0.9,
+    13.2
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5,
+   "appear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "iapxl",
+   "at": [
+    6.3500000000000005,
+    9.2
+   ],
+   "text": "V",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "iapyl",
+   "at": [
+    0.7,
+    13.649999999999999
+   ],
+   "text": "P",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s1"
+  },
+  {
+   "type": "polyline",
+   "id": "iapc1",
+   "pts": [
+    [
+     2.014,
+     12.427
+    ],
+    [
+     2.097,
+     12.237
+    ],
+    [
+     2.181,
+     12.072
+    ],
+    [
+     2.264,
+     11.926
+    ],
+    [
+     2.348,
+     11.798
+    ],
+    [
+     2.431,
+     11.683
+    ],
+    [
+     2.515,
+     11.581
+    ],
+    [
+     2.598,
+     11.488
+    ],
+    [
+     2.682,
+     11.405
+    ],
+    [
+     2.765,
+     11.328
+    ],
+    [
+     2.849,
+     11.258
+    ],
+    [
+     2.932,
+     11.194
+    ],
+    [
+     3.016,
+     11.135
+    ],
+    [
+     3.099,
+     11.081
+    ],
+    [
+     3.183,
+     11.03
+    ],
+    [
+     3.266,
+     10.983
+    ],
+    [
+     3.35,
+     10.94
+    ],
+    [
+     3.434,
+     10.899
+    ],
+    [
+     3.517,
+     10.861
+    ],
+    [
+     3.601,
+     10.825
+    ],
+    [
+     3.684,
+     10.791
+    ],
+    [
+     3.768,
+     10.759
+    ],
+    [
+     3.851,
+     10.729
+    ],
+    [
+     3.935,
+     10.701
+    ],
+    [
+     4.018,
+     10.674
+    ],
+    [
+     4.102,
+     10.649
+    ],
+    [
+     4.185,
+     10.624
+    ],
+    [
+     4.269,
+     10.602
+    ],
+    [
+     4.352,
+     10.58
+    ],
+    [
+     4.436,
+     10.559
+    ],
+    [
+     4.519,
+     10.539
+    ],
+    [
+     4.603,
+     10.52
+    ],
+    [
+     4.686,
+     10.502
+    ],
+    [
+     4.77,
+     10.485
+    ],
+    [
+     4.853,
+     10.468
+    ],
+    [
+     4.937,
+     10.452
+    ],
+    [
+     5.02,
+     10.437
+    ],
+    [
+     5.104,
+     10.422
+    ],
+    [
+     5.188,
+     10.408
+    ],
+    [
+     5.271,
+     10.395
+    ],
+    [
+     5.355,
+     10.382
+    ]
+   ],
+   "role": "cold",
+   "strokeWidth": 4,
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 900
+  },
+  {
+   "type": "vector",
+   "id": "iapa2",
+   "from": [
+    5.271,
+    10.395
+   ],
+   "to": [
+    5.355,
+    10.382
+   ],
+   "role": "cold",
+   "strokeWidth": 4,
+   "appear": "s1",
+   "effect": "fade",
+   "appearDur": 900,
+   "delay": 600
+  },
+  {
+   "type": "text",
+   "id": "iati",
+   "at": [
+    3.35,
+    13.649999999999999
+   ],
+   "text": "ISOTHERMAL",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "iacp",
+   "at": [
+    3.35,
+    8.85
+   ],
+   "text": "ΔU = 0, Q = W",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "ibpax",
+   "from": [
+    7.2,
+    9.7
+   ],
+   "to": [
+    12.600000000000001,
+    9.7
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5,
+   "appear": "s2"
+  },
+  {
+   "type": "vector",
+   "id": "ibpay",
+   "from": [
+    7.2,
+    9.7
+   ],
+   "to": [
+    7.2,
+    13.2
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5,
+   "appear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "ibpxl",
+   "at": [
+    12.650000000000002,
+    9.2
+   ],
+   "text": "V",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "ibpyl",
+   "at": [
+    7.0,
+    13.649999999999999
+   ],
+   "text": "P",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s2"
+  },
+  {
+   "type": "polygon",
+   "id": "ibpf1",
+   "pts": [
+    [
+     8.314,
+     9.7
+    ],
+    [
+     11.098,
+     9.7
+    ],
+    [
+     11.098,
+     11.2
+    ],
+    [
+     8.314,
+     11.2
+    ]
+   ],
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.3,
+   "strokeWidth": 1.5,
+   "appear": "s2",
+   "effect": "fade",
+   "appearDur": 700,
+   "layer": "back"
+  },
+  {
+   "type": "polyline",
+   "id": "ibpc2",
+   "pts": [
+    [
+     8.314,
+     11.2
+    ],
+    [
+     11.098,
+     11.2
+    ]
+   ],
+   "role": "hot",
+   "strokeWidth": 4,
+   "appear": "s2",
+   "effect": "draw",
+   "appearDur": 900
+  },
+  {
+   "type": "vector",
+   "id": "ibpa3",
+   "from": [
+    8.314,
+    11.2
+   ],
+   "to": [
+    11.098,
+    11.2
+   ],
+   "role": "hot",
+   "strokeWidth": 4,
+   "appear": "s2",
+   "effect": "fade",
+   "appearDur": 900,
+   "delay": 600
+  },
+  {
+   "type": "text",
+   "id": "ibti",
+   "at": [
+    9.65,
+    13.649999999999999
+   ],
+   "text": "ISOBARIC",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ibcp",
+   "at": [
+    9.65,
+    8.85
+   ],
+   "text": "Q = ΔU + PΔV",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "icpax",
+   "from": [
+    0.9,
+    3.1
+   ],
+   "to": [
+    6.300000000000001,
+    3.1
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5,
+   "appear": "s3"
+  },
+  {
+   "type": "vector",
+   "id": "icpay",
+   "from": [
+    0.9,
+    3.1
+   ],
+   "to": [
+    0.9,
+    6.6
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5,
+   "appear": "s3"
+  },
+  {
+   "type": "text",
+   "id": "icpxl",
+   "at": [
+    6.3500000000000005,
+    2.6
+   ],
+   "text": "V",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s3"
+  },
+  {
+   "type": "text",
+   "id": "icpyl",
+   "at": [
+    0.7,
+    7.05
+   ],
+   "text": "P",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s3"
+  },
+  {
+   "type": "polyline",
+   "id": "icpc1",
+   "pts": [
+    [
+     3.35,
+     3.782
+    ],
+    [
+     3.35,
+     5.691
+    ]
+   ],
+   "role": "ok",
+   "strokeWidth": 4,
+   "appear": "s3",
+   "effect": "draw",
+   "appearDur": 900
+  },
+  {
+   "type": "vector",
+   "id": "icpa2",
+   "from": [
+    3.35,
+    3.782
+   ],
+   "to": [
+    3.35,
+    5.691
+   ],
+   "role": "ok",
+   "strokeWidth": 4,
+   "appear": "s3",
+   "effect": "fade",
+   "appearDur": 900,
+   "delay": 600
+  },
+  {
+   "type": "text",
+   "id": "icti",
+   "at": [
+    3.35,
+    7.05
+   ],
+   "text": "ISOCHORIC",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "iccp",
+   "at": [
+    3.35,
+    2.25
+   ],
+   "text": "W = 0, Q = ΔU",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "idpax",
+   "from": [
+    7.2,
+    3.1
+   ],
+   "to": [
+    12.600000000000001,
+    3.1
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5,
+   "appear": "s4"
+  },
+  {
+   "type": "vector",
+   "id": "idpay",
+   "from": [
+    7.2,
+    3.1
+   ],
+   "to": [
+    7.2,
+    6.6
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5,
+   "appear": "s4"
+  },
+  {
+   "type": "text",
+   "id": "idpxl",
+   "at": [
+    12.650000000000002,
+    2.6
+   ],
+   "text": "V",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s4"
+  },
+  {
+   "type": "text",
+   "id": "idpyl",
+   "at": [
+    7.0,
+    7.05
+   ],
+   "text": "P",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s4"
+  },
+  {
+   "type": "polyline",
+   "id": "idpc1",
+   "pts": [
+    [
+     8.314,
+     5.827
+    ],
+    [
+     8.386,
+     5.597
+    ],
+    [
+     8.458,
+     5.398
+    ],
+    [
+     8.531,
+     5.225
+    ],
+    [
+     8.603,
+     5.073
+    ],
+    [
+     8.676,
+     4.939
+    ],
+    [
+     8.748,
+     4.82
+    ],
+    [
+     8.82,
+     4.713
+    ],
+    [
+     8.893,
+     4.618
+    ],
+    [
+     8.965,
+     4.531
+    ],
+    [
+     9.037,
+     4.453
+    ],
+    [
+     9.11,
+     4.382
+    ],
+    [
+     9.182,
+     4.317
+    ],
+    [
+     9.255,
+     4.257
+    ],
+    [
+     9.327,
+     4.202
+    ],
+    [
+     9.399,
+     4.152
+    ],
+    [
+     9.472,
+     4.105
+    ],
+    [
+     9.544,
+     4.062
+    ],
+    [
+     9.617,
+     4.022
+    ],
+    [
+     9.689,
+     3.985
+    ],
+    [
+     9.761,
+     3.95
+    ],
+    [
+     9.834,
+     3.917
+    ],
+    [
+     9.906,
+     3.887
+    ],
+    [
+     9.979,
+     3.858
+    ],
+    [
+     10.051,
+     3.831
+    ],
+    [
+     10.123,
+     3.806
+    ],
+    [
+     10.196,
+     3.782
+    ],
+    [
+     10.268,
+     3.76
+    ],
+    [
+     10.34,
+     3.739
+    ],
+    [
+     10.413,
+     3.719
+    ],
+    [
+     10.485,
+     3.7
+    ],
+    [
+     10.558,
+     3.682
+    ],
+    [
+     10.63,
+     3.665
+    ],
+    [
+     10.702,
+     3.648
+    ],
+    [
+     10.775,
+     3.633
+    ],
+    [
+     10.847,
+     3.618
+    ],
+    [
+     10.92,
+     3.604
+    ],
+    [
+     10.992,
+     3.591
+    ],
+    [
+     11.064,
+     3.578
+    ],
+    [
+     11.137,
+     3.566
+    ],
+    [
+     11.209,
+     3.554
+    ]
+   ],
+   "role": "u",
+   "strokeWidth": 4,
+   "appear": "s4",
+   "effect": "draw",
+   "appearDur": 900
+  },
+  {
+   "type": "vector",
+   "id": "idpa2",
+   "from": [
+    11.137,
+    3.566
+   ],
+   "to": [
+    11.209,
+    3.554
+   ],
+   "role": "u",
+   "strokeWidth": 4,
+   "appear": "s4",
+   "effect": "fade",
+   "appearDur": 900,
+   "delay": 600
+  },
+  {
+   "type": "text",
+   "id": "idti",
+   "at": [
+    9.65,
+    7.05
+   ],
+   "text": "ADIABATIC",
+   "role": "u",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "idcp",
+   "at": [
+    9.65,
+    2.25
+   ],
+   "text": "Q = 0, W = −ΔU",
+   "role": "u",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 0.35,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s5",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    0.9
+   ],
+   "text": "Four ways a gas can change state",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s5",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "Define and explain the four processes: isothermal, isobaric, adiabatic and isochoric.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "(a) Isothermal",
+   "text": "**Temperature constant.** For an ideal gas \\( \\Delta U = 0 \\), so \\( Q = W \\). The curve is the **isotherm** \\( PV = \\text{constant} \\). It must be **slow** so that heat can flow. Example: ice melting at 0 °C.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "(b) Isobaric",
+   "text": "**Pressure constant.** \\( Q = \\Delta U + P\\Delta V \\). On the P–V graph it is a **horizontal line**, and the area under it is the work. Example: water boiling in an open container.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "(c) Isochoric",
+   "text": "**Volume constant.** No volume change, so \\( W = 0 \\) and \\( Q = \\Delta U \\). A **vertical line** on the graph. Example: a pressure cooker.",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "(d) Adiabatic",
+   "text": "**No heat or mass transfer**, \\( Q = 0 \\), so \\( W = -\\Delta U \\). It is **rapid**; the curve falls more steeply than the isotherm. Example: sound waves in air.",
+   "actions": []
+  },
+  {
+   "id": "s5",
+   "title": "Compare them",
+   "text": "All four are special cases of \\( Q = \\Delta U + W \\): isothermal makes \\( \\Delta U = 0 \\), isochoric makes \\( W = 0 \\), adiabatic makes \\( Q = 0 \\), and isobaric keeps \\( P \\) fixed.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Special cases of the first law",
+   "tex": "\\role{hot}{Q} = \\role{u}{\\Delta U} + \\role{work}{W}",
+   "text": "Isothermal ΔU = 0 · Isochoric W = 0 · Adiabatic Q = 0 · Isobaric W = PΔV."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which process has **W = 0**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Isochoric"
+    },
+    {
+     "id": "b",
+     "label": "Isobaric"
+    },
+    {
+     "id": "c",
+     "label": "Isothermal"
+    },
+    {
+     "id": "d",
+     "label": "Adiabatic"
+    }
+   ],
+   "answer": "a",
+   "hint": "Work needs a volume change.",
+   "explain": "At constant volume ΔV = 0, so W = PΔV = 0."
+  }
+ ],
+ "takeaways": [
+  "Isothermal \\( \\Delta U = 0 \\); isobaric \\( W = P\\Delta V \\); isochoric \\( W = 0 \\); adiabatic \\( Q = 0 \\)."
+ ]
+}

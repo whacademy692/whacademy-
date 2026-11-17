@@ -1,0 +1,677 @@
+{
+ "id": "g11-phys-c8-ex-sq-06",
+ "title": "Ex SQ 8.6 · Must U rise when heat is added?",
+ "summary": "Should the internal energy of a system necessarily increase if heat is added to it?",
+ "alt": "Ex SQ 8.6: Should the internal energy of a system necessarily increase if heat is added to it?",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "cbase",
+   "from": [
+    0.4,
+    7.4
+   ],
+   "to": [
+    12.5,
+    7.4
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "ct0",
+   "at": [
+    2.4,
+    13.0
+   ],
+   "text": "W < Q",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "cb0_0",
+   "x": 1.0470588235294118,
+   "y": 7.4,
+   "w": 0.9523809523809523,
+   "h": 2.8,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s2",
+   "effect": "fade",
+   "appearDur": 700
+  },
+  {
+   "type": "text",
+   "id": "cn0_0",
+   "at": [
+    1.5232492997198879,
+    11.6
+   ],
+   "text": "Q",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "cv0_0",
+   "at": [
+    1.5232492997198879,
+    10.75
+   ],
+   "text": "+4",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "pop"
+  },
+  {
+   "type": "rect",
+   "id": "cb0_1",
+   "x": 2.223529411764706,
+   "y": 7.4,
+   "w": 0.9523809523809523,
+   "h": 0.7,
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s2",
+   "effect": "fade",
+   "appearDur": 700
+  },
+  {
+   "type": "text",
+   "id": "cn0_1",
+   "at": [
+    2.6997198879551823,
+    11.6
+   ],
+   "text": "W",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "cv0_1",
+   "at": [
+    2.6997198879551823,
+    8.65
+   ],
+   "text": "+1",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "pop"
+  },
+  {
+   "type": "rect",
+   "id": "cb0_2",
+   "x": 3.4,
+   "y": 7.4,
+   "w": 0.9523809523809523,
+   "h": 2.0999999999999996,
+   "role": "u",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s2",
+   "effect": "fade",
+   "appearDur": 700
+  },
+  {
+   "type": "text",
+   "id": "cn0_2",
+   "at": [
+    3.876190476190476,
+    11.6
+   ],
+   "text": "ΔU",
+   "role": "u",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "cv0_2",
+   "at": [
+    3.876190476190476,
+    10.05
+   ],
+   "text": "+3",
+   "role": "u",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ct1",
+   "at": [
+    6.4,
+    13.0
+   ],
+   "text": "W = Q",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "cb1_0",
+   "x": 5.0470588235294125,
+   "y": 7.4,
+   "w": 0.9523809523809523,
+   "h": 2.8,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s3",
+   "effect": "fade",
+   "appearDur": 700
+  },
+  {
+   "type": "text",
+   "id": "cn1_0",
+   "at": [
+    5.523249299719889,
+    11.6
+   ],
+   "text": "Q",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "cv1_0",
+   "at": [
+    5.523249299719889,
+    10.75
+   ],
+   "text": "+4",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "rect",
+   "id": "cb1_1",
+   "x": 6.223529411764707,
+   "y": 7.4,
+   "w": 0.9523809523809523,
+   "h": 2.8,
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s3",
+   "effect": "fade",
+   "appearDur": 700
+  },
+  {
+   "type": "text",
+   "id": "cn1_1",
+   "at": [
+    6.699719887955183,
+    11.6
+   ],
+   "text": "W",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "cv1_1",
+   "at": [
+    6.699719887955183,
+    10.75
+   ],
+   "text": "+4",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "rect",
+   "id": "cb1_2",
+   "x": 7.4,
+   "y": 7.4,
+   "w": 0.9523809523809523,
+   "h": 0.05,
+   "role": "u",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s3",
+   "effect": "fade",
+   "appearDur": 700
+  },
+  {
+   "type": "text",
+   "id": "cn1_2",
+   "at": [
+    7.876190476190477,
+    11.6
+   ],
+   "text": "ΔU",
+   "role": "u",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "cv1_2",
+   "at": [
+    7.876190476190477,
+    7.95
+   ],
+   "text": "0",
+   "role": "u",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ct2",
+   "at": [
+    10.4,
+    13.0
+   ],
+   "text": "W > Q",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "cb2_0",
+   "x": 9.047058823529412,
+   "y": 7.4,
+   "w": 0.9523809523809523,
+   "h": 2.8,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s4",
+   "effect": "fade",
+   "appearDur": 700
+  },
+  {
+   "type": "text",
+   "id": "cn2_0",
+   "at": [
+    9.523249299719888,
+    11.6
+   ],
+   "text": "Q",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "cv2_0",
+   "at": [
+    9.523249299719888,
+    10.75
+   ],
+   "text": "+4",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "effect": "pop"
+  },
+  {
+   "type": "rect",
+   "id": "cb2_1",
+   "x": 10.223529411764707,
+   "y": 7.4,
+   "w": 0.9523809523809523,
+   "h": 4.199999999999999,
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s4",
+   "effect": "fade",
+   "appearDur": 700
+  },
+  {
+   "type": "text",
+   "id": "cn2_1",
+   "at": [
+    10.699719887955183,
+    11.6
+   ],
+   "text": "W",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "cv2_1",
+   "at": [
+    10.699719887955183,
+    12.15
+   ],
+   "text": "+6",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "effect": "pop"
+  },
+  {
+   "type": "rect",
+   "id": "cb2_2",
+   "x": 11.4,
+   "y": 6.0,
+   "w": 0.9523809523809523,
+   "h": 1.4,
+   "role": "u",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s4",
+   "effect": "fade",
+   "appearDur": 700
+  },
+  {
+   "type": "text",
+   "id": "cn2_2",
+   "at": [
+    11.876190476190477,
+    11.6
+   ],
+   "text": "ΔU",
+   "role": "u",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "cv2_2",
+   "at": [
+    11.876190476190477,
+    5.45
+   ],
+   "text": "-2",
+   "role": "u",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "hd",
+   "at": [
+    6.45,
+    14.2
+   ],
+   "text": "heat added each time: Q = +4 J",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "f1",
+   "at": [
+    6.45,
+    4.3
+   ],
+   "text": "ΔU = Q − W",
+   "role": "u",
+   "size": "m",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "r2",
+   "at": [
+    6.45,
+    3.3
+   ],
+   "text": "gas expands slowly in a warm bath (W = Q)",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 0.75,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s5",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "No: ΔU can be zero or negative",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s5",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "Heat \\( Q \\) is added to a system. Does its internal energy **have to** increase?",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Use the first law",
+   "text": "\\( Q = \\Delta U + W \\), so \\( \\Delta U = Q - W \\). Where the heat goes depends on how much **work** the system does. Add \\( Q = +4 \\) J each time.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Little work: W < Q",
+   "text": "If the system does only 1 J of work, \\( \\Delta U = 4 - 1 = +3 \\) J: the internal energy rises.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "W = Q",
+   "text": "If the gas expands and does 4 J of work, \\( \\Delta U = 4 - 4 = 0 \\): all the heat leaves as work. This is an **isothermal** expansion of an ideal gas.",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "W > Q",
+   "text": "If it does 6 J of work, \\( \\Delta U = 4 - 6 = -2 \\) J: the internal energy actually **falls**.",
+   "actions": []
+  },
+  {
+   "id": "s5",
+   "title": "Answer: No",
+   "text": "**No.** Adding heat raises the internal energy only if the work done by the system is smaller than the heat added.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "First law",
+   "tex": "\\role{u}{\\Delta U} = \\role{hot}{Q} - \\role{work}{W}",
+   "text": "Positive Q does not guarantee positive ΔU."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A gas absorbs **500 J** of heat and does **700 J** of work. What is ΔU (in J)?",
+   "answer": -200,
+   "hint": "ΔU = Q − W.",
+   "explain": "\\( \\Delta U = 500 - 700 = -200 \\) J (it cools).",
+   "tolerance": 1,
+   "unit": "J"
+  }
+ ],
+ "takeaways": [
+  "\\( \\Delta U = Q - W \\): heat in can still give \\( \\Delta U \\le 0 \\) if the system does enough work."
+ ]
+}

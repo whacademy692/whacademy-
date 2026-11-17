@@ -1,0 +1,416 @@
+{
+ "id": "g11-phys-c8-ex-cq-8-3",
+ "title": "Ex CQ 8.3 · The first law of thermodynamics",
+ "summary": "Explain first law of thermodynamics.",
+ "alt": "Ex CQ 8.3: Explain first law of thermodynamics.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "bbase",
+   "from": [
+    0.7,
+    7.2
+   ],
+   "to": [
+    12.2,
+    7.2
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0"
+  },
+  {
+   "type": "rect",
+   "id": "bar0",
+   "x": 1.9499999999999997,
+   "y": 7.2,
+   "w": 2.2,
+   "h": 3.75,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s1",
+   "effect": "fade",
+   "appearDur": 800
+  },
+  {
+   "type": "text",
+   "id": "bn0",
+   "at": [
+    3.05,
+    10.5
+   ],
+   "text": "Heat Q",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "bv0",
+   "at": [
+    3.05,
+    11.5
+   ],
+   "text": "5 J",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "bs0",
+   "at": [
+    3.05,
+    3.8000000000000003
+   ],
+   "text": "added to gas",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bar1",
+   "x": 5.4,
+   "y": 7.2,
+   "w": 2.2,
+   "h": 2.25,
+   "role": "u",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s2",
+   "effect": "fade",
+   "appearDur": 800
+  },
+  {
+   "type": "text",
+   "id": "bn1",
+   "at": [
+    6.5,
+    10.5
+   ],
+   "text": "Rise ΔU",
+   "role": "u",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "bv1",
+   "at": [
+    6.5,
+    10.0
+   ],
+   "text": "3 J",
+   "role": "u",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "bs1",
+   "at": [
+    6.5,
+    3.8000000000000003
+   ],
+   "text": "stays inside",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bar2",
+   "x": 8.85,
+   "y": 7.2,
+   "w": 2.2,
+   "h": 1.5,
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s3",
+   "effect": "fade",
+   "appearDur": 800
+  },
+  {
+   "type": "text",
+   "id": "bn2",
+   "at": [
+    9.95,
+    10.5
+   ],
+   "text": "Work W",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "bv2",
+   "at": [
+    9.95,
+    9.25
+   ],
+   "text": "2 J",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "bs2",
+   "at": [
+    9.95,
+    3.8000000000000003
+   ],
+   "text": "gas expands",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "eq",
+   "at": [
+    6.45,
+    13.3
+   ],
+   "text": "Q = ΔU + W",
+   "role": "ans",
+   "size": "l",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "s1",
+   "at": [
+    6.45,
+    2.85
+   ],
+   "text": "Q > 0 heat added · Q < 0 heat removed",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "s2",
+   "at": [
+    6.45,
+    2.05
+   ],
+   "text": "W > 0 gas expands · W < 0 gas compressed",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 0.35,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s5",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    0.9
+   ],
+   "text": "Energy is conserved: Q = ΔU + W",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s5",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "Explain the **first law of thermodynamics**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Heat goes in",
+   "text": "Add heat \\( Q \\) to a system (here \\( Q = 5 \\) J). The energy has to **go somewhere**.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Part stays as internal energy",
+   "text": "Some of the heat **raises the internal energy**: \\( \\Delta U = 3 \\) J (the molecules move faster, so the temperature rises).",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Part is work",
+   "text": "The rest is used for **work** \\( W \\) done by the system on its surroundings (here 2 J, by expanding). \\[ Q = \\Delta U + W \\] This is the law of **conservation of energy** applied to heat and work.",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Sign conventions",
+   "text": "\\( Q \\) is positive when heat is **added**, negative when removed. \\( W \\) is positive when the gas **expands** (does work), negative when it is compressed. \\( \\Delta U \\) depends only on the initial and final states.",
+   "actions": []
+  },
+  {
+   "id": "s5",
+   "title": "Examples",
+   "text": "Melting ice, sweating, pumping up a tyre and the **metabolism of the human body** all follow \\( Q = \\Delta U + W \\).",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "First law",
+   "tex": "\\role{hot}{Q} = \\role{u}{\\Delta U} + \\role{work}{W}",
+   "text": "Heat added = rise in internal energy + work done by the system."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A gas takes in **800 J** of heat and does **300 J** of work. What is its change in internal energy (J)?",
+   "answer": 500,
+   "hint": "ΔU = Q − W.",
+   "explain": "\\( \\Delta U = 800 - 300 = 500 \\) J.",
+   "tolerance": 1,
+   "unit": "J"
+  }
+ ],
+ "takeaways": [
+  "\\( Q = \\Delta U + W \\): conservation of energy for heat, internal energy and work."
+ ]
+}

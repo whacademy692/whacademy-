@@ -1,0 +1,383 @@
+{
+ "id": "g11-phys-c8-ex-sq-03",
+ "title": "Ex SQ 8.3 · Temperature of an isolated system",
+ "summary": "Can the temperature of an isolated system change? Explain.",
+ "alt": "Ex SQ 8.3: Can the temperature of an isolated system change? Explain.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "eq",
+   "label": "eq",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "vl": "3.0-0.8*eq",
+  "vr": "1.3+0.9*eq"
+ },
+ "shapes": [
+  {
+   "type": "polyline",
+   "id": "bx",
+   "pts": [
+    [
+     0.4,
+     13.6
+    ],
+    [
+     12.5,
+     13.6
+    ],
+    [
+     12.5,
+     9.0
+    ],
+    [
+     0.4,
+     9.0
+    ],
+    [
+     0.4,
+     13.6
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 5,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "gas",
+   "id": "gl",
+   "x0": 0.4,
+   "x1": 6.45,
+   "y0": 9.0,
+   "y1": 13.6,
+   "n": 24,
+   "v": "vl",
+   "bath": 1,
+   "vref": 2.2,
+   "seed": 3,
+   "out": {
+    "vrms": "gvl"
+   }
+  },
+  {
+   "type": "gas",
+   "id": "gr",
+   "x0": 6.45,
+   "x1": 12.5,
+   "y0": 9.0,
+   "y1": 13.6,
+   "n": 24,
+   "v": "vr",
+   "bath": 1,
+   "vref": 2.2,
+   "seed": 8,
+   "out": {
+    "vrms": "gvr"
+   }
+  },
+  {
+   "type": "text",
+   "id": "t0",
+   "at": [
+    6.45,
+    14.35
+   ],
+   "text": "ISOLATED: no heat or matter crosses",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "hl",
+   "at": [
+    3.4,
+    8.4
+   ],
+   "text": "hot part",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "cl",
+   "at": [
+    9.5,
+    8.4
+   ],
+   "text": "cold part",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "e1",
+   "at": [
+    6.45,
+    6.8
+   ],
+   "text": "total energy of the box stays constant",
+   "role": "u",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "e2",
+   "at": [
+    6.45,
+    5.8
+   ],
+   "text": "parts exchange heat until T is equal",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 2.05,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s4",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    2.6
+   ],
+   "text": "Parts change T; the system cannot",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s4",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "Can the temperature of an **isolated** system change?",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "What isolated means",
+   "text": "An isolated system exchanges **no heat and no matter** with its surroundings. Nothing from outside can warm it or cool it.",
+   "actions": [
+    {
+     "set": {
+      "eq": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Its total energy is fixed",
+   "text": "Because nothing enters or leaves, the **total energy** of the system stays constant.",
+   "actions": [
+    {
+     "set": {
+      "eq": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "But the parts inside can change",
+   "text": "Inside, a hot part and a cold part exchange heat: the hot part **cools** and the cold part **warms** until both reach one common temperature (thermal equilibrium).",
+   "actions": [
+    {
+     "set": {
+      "eq": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "eq": 1
+     },
+     "at": 0,
+     "dur": 4500
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Answer",
+   "text": "The temperature of the **system as a whole** is not changed by the surroundings, but **different parts** inside it can change temperature until they reach equilibrium (for example a hot and a cold part in a thermos).",
+   "actions": [
+    {
+     "set": {
+      "eq": 1
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Isolated system",
+   "tex": "\\role{hot}{Q} = 0,\\quad \\role{work}{W} = 0 \\;\\Rightarrow\\; \\role{u}{\\Delta U} = 0",
+   "text": "The total internal energy cannot change."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which is true for an **isolated** system?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Its total energy is constant"
+    },
+    {
+     "id": "b",
+     "label": "Heat can enter from outside"
+    },
+    {
+     "id": "c",
+     "label": "Matter can leave"
+    },
+    {
+     "id": "d",
+     "label": "It always cools down"
+    }
+   ],
+   "answer": "a",
+   "hint": "Nothing crosses its boundary.",
+   "explain": "No heat, work or matter crosses the boundary, so the total energy stays constant."
+  }
+ ],
+ "takeaways": [
+  "Isolated: **no exchange** with surroundings, total energy constant; parts inside can still exchange heat."
+ ]
+}

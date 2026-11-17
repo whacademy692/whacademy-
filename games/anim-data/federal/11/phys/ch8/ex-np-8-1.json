@@ -1,0 +1,314 @@
+{
+ "id": "g11-phys-c8-ex-np-8-1",
+ "title": "Ex NP 8.1 · Moles of air in a balloon",
+ "summary": "Calculate number of moles of air in an inflated balloon of radius 10 cm and pressure 180 kPa at room temperature.…",
+ "alt": "Ex NP 8.1: Calculate number of moles of air in an inflated balloon of radius 10 cm and pressure 180 kPa at room temperature. (Ans: 0.3 moles)",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "circle",
+   "id": "bl",
+   "c": [
+    6.45,
+    11.0
+   ],
+   "r": 2.7,
+   "role": "gas",
+   "fill": "gas",
+   "fillOpacity": 0.16,
+   "strokeWidth": 3.5,
+   "appear": "s0",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "bt",
+   "at": [
+    6.45,
+    11.0
+   ],
+   "text": "air",
+   "role": "gas",
+   "size": "m",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "br",
+   "from": [
+    6.45,
+    11.0
+   ],
+   "to": [
+    9.15,
+    11.0
+   ],
+   "role": "ent",
+   "strokeWidth": 2.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "brt",
+   "at": [
+    8.0,
+    11.5
+   ],
+   "text": "r = 10 cm",
+   "role": "ent",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "bp",
+   "at": [
+    6.45,
+    14.2
+   ],
+   "text": "P = 180 kPa",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "as",
+   "at": [
+    6.45,
+    7.5
+   ],
+   "text": "assumed: room temperature T = 300 K",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "v1",
+   "at": [
+    6.45,
+    6.5
+   ],
+   "text": "V = (4/3)πr³ = 4.19 × 10⁻³ m³",
+   "role": "ent",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "n1",
+   "at": [
+    6.45,
+    5.5
+   ],
+   "text": "n = PV / RT",
+   "role": "wall",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "n2",
+   "at": [
+    6.45,
+    4.5
+   ],
+   "text": "= 1.8×10⁵ × 4.19×10⁻³ / (8.314 × 300)",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 1.8499999999999999,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s4",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    2.4
+   ],
+   "text": "n = 0.30 mol",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s4",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "A balloon of radius \\( 10 \\) cm holds air at \\( 180 \\) kPa at room temperature. How many moles of air are inside? (Book answer: 0.3 mol.)",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Units and the assumption",
+   "text": "Use SI units: \\( r = 0.10 \\) m and \\( P = 180\\ \\text{kPa} = 1.80\\times10^{5} \\) Pa. The question does not give the temperature, so we **take room temperature to be 27 °C**, i.e. \\( T = 300 \\) K (an assumption).",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Volume of the balloon",
+   "text": "The balloon is a sphere: \\[ V = \\tfrac{4}{3}\\pi r^{3} = \\tfrac{4}{3} \\times 3.142 \\times (0.10)^{3} = 4.19\\times10^{-3}\\ \\text{m}^{3} \\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Use PV = nRT",
+   "text": "\\[ n = \\dfrac{PV}{RT} = \\dfrac{1.80\\times10^{5} \\times 4.19\\times10^{-3}}{8.314 \\times 300} \\]",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Answer",
+   "text": "\\( n = 0.30 \\) mol, which matches the book. (If you take 25 °C instead, you still get 0.30 mol: the answer is not sensitive to the exact room temperature.)",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Ideal gas equation",
+   "tex": "\\role{u}{P}\\,\\role{ent}{V} = n\\,R\\,\\role{hot}{T}",
+   "text": "SI units; T in kelvin; R = 8.314 J mol⁻¹ K⁻¹."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A balloon of radius **5 cm** holds air at **180 kPa** and **300 K**. How many moles of air does it contain?",
+   "answer": 0.038,
+   "hint": "V = (4/3)π(0.05)³.",
+   "explain": "\\( V = 5.24\\times10^{-4} \\) m³, so \\( n = 1.8\\times10^{5}\\times5.24\\times10^{-4}/(8.314\\times300) = 0.038 \\) mol.",
+   "tolerance": 0.002,
+   "unit": "mol"
+  }
+ ],
+ "takeaways": [
+  "Sphere volume \\( \\tfrac{4}{3}\\pi r^{3} \\), then \\( n = PV/RT \\) with SI units and kelvin."
+ ]
+}

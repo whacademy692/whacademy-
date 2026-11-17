@@ -1,0 +1,482 @@
+{
+ "id": "g11-phys-c8-ex-np-8-5",
+ "title": "Ex NP 8.5 · Time to boil water with a heater",
+ "summary": "A 220 W electric immersion heater is used to boil 136 g of water. Calculate the time required to bring this water…",
+ "alt": "Ex NP 8.5: A 220 W electric immersion heater is used to boil 136 g of water. Calculate the time required to bring this water from 23.5 °C to its boiling point, ignoring any heat loss. (Ans: 198 s)",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "pax",
+   "from": [
+    2.1,
+    5.6
+   ],
+   "to": [
+    12.0,
+    5.6
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5,
+   "appear": "s0"
+  },
+  {
+   "type": "vector",
+   "id": "pay",
+   "from": [
+    2.1,
+    5.6
+   ],
+   "to": [
+    2.1,
+    12.899999999999999
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "pxl",
+   "at": [
+    12.05,
+    5.1
+   ],
+   "text": "time t (s)",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "pyl",
+   "at": [
+    1.9000000000000001,
+    13.349999999999998
+   ],
+   "text": "T (°C)",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "segment",
+   "id": "xt0",
+   "from": [
+    9.855,
+    5.6
+   ],
+   "to": [
+    9.855,
+    5.3999999999999995
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "xtl0",
+   "at": [
+    9.855,
+    4.949999999999999
+   ],
+   "text": "198",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s0"
+  },
+  {
+   "type": "segment",
+   "id": "yt0",
+   "from": [
+    2.1,
+    6.932
+   ],
+   "to": [
+    1.9000000000000001,
+    6.932
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "ytl0",
+   "at": [
+    1.1500000000000001,
+    6.932
+   ],
+   "text": "23.5",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s0"
+  },
+  {
+   "type": "segment",
+   "id": "yt1",
+   "from": [
+    2.1,
+    11.267
+   ],
+   "to": [
+    1.9000000000000001,
+    11.267
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "ytl1",
+   "at": [
+    1.1500000000000001,
+    11.267
+   ],
+   "text": "100",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s0"
+  },
+  {
+   "type": "polyline",
+   "id": "pc1",
+   "pts": [
+    [
+     2.1,
+     6.932
+    ],
+    [
+     9.855,
+     11.267
+    ]
+   ],
+   "role": "hot",
+   "strokeWidth": 4.5,
+   "appear": "s3",
+   "effect": "draw",
+   "appearDur": 900
+  },
+  {
+   "type": "vector",
+   "id": "pa2",
+   "from": [
+    2.1,
+    6.932
+   ],
+   "to": [
+    9.855,
+    11.267
+   ],
+   "role": "hot",
+   "strokeWidth": 4.5,
+   "appear": "s3",
+   "effect": "fade",
+   "appearDur": 900,
+   "delay": 600
+  },
+  {
+   "type": "point",
+   "id": "pd3",
+   "at": [
+    2.1,
+    6.932
+   ],
+   "role": "me",
+   "r": 7,
+   "appear": "s1",
+   "effect": "pop"
+  },
+  {
+   "type": "point",
+   "id": "pd4",
+   "at": [
+    9.855,
+    11.267
+   ],
+   "role": "ans",
+   "r": 7,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "segment",
+   "id": "gx5",
+   "from": [
+    9.855,
+    5.6
+   ],
+   "to": [
+    9.855,
+    11.267
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    5,
+    5
+   ],
+   "appear": "s3",
+   "effect": "draw"
+  },
+  {
+   "type": "segment",
+   "id": "gy6",
+   "from": [
+    2.1,
+    11.267
+   ],
+   "to": [
+    9.855,
+    11.267
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    5,
+    5
+   ],
+   "appear": "s3",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "pt7",
+   "at": [
+    6.213,
+    7.867
+   ],
+   "text": "steady heating at 220 W",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "as",
+   "at": [
+    6.45,
+    14.3
+   ],
+   "text": "standard values (not given): c = 4186 J/kg K, boils at 100 °C",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "q1",
+   "at": [
+    6.45,
+    3.8
+   ],
+   "text": "Q = mcΔT = 0.136 × 4186 × 76.5 = 4.36×10⁴ J",
+   "role": "u",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "q2",
+   "at": [
+    6.45,
+    2.9
+   ],
+   "text": "t = Q / P = 4.36×10⁴ / 220",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 0.6499999999999999,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s4",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    1.2
+   ],
+   "text": "t = 198 s",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s4",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "A **220 W** heater warms **136 g** of water from \\( 23.5\\ \\text{°C} \\) to boiling. Ignore heat losses. How long does it take?",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Data we need",
+   "text": "The question does not give the **specific heat** of water or its **boiling point**, so we use the standard values \\( c = 4186\\ \\text{J kg}^{-1}\\text{K}^{-1} \\) and \\( 100\\ \\text{°C} \\). Also \\( m = 0.136 \\) kg, \\( \\Delta T = 100 - 23.5 = 76.5 \\) K.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Heat needed",
+   "text": "\\[ Q = mc\\Delta T = 0.136 \\times 4186 \\times 76.5 = 4.36\\times10^{4}\\ \\text{J} \\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Time from the power",
+   "text": "Power is energy per second, \\( Q = P\\,t \\): \\[ t = \\dfrac{Q}{P} = \\dfrac{4.36\\times10^{4}}{220} \\]",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Answer",
+   "text": "\\( t = 198 \\) s (about 3.3 minutes). The straight line shows the temperature rising steadily because the heater supplies energy at a constant rate.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Heating water",
+   "tex": "\\role{hot}{Q} = m\\,c\\,\\Delta T, \\qquad \\role{hot}{Q} = P\\,t",
+   "text": "Energy needed = power × time."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "The same heater warms **200 g** of water from **20 °C** to **100 °C**. How long does it take (s)?",
+   "answer": 304,
+   "hint": "Q = 0.2 × 4186 × 80.",
+   "explain": "\\( Q = 66\\,976 \\) J, so \\( t = 66\\,976/220 \\approx 304 \\) s.",
+   "tolerance": 2,
+   "unit": "s"
+  }
+ ],
+ "takeaways": [
+  "\\( Q = mc\\Delta T \\) and \\( t = Q/P \\) when all the heater's energy goes into the water."
+ ]
+}

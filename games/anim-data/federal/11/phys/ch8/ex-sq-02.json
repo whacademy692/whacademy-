@@ -1,0 +1,411 @@
+{
+ "id": "g11-phys-c8-ex-sq-02",
+ "title": "Ex SQ 8.2 · Internal energy rises, temperature does not",
+ "summary": "When the internal energy of a system rises, can its temperature remain the same?",
+ "alt": "Ex SQ 8.2: When the internal energy of a system rises, can its temperature remain the same?",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "pax",
+   "from": [
+    2.1,
+    5.2
+   ],
+   "to": [
+    12.0,
+    5.2
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5,
+   "appear": "s0"
+  },
+  {
+   "type": "vector",
+   "id": "pay",
+   "from": [
+    2.1,
+    5.2
+   ],
+   "to": [
+    2.1,
+    13.100000000000001
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "pxl",
+   "at": [
+    12.05,
+    4.7
+   ],
+   "text": "heat added",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "pyl",
+   "at": [
+    1.9000000000000001,
+    13.55
+   ],
+   "text": "T (K)",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "segment",
+   "id": "yt0",
+   "from": [
+    2.1,
+    9.27
+   ],
+   "to": [
+    1.9000000000000001,
+    9.27
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "ytl0",
+   "at": [
+    1.1500000000000001,
+    9.27
+   ],
+   "text": "273",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s0"
+  },
+  {
+   "type": "polyline",
+   "id": "pc1",
+   "pts": [
+    [
+     2.1,
+     6.433
+    ],
+    [
+     5.037,
+     9.27
+    ]
+   ],
+   "role": "hot",
+   "strokeWidth": 4,
+   "appear": "s2",
+   "effect": "draw",
+   "appearDur": 900
+  },
+  {
+   "type": "text",
+   "id": "pt2",
+   "at": [
+    3.569,
+    7.913
+   ],
+   "text": "ice warms",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "polyline",
+   "id": "pc3",
+   "pts": [
+    [
+     5.037,
+     9.27
+    ],
+    [
+     7.975,
+     9.27
+    ]
+   ],
+   "role": "ans",
+   "strokeWidth": 5,
+   "appear": "s3",
+   "effect": "draw",
+   "appearDur": 900
+  },
+  {
+   "type": "text",
+   "id": "pt4",
+   "at": [
+    6.506,
+    10.01
+   ],
+   "text": "U rises, T constant",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "polyline",
+   "id": "pc5",
+   "pts": [
+    [
+     7.975,
+     9.27
+    ],
+    [
+     10.912,
+     11.983
+    ]
+   ],
+   "role": "cold",
+   "strokeWidth": 4,
+   "appear": "s4",
+   "effect": "draw",
+   "appearDur": 900
+  },
+  {
+   "type": "text",
+   "id": "pt6",
+   "at": [
+    9.738,
+    8.653
+   ],
+   "text": "water warms",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "u1",
+   "at": [
+    6.45,
+    3.7
+   ],
+   "text": "U = kinetic energy + potential energy",
+   "role": "u",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "u2",
+   "at": [
+    6.45,
+    2.7
+   ],
+   "text": "T measures only the kinetic part",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 0.35,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s5",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    0.9
+   ],
+   "text": "Yes: melting ice at 0 °C",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s5",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "The internal energy \\( U \\) of a system goes **up**. Must its temperature go up too?",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "What internal energy contains",
+   "text": "Internal energy is the **kinetic** energy of the molecules **plus** the **potential** energy stored in the bonds between them. Temperature measures only the **kinetic** part.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Heating a solid",
+   "text": "Warming ice from −20 °C to 0 °C: the heat raises the kinetic energy, so both \\( U \\) and \\( T \\) rise.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Melting: the plateau",
+   "text": "At 0 °C the ice melts. The heat now goes into **breaking bonds**: the potential energy rises, so \\( U \\) rises, but the molecules' average kinetic energy is unchanged: **T stays at 0 °C**.",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "After melting",
+   "text": "Once all the ice has melted, extra heat raises the kinetic energy again and the temperature climbs.",
+   "actions": []
+  },
+  {
+   "id": "s5",
+   "title": "Answer: Yes",
+   "text": "**Yes.** During a change of state (melting, boiling) the internal energy increases while the temperature stays constant.",
+   "actions": []
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Boiling water at 100 °C absorbs heat. Its temperature stays at 100 °C. Where does the heat go?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Into the potential energy of the molecules"
+    },
+    {
+     "id": "b",
+     "label": "Into the kinetic energy of the molecules"
+    },
+    {
+     "id": "c",
+     "label": "It is destroyed"
+    },
+    {
+     "id": "d",
+     "label": "Into cooling the pan"
+    }
+   ],
+   "answer": "a",
+   "hint": "Temperature measures the kinetic part only.",
+   "explain": "The heat breaks the bonds between molecules (potential energy), so T stays the same while U rises."
+  }
+ ],
+ "takeaways": [
+  "\\( U \\) can rise at **constant T** during a change of state: the heat raises potential energy."
+ ]
+}

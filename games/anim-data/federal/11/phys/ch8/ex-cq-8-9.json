@@ -1,0 +1,465 @@
+{
+ "id": "g11-phys-c8-ex-cq-8-9",
+ "title": "Ex CQ 8.9 · How a refrigerator works",
+ "summary": "Explain the working of a refrigerator.",
+ "alt": "Ex CQ 8.9: Explain the working of a refrigerator.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "hotR",
+   "x": 2.0,
+   "y": 12.2,
+   "w": 8.8,
+   "h": 1.3,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "coldR",
+   "x": 2.0,
+   "y": 1.7,
+   "w": 8.8,
+   "h": 1.3,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "hotL",
+   "at": [
+    6.45,
+    12.85
+   ],
+   "text": "Room (hot)",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "coldL",
+   "at": [
+    6.45,
+    2.35
+   ],
+   "text": "Inside (cold)",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "sct",
+   "at": [
+    6.45,
+    14.3
+   ],
+   "text": "example numbers",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "mach",
+   "x": 3.7,
+   "y": 6.0,
+   "w": 5.4,
+   "h": 2.9,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 4,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "machT",
+   "at": [
+    6.45,
+    7.45
+   ],
+   "text": "REFRIGERATOR",
+   "role": "wall",
+   "size": "m",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bC",
+   "x": 5.28,
+   "y": 3.0,
+   "w": 2.2399999999999998,
+   "h": 3.0,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 1.5,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bH",
+   "x": 5.0,
+   "y": 8.9,
+   "w": 2.8,
+   "h": 3.3,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 1.5,
+   "appear": "s4",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bW",
+   "x": 9.1,
+   "y": 7.17,
+   "w": 3.2,
+   "h": 0.5599999999999999,
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 1.5,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "aC",
+   "from": [
+    6.4,
+    3.0
+   ],
+   "to": [
+    6.4,
+    5.9
+   ],
+   "role": "cold",
+   "strokeWidth": 4,
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "aH",
+   "from": [
+    6.4,
+    8.9
+   ],
+   "to": [
+    6.4,
+    12.1
+   ],
+   "role": "hot",
+   "strokeWidth": 4,
+   "appear": "s4",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "aW",
+   "from": [
+    12.4,
+    7.45
+   ],
+   "to": [
+    9.2,
+    7.45
+   ],
+   "role": "work",
+   "strokeWidth": 4,
+   "appear": "s3",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "q1q",
+   "at": [
+    10.25,
+    10.6
+   ],
+   "text": "Q₁ = ?",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "disappear": "s4"
+  },
+  {
+   "type": "text",
+   "id": "q1",
+   "at": [
+    10.25,
+    10.6
+   ],
+   "text": "Q₁ = 500 J",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s4"
+  },
+  {
+   "type": "text",
+   "id": "q2q",
+   "at": [
+    10.25,
+    4.5
+   ],
+   "text": "Q₂ = ?",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "disappear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "q2",
+   "at": [
+    10.25,
+    4.5
+   ],
+   "text": "Q₂ = 400 J",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "wwq",
+   "at": [
+    10.9,
+    8.280000000000001
+   ],
+   "text": "W = ?",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "disappear": "s3"
+  },
+  {
+   "type": "text",
+   "id": "ww",
+   "at": [
+    10.9,
+    8.280000000000001
+   ],
+   "text": "W = 100 J",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s3"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 0.29999999999999993,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s5",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    0.85
+   ],
+   "text": "CP = Q₂ / W = T₂ / (T₁ − T₂)",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s5",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "Explain the working of a **refrigerator**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "A heat engine in reverse",
+   "text": "A refrigerator is a **heat engine run backwards**: it moves heat from a **cold** place to a **warm** one. Its working substance is a refrigerant gas.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Heat taken from inside",
+   "text": "The refrigerant absorbs heat \\( Q_2 \\) from the **cold** interior (temperature \\( T_2 \\)), here 400 J.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Work from the compressor",
+   "text": "A **compressor** does work \\( W \\) on the gas (100 J). Without work the heat would not go uphill.",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Heat rejected to the room",
+   "text": "The gas rejects heat \\( Q_1 = Q_2 + W \\) (500 J) to the **hot** surroundings (the room).",
+   "actions": []
+  },
+  {
+   "id": "s5",
+   "title": "Coefficient of performance",
+   "text": "How well it cools: \\[ \\text{CP} = \\dfrac{Q_2}{W} = \\dfrac{T_2}{T_1 - T_2} \\] Here \\( \\text{CP} = 400/100 = 4 \\).",
+   "actions": []
+  },
+  {
+   "id": "s6",
+   "title": "Why work is needed",
+   "text": "Heat does not flow from cold to hot by itself (**Clausius**), so work is essential. Used to heat a space, the same machine is a **heat pump** with \\( \\text{CP}_{\\text{heating}} = T_1/(T_1 - T_2) \\).",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Refrigerator",
+   "tex": "\\role{hot}{Q_1} = \\role{cold}{Q_2} + \\role{work}{W}, \\quad \\text{CP} = \\dfrac{\\role{cold}{Q_2}}{\\role{work}{W}} = \\dfrac{\\role{cold}{T_2}}{\\role{hot}{T_1} - \\role{cold}{T_2}}",
+   "text": "Ideal refrigerator; kelvin."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A refrigerator takes **600 J** from inside using **150 J** of work. What is its coefficient of performance?",
+   "answer": 4,
+   "hint": "CP = Q₂ / W.",
+   "explain": "\\( \\text{CP} = 600/150 = 4 \\).",
+   "tolerance": 0.05
+  }
+ ],
+ "takeaways": [
+  "Refrigerator: takes \\( Q_2 \\) from cold, work \\( W \\) in, rejects \\( Q_1 = Q_2 + W \\) to hot; \\( \\text{CP} = Q_2/W \\)."
+ ]
+}

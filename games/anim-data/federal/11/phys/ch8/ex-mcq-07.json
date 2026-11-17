@@ -1,0 +1,438 @@
+{
+ "id": "g11-phys-c8-ex-mcq-07",
+ "title": "Ex MCQ 7 · Carnot engine: heat supplied",
+ "summary": "A Carnot engine working between 300 K and 600 K has work output 800 J/cycle, the heat supplied is: (A) 1000…",
+ "alt": "Ex MCQ 7: A Carnot engine working between 300 K and 600 K has work output 800 J/cycle, the heat supplied is: (A) 1000 J/cycle (B) 1600 J/cycle (C) 1800 J/cycle (D) 2000 J/cycle",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "hotR",
+   "x": 2.0,
+   "y": 12.2,
+   "w": 8.8,
+   "h": 1.3,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "coldR",
+   "x": 2.0,
+   "y": 1.7,
+   "w": 8.8,
+   "h": 1.3,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "hotL",
+   "at": [
+    6.4,
+    12.85
+   ],
+   "text": "Hot source  T₁ = 600 K",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "coldL",
+   "at": [
+    6.4,
+    2.35
+   ],
+   "text": "Cold sink  T₂ = 300 K",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "sct",
+   "at": [
+    6.45,
+    14.3
+   ],
+   "text": "Carnot engine between 600 K and 300 K",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "mach",
+   "x": 3.7,
+   "y": 6.0,
+   "w": 5.4,
+   "h": 2.9,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 4,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "machT",
+   "at": [
+    6.45,
+    7.45
+   ],
+   "text": "HEAT ENGINE",
+   "role": "wall",
+   "size": "m",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bH",
+   "x": 5.0,
+   "y": 8.9,
+   "w": 2.8,
+   "h": 3.3,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 1.5,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bC",
+   "x": 5.7,
+   "y": 3.0,
+   "w": 1.4,
+   "h": 3.0,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 1.5,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bW",
+   "x": 9.1,
+   "y": 6.75,
+   "w": 3.2,
+   "h": 1.4,
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 1.5,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "aH",
+   "from": [
+    6.4,
+    12.2
+   ],
+   "to": [
+    6.4,
+    9.0
+   ],
+   "role": "hot",
+   "strokeWidth": 4,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "aC",
+   "from": [
+    6.4,
+    6.0
+   ],
+   "to": [
+    6.4,
+    3.1
+   ],
+   "role": "cold",
+   "strokeWidth": 4,
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "aW",
+   "from": [
+    9.1,
+    7.45
+   ],
+   "to": [
+    12.4,
+    7.45
+   ],
+   "role": "work",
+   "strokeWidth": 4,
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "q1q",
+   "at": [
+    10.25,
+    10.6
+   ],
+   "text": "Q₁ = ?",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "disappear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "q1",
+   "at": [
+    10.25,
+    10.6
+   ],
+   "text": "Q₁ = 1600 J",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "q2q",
+   "at": [
+    10.25,
+    4.5
+   ],
+   "text": "Q₂ = ?",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "disappear": "s3"
+  },
+  {
+   "type": "text",
+   "id": "q2",
+   "at": [
+    10.25,
+    4.5
+   ],
+   "text": "Q₂ = 800 J",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s3"
+  },
+  {
+   "type": "text",
+   "id": "ww",
+   "at": [
+    10.9,
+    8.700000000000001
+   ],
+   "text": "W = 800 J",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 0.29999999999999993,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s4",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    0.85
+   ],
+   "text": "Q₁ = 1600 J per cycle   →   (B)",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s4",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "A **Carnot engine** works between \\( T_1 = 600 \\) K (source) and \\( T_2 = 300 \\) K (sink) and gives \\( W = 800 \\) J every cycle. Find the heat supplied \\( Q_1 \\).",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Carnot efficiency",
+   "text": "The efficiency of a Carnot engine depends only on the two temperatures: \\[ \\eta = 1 - \\dfrac{T_2}{T_1} = 1 - \\dfrac{300}{600} = 0.5 \\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Efficiency is W / Q₁",
+   "text": "Since \\( \\eta = W/Q_1 \\): \\[ Q_1 = \\dfrac{W}{\\eta} = \\dfrac{800}{0.5} = 1600\\ \\text{J} \\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Check with energy balance",
+   "text": "Heat rejected: \\( Q_2 = Q_1 - W = 1600 - 800 = 800 \\) J. And \\( Q_2/Q_1 = 0.5 = T_2/T_1 \\) ✔.",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Answer: (B) 1600 J/cycle",
+   "text": "The engine must take in **1600 J** to do 800 J of work (A would give \\( \\eta = 0.8 \\), which is impossible between these temperatures).",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Carnot efficiency",
+   "tex": "\\eta = 1 - \\dfrac{\\role{cold}{T_2}}{\\role{hot}{T_1}} = \\dfrac{\\role{work}{W}}{\\role{hot}{Q_1}}",
+   "text": "Temperatures in kelvin."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A Carnot engine works between **300 K** and **900 K** and does **400 J** of work per cycle. What heat Q₁ does it take in (J)?",
+   "answer": 600,
+   "hint": "η = 1 − 300/900 = 2/3.",
+   "explain": "\\( \\eta = 2/3 \\), so \\( Q_1 = 400 / (2/3) = 600 \\) J.",
+   "tolerance": 1,
+   "unit": "J"
+  }
+ ],
+ "takeaways": [
+  "\\( \\eta = 1 - T_2/T_1 \\) (kelvin) and \\( Q_1 = W/\\eta \\)."
+ ]
+}
