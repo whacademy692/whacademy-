@@ -648,6 +648,9 @@
 
     // ============================================================ events
     eng.on('values', function () { syncValues(); syncReadouts(); refreshRich(); if (eng.mode === 'guided') renderNarrText(); });
+    // a `gas` simulation changes numbers every frame (no param changes): refresh readouts + live text ~6x per second
+    var simTick = 0;
+    eng.on('render', function () { if (!eng._hasSim) return; var now = Date.now(); if (now - simTick < 160) return; simTick = now; syncReadouts(); refreshRich(); });
     eng.on('param', function (e) { if (eng.playing && (e.src === 'user' || e.src === 'drag')) { eng.pause(); } });
     eng.on('drag-start', function () { eng.pause(); });
     eng.on('roles', function () { syncColours(); refreshRich(); renderNarrText(); syncLegend(); });

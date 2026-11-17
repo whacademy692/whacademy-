@@ -495,6 +495,7 @@
   Engine.prototype.buildEnv = function (vals) {
     var env = {}, k;
     for (k in vals) env[k] = vals[k];
+    if (this.simVars) for (k in this.simVars) env[k] = this.simVars[k];     // live numbers measured by a `gas` simulation
     var dl = this.derivedList;
     for (var i = 0; i < dl.length; i++) {
       var d = dl[i];
@@ -683,12 +684,14 @@
     if (this.stepRunning || (this.playing && this.stepDone && this.mode === 'guided')) { this._advance(dt); active = true; }
     if (this._tweens.length) { this._advanceTweens(dt); active = true; }
     if (this._clockIds.length && this._tickClocks(dt)) active = true;
+    if (this._simLive) { active = true; this._simLive = false; }      // a `gas` shape asked for another frame
     if (this._dirty || active || this._moving) { this._dirty = false; this._render(dt); }
     if (active || this._moving || this._dirty || this._tweens.length) this.invalidate();
     else this._last = 0;
   };
   Engine.prototype._render = function (dt) {
     if (!this.svgEl) return;
+    this._dt = dt || 16;
     var env = this.env = this.buildEnv(this.values);
     if (this.blocked && this.mode === 'guided' && this.stepDone && !this.stepRunning) this._checkUntil(env);
     var wr = this._worldRect(env, dt || 16), v = this.view;

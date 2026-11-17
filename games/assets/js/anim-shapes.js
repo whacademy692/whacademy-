@@ -16,7 +16,7 @@
  *   label: "text"  |  { text, t, off, dx, dy, at, away, role, size, bold, keep, visible }
  *
  * Types: point segment (vector) polygon polyline rect square regular circle
- *        arc sector angle text dimension grid axes numberline plot (y=f(x) or parametric) path group repeat
+ *        arc sector angle text dimension grid axes numberline plot (y=f(x) or parametric) path group repeat gas
  * ----------------------------------------------------------------------------
  */
 (function (root) {
@@ -698,6 +698,143 @@
         }
       },
       destroy: function () { inst.forEach(function (k) { k.destroy(); }); }
+    };
+  };
+
+  // ------------------------------------------------------------------ gas
+  /**
+   * gas — a real particle simulation (Physics / Chemistry: kinetic theory, gas laws, thermodynamics, entropy).
+   * Ideal-gas molecules fly in a box, bounce elastically off the walls and are NOT affected by each other.
+   * The RIGHT wall can be a moving piston: a molecule that hits an approaching piston leaves faster
+   * (so compressing an insulated gas really heats it), one that hits a retreating piston leaves slower.
+   *
+   *   x0 x1 y0 y1   box edges in world units (expressions; x1 may follow a param = the piston)
+   *   n             number of molecules (0-160)        v   target rms speed (world units / second)
+   *   bath          expression; > 0.5 → a heat bath drags the speeds towards v (isothermal / heating / cooling)
+   *                 otherwise the gas is thermally isolated (adiabatic) and keeps its own energy
+   *   rate          how quickly the bath acts (per second, default 3)
+   *   mix           collisions between molecules: chance per second that a molecule keeps its speed but takes a new direction (default 1.2; 0 = none)
+   *   initFrac      expression read once: molecules start in the left initFrac of the box (free expansion)
+   *   bind + cols   expression 0-1: spring towards a lattice site (1 = solid vibrating, 0 = free gas)
+   *   vref          speed that is drawn "medium" (colours: cold blue → warm amber → hot red), r = radius in px
+   *   split         expression: x of an imaginary line for out.left (fraction of molecules left of it)
+   *   cells         [columns, rows] for the coarse-grained entropy out.ent (0 .. ln(columns·rows))
+   *   out           names that receive live measurements: { vrms, ke, P, hits, left, ent, ke_in }
+   *                   vrms  root-mean-square speed          ke    mean of v²          P  pressure on the right wall (smoothed)
+   *                   P is the kinetic-theory pressure  N·v²/(2·L·h)  of the molecules actually in the box (smooth, follows the piston and the heat bath)
+   *                   hits  wall hits per second (right)    left  fraction left of split   ent  entropy (nats)
+   */
+  SHAPES.gas = function (def, eng, node, where) {
+    var nF = eng.cx(def.n, where + '.n', 30), vF = eng.cx(def.v, where + '.v', 3);
+    var x0F = eng.cx(def.x0, where + '.x0', 0), x1F = eng.cx(def.x1, where + '.x1', 6), y0F = eng.cx(def.y0, where + '.y0', 0), y1F = eng.cx(def.y1, where + '.y1', 4);
+    var bathF = def.bath !== undefined ? eng.cx(def.bath, where + '.bath', 0) : null;
+    var bindF = def.bind !== undefined ? eng.cx(def.bind, where + '.bind', 0) : null;
+    var fracF = def.initFrac !== undefined ? eng.cx(def.initFrac, where + '.initFrac', 1) : null;
+    var splitF = def.split !== undefined ? eng.cx(def.split, where + '.split', 0) : null;
+    var vrefF = def.vref !== undefined ? eng.cx(def.vref, where + '.vref', 3) : vF;
+    var rate = def.rate || 3, rpx = def.r || 4.5, cells = def.cells || [4, 3], mixRate = def.mix !== undefined ? def.mix : 1.2;
+    var out = def.out || {};
+    eng.simVars = eng.simVars || {}; eng._hasSim = true;
+    Object.keys(out).forEach(function (k) { eng.locals[out[k]] = 1; eng.simVars[out[k]] = 0; });
+    var seed = (def.seed || 11) >>> 0;
+    function rnd() { seed = (seed + 0x6D2B79F5) >>> 0; var t = seed; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }
+    function gauss() { var u = Math.max(1e-9, rnd()), w = rnd(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * w); }
+    var COLD = [56, 189, 248], MID = [251, 191, 36], HOT = [239, 68, 68];
+    if (def.colors && def.colors.length === 3) { COLD = def.colors[0]; MID = def.colors[1]; HOT = def.colors[2]; }
+    function mix(a, b, t) { return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]; }
+    function heat(r) { var c = r < 1 ? mix(COLD, MID, Math.max(0, r)) : mix(MID, HOT, Math.min(1, (r - 1) / 1.1)); return 'rgb(' + (c[0] | 0) + ',' + (c[1] | 0) + ',' + (c[2] | 0) + ')'; }
+    var plain = def.colorBy === false ? eng.roleCss(def.role, where) : null;
+    var P = [], prevX1 = null, Pm = 0, Hm = 0, started = false, started2 = false, vr = 0;
+    var gridCols = def.cols || 0;
+    function make(env, x0, x1, y0, y1, v, frac, i, n) {
+      var el = svg('circle', { 'class': 'anim-gas' }, node.g);
+      el.setAttribute('r', f2(rpx)); el.style.stroke = 'rgba(15,23,42,.35)'; el.style.strokeWidth = '0.8px';
+      var p = { el: el, x: x0 + rnd() * (x1 - x0) * frac, y: y0 + rnd() * (y1 - y0), vx: gauss() * v / Math.SQRT2, vy: gauss() * v / Math.SQRT2, hx: 0, hy: 0, col: '' };
+      if (bindF) { // lattice home: fill the box in rows/columns
+        var cols = gridCols || Math.max(1, Math.round(Math.sqrt(n * (x1 - x0) / Math.max(0.5, y1 - y0)))), rows = Math.ceil(n / cols);
+        var cx = i % cols, ry = Math.floor(i / cols);
+        p.hx = x0 + (x1 - x0) * (cx + 0.5) / cols; p.hy = y0 + (y1 - y0) * (ry + 0.5) / rows; p.x = p.hx; p.y = p.hy;
+      }
+      P.push(p); return p;
+    }
+    return {
+      update: function (c) {
+        var env = c.env, x0 = x0F(env), x1 = x1F(env), y0 = y0F(env), y1 = y1F(env);
+        var n = Math.max(0, Math.min(160, Math.round(nF(env)))), v = Math.max(0, vF(env));
+        if (!(x1 > x0 + 0.2) || !(y1 > y0 + 0.2) || !isFinite(x0 + x1 + y0 + y1 + n + v)) return false;
+        var still = H.reducedMotion();
+        var dt = still ? 0 : Math.min(0.05, (eng._dt || 16) / 1000) * (eng.ui.speed || 1);
+        if (!started) { started = true; }
+        var frac = fracF ? Math.max(0.05, Math.min(1, fracF(env))) : 1;
+        while (P.length < n) make(env, x0, x1, y0, y1, v, frac, P.length, n);
+        for (var q = 0; q < P.length; q++) P[q].el.style.display = q < n ? '' : 'none';
+        var u = 0;
+        if (prevX1 !== null && dt > 0) { /* a jump (slider snap, step change) is a teleport, not a push */ var dx1 = x1 - prevX1; u = dx1 / dt; if (Math.abs(u) > 12) u = 0; else if (u > 3) u = 3; else if (u < -3) u = -3; }
+        prevX1 = x1;
+        var bind = bindF ? Math.max(0, Math.min(1, bindF(env))) : 0;
+        var K = 36;                                  // spring constant of a lattice site (rad/s)²
+        var impulse = 0, hits = 0, sum2 = 0, sumx2 = 0, cnt = 0;
+        var vref = Math.max(0.05, vrefF(env));
+        var nc = cells[0] * cells[1], occ = [], ci;
+        for (ci = 0; ci < nc; ci++) occ.push(0);
+        var split = splitF ? splitF(env) : 0, leftN = 0;
+        for (var i = 0; i < n; i++) {
+          var p = P[i];
+          if (dt > 0) {
+            if (bind > 0.001) { p.vx += -K * bind * (p.x - p.hx) * dt; p.vy += -K * bind * (p.y - p.hy) * dt; }
+            if (mixRate > 0 && bind < 0.5 && rnd() < mixRate * dt) { var ang = rnd() * 6.2831853, spd = Math.sqrt(p.vx * p.vx + p.vy * p.vy); p.vx = spd * Math.cos(ang); p.vy = spd * Math.sin(ang); }   // molecular collisions: same speed, new direction
+            p.x += p.vx * dt; p.y += p.vy * dt;
+            var guard = 0;
+            while ((p.x > x1 || p.x < x0) && guard++ < 4) {
+              if (p.x > x1) {
+                var rel = p.vx - u;
+                if (rel > 0) { impulse += 2 * rel; hits++; }
+                p.x = 2 * x1 - p.x; p.vx = 2 * u - p.vx;
+                if (p.x < x0) p.x = x0 + 0.01;
+              } else { p.x = 2 * x0 - p.x; p.vx = -p.vx; if (p.x > x1) p.x = x1 - 0.01; }
+            }
+            if (p.y > y1) { p.y = 2 * y1 - p.y; p.vy = -p.vy; } else if (p.y < y0) { p.y = 2 * y0 - p.y; p.vy = -p.vy; }
+            p.x = Math.min(x1, Math.max(x0, p.x)); p.y = Math.min(y1, Math.max(y0, p.y));
+          }
+          sum2 += p.vx * p.vx + p.vy * p.vy; sumx2 += p.vx * p.vx; cnt++;
+          if (split !== 0 || splitF) { if (p.x < split) leftN++; }
+          var ccx = Math.min(cells[0] - 1, Math.floor((p.x - x0) / (x1 - x0) * cells[0])), ccy = Math.min(cells[1] - 1, Math.floor((p.y - y0) / (y1 - y0) * cells[1]));
+          occ[Math.max(0, ccy) * cells[0] + Math.max(0, ccx)]++;
+        }
+        var vrms = cnt ? Math.sqrt(sum2 / cnt) : 0;
+        // heat bath: drag every speed towards the target rms speed
+        if (bathF && dt > 0 && bathF(env) > 0.5 && vrms > 1e-6) {
+          var k = Math.min(1, rate * dt), f = 1 + (v / vrms - 1) * k;
+          for (var j = 0; j < n; j++) { P[j].vx *= f; P[j].vy *= f; }
+          vrms *= f;
+        } else if (bind > 0.5 && dt > 0 && vrms < 1e-6 && v > 0) {
+          for (var j2 = 0; j2 < n; j2++) { P[j2].vx = gauss() * v / Math.SQRT2; P[j2].vy = gauss() * v / Math.SQRT2; }
+        }
+        // draw
+        for (var d = 0; d < n; d++) {
+          var pd = P[d], s = c.map(pd.x, pd.y);
+          if (!ok2(s)) continue;
+          pd.el.setAttribute('cx', f2(s[0])); pd.el.setAttribute('cy', f2(s[1]));
+          var sp = Math.sqrt(pd.vx * pd.vx + pd.vy * pd.vy), col = plain || heat(sp / (vref * 1.0));
+          if (col !== pd.col) { pd.col = col; pd.el.style.fill = col; }
+        }
+        // measurements
+        if (dt > 0) {
+          var a = 1 - Math.exp(-dt / 0.55), a2 = 1 - Math.exp(-dt / 0.3), h = Math.max(0.2, y1 - y0);
+          Pm += (sum2 / 2 / Math.max(0.2, x1 - x0) / h - Pm) * a2; Hm += (hits / dt - Hm) * a; vr += (vrms - vr) * Math.min(1, dt / 0.25);
+          if (!vr) vr = vrms;
+          if (!started2) { started2 = true; Pm = sum2 / 2 / Math.max(0.2, x1 - x0) / h; }
+        } else vr = vrms;
+        var sv = eng.simVars;
+        if (out.vrms) sv[out.vrms] = vr;
+        if (out.ke) sv[out.ke] = vr * vr;
+        if (out.P) sv[out.P] = Pm;
+        if (out.hits) sv[out.hits] = Hm;
+        if (out.left) sv[out.left] = cnt ? leftN / cnt : 0;
+        if (out.ent) { var H0 = 0; for (ci = 0; ci < nc; ci++) if (occ[ci] > 0) { var pr = occ[ci] / cnt; H0 -= pr * Math.log(pr); } sv[out.ent] = H0; }
+        if (!still) eng._simLive = true;
+      },
+      destroy: function () { P = []; }
     };
   };
 })(typeof window !== 'undefined' ? window : this);
