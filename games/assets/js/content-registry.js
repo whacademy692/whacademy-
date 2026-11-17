@@ -1384,6 +1384,124 @@ window.WHA_CONTENT = {
             "game": null
           }
         ]
+      },
+      "phys": {
+        "name": "Physics",
+        "code": "PHYS",
+        "chapters": [
+          {
+            "n": 1,
+            "unit": 1,
+            "title": "Physical Quantities and Measurements",
+            "notes": null,
+            "quiz": null,
+            "game": null
+          },
+          {
+            "n": 2,
+            "unit": 2,
+            "title": "Vectors",
+            "notes": null,
+            "quiz": null,
+            "game": null
+          },
+          {
+            "n": 3,
+            "unit": 3,
+            "title": "Translatory Motion",
+            "notes": null,
+            "quiz": null,
+            "game": null
+          },
+          {
+            "n": 4,
+            "unit": 4,
+            "title": "Rotational and Circular Motion",
+            "notes": null,
+            "quiz": null,
+            "game": null
+          },
+          {
+            "n": 5,
+            "unit": 5,
+            "title": "Work and Kinetic Energy",
+            "notes": null,
+            "quiz": null,
+            "game": null
+          },
+          {
+            "n": 6,
+            "unit": 6,
+            "title": "Fluid Mechanics",
+            "notes": null,
+            "quiz": null,
+            "game": null
+          },
+          {
+            "n": 7,
+            "unit": 7,
+            "title": "Physics of Solids",
+            "notes": null,
+            "quiz": null,
+            "game": null
+          },
+          {
+            "n": 8,
+            "unit": 8,
+            "title": "Heat and Thermodynamics",
+            "notes": "https://whacademypk.com/notes/class-11/physics/heat-and-thermodynamics.html",
+            "quiz": null,
+            "game": "https://whacademypk.com/games/chapter.html?ch=11/phys/heat_and_thermodynamics"
+          },
+          {
+            "n": 9,
+            "unit": 9,
+            "title": "Waves",
+            "notes": null,
+            "quiz": null,
+            "game": null
+          },
+          {
+            "n": 10,
+            "unit": 10,
+            "title": "Electrostatics",
+            "notes": null,
+            "quiz": null,
+            "game": null
+          },
+          {
+            "n": 11,
+            "unit": 11,
+            "title": "Electricity",
+            "notes": null,
+            "quiz": null,
+            "game": null
+          },
+          {
+            "n": 12,
+            "unit": 12,
+            "title": "Magnetism",
+            "notes": null,
+            "quiz": null,
+            "game": null
+          },
+          {
+            "n": 13,
+            "unit": 13,
+            "title": "Relativity",
+            "notes": null,
+            "quiz": null,
+            "game": null
+          },
+          {
+            "n": 14,
+            "unit": 14,
+            "title": "Particle Physics",
+            "notes": null,
+            "quiz": null,
+            "game": null
+          }
+        ]
       }
     },
     "12": {
