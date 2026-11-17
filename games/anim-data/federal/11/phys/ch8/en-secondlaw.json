@@ -1,0 +1,904 @@
+{
+ "id": "g11-phys-c8-en-secondlaw",
+ "title": "The second law: what never happens",
+ "summary": "No engine can turn all its heat into work, and heat never flows from cold to hot by itself.",
+ "alt": "Four machines: a perfect engine marked impossible, a real engine, heat flowing spontaneously from cold to hot marked impossible, and a refrigerator that needs work.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "hot": {
+   "label": "Heat from hot reservoir",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": true
+  },
+  "cold": {
+   "label": "Heat to cold reservoir",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": true
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": true
+  },
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "case",
+   "label": "Machine",
+   "type": "choice",
+   "options": [
+    {
+     "value": 1,
+     "label": "1 · Perfect engine (all heat → work)"
+    },
+    {
+     "value": 2,
+     "label": "2 · A real engine"
+    },
+    {
+     "value": 3,
+     "label": "3 · Heat flows cold → hot by itself"
+    },
+    {
+     "value": 4,
+     "label": "4 · A refrigerator"
+    }
+   ],
+   "default": 1
+  },
+  {
+   "id": "ph",
+   "label": "Flow animation",
+   "type": "clock",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "speed": 0.35,
+   "loop": "repeat",
+   "default": 0,
+   "auto": true
+  }
+ ],
+ "derived": {
+  "Qh": "case==1 ? 100 : (case==2 ? 100 : (case==3 ? 100 : 140))",
+  "Qc": "case==1 ? 0 : (case==2 ? 60 : 100)",
+  "W": "case==1 ? 100 : (case==2 ? 40 : (case==3 ? 0 : 40))",
+  "bad": "(case==1||case==3) ? 1 : 0"
+ },
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "hotRe",
+   "x": 2.6,
+   "y": 12.7,
+   "w": 7.8,
+   "h": 1.4,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.3,
+   "strokeWidth": 3,
+   "visible": "case<=2"
+  },
+  {
+   "type": "rect",
+   "id": "coldRe",
+   "x": 2.6,
+   "y": 0.7,
+   "w": 7.8,
+   "h": 1.7,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.3,
+   "strokeWidth": 3,
+   "visible": "case<=2"
+  },
+  {
+   "type": "text",
+   "id": "hotTe",
+   "at": [
+    6.5,
+    13.4
+   ],
+   "text": "Hot reservoir  T_h",
+   "role": "hot",
+   "size": "m",
+   "bold": true,
+   "visible": "case<=2"
+  },
+  {
+   "type": "text",
+   "id": "coldTe",
+   "at": [
+    6.5,
+    1.55
+   ],
+   "text": "Cold reservoir  T_c",
+   "role": "cold",
+   "size": "m",
+   "bold": true,
+   "visible": "case<=2"
+  },
+  {
+   "type": "rect",
+   "id": "mache",
+   "x": 4.2,
+   "y": 6.0,
+   "w": 4.6,
+   "h": 3.0,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 4,
+   "visible": "case<=2"
+  },
+  {
+   "type": "text",
+   "id": "machTe",
+   "at": [
+    6.5,
+    7.5
+   ],
+   "text": "ENGINE",
+   "role": "wall",
+   "size": "m",
+   "bold": true,
+   "visible": "case<=2"
+  },
+  {
+   "type": "rect",
+   "id": "bHe",
+   "x": "6.5-Qh*0.04/2",
+   "y": 9.0,
+   "w": "max(Qh*0.04,0.03)",
+   "h": 3.7,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 1.5,
+   "visible": "case<=2"
+  },
+  {
+   "type": "rect",
+   "id": "bCe",
+   "x": "6.5-Qc*0.04/2",
+   "y": 2.4,
+   "w": "max(Qc*0.04,0.03)",
+   "h": 3.6,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 1.5,
+   "visible": "case<=2"
+  },
+  {
+   "type": "rect",
+   "id": "bWe",
+   "x": 8.8,
+   "y": "7.5-W*0.04/2",
+   "w": 3.9,
+   "h": "max(W*0.04,0.03)",
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 1.5,
+   "visible": "case<=2"
+  },
+  {
+   "type": "point",
+   "id": "pH0e",
+   "at": [
+    6.5,
+    "12.7-3.7*fract(ph+0.0)"
+   ],
+   "role": "hot",
+   "r": 5,
+   "visible": "(case<=2)&&Qh>1"
+  },
+  {
+   "type": "point",
+   "id": "pC0e",
+   "at": [
+    6.5,
+    "6.0-3.6*fract(ph+0.0)"
+   ],
+   "role": "cold",
+   "r": 5,
+   "visible": "(case<=2)&&Qc>1"
+  },
+  {
+   "type": "point",
+   "id": "pW0e",
+   "at": [
+    "8.8+3.9*fract(ph+0.0)",
+    7.5
+   ],
+   "role": "work",
+   "r": 5,
+   "visible": "(case<=2)&&W>1"
+  },
+  {
+   "type": "point",
+   "id": "pH1e",
+   "at": [
+    6.5,
+    "12.7-3.7*fract(ph+0.25)"
+   ],
+   "role": "hot",
+   "r": 5,
+   "visible": "(case<=2)&&Qh>1"
+  },
+  {
+   "type": "point",
+   "id": "pC1e",
+   "at": [
+    6.5,
+    "6.0-3.6*fract(ph+0.25)"
+   ],
+   "role": "cold",
+   "r": 5,
+   "visible": "(case<=2)&&Qc>1"
+  },
+  {
+   "type": "point",
+   "id": "pW1e",
+   "at": [
+    "8.8+3.9*fract(ph+0.25)",
+    7.5
+   ],
+   "role": "work",
+   "r": 5,
+   "visible": "(case<=2)&&W>1"
+  },
+  {
+   "type": "point",
+   "id": "pH2e",
+   "at": [
+    6.5,
+    "12.7-3.7*fract(ph+0.5)"
+   ],
+   "role": "hot",
+   "r": 5,
+   "visible": "(case<=2)&&Qh>1"
+  },
+  {
+   "type": "point",
+   "id": "pC2e",
+   "at": [
+    6.5,
+    "6.0-3.6*fract(ph+0.5)"
+   ],
+   "role": "cold",
+   "r": 5,
+   "visible": "(case<=2)&&Qc>1"
+  },
+  {
+   "type": "point",
+   "id": "pW2e",
+   "at": [
+    "8.8+3.9*fract(ph+0.5)",
+    7.5
+   ],
+   "role": "work",
+   "r": 5,
+   "visible": "(case<=2)&&W>1"
+  },
+  {
+   "type": "point",
+   "id": "pH3e",
+   "at": [
+    6.5,
+    "12.7-3.7*fract(ph+0.75)"
+   ],
+   "role": "hot",
+   "r": 5,
+   "visible": "(case<=2)&&Qh>1"
+  },
+  {
+   "type": "point",
+   "id": "pC3e",
+   "at": [
+    6.5,
+    "6.0-3.6*fract(ph+0.75)"
+   ],
+   "role": "cold",
+   "r": 5,
+   "visible": "(case<=2)&&Qc>1"
+  },
+  {
+   "type": "point",
+   "id": "pW3e",
+   "at": [
+    "8.8+3.9*fract(ph+0.75)",
+    7.5
+   ],
+   "role": "work",
+   "r": 5,
+   "visible": "(case<=2)&&W>1"
+  },
+  {
+   "type": "text",
+   "id": "tHe",
+   "at": [
+    11.2,
+    11.0
+   ],
+   "text": "Q_h = {{Qh|0}} J",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "visible": "case<=2"
+  },
+  {
+   "type": "text",
+   "id": "tCe",
+   "at": [
+    11.2,
+    4.4
+   ],
+   "text": "Q_c = {{Qc|0}} J",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "visible": "case<=2"
+  },
+  {
+   "type": "text",
+   "id": "tWe",
+   "at": [
+    11.0,
+    8.4
+   ],
+   "text": "W = {{W|0}} J",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "visible": "case<=2"
+  },
+  {
+   "type": "rect",
+   "id": "hotRf",
+   "x": 2.6,
+   "y": 12.7,
+   "w": 7.8,
+   "h": 1.4,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.3,
+   "strokeWidth": 3,
+   "visible": "case>=3"
+  },
+  {
+   "type": "rect",
+   "id": "coldRf",
+   "x": 2.6,
+   "y": 0.7,
+   "w": 7.8,
+   "h": 1.7,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.3,
+   "strokeWidth": 3,
+   "visible": "case>=3"
+  },
+  {
+   "type": "text",
+   "id": "hotTf",
+   "at": [
+    6.5,
+    13.4
+   ],
+   "text": "Hot reservoir  T_h",
+   "role": "hot",
+   "size": "m",
+   "bold": true,
+   "visible": "case>=3"
+  },
+  {
+   "type": "text",
+   "id": "coldTf",
+   "at": [
+    6.5,
+    1.55
+   ],
+   "text": "Cold reservoir  T_c",
+   "role": "cold",
+   "size": "m",
+   "bold": true,
+   "visible": "case>=3"
+  },
+  {
+   "type": "rect",
+   "id": "machf",
+   "x": 4.2,
+   "y": 6.0,
+   "w": 4.6,
+   "h": 3.0,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 4,
+   "visible": "case>=3"
+  },
+  {
+   "type": "text",
+   "id": "machTf",
+   "at": [
+    6.5,
+    7.5
+   ],
+   "text": "FRIDGE",
+   "role": "wall",
+   "size": "m",
+   "bold": true,
+   "visible": "case>=3"
+  },
+  {
+   "type": "rect",
+   "id": "bHf",
+   "x": "6.5-Qh*0.04/2",
+   "y": 9.0,
+   "w": "max(Qh*0.04,0.03)",
+   "h": 3.7,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 1.5,
+   "visible": "case>=3"
+  },
+  {
+   "type": "rect",
+   "id": "bCf",
+   "x": "6.5-Qc*0.04/2",
+   "y": 2.4,
+   "w": "max(Qc*0.04,0.03)",
+   "h": 3.6,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 1.5,
+   "visible": "case>=3"
+  },
+  {
+   "type": "rect",
+   "id": "bWf",
+   "x": 8.8,
+   "y": "7.5-W*0.04/2",
+   "w": 3.9,
+   "h": "max(W*0.04,0.03)",
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 1.5,
+   "visible": "case>=3"
+  },
+  {
+   "type": "point",
+   "id": "pC0f",
+   "at": [
+    6.5,
+    "2.4+3.6*fract(ph+0.0)"
+   ],
+   "role": "cold",
+   "r": 5,
+   "visible": "(case>=3)&&Qc>1"
+  },
+  {
+   "type": "point",
+   "id": "pH0f",
+   "at": [
+    6.5,
+    "9.0+3.7*fract(ph+0.0)"
+   ],
+   "role": "hot",
+   "r": 5,
+   "visible": "(case>=3)&&Qh>1"
+  },
+  {
+   "type": "point",
+   "id": "pW0f",
+   "at": [
+    "12.7-3.9*fract(ph+0.0)",
+    7.5
+   ],
+   "role": "work",
+   "r": 5,
+   "visible": "(case>=3)&&W>1"
+  },
+  {
+   "type": "point",
+   "id": "pC1f",
+   "at": [
+    6.5,
+    "2.4+3.6*fract(ph+0.25)"
+   ],
+   "role": "cold",
+   "r": 5,
+   "visible": "(case>=3)&&Qc>1"
+  },
+  {
+   "type": "point",
+   "id": "pH1f",
+   "at": [
+    6.5,
+    "9.0+3.7*fract(ph+0.25)"
+   ],
+   "role": "hot",
+   "r": 5,
+   "visible": "(case>=3)&&Qh>1"
+  },
+  {
+   "type": "point",
+   "id": "pW1f",
+   "at": [
+    "12.7-3.9*fract(ph+0.25)",
+    7.5
+   ],
+   "role": "work",
+   "r": 5,
+   "visible": "(case>=3)&&W>1"
+  },
+  {
+   "type": "point",
+   "id": "pC2f",
+   "at": [
+    6.5,
+    "2.4+3.6*fract(ph+0.5)"
+   ],
+   "role": "cold",
+   "r": 5,
+   "visible": "(case>=3)&&Qc>1"
+  },
+  {
+   "type": "point",
+   "id": "pH2f",
+   "at": [
+    6.5,
+    "9.0+3.7*fract(ph+0.5)"
+   ],
+   "role": "hot",
+   "r": 5,
+   "visible": "(case>=3)&&Qh>1"
+  },
+  {
+   "type": "point",
+   "id": "pW2f",
+   "at": [
+    "12.7-3.9*fract(ph+0.5)",
+    7.5
+   ],
+   "role": "work",
+   "r": 5,
+   "visible": "(case>=3)&&W>1"
+  },
+  {
+   "type": "point",
+   "id": "pC3f",
+   "at": [
+    6.5,
+    "2.4+3.6*fract(ph+0.75)"
+   ],
+   "role": "cold",
+   "r": 5,
+   "visible": "(case>=3)&&Qc>1"
+  },
+  {
+   "type": "point",
+   "id": "pH3f",
+   "at": [
+    6.5,
+    "9.0+3.7*fract(ph+0.75)"
+   ],
+   "role": "hot",
+   "r": 5,
+   "visible": "(case>=3)&&Qh>1"
+  },
+  {
+   "type": "point",
+   "id": "pW3f",
+   "at": [
+    "12.7-3.9*fract(ph+0.75)",
+    7.5
+   ],
+   "role": "work",
+   "r": 5,
+   "visible": "(case>=3)&&W>1"
+  },
+  {
+   "type": "text",
+   "id": "tHf",
+   "at": [
+    11.2,
+    11.0
+   ],
+   "text": "Q_h = {{Qh|0}} J",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "visible": "case>=3"
+  },
+  {
+   "type": "text",
+   "id": "tCf",
+   "at": [
+    11.2,
+    4.4
+   ],
+   "text": "Q_c = {{Qc|0}} J",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "visible": "case>=3"
+  },
+  {
+   "type": "text",
+   "id": "tWf",
+   "at": [
+    11.0,
+    8.4
+   ],
+   "text": "W = {{W|0}} J",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "visible": "case>=3"
+  },
+  {
+   "type": "text",
+   "id": "verdict",
+   "at": [
+    2.2,
+    7.5
+   ],
+   "text": "IMPOSSIBLE",
+   "role": "no",
+   "size": "m",
+   "bold": true,
+   "visible": "bad"
+  },
+  {
+   "type": "text",
+   "id": "verdict2",
+   "at": [
+    2.2,
+    7.5
+   ],
+   "text": "ALLOWED",
+   "role": "ok",
+   "size": "m",
+   "bold": true,
+   "visible": "!bad"
+  },
+  {
+   "type": "text",
+   "id": "why",
+   "at": [
+    6.5,
+    14.5
+   ],
+   "text": "{{if case==1|All the heat becomes work: impossible|}}{{if case==2|Some heat must go to the cold reservoir|}}{{if case==3|Heat will not climb to a hotter body alone|}}{{if case==4|Work is needed to pump heat uphill|}}",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Energy conservation is not enough",
+   "text": "The first law only says energy is **conserved**. A machine that turns all its heat into work would obey it. But nobody has ever built one. Something more is needed: the **second law**.",
+   "actions": [
+    {
+     "set": {
+      "case": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "A perfect engine?",
+   "text": "Imagine an engine that takes 100 J from a hot reservoir and turns **all of it** into 100 J of work, rejecting nothing. It would conserve energy but it is **impossible**: this is the Kelvin–Planck statement.",
+   "actions": [
+    {
+     "set": {
+      "case": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "A real engine",
+   "text": "A real engine always **rejects some heat** to the cold reservoir: here 100 J in, 40 J of work, 60 J rejected. It is the cold reservoir that makes work possible.",
+   "actions": [
+    {
+     "set": {
+      "case": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Heat does not climb uphill",
+   "text": "Heat flows **from hot to cold** by itself. A machine that moves heat **from cold to hot** with no work at all is impossible: this is the Clausius statement.",
+   "actions": [
+    {
+     "set": {
+      "case": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "A refrigerator needs work",
+   "text": "A refrigerator **can** move heat from cold to hot, but only if you supply **work** (the electricity). Then \\( Q_h = Q_c + W \\).",
+   "actions": [
+    {
+     "set": {
+      "case": 4
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Try the four machines",
+   "text": "Switch between the four machines. Each one conserves energy, but the second law forbids two of them.",
+   "actions": [
+    {
+     "set": {
+      "case": 1
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Heat in (J)",
+   "value": "{{Qh|0}}",
+   "role": "hot"
+  },
+  {
+   "label": "Work (J)",
+   "value": "{{W|0}}",
+   "role": "work"
+  },
+  {
+   "label": "Heat out (J)",
+   "value": "{{Qc|0}}",
+   "role": "cold"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Kelvin–Planck statement",
+   "tex": "\\text{No engine can turn all the heat it takes in into work}",
+   "text": "Some heat must always be rejected to a colder reservoir."
+  },
+  {
+   "title": "Clausius statement",
+   "tex": "\\text{Heat cannot flow from cold to hot without work}",
+   "text": "A refrigerator needs a power supply."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "A heat engine takes in 500 J of heat and produces **500 J** of work with no heat rejected. This engine:",
+   "options": [
+    {
+     "id": "a",
+     "label": "is possible if it is well made"
+    },
+    {
+     "id": "b",
+     "label": "violates the second law"
+    },
+    {
+     "id": "c",
+     "label": "violates the first law"
+    },
+    {
+     "id": "d",
+     "label": "is a refrigerator"
+    }
+   ],
+   "answer": "b",
+   "hint": "Energy is conserved, but is anything rejected?",
+   "explain": "It conserves energy, but the second law (Kelvin–Planck) says no engine can convert all its heat into work."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which statement is the **Clausius** statement?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Heat cannot flow from a cold body to a hotter body without outside work"
+    },
+    {
+     "id": "b",
+     "label": "Energy is conserved"
+    },
+    {
+     "id": "c",
+     "label": "Pressure is inversely proportional to volume"
+    },
+    {
+     "id": "d",
+     "label": "Entropy never decreases for a dead body"
+    }
+   ],
+   "answer": "a",
+   "hint": "It is about heat flowing uphill.",
+   "explain": "Clausius: heat cannot pass from a colder to a hotter body by itself."
+  },
+  {
+   "id": "c3",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A refrigerator removes **100 J** from the cold space using **40 J** of work. How much heat does it dump into the room (J)?",
+   "answer": 140,
+   "hint": "Q_h = Q_c + W.",
+   "explain": "\\( Q_h = 100 + 40 = 140 \\) J.",
+   "tolerance": 1,
+   "unit": "J"
+  }
+ ],
+ "takeaways": [
+  "**Second law (Kelvin–Planck):** no engine can convert all its heat into work.",
+  "**Second law (Clausius):** heat does not flow from cold to hot without work.",
+  "Both rule out processes that **conserve energy** but never happen in nature."
+ ],
+ "notes": [
+  {
+   "title": "Connects to",
+   "text": "The second law sets a **maximum efficiency**, reached by the **Carnot engine**, and leads to **entropy**: natural processes always increase the total disorder."
+  }
+ ]
+}

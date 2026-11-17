@@ -1,0 +1,647 @@
+{
+ "id": "g11-phys-c8-ent-heat-flow",
+ "title": "Entropy when heat flows",
+ "summary": "Heat Q leaving a hot body lowers its entropy by Q/T_h; the cold body gains Q/T_c. The total always rises.",
+ "alt": "A hot block and a cold block with molecules; heat flows between them while bars show the entropy change of each and the total.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": true
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": true
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "Th",
+   "label": "Hot body T_h (K)",
+   "type": "number",
+   "min": 340,
+   "max": 500,
+   "step": 10,
+   "default": 450
+  },
+  {
+   "id": "Tc",
+   "label": "Cold body T_c (K)",
+   "type": "number",
+   "min": 260,
+   "max": 330,
+   "step": 10,
+   "default": 300
+  },
+  {
+   "id": "Q",
+   "label": "Heat transferred Q (J)",
+   "type": "number",
+   "min": 20,
+   "max": 400,
+   "step": 10,
+   "default": 200
+  },
+  {
+   "id": "dir",
+   "label": "Direction of heat flow",
+   "type": "choice",
+   "options": [
+    {
+     "value": 1,
+     "label": "Hot → cold"
+    },
+    {
+     "value": 2,
+     "label": "Cold → hot"
+    }
+   ],
+   "default": 1
+  },
+  {
+   "id": "ph",
+   "label": "Flow animation",
+   "type": "clock",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "speed": 0.4,
+   "loop": "repeat",
+   "default": 0,
+   "auto": true
+  }
+ ],
+ "derived": {
+  "sg": "dir==1 ? 1 : -1",
+  "dSh": "-sg*Q/Th",
+  "dSc": "sg*Q/Tc",
+  "dSt": "dSh+dSc",
+  "vh": "2.2*sqrt(Th/300)",
+  "vc": "2.2*sqrt(Tc/300)",
+  "nn": "24"
+ },
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "hb",
+   "x": 0.2,
+   "y": 9.3,
+   "w": 4.0,
+   "h": 4.5,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.14,
+   "strokeWidth": 3
+  },
+  {
+   "type": "rect",
+   "id": "cb",
+   "x": 6.8,
+   "y": 9.3,
+   "w": 4.0,
+   "h": 4.5,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.14,
+   "strokeWidth": 3
+  },
+  {
+   "type": "gas",
+   "id": "g1",
+   "x0": 0.4,
+   "x1": 4.0,
+   "y0": 9.5,
+   "y1": 13.6,
+   "n": "nn",
+   "v": "vh",
+   "bath": 1,
+   "vref": 2.2,
+   "seed": 2,
+   "out": {
+    "vrms": "gv1"
+   },
+   "rate": 4
+  },
+  {
+   "type": "gas",
+   "id": "g2",
+   "x0": 7.0,
+   "x1": 10.6,
+   "y0": 9.5,
+   "y1": 13.6,
+   "n": "nn",
+   "v": "vc",
+   "bath": 1,
+   "vref": 2.2,
+   "seed": 5,
+   "out": {
+    "vrms": "gv2"
+   },
+   "rate": 4
+  },
+  {
+   "type": "text",
+   "id": "ht",
+   "at": [
+    2.2,
+    14.3
+   ],
+   "text": "HOT  {{Th|0}} K",
+   "role": "hot",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "ct",
+   "at": [
+    8.8,
+    14.3
+   ],
+   "text": "COLD  {{Tc|0}} K",
+   "role": "cold",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "vector",
+   "id": "a1",
+   "from": [
+    4.35,
+    11.5
+   ],
+   "to": [
+    6.65,
+    11.5
+   ],
+   "role": "hot",
+   "strokeWidth": 6,
+   "visible": "dir==1"
+  },
+  {
+   "type": "vector",
+   "id": "a2",
+   "from": [
+    6.65,
+    11.5
+   ],
+   "to": [
+    4.35,
+    11.5
+   ],
+   "role": "no",
+   "strokeWidth": 6,
+   "visible": "dir==2"
+  },
+  {
+   "type": "text",
+   "id": "qt",
+   "at": [
+    5.5,
+    12.3
+   ],
+   "text": "{{Q|0}} J",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "ok1",
+   "at": [
+    5.3,
+    8.5
+   ],
+   "text": "Total entropy rises: this happens by itself",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "visible": "dSt>0"
+  },
+  {
+   "type": "text",
+   "id": "no1",
+   "at": [
+    5.3,
+    8.5
+   ],
+   "text": "Total entropy would fall: never happens by itself",
+   "role": "no",
+   "size": "s",
+   "bold": true,
+   "visible": "dSt<0"
+  },
+  {
+   "type": "segment",
+   "id": "zero",
+   "from": [
+    1.0,
+    4.3
+   ],
+   "to": [
+    12.0,
+    4.3
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "rect",
+   "id": "rdSh",
+   "x": 1.7,
+   "y": "min(4.3,4.3+dSh*2.0)",
+   "w": 1.4,
+   "h": "abs(dSh)*2.0+0.02",
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "ldSh",
+   "at": [
+    2.4,
+    0.9
+   ],
+   "text": "Hot body",
+   "role": "hot",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "vdSh",
+   "at": [
+    2.4,
+    7.3
+   ],
+   "text": "{{dSh|2}} J/K",
+   "role": "hot",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "rdSc",
+   "x": 5.3,
+   "y": "min(4.3,4.3+dSc*2.0)",
+   "w": 1.4,
+   "h": "abs(dSc)*2.0+0.02",
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "ldSc",
+   "at": [
+    6.0,
+    0.9
+   ],
+   "text": "Cold body",
+   "role": "cold",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "vdSc",
+   "at": [
+    6.0,
+    7.3
+   ],
+   "text": "{{dSc|2}} J/K",
+   "role": "cold",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "rdSt",
+   "x": 8.9,
+   "y": "min(4.3,4.3+dSt*2.0)",
+   "w": 1.4,
+   "h": "abs(dSt)*2.0+0.02",
+   "role": "ent",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "ldSt",
+   "at": [
+    9.6,
+    0.9
+   ],
+   "text": "Total",
+   "role": "ent",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "vdSt",
+   "at": [
+    9.6,
+    7.3
+   ],
+   "text": "{{dSt|2}} J/K",
+   "role": "ent",
+   "size": "s",
+   "bold": true
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Two bodies at different temperatures",
+   "text": "A hot body and a cold body are placed in contact. We will follow the **entropy** of each. Entropy change for heat Q added at temperature T is \\( \\Delta S = Q/T \\) (T in kelvin).",
+   "actions": [
+    {
+     "set": {
+      "Th": 450,
+      "Tc": 300,
+      "Q": 200,
+      "dir": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "The hot body loses entropy",
+   "text": "It gives out \\( Q = {{Q|0}} \\) J at about \\( T_h = {{Th|0}} \\) K. Its entropy changes by \\( -Q/T_h \\): a **decrease**.",
+   "actions": [
+    {
+     "set": {
+      "Th": 450,
+      "Tc": 300,
+      "Q": 200,
+      "dir": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "The cold body gains more",
+   "text": "It receives the same heat at the **lower** temperature \\( T_c = {{Tc|0}} \\) K, so \\( +Q/T_c \\) is **bigger** than \\( Q/T_h \\). Heat added to a cold body disorders it more than the same heat removes from a hot one.",
+   "actions": [
+    {
+     "set": {
+      "Th": 450,
+      "Tc": 300,
+      "Q": 200,
+      "dir": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "The total entropy goes up",
+   "text": "Adding the two: \\( \\Delta S_{\\text{total}} = Q/T_c - Q/T_h > 0 \\). Heat flowing from hot to cold **increases** the total entropy, which is why it happens by itself.",
+   "actions": [
+    {
+     "set": {
+      "Th": 450,
+      "Tc": 300,
+      "Q": 200,
+      "dir": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "The reverse never happens",
+   "text": "Now let the same heat flow **from cold to hot**. The total change is **negative**: the entropy of the universe would fall. This is exactly the Clausius form of the second law.",
+   "actions": [
+    {
+     "set": {
+      "Th": 450,
+      "Tc": 300,
+      "Q": 200,
+      "dir": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Try it",
+   "text": "Change the temperatures and the heat. As long as heat flows from hot to cold, the total is always positive; it is zero only if the two temperatures are equal.",
+   "actions": [
+    {
+     "set": {
+      "Th": 450,
+      "Tc": 300,
+      "Q": 200,
+      "dir": 1
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "ΔS hot (J/K)",
+   "value": "{{dSh|2}}",
+   "role": "hot"
+  },
+  {
+   "label": "ΔS cold (J/K)",
+   "value": "{{dSc|2}}",
+   "role": "cold"
+  },
+  {
+   "label": "ΔS total (J/K)",
+   "value": "{{dSt|2}}",
+   "role": "ent"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Entropy change",
+   "tex": "\\Delta S = \\dfrac{Q}{T}",
+   "text": "Q in joules, T in kelvin, ΔS in J/K (heat added at constant temperature)."
+  },
+  {
+   "title": "Heat flow hot → cold",
+   "tex": "\\Delta S_{\\text{total}} = \\dfrac{Q}{\\role{cold}{T_c}} - \\dfrac{Q}{\\role{hot}{T_h}} > 0",
+   "text": "Because T_c < T_h."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "**400 J** of heat flows from a body at **500 K** to a body at **300 K**. What is the total entropy change in J/K?",
+   "answer": 0.533,
+   "hint": "ΔS = 400/300 − 400/500.",
+   "explain": "\\( \\Delta S = 1.333 - 0.800 = +0.533 \\) J/K.",
+   "tolerance": 0.02,
+   "unit": "J/K",
+   "set": {
+    "Th": 500,
+    "Tc": 300,
+    "Q": 400,
+    "dir": 1
+   }
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Heat flowing **spontaneously from cold to hot** would make the total entropy:",
+   "options": [
+    {
+     "id": "a",
+     "label": "increase"
+    },
+    {
+     "id": "b",
+     "label": "decrease"
+    },
+    {
+     "id": "c",
+     "label": "stay the same"
+    },
+    {
+     "id": "d",
+     "label": "be unrelated to the heat"
+    }
+   ],
+   "answer": "b",
+   "hint": "Look at the Total bar.",
+   "explain": "The total entropy would fall, which the second law forbids.",
+   "set": {
+    "dir": 2
+   }
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "When does the total entropy change become zero for heat flow between two bodies?",
+   "options": [
+    {
+     "id": "a",
+     "label": "When they are at the same temperature"
+    },
+    {
+     "id": "b",
+     "label": "When Q is large"
+    },
+    {
+     "id": "c",
+     "label": "When heat flows cold to hot"
+    },
+    {
+     "id": "d",
+     "label": "Never"
+    }
+   ],
+   "answer": "a",
+   "hint": "Set T_h and T_c equal.",
+   "explain": "If T_h = T_c, then Q/T_c − Q/T_h = 0: no net change (a reversible exchange)."
+  }
+ ],
+ "takeaways": [
+  "**\\( \\Delta S = Q/T \\)**: heat added to a body raises its entropy; heat removed lowers it.",
+  "Heat flowing from **hot to cold** raises the **total** entropy, so it happens by itself.",
+  "The **second law** in entropy form: the total entropy of an isolated system never decreases."
+ ],
+ "notes": [
+  {
+   "title": "Connects to",
+   "text": "A Carnot engine is the limiting reversible case in which the **total entropy change is zero**; every real engine produces a positive entropy change."
+  }
+ ]
+}

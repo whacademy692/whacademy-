@@ -1,0 +1,544 @@
+{
+ "id": "g11-phys-c8-ent-free-expansion",
+ "title": "Free expansion: why a gas never un-spreads",
+ "summary": "Remove a partition and the gas rushes into the empty half; the molecules never all return by themselves.",
+ "alt": "A box with a partition: forty molecules start in the left half; when the partition is removed they spread into both halves and stay spread out. Bars show how entropy rises.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": true
+  },
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "N",
+   "label": "Number of molecules N",
+   "type": "number",
+   "min": 2,
+   "max": 40,
+   "step": 1,
+   "default": 40
+  },
+  {
+   "id": "door",
+   "label": "door",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "xw": "door>0.5 ? 10.2 : 5.1",
+  "v": "2.2",
+  "n": "N",
+  "S": "(gl<=0.001||gl>=0.999) ? 0 : -(gl*ln(gl)+(1-gl)*ln(1-gl))",
+  "lg": "N*0.30103",
+  "W2": "pow(2,N)"
+ },
+ "shapes": [
+  {
+   "type": "polyline",
+   "id": "box",
+   "pts": [
+    [
+     0,
+     14.2
+    ],
+    [
+     10.65,
+     14.2
+    ],
+    [
+     10.65,
+     9.2
+    ],
+    [
+     0,
+     9.2
+    ],
+    [
+     0,
+     14.2
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 4
+  },
+  {
+   "type": "segment",
+   "id": "part",
+   "from": [
+    5.1,
+    9.2
+   ],
+   "to": [
+    5.1,
+    14.2
+   ],
+   "role": "pis",
+   "strokeWidth": 6,
+   "visible": "door<0.5"
+  },
+  {
+   "type": "gas",
+   "id": "g",
+   "x0": 0,
+   "x1": "xw",
+   "y0": 9.2,
+   "y1": 14.2,
+   "n": "n",
+   "v": "v",
+   "bath": 1,
+   "vref": 2.2,
+   "seed": 3,
+   "out": {
+    "left": "gl",
+    "vrms": "gv"
+   },
+   "rate": 3,
+   "initFrac": 1,
+   "split": 5.1
+  },
+  {
+   "type": "text",
+   "id": "vac",
+   "at": [
+    8.1,
+    11.7
+   ],
+   "text": "EMPTY",
+   "role": "wall",
+   "size": "m",
+   "bold": true,
+   "visible": "door<0.5"
+  },
+  {
+   "type": "text",
+   "id": "cap",
+   "at": [
+    5.3,
+    8.4
+   ],
+   "text": "{{if door<0.5|Partition in: gas in the left half|Partition out: gas fills the box}}",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "b1l",
+   "at": [
+    1.7,
+    6.9
+   ],
+   "text": "Left half",
+   "role": "gas",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "b1",
+   "x": 3.0,
+   "y": 6.55,
+   "w": "gl*7.0",
+   "h": 0.7,
+   "role": "gas",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "b2l",
+   "at": [
+    1.7,
+    5.6
+   ],
+   "text": "Right half",
+   "role": "gas",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "b2",
+   "x": 3.0,
+   "y": 5.25,
+   "w": "(1-gl)*7.0",
+   "h": 0.7,
+   "role": "gas",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "b3l",
+   "at": [
+    1.7,
+    4.0
+   ],
+   "text": "Entropy",
+   "role": "ent",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "b3",
+   "x": 3.0,
+   "y": 3.65,
+   "w": "S/0.693*7.0",
+   "h": 0.7,
+   "role": "ent",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "fr",
+   "at": [
+    11.5,
+    6.9
+   ],
+   "text": "{{gl*100|0}} %",
+   "role": "gas",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "fr2",
+   "at": [
+    11.5,
+    5.6
+   ],
+   "text": "{{100-gl*100|0}} %",
+   "role": "gas",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "sv",
+   "at": [
+    11.5,
+    4.0
+   ],
+   "text": "{{S|2}} k",
+   "role": "ent",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "ch1",
+   "at": [
+    6.4,
+    2.2
+   ],
+   "text": "Chance all {{N|0}} are back in the left half: 1 in {{W2|0}}",
+   "role": "no",
+   "size": "s",
+   "bold": true,
+   "visible": "N<=12&&door>0.5"
+  },
+  {
+   "type": "text",
+   "id": "ch2",
+   "at": [
+    6.4,
+    2.2
+   ],
+   "text": "Chance all {{N|0}} are back in the left half: 1 in 10^{{lg|0}}",
+   "role": "no",
+   "size": "s",
+   "bold": true,
+   "visible": "N>12&&door>0.5"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A gas in half a box",
+   "text": "A partition splits a box. All the molecules are in the **left half**; the right half is empty. This is a very **ordered** arrangement: only one way for every molecule to be on the left.",
+   "actions": [
+    {
+     "set": {
+      "door": 0,
+      "N": 40
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Remove the partition",
+   "text": "Take the partition away. Nothing pushes the molecules: they just move at random. Within moments they have spread into the **whole box**. This is a **free expansion**: no work is done and the gas does not cool.",
+   "actions": [
+    {
+     "set": {
+      "door": 0,
+      "N": 40
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "door": 1
+     },
+     "at": 0,
+     "dur": 500
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Spread out and staying spread out",
+   "text": "The gas now fills both halves, about half the molecules on each side. There are **vastly more ways** to be spread out than to be bunched on one side, so that is where the random motion takes it.",
+   "actions": [
+    {
+     "set": {
+      "door": 1,
+      "N": 40
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Will it ever go back?",
+   "text": "The molecules obey Newton's laws, which work just as well backwards. But for all {{N|0}} molecules to wander back into the left half at the same moment has a chance of only 1 in 2 for each one. For many molecules that is **never**.",
+   "actions": [
+    {
+     "set": {
+      "door": 1,
+      "N": 40
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "With only a few molecules...",
+   "text": "Try **N = 4**. With so few, all four are sometimes found in the left half again, by luck. The more molecules, the more impossible it becomes: the arrow of time comes from large numbers.",
+   "actions": [
+    {
+     "set": {
+      "door": 1,
+      "N": 4
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Entropy",
+   "text": "Physicists measure this \"spread-outness\" by **entropy**. The unmixed state has low entropy; the spread state has the maximum. In a spontaneous change of an isolated system, entropy **never decreases**.",
+   "actions": [
+    {
+     "set": {
+      "door": 1,
+      "N": 40
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Molecules",
+   "value": "{{N|0}}"
+  },
+  {
+   "label": "In left half",
+   "value": "{{gl*100|0}} %",
+   "role": "gas"
+  },
+  {
+   "label": "Entropy",
+   "value": "{{S|2}} k",
+   "role": "ent"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Entropy and number of arrangements",
+   "tex": "S = k \\ln W",
+   "text": "W is the number of ways the molecules can be arranged: more ways, more entropy."
+  },
+  {
+   "title": "Why it never un-spreads",
+   "tex": "\\text{chance all } N \\text{ back in left half} = \\left(\\tfrac{1}{2}\\right)^{N}",
+   "text": "Each molecule is in the left half with probability 1/2."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A box holds just **3** molecules. What is the chance that all three happen to be in the left half (as a fraction, e.g. 0.125)?",
+   "answer": 0.125,
+   "hint": "(1/2) × (1/2) × (1/2).",
+   "explain": "\\( (1/2)^3 = 1/8 = 0.125 \\).",
+   "tolerance": 0.005
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "After the partition is removed, the entropy of the gas:",
+   "options": [
+    {
+     "id": "a",
+     "label": "increases to a maximum"
+    },
+    {
+     "id": "b",
+     "label": "decreases"
+    },
+    {
+     "id": "c",
+     "label": "stays the same"
+    },
+    {
+     "id": "d",
+     "label": "becomes negative"
+    }
+   ],
+   "answer": "a",
+   "hint": "Is spread-out more ordered or less?",
+   "explain": "The spread-out state has many more arrangements, so the entropy increases."
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Why does the gas never move back into one half by itself?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Newton's laws forbid it"
+    },
+    {
+     "id": "b",
+     "label": "The un-spread state is overwhelmingly unlikely"
+    },
+    {
+     "id": "c",
+     "label": "The molecules lose energy"
+    },
+    {
+     "id": "d",
+     "label": "The walls stop them"
+    }
+   ],
+   "answer": "b",
+   "hint": "Think of the number of arrangements.",
+   "explain": "The laws of motion allow it, but the number of spread-out arrangements is so large that the un-spread one has almost no chance."
+  }
+ ],
+ "takeaways": [
+  "A gas released into a vacuum **spreads out** and never returns by itself.",
+  "**Entropy** measures how spread out (disordered) the arrangement is; it is **S = k ln W**.",
+  "In a spontaneous change in an isolated system, **entropy never decreases**."
+ ],
+ "notes": [
+  {
+   "title": "Connects to",
+   "text": "This is an **irreversible** process: it is the picture behind the **second law**. Next: heat flowing from hot to cold increases the total entropy too."
+  }
+ ]
+}

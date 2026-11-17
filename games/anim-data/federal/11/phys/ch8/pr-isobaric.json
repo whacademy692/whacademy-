@@ -1,0 +1,795 @@
+{
+ "id": "g11-phys-c8-pr-isobaric",
+ "title": "Isobaric process: constant pressure",
+ "summary": "Heat a gas under a freely moving piston: it expands, does work P × ΔV, and its internal energy rises too.",
+ "alt": "A heated cylinder with a floating piston, a horizontal line on the P–V graph with a shaded work rectangle, and bars for Q, ΔU and W.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "th": {
+   "label": "Path on the P–V graph",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": true
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": true
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": true
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": true
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "fire": {
+   "label": "Flame core",
+   "color": "#f59e0b",
+   "text": "The hot core of the flame.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "s",
+   "label": "Progress of the process",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0
+  }
+ ],
+ "derived": {
+  "L": "(2==1 ? 4 : 4+4*s)",
+  "T": "(2<=2 ? 300+300*s : (2==3 ? 300 : 300*pow(4/(4+4*s),0.4)))",
+  "P": "8/L*T/300",
+  "dU": "0.0667*(T-300)",
+  "W": "(2==1 ? 0 : (2==2 ? 2*(L-4) : (2==3 ? 8*ln(L/4) : 0.0667*(300-T))))",
+  "Q": "dU+W",
+  "v": "2.2*sqrt(T/300)",
+  "n": "40"
+ },
+ "shapes": [
+  {
+   "type": "polyline",
+   "id": "cyl",
+   "pts": [
+    [
+     10.649999999999999,
+     14.2
+    ],
+    [
+     0,
+     14.2
+    ],
+    [
+     0,
+     9.9
+    ],
+    [
+     10.649999999999999,
+     9.9
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 4
+  },
+  {
+   "type": "rect",
+   "id": "pis",
+   "x": "L",
+   "y": 9.85,
+   "w": 0.45,
+   "h": 4.399999999999999,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "segment",
+   "id": "rod",
+   "from": [
+    "(L)+0.45",
+    12.05
+   ],
+   "to": [
+    "(L)+2.3",
+    12.05
+   ],
+   "role": "pis",
+   "strokeWidth": 5
+  },
+  {
+   "type": "rect",
+   "id": "hdl",
+   "x": "(L)+2.3",
+   "y": 11.450000000000001,
+   "w": 0.3,
+   "h": 1.2,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.7,
+   "strokeWidth": 2
+  },
+  {
+   "type": "gas",
+   "id": "g",
+   "x0": 0,
+   "x1": "L",
+   "y0": 9.9,
+   "y1": 14.2,
+   "n": "n",
+   "v": "v",
+   "bath": 1,
+   "vref": 2.2,
+   "seed": 7,
+   "out": {
+    "vrms": "gv"
+   },
+   "rate": 2.5
+  },
+  {
+   "type": "polygon",
+   "id": "fl",
+   "pts": [
+    [
+     1.463,
+     7.797
+    ],
+    [
+     1.342,
+     8.361
+    ],
+    [
+     1.681,
+     8.796
+    ],
+    [
+     1.886,
+     8.522
+    ],
+    [
+     2.188,
+     9.085
+    ],
+    [
+     2.55,
+     9.407
+    ],
+    [
+     2.816,
+     8.989
+    ],
+    [
+     3.057,
+     8.602
+    ],
+    [
+     3.347,
+     8.86
+    ],
+    [
+     3.733,
+     8.28
+    ],
+    [
+     3.588,
+     7.797
+    ]
+   ],
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.75,
+   "strokeWidth": 2.5,
+   "visible": "s>0.03"
+  },
+  {
+   "type": "polygon",
+   "id": "fli",
+   "pts": [
+    [
+     2.007,
+     7.958
+    ],
+    [
+     1.946,
+     8.297
+    ],
+    [
+     2.115,
+     8.557
+    ],
+    [
+     2.218,
+     8.393
+    ],
+    [
+     2.369,
+     8.731
+    ],
+    [
+     2.55,
+     8.924
+    ],
+    [
+     2.683,
+     8.673
+    ],
+    [
+     2.804,
+     8.441
+    ],
+    [
+     2.948,
+     8.596
+    ],
+    [
+     3.142,
+     8.248
+    ],
+    [
+     3.069,
+     7.958
+    ]
+   ],
+   "role": "fire",
+   "fill": true,
+   "fillOpacity": 0.9,
+   "strokeWidth": 1,
+   "visible": "s>0.03"
+  },
+  {
+   "type": "polygon",
+   "id": "fl2",
+   "pts": [
+    [
+     5.063,
+     7.797
+    ],
+    [
+     4.943,
+     8.361
+    ],
+    [
+     5.281,
+     8.796
+    ],
+    [
+     5.486,
+     8.522
+    ],
+    [
+     5.788,
+     9.085
+    ],
+    [
+     6.15,
+     9.407
+    ],
+    [
+     6.416,
+     8.989
+    ],
+    [
+     6.657,
+     8.602
+    ],
+    [
+     6.947,
+     8.86
+    ],
+    [
+     7.333,
+     8.28
+    ],
+    [
+     7.188,
+     7.797
+    ]
+   ],
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.75,
+   "strokeWidth": 2.5,
+   "visible": "s>0.03"
+  },
+  {
+   "type": "polygon",
+   "id": "fl2i",
+   "pts": [
+    [
+     5.607,
+     7.958
+    ],
+    [
+     5.546,
+     8.297
+    ],
+    [
+     5.715,
+     8.557
+    ],
+    [
+     5.818,
+     8.393
+    ],
+    [
+     5.969,
+     8.731
+    ],
+    [
+     6.15,
+     8.924
+    ],
+    [
+     6.283,
+     8.673
+    ],
+    [
+     6.404,
+     8.441
+    ],
+    [
+     6.548,
+     8.596
+    ],
+    [
+     6.742,
+     8.248
+    ],
+    [
+     6.669,
+     7.958
+    ]
+   ],
+   "role": "fire",
+   "fill": true,
+   "fillOpacity": 0.9,
+   "strokeWidth": 1,
+   "visible": "s>0.03"
+  },
+  {
+   "type": "vector",
+   "id": "gax",
+   "from": [
+    1.7,
+    0.9
+   ],
+   "to": [
+    12.299999999999999,
+    0.9
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "vector",
+   "id": "gay",
+   "from": [
+    1.7,
+    0.9
+   ],
+   "to": [
+    1.7,
+    4.8
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "gxl",
+   "at": [
+    12.45,
+    0.8
+   ],
+   "text": "V",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "gyl",
+   "at": [
+    1.65,
+    5.1499999999999995
+   ],
+   "text": "P",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "zero",
+   "from": [
+    7.0,
+    5.4
+   ],
+   "to": [
+    7.0,
+    7.75
+   ],
+   "role": "wall",
+   "strokeWidth": 1.5
+  },
+  {
+   "type": "rect",
+   "id": "brQ",
+   "x": "min(7.0,7.0+(Q)*0.19)",
+   "y": 7.05,
+   "w": "max(0.05,abs(Q)*0.19)",
+   "h": 0.55,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.65,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "blQ",
+   "at": [
+    0.9,
+    7.33
+   ],
+   "text": "Q",
+   "role": "hot",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "bvQ",
+   "at": [
+    12.0,
+    7.33
+   ],
+   "text": "{{Q|1}}",
+   "role": "hot",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "brdU",
+   "x": "min(7.0,7.0+(dU)*0.19)",
+   "y": 6.3,
+   "w": "max(0.05,abs(dU)*0.19)",
+   "h": 0.55,
+   "role": "u",
+   "fill": true,
+   "fillOpacity": 0.65,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "bldU",
+   "at": [
+    0.9,
+    6.58
+   ],
+   "text": "ΔU",
+   "role": "u",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "bvdU",
+   "at": [
+    12.0,
+    6.58
+   ],
+   "text": "{{dU|1}}",
+   "role": "u",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "brW",
+   "x": "min(7.0,7.0+(W)*0.19)",
+   "y": 5.55,
+   "w": "max(0.05,abs(W)*0.19)",
+   "h": 0.55,
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.65,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "blW",
+   "at": [
+    0.9,
+    5.83
+   ],
+   "text": "W",
+   "role": "work",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "bvW",
+   "at": [
+    12.0,
+    5.83
+   ],
+   "text": "{{W|1}}",
+   "role": "work",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "wr",
+   "x": "(1.7+((4)/9)*10.2)",
+   "y": 0.9,
+   "w": "(1.7+((L)/9)*10.2)-(1.7+((4)/9)*10.2)",
+   "h": "(0.9+((2)/2.6)*3.4)-0.9",
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.3,
+   "strokeWidth": 1.5
+  },
+  {
+   "type": "segment",
+   "id": "pt",
+   "from": [
+    "(1.7+((4)/9)*10.2)",
+    "(0.9+((2)/2.6)*3.4)"
+   ],
+   "to": [
+    "(1.7+((L)/9)*10.2)",
+    "(0.9+((2)/2.6)*3.4)"
+   ],
+   "role": "th",
+   "strokeWidth": 4
+  },
+  {
+   "type": "point",
+   "id": "d",
+   "at": [
+    "(1.7+((L)/9)*10.2)",
+    "(0.9+((2)/2.6)*3.4)"
+   ],
+   "role": "me",
+   "r": 7
+  },
+  {
+   "type": "point",
+   "id": "d0",
+   "at": [
+    "(1.7+((4)/9)*10.2)",
+    "(0.9+((2)/2.6)*3.4)"
+   ],
+   "role": "wall",
+   "r": 5
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Pressure is held constant",
+   "text": "**Isobaric** means **constant pressure**. The piston floats freely under a steady outside pressure, so the gas pressure cannot change. It starts at 300 K and 2 P₀.",
+   "actions": [
+    {
+     "set": {
+      "s": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Heat the gas: it expands",
+   "text": "Heat flows in and the molecules speed up. To keep the pressure the same the gas **expands**, pushing the piston out. The state moves **right** along a horizontal line (Charles's law).",
+   "actions": [
+    {
+     "set": {
+      "s": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "s": 1
+     },
+     "at": 0,
+     "dur": 4600
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Work is the area",
+   "text": "The expanding gas does work \\( W = P\\Delta V \\): the shaded rectangle. Here \\( W = {{W|1}} \\) units.",
+   "actions": [
+    {
+     "set": {
+      "s": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "The heat does two jobs",
+   "text": "The gas also got hotter, so \\( \\Delta U = {{dU|1}} \\) rose. The heat has to cover **both** the rise in U and the work: \\( Q = \\Delta U + W = {{dU|1}} + {{W|1}} = {{Q|1}} \\).",
+   "actions": [
+    {
+     "set": {
+      "s": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "More heat than an isochoric rise",
+   "text": "The same temperature rise at constant volume would need only \\( Q = \\Delta U = {{dU|1}} \\). At constant pressure you must **also pay for the work**, so more heat is needed.",
+   "actions": [
+    {
+     "set": {
+      "s": 1
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "s": 0
+     },
+     "at": 0,
+     "dur": 3200
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Heat Q",
+   "value": "{{Q|1}}",
+   "role": "hot"
+  },
+  {
+   "label": "ΔU",
+   "value": "{{dU|1}}",
+   "role": "u"
+  },
+  {
+   "label": "Work W",
+   "value": "{{W|1}}",
+   "role": "work"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Isobaric process",
+   "tex": "\\Delta P = 0, \\qquad \\role{work}{W} = P\\Delta V, \\qquad \\role{hot}{Q} = \\role{u}{\\Delta U} + P\\Delta V",
+   "text": "The heat covers the rise in internal energy and the work of expansion."
+  },
+  {
+   "title": "Charles's law",
+   "tex": "\\dfrac{V_1}{T_1} = \\dfrac{V_2}{T_2}",
+   "text": "At constant pressure V is proportional to T (kelvin)."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A gas at constant pressure **1 × 10⁵ Pa** expands by **2 × 10⁻³ m³** while absorbing **500 J** of heat. How much work does it do (J)?",
+   "answer": 200,
+   "hint": "W = P ΔV.",
+   "explain": "\\( W = 10^5 \\times 2\\times10^{-3} = 200 \\) J.",
+   "tolerance": 1,
+   "unit": "J"
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "In the same process the gas absorbs **500 J** and does **200 J** of work. What is the rise in internal energy (J)?",
+   "answer": 300,
+   "hint": "ΔU = Q − W.",
+   "explain": "\\( \\Delta U = 500 - 200 = 300 \\) J.",
+   "tolerance": 1,
+   "unit": "J"
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "In an isobaric expansion the heat added is:",
+   "options": [
+    {
+     "id": "a",
+     "label": "equal to ΔU only"
+    },
+    {
+     "id": "b",
+     "label": "equal to W only"
+    },
+    {
+     "id": "c",
+     "label": "ΔU + P ΔV"
+    },
+    {
+     "id": "d",
+     "label": "zero"
+    }
+   ],
+   "answer": "c",
+   "hint": "Heat covers the energy rise and the work.",
+   "explain": "Isobaric: \\( Q = \\Delta U + P\\Delta V \\)."
+  }
+ ],
+ "takeaways": [
+  "**Isobaric = constant pressure**: horizontal line on the P–V graph.",
+  "**W = PΔV** is the area under the line.",
+  "**Q = ΔU + PΔV**: more heat is needed than for a constant-volume rise."
+ ],
+ "notes": [
+  {
+   "title": "Connects to",
+   "text": "Boiling water in an open pan, or a gas under a weighted piston, is isobaric. Constant-pressure steps appear in **engine cycles** such as the steam engine."
+  }
+ ]
+}

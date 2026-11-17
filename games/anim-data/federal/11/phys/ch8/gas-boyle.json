@@ -1,0 +1,466 @@
+{
+ "id": "g11-phys-c8-gas-boyle",
+ "title": "Boyle's law: pressure and volume (constant temperature)",
+ "summary": "Squeeze a gas slowly: pressure rises as volume falls, and P × V stays the same.",
+ "alt": "A cylinder with a piston and a P–V graph showing the curve P = k/V with a live dot and a rectangle whose area is P times V.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": true
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": true
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": true
+  },
+  "work": {
+   "label": "P × V area",
+   "color": "#d97706",
+   "text": "The area of this rectangle is P × V and does not change.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "L",
+   "label": "Volume V (length of gas)",
+   "type": "number",
+   "min": 2.5,
+   "max": 10,
+   "step": 0.05,
+   "default": 8
+  },
+  {
+   "id": "T",
+   "label": "Temperature (K)",
+   "type": "number",
+   "min": 200,
+   "max": 500,
+   "step": 10,
+   "default": 300
+  }
+ ],
+ "derived": {
+  "v": "2.2*sqrt(T/300)",
+  "n": "40",
+  "Pm": "gp/2.420",
+  "Pth": "8/L*(T/300)"
+ },
+ "shapes": [
+  {
+   "type": "polyline",
+   "id": "cyl",
+   "pts": [
+    [
+     10.649999999999999,
+     14.2
+    ],
+    [
+     0,
+     14.2
+    ],
+    [
+     0,
+     9.2
+    ],
+    [
+     10.649999999999999,
+     9.2
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 4
+  },
+  {
+   "type": "rect",
+   "id": "pis",
+   "x": "L",
+   "y": 9.149999999999999,
+   "w": 0.45,
+   "h": 5.1,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "segment",
+   "id": "rod",
+   "from": [
+    "(L)+0.45",
+    11.7
+   ],
+   "to": [
+    "(L)+2.3",
+    11.7
+   ],
+   "role": "pis",
+   "strokeWidth": 5
+  },
+  {
+   "type": "rect",
+   "id": "hdl",
+   "x": "(L)+2.3",
+   "y": 11.1,
+   "w": 0.3,
+   "h": 1.2,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.7,
+   "strokeWidth": 2
+  },
+  {
+   "type": "gas",
+   "id": "g",
+   "x0": 0,
+   "x1": "L",
+   "y0": 9.2,
+   "y1": 14.2,
+   "n": "n",
+   "v": "v",
+   "bath": 1,
+   "vref": 2.2,
+   "seed": 7,
+   "out": {
+    "vrms": "gv",
+    "P": "gp",
+    "hits": "gh"
+   }
+  },
+  {
+   "type": "vector",
+   "id": "gax",
+   "from": [
+    1.7,
+    0.9
+   ],
+   "to": [
+    12.299999999999999,
+    0.9
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "vector",
+   "id": "gay",
+   "from": [
+    1.7,
+    0.9
+   ],
+   "to": [
+    1.7,
+    6.800000000000001
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "gxl",
+   "at": [
+    12.45,
+    0.75
+   ],
+   "text": "V",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "gyl",
+   "at": [
+    1.5999999999999999,
+    7.15
+   ],
+   "text": "P",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "pvbox",
+   "x": 1.7,
+   "y": 0.9,
+   "w": "(1.7+((L)-(0))/(10.5-(0))*10.2)-1.7",
+   "h": "(0.9+((min(Pth,5.8))-(0))/(6-(0))*5.4)-0.9",
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 1.5
+  },
+  {
+   "type": "plot",
+   "id": "cv",
+   "x": "(1.7+((u)-(0))/(10.5-(0))*10.2)",
+   "y": "(0.9+((min(5.9,8/u*(T/300)))-(0))/(6-(0))*5.4)",
+   "var": "u",
+   "domain": [
+    1.5,
+    10.4
+   ],
+   "samples": 140,
+   "role": "th",
+   "strokeWidth": 3.5
+  },
+  {
+   "type": "point",
+   "id": "d",
+   "at": [
+    "(1.7+((L)-(0))/(10.5-(0))*10.2)",
+    "(0.9+((min(Pm,5.9))-(0))/(6-(0))*5.4)"
+   ],
+   "role": "me",
+   "r": 7
+  },
+  {
+   "type": "text",
+   "id": "tp",
+   "at": [
+    7.4,
+    6.0
+   ],
+   "text": "P × V = {{Pm*L/8|2}}",
+   "role": "work",
+   "size": "m",
+   "bold": true
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Gas trapped in a cylinder",
+   "text": "A fixed amount of gas is trapped in a cylinder. We keep the **temperature constant**, so the molecules keep the same average speed. Only the volume changes. The pressure is {{Pm|2}} × P₀.",
+   "actions": [
+    {
+     "set": {
+      "L": 8,
+      "T": 300
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Push the piston in",
+   "text": "Push the piston in slowly. The gas has less room, so molecules hit the piston **more often**. The pressure **rises**: look at the red dot climbing the curve.",
+   "actions": [
+    {
+     "set": {
+      "L": 8,
+      "T": 300
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "L": 4
+     },
+     "at": 0,
+     "dur": 3600
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Half the volume, double the pressure",
+   "text": "At V = {{L/8|2}} V₀ the pressure is {{Pm|2}} P₀. Halve the volume and the pressure **doubles**.",
+   "actions": [
+    {
+     "set": {
+      "L": 4,
+      "T": 300
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Pull the piston out",
+   "text": "Now let the gas expand. More room means fewer hits, so the pressure **drops** along the same curve.",
+   "actions": [
+    {
+     "set": {
+      "L": 4,
+      "T": 300
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "L": 9.5
+     },
+     "at": 0,
+     "dur": 4200
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "P × V never changes",
+   "text": "The shaded rectangle changes shape, but its **area (P × V) stays the same**. The curve is a hyperbola: \\( PV = \\text{constant} \\).",
+   "actions": [
+    {
+     "set": {
+      "L": 6,
+      "T": 300
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Hotter gas, higher curve",
+   "text": "Raising the temperature does not break the law: it moves the whole curve **up**. Each temperature has its own curve, called an **isotherm**. Explore with the sliders.",
+   "actions": [
+    {
+     "set": {
+      "L": 6,
+      "T": 300
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "T": 450
+     },
+     "at": 0,
+     "dur": 2600
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Volume (×V₀)",
+   "value": "{{L/8|2}}"
+  },
+  {
+   "label": "Pressure (×P₀)",
+   "value": "{{Pm|2}}",
+   "role": "me"
+  },
+  {
+   "label": "P × V",
+   "value": "{{Pm*L/8|2}}",
+   "role": "work"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Boyle's law",
+   "tex": "\\role{me}{P_1}\\,\\role{th}{V_1} = \\role{me}{P_2}\\,\\role{th}{V_2}",
+   "text": "At constant temperature and amount of gas, P × V stays the same."
+  },
+  {
+   "title": "Same thing, as a graph",
+   "tex": "\\role{me}{P} \\propto \\dfrac{1}{\\role{th}{V}}",
+   "text": "P against V is a curve (hyperbola); P against 1/V is a straight line through the origin."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A gas at **2 atm** is squeezed from **6 L** to **3 L** at constant temperature. What is the new pressure in atm?",
+   "answer": 4,
+   "hint": "Use \\( P_1V_1 = P_2V_2 \\).",
+   "explain": "\\( 2 \\times 6 = P_2 \\times 3 \\), so \\( P_2 = 4 \\) atm.",
+   "tolerance": 0.1,
+   "unit": "atm"
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "The gas is at **1 P₀** when V = V₀. What pressure (in P₀) will it show when the volume is made **one quarter** of V₀?",
+   "answer": 4,
+   "hint": "Quarter the volume = four times the pressure.",
+   "explain": "P × V is constant, so \\( P = 4 \\) P₀.",
+   "tolerance": 0.15,
+   "unit": "P₀",
+   "set": {
+    "L": 8,
+    "T": 300
+   }
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which statement is true for a gas at **constant temperature**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "P and V are directly proportional"
+    },
+    {
+     "id": "b",
+     "label": "P and V are inversely proportional"
+    },
+    {
+     "id": "c",
+     "label": "P and V are always equal"
+    },
+    {
+     "id": "d",
+     "label": "P does not depend on V"
+    }
+   ],
+   "answer": "b",
+   "hint": "When one goes up the other goes down.",
+   "explain": "Boyle's law: P × V = constant, so P ∝ 1/V."
+  }
+ ],
+ "takeaways": [
+  "**Boyle's law:** at constant temperature, \\( PV = \\text{constant} \\) for a fixed amount of gas.",
+  "Smaller volume means more frequent hits, so **higher pressure**.",
+  "The P–V graph of constant temperature is a **hyperbola**, called an isotherm."
+ ],
+ "notes": [
+  {
+   "title": "Connects to",
+   "text": "Boyle's curve is the **isothermal process** (T constant, ΔU = 0). The **area under** a P–V curve is the work done: see *Work as area under P–V*. Compare with Charles and Gay-Lussac, where temperature changes."
+  }
+ ]
+}

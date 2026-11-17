@@ -1,0 +1,662 @@
+{
+ "id": "g11-phys-c8-en-fourstroke",
+ "title": "The four-stroke petrol engine",
+ "summary": "Intake, compression, power, exhaust: follow one cylinder through a full cycle and see it on a P–V loop.",
+ "alt": "A horizontal cylinder with a piston, inlet and exhaust valves, a spark, molecules entering and leaving, and a P–V loop traced as the engine turns.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Power stroke",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": true
+  },
+  "cold": {
+   "label": "Intake / exhaust",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": true
+  },
+  "work": {
+   "label": "Spark",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": true
+  },
+  "u": {
+   "label": "Compression",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": true
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "phi",
+   "label": "Crank angle (°)",
+   "type": "clock",
+   "min": 0,
+   "max": 720,
+   "step": 1,
+   "speed": 80,
+   "loop": "repeat",
+   "default": 0
+  }
+ ],
+ "derived": {
+  "L": "(5.6-3*cos(phi))",
+  "T": "(phi<180 ? 300 : (phi<360 ? 300*pow(8.6/L,0.4) : (phi<540 ? 1100*pow(2.6/L,0.4) : 683-283*(phi-540)/180)))",
+  "P": "(phi<180 ? 1 : (phi<360 ? pow(8.6/L,1.4) : (phi<540 ? 12.1*pow(2.6/L,1.4) : 1)))",
+  "n": "(phi<180 ? 4+36*phi/180 : (phi<540 ? 40 : 40-36*(phi-540)/180))",
+  "v": "2.2*sqrt(T/300)",
+  "stroke": "phi<180 ? 1 : (phi<360 ? 2 : (phi<540 ? 3 : 4))"
+ },
+ "shapes": [
+  {
+   "type": "polyline",
+   "id": "cyl",
+   "pts": [
+    [
+     11.049999999999999,
+     14.2
+    ],
+    [
+     0,
+     14.2
+    ],
+    [
+     0,
+     9.9
+    ],
+    [
+     11.049999999999999,
+     9.9
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 4
+  },
+  {
+   "type": "rect",
+   "id": "pis",
+   "x": "L",
+   "y": 9.85,
+   "w": 0.45,
+   "h": 4.399999999999999,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "segment",
+   "id": "rod",
+   "from": [
+    "(L)+0.45",
+    12.05
+   ],
+   "to": [
+    "(L)+2.3",
+    12.05
+   ],
+   "role": "pis",
+   "strokeWidth": 5
+  },
+  {
+   "type": "rect",
+   "id": "hdl",
+   "x": "(L)+2.3",
+   "y": 11.450000000000001,
+   "w": 0.3,
+   "h": 1.2,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.7,
+   "strokeWidth": 2
+  },
+  {
+   "type": "gas",
+   "id": "g",
+   "x0": 0,
+   "x1": "L",
+   "y0": 9.9,
+   "y1": 14.2,
+   "n": "n",
+   "v": "v",
+   "bath": 1,
+   "vref": 2.4,
+   "seed": 5,
+   "out": {
+    "vrms": "gv"
+   },
+   "rate": 5
+  },
+  {
+   "type": "rect",
+   "id": "inV",
+   "x": 0.6,
+   "y": 14.2,
+   "w": 1.2,
+   "h": 0.35,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.7,
+   "strokeWidth": 2,
+   "visible": "stroke!=1"
+  },
+  {
+   "type": "vector",
+   "id": "inA",
+   "from": [
+    1.2,
+    14.95
+   ],
+   "to": [
+    1.2,
+    14.25
+   ],
+   "role": "cold",
+   "strokeWidth": 5,
+   "visible": "stroke==1"
+  },
+  {
+   "type": "rect",
+   "id": "exV",
+   "x": 0.6,
+   "y": 9.55,
+   "w": 1.2,
+   "h": 0.35,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.7,
+   "strokeWidth": 2,
+   "visible": "stroke!=4"
+  },
+  {
+   "type": "vector",
+   "id": "exA",
+   "from": [
+    1.2,
+    9.6
+   ],
+   "to": [
+    1.2,
+    8.9
+   ],
+   "role": "cold",
+   "strokeWidth": 5,
+   "visible": "stroke==4"
+  },
+  {
+   "type": "polygon",
+   "id": "sp",
+   "pts": [
+    [
+     2.4,
+     14.2
+    ],
+    [
+     2.9,
+     13.4
+    ],
+    [
+     2.6,
+     13.4
+    ],
+    [
+     3.2,
+     12.4
+    ],
+    [
+     2.5,
+     13.0
+    ],
+    [
+     2.8,
+     13.0
+    ]
+   ],
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.9,
+   "strokeWidth": 2,
+   "visible": "phi>=360&&phi<395"
+  },
+  {
+   "type": "text",
+   "id": "inT",
+   "at": [
+    4.3,
+    14.7
+   ],
+   "text": "inlet valve",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "visible": "stroke==1"
+  },
+  {
+   "type": "text",
+   "id": "exT",
+   "at": [
+    4.3,
+    8.9
+   ],
+   "text": "exhaust valve",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "visible": "stroke==4"
+  },
+  {
+   "type": "text",
+   "id": "stk",
+   "at": [
+    6.5,
+    8.35
+   ],
+   "text": "{{if stroke==1|1 · INTAKE: fresh fuel–air mixture is drawn in|}}{{if stroke==2|2 · COMPRESSION: piston squeezes the mixture|}}{{if stroke==3|3 · POWER: spark, hot gas pushes the piston|}}{{if stroke==4|4 · EXHAUST: burnt gas is pushed out|}}",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "vector",
+   "id": "gax",
+   "from": [
+    1.7,
+    0.9
+   ],
+   "to": [
+    12.299999999999999,
+    0.9
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "vector",
+   "id": "gay",
+   "from": [
+    1.7,
+    0.9
+   ],
+   "to": [
+    1.7,
+    6.8
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "gxl",
+   "at": [
+    12.45,
+    0.8
+   ],
+   "text": "V",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "gyl",
+   "at": [
+    1.65,
+    7.1
+   ],
+   "text": "P",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "in",
+   "from": [
+    "(1.7+((2.6)-(0))/(10.2-(0))*10.2)",
+    "(0.9+((1)/13)*5.6)"
+   ],
+   "to": [
+    "(1.7+((8.6)-(0))/(10.2-(0))*10.2)",
+    "(0.9+((1)/13)*5.6)"
+   ],
+   "role": "cold",
+   "strokeWidth": 4,
+   "opacity": "(phi<180||phi>=540) ? 1 : 0.32"
+  },
+  {
+   "type": "plot",
+   "id": "cm",
+   "x": "(1.7+((u)-(0))/(10.2-(0))*10.2)",
+   "y": "(0.9+((1*pow(8.6/u,1.4))/13)*5.6)",
+   "var": "u",
+   "domain": [
+    2.6,
+    8.6
+   ],
+   "samples": 60,
+   "role": "u",
+   "strokeWidth": 4,
+   "opacity": "(phi>=180&&phi<360) ? 1 : 0.32"
+  },
+  {
+   "type": "segment",
+   "id": "sk",
+   "from": [
+    "(1.7+((2.6)-(0))/(10.2-(0))*10.2)",
+    "(0.9+((pow(8.6/2.6,1.4))/13)*5.6)"
+   ],
+   "to": [
+    "(1.7+((2.6)-(0))/(10.2-(0))*10.2)",
+    "(0.9+((12.1)/13)*5.6)"
+   ],
+   "role": "work",
+   "strokeWidth": 4,
+   "opacity": "(phi>=330&&phi<400) ? 1 : 0.32"
+  },
+  {
+   "type": "plot",
+   "id": "pw",
+   "x": "(1.7+((u)-(0))/(10.2-(0))*10.2)",
+   "y": "(0.9+((12.1*pow(2.6/u,1.4))/13)*5.6)",
+   "var": "u",
+   "domain": [
+    2.6,
+    8.6
+   ],
+   "samples": 60,
+   "role": "hot",
+   "strokeWidth": 4,
+   "opacity": "(phi>=360&&phi<540) ? 1 : 0.32"
+  },
+  {
+   "type": "segment",
+   "id": "bd",
+   "from": [
+    "(1.7+((8.6)-(0))/(10.2-(0))*10.2)",
+    "(0.9+((12.1*pow(2.6/8.6,1.4))/13)*5.6)"
+   ],
+   "to": [
+    "(1.7+((8.6)-(0))/(10.2-(0))*10.2)",
+    "(0.9+((1)/13)*5.6)"
+   ],
+   "role": "cold",
+   "strokeWidth": 4,
+   "opacity": "(phi>=520&&phi<560) ? 1 : 0.32"
+  },
+  {
+   "type": "point",
+   "id": "d",
+   "at": [
+    "(1.7+((L)-(0))/(10.2-(0))*10.2)",
+    "(0.9+((P)/13)*5.6)"
+   ],
+   "role": "me",
+   "r": 8
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "One cylinder, four strokes",
+   "text": "In a petrol engine each cylinder repeats **four strokes** (two full turns of the crankshaft). On the P–V graph they trace a loop. Only **one** stroke, the power stroke, produces work.",
+   "actions": [
+    {
+     "set": {
+      "phi": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Stroke 1: intake",
+   "text": "The piston moves out and the **inlet valve opens**. A fresh fuel–air mixture is sucked in at about atmospheric pressure: the flat bottom line of the graph.",
+   "actions": [
+    {
+     "set": {
+      "phi": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "phi": 178
+     },
+     "at": 0,
+     "dur": 4000
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Stroke 2: compression",
+   "text": "Both valves are shut. The piston moves in and squeezes the mixture. Work is done **on** the gas, so it gets **hotter and its pressure climbs**: this is an adiabatic compression.",
+   "actions": [
+    {
+     "set": {
+      "phi": 180
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "phi": 358
+     },
+     "at": 0,
+     "dur": 4000
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Stroke 3: power",
+   "text": "At the top the **spark** ignites the mixture. The temperature and pressure shoot up (vertical line), then the hot gas pushes the piston out: the engine does **work**. The gas cools as it expands.",
+   "actions": [
+    {
+     "set": {
+      "phi": 360
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "phi": 538
+     },
+     "at": 0,
+     "dur": 4800
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Stroke 4: exhaust",
+   "text": "The **exhaust valve opens**. The pressure drops and the piston pushes the burnt gas out, **rejecting heat** to the surroundings. The cycle then starts again.",
+   "actions": [
+    {
+     "set": {
+      "phi": 540
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "phi": 718
+     },
+     "at": 0,
+     "dur": 4000
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "The loop is the work",
+   "text": "The **area enclosed** by the loop is the net work per cycle. Run the engine and watch the loop trace itself. Press play on **Crank angle**.",
+   "actions": [
+    {
+     "set": {
+      "phi": 0
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Stroke",
+   "value": "{{stroke|0}} of 4"
+  },
+  {
+   "label": "Crank angle",
+   "value": "{{phi|0}}°"
+  },
+  {
+   "label": "Gas temp (K)",
+   "value": "{{T|0}}",
+   "role": "hot"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Net work in a cycle",
+   "tex": "\\role{work}{W_{\\text{net}}} = \\oint P\\,dV = \\text{area enclosed by the loop}",
+   "text": "Work out in the power stroke minus the work put in during compression."
+  },
+  {
+   "title": "Energy balance per cycle",
+   "tex": "\\role{hot}{Q_h} = \\role{work}{W_{\\text{net}}} + \\role{cold}{Q_c}",
+   "text": "Fuel heat in = useful work + heat lost in the exhaust."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "In which stroke does the engine produce **useful work**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Intake"
+    },
+    {
+     "id": "b",
+     "label": "Compression"
+    },
+    {
+     "id": "c",
+     "label": "Power"
+    },
+    {
+     "id": "d",
+     "label": "Exhaust"
+    }
+   ],
+   "answer": "c",
+   "hint": "The hot gas pushes the piston.",
+   "explain": "Only the power stroke does work on the piston; the other three strokes use energy."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Why does the gas get hotter during the **compression** stroke?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Work is done on it by the piston"
+    },
+    {
+     "id": "b",
+     "label": "The spark ignites it"
+    },
+    {
+     "id": "c",
+     "label": "Cold air enters"
+    },
+    {
+     "id": "d",
+     "label": "The walls are hot"
+    }
+   ],
+   "answer": "a",
+   "hint": "Think of the bicycle pump.",
+   "explain": "Fast compression is nearly adiabatic: the work done on the gas becomes internal energy."
+  },
+  {
+   "id": "c3",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "How many full turns of the crankshaft does one four-stroke cycle need?",
+   "answer": 2,
+   "hint": "Each stroke is half a turn.",
+   "explain": "Four strokes × half a turn each = **2 turns** (720°).",
+   "tolerance": 0.1,
+   "unit": "turns"
+  }
+ ],
+ "takeaways": [
+  "The four strokes are **intake, compression, power, exhaust**.",
+  "On the P–V graph the strokes form a **loop**; its **area is the net work** per cycle.",
+  "Only the **power stroke** does work; some heat must always be **rejected in the exhaust**."
+ ],
+ "notes": [
+  {
+   "title": "Connects to",
+   "text": "The engine has an efficiency \\( \\eta = W/Q_h \\) well below 100%. The best possible for given temperatures is the **Carnot engine**, which uses two isotherms and two adiabats."
+  }
+ ]
+}

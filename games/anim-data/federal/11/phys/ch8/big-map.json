@@ -1,0 +1,777 @@
+{
+ "id": "g11-phys-c8-big-map",
+ "title": "The big map: how the whole chapter connects",
+ "summary": "Molecules, gas laws, work, the first law, the four processes, engines and entropy: follow the links from the bottom to the top.",
+ "alt": "A concept map with boxes linked by arrows from molecules and gas laws down through work and the first law, the four processes, heat engines and the second law and entropy.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "foc",
+   "label": "foc",
+   "type": "number",
+   "min": 0,
+   "max": 8,
+   "step": 0.01,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "n1",
+   "x": 0.6,
+   "y": 13.1,
+   "w": 5.6,
+   "h": 1.6,
+   "role": "gas",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "opacity": "(foc==0||foc==1) ? 1 : 0.3"
+  },
+  {
+   "type": "text",
+   "id": "nt1",
+   "at": [
+    3.4,
+    14.15
+   ],
+   "text": "Molecules",
+   "role": "gas",
+   "size": "s",
+   "bold": true,
+   "opacity": "(foc==0||foc==1) ? 1 : 0.3"
+  },
+  {
+   "type": "text",
+   "id": "ns1",
+   "at": [
+    3.4,
+    13.549999999999999
+   ],
+   "text": "T ∝ average KE",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "opacity": "(foc==0||foc==1) ? 1 : 0.3"
+  },
+  {
+   "type": "rect",
+   "id": "n2",
+   "x": 6.7,
+   "y": 13.1,
+   "w": 5.6,
+   "h": 1.6,
+   "role": "th",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "opacity": "(foc==0||foc==2) ? 1 : 0.3"
+  },
+  {
+   "type": "text",
+   "id": "nt2",
+   "at": [
+    9.5,
+    14.15
+   ],
+   "text": "Gas laws",
+   "role": "th",
+   "size": "s",
+   "bold": true,
+   "opacity": "(foc==0||foc==2) ? 1 : 0.3"
+  },
+  {
+   "type": "text",
+   "id": "ns2",
+   "at": [
+    9.5,
+    13.549999999999999
+   ],
+   "text": "PV = nRT",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "opacity": "(foc==0||foc==2) ? 1 : 0.3"
+  },
+  {
+   "type": "rect",
+   "id": "n3",
+   "x": 0.6,
+   "y": 10.7,
+   "w": 5.6,
+   "h": 1.6,
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "opacity": "(foc==0||foc==3) ? 1 : 0.3"
+  },
+  {
+   "type": "text",
+   "id": "nt3",
+   "at": [
+    3.4,
+    11.75
+   ],
+   "text": "Work",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "opacity": "(foc==0||foc==3) ? 1 : 0.3"
+  },
+  {
+   "type": "text",
+   "id": "ns3",
+   "at": [
+    3.4,
+    11.149999999999999
+   ],
+   "text": "W = PΔV",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "opacity": "(foc==0||foc==3) ? 1 : 0.3"
+  },
+  {
+   "type": "rect",
+   "id": "n4",
+   "x": 6.7,
+   "y": 10.7,
+   "w": 5.6,
+   "h": 1.6,
+   "role": "u",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "opacity": "(foc==0||foc==4) ? 1 : 0.3"
+  },
+  {
+   "type": "text",
+   "id": "nt4",
+   "at": [
+    9.5,
+    11.75
+   ],
+   "text": "Internal energy",
+   "role": "u",
+   "size": "s",
+   "bold": true,
+   "opacity": "(foc==0||foc==4) ? 1 : 0.3"
+  },
+  {
+   "type": "text",
+   "id": "ns4",
+   "at": [
+    9.5,
+    11.149999999999999
+   ],
+   "text": "U of the molecules",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "opacity": "(foc==0||foc==4) ? 1 : 0.3"
+  },
+  {
+   "type": "rect",
+   "id": "n5",
+   "x": 2.5,
+   "y": 8.3,
+   "w": 7.9,
+   "h": 1.6,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "opacity": "(foc==0||foc==5) ? 1 : 0.3"
+  },
+  {
+   "type": "text",
+   "id": "nt5",
+   "at": [
+    6.45,
+    9.350000000000001
+   ],
+   "text": "First law",
+   "role": "hot",
+   "size": "m",
+   "bold": true,
+   "opacity": "(foc==0||foc==5) ? 1 : 0.3"
+  },
+  {
+   "type": "text",
+   "id": "ns5",
+   "at": [
+    6.45,
+    8.75
+   ],
+   "text": "Q = ΔU + W",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "opacity": "(foc==0||foc==5) ? 1 : 0.3"
+  },
+  {
+   "type": "rect",
+   "id": "n6",
+   "x": 0.6,
+   "y": 5.9,
+   "w": 11.7,
+   "h": 1.6,
+   "role": "th",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "opacity": "(foc==0||foc==6) ? 1 : 0.3"
+  },
+  {
+   "type": "text",
+   "id": "nt6",
+   "at": [
+    6.449999999999999,
+    6.95
+   ],
+   "text": "Four processes",
+   "role": "th",
+   "size": "m",
+   "bold": true,
+   "opacity": "(foc==0||foc==6) ? 1 : 0.3"
+  },
+  {
+   "type": "text",
+   "id": "ns6",
+   "at": [
+    6.449999999999999,
+    6.3500000000000005
+   ],
+   "text": "isochoric · isobaric · isothermal · adiabatic",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "opacity": "(foc==0||foc==6) ? 1 : 0.3"
+  },
+  {
+   "type": "rect",
+   "id": "n7",
+   "x": 0.6,
+   "y": 3.5,
+   "w": 11.7,
+   "h": 1.6,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "opacity": "(foc==0||foc==7) ? 1 : 0.3"
+  },
+  {
+   "type": "text",
+   "id": "nt7",
+   "at": [
+    6.449999999999999,
+    4.55
+   ],
+   "text": "Heat engines and refrigerators",
+   "role": "cold",
+   "size": "m",
+   "bold": true,
+   "opacity": "(foc==0||foc==7) ? 1 : 0.3"
+  },
+  {
+   "type": "text",
+   "id": "ns7",
+   "at": [
+    6.449999999999999,
+    3.95
+   ],
+   "text": "four-stroke · Carnot · η = 1 − T_c/T_h",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "opacity": "(foc==0||foc==7) ? 1 : 0.3"
+  },
+  {
+   "type": "rect",
+   "id": "n8",
+   "x": 2.5,
+   "y": 1.1,
+   "w": 7.9,
+   "h": 1.6,
+   "role": "ent",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "opacity": "(foc==0||foc==8) ? 1 : 0.3"
+  },
+  {
+   "type": "text",
+   "id": "nt8",
+   "at": [
+    6.45,
+    2.1500000000000004
+   ],
+   "text": "Second law and entropy",
+   "role": "ent",
+   "size": "m",
+   "bold": true,
+   "opacity": "(foc==0||foc==8) ? 1 : 0.3"
+  },
+  {
+   "type": "text",
+   "id": "ns8",
+   "at": [
+    6.45,
+    1.55
+   ],
+   "text": "heat flows hot → cold · S never falls",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "opacity": "(foc==0||foc==8) ? 1 : 0.3"
+  },
+  {
+   "type": "vector",
+   "id": "ar0",
+   "from": [
+    3.4,
+    13.1
+   ],
+   "to": [
+    9.5,
+    12.35
+   ],
+   "role": "wall",
+   "strokeWidth": 3
+  },
+  {
+   "type": "vector",
+   "id": "ar1",
+   "from": [
+    9.5,
+    13.1
+   ],
+   "to": [
+    3.4,
+    12.35
+   ],
+   "role": "wall",
+   "strokeWidth": 3
+  },
+  {
+   "type": "vector",
+   "id": "ar2",
+   "from": [
+    3.4,
+    10.7
+   ],
+   "to": [
+    4.8,
+    9.95
+   ],
+   "role": "wall",
+   "strokeWidth": 3
+  },
+  {
+   "type": "vector",
+   "id": "ar3",
+   "from": [
+    9.5,
+    10.7
+   ],
+   "to": [
+    8.2,
+    9.95
+   ],
+   "role": "wall",
+   "strokeWidth": 3
+  },
+  {
+   "type": "vector",
+   "id": "ar4",
+   "from": [
+    6.45,
+    8.3
+   ],
+   "to": [
+    6.45,
+    7.55
+   ],
+   "role": "wall",
+   "strokeWidth": 3
+  },
+  {
+   "type": "vector",
+   "id": "ar5",
+   "from": [
+    6.45,
+    5.9
+   ],
+   "to": [
+    6.45,
+    5.15
+   ],
+   "role": "wall",
+   "strokeWidth": 3
+  },
+  {
+   "type": "vector",
+   "id": "ar6",
+   "from": [
+    6.45,
+    3.5
+   ],
+   "to": [
+    6.45,
+    2.75
+   ],
+   "role": "wall",
+   "strokeWidth": 3
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The whole chapter on one page",
+   "text": "Everything in this unit is one story: **molecules** make a **gas**; the gas can receive **heat** and do **work**; the **first law** keeps the energy books; **processes** and **engines** put it to use; the **second law** tells us which way things go.",
+   "actions": [
+    {
+     "set": {
+      "foc": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Molecules and gas laws",
+   "text": "Billions of molecules hitting the walls give the **pressure**; their average kinetic energy is the **temperature**. Together they give **Boyle, Charles, Gay-Lussac** and the ideal gas equation \\( PV = nRT \\).",
+   "actions": [
+    {
+     "set": {
+      "foc": 1
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "foc": 2
+     },
+     "at": 0,
+     "dur": 2000
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Work and internal energy",
+   "text": "A gas that expands pushes the piston and does **work**: the area under the P–V graph. The energy stored in the molecular motion is the **internal energy** \\( U \\), which rises with temperature.",
+   "actions": [
+    {
+     "set": {
+      "foc": 3
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "foc": 4
+     },
+     "at": 0,
+     "dur": 2000
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "The first law joins them",
+   "text": "Heat in goes into raising U and doing work: \\( Q = \\Delta U + W \\). This is **conservation of energy** for the gas, and every process in the unit is an application of it.",
+   "actions": [
+    {
+     "set": {
+      "foc": 5
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Four special processes",
+   "text": "Hold one thing fixed and the first law simplifies: constant volume (**W = 0**), constant pressure, constant temperature (**ΔU = 0**), or no heat flow (**Q = 0**, adiabatic).",
+   "actions": [
+    {
+     "set": {
+      "foc": 6
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Engines",
+   "text": "Chain the processes into a **cycle** and you have an **engine**: heat in, work out, heat rejected. The **Carnot cycle** (two isotherms, two adiabats) gives the best efficiency \\( 1 - T_c/T_h \\). Run backwards, it is a refrigerator.",
+   "actions": [
+    {
+     "set": {
+      "foc": 7
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "title": "The second law and entropy",
+   "text": "Energy conservation is not enough. The **second law** says no engine turns all its heat into work and heat never flows cold to hot by itself. **Entropy**, the measure of disorder, never decreases in a spontaneous change.",
+   "actions": [
+    {
+     "set": {
+      "foc": 8
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s7",
+   "title": "The links",
+   "text": "Each arrow is an idea passed down: the kinetic picture explains the gas laws and U; both feed the first law; the first law gives the four processes; the processes build engines; the second law limits them.",
+   "actions": [
+    {
+     "set": {
+      "foc": 0
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "formulas": [
+  {
+   "title": "The chapter in four equations",
+   "tex": "PV = nRT \\quad Q = \\Delta U + W \\quad \\eta = 1 - \\dfrac{T_c}{T_h} \\quad \\Delta S = \\dfrac{Q}{T}",
+   "text": "Gas law, first law, Carnot efficiency, entropy change."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which idea links **heat, internal energy and work**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "The first law"
+    },
+    {
+     "id": "b",
+     "label": "Boyle's law"
+    },
+    {
+     "id": "c",
+     "label": "The Carnot cycle"
+    },
+    {
+     "id": "d",
+     "label": "Entropy"
+    }
+   ],
+   "answer": "a",
+   "hint": "It is a statement of energy conservation.",
+   "explain": "The first law: Q = ΔU + W.",
+   "set": {
+    "foc": 5
+   }
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which idea tells us that **no engine can be 100% efficient**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "The first law"
+    },
+    {
+     "id": "b",
+     "label": "The second law"
+    },
+    {
+     "id": "c",
+     "label": "Charles's law"
+    },
+    {
+     "id": "d",
+     "label": "The ideal gas equation"
+    }
+   ],
+   "answer": "b",
+   "hint": "Energy is conserved even for a perfect engine.",
+   "explain": "The second law (Kelvin–Planck) forbids converting all heat into work.",
+   "set": {
+    "foc": 8
+   }
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "In which process is the **work zero** because the volume cannot change?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Isochoric"
+    },
+    {
+     "id": "b",
+     "label": "Isobaric"
+    },
+    {
+     "id": "c",
+     "label": "Isothermal"
+    },
+    {
+     "id": "d",
+     "label": "Adiabatic"
+    }
+   ],
+   "answer": "a",
+   "hint": "W = PΔV.",
+   "explain": "Constant volume means ΔV = 0, so W = 0.",
+   "set": {
+    "foc": 6
+   }
+  },
+  {
+   "id": "c4",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which quantity is largest in an ideal reversible engine working between two given temperatures?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Efficiency (Carnot value)"
+    },
+    {
+     "id": "b",
+     "label": "Heat rejected"
+    },
+    {
+     "id": "c",
+     "label": "Total entropy production"
+    },
+    {
+     "id": "d",
+     "label": "Work lost to friction"
+    }
+   ],
+   "answer": "a",
+   "hint": "No engine can beat it.",
+   "explain": "The Carnot engine reaches the maximum possible efficiency; its total entropy production is zero.",
+   "set": {
+    "foc": 7
+   }
+  }
+ ],
+ "takeaways": [
+  "Molecules → **gas laws** and **internal energy** → **first law** → **processes** → **engines** → **second law and entropy**.",
+  "The first law (**Q = ΔU + W**) is the energy book-keeping; the second law decides the direction.",
+  "Every animation in this unit is one box on this map."
+ ],
+ "notes": [
+  {
+   "title": "How to use this map",
+   "text": "Open any other animation in the unit, then come back here to see where it sits. Each *Connects to* note points to the next box."
+  }
+ ]
+}

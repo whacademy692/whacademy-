@@ -1,0 +1,508 @@
+{
+ "id": "g11-phys-c8-wk-area",
+ "title": "Work is the area under the P–V curve (and it depends on the path)",
+ "summary": "Go from the same start to the same end by three different routes: the work done is different each time.",
+ "alt": "A P–V graph with three paths from state A to state B and the area beneath the chosen path shaded.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   8.3
+  ],
+  "ratio": 1.6125,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "th": {
+   "label": "Path 2: smooth curve (isothermal)",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": true
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": true
+  },
+  "hot": {
+   "label": "Path 1: constant pressure first",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": true
+  },
+  "cold": {
+   "label": "Path 3: constant volume first",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "path",
+   "label": "Choose the path",
+   "type": "choice",
+   "options": [
+    {
+     "value": 1,
+     "label": "Path 1: expand first, then lower P"
+    },
+    {
+     "value": 2,
+     "label": "Path 2: smooth curve"
+    },
+    {
+     "value": 3,
+     "label": "Path 3: lower P first, then expand"
+    }
+   ],
+   "default": 1
+  },
+  {
+   "id": "s",
+   "label": "Progress along path",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0
+  }
+ ],
+ "derived": {
+  "Wa": "path==1 ? 6 : (path==2 ? 3*ln(3) : 2)",
+  "Xd": "path==1 ? (s<0.5 ? 1+4*s : 3) : (path==2 ? 1+2*s : (s<0.5 ? 1 : 1+4*(s-0.5)))",
+  "Yd": "path==1 ? (s<0.5 ? 3 : 3-4*(s-0.5)) : (path==2 ? 3/(1+2*s) : (s<0.5 ? 3-4*s : 1))"
+ },
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "gax",
+   "from": [
+    1.7,
+    0.9
+   ],
+   "to": [
+    12.299999999999999,
+    0.9
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "vector",
+   "id": "gay",
+   "from": [
+    1.7,
+    0.9
+   ],
+   "to": [
+    1.7,
+    6.800000000000001
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "gxl",
+   "at": [
+    12.45,
+    0.75
+   ],
+   "text": "V",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "gyl",
+   "at": [
+    1.5999999999999999,
+    7.15
+   ],
+   "text": "P",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "ar1",
+   "x": "(1.7+((1)-(0))/(4-(0))*10.2)",
+   "y": 0.9,
+   "w": "(1.7+((3)-(0))/(4-(0))*10.2)-(1.7+((1)-(0))/(4-(0))*10.2)",
+   "h": "(0.9+((3)-(0))/(3.6-(0))*5.4)-0.9",
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.3,
+   "strokeWidth": 1,
+   "visible": "path==1"
+  },
+  {
+   "type": "rect",
+   "id": "ar3",
+   "x": "(1.7+((1)-(0))/(4-(0))*10.2)",
+   "y": 0.9,
+   "w": "(1.7+((3)-(0))/(4-(0))*10.2)-(1.7+((1)-(0))/(4-(0))*10.2)",
+   "h": "(0.9+((1)-(0))/(3.6-(0))*5.4)-0.9",
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.3,
+   "strokeWidth": 1,
+   "visible": "path==3"
+  },
+  {
+   "type": "plot",
+   "id": "ar2",
+   "fn": "3/x",
+   "domain": [
+    1,
+    3
+   ],
+   "samples": 80,
+   "role": "work",
+   "strokeWidth": 1,
+   "fillTo": "0",
+   "fillOpacity": 0.3,
+   "visible": "path==2"
+  },
+  {
+   "type": "polyline",
+   "id": "p1",
+   "pts": [
+    [
+     "(1.7+((1)-(0))/(4-(0))*10.2)",
+     "(0.9+((3)-(0))/(3.6-(0))*5.4)"
+    ],
+    [
+     "(1.7+((3)-(0))/(4-(0))*10.2)",
+     "(0.9+((3)-(0))/(3.6-(0))*5.4)"
+    ],
+    [
+     "(1.7+((3)-(0))/(4-(0))*10.2)",
+     "(0.9+((1)-(0))/(3.6-(0))*5.4)"
+    ]
+   ],
+   "role": "hot",
+   "strokeWidth": 4,
+   "opacity": "path==1 ? 1 : 0.35"
+  },
+  {
+   "type": "plot",
+   "id": "p2",
+   "x": "(1.7+((u)-(0))/(4-(0))*10.2)",
+   "y": "(0.9+((3/u)-(0))/(3.6-(0))*5.4)",
+   "var": "u",
+   "domain": [
+    1,
+    3
+   ],
+   "samples": 80,
+   "role": "th",
+   "strokeWidth": 4,
+   "opacity": "path==2 ? 1 : 0.35"
+  },
+  {
+   "type": "polyline",
+   "id": "p3",
+   "pts": [
+    [
+     "(1.7+((1)-(0))/(4-(0))*10.2)",
+     "(0.9+((3)-(0))/(3.6-(0))*5.4)"
+    ],
+    [
+     "(1.7+((1)-(0))/(4-(0))*10.2)",
+     "(0.9+((1)-(0))/(3.6-(0))*5.4)"
+    ],
+    [
+     "(1.7+((3)-(0))/(4-(0))*10.2)",
+     "(0.9+((1)-(0))/(3.6-(0))*5.4)"
+    ]
+   ],
+   "role": "cold",
+   "strokeWidth": 4,
+   "opacity": "path==3 ? 1 : 0.35"
+  },
+  {
+   "type": "point",
+   "id": "pa",
+   "at": [
+    "(1.7+((1)-(0))/(4-(0))*10.2)",
+    "(0.9+((3)-(0))/(3.6-(0))*5.4)"
+   ],
+   "role": "wall",
+   "r": 7
+  },
+  {
+   "type": "point",
+   "id": "pb",
+   "at": [
+    "(1.7+((3)-(0))/(4-(0))*10.2)",
+    "(0.9+((1)-(0))/(3.6-(0))*5.4)"
+   ],
+   "role": "wall",
+   "r": 7
+  },
+  {
+   "type": "text",
+   "id": "la",
+   "at": [
+    "(1.7+((1)-(0))/(4-(0))*10.2)-0.45",
+    "(0.9+((3)-(0))/(3.6-(0))*5.4)+0.1"
+   ],
+   "text": "A",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "lb",
+   "at": [
+    "(1.7+((3)-(0))/(4-(0))*10.2)+0.45",
+    "(0.9+((1)-(0))/(3.6-(0))*5.4)+0.1"
+   ],
+   "text": "B",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "wt",
+   "at": [
+    6.5,
+    7.6
+   ],
+   "text": "Work done = area = {{Wa|2}} units",
+   "role": "work",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "point",
+   "id": "mv",
+   "at": [
+    "(1.7+((Xd)-(0))/(4-(0))*10.2)",
+    "(0.9+((Yd)-(0))/(3.6-(0))*5.4)"
+   ],
+   "role": "me",
+   "r": 8
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "From A to B",
+   "text": "The gas starts at **A** (low volume, high pressure) and ends at **B** (high volume, low pressure). Many routes join A and B. Does the work done depend on the route?",
+   "actions": [
+    {
+     "set": {
+      "path": 1,
+      "s": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Path 1: expand first",
+   "text": "Keep the pressure high and expand to the final volume, then lower the pressure. The area under this path is \\( 3 \\times 2 = 6 \\) units.",
+   "actions": [
+    {
+     "set": {
+      "path": 1,
+      "s": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "s": 1
+     },
+     "at": 0,
+     "dur": 4200
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Path 2: a smooth curve",
+   "text": "A smooth isotherm from A to B. Its area is smaller: about {{3*ln(3)|2}} units. The work is the area under the curve.",
+   "actions": [
+    {
+     "set": {
+      "path": 2,
+      "s": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "s": 1
+     },
+     "at": 0,
+     "dur": 4200
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Path 3: lower the pressure first",
+   "text": "Reduce the pressure first at constant volume (no work!), then expand at the low pressure. The area is only \\( 1 \\times 2 = 2 \\) units.",
+   "actions": [
+    {
+     "set": {
+      "path": 3,
+      "s": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "s": 1
+     },
+     "at": 0,
+     "dur": 4200
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Work depends on the path",
+   "text": "Same start, same end, **three different amounts of work**: 6, 3.3 and 2. Work is not a property of the state of the gas; it depends on **how** the gas gets there. The same is true of heat.",
+   "actions": [
+    {
+     "set": {
+      "path": 1,
+      "s": 1
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Work (units)",
+   "value": "{{Wa|2}}",
+   "role": "work"
+  },
+  {
+   "label": "Path",
+   "value": "{{path|0}}"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Work as an area",
+   "tex": "\\role{work}{W} = \\int_{V_1}^{V_2} P\\,dV = \\text{area under the P–V curve}",
+   "text": "For constant P this is just P ΔV."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "Along **Path 1** the gas expands at 3 units of pressure from V = 1 to V = 3. What is the work done in units?",
+   "answer": 6,
+   "hint": "Rectangle: height × width.",
+   "explain": "\\( 3 \\times (3-1) = 6 \\) units.",
+   "tolerance": 0.1,
+   "unit": "units",
+   "set": {
+    "path": 1,
+    "s": 1
+   }
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which path does the **least** work between A and B?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Path 1"
+    },
+    {
+     "id": "b",
+     "label": "Path 2"
+    },
+    {
+     "id": "c",
+     "label": "Path 3"
+    },
+    {
+     "id": "d",
+     "label": "All the same"
+    }
+   ],
+   "answer": "c",
+   "hint": "Which one has the smallest area under it?",
+   "explain": "Path 3 has the smallest area (2 units), so it does the least work.",
+   "set": {
+    "path": 3,
+    "s": 1
+   }
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "The work done by a gas between two states:",
+   "options": [
+    {
+     "id": "a",
+     "label": "depends only on the two states"
+    },
+    {
+     "id": "b",
+     "label": "depends on the path taken"
+    },
+    {
+     "id": "c",
+     "label": "is always zero"
+    },
+    {
+     "id": "d",
+     "label": "is always positive"
+    }
+   ],
+   "answer": "b",
+   "hint": "Compare the three areas.",
+   "explain": "Work depends on the path. That is why it is not a \"state function\"."
+  }
+ ],
+ "takeaways": [
+  "**Work = area under the P–V curve** (for any path).",
+  "Different paths between the same two states do **different amounts of work**.",
+  "Work is **not** a property of the state; it depends on the path."
+ ],
+ "notes": [
+  {
+   "title": "Connects to",
+   "text": "In a **cycle** (an engine), the net work is the area **enclosed** by the loop: see *Heat engine* and *Carnot cycle*. Constant-volume steps do **no work** (zero width)."
+  }
+ ]
+}

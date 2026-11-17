@@ -1,0 +1,521 @@
+{
+ "id": "g11-phys-c8-th-equilibrium",
+ "title": "Thermal equilibrium: heat flows until temperatures match",
+ "summary": "Touch a hot body to a cold one and watch heat flow until both reach the same temperature.",
+ "alt": "Two solid blocks in contact; molecules of the hot block vibrate fast and slow down while the cold block speeds up, with temperature curves meeting.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "hot": {
+   "label": "Body A (hot)",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": true
+  },
+  "cold": {
+   "label": "Body B (cold)",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": true
+  },
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "work": {
+   "label": "Heat flow",
+   "color": "#d97706",
+   "text": "The direction heat travels.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "TA",
+   "label": "Body A temperature (K)",
+   "type": "number",
+   "min": 300,
+   "max": 600,
+   "step": 10,
+   "default": 500
+  },
+  {
+   "id": "TB",
+   "label": "Body B temperature (K)",
+   "type": "number",
+   "min": 150,
+   "max": 300,
+   "step": 10,
+   "default": 200
+  },
+  {
+   "id": "t",
+   "label": "Time",
+   "type": "number",
+   "min": 0,
+   "max": 8,
+   "step": 0.05,
+   "default": 0
+  }
+ ],
+ "derived": {
+  "Tf": "(TA+TB)/2",
+  "ta": "Tf+(TA-Tf)*exp(-t/2.2)",
+  "tb": "Tf+(TB-Tf)*exp(-t/2.2)",
+  "dT": "ta-tb"
+ },
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "bA",
+   "x": 0.4,
+   "y": 9.4,
+   "w": 5.7,
+   "h": 4.5,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.22,
+   "strokeWidth": 3
+  },
+  {
+   "type": "rect",
+   "id": "bB",
+   "x": 6.8,
+   "y": 9.4,
+   "w": 5.7,
+   "h": 4.5,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.22,
+   "strokeWidth": 3
+  },
+  {
+   "type": "gas",
+   "id": "a",
+   "x0": 0.4,
+   "x1": 6.1,
+   "y0": 9.4,
+   "y1": 13.9,
+   "n": 30,
+   "v": "1.35*sqrt(ta/300)",
+   "bath": 1,
+   "vref": 1.35,
+   "seed": 5,
+   "out": {
+    "vrms": "va"
+   },
+   "bind": 1,
+   "cols": 6,
+   "r": 4.2
+  },
+  {
+   "type": "gas",
+   "id": "b",
+   "x0": 6.8,
+   "x1": 12.5,
+   "y0": 9.4,
+   "y1": 13.9,
+   "n": 30,
+   "v": "1.35*sqrt(tb/300)",
+   "bath": 1,
+   "vref": 1.35,
+   "seed": 9,
+   "out": {
+    "vrms": "vb"
+   },
+   "bind": 1,
+   "cols": 6,
+   "r": 4.2
+  },
+  {
+   "type": "text",
+   "id": "lA",
+   "at": [
+    3.25,
+    14.5
+   ],
+   "text": "A  {{ta|0}} K",
+   "role": "hot",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "lB",
+   "at": [
+    9.65,
+    14.5
+   ],
+   "text": "B  {{tb|0}} K",
+   "role": "cold",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "vector",
+   "id": "hf",
+   "from": [
+    5.6,
+    8.2
+   ],
+   "to": [
+    7.3,
+    8.2
+   ],
+   "role": "work",
+   "strokeWidth": "clamp(dT/12,1,7)",
+   "visible": "dT>8"
+  },
+  {
+   "type": "text",
+   "id": "hft",
+   "at": [
+    6.5,
+    8.8
+   ],
+   "text": "heat flows A → B",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "visible": "dT>8"
+  },
+  {
+   "type": "text",
+   "id": "eq",
+   "at": [
+    6.5,
+    8.3
+   ],
+   "text": "EQUAL: thermal equilibrium",
+   "role": "wall",
+   "size": "m",
+   "bold": true,
+   "visible": "dT<=8"
+  },
+  {
+   "type": "vector",
+   "id": "gax",
+   "from": [
+    1.7,
+    0.9
+   ],
+   "to": [
+    12.299999999999999,
+    0.9
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "vector",
+   "id": "gay",
+   "from": [
+    1.7,
+    0.9
+   ],
+   "to": [
+    1.7,
+    6.800000000000001
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "gxl",
+   "at": [
+    12.45,
+    0.75
+   ],
+   "text": "t",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "gyl",
+   "at": [
+    1.5999999999999999,
+    7.15
+   ],
+   "text": "T",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "plot",
+   "id": "cA",
+   "x": "(1.7+((u)-(0))/(8-(0))*10.2)",
+   "y": "(0.9+((Tf+(TA-Tf)*exp(-u/2.2))-(100))/(650-(100))*5.4)",
+   "var": "u",
+   "domain": [
+    0,
+    8
+   ],
+   "samples": 140,
+   "role": "hot",
+   "strokeWidth": 3.5
+  },
+  {
+   "type": "plot",
+   "id": "cB",
+   "x": "(1.7+((u)-(0))/(8-(0))*10.2)",
+   "y": "(0.9+((Tf+(TB-Tf)*exp(-u/2.2))-(100))/(650-(100))*5.4)",
+   "var": "u",
+   "domain": [
+    0,
+    8
+   ],
+   "samples": 140,
+   "role": "cold",
+   "strokeWidth": 3.5
+  },
+  {
+   "type": "segment",
+   "id": "cf",
+   "from": [
+    1.7,
+    "(0.9+((Tf)-(100))/(650-(100))*5.4)"
+   ],
+   "to": [
+    11.899999999999999,
+    "(0.9+((Tf)-(100))/(650-(100))*5.4)"
+   ],
+   "role": "wall",
+   "strokeWidth": 1.5,
+   "dash": [
+    5,
+    5
+   ]
+  },
+  {
+   "type": "point",
+   "id": "dA",
+   "at": [
+    "(1.7+((t)-(0))/(8-(0))*10.2)",
+    "(0.9+((ta)-(100))/(650-(100))*5.4)"
+   ],
+   "role": "hot",
+   "r": 7
+  },
+  {
+   "type": "point",
+   "id": "dB",
+   "at": [
+    "(1.7+((t)-(0))/(8-(0))*10.2)",
+    "(0.9+((tb)-(100))/(650-(100))*5.4)"
+   ],
+   "role": "cold",
+   "r": 7
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A hot body and a cold body",
+   "text": "Body **A** is hot (500 K): its atoms vibrate fast (red). Body **B** is cold (200 K): its atoms vibrate slowly (blue). They are in contact but nothing has happened yet.",
+   "actions": [
+    {
+     "set": {
+      "TA": 500,
+      "TB": 200,
+      "t": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Heat flows from hot to cold",
+   "text": "Watch the two temperatures. Fast atoms of A bump into slow atoms of B and **share their energy**. **Heat** is this energy on the move from hot to cold. A cools, B warms.",
+   "actions": [
+    {
+     "set": {
+      "TA": 500,
+      "TB": 200
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "t": 3
+     },
+     "at": 0,
+     "dur": 4800
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "The temperatures meet",
+   "text": "The two curves meet at {{Tf|0}} K. The atoms of A and B now vibrate with the **same average energy**. Nothing more changes: the bodies are in **thermal equilibrium**.",
+   "actions": [
+    {
+     "set": {
+      "TA": 500,
+      "TB": 200
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "t": 8
+     },
+     "at": 0,
+     "dur": 3600
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Equal temperature means no net heat flow",
+   "text": "Two bodies at the **same temperature** are in thermal equilibrium: no net heat flows between them. Temperature is the property that tells which way heat will flow.",
+   "actions": [
+    {
+     "set": {
+      "TA": 500,
+      "TB": 200,
+      "t": 8
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Your turn",
+   "text": "Change the starting temperatures and drag **Time** to follow the flow. The final temperature is always in between (for two identical bodies it is the average).",
+   "actions": [
+    {
+     "set": {
+      "TA": 500,
+      "TB": 200,
+      "t": 0
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Body A (K)",
+   "value": "{{ta|0}}",
+   "role": "hot"
+  },
+  {
+   "label": "Body B (K)",
+   "value": "{{tb|0}}",
+   "role": "cold"
+  },
+  {
+   "label": "Final (K)",
+   "value": "{{Tf|0}}"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Final temperature (equal bodies)",
+   "tex": "T_f = \\dfrac{\\role{hot}{T_A} + \\role{cold}{T_B}}{2}",
+   "text": "Two identical bodies end up at the average temperature."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "Two identical blocks, one at **500 K** and one at **300 K**, are placed in contact and left alone. At what temperature (K) will they settle?",
+   "answer": 400,
+   "hint": "Identical bodies share the difference equally.",
+   "explain": "Average of 500 and 300 = **400 K**.",
+   "tolerance": 5,
+   "unit": "K",
+   "set": {
+    "TA": 500,
+    "TB": 300
+   }
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Body A and body B are in thermal equilibrium with a third body C. What can you say about A and B?",
+   "options": [
+    {
+     "id": "a",
+     "label": "A is hotter than B"
+    },
+    {
+     "id": "b",
+     "label": "They are at the same temperature"
+    },
+    {
+     "id": "c",
+     "label": "B is hotter than A"
+    },
+    {
+     "id": "d",
+     "label": "Heat will flow between them"
+    }
+   ],
+   "answer": "b",
+   "hint": "Equal temperature is what equilibrium means.",
+   "explain": "Both are at the temperature of C, so they are at the same temperature as each other. No net heat flows between them."
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Heat always flows from:",
+   "options": [
+    {
+     "id": "a",
+     "label": "cold to hot"
+    },
+    {
+     "id": "b",
+     "label": "hot to cold"
+    },
+    {
+     "id": "c",
+     "label": "big to small"
+    },
+    {
+     "id": "d",
+     "label": "heavy to light"
+    }
+   ],
+   "answer": "b",
+   "hint": "Think of the hot body cooling down.",
+   "explain": "Heat flows from the higher temperature to the lower temperature until thermal equilibrium."
+  }
+ ],
+ "takeaways": [
+  "**Heat** is energy transferred because of a temperature difference: it flows from hot to cold.",
+  "Bodies at the **same temperature** are in thermal equilibrium: no net heat flow.",
+  "In a solid, hotter means atoms **vibrate with more energy**."
+ ],
+ "notes": [
+  {
+   "title": "Connects to",
+   "text": "Next, see why temperature measures the **average kinetic energy** of molecules, and how heat raises the **internal energy** of a body."
+  }
+ ]
+}

@@ -1,0 +1,672 @@
+{
+ "id": "g11-phys-c8-wk-firstlaw",
+ "title": "First law of thermodynamics: Q = ΔU + W",
+ "summary": "Heat put into a gas is shared between a rise in internal energy and work done on the surroundings: energy is conserved.",
+ "alt": "A gas with a flame and a piston, plus an energy bar where the heat Q is split into internal energy rise and work done.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Heat in (Q)",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": true
+  },
+  "u": {
+   "label": "Rise in internal energy (ΔU)",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": true
+  },
+  "work": {
+   "label": "Work done by the gas (W)",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": true
+  },
+  "fire": {
+   "label": "Flame core",
+   "color": "#f59e0b",
+   "text": "The hot core of the flame.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "Q",
+   "label": "Heat added Q (J)",
+   "type": "number",
+   "min": 0,
+   "max": 100,
+   "step": 1,
+   "default": 60
+  },
+  {
+   "id": "f",
+   "label": "Share that becomes work",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.05,
+   "default": 0.3
+  }
+ ],
+ "derived": {
+  "dU": "(1-f)*Q",
+  "Wk": "f*Q",
+  "Tt": "300+2.2*dU",
+  "v": "2.2*sqrt(Tt/300)",
+  "L": "5+3.8*Wk/100",
+  "n": "40"
+ },
+ "shapes": [
+  {
+   "type": "polyline",
+   "id": "cyl",
+   "pts": [
+    [
+     10.649999999999999,
+     14.2
+    ],
+    [
+     0,
+     14.2
+    ],
+    [
+     0,
+     9.2
+    ],
+    [
+     10.649999999999999,
+     9.2
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 4
+  },
+  {
+   "type": "rect",
+   "id": "pis",
+   "x": "L",
+   "y": 9.149999999999999,
+   "w": 0.45,
+   "h": 5.1,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "segment",
+   "id": "rod",
+   "from": [
+    "(L)+0.45",
+    11.7
+   ],
+   "to": [
+    "(L)+2.3",
+    11.7
+   ],
+   "role": "pis",
+   "strokeWidth": 5
+  },
+  {
+   "type": "rect",
+   "id": "hdl",
+   "x": "(L)+2.3",
+   "y": 11.1,
+   "w": 0.3,
+   "h": 1.2,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.7,
+   "strokeWidth": 2
+  },
+  {
+   "type": "gas",
+   "id": "g",
+   "x0": 0,
+   "x1": "L",
+   "y0": 9.2,
+   "y1": 14.2,
+   "n": "n",
+   "v": "v",
+   "bath": 1,
+   "vref": 2.2,
+   "seed": 7,
+   "out": {
+    "vrms": "gv"
+   },
+   "rate": 2.2
+  },
+  {
+   "type": "polygon",
+   "id": "fl",
+   "pts": [
+    [
+     1.463,
+     6.969
+    ],
+    [
+     1.342,
+     7.572
+    ],
+    [
+     1.681,
+     8.038
+    ],
+    [
+     1.886,
+     7.745
+    ],
+    [
+     2.188,
+     8.349
+    ],
+    [
+     2.55,
+     8.694
+    ],
+    [
+     2.816,
+     8.245
+    ],
+    [
+     3.057,
+     7.831
+    ],
+    [
+     3.347,
+     8.107
+    ],
+    [
+     3.733,
+     7.486
+    ],
+    [
+     3.588,
+     6.969
+    ]
+   ],
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.75,
+   "strokeWidth": 2.5,
+   "visible": "Q>8"
+  },
+  {
+   "type": "polygon",
+   "id": "fli",
+   "pts": [
+    [
+     2.007,
+     7.141
+    ],
+    [
+     1.946,
+     7.504
+    ],
+    [
+     2.115,
+     7.783
+    ],
+    [
+     2.218,
+     7.607
+    ],
+    [
+     2.369,
+     7.969
+    ],
+    [
+     2.55,
+     8.176
+    ],
+    [
+     2.683,
+     7.907
+    ],
+    [
+     2.804,
+     7.659
+    ],
+    [
+     2.948,
+     7.824
+    ],
+    [
+     3.142,
+     7.452
+    ],
+    [
+     3.069,
+     7.141
+    ]
+   ],
+   "role": "fire",
+   "fill": true,
+   "fillOpacity": 0.9,
+   "strokeWidth": 1,
+   "visible": "Q>8"
+  },
+  {
+   "type": "polygon",
+   "id": "fl2",
+   "pts": [
+    [
+     5.063,
+     6.969
+    ],
+    [
+     4.943,
+     7.572
+    ],
+    [
+     5.281,
+     8.038
+    ],
+    [
+     5.486,
+     7.745
+    ],
+    [
+     5.788,
+     8.349
+    ],
+    [
+     6.15,
+     8.694
+    ],
+    [
+     6.416,
+     8.245
+    ],
+    [
+     6.657,
+     7.831
+    ],
+    [
+     6.947,
+     8.107
+    ],
+    [
+     7.333,
+     7.486
+    ],
+    [
+     7.188,
+     6.969
+    ]
+   ],
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.75,
+   "strokeWidth": 2.5,
+   "visible": "Q>8"
+  },
+  {
+   "type": "polygon",
+   "id": "fl2i",
+   "pts": [
+    [
+     5.607,
+     7.141
+    ],
+    [
+     5.546,
+     7.504
+    ],
+    [
+     5.715,
+     7.783
+    ],
+    [
+     5.818,
+     7.607
+    ],
+    [
+     5.969,
+     7.969
+    ],
+    [
+     6.15,
+     8.176
+    ],
+    [
+     6.283,
+     7.907
+    ],
+    [
+     6.404,
+     7.659
+    ],
+    [
+     6.548,
+     7.824
+    ],
+    [
+     6.742,
+     7.452
+    ],
+    [
+     6.669,
+     7.141
+    ]
+   ],
+   "role": "fire",
+   "fill": true,
+   "fillOpacity": 0.9,
+   "strokeWidth": 1,
+   "visible": "Q>8"
+  },
+  {
+   "type": "text",
+   "id": "hd",
+   "at": [
+    6.5,
+    7.2
+   ],
+   "text": "where does the heat go?",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "qb",
+   "x": 1.2,
+   "y": 5.3,
+   "w": "clamp(11*Q/100,0.05,11)",
+   "h": 1.0,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.6,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "qt",
+   "at": [
+    6.7,
+    5.8
+   ],
+   "text": "Q = {{Q|0}} J",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "ub",
+   "x": 1.2,
+   "y": 3.6,
+   "w": "clamp(11*dU/100,0.02,11)",
+   "h": 1.0,
+   "role": "u",
+   "fill": true,
+   "fillOpacity": 0.6,
+   "strokeWidth": 2
+  },
+  {
+   "type": "rect",
+   "id": "wb",
+   "x": "1.2+11*dU/100",
+   "y": 3.6,
+   "w": "clamp(11*Wk/100,0.02,11)",
+   "h": 1.0,
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.6,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "ut",
+   "at": [
+    3.2,
+    2.9
+   ],
+   "text": "ΔU = {{dU|0}} J",
+   "role": "u",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "wt",
+   "at": [
+    9.0,
+    2.9
+   ],
+   "text": "W = {{Wk|0}} J",
+   "role": "work",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "eq",
+   "at": [
+    6.5,
+    1.6
+   ],
+   "text": "{{Q|0}} = {{dU|0}} + {{Wk|0}}",
+   "role": "wall",
+   "size": "l",
+   "bold": true
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Energy is conserved",
+   "text": "Heat is energy. When 60 J of heat enters a gas, the energy cannot vanish. It goes into **two places**: it heats the gas (**ΔU**) and it pushes the piston out (**W**).",
+   "actions": [
+    {
+     "set": {
+      "Q": 60,
+      "f": 0.3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Piston locked: all heat raises U",
+   "text": "Lock the piston (nothing can move, so **W = 0**). All 60 J goes into the molecules: \\( \\Delta U = Q \\). The gas gets hot but does not expand.",
+   "actions": [
+    {
+     "set": {
+      "Q": 60,
+      "f": 0.3
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "f": 0
+     },
+     "at": 0,
+     "dur": 2800
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Free piston at constant temperature: all heat becomes work",
+   "text": "Now let the gas push the piston out while it stays at the same temperature (\\( \\Delta U = 0 \\)). All 60 J becomes work: \\( W = Q \\).",
+   "actions": [
+    {
+     "set": {
+      "Q": 60,
+      "f": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "f": 1
+     },
+     "at": 0,
+     "dur": 3200
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "The usual case: a share of each",
+   "text": "In between, part of the heat raises U and the rest pushes the piston. Always \\( Q = \\Delta U + W \\): {{Q|0}} = {{dU|0}} + {{Wk|0}}.",
+   "actions": [
+    {
+     "set": {
+      "Q": 60,
+      "f": 1
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "f": 0.4
+     },
+     "at": 0,
+     "dur": 2800
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Sign convention",
+   "text": "**Q > 0**: heat goes **into** the gas. **W > 0**: the gas does work **on** the surroundings (expands). **ΔU > 0**: the gas gets hotter. Try different heats and splits.",
+   "actions": [
+    {
+     "set": {
+      "Q": 60,
+      "f": 0.4
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Heat Q (J)",
+   "value": "{{Q|0}}",
+   "role": "hot"
+  },
+  {
+   "label": "ΔU (J)",
+   "value": "{{dU|0}}",
+   "role": "u"
+  },
+  {
+   "label": "Work W (J)",
+   "value": "{{Wk|0}}",
+   "role": "work"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "First law of thermodynamics",
+   "tex": "\\role{hot}{Q} = \\role{u}{\\Delta U} + \\role{work}{W}",
+   "text": "Heat added to the gas = rise in internal energy + work done by the gas."
+  },
+  {
+   "title": "Energy conservation",
+   "tex": "\\Delta U = Q - W",
+   "text": "The same law written for ΔU. It is conservation of energy including heat."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A gas absorbs **500 J** of heat and does **200 J** of work on its surroundings. What is the change in its internal energy (J)?",
+   "answer": 300,
+   "hint": "Use Q = ΔU + W.",
+   "explain": "\\( \\Delta U = Q - W = 500 - 200 = 300 \\) J.",
+   "tolerance": 1,
+   "unit": "J"
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A gas is **compressed**: **150 J** of work is done **on** it and **50 J** of heat leaves it. What is ΔU (J)?",
+   "answer": 100,
+   "hint": "Work on the gas: W = −150 J. Heat out: Q = −50 J.",
+   "explain": "\\( Q = -50,\\ W = -150 \\). \\( \\Delta U = Q - W = -50 + 150 = 100 \\) J. The gas warms up.",
+   "tolerance": 1,
+   "unit": "J"
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "In an **isothermal** expansion of an ideal gas (ΔU = 0), the heat absorbed Q equals:",
+   "options": [
+    {
+     "id": "a",
+     "label": "zero"
+    },
+    {
+     "id": "b",
+     "label": "the work done W"
+    },
+    {
+     "id": "c",
+     "label": "minus the work done"
+    },
+    {
+     "id": "d",
+     "label": "the internal energy U"
+    }
+   ],
+   "answer": "b",
+   "hint": "Put ΔU = 0 in Q = ΔU + W.",
+   "explain": "With ΔU = 0, \\( Q = W \\): all the heat absorbed becomes work."
+  }
+ ],
+ "takeaways": [
+  "\\( Q = \\Delta U + W \\): heat in = rise in internal energy + work done by the gas.",
+  "It is the law of **conservation of energy** for heat and work.",
+  "Signs: Q > 0 heat in; W > 0 gas expands; ΔU > 0 gas heats up."
+ ],
+ "notes": [
+  {
+   "title": "Connects to",
+   "text": "Each **process** is the first law with one term removed: **isochoric** (W = 0), **isothermal** (ΔU = 0), **adiabatic** (Q = 0), **isobaric** (W = PΔV). Next: see the four processes one at a time."
+  }
+ ]
+}

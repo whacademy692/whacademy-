@@ -1,0 +1,444 @@
+{
+ "id": "g11-phys-c8-gas-ideal",
+ "title": "The ideal gas equation PV = nRT",
+ "summary": "One equation joins P, V, T and the amount of gas: change any slider and watch the others follow.",
+ "alt": "A cylinder of gas with sliders for the number of molecules, temperature and volume, and live readings of pressure and P×V divided by N×T.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": true
+  },
+  "th": {
+   "label": "PV ÷ (N T)",
+   "color": "#059669",
+   "text": "This ratio is the same for every state of an ideal gas.",
+   "legend": true
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": true
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "n",
+   "label": "Amount of gas (molecules N)",
+   "type": "number",
+   "min": 10,
+   "max": 80,
+   "step": 1,
+   "default": 40
+  },
+  {
+   "id": "T",
+   "label": "Temperature (K)",
+   "type": "number",
+   "min": 150,
+   "max": 600,
+   "step": 10,
+   "default": 300
+  },
+  {
+   "id": "L",
+   "label": "Volume (length of gas)",
+   "type": "number",
+   "min": 3,
+   "max": 10,
+   "step": 0.05,
+   "default": 8
+  }
+ ],
+ "derived": {
+  "v": "2.2*sqrt(T/300)",
+  "Pm": "gp/2.420"
+ },
+ "shapes": [
+  {
+   "type": "polyline",
+   "id": "cyl",
+   "pts": [
+    [
+     10.649999999999999,
+     14.2
+    ],
+    [
+     0,
+     14.2
+    ],
+    [
+     0,
+     9.2
+    ],
+    [
+     10.649999999999999,
+     9.2
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 4
+  },
+  {
+   "type": "rect",
+   "id": "pis",
+   "x": "L",
+   "y": 9.149999999999999,
+   "w": 0.45,
+   "h": 5.1,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "segment",
+   "id": "rod",
+   "from": [
+    "(L)+0.45",
+    11.7
+   ],
+   "to": [
+    "(L)+2.3",
+    11.7
+   ],
+   "role": "pis",
+   "strokeWidth": 5
+  },
+  {
+   "type": "rect",
+   "id": "hdl",
+   "x": "(L)+2.3",
+   "y": 11.1,
+   "w": 0.3,
+   "h": 1.2,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.7,
+   "strokeWidth": 2
+  },
+  {
+   "type": "gas",
+   "id": "g",
+   "x0": 0,
+   "x1": "L",
+   "y0": 9.2,
+   "y1": 14.2,
+   "n": "n",
+   "v": "v",
+   "bath": 1,
+   "vref": 2.2,
+   "seed": 7,
+   "out": {
+    "vrms": "gv",
+    "P": "gp",
+    "hits": "gh"
+   }
+  },
+  {
+   "type": "rect",
+   "id": "bk",
+   "x": 1.5,
+   "y": 4.5,
+   "w": 10,
+   "h": 2.5,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.06,
+   "strokeWidth": 1.5
+  },
+  {
+   "type": "text",
+   "id": "t1",
+   "at": [
+    6.5,
+    6.45
+   ],
+   "text": "P × V = {{Pm*L/8|2}}",
+   "role": "me",
+   "size": "l",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t2",
+   "at": [
+    6.5,
+    5.65
+   ],
+   "text": "N × T = {{n*T/12000|2}}",
+   "role": "gas",
+   "size": "l",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t3",
+   "at": [
+    6.5,
+    4.9
+   ],
+   "text": "ratio  PV ÷ NT = {{(Pm*L/8)/(n*T/12000)|2}}",
+   "role": "th",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t4",
+   "at": [
+    6.5,
+    3.0
+   ],
+   "text": "The ratio never changes.",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t5",
+   "at": [
+    6.5,
+    2.2
+   ],
+   "text": "That constant is R (per mole)",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "t6",
+   "at": [
+    6.5,
+    1.6
+   ],
+   "text": "or k (per molecule).",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Three laws, one equation",
+   "text": "Boyle: \\( P \\propto 1/V \\). Charles: \\( V \\propto T \\). Gay-Lussac: \\( P \\propto T \\). And the more gas, the more pressure: \\( P \\propto N \\). Put them all together: \\( \\dfrac{PV}{NT} = \\text{constant} \\).",
+   "actions": [
+    {
+     "set": {
+      "n": 40,
+      "T": 300,
+      "L": 8
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Change the volume",
+   "text": "Halve the volume. P doubles and V halves, so P × V is unchanged. The ratio PV ÷ NT stays at **{{(Pm*L/8)/(n*T/12000)|2}}**.",
+   "actions": [
+    {
+     "set": {
+      "n": 40,
+      "T": 300,
+      "L": 8
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "L": 4
+     },
+     "at": 0,
+     "dur": 3000
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Change the temperature",
+   "text": "Now heat the gas at constant volume. P goes up in proportion to T; the ratio is still **{{(Pm*L/8)/(n*T/12000)|2}}**.",
+   "actions": [
+    {
+     "set": {
+      "n": 40,
+      "T": 300,
+      "L": 8
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "T": 600
+     },
+     "at": 0,
+     "dur": 3000
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Change the amount of gas",
+   "text": "Double the number of molecules: P doubles. The constant stays the same because we divide by N too. Written per mole it becomes \\( PV = nRT \\).",
+   "actions": [
+    {
+     "set": {
+      "n": 40,
+      "T": 300,
+      "L": 8
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "n": 80
+     },
+     "at": 0,
+     "dur": 3000
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Per mole or per molecule",
+   "text": "With **n moles**: \\( PV = nRT \\) where \\( R = 8.31\\ \\text{J mol}^{-1}\\text{K}^{-1} \\). With **N molecules**: \\( PV = NkT \\) where the **Boltzmann constant** is \\( k = R/N_A \\). Play with all three sliders.",
+   "actions": [
+    {
+     "set": {
+      "n": 40,
+      "T": 300,
+      "L": 8
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "P (×P₀)",
+   "value": "{{Pm|2}}",
+   "role": "me"
+  },
+  {
+   "label": "V (×V₀)",
+   "value": "{{L/8|2}}"
+  },
+  {
+   "label": "PV ÷ NT",
+   "value": "{{(Pm*L/8)/(n*T/12000)|2}}",
+   "role": "th"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Ideal gas equation",
+   "tex": "\\role{me}{P}\\,\\role{pis}{V} = \\role{gas}{n}\\,R\\,\\role{hot}{T}",
+   "text": "P in pascal, V in m³, n in moles, T in kelvin, R = 8.31 J mol⁻¹ K⁻¹."
+  },
+  {
+   "title": "Boltzmann constant",
+   "tex": "k = \\dfrac{R}{N_A} \\approx 1.38\\times10^{-23}\\ \\mathrm{J\\,K^{-1}}",
+   "text": "PV = NkT when you count molecules N instead of moles n."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "How many moles of an ideal gas are in a **2 m³** container at **300 K** and **1.5 × 10⁵ Pa**? (R = 8.31 J mol⁻¹ K⁻¹) Give your answer to the nearest mole.",
+   "answer": 120,
+   "hint": "n = PV / RT.",
+   "explain": "\\( n = \\dfrac{1.5\\times10^5 \\times 2}{8.31\\times300} \\approx 120 \\) mol.",
+   "tolerance": 2,
+   "unit": "mol"
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "The gas shows **1 P₀** at **V₀** and **300 K**. Both V and T are doubled. What is the pressure in P₀?",
+   "answer": 1,
+   "hint": "P ∝ T / V.",
+   "explain": "T doubles (×2) and V doubles (÷2), so P is unchanged: **1 P₀**.",
+   "tolerance": 0.15,
+   "unit": "P₀"
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "In \\( PV = NkT \\), what does the Boltzmann constant k equal?",
+   "options": [
+    {
+     "id": "a",
+     "label": "R × N_A"
+    },
+    {
+     "id": "b",
+     "label": "R ÷ N_A"
+    },
+    {
+     "id": "c",
+     "label": "N_A ÷ R"
+    },
+    {
+     "id": "d",
+     "label": "R + N_A"
+    }
+   ],
+   "answer": "b",
+   "hint": "k is the gas constant for one molecule.",
+   "explain": "\\( k = R/N_A \\approx 1.38\\times10^{-23} \\) J K⁻¹."
+  }
+ ],
+ "takeaways": [
+  "**Ideal gas equation:** \\( PV = nRT = NkT \\).",
+  "It combines Boyle, Charles and Gay-Lussac (and the effect of the amount of gas).",
+  "Always use **kelvin** and SI units (pascal, m³)."
+ ],
+ "notes": [
+  {
+   "title": "Connects to",
+   "text": "The three laws are special cases: **fix T** → Boyle (isothermal), **fix P** → Charles (isobaric), **fix V** → Gay-Lussac (isochoric). Next, see how a changing volume does **work** (W = PΔV) and how that links to the **first law**."
+  }
+ ]
+}

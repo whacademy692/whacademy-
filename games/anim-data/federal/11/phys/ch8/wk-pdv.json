@@ -1,0 +1,474 @@
+{
+ "id": "g11-phys-c8-wk-pdv",
+ "title": "Work done by a gas: W = P × ΔV",
+ "summary": "A gas expanding against constant pressure does work equal to the pressure times the change in volume.",
+ "alt": "A gas pushing a piston outward at constant pressure, with a shaded rectangle on a P–V graph showing the work as an area.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": true
+  },
+  "th": {
+   "label": "Constant pressure",
+   "color": "#059669",
+   "text": "The pressure stays at 200 kPa.",
+   "legend": true
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "L",
+   "label": "Gas length (volume)",
+   "type": "number",
+   "min": 3.5,
+   "max": 9.5,
+   "step": 0.05,
+   "default": 4
+  }
+ ],
+ "derived": {
+  "v": "2.2*sqrt(L/6)",
+  "n": "40",
+  "Vl": "L/2",
+  "dV": "L/2-2",
+  "W": "200*(L/2-2)"
+ },
+ "shapes": [
+  {
+   "type": "polyline",
+   "id": "cyl",
+   "pts": [
+    [
+     10.649999999999999,
+     14.2
+    ],
+    [
+     0,
+     14.2
+    ],
+    [
+     0,
+     9.2
+    ],
+    [
+     10.649999999999999,
+     9.2
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 4
+  },
+  {
+   "type": "rect",
+   "id": "pis",
+   "x": "L",
+   "y": 9.149999999999999,
+   "w": 0.45,
+   "h": 5.1,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "segment",
+   "id": "rod",
+   "from": [
+    "(L)+0.45",
+    11.7
+   ],
+   "to": [
+    "(L)+2.3",
+    11.7
+   ],
+   "role": "pis",
+   "strokeWidth": 5
+  },
+  {
+   "type": "rect",
+   "id": "hdl",
+   "x": "(L)+2.3",
+   "y": 11.1,
+   "w": 0.3,
+   "h": 1.2,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.7,
+   "strokeWidth": 2
+  },
+  {
+   "type": "gas",
+   "id": "g",
+   "x0": 0,
+   "x1": "L",
+   "y0": 9.2,
+   "y1": 14.2,
+   "n": "n",
+   "v": "v",
+   "bath": 1,
+   "vref": 2.2,
+   "seed": 7,
+   "out": {
+    "vrms": "gv",
+    "P": "gp",
+    "hits": "gh"
+   }
+  },
+  {
+   "type": "vector",
+   "id": "Pa",
+   "from": [
+    "L+3.8",
+    12.2
+   ],
+   "to": [
+    "L+2.55",
+    12.2
+   ],
+   "role": "th",
+   "strokeWidth": 5
+  },
+  {
+   "type": "text",
+   "id": "pt",
+   "at": [
+    "L+3.0",
+    12.9
+   ],
+   "text": "P",
+   "role": "th",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "vector",
+   "id": "gax",
+   "from": [
+    1.7,
+    0.9
+   ],
+   "to": [
+    12.299999999999999,
+    0.9
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "vector",
+   "id": "gay",
+   "from": [
+    1.7,
+    0.9
+   ],
+   "to": [
+    1.7,
+    6.800000000000001
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "gxl",
+   "at": [
+    12.45,
+    0.75
+   ],
+   "text": "V (L)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "gyl",
+   "at": [
+    1.5999999999999999,
+    7.15
+   ],
+   "text": "P (kPa)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "wr",
+   "x": "(1.7+((2)-(0))/(5.5-(0))*10.2)",
+   "y": 0.9,
+   "w": "(1.7+((Vl)-(0))/(5.5-(0))*10.2)-(1.7+((2)-(0))/(5.5-(0))*10.2)",
+   "h": "(0.9+((200)-(0))/(300-(0))*5.4)-0.9",
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 1.5,
+   "visible": "Vl>2"
+  },
+  {
+   "type": "rect",
+   "id": "wr2",
+   "x": "(1.7+((Vl)-(0))/(5.5-(0))*10.2)",
+   "y": 0.9,
+   "w": "(1.7+((2)-(0))/(5.5-(0))*10.2)-(1.7+((Vl)-(0))/(5.5-(0))*10.2)",
+   "h": "(0.9+((200)-(0))/(300-(0))*5.4)-0.9",
+   "role": "me",
+   "fill": true,
+   "fillOpacity": 0.3,
+   "strokeWidth": 1.5,
+   "visible": "Vl<=2"
+  },
+  {
+   "type": "segment",
+   "id": "p0",
+   "from": [
+    1.7,
+    "(0.9+((200)-(0))/(300-(0))*5.4)"
+   ],
+   "to": [
+    11.899999999999999,
+    "(0.9+((200)-(0))/(300-(0))*5.4)"
+   ],
+   "role": "th",
+   "strokeWidth": 3.5
+  },
+  {
+   "type": "point",
+   "id": "d1",
+   "at": [
+    "(1.7+((2)-(0))/(5.5-(0))*10.2)",
+    "(0.9+((200)-(0))/(300-(0))*5.4)"
+   ],
+   "role": "wall",
+   "r": 6
+  },
+  {
+   "type": "point",
+   "id": "d2",
+   "at": [
+    "(1.7+((Vl)-(0))/(5.5-(0))*10.2)",
+    "(0.9+((200)-(0))/(300-(0))*5.4)"
+   ],
+   "role": "th",
+   "r": 7
+  },
+  {
+   "type": "text",
+   "id": "w1",
+   "at": [
+    7.4,
+    3.7
+   ],
+   "text": "W = {{W|0}} J",
+   "role": "work",
+   "size": "l",
+   "bold": true
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A gas at constant pressure",
+   "text": "The gas pushes on a piston with a steady pressure \\( P = 200 \\) kPa (the red arrow). It starts with a volume of 2 L.",
+   "actions": [
+    {
+     "set": {
+      "L": 4
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "The gas expands",
+   "text": "The gas heats up and pushes the piston out. The piston moves a distance \\( d \\). The force of the gas is \\( F = P \\times A \\), where \\( A \\) is the piston area.",
+   "actions": [
+    {
+     "set": {
+      "L": 4
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "L": 8
+     },
+     "at": 0,
+     "dur": 4200
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Force × distance",
+   "text": "Work is force times distance: \\( W = F \\times d = (P A)\\,d = P\\,(A d) \\). But \\( A d \\) is the **change in volume** \\( \\Delta V \\). So \\( W = P \\Delta V \\).",
+   "actions": [
+    {
+     "set": {
+      "L": 8
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Work is the area",
+   "text": "On the P–V graph the work is the **area of the rectangle** under the constant-pressure line: height P, width ΔV. Here \\( W = 200 \\times 2 = {{W|0}} \\) J.",
+   "actions": [
+    {
+     "set": {
+      "L": 8
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Compression: work done on the gas",
+   "text": "Push the piston back in. The volume **decreases**, so \\( \\Delta V \\) is negative and the work done **by** the gas is negative: the surroundings do work **on** the gas.",
+   "actions": [
+    {
+     "set": {
+      "L": 8
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "L": 3.5
+     },
+     "at": 0,
+     "dur": 4200
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "ΔV (L)",
+   "value": "{{dV|2}}",
+   "role": "work"
+  },
+  {
+   "label": "P (kPa)",
+   "value": "200",
+   "role": "th"
+  },
+  {
+   "label": "Work W (J)",
+   "value": "{{W|0}}",
+   "role": "work"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Work done by a gas (constant P)",
+   "tex": "\\role{work}{W} = \\role{th}{P}\\,\\Delta V = P\\,(V_2 - V_1)",
+   "text": "P in pascal, V in m³, W in joule. W > 0 when the gas expands, W < 0 when it is compressed."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A gas at a constant pressure of **200 kPa** expands from **2 L** to **5 L**. How much work does it do, in joules? (1 L = 10⁻³ m³)",
+   "answer": 600,
+   "hint": "ΔV = 3 L = 3 × 10⁻³ m³.",
+   "explain": "\\( W = 2\\times10^5 \\times 3\\times10^{-3} = 600 \\) J.",
+   "tolerance": 5,
+   "unit": "J"
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A gas at **100 kPa** is compressed from **4 L** to **1 L**. What is the work done **by** the gas (joules)? Use a negative sign if it is done on the gas.",
+   "answer": -300,
+   "hint": "Volume decreases so ΔV < 0.",
+   "explain": "\\( W = 1\\times10^5 \\times (-3\\times10^{-3}) = -300 \\) J: the surroundings do 300 J of work on the gas.",
+   "tolerance": 5,
+   "unit": "J"
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "On a P–V graph at constant pressure, the work done by the gas equals:",
+   "options": [
+    {
+     "id": "a",
+     "label": "the slope of the line"
+    },
+    {
+     "id": "b",
+     "label": "the area under the line"
+    },
+    {
+     "id": "c",
+     "label": "the height of the line"
+    },
+    {
+     "id": "d",
+     "label": "the length of the line"
+    }
+   ],
+   "answer": "b",
+   "hint": "Height P times width ΔV.",
+   "explain": "W = P ΔV is the area of the rectangle under the line."
+  }
+ ],
+ "takeaways": [
+  "\\( W = P\\Delta V \\) at constant pressure: force on the piston times the distance it moves.",
+  "Expansion: **W > 0** (gas does work). Compression: **W < 0** (work is done on the gas).",
+  "On a P–V graph, **work = area** under the curve."
+ ],
+ "notes": [
+  {
+   "title": "Connects to",
+   "text": "If the pressure is **not** constant, the work is still the area under the P–V curve (see *Work is the area under P–V*). The work is part of the energy bookkeeping of the **first law**."
+  }
+ ]
+}

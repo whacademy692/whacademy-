@@ -1,0 +1,558 @@
+{
+ "id": "g11-phys-c8-en-heat",
+ "title": "The heat engine: heat in, work out, heat rejected",
+ "summary": "A heat engine takes heat from a hot reservoir, turns part of it into work and must reject the rest to a cold reservoir.",
+ "alt": "A flow diagram: heat flows from a hot reservoir into an engine; work leaves to the right and the remaining heat goes to a cold reservoir.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "hot": {
+   "label": "Heat from hot reservoir",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": true
+  },
+  "cold": {
+   "label": "Heat to cold reservoir",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": true
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": true
+  },
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "Qh",
+   "label": "Heat taken from hot reservoir Q_h (J)",
+   "type": "number",
+   "min": 20,
+   "max": 100,
+   "step": 5,
+   "default": 100
+  },
+  {
+   "id": "Qc",
+   "label": "Heat rejected to cold reservoir Q_c (J)",
+   "type": "number",
+   "min": 10,
+   "max": 95,
+   "step": 5,
+   "default": 60
+  },
+  {
+   "id": "ph",
+   "label": "Flow animation",
+   "type": "clock",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "speed": 0.35,
+   "loop": "repeat",
+   "default": 0,
+   "auto": true
+  }
+ ],
+ "derived": {
+  "W": "max(Qh-Qc,0)",
+  "eta": "100*W/Qh"
+ },
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "hotR",
+   "x": 2.6,
+   "y": 12.7,
+   "w": 7.8,
+   "h": 1.4,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.3,
+   "strokeWidth": 3
+  },
+  {
+   "type": "rect",
+   "id": "coldR",
+   "x": 2.6,
+   "y": 0.7,
+   "w": 7.8,
+   "h": 1.7,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.3,
+   "strokeWidth": 3
+  },
+  {
+   "type": "text",
+   "id": "hotT",
+   "at": [
+    6.5,
+    13.4
+   ],
+   "text": "Hot reservoir  T_h",
+   "role": "hot",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "coldT",
+   "at": [
+    6.5,
+    1.55
+   ],
+   "text": "Cold reservoir  T_c",
+   "role": "cold",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "mach",
+   "x": 4.2,
+   "y": 6.0,
+   "w": 4.6,
+   "h": 3.0,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 4
+  },
+  {
+   "type": "text",
+   "id": "machT",
+   "at": [
+    6.5,
+    7.5
+   ],
+   "text": "ENGINE",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "bH",
+   "x": "6.5-Qh*0.04/2",
+   "y": 9.0,
+   "w": "max(Qh*0.04,0.03)",
+   "h": 3.7,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 1.5
+  },
+  {
+   "type": "rect",
+   "id": "bC",
+   "x": "6.5-Qc*0.04/2",
+   "y": 2.4,
+   "w": "max(Qc*0.04,0.03)",
+   "h": 3.6,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 1.5
+  },
+  {
+   "type": "rect",
+   "id": "bW",
+   "x": 8.8,
+   "y": "7.5-W*0.04/2",
+   "w": 3.9,
+   "h": "max(W*0.04,0.03)",
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 1.5
+  },
+  {
+   "type": "point",
+   "id": "pH0",
+   "at": [
+    6.5,
+    "12.7-3.7*fract(ph+0.0)"
+   ],
+   "role": "hot",
+   "r": 5,
+   "visible": "Qh>1"
+  },
+  {
+   "type": "point",
+   "id": "pC0",
+   "at": [
+    6.5,
+    "6.0-3.6*fract(ph+0.0)"
+   ],
+   "role": "cold",
+   "r": 5,
+   "visible": "Qc>1"
+  },
+  {
+   "type": "point",
+   "id": "pW0",
+   "at": [
+    "8.8+3.9*fract(ph+0.0)",
+    7.5
+   ],
+   "role": "work",
+   "r": 5,
+   "visible": "W>1"
+  },
+  {
+   "type": "point",
+   "id": "pH1",
+   "at": [
+    6.5,
+    "12.7-3.7*fract(ph+0.25)"
+   ],
+   "role": "hot",
+   "r": 5,
+   "visible": "Qh>1"
+  },
+  {
+   "type": "point",
+   "id": "pC1",
+   "at": [
+    6.5,
+    "6.0-3.6*fract(ph+0.25)"
+   ],
+   "role": "cold",
+   "r": 5,
+   "visible": "Qc>1"
+  },
+  {
+   "type": "point",
+   "id": "pW1",
+   "at": [
+    "8.8+3.9*fract(ph+0.25)",
+    7.5
+   ],
+   "role": "work",
+   "r": 5,
+   "visible": "W>1"
+  },
+  {
+   "type": "point",
+   "id": "pH2",
+   "at": [
+    6.5,
+    "12.7-3.7*fract(ph+0.5)"
+   ],
+   "role": "hot",
+   "r": 5,
+   "visible": "Qh>1"
+  },
+  {
+   "type": "point",
+   "id": "pC2",
+   "at": [
+    6.5,
+    "6.0-3.6*fract(ph+0.5)"
+   ],
+   "role": "cold",
+   "r": 5,
+   "visible": "Qc>1"
+  },
+  {
+   "type": "point",
+   "id": "pW2",
+   "at": [
+    "8.8+3.9*fract(ph+0.5)",
+    7.5
+   ],
+   "role": "work",
+   "r": 5,
+   "visible": "W>1"
+  },
+  {
+   "type": "point",
+   "id": "pH3",
+   "at": [
+    6.5,
+    "12.7-3.7*fract(ph+0.75)"
+   ],
+   "role": "hot",
+   "r": 5,
+   "visible": "Qh>1"
+  },
+  {
+   "type": "point",
+   "id": "pC3",
+   "at": [
+    6.5,
+    "6.0-3.6*fract(ph+0.75)"
+   ],
+   "role": "cold",
+   "r": 5,
+   "visible": "Qc>1"
+  },
+  {
+   "type": "point",
+   "id": "pW3",
+   "at": [
+    "8.8+3.9*fract(ph+0.75)",
+    7.5
+   ],
+   "role": "work",
+   "r": 5,
+   "visible": "W>1"
+  },
+  {
+   "type": "text",
+   "id": "tH",
+   "at": [
+    11.2,
+    11.0
+   ],
+   "text": "Q_h = {{Qh|0}} J",
+   "role": "hot",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "tC",
+   "at": [
+    11.2,
+    4.4
+   ],
+   "text": "Q_c = {{Qc|0}} J",
+   "role": "cold",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "tW",
+   "at": [
+    11.0,
+    8.4
+   ],
+   "text": "W = {{W|0}} J",
+   "role": "work",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "eff",
+   "at": [
+    2.2,
+    7.5
+   ],
+   "text": "η = {{eta|0}} %",
+   "role": "work",
+   "size": "m",
+   "bold": true
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "What a heat engine does",
+   "text": "A **heat engine** turns heat into useful work. It works between a **hot** reservoir (a furnace or flame) and a **cold** one (the air or a river). Every car, power station and steam engine is a heat engine.",
+   "actions": [
+    {
+     "set": {
+      "Qh": 100,
+      "Qc": 60
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Heat in",
+   "text": "The engine takes {{Qh|0}} J of heat \\( Q_h \\) from the hot reservoir. It uses this energy to push a piston or turn a turbine.",
+   "actions": [
+    {
+     "set": {
+      "Qh": 100,
+      "Qc": 60
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Work out",
+   "text": "Part of the heat becomes useful **work** \\( W \\) (the amber band). Here \\( W = {{W|0}} \\) J.",
+   "actions": [
+    {
+     "set": {
+      "Qh": 100,
+      "Qc": 60
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Heat must be rejected",
+   "text": "The rest, \\( Q_c = {{Qc|0}} \\) J, has to be thrown away into the cold reservoir. By energy conservation \\( Q_h = W + Q_c \\). The engine cannot keep all the heat as work.",
+   "actions": [
+    {
+     "set": {
+      "Qh": 100,
+      "Qc": 60
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Efficiency",
+   "text": "The **efficiency** is the fraction of the heat taken in that becomes work: \\( \\eta = W/Q_h = {{eta|0}}\\% \\). Reduce the rejected heat and the efficiency rises. Can it ever reach 100%? (See the second law.)",
+   "actions": [
+    {
+     "set": {
+      "Qh": 100,
+      "Qc": 60
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "Qc": 30
+     },
+     "at": 0,
+     "dur": 3600
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Q_h (J)",
+   "value": "{{Qh|0}}",
+   "role": "hot"
+  },
+  {
+   "label": "Work W (J)",
+   "value": "{{W|0}}",
+   "role": "work"
+  },
+  {
+   "label": "Q_c (J)",
+   "value": "{{Qc|0}}",
+   "role": "cold"
+  },
+  {
+   "label": "Efficiency",
+   "value": "{{eta|0}} %",
+   "role": "work"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Energy balance",
+   "tex": "\\role{hot}{Q_h} = \\role{work}{W} + \\role{cold}{Q_c}",
+   "text": "Heat in = work out + heat rejected."
+  },
+  {
+   "title": "Efficiency",
+   "tex": "\\eta = \\dfrac{\\role{work}{W}}{\\role{hot}{Q_h}} = 1 - \\dfrac{\\role{cold}{Q_c}}{\\role{hot}{Q_h}}",
+   "text": "Always less than 1 for a real engine."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "An engine takes **1000 J** from the hot reservoir and rejects **700 J** to the cold one. What work does it do (J)?",
+   "answer": 300,
+   "hint": "W = Q_h − Q_c.",
+   "explain": "\\( W = 1000 - 700 = 300 \\) J.",
+   "tolerance": 1,
+   "unit": "J"
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "What is the efficiency of that engine, as a percentage?",
+   "answer": 30,
+   "hint": "η = W / Q_h.",
+   "explain": "\\( \\eta = 300/1000 = 0.30 = 30\\% \\).",
+   "tolerance": 0.5,
+   "unit": "%"
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which statement about a heat engine is true?",
+   "options": [
+    {
+     "id": "a",
+     "label": "It converts all the heat it takes in into work"
+    },
+    {
+     "id": "b",
+     "label": "It rejects some heat to a colder reservoir"
+    },
+    {
+     "id": "c",
+     "label": "It needs no hot reservoir"
+    },
+    {
+     "id": "d",
+     "label": "It creates energy"
+    }
+   ],
+   "answer": "b",
+   "hint": "Energy is conserved: where does the unused heat go?",
+   "explain": "Every heat engine must reject some heat to a cold reservoir; it cannot convert all the heat into work."
+  }
+ ],
+ "takeaways": [
+  "A **heat engine** takes heat \\( Q_h \\) from a hot reservoir, does work \\( W \\), and rejects \\( Q_c \\) to a cold reservoir.",
+  "\\( Q_h = W + Q_c \\) and \\( \\eta = W/Q_h \\).",
+  "Efficiency is **always below 100%**: some heat must be rejected."
+ ],
+ "notes": [
+  {
+   "title": "Connects to",
+   "text": "The engine itself is a gas going round a **cycle** of processes: see the *Four-stroke engine* and the *Carnot cycle*. The fact that Q_c cannot be zero is the **second law**."
+  }
+ ]
+}

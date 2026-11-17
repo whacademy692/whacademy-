@@ -1,0 +1,436 @@
+{
+ "id": "g11-phys-c8-th-kinetic",
+ "title": "Temperature is the average kinetic energy of molecules",
+ "summary": "Compare two gases: the hotter one has faster molecules and a larger average kinetic energy.",
+ "alt": "Two boxes of gas side by side, one at fixed temperature and one adjustable, with bars showing mean kinetic energy.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "hot": {
+   "label": "Gas B (adjustable)",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": true
+  },
+  "cold": {
+   "label": "Gas A (fixed)",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": true
+  },
+  "u": {
+   "label": "Mean kinetic energy",
+   "color": "#4f46e5",
+   "text": "Average kinetic energy of one molecule.",
+   "legend": true
+  },
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "TB",
+   "label": "Gas B temperature (K)",
+   "type": "number",
+   "min": 50,
+   "max": 1200,
+   "step": 10,
+   "default": 300
+  }
+ ],
+ "derived": {
+  "TA": "300",
+  "va": "2.2",
+  "vb": "2.2*sqrt(TB/300)",
+  "KEA": "1",
+  "KEB": "TB/300"
+ },
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "bA",
+   "x": 0.4,
+   "y": 9.4,
+   "w": 5.7,
+   "h": 4.8,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 3
+  },
+  {
+   "type": "rect",
+   "id": "bB",
+   "x": 6.8,
+   "y": 9.4,
+   "w": 5.7,
+   "h": 4.8,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 3
+  },
+  {
+   "type": "gas",
+   "id": "ga",
+   "x0": 0.4,
+   "x1": 6.1,
+   "y0": 9.4,
+   "y1": 14.2,
+   "n": 24,
+   "v": "va",
+   "bath": 1,
+   "vref": 2.2,
+   "seed": 3,
+   "out": {
+    "vrms": "gva"
+   }
+  },
+  {
+   "type": "gas",
+   "id": "gb",
+   "x0": 6.8,
+   "x1": 12.5,
+   "y0": 9.4,
+   "y1": 14.2,
+   "n": 24,
+   "v": "vb",
+   "bath": 1,
+   "vref": 2.2,
+   "seed": 8,
+   "out": {
+    "vrms": "gvb"
+   }
+  },
+  {
+   "type": "text",
+   "id": "lA",
+   "at": [
+    3.25,
+    8.7
+   ],
+   "text": "A: 300 K",
+   "role": "cold",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "lB",
+   "at": [
+    9.65,
+    8.7
+   ],
+   "text": "B: {{TB|0}} K",
+   "role": "hot",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "hd",
+   "at": [
+    6.5,
+    6.9
+   ],
+   "text": "average kinetic energy of a molecule",
+   "role": "u",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "kbA0",
+   "x": 1.0,
+   "y": 5.2,
+   "w": 11.0,
+   "h": 0.9,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.06,
+   "strokeWidth": 1
+  },
+  {
+   "type": "rect",
+   "id": "kbA",
+   "x": 1.0,
+   "y": 5.2,
+   "w": "clamp(11*KEA/4.5,0.05,11)",
+   "h": 0.9,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "kA",
+   "at": [
+    6.5,
+    5.65
+   ],
+   "text": "A  =  1",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "kbB0",
+   "x": 1.0,
+   "y": 3.8,
+   "w": 11.0,
+   "h": 0.9,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.06,
+   "strokeWidth": 1
+  },
+  {
+   "type": "rect",
+   "id": "kbB",
+   "x": 1.0,
+   "y": 3.8,
+   "w": "clamp(11*KEB/4.5,0.05,11)",
+   "h": 0.9,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "kB",
+   "at": [
+    6.5,
+    4.25
+   ],
+   "text": "B  =  {{KEB|2}}",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "ratio",
+   "at": [
+    6.5,
+    2.2
+   ],
+   "text": "speed ratio  B ÷ A = {{vb/va|2}}",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "ratio2",
+   "at": [
+    6.5,
+    1.4
+   ],
+   "text": "(KE ratio {{KEB|2}}; the speed ratio is its square root)",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Same temperature, same average energy",
+   "text": "Both gases are at 300 K. The molecules move in all directions at many different speeds, but the **average kinetic energy** is the same in both boxes.",
+   "actions": [
+    {
+     "set": {
+      "TB": 300
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Heat B to 1200 K",
+   "text": "Heat gas B to four times the kelvin temperature. The molecules of B turn red and move **twice as fast**. Their average kinetic energy is **four times** bigger.",
+   "actions": [
+    {
+     "set": {
+      "TB": 300
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "TB": 1200
+     },
+     "at": 0,
+     "dur": 4000
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Temperature ∝ average kinetic energy",
+   "text": "This is the meaning of temperature: \\( \\overline{KE} \\propto T \\). Kinetic energy goes with T; the speed goes with \\( \\sqrt{T} \\).",
+   "actions": [
+    {
+     "set": {
+      "TB": 1200
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Cool B to near zero",
+   "text": "Cool gas B far below 300 K. The molecules slow down. At **absolute zero (0 K)** an ideal gas would have no motion at all.",
+   "actions": [
+    {
+     "set": {
+      "TB": 1200
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "TB": 60
+     },
+     "at": 0,
+     "dur": 4800
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Try your own temperature",
+   "text": "Choose any temperature for B and compare the kinetic-energy bars and the speed ratio.",
+   "actions": [
+    {
+     "set": {
+      "TB": 300
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "B temperature (K)",
+   "value": "{{TB|0}}",
+   "role": "hot"
+  },
+  {
+   "label": "KE of B ÷ KE of A",
+   "value": "{{KEB|2}}",
+   "role": "u"
+  },
+  {
+   "label": "Speed B ÷ A",
+   "value": "{{vb/va|2}}"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Kinetic energy and temperature",
+   "tex": "\\overline{KE} = \\dfrac{3}{2}\\,k\\,\\role{hot}{T}",
+   "text": "For a gas molecule the average kinetic energy is proportional to the kelvin temperature."
+  },
+  {
+   "title": "Speed",
+   "tex": "v_{rms} \\propto \\sqrt{\\role{hot}{T}}",
+   "text": "Quadruple the temperature and the speed only doubles."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "Gas B is heated from 300 K to **1200 K**. How many times larger is the **average kinetic energy** of its molecules?",
+   "answer": 4,
+   "hint": "KE is proportional to the kelvin temperature.",
+   "explain": "1200 ÷ 300 = **4**.",
+   "tolerance": 0.1,
+   "unit": "×",
+   "set": {
+    "TB": 300
+   }
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "Gas B is heated from 300 K to **1200 K**. By what factor does the **speed** of its molecules increase?",
+   "answer": 2,
+   "hint": "Speed goes as the square root of T.",
+   "explain": "\\( \\sqrt{4} = 2 \\) times faster.",
+   "tolerance": 0.1,
+   "unit": "×",
+   "set": {
+    "TB": 300
+   }
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "What happens to the molecules of an ideal gas at **0 K**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "They move faster"
+    },
+    {
+     "id": "b",
+     "label": "They stop moving (zero kinetic energy)"
+    },
+    {
+     "id": "c",
+     "label": "They melt"
+    },
+    {
+     "id": "d",
+     "label": "They stick to the walls"
+    }
+   ],
+   "answer": "b",
+   "hint": "Zero temperature = zero average kinetic energy.",
+   "explain": "At absolute zero an ideal gas would have no kinetic energy: the molecules would be at rest."
+  }
+ ],
+ "takeaways": [
+  "**Temperature measures the average kinetic energy** of the molecules: \\( \\overline{KE} \\propto T \\).",
+  "Speed goes as \\( \\sqrt{T} \\): four times the kelvin temperature means twice the speed.",
+  "At absolute zero (0 K) ideal-gas molecules would have no motion."
+ ],
+ "notes": [
+  {
+   "title": "Connects to",
+   "text": "This is why heating a gas raises its **pressure** (faster molecules hit harder) and why **internal energy** of a gas depends on temperature."
+  }
+ ]
+}

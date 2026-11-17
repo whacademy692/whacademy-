@@ -1,0 +1,696 @@
+{
+ "id": "g11-phys-c8-gas-charles",
+ "title": "Charles's law: volume and temperature (constant pressure)",
+ "summary": "Heat a gas under a freely moving piston: it expands in proportion to its kelvin temperature.",
+ "alt": "A cylinder whose piston rises as the gas is heated, and a V–T graph with a straight line through the origin.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": true
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": true
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": true
+  },
+  "hot": {
+   "label": "Flame",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": true
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "fire": {
+   "label": "Flame core",
+   "color": "#f59e0b",
+   "text": "The hot core of the flame.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "T",
+   "label": "Temperature (K)",
+   "type": "number",
+   "min": 150,
+   "max": 600,
+   "step": 5,
+   "default": 300
+  }
+ ],
+ "derived": {
+  "v": "2.2*sqrt(T/300)",
+  "n": "40",
+  "L": "4*T/300",
+  "Pm": "gp/2.420",
+  "flame": "clamp((T-300)/300,0,1)",
+  "TC": "T-273"
+ },
+ "shapes": [
+  {
+   "type": "polyline",
+   "id": "cyl",
+   "pts": [
+    [
+     11.049999999999999,
+     14.2
+    ],
+    [
+     0,
+     14.2
+    ],
+    [
+     0,
+     9.2
+    ],
+    [
+     11.049999999999999,
+     9.2
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 4
+  },
+  {
+   "type": "rect",
+   "id": "pis",
+   "x": "L",
+   "y": 9.149999999999999,
+   "w": 0.45,
+   "h": 5.1,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "segment",
+   "id": "rod",
+   "from": [
+    "(L)+0.45",
+    11.7
+   ],
+   "to": [
+    "(L)+2.3",
+    11.7
+   ],
+   "role": "pis",
+   "strokeWidth": 5
+  },
+  {
+   "type": "rect",
+   "id": "hdl",
+   "x": "(L)+2.3",
+   "y": 11.1,
+   "w": 0.3,
+   "h": 1.2,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.7,
+   "strokeWidth": 2
+  },
+  {
+   "type": "gas",
+   "id": "g",
+   "x0": 0,
+   "x1": "L",
+   "y0": 9.2,
+   "y1": 14.2,
+   "n": 40,
+   "v": "v",
+   "bath": 1,
+   "vref": 2.2,
+   "seed": 7,
+   "out": {
+    "vrms": "gv",
+    "P": "gp",
+    "hits": "gh"
+   }
+  },
+  {
+   "type": "polygon",
+   "id": "fl",
+   "pts": [
+    [
+     1.463,
+     7.098
+    ],
+    [
+     1.342,
+     7.661
+    ],
+    [
+     1.681,
+     8.096
+    ],
+    [
+     1.886,
+     7.822
+    ],
+    [
+     2.188,
+     8.386
+    ],
+    [
+     2.55,
+     8.707
+    ],
+    [
+     2.816,
+     8.289
+    ],
+    [
+     3.057,
+     7.902
+    ],
+    [
+     3.347,
+     8.16
+    ],
+    [
+     3.733,
+     7.581
+    ],
+    [
+     3.588,
+     7.098
+    ]
+   ],
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.75,
+   "strokeWidth": 2.5,
+   "visible": "T>330"
+  },
+  {
+   "type": "polygon",
+   "id": "fli",
+   "pts": [
+    [
+     2.007,
+     7.258
+    ],
+    [
+     1.946,
+     7.597
+    ],
+    [
+     2.115,
+     7.857
+    ],
+    [
+     2.218,
+     7.693
+    ],
+    [
+     2.369,
+     8.031
+    ],
+    [
+     2.55,
+     8.224
+    ],
+    [
+     2.683,
+     7.973
+    ],
+    [
+     2.804,
+     7.742
+    ],
+    [
+     2.948,
+     7.896
+    ],
+    [
+     3.142,
+     7.548
+    ],
+    [
+     3.069,
+     7.258
+    ]
+   ],
+   "role": "fire",
+   "fill": true,
+   "fillOpacity": 0.9,
+   "strokeWidth": 1,
+   "visible": "T>330"
+  },
+  {
+   "type": "polygon",
+   "id": "fl2",
+   "pts": [
+    [
+     5.063,
+     7.098
+    ],
+    [
+     4.943,
+     7.661
+    ],
+    [
+     5.281,
+     8.096
+    ],
+    [
+     5.486,
+     7.822
+    ],
+    [
+     5.788,
+     8.386
+    ],
+    [
+     6.15,
+     8.707
+    ],
+    [
+     6.416,
+     8.289
+    ],
+    [
+     6.657,
+     7.902
+    ],
+    [
+     6.947,
+     8.16
+    ],
+    [
+     7.333,
+     7.581
+    ],
+    [
+     7.188,
+     7.098
+    ]
+   ],
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.75,
+   "strokeWidth": 2.5,
+   "visible": "T>330"
+  },
+  {
+   "type": "polygon",
+   "id": "fl2i",
+   "pts": [
+    [
+     5.607,
+     7.258
+    ],
+    [
+     5.546,
+     7.597
+    ],
+    [
+     5.715,
+     7.857
+    ],
+    [
+     5.818,
+     7.693
+    ],
+    [
+     5.969,
+     8.031
+    ],
+    [
+     6.15,
+     8.224
+    ],
+    [
+     6.283,
+     7.973
+    ],
+    [
+     6.404,
+     7.742
+    ],
+    [
+     6.548,
+     7.896
+    ],
+    [
+     6.742,
+     7.548
+    ],
+    [
+     6.669,
+     7.258
+    ]
+   ],
+   "role": "fire",
+   "fill": true,
+   "fillOpacity": 0.9,
+   "strokeWidth": 1,
+   "visible": "T>330"
+  },
+  {
+   "type": "polygon",
+   "id": "ic",
+   "pts": [
+    [
+     1.4,
+     8.9
+    ],
+    [
+     2.2,
+     7.9
+    ],
+    [
+     3.0,
+     8.9
+    ]
+   ],
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2.5,
+   "visible": "T<270"
+  },
+  {
+   "type": "polygon",
+   "id": "ic2",
+   "pts": [
+    [
+     5.0,
+     8.9
+    ],
+    [
+     5.8,
+     7.9
+    ],
+    [
+     6.6,
+     8.9
+    ]
+   ],
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2.5,
+   "visible": "T<270"
+  },
+  {
+   "type": "vector",
+   "id": "gax",
+   "from": [
+    1.7,
+    0.9
+   ],
+   "to": [
+    12.299999999999999,
+    0.9
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "vector",
+   "id": "gay",
+   "from": [
+    1.7,
+    0.9
+   ],
+   "to": [
+    1.7,
+    6.800000000000001
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "gxl",
+   "at": [
+    12.45,
+    0.75
+   ],
+   "text": "T (K)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "gyl",
+   "at": [
+    1.5999999999999999,
+    7.15
+   ],
+   "text": "V",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "plot",
+   "id": "ln",
+   "x": "(1.7+((u)-(0))/(650-(0))*10.2)",
+   "y": "(0.9+((4*u/300)-(0))/(10.5-(0))*5.4)",
+   "var": "u",
+   "domain": [
+    0,
+    650
+   ],
+   "samples": 40,
+   "role": "th",
+   "strokeWidth": 3
+  },
+  {
+   "type": "point",
+   "id": "d",
+   "at": [
+    "(1.7+((T)-(0))/(650-(0))*10.2)",
+    "(0.9+((L)-(0))/(10.5-(0))*5.4)"
+   ],
+   "role": "me",
+   "r": 7
+  },
+  {
+   "type": "text",
+   "id": "tp",
+   "at": [
+    6.5,
+    8.3
+   ],
+   "text": "T = {{T|0}} K  ({{TC|0}} °C)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A piston that floats freely",
+   "text": "The gas is under a **freely moving piston**, so the pressure outside decides the pressure inside and it stays **constant**. We will change the temperature. The gas now is at {{T|0}} K.",
+   "actions": [
+    {
+     "set": {
+      "T": 300
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Heat the gas",
+   "text": "Heat the cylinder. The molecules speed up (they turn redder). They hit the piston harder, push it out, and the gas **expands** until the pressure is balanced again.",
+   "actions": [
+    {
+     "set": {
+      "T": 300
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "T": 500
+     },
+     "at": 0,
+     "dur": 4200
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "V ∝ T on the graph",
+   "text": "The red dot moves along a **straight line that passes through the origin**: the volume is proportional to the temperature in **kelvin**. At {{T|0}} K the volume is {{L/4|2}} V₀ (V₀ is the volume at 300 K).",
+   "actions": [
+    {
+     "set": {
+      "T": 500
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Cool the gas",
+   "text": "Cool it down: molecules slow (blue) and the piston sinks. At 150 K the volume has fallen to half of what it was at 300 K.",
+   "actions": [
+    {
+     "set": {
+      "T": 500
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "T": 150
+     },
+     "at": 0,
+     "dur": 4800
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Why kelvin, not °C",
+   "text": "The line points to **zero volume at 0 K**, which is −273 °C. Doubling the **Celsius** temperature does not double V, but doubling the **kelvin** temperature does. Always use \\( T = t + 273 \\).",
+   "actions": [
+    {
+     "set": {
+      "T": 300
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Temperature (K)",
+   "value": "{{T|0}}",
+   "role": "hot"
+  },
+  {
+   "label": "Volume (×V₀)",
+   "value": "{{L/4|2}}",
+   "role": "me"
+  },
+  {
+   "label": "V ÷ T",
+   "value": "{{L/T*300/8|2}}",
+   "role": "th"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Charles's law",
+   "tex": "\\role{th}{\\dfrac{V_1}{T_1}} = \\role{th}{\\dfrac{V_2}{T_2}}",
+   "text": "At constant pressure, V/T stays the same. T must be in kelvin."
+  },
+  {
+   "title": "Celsius to kelvin",
+   "tex": "T\\,(\\mathrm{K}) = t\\,(^{\\circ}\\mathrm{C}) + 273",
+   "text": "Absolute zero: 0 K = −273 °C."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A gas occupies **3 L** at **300 K**. It is heated to **600 K** at constant pressure. What is the new volume in litres?",
+   "answer": 6,
+   "hint": "Use \\( V_1/T_1 = V_2/T_2 \\) with kelvin.",
+   "explain": "\\( 3/300 = V_2/600 \\), so \\( V_2 = 6 \\) L. Doubling the kelvin temperature doubles the volume.",
+   "tolerance": 0.1,
+   "unit": "L"
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A gas at **27 °C** has volume **2 L**. At constant pressure it is heated until its volume is **4 L**. What is the new temperature in kelvin?",
+   "answer": 600,
+   "hint": "First convert 27 °C to kelvin.",
+   "explain": "27 °C = 300 K. The volume doubles, so the kelvin temperature doubles: **600 K**.",
+   "tolerance": 1,
+   "unit": "K"
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "What happens to the volume of a gas at constant pressure if its kelvin temperature is **halved**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "It doubles"
+    },
+    {
+     "id": "b",
+     "label": "It stays the same"
+    },
+    {
+     "id": "c",
+     "label": "It is halved"
+    },
+    {
+     "id": "d",
+     "label": "It becomes four times larger"
+    }
+   ],
+   "answer": "c",
+   "hint": "V is proportional to T.",
+   "explain": "V ∝ T, so half the temperature gives half the volume."
+  }
+ ],
+ "takeaways": [
+  "**Charles's law:** at constant pressure, \\( V/T = \\text{constant} \\) (T in kelvin).",
+  "The V–T graph is a **straight line through the origin**.",
+  "Hotter molecules push the piston out until the pressure is balanced: **heating at constant pressure expands the gas**."
+ ],
+ "notes": [
+  {
+   "title": "Connects to",
+   "text": "This is the **isobaric process** (constant pressure). The gas expands and does work \\( W = P\\Delta V \\) — see *Work done by a gas*. The heat it takes in is more than the energy stored: see the **first law**."
+  }
+ ]
+}

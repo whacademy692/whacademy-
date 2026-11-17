@@ -1,0 +1,550 @@
+{
+ "id": "g11-phys-c8-ent-melting",
+ "title": "Melting: entropy rises while the temperature stays put",
+ "summary": "Ice absorbs heat and melts at a constant temperature; the molecules go from an ordered lattice to free movement and the entropy rises.",
+ "alt": "A block of ice molecules vibrating on a lattice is heated, then melts into free-moving water molecules; a temperature versus heat graph shows the flat melting plateau and a bar shows entropy.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": true
+  },
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": true
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "q",
+   "label": "Heat added",
+   "type": "clock",
+   "min": 0,
+   "max": 3,
+   "step": 0.01,
+   "speed": 0.25,
+   "loop": "repeat",
+   "default": 0
+  }
+ ],
+ "derived": {
+  "T": "q<1 ? 250+23*q : (q<2 ? 273 : 273+27*(q-2))",
+  "bd": "q<1 ? 1 : (q<2 ? 2-q : 0)",
+  "v": "1.3*sqrt(T/273)",
+  "n": "30",
+  "ph": "q<1 ? 1 : (q<2 ? 2 : 3)",
+  "S": "q<1 ? 1+0.08*q : (q<2 ? 1.08+1.6*(q-1) : 2.68+0.1*(q-2))"
+ },
+ "shapes": [
+  {
+   "type": "polyline",
+   "id": "box",
+   "pts": [
+    [
+     0.6,
+     14.2
+    ],
+    [
+     10.2,
+     14.2
+    ],
+    [
+     10.2,
+     9.7
+    ],
+    [
+     0.6,
+     9.7
+    ],
+    [
+     0.6,
+     14.2
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 4
+  },
+  {
+   "type": "gas",
+   "id": "g",
+   "x0": 0.6,
+   "x1": 10.2,
+   "y0": 9.7,
+   "y1": 14.2,
+   "n": "n",
+   "v": "v",
+   "bath": 1,
+   "vref": 2.2,
+   "seed": 8,
+   "out": {
+    "ent": "ge",
+    "vrms": "gv"
+   },
+   "rate": 4,
+   "bind": "bd",
+   "cols": 6,
+   "cells": [
+    6,
+    4
+   ],
+   "mix": 2
+  },
+  {
+   "type": "text",
+   "id": "p1",
+   "at": [
+    5.4,
+    14.7
+   ],
+   "text": "ICE: molecules vibrate on a fixed lattice",
+   "role": "gas",
+   "size": "s",
+   "bold": true,
+   "visible": "ph==1"
+  },
+  {
+   "type": "text",
+   "id": "p2",
+   "at": [
+    5.4,
+    14.7
+   ],
+   "text": "MELTING: bonds break, temperature stays at 273 K",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "visible": "ph==2"
+  },
+  {
+   "type": "text",
+   "id": "p3",
+   "at": [
+    5.4,
+    14.7
+   ],
+   "text": "WATER: molecules move freely past each other",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "visible": "ph==3"
+  },
+  {
+   "type": "text",
+   "id": "el",
+   "at": [
+    5.4,
+    8.9
+   ],
+   "text": "Entropy (relative)",
+   "role": "ent",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "eb",
+   "x": 1.4,
+   "y": 8.1,
+   "w": "S/3*8.4",
+   "h": 0.5,
+   "role": "ent",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2
+  },
+  {
+   "type": "vector",
+   "id": "gax",
+   "from": [
+    1.7,
+    0.9
+   ],
+   "to": [
+    12.299999999999999,
+    0.9
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "vector",
+   "id": "gay",
+   "from": [
+    1.7,
+    0.9
+   ],
+   "to": [
+    1.7,
+    6.800000000000001
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "gxl",
+   "at": [
+    12.45,
+    0.75
+   ],
+   "text": "Q",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "gyl",
+   "at": [
+    1.5999999999999999,
+    7.15
+   ],
+   "text": "T (K)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "plot",
+   "id": "cv",
+   "x": "(1.7+((u)-(0))/(3-(0))*10.2)",
+   "y": "(0.9+(((u<1?250+23*u:(u<2?273:273+27*(u-2))))-(240))/(300-(240))*5.4)",
+   "var": "u",
+   "domain": [
+    0,
+    3
+   ],
+   "samples": 80,
+   "role": "hot",
+   "strokeWidth": 4,
+   "upTo": "q"
+  },
+  {
+   "type": "segment",
+   "id": "pl",
+   "from": [
+    "(1.7+((1)-(0))/(3-(0))*10.2)",
+    "(0.9+((273)-(240))/(300-(240))*5.4)"
+   ],
+   "to": [
+    "(1.7+((2)-(0))/(3-(0))*10.2)",
+    "(0.9+((273)-(240))/(300-(240))*5.4)"
+   ],
+   "role": "hot",
+   "strokeWidth": 1,
+   "dash": [
+    5,
+    5
+   ],
+   "opacity": "0.0"
+  },
+  {
+   "type": "point",
+   "id": "d",
+   "at": [
+    "(1.7+((q)-(0))/(3-(0))*10.2)",
+    "(0.9+((T)-(240))/(300-(240))*5.4)"
+   ],
+   "role": "me",
+   "r": 8
+  },
+  {
+   "type": "text",
+   "id": "tl",
+   "at": [
+    "(1.7+((1.5)-(0))/(3-(0))*10.2)",
+    "(0.9+((273)-(240))/(300-(240))*5.4)+0.75"
+   ],
+   "text": "flat: all the heat breaks bonds",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "visible": "q>=2"
+  },
+  {
+   "type": "text",
+   "id": "tv",
+   "at": [
+    "(1.7+((min(q,2.3))-(0))/(3-(0))*10.2)",
+    "(0.9+((T)-(240))/(300-(240))*5.4)+0.9"
+   ],
+   "text": "T = {{T|0}} K",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A block of ice",
+   "text": "Ice is a **solid**: each molecule vibrates around a fixed place in a regular lattice. This is a very ordered arrangement with low entropy. We now add heat at a steady rate.",
+   "actions": [
+    {
+     "set": {
+      "q": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Heating the solid",
+   "text": "The heat raises the temperature: the molecules vibrate harder. The **T–Q graph** climbs.",
+   "actions": [
+    {
+     "set": {
+      "q": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "q": 0.995
+     },
+     "at": 0,
+     "dur": 3800
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Melting: temperature stays at 0 °C",
+   "text": "At the melting point the heat no longer raises the temperature. It goes into **breaking the bonds** between molecules. The graph is **flat**, yet the molecules are escaping their places.",
+   "actions": [
+    {
+     "set": {
+      "q": 1
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "q": 1.995
+     },
+     "at": 0,
+     "dur": 4800
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Entropy has risen",
+   "text": "The ordered lattice has turned into a disordered liquid: many more arrangements are possible, so the **entropy is higher**, although the temperature did not change. Heat Q absorbed at constant T gives \\( \\Delta S = Q/T \\).",
+   "actions": [
+    {
+     "set": {
+      "q": 2
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "q": 2.4
+     },
+     "at": 0,
+     "dur": 2500
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Heating the water",
+   "text": "With all the bonds broken the added heat again raises the temperature. Press play on **Heat added** to run the whole sequence.",
+   "actions": [
+    {
+     "set": {
+      "q": 2
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "q": 2.995
+     },
+     "at": 0,
+     "dur": 3200
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Temperature (K)",
+   "value": "{{T|0}}",
+   "role": "hot"
+  },
+  {
+   "label": "Entropy (relative)",
+   "value": "{{S|2}}",
+   "role": "ent"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Entropy change on melting",
+   "tex": "\\Delta S = \\dfrac{Q}{T}",
+   "text": "Q is the heat absorbed while melting at the constant temperature T (in kelvin)."
+  },
+  {
+   "title": "Heat to melt",
+   "tex": "Q = m L_f",
+   "text": "L_f is the latent heat of fusion: the heat per kilogram to melt a solid at its melting point."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "**1 kg** of ice at **273 K** absorbs **3.34 × 10⁵ J** to melt completely. What is the entropy change of the ice in J/K?",
+   "answer": 1223,
+   "hint": "ΔS = Q / T.",
+   "explain": "\\( \\Delta S = 3.34 \\times 10^5 / 273 \\approx 1223 \\) J/K.",
+   "tolerance": 10,
+   "unit": "J/K"
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "During melting at a constant 273 K, the heat supplied:",
+   "options": [
+    {
+     "id": "a",
+     "label": "raises the temperature"
+    },
+    {
+     "id": "b",
+     "label": "breaks bonds and raises the entropy"
+    },
+    {
+     "id": "c",
+     "label": "is lost as work"
+    },
+    {
+     "id": "d",
+     "label": "cools the water"
+    }
+   ],
+   "answer": "b",
+   "hint": "Look at the flat part of the graph.",
+   "explain": "It goes into breaking the bonds between molecules (latent heat), so the entropy rises while T stays constant."
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which has the **higher entropy**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "1 kg of ice at 273 K"
+    },
+    {
+     "id": "b",
+     "label": "1 kg of water at 273 K"
+    },
+    {
+     "id": "c",
+     "label": "They are equal"
+    },
+    {
+     "id": "d",
+     "label": "It depends on the container"
+    }
+   ],
+   "answer": "b",
+   "hint": "Which is more disordered?",
+   "explain": "Liquid water has more possible arrangements than ordered ice."
+  }
+ ],
+ "takeaways": [
+  "During melting the **temperature stays constant**; the heat breaks the lattice (latent heat).",
+  "**Entropy rises** because an ordered solid becomes a disordered liquid.",
+  "**\\( \\Delta S = Q/T \\)** at constant temperature."
+ ],
+ "notes": [
+  {
+   "title": "Connects to",
+   "text": "Entropy ties together the whole chapter: disorder of molecules (kinetic picture), heat flow (**Q/T**), and the **second law**."
+  }
+ ]
+}

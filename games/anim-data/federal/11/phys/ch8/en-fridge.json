@@ -1,0 +1,544 @@
+{
+ "id": "g11-phys-c8-en-fridge",
+ "title": "The refrigerator: a heat engine in reverse",
+ "summary": "Work pumps heat out of a cold space and dumps it, together with the work, into the warm room.",
+ "alt": "A flow diagram with heat moving upward from a cold reservoir through a refrigerator into a hot reservoir while work flows in.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "hot": {
+   "label": "Heat dumped in the room (Q_h)",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": true
+  },
+  "cold": {
+   "label": "Heat removed from inside (Q_c)",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": true
+  },
+  "work": {
+   "label": "Work supplied",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": true
+  },
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "Qc",
+   "label": "Heat removed from cold space Q_c (J)",
+   "type": "number",
+   "min": 20,
+   "max": 100,
+   "step": 5,
+   "default": 100
+  },
+  {
+   "id": "W",
+   "label": "Work supplied W (J)",
+   "type": "number",
+   "min": 10,
+   "max": 80,
+   "step": 5,
+   "default": 40
+  },
+  {
+   "id": "ph",
+   "label": "Flow animation",
+   "type": "clock",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "speed": 0.35,
+   "loop": "repeat",
+   "default": 0,
+   "auto": true
+  }
+ ],
+ "derived": {
+  "Qh": "Qc+W",
+  "cp": "Qc/W"
+ },
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "hotR",
+   "x": 2.6,
+   "y": 12.7,
+   "w": 7.8,
+   "h": 1.4,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.3,
+   "strokeWidth": 3
+  },
+  {
+   "type": "rect",
+   "id": "coldR",
+   "x": 2.6,
+   "y": 0.7,
+   "w": 7.8,
+   "h": 1.7,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.3,
+   "strokeWidth": 3
+  },
+  {
+   "type": "text",
+   "id": "hotT",
+   "at": [
+    6.5,
+    13.4
+   ],
+   "text": "Hot reservoir  T_h",
+   "role": "hot",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "coldT",
+   "at": [
+    6.5,
+    1.55
+   ],
+   "text": "Cold reservoir  T_c",
+   "role": "cold",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "mach",
+   "x": 4.2,
+   "y": 6.0,
+   "w": 4.6,
+   "h": 3.0,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 4
+  },
+  {
+   "type": "text",
+   "id": "machT",
+   "at": [
+    6.5,
+    7.5
+   ],
+   "text": "FRIDGE",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "bH",
+   "x": "6.5-Qh*0.04/2",
+   "y": 9.0,
+   "w": "max(Qh*0.04,0.03)",
+   "h": 3.7,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 1.5
+  },
+  {
+   "type": "rect",
+   "id": "bC",
+   "x": "6.5-Qc*0.04/2",
+   "y": 2.4,
+   "w": "max(Qc*0.04,0.03)",
+   "h": 3.6,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 1.5
+  },
+  {
+   "type": "rect",
+   "id": "bW",
+   "x": 8.8,
+   "y": "7.5-W*0.04/2",
+   "w": 3.9,
+   "h": "max(W*0.04,0.03)",
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 1.5
+  },
+  {
+   "type": "point",
+   "id": "pC0",
+   "at": [
+    6.5,
+    "2.4+3.6*fract(ph+0.0)"
+   ],
+   "role": "cold",
+   "r": 5,
+   "visible": "Qc>1"
+  },
+  {
+   "type": "point",
+   "id": "pH0",
+   "at": [
+    6.5,
+    "9.0+3.7*fract(ph+0.0)"
+   ],
+   "role": "hot",
+   "r": 5,
+   "visible": "Qh>1"
+  },
+  {
+   "type": "point",
+   "id": "pW0",
+   "at": [
+    "12.7-3.9*fract(ph+0.0)",
+    7.5
+   ],
+   "role": "work",
+   "r": 5,
+   "visible": "W>1"
+  },
+  {
+   "type": "point",
+   "id": "pC1",
+   "at": [
+    6.5,
+    "2.4+3.6*fract(ph+0.25)"
+   ],
+   "role": "cold",
+   "r": 5,
+   "visible": "Qc>1"
+  },
+  {
+   "type": "point",
+   "id": "pH1",
+   "at": [
+    6.5,
+    "9.0+3.7*fract(ph+0.25)"
+   ],
+   "role": "hot",
+   "r": 5,
+   "visible": "Qh>1"
+  },
+  {
+   "type": "point",
+   "id": "pW1",
+   "at": [
+    "12.7-3.9*fract(ph+0.25)",
+    7.5
+   ],
+   "role": "work",
+   "r": 5,
+   "visible": "W>1"
+  },
+  {
+   "type": "point",
+   "id": "pC2",
+   "at": [
+    6.5,
+    "2.4+3.6*fract(ph+0.5)"
+   ],
+   "role": "cold",
+   "r": 5,
+   "visible": "Qc>1"
+  },
+  {
+   "type": "point",
+   "id": "pH2",
+   "at": [
+    6.5,
+    "9.0+3.7*fract(ph+0.5)"
+   ],
+   "role": "hot",
+   "r": 5,
+   "visible": "Qh>1"
+  },
+  {
+   "type": "point",
+   "id": "pW2",
+   "at": [
+    "12.7-3.9*fract(ph+0.5)",
+    7.5
+   ],
+   "role": "work",
+   "r": 5,
+   "visible": "W>1"
+  },
+  {
+   "type": "point",
+   "id": "pC3",
+   "at": [
+    6.5,
+    "2.4+3.6*fract(ph+0.75)"
+   ],
+   "role": "cold",
+   "r": 5,
+   "visible": "Qc>1"
+  },
+  {
+   "type": "point",
+   "id": "pH3",
+   "at": [
+    6.5,
+    "9.0+3.7*fract(ph+0.75)"
+   ],
+   "role": "hot",
+   "r": 5,
+   "visible": "Qh>1"
+  },
+  {
+   "type": "point",
+   "id": "pW3",
+   "at": [
+    "12.7-3.9*fract(ph+0.75)",
+    7.5
+   ],
+   "role": "work",
+   "r": 5,
+   "visible": "W>1"
+  },
+  {
+   "type": "text",
+   "id": "tH",
+   "at": [
+    11.2,
+    11.0
+   ],
+   "text": "Q_h = {{Qh|0}} J",
+   "role": "hot",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "tC",
+   "at": [
+    11.2,
+    4.4
+   ],
+   "text": "Q_c = {{Qc|0}} J",
+   "role": "cold",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "tW",
+   "at": [
+    11.0,
+    8.4
+   ],
+   "text": "W = {{W|0}} J",
+   "role": "work",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "cpt",
+   "at": [
+    2.2,
+    7.5
+   ],
+   "text": "CP = {{cp|2}}",
+   "role": "cold",
+   "size": "m",
+   "bold": true
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A heat engine run backwards",
+   "text": "In an engine, heat falls from hot to cold and some becomes work. Run it **backwards**: put work **in** and heat is pumped from the **cold** space to the **hot** surroundings. That is a **refrigerator** (or an air-conditioner).",
+   "actions": [
+    {
+     "set": {
+      "Qc": 100,
+      "W": 40
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Heat removed from the cold space",
+   "text": "The refrigerator takes \\( Q_c = {{Qc|0}} \\) J out of the cold space: this is the heat it is trying to remove.",
+   "actions": [
+    {
+     "set": {
+      "Qc": 100,
+      "W": 40
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Work is supplied",
+   "text": "Heat will not climb uphill by itself (second law), so the compressor must supply work \\( W = {{W|0}} \\) J from the mains.",
+   "actions": [
+    {
+     "set": {
+      "Qc": 100,
+      "W": 40
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Everything is dumped in the room",
+   "text": "The heat removed **plus** the work supplied leaves as heat to the room: \\( Q_h = Q_c + W = {{Qh|0}} \\) J. This is why the back of a fridge is warm.",
+   "actions": [
+    {
+     "set": {
+      "Qc": 100,
+      "W": 40
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Coefficient of performance",
+   "text": "A good refrigerator removes a lot of heat for little work. The **coefficient of performance** is \\( CP = Q_c / W = {{cp|2}} \\). Less work for the same heat gives a bigger CP.",
+   "actions": [
+    {
+     "set": {
+      "Qc": 100,
+      "W": 40
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "W": 20
+     },
+     "at": 0,
+     "dur": 3600
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Q_c removed",
+   "value": "{{Qc|0}}",
+   "role": "cold"
+  },
+  {
+   "label": "Work W",
+   "value": "{{W|0}}",
+   "role": "work"
+  },
+  {
+   "label": "Q_h dumped",
+   "value": "{{Qh|0}}",
+   "role": "hot"
+  },
+  {
+   "label": "CP",
+   "value": "{{cp|2}}"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Energy balance",
+   "tex": "\\role{hot}{Q_h} = \\role{cold}{Q_c} + \\role{work}{W}",
+   "text": "Heat dumped = heat removed + work supplied."
+  },
+  {
+   "title": "Coefficient of performance",
+   "tex": "CP = \\dfrac{\\role{cold}{Q_c}}{\\role{work}{W}}",
+   "text": "For a Carnot refrigerator \\( CP = \\dfrac{T_c}{T_h - T_c} \\)."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A refrigerator removes **300 J** from the cold space using **100 J** of work. How much heat does it release to the room (J)?",
+   "answer": 400,
+   "hint": "Q_h = Q_c + W.",
+   "explain": "\\( Q_h = 300 + 100 = 400 \\) J.",
+   "tolerance": 1,
+   "unit": "J"
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "What is the coefficient of performance of that refrigerator?",
+   "answer": 3,
+   "hint": "CP = Q_c ÷ W.",
+   "explain": "\\( CP = 300/100 = 3 \\).",
+   "tolerance": 0.05
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Why is the back of a refrigerator warm?",
+   "options": [
+    {
+     "id": "a",
+     "label": "It releases the removed heat plus the work supplied"
+    },
+    {
+     "id": "b",
+     "label": "It is not insulated"
+    },
+    {
+     "id": "c",
+     "label": "Food is hot"
+    },
+    {
+     "id": "d",
+     "label": "It stores heat for later"
+    }
+   ],
+   "answer": "a",
+   "hint": "Q_h = Q_c + W.",
+   "explain": "The heat removed from inside plus the electrical work are both released into the room."
+  }
+ ],
+ "takeaways": [
+  "A **refrigerator** is a heat engine **run in reverse**: work in, heat pumped from cold to hot.",
+  "\\( Q_h = Q_c + W \\) and \\( CP = Q_c/W \\).",
+  "The **second law** says it cannot work without a supply of work."
+ ],
+ "notes": [
+  {
+   "title": "Connects to",
+   "text": "Run the **Carnot cycle** backwards (anticlockwise on the P–V graph) and you get the **ideal refrigerator**. It is the second-law (Clausius) statement in action."
+  }
+ ]
+}

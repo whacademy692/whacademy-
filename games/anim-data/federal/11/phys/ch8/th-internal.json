@@ -1,0 +1,684 @@
+{
+ "id": "g11-phys-c8-th-internal",
+ "title": "Internal energy: two ways to raise it",
+ "summary": "Heating a gas or squeezing it raises its internal energy: the molecules move faster.",
+ "alt": "A gas in a cylinder that can be heated by a flame or compressed by the piston, with an internal-energy bar that rises with temperature.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": true
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": true
+  },
+  "hot": {
+   "label": "Heat added",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": true
+  },
+  "work": {
+   "label": "Work done on the gas",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": true
+  },
+  "fire": {
+   "label": "Flame core",
+   "color": "#f59e0b",
+   "text": "The hot core of the flame.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "Q",
+   "label": "Heat added (flame)",
+   "type": "number",
+   "min": 0,
+   "max": 100,
+   "step": 1,
+   "default": 0
+  },
+  {
+   "id": "W",
+   "label": "Work done on the gas (squeeze)",
+   "type": "number",
+   "min": 0,
+   "max": 100,
+   "step": 1,
+   "default": 0
+  }
+ ],
+ "derived": {
+  "Tt": "300+3*Q+2.4*W",
+  "v": "2.2*sqrt(Tt/300)",
+  "L": "8-4.5*W/100",
+  "n": "40",
+  "U": "Tt/300"
+ },
+ "shapes": [
+  {
+   "type": "polyline",
+   "id": "cyl",
+   "pts": [
+    [
+     10.649999999999999,
+     14.2
+    ],
+    [
+     0,
+     14.2
+    ],
+    [
+     0,
+     9.2
+    ],
+    [
+     10.649999999999999,
+     9.2
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 4
+  },
+  {
+   "type": "rect",
+   "id": "pis",
+   "x": "L",
+   "y": 9.149999999999999,
+   "w": 0.45,
+   "h": 5.1,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "segment",
+   "id": "rod",
+   "from": [
+    "(L)+0.45",
+    11.7
+   ],
+   "to": [
+    "(L)+2.3",
+    11.7
+   ],
+   "role": "pis",
+   "strokeWidth": 5
+  },
+  {
+   "type": "rect",
+   "id": "hdl",
+   "x": "(L)+2.3",
+   "y": 11.1,
+   "w": 0.3,
+   "h": 1.2,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.7,
+   "strokeWidth": 2
+  },
+  {
+   "type": "gas",
+   "id": "g",
+   "x0": 0,
+   "x1": "L",
+   "y0": 9.2,
+   "y1": 14.2,
+   "n": "n",
+   "v": "v",
+   "bath": 1,
+   "vref": 2.2,
+   "seed": 7,
+   "out": {
+    "vrms": "gv",
+    "P": "gp",
+    "hits": "gh"
+   },
+   "rate": 2.2
+  },
+  {
+   "type": "polygon",
+   "id": "fl",
+   "pts": [
+    [
+     1.463,
+     6.969
+    ],
+    [
+     1.342,
+     7.572
+    ],
+    [
+     1.681,
+     8.038
+    ],
+    [
+     1.886,
+     7.745
+    ],
+    [
+     2.188,
+     8.349
+    ],
+    [
+     2.55,
+     8.694
+    ],
+    [
+     2.816,
+     8.245
+    ],
+    [
+     3.057,
+     7.831
+    ],
+    [
+     3.347,
+     8.107
+    ],
+    [
+     3.733,
+     7.486
+    ],
+    [
+     3.588,
+     6.969
+    ]
+   ],
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.75,
+   "strokeWidth": 2.5,
+   "visible": "Q>8"
+  },
+  {
+   "type": "polygon",
+   "id": "fli",
+   "pts": [
+    [
+     2.007,
+     7.141
+    ],
+    [
+     1.946,
+     7.504
+    ],
+    [
+     2.115,
+     7.783
+    ],
+    [
+     2.218,
+     7.607
+    ],
+    [
+     2.369,
+     7.969
+    ],
+    [
+     2.55,
+     8.176
+    ],
+    [
+     2.683,
+     7.907
+    ],
+    [
+     2.804,
+     7.659
+    ],
+    [
+     2.948,
+     7.824
+    ],
+    [
+     3.142,
+     7.452
+    ],
+    [
+     3.069,
+     7.141
+    ]
+   ],
+   "role": "fire",
+   "fill": true,
+   "fillOpacity": 0.9,
+   "strokeWidth": 1,
+   "visible": "Q>8"
+  },
+  {
+   "type": "polygon",
+   "id": "fl2",
+   "pts": [
+    [
+     5.063,
+     6.969
+    ],
+    [
+     4.943,
+     7.572
+    ],
+    [
+     5.281,
+     8.038
+    ],
+    [
+     5.486,
+     7.745
+    ],
+    [
+     5.788,
+     8.349
+    ],
+    [
+     6.15,
+     8.694
+    ],
+    [
+     6.416,
+     8.245
+    ],
+    [
+     6.657,
+     7.831
+    ],
+    [
+     6.947,
+     8.107
+    ],
+    [
+     7.333,
+     7.486
+    ],
+    [
+     7.188,
+     6.969
+    ]
+   ],
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.75,
+   "strokeWidth": 2.5,
+   "visible": "Q>8"
+  },
+  {
+   "type": "polygon",
+   "id": "fl2i",
+   "pts": [
+    [
+     5.607,
+     7.141
+    ],
+    [
+     5.546,
+     7.504
+    ],
+    [
+     5.715,
+     7.783
+    ],
+    [
+     5.818,
+     7.607
+    ],
+    [
+     5.969,
+     7.969
+    ],
+    [
+     6.15,
+     8.176
+    ],
+    [
+     6.283,
+     7.907
+    ],
+    [
+     6.404,
+     7.659
+    ],
+    [
+     6.548,
+     7.824
+    ],
+    [
+     6.742,
+     7.452
+    ],
+    [
+     6.669,
+     7.141
+    ]
+   ],
+   "role": "fire",
+   "fill": true,
+   "fillOpacity": 0.9,
+   "strokeWidth": 1,
+   "visible": "Q>8"
+  },
+  {
+   "type": "vector",
+   "id": "wa",
+   "from": [
+    "L+3.5",
+    11.7
+   ],
+   "to": [
+    "L+2.55",
+    11.7
+   ],
+   "role": "work",
+   "strokeWidth": 6,
+   "visible": "W>8"
+  },
+  {
+   "type": "text",
+   "id": "hd",
+   "at": [
+    6.5,
+    7.2
+   ],
+   "text": "internal energy of the gas",
+   "role": "u",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "ub0",
+   "x": 1.2,
+   "y": 5.6,
+   "w": 11,
+   "h": 1.0,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.06,
+   "strokeWidth": 1
+  },
+  {
+   "type": "rect",
+   "id": "ub",
+   "x": 1.2,
+   "y": 5.6,
+   "w": "clamp(11*U/2.6,0.1,11)",
+   "h": 1.0,
+   "role": "u",
+   "fill": true,
+   "fillOpacity": 0.6,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "ut",
+   "at": [
+    6.7,
+    6.1
+   ],
+   "text": "U = {{U|2}} × U₀",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "q1",
+   "at": [
+    6.5,
+    3.6
+   ],
+   "text": "Heat added Q = {{Q|0}} J",
+   "role": "hot",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "q2",
+   "at": [
+    6.5,
+    2.7
+   ],
+   "text": "Work done on the gas W = {{W|0}} J",
+   "role": "work",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "q3",
+   "at": [
+    6.5,
+    1.6
+   ],
+   "text": "Rise in internal energy ≈ {{Q+W|0}} J",
+   "role": "u",
+   "size": "m",
+   "bold": true
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Internal energy",
+   "text": "The molecules of a gas have **kinetic energy** (they move) and a little energy from the forces between them. All of it added up is the **internal energy U** of the gas. For an ideal gas it depends only on temperature.",
+   "actions": [
+    {
+     "set": {
+      "Q": 0,
+      "W": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Way 1: add heat",
+   "text": "Put the gas over a flame. Energy flows in as **heat** Q. The molecules speed up (more red), the temperature rises, and U goes **up**.",
+   "actions": [
+    {
+     "set": {
+      "Q": 0,
+      "W": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "Q": 100
+     },
+     "at": 0,
+     "dur": 3800
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Way 2: do work on it",
+   "text": "Now push the piston in. The piston hits molecules and sends them away faster, so the gas **warms up** even with no flame. Work done **on** the gas also raises U.",
+   "actions": [
+    {
+     "set": {
+      "Q": 0,
+      "W": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "W": 100
+     },
+     "at": 0,
+     "dur": 3800
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Both together",
+   "text": "Heat and work **add up**: the rise in internal energy is the heat added plus the work done on the gas. This is the first law of thermodynamics.",
+   "actions": [
+    {
+     "set": {
+      "Q": 60,
+      "W": 40
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Experiment",
+   "text": "Use the two sliders. Notice the gas gets hot **either way**: from outside you cannot tell if the energy arrived as heat or as work.",
+   "actions": [
+    {
+     "set": {
+      "Q": 0,
+      "W": 0
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Q (J)",
+   "value": "{{Q|0}}",
+   "role": "hot"
+  },
+  {
+   "label": "Work on gas (J)",
+   "value": "{{W|0}}",
+   "role": "work"
+  },
+  {
+   "label": "Temperature (K)",
+   "value": "{{Tt|0}}",
+   "role": "u"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Rise of internal energy",
+   "tex": "\\role{u}{\\Delta U} = \\role{hot}{Q} + \\role{work}{W_{\\text{on}}}",
+   "text": "Heat added to the gas plus work done on the gas."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A gas receives **300 J** of heat and **200 J** of work is done on it. By how many joules does its internal energy rise?",
+   "answer": 500,
+   "hint": "Add the two energies that go in.",
+   "explain": "\\( \\Delta U = 300 + 200 = 500 \\) J.",
+   "tolerance": 1,
+   "unit": "J",
+   "set": {
+    "Q": 60,
+    "W": 40
+   }
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which of these will raise the internal energy of a gas?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Heating it"
+    },
+    {
+     "id": "b",
+     "label": "Compressing it quickly"
+    },
+    {
+     "id": "c",
+     "label": "Both of these"
+    },
+    {
+     "id": "d",
+     "label": "Neither"
+    }
+   ],
+   "answer": "c",
+   "hint": "There are two ways to put energy in.",
+   "explain": "Heat flowing in and work done on the gas both add energy to the molecules."
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Compressing a gas quickly in an insulated container makes it warmer. Where did the extra energy come from?",
+   "options": [
+    {
+     "id": "a",
+     "label": "From the work done by the piston"
+    },
+    {
+     "id": "b",
+     "label": "From nowhere"
+    },
+    {
+     "id": "c",
+     "label": "From the cold air outside"
+    },
+    {
+     "id": "d",
+     "label": "From the walls"
+    }
+   ],
+   "answer": "a",
+   "hint": "No heat could enter.",
+   "explain": "The piston does work on the gas: its energy becomes the energy of the molecules, so the gas heats up."
+  }
+ ],
+ "takeaways": [
+  "**Internal energy U** is the total energy of the molecules (mainly their kinetic energy in a gas).",
+  "U can be raised by **heat** flowing in **or** by **work** done on the gas.",
+  "Bigger U means higher temperature for an ideal gas."
+ ],
+ "notes": [
+  {
+   "title": "Connects to",
+   "text": "Putting this into one equation gives the **first law of thermodynamics**, Q = ΔU + W (see *First law*). Doing work **on** the gas is the compression of an **adiabatic** process."
+  }
+ ]
+}

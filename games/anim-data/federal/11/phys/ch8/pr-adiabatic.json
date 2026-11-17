@@ -1,0 +1,653 @@
+{
+ "id": "g11-phys-c8-pr-adiabatic",
+ "title": "Adiabatic process: no heat exchange",
+ "summary": "Expand a gas inside an insulated cylinder: it does work using its own energy and cools down.",
+ "alt": "An insulated cylinder whose gas cools as it expands, a steep curve on the P–V graph compared with the isotherm, and bars showing Q is zero and W equals minus ΔU.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "th": {
+   "label": "Adiabat (no heat)",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": true
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": true
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": true
+  },
+  "cold": {
+   "label": "Isotherm (for comparison)",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "s",
+   "label": "Progress of the process",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0
+  }
+ ],
+ "derived": {
+  "L": "(4==1 ? 4 : 4+4*s)",
+  "T": "(4<=2 ? 300+300*s : (4==3 ? 300 : 300*pow(4/(4+4*s),0.4)))",
+  "P": "8/L*T/300",
+  "dU": "0.0667*(T-300)",
+  "W": "(4==1 ? 0 : (4==2 ? 2*(L-4) : (4==3 ? 8*ln(L/4) : 0.0667*(300-T))))",
+  "Q": "dU+W",
+  "v": "2.2*sqrt(T/300)",
+  "n": "40"
+ },
+ "shapes": [
+  {
+   "type": "polyline",
+   "id": "cyl",
+   "pts": [
+    [
+     10.649999999999999,
+     14.2
+    ],
+    [
+     0,
+     14.2
+    ],
+    [
+     0,
+     9.9
+    ],
+    [
+     10.649999999999999,
+     9.9
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 4
+  },
+  {
+   "type": "rect",
+   "id": "pis",
+   "x": "L",
+   "y": 9.85,
+   "w": 0.45,
+   "h": 4.399999999999999,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "segment",
+   "id": "rod",
+   "from": [
+    "(L)+0.45",
+    12.05
+   ],
+   "to": [
+    "(L)+2.3",
+    12.05
+   ],
+   "role": "pis",
+   "strokeWidth": 5
+  },
+  {
+   "type": "rect",
+   "id": "hdl",
+   "x": "(L)+2.3",
+   "y": 11.450000000000001,
+   "w": 0.3,
+   "h": 1.2,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.7,
+   "strokeWidth": 2
+  },
+  {
+   "type": "gas",
+   "id": "g",
+   "x0": 0,
+   "x1": "L",
+   "y0": 9.9,
+   "y1": 14.2,
+   "n": "n",
+   "v": "v",
+   "bath": 1,
+   "vref": 2.2,
+   "seed": 7,
+   "out": {
+    "vrms": "gv"
+   },
+   "rate": 2.5
+  },
+  {
+   "type": "polyline",
+   "id": "jt",
+   "pts": [
+    [
+     10.9,
+     14.549999999999999
+    ],
+    [
+     -0.35,
+     14.549999999999999
+    ],
+    [
+     -0.35,
+     9.55
+    ],
+    [
+     10.9,
+     9.55
+    ]
+   ],
+   "role": "hot",
+   "strokeWidth": 8,
+   "opacity": "0.35"
+  },
+  {
+   "type": "text",
+   "id": "ins",
+   "at": [
+    5.3,
+    9.0
+   ],
+   "text": "insulated: Q = 0",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "vector",
+   "id": "gax",
+   "from": [
+    1.7,
+    0.9
+   ],
+   "to": [
+    12.299999999999999,
+    0.9
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "vector",
+   "id": "gay",
+   "from": [
+    1.7,
+    0.9
+   ],
+   "to": [
+    1.7,
+    4.8
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "gxl",
+   "at": [
+    12.45,
+    0.8
+   ],
+   "text": "V",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "gyl",
+   "at": [
+    1.65,
+    5.1499999999999995
+   ],
+   "text": "P",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "zero",
+   "from": [
+    7.0,
+    5.4
+   ],
+   "to": [
+    7.0,
+    7.75
+   ],
+   "role": "wall",
+   "strokeWidth": 1.5
+  },
+  {
+   "type": "rect",
+   "id": "brQ",
+   "x": "min(7.0,7.0+(Q)*0.19)",
+   "y": 7.05,
+   "w": "max(0.05,abs(Q)*0.19)",
+   "h": 0.55,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.65,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "blQ",
+   "at": [
+    0.9,
+    7.33
+   ],
+   "text": "Q",
+   "role": "hot",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "bvQ",
+   "at": [
+    12.0,
+    7.33
+   ],
+   "text": "{{Q|1}}",
+   "role": "hot",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "brdU",
+   "x": "min(7.0,7.0+(dU)*0.19)",
+   "y": 6.3,
+   "w": "max(0.05,abs(dU)*0.19)",
+   "h": 0.55,
+   "role": "u",
+   "fill": true,
+   "fillOpacity": 0.65,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "bldU",
+   "at": [
+    0.9,
+    6.58
+   ],
+   "text": "ΔU",
+   "role": "u",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "bvdU",
+   "at": [
+    12.0,
+    6.58
+   ],
+   "text": "{{dU|1}}",
+   "role": "u",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "brW",
+   "x": "min(7.0,7.0+(W)*0.19)",
+   "y": 5.55,
+   "w": "max(0.05,abs(W)*0.19)",
+   "h": 0.55,
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.65,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "blW",
+   "at": [
+    0.9,
+    5.83
+   ],
+   "text": "W",
+   "role": "work",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "bvW",
+   "at": [
+    12.0,
+    5.83
+   ],
+   "text": "{{W|1}}",
+   "role": "work",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "plot",
+   "id": "iso",
+   "x": "(1.7+((u)/9)*10.2)",
+   "y": "(0.9+((8/u)/2.6)*3.4)",
+   "var": "u",
+   "domain": [
+    4,
+    8.2
+   ],
+   "samples": 60,
+   "role": "cold",
+   "strokeWidth": 2,
+   "dash": [
+    6,
+    5
+   ],
+   "opacity": "0.8"
+  },
+  {
+   "type": "plot",
+   "id": "pf",
+   "x": "(1.7+((u)/9)*10.2)",
+   "y": "(0.9+((8*pow(4/u,0.4)/u)/2.6)*3.4)",
+   "var": "u",
+   "domain": [
+    4,
+    8
+   ],
+   "samples": 60,
+   "role": "th",
+   "strokeWidth": 2,
+   "opacity": "0.35"
+  },
+  {
+   "type": "plot",
+   "id": "pc",
+   "x": "(1.7+((u)/9)*10.2)",
+   "y": "(0.9+((8*pow(4/u,0.4)/u)/2.6)*3.4)",
+   "var": "u",
+   "domain": [
+    4,
+    8
+   ],
+   "samples": 60,
+   "role": "th",
+   "strokeWidth": 4,
+   "upTo": "L"
+  },
+  {
+   "type": "rect",
+   "id": "wr",
+   "x": "(1.7+((4)/9)*10.2)",
+   "y": 0.9,
+   "w": "(1.7+((L)/9)*10.2)-(1.7+((4)/9)*10.2)",
+   "h": "(0.9+((P)/2.6)*3.4)-0.9",
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.15,
+   "strokeWidth": 1,
+   "visible": "L>4.05"
+  },
+  {
+   "type": "point",
+   "id": "d",
+   "at": [
+    "(1.7+((L)/9)*10.2)",
+    "(0.9+((P)/2.6)*3.4)"
+   ],
+   "role": "me",
+   "r": 7
+  },
+  {
+   "type": "point",
+   "id": "d0",
+   "at": [
+    "(1.7+((4)/9)*10.2)",
+    "(0.9+((2)/2.6)*3.4)"
+   ],
+   "role": "wall",
+   "r": 5
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "An insulated cylinder",
+   "text": "**Adiabatic** means **no heat flows in or out**: \\( Q = 0 \\). The cylinder is wrapped in insulation (or the change is so fast that heat has no time to move). The gas starts at 300 K.",
+   "actions": [
+    {
+     "set": {
+      "s": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Expand: the gas cools",
+   "text": "The piston moves out. Molecules that hit a retreating piston **bounce back slower**, and nothing replaces the lost energy. The molecules turn bluer: the gas **cools** to {{T|0}} K.",
+   "actions": [
+    {
+     "set": {
+      "s": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "s": 1
+     },
+     "at": 0,
+     "dur": 5200
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Steeper than the isotherm",
+   "text": "Pressure falls faster than in the isothermal case, because the gas is cooling **as well as** spreading out. The adiabat (green) lies **below** the dashed isotherm.",
+   "actions": [
+    {
+     "set": {
+      "s": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "The work comes from U",
+   "text": "With \\( Q = 0 \\) the first law gives \\( 0 = \\Delta U + W \\), so \\( W = -\\Delta U \\). The gas did {{W|1}} units of work by **using up** {{-dU|1}} units of its own internal energy.",
+   "actions": [
+    {
+     "set": {
+      "s": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Compress it: it heats up",
+   "text": "Push the piston back and the work done **on** the gas raises its internal energy: the gas **warms up** with no flame. This is how a bicycle pump gets hot and how a diesel engine ignites its fuel.",
+   "actions": [
+    {
+     "set": {
+      "s": 1
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "s": 0
+     },
+     "at": 0,
+     "dur": 4200
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Heat Q",
+   "value": "{{Q|1}}",
+   "role": "hot"
+  },
+  {
+   "label": "ΔU",
+   "value": "{{dU|1}}",
+   "role": "u"
+  },
+  {
+   "label": "Work W",
+   "value": "{{W|1}}",
+   "role": "work"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Adiabatic process",
+   "tex": "\\role{hot}{Q} = 0 \\;\\Rightarrow\\; \\role{u}{\\Delta U} = -\\role{work}{W}",
+   "text": "Expansion: W > 0, so ΔU < 0 (cools). Compression: W < 0, so ΔU > 0 (heats)."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "An insulated gas expands and does **200 J** of work. By how much does its internal energy change (J)? Use a negative sign for a decrease.",
+   "answer": -200,
+   "hint": "Q = 0, so ΔU = −W.",
+   "explain": "\\( \\Delta U = Q - W = 0 - 200 = -200 \\) J: the gas cools.",
+   "tolerance": 1,
+   "unit": "J"
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "A bicycle pump gets warm when you pump quickly. This is mainly because:",
+   "options": [
+    {
+     "id": "a",
+     "label": "Work is done on the air, raising its internal energy"
+    },
+    {
+     "id": "b",
+     "label": "Heat flows in from the outside"
+    },
+    {
+     "id": "c",
+     "label": "The air expands"
+    },
+    {
+     "id": "d",
+     "label": "Friction cools it"
+    }
+   ],
+   "answer": "a",
+   "hint": "The compression is fast, so heat has no time to leave.",
+   "explain": "Quick compression is nearly adiabatic: work done on the gas goes into its internal energy, so it warms."
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "On a P–V graph, compared with an isotherm through the same point, an adiabatic curve is:",
+   "options": [
+    {
+     "id": "a",
+     "label": "steeper"
+    },
+    {
+     "id": "b",
+     "label": "less steep"
+    },
+    {
+     "id": "c",
+     "label": "identical"
+    },
+    {
+     "id": "d",
+     "label": "horizontal"
+    }
+   ],
+   "answer": "a",
+   "hint": "The gas cools as it expands.",
+   "explain": "In an adiabatic expansion the temperature also falls, so the pressure drops faster: the curve is steeper."
+  }
+ ],
+ "takeaways": [
+  "**Adiabatic: Q = 0**: no heat enters or leaves.",
+  "**ΔU = −W**: expansion cools the gas, compression heats it.",
+  "The adiabatic curve is **steeper** than the isotherm."
+ ],
+ "notes": [
+  {
+   "title": "Connects to",
+   "text": "Two steps of the **Carnot cycle** are adiabatic: the gas cools while expanding and heats while being compressed, joining the two isotherms. Fast processes such as sound waves in air are nearly adiabatic."
+  }
+ ]
+}

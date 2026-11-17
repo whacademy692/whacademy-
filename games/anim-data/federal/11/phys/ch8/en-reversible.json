@@ -1,0 +1,602 @@
+{
+ "id": "g11-phys-c8-en-reversible",
+ "title": "Reversible and irreversible processes",
+ "summary": "A reversible change can be undone exactly; a sudden, real one cannot, and some work is wasted as heat.",
+ "alt": "A gas expanded and compressed either slowly or suddenly with a P–V graph: the slow path retraces itself and the sudden path encloses a wasted-work area.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "th": {
+   "label": "Expansion path",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": true
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Return path",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": true
+  },
+  "work": {
+   "label": "Work wasted as heat",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": true
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "mode",
+   "label": "How is it done?",
+   "type": "choice",
+   "options": [
+    {
+     "value": 1,
+     "label": "Very slowly (reversible)"
+    },
+    {
+     "value": 2,
+     "label": "Suddenly (irreversible)"
+    }
+   ],
+   "default": 1
+  },
+  {
+   "id": "s",
+   "label": "Out and back (0 → 1 out, 1 → 2 back)",
+   "type": "number",
+   "min": 0,
+   "max": 2,
+   "step": 0.01,
+   "default": 0
+  }
+ ],
+ "derived": {
+  "Vd": "mode==1 ? 4+4*(s<=1 ? s : 2-s) : (s<=1 ? (s<0.1 ? 4 : 4+4*(s-0.1)/0.9) : (s<1.1 ? 8 : 8-4*(s-1.1)/0.9))",
+  "Pd": "mode==1 ? 8/Vd : (s<=1 ? (s<0.1 ? 2-10*s : 1) : (s<1.1 ? 1+10*(s-1) : 2))",
+  "L": "Vd",
+  "n": "40",
+  "v": "2.2",
+  "Wnet": "mode==1 ? 0 : 4"
+ },
+ "shapes": [
+  {
+   "type": "polyline",
+   "id": "cyl",
+   "pts": [
+    [
+     10.649999999999999,
+     14.2
+    ],
+    [
+     0,
+     14.2
+    ],
+    [
+     0,
+     9.9
+    ],
+    [
+     10.649999999999999,
+     9.9
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 4
+  },
+  {
+   "type": "rect",
+   "id": "pis",
+   "x": "L",
+   "y": 9.85,
+   "w": 0.45,
+   "h": 4.399999999999999,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "segment",
+   "id": "rod",
+   "from": [
+    "(L)+0.45",
+    12.05
+   ],
+   "to": [
+    "(L)+2.3",
+    12.05
+   ],
+   "role": "pis",
+   "strokeWidth": 5
+  },
+  {
+   "type": "rect",
+   "id": "hdl",
+   "x": "(L)+2.3",
+   "y": 11.450000000000001,
+   "w": 0.3,
+   "h": 1.2,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.7,
+   "strokeWidth": 2
+  },
+  {
+   "type": "gas",
+   "id": "g",
+   "x0": 0,
+   "x1": "L",
+   "y0": 9.9,
+   "y1": 14.2,
+   "n": "n",
+   "v": "v",
+   "bath": 1,
+   "vref": 2.2,
+   "seed": 7,
+   "out": {
+    "vrms": "gv"
+   }
+  },
+  {
+   "type": "text",
+   "id": "cap",
+   "at": [
+    6.5,
+    8.6
+   ],
+   "text": "{{if mode==1|slow: always in equilibrium|}}{{if mode==2|sudden: far from equilibrium|}}",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "vector",
+   "id": "gax",
+   "from": [
+    1.7,
+    0.9
+   ],
+   "to": [
+    12.299999999999999,
+    0.9
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "vector",
+   "id": "gay",
+   "from": [
+    1.7,
+    0.9
+   ],
+   "to": [
+    1.7,
+    6.6
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "gxl",
+   "at": [
+    12.45,
+    0.8
+   ],
+   "text": "V",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "gyl",
+   "at": [
+    1.65,
+    7.1
+   ],
+   "text": "P",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "wa",
+   "x": "(1.7+((4)-(0))/(9.5-(0))*10.2)",
+   "y": 0.9,
+   "w": "(1.7+((8)-(0))/(9.5-(0))*10.2)-(1.7+((4)-(0))/(9.5-(0))*10.2)",
+   "h": 0.1,
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.0,
+   "strokeWidth": 0,
+   "visible": "0"
+  },
+  {
+   "type": "rect",
+   "id": "waste",
+   "x": "(1.7+((4)-(0))/(9.5-(0))*10.2)",
+   "y": "(0.9+((1)/2.6)*5.4)",
+   "w": "(1.7+((8)-(0))/(9.5-(0))*10.2)-(1.7+((4)-(0))/(9.5-(0))*10.2)",
+   "h": "(0.9+((2)/2.6)*5.4)-(0.9+((1)/2.6)*5.4)",
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 1.5,
+   "visible": "mode==2"
+  },
+  {
+   "type": "plot",
+   "id": "iso",
+   "x": "(1.7+((u)-(0))/(9.5-(0))*10.2)",
+   "y": "(0.9+((8/u)/2.6)*5.4)",
+   "var": "u",
+   "domain": [
+    4,
+    8
+   ],
+   "samples": 60,
+   "role": "th",
+   "strokeWidth": 4,
+   "visible": "mode==1"
+  },
+  {
+   "type": "polyline",
+   "id": "o2",
+   "pts": [
+    [
+     "(1.7+((4)-(0))/(9.5-(0))*10.2)",
+     "(0.9+((2)/2.6)*5.4)"
+    ],
+    [
+     "(1.7+((4)-(0))/(9.5-(0))*10.2)",
+     "(0.9+((1)/2.6)*5.4)"
+    ],
+    [
+     "(1.7+((8)-(0))/(9.5-(0))*10.2)",
+     "(0.9+((1)/2.6)*5.4)"
+    ]
+   ],
+   "role": "th",
+   "strokeWidth": 4,
+   "visible": "mode==2"
+  },
+  {
+   "type": "polyline",
+   "id": "b2",
+   "pts": [
+    [
+     "(1.7+((8)-(0))/(9.5-(0))*10.2)",
+     "(0.9+((1)/2.6)*5.4)"
+    ],
+    [
+     "(1.7+((8)-(0))/(9.5-(0))*10.2)",
+     "(0.9+((2)/2.6)*5.4)"
+    ],
+    [
+     "(1.7+((4)-(0))/(9.5-(0))*10.2)",
+     "(0.9+((2)/2.6)*5.4)"
+    ]
+   ],
+   "role": "cold",
+   "strokeWidth": 4,
+   "dash": [
+    8,
+    6
+   ],
+   "visible": "mode==2"
+  },
+  {
+   "type": "point",
+   "id": "d",
+   "at": [
+    "(1.7+((Vd)-(0))/(9.5-(0))*10.2)",
+    "(0.9+((Pd)/2.6)*5.4)"
+   ],
+   "role": "me",
+   "r": 8
+  },
+  {
+   "type": "point",
+   "id": "da",
+   "at": [
+    "(1.7+((4)-(0))/(9.5-(0))*10.2)",
+    "(0.9+((2)/2.6)*5.4)"
+   ],
+   "role": "wall",
+   "r": 5
+  },
+  {
+   "type": "text",
+   "id": "la",
+   "at": [
+    "(1.7+((4)-(0))/(9.5-(0))*10.2)-0.5",
+    "(0.9+((2)/2.6)*5.4)+0.1"
+   ],
+   "text": "A",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "lb",
+   "at": [
+    "(1.7+((8)-(0))/(9.5-(0))*10.2)+0.5",
+    "(0.9+((1)/2.6)*5.4)+0.1"
+   ],
+   "text": "B",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "res",
+   "at": [
+    8.3,
+    6.2
+   ],
+   "text": "{{if mode==1|Back at A: nothing is left changed|}}{{if mode==2|Back at A, but work was wasted as heat|}}",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "visible": "s>1.8"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Can the gas go back exactly?",
+   "text": "We will expand a gas from **A to B** and then compress it back. If the gas **and** the surroundings both return exactly to where they began, the process is **reversible**.",
+   "actions": [
+    {
+     "set": {
+      "mode": 1,
+      "s": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Slow expansion and return",
+   "text": "Done **very slowly**, the gas is almost in equilibrium at every moment, so it follows the same curve out and back. Nothing is wasted: the process is **reversible**.",
+   "actions": [
+    {
+     "set": {
+      "mode": 1,
+      "s": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "s": 2
+     },
+     "at": 0,
+     "dur": 7000
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Sudden expansion and return",
+   "text": "Now do it **suddenly**: the pressure drops at once and the piston flies out; to return, the pressure is raised at once. The path out and back are **different**.",
+   "actions": [
+    {
+     "set": {
+      "mode": 2,
+      "s": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "s": 2
+     },
+     "at": 0,
+     "dur": 7000
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "The wasted work",
+   "text": "The loop between the two paths is the **work wasted as heat**. The surroundings cannot be restored: the process is **irreversible**. Real processes always are.",
+   "actions": [
+    {
+     "set": {
+      "mode": 2,
+      "s": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Everyday irreversible processes",
+   "text": "Friction, heat flowing from hot to cold, a gas rushing into a vacuum, and mixing milk into tea are all **irreversible**. None of them ever runs backwards by itself.",
+   "actions": [
+    {
+     "set": {
+      "mode": 2,
+      "s": 2
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Process",
+   "value": "{{if mode==1|reversible|irreversible}}"
+  },
+  {
+   "label": "Wasted work",
+   "value": "{{Wnet|0}}",
+   "role": "work"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Reversible process",
+   "tex": "\\text{gas and surroundings can both be restored exactly}",
+   "text": "Only possible if the process is infinitely slow with no friction and no heat flow across a temperature difference."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which of these is closest to a **reversible** process?",
+   "options": [
+    {
+     "id": "a",
+     "label": "A gas compressed very slowly while kept in thermal equilibrium"
+    },
+    {
+     "id": "b",
+     "label": "A gas rushing into a vacuum"
+    },
+    {
+     "id": "c",
+     "label": "A hot cup cooling in a cold room"
+    },
+    {
+     "id": "d",
+     "label": "A brake pad rubbing a wheel"
+    }
+   ],
+   "answer": "a",
+   "hint": "Infinitely slow, with no friction.",
+   "explain": "Only extremely slow changes with no friction or heat flow across a temperature difference are (nearly) reversible."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Heat flowing from a hot body to a cold body is:",
+   "options": [
+    {
+     "id": "a",
+     "label": "reversible"
+    },
+    {
+     "id": "b",
+     "label": "irreversible"
+    },
+    {
+     "id": "c",
+     "label": "adiabatic"
+    },
+    {
+     "id": "d",
+     "label": "isothermal"
+    }
+   ],
+   "answer": "b",
+   "hint": "Have you ever seen it flow back by itself?",
+   "explain": "It never reverses by itself: it is irreversible."
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "In the sudden expansion and return, the loop on the P–V graph represents:",
+   "options": [
+    {
+     "id": "a",
+     "label": "work wasted as heat"
+    },
+    {
+     "id": "b",
+     "label": "the final pressure"
+    },
+    {
+     "id": "c",
+     "label": "a constant temperature"
+    },
+    {
+     "id": "d",
+     "label": "the heat bath"
+    }
+   ],
+   "answer": "a",
+   "hint": "The area of the loop is net work.",
+   "explain": "The enclosed area is work that was done on the gas and not recovered: it ended up as heat in the surroundings."
+  }
+ ],
+ "takeaways": [
+  "A **reversible** process can be undone so that both the system and surroundings return to their original states.",
+  "**All real processes are irreversible** (friction, heat flow, rapid expansion).",
+  "The **Carnot engine** is built from reversible processes: it is an ideal limit."
+ ],
+ "notes": [
+  {
+   "title": "Connects to",
+   "text": "Irreversibility is the idea behind the **second law** and **entropy**: natural processes go one way only. The Carnot engine is the reversible ideal that gives the maximum efficiency."
+  }
+ ]
+}
