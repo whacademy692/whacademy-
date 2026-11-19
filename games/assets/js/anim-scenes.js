@@ -12,6 +12,7 @@
  *   pole    → a pole held by a taut cable      (anchor slider · flying bird)
  *   tent    → a triangular tent                (height slider · campfire · night glow)
  *   map     → ships on a chart                 (sail the routes · shortest-distance lines)
+ *   carnot  → a Carnot engine                  (hot/cold blocks · insulating jacket · follows the spec's T1, T2, Vr, ph)
  *
  * Model units are metres (or km on the map): x → right, y → up, z → toward the viewer.
  * All labels are "billboards" that always face the camera, so they stay readable from any angle.
@@ -681,8 +682,203 @@
     return { C: C, el: C.root3d, initialView: cfg.view || [-58, 0], rebuild: function () { layout(); }, destroy: C.destroy };
   }
 
+  // ======================================================================== carnot
+  // A real 3-D Carnot engine for the Carnot specs ("scene3d": "carnot"). It FOLLOWS the spec's own parameters
+  // (T1, T2, Vr and the cycle clock ph), so the flat drawing, the P–V graph and this model always agree.
+  // Model units: x → along the cylinder (the piston moves along x), y → up, z → toward the viewer.
+  //   • glass cylinder + fixed cap + piston/rod/handle · gas tinted by its temperature + moving molecules
+  //   • hot block ABOVE and cold block BELOW: each slides in and touches the cylinder ONLY during its isothermal stroke
+  //   • insulating jacket fades in during the two adiabatic strokes · heat-flow arrows · name tags (never overlapping)
+  //   γ = 5/3 is used only to place the adiabats (Beyond the book — Physics F8).
+  function carnotScene(cfg, ctx) {
+    var eng = ctx.eng, C = chrome(ctx, cfg), base = C.base, kit;
+    var GM = cfg.gamma ? num(cfg.gamma, 5 / 3) : 5 / 3, RAD = 1, XC = -1.8, XO = 1.4, XH = 2.6, XSH = 0.4;     // XSH: model centred on x = XSH
+    var NAME = ['a → b  Isothermal expansion', 'b → c  Adiabatic expansion', 'c → d  Isothermal compression', 'd → a  Adiabatic compression'];
+    var HEAT = ['Heat Q₁ flows IN · T stays T₁', 'Insulated: Q = 0 · gas cools', 'Heat Q₂ flows OUT · T stays T₂', 'Insulated: Q = 0 · gas warms'];
+    var WORK = ['Gas expands and does work', 'Gas expands and does work', 'Piston compresses the gas', 'Piston compresses the gas'];
+    var COLS = ['#ea580c', '#7c3aed', '#2563eb', '#db2777'];
+    var NP = 34, parts = [], i;
+    for (i = 0; i < NP; i++) parts.push({ x: Math.random(), y: Math.random() * 2 - 1, z: Math.random() * 2 - 1, vx: Math.random() * 2 - 1, vy: Math.random() * 2 - 1, vz: Math.random() * 2 - 1 });
+    var narrow = false, G = {}, st = { ph: 0, T1: 600, T2: 300, Vr: 2.2, leg: 0, f: 0, xp: -1.3, hotC: 0, coldC: 0, jac: 1, T: 600, V: 1 };
+    var tHot, tCold, tGas, tPis, tJac, tQ1, tQ2, slider, playB, strokeBs = [], badge, trip1, trip2, rafId = 0, last = 0, shown = false;
+
+    C.sky.style.display = 'none';                                    // a lab model: no sun and clouds
+    var nb = C.viewsEl.lastChild; if (nb && /^(Night|Day)$/.test(nb.textContent)) C.viewsEl.removeChild(nb);
+
+    function P(id, d) { var v = eng.values ? Number(eng.values[id]) : NaN; return isFinite(v) ? v : d; }
+    function m(x, y, z) { return [x - XSH, y, z]; }
+    function mvTag(t, x, y, z) { var c = kit.css(m(x, y, z)); t.a.style.transform = 'translate3d(' + r2(c[0]) + 'px,' + r2(c[1]) + 'px,' + r2(c[2]) + 'px)'; }
+
+    function readState() {
+      var T1 = P('T1', 600), T2 = P('T2', 300), Vr = P('Vr', 2.2), ph = clamp(P('ph', st.ph), 0, 3.9999);
+      if (T1 <= T2 + 20) T1 = T2 + 20;
+      var kk = Math.pow(T1 / T2, 1 / (GM - 1)), V1 = 1, V2 = Vr, V3 = Vr * kk, V4 = kk;
+      var leg = Math.min(3, Math.floor(ph)), f = ph - leg, V, T;
+      if (leg === 0) { V = V1 + (V2 - V1) * f; T = T1; }
+      else if (leg === 1) { V = V2 + (V3 - V2) * f; T = T1 * Math.pow(V2 / V, GM - 1); }
+      else if (leg === 2) { V = V3 + (V4 - V3) * f; T = T2; }
+      else { V = V4 + (V1 - V4) * f; T = T2 * Math.pow(V4 / V, GM - 1); }
+      var ramp = clamp(Math.min(f, 1 - f) / 0.1, 0, 1);
+      st.ph = ph; st.T1 = T1; st.T2 = T2; st.Vr = Vr; st.leg = leg; st.f = f; st.V = V; st.T = T;
+      st.xp = -1.3 + 2.4 * (V - V1) / (V3 - V1);
+      st.hotC = leg === 0 ? ramp : 0; st.coldC = leg === 2 ? ramp : 0; st.jac = 1 - Math.max(st.hotC, st.coldC);
+      var Rg = 8.314, Q1 = Rg * T1 * Math.log(Vr), Q2 = Rg * T2 * Math.log(Vr), Vs = [V1, V2, V3, V4][leg];
+      st.Qs = leg === 0 ? Rg * T * Math.log(V / Vs) : Q1;                       // heat taken in so far
+      st.Qo = leg < 2 ? 0 : (leg === 2 ? -Rg * T * Math.log(V / Vs) : Q2);       // heat given out so far
+      st.W = st.Qs - st.Qo - 1.5 * Rg * (T - T1);                                // net work so far
+    }
+    function gasCol(a) { var t = clamp((st.T - st.T2) / (st.T1 - st.T2), 0, 1); return 'hsla(' + Math.round(210 - 210 * t) + ',88%,52%,' + a + ')'; }
+
+    // ---------------------------------------------------------------- build
+    function disc(parent, x, r, bg, border, extra) {
+      var q = kit.quad(parent, 'sc-cn-disc', m(x, r, -r), [0, 0, 1], [0, -1, 0], 2 * r, 2 * r);
+      q.style.borderRadius = '50%'; if (bg) q.style.background = bg; if (border) q.style.border = border; if (extra) q.style.cssText += extra;
+      return q;
+    }
+    function strips(parent, r, x0, wm, n, bg) {                       // the curved wall of a cylinder, as n flat strips
+      for (var j = 0; j < n; j++) {
+        var a0 = 2 * Math.PI * j / n, a1 = 2 * Math.PI * (j + 1) / n, c = [0, r * (Math.cos(a1) - Math.cos(a0)), r * (Math.sin(a1) - Math.sin(a0))];
+        var q = kit.quad(parent, 'sc-cn-s', m(x0, r * Math.cos(a0), r * Math.sin(a0)), [1, 0, 0], c, wm, Math.hypot(c[1], c[2]));
+        q.style.background = bg;
+      }
+    }
+    function block(parent, x0, x1, y0, y1, z0, z1, varTop, varSide) {  // a box from 6 flat faces
+      var W = x1 - x0, H = y1 - y0, D = z1 - z0, F = [
+        [m(x0, y1, z0), [1, 0, 0], [0, 0, 1], W, D, varTop], [m(x0, y0, z0), [1, 0, 0], [0, 0, 1], W, D, varSide],
+        [m(x0, y1, z1), [1, 0, 0], [0, -1, 0], W, H, varSide], [m(x0, y1, z0), [1, 0, 0], [0, -1, 0], W, H, varSide],
+        [m(x0, y1, z0), [0, 0, 1], [0, -1, 0], D, H, varSide], [m(x1, y1, z0), [0, 0, 1], [0, -1, 0], D, H, varSide]];
+      F.forEach(function (f) { var q = kit.quad(parent, 'sc-cn-f', f[0], f[1], f[2], f[3], f[4]); q.style.background = 'var(' + f[5] + ')'; q.style.border = '1px solid rgba(15,23,42,.35)'; });
+    }
+    function layout() {
+      var W = Math.max(280, eng.view.W), H = Math.max(220, eng.view.H);
+      narrow = W < 520;                                           // phone: smaller model, one-line badge, so nothing sits on the labels
+      var S = Math.min(0.9 * W / 4.9, (narrow ? 0.6 : 0.7) * H / 4.2);
+      kit = new Kit(S, C);
+      base.textContent = ''; C.clearTags(); base.style.transform = 'translateY(' + (H * (narrow ? 0.13 : 0.06)).toFixed(0) + 'px)';
+      var N = 24, y;
+      // glass cylinder
+      G.shell = el('div', 'sc-grp', base); strips(G.shell, RAD, XC, XO - XC, N, 'rgba(110,130,160,.17)');
+      G.cap = el('div', 'sc-grp', base); disc(G.cap, XC, RAD, 'rgba(148,163,184,.93)', '2px solid #475569'); disc(G.cap, XC - 0.1, RAD, 'rgba(100,116,139,.95)', '2px solid #334155');
+      G.endRing = el('div', 'sc-grp', base); disc(G.endRing, XO, RAD, 'transparent', '2.5px solid rgba(51,65,85,.9)');
+      // gas volume (a tinted cylinder that stretches with the piston)
+      G.gas = el('div', 'sc-grp', base); strips(G.gas, 0.94 * RAD, XSH, 1 / S, N, 'var(--gas)');      // built at x = XSH so that m() puts it at 0 (the group is scaled in x)
+      // insulating jacket (stripes = insulation)
+      G.jac = el('div', 'sc-grp', base); strips(G.jac, 1.13 * RAD, XC - 0.12, XO - XC + 0.24, N, 'repeating-linear-gradient(90deg, rgba(71,85,105,.5) 0 9px, rgba(203,213,225,.5) 9px 14px)');
+      disc(G.jac, XC - 0.12, 1.13 * RAD, 'transparent', '3px solid rgba(30,41,59,.85)'); disc(G.jac, XO + 0.12, 1.13 * RAD, 'transparent', '3px solid rgba(30,41,59,.85)');
+      G.jacK = [].slice.call(G.jac.children);
+      // reservoirs (blocks)
+      G.hot = el('div', 'sc-grp', base); block(G.hot, -1.7, 1.3, RAD + 0.03, RAD + 0.43, -0.95, 0.95, '--hotT', '--hotS');
+      G.cold = el('div', 'sc-grp', base); block(G.cold, -1.7, 1.3, -(RAD + 0.43), -(RAD + 0.03), -0.95, 0.95, '--coldT', '--coldS');
+      // piston, rod, handle
+      G.pis = el('div', 'sc-grp', base);
+      disc(G.pis, 0, 0.96 * RAD, '#7c3aed', '2px solid #4c1d95'); disc(G.pis, 0.16, 0.96 * RAD, '#8b5cf6', '2px solid #4c1d95');
+      strips(G.pis, 0.96 * RAD, 0, 0.16, 18, '#6d28d9');
+      G.rod = el('div', 'sc-grp', base);
+      var th = Math.max(6, 0.17 * S), q1 = kit.quad(G.rod, 'sc-cn-rod', m(XSH, th / 2 / S, 0), [1, 0, 0], [0, -1, 0], 1 / S, th / S), q2 = kit.quad(G.rod, 'sc-cn-rod', m(XSH, 0, -th / 2 / S), [1, 0, 0], [0, 0, 1], 1 / S, th / S);
+      q1.style.background = q2.style.background = '#5b21b6';
+      G.handle = el('div', 'sc-grp', base); disc(G.handle, XH, 0.46, '#8b5cf6', '3px solid #4c1d95'); disc(G.handle, XH + 0.1, 0.46, '#7c3aed', '3px solid #4c1d95');
+      // molecules
+      G.mol = el('div', 'sc-grp', base);
+      parts.forEach(function (p) {
+        var d = el('i', 'sc-cn-m'); d.style.cssText = 'display:block;width:8px;height:8px;border-radius:50%;background:var(--mol);box-shadow:0 0 0 1.5px rgba(255,255,255,.9)';
+        p.e = kit.bill(G.mol, m(0, 0, 0), '', d, 'c');
+      });
+      // heat arrows (always upright)
+      G.aH = []; G.aC = [];
+      [-1, -0.1, 0.8].forEach(function (x) {
+        var a = kit.bill(base, m(x, 0.55, 0), '', '⬇', 'c'), b = kit.bill(base, m(x, -0.55, 0), '', '⬇', 'c');
+        a.style.cssText += ';font-size:30px;line-height:1;color:#ea580c;text-shadow:0 0 4px #fff,0 0 4px #fff,0 0 8px #fff';
+        b.style.cssText += ';font-size:30px;line-height:1;color:#2563eb;text-shadow:0 0 4px #fff,0 0 4px #fff,0 0 8px #fff';
+        G.aH.push(a.parentNode); G.aC.push(b.parentNode);
+      });
+      // name tags (flat layer; they are pinned to 3-D points and kept from overlapping)
+      function tag(text, bg, up) { var t = kit.pill(base, m(0, 0, 0), '', text, null, up); t.e.style.background = bg; return t; }
+      tHot = tag('', '#c2410c', 'u'); tCold = tag('', '#1d4ed8', 'd'); tGas = tag('Gas', '#0369a1', null); tPis = tag('Piston + rod', '#6d28d9', 'd');
+      tJac = tag('Insulating jacket', '#334155', 'u'); tQ1 = tag('Q₁ in', '#c2410c', 'r'); tQ2 = tag('Q₂ out', '#1d4ed8', 'r');
+      update();
+    }
+
+    // ---------------------------------------------------------------- per-frame update
+    function px(v) { return (v * kit.S).toFixed(1) + 'px'; }
+    function update() {
+      if (!kit) return;
+      readState();
+      var S = kit.S, xp = st.xp, gap = 0.6;
+      var hy = (1 - st.hotC) * gap, cy = (1 - st.coldC) * gap;
+      G.gas.style.transform = 'translate3d(' + px(XC + 0.02 - XSH) + ',0,0) scale3d(' + ((xp - 0.04 - (XC + 0.02)) * S).toFixed(2) + ',1,1)';
+      G.gas.style.setProperty('--gas', gasCol(0.2)); G.mol.style.setProperty('--mol', gasCol(1));
+      G.pis.style.transform = 'translate3d(' + px(xp - XSH) + ',0,0)';
+      G.rod.style.transform = 'translate3d(' + px(xp + 0.16 - XSH) + ',0,0) scale3d(' + Math.max(1, (XH - xp - 0.16) * S).toFixed(2) + ',1,1)';
+      G.hot.style.transform = 'translate3d(0,' + px(-hy) + ',0)'; G.cold.style.transform = 'translate3d(0,' + px(cy) + ',0)';
+      var hOn = st.hotC > 0.02, cOn = st.coldC > 0.02;
+      // translucent faces (colour alpha, not group opacity — that would flatten the 3-D block) so the top view can see through
+      G.hot.style.setProperty('--hotT', hOn ? 'rgba(251,146,60,.78)' : 'rgba(254,215,170,.78)'); G.hot.style.setProperty('--hotS', hOn ? 'rgba(234,88,12,.88)' : 'rgba(253,186,116,.88)');
+      G.cold.style.setProperty('--coldT', cOn ? 'rgba(96,165,250,.78)' : 'rgba(191,219,254,.78)'); G.cold.style.setProperty('--coldS', cOn ? 'rgba(37,99,235,.88)' : 'rgba(147,197,253,.88)');
+      G.jacK.forEach(function (k) { k.style.opacity = st.jac.toFixed(2); }); G.jac.style.display = st.jac > 0.03 ? '' : 'none';   // fade the strips, never the 3-D group (opacity would flatten it)
+      G.aH.forEach(function (a) { a.style.display = st.hotC > 0.9 ? '' : 'none'; }); G.aC.forEach(function (a) { a.style.display = st.coldC > 0.9 ? '' : 'none'; });
+      // tags
+      tHot.e.textContent = 'Hot reservoir  T₁ = ' + Math.round(st.T1) + ' K'; tCold.e.textContent = 'Cold reservoir  T₂ = ' + Math.round(st.T2) + ' K';
+      mvTag(tHot, -0.2, RAD + 0.43 + hy, 0); mvTag(tCold, -0.2, -(RAD + 0.43) - cy, 0); mvTag(tGas, (XC + xp) / 2, 0, 0); mvTag(tPis, XH, -0.46, 0);
+      mvTag(tJac, 0.9, 1.13 * RAD, 0); mvTag(tQ1, 1.3, RAD + 0.23 + hy, 0); mvTag(tQ2, 1.3, -(RAD + 0.23) - cy, 0);
+      tJac.e.style.display = st.jac > 0.6 ? '' : 'none'; tQ1.e.style.display = st.hotC > 0.9 ? '' : 'none'; tQ2.e.style.display = st.coldC > 0.9 ? '' : 'none';
+      // read-outs and buttons
+      var L = st.leg;
+      badge.firstChild.textContent = NAME[L]; badge.firstChild.style.color = COLS[L]; badge.lastChild.textContent = HEAT[L] + ' · ' + WORK[L]; badge.lastChild.style.display = narrow ? 'none' : '';
+      trip1.textContent = 'T = ' + Math.round(st.T) + ' K   V = ' + fmt(st.V, 2) + ' V₁';
+      trip2.textContent = 'Heat in ' + Math.round(st.Qs) + ' J   Heat out ' + Math.round(st.Qo) + ' J   Work ' + Math.round(st.W) + ' J';
+      if (slider && document.activeElement !== slider.input) slider.set(st.ph);
+      strokeBs.forEach(function (b, k) { b.classList.toggle('is-on', k === L); });
+      if (playB) { var run = eng.clockRunning && eng.clockRunning('ph'); playB.textContent = run ? '❚❚ Pause' : '▶ Play'; playB.classList.toggle('is-on', !!run); }
+      C.place();
+    }
+    // molecules move on their own (speed follows the temperature)
+    function tick(ts) {
+      if (!shown) return;
+      var dt = Math.min(0.05, ((ts - last) / 1000) || 0); last = ts;
+      var sp = (0.35 + 0.6 * Math.sqrt(st.T / st.T2)) * 0.9, xl = XC + 0.12, xr = st.xp - 0.12;
+      parts.forEach(function (p) {
+        p.x += p.vx * dt * sp; p.y += p.vy * dt * sp; p.z += p.vz * dt * sp;
+        if (p.y * p.y + p.z * p.z > 1) { var n = Math.hypot(p.y, p.z), ny = p.y / n, nz = p.z / n, d = p.vy * ny + p.vz * nz; p.vy -= 2 * d * ny; p.vz -= 2 * d * nz; p.y = ny * 0.98; p.z = nz * 0.98; }
+        if (p.x < 0) { p.x = 0; p.vx = Math.abs(p.vx); } if (p.x > 1) { p.x = 1; p.vx = -Math.abs(p.vx); }
+        kit.moveBill(p.e, m(xl + p.x * (xr - xl), p.y * 0.8 * RAD, p.z * 0.8 * RAD));
+      });
+      rafId = root.requestAnimationFrame(tick);
+    }
+
+    // ---------------------------------------------------------------- controls
+    badge = el('div', 'anim-sc-badge', C.top); badge.style.cssText = 'background:rgba(255,255,255,.94);border-radius:12px;padding:5px 9px;max-width:min(80%,300px);box-shadow:0 2px 10px rgba(15,23,42,.25);font:700 11px/1.25 var(--font-body);color:#334155';
+    el('div', '', badge).style.cssText = 'font-weight:800;font-size:12px'; el('div', '', badge);
+    trip1 = el('div', 'anim-sc-trip', C.row1); trip2 = el('div', 'anim-sc-trip', C.row1);
+    slider = C.slider(C.row2, 'Cycle', 0, 3.99, 0.01, 0, function (v) { return v.toFixed(2); }, function (v) { if (!(eng.setParam && eng.setParam('ph', v, 'user'))) { st.ph = v; } update(); });
+    ['a→b', 'b→c', 'c→d', 'd→a'].forEach(function (t, k) {
+      var b = C.btn(C.row3, t, function () { if (eng.setParam) eng.setParam('ph', k + 0.02, 'user'); update(); }, 'anim-sc-b--toggle');
+      b.style.color = COLS[k]; C.row3.insertBefore(b, C.viewsEl); strokeBs.push(b);
+    });
+    playB = C.btn(C.row3, '▶ Play', function () { if (eng.toggleClock) eng.toggleClock('ph'); update(); }, 'anim-sc-b--go'); C.row3.insertBefore(playB, C.viewsEl);
+
+    var baseShow = C.show;
+    C.show = function (on) { shown = !!on; baseShow(on); if (on) { update(); last = 0; root.cancelAnimationFrame(rafId); rafId = root.requestAnimationFrame(tick); } else root.cancelAnimationFrame(rafId); };
+    var basePlace = C.place;
+    C.place = function () { basePlace(); declutter(); };
+    // keep the name tags from sitting on top of each other (push the lower one down)
+    function declutter() {
+      if (C.root3d.hidden) return;
+      var vis = C.tags.filter(function (t) { return t.e.style.display !== 'none'; }), br = C.box.getBoundingClientRect(), rs = vis.map(function (t) { var r = t.e.getBoundingClientRect(); return { t: t, l: r.left - br.left, tp: r.top - br.top, w: r.width, h: r.height, dy: 0 }; });
+      rs.sort(function (a, b) { return a.tp - b.tp; });
+      for (var i = 1; i < rs.length; i++) for (var j = 0; j < i; j++) {
+        var a = rs[j], b = rs[i];
+        if (a.l < b.l + b.w + 2 && b.l < a.l + a.w + 2 && a.tp + a.dy < b.tp + b.dy + b.h && b.tp + b.dy < a.tp + a.dy + a.h) b.dy += (a.tp + a.dy + a.h + 3) - (b.tp + b.dy);
+      }
+      rs.forEach(function (r) { if (r.dy) { var y = parseFloat(r.t.e.style.getPropertyValue('--Y')) || 0; r.t.e.style.setProperty('--Y', (y + r.dy).toFixed(1) + 'px'); } });
+    }
+    C.onHide = function () { root.cancelAnimationFrame(rafId); };
+    var baseDestroy = C.destroy; C.destroy = function () { root.cancelAnimationFrame(rafId); baseDestroy(); };
+    layout();
+    return { C: C, el: C.root3d, initialView: cfg.view || [-20, -32], rebuild: function () { layout(); }, onSourceChange: update, destroy: C.destroy };
+  }
+
   // ======================================================================== public
-  var BUILDERS = { ladder: ladderScene, pole: poleScene, tent: tentScene, map: mapScene };
+  var BUILDERS = { ladder: ladderScene, pole: poleScene, tent: tentScene, map: mapScene, carnot: carnotScene };
   function create(cfg, ctx) {
     if (typeof cfg === 'string') cfg = { type: cfg };
     if (!cfg || !BUILDERS[cfg.type]) return null;
