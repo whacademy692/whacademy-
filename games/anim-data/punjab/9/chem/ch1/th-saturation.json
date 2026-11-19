@@ -1,0 +1,414 @@
+{
+ "id": "pb9-chem-c1-th-saturation",
+ "title": "Unsaturated and saturated solutions",
+ "summary": "Add solute to 100 g of water at 20 °C until no more dissolves.",
+ "alt": "A beaker of water: solute dissolves until the saturation limit, after which extra solute settles at the bottom.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "a": {
+   "label": "Dissolved solute",
+   "color": "#7c3aed",
+   "text": "Solute dissolved in water.",
+   "legend": true
+  },
+  "b": {
+   "label": "Undissolved solute",
+   "color": "#d97706",
+   "text": "Extra solute lying at the bottom.",
+   "legend": true
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  },
+  "water": {
+   "label": "Water",
+   "color": "#0ea5e9",
+   "text": "Water.",
+   "legend": false
+  },
+  "wall": {
+   "label": "Apparatus",
+   "color": "#475569",
+   "text": "The container or apparatus.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "sol",
+   "label": "Solute (100 g water, 20 °C)",
+   "type": "choice",
+   "options": [
+    {
+     "value": 1,
+     "label": "Sodium chloride (salt)"
+    },
+    {
+     "value": 2,
+     "label": "Table sugar"
+    }
+   ],
+   "default": 2
+  },
+  {
+   "id": "g",
+   "label": "Solute added (g)",
+   "type": "number",
+   "min": 0,
+   "max": 250,
+   "step": 1,
+   "default": 0
+  }
+ ],
+ "derived": {
+  "S": "sol==1?36:203.9",
+  "dis": "min(g,S)",
+  "ex": "max(0,g-S)",
+  "nd": "round(30*min(g,S)/S)",
+  "np": "min(14,floor(ex/5+0.999))"
+ },
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "wt",
+   "x": 8,
+   "y": 18,
+   "w": 34,
+   "h": 36,
+   "role": "water",
+   "fill": true,
+   "fillOpacity": 0.18,
+   "strokeWidth": 0
+  },
+  {
+   "type": "rect",
+   "id": "bk",
+   "x": 8,
+   "y": 18,
+   "w": 34,
+   "h": 44,
+   "role": "wall",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 3
+  },
+  {
+   "type": "repeat",
+   "id": "dd",
+   "count": "nd",
+   "as": "i",
+   "template": {
+    "type": "point",
+    "role": "a",
+    "r": 4,
+    "at": [
+     "8+3+28*(mod(abs(sin(i*12.9898+1)*43758.5453),1))",
+     "24+28*(mod(abs(sin(i*78.233+2)*43758.5453),1))"
+    ]
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "pp",
+   "count": "np",
+   "as": "i",
+   "template": {
+    "type": "point",
+    "role": "b",
+    "r": 5.5,
+    "at": [
+     "8+3.5+2.6*mod(i,12)",
+     "19.6+2.9*floor(i/12)"
+    ]
+   }
+  },
+  {
+   "type": "text",
+   "id": "t1",
+   "at": [
+    25,
+    68
+   ],
+   "text": "100 g of water at 20 °C",
+   "role": "ink",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "st",
+   "at": [
+    72,
+    62
+   ],
+   "text": "{{if g<S | Unsaturated | Saturated}}",
+   "role": "warn",
+   "size": "l",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "st2",
+   "at": [
+    72,
+    54
+   ],
+   "text": "{{if g<S | can dissolve more | no more dissolves}}",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "lm",
+   "at": [
+    72,
+    44
+   ],
+   "text": "Saturation limit: {{S|1}} g",
+   "role": "a",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "ex",
+   "at": [
+    72,
+    36
+   ],
+   "text": "Undissolved: {{ex|1}} g",
+   "role": "b",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "nt",
+   "at": [
+    72,
+    25
+   ],
+   "text": "Sugar molecules are bigger than",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sol==2&&g>0"
+  },
+  {
+   "type": "text",
+   "id": "nt2",
+   "at": [
+    72,
+    20
+   ],
+   "text": "salt ions, so more water molecules",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sol==2&&g>0"
+  },
+  {
+   "type": "text",
+   "id": "nt3",
+   "at": [
+    72,
+    15
+   ],
+   "text": "surround one: more sugar dissolves",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sol==2&&g>0"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Start adding sugar",
+   "text": "100 g of water at 20 °C. Stir in sugar a little at a time.",
+   "actions": [
+    {
+     "set": {
+      "sol": 2,
+      "g": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Unsaturated",
+   "text": "The sugar dissolves. This solution is **unsaturated**: it can dissolve **more** solute at this temperature.",
+   "actions": [
+    {
+     "set": {
+      "sol": 2
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "g": 120
+     },
+     "at": 0,
+     "dur": 1500
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Saturated",
+   "text": "At **203.9 g** no more sugar dissolves. The solution is **saturated**: it holds the **maximum** amount of solute at that temperature.",
+   "actions": [
+    {
+     "set": {
+      "sol": 2
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "g": 204
+     },
+     "at": 0,
+     "dur": 1500
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Extra settles",
+   "text": "Any extra sugar settles at the bottom, undissolved.",
+   "actions": [
+    {
+     "set": {
+      "sol": 2
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "g": 250
+     },
+     "at": 0,
+     "dur": 1200
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Different solutes, different limits",
+   "text": "Salt is far less soluble: only **36 g of NaCl** dissolve in 100 g of water at 20 °C.",
+   "actions": [
+    {
+     "set": {
+      "sol": 1
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "g": 60
+     },
+     "at": 0,
+     "dur": 1500
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Added",
+   "value": "{{g|1}} g",
+   "role": "warn"
+  },
+  {
+   "label": "Dissolved",
+   "value": "{{dis|1}} g",
+   "role": "a"
+  },
+  {
+   "label": "Undissolved",
+   "value": "{{ex|1}} g",
+   "role": "b"
+  },
+  {
+   "label": "Solubility at 20 °C",
+   "value": "{{S|1}} g / 100 g water",
+   "role": "warn"
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "250 g of sugar is added to 100 g of water at 20 °C (solubility 203.9 g). How many grams stay **undissolved**?",
+   "answer": "250-203.9",
+   "hint": "Undissolved = added − solubility.",
+   "explain": "\\( 250 - 203.9 = 46.1 \\) g.",
+   "tolerance": 0.2,
+   "unit": "g"
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "50 g of NaCl is stirred into 100 g of water at 20 °C (solubility 36 g). How many grams stay undissolved?",
+   "answer": 14,
+   "hint": "50 − 36.",
+   "explain": "\\( 50 - 36 = 14 \\) g.",
+   "tolerance": 0.1,
+   "unit": "g"
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "A solution that can dissolve **more** solute at the same temperature is…",
+   "options": [
+    {
+     "id": "a",
+     "label": "unsaturated"
+    },
+    {
+     "id": "b",
+     "label": "saturated"
+    },
+    {
+     "id": "c",
+     "label": "a suspension"
+    },
+    {
+     "id": "d",
+     "label": "a colloid"
+    }
+   ],
+   "answer": "a",
+   "hint": "It has not reached its limit.",
+   "explain": "That is an **unsaturated** solution."
+  }
+ ],
+ "takeaways": [
+  "Unsaturated: can dissolve more solute at that temperature.",
+  "Saturated: holds the maximum solute for that amount of solvent at that temperature.",
+  "At 20 °C in 100 g of water: 36 g NaCl but 203.9 g sugar dissolve."
+ ]
+}

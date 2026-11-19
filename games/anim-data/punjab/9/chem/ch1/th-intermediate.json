@@ -1,0 +1,1127 @@
+{
+ "id": "pb9-chem-c1-th-intermediate",
+ "title": "Intermediate and exotic states",
+ "summary": "Supercritical fluids, liquid crystals, graphene and the exotic states of matter.",
+ "alt": "A line from solid to gas with liquid crystal between solid and liquid and supercritical fluid between liquid and gas, plus cards for graphene and exotic states.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "a": {
+   "label": "Atom A",
+   "color": "#7c3aed",
+   "text": "First atom.",
+   "legend": false
+  },
+  "b": {
+   "label": "Atom B",
+   "color": "#059669",
+   "text": "Second atom.",
+   "legend": false
+  },
+  "c": {
+   "label": "Atom C",
+   "color": "#d97706",
+   "text": "Third kind of atom.",
+   "legend": false
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Low energy.",
+   "legend": false
+  },
+  "sh": {
+   "label": "Shell",
+   "color": "#94a3b8",
+   "text": "An energy level (orbit).",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Heat / high energy.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "sel",
+   "label": "Show",
+   "type": "choice",
+   "options": [
+    {
+     "value": 0,
+     "label": "The line of states"
+    },
+    {
+     "value": 1,
+     "label": "Supercritical fluid"
+    },
+    {
+     "value": 2,
+     "label": "Liquid crystal"
+    },
+    {
+     "value": 3,
+     "label": "Graphene"
+    },
+    {
+     "value": 4,
+     "label": "Exotic states"
+    }
+   ],
+   "default": 0
+  }
+ ],
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "n0",
+   "x": 1,
+   "y": 50,
+   "w": 16,
+   "h": 16,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 2
+  },
+  {
+   "type": "rect",
+   "id": "h0",
+   "x": 1,
+   "y": 50,
+   "w": 16,
+   "h": 16,
+   "role": "warn",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 4,
+   "visible": "sel==3"
+  },
+  {
+   "type": "point",
+   "id": "d0_0",
+   "at": [
+    6,
+    55
+   ],
+   "role": "a",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d0_1",
+   "at": [
+    9,
+    55
+   ],
+   "role": "a",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d0_2",
+   "at": [
+    12,
+    55
+   ],
+   "role": "a",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d0_3",
+   "at": [
+    6,
+    58
+   ],
+   "role": "a",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d0_4",
+   "at": [
+    9,
+    58
+   ],
+   "role": "a",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d0_5",
+   "at": [
+    12,
+    58
+   ],
+   "role": "a",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d0_6",
+   "at": [
+    6,
+    61
+   ],
+   "role": "a",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d0_7",
+   "at": [
+    9,
+    61
+   ],
+   "role": "a",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d0_8",
+   "at": [
+    12,
+    61
+   ],
+   "role": "a",
+   "r": 3.2
+  },
+  {
+   "type": "text",
+   "id": "l0",
+   "at": [
+    9,
+    45
+   ],
+   "text": "Solid",
+   "role": "ink",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "n1",
+   "x": 21,
+   "y": 50,
+   "w": 16,
+   "h": 16,
+   "role": "warn",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 2
+  },
+  {
+   "type": "rect",
+   "id": "h1",
+   "x": 21,
+   "y": 50,
+   "w": 16,
+   "h": 16,
+   "role": "warn",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 4,
+   "visible": "sel==2"
+  },
+  {
+   "type": "point",
+   "id": "d1_0",
+   "at": [
+    26,
+    55
+   ],
+   "role": "warn",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d1_1",
+   "at": [
+    29,
+    55
+   ],
+   "role": "warn",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d1_2",
+   "at": [
+    32,
+    55
+   ],
+   "role": "warn",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d1_3",
+   "at": [
+    26,
+    58.6
+   ],
+   "role": "warn",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d1_4",
+   "at": [
+    29.8,
+    58.2
+   ],
+   "role": "warn",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d1_5",
+   "at": [
+    32.4,
+    57.6
+   ],
+   "role": "warn",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d1_6",
+   "at": [
+    25.6,
+    61
+   ],
+   "role": "warn",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d1_7",
+   "at": [
+    29.2,
+    61.4
+   ],
+   "role": "warn",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d1_8",
+   "at": [
+    32,
+    61
+   ],
+   "role": "warn",
+   "r": 3.2
+  },
+  {
+   "type": "text",
+   "id": "l1",
+   "at": [
+    29,
+    45
+   ],
+   "text": "Liquid crystal",
+   "role": "ink",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "n2",
+   "x": 41,
+   "y": 50,
+   "w": 16,
+   "h": 16,
+   "role": "b",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 2
+  },
+  {
+   "type": "rect",
+   "id": "h2",
+   "x": 41,
+   "y": 50,
+   "w": 16,
+   "h": 16,
+   "role": "warn",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 4,
+   "visible": "sel==9"
+  },
+  {
+   "type": "point",
+   "id": "d2_0",
+   "at": [
+    45.6,
+    55.6
+   ],
+   "role": "b",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d2_1",
+   "at": [
+    49.6,
+    54.6
+   ],
+   "role": "b",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d2_2",
+   "at": [
+    52,
+    56.8
+   ],
+   "role": "b",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d2_3",
+   "at": [
+    47.6,
+    58.4
+   ],
+   "role": "b",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d2_4",
+   "at": [
+    51.4,
+    59.8
+   ],
+   "role": "b",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d2_5",
+   "at": [
+    46,
+    60.8
+   ],
+   "role": "b",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d2_6",
+   "at": [
+    50.4,
+    61.6
+   ],
+   "role": "b",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d2_7",
+   "at": [
+    48.8,
+    57
+   ],
+   "role": "b",
+   "r": 3.2
+  },
+  {
+   "type": "text",
+   "id": "l2",
+   "at": [
+    49,
+    45
+   ],
+   "text": "Liquid",
+   "role": "ink",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "n3",
+   "x": 61,
+   "y": 50,
+   "w": 16,
+   "h": 16,
+   "role": "warn",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 2
+  },
+  {
+   "type": "rect",
+   "id": "h3",
+   "x": 61,
+   "y": 50,
+   "w": 16,
+   "h": 16,
+   "role": "warn",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 4,
+   "visible": "sel==1"
+  },
+  {
+   "type": "point",
+   "id": "d3_0",
+   "at": [
+    65.8,
+    56
+   ],
+   "role": "warn",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d3_1",
+   "at": [
+    69.4,
+    54.6
+   ],
+   "role": "warn",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d3_2",
+   "at": [
+    72.4,
+    57.6
+   ],
+   "role": "warn",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d3_3",
+   "at": [
+    67.6,
+    59.4
+   ],
+   "role": "warn",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d3_4",
+   "at": [
+    71.6,
+    61.2
+   ],
+   "role": "warn",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d3_5",
+   "at": [
+    65.8,
+    61.4
+   ],
+   "role": "warn",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d3_6",
+   "at": [
+    70.4,
+    57.8
+   ],
+   "role": "warn",
+   "r": 3.2
+  },
+  {
+   "type": "text",
+   "id": "l3",
+   "at": [
+    69,
+    45
+   ],
+   "text": "Supercritical fluid",
+   "role": "ink",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "n4",
+   "x": 81,
+   "y": 50,
+   "w": 16,
+   "h": 16,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 2
+  },
+  {
+   "type": "rect",
+   "id": "h4",
+   "x": 81,
+   "y": 50,
+   "w": 16,
+   "h": 16,
+   "role": "warn",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 4,
+   "visible": "sel==9"
+  },
+  {
+   "type": "point",
+   "id": "d4_0",
+   "at": [
+    85.6,
+    55
+   ],
+   "role": "cold",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d4_1",
+   "at": [
+    92.2,
+    55.8
+   ],
+   "role": "cold",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d4_2",
+   "at": [
+    87.4,
+    61.2
+   ],
+   "role": "cold",
+   "r": 3.2
+  },
+  {
+   "type": "point",
+   "id": "d4_3",
+   "at": [
+    92.2,
+    61.2
+   ],
+   "role": "cold",
+   "r": 3.2
+  },
+  {
+   "type": "text",
+   "id": "l4",
+   "at": [
+    89,
+    45
+   ],
+   "text": "Gas",
+   "role": "ink",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "pl",
+   "at": [
+    49,
+    73
+   ],
+   "text": "Plasma (4th state) exists at very high energy",
+   "role": "hot",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "cd1",
+   "x": 10,
+   "y": 6,
+   "w": 80,
+   "h": 29,
+   "role": "warn",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 2,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "ct1",
+   "at": [
+    50,
+    29
+   ],
+   "text": "Supercritical fluid",
+   "role": "warn",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "cl1_0",
+   "at": [
+    50,
+    23.5
+   ],
+   "text": "Highly compressed state with properties",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "cl1_1",
+   "at": [
+    50,
+    18.3
+   ],
+   "text": "of both gases and liquids",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "cl1_2",
+   "at": [
+    50,
+    13.1
+   ],
+   "text": "Supercritical CO₂ is used as a solvent for",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "cl1_3",
+   "at": [
+    50,
+    7.899999999999999
+   ],
+   "text": "reactions not possible in usual solvents",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==1"
+  },
+  {
+   "type": "rect",
+   "id": "cd2",
+   "x": 10,
+   "y": 6,
+   "w": 80,
+   "h": 29,
+   "role": "warn",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 2,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "ct2",
+   "at": [
+    50,
+    29
+   ],
+   "text": "Liquid crystal",
+   "role": "warn",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "cl2_0",
+   "at": [
+    50,
+    23.5
+   ],
+   "text": "Properties between conventional liquids",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "cl2_1",
+   "at": [
+    50,
+    18.3
+   ],
+   "text": "and crystalline solids",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "cl2_2",
+   "at": [
+    50,
+    13.1
+   ],
+   "text": "Used in display devices: monitors, clocks,",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "cl2_3",
+   "at": [
+    50,
+    7.899999999999999
+   ],
+   "text": "watches and navigation systems",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==2"
+  },
+  {
+   "type": "rect",
+   "id": "cd3",
+   "x": 10,
+   "y": 6,
+   "w": 80,
+   "h": 29,
+   "role": "warn",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 2,
+   "visible": "sel==3"
+  },
+  {
+   "type": "text",
+   "id": "ct3",
+   "at": [
+    50,
+    29
+   ],
+   "text": "Graphene",
+   "role": "warn",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==3"
+  },
+  {
+   "type": "text",
+   "id": "cl3_0",
+   "at": [
+    50,
+    23.5
+   ],
+   "text": "A two-dimensional crystal: a single layer",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==3"
+  },
+  {
+   "type": "text",
+   "id": "cl3_1",
+   "at": [
+    50,
+    18.3
+   ],
+   "text": "of carbon atoms in a hexagonal pattern",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==3"
+  },
+  {
+   "type": "text",
+   "id": "cl3_2",
+   "at": [
+    50,
+    13.1
+   ],
+   "text": "Tough, flexible, light material",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==3"
+  },
+  {
+   "type": "text",
+   "id": "cl3_3",
+   "at": [
+    50,
+    7.899999999999999
+   ],
+   "text": "with high resistance",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==3"
+  },
+  {
+   "type": "rect",
+   "id": "cd4",
+   "x": 10,
+   "y": 6,
+   "w": 80,
+   "h": 29,
+   "role": "warn",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 2,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "ct4",
+   "at": [
+    50,
+    29
+   ],
+   "text": "Exotic states",
+   "role": "warn",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "cl4_0",
+   "at": [
+    50,
+    23.5
+   ],
+   "text": "States not commonly encountered",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "cl4_1",
+   "at": [
+    50,
+    18.3
+   ],
+   "text": "Dark matter, Bose–Einstein condensate (BEC),",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "cl4_2",
+   "at": [
+    50,
+    13.1
+   ],
+   "text": "nuclear matter, quantum spin liquid",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "cl4_3",
+   "at": [
+    50,
+    7.899999999999999
+   ],
+   "text": "and many others",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "intro",
+   "at": [
+    50,
+    24
+   ],
+   "text": "Everyday states: solid, liquid, gas and plasma",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==0"
+  },
+  {
+   "type": "text",
+   "id": "intro2",
+   "at": [
+    50,
+    17
+   ],
+   "text": "Some states lie between them or are not seen daily",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==0"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Between the main states",
+   "text": "Besides solid, liquid, gas and plasma there are **intermediate states** that lie between a liquid and a gas, or between a liquid and a solid.",
+   "actions": [
+    {
+     "set": {
+      "sel": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Supercritical fluid",
+   "text": "A **supercritical fluid** is a highly compressed state with properties of **both gases and liquids**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Liquid crystal",
+   "text": "A **liquid crystal** has properties between those of a liquid and a crystalline solid, so it is used in **displays**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Graphene",
+   "text": "**Graphene** is a two-dimensional crystal: one layer of carbon atoms in a hexagonal pattern.",
+   "actions": [
+    {
+     "set": {
+      "sel": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Exotic states",
+   "text": "States not commonly met, such as **dark matter**, **Bose–Einstein condensate**, nuclear matter and quantum spin liquid, are called **exotic states**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 4
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Supercritical carbon dioxide is useful because it…",
+   "options": [
+    {
+     "id": "a",
+     "label": "acts as a solvent for reactions not possible in usual solvents"
+    },
+    {
+     "id": "b",
+     "label": "is a very hard solid"
+    },
+    {
+     "id": "c",
+     "label": "is a type of plasma"
+    },
+    {
+     "id": "d",
+     "label": "forms liquid crystal displays"
+    }
+   ],
+   "answer": "a",
+   "hint": "It has properties of both gas and liquid.",
+   "explain": "Reactions that cannot be done in conventional solvents can be done in **supercritical CO₂**."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which material is used in the **displays** of monitors and watches?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Liquid crystal"
+    },
+    {
+     "id": "b",
+     "label": "Plasma"
+    },
+    {
+     "id": "c",
+     "label": "Supercritical fluid"
+    },
+    {
+     "id": "d",
+     "label": "Graphene"
+    }
+   ],
+   "answer": "a",
+   "hint": "Between a liquid and a crystalline solid.",
+   "explain": "**Liquid crystals** are used in display devices."
+  }
+ ],
+ "takeaways": [
+  "Intermediate states: supercritical fluid, liquid crystal, graphene.",
+  "Exotic states: dark matter, BEC, nuclear matter, quantum spin liquid, etc."
+ ]
+}

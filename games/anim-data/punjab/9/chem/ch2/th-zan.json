@@ -1,0 +1,455 @@
+{
+ "id": "pb9-chem-c2-th-zan",
+ "title": "Atomic number, mass number and neutrons",
+ "summary": "Pick an atom and see its protons, neutrons and electrons. N = A − Z.",
+ "alt": "Three bars show the numbers of protons, neutrons and electrons of a chosen atom with its symbol and the rule N = A − Z.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "pro": {
+   "label": "Proton",
+   "color": "#ef4444",
+   "text": "Positive particle in the nucleus.",
+   "legend": true
+  },
+  "neu": {
+   "label": "Neutron",
+   "color": "#64748b",
+   "text": "Neutral particle in the nucleus.",
+   "legend": true
+  },
+  "el": {
+   "label": "Electron",
+   "color": "#2563eb",
+   "text": "Negative particle moving around the nucleus.",
+   "legend": true
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  },
+  "nuc": {
+   "label": "Nucleus",
+   "color": "#dc2626",
+   "text": "The tiny central part of the atom.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "sel",
+   "label": "Atom",
+   "type": "choice",
+   "options": [
+    {
+     "value": 1,
+     "label": "S-32"
+    },
+    {
+     "value": 2,
+     "label": "Ba-137"
+    },
+    {
+     "value": 3,
+     "label": "Pt-195"
+    },
+    {
+     "value": 4,
+     "label": "Mn-55"
+    },
+    {
+     "value": 5,
+     "label": "I-127"
+    },
+    {
+     "value": 6,
+     "label": "O-16"
+    },
+    {
+     "value": 7,
+     "label": "C-12"
+    },
+    {
+     "value": 8,
+     "label": "Bi-210"
+    }
+   ],
+   "default": 1
+  }
+ ],
+ "derived": {
+  "Z": "if(sel==1,16,if(sel==2,56,if(sel==3,78,if(sel==4,25,if(sel==5,53,if(sel==6,8,if(sel==7,6,83)))))))",
+  "A": "if(sel==1,32,if(sel==2,137,if(sel==3,195,if(sel==4,55,if(sel==5,127,if(sel==6,16,if(sel==7,12,210)))))))",
+  "N": "A-Z"
+ },
+ "shapes": [
+  {
+   "type": "text",
+   "id": "lpro",
+   "at": [
+    34,
+    58.5
+   ],
+   "text": "Protons = Z",
+   "role": "pro",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "bpro",
+   "x": 22,
+   "y": 49,
+   "w": "Z*0.2761904761904762",
+   "h": 6,
+   "role": "pro",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "vpro",
+   "at": [
+    "22+Z*0.2761904761904762+4",
+    52
+   ],
+   "text": "{{Z|int}}",
+   "role": "pro",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "lneu",
+   "at": [
+    34,
+    44.5
+   ],
+   "text": "Neutrons = A − Z",
+   "role": "neu",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "bneu",
+   "x": 22,
+   "y": 35,
+   "w": "N*0.2761904761904762",
+   "h": 6,
+   "role": "neu",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "vneu",
+   "at": [
+    "22+N*0.2761904761904762+4",
+    38
+   ],
+   "text": "{{N|int}}",
+   "role": "neu",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "lel",
+   "at": [
+    34,
+    30.5
+   ],
+   "text": "Electrons = Z",
+   "role": "el",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "bel",
+   "x": 22,
+   "y": 21,
+   "w": "Z*0.2761904761904762",
+   "h": 6,
+   "role": "el",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "vel",
+   "at": [
+    "22+Z*0.2761904761904762+4",
+    24
+   ],
+   "text": "{{Z|int}}",
+   "role": "el",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "sy1",
+   "at": [
+    50,
+    68
+   ],
+   "text": "\\(^{32}_{16}\\text{S}\\)",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "sy2",
+   "at": [
+    50,
+    68
+   ],
+   "text": "\\(^{137}_{56}\\text{Ba}\\)",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "sy3",
+   "at": [
+    50,
+    68
+   ],
+   "text": "\\(^{195}_{78}\\text{Pt}\\)",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "visible": "sel==3"
+  },
+  {
+   "type": "text",
+   "id": "sy4",
+   "at": [
+    50,
+    68
+   ],
+   "text": "\\(^{55}_{25}\\text{Mn}\\)",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "sy5",
+   "at": [
+    50,
+    68
+   ],
+   "text": "\\(^{127}_{53}\\text{I}\\)",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "visible": "sel==5"
+  },
+  {
+   "type": "text",
+   "id": "sy6",
+   "at": [
+    50,
+    68
+   ],
+   "text": "\\(^{16}_{8}\\text{O}\\)",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "visible": "sel==6"
+  },
+  {
+   "type": "text",
+   "id": "sy7",
+   "at": [
+    50,
+    68
+   ],
+   "text": "\\(^{12}_{6}\\text{C}\\)",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "visible": "sel==7"
+  },
+  {
+   "type": "text",
+   "id": "sy8",
+   "at": [
+    50,
+    68
+   ],
+   "text": "\\(^{210}_{83}\\text{Bi}\\)",
+   "role": "ink",
+   "size": "xl",
+   "bold": true,
+   "visible": "sel==8"
+  },
+  {
+   "type": "text",
+   "id": "rule",
+   "at": [
+    48,
+    10
+   ],
+   "text": "N = A − Z = {{A|int}} − {{Z|int}} = {{N|int}}",
+   "role": "warn",
+   "size": "m",
+   "bold": true
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Two numbers identify an atom",
+   "text": "The **atomic number Z** is the number of protons: it identifies the element. The **mass number A** = protons + neutrons (electrons are too light to count). Written as \\(^{A}_{Z}\\text{X}\\).",
+   "actions": [
+    {
+     "set": {
+      "sel": 7
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Sulphur-32",
+   "text": "For \\(^{32}_{16}\\text{S}\\): protons = 16, electrons = 16 and neutrons = 32 − 16 = **16**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Barium-137 (book example)",
+   "text": "For \\(^{137}_{56}\\text{Ba}\\): protons = 56, electrons = 56, neutrons = 137 − 56 = **81**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Platinum-195",
+   "text": "Protons 78, electrons 78, neutrons 195 − 78 = **117**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Manganese-55",
+   "text": "Protons 25, electrons 25, neutrons 55 − 25 = **30**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 4
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Iodine-127",
+   "text": "Protons 53, electrons 53, neutrons 127 − 53 = **74**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 5
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Atomic number Z",
+   "value": "{{Z|int}}",
+   "role": "pro"
+  },
+  {
+   "label": "Mass number A",
+   "value": "{{A|int}}",
+   "role": "warn"
+  },
+  {
+   "label": "Neutrons N",
+   "value": "{{N|int}}",
+   "role": "neu"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Number of neutrons",
+   "tex": "N = A - Z",
+   "text": "Mass number minus atomic number. Protons = electrons = Z in a neutral atom."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "How many **neutrons** are in \\(^{210}_{83}\\text{Bi}\\)?",
+   "answer": "210-83",
+   "hint": "N = A − Z.",
+   "explain": "\\( N = 210 - 83 = 127 \\).",
+   "tolerance": 0.01
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "How many **electrons** are in a neutral atom of \\(^{127}_{53}\\text{I}\\)?",
+   "answer": 53,
+   "hint": "A neutral atom has as many electrons as protons.",
+   "explain": "Electrons = protons = Z = **53**.",
+   "tolerance": 0.01
+  }
+ ],
+ "takeaways": [
+  "Z = number of protons = number of electrons (neutral atom).",
+  "A = protons + neutrons, so N = A − Z.",
+  "Changing electrons makes ions; changing neutrons makes isotopes."
+ ]
+}

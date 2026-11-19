@@ -1,0 +1,1233 @@
+{
+ "id": "pb9-chem-c2-th-subshells",
+ "title": "Sub-shells: s, p, d and f",
+ "summary": "Each shell has n sub-shells. Count how the s, p, d, f capacities add up to 2n².",
+ "alt": "Rows of electron places for the K, L, M and N shells split into s, p, d and f sub-shells.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "a": {
+   "label": "s sub-shell",
+   "color": "#7c3aed",
+   "text": "Holds 2 electrons.",
+   "legend": true
+  },
+  "b": {
+   "label": "p sub-shell",
+   "color": "#059669",
+   "text": "Holds 6 electrons.",
+   "legend": true
+  },
+  "c": {
+   "label": "d sub-shell",
+   "color": "#d97706",
+   "text": "Holds 10 electrons.",
+   "legend": true
+  },
+  "h": {
+   "label": "f sub-shell",
+   "color": "#0ea5e9",
+   "text": "Holds 14 electrons.",
+   "legend": true
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "k",
+   "label": "Shell number n",
+   "type": "number",
+   "min": 1,
+   "max": 4,
+   "step": 1,
+   "default": 1
+  }
+ ],
+ "derived": {
+  "cap": "2*k^2"
+ },
+ "shapes": [
+  {
+   "type": "text",
+   "id": "rn1",
+   "at": [
+    5,
+    12
+   ],
+   "text": "K",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "appear": "s1",
+   "appearDur": 300,
+   "keep": true
+  },
+  {
+   "type": "point",
+   "id": "d1s0",
+   "at": [
+    11.5,
+    12
+   ],
+   "role": "a",
+   "r": 4.2,
+   "appear": "s1",
+   "appearDur": 300
+  },
+  {
+   "type": "point",
+   "id": "d1s1",
+   "at": [
+    13.75,
+    12
+   ],
+   "role": "a",
+   "r": 4.2,
+   "appear": "s1",
+   "appearDur": 325
+  },
+  {
+   "type": "text",
+   "id": "g1s",
+   "at": [
+    12.625,
+    16.6
+   ],
+   "text": "s·2",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "appearDur": 400,
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "hl1",
+   "x": 8,
+   "y": 7.5,
+   "w": 8.7,
+   "h": 11.5,
+   "role": "warn",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 3,
+   "visible": "k==1",
+   "rx": 2
+  },
+  {
+   "type": "text",
+   "id": "rn2",
+   "at": [
+    5,
+    27
+   ],
+   "text": "L",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "appear": "s2",
+   "appearDur": 300,
+   "keep": true
+  },
+  {
+   "type": "point",
+   "id": "d2s0",
+   "at": [
+    11.5,
+    27
+   ],
+   "role": "a",
+   "r": 4.2,
+   "appear": "s2",
+   "appearDur": 300
+  },
+  {
+   "type": "point",
+   "id": "d2s1",
+   "at": [
+    13.75,
+    27
+   ],
+   "role": "a",
+   "r": 4.2,
+   "appear": "s2",
+   "appearDur": 325
+  },
+  {
+   "type": "text",
+   "id": "g2s",
+   "at": [
+    12.625,
+    31.6
+   ],
+   "text": "s·2",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "appearDur": 400,
+   "keep": true
+  },
+  {
+   "type": "point",
+   "id": "d2p0",
+   "at": [
+    17.5,
+    27
+   ],
+   "role": "b",
+   "r": 4.2,
+   "appear": "s2",
+   "appearDur": 300
+  },
+  {
+   "type": "point",
+   "id": "d2p1",
+   "at": [
+    19.75,
+    27
+   ],
+   "role": "b",
+   "r": 4.2,
+   "appear": "s2",
+   "appearDur": 325
+  },
+  {
+   "type": "point",
+   "id": "d2p2",
+   "at": [
+    22.0,
+    27
+   ],
+   "role": "b",
+   "r": 4.2,
+   "appear": "s2",
+   "appearDur": 350
+  },
+  {
+   "type": "point",
+   "id": "d2p3",
+   "at": [
+    24.25,
+    27
+   ],
+   "role": "b",
+   "r": 4.2,
+   "appear": "s2",
+   "appearDur": 375
+  },
+  {
+   "type": "point",
+   "id": "d2p4",
+   "at": [
+    26.5,
+    27
+   ],
+   "role": "b",
+   "r": 4.2,
+   "appear": "s2",
+   "appearDur": 400
+  },
+  {
+   "type": "point",
+   "id": "d2p5",
+   "at": [
+    28.75,
+    27
+   ],
+   "role": "b",
+   "r": 4.2,
+   "appear": "s2",
+   "appearDur": 425
+  },
+  {
+   "type": "text",
+   "id": "g2p",
+   "at": [
+    23.125,
+    31.6
+   ],
+   "text": "p·6",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "appearDur": 400,
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "hl2",
+   "x": 8,
+   "y": 22.5,
+   "w": 23.7,
+   "h": 11.5,
+   "role": "warn",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 3,
+   "visible": "k==2",
+   "rx": 2
+  },
+  {
+   "type": "text",
+   "id": "rn3",
+   "at": [
+    5,
+    42
+   ],
+   "text": "M",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "appearDur": 300,
+   "keep": true
+  },
+  {
+   "type": "point",
+   "id": "d3s0",
+   "at": [
+    11.5,
+    42
+   ],
+   "role": "a",
+   "r": 4.2,
+   "appear": "s3",
+   "appearDur": 300
+  },
+  {
+   "type": "point",
+   "id": "d3s1",
+   "at": [
+    13.75,
+    42
+   ],
+   "role": "a",
+   "r": 4.2,
+   "appear": "s3",
+   "appearDur": 325
+  },
+  {
+   "type": "text",
+   "id": "g3s",
+   "at": [
+    12.625,
+    46.6
+   ],
+   "text": "s·2",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "appearDur": 400,
+   "keep": true
+  },
+  {
+   "type": "point",
+   "id": "d3p0",
+   "at": [
+    17.5,
+    42
+   ],
+   "role": "b",
+   "r": 4.2,
+   "appear": "s3",
+   "appearDur": 300
+  },
+  {
+   "type": "point",
+   "id": "d3p1",
+   "at": [
+    19.75,
+    42
+   ],
+   "role": "b",
+   "r": 4.2,
+   "appear": "s3",
+   "appearDur": 325
+  },
+  {
+   "type": "point",
+   "id": "d3p2",
+   "at": [
+    22.0,
+    42
+   ],
+   "role": "b",
+   "r": 4.2,
+   "appear": "s3",
+   "appearDur": 350
+  },
+  {
+   "type": "point",
+   "id": "d3p3",
+   "at": [
+    24.25,
+    42
+   ],
+   "role": "b",
+   "r": 4.2,
+   "appear": "s3",
+   "appearDur": 375
+  },
+  {
+   "type": "point",
+   "id": "d3p4",
+   "at": [
+    26.5,
+    42
+   ],
+   "role": "b",
+   "r": 4.2,
+   "appear": "s3",
+   "appearDur": 400
+  },
+  {
+   "type": "point",
+   "id": "d3p5",
+   "at": [
+    28.75,
+    42
+   ],
+   "role": "b",
+   "r": 4.2,
+   "appear": "s3",
+   "appearDur": 425
+  },
+  {
+   "type": "text",
+   "id": "g3p",
+   "at": [
+    23.125,
+    46.6
+   ],
+   "text": "p·6",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "appearDur": 400,
+   "keep": true
+  },
+  {
+   "type": "point",
+   "id": "d3d0",
+   "at": [
+    32.5,
+    42
+   ],
+   "role": "c",
+   "r": 4.2,
+   "appear": "s3",
+   "appearDur": 300
+  },
+  {
+   "type": "point",
+   "id": "d3d1",
+   "at": [
+    34.75,
+    42
+   ],
+   "role": "c",
+   "r": 4.2,
+   "appear": "s3",
+   "appearDur": 325
+  },
+  {
+   "type": "point",
+   "id": "d3d2",
+   "at": [
+    37.0,
+    42
+   ],
+   "role": "c",
+   "r": 4.2,
+   "appear": "s3",
+   "appearDur": 350
+  },
+  {
+   "type": "point",
+   "id": "d3d3",
+   "at": [
+    39.25,
+    42
+   ],
+   "role": "c",
+   "r": 4.2,
+   "appear": "s3",
+   "appearDur": 375
+  },
+  {
+   "type": "point",
+   "id": "d3d4",
+   "at": [
+    41.5,
+    42
+   ],
+   "role": "c",
+   "r": 4.2,
+   "appear": "s3",
+   "appearDur": 400
+  },
+  {
+   "type": "point",
+   "id": "d3d5",
+   "at": [
+    43.75,
+    42
+   ],
+   "role": "c",
+   "r": 4.2,
+   "appear": "s3",
+   "appearDur": 425
+  },
+  {
+   "type": "point",
+   "id": "d3d6",
+   "at": [
+    46.0,
+    42
+   ],
+   "role": "c",
+   "r": 4.2,
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "d3d7",
+   "at": [
+    48.25,
+    42
+   ],
+   "role": "c",
+   "r": 4.2,
+   "appear": "s3",
+   "appearDur": 475
+  },
+  {
+   "type": "point",
+   "id": "d3d8",
+   "at": [
+    50.5,
+    42
+   ],
+   "role": "c",
+   "r": 4.2,
+   "appear": "s3",
+   "appearDur": 500
+  },
+  {
+   "type": "point",
+   "id": "d3d9",
+   "at": [
+    52.75,
+    42
+   ],
+   "role": "c",
+   "r": 4.2,
+   "appear": "s3",
+   "appearDur": 525
+  },
+  {
+   "type": "text",
+   "id": "g3d",
+   "at": [
+    42.625,
+    46.6
+   ],
+   "text": "d·10",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "appearDur": 400,
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "hl3",
+   "x": 8,
+   "y": 37.5,
+   "w": 47.7,
+   "h": 11.5,
+   "role": "warn",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 3,
+   "visible": "k==3",
+   "rx": 2
+  },
+  {
+   "type": "text",
+   "id": "rn4",
+   "at": [
+    5,
+    57
+   ],
+   "text": "N",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "appear": "s4",
+   "appearDur": 300,
+   "keep": true
+  },
+  {
+   "type": "point",
+   "id": "d4s0",
+   "at": [
+    11.5,
+    57
+   ],
+   "role": "a",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 300
+  },
+  {
+   "type": "point",
+   "id": "d4s1",
+   "at": [
+    13.75,
+    57
+   ],
+   "role": "a",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 325
+  },
+  {
+   "type": "text",
+   "id": "g4s",
+   "at": [
+    12.625,
+    61.6
+   ],
+   "text": "s·2",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "appearDur": 400,
+   "keep": true
+  },
+  {
+   "type": "point",
+   "id": "d4p0",
+   "at": [
+    17.5,
+    57
+   ],
+   "role": "b",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 300
+  },
+  {
+   "type": "point",
+   "id": "d4p1",
+   "at": [
+    19.75,
+    57
+   ],
+   "role": "b",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 325
+  },
+  {
+   "type": "point",
+   "id": "d4p2",
+   "at": [
+    22.0,
+    57
+   ],
+   "role": "b",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 350
+  },
+  {
+   "type": "point",
+   "id": "d4p3",
+   "at": [
+    24.25,
+    57
+   ],
+   "role": "b",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 375
+  },
+  {
+   "type": "point",
+   "id": "d4p4",
+   "at": [
+    26.5,
+    57
+   ],
+   "role": "b",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 400
+  },
+  {
+   "type": "point",
+   "id": "d4p5",
+   "at": [
+    28.75,
+    57
+   ],
+   "role": "b",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 425
+  },
+  {
+   "type": "text",
+   "id": "g4p",
+   "at": [
+    23.125,
+    61.6
+   ],
+   "text": "p·6",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "appearDur": 400,
+   "keep": true
+  },
+  {
+   "type": "point",
+   "id": "d4d0",
+   "at": [
+    32.5,
+    57
+   ],
+   "role": "c",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 300
+  },
+  {
+   "type": "point",
+   "id": "d4d1",
+   "at": [
+    34.75,
+    57
+   ],
+   "role": "c",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 325
+  },
+  {
+   "type": "point",
+   "id": "d4d2",
+   "at": [
+    37.0,
+    57
+   ],
+   "role": "c",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 350
+  },
+  {
+   "type": "point",
+   "id": "d4d3",
+   "at": [
+    39.25,
+    57
+   ],
+   "role": "c",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 375
+  },
+  {
+   "type": "point",
+   "id": "d4d4",
+   "at": [
+    41.5,
+    57
+   ],
+   "role": "c",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 400
+  },
+  {
+   "type": "point",
+   "id": "d4d5",
+   "at": [
+    43.75,
+    57
+   ],
+   "role": "c",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 425
+  },
+  {
+   "type": "point",
+   "id": "d4d6",
+   "at": [
+    46.0,
+    57
+   ],
+   "role": "c",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "d4d7",
+   "at": [
+    48.25,
+    57
+   ],
+   "role": "c",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 475
+  },
+  {
+   "type": "point",
+   "id": "d4d8",
+   "at": [
+    50.5,
+    57
+   ],
+   "role": "c",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 500
+  },
+  {
+   "type": "point",
+   "id": "d4d9",
+   "at": [
+    52.75,
+    57
+   ],
+   "role": "c",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 525
+  },
+  {
+   "type": "text",
+   "id": "g4d",
+   "at": [
+    42.625,
+    61.6
+   ],
+   "text": "d·10",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "appearDur": 400,
+   "keep": true
+  },
+  {
+   "type": "point",
+   "id": "d4f0",
+   "at": [
+    56.5,
+    57
+   ],
+   "role": "h",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 300
+  },
+  {
+   "type": "point",
+   "id": "d4f1",
+   "at": [
+    58.75,
+    57
+   ],
+   "role": "h",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 325
+  },
+  {
+   "type": "point",
+   "id": "d4f2",
+   "at": [
+    61.0,
+    57
+   ],
+   "role": "h",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 350
+  },
+  {
+   "type": "point",
+   "id": "d4f3",
+   "at": [
+    63.25,
+    57
+   ],
+   "role": "h",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 375
+  },
+  {
+   "type": "point",
+   "id": "d4f4",
+   "at": [
+    65.5,
+    57
+   ],
+   "role": "h",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 400
+  },
+  {
+   "type": "point",
+   "id": "d4f5",
+   "at": [
+    67.75,
+    57
+   ],
+   "role": "h",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 425
+  },
+  {
+   "type": "point",
+   "id": "d4f6",
+   "at": [
+    70.0,
+    57
+   ],
+   "role": "h",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "d4f7",
+   "at": [
+    72.25,
+    57
+   ],
+   "role": "h",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 475
+  },
+  {
+   "type": "point",
+   "id": "d4f8",
+   "at": [
+    74.5,
+    57
+   ],
+   "role": "h",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 500
+  },
+  {
+   "type": "point",
+   "id": "d4f9",
+   "at": [
+    76.75,
+    57
+   ],
+   "role": "h",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 525
+  },
+  {
+   "type": "point",
+   "id": "d4f10",
+   "at": [
+    79.0,
+    57
+   ],
+   "role": "h",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 550
+  },
+  {
+   "type": "point",
+   "id": "d4f11",
+   "at": [
+    81.25,
+    57
+   ],
+   "role": "h",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 575
+  },
+  {
+   "type": "point",
+   "id": "d4f12",
+   "at": [
+    83.5,
+    57
+   ],
+   "role": "h",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 600
+  },
+  {
+   "type": "point",
+   "id": "d4f13",
+   "at": [
+    85.75,
+    57
+   ],
+   "role": "h",
+   "r": 4.2,
+   "appear": "s4",
+   "appearDur": 625
+  },
+  {
+   "type": "text",
+   "id": "g4f",
+   "at": [
+    71.125,
+    61.6
+   ],
+   "text": "f·14",
+   "role": "h",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "appearDur": 400,
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "hl4",
+   "x": 8,
+   "y": 52.5,
+   "w": 80.7,
+   "h": 11.5,
+   "role": "warn",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 3,
+   "visible": "k==4",
+   "rx": 2
+  },
+  {
+   "type": "text",
+   "id": "eq1",
+   "at": [
+    44,
+    74
+   ],
+   "text": "K: 2 = 2 × 1²",
+   "role": "warn",
+   "size": "m",
+   "bold": true,
+   "visible": "k==1"
+  },
+  {
+   "type": "text",
+   "id": "eq2",
+   "at": [
+    44,
+    74
+   ],
+   "text": "L: 2 + 6 = 8 = 2 × 2²",
+   "role": "warn",
+   "size": "m",
+   "bold": true,
+   "visible": "k==2"
+  },
+  {
+   "type": "text",
+   "id": "eq3",
+   "at": [
+    44,
+    74
+   ],
+   "text": "M: 2 + 6 + 10 = 18 = 2 × 3²",
+   "role": "warn",
+   "size": "m",
+   "bold": true,
+   "visible": "k==3"
+  },
+  {
+   "type": "text",
+   "id": "eq4",
+   "at": [
+    44,
+    74
+   ],
+   "text": "N: 2 + 6 + 10 + 14 = 32 = 2 × 4²",
+   "role": "warn",
+   "size": "m",
+   "bold": true,
+   "visible": "k==4"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Shells are split up",
+   "text": "Every shell is divided into **sub-shells** named **s, p, d, f**. The **number of sub-shells in a shell = n**. Capacities: **s = 2, p = 6, d = 10, f = 14** electrons.",
+   "actions": [
+    {
+     "set": {
+      "k": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "K shell: s only",
+   "text": "n = 1 → one sub-shell, **s**. It holds 2 electrons, so the K shell holds 2.",
+   "actions": [
+    {
+     "set": {
+      "k": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "L shell: s and p",
+   "text": "n = 2 → **s** and **p**: 2 + 6 = **8** electrons.",
+   "actions": [
+    {
+     "set": {
+      "k": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "M shell: s, p and d",
+   "text": "n = 3 → **s, p, d**: 2 + 6 + 10 = **18** electrons.",
+   "actions": [
+    {
+     "set": {
+      "k": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "N shell: s, p, d and f",
+   "text": "n = 4 → **s, p, d, f**: 2 + 6 + 10 + 14 = **32** electrons. Every total matches 2n².",
+   "actions": [
+    {
+     "set": {
+      "k": 4
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Shell n",
+   "value": "{{k|int}}",
+   "role": "warn"
+  },
+  {
+   "label": "Sub-shells in it (= n)",
+   "value": "{{k|int}}",
+   "role": "a"
+  },
+  {
+   "label": "Maximum electrons (2n²)",
+   "value": "{{cap|int}}",
+   "role": "b"
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "How many electrons can the **p sub-shell** hold?",
+   "answer": 6,
+   "hint": "Look at the green row of dots.",
+   "explain": "The p sub-shell holds **6** electrons (s = 2, p = 6, d = 10, f = 14).",
+   "tolerance": 0.01
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which sub-shells are present in the **third (M) shell**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "s only"
+    },
+    {
+     "id": "b",
+     "label": "s, p"
+    },
+    {
+     "id": "c",
+     "label": "s, p, d"
+    },
+    {
+     "id": "d",
+     "label": "s, p, d, f"
+    }
+   ],
+   "answer": "c",
+   "hint": "Number of sub-shells = n = 3.",
+   "explain": "n = 3, so three sub-shells: **s, p, d**."
+  }
+ ],
+ "takeaways": [
+  "A shell with number n has **n sub-shells**.",
+  "s = 2, p = 6, d = 10, f = 14 electrons.",
+  "The sub-shell capacities add up to 2n² for each shell."
+ ]
+}

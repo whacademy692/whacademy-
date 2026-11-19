@@ -1,0 +1,385 @@
+{
+ "id": "pb9-chem-c2-th-ionisation",
+ "title": "Ionisation of a sodium atom",
+ "summary": "Radiation knocks the outer electron out of sodium and makes a Na⁺ ion.",
+ "alt": "Radiation strikes a sodium atom (2, 8, 1) and removes its outer electron, leaving a sodium ion with one positive charge.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "nuc": {
+   "label": "Nucleus",
+   "color": "#dc2626",
+   "text": "The tiny central part of the atom.",
+   "legend": false
+  },
+  "el": {
+   "label": "Electron",
+   "color": "#2563eb",
+   "text": "Negative particle moving around the nucleus.",
+   "legend": true
+  },
+  "sh": {
+   "label": "Shell",
+   "color": "#94a3b8",
+   "text": "An energy level (orbit).",
+   "legend": false
+  },
+  "warn": {
+   "label": "Ionising radiation",
+   "color": "#d97706",
+   "text": "Radiation with enough energy to remove an electron.",
+   "legend": true
+  },
+  "pos": {
+   "label": "Positive",
+   "color": "#e11d48",
+   "text": "Positive charge / cation.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "ph",
+   "label": "Spin",
+   "type": "clock",
+   "min": 0,
+   "max": 360,
+   "step": 0.01,
+   "speed": 60,
+   "loop": "repeat",
+   "default": 0,
+   "auto": true,
+   "hidden": true
+  },
+  {
+   "id": "ray",
+   "label": "ray",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0,
+   "hidden": true
+  },
+  {
+   "id": "ion",
+   "label": "ion",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "circle",
+   "id": "K",
+   "c": [
+    40,
+    42
+   ],
+   "r": 9,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 1.8,
+   "dash": true
+  },
+  {
+   "type": "circle",
+   "id": "L",
+   "c": [
+    40,
+    42
+   ],
+   "r": 17,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 1.8,
+   "dash": true
+  },
+  {
+   "type": "circle",
+   "id": "M",
+   "c": [
+    40,
+    42
+   ],
+   "r": 25,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 1.8,
+   "dash": true,
+   "opacity": "1-ion"
+  },
+  {
+   "type": "circle",
+   "id": "nuc",
+   "c": [
+    40,
+    42
+   ],
+   "r": 4.4,
+   "role": "nuc",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 3
+  },
+  {
+   "type": "text",
+   "id": "nt",
+   "at": [
+    40,
+    42
+   ],
+   "text": "11+",
+   "role": "nuc",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "repeat",
+   "id": "eK",
+   "count": 2,
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "(40)+(9)*cos(1*(ph)+360*i/(2)+0)",
+     "(42)+(9)*sin(1*(ph)+360*i/(2)+0)"
+    ],
+    "role": "el",
+    "r": 5
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "eL",
+   "count": 8,
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "(40)+(17)*cos(-1*(ph)+360*i/(8)+15)",
+     "(42)+(17)*sin(-1*(ph)+360*i/(8)+15)"
+    ],
+    "role": "el",
+    "r": 5
+   }
+  },
+  {
+   "type": "point",
+   "id": "eM",
+   "at": [
+    "40+(25+ion*12)*cos(ph*0.8+40)",
+    "42+(25+ion*12)*sin(ph*0.8+40)"
+   ],
+   "role": "el",
+   "r": 6,
+   "opacity": "1-0.6*ion"
+  },
+  {
+   "type": "vector",
+   "id": "rad",
+   "from": [
+    6,
+    74
+   ],
+   "to": [
+    24,
+    60
+   ],
+   "role": "warn",
+   "strokeWidth": 4,
+   "visible": "ray>0.05&&ion<0.5"
+  },
+  {
+   "type": "text",
+   "id": "radt",
+   "at": [
+    18,
+    77
+   ],
+   "text": "radiation",
+   "role": "warn",
+   "size": "s",
+   "bold": true,
+   "visible": "ray>0.05&&ion<0.5"
+  },
+  {
+   "type": "text",
+   "id": "sy",
+   "at": [
+    80,
+    62
+   ],
+   "text": "Na",
+   "role": "nuc",
+   "size": "xl",
+   "bold": true,
+   "visible": "ion<0.5"
+  },
+  {
+   "type": "text",
+   "id": "sy2",
+   "at": [
+    80,
+    62
+   ],
+   "text": "Na⁺",
+   "role": "pos",
+   "size": "xl",
+   "bold": true,
+   "visible": "ion>=0.5"
+  },
+  {
+   "type": "text",
+   "id": "cf",
+   "at": [
+    80,
+    53
+   ],
+   "text": "{{if ion<0.5 | 2, 8, 1 | 2, 8}}",
+   "role": "el",
+   "size": "l",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "eq",
+   "at": [
+    80,
+    36
+   ],
+   "text": "Na → Na⁺ + e⁻",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "appear": "s2",
+   "appearDur": 500
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A neutral sodium atom",
+   "text": "Sodium has **11 protons and 11 electrons**, arranged **2, 8, 1**. The atom is neutral.",
+   "actions": [
+    {
+     "tween": {
+      "ray": 0,
+      "ion": 0
+     },
+     "at": 0,
+     "dur": 400
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Ionising radiation arrives",
+   "text": "Radiation from a radioactive source (for example radium-226) can **collide** with the atom. It needs **enough energy** to remove an electron.",
+   "actions": [
+    {
+     "tween": {
+      "ray": 1,
+      "ion": 0
+     },
+     "at": 0,
+     "dur": 800
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "The outer electron is lost",
+   "text": "The outer electron is forced away. 11 protons and 10 electrons: the atom becomes a **positive ion (cation)**, **Na⁺**.",
+   "actions": [
+    {
+     "tween": {
+      "ray": 1,
+      "ion": 1
+     },
+     "at": 0,
+     "dur": 1800
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Protons",
+   "value": "11",
+   "role": "nuc"
+  },
+  {
+   "label": "Electrons",
+   "value": "{{11-round(ion)|int}}",
+   "role": "el"
+  },
+  {
+   "label": "Charge",
+   "value": "{{if ion<0.5 | 0 | +1}}",
+   "role": "pos"
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "After losing one electron, how many **electrons** does Na⁺ have?",
+   "answer": 10,
+   "hint": "11 − 1.",
+   "explain": "The ion has 11 protons and **10 electrons**, so its charge is +1.",
+   "tolerance": 0.01
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Losing an electron makes an atom a…",
+   "options": [
+    {
+     "id": "a",
+     "label": "cation (positive ion)"
+    },
+    {
+     "id": "b",
+     "label": "anion (negative ion)"
+    },
+    {
+     "id": "c",
+     "label": "new isotope"
+    },
+    {
+     "id": "d",
+     "label": "neutron"
+    }
+   ],
+   "answer": "a",
+   "hint": "More protons than electrons.",
+   "explain": "There are more protons than electrons, so the particle is a positive ion, a **cation**."
+  }
+ ],
+ "takeaways": [
+  "Changing the number of **electrons** forms **ions** (changing neutrons forms isotopes).",
+  "Na → Na⁺ + e⁻: the sodium atom loses one electron.",
+  "Radiation needs enough energy to remove a tightly held electron."
+ ]
+}

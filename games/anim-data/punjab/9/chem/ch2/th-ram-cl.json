@@ -1,0 +1,334 @@
+{
+ "id": "pb9-chem-c2-th-ram-cl",
+ "title": "Finding an unknown isotope mass: chlorine",
+ "summary": "Chlorine = 35.45. Slide the mass of the light isotope until the average matches.",
+ "alt": "Two bars for the chlorine isotopes (75.77 % and 24.23 %) and a slider for the mass of the light isotope that must give 35.45.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "a": {
+   "label": "Atom A",
+   "color": "#7c3aed",
+   "text": "First atom.",
+   "legend": false
+  },
+  "b": {
+   "label": "Atom B",
+   "color": "#059669",
+   "text": "Second atom.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "The correct / stable one.",
+   "legend": false
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "m1",
+   "label": "Mass of the light isotope (amu)",
+   "type": "number",
+   "min": 34,
+   "max": 36,
+   "step": 0.01,
+   "default": 35,
+   "unit": "amu"
+  }
+ ],
+ "derived": {
+  "ram": "(m1*75.77+37*24.23)/100"
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ax",
+   "from": [
+    6,
+    18
+   ],
+   "to": [
+    90,
+    18
+   ],
+   "role": "warn",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "rect",
+   "id": "b1",
+   "x": 22,
+   "y": 18,
+   "w": 14,
+   "h": 22.730999999999998,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2
+  },
+  {
+   "type": "rect",
+   "id": "b2",
+   "x": 58,
+   "y": 18,
+   "w": 14,
+   "h": 7.269,
+   "role": "b",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "p1",
+   "at": [
+    29,
+    44.730999999999995
+   ],
+   "text": "75.77 %",
+   "role": "a",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "p2",
+   "at": [
+    65,
+    29.269
+   ],
+   "text": "24.23 %",
+   "role": "b",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "n1",
+   "at": [
+    29,
+    13
+   ],
+   "text": "light isotope",
+   "role": "a",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "n2",
+   "at": [
+    65,
+    13
+   ],
+   "text": "Cl-37",
+   "role": "b",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "m1t",
+   "at": [
+    29,
+    7
+   ],
+   "text": "m = {{m1|2}}",
+   "role": "a",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "m2t",
+   "at": [
+    65,
+    7
+   ],
+   "text": "m = 37",
+   "role": "b",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "rm",
+   "at": [
+    50,
+    70
+   ],
+   "text": "(m × 75.77 + 37 × 24.23) / 100 = {{ram|2}}",
+   "role": "ink",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "tg",
+   "at": [
+    50,
+    62
+   ],
+   "text": "target: 35.45",
+   "role": "ok",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "e1",
+   "at": [
+    66,
+    52
+   ],
+   "text": "3545 = m × 75.77 + 37 × 24.23",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "appearDur": 400
+  },
+  {
+   "type": "text",
+   "id": "e2",
+   "at": [
+    66,
+    46
+   ],
+   "text": "3545 − 896.51 = m × 75.77",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "appearDur": 400
+  },
+  {
+   "type": "text",
+   "id": "e3",
+   "at": [
+    66,
+    40
+   ],
+   "text": "m = 2648.49 ÷ 75.77 = 34.95",
+   "role": "ok",
+   "size": "m",
+   "bold": true,
+   "appear": "s4",
+   "appearDur": 400
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Two isotopes of chlorine",
+   "text": "Chlorine has a light isotope (**75.77 %**) and **Cl-37 (24.23 %)**. Its relative atomic mass is **35.45**. We want the mass of the light isotope.",
+   "actions": [
+    {
+     "set": {
+      "m1": 35
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Try the slider",
+   "text": "Move the slider: the average changes. Which value gives exactly 35.45?",
+   "actions": [
+    {
+     "set": {
+      "m1": 35
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Multiply by 100",
+   "text": "35.45 = (m × 75.77 + 37 × 24.23) / 100, so **3545 = m × 75.77 + 37 × 24.23**.",
+   "actions": [
+    {
+     "set": {
+      "m1": 35
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Subtract the known part",
+   "text": "37 × 24.23 = 896.51, so m × 75.77 = 3545 − 896.51 = **2648.49**.",
+   "actions": [
+    {
+     "set": {
+      "m1": 35
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Divide",
+   "text": "m = 2648.49 ÷ 75.77 = **34.95**: the light isotope is Cl-35 with relative mass 34.95.",
+   "actions": [
+    {
+     "tween": {
+      "m1": 34.95
+     },
+     "at": 0,
+     "dur": 700
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Average with your m",
+   "value": "{{ram|2}}",
+   "role": "warn"
+  },
+  {
+   "label": "Target",
+   "value": "35.45",
+   "role": "ok"
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "Use the slider or the method: what is the **mass of the light isotope** (to 2 decimal places)?",
+   "answer": "(3545-37*24.23)/75.77",
+   "hint": "Multiply by 100, subtract 37 × 24.23, divide by 75.77.",
+   "explain": "m = (3545 − 896.51) / 75.77 = **34.95**.",
+   "tolerance": 0.05
+  }
+ ],
+ "takeaways": [
+  "If the average and all but one isotope are known: multiply by 100, subtract the known part, divide by the unknown abundance.",
+  "Light isotope of chlorine: 34.95 (Cl-35)."
+ ]
+}

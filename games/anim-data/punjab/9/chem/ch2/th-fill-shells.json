@@ -1,0 +1,1227 @@
+{
+ "id": "pb9-chem-c2-th-fill-shells",
+ "title": "Build an atom, electron by electron",
+ "summary": "Slide the atomic number from 1 to 20 and watch the shells fill (2, 8, 8, 2).",
+ "alt": "An atom whose nucleus charge Z is changed from 1 to 20; electrons fill the K, L, M and N shells; outer-shell electrons are highlighted.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80.0
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "nuc": {
+   "label": "Nucleus",
+   "color": "#dc2626",
+   "text": "The tiny central part of the atom.",
+   "legend": false
+  },
+  "el": {
+   "label": "Inner electrons",
+   "color": "#2563eb",
+   "text": "Electrons in the inner, filled shells.",
+   "legend": true
+  },
+  "elx": {
+   "label": "Outer-shell electrons",
+   "color": "#f59e0b",
+   "text": "The electrons in the outermost shell: they take part in chemical reactions.",
+   "legend": true
+  },
+  "sh": {
+   "label": "Shell",
+   "color": "#94a3b8",
+   "text": "An energy level (orbit).",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "ph",
+   "label": "Spin",
+   "type": "clock",
+   "min": 0,
+   "max": 360,
+   "step": 0.01,
+   "speed": 45,
+   "loop": "repeat",
+   "default": 0,
+   "auto": true,
+   "hidden": true
+  },
+  {
+   "id": "Z",
+   "label": "Atomic number Z (number of protons)",
+   "type": "number",
+   "min": 1,
+   "max": 20,
+   "step": 1,
+   "default": 1
+  }
+ ],
+ "derived": {
+  "K": "min(Z,2)",
+  "L": "clamp(Z-2,0,8)",
+  "M": "clamp(Z-10,0,8)",
+  "N": "clamp(Z-18,0,2)",
+  "o": "if(Z<=2,1,if(Z<=10,2,if(Z<=18,3,4)))",
+  "v": "if(Z<=2,Z,if(Z<=10,Z-2,if(Z<=18,Z-10,Z-18)))"
+ },
+ "shapes": [
+  {
+   "type": "circle",
+   "id": "sh1",
+   "c": [
+    33,
+    40
+   ],
+   "r": 8.0,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 1.8,
+   "visible": "o>=1",
+   "dash": true
+  },
+  {
+   "type": "circle",
+   "id": "sh2",
+   "c": [
+    33,
+    40
+   ],
+   "r": 15.5,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 1.8,
+   "visible": "o>=2",
+   "dash": true
+  },
+  {
+   "type": "circle",
+   "id": "sh3",
+   "c": [
+    33,
+    40
+   ],
+   "r": 23.0,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 1.8,
+   "visible": "o>=3",
+   "dash": true
+  },
+  {
+   "type": "circle",
+   "id": "sh4",
+   "c": [
+    33,
+    40
+   ],
+   "r": 30.5,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 1.8,
+   "visible": "o>=4",
+   "dash": true
+  },
+  {
+   "type": "circle",
+   "id": "nuc",
+   "c": [
+    33,
+    40
+   ],
+   "r": 3.6,
+   "role": "nuc",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 3
+  },
+  {
+   "type": "text",
+   "id": "nt",
+   "at": [
+    33,
+    40
+   ],
+   "text": "{{Z|int}}+",
+   "role": "nuc",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "repeat",
+   "id": "iK",
+   "count": "K*(o>1)",
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "(33)+(8.0)*cos(1*(ph)+360*i/(K*(o>1))+20)",
+     "(40)+(8.0)*sin(1*(ph)+360*i/(K*(o>1))+20)"
+    ],
+    "role": "el",
+    "r": 5
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "oK",
+   "count": "K*(o==1)",
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "(33)+(8.0)*cos(1*(ph)+360*i/(K*(o==1))+20)",
+     "(40)+(8.0)*sin(1*(ph)+360*i/(K*(o==1))+20)"
+    ],
+    "role": "elx",
+    "r": 5
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "iL",
+   "count": "L*(o>2)",
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "(33)+(15.5)*cos(1*(ph)+360*i/(L*(o>2))+40)",
+     "(40)+(15.5)*sin(1*(ph)+360*i/(L*(o>2))+40)"
+    ],
+    "role": "el",
+    "r": 5
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "oL",
+   "count": "L*(o==2)",
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "(33)+(15.5)*cos(1*(ph)+360*i/(L*(o==2))+40)",
+     "(40)+(15.5)*sin(1*(ph)+360*i/(L*(o==2))+40)"
+    ],
+    "role": "elx",
+    "r": 5
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "iM",
+   "count": "M*(o>3)",
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "(33)+(23.0)*cos(1*(ph)+360*i/(M*(o>3))+60)",
+     "(40)+(23.0)*sin(1*(ph)+360*i/(M*(o>3))+60)"
+    ],
+    "role": "el",
+    "r": 5
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "oM",
+   "count": "M*(o==3)",
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "(33)+(23.0)*cos(1*(ph)+360*i/(M*(o==3))+60)",
+     "(40)+(23.0)*sin(1*(ph)+360*i/(M*(o==3))+60)"
+    ],
+    "role": "elx",
+    "r": 5
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "iN",
+   "count": "N*(o>4)",
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "(33)+(30.5)*cos(1*(ph)+360*i/(N*(o>4))+80)",
+     "(40)+(30.5)*sin(1*(ph)+360*i/(N*(o>4))+80)"
+    ],
+    "role": "el",
+    "r": 5
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "oN",
+   "count": "N*(o==4)",
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "(33)+(30.5)*cos(1*(ph)+360*i/(N*(o==4))+80)",
+     "(40)+(30.5)*sin(1*(ph)+360*i/(N*(o==4))+80)"
+    ],
+    "role": "elx",
+    "r": 5
+   }
+  },
+  {
+   "type": "text",
+   "id": "sy1",
+   "at": [
+    77,
+    60
+   ],
+   "text": "H",
+   "role": "nuc",
+   "size": "xl",
+   "bold": true,
+   "visible": "Z==1"
+  },
+  {
+   "type": "text",
+   "id": "nm1",
+   "at": [
+    77,
+    52
+   ],
+   "text": "Hydrogen",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "Z==1"
+  },
+  {
+   "type": "text",
+   "id": "cf1",
+   "at": [
+    77,
+    44
+   ],
+   "text": "1",
+   "role": "el",
+   "size": "l",
+   "bold": true,
+   "visible": "Z==1"
+  },
+  {
+   "type": "text",
+   "id": "sy2",
+   "at": [
+    77,
+    60
+   ],
+   "text": "He",
+   "role": "nuc",
+   "size": "xl",
+   "bold": true,
+   "visible": "Z==2"
+  },
+  {
+   "type": "text",
+   "id": "nm2",
+   "at": [
+    77,
+    52
+   ],
+   "text": "Helium",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "Z==2"
+  },
+  {
+   "type": "text",
+   "id": "cf2",
+   "at": [
+    77,
+    44
+   ],
+   "text": "2",
+   "role": "el",
+   "size": "l",
+   "bold": true,
+   "visible": "Z==2"
+  },
+  {
+   "type": "text",
+   "id": "sy3",
+   "at": [
+    77,
+    60
+   ],
+   "text": "Li",
+   "role": "nuc",
+   "size": "xl",
+   "bold": true,
+   "visible": "Z==3"
+  },
+  {
+   "type": "text",
+   "id": "nm3",
+   "at": [
+    77,
+    52
+   ],
+   "text": "Lithium",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "Z==3"
+  },
+  {
+   "type": "text",
+   "id": "cf3",
+   "at": [
+    77,
+    44
+   ],
+   "text": "2, 1",
+   "role": "el",
+   "size": "l",
+   "bold": true,
+   "visible": "Z==3"
+  },
+  {
+   "type": "text",
+   "id": "sy4",
+   "at": [
+    77,
+    60
+   ],
+   "text": "Be",
+   "role": "nuc",
+   "size": "xl",
+   "bold": true,
+   "visible": "Z==4"
+  },
+  {
+   "type": "text",
+   "id": "nm4",
+   "at": [
+    77,
+    52
+   ],
+   "text": "Beryllium",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "Z==4"
+  },
+  {
+   "type": "text",
+   "id": "cf4",
+   "at": [
+    77,
+    44
+   ],
+   "text": "2, 2",
+   "role": "el",
+   "size": "l",
+   "bold": true,
+   "visible": "Z==4"
+  },
+  {
+   "type": "text",
+   "id": "sy5",
+   "at": [
+    77,
+    60
+   ],
+   "text": "B",
+   "role": "nuc",
+   "size": "xl",
+   "bold": true,
+   "visible": "Z==5"
+  },
+  {
+   "type": "text",
+   "id": "nm5",
+   "at": [
+    77,
+    52
+   ],
+   "text": "Boron",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "Z==5"
+  },
+  {
+   "type": "text",
+   "id": "cf5",
+   "at": [
+    77,
+    44
+   ],
+   "text": "2, 3",
+   "role": "el",
+   "size": "l",
+   "bold": true,
+   "visible": "Z==5"
+  },
+  {
+   "type": "text",
+   "id": "sy6",
+   "at": [
+    77,
+    60
+   ],
+   "text": "C",
+   "role": "nuc",
+   "size": "xl",
+   "bold": true,
+   "visible": "Z==6"
+  },
+  {
+   "type": "text",
+   "id": "nm6",
+   "at": [
+    77,
+    52
+   ],
+   "text": "Carbon",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "Z==6"
+  },
+  {
+   "type": "text",
+   "id": "cf6",
+   "at": [
+    77,
+    44
+   ],
+   "text": "2, 4",
+   "role": "el",
+   "size": "l",
+   "bold": true,
+   "visible": "Z==6"
+  },
+  {
+   "type": "text",
+   "id": "sy7",
+   "at": [
+    77,
+    60
+   ],
+   "text": "N",
+   "role": "nuc",
+   "size": "xl",
+   "bold": true,
+   "visible": "Z==7"
+  },
+  {
+   "type": "text",
+   "id": "nm7",
+   "at": [
+    77,
+    52
+   ],
+   "text": "Nitrogen",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "Z==7"
+  },
+  {
+   "type": "text",
+   "id": "cf7",
+   "at": [
+    77,
+    44
+   ],
+   "text": "2, 5",
+   "role": "el",
+   "size": "l",
+   "bold": true,
+   "visible": "Z==7"
+  },
+  {
+   "type": "text",
+   "id": "sy8",
+   "at": [
+    77,
+    60
+   ],
+   "text": "O",
+   "role": "nuc",
+   "size": "xl",
+   "bold": true,
+   "visible": "Z==8"
+  },
+  {
+   "type": "text",
+   "id": "nm8",
+   "at": [
+    77,
+    52
+   ],
+   "text": "Oxygen",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "Z==8"
+  },
+  {
+   "type": "text",
+   "id": "cf8",
+   "at": [
+    77,
+    44
+   ],
+   "text": "2, 6",
+   "role": "el",
+   "size": "l",
+   "bold": true,
+   "visible": "Z==8"
+  },
+  {
+   "type": "text",
+   "id": "sy9",
+   "at": [
+    77,
+    60
+   ],
+   "text": "F",
+   "role": "nuc",
+   "size": "xl",
+   "bold": true,
+   "visible": "Z==9"
+  },
+  {
+   "type": "text",
+   "id": "nm9",
+   "at": [
+    77,
+    52
+   ],
+   "text": "Fluorine",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "Z==9"
+  },
+  {
+   "type": "text",
+   "id": "cf9",
+   "at": [
+    77,
+    44
+   ],
+   "text": "2, 7",
+   "role": "el",
+   "size": "l",
+   "bold": true,
+   "visible": "Z==9"
+  },
+  {
+   "type": "text",
+   "id": "sy10",
+   "at": [
+    77,
+    60
+   ],
+   "text": "Ne",
+   "role": "nuc",
+   "size": "xl",
+   "bold": true,
+   "visible": "Z==10"
+  },
+  {
+   "type": "text",
+   "id": "nm10",
+   "at": [
+    77,
+    52
+   ],
+   "text": "Neon",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "Z==10"
+  },
+  {
+   "type": "text",
+   "id": "cf10",
+   "at": [
+    77,
+    44
+   ],
+   "text": "2, 8",
+   "role": "el",
+   "size": "l",
+   "bold": true,
+   "visible": "Z==10"
+  },
+  {
+   "type": "text",
+   "id": "sy11",
+   "at": [
+    77,
+    60
+   ],
+   "text": "Na",
+   "role": "nuc",
+   "size": "xl",
+   "bold": true,
+   "visible": "Z==11"
+  },
+  {
+   "type": "text",
+   "id": "nm11",
+   "at": [
+    77,
+    52
+   ],
+   "text": "Sodium",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "Z==11"
+  },
+  {
+   "type": "text",
+   "id": "cf11",
+   "at": [
+    77,
+    44
+   ],
+   "text": "2, 8, 1",
+   "role": "el",
+   "size": "l",
+   "bold": true,
+   "visible": "Z==11"
+  },
+  {
+   "type": "text",
+   "id": "sy12",
+   "at": [
+    77,
+    60
+   ],
+   "text": "Mg",
+   "role": "nuc",
+   "size": "xl",
+   "bold": true,
+   "visible": "Z==12"
+  },
+  {
+   "type": "text",
+   "id": "nm12",
+   "at": [
+    77,
+    52
+   ],
+   "text": "Magnesium",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "Z==12"
+  },
+  {
+   "type": "text",
+   "id": "cf12",
+   "at": [
+    77,
+    44
+   ],
+   "text": "2, 8, 2",
+   "role": "el",
+   "size": "l",
+   "bold": true,
+   "visible": "Z==12"
+  },
+  {
+   "type": "text",
+   "id": "sy13",
+   "at": [
+    77,
+    60
+   ],
+   "text": "Al",
+   "role": "nuc",
+   "size": "xl",
+   "bold": true,
+   "visible": "Z==13"
+  },
+  {
+   "type": "text",
+   "id": "nm13",
+   "at": [
+    77,
+    52
+   ],
+   "text": "Aluminium",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "Z==13"
+  },
+  {
+   "type": "text",
+   "id": "cf13",
+   "at": [
+    77,
+    44
+   ],
+   "text": "2, 8, 3",
+   "role": "el",
+   "size": "l",
+   "bold": true,
+   "visible": "Z==13"
+  },
+  {
+   "type": "text",
+   "id": "sy14",
+   "at": [
+    77,
+    60
+   ],
+   "text": "Si",
+   "role": "nuc",
+   "size": "xl",
+   "bold": true,
+   "visible": "Z==14"
+  },
+  {
+   "type": "text",
+   "id": "nm14",
+   "at": [
+    77,
+    52
+   ],
+   "text": "Silicon",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "Z==14"
+  },
+  {
+   "type": "text",
+   "id": "cf14",
+   "at": [
+    77,
+    44
+   ],
+   "text": "2, 8, 4",
+   "role": "el",
+   "size": "l",
+   "bold": true,
+   "visible": "Z==14"
+  },
+  {
+   "type": "text",
+   "id": "sy15",
+   "at": [
+    77,
+    60
+   ],
+   "text": "P",
+   "role": "nuc",
+   "size": "xl",
+   "bold": true,
+   "visible": "Z==15"
+  },
+  {
+   "type": "text",
+   "id": "nm15",
+   "at": [
+    77,
+    52
+   ],
+   "text": "Phosphorus",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "Z==15"
+  },
+  {
+   "type": "text",
+   "id": "cf15",
+   "at": [
+    77,
+    44
+   ],
+   "text": "2, 8, 5",
+   "role": "el",
+   "size": "l",
+   "bold": true,
+   "visible": "Z==15"
+  },
+  {
+   "type": "text",
+   "id": "sy16",
+   "at": [
+    77,
+    60
+   ],
+   "text": "S",
+   "role": "nuc",
+   "size": "xl",
+   "bold": true,
+   "visible": "Z==16"
+  },
+  {
+   "type": "text",
+   "id": "nm16",
+   "at": [
+    77,
+    52
+   ],
+   "text": "Sulphur",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "Z==16"
+  },
+  {
+   "type": "text",
+   "id": "cf16",
+   "at": [
+    77,
+    44
+   ],
+   "text": "2, 8, 6",
+   "role": "el",
+   "size": "l",
+   "bold": true,
+   "visible": "Z==16"
+  },
+  {
+   "type": "text",
+   "id": "sy17",
+   "at": [
+    77,
+    60
+   ],
+   "text": "Cl",
+   "role": "nuc",
+   "size": "xl",
+   "bold": true,
+   "visible": "Z==17"
+  },
+  {
+   "type": "text",
+   "id": "nm17",
+   "at": [
+    77,
+    52
+   ],
+   "text": "Chlorine",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "Z==17"
+  },
+  {
+   "type": "text",
+   "id": "cf17",
+   "at": [
+    77,
+    44
+   ],
+   "text": "2, 8, 7",
+   "role": "el",
+   "size": "l",
+   "bold": true,
+   "visible": "Z==17"
+  },
+  {
+   "type": "text",
+   "id": "sy18",
+   "at": [
+    77,
+    60
+   ],
+   "text": "Ar",
+   "role": "nuc",
+   "size": "xl",
+   "bold": true,
+   "visible": "Z==18"
+  },
+  {
+   "type": "text",
+   "id": "nm18",
+   "at": [
+    77,
+    52
+   ],
+   "text": "Argon",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "Z==18"
+  },
+  {
+   "type": "text",
+   "id": "cf18",
+   "at": [
+    77,
+    44
+   ],
+   "text": "2, 8, 8",
+   "role": "el",
+   "size": "l",
+   "bold": true,
+   "visible": "Z==18"
+  },
+  {
+   "type": "text",
+   "id": "sy19",
+   "at": [
+    77,
+    60
+   ],
+   "text": "K",
+   "role": "nuc",
+   "size": "xl",
+   "bold": true,
+   "visible": "Z==19"
+  },
+  {
+   "type": "text",
+   "id": "nm19",
+   "at": [
+    77,
+    52
+   ],
+   "text": "Potassium",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "Z==19"
+  },
+  {
+   "type": "text",
+   "id": "cf19",
+   "at": [
+    77,
+    44
+   ],
+   "text": "2, 8, 8, 1",
+   "role": "el",
+   "size": "l",
+   "bold": true,
+   "visible": "Z==19"
+  },
+  {
+   "type": "text",
+   "id": "sy20",
+   "at": [
+    77,
+    60
+   ],
+   "text": "Ca",
+   "role": "nuc",
+   "size": "xl",
+   "bold": true,
+   "visible": "Z==20"
+  },
+  {
+   "type": "text",
+   "id": "nm20",
+   "at": [
+    77,
+    52
+   ],
+   "text": "Calcium",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "Z==20"
+  },
+  {
+   "type": "text",
+   "id": "cf20",
+   "at": [
+    77,
+    44
+   ],
+   "text": "2, 8, 8, 2",
+   "role": "el",
+   "size": "l",
+   "bold": true,
+   "visible": "Z==20"
+  },
+  {
+   "type": "text",
+   "id": "cfl",
+   "at": [
+    77,
+    37.5
+   ],
+   "text": "electrons in K, L, M, N",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Hydrogen, Z = 1",
+   "text": "The number of electrons equals the number of protons (**Z**). Hydrogen has **1 electron**, in the K shell.",
+   "actions": [
+    {
+     "set": {
+      "Z": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Helium, Z = 2: duplet",
+   "text": "The K shell holds at most **2** electrons. Helium has a full K shell, a stable **duplet**.",
+   "actions": [
+    {
+     "set": {
+      "Z": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Lithium, Z = 3",
+   "text": "The K shell is full, so the third electron goes into the **L shell**.",
+   "actions": [
+    {
+     "set": {
+      "Z": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Neon, Z = 10: octet",
+   "text": "The L shell takes up to **8** electrons. Neon has a full L shell, a stable **octet**.",
+   "actions": [
+    {
+     "set": {
+      "Z": 10
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Sodium, Z = 11: 2, 8, 1",
+   "text": "The 11th electron starts the **M shell**. Sodium: **2, 8, 1**, with one electron in its outer shell.",
+   "actions": [
+    {
+     "set": {
+      "Z": 11
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Chlorine, Z = 17: 2, 8, 7",
+   "text": "Chlorine has **7** electrons in the outer shell, one short of an octet.",
+   "actions": [
+    {
+     "set": {
+      "Z": 17
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "title": "Argon, Z = 18: 2, 8, 8",
+   "text": "Argon has an octet in its outer (M) shell.",
+   "actions": [
+    {
+     "set": {
+      "Z": 18
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s7",
+   "title": "Calcium, Z = 20: 2, 8, 8, 2",
+   "text": "The M shell stays at 8 for these elements, so the last two electrons go into the **N shell**: calcium is **2, 8, 8, 2**.",
+   "actions": [
+    {
+     "set": {
+      "Z": 20
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Electrons (= Z)",
+   "value": "{{Z|int}}",
+   "role": "el"
+  },
+  {
+   "label": "Outer-shell electrons",
+   "value": "{{v|int}}",
+   "role": "elx"
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "How many electrons are in the **outermost shell of sodium** (Z = 11)?",
+   "answer": 1,
+   "hint": "Fill K (2), L (8), then the rest.",
+   "explain": "Sodium is 2, 8, **1**: one electron in the outer shell.",
+   "tolerance": 0.01
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "How many electrons does the **M shell of chlorine** (Z = 17) hold?",
+   "answer": 7,
+   "hint": "17 − 2 − 8 = ?",
+   "explain": "Chlorine is 2, 8, **7**: seven in the M shell.",
+   "tolerance": 0.01
+  }
+ ],
+ "takeaways": [
+  "Number of electrons = number of protons = Z.",
+  "First 20 elements fill K (2), L (8), M (8), then N (2).",
+  "The outermost-shell electrons decide how an atom reacts."
+ ],
+ "notes": [
+  {
+   "title": "Filling pattern",
+   "text": "For the first 20 elements the shells fill as 2, 8, 8, 2. Only the electrons of the **outermost shell** take part in chemical reactions (Chapter 3)."
+  }
+ ]
+}

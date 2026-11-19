@@ -1,0 +1,1413 @@
+{
+ "id": "pb9-chem-c3-th-slip",
+ "title": "Pressure on a metal and on an ionic crystal",
+ "summary": "Slide the top row: a metal changes shape, an ionic crystal breaks.",
+ "alt": "The top row of a metal slips over the rest and the electron sea still holds it; in an ionic crystal the same slip puts like charges together and the crystal breaks.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "pos": {
+   "label": "Positive",
+   "color": "#e11d48",
+   "text": "Positive charge / cation.",
+   "legend": false
+  },
+  "neg": {
+   "label": "Negative",
+   "color": "#2563eb",
+   "text": "Negative charge / anion.",
+   "legend": false
+  },
+  "el": {
+   "label": "Electron",
+   "color": "#2563eb",
+   "text": "Negative particle moving around the nucleus.",
+   "legend": false
+  },
+  "bad": {
+   "label": "Not allowed",
+   "color": "#e11d48",
+   "text": "Not possible / unstable.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "The correct / stable one.",
+   "legend": false
+  },
+  "wall": {
+   "label": "Apparatus",
+   "color": "#475569",
+   "text": "The container or apparatus.",
+   "legend": false
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  },
+  "a": {
+   "label": "Atom A",
+   "color": "#7c3aed",
+   "text": "First atom.",
+   "legend": false
+  },
+  "b": {
+   "label": "Atom B",
+   "color": "#059669",
+   "text": "Second atom.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "sel",
+   "label": "Material",
+   "type": "choice",
+   "options": [
+    {
+     "value": 1,
+     "label": "Metal"
+    },
+    {
+     "value": 2,
+     "label": "Ionic crystal"
+    }
+   ],
+   "default": 1
+  },
+  {
+   "id": "sh",
+   "label": "Push the top row",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0
+  },
+  {
+   "id": "ph",
+   "label": "Time",
+   "type": "clock",
+   "min": 0,
+   "max": 360,
+   "step": 0.01,
+   "speed": 60,
+   "loop": "repeat",
+   "default": 0,
+   "auto": true,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "circle",
+   "id": "m0_0",
+   "c": [
+    "14+11*0+0",
+    22
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "mt0_0",
+   "at": [
+    "14+11*0+0",
+    22
+   ],
+   "text": "+",
+   "role": "pos",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "p0_0",
+   "c": [
+    "14+11*0+0",
+    22
+   ],
+   "r": 3.6,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "pt0_0",
+   "at": [
+    "14+11*0+0",
+    22
+   ],
+   "text": "+",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "m0_1",
+   "c": [
+    "14+11*1+0",
+    22
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "mt0_1",
+   "at": [
+    "14+11*1+0",
+    22
+   ],
+   "text": "+",
+   "role": "pos",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "p0_1",
+   "c": [
+    "14+11*1+0",
+    22
+   ],
+   "r": 4.8,
+   "role": "b",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "pt0_1",
+   "at": [
+    "14+11*1+0",
+    22
+   ],
+   "text": "−",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "m0_2",
+   "c": [
+    "14+11*2+0",
+    22
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "mt0_2",
+   "at": [
+    "14+11*2+0",
+    22
+   ],
+   "text": "+",
+   "role": "pos",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "p0_2",
+   "c": [
+    "14+11*2+0",
+    22
+   ],
+   "r": 3.6,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "pt0_2",
+   "at": [
+    "14+11*2+0",
+    22
+   ],
+   "text": "+",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "m0_3",
+   "c": [
+    "14+11*3+0",
+    22
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "mt0_3",
+   "at": [
+    "14+11*3+0",
+    22
+   ],
+   "text": "+",
+   "role": "pos",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "p0_3",
+   "c": [
+    "14+11*3+0",
+    22
+   ],
+   "r": 4.8,
+   "role": "b",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "pt0_3",
+   "at": [
+    "14+11*3+0",
+    22
+   ],
+   "text": "−",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "m0_4",
+   "c": [
+    "14+11*4+0",
+    22
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "mt0_4",
+   "at": [
+    "14+11*4+0",
+    22
+   ],
+   "text": "+",
+   "role": "pos",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "p0_4",
+   "c": [
+    "14+11*4+0",
+    22
+   ],
+   "r": 3.6,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "pt0_4",
+   "at": [
+    "14+11*4+0",
+    22
+   ],
+   "text": "+",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "m0_5",
+   "c": [
+    "14+11*5+0",
+    22
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "mt0_5",
+   "at": [
+    "14+11*5+0",
+    22
+   ],
+   "text": "+",
+   "role": "pos",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "p0_5",
+   "c": [
+    "14+11*5+0",
+    22
+   ],
+   "r": 4.8,
+   "role": "b",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "pt0_5",
+   "at": [
+    "14+11*5+0",
+    22
+   ],
+   "text": "−",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "m1_0",
+   "c": [
+    "14+11*0+0",
+    34
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "mt1_0",
+   "at": [
+    "14+11*0+0",
+    34
+   ],
+   "text": "+",
+   "role": "pos",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "p1_0",
+   "c": [
+    "14+11*0+0",
+    34
+   ],
+   "r": 4.8,
+   "role": "b",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "pt1_0",
+   "at": [
+    "14+11*0+0",
+    34
+   ],
+   "text": "−",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "m1_1",
+   "c": [
+    "14+11*1+0",
+    34
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "mt1_1",
+   "at": [
+    "14+11*1+0",
+    34
+   ],
+   "text": "+",
+   "role": "pos",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "p1_1",
+   "c": [
+    "14+11*1+0",
+    34
+   ],
+   "r": 3.6,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "pt1_1",
+   "at": [
+    "14+11*1+0",
+    34
+   ],
+   "text": "+",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "m1_2",
+   "c": [
+    "14+11*2+0",
+    34
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "mt1_2",
+   "at": [
+    "14+11*2+0",
+    34
+   ],
+   "text": "+",
+   "role": "pos",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "p1_2",
+   "c": [
+    "14+11*2+0",
+    34
+   ],
+   "r": 4.8,
+   "role": "b",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "pt1_2",
+   "at": [
+    "14+11*2+0",
+    34
+   ],
+   "text": "−",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "m1_3",
+   "c": [
+    "14+11*3+0",
+    34
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "mt1_3",
+   "at": [
+    "14+11*3+0",
+    34
+   ],
+   "text": "+",
+   "role": "pos",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "p1_3",
+   "c": [
+    "14+11*3+0",
+    34
+   ],
+   "r": 3.6,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "pt1_3",
+   "at": [
+    "14+11*3+0",
+    34
+   ],
+   "text": "+",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "m1_4",
+   "c": [
+    "14+11*4+0",
+    34
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "mt1_4",
+   "at": [
+    "14+11*4+0",
+    34
+   ],
+   "text": "+",
+   "role": "pos",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "p1_4",
+   "c": [
+    "14+11*4+0",
+    34
+   ],
+   "r": 4.8,
+   "role": "b",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "pt1_4",
+   "at": [
+    "14+11*4+0",
+    34
+   ],
+   "text": "−",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "m1_5",
+   "c": [
+    "14+11*5+0",
+    34
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "mt1_5",
+   "at": [
+    "14+11*5+0",
+    34
+   ],
+   "text": "+",
+   "role": "pos",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "p1_5",
+   "c": [
+    "14+11*5+0",
+    34
+   ],
+   "r": 3.6,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "pt1_5",
+   "at": [
+    "14+11*5+0",
+    34
+   ],
+   "text": "+",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "m2_0",
+   "c": [
+    "14+11*0+sh*11",
+    46
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "mt2_0",
+   "at": [
+    "14+11*0+sh*11",
+    46
+   ],
+   "text": "+",
+   "role": "pos",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "p2_0",
+   "c": [
+    "14+11*0+sh*11",
+    46
+   ],
+   "r": 3.6,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "pt2_0",
+   "at": [
+    "14+11*0+sh*11",
+    46
+   ],
+   "text": "+",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "m2_1",
+   "c": [
+    "14+11*1+sh*11",
+    46
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "mt2_1",
+   "at": [
+    "14+11*1+sh*11",
+    46
+   ],
+   "text": "+",
+   "role": "pos",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "p2_1",
+   "c": [
+    "14+11*1+sh*11",
+    46
+   ],
+   "r": 4.8,
+   "role": "b",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "pt2_1",
+   "at": [
+    "14+11*1+sh*11",
+    46
+   ],
+   "text": "−",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "m2_2",
+   "c": [
+    "14+11*2+sh*11",
+    46
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "mt2_2",
+   "at": [
+    "14+11*2+sh*11",
+    46
+   ],
+   "text": "+",
+   "role": "pos",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "p2_2",
+   "c": [
+    "14+11*2+sh*11",
+    46
+   ],
+   "r": 3.6,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "pt2_2",
+   "at": [
+    "14+11*2+sh*11",
+    46
+   ],
+   "text": "+",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "m2_3",
+   "c": [
+    "14+11*3+sh*11",
+    46
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "mt2_3",
+   "at": [
+    "14+11*3+sh*11",
+    46
+   ],
+   "text": "+",
+   "role": "pos",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "p2_3",
+   "c": [
+    "14+11*3+sh*11",
+    46
+   ],
+   "r": 4.8,
+   "role": "b",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "pt2_3",
+   "at": [
+    "14+11*3+sh*11",
+    46
+   ],
+   "text": "−",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "m2_4",
+   "c": [
+    "14+11*4+sh*11",
+    46
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "mt2_4",
+   "at": [
+    "14+11*4+sh*11",
+    46
+   ],
+   "text": "+",
+   "role": "pos",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "p2_4",
+   "c": [
+    "14+11*4+sh*11",
+    46
+   ],
+   "r": 3.6,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "pt2_4",
+   "at": [
+    "14+11*4+sh*11",
+    46
+   ],
+   "text": "+",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "m2_5",
+   "c": [
+    "14+11*5+sh*11",
+    46
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "mt2_5",
+   "at": [
+    "14+11*5+sh*11",
+    46
+   ],
+   "text": "+",
+   "role": "pos",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "p2_5",
+   "c": [
+    "14+11*5+sh*11",
+    46
+   ],
+   "r": 4.8,
+   "role": "b",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "pt2_5",
+   "at": [
+    "14+11*5+sh*11",
+    46
+   ],
+   "text": "−",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "repeat",
+   "id": "ee",
+   "count": 22,
+   "as": "i",
+   "template": {
+    "type": "point",
+    "id": "e",
+    "at": [
+     "14+4+50*(mod(abs(sin(i*12.9898+3)*43758.5453),1))+1.4*sin(ph*3+i*50)",
+     "17+34*(mod(abs(sin(i*78.233+7)*43758.5453),1))+1.4*cos(ph*2+i*70)"
+    ],
+    "role": "el",
+    "r": 3.5,
+    "visible": "sel==1",
+    "opacity": "0.7"
+   }
+  },
+  {
+   "type": "segment",
+   "id": "rp0",
+   "from": [
+    "14+11*0+sh*11",
+    41
+   ],
+   "to": [
+    "14+11*0+sh*11",
+    46
+   ],
+   "role": "bad",
+   "strokeWidth": 4,
+   "visible": "sel==2&&sh>0.7"
+  },
+  {
+   "type": "segment",
+   "id": "rp1",
+   "from": [
+    "14+11*1+sh*11",
+    41
+   ],
+   "to": [
+    "14+11*1+sh*11",
+    46
+   ],
+   "role": "bad",
+   "strokeWidth": 4,
+   "visible": "sel==2&&sh>0.7"
+  },
+  {
+   "type": "segment",
+   "id": "rp2",
+   "from": [
+    "14+11*2+sh*11",
+    41
+   ],
+   "to": [
+    "14+11*2+sh*11",
+    46
+   ],
+   "role": "bad",
+   "strokeWidth": 4,
+   "visible": "sel==2&&sh>0.7"
+  },
+  {
+   "type": "segment",
+   "id": "rp3",
+   "from": [
+    "14+11*3+sh*11",
+    41
+   ],
+   "to": [
+    "14+11*3+sh*11",
+    46
+   ],
+   "role": "bad",
+   "strokeWidth": 4,
+   "visible": "sel==2&&sh>0.7"
+  },
+  {
+   "type": "segment",
+   "id": "rp4",
+   "from": [
+    "14+11*4+sh*11",
+    41
+   ],
+   "to": [
+    "14+11*4+sh*11",
+    46
+   ],
+   "role": "bad",
+   "strokeWidth": 4,
+   "visible": "sel==2&&sh>0.7"
+  },
+  {
+   "type": "segment",
+   "id": "rp5",
+   "from": [
+    "14+11*5+sh*11",
+    41
+   ],
+   "to": [
+    "14+11*5+sh*11",
+    46
+   ],
+   "role": "bad",
+   "strokeWidth": 4,
+   "visible": "sel==2&&sh>0.7"
+  },
+  {
+   "type": "segment",
+   "id": "crk",
+   "from": [
+    8,
+    41.5
+   ],
+   "to": [
+    92,
+    41.5
+   ],
+   "role": "bad",
+   "strokeWidth": 2.5,
+   "dash": true,
+   "visible": "sel==2&&sh>0.7"
+  },
+  {
+   "type": "text",
+   "id": "t1",
+   "at": [
+    50,
+    72
+   ],
+   "text": "{{if sel==1 | Metal: ions in a sea of electrons | Ionic crystal: alternating + and − ions}}",
+   "role": "ink",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "r1",
+   "at": [
+    50,
+    8
+   ],
+   "text": "Shape changes; the electron sea still holds the rows together",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1&&sh>0.7"
+  },
+  {
+   "type": "text",
+   "id": "r2",
+   "at": [
+    50,
+    8
+   ],
+   "text": "Like charges face each other: repulsion, the crystal breaks",
+   "role": "bad",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2&&sh>0.7"
+  },
+  {
+   "type": "text",
+   "id": "r3",
+   "at": [
+    50,
+    3
+   ],
+   "text": "Metals are malleable and ductile",
+   "role": "ok",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==1&&sh>0.7"
+  },
+  {
+   "type": "text",
+   "id": "r4",
+   "at": [
+    50,
+    3
+   ],
+   "text": "Ionic solids are brittle",
+   "role": "bad",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==2&&sh>0.7"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A metal at rest",
+   "text": "In a metal the atoms are strongly held and arranged in **rows one above the other**, held by the sea of electrons.",
+   "actions": [
+    {
+     "set": {
+      "sel": 1
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "sh": 0
+     },
+     "at": 0,
+     "dur": 300
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Push on the metal",
+   "text": "When pressure is applied, the **upper rows slip past the lower rows**. The electron sea still binds the ions, so the metal only **changes shape**: it can be drawn into **wires and sheets**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 1
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "sh": 1
+     },
+     "at": 0,
+     "dur": 2200
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "An ionic crystal at rest",
+   "text": "In an ionic crystal, + and − ions alternate. Ions are rigid and held by strong electrostatic forces.",
+   "actions": [
+    {
+     "set": {
+      "sel": 2,
+      "sh": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Push on the crystal",
+   "text": "If a force shifts a layer, **like charges come face to face** and repel, so the lattice **breaks easily**: ionic solids are **brittle**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 2
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "sh": 1
+     },
+     "at": 0,
+     "dur": 2200
+    }
+   ]
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Why can a metal be drawn into **wires**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Rows of atoms slip and the electron sea keeps them bonded"
+    },
+    {
+     "id": "b",
+     "label": "Its atoms are molecules"
+    },
+    {
+     "id": "c",
+     "label": "It has no electrons"
+    },
+    {
+     "id": "d",
+     "label": "Its ions repel when shifted"
+    }
+   ],
+   "answer": "a",
+   "hint": "Think about slipping rows.",
+   "explain": "Rows slip past each other while the **sea of electrons** holds the metal together."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Why are **ionic solids brittle**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "A shifted layer brings like charges together, so they repel and break"
+    },
+    {
+     "id": "b",
+     "label": "They contain free electrons"
+    },
+    {
+     "id": "c",
+     "label": "Their atoms slip easily"
+    },
+    {
+     "id": "d",
+     "label": "They are molecular"
+    }
+   ],
+   "answer": "a",
+   "hint": "Look at the red repulsion lines.",
+   "explain": "Shifting a layer puts **like charges** face to face; repulsion breaks the lattice."
+  }
+ ],
+ "takeaways": [
+  "Metals: rows slip and the electron sea still binds them: malleable and ductile.",
+  "Ionic crystals: a shifted layer causes repulsion: brittle."
+ ]
+}

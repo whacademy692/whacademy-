@@ -1,0 +1,351 @@
+{
+ "id": "pb9-chem-c1-th-water-ratio",
+ "title": "Hydrogen and oxygen in water: 1 : 8",
+ "summary": "Change the mass of water and see how many grams of hydrogen and oxygen it holds.",
+ "alt": "Bars showing that any amount of water contains hydrogen and oxygen in the mass ratio 1 to 8.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "h": {
+   "label": "Hydrogen",
+   "color": "#0ea5e9",
+   "text": "Hydrogen atom.",
+   "legend": true
+  },
+  "o": {
+   "label": "Oxygen",
+   "color": "#ef4444",
+   "text": "Oxygen atom.",
+   "legend": true
+  },
+  "water": {
+   "label": "Water",
+   "color": "#0ea5e9",
+   "text": "Water.",
+   "legend": false
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  },
+  "wall": {
+   "label": "Apparatus",
+   "color": "#475569",
+   "text": "The container or apparatus.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "m",
+   "label": "Mass of water (g)",
+   "type": "number",
+   "min": 9,
+   "max": 90,
+   "step": 9,
+   "default": 36
+  }
+ ],
+ "derived": {
+  "H": "m/9",
+  "O": "8*m/9"
+ },
+ "shapes": [
+  {
+   "type": "circle",
+   "id": "wo",
+   "c": [
+    12,
+    60
+   ],
+   "r": 2.8,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "circle",
+   "id": "wh1",
+   "c": [
+    9.1,
+    57.6
+   ],
+   "r": 1.7,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "circle",
+   "id": "wh2",
+   "c": [
+    14.9,
+    57.6
+   ],
+   "r": 1.7,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "text",
+   "id": "wt",
+   "at": [
+    26,
+    59
+   ],
+   "text": "H₂O",
+   "role": "water",
+   "size": "l",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "bw",
+   "x": 12,
+   "y": 40,
+   "w": "m*0.8",
+   "h": 7,
+   "role": "water",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "lw",
+   "at": [
+    6,
+    43.5
+   ],
+   "text": "water",
+   "role": "water",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "bh",
+   "x": 12,
+   "y": 28,
+   "w": "H*0.8",
+   "h": 7,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "lh",
+   "at": [
+    6,
+    31.5
+   ],
+   "text": "H",
+   "role": "h",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "bo",
+   "x": 12,
+   "y": 16,
+   "w": "O*0.8",
+   "h": 7,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "lo",
+   "at": [
+    6,
+    19.5
+   ],
+   "text": "O",
+   "role": "o",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "vw",
+   "at": [
+    "12+m*0.8+9",
+    43.5
+   ],
+   "text": "{{m|int}} g",
+   "role": "water",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "vh",
+   "at": [
+    "12+H*0.8+9",
+    31.5
+   ],
+   "text": "{{H|1}} g",
+   "role": "h",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "vo",
+   "at": [
+    "12+O*0.8+9",
+    19.5
+   ],
+   "text": "{{O|1}} g",
+   "role": "o",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "rt",
+   "at": [
+    50,
+    5
+   ],
+   "text": "H : O = 1 : 8 by mass, for any amount of water",
+   "role": "warn",
+   "size": "m",
+   "bold": true
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Water is a compound",
+   "text": "Water contains **hydrogen and oxygen** chemically combined. The elements are not mixed in any ratio: the ratio is **fixed**.",
+   "actions": [
+    {
+     "set": {
+      "m": 36
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Fixed ratio by weight",
+   "text": "In every sample of water, hydrogen and oxygen are in the ratio **1 : 8 by weight**.",
+   "actions": [
+    {
+     "set": {
+      "m": 36
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Try another amount",
+   "text": "Whatever the amount of water, hydrogen is one-ninth and oxygen eight-ninths of the mass.",
+   "actions": [
+    {
+     "tween": {
+      "m": 72
+     },
+     "at": 0,
+     "dur": 1500
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Different from its elements",
+   "text": "The properties of water are **always different** from those of hydrogen and oxygen, and it can only be broken down into them by a **chemical reaction**.",
+   "actions": [
+    {
+     "set": {
+      "m": 18
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Water",
+   "value": "{{m|int}} g",
+   "role": "water"
+  },
+  {
+   "label": "Hydrogen",
+   "value": "{{H|1}} g",
+   "role": "h"
+  },
+  {
+   "label": "Oxygen",
+   "value": "{{O|1}} g",
+   "role": "o"
+  },
+  {
+   "label": "Ratio H : O",
+   "value": "1 : 8",
+   "role": "warn"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Mass of each element in water",
+   "tex": "\\text{H} = \\dfrac{m}{9},\\qquad \\text{O} = \\dfrac{8m}{9}",
+   "text": "m = mass of water; H : O = 1 : 8 by weight."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "How many grams of **hydrogen** are in 27 g of water?",
+   "answer": 3,
+   "hint": "Hydrogen is 1 part in 9 parts (1 + 8).",
+   "explain": "\\( 27 \\times \\tfrac{1}{9} = 3 \\) g.",
+   "tolerance": 0.01,
+   "unit": "g"
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "How many grams of **oxygen** are in 18 g of water?",
+   "answer": 16,
+   "hint": "Oxygen is 8 parts in 9.",
+   "explain": "\\( 18 \\times \\tfrac{8}{9} = 16 \\) g.",
+   "tolerance": 0.1,
+   "unit": "g"
+  }
+ ],
+ "takeaways": [
+  "A compound has a fixed ratio by weight: in water H : O = 1 : 8.",
+  "Its properties differ from the elements it is made of."
+ ]
+}

@@ -1,0 +1,546 @@
+{
+ "id": "pb9-chem-c2-th-cathode",
+ "title": "Cathode rays: discovery of the electron",
+ "summary": "Switch the high voltage on and watch rays bend towards the positive plate or a magnet.",
+ "alt": "A discharge tube: rays leave the cathode, glow on the screen, bend towards a positive plate and are deflected by a magnet.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   72
+  ],
+  "ratio": 1.3888888888888888,
+  "pad": 6
+ },
+ "roles": {
+  "neg": {
+   "label": "Cathode / negative",
+   "color": "#2563eb",
+   "text": "The negative electrode (cathode) and the negative plate.",
+   "legend": true
+  },
+  "pos": {
+   "label": "Anode / positive",
+   "color": "#e11d48",
+   "text": "The positive electrode (anode) and the positive plate.",
+   "legend": true
+  },
+  "wall": {
+   "label": "Apparatus",
+   "color": "#475569",
+   "text": "The container or apparatus.",
+   "legend": false
+  },
+  "ray": {
+   "label": "Cathode rays",
+   "color": "#7c3aed",
+   "text": "The stream of electrons.",
+   "legend": true
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "The correct / stable one.",
+   "legend": false
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "ph",
+   "label": "Flow",
+   "type": "clock",
+   "min": 0,
+   "max": 360,
+   "step": 0.01,
+   "speed": 140,
+   "loop": "repeat",
+   "default": 0,
+   "auto": true,
+   "hidden": true
+  },
+  {
+   "id": "V",
+   "label": "Electric plates",
+   "type": "toggle",
+   "default": 0
+  },
+  {
+   "id": "M",
+   "label": "Magnets",
+   "type": "toggle",
+   "default": 0
+  },
+  {
+   "id": "rays",
+   "label": "rays",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "Ys": "44+V*(0.012*256+0.384*23)-M*(0.006*256+0.192*29)"
+ },
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "tube",
+   "x": 8,
+   "y": 30,
+   "w": 74,
+   "h": 28,
+   "role": "wall",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 3.2
+  },
+  {
+   "type": "rect",
+   "id": "cat",
+   "x": 10,
+   "y": 34,
+   "w": 2.2,
+   "h": 20,
+   "role": "neg",
+   "fill": true,
+   "fillOpacity": 0.6,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "rect",
+   "id": "ano",
+   "x": 62,
+   "y": 34,
+   "w": 2.2,
+   "h": 20,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.6,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "rect",
+   "id": "scr",
+   "x": 79.4,
+   "y": 31,
+   "w": 1.8,
+   "h": 26,
+   "role": "ok",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "lc",
+   "at": [
+    20,
+    26.5
+   ],
+   "text": "Cathode (−)",
+   "role": "neg",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "la",
+   "at": [
+    71,
+    26.5
+   ],
+   "text": "Anode (+)",
+   "role": "pos",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "ls",
+   "at": [
+    80,
+    61.5
+   ],
+   "text": "Screen",
+   "role": "ok",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "polyline",
+   "id": "w1",
+   "pts": [
+    [
+     11,
+     34
+    ],
+    [
+     11,
+     12
+    ],
+    [
+     40,
+     12
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "polyline",
+   "id": "w2",
+   "pts": [
+    [
+     63,
+     34
+    ],
+    [
+     63,
+     12
+    ],
+    [
+     60,
+     12
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "rect",
+   "id": "hv",
+   "x": 40,
+   "y": 6,
+   "w": 20,
+   "h": 12,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "hvt",
+   "at": [
+    50,
+    12
+   ],
+   "text": "High voltage",
+   "role": "ink",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "pump",
+   "from": [
+    72,
+    58
+   ],
+   "to": [
+    72,
+    65
+   ],
+   "role": "wall",
+   "strokeWidth": 3
+  },
+  {
+   "type": "text",
+   "id": "pumpt",
+   "at": [
+    72,
+    68.5
+   ],
+   "text": "to vacuum pump",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "pt",
+   "x": 40,
+   "y": 53.2,
+   "w": 16,
+   "h": 1.4,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.8,
+   "strokeWidth": 1.5,
+   "visible": "V>0.5"
+  },
+  {
+   "type": "rect",
+   "id": "pb",
+   "x": 40,
+   "y": 34.4,
+   "w": 16,
+   "h": 1.4,
+   "role": "neg",
+   "fill": true,
+   "fillOpacity": 0.8,
+   "strokeWidth": 1.5,
+   "visible": "V>0.5"
+  },
+  {
+   "type": "text",
+   "id": "ptp",
+   "at": [
+    48,
+    50.3
+   ],
+   "text": "+ plate",
+   "role": "pos",
+   "size": "s",
+   "bold": true,
+   "visible": "V>0.5"
+  },
+  {
+   "type": "text",
+   "id": "pbt",
+   "at": [
+    48,
+    37.6
+   ],
+   "text": "− plate",
+   "role": "neg",
+   "size": "s",
+   "bold": true,
+   "visible": "V>0.5"
+  },
+  {
+   "type": "rect",
+   "id": "mN",
+   "x": 34,
+   "y": 60.5,
+   "w": 16,
+   "h": 6,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.2,
+   "strokeWidth": 2.5,
+   "visible": "M>0.5"
+  },
+  {
+   "type": "text",
+   "id": "mNt",
+   "at": [
+    42,
+    63.5
+   ],
+   "text": "N",
+   "role": "pos",
+   "size": "m",
+   "bold": true,
+   "visible": "M>0.5"
+  },
+  {
+   "type": "rect",
+   "id": "mS",
+   "x": 34,
+   "y": 21.5,
+   "w": 16,
+   "h": 6,
+   "role": "neg",
+   "fill": true,
+   "fillOpacity": 0.2,
+   "strokeWidth": 2.5,
+   "visible": "M>0.5"
+  },
+  {
+   "type": "text",
+   "id": "mSt",
+   "at": [
+    42,
+    24.5
+   ],
+   "text": "S",
+   "role": "neg",
+   "size": "m",
+   "bold": true,
+   "visible": "M>0.5"
+  },
+  {
+   "type": "repeat",
+   "id": "ray",
+   "count": "rays*12",
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "(13+66*fract(ph/360+i/12))",
+     "44+(V*(0.012*clamp((13+66*fract(ph/360+i/12))-40,0,16)^2+0.384*max(0,(13+66*fract(ph/360+i/12))-56))-M*(0.006*clamp((13+66*fract(ph/360+i/12))-34,0,16)^2+0.192*max(0,(13+66*fract(ph/360+i/12))-50)))"
+    ],
+    "role": "ray",
+    "r": 5
+   }
+  },
+  {
+   "type": "point",
+   "id": "spot",
+   "at": [
+    79.8,
+    "Ys"
+   ],
+   "role": "ok",
+   "r": 8,
+   "visible": "rays>0.5"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The discharge tube",
+   "text": "A hard glass tube holds two metal **electrodes**: the **cathode (−)** and the **anode (+)**. A vacuum pump removes most of the gas so the pressure is very low.",
+   "actions": [
+    {
+     "tween": {
+      "V": 0,
+      "M": 0,
+      "rays": 0
+     },
+     "at": 0,
+     "dur": 700
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "High voltage: cathode rays",
+   "text": "With a **very high voltage** across the gas at very low pressure, the glass behind the positive electrode **glows**. The glow is caused by rays from the cathode: **cathode rays**.",
+   "actions": [
+    {
+     "tween": {
+      "V": 0,
+      "M": 0,
+      "rays": 1
+     },
+     "at": 0,
+     "dur": 700
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Electric plates: they bend",
+   "text": "**J. J. Thomson (1897)** passed the rays between two charged plates. The rays **bent towards the positive plate**, so they carry **negative charge**.",
+   "actions": [
+    {
+     "tween": {
+      "V": 1,
+      "M": 0,
+      "rays": 1
+     },
+     "at": 0,
+     "dur": 700
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Magnets: also deflected",
+   "text": "Two magnets on either side of the tube also **deflected** the rays. Thomson used both results to calculate the **mass-to-charge ratio**.",
+   "actions": [
+    {
+     "tween": {
+      "V": 0,
+      "M": 1,
+      "rays": 1
+     },
+     "at": 0,
+     "dur": 700
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Conclusion: electrons",
+   "text": "Cathode rays are **negatively charged material particles**. They were named **electrons** and are found in the atoms of **all** elements.",
+   "actions": [
+    {
+     "tween": {
+      "V": 0,
+      "M": 0,
+      "rays": 1
+     },
+     "at": 0,
+     "dur": 700
+    }
+   ]
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Cathode rays are attracted towards the **positive** plate. What does this show?",
+   "options": [
+    {
+     "id": "a",
+     "label": "They are positively charged"
+    },
+    {
+     "id": "b",
+     "label": "They are negatively charged"
+    },
+    {
+     "id": "c",
+     "label": "They have no charge"
+    },
+    {
+     "id": "d",
+     "label": "They are neutrons"
+    }
+   ],
+   "answer": "b",
+   "hint": "Opposite charges attract.",
+   "explain": "Opposites attract, so rays pulled towards the positive plate must be **negative**."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "What name was later given to the particles of cathode rays?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Protons"
+    },
+    {
+     "id": "b",
+     "label": "Neutrons"
+    },
+    {
+     "id": "c",
+     "label": "Electrons"
+    },
+    {
+     "id": "d",
+     "label": "Nuclei"
+    }
+   ],
+   "answer": "c",
+   "hint": "They are the negative subatomic particles.",
+   "explain": "They were named **electrons**."
+  }
+ ],
+ "takeaways": [
+  "Cathode rays travel from the cathode towards the anode.",
+  "They bend towards a positive plate, so they are **negative**; magnets deflect them too.",
+  "They are electrons, present in all atoms."
+ ]
+}

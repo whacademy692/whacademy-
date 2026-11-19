@@ -1,0 +1,1119 @@
+{
+ "id": "pb9-chem-c3-th-hydration",
+ "title": "Dissolving NaCl in water",
+ "summary": "Polar water molecules pull Na⁺ and Cl⁻ out of the crystal: oxygen faces Na⁺, hydrogen faces Cl⁻.",
+ "alt": "A small NaCl crystal separating into ions as water molecules surround each one.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "a": {
+   "label": "Atom A",
+   "color": "#7c3aed",
+   "text": "First atom.",
+   "legend": false
+  },
+  "b": {
+   "label": "Atom B",
+   "color": "#059669",
+   "text": "Second atom.",
+   "legend": false
+  },
+  "o": {
+   "label": "Oxygen",
+   "color": "#ef4444",
+   "text": "Oxygen atom.",
+   "legend": false
+  },
+  "h": {
+   "label": "Hydrogen",
+   "color": "#0ea5e9",
+   "text": "Hydrogen atom.",
+   "legend": false
+  },
+  "pos": {
+   "label": "Positive",
+   "color": "#e11d48",
+   "text": "Positive charge / cation.",
+   "legend": false
+  },
+  "neg": {
+   "label": "Negative",
+   "color": "#2563eb",
+   "text": "Negative charge / anion.",
+   "legend": false
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  },
+  "wall": {
+   "label": "Apparatus",
+   "color": "#475569",
+   "text": "The container or apparatus.",
+   "legend": false
+  },
+  "water": {
+   "label": "Water",
+   "color": "#0ea5e9",
+   "text": "Water.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "The correct / stable one.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "d",
+   "label": "Dissolving",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0
+  }
+ ],
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "bk",
+   "x": 6,
+   "y": 4,
+   "w": 88,
+   "h": 64,
+   "role": "water",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "circle",
+   "id": "i00",
+   "c": [
+    "33.5+(-20.625)*d",
+    "34.5+(-13.75)*d"
+   ],
+   "r": 3.4,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "it00",
+   "at": [
+    "33.5+(-20.625)*d",
+    "34.5+(-13.75)*d"
+   ],
+   "text": "+",
+   "role": "a",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "w00uo",
+   "c": [
+    "33.5+(-20.625)*d",
+    "34.5+(-13.75)*d+(6.4)"
+   ],
+   "r": 2.4,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w00uh1",
+   "c": [
+    "33.5+(-20.625)*d+(-1.9)",
+    "34.5+(-13.75)*d+(6.4)+(2.9)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w00uh2",
+   "c": [
+    "33.5+(-20.625)*d+(1.9)",
+    "34.5+(-13.75)*d+(6.4)+(2.9)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w00do",
+   "c": [
+    "33.5+(-20.625)*d",
+    "34.5+(-13.75)*d+(-6.4)"
+   ],
+   "r": 2.4,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w00dh1",
+   "c": [
+    "33.5+(-20.625)*d+(-1.9)",
+    "34.5+(-13.75)*d+(-6.4)+(-2.9)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w00dh2",
+   "c": [
+    "33.5+(-20.625)*d+(1.9)",
+    "34.5+(-13.75)*d+(-6.4)+(-2.9)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "i01",
+   "c": [
+    "44.5+(-6.875)*d",
+    "34.5+(-13.75)*d"
+   ],
+   "r": 4.4,
+   "role": "b",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "it01",
+   "at": [
+    "44.5+(-6.875)*d",
+    "34.5+(-13.75)*d"
+   ],
+   "text": "−",
+   "role": "b",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "w01uo",
+   "c": [
+    "44.5+(-6.875)*d",
+    "34.5+(-13.75)*d+(8.4)+(2.9)"
+   ],
+   "r": 2.4,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w01uh1",
+   "c": [
+    "44.5+(-6.875)*d+(-1.9)",
+    "34.5+(-13.75)*d+(8.4)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w01uh2",
+   "c": [
+    "44.5+(-6.875)*d+(1.9)",
+    "34.5+(-13.75)*d+(8.4)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w01do",
+   "c": [
+    "44.5+(-6.875)*d",
+    "34.5+(-13.75)*d+(-8.4)+(-2.9)"
+   ],
+   "r": 2.4,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w01dh1",
+   "c": [
+    "44.5+(-6.875)*d+(-1.9)",
+    "34.5+(-13.75)*d+(-8.4)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w01dh2",
+   "c": [
+    "44.5+(-6.875)*d+(1.9)",
+    "34.5+(-13.75)*d+(-8.4)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "i02",
+   "c": [
+    "55.5+(6.875)*d",
+    "34.5+(-13.75)*d"
+   ],
+   "r": 3.4,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "it02",
+   "at": [
+    "55.5+(6.875)*d",
+    "34.5+(-13.75)*d"
+   ],
+   "text": "+",
+   "role": "a",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "w02uo",
+   "c": [
+    "55.5+(6.875)*d",
+    "34.5+(-13.75)*d+(6.4)"
+   ],
+   "r": 2.4,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w02uh1",
+   "c": [
+    "55.5+(6.875)*d+(-1.9)",
+    "34.5+(-13.75)*d+(6.4)+(2.9)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w02uh2",
+   "c": [
+    "55.5+(6.875)*d+(1.9)",
+    "34.5+(-13.75)*d+(6.4)+(2.9)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w02do",
+   "c": [
+    "55.5+(6.875)*d",
+    "34.5+(-13.75)*d+(-6.4)"
+   ],
+   "r": 2.4,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w02dh1",
+   "c": [
+    "55.5+(6.875)*d+(-1.9)",
+    "34.5+(-13.75)*d+(-6.4)+(-2.9)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w02dh2",
+   "c": [
+    "55.5+(6.875)*d+(1.9)",
+    "34.5+(-13.75)*d+(-6.4)+(-2.9)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "i03",
+   "c": [
+    "66.5+(20.625)*d",
+    "34.5+(-13.75)*d"
+   ],
+   "r": 4.4,
+   "role": "b",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "it03",
+   "at": [
+    "66.5+(20.625)*d",
+    "34.5+(-13.75)*d"
+   ],
+   "text": "−",
+   "role": "b",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "w03uo",
+   "c": [
+    "66.5+(20.625)*d",
+    "34.5+(-13.75)*d+(8.4)+(2.9)"
+   ],
+   "r": 2.4,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w03uh1",
+   "c": [
+    "66.5+(20.625)*d+(-1.9)",
+    "34.5+(-13.75)*d+(8.4)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w03uh2",
+   "c": [
+    "66.5+(20.625)*d+(1.9)",
+    "34.5+(-13.75)*d+(8.4)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w03do",
+   "c": [
+    "66.5+(20.625)*d",
+    "34.5+(-13.75)*d+(-8.4)+(-2.9)"
+   ],
+   "r": 2.4,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w03dh1",
+   "c": [
+    "66.5+(20.625)*d+(-1.9)",
+    "34.5+(-13.75)*d+(-8.4)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w03dh2",
+   "c": [
+    "66.5+(20.625)*d+(1.9)",
+    "34.5+(-13.75)*d+(-8.4)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "i10",
+   "c": [
+    "33.5+(-20.625)*d",
+    "45.5+(13.75)*d"
+   ],
+   "r": 4.4,
+   "role": "b",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "it10",
+   "at": [
+    "33.5+(-20.625)*d",
+    "45.5+(13.75)*d"
+   ],
+   "text": "−",
+   "role": "b",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "w10uo",
+   "c": [
+    "33.5+(-20.625)*d",
+    "45.5+(13.75)*d+(8.4)+(2.9)"
+   ],
+   "r": 2.4,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w10uh1",
+   "c": [
+    "33.5+(-20.625)*d+(-1.9)",
+    "45.5+(13.75)*d+(8.4)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w10uh2",
+   "c": [
+    "33.5+(-20.625)*d+(1.9)",
+    "45.5+(13.75)*d+(8.4)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w10do",
+   "c": [
+    "33.5+(-20.625)*d",
+    "45.5+(13.75)*d+(-8.4)+(-2.9)"
+   ],
+   "r": 2.4,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w10dh1",
+   "c": [
+    "33.5+(-20.625)*d+(-1.9)",
+    "45.5+(13.75)*d+(-8.4)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w10dh2",
+   "c": [
+    "33.5+(-20.625)*d+(1.9)",
+    "45.5+(13.75)*d+(-8.4)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "i11",
+   "c": [
+    "44.5+(-6.875)*d",
+    "45.5+(13.75)*d"
+   ],
+   "r": 3.4,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "it11",
+   "at": [
+    "44.5+(-6.875)*d",
+    "45.5+(13.75)*d"
+   ],
+   "text": "+",
+   "role": "a",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "w11uo",
+   "c": [
+    "44.5+(-6.875)*d",
+    "45.5+(13.75)*d+(6.4)"
+   ],
+   "r": 2.4,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w11uh1",
+   "c": [
+    "44.5+(-6.875)*d+(-1.9)",
+    "45.5+(13.75)*d+(6.4)+(2.9)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w11uh2",
+   "c": [
+    "44.5+(-6.875)*d+(1.9)",
+    "45.5+(13.75)*d+(6.4)+(2.9)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w11do",
+   "c": [
+    "44.5+(-6.875)*d",
+    "45.5+(13.75)*d+(-6.4)"
+   ],
+   "r": 2.4,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w11dh1",
+   "c": [
+    "44.5+(-6.875)*d+(-1.9)",
+    "45.5+(13.75)*d+(-6.4)+(-2.9)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w11dh2",
+   "c": [
+    "44.5+(-6.875)*d+(1.9)",
+    "45.5+(13.75)*d+(-6.4)+(-2.9)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "i12",
+   "c": [
+    "55.5+(6.875)*d",
+    "45.5+(13.75)*d"
+   ],
+   "r": 4.4,
+   "role": "b",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "it12",
+   "at": [
+    "55.5+(6.875)*d",
+    "45.5+(13.75)*d"
+   ],
+   "text": "−",
+   "role": "b",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "w12uo",
+   "c": [
+    "55.5+(6.875)*d",
+    "45.5+(13.75)*d+(8.4)+(2.9)"
+   ],
+   "r": 2.4,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w12uh1",
+   "c": [
+    "55.5+(6.875)*d+(-1.9)",
+    "45.5+(13.75)*d+(8.4)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w12uh2",
+   "c": [
+    "55.5+(6.875)*d+(1.9)",
+    "45.5+(13.75)*d+(8.4)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w12do",
+   "c": [
+    "55.5+(6.875)*d",
+    "45.5+(13.75)*d+(-8.4)+(-2.9)"
+   ],
+   "r": 2.4,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w12dh1",
+   "c": [
+    "55.5+(6.875)*d+(-1.9)",
+    "45.5+(13.75)*d+(-8.4)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w12dh2",
+   "c": [
+    "55.5+(6.875)*d+(1.9)",
+    "45.5+(13.75)*d+(-8.4)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "i13",
+   "c": [
+    "66.5+(20.625)*d",
+    "45.5+(13.75)*d"
+   ],
+   "r": 3.4,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "it13",
+   "at": [
+    "66.5+(20.625)*d",
+    "45.5+(13.75)*d"
+   ],
+   "text": "+",
+   "role": "a",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "w13uo",
+   "c": [
+    "66.5+(20.625)*d",
+    "45.5+(13.75)*d+(6.4)"
+   ],
+   "r": 2.4,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w13uh1",
+   "c": [
+    "66.5+(20.625)*d+(-1.9)",
+    "45.5+(13.75)*d+(6.4)+(2.9)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w13uh2",
+   "c": [
+    "66.5+(20.625)*d+(1.9)",
+    "45.5+(13.75)*d+(6.4)+(2.9)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w13do",
+   "c": [
+    "66.5+(20.625)*d",
+    "45.5+(13.75)*d+(-6.4)"
+   ],
+   "r": 2.4,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w13dh1",
+   "c": [
+    "66.5+(20.625)*d+(-1.9)",
+    "45.5+(13.75)*d+(-6.4)+(-2.9)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "circle",
+   "id": "w13dh2",
+   "c": [
+    "66.5+(20.625)*d+(1.9)",
+    "45.5+(13.75)*d+(-6.4)+(-2.9)"
+   ],
+   "r": 1.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.4,
+   "visible": "d>0.25"
+  },
+  {
+   "type": "text",
+   "id": "tt",
+   "at": [
+    50,
+    74.5
+   ],
+   "text": "{{if d<0.25 | NaCl crystal: ions held by electrostatic forces | Each ion is surrounded by water molecules}}",
+   "role": "ink",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "b1",
+   "at": [
+    50,
+    0.8
+   ],
+   "text": "Na⁺ attracts the O end (δ⁻); Cl⁻ attracts the H ends (δ⁺)",
+   "role": "warn",
+   "size": "s",
+   "bold": true,
+   "visible": "d>0.25"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A crystal in water",
+   "text": "NaCl is an **ionic compound**: Na⁺ and Cl⁻ ions are held in a lattice by strong electrostatic forces.",
+   "actions": [
+    {
+     "set": {
+      "d": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Polar water molecules approach",
+   "text": "Water molecules are **polar**. The **oxygen (δ⁻) end** is attracted to **Na⁺** and the **hydrogen (δ⁺) ends** to **Cl⁻**.",
+   "actions": [
+    {
+     "tween": {
+      "d": 0.45
+     },
+     "at": 0,
+     "dur": 1800
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "The ions are pulled apart",
+   "text": "The attraction between water and the ions **overcomes the forces between the ions**, so they separate and each ion becomes **surrounded by water molecules**.",
+   "actions": [
+    {
+     "tween": {
+      "d": 1
+     },
+     "at": 0,
+     "dur": 2200
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Free, hydrated ions",
+   "text": "The ions are now free to move in the solution: this is why an ionic compound **dissolves in water** and the solution **conducts electricity**.",
+   "actions": [
+    {
+     "set": {
+      "d": 1
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which end of a water molecule is attracted to **Na⁺**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "The oxygen end (δ⁻)"
+    },
+    {
+     "id": "b",
+     "label": "The hydrogen ends (δ⁺)"
+    },
+    {
+     "id": "c",
+     "label": "Both equally"
+    },
+    {
+     "id": "d",
+     "label": "Neither"
+    }
+   ],
+   "answer": "a",
+   "hint": "Opposite charges attract.",
+   "explain": "Na⁺ is positive, so it attracts the **δ⁻ oxygen** end."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Why does NaCl dissolve in water?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Water is polar and attracts the ions strongly enough to separate them"
+    },
+    {
+     "id": "b",
+     "label": "Water is non-polar"
+    },
+    {
+     "id": "c",
+     "label": "NaCl is covalent"
+    },
+    {
+     "id": "d",
+     "label": "NaCl is a metal"
+    }
+   ],
+   "answer": "a",
+   "hint": "Think of δ⁺ and δ⁻.",
+   "explain": "Polar water molecules **surround and separate** the ions."
+  }
+ ],
+ "takeaways": [
+  "Polar water molecules attract the ions: O toward Na⁺, H toward Cl⁻.",
+  "Hydrated ions move freely, so ionic compounds dissolve in water and their solutions conduct."
+ ]
+}

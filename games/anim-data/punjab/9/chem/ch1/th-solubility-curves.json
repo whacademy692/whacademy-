@@ -1,0 +1,809 @@
+{
+ "id": "pb9-chem-c1-th-solubility-curves",
+ "title": "Solubility curves",
+ "summary": "Slide the temperature and read the solubility of six substances.",
+ "alt": "A graph of solubility in grams per 100 grams of water against temperature: KNO3 rises steeply, NaCl is almost flat and the gases NH3 and SO2 fall.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "KNO3": {
+   "label": "KNO₃",
+   "color": "#7c3aed",
+   "text": "Solubility curve of KNO₃.",
+   "legend": true
+  },
+  "NaNO3": {
+   "label": "NaNO₃",
+   "color": "#0ea5e9",
+   "text": "Solubility curve of NaNO₃.",
+   "legend": true
+  },
+  "KCl": {
+   "label": "KCl",
+   "color": "#059669",
+   "text": "Solubility curve of KCl.",
+   "legend": true
+  },
+  "NaCl": {
+   "label": "NaCl",
+   "color": "#d97706",
+   "text": "Solubility curve of NaCl.",
+   "legend": true
+  },
+  "NH3": {
+   "label": "NH₃ (gas)",
+   "color": "#e11d48",
+   "text": "Solubility curve of NH₃ (gas).",
+   "legend": true
+  },
+  "SO2": {
+   "label": "SO₂ (gas)",
+   "color": "#475569",
+   "text": "Solubility curve of SO₂ (gas).",
+   "legend": true
+  },
+  "wall": {
+   "label": "Apparatus",
+   "color": "#475569",
+   "text": "The container or apparatus.",
+   "legend": false
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  },
+  "sh": {
+   "label": "Shell",
+   "color": "#94a3b8",
+   "text": "An energy level (orbit).",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "T",
+   "label": "Temperature (°C)",
+   "type": "number",
+   "min": 0,
+   "max": 100,
+   "step": 1,
+   "default": 20
+  }
+ ],
+ "derived": {
+  "SKNO3": "13.3+0.539*T+0.01788*T*T",
+  "SNaNO3": "73+0.73*T+0.0035*T*T",
+  "SKCl": "28+0.287*T",
+  "SNaCl": "35.7+0.033*T",
+  "SNH3": "89.5*exp(-0.0275*T)",
+  "SSO2": "22.8*exp(-0.038*T)"
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ax",
+   "from": [
+    12,
+    8
+   ],
+   "to": [
+    80,
+    8
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "segment",
+   "id": "ay",
+   "from": [
+    12,
+    8
+   ],
+   "to": [
+    12,
+    66
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "xt0",
+   "at": [
+    12.0,
+    3.6
+   ],
+   "text": "0",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "segment",
+   "id": "xg0",
+   "from": [
+    12.0,
+    8
+   ],
+   "to": [
+    12.0,
+    66
+   ],
+   "role": "sh",
+   "strokeWidth": 1,
+   "dash": true
+  },
+  {
+   "type": "text",
+   "id": "xt20",
+   "at": [
+    25.6,
+    3.6
+   ],
+   "text": "20",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "segment",
+   "id": "xg20",
+   "from": [
+    25.6,
+    8
+   ],
+   "to": [
+    25.6,
+    66
+   ],
+   "role": "sh",
+   "strokeWidth": 1,
+   "dash": true
+  },
+  {
+   "type": "text",
+   "id": "xt40",
+   "at": [
+    39.2,
+    3.6
+   ],
+   "text": "40",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "segment",
+   "id": "xg40",
+   "from": [
+    39.2,
+    8
+   ],
+   "to": [
+    39.2,
+    66
+   ],
+   "role": "sh",
+   "strokeWidth": 1,
+   "dash": true
+  },
+  {
+   "type": "text",
+   "id": "xt60",
+   "at": [
+    52.800000000000004,
+    3.6
+   ],
+   "text": "60",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "segment",
+   "id": "xg60",
+   "from": [
+    52.800000000000004,
+    8
+   ],
+   "to": [
+    52.800000000000004,
+    66
+   ],
+   "role": "sh",
+   "strokeWidth": 1,
+   "dash": true
+  },
+  {
+   "type": "text",
+   "id": "xt80",
+   "at": [
+    66.4,
+    3.6
+   ],
+   "text": "80",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "segment",
+   "id": "xg80",
+   "from": [
+    66.4,
+    8
+   ],
+   "to": [
+    66.4,
+    66
+   ],
+   "role": "sh",
+   "strokeWidth": 1,
+   "dash": true
+  },
+  {
+   "type": "text",
+   "id": "xt100",
+   "at": [
+    80.0,
+    3.6
+   ],
+   "text": "100",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "segment",
+   "id": "xg100",
+   "from": [
+    80.0,
+    8
+   ],
+   "to": [
+    80.0,
+    66
+   ],
+   "role": "sh",
+   "strokeWidth": 1,
+   "dash": true
+  },
+  {
+   "type": "text",
+   "id": "yt0",
+   "at": [
+    8,
+    8.0
+   ],
+   "text": "0",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "segment",
+   "id": "yg0",
+   "from": [
+    12,
+    8.0
+   ],
+   "to": [
+    80,
+    8.0
+   ],
+   "role": "sh",
+   "strokeWidth": 1,
+   "dash": true
+  },
+  {
+   "type": "text",
+   "id": "yt50",
+   "at": [
+    8,
+    19.200000000000003
+   ],
+   "text": "50",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "segment",
+   "id": "yg50",
+   "from": [
+    12,
+    19.200000000000003
+   ],
+   "to": [
+    80,
+    19.200000000000003
+   ],
+   "role": "sh",
+   "strokeWidth": 1,
+   "dash": true
+  },
+  {
+   "type": "text",
+   "id": "yt100",
+   "at": [
+    8,
+    30.400000000000002
+   ],
+   "text": "100",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "segment",
+   "id": "yg100",
+   "from": [
+    12,
+    30.400000000000002
+   ],
+   "to": [
+    80,
+    30.400000000000002
+   ],
+   "role": "sh",
+   "strokeWidth": 1,
+   "dash": true
+  },
+  {
+   "type": "text",
+   "id": "yt150",
+   "at": [
+    8,
+    41.6
+   ],
+   "text": "150",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "segment",
+   "id": "yg150",
+   "from": [
+    12,
+    41.6
+   ],
+   "to": [
+    80,
+    41.6
+   ],
+   "role": "sh",
+   "strokeWidth": 1,
+   "dash": true
+  },
+  {
+   "type": "text",
+   "id": "yt200",
+   "at": [
+    8,
+    52.800000000000004
+   ],
+   "text": "200",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "segment",
+   "id": "yg200",
+   "from": [
+    12,
+    52.800000000000004
+   ],
+   "to": [
+    80,
+    52.800000000000004
+   ],
+   "role": "sh",
+   "strokeWidth": 1,
+   "dash": true
+  },
+  {
+   "type": "text",
+   "id": "yt250",
+   "at": [
+    8,
+    64.0
+   ],
+   "text": "250",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "segment",
+   "id": "yg250",
+   "from": [
+    12,
+    64.0
+   ],
+   "to": [
+    80,
+    64.0
+   ],
+   "role": "sh",
+   "strokeWidth": 1,
+   "dash": true
+  },
+  {
+   "type": "text",
+   "id": "xl",
+   "at": [
+    46,
+    -1.5
+   ],
+   "text": "temperature (°C)",
+   "role": "ink",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "yl",
+   "at": [
+    10,
+    72
+   ],
+   "text": "g per 100 g water",
+   "role": "ink",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "plot",
+   "id": "cKNO3",
+   "x": "12+0.68*u",
+   "y": "8+0.224*(13.3+0.539*u+0.01788*u*u)",
+   "var": "u",
+   "domain": [
+    0,
+    100
+   ],
+   "samples": 120,
+   "role": "KNO3",
+   "strokeWidth": 3.4
+  },
+  {
+   "type": "point",
+   "id": "mKNO3",
+   "at": [
+    "12+0.68*T",
+    "8+0.224*SKNO3"
+   ],
+   "role": "KNO3",
+   "r": 7
+  },
+  {
+   "type": "plot",
+   "id": "cNaNO3",
+   "x": "12+0.68*u",
+   "y": "8+0.224*(73+0.73*u+0.0035*u*u)",
+   "var": "u",
+   "domain": [
+    0,
+    100
+   ],
+   "samples": 120,
+   "role": "NaNO3",
+   "strokeWidth": 3.4
+  },
+  {
+   "type": "point",
+   "id": "mNaNO3",
+   "at": [
+    "12+0.68*T",
+    "8+0.224*SNaNO3"
+   ],
+   "role": "NaNO3",
+   "r": 7
+  },
+  {
+   "type": "plot",
+   "id": "cKCl",
+   "x": "12+0.68*u",
+   "y": "8+0.224*(28+0.287*u)",
+   "var": "u",
+   "domain": [
+    0,
+    100
+   ],
+   "samples": 120,
+   "role": "KCl",
+   "strokeWidth": 3.4
+  },
+  {
+   "type": "point",
+   "id": "mKCl",
+   "at": [
+    "12+0.68*T",
+    "8+0.224*SKCl"
+   ],
+   "role": "KCl",
+   "r": 7
+  },
+  {
+   "type": "plot",
+   "id": "cNaCl",
+   "x": "12+0.68*u",
+   "y": "8+0.224*(35.7+0.033*u)",
+   "var": "u",
+   "domain": [
+    0,
+    100
+   ],
+   "samples": 120,
+   "role": "NaCl",
+   "strokeWidth": 3.4
+  },
+  {
+   "type": "point",
+   "id": "mNaCl",
+   "at": [
+    "12+0.68*T",
+    "8+0.224*SNaCl"
+   ],
+   "role": "NaCl",
+   "r": 7
+  },
+  {
+   "type": "plot",
+   "id": "cNH3",
+   "x": "12+0.68*u",
+   "y": "8+0.224*(89.5*exp(-0.0275*u))",
+   "var": "u",
+   "domain": [
+    0,
+    100
+   ],
+   "samples": 120,
+   "role": "NH3",
+   "strokeWidth": 3.4
+  },
+  {
+   "type": "point",
+   "id": "mNH3",
+   "at": [
+    "12+0.68*T",
+    "8+0.224*SNH3"
+   ],
+   "role": "NH3",
+   "r": 7
+  },
+  {
+   "type": "plot",
+   "id": "cSO2",
+   "x": "12+0.68*u",
+   "y": "8+0.224*(22.8*exp(-0.038*u))",
+   "var": "u",
+   "domain": [
+    0,
+    100
+   ],
+   "samples": 120,
+   "role": "SO2",
+   "strokeWidth": 3.4
+  },
+  {
+   "type": "point",
+   "id": "mSO2",
+   "at": [
+    "12+0.68*T",
+    "8+0.224*SSO2"
+   ],
+   "role": "SO2",
+   "r": 7
+  },
+  {
+   "type": "segment",
+   "id": "tl",
+   "from": [
+    "12+0.68*T",
+    8
+   ],
+   "to": [
+    "12+0.68*T",
+    66
+   ],
+   "role": "warn",
+   "strokeWidth": 2.5,
+   "dash": true
+  },
+  {
+   "type": "text",
+   "id": "tt",
+   "at": [
+    "12+0.68*T",
+    69
+   ],
+   "text": "{{T|int}} °C",
+   "role": "warn",
+   "size": "m",
+   "bold": true
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Solubility at 20 °C",
+   "text": "**Solubility** = grams of solute that dissolve in **100 g of solvent** at a given temperature. Slide the temperature to read each value.",
+   "actions": [
+    {
+     "set": {
+      "T": 20
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Most solids: higher T, more dissolves",
+   "text": "The solubility of **KNO₃** (and NaNO₃, KCl, CuSO₄, AgNO₃) **increases** as the temperature rises. KNO₃ rises very steeply.",
+   "actions": [
+    {
+     "tween": {
+      "T": 90
+     },
+     "at": 0,
+     "dur": 2200
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Sodium chloride is almost flat",
+   "text": "The solubility of **NaCl** does **not increase appreciably** with temperature.",
+   "actions": [
+    {
+     "set": {
+      "T": 60
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Gases in water: opposite",
+   "text": "The solubility of **gases** (NH₃, SO₂) **decreases** as the temperature rises. Usually solubility increases with temperature but this is **not a general rule**.",
+   "actions": [
+    {
+     "tween": {
+      "T": 20
+     },
+     "at": 0,
+     "dur": 1800
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "KNO₃",
+   "value": "{{SKNO3|1}} g",
+   "role": "KNO3"
+  },
+  {
+   "label": "NaNO₃",
+   "value": "{{SNaNO3|1}} g",
+   "role": "NaNO3"
+  },
+  {
+   "label": "KCl",
+   "value": "{{SKCl|1}} g",
+   "role": "KCl"
+  },
+  {
+   "label": "NaCl",
+   "value": "{{SNaCl|1}} g",
+   "role": "NaCl"
+  },
+  {
+   "label": "NH₃ (gas)",
+   "value": "{{SNH3|1}} g",
+   "role": "NH3"
+  },
+  {
+   "label": "SO₂ (gas)",
+   "value": "{{SSO2|1}} g",
+   "role": "SO2"
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "The solubility of which substance does **not change appreciably** with temperature?",
+   "options": [
+    {
+     "id": "a",
+     "label": "NaCl"
+    },
+    {
+     "id": "b",
+     "label": "KNO₃"
+    },
+    {
+     "id": "c",
+     "label": "NaNO₃"
+    },
+    {
+     "id": "d",
+     "label": "KCl"
+    }
+   ],
+   "answer": "a",
+   "hint": "Its curve is nearly flat.",
+   "explain": "The **NaCl** curve is almost flat."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "When water is heated, the solubility of a **gas** in it usually…",
+   "options": [
+    {
+     "id": "a",
+     "label": "decreases"
+    },
+    {
+     "id": "b",
+     "label": "increases"
+    },
+    {
+     "id": "c",
+     "label": "stays the same"
+    },
+    {
+     "id": "d",
+     "label": "doubles"
+    }
+   ],
+   "answer": "a",
+   "hint": "Gas curves fall.",
+   "explain": "The solubility of gases generally **decreases** with temperature."
+  },
+  {
+   "id": "c3",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "Read the graph: about how many grams of KNO₃ dissolve in 100 g of water at **60 °C**?",
+   "answer": "13.3+0.539*60+0.01788*3600",
+   "hint": "Set the slider to 60 °C and read the KNO₃ value.",
+   "explain": "About **110 g** (read from the curve).",
+   "tolerance": 8,
+   "unit": "g"
+  }
+ ],
+ "takeaways": [
+  "Solubility = g of solute per 100 g of solvent at a given temperature.",
+  "Solids such as KNO₃ dissolve more when hot; NaCl hardly changes; gases dissolve less when hot.",
+  "It is not a general rule that solubility increases with temperature."
+ ],
+ "notes": [
+  {
+   "title": "Beyond the book",
+   "text": "The book’s Fig 1.6 shows the curves without numbers. The values here are smooth fits to standard solubility tables, so treat them as **approximate**."
+  }
+ ]
+}

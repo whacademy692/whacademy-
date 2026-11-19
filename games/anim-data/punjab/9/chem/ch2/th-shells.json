@@ -1,0 +1,644 @@
+{
+ "id": "pb9-chem-c2-th-shells",
+ "title": "Shells and the 2n² rule",
+ "summary": "How many electrons can each shell hold? Step through K, L, M and N.",
+ "alt": "Bohr model with shells K, L, M and N around a nucleus, filled to their 2n² capacity one at a time.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80.0
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "nuc": {
+   "label": "Nucleus",
+   "color": "#dc2626",
+   "text": "The tiny central part of the atom.",
+   "legend": false
+  },
+  "el": {
+   "label": "Electron",
+   "color": "#2563eb",
+   "text": "Negative particle moving around the nucleus.",
+   "legend": true
+  },
+  "sh": {
+   "label": "Shell",
+   "color": "#94a3b8",
+   "text": "An energy level (orbit).",
+   "legend": false
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "ph",
+   "label": "Spin",
+   "type": "clock",
+   "min": 0,
+   "max": 360,
+   "step": 0.01,
+   "speed": 45,
+   "loop": "repeat",
+   "default": 0,
+   "auto": true,
+   "hidden": true
+  },
+  {
+   "id": "k",
+   "label": "Shell number n",
+   "type": "number",
+   "min": 1,
+   "max": 4,
+   "step": 1,
+   "default": 1
+  }
+ ],
+ "derived": {
+  "Rk": "8+7.5*(k-1)",
+  "cap": "2*k^2"
+ },
+ "shapes": [
+  {
+   "type": "circle",
+   "id": "sh1",
+   "c": [
+    33,
+    40
+   ],
+   "r": 8.0,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2
+  },
+  {
+   "type": "circle",
+   "id": "hi1",
+   "c": [
+    33,
+    40
+   ],
+   "r": 8.0,
+   "role": "warn",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 4,
+   "visible": "k==1"
+  },
+  {
+   "type": "text",
+   "id": "nm1",
+   "at": [
+    38.76,
+    46.96
+   ],
+   "text": "K",
+   "role": "warn",
+   "size": "s",
+   "bold": true,
+   "visible": "k==1"
+  },
+  {
+   "type": "circle",
+   "id": "sh2",
+   "c": [
+    33,
+    40
+   ],
+   "r": 15.5,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2
+  },
+  {
+   "type": "circle",
+   "id": "hi2",
+   "c": [
+    33,
+    40
+   ],
+   "r": 15.5,
+   "role": "warn",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 4,
+   "visible": "k==2"
+  },
+  {
+   "type": "text",
+   "id": "nm2",
+   "at": [
+    44.16,
+    52.36
+   ],
+   "text": "L",
+   "role": "warn",
+   "size": "s",
+   "bold": true,
+   "visible": "k==2"
+  },
+  {
+   "type": "circle",
+   "id": "sh3",
+   "c": [
+    33,
+    40
+   ],
+   "r": 23.0,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2
+  },
+  {
+   "type": "circle",
+   "id": "hi3",
+   "c": [
+    33,
+    40
+   ],
+   "r": 23.0,
+   "role": "warn",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 4,
+   "visible": "k==3"
+  },
+  {
+   "type": "text",
+   "id": "nm3",
+   "at": [
+    49.56,
+    57.760000000000005
+   ],
+   "text": "M",
+   "role": "warn",
+   "size": "s",
+   "bold": true,
+   "visible": "k==3"
+  },
+  {
+   "type": "circle",
+   "id": "sh4",
+   "c": [
+    33,
+    40
+   ],
+   "r": 30.5,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2
+  },
+  {
+   "type": "circle",
+   "id": "hi4",
+   "c": [
+    33,
+    40
+   ],
+   "r": 30.5,
+   "role": "warn",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 4,
+   "visible": "k==4"
+  },
+  {
+   "type": "text",
+   "id": "nm4",
+   "at": [
+    54.96,
+    63.160000000000004
+   ],
+   "text": "N",
+   "role": "warn",
+   "size": "s",
+   "bold": true,
+   "visible": "k==4"
+  },
+  {
+   "type": "circle",
+   "id": "nuc",
+   "c": [
+    33,
+    40
+   ],
+   "r": 3.4,
+   "role": "nuc",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 3
+  },
+  {
+   "type": "text",
+   "id": "nt",
+   "at": [
+    33,
+    40
+   ],
+   "text": "+",
+   "role": "nuc",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "repeat",
+   "id": "es",
+   "count": "cap",
+   "as": "i",
+   "template": {
+    "type": "point",
+    "id": "e",
+    "at": [
+     "(33)+Rk*cos(ph+360*i/cap)",
+     "(40)+Rk*sin(ph+360*i/cap)"
+    ],
+    "role": "el",
+    "r": 5
+   }
+  },
+  {
+   "type": "text",
+   "id": "lt",
+   "at": [
+    77,
+    73
+   ],
+   "text": "Energy levels",
+   "role": "ink",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "lv1",
+   "from": [
+    69,
+    10
+   ],
+   "to": [
+    87,
+    10
+   ],
+   "role": "sh",
+   "strokeWidth": 3
+  },
+  {
+   "type": "segment",
+   "id": "lh1",
+   "from": [
+    69,
+    10
+   ],
+   "to": [
+    87,
+    10
+   ],
+   "role": "warn",
+   "strokeWidth": 5,
+   "visible": "k==1"
+  },
+  {
+   "type": "text",
+   "id": "ln1",
+   "at": [
+    73,
+    14.2
+   ],
+   "text": "n=1 (K)",
+   "role": "ink",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "le1",
+   "at": [
+    84,
+    14.2
+   ],
+   "text": "E₁",
+   "role": "ink",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "lv2",
+   "from": [
+    69,
+    26
+   ],
+   "to": [
+    87,
+    26
+   ],
+   "role": "sh",
+   "strokeWidth": 3
+  },
+  {
+   "type": "segment",
+   "id": "lh2",
+   "from": [
+    69,
+    26
+   ],
+   "to": [
+    87,
+    26
+   ],
+   "role": "warn",
+   "strokeWidth": 5,
+   "visible": "k==2"
+  },
+  {
+   "type": "text",
+   "id": "ln2",
+   "at": [
+    73,
+    30.2
+   ],
+   "text": "n=2 (L)",
+   "role": "ink",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "le2",
+   "at": [
+    84,
+    30.2
+   ],
+   "text": "E₂",
+   "role": "ink",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "lv3",
+   "from": [
+    69,
+    42
+   ],
+   "to": [
+    87,
+    42
+   ],
+   "role": "sh",
+   "strokeWidth": 3
+  },
+  {
+   "type": "segment",
+   "id": "lh3",
+   "from": [
+    69,
+    42
+   ],
+   "to": [
+    87,
+    42
+   ],
+   "role": "warn",
+   "strokeWidth": 5,
+   "visible": "k==3"
+  },
+  {
+   "type": "text",
+   "id": "ln3",
+   "at": [
+    73,
+    46.2
+   ],
+   "text": "n=3 (M)",
+   "role": "ink",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "le3",
+   "at": [
+    84,
+    46.2
+   ],
+   "text": "E₃",
+   "role": "ink",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "lv4",
+   "from": [
+    69,
+    58
+   ],
+   "to": [
+    87,
+    58
+   ],
+   "role": "sh",
+   "strokeWidth": 3
+  },
+  {
+   "type": "segment",
+   "id": "lh4",
+   "from": [
+    69,
+    58
+   ],
+   "to": [
+    87,
+    58
+   ],
+   "role": "warn",
+   "strokeWidth": 5,
+   "visible": "k==4"
+  },
+  {
+   "type": "text",
+   "id": "ln4",
+   "at": [
+    73,
+    62.2
+   ],
+   "text": "n=4 (N)",
+   "role": "ink",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "le4",
+   "at": [
+    84,
+    62.2
+   ],
+   "text": "E₄",
+   "role": "ink",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "vector",
+   "id": "up",
+   "from": [
+    66,
+    8
+   ],
+   "to": [
+    66,
+    66
+   ],
+   "role": "sh",
+   "strokeWidth": 2.5
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Bohr's picture",
+   "text": "Electrons revolve around the **nucleus** in fixed paths called **shells** or **orbits**. Each shell has its own fixed energy, so shells are also called **energy levels**.",
+   "actions": [
+    {
+     "set": {
+      "k": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "K shell (n = 1)",
+   "text": "The shell nearest the nucleus is the **K shell**. It has the **lowest energy** and holds at most **2** electrons: 2 × 1² = 2.",
+   "actions": [
+    {
+     "set": {
+      "k": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "L shell (n = 2)",
+   "text": "The second shell is **L**. Maximum = 2 × 2² = **8** electrons. It is farther away, so its energy is greater.",
+   "actions": [
+    {
+     "set": {
+      "k": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "M shell (n = 3)",
+   "text": "Third shell **M**: 2 × 3² = **18** electrons.",
+   "actions": [
+    {
+     "set": {
+      "k": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "N shell (n = 4)",
+   "text": "Fourth shell **N**: 2 × 4² = **32** electrons. E₄ > E₃ > E₂ > E₁.",
+   "actions": [
+    {
+     "set": {
+      "k": 4
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Shell",
+   "value": "n = {{k|int}}",
+   "role": "warn"
+  },
+  {
+   "label": "Electrons it can hold (2n²)",
+   "value": "{{cap|int}}",
+   "role": "el"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Maximum electrons in a shell",
+   "tex": "\\text{max electrons} = 2n^2",
+   "text": "n is the shell number (K = 1, L = 2, M = 3, N = 4)."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "How many electrons can the **third shell (M)** hold at most?",
+   "answer": "2*3^2",
+   "hint": "Use 2n² with n = 3.",
+   "explain": "\\( 2n^2 = 2 \\times 3^2 = 18 \\).",
+   "tolerance": 0.01
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which shell has the **greatest energy**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "K shell"
+    },
+    {
+     "id": "b",
+     "label": "L shell"
+    },
+    {
+     "id": "c",
+     "label": "M shell"
+    },
+    {
+     "id": "d",
+     "label": "N shell"
+    }
+   ],
+   "answer": "d",
+   "hint": "Energy increases as the shells get farther from the nucleus.",
+   "explain": "E₄ > E₃ > E₂ > E₁, so the N shell (4th) has the most energy."
+  }
+ ],
+ "takeaways": [
+  "Shells (energy levels) are K, L, M, N … with n = 1, 2, 3, 4 …",
+  "Maximum electrons in a shell = **2n²**: 2, 8, 18, 32.",
+  "The shell nearest the nucleus has the least energy."
+ ]
+}

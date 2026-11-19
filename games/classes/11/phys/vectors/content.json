@@ -1,0 +1,608 @@
+{
+  "chapterId": "class11-phys-vectors",
+  "classLevel": 11,
+  "subject": "Physics",
+  "subjectKey": "phys",
+  "title": "Vectors",
+  "chapterRef": "class11/subjects/phys/vectors",
+  "schemaVersion": "1.0.0",
+  "learningOutcomes": [
+    "Distinguish scalars from vectors, represent a vector graphically, and define the unit vector, null vector and position vector.",
+    "Define rectangular components and write a vector in the form A = Ax î + Ay ĵ.",
+    "Find the magnitudes of the rectangular components using Ax = A cosθ and Ay = A sinθ.",
+    "Find the magnitude and direction of a vector from its components using A = √(Ax² + Ay²) and θ = tan⁻¹(Ay/Ax).",
+    "Solve numerical problems on resolving a vector into components and rebuilding it from them.",
+    "Define the scalar (dot) product and state A · B = AB cosθ, including its meaning as one magnitude times the component of the other vector.",
+    "Give examples of the scalar product: work, power and electric flux.",
+    "State and explain the properties of the scalar product: commutative, results at 0°, 90° and 180°, self-product and unit-vector products.",
+    "Use the scalar product in component form, and use it to find the angle between two vectors and the projection of one on another.",
+    "Define the vector (cross) product, state A × B = AB sinθ n̂, and apply the right-hand rule to find its direction.",
+    "Give examples of the vector product: torque and angular momentum.",
+    "State and explain the properties of the vector product: anti-commutative, results at 0°, 180° and 90°, self-product and unit-vector products.",
+    "Evaluate the vector product in component form using a determinant.",
+    "Explain that |A × B| equals the area of the parallelogram whose adjacent sides are A and B.",
+    "Compare the scalar and vector products and choose the correct one for a given physical situation.",
+    "Connect resolution, the scalar product and the vector product through the same right-angled triangle and the functions cosθ and sinθ."
+  ],
+  "theory": {
+    "sections": [
+      {
+        "heading": "Scalars and Vectors",
+        "body": "A scalar is completely described by a magnitude (a number with a unit): mass, time, length, speed, energy, work and power. A vector needs a magnitude and a direction: displacement, velocity, acceleration, force, momentum, torque and angular momentum. A vector is drawn as an arrow whose length (to scale) shows the magnitude and whose arrowhead shows the direction. In print a vector is written in bold, or with an arrow over the letter, such as A; its magnitude is written |A| or simply A."
+      },
+      {
+        "heading": "Unit Vector, Null Vector and Position Vector",
+        "body": "A unit vector has magnitude one and no unit; it only shows direction. The unit vector along A is Â = A/A. Along the x, y and z axes the unit vectors are î, ĵ and k̂. The null (zero) vector has zero magnitude and an arbitrary direction. The position vector r of a point P(x, y) locates it from the origin, r = x î + y ĵ, with magnitude r = √(x² + y²)."
+      },
+      {
+        "heading": "Rectangular Components of a Vector",
+        "body": "Any vector in a plane can be replaced by two perpendicular vectors along the x- and y-axes: its rectangular components Ax and Ay. Drop perpendiculars from the head of A to the two axes to form a right-angled triangle. Then A = Ax î + Ay ĵ. The components do the same job as the single vector, and because they are at right angles they do not affect each other. This is why resolving a vector makes force and motion problems easy."
+      },
+      {
+        "heading": "Magnitudes of the Components",
+        "body": "If A makes an angle θ with the +x axis, the right-angled triangle gives cosθ = Ax/A and sinθ = Ay/A. Hence Ax = A cosθ and Ay = A sinθ. Check the extremes: at θ = 0° the vector lies along x, so Ax = A and Ay = 0; at θ = 90° it lies along y, so Ax = 0 and Ay = A. The component next to the angle uses cosine; the component opposite the angle uses sine. Signs follow the quadrant."
+      },
+      {
+        "heading": "Magnitude and Direction from Components",
+        "body": "When Ax and Ay are known, Pythagoras' theorem in the right-angled triangle gives A² = Ax² + Ay², so A = √(Ax² + Ay²). The direction is given by tanθ = Ay/Ax, so θ = tan⁻¹(Ay/Ax). The calculator angle is measured from the x-axis; check the quadrant from the signs of Ax and Ay. Ax = Ay gives θ = 45°; Ax = 3, Ay = 4 gives A = 5 and θ = 53.1°."
+      },
+      {
+        "heading": "Scalar (Dot) Product",
+        "body": "The scalar product of A and B is A · B = AB cosθ, where θ is the angle between them (tails joined). It is the magnitude of one vector multiplied by the component of the other along it, so A · B = (A cosθ) B = A (B cosθ). The result is a scalar. The product has its largest positive value at 0° (parallel), is zero at 90° (perpendicular) and has its largest negative value at 180° (anti-parallel)."
+      },
+      {
+        "heading": "Examples of the Scalar Product",
+        "body": "Work: W = F · d = F d cosθ; only the component of the force along the displacement does work, so a force perpendicular to the motion does none. Power: P = F · v = F v cosθ, the rate of work. Electric flux: Φ = E · A = E A cosθ, where the area vector A is normal to the surface. All three give scalar answers, and all three are largest when the two vectors are parallel."
+      },
+      {
+        "heading": "Properties of the Scalar Product",
+        "body": "(1) A · B = B · A, the commutative property. (2) A · A = A², the square of the magnitude. (3) If A · B = 0 and neither vector is null, the vectors are perpendicular. (4) î · î = ĵ · ĵ = k̂ · k̂ = 1 and î · ĵ = ĵ · k̂ = k̂ · î = 0. (5) The scalar product is distributive: A · (B + C) = A · B + A · C. The angle between two vectors follows from cosθ = A · B/(AB)."
+      },
+      {
+        "heading": "Scalar Product in Component Form",
+        "body": "Write A = Ax î + Ay ĵ + Az k̂ and B = Bx î + By ĵ + Bz k̂. Multiplying term by term and using î · î = 1 and î · ĵ = 0 leaves only the like-axis terms: A · B = AxBx + AyBy + AzBz. The component of A along B is (A · B)/B. To find the angle, compute A · B, A and B, then use cosθ = (A · B)/(AB)."
+      },
+      {
+        "heading": "Vector (Cross) Product",
+        "body": "The vector product of A and B is A × B = AB sinθ n̂, where θ is the angle between them and n̂ is a unit vector perpendicular to the plane of A and B. The result is a vector. Its magnitude AB sinθ is largest (AB) at 90° and zero at 0° and 180°. Its direction follows the right-hand rule: curl the fingers of the right hand from the first vector A toward the second vector B through the smaller angle; the erect thumb points along A × B."
+      },
+      {
+        "heading": "Examples of the Vector Product",
+        "body": "Torque: τ = r × F, with magnitude rF sinθ; it is the turning effect of a force about a point and is zero when the force acts along the line of r. Angular momentum: L = r × p = m (r × v). Both are vectors perpendicular to the plane of the two vectors in the product, with direction found by the right-hand rule. The magnitude of a vector product also gives the area of a parallelogram."
+      },
+      {
+        "heading": "Properties of the Vector Product",
+        "body": "(1) A × B = −(B × A): the product is anti-commutative, so reversing the order reverses the direction. (2) A × A = 0, and the product vanishes for parallel and anti-parallel vectors. (3) For perpendicular vectors |A × B| = AB. (4) î × î = ĵ × ĵ = k̂ × k̂ = 0. (5) î × ĵ = k̂, ĵ × k̂ = î, k̂ × î = ĵ, and the reversed orders give the negatives."
+      },
+      {
+        "heading": "Vector Product in Component Form",
+        "body": "The vector product of A = Ax î + Ay ĵ + Az k̂ and B = Bx î + By ĵ + Bz k̂ is the determinant with rows î ĵ k̂, Ax Ay Az and Bx By Bz. Expanding gives A × B = (AyBz − AzBy) î − (AxBz − AzBx) ĵ + (AxBy − AyBx) k̂. For two vectors in the x–y plane only the k̂ term survives: A × B = (AxBy − AyBx) k̂. Remember the minus sign before the ĵ term."
+      },
+      {
+        "heading": "Area of a Parallelogram and a Triangle",
+        "body": "Place two vectors A and B tail to tail; they are the adjacent sides of a parallelogram. Its height is B sinθ, so its area is base × height = AB sinθ = |A × B|. The triangle formed by the same two vectors has half that area, ½ |A × B|. Because the area equals a vector product, parallel vectors give zero area (the shape collapses)."
+      },
+      {
+        "heading": "Dot Product versus Cross Product",
+        "body": "Both products use the angle between the vectors, but through different functions. The dot product uses cosθ, gives a scalar, and measures how much the vectors point the same way (zero when perpendicular). The cross product uses sinθ, gives a vector, and measures how much they point apart (zero when parallel). Together, (A · B)² + |A × B|² = A²B² and tanθ = |A × B|/(A · B)."
+      }
+    ],
+    "definitions": [
+      {
+        "term": "Scalar",
+        "definition": "A physical quantity described completely by a magnitude (a number with a unit), for example mass, time, work."
+      },
+      {
+        "term": "Vector",
+        "definition": "A physical quantity that has both magnitude and direction, for example force, displacement, torque."
+      },
+      {
+        "term": "Unit vector",
+        "definition": "A vector of magnitude one with no unit that shows direction only; Â = A/A, and î, ĵ, k̂ along the axes."
+      },
+      {
+        "term": "Null vector",
+        "definition": "A vector of zero magnitude and arbitrary direction."
+      },
+      {
+        "term": "Position vector",
+        "definition": "The vector drawn from the origin to a point P(x, y): r = x î + y ĵ."
+      },
+      {
+        "term": "Rectangular components",
+        "definition": "The two mutually perpendicular vectors Ax î and Ay ĵ into which a vector can be resolved."
+      },
+      {
+        "term": "Resolution of a vector",
+        "definition": "Splitting a vector into two perpendicular components: Ax = A cosθ and Ay = A sinθ."
+      },
+      {
+        "term": "Magnitude of a vector",
+        "definition": "A = √(Ax² + Ay²) for a vector with rectangular components Ax and Ay."
+      },
+      {
+        "term": "Direction of a vector",
+        "definition": "The angle θ with the +x axis found from tanθ = Ay/Ax."
+      },
+      {
+        "term": "Scalar (dot) product",
+        "definition": "A · B = AB cosθ; the result is a scalar."
+      },
+      {
+        "term": "Work",
+        "definition": "The scalar product of force and displacement, W = F · d = F d cosθ (unit: joule)."
+      },
+      {
+        "term": "Power",
+        "definition": "The scalar product of force and velocity, P = F · v = F v cosθ (unit: watt)."
+      },
+      {
+        "term": "Electric flux",
+        "definition": "The scalar product of the electric field and the area vector, Φ = E · A = E A cosθ."
+      },
+      {
+        "term": "Projection of A on B",
+        "definition": "The component of A along B, equal to A cosθ = (A · B)/B."
+      },
+      {
+        "term": "Vector (cross) product",
+        "definition": "A × B = AB sinθ n̂; the result is a vector perpendicular to both A and B."
+      },
+      {
+        "term": "Right-hand rule",
+        "definition": "Curl the fingers of the right hand from the first vector toward the second through the smaller angle; the thumb shows the direction of A × B."
+      },
+      {
+        "term": "Torque",
+        "definition": "The vector product of position vector and force, τ = r × F, with magnitude rF sinθ (unit: N m)."
+      },
+      {
+        "term": "Angular momentum",
+        "definition": "The vector product of position vector and linear momentum, L = r × p."
+      },
+      {
+        "term": "Commutative property",
+        "definition": "The order does not matter: A · B = B · A holds for the dot product but not for the cross product."
+      },
+      {
+        "term": "Anti-commutative property",
+        "definition": "Reversing the order reverses the sign: A × B = −(B × A)."
+      },
+      {
+        "term": "Parallelogram area",
+        "definition": "The area of a parallelogram with adjacent sides A and B is |A × B| = AB sinθ."
+      },
+      {
+        "term": "Perpendicular vectors",
+        "definition": "Two non-null vectors at 90° to each other; their scalar product is zero."
+      },
+      {
+        "term": "Parallel vectors",
+        "definition": "Two non-null vectors at 0° or 180° to each other; their vector product is zero."
+      }
+    ],
+    "examTips": [
+      "Before using Ax = A cosθ and Ay = A sinθ, check which axis the angle is measured from; if it is measured from the y-axis, the sine and cosine swap.",
+      "For θ = tan⁻¹(Ay/Ax) always look at the signs of Ax and Ay to place the vector in the correct quadrant before writing the final angle.",
+      "Write the scalar product as A · B and the vector product as A × B; never use the wrong symbol, because an examiner marks the type of the answer (a number or a vector).",
+      "A · B uses cosθ and gives a number; A × B uses sinθ and gives a vector. In any long answer say this in one line.",
+      "For the direction of A × B, name the right-hand rule and state it fully: fingers from A to B through the smaller angle, thumb along A × B.",
+      "In the determinant for A × B, the ĵ term has a minus sign: (AyBz − AzBy) î − (AxBz − AzBx) ĵ + (AxBy − AyBx) k̂.",
+      "Remember the three special results: A · B = 0 for perpendicular vectors, A × B = 0 for parallel and anti-parallel vectors, and A × A = 0.",
+      "Learn the unit-vector table: î × ĵ = k̂, ĵ × k̂ = î, k̂ × î = ĵ (cyclic order is positive); reversing the order gives the negative.",
+      "Give the area of a parallelogram as |A × B| = AB sinθ and the area of a triangle as ½ |A × B|; a missing half is a common lost mark."
+    ]
+  },
+  "practiceQuestions": [
+    {
+      "id": "q1",
+      "mechanicId": "mcq-arena",
+      "topicTag": "scalars-vectors",
+      "difficulty": "Easy",
+      "bloomsLevel": "Remember",
+      "prompt": "Which of these is a vector quantity?",
+      "payload": {
+        "options": [
+          "Mass",
+          "Force",
+          "Time",
+          "Work"
+        ],
+        "correctIndex": 1
+      },
+      "explanation": "Force has direction as well as magnitude, so it is a vector; mass, time and work are scalars."
+    },
+    {
+      "id": "q2",
+      "mechanicId": "mcq-arena",
+      "topicTag": "unit-vectors",
+      "difficulty": "Easy",
+      "bloomsLevel": "Understand",
+      "prompt": "A unit vector has:",
+      "payload": {
+        "options": [
+          "Magnitude 1 and no unit",
+          "Magnitude 1 and a unit of metre",
+          "Zero magnitude",
+          "Magnitude equal to the vector"
+        ],
+        "correctIndex": 0
+      },
+      "explanation": "A unit vector has magnitude one and no unit; it only shows direction."
+    },
+    {
+      "id": "q3",
+      "mechanicId": "mcq-arena",
+      "topicTag": "rectangular-components",
+      "difficulty": "Medium",
+      "bloomsLevel": "Understand",
+      "prompt": "A force of 10 N acts at 30° with the horizontal. Which expression gives its vertical component?",
+      "payload": {
+        "options": [
+          "10 cos30°",
+          "10 sin30°",
+          "10 tan30°",
+          "10/sin30°"
+        ],
+        "correctIndex": 1
+      },
+      "explanation": "The vertical component is opposite the angle, so Fy = F sinθ = 10 sin30° = 5 N."
+    },
+    {
+      "id": "q4",
+      "mechanicId": "mcq-arena",
+      "topicTag": "rectangular-components",
+      "difficulty": "Medium",
+      "bloomsLevel": "Apply",
+      "prompt": "A rope pulls a box with 40 N at 60° to the floor. What is the horizontal component of the pull?",
+      "payload": {
+        "options": [
+          "20 N",
+          "34.6 N",
+          "40 N",
+          "80 N"
+        ],
+        "correctIndex": 0
+      },
+      "explanation": "Fx = F cosθ = 40 cos60° = 20 N."
+    },
+    {
+      "id": "q5",
+      "mechanicId": "mcq-arena",
+      "topicTag": "magnitude-direction",
+      "difficulty": "Medium",
+      "bloomsLevel": "Apply",
+      "prompt": "The components of a force are Fx = 12 N and Fy = 5 N. The magnitude of the force is:",
+      "payload": {
+        "options": [
+          "7 N",
+          "13 N",
+          "17 N",
+          "60 N"
+        ],
+        "correctIndex": 1
+      },
+      "explanation": "F = √(Fx² + Fy²) = √(144 + 25) = 13 N."
+    },
+    {
+      "id": "q6",
+      "mechanicId": "mcq-arena",
+      "topicTag": "dot-product",
+      "difficulty": "Medium",
+      "bloomsLevel": "Apply",
+      "prompt": "A force of 20 N moves a body 5 m in its own direction. The work done is:",
+      "payload": {
+        "options": [
+          "0 J",
+          "4 J",
+          "100 J",
+          "25 J"
+        ],
+        "correctIndex": 2
+      },
+      "explanation": "θ = 0°, so W = F d cos0° = 20 × 5 × 1 = 100 J."
+    },
+    {
+      "id": "q7",
+      "mechanicId": "mcq-arena",
+      "topicTag": "cross-product",
+      "difficulty": "Medium",
+      "bloomsLevel": "Apply",
+      "prompt": "î × ĵ equals:",
+      "payload": {
+        "options": [
+          "k̂",
+          "−k̂",
+          "0",
+          "1"
+        ],
+        "correctIndex": 0
+      },
+      "explanation": "Cyclic order î → ĵ → k̂ gives î × ĵ = k̂."
+    },
+    {
+      "id": "q8",
+      "mechanicId": "mcq-arena",
+      "topicTag": "connecting-concepts",
+      "difficulty": "Medium",
+      "bloomsLevel": "Understand",
+      "prompt": "Which product is zero for two perpendicular vectors?",
+      "payload": {
+        "options": [
+          "The vector product",
+          "The scalar product",
+          "Both products",
+          "Neither product"
+        ],
+        "correctIndex": 1
+      },
+      "explanation": "A · B = AB cos90° = 0, while |A × B| = AB sin90° = AB."
+    },
+    {
+      "id": "q9",
+      "mechanicId": "true-false-sprint",
+      "topicTag": "scalars-vectors",
+      "difficulty": "Easy",
+      "bloomsLevel": "Remember",
+      "prompt": "Work is a scalar quantity even though it is calculated from two vectors.",
+      "payload": {
+        "correctBoolean": true
+      },
+      "explanation": "True. Work is the scalar (dot) product of force and displacement, and its result is a number."
+    },
+    {
+      "id": "q10",
+      "mechanicId": "true-false-sprint",
+      "topicTag": "rectangular-components",
+      "difficulty": "Easy",
+      "bloomsLevel": "Understand",
+      "prompt": "If θ = 0° with the x-axis, the y-component of the vector is zero.",
+      "payload": {
+        "correctBoolean": true
+      },
+      "explanation": "True. Ay = A sin0° = 0, so the vector lies entirely along the x-axis."
+    },
+    {
+      "id": "q11",
+      "mechanicId": "true-false-sprint",
+      "topicTag": "cross-product",
+      "difficulty": "Medium",
+      "bloomsLevel": "Understand",
+      "prompt": "A × B = B × A for any two vectors.",
+      "payload": {
+        "correctBoolean": false
+      },
+      "explanation": "False. The vector product is anti-commutative: A × B = −(B × A)."
+    },
+    {
+      "id": "q12",
+      "mechanicId": "true-false-sprint",
+      "topicTag": "dot-product",
+      "difficulty": "Easy",
+      "bloomsLevel": "Understand",
+      "prompt": "If A · B = 0 for two non-null vectors, then the vectors are perpendicular.",
+      "payload": {
+        "correctBoolean": true
+      },
+      "explanation": "True. cosθ = 0 gives θ = 90°."
+    },
+    {
+      "id": "q13",
+      "mechanicId": "fill-in-the-blank",
+      "topicTag": "dot-product",
+      "difficulty": "Medium",
+      "bloomsLevel": "Remember",
+      "prompt": "The scalar product of two vectors is also called the ______ product.",
+      "payload": {
+        "acceptedAnswers": [
+          "dot"
+        ]
+      },
+      "explanation": "The scalar product is written with a dot, A · B, so it is also called the dot product."
+    },
+    {
+      "id": "q14",
+      "mechanicId": "fill-in-the-blank",
+      "topicTag": "cross-product",
+      "difficulty": "Easy",
+      "bloomsLevel": "Remember",
+      "prompt": "The direction of the vector product is found by the ______ rule.",
+      "payload": {
+        "acceptedAnswers": [
+          "right-hand",
+          "right hand",
+          "right hand rule"
+        ]
+      },
+      "explanation": "The right-hand rule gives the direction of A × B."
+    },
+    {
+      "id": "q15",
+      "mechanicId": "fill-in-the-blank",
+      "topicTag": "magnitude-direction",
+      "difficulty": "Easy",
+      "bloomsLevel": "Remember",
+      "prompt": "The magnitude of a vector with components 3 and 4 is ______.",
+      "payload": {
+        "acceptedAnswers": [
+          "5"
+        ],
+        "numeric": true,
+        "tolerance": 0.01
+      },
+      "explanation": "A = √(3² + 4²) = 5."
+    }
+  ],
+  "sequencingActivity": {
+    "id": "seq1",
+    "mechanicId": "ordering-sequencing",
+    "topicTag": "magnitude-direction",
+    "difficulty": "Medium",
+    "bloomsLevel": "Apply",
+    "prompt": "Arrange the steps of finding the magnitude and direction of a vector from its components, starting with writing the components.",
+    "payload": {
+      "items": [
+        "Apply tanθ = Ay/Ax",
+        "Write the given Ax and Ay",
+        "Take tan⁻¹ to get the angle θ",
+        "Take the square root to get A",
+        "Apply Pythagoras: A² = Ax² + Ay²"
+      ],
+      "correctOrder": [
+        "Write the given Ax and Ay",
+        "Apply Pythagoras: A² = Ax² + Ay²",
+        "Take the square root to get A",
+        "Apply tanθ = Ay/Ax",
+        "Take tan⁻¹ to get the angle θ"
+      ]
+    },
+    "explanation": "The magnitude comes first from Pythagoras, then the direction from the tangent ratio; both use the same two components."
+  },
+  "bossBattleQuestions": [
+    {
+      "id": "b1",
+      "mechanicId": "mcq-arena",
+      "topicTag": "magnitude-direction",
+      "difficulty": "Master",
+      "bloomsLevel": "Analyze",
+      "prompt": "Find the angle between A = 6î + 8ĵ and B = 3î − 4ĵ.",
+      "payload": {
+        "options": [
+          "106.3°",
+          "73.7°",
+          "90°",
+          "53.1°"
+        ],
+        "correctIndex": 0
+      },
+      "explanation": "A · B = (6)(3) + (8)(−4) = −14, A = 10 and B = 5, so cosθ = −14/50 = −0.28 and θ = 106.3°. (73.7° is the supplement, found if the sign of A · B is ignored.)"
+    },
+    {
+      "id": "b2",
+      "mechanicId": "mcq-arena",
+      "topicTag": "dot-product",
+      "difficulty": "Master",
+      "bloomsLevel": "Apply",
+      "prompt": "A force F = 4î + 3ĵ N moves a body from the point (1, 2) m to the point (7, 10) m. Find the work done.",
+      "payload": {
+        "options": [
+          "48 J",
+          "14 J",
+          "50 J",
+          "24 J"
+        ],
+        "correctIndex": 0
+      },
+      "explanation": "Displacement d = (7 − 1)î + (10 − 2)ĵ = 6î + 8ĵ m. W = F · d = (4)(6) + (3)(8) = 48 J. (50 J is F × d, found by ignoring the angle.)"
+    },
+    {
+      "id": "b3",
+      "mechanicId": "mcq-arena",
+      "topicTag": "torque-angular-momentum",
+      "difficulty": "Master",
+      "bloomsLevel": "Apply",
+      "prompt": "A force F = 4î − 5ĵ N acts at the position r = 2î + 3ĵ m. Find the torque τ = r × F.",
+      "payload": {
+        "options": [
+          "−22 k̂ N m",
+          "22 k̂ N m",
+          "−2 k̂ N m",
+          "2 k̂ N m"
+        ],
+        "correctIndex": 0
+      },
+      "explanation": "Both vectors lie in the x–y plane, so τ = (rxFy − ryFx) k̂ = (2)(−5) − (3)(4) = −10 − 12 = −22, i.e. τ = −22 k̂ N m."
+    },
+    {
+      "id": "b4",
+      "mechanicId": "mcq-arena",
+      "topicTag": "connecting-concepts",
+      "difficulty": "Master",
+      "bloomsLevel": "Analyze",
+      "prompt": "For two vectors, A · B = 12 and |A × B| = 12√3. Find the angle between them and the product AB of their magnitudes.",
+      "payload": {
+        "options": [
+          "60° and 24",
+          "30° and 24",
+          "60° and 12",
+          "45° and 24"
+        ],
+        "correctIndex": 0
+      },
+      "explanation": "tanθ = |A × B|/(A · B) = √3, so θ = 60°. Also (AB)² = (A · B)² + |A × B|² = 144 + 432 = 576, so AB = 24."
+    },
+    {
+      "id": "b5",
+      "mechanicId": "mcq-arena",
+      "topicTag": "area-parallelogram",
+      "difficulty": "Master",
+      "bloomsLevel": "Evaluate",
+      "prompt": "Find the area of the triangle whose adjacent sides are A = 2î + 3ĵ + k̂ and B = î − ĵ + 2k̂.",
+      "payload": {
+        "options": [
+          "4.56 square units",
+          "9.11 square units",
+          "41.5 square units",
+          "1 square unit"
+        ],
+        "correctIndex": 0
+      },
+      "explanation": "A × B = (3·2 − 1·(−1)) î − (2·2 − 1·1) ĵ + (2·(−1) − 3·1) k̂ = 7î − 3ĵ − 5k̂, so |A × B| = √83 = 9.11 and the triangle is ½ × 9.11 = 4.56 square units."
+    }
+  ],
+  "achievementHooks": [
+    "first-chapter-complete",
+    "ninety-percent-accuracy-subject"
+  ],
+  "notesUrl": "https://whacademypk.com/notes/class-11/physics/vectors.html",
+  "practiceBanks": [
+    {
+      "mechanicId": "mcq-arena",
+      "name": "Multiple Choice",
+      "description": "Pick the correct answer. A quick way to check what you know.",
+      "count": 300
+    },
+    {
+      "mechanicId": "speed-challenge",
+      "name": "Speed Quiz",
+      "description": "Answer before the timer runs out. Quick recall practice.",
+      "count": 300
+    },
+    {
+      "mechanicId": "rapid-fire",
+      "name": "Rapid Fire",
+      "description": "Even faster! Short timer, back-to-back questions.",
+      "count": 300
+    },
+    {
+      "mechanicId": "true-false-sprint",
+      "name": "True or False",
+      "description": "Read the statement and tap True or False.",
+      "count": 300
+    },
+    {
+      "mechanicId": "fill-in-the-blank",
+      "name": "Fill in the Blank",
+      "description": "Type the missing word to complete the sentence.",
+      "count": 300
+    },
+    {
+      "mechanicId": "matching-grid",
+      "name": "Match the Pairs",
+      "description": "Match each item to its correct partner.",
+      "count": 300
+    },
+    {
+      "mechanicId": "drag-drop-classification",
+      "name": "Sort into Groups",
+      "description": "Drag each item into the correct group.",
+      "count": 300
+    },
+    {
+      "mechanicId": "ordering-sequencing",
+      "name": "Put in Order",
+      "description": "Arrange the steps in the correct sequence.",
+      "count": 300
+    }
+  ]
+}

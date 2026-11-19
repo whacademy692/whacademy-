@@ -1,0 +1,339 @@
+{
+ "id": "pb9-chem-c2-th-canal",
+ "title": "Canal rays: discovery of the proton",
+ "summary": "Positive rays pass through the holes of a perforated cathode, while electrons go the other way.",
+ "alt": "A discharge tube with a holed cathode: electrons move to the anode while positive canal rays pass through the holes.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   72
+  ],
+  "ratio": 1.3888888888888888,
+  "pad": 6
+ },
+ "roles": {
+  "neg": {
+   "label": "Cathode / electrons",
+   "color": "#2563eb",
+   "text": "Cathode (−) and the electrons.",
+   "legend": true
+  },
+  "pos": {
+   "label": "Anode / positive rays",
+   "color": "#e11d48",
+   "text": "Anode (+) and the positive canal rays.",
+   "legend": true
+  },
+  "wall": {
+   "label": "Apparatus",
+   "color": "#475569",
+   "text": "The container or apparatus.",
+   "legend": false
+  },
+  "ray": {
+   "label": "Cathode rays",
+   "color": "#7c3aed",
+   "text": "Electrons moving towards the anode.",
+   "legend": false
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "ph",
+   "label": "Flow",
+   "type": "clock",
+   "min": 0,
+   "max": 360,
+   "step": 0.01,
+   "speed": 110,
+   "loop": "repeat",
+   "default": 0,
+   "auto": true,
+   "hidden": true
+  },
+  {
+   "id": "ele",
+   "label": "ele",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0,
+   "hidden": true
+  },
+  {
+   "id": "ion",
+   "label": "ion",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "tube",
+   "x": 8,
+   "y": 30,
+   "w": 74,
+   "h": 28,
+   "role": "wall",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 3.2
+  },
+  {
+   "type": "rect",
+   "id": "ano",
+   "x": 24,
+   "y": 34,
+   "w": 2.2,
+   "h": 20,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.6,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "rect",
+   "id": "cp0",
+   "x": 52,
+   "y": 32,
+   "w": 2.2,
+   "h": 6.799999999999997,
+   "role": "neg",
+   "fill": true,
+   "fillOpacity": 0.6,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "rect",
+   "id": "cp1",
+   "x": 52,
+   "y": 41.2,
+   "w": 2.2,
+   "h": 6.599999999999994,
+   "role": "neg",
+   "fill": true,
+   "fillOpacity": 0.6,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "rect",
+   "id": "cp2",
+   "x": 52,
+   "y": 50.2,
+   "w": 2.2,
+   "h": 5.799999999999997,
+   "role": "neg",
+   "fill": true,
+   "fillOpacity": 0.6,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "la",
+   "at": [
+    25,
+    26.5
+   ],
+   "text": "Anode (+)",
+   "role": "pos",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "lc",
+   "at": [
+    53,
+    26.5
+   ],
+   "text": "Holed cathode (−)",
+   "role": "neg",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "glow",
+   "x": 55,
+   "y": 32,
+   "w": 25,
+   "h": 24,
+   "role": "warn",
+   "fill": true,
+   "fillOpacity": 0.12,
+   "strokeWidth": 0,
+   "visible": "ion>0.5",
+   "stroke": false
+  },
+  {
+   "type": "repeat",
+   "id": "ions",
+   "count": "ion*8",
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "(28+52*fract(ph/360+i*0.37))",
+     "34+3*i"
+    ],
+    "role": "pos",
+    "r": 5,
+    "opacity": "((28+52*fract(ph/360+i*0.37))<52||i==2||i==5)?1:0"
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "els",
+   "count": "ele*6",
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "(51-24*fract(ph/360+i*0.41))",
+     "35.5+3.6*i"
+    ],
+    "role": "ray",
+    "r": 4
+   }
+  },
+  {
+   "type": "text",
+   "id": "lele",
+   "at": [
+    38,
+    61
+   ],
+   "text": "cathode rays → anode",
+   "role": "ray",
+   "size": "s",
+   "bold": true,
+   "visible": "ele>0.5"
+  },
+  {
+   "type": "text",
+   "id": "lion",
+   "at": [
+    68,
+    61
+   ],
+   "text": "canal rays",
+   "role": "pos",
+   "size": "s",
+   "bold": true,
+   "visible": "ion>0.5"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A holed cathode",
+   "text": "**E. Goldstein (1886)** used a discharge tube whose **cathode had holes** in it. The idea: atoms are electrically neutral, so there should be positive particles too.",
+   "actions": [
+    {
+     "tween": {
+      "ele": 0,
+      "ion": 0
+     },
+     "at": 0,
+     "dur": 700
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Electrons go to the anode",
+   "text": "The negative **cathode rays** travel from the cathode towards the **anode**.",
+   "actions": [
+    {
+     "tween": {
+      "ele": 1,
+      "ion": 0
+     },
+     "at": 0,
+     "dur": 700
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Positive rays go to the cathode",
+   "text": "A new kind of ray started at the **anode** and moved **towards the cathode**. Some passed **through the holes** (canals), so they are called **canal rays** or **anode rays**.",
+   "actions": [
+    {
+     "tween": {
+      "ele": 1,
+      "ion": 1
+     },
+     "at": 0,
+     "dur": 700
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "What the rays were",
+   "text": "The rays changed with the gas in the tube: they were **gas ions**, including **hydrogen ions (H⁺)**. In **1917 Rutherford** showed the hydrogen nucleus, the **proton**, is in all other nuclei.",
+   "actions": [
+    {
+     "tween": {
+      "ele": 1,
+      "ion": 1
+     },
+     "at": 0,
+     "dur": 700
+    }
+   ]
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Canal rays travel in which direction?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Cathode to anode"
+    },
+    {
+     "id": "b",
+     "label": "Anode towards the cathode"
+    },
+    {
+     "id": "c",
+     "label": "They do not move"
+    },
+    {
+     "id": "d",
+     "label": "Only sideways"
+    }
+   ],
+   "answer": "b",
+   "hint": "They started at the anode.",
+   "explain": "Canal (anode) rays move **from the anode towards the cathode** and pass through its holes."
+  }
+ ],
+ "takeaways": [
+  "Goldstein (1886): canal or anode rays pass through a holed cathode.",
+  "They are positive gas ions, including H⁺.",
+  "Rutherford (1917): the hydrogen nucleus (proton) is a building block of all nuclei."
+ ]
+}

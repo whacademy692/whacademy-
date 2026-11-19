@@ -1,0 +1,1066 @@
+{
+ "id": "pb9-chem-c3-th-cov-bonds",
+ "title": "Single, double and triple covalent bonds",
+ "summary": "H₂, Cl₂, O₂ and N₂: atoms share 1, 2 or 3 pairs of electrons.",
+ "alt": "Two atoms with overlapping outer shells share one, two or three electron pairs; the remaining outer electrons are non-bonding pairs.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "h": {
+   "label": "Hydrogen",
+   "color": "#0ea5e9",
+   "text": "Hydrogen atom.",
+   "legend": false
+  },
+  "cl": {
+   "label": "Chlorine",
+   "color": "#16a34a",
+   "text": "Chlorine atom.",
+   "legend": false
+  },
+  "o": {
+   "label": "Oxygen",
+   "color": "#ef4444",
+   "text": "Oxygen atom.",
+   "legend": false
+  },
+  "n": {
+   "label": "Nitrogen",
+   "color": "#3b82f6",
+   "text": "Nitrogen atom.",
+   "legend": false
+  },
+  "el": {
+   "label": "Electron of the left atom (•)",
+   "color": "#2563eb",
+   "text": "Electron that came from the left atom.",
+   "legend": true
+  },
+  "elx": {
+   "label": "Electron of the right atom (×)",
+   "color": "#f59e0b",
+   "text": "Electron that came from the right atom.",
+   "legend": true
+  },
+  "sh": {
+   "label": "Shell",
+   "color": "#94a3b8",
+   "text": "An energy level (orbit).",
+   "legend": false
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "sel",
+   "label": "Molecule",
+   "type": "choice",
+   "options": [
+    {
+     "value": 1,
+     "label": "Hydrogen H₂ (single)"
+    },
+    {
+     "value": 2,
+     "label": "Chlorine Cl₂ (single)"
+    },
+    {
+     "value": 3,
+     "label": "Oxygen O₂ (double)"
+    },
+    {
+     "value": 4,
+     "label": "Nitrogen N₂ (triple)"
+    }
+   ],
+   "default": 1
+  }
+ ],
+ "shapes": [
+  {
+   "type": "circle",
+   "id": "lc1",
+   "c": [
+    38,
+    42
+   ],
+   "r": 14,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "rc1",
+   "c": [
+    62,
+    42
+   ],
+   "r": 14,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "ln1",
+   "c": [
+    38,
+    42
+   ],
+   "r": 4.2,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2.2,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "lt1",
+   "at": [
+    38,
+    42
+   ],
+   "text": "H",
+   "role": "h",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "rn1",
+   "c": [
+    62,
+    42
+   ],
+   "r": 4.2,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2.2,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "rt1",
+   "at": [
+    62,
+    42
+   ],
+   "text": "H",
+   "role": "h",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "point",
+   "id": "sa1_0",
+   "at": [
+    48.7,
+    42
+   ],
+   "role": "el",
+   "r": 5.5,
+   "visible": "sel==1"
+  },
+  {
+   "type": "point",
+   "id": "sb1_0",
+   "at": [
+    51.3,
+    42
+   ],
+   "role": "elx",
+   "r": 5.5,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "lc2",
+   "c": [
+    38,
+    42
+   ],
+   "r": 14,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "rc2",
+   "c": [
+    62,
+    42
+   ],
+   "r": 14,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "ln2",
+   "c": [
+    38,
+    42
+   ],
+   "r": 4.2,
+   "role": "cl",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2.2,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "lt2",
+   "at": [
+    38,
+    42
+   ],
+   "text": "Cl",
+   "role": "cl",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "rn2",
+   "c": [
+    62,
+    42
+   ],
+   "r": 4.2,
+   "role": "cl",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2.2,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "rt2",
+   "at": [
+    62,
+    42
+   ],
+   "text": "Cl",
+   "role": "cl",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "point",
+   "id": "sa2_0",
+   "at": [
+    48.7,
+    42
+   ],
+   "role": "el",
+   "r": 5.5,
+   "visible": "sel==2"
+  },
+  {
+   "type": "point",
+   "id": "sb2_0",
+   "at": [
+    51.3,
+    42
+   ],
+   "role": "elx",
+   "r": 5.5,
+   "visible": "sel==2"
+  },
+  {
+   "type": "point",
+   "id": "la2_0_0",
+   "at": [
+    40.671,
+    55.743
+   ],
+   "role": "el",
+   "r": 4.5,
+   "visible": "sel==2"
+  },
+  {
+   "type": "point",
+   "id": "la2_0_1",
+   "at": [
+    35.329,
+    55.743
+   ],
+   "role": "el",
+   "r": 4.5,
+   "visible": "sel==2"
+  },
+  {
+   "type": "point",
+   "id": "lb2_0_0",
+   "at": [
+    64.671,
+    55.743
+   ],
+   "role": "elx",
+   "r": 4.5,
+   "visible": "sel==2"
+  },
+  {
+   "type": "point",
+   "id": "lb2_0_1",
+   "at": [
+    59.329,
+    55.743
+   ],
+   "role": "elx",
+   "r": 4.5,
+   "visible": "sel==2"
+  },
+  {
+   "type": "point",
+   "id": "la2_1_0",
+   "at": [
+    24.257,
+    44.671
+   ],
+   "role": "el",
+   "r": 4.5,
+   "visible": "sel==2"
+  },
+  {
+   "type": "point",
+   "id": "la2_1_1",
+   "at": [
+    24.257,
+    39.329
+   ],
+   "role": "el",
+   "r": 4.5,
+   "visible": "sel==2"
+  },
+  {
+   "type": "point",
+   "id": "lb2_1_0",
+   "at": [
+    75.743,
+    39.329
+   ],
+   "role": "elx",
+   "r": 4.5,
+   "visible": "sel==2"
+  },
+  {
+   "type": "point",
+   "id": "lb2_1_1",
+   "at": [
+    75.743,
+    44.671
+   ],
+   "role": "elx",
+   "r": 4.5,
+   "visible": "sel==2"
+  },
+  {
+   "type": "point",
+   "id": "la2_2_0",
+   "at": [
+    35.329,
+    28.257
+   ],
+   "role": "el",
+   "r": 4.5,
+   "visible": "sel==2"
+  },
+  {
+   "type": "point",
+   "id": "la2_2_1",
+   "at": [
+    40.671,
+    28.257
+   ],
+   "role": "el",
+   "r": 4.5,
+   "visible": "sel==2"
+  },
+  {
+   "type": "point",
+   "id": "lb2_2_0",
+   "at": [
+    59.329,
+    28.257
+   ],
+   "role": "elx",
+   "r": 4.5,
+   "visible": "sel==2"
+  },
+  {
+   "type": "point",
+   "id": "lb2_2_1",
+   "at": [
+    64.671,
+    28.257
+   ],
+   "role": "elx",
+   "r": 4.5,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "lc3",
+   "c": [
+    38,
+    42
+   ],
+   "r": 14,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "sel==3"
+  },
+  {
+   "type": "circle",
+   "id": "rc3",
+   "c": [
+    62,
+    42
+   ],
+   "r": 14,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "sel==3"
+  },
+  {
+   "type": "circle",
+   "id": "ln3",
+   "c": [
+    38,
+    42
+   ],
+   "r": 4.2,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2.2,
+   "visible": "sel==3"
+  },
+  {
+   "type": "text",
+   "id": "lt3",
+   "at": [
+    38,
+    42
+   ],
+   "text": "O",
+   "role": "o",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==3"
+  },
+  {
+   "type": "circle",
+   "id": "rn3",
+   "c": [
+    62,
+    42
+   ],
+   "r": 4.2,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2.2,
+   "visible": "sel==3"
+  },
+  {
+   "type": "text",
+   "id": "rt3",
+   "at": [
+    62,
+    42
+   ],
+   "text": "O",
+   "role": "o",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==3"
+  },
+  {
+   "type": "point",
+   "id": "sa3_0",
+   "at": [
+    48.7,
+    47
+   ],
+   "role": "el",
+   "r": 5.5,
+   "visible": "sel==3"
+  },
+  {
+   "type": "point",
+   "id": "sb3_0",
+   "at": [
+    51.3,
+    47
+   ],
+   "role": "elx",
+   "r": 5.5,
+   "visible": "sel==3"
+  },
+  {
+   "type": "point",
+   "id": "sa3_1",
+   "at": [
+    48.7,
+    37
+   ],
+   "role": "el",
+   "r": 5.5,
+   "visible": "sel==3"
+  },
+  {
+   "type": "point",
+   "id": "sb3_1",
+   "at": [
+    51.3,
+    37
+   ],
+   "role": "elx",
+   "r": 5.5,
+   "visible": "sel==3"
+  },
+  {
+   "type": "point",
+   "id": "la3_0_0",
+   "at": [
+    40.671,
+    55.743
+   ],
+   "role": "el",
+   "r": 4.5,
+   "visible": "sel==3"
+  },
+  {
+   "type": "point",
+   "id": "la3_0_1",
+   "at": [
+    35.329,
+    55.743
+   ],
+   "role": "el",
+   "r": 4.5,
+   "visible": "sel==3"
+  },
+  {
+   "type": "point",
+   "id": "lb3_0_0",
+   "at": [
+    64.671,
+    55.743
+   ],
+   "role": "elx",
+   "r": 4.5,
+   "visible": "sel==3"
+  },
+  {
+   "type": "point",
+   "id": "lb3_0_1",
+   "at": [
+    59.329,
+    55.743
+   ],
+   "role": "elx",
+   "r": 4.5,
+   "visible": "sel==3"
+  },
+  {
+   "type": "point",
+   "id": "la3_1_0",
+   "at": [
+    35.329,
+    28.257
+   ],
+   "role": "el",
+   "r": 4.5,
+   "visible": "sel==3"
+  },
+  {
+   "type": "point",
+   "id": "la3_1_1",
+   "at": [
+    40.671,
+    28.257
+   ],
+   "role": "el",
+   "r": 4.5,
+   "visible": "sel==3"
+  },
+  {
+   "type": "point",
+   "id": "lb3_1_0",
+   "at": [
+    59.329,
+    28.257
+   ],
+   "role": "elx",
+   "r": 4.5,
+   "visible": "sel==3"
+  },
+  {
+   "type": "point",
+   "id": "lb3_1_1",
+   "at": [
+    64.671,
+    28.257
+   ],
+   "role": "elx",
+   "r": 4.5,
+   "visible": "sel==3"
+  },
+  {
+   "type": "circle",
+   "id": "lc4",
+   "c": [
+    38,
+    42
+   ],
+   "r": 14,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "sel==4"
+  },
+  {
+   "type": "circle",
+   "id": "rc4",
+   "c": [
+    62,
+    42
+   ],
+   "r": 14,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "sel==4"
+  },
+  {
+   "type": "circle",
+   "id": "ln4",
+   "c": [
+    38,
+    42
+   ],
+   "r": 4.2,
+   "role": "n",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2.2,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "lt4",
+   "at": [
+    38,
+    42
+   ],
+   "text": "N",
+   "role": "n",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==4"
+  },
+  {
+   "type": "circle",
+   "id": "rn4",
+   "c": [
+    62,
+    42
+   ],
+   "r": 4.2,
+   "role": "n",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2.2,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "rt4",
+   "at": [
+    62,
+    42
+   ],
+   "text": "N",
+   "role": "n",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==4"
+  },
+  {
+   "type": "point",
+   "id": "sa4_0",
+   "at": [
+    48.7,
+    52
+   ],
+   "role": "el",
+   "r": 5.5,
+   "visible": "sel==4"
+  },
+  {
+   "type": "point",
+   "id": "sb4_0",
+   "at": [
+    51.3,
+    52
+   ],
+   "role": "elx",
+   "r": 5.5,
+   "visible": "sel==4"
+  },
+  {
+   "type": "point",
+   "id": "sa4_1",
+   "at": [
+    48.7,
+    42
+   ],
+   "role": "el",
+   "r": 5.5,
+   "visible": "sel==4"
+  },
+  {
+   "type": "point",
+   "id": "sb4_1",
+   "at": [
+    51.3,
+    42
+   ],
+   "role": "elx",
+   "r": 5.5,
+   "visible": "sel==4"
+  },
+  {
+   "type": "point",
+   "id": "sa4_2",
+   "at": [
+    48.7,
+    32
+   ],
+   "role": "el",
+   "r": 5.5,
+   "visible": "sel==4"
+  },
+  {
+   "type": "point",
+   "id": "sb4_2",
+   "at": [
+    51.3,
+    32
+   ],
+   "role": "elx",
+   "r": 5.5,
+   "visible": "sel==4"
+  },
+  {
+   "type": "point",
+   "id": "la4_0_0",
+   "at": [
+    24.257,
+    44.671
+   ],
+   "role": "el",
+   "r": 4.5,
+   "visible": "sel==4"
+  },
+  {
+   "type": "point",
+   "id": "la4_0_1",
+   "at": [
+    24.257,
+    39.329
+   ],
+   "role": "el",
+   "r": 4.5,
+   "visible": "sel==4"
+  },
+  {
+   "type": "point",
+   "id": "lb4_0_0",
+   "at": [
+    75.743,
+    39.329
+   ],
+   "role": "elx",
+   "r": 4.5,
+   "visible": "sel==4"
+  },
+  {
+   "type": "point",
+   "id": "lb4_0_1",
+   "at": [
+    75.743,
+    44.671
+   ],
+   "role": "elx",
+   "r": 4.5,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "fm1",
+   "at": [
+    50,
+    66
+   ],
+   "text": "H — H",
+   "role": "warn",
+   "size": "xl",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "kd1",
+   "at": [
+    50,
+    10
+   ],
+   "text": "single bond: 1 shared pair",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "fm2",
+   "at": [
+    50,
+    66
+   ],
+   "text": "Cl — Cl",
+   "role": "warn",
+   "size": "xl",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "kd2",
+   "at": [
+    50,
+    10
+   ],
+   "text": "single bond: 1 shared pair",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "fm3",
+   "at": [
+    50,
+    66
+   ],
+   "text": "O = O",
+   "role": "warn",
+   "size": "xl",
+   "bold": true,
+   "visible": "sel==3"
+  },
+  {
+   "type": "text",
+   "id": "kd3",
+   "at": [
+    50,
+    10
+   ],
+   "text": "double bond: 2 shared pairs",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==3"
+  },
+  {
+   "type": "text",
+   "id": "fm4",
+   "at": [
+    50,
+    66
+   ],
+   "text": "N ≡ N",
+   "role": "warn",
+   "size": "xl",
+   "bold": true,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "kd4",
+   "at": [
+    50,
+    10
+   ],
+   "text": "triple bond: 3 shared pairs",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "nb",
+   "at": [
+    50,
+    4
+   ],
+   "text": "other outer electrons stay as non-bonding pairs",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel>=2"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Hydrogen: one shared pair",
+   "text": "Two H atoms share **one electron pair**: a **single covalent bond**, drawn H — H. Each atom now has a full duplet.",
+   "actions": [
+    {
+     "set": {
+      "sel": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Chlorine: single bond",
+   "text": "Two Cl atoms share **one pair**. Each keeps its other six outer electrons as **non-bonding pairs**: each atom reaches an octet.",
+   "actions": [
+    {
+     "set": {
+      "sel": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Oxygen: double bond",
+   "text": "Each O atom shares **two** electrons: **two electron pairs** make a **double bond**, O = O.",
+   "actions": [
+    {
+     "set": {
+      "sel": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Nitrogen: triple bond",
+   "text": "Each N atom shares **three** electrons: **three pairs** make a **triple bond**, N ≡ N.",
+   "actions": [
+    {
+     "set": {
+      "sel": 4
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "How many electron pairs are shared in a **nitrogen molecule N₂**?",
+   "answer": 3,
+   "hint": "N ≡ N.",
+   "explain": "Three pairs: a **triple bond**.",
+   "tolerance": 0.01
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "The molecule **O₂** contains a…",
+   "options": [
+    {
+     "id": "a",
+     "label": "double covalent bond"
+    },
+    {
+     "id": "b",
+     "label": "single covalent bond"
+    },
+    {
+     "id": "c",
+     "label": "triple covalent bond"
+    },
+    {
+     "id": "d",
+     "label": "ionic bond"
+    }
+   ],
+   "answer": "a",
+   "hint": "O = O.",
+   "explain": "Two shared pairs: a **double covalent bond**."
+  }
+ ],
+ "takeaways": [
+  "Covalent bond: mutual sharing of electron pair(s) between atoms.",
+  "Single = 1 pair (H₂, Cl₂); double = 2 pairs (O₂); triple = 3 pairs (N₂).",
+  "After sharing, each atom has the configuration of the nearest noble gas."
+ ]
+}

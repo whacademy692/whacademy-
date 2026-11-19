@@ -1,0 +1,708 @@
+{
+ "id": "pb9-chem-c3-th-agcl",
+ "title": "NaCl + AgNO₃: a white precipitate",
+ "summary": "Mix the two solutions: Ag⁺ meets Cl⁻ and insoluble AgCl settles out; Na⁺ and NO₃⁻ stay dissolved.",
+ "alt": "Two solutions of ions mixing in a beaker; silver and chloride ions come together at the bottom as a white precipitate.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "a": {
+   "label": "Atom A",
+   "color": "#7c3aed",
+   "text": "First atom.",
+   "legend": false
+  },
+  "b": {
+   "label": "Atom B",
+   "color": "#059669",
+   "text": "Second atom.",
+   "legend": false
+  },
+  "c": {
+   "label": "Atom C",
+   "color": "#d97706",
+   "text": "Third kind of atom.",
+   "legend": false
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  },
+  "wall": {
+   "label": "Apparatus",
+   "color": "#475569",
+   "text": "The container or apparatus.",
+   "legend": false
+  },
+  "water": {
+   "label": "Water",
+   "color": "#0ea5e9",
+   "text": "Water.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "The correct / stable one.",
+   "legend": false
+  },
+  "cb": {
+   "label": "Carbon",
+   "color": "#475569",
+   "text": "Carbon atom.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "m",
+   "label": "Mix the solutions",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0
+  },
+  {
+   "id": "ph",
+   "label": "Time",
+   "type": "clock",
+   "min": 0,
+   "max": 360,
+   "step": 0.01,
+   "speed": 60,
+   "loop": "repeat",
+   "default": 0,
+   "auto": true,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "bk",
+   "x": 6,
+   "y": 8,
+   "w": 88,
+   "h": 56,
+   "role": "water",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "rect",
+   "id": "ppt",
+   "x": 12,
+   "y": 9.5,
+   "w": 76,
+   "h": 13,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2,
+   "visible": "m>0.9"
+  },
+  {
+   "type": "segment",
+   "id": "dv",
+   "from": [
+    50,
+    12
+   ],
+   "to": [
+    50,
+    60
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "m<0.05"
+  },
+  {
+   "type": "text",
+   "id": "l1",
+   "at": [
+    28,
+    61.5
+   ],
+   "text": "NaCl solution",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "visible": "m<0.05"
+  },
+  {
+   "type": "text",
+   "id": "l2",
+   "at": [
+    72,
+    61.5
+   ],
+   "text": "AgNO₃ solution",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "visible": "m<0.05"
+  },
+  {
+   "type": "circle",
+   "id": "na0",
+   "c": [
+    "16+(6)*m+1.1*sin(ph*2+10)",
+    "50+(0)*m+1.1*cos(ph*2+5)"
+   ],
+   "r": 4.4,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "nat0",
+   "at": [
+    "16+(6)*m+1.1*sin(ph*2+10)",
+    "50+(0)*m+1.1*cos(ph*2+5)"
+   ],
+   "text": "Na⁺",
+   "role": "a",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "no0",
+   "c": [
+    "72+(-42)*m+1.1*sin(ph*2+10)",
+    "50+(-12)*m+1.1*cos(ph*2+5)"
+   ],
+   "r": 5.4,
+   "role": "warn",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "not0",
+   "at": [
+    "72+(-42)*m+1.1*sin(ph*2+10)",
+    "50+(-12)*m+1.1*cos(ph*2+5)"
+   ],
+   "text": "NO₃⁻",
+   "role": "warn",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "cl0",
+   "c": [
+    "26+(-8.0)*m+1.1*sin(ph*2+10)",
+    "30+(-14)*m+1.1*cos(ph*2+5)"
+   ],
+   "r": 4.4,
+   "role": "b",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "clt0",
+   "at": [
+    "26+(-8.0)*m+1.1*sin(ph*2+10)",
+    "30+(-14)*m+1.1*cos(ph*2+5)"
+   ],
+   "text": "Cl⁻",
+   "role": "b",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "ag0",
+   "c": [
+    "62+(-35.2)*m+1.1*sin(ph*2+10)",
+    "50+(-34)*m+1.1*cos(ph*2+5)"
+   ],
+   "r": 4.4,
+   "role": "c",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "agt0",
+   "at": [
+    "62+(-35.2)*m+1.1*sin(ph*2+10)",
+    "50+(-34)*m+1.1*cos(ph*2+5)"
+   ],
+   "text": "Ag⁺",
+   "role": "c",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "na1",
+   "c": [
+    "36+(6)*m+1.1*sin(ph*2+60)",
+    "50+(-4)*m+1.1*cos(ph*2+75)"
+   ],
+   "r": 4.4,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "nat1",
+   "at": [
+    "36+(6)*m+1.1*sin(ph*2+60)",
+    "50+(-4)*m+1.1*cos(ph*2+75)"
+   ],
+   "text": "Na⁺",
+   "role": "a",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "no1",
+   "c": [
+    "82+(-34)*m+1.1*sin(ph*2+60)",
+    "40+(14)*m+1.1*cos(ph*2+75)"
+   ],
+   "r": 5.4,
+   "role": "warn",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "not1",
+   "at": [
+    "82+(-34)*m+1.1*sin(ph*2+60)",
+    "40+(14)*m+1.1*cos(ph*2+75)"
+   ],
+   "text": "NO₃⁻",
+   "role": "warn",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "cl1",
+   "c": [
+    "36+(-0.5)*m+1.1*sin(ph*2+60)",
+    "40+(-24)*m+1.1*cos(ph*2+75)"
+   ],
+   "r": 4.4,
+   "role": "b",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "clt1",
+   "at": [
+    "36+(-0.5)*m+1.1*sin(ph*2+60)",
+    "40+(-24)*m+1.1*cos(ph*2+75)"
+   ],
+   "text": "Cl⁻",
+   "role": "b",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "ag1",
+   "c": [
+    "82+(-37.7)*m+1.1*sin(ph*2+60)",
+    "50+(-34)*m+1.1*cos(ph*2+75)"
+   ],
+   "r": 4.4,
+   "role": "c",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "agt1",
+   "at": [
+    "82+(-37.7)*m+1.1*sin(ph*2+60)",
+    "50+(-34)*m+1.1*cos(ph*2+75)"
+   ],
+   "text": "Ag⁺",
+   "role": "c",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "na2",
+   "c": [
+    "26+(34)*m+1.1*sin(ph*2+110)",
+    "40+(12)*m+1.1*cos(ph*2+145)"
+   ],
+   "r": 4.4,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "nat2",
+   "at": [
+    "26+(34)*m+1.1*sin(ph*2+110)",
+    "40+(12)*m+1.1*cos(ph*2+145)"
+   ],
+   "text": "Na⁺",
+   "role": "a",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "no2",
+   "c": [
+    "62+(6)*m+1.1*sin(ph*2+110)",
+    "40+(2)*m+1.1*cos(ph*2+145)"
+   ],
+   "r": 5.4,
+   "role": "warn",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "not2",
+   "at": [
+    "62+(6)*m+1.1*sin(ph*2+110)",
+    "40+(2)*m+1.1*cos(ph*2+145)"
+   ],
+   "text": "NO₃⁻",
+   "role": "warn",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "cl2",
+   "c": [
+    "16+(37.0)*m+1.1*sin(ph*2+110)",
+    "40+(-24)*m+1.1*cos(ph*2+145)"
+   ],
+   "r": 4.4,
+   "role": "b",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "clt2",
+   "at": [
+    "16+(37.0)*m+1.1*sin(ph*2+110)",
+    "40+(-24)*m+1.1*cos(ph*2+145)"
+   ],
+   "text": "Cl⁻",
+   "role": "b",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "ag2",
+   "c": [
+    "72+(-10.2)*m+1.1*sin(ph*2+110)",
+    "40+(-24)*m+1.1*cos(ph*2+145)"
+   ],
+   "r": 4.4,
+   "role": "c",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "agt2",
+   "at": [
+    "72+(-10.2)*m+1.1*sin(ph*2+110)",
+    "40+(-24)*m+1.1*cos(ph*2+145)"
+   ],
+   "text": "Ag⁺",
+   "role": "c",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "na3",
+   "c": [
+    "16+(62)*m+1.1*sin(ph*2+160)",
+    "30+(16)*m+1.1*cos(ph*2+215)"
+   ],
+   "r": 4.4,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "nat3",
+   "at": [
+    "16+(62)*m+1.1*sin(ph*2+160)",
+    "30+(16)*m+1.1*cos(ph*2+215)"
+   ],
+   "text": "Na⁺",
+   "role": "a",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "no3",
+   "c": [
+    "82+(2)*m+1.1*sin(ph*2+160)",
+    "30+(4)*m+1.1*cos(ph*2+215)"
+   ],
+   "r": 5.4,
+   "role": "warn",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "not3",
+   "at": [
+    "82+(2)*m+1.1*sin(ph*2+160)",
+    "30+(4)*m+1.1*cos(ph*2+215)"
+   ],
+   "text": "NO₃⁻",
+   "role": "warn",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "cl3",
+   "c": [
+    "36+(34.5)*m+1.1*sin(ph*2+160)",
+    "20+(-4)*m+1.1*cos(ph*2+215)"
+   ],
+   "r": 4.4,
+   "role": "b",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "clt3",
+   "at": [
+    "36+(34.5)*m+1.1*sin(ph*2+160)",
+    "20+(-4)*m+1.1*cos(ph*2+215)"
+   ],
+   "text": "Cl⁻",
+   "role": "b",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "ag3",
+   "c": [
+    "62+(17.3)*m+1.1*sin(ph*2+160)",
+    "30+(-14)*m+1.1*cos(ph*2+215)"
+   ],
+   "r": 4.4,
+   "role": "c",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "agt3",
+   "at": [
+    "62+(17.3)*m+1.1*sin(ph*2+160)",
+    "30+(-14)*m+1.1*cos(ph*2+215)"
+   ],
+   "text": "Ag⁺",
+   "role": "c",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "tt",
+   "at": [
+    50,
+    73
+   ],
+   "text": "{{if m<0.5 | Two clear solutions of ions | NaCl + AgNO₃ → AgCl↓ + NaNO₃}}",
+   "role": "ink",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t2",
+   "at": [
+    50,
+    67.5
+   ],
+   "text": "Ag⁺ + Cl⁻ → AgCl↓ (white precipitate)",
+   "role": "warn",
+   "size": "s",
+   "bold": true,
+   "visible": "m>0.9"
+  },
+  {
+   "type": "text",
+   "id": "t3",
+   "at": [
+    50,
+    3.5
+   ],
+   "text": "Na⁺ and NO₃⁻ stay dissolved",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "visible": "m>0.9"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Two solutions",
+   "text": "A solution of **NaCl** contains **Na⁺ and Cl⁻** ions; a solution of **AgNO₃** contains **Ag⁺ and NO₃⁻** ions. All are dissolved and move freely.",
+   "actions": [
+    {
+     "set": {
+      "m": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Mix them",
+   "text": "When the solutions are mixed, **Ag⁺ meets Cl⁻**. Silver chloride is **insoluble in water**, so the ions join together.",
+   "actions": [
+    {
+     "tween": {
+      "m": 1
+     },
+     "at": 0,
+     "dur": 2600
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "White precipitate",
+   "text": "AgCl settles as a **white precipitate**. **Na⁺ and NO₃⁻** stay dissolved as NaNO₃: they did not take part in the change.",
+   "actions": [
+    {
+     "set": {
+      "m": 1
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "What is the **white precipitate** formed?",
+   "options": [
+    {
+     "id": "a",
+     "label": "AgCl"
+    },
+    {
+     "id": "b",
+     "label": "NaNO₃"
+    },
+    {
+     "id": "c",
+     "label": "NaCl"
+    },
+    {
+     "id": "d",
+     "label": "AgNO₃"
+    }
+   ],
+   "answer": "a",
+   "hint": "Ag⁺ + Cl⁻ …",
+   "explain": "**AgCl**, insoluble in water."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which ions stay **dissolved** in the solution?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Na⁺ and NO₃⁻"
+    },
+    {
+     "id": "b",
+     "label": "Ag⁺ and Cl⁻"
+    },
+    {
+     "id": "c",
+     "label": "Na⁺ and Cl⁻"
+    },
+    {
+     "id": "d",
+     "label": "Ag⁺ and NO₃⁻"
+    }
+   ],
+   "answer": "a",
+   "hint": "The ions that did not join.",
+   "explain": "**Na⁺ and NO₃⁻** stay in solution as NaNO₃."
+  }
+ ],
+ "takeaways": [
+  "NaCl + AgNO₃ → AgCl↓ + NaNO₃: Ag⁺ and Cl⁻ combine to give a white precipitate.",
+  "Reactions of ionic compounds in solution happen between their free ions."
+ ],
+ "notes": [
+  {
+   "title": "Beyond the book",
+   "text": "Na⁺ and NO₃⁻ are often called spectator ions. That name is not used in the book; it only describes ions that stay unchanged."
+  }
+ ]
+}

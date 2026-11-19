@@ -1,0 +1,489 @@
+{
+ "id": "pb9-chem-c3-th-acid-ionise",
+ "title": "Acids ionise in water",
+ "summary": "Covalent HCl and H₂SO₄ split into ions when they dissolve in water.",
+ "alt": "An HCl molecule and an H2SO4 molecule in water releasing hydrogen ions and leaving chloride or sulfate ions.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "h": {
+   "label": "Hydrogen",
+   "color": "#0ea5e9",
+   "text": "Hydrogen atom.",
+   "legend": false
+  },
+  "cl": {
+   "label": "Chlorine",
+   "color": "#16a34a",
+   "text": "Chlorine atom.",
+   "legend": false
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  },
+  "pos": {
+   "label": "Positive",
+   "color": "#e11d48",
+   "text": "Positive charge / cation.",
+   "legend": false
+  },
+  "neg": {
+   "label": "Negative",
+   "color": "#2563eb",
+   "text": "Negative charge / anion.",
+   "legend": false
+  },
+  "water": {
+   "label": "Water",
+   "color": "#0ea5e9",
+   "text": "Water.",
+   "legend": false
+  },
+  "wall": {
+   "label": "Apparatus",
+   "color": "#475569",
+   "text": "The container or apparatus.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "The correct / stable one.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "sel",
+   "label": "Acid",
+   "type": "choice",
+   "options": [
+    {
+     "value": 1,
+     "label": "Hydrochloric acid, HCl"
+    },
+    {
+     "value": 2,
+     "label": "Sulfuric acid, H₂SO₄"
+    }
+   ],
+   "default": 1
+  },
+  {
+   "id": "i",
+   "label": "Dissolve in water",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0
+  }
+ ],
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "bk",
+   "x": 6,
+   "y": 8,
+   "w": 88,
+   "h": 56,
+   "role": "water",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "wt",
+   "at": [
+    14,
+    12
+   ],
+   "text": "in water",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "segment",
+   "id": "hb1",
+   "from": [
+    34,
+    38
+   ],
+   "to": [
+    "34+11.5",
+    38
+   ],
+   "role": "ink",
+   "strokeWidth": 3,
+   "visible": "sel==1&&i<0.15"
+  },
+  {
+   "type": "circle",
+   "id": "hcl",
+   "c": [
+    34,
+    38
+   ],
+   "r": 7.5,
+   "role": "cl",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2.4,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "hclt",
+   "at": [
+    34,
+    38
+   ],
+   "text": "{{if i<0.5 | Cl | Cl⁻}}",
+   "role": "cl",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "hh",
+   "c": [
+    "34+11.5+i*30",
+    38
+   ],
+   "r": 4.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2.4,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "hht",
+   "at": [
+    "34+11.5+i*30",
+    38
+   ],
+   "text": "{{if i<0.5 | H | H⁺}}",
+   "role": "h",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "e1",
+   "at": [
+    50,
+    73
+   ],
+   "text": "HCl → H⁺ + Cl⁻",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==1&&i>0.9"
+  },
+  {
+   "type": "text",
+   "id": "e1b",
+   "at": [
+    50,
+    73
+   ],
+   "text": "A covalent HCl molecule",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==1&&i<=0.9"
+  },
+  {
+   "type": "segment",
+   "id": "sb1",
+   "from": [
+    34,
+    44
+   ],
+   "to": [
+    "34-8",
+    "44+10"
+   ],
+   "role": "ink",
+   "strokeWidth": 3,
+   "visible": "sel==2&&i<0.15"
+  },
+  {
+   "type": "segment",
+   "id": "sb2",
+   "from": [
+    34,
+    44
+   ],
+   "to": [
+    "34+8",
+    "44+10"
+   ],
+   "role": "ink",
+   "strokeWidth": 3,
+   "visible": "sel==2&&i<0.15"
+  },
+  {
+   "type": "circle",
+   "id": "so",
+   "c": [
+    34,
+    38
+   ],
+   "r": 11,
+   "role": "warn",
+   "fill": true,
+   "fillOpacity": 0.3,
+   "strokeWidth": 2.4,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "sot",
+   "at": [
+    34,
+    38
+   ],
+   "text": "{{if i<0.5 | SO₄ | SO₄²⁻}}",
+   "role": "warn",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "sh1",
+   "c": [
+    "26-i*14",
+    "54+i*0"
+   ],
+   "r": 4.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2.4,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "sh1t",
+   "at": [
+    "26-i*14",
+    54
+   ],
+   "text": "{{if i<0.5 | H | H⁺}}",
+   "role": "h",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "sh2",
+   "c": [
+    "42+i*30",
+    54
+   ],
+   "r": 4.4,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2.4,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "sh2t",
+   "at": [
+    "42+i*30",
+    54
+   ],
+   "text": "{{if i<0.5 | H | H⁺}}",
+   "role": "h",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "e2",
+   "at": [
+    50,
+    73
+   ],
+   "text": "H₂SO₄ → 2H⁺ + SO₄²⁻",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==2&&i>0.9"
+  },
+  {
+   "type": "text",
+   "id": "e2b",
+   "at": [
+    50,
+    73
+   ],
+   "text": "A covalent H₂SO₄ molecule",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==2&&i<=0.9"
+  },
+  {
+   "type": "text",
+   "id": "nt",
+   "at": [
+    50,
+    3.5
+   ],
+   "text": "Each H⁺ then joins a water molecule as H₃O⁺",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "i>0.9"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A covalent molecule",
+   "text": "HCl and H₂SO₄ are **covalent compounds**: their atoms share electrons and there are **no ions** yet.",
+   "actions": [
+    {
+     "set": {
+      "sel": 1,
+      "i": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "HCl in water",
+   "text": "In water the polar H–Cl bond breaks: HCl **ionises** into **H⁺ and Cl⁻**, so its solution conducts electricity.",
+   "actions": [
+    {
+     "set": {
+      "sel": 1
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "i": 1
+     },
+     "at": 0,
+     "dur": 2200
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "H₂SO₄ in water",
+   "text": "Sulfuric acid ionises into **two H⁺ ions** and one **sulfate ion SO₄²⁻**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 2,
+      "i": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "i": 1
+     },
+     "at": 0,
+     "dur": 2200
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Ions in solution",
+   "text": "The hydrogen ions are what make a solution **acidic**. A free H⁺ joins a water molecule to form **H₃O⁺** (a coordinate bond).",
+   "actions": [
+    {
+     "set": {
+      "sel": 2,
+      "i": 1
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "H⁺ ions released",
+   "value": "{{if sel==1 | 1 | 2}}",
+   "role": "pos",
+   "when": "i>0.9"
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "How many **H⁺ ions** does one molecule of **H₂SO₄** release?",
+   "answer": 2,
+   "hint": "Count the H atoms in the formula.",
+   "explain": "H₂SO₄ → **2** H⁺ + SO₄²⁻.",
+   "tolerance": 0.01
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which ions does **HCl** form in water?",
+   "options": [
+    {
+     "id": "a",
+     "label": "H⁺ and Cl⁻"
+    },
+    {
+     "id": "b",
+     "label": "H⁻ and Cl⁺"
+    },
+    {
+     "id": "c",
+     "label": "Na⁺ and Cl⁻"
+    },
+    {
+     "id": "d",
+     "label": "It stays as molecules"
+    }
+   ],
+   "answer": "a",
+   "hint": "H goes away as a positive ion.",
+   "explain": "HCl → **H⁺ + Cl⁻**."
+  }
+ ],
+ "takeaways": [
+  "Covalent acids ionise in water: HCl → H⁺ + Cl⁻ and H₂SO₄ → 2H⁺ + SO₄²⁻.",
+  "The free ions let their solutions conduct electricity."
+ ]
+}

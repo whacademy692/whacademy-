@@ -1,0 +1,949 @@
+{
+ "id": "pb9-chem-c3-th-ionic-cov",
+ "title": "Ionic vs covalent compounds",
+ "summary": "Compare structure, melting point, solubility and conduction side by side.",
+ "alt": "Two columns comparing an ionic crystal with covalent molecules for structure, melting points, solubility and electrical conduction.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "a": {
+   "label": "Atom A",
+   "color": "#7c3aed",
+   "text": "First atom.",
+   "legend": false
+  },
+  "b": {
+   "label": "Atom B",
+   "color": "#059669",
+   "text": "Second atom.",
+   "legend": false
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "The correct / stable one.",
+   "legend": false
+  },
+  "bad": {
+   "label": "Not allowed",
+   "color": "#e11d48",
+   "text": "Not possible / unstable.",
+   "legend": false
+  },
+  "wall": {
+   "label": "Apparatus",
+   "color": "#475569",
+   "text": "The container or apparatus.",
+   "legend": false
+  },
+  "o": {
+   "label": "Oxygen",
+   "color": "#ef4444",
+   "text": "Oxygen atom.",
+   "legend": false
+  },
+  "h": {
+   "label": "Hydrogen",
+   "color": "#0ea5e9",
+   "text": "Hydrogen atom.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Heat / high energy.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Low energy.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "sel",
+   "label": "Property",
+   "type": "choice",
+   "options": [
+    {
+     "value": 1,
+     "label": "Structure"
+    },
+    {
+     "value": 2,
+     "label": "Melting and boiling points"
+    },
+    {
+     "value": 3,
+     "label": "Solubility"
+    },
+    {
+     "value": 4,
+     "label": "Conductivity"
+    }
+   ],
+   "default": 1
+  }
+ ],
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "lc",
+   "x": 3,
+   "y": 6,
+   "w": 45,
+   "h": 66,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.06,
+   "strokeWidth": 2
+  },
+  {
+   "type": "rect",
+   "id": "rc",
+   "x": 52,
+   "y": 6,
+   "w": 45,
+   "h": 66,
+   "role": "b",
+   "fill": true,
+   "fillOpacity": 0.06,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "lt",
+   "at": [
+    25.5,
+    68
+   ],
+   "text": "Ionic compounds",
+   "role": "a",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "rt",
+   "at": [
+    74.5,
+    68
+   ],
+   "text": "Covalent compounds",
+   "role": "b",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "li0_0",
+   "c": [
+    10,
+    56
+   ],
+   "r": 3.4,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2
+  },
+  {
+   "type": "circle",
+   "id": "li0_1",
+   "c": [
+    20,
+    56
+   ],
+   "r": 4.4,
+   "role": "b",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2
+  },
+  {
+   "type": "circle",
+   "id": "li0_2",
+   "c": [
+    30,
+    56
+   ],
+   "r": 3.4,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2
+  },
+  {
+   "type": "circle",
+   "id": "li0_3",
+   "c": [
+    40,
+    56
+   ],
+   "r": 4.4,
+   "role": "b",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2
+  },
+  {
+   "type": "circle",
+   "id": "li1_0",
+   "c": [
+    10,
+    46
+   ],
+   "r": 4.4,
+   "role": "b",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2
+  },
+  {
+   "type": "circle",
+   "id": "li1_1",
+   "c": [
+    20,
+    46
+   ],
+   "r": 3.4,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2
+  },
+  {
+   "type": "circle",
+   "id": "li1_2",
+   "c": [
+    30,
+    46
+   ],
+   "r": 4.4,
+   "role": "b",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2
+  },
+  {
+   "type": "circle",
+   "id": "li1_3",
+   "c": [
+    40,
+    46
+   ],
+   "r": 3.4,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.45,
+   "strokeWidth": 2
+  },
+  {
+   "type": "circle",
+   "id": "ro0",
+   "c": [
+    62,
+    57
+   ],
+   "r": 3.2,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2
+  },
+  {
+   "type": "circle",
+   "id": "rh0_a",
+   "c": [
+    58.8,
+    54.4
+   ],
+   "r": 1.9,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "circle",
+   "id": "rh0_b",
+   "c": [
+    65.2,
+    54.4
+   ],
+   "r": 1.9,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "circle",
+   "id": "ro1",
+   "c": [
+    80,
+    57
+   ],
+   "r": 3.2,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2
+  },
+  {
+   "type": "circle",
+   "id": "rh1_a",
+   "c": [
+    76.8,
+    54.4
+   ],
+   "r": 1.9,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "circle",
+   "id": "rh1_b",
+   "c": [
+    83.2,
+    54.4
+   ],
+   "r": 1.9,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "circle",
+   "id": "ro2",
+   "c": [
+    71,
+    46
+   ],
+   "r": 3.2,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2
+  },
+  {
+   "type": "circle",
+   "id": "rh2_a",
+   "c": [
+    67.8,
+    43.4
+   ],
+   "r": 1.9,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "circle",
+   "id": "rh2_b",
+   "c": [
+    74.2,
+    43.4
+   ],
+   "r": 1.9,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "circle",
+   "id": "ro3",
+   "c": [
+    88,
+    46
+   ],
+   "r": 3.2,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2
+  },
+  {
+   "type": "circle",
+   "id": "rh3_a",
+   "c": [
+    84.8,
+    43.4
+   ],
+   "r": 1.9,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "circle",
+   "id": "rh3_b",
+   "c": [
+    91.2,
+    43.4
+   ],
+   "r": 1.9,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "text",
+   "id": "la1_0",
+   "at": [
+    25.5,
+    36
+   ],
+   "text": "crystal lattice of ions",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "ra1_0",
+   "at": [
+    74.5,
+    36
+   ],
+   "text": "discrete neutral molecules",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "la1_1",
+   "at": [
+    25.5,
+    29
+   ],
+   "text": "neutral overall",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "ra1_1",
+   "at": [
+    74.5,
+    29
+   ],
+   "text": "shared pairs between nuclei",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "la1_2",
+   "at": [
+    25.5,
+    22
+   ],
+   "text": "strong electrostatic forces",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "ra1_2",
+   "at": [
+    74.5,
+    22
+   ],
+   "text": "and electrons",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "la2_0",
+   "at": [
+    25.5,
+    36
+   ],
+   "text": "solids, high m.p. and b.p.",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "ra2_0",
+   "at": [
+    74.5,
+    36
+   ],
+   "text": "gases, low-boiling liquids",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "la2_1",
+   "at": [
+    25.5,
+    29
+   ],
+   "text": "NaCl melts at 801 °C",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "ra2_1",
+   "at": [
+    74.5,
+    29
+   ],
+   "text": "or low-melting solids",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "la2_2",
+   "at": [
+    25.5,
+    22
+   ],
+   "text": "strong ionic attraction",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "ra2_2",
+   "at": [
+    74.5,
+    22
+   ],
+   "text": "generally lower m.p. and b.p.",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "la3_0",
+   "at": [
+    25.5,
+    36
+   ],
+   "text": "usually soluble in water",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==3"
+  },
+  {
+   "type": "text",
+   "id": "ra3_0",
+   "at": [
+    74.5,
+    36
+   ],
+   "text": "usually insoluble in water",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==3"
+  },
+  {
+   "type": "text",
+   "id": "la3_1",
+   "at": [
+    25.5,
+    29
+   ],
+   "text": "polar solvent",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==3"
+  },
+  {
+   "type": "text",
+   "id": "ra3_1",
+   "at": [
+    74.5,
+    29
+   ],
+   "text": "soluble in non-polar solvents",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==3"
+  },
+  {
+   "type": "text",
+   "id": "ra3_2",
+   "at": [
+    74.5,
+    22
+   ],
+   "text": "ether, benzene, acetone",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==3"
+  },
+  {
+   "type": "text",
+   "id": "la4_0",
+   "at": [
+    25.5,
+    36
+   ],
+   "text": "good conductors when molten",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "ra4_0",
+   "at": [
+    74.5,
+    36
+   ],
+   "text": "usually bad conductors",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "la4_1",
+   "at": [
+    25.5,
+    29
+   ],
+   "text": "or in solution (free ions)",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "ra4_1",
+   "at": [
+    74.5,
+    29
+   ],
+   "text": "no free ions or electrons",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "la4_2",
+   "at": [
+    25.5,
+    22
+   ],
+   "text": "solid does not conduct",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==4"
+  },
+  {
+   "type": "rect",
+   "id": "tl",
+   "x": 6.5,
+   "y": 11,
+   "w": 38,
+   "h": 4,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.6,
+   "strokeWidth": 2,
+   "visible": "sel==2"
+  },
+  {
+   "type": "rect",
+   "id": "tr",
+   "x": 55.5,
+   "y": 11,
+   "w": 12,
+   "h": 4,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.6,
+   "strokeWidth": 2,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "tl2",
+   "at": [
+    25.5,
+    8
+   ],
+   "text": "high melting point",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "tr2",
+   "at": [
+    74.5,
+    8
+   ],
+   "text": "lower melting point",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "bl",
+   "c": [
+    25.5,
+    14
+   ],
+   "r": 4.5,
+   "role": "warn",
+   "fill": true,
+   "fillOpacity": 0.7,
+   "strokeWidth": 2.5,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "blt",
+   "at": [
+    25.5,
+    14
+   ],
+   "text": "on",
+   "role": "warn",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==4"
+  },
+  {
+   "type": "circle",
+   "id": "br",
+   "c": [
+    74.5,
+    14
+   ],
+   "r": 4.5,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 2.5,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "brt",
+   "at": [
+    74.5,
+    14
+   ],
+   "text": "off",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "wl",
+   "at": [
+    25.5,
+    14
+   ],
+   "text": "✔ water",
+   "role": "ok",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==3"
+  },
+  {
+   "type": "text",
+   "id": "wr",
+   "at": [
+    74.5,
+    14
+   ],
+   "text": "✘ water   ✔ non-polar",
+   "role": "bad",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==3"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Structure",
+   "text": "Ionic compounds: oppositely charged ions in a **crystal lattice**. Covalent compounds: mostly **discrete neutral molecules**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Melting and boiling points",
+   "text": "Ionic solids have **high melting and boiling points**: NaCl melts at **801 °C** because the strong forces between ions are hard to break. Covalent compounds generally melt and boil at **lower** temperatures.",
+   "actions": [
+    {
+     "set": {
+      "sel": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Solubility",
+   "text": "Ionic compounds are generally **soluble in polar solvents like water**. Covalent compounds are usually **insoluble in water** but soluble in **non-polar solvents**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Conductivity",
+   "text": "Ionic compounds conduct when **molten or in solution** because of **free ions**. Covalent compounds are usually **bad conductors**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 4
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which compound type usually has a **high melting point**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Ionic"
+    },
+    {
+     "id": "b",
+     "label": "Covalent"
+    },
+    {
+     "id": "c",
+     "label": "Both equally"
+    },
+    {
+     "id": "d",
+     "label": "Neither"
+    }
+   ],
+   "answer": "a",
+   "hint": "NaCl melts at 801 °C.",
+   "explain": "**Ionic** compounds: strong electrostatic forces between ions."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which usually dissolves in **benzene or ether**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Covalent compounds"
+    },
+    {
+     "id": "b",
+     "label": "Ionic compounds"
+    },
+    {
+     "id": "c",
+     "label": "Both"
+    },
+    {
+     "id": "d",
+     "label": "Metals only"
+    }
+   ],
+   "answer": "a",
+   "hint": "Non-polar solvents.",
+   "explain": "**Covalent** compounds are soluble in non-polar solvents."
+  }
+ ],
+ "takeaways": [
+  "Ionic: lattice, high m.p./b.p., soluble in water, conduct when molten or dissolved.",
+  "Covalent: molecules, lower m.p./b.p., insoluble in water, usually bad conductors."
+ ]
+}

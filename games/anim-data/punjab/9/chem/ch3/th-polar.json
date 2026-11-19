@@ -1,0 +1,694 @@
+{
+ "id": "pb9-chem-c3-th-polar",
+ "title": "Polar and non-polar covalent bonds",
+ "summary": "Where does the shared pair sit? Compare H₂, Cl₂, HCl and H₂O.",
+ "alt": "Shared electron pairs between identical atoms are in the middle; between different atoms they shift toward the more electronegative atom giving partial charges.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "h": {
+   "label": "Hydrogen",
+   "color": "#0ea5e9",
+   "text": "Hydrogen atom.",
+   "legend": false
+  },
+  "cl": {
+   "label": "Chlorine",
+   "color": "#16a34a",
+   "text": "Chlorine atom.",
+   "legend": false
+  },
+  "o": {
+   "label": "Oxygen",
+   "color": "#ef4444",
+   "text": "Oxygen atom.",
+   "legend": false
+  },
+  "el": {
+   "label": "Electron of the left / first atom",
+   "color": "#2563eb",
+   "text": "Shared electron from the first atom.",
+   "legend": true
+  },
+  "elx": {
+   "label": "Electron of the second atom",
+   "color": "#f59e0b",
+   "text": "Shared electron from the second atom.",
+   "legend": true
+  },
+  "pos": {
+   "label": "Positive",
+   "color": "#e11d48",
+   "text": "Positive charge / cation.",
+   "legend": false
+  },
+  "neg": {
+   "label": "Negative",
+   "color": "#2563eb",
+   "text": "Negative charge / anion.",
+   "legend": false
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "sel",
+   "label": "Molecule",
+   "type": "choice",
+   "options": [
+    {
+     "value": 1,
+     "label": "H₂"
+    },
+    {
+     "value": 2,
+     "label": "Cl₂"
+    },
+    {
+     "value": 3,
+     "label": "HCl"
+    },
+    {
+     "value": 4,
+     "label": "H₂O"
+    }
+   ],
+   "default": 1
+  }
+ ],
+ "shapes": [
+  {
+   "type": "circle",
+   "id": "c1_1",
+   "c": [
+    30,
+    40
+   ],
+   "r": 8,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 2.6,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "t1_1",
+   "at": [
+    30,
+    40
+   ],
+   "text": "H",
+   "role": "h",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "c2_1",
+   "c": [
+    70,
+    40
+   ],
+   "r": 8,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 2.6,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "t2_1",
+   "at": [
+    70,
+    40
+   ],
+   "text": "H",
+   "role": "h",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "point",
+   "id": "pa_1",
+   "at": [
+    48.6,
+    40
+   ],
+   "role": "el",
+   "r": 6,
+   "visible": "sel==1"
+  },
+  {
+   "type": "point",
+   "id": "pb_1",
+   "at": [
+    51.4,
+    40
+   ],
+   "role": "elx",
+   "r": 6,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "c1_2",
+   "c": [
+    24,
+    40
+   ],
+   "r": 11,
+   "role": "cl",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 2.6,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "t1_2",
+   "at": [
+    24,
+    40
+   ],
+   "text": "Cl",
+   "role": "cl",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "c2_2",
+   "c": [
+    76,
+    40
+   ],
+   "r": 11,
+   "role": "cl",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 2.6,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "t2_2",
+   "at": [
+    76,
+    40
+   ],
+   "text": "Cl",
+   "role": "cl",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "point",
+   "id": "pa_2",
+   "at": [
+    48.6,
+    40
+   ],
+   "role": "el",
+   "r": 6,
+   "visible": "sel==2"
+  },
+  {
+   "type": "point",
+   "id": "pb_2",
+   "at": [
+    51.4,
+    40
+   ],
+   "role": "elx",
+   "r": 6,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "c1_3",
+   "c": [
+    30,
+    40
+   ],
+   "r": 8,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 2.6,
+   "visible": "sel==3"
+  },
+  {
+   "type": "text",
+   "id": "t1_3",
+   "at": [
+    30,
+    40
+   ],
+   "text": "H",
+   "role": "h",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==3"
+  },
+  {
+   "type": "circle",
+   "id": "c2_3",
+   "c": [
+    70,
+    40
+   ],
+   "r": 11,
+   "role": "cl",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 2.6,
+   "visible": "sel==3"
+  },
+  {
+   "type": "text",
+   "id": "t2_3",
+   "at": [
+    70,
+    40
+   ],
+   "text": "Cl",
+   "role": "cl",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==3"
+  },
+  {
+   "type": "point",
+   "id": "pa_3",
+   "at": [
+    53.4,
+    40
+   ],
+   "role": "el",
+   "r": 6,
+   "visible": "sel==3"
+  },
+  {
+   "type": "point",
+   "id": "pb_3",
+   "at": [
+    56.199999999999996,
+    40
+   ],
+   "role": "elx",
+   "r": 6,
+   "visible": "sel==3"
+  },
+  {
+   "type": "text",
+   "id": "dh",
+   "at": [
+    30,
+    55
+   ],
+   "text": "δ⁺",
+   "role": "pos",
+   "size": "l",
+   "bold": true,
+   "visible": "sel==3"
+  },
+  {
+   "type": "text",
+   "id": "dc",
+   "at": [
+    70,
+    58
+   ],
+   "text": "δ⁻",
+   "role": "neg",
+   "size": "l",
+   "bold": true,
+   "visible": "sel==3"
+  },
+  {
+   "type": "circle",
+   "id": "wo",
+   "c": [
+    50,
+    48
+   ],
+   "r": 11,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 2.6,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "wot",
+   "at": [
+    50,
+    48
+   ],
+   "text": "O",
+   "role": "o",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==4"
+  },
+  {
+   "type": "circle",
+   "id": "wh0",
+   "c": [
+    28,
+    26
+   ],
+   "r": 7,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 2.6,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "wht0",
+   "at": [
+    28,
+    26
+   ],
+   "text": "H",
+   "role": "h",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==4"
+  },
+  {
+   "type": "point",
+   "id": "wa0",
+   "at": [
+    40.44,
+    39.64
+   ],
+   "role": "el",
+   "r": 6,
+   "visible": "sel==4"
+  },
+  {
+   "type": "point",
+   "id": "wb0",
+   "at": [
+    42.84,
+    39.64
+   ],
+   "role": "elx",
+   "r": 6,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "wd0",
+   "at": [
+    20,
+    20
+   ],
+   "text": "δ⁺",
+   "role": "pos",
+   "size": "l",
+   "bold": true,
+   "visible": "sel==4"
+  },
+  {
+   "type": "circle",
+   "id": "wh1",
+   "c": [
+    72,
+    26
+   ],
+   "r": 7,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 2.6,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "wht1",
+   "at": [
+    72,
+    26
+   ],
+   "text": "H",
+   "role": "h",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==4"
+  },
+  {
+   "type": "point",
+   "id": "wa1",
+   "at": [
+    57.16,
+    39.64
+   ],
+   "role": "el",
+   "r": 6,
+   "visible": "sel==4"
+  },
+  {
+   "type": "point",
+   "id": "wb1",
+   "at": [
+    59.56,
+    39.64
+   ],
+   "role": "elx",
+   "r": 6,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "wd1",
+   "at": [
+    80,
+    20
+   ],
+   "text": "δ⁺",
+   "role": "pos",
+   "size": "l",
+   "bold": true,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "wdn",
+   "at": [
+    50,
+    64
+   ],
+   "text": "δ⁻",
+   "role": "neg",
+   "size": "l",
+   "bold": true,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "k1",
+   "at": [
+    50,
+    11
+   ],
+   "text": "Non-polar: pair in the middle",
+   "role": "warn",
+   "size": "m",
+   "bold": true,
+   "visible": "sel<=2"
+  },
+  {
+   "type": "text",
+   "id": "k2",
+   "at": [
+    50,
+    11
+   ],
+   "text": "Polar: pair bends toward the more",
+   "role": "warn",
+   "size": "m",
+   "bold": true,
+   "visible": "sel>=3"
+  },
+  {
+   "type": "text",
+   "id": "k2b",
+   "at": [
+    50,
+    5
+   ],
+   "text": "electronegative atom",
+   "role": "warn",
+   "size": "m",
+   "bold": true,
+   "visible": "sel>=3"
+  },
+  {
+   "type": "text",
+   "id": "k3",
+   "at": [
+    50,
+    73
+   ],
+   "text": "Identical atoms: pure covalent bond",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "visible": "sel<=2"
+  },
+  {
+   "type": "text",
+   "id": "k4",
+   "at": [
+    50,
+    73
+   ],
+   "text": "Different atoms: partial charges δ⁺ and δ⁻",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "visible": "sel>=3"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Identical atoms: H₂",
+   "text": "Two **identical** atoms attract the shared pair **equally**: it lies **in the middle**. The bond is **non-polar** (pure covalent).",
+   "actions": [
+    {
+     "set": {
+      "sel": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Chlorine, Cl₂",
+   "text": "Same for Cl₂: identical atoms, shared pair in the middle: **non-polar**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "HCl: unequal sharing",
+   "text": "Chlorine is **more electronegative** than hydrogen, so the shared pair **bends toward Cl**. Cl gets a **partial negative charge (δ⁻)** and H an equal **partial positive charge (δ⁺)**: a **polar covalent bond**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Water: polar bonds",
+   "text": "The two O–H bonds in **water** are **polar covalent**: δ⁻ on oxygen and δ⁺ on each hydrogen.",
+   "actions": [
+    {
+     "set": {
+      "sel": 4
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which molecule has a **non-polar** covalent bond?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Cl₂"
+    },
+    {
+     "id": "b",
+     "label": "HCl"
+    },
+    {
+     "id": "c",
+     "label": "H₂O"
+    },
+    {
+     "id": "d",
+     "label": "NaCl"
+    }
+   ],
+   "answer": "a",
+   "hint": "The two atoms are identical.",
+   "explain": "**Cl₂**: identical atoms share the pair equally."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "In **HCl**, which atom carries the partial negative charge δ⁻?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Chlorine"
+    },
+    {
+     "id": "b",
+     "label": "Hydrogen"
+    },
+    {
+     "id": "c",
+     "label": "Both"
+    },
+    {
+     "id": "d",
+     "label": "Neither"
+    }
+   ],
+   "answer": "a",
+   "hint": "Chlorine is more electronegative.",
+   "explain": "The shared pair bends toward **chlorine**, so Cl is δ⁻."
+  }
+ ],
+ "takeaways": [
+  "Non-polar covalent: between identical atoms (H₂, Cl₂), pair in the middle.",
+  "Polar covalent: between different atoms (HCl, H₂O), δ⁻ on the more electronegative atom."
+ ]
+}

@@ -1,0 +1,437 @@
+{
+ "id": "pb9-chem-c1-th-three-states",
+ "title": "Solid, liquid and gas",
+ "summary": "Compare arrangement, motion, forces and density of the three primary states.",
+ "alt": "Three boxes of particles: a vibrating lattice (solid), a dense random liquid and a few fast particles far apart (gas).",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Low energy.",
+   "legend": false
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Heat / high energy.",
+   "legend": false
+  },
+  "wall": {
+   "label": "Apparatus",
+   "color": "#475569",
+   "text": "The container or apparatus.",
+   "legend": false
+  },
+  "a": {
+   "label": "Atom A",
+   "color": "#7c3aed",
+   "text": "First atom.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "gas",
+   "id": "gs",
+   "x0": 3,
+   "x1": 29,
+   "y0": 26,
+   "y1": 58,
+   "n": 30,
+   "v": 0.8,
+   "bath": 1,
+   "vref": 3,
+   "seed": 7,
+   "r": 5,
+   "bind": 1,
+   "mix": 0
+  },
+  {
+   "type": "gas",
+   "id": "gl",
+   "x0": 37,
+   "x1": 63,
+   "y0": 26,
+   "y1": 48,
+   "n": 30,
+   "v": 2.4,
+   "bath": 1,
+   "vref": 3,
+   "seed": 7,
+   "r": 5
+  },
+  {
+   "type": "gas",
+   "id": "gg",
+   "x0": 71,
+   "x1": 97,
+   "y0": 26,
+   "y1": 58,
+   "n": 9,
+   "v": 6,
+   "bath": 1,
+   "vref": 3,
+   "seed": 7,
+   "r": 5
+  },
+  {
+   "type": "rect",
+   "id": "bx0",
+   "x": 3,
+   "y": 26,
+   "w": 26,
+   "h": 32,
+   "role": "wall",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "nm0",
+   "at": [
+    16.0,
+    66
+   ],
+   "text": "Solid",
+   "role": "ink",
+   "size": "l",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "bx1",
+   "x": 37,
+   "y": 26,
+   "w": 26,
+   "h": 32,
+   "role": "wall",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "nm1",
+   "at": [
+    50.0,
+    66
+   ],
+   "text": "Liquid",
+   "role": "ink",
+   "size": "l",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "bx2",
+   "x": 71,
+   "y": 26,
+   "w": 26,
+   "h": 32,
+   "role": "wall",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "nm2",
+   "at": [
+    84.0,
+    66
+   ],
+   "text": "Gas",
+   "role": "ink",
+   "size": "l",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "arr0",
+   "at": [
+    16.0,
+    20.5
+   ],
+   "text": "fixed positions",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "arr1",
+   "at": [
+    50.0,
+    20.5
+   ],
+   "text": "close, move randomly",
+   "role": "warn",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "arr2",
+   "at": [
+    84.0,
+    20.5
+   ],
+   "text": "very far apart",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "mot0",
+   "at": [
+    16.0,
+    15
+   ],
+   "text": "vibrate in place",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "mot1",
+   "at": [
+    50.0,
+    15
+   ],
+   "text": "move randomly",
+   "role": "warn",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "mot2",
+   "at": [
+    84.0,
+    15
+   ],
+   "text": "fast, random",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "frc0",
+   "at": [
+    16.0,
+    9.5
+   ],
+   "text": "very strong forces",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "frc1",
+   "at": [
+    50.0,
+    9.5
+   ],
+   "text": "significant forces",
+   "role": "warn",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "frc2",
+   "at": [
+    84.0,
+    9.5
+   ],
+   "text": "very weak forces",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "den0",
+   "at": [
+    16.0,
+    4
+   ],
+   "text": "density: very high",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "den1",
+   "at": [
+    50.0,
+    4
+   ],
+   "text": "density: higher than gas",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "den2",
+   "at": [
+    84.0,
+    4
+   ],
+   "text": "density: very low",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Three primary states",
+   "text": "Matter has mass and occupies space. The three primary states are **solid, liquid and gas**; they differ in how the particles are arranged and held together.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Arrangement and distance",
+   "text": "Solid: particles **closely packed** at fixed positions. Liquid: closely attached but moving randomly. Gas: **very widely apart**, no order at all.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Motion of particles",
+   "text": "Solid particles only **oscillate about their mean positions**. Liquid and gas particles move randomly; gas particles move fastest.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Intermolecular forces",
+   "text": "Forces are **very strong** in a solid, **significant** in a liquid and **very weak** in a gas.",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Density",
+   "text": "Closely packed particles give a **high density**: crystalline solids are the most dense, gases have a very low density.",
+   "actions": []
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "In which state do the particles **only vibrate about fixed positions**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Solid"
+    },
+    {
+     "id": "b",
+     "label": "Liquid"
+    },
+    {
+     "id": "c",
+     "label": "Gas"
+    },
+    {
+     "id": "d",
+     "label": "All of them"
+    }
+   ],
+   "answer": "a",
+   "hint": "Look at the lattice box.",
+   "explain": "In a **solid** the particles oscillate about their mean positions."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which state has the **weakest** intermolecular forces?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Solid"
+    },
+    {
+     "id": "b",
+     "label": "Liquid"
+    },
+    {
+     "id": "c",
+     "label": "Gas"
+    },
+    {
+     "id": "d",
+     "label": "Plasma only"
+    }
+   ],
+   "answer": "c",
+   "hint": "The particles are very far apart.",
+   "explain": "In a **gas** the forces are very weak because the particles are very far apart."
+  }
+ ],
+ "takeaways": [
+  "Solid: closely packed, fixed positions, vibrate, strong forces, high density.",
+  "Liquid: close but random, significant forces.",
+  "Gas: far apart, random fast motion, very weak forces, very low density."
+ ],
+ "notes": [
+  {
+   "title": "Beyond the book",
+   "text": "The book does not discuss **fluidity** (an SLO). In standard chemistry solids are rigid, while liquids and gases flow, so they are called fluids."
+  }
+ ]
+}

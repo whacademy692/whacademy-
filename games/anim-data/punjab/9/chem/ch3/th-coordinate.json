@@ -1,0 +1,657 @@
+{
+ "id": "pb9-chem-c3-th-coordinate",
+ "title": "Coordinate covalent bond",
+ "summary": "One atom donates both electrons of the shared pair: H₃O⁺, H₃N→BF₃ and NH₄⁺.",
+ "alt": "A donor atom with a lone pair approaches an acceptor with an empty orbital and shares that pair, shown by an arrow.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "o": {
+   "label": "Oxygen",
+   "color": "#ef4444",
+   "text": "Oxygen atom.",
+   "legend": false
+  },
+  "n": {
+   "label": "Nitrogen",
+   "color": "#3b82f6",
+   "text": "Nitrogen atom.",
+   "legend": false
+  },
+  "h": {
+   "label": "Hydrogen",
+   "color": "#0ea5e9",
+   "text": "Hydrogen atom.",
+   "legend": false
+  },
+  "cb": {
+   "label": "Carbon",
+   "color": "#475569",
+   "text": "Carbon atom.",
+   "legend": false
+  },
+  "el": {
+   "label": "Electron",
+   "color": "#2563eb",
+   "text": "Negative particle moving around the nucleus.",
+   "legend": true
+  },
+  "pos": {
+   "label": "Positive",
+   "color": "#e11d48",
+   "text": "Positive charge / cation.",
+   "legend": false
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  },
+  "sh": {
+   "label": "Shell",
+   "color": "#94a3b8",
+   "text": "An energy level (orbit).",
+   "legend": false
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "The correct / stable one.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "sel",
+   "label": "Reaction",
+   "type": "choice",
+   "options": [
+    {
+     "value": 1,
+     "label": "H₂O + H⁺ → H₃O⁺"
+    },
+    {
+     "value": 2,
+     "label": "NH₃ + BF₃ → H₃N→BF₃"
+    },
+    {
+     "value": 3,
+     "label": "NH₃ + H⁺ → NH₄⁺"
+    }
+   ],
+   "default": 1
+  },
+  {
+   "id": "j",
+   "label": "Bring them together",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0
+  }
+ ],
+ "derived": {
+  "ax": "sel==2?(86-44*j):(80-42*j)"
+ },
+ "shapes": [
+  {
+   "type": "circle",
+   "id": "don",
+   "c": [
+    26,
+    42
+   ],
+   "r": 7.4,
+   "role": "o",
+   "fill": true,
+   "fillOpacity": 0.3,
+   "strokeWidth": 2.6,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "dt1",
+   "at": [
+    26,
+    42
+   ],
+   "text": "O",
+   "role": "o",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "don2",
+   "c": [
+    26,
+    42
+   ],
+   "r": 7.4,
+   "role": "n",
+   "fill": true,
+   "fillOpacity": 0.3,
+   "strokeWidth": 2.6,
+   "visible": "sel>=2"
+  },
+  {
+   "type": "text",
+   "id": "dt2",
+   "at": [
+    26,
+    42
+   ],
+   "text": "N",
+   "role": "n",
+   "size": "m",
+   "bold": true,
+   "visible": "sel>=2"
+  },
+  {
+   "type": "segment",
+   "id": "hb14_52",
+   "from": [
+    26,
+    42
+   ],
+   "to": [
+    14,
+    52
+   ],
+   "role": "ink",
+   "strokeWidth": 2.6,
+   "visible": "sel>=1"
+  },
+  {
+   "type": "circle",
+   "id": "h14_52",
+   "c": [
+    14,
+    52
+   ],
+   "r": 3.6,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2,
+   "visible": "sel>=1"
+  },
+  {
+   "type": "text",
+   "id": "ht14_52",
+   "at": [
+    14,
+    52
+   ],
+   "text": "H",
+   "role": "h",
+   "size": "s",
+   "bold": true,
+   "visible": "sel>=1"
+  },
+  {
+   "type": "segment",
+   "id": "hb14_32",
+   "from": [
+    26,
+    42
+   ],
+   "to": [
+    14,
+    32
+   ],
+   "role": "ink",
+   "strokeWidth": 2.6,
+   "visible": "sel>=1"
+  },
+  {
+   "type": "circle",
+   "id": "h14_32",
+   "c": [
+    14,
+    32
+   ],
+   "r": 3.6,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2,
+   "visible": "sel>=1"
+  },
+  {
+   "type": "text",
+   "id": "ht14_32",
+   "at": [
+    14,
+    32
+   ],
+   "text": "H",
+   "role": "h",
+   "size": "s",
+   "bold": true,
+   "visible": "sel>=1"
+  },
+  {
+   "type": "segment",
+   "id": "hb26_28",
+   "from": [
+    26,
+    42
+   ],
+   "to": [
+    26,
+    28
+   ],
+   "role": "ink",
+   "strokeWidth": 2.6,
+   "visible": "sel>=2"
+  },
+  {
+   "type": "circle",
+   "id": "h26_28",
+   "c": [
+    26,
+    28
+   ],
+   "r": 3.6,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2,
+   "visible": "sel>=2"
+  },
+  {
+   "type": "text",
+   "id": "ht26_28",
+   "at": [
+    26,
+    28
+   ],
+   "text": "H",
+   "role": "h",
+   "size": "s",
+   "bold": true,
+   "visible": "sel>=2"
+  },
+  {
+   "type": "point",
+   "id": "lp1",
+   "at": [
+    34.2,
+    43.6
+   ],
+   "role": "el",
+   "r": 6
+  },
+  {
+   "type": "point",
+   "id": "lp2",
+   "at": [
+    34.2,
+    40.4
+   ],
+   "role": "el",
+   "r": 6
+  },
+  {
+   "type": "circle",
+   "id": "acH",
+   "c": [
+    "ax",
+    42
+   ],
+   "r": 4.4,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.3,
+   "strokeWidth": 2.6,
+   "visible": "sel!=2"
+  },
+  {
+   "type": "text",
+   "id": "acHt",
+   "at": [
+    "ax",
+    42
+   ],
+   "text": "H⁺",
+   "role": "pos",
+   "size": "s",
+   "bold": true,
+   "visible": "sel!=2"
+  },
+  {
+   "type": "circle",
+   "id": "acB",
+   "c": [
+    "ax",
+    42
+   ],
+   "r": 8.4,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 2.6,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "acBt",
+   "at": [
+    "ax",
+    42
+   ],
+   "text": "BF₃",
+   "role": "cb",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "acBe",
+   "c": [
+    "ax-10.8",
+    42
+   ],
+   "r": 2.6,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "sel==2&&j<0.95"
+  },
+  {
+   "type": "vector",
+   "id": "arr",
+   "from": [
+    35,
+    42
+   ],
+   "to": [
+    0,
+    42
+   ],
+   "role": "warn",
+   "strokeWidth": 4,
+   "visible": "0"
+  },
+  {
+   "type": "vector",
+   "id": "arrow",
+   "from": [
+    30,
+    54
+   ],
+   "to": [
+    "ax-1",
+    54
+   ],
+   "role": "warn",
+   "strokeWidth": 4,
+   "visible": "j>0.9"
+  },
+  {
+   "type": "text",
+   "id": "ar1",
+   "at": [
+    "(26+ax)/2+4",
+    59
+   ],
+   "text": "donor → acceptor",
+   "role": "warn",
+   "size": "s",
+   "bold": true,
+   "visible": "j>0.9"
+  },
+  {
+   "type": "text",
+   "id": "dn",
+   "at": [
+    26,
+    66
+   ],
+   "text": "Donor: has a lone pair",
+   "role": "ink",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "ac",
+   "at": [
+    70,
+    66
+   ],
+   "text": "{{if sel==2 | Acceptor: empty shell on B | Acceptor: H⁺, empty shell}}",
+   "role": "ink",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "prod",
+   "at": [
+    60,
+    16
+   ],
+   "text": "{{if sel==1 | H₃O⁺ | if(sel==2, H₃N→BF₃, NH₄⁺)}}",
+   "role": "warn",
+   "size": "xl",
+   "bold": true,
+   "visible": "0"
+  },
+  {
+   "type": "text",
+   "id": "pr1",
+   "at": [
+    58,
+    14
+   ],
+   "text": "H₃O⁺ (hydroxonium ion)",
+   "role": "warn",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==1&&j>0.9"
+  },
+  {
+   "type": "text",
+   "id": "pr2",
+   "at": [
+    58,
+    14
+   ],
+   "text": "H₃N → BF₃",
+   "role": "warn",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==2&&j>0.9"
+  },
+  {
+   "type": "text",
+   "id": "pr3",
+   "at": [
+    58,
+    14
+   ],
+   "text": "NH₄⁺ (ammonium ion)",
+   "role": "warn",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==3&&j>0.9"
+  },
+  {
+   "type": "text",
+   "id": "pr4",
+   "at": [
+    58,
+    7
+   ],
+   "text": "All bonds behave exactly alike afterwards",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "(sel==1||sel==3)&&j>0.9"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A donor with a lone pair",
+   "text": "In a **coordinate covalent bond** the shared pair is donated by **one atom only**. The **donor** here has a **lone pair**; the **acceptor** has room for it.",
+   "actions": [
+    {
+     "set": {
+      "sel": 1
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "j": 0
+     },
+     "at": 0,
+     "dur": 300
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "H₃O⁺: water + proton",
+   "text": "A proton (H⁺) has an **empty outer shell** and accepts one lone pair of O in water, forming the **hydroxonium ion H₃O⁺**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 1
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "j": 1
+     },
+     "at": 0,
+     "dur": 2000
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "H₃N → BF₃",
+   "text": "The lone pair of **N in NH₃** fills the partly empty outer shell of **B in BF₃**: **H₃N → BF₃**. The **arrow points to the acceptor**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 2,
+      "j": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "j": 1
+     },
+     "at": 0,
+     "dur": 2000
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Ammonium ion",
+   "text": "NH₃ + H⁺ (from HCl) → **NH₄⁺**. After forming, all four N–H bonds are **exactly alike**: the difference is only in how the bond formed.",
+   "actions": [
+    {
+     "set": {
+      "sel": 3,
+      "j": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "j": 1
+     },
+     "at": 0,
+     "dur": 2000
+    }
+   ]
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "In the formation of **H₃O⁺**, which species is the **donor**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "The oxygen of H₂O"
+    },
+    {
+     "id": "b",
+     "label": "The proton H⁺"
+    },
+    {
+     "id": "c",
+     "label": "Both equally"
+    },
+    {
+     "id": "d",
+     "label": "Neither"
+    }
+   ],
+   "answer": "a",
+   "hint": "Which one has the lone pair?",
+   "explain": "The **oxygen of water** donates the lone pair; H⁺ accepts it."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "A coordinate covalent bond differs from a normal covalent bond only in…",
+   "options": [
+    {
+     "id": "a",
+     "label": "how it forms (one atom gives the pair)"
+    },
+    {
+     "id": "b",
+     "label": "its final strength"
+    },
+    {
+     "id": "c",
+     "label": "its colour"
+    },
+    {
+     "id": "d",
+     "label": "the number of protons"
+    }
+   ],
+   "answer": "a",
+   "hint": "After forming they are the same.",
+   "explain": "Once formed there is **no difference**; they differ only in the way they form."
+  }
+ ],
+ "takeaways": [
+  "Coordinate bond: the shared pair comes from one atom (donor) and is drawn as an arrow to the acceptor.",
+  "Examples: H₃O⁺, H₃N → BF₃, NH₄⁺.",
+  "When a coordinate bond breaks, both electrons go to the donor."
+ ]
+}

@@ -1,0 +1,594 @@
+{
+ "id": "pb9-chem-c3-th-electro",
+ "title": "Electropositive and electronegative character",
+ "summary": "Metals lose electrons (cations); non-metals gain them (anions). Compare how strongly.",
+ "alt": "Bars comparing alkali and alkaline earth metals by how easily they lose electrons, and a ranking of fluorine, oxygen, nitrogen and chlorine by electronegativity.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "pos": {
+   "label": "Positive",
+   "color": "#e11d48",
+   "text": "Positive charge / cation.",
+   "legend": false
+  },
+  "neg": {
+   "label": "Negative",
+   "color": "#2563eb",
+   "text": "Negative charge / anion.",
+   "legend": false
+  },
+  "a": {
+   "label": "Atom A",
+   "color": "#7c3aed",
+   "text": "First atom.",
+   "legend": false
+  },
+  "b": {
+   "label": "Atom B",
+   "color": "#059669",
+   "text": "Second atom.",
+   "legend": false
+  },
+  "c": {
+   "label": "Atom C",
+   "color": "#d97706",
+   "text": "Third kind of atom.",
+   "legend": false
+  },
+  "h": {
+   "label": "Hydrogen",
+   "color": "#0ea5e9",
+   "text": "Hydrogen atom.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "The correct / stable one.",
+   "legend": false
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  },
+  "wall": {
+   "label": "Apparatus",
+   "color": "#475569",
+   "text": "The container or apparatus.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "sel",
+   "label": "Topic",
+   "type": "choice",
+   "options": [
+    {
+     "value": 1,
+     "label": "Metals: electropositive"
+    },
+    {
+     "value": 2,
+     "label": "Non-metals: electronegative"
+    }
+   ],
+   "default": 1
+  }
+ ],
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ax",
+   "from": [
+    8,
+    16
+   ],
+   "to": [
+    92,
+    16
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "rect",
+   "id": "b0",
+   "x": 12,
+   "y": 16,
+   "w": 18,
+   "h": 36,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2.5,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "n0",
+   "at": [
+    21,
+    11
+   ],
+   "text": "Na, K",
+   "role": "a",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "g0",
+   "at": [
+    21,
+    5.5
+   ],
+   "text": "Alkali metals",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "l0",
+   "at": [
+    21,
+    56
+   ],
+   "text": "lose 1 e⁻: very vigorous",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "rect",
+   "id": "b1",
+   "x": 40,
+   "y": 16,
+   "w": 18,
+   "h": 22,
+   "role": "b",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2.5,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "n1",
+   "at": [
+    49,
+    11
+   ],
+   "text": "Mg, Ca",
+   "role": "b",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "g1",
+   "at": [
+    49,
+    5.5
+   ],
+   "text": "Alkaline earth",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "l1",
+   "at": [
+    49,
+    42
+   ],
+   "text": "lose 2 e⁻: less vigorous",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "rect",
+   "id": "b2",
+   "x": 68,
+   "y": 16,
+   "w": 18,
+   "h": 29,
+   "role": "c",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2.5,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "n2",
+   "at": [
+    77,
+    11
+   ],
+   "text": "Al",
+   "role": "c",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "g2",
+   "at": [
+    77,
+    5.5
+   ],
+   "text": "Aluminium",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "l2",
+   "at": [
+    77,
+    49
+   ],
+   "text": "reacts with acids",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "h1",
+   "at": [
+    50,
+    70
+   ],
+   "text": "Tendency to lose electrons → cations",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "h1b",
+   "at": [
+    50,
+    64
+   ],
+   "text": "higher bar = loses electrons more easily",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==1"
+  },
+  {
+   "type": "rect",
+   "id": "e0",
+   "x": 12,
+   "y": 16,
+   "w": 15,
+   "h": 40,
+   "role": "h",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2.5,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "es0",
+   "at": [
+    19.5,
+    11
+   ],
+   "text": "F",
+   "role": "h",
+   "size": "l",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "er0",
+   "at": [
+    19.5,
+    60
+   ],
+   "text": "1st",
+   "role": "h",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "rect",
+   "id": "e1",
+   "x": 32,
+   "y": 16,
+   "w": 15,
+   "h": 32,
+   "role": "warn",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2.5,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "es1",
+   "at": [
+    39.5,
+    11
+   ],
+   "text": "O",
+   "role": "warn",
+   "size": "l",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "er1",
+   "at": [
+    39.5,
+    52
+   ],
+   "text": "2nd",
+   "role": "warn",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "rect",
+   "id": "e2",
+   "x": 52,
+   "y": 16,
+   "w": 15,
+   "h": 24,
+   "role": "a",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2.5,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "es2",
+   "at": [
+    59.5,
+    11
+   ],
+   "text": "N",
+   "role": "a",
+   "size": "l",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "er2",
+   "at": [
+    59.5,
+    44
+   ],
+   "text": "3rd",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "rect",
+   "id": "e3",
+   "x": 72,
+   "y": 16,
+   "w": 15,
+   "h": 16,
+   "role": "ok",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2.5,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "es3",
+   "at": [
+    79.5,
+    11
+   ],
+   "text": "Cl",
+   "role": "ok",
+   "size": "l",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "er3",
+   "at": [
+    79.5,
+    36
+   ],
+   "text": "4th",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "h2",
+   "at": [
+    46,
+    70
+   ],
+   "text": "Tendency to gain electrons → anions",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "h2b",
+   "at": [
+    46,
+    64
+   ],
+   "text": "order in the book: F > O > N > Cl (F is the highest)",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==2"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Electropositive metals",
+   "text": "Metals tend to **lose electrons** and form **cations**: this is their **electropositive character**, linked to **reactivity**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Alkali metals are the most reactive",
+   "text": "**Na and K** lose electrons very easily and react **vigorously** with water and halogens. **Mg and Ca** are **less electropositive**, so less vigorous. **Aluminium** is also highly electropositive and reacts with mineral acids.",
+   "actions": [
+    {
+     "set": {
+      "sel": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Electronegative non-metals",
+   "text": "Non-metals have an **affinity for electrons**: they gain electrons and form **anions**. They are **electronegative**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "The order",
+   "text": "**Fluorine** is the **most electronegative** element, followed by **oxygen, nitrogen and chlorine** (the order given in the book).",
+   "actions": [
+    {
+     "set": {
+      "sel": 2
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which is the **most electronegative** element?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Fluorine"
+    },
+    {
+     "id": "b",
+     "label": "Oxygen"
+    },
+    {
+     "id": "c",
+     "label": "Nitrogen"
+    },
+    {
+     "id": "d",
+     "label": "Chlorine"
+    }
+   ],
+   "answer": "a",
+   "hint": "It is at the top of the book’s list.",
+   "explain": "**Fluorine** is the most electronegative element."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which group of metals is **more electropositive**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Alkali metals (Na, K)"
+    },
+    {
+     "id": "b",
+     "label": "Alkaline earth metals (Mg, Ca)"
+    },
+    {
+     "id": "c",
+     "label": "They are equal"
+    },
+    {
+     "id": "d",
+     "label": "Non-metals"
+    }
+   ],
+   "answer": "a",
+   "hint": "They lose one electron more easily.",
+   "explain": "Alkali metals lose electrons most easily and react most vigorously."
+  }
+ ],
+ "takeaways": [
+  "Metals: lose electrons → cations (electropositive). Non-metals: gain electrons → anions (electronegative).",
+  "Alkali metals are more electropositive than alkaline earth metals.",
+  "F is the most electronegative element, then O, N and Cl."
+ ],
+ "notes": [
+  {
+   "title": "Beyond the book",
+   "text": "The bars show **order only**, not measured values. Some tables place chlorine above nitrogen; here the order follows the book."
+  }
+ ]
+}

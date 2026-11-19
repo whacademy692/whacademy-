@@ -1315,9 +1315,9 @@ window.WHA_CONTENT = {
             "n": 1,
             "unit": 1,
             "title": "Complex Numbers",
-            "notes": null,
+            "notes": "https://whacademypk.com/notes/class-11/math/complex-numbers.html",
             "quiz": null,
-            "game": null
+            "game": "https://whacademypk.com/games/chapter.html?ch=11/math/complex_numbers"
           },
           {
             "n": 2,
@@ -1401,9 +1401,9 @@ window.WHA_CONTENT = {
             "n": 2,
             "unit": 2,
             "title": "Vectors",
-            "notes": null,
+            "notes": "https://whacademypk.com/notes/class-11/physics/vectors.html",
             "quiz": null,
-            "game": null
+            "game": "https://whacademypk.com/games/chapter.html?ch=11/phys/vectors"
           },
           {
             "n": 3,

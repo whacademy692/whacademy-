@@ -1,0 +1,603 @@
+{
+ "id": "pb9-chem-c1-th-kno3-cooling",
+ "title": "Cooling a KNO₃ solution: crystals",
+ "summary": "Cool a hot solution of 100 g KNO₃ in 100 g water and watch crystals form.",
+ "alt": "A solubility curve of KNO3 with a marker for 100 g of salt, and a beaker in which crystals appear as the temperature falls.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Apparatus",
+   "color": "#475569",
+   "text": "The container or apparatus.",
+   "legend": false
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  },
+  "sh": {
+   "label": "Shell",
+   "color": "#94a3b8",
+   "text": "An energy level (orbit).",
+   "legend": false
+  },
+  "a": {
+   "label": "Atom A",
+   "color": "#7c3aed",
+   "text": "First atom.",
+   "legend": false
+  },
+  "b": {
+   "label": "Atom B",
+   "color": "#059669",
+   "text": "Second atom.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "The correct / stable one.",
+   "legend": false
+  },
+  "bad": {
+   "label": "Not allowed",
+   "color": "#e11d48",
+   "text": "Not possible / unstable.",
+   "legend": false
+  },
+  "water": {
+   "label": "Water",
+   "color": "#0ea5e9",
+   "text": "Water.",
+   "legend": false
+  },
+  "th": {
+   "label": "KNO₃ solubility",
+   "color": "#7c3aed",
+   "text": "Saturation curve of KNO₃.",
+   "legend": true
+  },
+  "me": {
+   "label": "100 g KNO₃ per 100 g water",
+   "color": "#e11d48",
+   "text": "Your solution.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "T",
+   "label": "Temperature (°C)",
+   "type": "number",
+   "min": 10,
+   "max": 100,
+   "step": 1,
+   "default": 90
+  }
+ ],
+ "derived": {
+  "S": "13.3+0.539*T+0.01788*T*T",
+  "dis": "min(100,S)",
+  "cr": "max(0,100-S)",
+  "nc": "min(14,floor(cr/5+0.999))"
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ax",
+   "from": [
+    10,
+    14
+   ],
+   "to": [
+    60,
+    14
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "segment",
+   "id": "ay",
+   "from": [
+    10,
+    14
+   ],
+   "to": [
+    10,
+    60
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "xt0",
+   "at": [
+    10.0,
+    10
+   ],
+   "text": "0",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "xt20",
+   "at": [
+    20.0,
+    10
+   ],
+   "text": "20",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "xt40",
+   "at": [
+    30.0,
+    10
+   ],
+   "text": "40",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "xt60",
+   "at": [
+    40.0,
+    10
+   ],
+   "text": "60",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "xt80",
+   "at": [
+    50.0,
+    10
+   ],
+   "text": "80",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "xt100",
+   "at": [
+    60.0,
+    10
+   ],
+   "text": "100",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "yt0",
+   "at": [
+    6,
+    14.0
+   ],
+   "text": "0",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "yt50",
+   "at": [
+    6,
+    22.5
+   ],
+   "text": "50",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "yt100",
+   "at": [
+    6,
+    31.0
+   ],
+   "text": "100",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "yt150",
+   "at": [
+    6,
+    39.5
+   ],
+   "text": "150",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "yt200",
+   "at": [
+    6,
+    48.0
+   ],
+   "text": "200",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "yt250",
+   "at": [
+    6,
+    56.5
+   ],
+   "text": "250",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "xl",
+   "at": [
+    35,
+    5
+   ],
+   "text": "temperature (°C)",
+   "role": "ink",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "yl",
+   "at": [
+    12,
+    66
+   ],
+   "text": "g KNO₃ per 100 g water",
+   "role": "ink",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "plot",
+   "id": "cv",
+   "x": "10+0.5*u",
+   "y": "14+0.17*(13.3+0.539*u+0.01788*u*u)",
+   "var": "u",
+   "domain": [
+    0,
+    100
+   ],
+   "samples": 120,
+   "role": "th",
+   "strokeWidth": 3.6
+  },
+  {
+   "type": "text",
+   "id": "rg1",
+   "at": [
+    50,
+    24
+   ],
+   "text": "unsaturated",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "rg2",
+   "at": [
+    26,
+    52
+   ],
+   "text": "supersaturated",
+   "role": "bad",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "segment",
+   "id": "hl",
+   "from": [
+    10,
+    "14+0.17*100"
+   ],
+   "to": [
+    60,
+    "14+0.17*100"
+   ],
+   "role": "me",
+   "strokeWidth": 1.8,
+   "dash": true
+  },
+  {
+   "type": "point",
+   "id": "mk",
+   "at": [
+    "10+0.5*T",
+    "14+0.17*100"
+   ],
+   "role": "me",
+   "r": 8
+  },
+  {
+   "type": "point",
+   "id": "mk2",
+   "at": [
+    "10+0.5*T",
+    "14+0.17*dis"
+   ],
+   "role": "th",
+   "r": 5,
+   "visible": "cr>0"
+  },
+  {
+   "type": "rect",
+   "id": "wt",
+   "x": 68,
+   "y": 18,
+   "w": 26,
+   "h": 30,
+   "role": "water",
+   "fill": true,
+   "fillOpacity": 0.18,
+   "strokeWidth": 0
+  },
+  {
+   "type": "rect",
+   "id": "bk",
+   "x": 68,
+   "y": 18,
+   "w": 26,
+   "h": 38,
+   "role": "wall",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 3
+  },
+  {
+   "type": "repeat",
+   "id": "cc",
+   "count": "nc",
+   "as": "i",
+   "template": {
+    "type": "text",
+    "id": "c",
+    "at": [
+     "68+3.5+3.2*mod(i,7)+0*i",
+     "20.5+3.4*floor(i/7)"
+    ],
+    "text": "◆",
+    "role": "a",
+    "size": "m",
+    "bold": true
+   }
+  },
+  {
+   "type": "text",
+   "id": "bt",
+   "at": [
+    81,
+    62
+   ],
+   "text": "100 g KNO₃ + 100 g water",
+   "role": "ink",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "stt",
+   "at": [
+    81,
+    11
+   ],
+   "text": "{{if S>100.5 | Unsaturated | Saturated}}",
+   "role": "warn",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "stu",
+   "at": [
+    81,
+    5
+   ],
+   "text": "Crystals: {{cr|1}} g",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "visible": "cr>0.5"
+  },
+  {
+   "type": "text",
+   "id": "stv",
+   "at": [
+    81,
+    5
+   ],
+   "text": "No crystals yet",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "cr<=0.5"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A hot solution",
+   "text": "At 90 °C, 100 g of KNO₃ dissolves completely in 100 g of water: the solution is **unsaturated**.",
+   "actions": [
+    {
+     "set": {
+      "T": 90
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Regions of the graph",
+   "text": "Below the curve the solution is **unsaturated**. **On the curve** it is **saturated**. Above the curve it would be **supersaturated**, holding more than it normally can.",
+   "actions": [
+    {
+     "set": {
+      "T": 90
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Cool to the curve",
+   "text": "On cooling, the solubility falls. At about **56 °C** the solubility equals 100 g: the solution is just **saturated**.",
+   "actions": [
+    {
+     "tween": {
+      "T": 56
+     },
+     "at": 0,
+     "dur": 2000
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Crystals appear",
+   "text": "Cooling further, the water can hold less KNO₃, so the extra comes out as **crystals**. At 20 °C most of the salt has crystallised.",
+   "actions": [
+    {
+     "tween": {
+      "T": 20
+     },
+     "at": 0,
+     "dur": 2200
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Purifying by crystals",
+   "text": "Because solubility changes with temperature, a solid can be **purified**; pure solids appear as beautifully shaped **crystals**.",
+   "actions": [
+    {
+     "set": {
+      "T": 20
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Temperature",
+   "value": "{{T|int}} °C",
+   "role": "warn"
+  },
+  {
+   "label": "KNO₃ that can dissolve",
+   "value": "{{S|1}} g",
+   "role": "th"
+  },
+  {
+   "label": "Crystals formed",
+   "value": "{{cr|1}} g",
+   "role": "a"
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A solution holds 100 g of KNO₃ in 100 g of water. Using the curve, how many grams of **crystals** form on cooling to **20 °C**? (solubility at 20 °C is about 31 g)",
+   "answer": "100-(13.3+0.539*20+0.01788*400)",
+   "hint": "Crystals = 100 − solubility at 20 °C.",
+   "explain": "About **69 g** crystallise (100 − 31).",
+   "tolerance": 3,
+   "unit": "g"
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "A point **above** the solubility curve represents a…",
+   "options": [
+    {
+     "id": "a",
+     "label": "supersaturated solution"
+    },
+    {
+     "id": "b",
+     "label": "unsaturated solution"
+    },
+    {
+     "id": "c",
+     "label": "suspension"
+    },
+    {
+     "id": "d",
+     "label": "pure solid"
+    }
+   ],
+   "answer": "a",
+   "hint": "It holds more than the curve allows.",
+   "explain": "Above the curve the solution is **supersaturated**."
+  }
+ ],
+ "takeaways": [
+  "Below the curve: unsaturated. On the curve: saturated. Above: supersaturated.",
+  "Cooling a hot saturated solution makes the extra solute crystallise.",
+  "Crystallisation can be used to purify solids."
+ ],
+ "notes": [
+  {
+   "title": "Beyond the book",
+   "text": "The book labels the three regions of the KNO₃ curve but gives no numbers. Values here are fitted to standard tables and are **approximate**."
+  }
+ ]
+}

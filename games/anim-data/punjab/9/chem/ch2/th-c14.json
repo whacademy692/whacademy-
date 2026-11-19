@@ -1,0 +1,273 @@
+{
+ "id": "pb9-chem-c2-th-c14",
+ "title": "Radiocarbon dating",
+ "summary": "The older the sample, the less carbon-14 is left. Slide the age and count.",
+ "alt": "A grid of 16 carbon-14 atoms; the older the sample, the fewer remain.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "nuc": {
+   "label": "Carbon-14 atoms left",
+   "color": "#dc2626",
+   "text": "Radioactive carbon-14 still present.",
+   "legend": true
+  },
+  "sh": {
+   "label": "Shell",
+   "color": "#94a3b8",
+   "text": "An energy level (orbit).",
+   "legend": false
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "age",
+   "label": "Age of the sample (older →)",
+   "type": "number",
+   "min": 0,
+   "max": 4,
+   "step": 1,
+   "default": 0,
+   "hint": "Each step = one half-life (about 5730 years; value from outside the book)."
+  }
+ ],
+ "derived": {
+  "left": "floor(16*pow(0.5,age)+0.001)"
+ },
+ "shapes": [
+  {
+   "type": "repeat",
+   "id": "ring",
+   "count": 16,
+   "as": "i",
+   "template": {
+    "type": "circle",
+    "id": "r",
+    "c": [
+     "34+10*mod(i,4)",
+     "14+10*floor(i/4)"
+    ],
+    "r": 3.6,
+    "role": "sh",
+    "fill": false,
+    "fillOpacity": 0,
+    "strokeWidth": 1.6,
+    "dash": true
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "at",
+   "count": "left",
+   "as": "i",
+   "template": {
+    "type": "circle",
+    "id": "a",
+    "c": [
+     "34+10*mod(i,4)",
+     "14+10*floor(i/4)"
+    ],
+    "r": 3.6,
+    "role": "nuc",
+    "fill": true,
+    "fillOpacity": 0.6,
+    "strokeWidth": 2
+   }
+  },
+  {
+   "type": "text",
+   "id": "t1",
+   "at": [
+    20,
+    52
+   ],
+   "text": "Sample from a",
+   "role": "ink",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t2",
+   "at": [
+    20,
+    45
+   ],
+   "text": "dead plant",
+   "role": "ink",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t3",
+   "at": [
+    20,
+    38
+   ],
+   "text": "or animal",
+   "role": "ink",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t4",
+   "at": [
+    20,
+    28
+   ],
+   "text": "(wood, bone)",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "top",
+   "at": [
+    54,
+    62
+   ],
+   "text": "¹⁴C atoms still present",
+   "role": "nuc",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "cnt",
+   "at": [
+    54,
+    70
+   ],
+   "text": "{{left|int}} of 16",
+   "role": "warn",
+   "size": "l",
+   "bold": true
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A freshly dead sample",
+   "text": "A dead plant or animal still contains all its **radioactive ¹⁴₆C**.",
+   "actions": [
+    {
+     "set": {
+      "age": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Radioactive decay",
+   "text": "¹⁴C is **radioactive**, so its atoms **decay** and the amount slowly falls.",
+   "actions": [
+    {
+     "set": {
+      "age": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Older sample, less ¹⁴C",
+   "text": "**The older the sample, the less ¹⁴C** can be detected.",
+   "actions": [
+    {
+     "set": {
+      "age": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Measure and calculate",
+   "text": "Archaeologists measure the proportion of ¹⁴C in wood or bone to calculate **when it died**.",
+   "actions": [
+    {
+     "set": {
+      "age": 2
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Age of sample",
+   "value": "{{age|int}} half-lives",
+   "role": "warn"
+  },
+  {
+   "label": "¹⁴C left",
+   "value": "{{left|int}} of 16",
+   "role": "nuc"
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Sample A has **less ¹⁴C** than sample B. Which is older?",
+   "options": [
+    {
+     "id": "a",
+     "label": "A"
+    },
+    {
+     "id": "b",
+     "label": "B"
+    },
+    {
+     "id": "c",
+     "label": "Same age"
+    },
+    {
+     "id": "d",
+     "label": "Cannot tell"
+    }
+   ],
+   "answer": "a",
+   "hint": "Older samples have lost more ¹⁴C.",
+   "explain": "Less ¹⁴C left means more time has passed, so **A is older**."
+  }
+ ],
+ "takeaways": [
+  "¹⁴₆C is a radioactive isotope of carbon.",
+  "The older the dead plant or animal, the less ¹⁴C is detected.",
+  "This lets archaeologists date historical objects."
+ ],
+ "notes": [
+  {
+   "title": "Beyond the book",
+   "text": "The book says only that older samples contain less ¹⁴C. The idea of a half-life (about 5730 years for ¹⁴C) is added here to give the slider a scale."
+  }
+ ]
+}

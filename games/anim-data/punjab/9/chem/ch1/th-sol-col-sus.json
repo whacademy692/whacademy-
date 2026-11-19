@@ -1,0 +1,603 @@
+{
+ "id": "pb9-chem-c1-th-sol-col-sus",
+ "title": "Solution, colloid and suspension",
+ "summary": "Compare particle size, standing and filtering for the three kinds of mixture.",
+ "alt": "Three beakers with tiny, medium and large particles; on standing the suspension settles; on filtering only the suspension leaves a residue.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "a": {
+   "label": "Atom A",
+   "color": "#7c3aed",
+   "text": "First atom.",
+   "legend": false
+  },
+  "b": {
+   "label": "Atom B",
+   "color": "#059669",
+   "text": "Second atom.",
+   "legend": false
+  },
+  "c": {
+   "label": "Atom C",
+   "color": "#d97706",
+   "text": "Third kind of atom.",
+   "legend": false
+  },
+  "water": {
+   "label": "Water",
+   "color": "#0ea5e9",
+   "text": "Water.",
+   "legend": false
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  },
+  "wall": {
+   "label": "Apparatus",
+   "color": "#475569",
+   "text": "The container or apparatus.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "t",
+   "label": "t",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0,
+   "hidden": true
+  },
+  {
+   "id": "fl",
+   "label": "fl",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "w0",
+   "x": 4,
+   "y": 28,
+   "w": 26,
+   "h": 28,
+   "role": "water",
+   "fill": true,
+   "fillOpacity": 0.12,
+   "strokeWidth": 0
+  },
+  {
+   "type": "rect",
+   "id": "bk0",
+   "x": 4,
+   "y": 28,
+   "w": 26,
+   "h": 33,
+   "role": "wall",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "repeat",
+   "id": "p0",
+   "count": 34,
+   "as": "i",
+   "template": {
+    "type": "point",
+    "role": "a",
+    "r": 1.6,
+    "at": [
+     "4+2+22*(mod(abs(sin(i*12.9898+1)*43758.5453),1))",
+     "28+2+22*(mod(abs(sin(i*78.233+2)*43758.5453),1))"
+    ]
+   }
+  },
+  {
+   "type": "text",
+   "id": "nm0",
+   "at": [
+    17.0,
+    68
+   ],
+   "text": "True solution",
+   "role": "a",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "ex0",
+   "at": [
+    17.0,
+    63
+   ],
+   "text": "NaCl in water",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "rect",
+   "id": "w1",
+   "x": 37,
+   "y": 28,
+   "w": 26,
+   "h": 28,
+   "role": "water",
+   "fill": true,
+   "fillOpacity": 0.12,
+   "strokeWidth": 0
+  },
+  {
+   "type": "rect",
+   "id": "bk1",
+   "x": 37,
+   "y": 28,
+   "w": 26,
+   "h": 33,
+   "role": "wall",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "repeat",
+   "id": "p1",
+   "count": 18,
+   "as": "i",
+   "template": {
+    "type": "point",
+    "role": "b",
+    "r": 3.0,
+    "at": [
+     "37+2+22*(mod(abs(sin(i*12.9898+4)*43758.5453),1))",
+     "28+2+22*(mod(abs(sin(i*78.233+4)*43758.5453),1))"
+    ]
+   }
+  },
+  {
+   "type": "text",
+   "id": "nm1",
+   "at": [
+    50.0,
+    68
+   ],
+   "text": "Colloidal solution",
+   "role": "b",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "ex1",
+   "at": [
+    50.0,
+    63
+   ],
+   "text": "starch, egg white",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "rect",
+   "id": "w2",
+   "x": 70,
+   "y": 28,
+   "w": 26,
+   "h": 28,
+   "role": "water",
+   "fill": true,
+   "fillOpacity": 0.12,
+   "strokeWidth": 0
+  },
+  {
+   "type": "rect",
+   "id": "bk2",
+   "x": 70,
+   "y": 28,
+   "w": 26,
+   "h": 33,
+   "role": "wall",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "repeat",
+   "id": "p2",
+   "count": 10,
+   "as": "i",
+   "template": {
+    "type": "point",
+    "role": "c",
+    "r": 5.0,
+    "at": [
+     "(70+2+22*(mod(abs(sin(i*12.9898+7)*43758.5453),1)))*(1-t)+(70+3+18*mod(i,5)/5*0.9)*t",
+     "(28+2+22*(mod(abs(sin(i*78.233+6)*43758.5453),1)))*(1-t)+(28+2.6*mod(i,3)+1)*t"
+    ]
+   }
+  },
+  {
+   "type": "text",
+   "id": "nm2",
+   "at": [
+    83.0,
+    68
+   ],
+   "text": "Suspension",
+   "role": "c",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "ex2",
+   "at": [
+    83.0,
+    63
+   ],
+   "text": "chalk in water",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "v0",
+   "at": [
+    17.0,
+    22
+   ],
+   "text": "cannot be seen",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "v1",
+   "at": [
+    50.0,
+    22
+   ],
+   "text": "too small to see",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "v2",
+   "at": [
+    83.0,
+    22
+   ],
+   "text": "particles can be seen",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "st0",
+   "at": [
+    17.0,
+    16.5
+   ],
+   "text": "stay mixed",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "st1",
+   "at": [
+    50.0,
+    16.5
+   ],
+   "text": "do not settle",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "st2",
+   "at": [
+    83.0,
+    16.5
+   ],
+   "text": "settle down",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "polygon",
+   "id": "fp0",
+   "pts": [
+    [
+     10.0,
+     12
+    ],
+    [
+     24.0,
+     12
+    ],
+    [
+     17.0,
+     2
+    ]
+   ],
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 2,
+   "visible": "fl>0.5"
+  },
+  {
+   "type": "polygon",
+   "id": "fp1",
+   "pts": [
+    [
+     43.0,
+     12
+    ],
+    [
+     57.0,
+     12
+    ],
+    [
+     50.0,
+     2
+    ]
+   ],
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 2,
+   "visible": "fl>0.5"
+  },
+  {
+   "type": "polygon",
+   "id": "fp2",
+   "pts": [
+    [
+     76.0,
+     12
+    ],
+    [
+     90.0,
+     12
+    ],
+    [
+     83.0,
+     2
+    ]
+   ],
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 2,
+   "visible": "fl>0.5"
+  },
+  {
+   "type": "repeat",
+   "id": "res",
+   "count": 5,
+   "as": "i",
+   "template": {
+    "type": "point",
+    "role": "c",
+    "r": 5,
+    "at": [
+     "70+13+(mod(i,3)-1+0.5*floor(i/3))*3.6",
+     "10-2.8*floor(i/3)"
+    ],
+    "visible": "fl>0.5"
+   }
+  },
+  {
+   "type": "text",
+   "id": "fr0",
+   "at": [
+    17,
+    -1.5
+   ],
+   "text": "no residue",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "visible": "fl>0.5"
+  },
+  {
+   "type": "text",
+   "id": "fr1",
+   "at": [
+    50,
+    -1.5
+   ],
+   "text": "no residue",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "visible": "fl>0.5"
+  },
+  {
+   "type": "text",
+   "id": "fr2",
+   "at": [
+    83,
+    -1.5
+   ],
+   "text": "residue",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "visible": "fl>0.5"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Three mixtures",
+   "text": "A **true solution**, a **colloidal solution** and a **suspension** are all mixtures of a solute in water.",
+   "actions": [
+    {
+     "set": {
+      "t": 0,
+      "fl": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Particle size and visibility",
+   "text": "In a true solution the particles are completely **homogenised** and cannot be seen. Colloid particles are a little bigger but still too small to see. Suspension particles are **seen**.",
+   "actions": [
+    {
+     "set": {
+      "t": 0,
+      "fl": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Let them stand",
+   "text": "The true solution and the colloid **do not settle**. The suspension particles **settle down**.",
+   "actions": [
+    {
+     "set": {
+      "fl": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "t": 1
+     },
+     "at": 0,
+     "dur": 2200
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Filter them",
+   "text": "The solution and the colloid **pass through filter paper**. The suspension **cannot pass**; its particles are collected as a **residue**.",
+   "actions": [
+    {
+     "set": {
+      "t": 1,
+      "fl": 1
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which mixture leaves a **residue** on filter paper?",
+   "options": [
+    {
+     "id": "a",
+     "label": "True solution"
+    },
+    {
+     "id": "b",
+     "label": "Colloidal solution"
+    },
+    {
+     "id": "c",
+     "label": "Suspension"
+    },
+    {
+     "id": "d",
+     "label": "All three"
+    }
+   ],
+   "answer": "c",
+   "hint": "Its particles are the biggest.",
+   "explain": "Only the **suspension** (for example chalk in water) leaves a residue."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Starch solution is an example of a…",
+   "options": [
+    {
+     "id": "a",
+     "label": "true solution"
+    },
+    {
+     "id": "b",
+     "label": "colloidal solution"
+    },
+    {
+     "id": "c",
+     "label": "suspension"
+    },
+    {
+     "id": "d",
+     "label": "pure compound"
+    }
+   ],
+   "answer": "b",
+   "hint": "Its particles do not settle and pass through filter paper.",
+   "explain": "Starch solution (and the white of an egg) are **colloidal solutions**."
+  }
+ ],
+ "takeaways": [
+  "True solution: homogenised, invisible, no residue (NaCl or CuSO₄ in water).",
+  "Colloid: bigger particles, do not settle, pass through filter paper (starch, egg white).",
+  "Suspension: visible particles that settle and stay on the filter paper (chalk in water)."
+ ]
+}

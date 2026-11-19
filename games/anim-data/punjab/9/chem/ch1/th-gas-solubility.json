@@ -1,0 +1,333 @@
+{
+ "id": "pb9-chem-c1-th-gas-solubility",
+ "title": "Gases dissolve less when warm",
+ "summary": "Warm a soda bottle and watch CO₂ leave the water.",
+ "alt": "A bottle of soda water: at low temperature many CO2 particles stay dissolved; when warmed, bubbles of gas escape.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "o": {
+   "label": "CO₂ dissolved",
+   "color": "#7c3aed",
+   "text": "Carbon dioxide dissolved in the water.",
+   "legend": true
+  },
+  "water": {
+   "label": "Water",
+   "color": "#0ea5e9",
+   "text": "Water.",
+   "legend": false
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  },
+  "wall": {
+   "label": "Apparatus",
+   "color": "#475569",
+   "text": "The container or apparatus.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Low energy.",
+   "legend": false
+  },
+  "hot": {
+   "label": "CO₂ gas escaping",
+   "color": "#ea580c",
+   "text": "Gas leaving the liquid.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "ph",
+   "label": "Time",
+   "type": "clock",
+   "min": 0,
+   "max": 360,
+   "step": 0.01,
+   "speed": 90,
+   "loop": "repeat",
+   "default": 0,
+   "auto": true,
+   "hidden": true
+  },
+  {
+   "id": "T",
+   "label": "Temperature (°C)",
+   "type": "number",
+   "min": 0,
+   "max": 40,
+   "step": 1,
+   "default": 4
+  }
+ ],
+ "derived": {
+  "nd": "round(24*exp(-0.0342*T))",
+  "ne": "24-round(24*exp(-0.0342*T))"
+ },
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "lq",
+   "x": 14,
+   "y": 12,
+   "w": 30,
+   "h": 36,
+   "role": "water",
+   "fill": true,
+   "fillOpacity": 0.2,
+   "strokeWidth": 0
+  },
+  {
+   "type": "rect",
+   "id": "bd",
+   "x": 14,
+   "y": 12,
+   "w": 30,
+   "h": 48,
+   "role": "wall",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 3
+  },
+  {
+   "type": "rect",
+   "id": "nk",
+   "x": 23,
+   "y": 60,
+   "w": 12,
+   "h": 10,
+   "role": "wall",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 3
+  },
+  {
+   "type": "rect",
+   "id": "cp",
+   "x": 22,
+   "y": 70,
+   "w": 14,
+   "h": 3,
+   "role": "warn",
+   "fill": true,
+   "fillOpacity": 0.6,
+   "strokeWidth": 2
+  },
+  {
+   "type": "repeat",
+   "id": "dd",
+   "count": "nd",
+   "as": "i",
+   "template": {
+    "type": "point",
+    "role": "o",
+    "r": 4.5,
+    "at": [
+     "14+3+24*(mod(abs(sin(i*12.9898+1)*43758.5453),1))",
+     "15+30*(mod(abs(sin(i*78.233+2)*43758.5453),1))"
+    ]
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "ee",
+   "count": "ne",
+   "as": "i",
+   "template": {
+    "type": "point",
+    "role": "hot",
+    "r": 4.5,
+    "at": [
+     "14+4+22*(mod(abs(sin(i*39.346+1)*43758.5453),1))",
+     "14+40*mod(ph/360*2+i*0.173,1)"
+    ]
+   }
+  },
+  {
+   "type": "text",
+   "id": "tt",
+   "at": [
+    29,
+    6
+   ],
+   "text": "{{T|int}} °C",
+   "role": "warn",
+   "size": "l",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "d1",
+   "at": [
+    72,
+    56
+   ],
+   "text": "Dissolved CO₂: {{nd|int}} of 24",
+   "role": "o",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "d2",
+   "at": [
+    72,
+    48
+   ],
+   "text": "Escaped: {{ne|int}} of 24",
+   "role": "hot",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "n1",
+   "at": [
+    72,
+    34
+   ],
+   "text": "{{if T<10 | Cold: CO₂ stays dissolved | Warm: CO₂ escapes as gas}}",
+   "role": "ink",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "n2",
+   "at": [
+    72,
+    26
+   ],
+   "text": "Solubility of gases decreases",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "appear": "s2",
+   "appearDur": 400
+  },
+  {
+   "type": "text",
+   "id": "n3",
+   "at": [
+    72,
+    20
+   ],
+   "text": "as the temperature rises",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "appear": "s2",
+   "appearDur": 400
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A cold bottle",
+   "text": "Carbon dioxide is **more soluble in water at low temperature**, so a cold bottle keeps its CO₂ dissolved.",
+   "actions": [
+    {
+     "set": {
+      "T": 4
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Warm it up",
+   "text": "As the temperature rises, the CO₂ becomes **less soluble** and bubbles of gas escape from the liquid.",
+   "actions": [
+    {
+     "tween": {
+      "T": 36
+     },
+     "at": 0,
+     "dur": 2200
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Gases behave opposite to most solids",
+   "text": "The solubility of gases in water generally **decreases** with temperature. That is why soda-water bottles are stored in the **refrigerator**: to keep CO₂ dissolved for longer.",
+   "actions": [
+    {
+     "set": {
+      "T": 36
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Temperature",
+   "value": "{{T|int}} °C",
+   "role": "warn"
+  },
+  {
+   "label": "CO₂ dissolved",
+   "value": "{{nd|int}} of 24",
+   "role": "o"
+  },
+  {
+   "label": "CO₂ escaped",
+   "value": "{{ne|int}} of 24",
+   "role": "hot"
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Why are soda-water bottles stored in a refrigerator?",
+   "options": [
+    {
+     "id": "a",
+     "label": "CO₂ is more soluble at low temperature"
+    },
+    {
+     "id": "b",
+     "label": "CO₂ is more soluble at high temperature"
+    },
+    {
+     "id": "c",
+     "label": "Cold water is lighter"
+    },
+    {
+     "id": "d",
+     "label": "To make the bottle stronger"
+    }
+   ],
+   "answer": "a",
+   "hint": "Gas solubility and temperature.",
+   "explain": "CO₂ is **more soluble in cold water**, so it stays dissolved longer."
+  }
+ ],
+ "takeaways": [
+  "Solubility of gases generally decreases as temperature rises.",
+  "CO₂ dissolves better in cold water: store soda bottles in the refrigerator."
+ ]
+}

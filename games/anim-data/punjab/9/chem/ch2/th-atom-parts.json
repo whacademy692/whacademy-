@@ -1,0 +1,551 @@
+{
+ "id": "pb9-chem-c2-th-atom-parts",
+ "title": "Electron, proton and neutron",
+ "summary": "Pick a particle and see its charge, mass and place in the atom.",
+ "alt": "A carbon atom with a nucleus of protons and neutrons and electrons in shells; the chosen particle is highlighted.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "pro": {
+   "label": "Proton",
+   "color": "#ef4444",
+   "text": "Positive particle in the nucleus.",
+   "legend": true
+  },
+  "neu": {
+   "label": "Neutron",
+   "color": "#64748b",
+   "text": "Neutral particle in the nucleus.",
+   "legend": true
+  },
+  "el": {
+   "label": "Electron",
+   "color": "#2563eb",
+   "text": "Negative particle moving around the nucleus.",
+   "legend": true
+  },
+  "sh": {
+   "label": "Shell",
+   "color": "#94a3b8",
+   "text": "An energy level (orbit).",
+   "legend": false
+  },
+  "nuc": {
+   "label": "Nucleus",
+   "color": "#dc2626",
+   "text": "The tiny central part of the atom.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "ph",
+   "label": "Spin",
+   "type": "clock",
+   "min": 0,
+   "max": 360,
+   "step": 0.01,
+   "speed": 40,
+   "loop": "repeat",
+   "default": 0,
+   "auto": true,
+   "hidden": true
+  },
+  {
+   "id": "sel",
+   "label": "Particle",
+   "type": "choice",
+   "options": [
+    {
+     "value": 1,
+     "label": "Electron"
+    },
+    {
+     "value": 2,
+     "label": "Proton"
+    },
+    {
+     "value": 3,
+     "label": "Neutron"
+    }
+   ],
+   "default": 2
+  }
+ ],
+ "shapes": [
+  {
+   "type": "circle",
+   "id": "k",
+   "c": [
+    42,
+    40
+   ],
+   "r": 15,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2,
+   "dash": true
+  },
+  {
+   "type": "circle",
+   "id": "l",
+   "c": [
+    42,
+    40
+   ],
+   "r": 28,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2,
+   "dash": true
+  },
+  {
+   "type": "circle",
+   "id": "n0",
+   "c": [
+    45.502,
+    41.913
+   ],
+   "r": 2.0,
+   "role": "neu",
+   "fill": true,
+   "fillOpacity": 0.85,
+   "strokeWidth": 1.2,
+   "opacity": "sel==3?1:0.28"
+  },
+  {
+   "type": "circle",
+   "id": "n1",
+   "c": [
+    46.312,
+    46.715
+   ],
+   "r": 2.0,
+   "role": "pro",
+   "fill": true,
+   "fillOpacity": 0.85,
+   "strokeWidth": 1.2,
+   "opacity": "sel==2?1:0.28"
+  },
+  {
+   "type": "circle",
+   "id": "n2",
+   "c": [
+    35.285,
+    44.312
+   ],
+   "r": 2.0,
+   "role": "neu",
+   "fill": true,
+   "fillOpacity": 0.85,
+   "strokeWidth": 1.2,
+   "opacity": "sel==3?1:0.28"
+  },
+  {
+   "type": "circle",
+   "id": "n3",
+   "c": [
+    42,
+    40
+   ],
+   "r": 2.0,
+   "role": "neu",
+   "fill": true,
+   "fillOpacity": 0.85,
+   "strokeWidth": 1.2,
+   "opacity": "sel==3?1:0.28"
+  },
+  {
+   "type": "circle",
+   "id": "n4",
+   "c": [
+    45.407,
+    37.924
+   ],
+   "r": 2.0,
+   "role": "pro",
+   "fill": true,
+   "fillOpacity": 0.85,
+   "strokeWidth": 1.2,
+   "opacity": "sel==2?1:0.28"
+  },
+  {
+   "type": "circle",
+   "id": "n5",
+   "c": [
+    34.029,
+    40.376
+   ],
+   "r": 2.0,
+   "role": "pro",
+   "fill": true,
+   "fillOpacity": 0.85,
+   "strokeWidth": 1.2,
+   "opacity": "sel==2?1:0.28"
+  },
+  {
+   "type": "circle",
+   "id": "n6",
+   "c": [
+    38.498,
+    38.087
+   ],
+   "r": 2.0,
+   "role": "neu",
+   "fill": true,
+   "fillOpacity": 0.85,
+   "strokeWidth": 1.2,
+   "opacity": "sel==3?1:0.28"
+  },
+  {
+   "type": "circle",
+   "id": "n7",
+   "c": [
+    41.906,
+    36.011
+   ],
+   "r": 2.0,
+   "role": "neu",
+   "fill": true,
+   "fillOpacity": 0.85,
+   "strokeWidth": 1.2,
+   "opacity": "sel==3?1:0.28"
+  },
+  {
+   "type": "circle",
+   "id": "n8",
+   "c": [
+    42.094,
+    43.989
+   ],
+   "r": 2.0,
+   "role": "neu",
+   "fill": true,
+   "fillOpacity": 0.85,
+   "strokeWidth": 1.2,
+   "opacity": "sel==3?1:0.28"
+  },
+  {
+   "type": "circle",
+   "id": "n9",
+   "c": [
+    42.376,
+    47.971
+   ],
+   "r": 2.0,
+   "role": "pro",
+   "fill": true,
+   "fillOpacity": 0.85,
+   "strokeWidth": 1.2,
+   "opacity": "sel==2?1:0.28"
+  },
+  {
+   "type": "circle",
+   "id": "n10",
+   "c": [
+    38.34,
+    47.091
+   ],
+   "r": 2.0,
+   "role": "pro",
+   "fill": true,
+   "fillOpacity": 0.85,
+   "strokeWidth": 1.2,
+   "opacity": "sel==2?1:0.28"
+  },
+  {
+   "type": "circle",
+   "id": "n11",
+   "c": [
+    38.593,
+    42.076
+   ],
+   "r": 2.0,
+   "role": "pro",
+   "fill": true,
+   "fillOpacity": 0.85,
+   "strokeWidth": 1.2,
+   "opacity": "sel==2?1:0.28"
+  },
+  {
+   "type": "repeat",
+   "id": "eK",
+   "count": 2,
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "(42)+(15)*cos(1*(ph)+360*i/(2)+0)",
+     "(40)+(15)*sin(1*(ph)+360*i/(2)+0)"
+    ],
+    "role": "el",
+    "r": 5,
+    "opacity": "sel==1?1:0.3"
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "eL",
+   "count": 4,
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "(42)+(28)*cos(1*(ph)+360*i/(4)+30)",
+     "(40)+(28)*sin(1*(ph)+360*i/(4)+30)"
+    ],
+    "role": "el",
+    "r": 5,
+    "opacity": "sel==1?1:0.3"
+   }
+  },
+  {
+   "type": "text",
+   "id": "ln",
+   "at": [
+    17,
+    73
+   ],
+   "text": "Nucleus: protons + neutrons",
+   "role": "nuc",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "vector",
+   "id": "vn",
+   "from": [
+    24,
+    70.5
+   ],
+   "to": [
+    36,
+    47
+   ],
+   "role": "nuc",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "le",
+   "at": [
+    74,
+    12
+   ],
+   "text": "Electrons in shells",
+   "role": "el",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "vector",
+   "id": "ve",
+   "from": [
+    66,
+    15
+   ],
+   "to": [
+    64,
+    20
+   ],
+   "role": "el",
+   "strokeWidth": 2
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "An atom has two portions",
+   "text": "A tiny **nucleus** in the centre (protons and neutrons) and the **electrons** moving in shells around it. The atom is neutral overall.",
+   "actions": [
+    {
+     "set": {
+      "sel": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Electron",
+   "text": "The **electron** is negative: charge −1.6022 × 10⁻¹⁹ C. Its mass is only 9.109 × 10⁻³¹ kg. A proton is about **1836 times heavier** than an electron.",
+   "actions": [
+    {
+     "set": {
+      "sel": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Proton",
+   "text": "The **proton** is positive: +1.6022 × 10⁻¹⁹ C, mass 1.673 × 10⁻²⁷ kg. It sits in the **nucleus**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Neutron",
+   "text": "The **neutron** has **no charge** and a mass almost the same as the proton: 1.675 × 10⁻²⁷ kg. It sits in the nucleus.",
+   "actions": [
+    {
+     "set": {
+      "sel": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Same particles, different numbers",
+   "text": "All atoms are made of these **three fundamental particles**. Atoms of different elements differ only in the **number** of each particle.",
+   "actions": [
+    {
+     "set": {
+      "sel": 2
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Charge",
+   "value": "−1.6022 × 10⁻¹⁹ C",
+   "role": "el",
+   "when": "sel==1"
+  },
+  {
+   "label": "Mass",
+   "value": "9.109 × 10⁻³¹ kg",
+   "role": "el",
+   "when": "sel==1"
+  },
+  {
+   "label": "Position",
+   "value": "in shells around the nucleus",
+   "role": "el",
+   "when": "sel==1"
+  },
+  {
+   "label": "Charge",
+   "value": "+1.6022 × 10⁻¹⁹ C",
+   "role": "pro",
+   "when": "sel==2"
+  },
+  {
+   "label": "Mass",
+   "value": "1.673 × 10⁻²⁷ kg",
+   "role": "pro",
+   "when": "sel==2"
+  },
+  {
+   "label": "Position",
+   "value": "in the nucleus",
+   "role": "pro",
+   "when": "sel==2"
+  },
+  {
+   "label": "Charge",
+   "value": "0 (neutral)",
+   "role": "neu",
+   "when": "sel==3"
+  },
+  {
+   "label": "Mass",
+   "value": "1.675 × 10⁻²⁷ kg",
+   "role": "neu",
+   "when": "sel==3"
+  },
+  {
+   "label": "Position",
+   "value": "in the nucleus",
+   "role": "neu",
+   "when": "sel==3"
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which particle has **no electric charge**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Electron"
+    },
+    {
+     "id": "b",
+     "label": "Proton"
+    },
+    {
+     "id": "c",
+     "label": "Neutron"
+    },
+    {
+     "id": "d",
+     "label": "All have charge"
+    }
+   ],
+   "answer": "c",
+   "hint": "Look at the charge column.",
+   "explain": "The **neutron** is neutral (charge 0)."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which two particles are found in the nucleus?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Electrons and protons"
+    },
+    {
+     "id": "b",
+     "label": "Protons and neutrons"
+    },
+    {
+     "id": "c",
+     "label": "Electrons and neutrons"
+    },
+    {
+     "id": "d",
+     "label": "Only protons"
+    }
+   ],
+   "answer": "b",
+   "hint": "They are the heavy ones.",
+   "explain": "**Protons and neutrons** make up the nucleus; the electrons move outside it."
+  }
+ ],
+ "takeaways": [
+  "Electron −1.6022 × 10⁻¹⁹ C, 9.109 × 10⁻³¹ kg; proton +1.6022 × 10⁻¹⁹ C, 1.673 × 10⁻²⁷ kg; neutron 0, 1.675 × 10⁻²⁷ kg.",
+  "Protons and neutrons are in the nucleus; electrons are outside it."
+ ]
+}

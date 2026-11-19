@@ -1,0 +1,337 @@
+{
+ "id": "pb9-chem-c1-th-plasma",
+ "title": "Plasma: the fourth state",
+ "summary": "Add energy to a gas until atoms lose electrons and become a partly ionised gas.",
+ "alt": "Atoms with orbiting electrons; as the energy rises the electrons break free, leaving positive ions and free electrons.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "nuc": {
+   "label": "Neutral atom core",
+   "color": "#64748b",
+   "text": "The atom is neutral while it keeps its electron.",
+   "legend": true
+  },
+  "pos": {
+   "label": "Positive ion",
+   "color": "#e11d48",
+   "text": "An atom that has lost its electron.",
+   "legend": true
+  },
+  "el": {
+   "label": "Electron",
+   "color": "#2563eb",
+   "text": "Negative particle moving around the nucleus.",
+   "legend": true
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Heat / high energy.",
+   "legend": false
+  },
+  "sh": {
+   "label": "Shell",
+   "color": "#94a3b8",
+   "text": "An energy level (orbit).",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "ph",
+   "label": "Spin",
+   "type": "clock",
+   "min": 0,
+   "max": 360,
+   "step": 0.01,
+   "speed": 80,
+   "loop": "repeat",
+   "default": 0,
+   "auto": true,
+   "hidden": true
+  },
+  {
+   "id": "E",
+   "label": "Energy supplied",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0
+  }
+ ],
+ "derived": {
+  "ion": "min(1,max(0,(E-0.5)*4))",
+  "ions": "round(8*ion)"
+ },
+ "shapes": [
+  {
+   "type": "repeat",
+   "id": "orbs",
+   "count": 8,
+   "as": "i",
+   "template": {
+    "type": "circle",
+    "id": "o",
+    "c": [
+     "16+22*mod(i,4)",
+     "50-24*floor(i/4)"
+    ],
+    "r": 8,
+    "role": "sh",
+    "fill": false,
+    "fillOpacity": 0,
+    "strokeWidth": 1.6,
+    "dash": true,
+    "opacity": "max(0,1-E*2)"
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "at",
+   "count": 8,
+   "as": "i",
+   "template": {
+    "type": "circle",
+    "id": "a",
+    "c": [
+     "16+22*mod(i,4)",
+     "50-24*floor(i/4)"
+    ],
+    "r": 3.2,
+    "role": "nuc",
+    "fill": true,
+    "fillOpacity": 0.5,
+    "strokeWidth": 2.4,
+    "opacity": "1-ion"
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "io",
+   "count": 8,
+   "as": "i",
+   "template": {
+    "type": "circle",
+    "id": "a",
+    "c": [
+     "16+22*mod(i,4)",
+     "50-24*floor(i/4)"
+    ],
+    "r": 3.2,
+    "role": "pos",
+    "fill": true,
+    "fillOpacity": 0.5,
+    "strokeWidth": 2.4,
+    "opacity": "ion"
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "ee",
+   "count": 8,
+   "as": "i",
+   "template": {
+    "type": "point",
+    "role": "el",
+    "r": 6,
+    "at": [
+     "16+22*mod(i,4)+(8+max(0,(E-0.5)*2)*(14+9*abs(sin(3*i+1))))*cos(ph*2+45*i)",
+     "50-24*floor(i/4)+(8+max(0,(E-0.5)*2)*(14+9*abs(sin(3*i+1))))*sin(ph*2+45*i)"
+    ]
+   }
+  },
+  {
+   "type": "text",
+   "id": "s1",
+   "at": [
+    47,
+    70
+   ],
+   "text": "{{if E<0.5 | Neutral gas atoms | Plasma: ions + free electrons}}",
+   "role": "ink",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "s2",
+   "at": [
+    47,
+    8
+   ],
+   "text": "Fluorescent tubes, lightning, welding arcs",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "s3",
+   "at": [
+    47,
+    2
+   ],
+   "text": "Most matter in the universe is plasma",
+   "role": "warn",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A neutral gas",
+   "text": "Each atom keeps its electron: the gas is **neutral**.",
+   "actions": [
+    {
+     "set": {
+      "E": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Very high kinetic energy",
+   "text": "Add a lot of energy: particles gain **very high kinetic energy** and collisions tear electrons off atoms.",
+   "actions": [
+    {
+     "tween": {
+      "E": 0.55
+     },
+     "at": 0,
+     "dur": 1800
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "A partially ionised gas",
+   "text": "Electrons break free and the atoms become **positive ions**. The gas now contains **electrons, ions and photons**: this is **plasma**.",
+   "actions": [
+    {
+     "tween": {
+      "E": 1
+     },
+     "at": 0,
+     "dur": 2000
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Plasma is common",
+   "text": "Plasma is the **fourth state of matter**. It occurs in fluorescent tubes, lightning and welding arcs, and **most matter in the rest of the universe** is plasma.",
+   "actions": [
+    {
+     "set": {
+      "E": 1
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Energy",
+   "value": "{{E*100|int}} %",
+   "role": "hot"
+  },
+  {
+   "label": "Positive ions",
+   "value": "{{ions|int}} of 8",
+   "role": "pos"
+  },
+  {
+   "label": "Free electrons",
+   "value": "{{ions|int}}",
+   "role": "el"
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Plasma is best described as a…",
+   "options": [
+    {
+     "id": "a",
+     "label": "partially ionised gas"
+    },
+    {
+     "id": "b",
+     "label": "very cold solid"
+    },
+    {
+     "id": "c",
+     "label": "dense liquid"
+    },
+    {
+     "id": "d",
+     "label": "mixture of two liquids"
+    }
+   ],
+   "answer": "a",
+   "hint": "Electrons are removed from atoms.",
+   "explain": "Plasma is a **partially ionised gas** containing electrons, ions and photons."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which of these contains plasma?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Lightning"
+    },
+    {
+     "id": "b",
+     "label": "Ice cube"
+    },
+    {
+     "id": "c",
+     "label": "Water in a glass"
+    },
+    {
+     "id": "d",
+     "label": "A diamond"
+    }
+   ],
+   "answer": "a",
+   "hint": "It also appears in fluorescent tubes.",
+   "explain": "**Lightning**, fluorescent tubes and welding arcs contain plasma."
+  }
+ ],
+ "takeaways": [
+  "Plasma is the 4th state: particles of very high kinetic energy.",
+  "It is a partially ionised gas of electrons, ions and photons.",
+  "Most of the matter in the rest of the universe is plasma."
+ ]
+}

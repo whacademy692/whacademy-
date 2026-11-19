@@ -1,0 +1,653 @@
+{
+ "id": "pb9-chem-c3-th-octet",
+ "title": "Duplet and octet rule",
+ "summary": "Why noble gases are stable and why other atoms bond: step through He, Ne, Ar, Na, Cl and H.",
+ "alt": "Bohr diagrams of He, Ne, Ar, Na, Cl and H showing which have a full outer shell of 2 or 8 electrons.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "nuc": {
+   "label": "Nucleus",
+   "color": "#dc2626",
+   "text": "The tiny central part of the atom.",
+   "legend": false
+  },
+  "el": {
+   "label": "Electron",
+   "color": "#2563eb",
+   "text": "Negative particle moving around the nucleus.",
+   "legend": true
+  },
+  "sh": {
+   "label": "Shell",
+   "color": "#94a3b8",
+   "text": "An energy level (orbit).",
+   "legend": false
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "The correct / stable one.",
+   "legend": false
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  },
+  "bad": {
+   "label": "Not allowed",
+   "color": "#e11d48",
+   "text": "Not possible / unstable.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "sel",
+   "label": "Atom",
+   "type": "choice",
+   "options": [
+    {
+     "value": 1,
+     "label": "Helium (He)"
+    },
+    {
+     "value": 2,
+     "label": "Neon (Ne)"
+    },
+    {
+     "value": 3,
+     "label": "Argon (Ar)"
+    },
+    {
+     "value": 4,
+     "label": "Sodium (Na)"
+    },
+    {
+     "value": 5,
+     "label": "Chlorine (Cl)"
+    },
+    {
+     "value": 6,
+     "label": "Hydrogen (H)"
+    }
+   ],
+   "default": 1
+  },
+  {
+   "id": "ph",
+   "label": "Spin",
+   "type": "clock",
+   "min": 0,
+   "max": 360,
+   "step": 0.01,
+   "speed": 40,
+   "loop": "repeat",
+   "default": 0,
+   "auto": true,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "nK": "sel==1?2:(sel==2?2:(sel==3?2:(sel==4?2:(sel==5?2:(1)))))",
+  "nL": "sel==1?0:(sel==2?8:(sel==3?8:(sel==4?8:(sel==5?8:(0)))))",
+  "nM": "sel==1?0:(sel==2?0:(sel==3?8:(sel==4?1:(sel==5?7:(0)))))",
+  "Z": "sel==1?2:(sel==2?10:(sel==3?18:(sel==4?11:(sel==5?17:(1)))))",
+  "outer": "sel==1?2:(sel==2?8:(sel==3?8:(sel==4?1:(sel==5?7:(1)))))"
+ },
+ "shapes": [
+  {
+   "type": "circle",
+   "id": "sh0",
+   "c": [
+    30,
+    40
+   ],
+   "r": 7,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "nK>0"
+  },
+  {
+   "type": "repeat",
+   "id": "e0",
+   "count": "nK",
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "(30)+(7)*cos(1*(ph)+360*i/(nK)+0)",
+     "(40)+(7)*sin(1*(ph)+360*i/(nK)+0)"
+    ],
+    "role": "el",
+    "r": 5,
+    "visible": "nK>0"
+   }
+  },
+  {
+   "type": "circle",
+   "id": "sh1",
+   "c": [
+    30,
+    40
+   ],
+   "r": 14,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "nL>0"
+  },
+  {
+   "type": "repeat",
+   "id": "e1",
+   "count": "nL",
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "(30)+(14)*cos(-1*(ph)+360*i/(nL)+20)",
+     "(40)+(14)*sin(-1*(ph)+360*i/(nL)+20)"
+    ],
+    "role": "el",
+    "r": 5,
+    "visible": "nL>0"
+   }
+  },
+  {
+   "type": "circle",
+   "id": "sh2",
+   "c": [
+    30,
+    40
+   ],
+   "r": 21,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "nM>0"
+  },
+  {
+   "type": "repeat",
+   "id": "e2",
+   "count": "nM",
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "(30)+(21)*cos(1*(ph)+360*i/(nM)+40)",
+     "(40)+(21)*sin(1*(ph)+360*i/(nM)+40)"
+    ],
+    "role": "el",
+    "r": 5,
+    "visible": "nM>0"
+   }
+  },
+  {
+   "type": "circle",
+   "id": "nc",
+   "c": [
+    30,
+    40
+   ],
+   "r": 3.6,
+   "role": "nuc",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 3
+  },
+  {
+   "type": "text",
+   "id": "nz",
+   "at": [
+    30,
+    40
+   ],
+   "text": "{{Z|int}}+",
+   "role": "nuc",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "nm0",
+   "at": [
+    76,
+    62
+   ],
+   "text": "Helium",
+   "role": "warn",
+   "size": "l",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "cf0",
+   "at": [
+    76,
+    53
+   ],
+   "text": "Configuration: 2",
+   "role": "el",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "nm1",
+   "at": [
+    76,
+    62
+   ],
+   "text": "Neon",
+   "role": "warn",
+   "size": "l",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "cf1",
+   "at": [
+    76,
+    53
+   ],
+   "text": "Configuration: 2, 8",
+   "role": "el",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "nm2",
+   "at": [
+    76,
+    62
+   ],
+   "text": "Argon",
+   "role": "warn",
+   "size": "l",
+   "bold": true,
+   "visible": "sel==3"
+  },
+  {
+   "type": "text",
+   "id": "cf2",
+   "at": [
+    76,
+    53
+   ],
+   "text": "Configuration: 2, 8, 8",
+   "role": "el",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==3"
+  },
+  {
+   "type": "text",
+   "id": "nm3",
+   "at": [
+    76,
+    62
+   ],
+   "text": "Sodium",
+   "role": "warn",
+   "size": "l",
+   "bold": true,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "cf3",
+   "at": [
+    76,
+    53
+   ],
+   "text": "Configuration: 2, 8, 1",
+   "role": "el",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "nm4",
+   "at": [
+    76,
+    62
+   ],
+   "text": "Chlorine",
+   "role": "warn",
+   "size": "l",
+   "bold": true,
+   "visible": "sel==5"
+  },
+  {
+   "type": "text",
+   "id": "cf4",
+   "at": [
+    76,
+    53
+   ],
+   "text": "Configuration: 2, 8, 7",
+   "role": "el",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==5"
+  },
+  {
+   "type": "text",
+   "id": "nm5",
+   "at": [
+    76,
+    62
+   ],
+   "text": "Hydrogen",
+   "role": "warn",
+   "size": "l",
+   "bold": true,
+   "visible": "sel==6"
+  },
+  {
+   "type": "text",
+   "id": "cf5",
+   "at": [
+    76,
+    53
+   ],
+   "text": "Configuration: 1",
+   "role": "el",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==6"
+  },
+  {
+   "type": "text",
+   "id": "ot",
+   "at": [
+    76,
+    44
+   ],
+   "text": "Outer shell: {{outer|int}} electron(s)",
+   "role": "ink",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "v1",
+   "at": [
+    76,
+    33
+   ],
+   "text": "Stable: duplet (2)",
+   "role": "ok",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "v2",
+   "at": [
+    76,
+    33
+   ],
+   "text": "Stable: octet (8)",
+   "role": "ok",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==2||sel==3"
+  },
+  {
+   "type": "text",
+   "id": "v4",
+   "at": [
+    76,
+    33
+   ],
+   "text": "Not stable",
+   "role": "bad",
+   "size": "m",
+   "bold": true,
+   "visible": "sel>=4"
+  },
+  {
+   "type": "text",
+   "id": "w4",
+   "at": [
+    76,
+    24
+   ],
+   "text": "Lose 1 electron is easier",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "w4b",
+   "at": [
+    76,
+    18
+   ],
+   "text": "than gaining 7",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==4"
+  },
+  {
+   "type": "text",
+   "id": "w5",
+   "at": [
+    76,
+    24
+   ],
+   "text": "Needs 1 more electron",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==5"
+  },
+  {
+   "type": "text",
+   "id": "w5b",
+   "at": [
+    76,
+    18
+   ],
+   "text": "to complete its octet",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==5"
+  },
+  {
+   "type": "text",
+   "id": "w6",
+   "at": [
+    76,
+    24
+   ],
+   "text": "Can lose 1 (H⁺) or gain 1",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==6"
+  },
+  {
+   "type": "text",
+   "id": "w6b",
+   "at": [
+    76,
+    18
+   ],
+   "text": "(H⁻) to complete duplet",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==6"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Helium: a duplet",
+   "text": "Noble gases neither combine with themselves nor with other atoms: they are **stable**. **Helium has 2 electrons** in its only (first) shell: a **duplet**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Neon: an octet",
+   "text": "**Neon** has **8 electrons** in its outermost shell: an **octet**. Also stable and unreactive.",
+   "actions": [
+    {
+     "set": {
+      "sel": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Argon: an octet too",
+   "text": "All noble gases except helium have **8 electrons** in the outermost shell. This gave the **Duplet or Octet Rule**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Sodium: lose one",
+   "text": "Atoms bond to lower their energy by **completing their duplet or octet**. It is easier for **sodium** to **lose 1 electron** than to gain 7.",
+   "actions": [
+    {
+     "set": {
+      "sel": 4
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Chlorine: gain one",
+   "text": "**Chlorine** has 7 outer electrons and needs just **1 more** to complete its octet.",
+   "actions": [
+    {
+     "set": {
+      "sel": 5
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Hydrogen: lose or gain",
+   "text": "**Hydrogen** can lose its electron to become a proton (**H⁺**) or gain one to become a hydride ion (**H⁻**), completing its duplet.",
+   "actions": [
+    {
+     "set": {
+      "sel": 6
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Outer-shell electrons",
+   "value": "{{outer|int}}",
+   "role": "el"
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "How many electrons must **chlorine** gain to complete its octet?",
+   "answer": 1,
+   "hint": "It has 7 outer electrons.",
+   "explain": "8 − 7 = **1** electron.",
+   "tolerance": 0.01
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Why is sodium likely to **lose** one electron rather than gain seven?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Losing one electron is energetically easier"
+    },
+    {
+     "id": "b",
+     "label": "Sodium is a noble gas"
+    },
+    {
+     "id": "c",
+     "label": "It has 8 outer electrons"
+    },
+    {
+     "id": "d",
+     "label": "Gaining electrons is impossible"
+    }
+   ],
+   "answer": "a",
+   "hint": "Compare 1 with 7.",
+   "explain": "Sodium takes the **energetically easier path** and loses one electron."
+  }
+ ],
+ "takeaways": [
+  "Duplet (H, He): 2 outer electrons; octet: 8 outer electrons = stable and unreactive.",
+  "Atoms form bonds to lower their energy by completing a duplet or octet.",
+  "Only outermost-shell electrons take part."
+ ],
+ "notes": [
+  {
+   "title": "Beyond the book",
+   "text": "The book adds that the octet rule helped explain bonding at the start but was later found to be **less important**."
+  }
+ ]
+}

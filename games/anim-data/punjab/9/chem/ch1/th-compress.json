@@ -1,0 +1,382 @@
+{
+ "id": "pb9-chem-c1-th-compress",
+ "title": "Compressibility of the three states",
+ "summary": "Push the piston on a solid, a liquid and a gas and watch the volume.",
+ "alt": "A piston compresses a box of particles; the gas volume shrinks a lot, the liquid hardly, the solid not at all.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Apparatus",
+   "color": "#475569",
+   "text": "The container or apparatus.",
+   "legend": false
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": true
+  },
+  "a": {
+   "label": "Atom A",
+   "color": "#7c3aed",
+   "text": "First atom.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Low energy.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "st",
+   "label": "State of matter",
+   "type": "choice",
+   "options": [
+    {
+     "value": 3,
+     "label": "Gas"
+    },
+    {
+     "value": 2,
+     "label": "Liquid"
+    },
+    {
+     "value": 1,
+     "label": "Solid"
+    }
+   ],
+   "default": 3
+  },
+  {
+   "id": "push",
+   "label": "Push the piston",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0
+  }
+ ],
+ "derived": {
+  "kk": "st==3?0.7:(st==2?0.03:0)",
+  "Wd": "40*(1-push*kk)",
+  "np": "st==3?12:40"
+ },
+ "shapes": [
+  {
+   "type": "gas",
+   "id": "g",
+   "x0": 10,
+   "x1": "10+Wd",
+   "y0": 20,
+   "y1": 52,
+   "n": "np",
+   "v": "st==3?6:(st==2?2.4:0.8)",
+   "bath": 1,
+   "vref": 3,
+   "seed": 7,
+   "r": 5,
+   "bind": "st==1",
+   "mix": "st==1?0:1.2"
+  },
+  {
+   "type": "segment",
+   "id": "top",
+   "from": [
+    10,
+    52
+   ],
+   "to": [
+    "10+Wd",
+    52
+   ],
+   "role": "wall",
+   "strokeWidth": 3
+  },
+  {
+   "type": "segment",
+   "id": "bot",
+   "from": [
+    10,
+    20
+   ],
+   "to": [
+    "10+Wd",
+    20
+   ],
+   "role": "wall",
+   "strokeWidth": 3
+  },
+  {
+   "type": "segment",
+   "id": "lft",
+   "from": [
+    10,
+    20
+   ],
+   "to": [
+    10,
+    52
+   ],
+   "role": "wall",
+   "strokeWidth": 3
+  },
+  {
+   "type": "segment",
+   "id": "pst",
+   "from": [
+    "10+Wd",
+    20
+   ],
+   "to": [
+    "10+Wd",
+    52
+   ],
+   "role": "warn",
+   "strokeWidth": 6
+  },
+  {
+   "type": "segment",
+   "id": "hnd",
+   "from": [
+    "10+Wd",
+    36
+   ],
+   "to": [
+    "10+Wd+20",
+    36
+   ],
+   "role": "warn",
+   "strokeWidth": 3
+  },
+  {
+   "type": "segment",
+   "id": "knb",
+   "from": [
+    "10+Wd+20",
+    28
+   ],
+   "to": [
+    "10+Wd+20",
+    44
+   ],
+   "role": "warn",
+   "strokeWidth": 6
+  },
+  {
+   "type": "vector",
+   "id": "push_arrow",
+   "from": [
+    "10+Wd+30",
+    36
+   ],
+   "to": [
+    "10+Wd+22",
+    36
+   ],
+   "role": "warn",
+   "strokeWidth": 4,
+   "visible": "push>0.02"
+  },
+  {
+   "type": "text",
+   "id": "t3",
+   "at": [
+    30,
+    62
+   ],
+   "text": "Gas: particles far apart",
+   "role": "cold",
+   "size": "m",
+   "bold": true,
+   "visible": "st==3"
+  },
+  {
+   "type": "text",
+   "id": "t2",
+   "at": [
+    30,
+    62
+   ],
+   "text": "Liquid: closely attached",
+   "role": "a",
+   "size": "m",
+   "bold": true,
+   "visible": "st==2"
+  },
+  {
+   "type": "text",
+   "id": "t1",
+   "at": [
+    30,
+    62
+   ],
+   "text": "Solid: tightly packed",
+   "role": "a",
+   "size": "m",
+   "bold": true,
+   "visible": "st==1"
+  },
+  {
+   "type": "text",
+   "id": "vol",
+   "at": [
+    30,
+    12
+   ],
+   "text": "Volume: {{Wd|1}} of 40",
+   "role": "warn",
+   "size": "m",
+   "bold": true
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A gas in a cylinder",
+   "text": "The gas particles are **far apart** with lots of empty space between them.",
+   "actions": [
+    {
+     "set": {
+      "st": 3,
+      "push": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Push the piston",
+   "text": "The piston squeezes the gas into a much smaller volume: a gas is **easily compressible**.",
+   "actions": [
+    {
+     "set": {
+      "st": 3
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "push": 1
+     },
+     "at": 0,
+     "dur": 1800
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "A liquid",
+   "text": "In a liquid the particles are already **close together**. Pushing hardly changes the volume: not easily compressible.",
+   "actions": [
+    {
+     "set": {
+      "st": 2,
+      "push": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "push": 1
+     },
+     "at": 0,
+     "dur": 1500
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "A solid",
+   "text": "In a **crystalline solid** the particles are tightly packed: almost incompressible and rigid.",
+   "actions": [
+    {
+     "set": {
+      "st": 1,
+      "push": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "push": 1
+     },
+     "at": 0,
+     "dur": 1500
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Volume left",
+   "value": "{{Wd|1}} of 40",
+   "role": "warn"
+  },
+  {
+   "label": "Volume lost",
+   "value": "{{40-Wd|1}}",
+   "role": "cold"
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which state is **easily compressible**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Gas"
+    },
+    {
+     "id": "b",
+     "label": "Liquid"
+    },
+    {
+     "id": "c",
+     "label": "Solid"
+    },
+    {
+     "id": "d",
+     "label": "Crystalline solid"
+    }
+   ],
+   "answer": "a",
+   "hint": "There is a lot of space between its particles.",
+   "explain": "**Gases** have a lot of empty space between particles, so they compress easily."
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "The gas starts with volume 40. If its volume is squeezed by **70 %**, what volume is left?",
+   "answer": "40*0.3",
+   "hint": "Take 30 % of 40.",
+   "explain": "\\( 40 \\times 0.30 = 12 \\).",
+   "tolerance": 0.3
+  }
+ ],
+ "takeaways": [
+  "Gas: easily compressible (large gaps). Liquid: not easily compressible. Solid: relatively incompressible and rigid.",
+  "Compressibility depends on the distance between particles."
+ ]
+}

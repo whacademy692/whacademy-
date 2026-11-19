@@ -1,0 +1,517 @@
+{
+ "id": "pb9-chem-c3-th-ionic-nacl",
+ "title": "Ionic bond in sodium chloride",
+ "summary": "Sodium gives its outer electron to chlorine and the two ions attract.",
+ "alt": "A sodium atom (2,8,1) transfers one electron to a chlorine atom (2,8,7) making Na+ and Cl- with full outer shells.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "nuc": {
+   "label": "Nucleus",
+   "color": "#dc2626",
+   "text": "The tiny central part of the atom.",
+   "legend": false
+  },
+  "el": {
+   "label": "Electron",
+   "color": "#2563eb",
+   "text": "Negative particle moving around the nucleus.",
+   "legend": true
+  },
+  "elx": {
+   "label": "Transferred electron",
+   "color": "#f59e0b",
+   "text": "The electron that moves from Na to Cl.",
+   "legend": true
+  },
+  "sh": {
+   "label": "Shell",
+   "color": "#94a3b8",
+   "text": "An energy level (orbit).",
+   "legend": false
+  },
+  "pos": {
+   "label": "Positive",
+   "color": "#e11d48",
+   "text": "Positive charge / cation.",
+   "legend": false
+  },
+  "neg": {
+   "label": "Negative",
+   "color": "#2563eb",
+   "text": "Negative charge / anion.",
+   "legend": false
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "ph",
+   "label": "Spin",
+   "type": "clock",
+   "min": 0,
+   "max": 360,
+   "step": 0.01,
+   "speed": 40,
+   "loop": "repeat",
+   "default": 0,
+   "auto": true,
+   "hidden": true
+  },
+  {
+   "id": "x",
+   "label": "Transfer",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0
+  }
+ ],
+ "derived": {
+  "ion": "min(1,max(0,x*1.0))"
+ },
+ "shapes": [
+  {
+   "type": "circle",
+   "id": "ash0",
+   "c": [
+    20,
+    40
+   ],
+   "r": 5.5,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 1.8,
+   "dash": true
+  },
+  {
+   "type": "circle",
+   "id": "ash1",
+   "c": [
+    20,
+    40
+   ],
+   "r": 10.5,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 1.8,
+   "dash": true
+  },
+  {
+   "type": "circle",
+   "id": "ash2",
+   "c": [
+    20,
+    40
+   ],
+   "r": 15.5,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 1.8,
+   "dash": true,
+   "opacity": "1-x"
+  },
+  {
+   "type": "circle",
+   "id": "an",
+   "c": [
+    20,
+    40
+   ],
+   "r": 3.2,
+   "role": "nuc",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.6
+  },
+  {
+   "type": "text",
+   "id": "az",
+   "at": [
+    20,
+    40
+   ],
+   "text": "11+",
+   "role": "nuc",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "bsh0",
+   "c": [
+    72,
+    40
+   ],
+   "r": 5.5,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 1.8,
+   "dash": true
+  },
+  {
+   "type": "circle",
+   "id": "bsh1",
+   "c": [
+    72,
+    40
+   ],
+   "r": 10.5,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 1.8,
+   "dash": true
+  },
+  {
+   "type": "circle",
+   "id": "bsh2",
+   "c": [
+    72,
+    40
+   ],
+   "r": 15.5,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 1.8,
+   "dash": true
+  },
+  {
+   "type": "circle",
+   "id": "bn",
+   "c": [
+    72,
+    40
+   ],
+   "r": 3.2,
+   "role": "nuc",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.6
+  },
+  {
+   "type": "text",
+   "id": "bz",
+   "at": [
+    72,
+    40
+   ],
+   "text": "17+",
+   "role": "nuc",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "repeat",
+   "id": "aK",
+   "count": 2,
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "(20)+(5.5)*cos(1*(ph)+360*i/(2)+0)",
+     "(40)+(5.5)*sin(1*(ph)+360*i/(2)+0)"
+    ],
+    "role": "el",
+    "r": 5
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "aL",
+   "count": 8,
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "(20)+(10.5)*cos(-1*(ph)+360*i/(8)+10)",
+     "(40)+(10.5)*sin(-1*(ph)+360*i/(8)+10)"
+    ],
+    "role": "el",
+    "r": 5
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "bK",
+   "count": 2,
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "(72)+(5.5)*cos(1*(ph)+360*i/(2)+0)",
+     "(40)+(5.5)*sin(1*(ph)+360*i/(2)+0)"
+    ],
+    "role": "el",
+    "r": 5
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "bL",
+   "count": 8,
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "(72)+(10.5)*cos(-1*(ph)+360*i/(8)+10)",
+     "(40)+(10.5)*sin(-1*(ph)+360*i/(8)+10)"
+    ],
+    "role": "el",
+    "r": 5
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "bM",
+   "count": 7,
+   "as": "i",
+   "template": {
+    "type": "point",
+    "id": "b",
+    "at": [
+     "72+15.5*cos(180+30+120*i/3.5+0*ph)",
+     "40+15.5*sin(180+30+120*i/3.5+0*ph)"
+    ],
+    "role": "el",
+    "r": 5
+   }
+  },
+  {
+   "type": "point",
+   "id": "mv",
+   "at": [
+    "20+15.5+x*(72-15.5-20-15.5)",
+    "40+0"
+   ],
+   "role": "elx",
+   "r": 6.5
+  },
+  {
+   "type": "text",
+   "id": "sa",
+   "at": [
+    20,
+    63
+   ],
+   "text": "{{if x<0.5 | Na | Na⁺}}",
+   "role": "pos",
+   "size": "xl",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "sb",
+   "at": [
+    72,
+    63
+   ],
+   "text": "{{if x<0.5 | Cl | Cl⁻}}",
+   "role": "neg",
+   "size": "xl",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "ca",
+   "at": [
+    20,
+    17
+   ],
+   "text": "{{if x<0.5 | 2, 8, 1 | 2, 8}}",
+   "role": "ink",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "cb",
+   "at": [
+    72,
+    17
+   ],
+   "text": "{{if x<0.5 | 2, 8, 7 | 2, 8, 8}}",
+   "role": "ink",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "eqn",
+   "at": [
+    46,
+    74
+   ],
+   "text": "Na → Na⁺ + e⁻     Cl + e⁻ → Cl⁻",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "att",
+   "at": [
+    46,
+    7
+   ],
+   "text": "electrostatic attraction = ionic bond",
+   "role": "warn",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "segment",
+   "id": "al",
+   "from": [
+    38,
+    40
+   ],
+   "to": [
+    54,
+    40
+   ],
+   "role": "warn",
+   "strokeWidth": 2.5,
+   "dash": true,
+   "appear": "s3",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Two neutral atoms",
+   "text": "**Sodium** has configuration **2, 8, 1** and **chlorine 2, 8, 7**. Sodium has one electron too many; chlorine is one short of an octet.",
+   "actions": [
+    {
+     "set": {
+      "x": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "An electron is transferred",
+   "text": "The electron from the **outermost shell of sodium** passes to the outermost shell of chlorine.",
+   "actions": [
+    {
+     "tween": {
+      "x": 1
+     },
+     "at": 0,
+     "dur": 2200
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Two ions with noble-gas shells",
+   "text": "Sodium becomes **Na⁺** (2, 8, like neon) and chlorine **Cl⁻** (2, 8, 8, like argon). Both have a stable outer shell.",
+   "actions": [
+    {
+     "set": {
+      "x": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "The ionic bond",
+   "text": "The oppositely charged ions attract each other by an **electrostatic force**: this is an **ionic (electrovalent) bond**; NaCl is an **ionic compound**.",
+   "actions": [
+    {
+     "set": {
+      "x": 1
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Na electrons",
+   "value": "{{11-round(x)|int}}",
+   "role": "pos"
+  },
+  {
+   "label": "Cl electrons",
+   "value": "{{17+round(x)|int}}",
+   "role": "neg"
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "How many electrons does the **sodium ion Na⁺** have?",
+   "answer": 10,
+   "hint": "11 protons, one electron lost.",
+   "explain": "11 − 1 = **10** electrons (configuration 2, 8).",
+   "tolerance": 0.01
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "An ionic bond is formed by the…",
+   "options": [
+    {
+     "id": "a",
+     "label": "complete transfer of electron(s) from one atom to another"
+    },
+    {
+     "id": "b",
+     "label": "sharing of electrons"
+    },
+    {
+     "id": "c",
+     "label": "transfer of protons"
+    },
+    {
+     "id": "d",
+     "label": "sharing of neutrons"
+    }
+   ],
+   "answer": "a",
+   "hint": "Na gives, Cl takes.",
+   "explain": "An ionic bond forms by the **complete transference of electron(s)**."
+  }
+ ],
+ "takeaways": [
+  "Na → Na⁺ + e⁻ and Cl + e⁻ → Cl⁻, giving Na⁺Cl⁻.",
+  "Only outermost-shell electrons are transferred.",
+  "The ions are held by electrostatic attraction: the ionic (electrovalent) bond."
+ ]
+}

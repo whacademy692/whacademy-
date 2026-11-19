@@ -1,0 +1,515 @@
+{
+ "id": "pb9-chem-c2-th-isotopes-h",
+ "title": "Isotopes of hydrogen",
+ "summary": "Same protons, different neutrons: protium, deuterium and tritium.",
+ "alt": "Three hydrogen atoms with 0, 1 and 2 neutrons, each with one electron.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "pro": {
+   "label": "Proton",
+   "color": "#ef4444",
+   "text": "Positive particle in the nucleus.",
+   "legend": true
+  },
+  "neu": {
+   "label": "Neutron",
+   "color": "#64748b",
+   "text": "Neutral particle in the nucleus.",
+   "legend": true
+  },
+  "el": {
+   "label": "Electron",
+   "color": "#2563eb",
+   "text": "Negative particle moving around the nucleus.",
+   "legend": true
+  },
+  "sh": {
+   "label": "Shell",
+   "color": "#94a3b8",
+   "text": "An energy level (orbit).",
+   "legend": false
+  },
+  "bad": {
+   "label": "Not allowed",
+   "color": "#e11d48",
+   "text": "Not possible / unstable.",
+   "legend": false
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "ph",
+   "label": "Spin",
+   "type": "clock",
+   "min": 0,
+   "max": 360,
+   "step": 0.01,
+   "speed": 70,
+   "loop": "repeat",
+   "default": 0,
+   "auto": true,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "circle",
+   "id": "sh0",
+   "c": [
+    17,
+    46
+   ],
+   "r": 10,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 1.8,
+   "dash": true
+  },
+  {
+   "type": "circle",
+   "id": "i0p0",
+   "c": [
+    17,
+    46
+   ],
+   "r": 1.7,
+   "role": "pro",
+   "fill": true,
+   "fillOpacity": 0.85,
+   "strokeWidth": 1.4
+  },
+  {
+   "type": "repeat",
+   "id": "e0",
+   "count": 1,
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "(17)+(10)*cos(1*(ph)+360*i/(1)+0)",
+     "(46)+(10)*sin(1*(ph)+360*i/(1)+0)"
+    ],
+    "role": "el",
+    "r": 5
+   }
+  },
+  {
+   "type": "text",
+   "id": "sy0",
+   "at": [
+    17,
+    30
+   ],
+   "text": "\\(^{1}_{1}\\text{H}\\)",
+   "role": "ink",
+   "size": "xl",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "nm0",
+   "at": [
+    17,
+    22
+   ],
+   "text": "Protium",
+   "role": "ink",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "pn0",
+   "at": [
+    17,
+    15.5
+   ],
+   "text": "p = 1, n = 0",
+   "role": "neu",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "appearDur": 400
+  },
+  {
+   "type": "text",
+   "id": "ms0",
+   "at": [
+    17,
+    63
+   ],
+   "text": "mass × 1",
+   "role": "warn",
+   "size": "m",
+   "bold": true,
+   "appear": "s2",
+   "appearDur": 400
+  },
+  {
+   "type": "circle",
+   "id": "sh1",
+   "c": [
+    47,
+    46
+   ],
+   "r": 10,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 1.8,
+   "dash": true
+  },
+  {
+   "type": "circle",
+   "id": "i1p0",
+   "c": [
+    45.2,
+    46
+   ],
+   "r": 1.7,
+   "role": "pro",
+   "fill": true,
+   "fillOpacity": 0.85,
+   "strokeWidth": 1.4
+  },
+  {
+   "type": "circle",
+   "id": "i1n0",
+   "c": [
+    48.8,
+    46
+   ],
+   "r": 1.7,
+   "role": "neu",
+   "fill": true,
+   "fillOpacity": 0.85,
+   "strokeWidth": 1.4
+  },
+  {
+   "type": "repeat",
+   "id": "e1",
+   "count": 1,
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "(47)+(10)*cos(1*(ph)+360*i/(1)+70)",
+     "(46)+(10)*sin(1*(ph)+360*i/(1)+70)"
+    ],
+    "role": "el",
+    "r": 5
+   }
+  },
+  {
+   "type": "text",
+   "id": "sy1",
+   "at": [
+    47,
+    30
+   ],
+   "text": "\\(^{2}_{1}\\text{H}\\)",
+   "role": "ink",
+   "size": "xl",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "nm1",
+   "at": [
+    47,
+    22
+   ],
+   "text": "Deuterium",
+   "role": "ink",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "pn1",
+   "at": [
+    47,
+    15.5
+   ],
+   "text": "p = 1, n = 1",
+   "role": "neu",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "appearDur": 400
+  },
+  {
+   "type": "text",
+   "id": "ms1",
+   "at": [
+    47,
+    63
+   ],
+   "text": "mass × 2",
+   "role": "warn",
+   "size": "m",
+   "bold": true,
+   "appear": "s2",
+   "appearDur": 400
+  },
+  {
+   "type": "circle",
+   "id": "sh2",
+   "c": [
+    77,
+    46
+   ],
+   "r": 10,
+   "role": "sh",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 1.8,
+   "dash": true
+  },
+  {
+   "type": "circle",
+   "id": "i2p0",
+   "c": [
+    75.2,
+    44.8
+   ],
+   "r": 1.7,
+   "role": "pro",
+   "fill": true,
+   "fillOpacity": 0.85,
+   "strokeWidth": 1.4
+  },
+  {
+   "type": "circle",
+   "id": "i2n0",
+   "c": [
+    78.8,
+    44.8
+   ],
+   "r": 1.7,
+   "role": "neu",
+   "fill": true,
+   "fillOpacity": 0.85,
+   "strokeWidth": 1.4
+  },
+  {
+   "type": "circle",
+   "id": "i2n1",
+   "c": [
+    77,
+    48.0
+   ],
+   "r": 1.7,
+   "role": "neu",
+   "fill": true,
+   "fillOpacity": 0.85,
+   "strokeWidth": 1.4
+  },
+  {
+   "type": "repeat",
+   "id": "e2",
+   "count": 1,
+   "as": "i",
+   "template": {
+    "type": "point",
+    "at": [
+     "(77)+(10)*cos(1*(ph)+360*i/(1)+140)",
+     "(46)+(10)*sin(1*(ph)+360*i/(1)+140)"
+    ],
+    "role": "el",
+    "r": 5
+   }
+  },
+  {
+   "type": "text",
+   "id": "sy2",
+   "at": [
+    77,
+    30
+   ],
+   "text": "\\(^{3}_{1}\\text{H}\\)",
+   "role": "ink",
+   "size": "xl",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "nm2",
+   "at": [
+    77,
+    22
+   ],
+   "text": "Tritium",
+   "role": "ink",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "pn2",
+   "at": [
+    77,
+    15.5
+   ],
+   "text": "p = 1, n = 2",
+   "role": "neu",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "appearDur": 400
+  },
+  {
+   "type": "text",
+   "id": "ms2",
+   "at": [
+    77,
+    63
+   ],
+   "text": "mass × 3",
+   "role": "warn",
+   "size": "m",
+   "bold": true,
+   "appear": "s2",
+   "appearDur": 400
+  },
+  {
+   "type": "text",
+   "id": "eq",
+   "at": [
+    47,
+    72
+   ],
+   "text": "electron: 1 in each atom",
+   "role": "el",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "appearDur": 400
+  },
+  {
+   "type": "circle",
+   "id": "rad",
+   "c": [
+    77,
+    46
+   ],
+   "r": 13.5,
+   "role": "bad",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 3.5,
+   "appear": "s4",
+   "appearDur": 450,
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "radt",
+   "at": [
+    77,
+    5
+   ],
+   "text": "radioactive",
+   "role": "bad",
+   "size": "m",
+   "bold": true,
+   "appear": "s4",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Three kinds of hydrogen atom",
+   "text": "All three are **hydrogen**: each has **1 proton** (Z = 1) and **1 electron**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Different neutrons",
+   "text": "**Isotopes** are atoms of the same element with a **different number of neutrons**: 0, 1 and 2. ¹₁H is the only atom with no neutron.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Different masses",
+   "text": "More neutrons means more mass: ²₁H has **twice** and ³₁H **three times** the mass of ¹₁H.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Same chemistry",
+   "text": "**Chemical properties** depend on the **electrons**, and all three have one electron, so they behave almost the same chemically. Physical properties such as mass may differ.",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "One is radioactive",
+   "text": "**Tritium** (³₁H) has an unstable nucleus and is **radioactive**. The other two hydrogen isotopes are stable.",
+   "actions": []
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "How many **neutrons** does tritium \\(^{3}_{1}\\text{H}\\) have?",
+   "answer": 2,
+   "hint": "N = A − Z = 3 − 1.",
+   "explain": "\\( N = 3 - 1 = 2 \\).",
+   "tolerance": 0.01
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Why do isotopes of an element show the **same chemical properties**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "They have the same number of neutrons"
+    },
+    {
+     "id": "b",
+     "label": "They have the same number of electrons"
+    },
+    {
+     "id": "c",
+     "label": "They have the same mass number"
+    },
+    {
+     "id": "d",
+     "label": "They are all radioactive"
+    }
+   ],
+   "answer": "b",
+   "hint": "Chemistry is about electrons.",
+   "explain": "Chemical properties are decided by the number of **electrons**, which is the same in all isotopes of an element."
+  }
+ ],
+ "takeaways": [
+  "Isotopes: same Z (protons), different neutrons, so different A.",
+  "Same electrons means the same chemical behaviour; mass is different.",
+  "Tritium is radioactive; protium and deuterium are stable."
+ ]
+}

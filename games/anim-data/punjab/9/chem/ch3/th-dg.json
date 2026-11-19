@@ -1,0 +1,1443 @@
+{
+ "id": "pb9-chem-c3-th-dg",
+ "title": "Diamond and graphite",
+ "summary": "Same element, different bonding: a rigid 3D network versus layers that slip and carry current.",
+ "alt": "A diamond network with each carbon bonded to four others, and graphite layers that slide and have mobile electrons between them.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "cb": {
+   "label": "Carbon",
+   "color": "#475569",
+   "text": "Carbon atom.",
+   "legend": false
+  },
+  "el": {
+   "label": "Mobile electrons",
+   "color": "#2563eb",
+   "text": "Free electrons between graphite layers.",
+   "legend": true
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  },
+  "wall": {
+   "label": "Apparatus",
+   "color": "#475569",
+   "text": "The container or apparatus.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "The correct / stable one.",
+   "legend": false
+  },
+  "bad": {
+   "label": "Not allowed",
+   "color": "#e11d48",
+   "text": "Not possible / unstable.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "sel",
+   "label": "Allotrope",
+   "type": "choice",
+   "options": [
+    {
+     "value": 1,
+     "label": "Diamond"
+    },
+    {
+     "value": 2,
+     "label": "Graphite"
+    }
+   ],
+   "default": 1
+  },
+  {
+   "id": "sl",
+   "label": "Push the top layer",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0
+  },
+  {
+   "id": "cur",
+   "label": "Apply a voltage",
+   "type": "toggle",
+   "default": 0
+  },
+  {
+   "id": "ph",
+   "label": "Time",
+   "type": "clock",
+   "min": 0,
+   "max": 360,
+   "step": 0.01,
+   "speed": 60,
+   "loop": "repeat",
+   "default": 0,
+   "auto": true,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "circle",
+   "id": "c0",
+   "c": [
+    50,
+    40
+   ],
+   "r": 3.6,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2.4,
+   "visible": "sel==1"
+  },
+  {
+   "type": "segment",
+   "id": "dn0",
+   "from": [
+    50,
+    40
+   ],
+   "to": [
+    65,
+    53
+   ],
+   "role": "ink",
+   "strokeWidth": 3,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "dc0",
+   "c": [
+    65,
+    53
+   ],
+   "r": 3.6,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2.4,
+   "visible": "sel==1"
+  },
+  {
+   "type": "segment",
+   "id": "do0_0",
+   "from": [
+    65,
+    53
+   ],
+   "to": [
+    79,
+    53
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "dd0_0",
+   "c": [
+    79,
+    53
+   ],
+   "r": 2.4,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.2,
+   "strokeWidth": 1.6,
+   "visible": "sel==1"
+  },
+  {
+   "type": "segment",
+   "id": "do0_1",
+   "from": [
+    65,
+    53
+   ],
+   "to": [
+    65,
+    64
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "dd0_1",
+   "c": [
+    65,
+    64
+   ],
+   "r": 2.4,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.2,
+   "strokeWidth": 1.6,
+   "visible": "sel==1"
+  },
+  {
+   "type": "segment",
+   "id": "dn1",
+   "from": [
+    50,
+    40
+   ],
+   "to": [
+    35,
+    53
+   ],
+   "role": "ink",
+   "strokeWidth": 3,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "dc1",
+   "c": [
+    35,
+    53
+   ],
+   "r": 3.6,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2.4,
+   "visible": "sel==1"
+  },
+  {
+   "type": "segment",
+   "id": "do1_0",
+   "from": [
+    35,
+    53
+   ],
+   "to": [
+    21,
+    53
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "dd1_0",
+   "c": [
+    21,
+    53
+   ],
+   "r": 2.4,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.2,
+   "strokeWidth": 1.6,
+   "visible": "sel==1"
+  },
+  {
+   "type": "segment",
+   "id": "do1_1",
+   "from": [
+    35,
+    53
+   ],
+   "to": [
+    35,
+    64
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "dd1_1",
+   "c": [
+    35,
+    64
+   ],
+   "r": 2.4,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.2,
+   "strokeWidth": 1.6,
+   "visible": "sel==1"
+  },
+  {
+   "type": "segment",
+   "id": "dn2",
+   "from": [
+    50,
+    40
+   ],
+   "to": [
+    65,
+    27
+   ],
+   "role": "ink",
+   "strokeWidth": 3,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "dc2",
+   "c": [
+    65,
+    27
+   ],
+   "r": 3.6,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2.4,
+   "visible": "sel==1"
+  },
+  {
+   "type": "segment",
+   "id": "do2_0",
+   "from": [
+    65,
+    27
+   ],
+   "to": [
+    79,
+    27
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "dd2_0",
+   "c": [
+    79,
+    27
+   ],
+   "r": 2.4,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.2,
+   "strokeWidth": 1.6,
+   "visible": "sel==1"
+  },
+  {
+   "type": "segment",
+   "id": "do2_1",
+   "from": [
+    65,
+    27
+   ],
+   "to": [
+    65,
+    16
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "dd2_1",
+   "c": [
+    65,
+    16
+   ],
+   "r": 2.4,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.2,
+   "strokeWidth": 1.6,
+   "visible": "sel==1"
+  },
+  {
+   "type": "segment",
+   "id": "dn3",
+   "from": [
+    50,
+    40
+   ],
+   "to": [
+    35,
+    27
+   ],
+   "role": "ink",
+   "strokeWidth": 3,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "dc3",
+   "c": [
+    35,
+    27
+   ],
+   "r": 3.6,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2.4,
+   "visible": "sel==1"
+  },
+  {
+   "type": "segment",
+   "id": "do3_0",
+   "from": [
+    35,
+    27
+   ],
+   "to": [
+    21,
+    27
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "dd3_0",
+   "c": [
+    21,
+    27
+   ],
+   "r": 2.4,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.2,
+   "strokeWidth": 1.6,
+   "visible": "sel==1"
+  },
+  {
+   "type": "segment",
+   "id": "do3_1",
+   "from": [
+    35,
+    27
+   ],
+   "to": [
+    35,
+    16
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "circle",
+   "id": "dd3_1",
+   "c": [
+    35,
+    16
+   ],
+   "r": 2.4,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.2,
+   "strokeWidth": 1.6,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "d_t",
+   "at": [
+    50,
+    73
+   ],
+   "text": "Diamond: each C bonded to 4 other C atoms",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "d_b1",
+   "at": [
+    50,
+    8
+   ],
+   "text": "Very hard: strong bonds in every direction",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==1"
+  },
+  {
+   "type": "text",
+   "id": "d_b2",
+   "at": [
+    50,
+    3
+   ],
+   "text": "Used in drill bits and glass cutters",
+   "role": "ink",
+   "size": "s",
+   "bold": false,
+   "visible": "sel==1"
+  },
+  {
+   "type": "segment",
+   "id": "gb0_0",
+   "from": [
+    "14",
+    19.5
+   ],
+   "to": [
+    "23",
+    24.5
+   ],
+   "role": "ink",
+   "strokeWidth": 2.4,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gb0_1",
+   "from": [
+    "23",
+    24.5
+   ],
+   "to": [
+    "32",
+    19.5
+   ],
+   "role": "ink",
+   "strokeWidth": 2.4,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gb0_2",
+   "from": [
+    "32",
+    19.5
+   ],
+   "to": [
+    "41",
+    24.5
+   ],
+   "role": "ink",
+   "strokeWidth": 2.4,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gb0_3",
+   "from": [
+    "41",
+    24.5
+   ],
+   "to": [
+    "50",
+    19.5
+   ],
+   "role": "ink",
+   "strokeWidth": 2.4,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gb0_4",
+   "from": [
+    "50",
+    19.5
+   ],
+   "to": [
+    "59",
+    24.5
+   ],
+   "role": "ink",
+   "strokeWidth": 2.4,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gb0_5",
+   "from": [
+    "59",
+    24.5
+   ],
+   "to": [
+    "68",
+    19.5
+   ],
+   "role": "ink",
+   "strokeWidth": 2.4,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gb0_6",
+   "from": [
+    "68",
+    19.5
+   ],
+   "to": [
+    "77",
+    24.5
+   ],
+   "role": "ink",
+   "strokeWidth": 2.4,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "ga0_0",
+   "c": [
+    "14",
+    19.5
+   ],
+   "r": 2.8,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.0,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "ga0_1",
+   "c": [
+    "23",
+    24.5
+   ],
+   "r": 2.8,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.0,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "ga0_2",
+   "c": [
+    "32",
+    19.5
+   ],
+   "r": 2.8,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.0,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "ga0_3",
+   "c": [
+    "41",
+    24.5
+   ],
+   "r": 2.8,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.0,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "ga0_4",
+   "c": [
+    "50",
+    19.5
+   ],
+   "r": 2.8,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.0,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "ga0_5",
+   "c": [
+    "59",
+    24.5
+   ],
+   "r": 2.8,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.0,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "ga0_6",
+   "c": [
+    "68",
+    19.5
+   ],
+   "r": 2.8,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.0,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "ga0_7",
+   "c": [
+    "77",
+    24.5
+   ],
+   "r": 2.8,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.0,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gb1_0",
+   "from": [
+    "14",
+    37.5
+   ],
+   "to": [
+    "23",
+    42.5
+   ],
+   "role": "ink",
+   "strokeWidth": 2.4,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gb1_1",
+   "from": [
+    "23",
+    42.5
+   ],
+   "to": [
+    "32",
+    37.5
+   ],
+   "role": "ink",
+   "strokeWidth": 2.4,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gb1_2",
+   "from": [
+    "32",
+    37.5
+   ],
+   "to": [
+    "41",
+    42.5
+   ],
+   "role": "ink",
+   "strokeWidth": 2.4,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gb1_3",
+   "from": [
+    "41",
+    42.5
+   ],
+   "to": [
+    "50",
+    37.5
+   ],
+   "role": "ink",
+   "strokeWidth": 2.4,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gb1_4",
+   "from": [
+    "50",
+    37.5
+   ],
+   "to": [
+    "59",
+    42.5
+   ],
+   "role": "ink",
+   "strokeWidth": 2.4,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gb1_5",
+   "from": [
+    "59",
+    42.5
+   ],
+   "to": [
+    "68",
+    37.5
+   ],
+   "role": "ink",
+   "strokeWidth": 2.4,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gb1_6",
+   "from": [
+    "68",
+    37.5
+   ],
+   "to": [
+    "77",
+    42.5
+   ],
+   "role": "ink",
+   "strokeWidth": 2.4,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "ga1_0",
+   "c": [
+    "14",
+    37.5
+   ],
+   "r": 2.8,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.0,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "ga1_1",
+   "c": [
+    "23",
+    42.5
+   ],
+   "r": 2.8,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.0,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "ga1_2",
+   "c": [
+    "32",
+    37.5
+   ],
+   "r": 2.8,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.0,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "ga1_3",
+   "c": [
+    "41",
+    42.5
+   ],
+   "r": 2.8,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.0,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "ga1_4",
+   "c": [
+    "50",
+    37.5
+   ],
+   "r": 2.8,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.0,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "ga1_5",
+   "c": [
+    "59",
+    42.5
+   ],
+   "r": 2.8,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.0,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "ga1_6",
+   "c": [
+    "68",
+    37.5
+   ],
+   "r": 2.8,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.0,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "ga1_7",
+   "c": [
+    "77",
+    42.5
+   ],
+   "r": 2.8,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.0,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gb2_0",
+   "from": [
+    "14+sl*14",
+    55.5
+   ],
+   "to": [
+    "23+sl*14",
+    60.5
+   ],
+   "role": "ink",
+   "strokeWidth": 2.4,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gb2_1",
+   "from": [
+    "23+sl*14",
+    60.5
+   ],
+   "to": [
+    "32+sl*14",
+    55.5
+   ],
+   "role": "ink",
+   "strokeWidth": 2.4,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gb2_2",
+   "from": [
+    "32+sl*14",
+    55.5
+   ],
+   "to": [
+    "41+sl*14",
+    60.5
+   ],
+   "role": "ink",
+   "strokeWidth": 2.4,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gb2_3",
+   "from": [
+    "41+sl*14",
+    60.5
+   ],
+   "to": [
+    "50+sl*14",
+    55.5
+   ],
+   "role": "ink",
+   "strokeWidth": 2.4,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gb2_4",
+   "from": [
+    "50+sl*14",
+    55.5
+   ],
+   "to": [
+    "59+sl*14",
+    60.5
+   ],
+   "role": "ink",
+   "strokeWidth": 2.4,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gb2_5",
+   "from": [
+    "59+sl*14",
+    60.5
+   ],
+   "to": [
+    "68+sl*14",
+    55.5
+   ],
+   "role": "ink",
+   "strokeWidth": 2.4,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gb2_6",
+   "from": [
+    "68+sl*14",
+    55.5
+   ],
+   "to": [
+    "77+sl*14",
+    60.5
+   ],
+   "role": "ink",
+   "strokeWidth": 2.4,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "ga2_0",
+   "c": [
+    "14+sl*14",
+    55.5
+   ],
+   "r": 2.8,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.0,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "ga2_1",
+   "c": [
+    "23+sl*14",
+    60.5
+   ],
+   "r": 2.8,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.0,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "ga2_2",
+   "c": [
+    "32+sl*14",
+    55.5
+   ],
+   "r": 2.8,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.0,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "ga2_3",
+   "c": [
+    "41+sl*14",
+    60.5
+   ],
+   "r": 2.8,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.0,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "ga2_4",
+   "c": [
+    "50+sl*14",
+    55.5
+   ],
+   "r": 2.8,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.0,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "ga2_5",
+   "c": [
+    "59+sl*14",
+    60.5
+   ],
+   "r": 2.8,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.0,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "ga2_6",
+   "c": [
+    "68+sl*14",
+    55.5
+   ],
+   "r": 2.8,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.0,
+   "visible": "sel==2"
+  },
+  {
+   "type": "circle",
+   "id": "ga2_7",
+   "c": [
+    "77+sl*14",
+    60.5
+   ],
+   "r": 2.8,
+   "role": "cb",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.0,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gw0_1",
+   "from": [
+    23,
+    25
+   ],
+   "to": [
+    "23",
+    37
+   ],
+   "role": "wall",
+   "strokeWidth": 1.6,
+   "dash": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gw0_4",
+   "from": [
+    50,
+    25
+   ],
+   "to": [
+    "50",
+    37
+   ],
+   "role": "wall",
+   "strokeWidth": 1.6,
+   "dash": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gw0_7",
+   "from": [
+    77,
+    25
+   ],
+   "to": [
+    "77",
+    37
+   ],
+   "role": "wall",
+   "strokeWidth": 1.6,
+   "dash": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gw1_1",
+   "from": [
+    23,
+    43
+   ],
+   "to": [
+    "23+sl*14",
+    55
+   ],
+   "role": "wall",
+   "strokeWidth": 1.6,
+   "dash": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gw1_4",
+   "from": [
+    50,
+    43
+   ],
+   "to": [
+    "50+sl*14",
+    55
+   ],
+   "role": "wall",
+   "strokeWidth": 1.6,
+   "dash": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "segment",
+   "id": "gw1_7",
+   "from": [
+    77,
+    43
+   ],
+   "to": [
+    "77+sl*14",
+    55
+   ],
+   "role": "wall",
+   "strokeWidth": 1.6,
+   "dash": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "repeat",
+   "id": "ge",
+   "count": 14,
+   "as": "i",
+   "template": {
+    "type": "point",
+    "id": "e",
+    "at": [
+     "14+mod(62*(mod(abs(sin(i*12.9898+3)*43758.5453),1))+cur*ph/360*62,62)+1.2*sin(ph*3+i*50)",
+     "31+18*floor(2*(mod(abs(sin(i*78.233+7)*43758.5453),1)))+1.2*cos(ph*2+i*70)"
+    ],
+    "role": "el",
+    "r": 3.8,
+    "visible": "sel==2"
+   }
+  },
+  {
+   "type": "text",
+   "id": "g_t",
+   "at": [
+    50,
+    73
+   ],
+   "text": "Graphite: layers of C atoms, weak forces between layers",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "sel==2"
+  },
+  {
+   "type": "text",
+   "id": "g_b1",
+   "at": [
+    50,
+    8
+   ],
+   "text": "Layers slip over one another: soft, a lubricant",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2&&sl>0.7"
+  },
+  {
+   "type": "text",
+   "id": "g_b2",
+   "at": [
+    50,
+    3
+   ],
+   "text": "Mobile electrons carry current: used as electrodes",
+   "role": "el",
+   "size": "s",
+   "bold": true,
+   "visible": "sel==2&&cur>0.5"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Diamond: a rigid network",
+   "text": "In **diamond** each carbon atom is bonded to **four other carbon atoms**, in all directions, forming a **three-dimensional network**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 1,
+      "sl": 0,
+      "cur": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Hard, so useful for cutting",
+   "text": "Every bond is strong and there is no way for atoms to slip, so diamond is the **hardest natural substance**: it is used in **drill bits and glass cutters**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 1,
+      "sl": 0,
+      "cur": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Graphite: layers",
+   "text": "In **graphite** the carbon atoms are arranged in **layers**. Only **weak forces** hold one layer to the next.",
+   "actions": [
+    {
+     "set": {
+      "sel": 2,
+      "sl": 0,
+      "cur": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Layers slip",
+   "text": "The layers **slide over each other** easily, so graphite is **soft and slippery**: it is used as a **lubricant** and as pencil lead.",
+   "actions": [
+    {
+     "set": {
+      "sel": 2,
+      "cur": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "sl": 1
+     },
+     "at": 0,
+     "dur": 2200
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Electrons can move",
+   "text": "Graphite has **mobile electrons**, so it **conducts electricity** and is used to make **electrodes**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 2,
+      "sl": 0,
+      "cur": 1
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "How many carbon atoms is each carbon atom in **diamond** bonded to?",
+   "answer": 4,
+   "hint": "Look at the central atom.",
+   "explain": "Each C is bonded to **4** other carbon atoms.",
+   "tolerance": 0.01
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which allotrope is a **lubricant** and conducts electricity?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Graphite"
+    },
+    {
+     "id": "b",
+     "label": "Diamond"
+    },
+    {
+     "id": "c",
+     "label": "Both"
+    },
+    {
+     "id": "d",
+     "label": "Neither"
+    }
+   ],
+   "answer": "a",
+   "hint": "Layers slip, and electrons are mobile.",
+   "explain": "**Graphite**: slipping layers and mobile electrons."
+  }
+ ],
+ "takeaways": [
+  "Diamond: each C bonded to 4 C atoms in a 3D network: hardest, cutting tools.",
+  "Graphite: layers held by weak forces slip (lubricant, pencils); mobile electrons give conduction (electrodes)."
+ ]
+}

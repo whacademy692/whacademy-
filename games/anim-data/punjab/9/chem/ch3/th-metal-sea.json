@@ -1,0 +1,727 @@
+{
+ "id": "pb9-chem-c3-th-metal-sea",
+ "title": "The metallic bond: a sea of electrons",
+ "summary": "Positive ions sit in a sea of mobile electrons. Compare Na and Mg and switch on a voltage.",
+ "alt": "Rows of positive metal ions with free electrons moving between them; magnesium has twice the charge and twice as many electrons as sodium.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "pos": {
+   "label": "Metal ions (+)",
+   "color": "#e11d48",
+   "text": "Positive ions of the metal.",
+   "legend": true
+  },
+  "el": {
+   "label": "Mobile electrons (−)",
+   "color": "#2563eb",
+   "text": "Free electrons shared by all the ions.",
+   "legend": true
+  },
+  "warn": {
+   "label": "Highlight",
+   "color": "#d97706",
+   "text": "Important value or highlight.",
+   "legend": false
+  },
+  "wall": {
+   "label": "Apparatus",
+   "color": "#475569",
+   "text": "The container or apparatus.",
+   "legend": false
+  },
+  "bad": {
+   "label": "Not allowed",
+   "color": "#e11d48",
+   "text": "Not possible / unstable.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "sel",
+   "label": "Metal",
+   "type": "choice",
+   "options": [
+    {
+     "value": 1,
+     "label": "Sodium (1 electron per atom)"
+    },
+    {
+     "value": 2,
+     "label": "Magnesium (2 electrons per atom)"
+    }
+   ],
+   "default": 1
+  },
+  {
+   "id": "volt",
+   "label": "Apply a voltage",
+   "type": "toggle",
+   "default": 0
+  },
+  {
+   "id": "ph",
+   "label": "Time",
+   "type": "clock",
+   "min": 0,
+   "max": 360,
+   "step": 0.01,
+   "speed": 60,
+   "loop": "repeat",
+   "default": 0,
+   "auto": true,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "circle",
+   "id": "i0_0",
+   "c": [
+    18.0,
+    32
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "it0_0",
+   "at": [
+    18.0,
+    32
+   ],
+   "text": "{{if sel==1 | + | 2+}}",
+   "role": "pos",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "i0_1",
+   "c": [
+    30.5,
+    32
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "it0_1",
+   "at": [
+    30.5,
+    32
+   ],
+   "text": "{{if sel==1 | + | 2+}}",
+   "role": "pos",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "i0_2",
+   "c": [
+    43.0,
+    32
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "it0_2",
+   "at": [
+    43.0,
+    32
+   ],
+   "text": "{{if sel==1 | + | 2+}}",
+   "role": "pos",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "i0_3",
+   "c": [
+    55.5,
+    32
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "it0_3",
+   "at": [
+    55.5,
+    32
+   ],
+   "text": "{{if sel==1 | + | 2+}}",
+   "role": "pos",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "i0_4",
+   "c": [
+    68.0,
+    32
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "it0_4",
+   "at": [
+    68.0,
+    32
+   ],
+   "text": "{{if sel==1 | + | 2+}}",
+   "role": "pos",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "i1_0",
+   "c": [
+    18.0,
+    43
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "it1_0",
+   "at": [
+    18.0,
+    43
+   ],
+   "text": "{{if sel==1 | + | 2+}}",
+   "role": "pos",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "i1_1",
+   "c": [
+    30.5,
+    43
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "it1_1",
+   "at": [
+    30.5,
+    43
+   ],
+   "text": "{{if sel==1 | + | 2+}}",
+   "role": "pos",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "i1_2",
+   "c": [
+    43.0,
+    43
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "it1_2",
+   "at": [
+    43.0,
+    43
+   ],
+   "text": "{{if sel==1 | + | 2+}}",
+   "role": "pos",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "i1_3",
+   "c": [
+    55.5,
+    43
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "it1_3",
+   "at": [
+    55.5,
+    43
+   ],
+   "text": "{{if sel==1 | + | 2+}}",
+   "role": "pos",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "i1_4",
+   "c": [
+    68.0,
+    43
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "it1_4",
+   "at": [
+    68.0,
+    43
+   ],
+   "text": "{{if sel==1 | + | 2+}}",
+   "role": "pos",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "i2_0",
+   "c": [
+    18.0,
+    54
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "it2_0",
+   "at": [
+    18.0,
+    54
+   ],
+   "text": "{{if sel==1 | + | 2+}}",
+   "role": "pos",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "i2_1",
+   "c": [
+    30.5,
+    54
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "it2_1",
+   "at": [
+    30.5,
+    54
+   ],
+   "text": "{{if sel==1 | + | 2+}}",
+   "role": "pos",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "i2_2",
+   "c": [
+    43.0,
+    54
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "it2_2",
+   "at": [
+    43.0,
+    54
+   ],
+   "text": "{{if sel==1 | + | 2+}}",
+   "role": "pos",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "i2_3",
+   "c": [
+    55.5,
+    54
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "it2_3",
+   "at": [
+    55.5,
+    54
+   ],
+   "text": "{{if sel==1 | + | 2+}}",
+   "role": "pos",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "i2_4",
+   "c": [
+    68.0,
+    54
+   ],
+   "r": 4.2,
+   "role": "pos",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "it2_4",
+   "at": [
+    68.0,
+    54
+   ],
+   "text": "{{if sel==1 | + | 2+}}",
+   "role": "pos",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "repeat",
+   "id": "ee",
+   "count": "sel==1?15:30",
+   "as": "i",
+   "template": {
+    "type": "point",
+    "id": "e",
+    "at": [
+     "10+mod(66*(mod(abs(sin(i*12.9898+3)*43758.5453),1))+volt*ph/360*66,66)+1.6*sin(ph*3+i*50)",
+     "25+30*(mod(abs(sin(i*78.233+7)*43758.5453),1))+1.6*cos(ph*2+i*70)"
+    ],
+    "role": "el",
+    "r": 4.5
+   }
+  },
+  {
+   "type": "rect",
+   "id": "bx",
+   "x": 10,
+   "y": 22,
+   "w": 66,
+   "h": 38,
+   "role": "wall",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "mn",
+   "at": [
+    7,
+    41
+   ],
+   "text": "−",
+   "role": "el",
+   "size": "xl",
+   "bold": true,
+   "visible": "volt>0.5"
+  },
+  {
+   "type": "text",
+   "id": "pl",
+   "at": [
+    79,
+    41
+   ],
+   "text": "+",
+   "role": "pos",
+   "size": "xl",
+   "bold": true,
+   "visible": "volt>0.5"
+  },
+  {
+   "type": "vector",
+   "id": "fl",
+   "from": [
+    18,
+    64
+   ],
+   "to": [
+    60,
+    64
+   ],
+   "role": "el",
+   "strokeWidth": 4,
+   "visible": "volt>0.5"
+  },
+  {
+   "type": "text",
+   "id": "fl2",
+   "at": [
+    39,
+    68
+   ],
+   "text": "electrons drift: current flows",
+   "role": "el",
+   "size": "s",
+   "bold": true,
+   "visible": "volt>0.5"
+  },
+  {
+   "type": "text",
+   "id": "t0",
+   "at": [
+    46,
+    72
+   ],
+   "text": "Metal ions in a sea of mobile electrons",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "volt<0.5"
+  },
+  {
+   "type": "text",
+   "id": "s1",
+   "at": [
+    46,
+    15
+   ],
+   "text": "{{if sel==1 | Na: 1 electron per atom, ion Na⁺ | Mg: 2 electrons per atom, ion Mg²⁺}}",
+   "role": "ink",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "s2",
+   "at": [
+    46,
+    9
+   ],
+   "text": "{{if sel==1 | Bond not very strong: lower melting point | Bond stronger: higher melting point than Na}}",
+   "role": "warn",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "s3",
+   "at": [
+    46,
+    3
+   ],
+   "text": "Strength depends on ion charge and number of mobile electrons",
+   "role": "ink",
+   "size": "s",
+   "bold": false
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Metals lose outer electrons easily",
+   "text": "Metals have **low ionisation energy**, so their atoms lose outer electrons easily. The nuclei **cannot hold their outer electrons firmly**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 1,
+      "volt": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "A sea of electrons",
+   "text": "The outer electrons move **freely** between the ions: no electron stays with one nucleus. The metal is **positive ions submerged in a sea of electrons**. This is the **metallic bond**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 1,
+      "volt": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Free electrons conduct",
+   "text": "The freely moving electrons let metals **conduct heat and electricity**.",
+   "actions": [
+    {
+     "set": {
+      "sel": 1,
+      "volt": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Stronger with more charge",
+   "text": "Magnesium frees **two** electrons per atom and forms **2+** ions, so its metallic bond is **stronger** and it melts at a **higher temperature** than sodium.",
+   "actions": [
+    {
+     "set": {
+      "sel": 2,
+      "volt": 0
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Electrons freed per atom",
+   "value": "{{sel|int}}",
+   "role": "el"
+  },
+  {
+   "label": "Ion charge",
+   "value": "{{sel|int}}+",
+   "role": "pos"
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Why do metals **conduct electricity**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "They contain freely moving electrons"
+    },
+    {
+     "id": "b",
+     "label": "They contain free protons"
+    },
+    {
+     "id": "c",
+     "label": "Their atoms are neutral"
+    },
+    {
+     "id": "d",
+     "label": "They contain molecules"
+    }
+   ],
+   "answer": "a",
+   "hint": "The sea of electrons.",
+   "explain": "The **mobile electrons** carry the current."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which metal has the **stronger** metallic bond?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Magnesium"
+    },
+    {
+     "id": "b",
+     "label": "Sodium"
+    },
+    {
+     "id": "c",
+     "label": "Both equal"
+    },
+    {
+     "id": "d",
+     "label": "Neither"
+    }
+   ],
+   "answer": "a",
+   "hint": "Compare charge and number of mobile electrons.",
+   "explain": "Mg has **2+ ions and twice the mobile electrons**, so a stronger bond."
+  }
+ ],
+ "takeaways": [
+  "Metallic bond: positive ions bound together by mobile electrons.",
+  "Strength depends on the ion charge and the number of mobile electrons per atom.",
+  "Free electrons explain electrical and thermal conduction."
+ ]
+}

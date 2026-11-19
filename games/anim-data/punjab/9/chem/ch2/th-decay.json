@@ -1,0 +1,428 @@
+{
+ "id": "pb9-chem-c2-th-decay",
+ "title": "Radioactive decay",
+ "summary": "An unstable nucleus gives out radiation and becomes a different element.",
+ "alt": "A radioactive nucleus emits radiation and turns into the nucleus of another element with a different mass and atomic number.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   100.0
+  ],
+  "y": [
+   0,
+   80
+  ],
+  "ratio": 1.25,
+  "pad": 6
+ },
+ "roles": {
+  "nuc": {
+   "label": "Radioactive nucleus",
+   "color": "#dc2626",
+   "text": "An unstable nucleus.",
+   "legend": true
+  },
+  "warn": {
+   "label": "Radiation + energy",
+   "color": "#d97706",
+   "text": "What is thrown out.",
+   "legend": true
+  },
+  "ok": {
+   "label": "New element",
+   "color": "#059669",
+   "text": "The nucleus after decay.",
+   "legend": true
+  },
+  "bad": {
+   "label": "Not allowed",
+   "color": "#e11d48",
+   "text": "Not possible / unstable.",
+   "legend": false
+  },
+  "sh": {
+   "label": "Shell",
+   "color": "#94a3b8",
+   "text": "An energy level (orbit).",
+   "legend": false
+  },
+  "wall": {
+   "label": "Apparatus",
+   "color": "#475569",
+   "text": "The container or apparatus.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "dec",
+   "label": "Example",
+   "type": "choice",
+   "options": [
+    {
+     "value": 1,
+     "label": "Uranium-238"
+    },
+    {
+     "value": 2,
+     "label": "Bismuth-210"
+    }
+   ],
+   "default": 1
+  },
+  {
+   "id": "ray",
+   "label": "ray",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0,
+   "hidden": true
+  },
+  {
+   "id": "new",
+   "label": "new",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "circle",
+   "id": "par",
+   "c": [
+    22,
+    44
+   ],
+   "r": 12,
+   "role": "nuc",
+   "fill": true,
+   "fillOpacity": 0.22,
+   "strokeWidth": 3,
+   "opacity": "1-0.6*new"
+  },
+  {
+   "type": "circle",
+   "id": "dau",
+   "c": [
+    72,
+    44
+   ],
+   "r": 12,
+   "role": "ok",
+   "fill": true,
+   "fillOpacity": 0.22,
+   "strokeWidth": 3,
+   "opacity": "new"
+  },
+  {
+   "type": "vector",
+   "id": "arr",
+   "from": [
+    36,
+    44
+   ],
+   "to": [
+    57,
+    44
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5,
+   "opacity": "new"
+  },
+  {
+   "type": "point",
+   "id": "rd",
+   "at": [
+    "22+ray*40",
+    "44+ray*16"
+   ],
+   "role": "warn",
+   "r": 9,
+   "visible": "ray>0.02&&new<0.5"
+  },
+  {
+   "type": "text",
+   "id": "rdt",
+   "at": [
+    62,
+    66
+   ],
+   "text": "radiation + energy",
+   "role": "warn",
+   "size": "s",
+   "bold": true,
+   "visible": "ray>0.1&&new<0.5"
+  },
+  {
+   "type": "text",
+   "id": "p1",
+   "at": [
+    22,
+    44
+   ],
+   "text": "\\(^{238}_{92}\\text{U}\\)",
+   "role": "nuc",
+   "size": "l",
+   "bold": true,
+   "visible": "dec==1",
+   "opacity": "1-0.5*new"
+  },
+  {
+   "type": "text",
+   "id": "pn1",
+   "at": [
+    22,
+    27
+   ],
+   "text": "Uranium",
+   "role": "nuc",
+   "size": "m",
+   "bold": true,
+   "visible": "dec==1"
+  },
+  {
+   "type": "text",
+   "id": "d1",
+   "at": [
+    72,
+    44
+   ],
+   "text": "\\(^{234}_{90}\\text{Th}\\)",
+   "role": "ok",
+   "size": "l",
+   "bold": true,
+   "visible": "dec==1",
+   "opacity": "new"
+  },
+  {
+   "type": "text",
+   "id": "dn1",
+   "at": [
+    72,
+    27
+   ],
+   "text": "Thorium",
+   "role": "ok",
+   "size": "m",
+   "bold": true,
+   "visible": "dec==1",
+   "opacity": "new"
+  },
+  {
+   "type": "text",
+   "id": "ta1",
+   "at": [
+    47,
+    12
+   ],
+   "text": "Mass number A: 238 → 234",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "dec==1&&new>0.5"
+  },
+  {
+   "type": "text",
+   "id": "tz1",
+   "at": [
+    47,
+    5
+   ],
+   "text": "Atomic number Z: 92 → 90",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "dec==1&&new>0.5"
+  },
+  {
+   "type": "text",
+   "id": "p2",
+   "at": [
+    22,
+    44
+   ],
+   "text": "\\(^{210}_{83}\\text{Bi}\\)",
+   "role": "nuc",
+   "size": "l",
+   "bold": true,
+   "visible": "dec==2",
+   "opacity": "1-0.5*new"
+  },
+  {
+   "type": "text",
+   "id": "pn2",
+   "at": [
+    22,
+    27
+   ],
+   "text": "Bismuth",
+   "role": "nuc",
+   "size": "m",
+   "bold": true,
+   "visible": "dec==2"
+  },
+  {
+   "type": "text",
+   "id": "d2",
+   "at": [
+    72,
+    44
+   ],
+   "text": "\\(^{206}_{81}\\text{Tl}\\)",
+   "role": "ok",
+   "size": "l",
+   "bold": true,
+   "visible": "dec==2",
+   "opacity": "new"
+  },
+  {
+   "type": "text",
+   "id": "dn2",
+   "at": [
+    72,
+    27
+   ],
+   "text": "Thallium",
+   "role": "ok",
+   "size": "m",
+   "bold": true,
+   "visible": "dec==2",
+   "opacity": "new"
+  },
+  {
+   "type": "text",
+   "id": "ta2",
+   "at": [
+    47,
+    12
+   ],
+   "text": "Mass number A: 210 → 206",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "dec==2&&new>0.5"
+  },
+  {
+   "type": "text",
+   "id": "tz2",
+   "at": [
+    47,
+    5
+   ],
+   "text": "Atomic number Z: 83 → 81",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "visible": "dec==2&&new>0.5"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "An unstable nucleus",
+   "text": "Some isotopes have **unstable nuclei**. They get rid of the extra energy as **radiation**; this is **radioactivity**.",
+   "actions": [
+    {
+     "tween": {
+      "ray": 0,
+      "new": 0
+     },
+     "at": 0,
+     "dur": 400
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Radiation is emitted",
+   "text": "The nucleus throws out radiation and energy.",
+   "actions": [
+    {
+     "tween": {
+      "ray": 1,
+      "new": 0
+     },
+     "at": 0,
+     "dur": 1500
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "A new element",
+   "text": "After emitting radiation the atom has **changed into another element**. This is **radioactive decay**. Here the mass number falls by 4 and the atomic number by 2.",
+   "actions": [
+    {
+     "tween": {
+      "ray": 1,
+      "new": 1
+     },
+     "at": 0,
+     "dur": 900
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "May decay again",
+   "text": "The new element may be **stable**, or radioactive and **decay further**: thorium-234, for example, is unstable and decays on.",
+   "actions": [
+    {
+     "tween": {
+      "ray": 1,
+      "new": 1
+     },
+     "at": 0,
+     "dur": 300
+    }
+   ]
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "When a radioactive isotope emits radiation, it becomes…",
+   "options": [
+    {
+     "id": "a",
+     "label": "a different element"
+    },
+    {
+     "id": "b",
+     "label": "the same atom, heavier"
+    },
+    {
+     "id": "c",
+     "label": "a compound"
+    },
+    {
+     "id": "d",
+     "label": "an ion of itself"
+    }
+   ],
+   "answer": "a",
+   "hint": "Look at the daughter nucleus.",
+   "explain": "It **transforms into another chemical element**."
+  }
+ ],
+ "takeaways": [
+  "Radioactive isotopes have unstable nuclei and throw out radiation.",
+  "Radioactive decay changes one element into another.",
+  "Tritium is a radioactive isotope of hydrogen."
+ ],
+ "notes": [
+  {
+   "title": "Beyond the book",
+   "text": "In both book examples (²³⁸U → ²³⁴Th and ²¹⁰Bi → ²⁰⁶Tl) the mass number drops by 4 and the atomic number by 2: the usual **alpha decay**. The book itself only writes “+ energy”."
+  }
+ ]
+}
