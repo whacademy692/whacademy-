@@ -12,11 +12,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
 <!-- Cloudflare Turnstile (anti-spam). SITE key is public by design; same widget as login / insights. -->
 <script>
-  window.WHA_TURNSTILE_SITE_KEY = '0x4AAAAAAEKa85ts_mWrcild';
+  window.WHA_TURNSTILE_SITE_KEY = ''; /* TEMP OFF 2026-11-19. Original SITE key to restore: 0x4AAAAAAEKa85ts_mWrcild */
   (function(){
     var wid;
     window.whaEnrollCaptchaRender = function(){
-      if (wid !== undefined || !window.turnstile) return;
+      if (!window.WHA_TURNSTILE_SITE_KEY || wid !== undefined || !window.turnstile) return;
       var el = document.getElementById('enrollCaptcha'); if (!el) return;
       try { wid = window.turnstile.render('#enrollCaptcha', { sitekey: window.WHA_TURNSTILE_SITE_KEY }); } catch (e) { /* retried by onload / DOMContentLoaded */ }
     };
@@ -521,7 +521,7 @@
     need('consent', $('consent').checked);
 
     var captchaToken = (window.whaEnrollCaptchaToken && window.whaEnrollCaptchaToken()) || '';
-    if(ok && !captchaToken){
+    if(ok && window.WHA_TURNSTILE_SITE_KEY && !captchaToken){
       $('formErr').textContent='Please complete the verification check above the Submit button, then submit again.';
       $('formErr').classList.add('show');
       var capEl=$('enrollCaptcha'); if(capEl && capEl.scrollIntoView) capEl.scrollIntoView({behavior:'smooth',block:'center'});
