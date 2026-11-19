@@ -1,0 +1,634 @@
+{
+ "id": "g11-phys-c8-cn-fun-story",
+ "title": "Sadi Carnot and the waterwheel",
+ "summary": "The 1824 story: how a young French engineer compared heat to falling water, what he got right, and what he got wrong.",
+ "alt": "A waterwheel between a high pool and a low pool stands for a heat engine between a hot and a cold reservoir; the story follows Carnot from 1824 to the second law.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder / axes",
+   "color": "#475569",
+   "text": "Walls of the cylinder and the graph axes.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Isothermal at T₁ (a→b)",
+   "color": "#ea580c",
+   "text": "Heat Q₁ flows IN from the hot reservoir; T stays T₁.",
+   "legend": true
+  },
+  "cold": {
+   "label": "Isothermal at T₂ (c→d)",
+   "color": "#2563eb",
+   "text": "Heat Q₂ flows OUT to the cold reservoir; T stays T₂.",
+   "legend": true
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by the gas (area under the curve / inside the loop).",
+   "legend": true
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The result.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "adB": {
+   "label": "Adiabatic expansion (b→c)",
+   "color": "#7c3aed",
+   "text": "No heat flows; the gas cools from T₁ to T₂.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "T1",
+   "label": "Hot side \\(T_1\\) (K)",
+   "type": "number",
+   "min": 400,
+   "max": 800,
+   "step": 10,
+   "default": 600,
+   "unit": "K"
+  },
+  {
+   "id": "T2",
+   "label": "Cold side \\(T_2\\) (K)",
+   "type": "number",
+   "min": 260,
+   "max": 320,
+   "step": 10,
+   "default": 300,
+   "unit": "K"
+  },
+  {
+   "id": "ang",
+   "label": "Wheel",
+   "type": "clock",
+   "min": 0,
+   "max": 360,
+   "step": 1,
+   "speed": 60,
+   "loop": "repeat",
+   "default": 0,
+   "auto": true
+  }
+ ],
+ "derived": {
+  "Q1": "1000",
+  "Q2": "Q1*T2/T1",
+  "W": "Q1-Q2",
+  "ys1": "2.6+T1/800*8.2",
+  "ys2": "2.6+T2/800*8.2",
+  "cy": "(ys1+ys2)/2",
+  "drop": "T1-T2",
+  "eta": "(1-T2/T1)*100"
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ground",
+   "from": [
+    0.3,
+    2.6
+   ],
+   "to": [
+    12.6,
+    2.6
+   ],
+   "role": "wall",
+   "strokeWidth": 3
+  },
+  {
+   "type": "rect",
+   "id": "p1",
+   "x": 0.4,
+   "y": 2.6,
+   "w": 3.0,
+   "h": "ys1-2.6",
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 3
+  },
+  {
+   "type": "rect",
+   "id": "p2",
+   "x": 9.5,
+   "y": 2.6,
+   "w": 3.0,
+   "h": "ys2-2.6",
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 3
+  },
+  {
+   "type": "text",
+   "id": "p1t",
+   "at": [
+    1.9,
+    "ys1-1.3"
+   ],
+   "text": "HIGH POOL  \\(T_1\\)",
+   "role": "hot",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "p2t",
+   "at": [
+    11.0,
+    "ys2-1.3"
+   ],
+   "text": "LOW POOL  \\(T_2\\)",
+   "role": "cold",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "p1v",
+   "at": [
+    1.9,
+    "ys1-0.55"
+   ],
+   "text": "{{T1|0}} K",
+   "role": "hot",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "p2v",
+   "at": [
+    11.0,
+    "ys2-0.55"
+   ],
+   "text": "{{T2|0}} K",
+   "role": "cold",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "wh",
+   "c": [
+    6.45,
+    "cy"
+   ],
+   "r": 1.6,
+   "role": "work",
+   "strokeWidth": 4
+  },
+  {
+   "type": "repeat",
+   "id": "spk",
+   "count": 8,
+   "as": "i",
+   "template": {
+    "type": "segment",
+    "id": "sp",
+    "from": [
+     6.45,
+     "cy"
+    ],
+    "to": [
+     "6.45+1.6*cos(45*i+ang)",
+     "cy+1.6*sin(45*i+ang)"
+    ],
+    "role": "work",
+    "strokeWidth": 3
+   }
+  },
+  {
+   "type": "repeat",
+   "id": "pad",
+   "count": 8,
+   "as": "i",
+   "template": {
+    "type": "rect",
+    "id": "pd",
+    "x": "6.45+1.6*cos(45*i+ang)-0.24",
+    "y": "cy+1.6*sin(45*i+ang)-0.24",
+    "w": 0.48,
+    "h": 0.48,
+    "role": "cold",
+    "fill": true,
+    "fillOpacity": 0.7,
+    "strokeWidth": 2
+   }
+  },
+  {
+   "type": "point",
+   "id": "hub",
+   "at": [
+    6.45,
+    "cy"
+   ],
+   "role": "work",
+   "r": 8
+  },
+  {
+   "type": "vector",
+   "id": "fin",
+   "from": [
+    3.5,
+    "ys1-0.2"
+   ],
+   "to": [
+    5.2,
+    "cy+1.1"
+   ],
+   "role": "hot",
+   "strokeWidth": 7
+  },
+  {
+   "type": "vector",
+   "id": "fout",
+   "from": [
+    7.7,
+    "cy-1.1"
+   ],
+   "to": [
+    9.4,
+    "ys2+0.3"
+   ],
+   "role": "cold",
+   "strokeWidth": 7
+  },
+  {
+   "type": "segment",
+   "id": "lvl",
+   "from": [
+    3.4,
+    "ys1"
+   ],
+   "to": [
+    11.9,
+    "ys1"
+   ],
+   "role": "ans",
+   "strokeWidth": 2,
+   "dash": [
+    6,
+    4
+   ],
+   "appear": "s1"
+  },
+  {
+   "type": "vector",
+   "id": "dr1",
+   "from": [
+    11.9,
+    "ys1"
+   ],
+   "to": [
+    11.9,
+    "ys2"
+   ],
+   "role": "ans",
+   "strokeWidth": 4,
+   "appear": "s1"
+  },
+  {
+   "type": "vector",
+   "id": "dr2",
+   "from": [
+    11.9,
+    "ys2"
+   ],
+   "to": [
+    11.9,
+    "ys1"
+   ],
+   "role": "ans",
+   "strokeWidth": 4,
+   "appear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "drt",
+   "at": [
+    10.6,
+    "(ys1+ys2)/2+0.35"
+   ],
+   "text": "drop",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "appear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "drt2",
+   "at": [
+    10.6,
+    "(ys1+ys2)/2-0.25"
+   ],
+   "text": "\\(T_1-T_2\\)",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "appear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "hd0",
+   "at": [
+    6.45,
+    13.6
+   ],
+   "text": "Paris, 1824",
+   "role": "ans",
+   "size": "l",
+   "bold": true,
+   "appear": "s0",
+   "disappear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "hd1",
+   "at": [
+    6.45,
+    13.6
+   ],
+   "text": "Water: work = weight × drop",
+   "role": "ans",
+   "size": "l",
+   "bold": true,
+   "appear": "s1",
+   "disappear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "hd2",
+   "at": [
+    6.45,
+    13.6
+   ],
+   "text": "Carnot: heat falls too",
+   "role": "ans",
+   "size": "l",
+   "bold": true,
+   "appear": "s2",
+   "disappear": "s3"
+  },
+  {
+   "type": "text",
+   "id": "hd3",
+   "at": [
+    6.45,
+    13.6
+   ],
+   "text": "What he got wrong",
+   "role": "ans",
+   "size": "l",
+   "bold": true,
+   "appear": "s3",
+   "disappear": "s4"
+  },
+  {
+   "type": "text",
+   "id": "hd4",
+   "at": [
+    6.45,
+    13.6
+   ],
+   "text": "What came next",
+   "role": "ans",
+   "size": "l",
+   "bold": true,
+   "appear": "s4"
+  },
+  {
+   "type": "text",
+   "id": "q1",
+   "at": [
+    1.9,
+    1.7
+   ],
+   "text": "\\(Q_1\\) = {{Q1|0}} J in",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s3"
+  },
+  {
+   "type": "text",
+   "id": "q2",
+   "at": [
+    11.0,
+    1.7
+   ],
+   "text": "\\(Q_2\\) = {{Q2|0}} J out",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s3"
+  },
+  {
+   "type": "text",
+   "id": "qw",
+   "at": [
+    6.45,
+    "cy+2.6"
+   ],
+   "text": "\\(W=Q_1-Q_2\\) = {{W|0}} J",
+   "role": "work",
+   "size": "m",
+   "bold": true,
+   "appear": "s3"
+  },
+  {
+   "type": "text",
+   "id": "c1824",
+   "at": [
+    6.45,
+    12.2
+   ],
+   "text": "1824: \"caloric is never used up\", \\(Q_{out}=Q_{in}\\)",
+   "role": "no",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "disappear": "s4"
+  },
+  {
+   "type": "text",
+   "id": "c1840",
+   "at": [
+    6.45,
+    11.6
+   ],
+   "text": "1840s Joule: energy is conserved, \\(Q_1-Q_2=W\\)",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "disappear": "s4"
+  },
+  {
+   "type": "text",
+   "id": "cl",
+   "at": [
+    6.45,
+    12.1
+   ],
+   "text": "Clapeyron 1834: the P–V loop",
+   "role": "adB",
+   "size": "m",
+   "bold": true,
+   "appear": "s4"
+  },
+  {
+   "type": "text",
+   "id": "ck",
+   "at": [
+    6.45,
+    11.5
+   ],
+   "text": "Kelvin & Clausius 1850s: 2nd law",
+   "role": "adB",
+   "size": "m",
+   "bold": true,
+   "appear": "s4"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Paris, 1824",
+   "text": "Sadi Carnot, a 28-year-old French army engineer (born 1796), publishes one slim book, “Reflections on the Motive Power of Fire”. Steam engines were changing the world, but nobody knew **how much work** a given amount of heat could possibly give, or what the best engine would look like.",
+   "actions": [],
+   "dwell": 7000
+  },
+  {
+   "id": "s1",
+   "title": "The waterwheel picture",
+   "text": "Water falling from a high pool to a low pool turns a wheel. The work depends on **how far** the water drops, not on what the wheel is made of. Move the sliders: a bigger drop \\(T_1-T_2\\) means more work per unit of water.",
+   "actions": [],
+   "dwell": 7000
+  },
+  {
+   "id": "s2",
+   "title": "Heat falls too",
+   "text": "Carnot saw that an engine needs **two** temperatures: it works because heat falls from a hot body to a cold one, like water between pools. And the best possible engine must be **reversible**. From this came his theorem: the best efficiency depends only on \\(T_1\\) and \\(T_2\\), not on steam, air or anything else.",
+   "actions": [],
+   "dwell": 7500
+  },
+  {
+   "id": "s3",
+   "title": "What he got wrong",
+   "text": "Carnot believed heat (\"caloric\") was like water: never used up, so the same amount leaves at the bottom as enters at the top. But some heat **becomes work**. By the 1840s Joule and others showed energy is conserved: \\(Q_1-Q_2=W\\). With \\(T_1={{T1|0}}\\) K and \\(T_2={{T2|0}}\\) K, \\(1000\\) J in leaves \\(Q_2={{Q2|0}}\\) J out and gives \\(W={{W|0}}\\) J.",
+   "actions": [],
+   "dwell": 8000
+  },
+  {
+   "id": "s4",
+   "title": "What came next",
+   "text": "The book was almost ignored. Carnot died of cholera in 1832, aged 36. In 1834 Émile Clapeyron drew Carnot's cycle as a **P–V loop**, the graph you have been studying. Kelvin and Clausius then fixed the caloric mistake and built the **second law of thermodynamics** on Carnot's idea (1850s).",
+   "actions": [],
+   "dwell": 8000
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Drop T₁ − T₂",
+   "value": "{{drop|0}} K",
+   "role": "ans"
+  },
+  {
+   "label": "Efficiency",
+   "value": "{{eta|1}} %",
+   "role": "work"
+  },
+  {
+   "label": "Heat in Q₁",
+   "value": "{{Q1|0}} J",
+   "role": "hot"
+  },
+  {
+   "label": "Heat out Q₂",
+   "value": "{{Q2|0}} J",
+   "role": "cold"
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "What did Carnot get right?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Heat is a fluid that is never used up"
+    },
+    {
+     "id": "b",
+     "label": "The best engine works between two temperatures and depends only on them"
+    },
+    {
+     "id": "c",
+     "label": "Efficiency can reach 100 %"
+    }
+   ],
+   "answer": "b",
+   "hint": "Think of Carnot's theorem.",
+   "explain": "The maximum efficiency depends only on \\(T_1\\) and \\(T_2\\) (\\(\\eta=1-T_2/T_1\\)). The caloric idea was the part that was wrong."
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "In the model, \\(1000\\) J enters at \\(600\\) K and the cold side is \\(300\\) K. How many joules of **work** come out?",
+   "answer": 500,
+   "hint": "\\(W=Q_1-Q_2\\) and \\(Q_2/Q_1=T_2/T_1\\).",
+   "explain": "\\(Q_2=1000\\times300/600=500\\) J, so \\(W=1000-500=500\\) J.",
+   "unit": "J",
+   "set": {
+    "T1": 600,
+    "T2": 300
+   }
+  }
+ ],
+ "takeaways": [
+  "Heat engines need a hot **and** a cold reservoir.",
+  "The waterwheel analogy gets the \"drop\" idea right, but heat is not conserved: \\(Q_1-Q_2=W\\).",
+  "Clapeyron turned the cycle into the P–V loop; Kelvin and Clausius built the second law on it."
+ ],
+ "notes": [
+  {
+   "title": "Beyond the book",
+   "text": "This history is for interest and is not part of the syllabus. Dates: Carnot 1796–1832, his book 1824, Clapeyron's graph 1834, second law 1850s."
+  }
+ ]
+}

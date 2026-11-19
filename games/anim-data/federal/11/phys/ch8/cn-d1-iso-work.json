@@ -1,0 +1,610 @@
+{
+ "id": "g11-phys-c8-cn-d1-iso-work",
+ "title": "Derivation: work in a→b, W = nRT₁ ln(V₂/V₁)",
+ "summary": "Cut the area under the isotherm into strips, add them, and get the exact formula for the work (and so for Q₁).",
+ "alt": "A P–V isotherm with the area under it split into thin strips; the strips are added up and turned into the integral that gives W equals nRT1 ln V2 over V1.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder / axes",
+   "color": "#475569",
+   "text": "Walls of the cylinder and the graph axes.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Isothermal at T₁ (a→b)",
+   "color": "#ea580c",
+   "text": "Heat Q₁ flows IN from the hot reservoir; T stays T₁.",
+   "legend": true
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by the gas (area under the curve / inside the loop).",
+   "legend": true
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The result.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live state",
+   "color": "#16a34a",
+   "text": "Where the gas is on the graph right now.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "T1",
+   "label": "Temperature \\(T_1\\) (K)",
+   "type": "number",
+   "min": 300,
+   "max": 800,
+   "step": 10,
+   "default": 500,
+   "unit": "K"
+  },
+  {
+   "id": "Vr",
+   "label": "Expansion ratio \\(V_2/V_1\\)",
+   "type": "number",
+   "min": 1.5,
+   "max": 4.0,
+   "step": 0.1,
+   "default": 2.0
+  },
+  {
+   "id": "N",
+   "label": "Number of strips",
+   "type": "number",
+   "min": 0,
+   "max": 80,
+   "step": 1,
+   "default": 0
+  }
+ ],
+ "derived": {
+  "V1": "1",
+  "V2": "Vr",
+  "xmin": "0.55",
+  "xmax": "Vr+0.55",
+  "ymax": "T1/0.7*1.06",
+  "Ni": "round(N)",
+  "dV": "(Vr-1)/max(1,Ni)",
+  "Wex": "8.314*T1*ln(Vr)"
+ },
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "gax",
+   "from": [
+    1.6,
+    5.7
+   ],
+   "to": [
+    12.2,
+    5.7
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "vector",
+   "id": "gay",
+   "from": [
+    1.6,
+    5.7
+   ],
+   "to": [
+    1.6,
+    13.2
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "gxl",
+   "at": [
+    12.45,
+    5.75
+   ],
+   "text": "\\(V\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "gyl",
+   "at": [
+    1.6500000000000001,
+    13.45
+   ],
+   "text": "\\(P\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "repeat",
+   "id": "strips",
+   "count": 80,
+   "as": "i",
+   "template": {
+    "type": "rect",
+    "id": "st",
+    "x": "(1.6+(((1+dV*i))-xmin)/(xmax-xmin)*10.2)+((1.6+((1+dV)-xmin)/(xmax-xmin)*10.2)-(1.6+((1)-xmin)/(xmax-xmin)*10.2))*(1-(Ni<25 ? 0.88 : 1.03))/2",
+    "y": 5.7,
+    "w": "((1.6+((1+dV)-xmin)/(xmax-xmin)*10.2)-(1.6+((1)-xmin)/(xmax-xmin)*10.2))*(Ni<25 ? 0.88 : 1.03)",
+    "h": "(5.7+(T1/(1+dV*(i+0.5)))/ymax*7.0)-5.7",
+    "role": "work",
+    "fill": true,
+    "fillOpacity": 0.55,
+    "strokeWidth": 0,
+    "stroke": false,
+    "layer": "back",
+    "visible": "i<Ni"
+   }
+  },
+  {
+   "type": "plot",
+   "id": "isoD",
+   "x": "(1.6+((0.7+(Vr+0.45-0.7)*s)-xmin)/(xmax-xmin)*10.2)",
+   "y": "(5.7+(T1/(0.7+(Vr+0.45-0.7)*s))/ymax*7.0)",
+   "var": "s",
+   "domain": [
+    0,
+    1
+   ],
+   "samples": 70,
+   "role": "hot",
+   "strokeWidth": 3,
+   "opacity": 0.5
+  },
+  {
+   "type": "plot",
+   "id": "iso",
+   "x": "(1.6+((1+(Vr-1)*s)-xmin)/(xmax-xmin)*10.2)",
+   "y": "(5.7+(T1/(1+(Vr-1)*s))/ymax*7.0)",
+   "var": "s",
+   "domain": [
+    0,
+    1
+   ],
+   "samples": 70,
+   "role": "hot",
+   "strokeWidth": 6
+  },
+  {
+   "type": "segment",
+   "id": "gv1",
+   "from": [
+    "(1.6+((1)-xmin)/(xmax-xmin)*10.2)",
+    "(5.7+(T1)/ymax*7.0)"
+   ],
+   "to": [
+    "(1.6+((1)-xmin)/(xmax-xmin)*10.2)",
+    5.7
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "gp1",
+   "from": [
+    "(1.6+((1)-xmin)/(xmax-xmin)*10.2)",
+    "(5.7+(T1)/ymax*7.0)"
+   ],
+   "to": [
+    1.6,
+    "(5.7+(T1)/ymax*7.0)"
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "text",
+   "id": "tv1",
+   "at": [
+    "(1.6+((1)-xmin)/(xmax-xmin)*10.2)",
+    5.25
+   ],
+   "text": "\\(V_1\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "tp1",
+   "at": [
+    1.0,
+    "(5.7+(T1)/ymax*7.0)"
+   ],
+   "text": "\\(P_1\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "point",
+   "id": "pt1",
+   "at": [
+    "(1.6+((1)-xmin)/(xmax-xmin)*10.2)",
+    "(5.7+(T1)/ymax*7.0)"
+   ],
+   "role": "hot",
+   "r": 6
+  },
+  {
+   "type": "segment",
+   "id": "gv2",
+   "from": [
+    "(1.6+((Vr)-xmin)/(xmax-xmin)*10.2)",
+    "(5.7+(T1/Vr)/ymax*7.0)"
+   ],
+   "to": [
+    "(1.6+((Vr)-xmin)/(xmax-xmin)*10.2)",
+    5.7
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "gp2",
+   "from": [
+    "(1.6+((Vr)-xmin)/(xmax-xmin)*10.2)",
+    "(5.7+(T1/Vr)/ymax*7.0)"
+   ],
+   "to": [
+    1.6,
+    "(5.7+(T1/Vr)/ymax*7.0)"
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "text",
+   "id": "tv2",
+   "at": [
+    "(1.6+((Vr)-xmin)/(xmax-xmin)*10.2)",
+    5.25
+   ],
+   "text": "\\(V_2\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "tp2",
+   "at": [
+    1.0,
+    "(5.7+(T1/Vr)/ymax*7.0)"
+   ],
+   "text": "\\(P_2\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "point",
+   "id": "pt2",
+   "at": [
+    "(1.6+((Vr)-xmin)/(xmax-xmin)*10.2)",
+    "(5.7+(T1/Vr)/ymax*7.0)"
+   ],
+   "role": "hot",
+   "r": 6
+  },
+  {
+   "type": "text",
+   "id": "ta",
+   "at": [
+    "(1.6+((1)-xmin)/(xmax-xmin)*10.2)-0.5",
+    "(5.7+(T1)/ymax*7.0)+0.45"
+   ],
+   "text": "\\(a\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "tb",
+   "at": [
+    "(1.6+((Vr)-xmin)/(xmax-xmin)*10.2)+0.5",
+    "(5.7+(T1/Vr)/ymax*7.0)+0.45"
+   ],
+   "text": "\\(b\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "tcurve",
+   "at": [
+    "(1.6+((0.55+Vr*0.72)-xmin)/(xmax-xmin)*10.2)",
+    "5.7+7.0*0.9"
+   ],
+   "text": "isotherm  \\(PV = nRT_1\\)",
+   "role": "hot",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "tW",
+   "at": [
+    "(1.6+(((1+Vr)/2)-xmin)/(xmax-xmin)*10.2)",
+    "5.7+((5.7+(T1/Vr)/ymax*7.0)-5.7)*0.45"
+   ],
+   "text": "\\(W\\)",
+   "role": "ans",
+   "size": "l",
+   "bold": true,
+   "appear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "e0",
+   "at": [
+    6.45,
+    4.45
+   ],
+   "text": "\\(W = \\displaystyle\\int_{V_1}^{V_2} P\\,dV\\)  =  area under the curve",
+   "role": "work",
+   "size": "m",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "e1",
+   "at": [
+    6.45,
+    3.6
+   ],
+   "text": "\\(W \\approx \\displaystyle\\sum P\\,\\Delta V\\)   (sum of thin strips)",
+   "role": "work",
+   "size": "m",
+   "bold": true,
+   "appear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "e2",
+   "at": [
+    6.45,
+    2.7
+   ],
+   "text": "\\(P = \\dfrac{nRT_1}{V}\\ \\Rightarrow\\ W = nRT_1\\displaystyle\\int_{V_1}^{V_2}\\dfrac{dV}{V}\\)",
+   "role": "hot",
+   "size": "m",
+   "bold": true,
+   "appear": "s3"
+  },
+  {
+   "type": "text",
+   "id": "e3",
+   "at": [
+    6.45,
+    1.8
+   ],
+   "text": "\\(W = nRT_1\\,\\ln\\dfrac{V_2}{V_1}\\)",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s4"
+  },
+  {
+   "type": "text",
+   "id": "e4",
+   "at": [
+    6.45,
+    0.9
+   ],
+   "text": "\\(\\Delta U = 0\\ \\Rightarrow\\ Q_1 = W_{ab} = {{Wex|0}}\\) J  (1 mol)",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s5"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The goal",
+   "text": "In stroke \\(a\\to b\\) the gas expands at constant temperature \\(T_1\\) from \\(V_1\\) to \\(V_2\\). The work done by the gas is \\(W=\\int P\\,dV\\), the **area under the curve**. Let us find that area exactly.",
+   "actions": [
+    {
+     "set": {
+      "N": 0
+     },
+     "at": 0
+    }
+   ],
+   "dwell": 5200
+  },
+  {
+   "id": "s1",
+   "title": "Cut the area into strips",
+   "text": "Slice the area into thin vertical strips. Each strip is almost a rectangle of height \\(P\\) and width \\(\\Delta V\\), so its area is \\(P\\,\\Delta V\\). Adding all of them gives \\(W\\approx\\sum P\\,\\Delta V\\). Here: **6** strips.",
+   "actions": [
+    {
+     "set": {
+      "N": 6
+     },
+     "at": 0
+    }
+   ],
+   "dwell": 5600
+  },
+  {
+   "id": "s2",
+   "title": "Thinner strips fit better",
+   "text": "Make the strips thinner and thinner. The steps melt into the curve and the sum becomes the integral \\(W=\\int_{V_1}^{V_2}P\\,dV\\). Drag **Number of strips** to see it.",
+   "actions": [
+    {
+     "tween": {
+      "N": 60
+     },
+     "at": 0,
+     "dur": 3200
+    }
+   ],
+   "dwell": 5600
+  },
+  {
+   "id": "s3",
+   "title": "Put in P = nRT/V",
+   "text": "For an ideal gas \\(PV=nRT\\), so \\(P=nRT_1/V\\). The temperature is constant on an isotherm, so \\(nRT_1\\) is a constant and comes **outside** the integral: \\(W=nRT_1\\int dV/V\\).",
+   "actions": [
+    {
+     "set": {
+      "N": 60
+     },
+     "at": 0
+    }
+   ],
+   "dwell": 6000
+  },
+  {
+   "id": "s4",
+   "title": "Do the integral",
+   "text": "Calculus: \\(\\int dV/V=\\ln V\\). Put in the limits: \\(W=nRT_1(\\ln V_2-\\ln V_1)=nRT_1\\ln\\dfrac{V_2}{V_1}\\).",
+   "actions": [
+    {
+     "set": {
+      "N": 60
+     },
+     "at": 0
+    }
+   ],
+   "dwell": 6000
+  },
+  {
+   "id": "s5",
+   "title": "Heat absorbed",
+   "text": "The temperature is constant, so \\(\\Delta U=0\\) and the first law gives \\(Q=W\\). Hence \\(Q_1=W_{ab}=nRT_1\\ln\\dfrac{V_2}{V_1}\\). For 1 mol at \\(T_1={{T1|0}}\\) K and \\(V_2/V_1={{Vr|1}}\\): \\(Q_1={{Wex|0}}\\) J.",
+   "actions": [
+    {
+     "set": {
+      "N": 60
+     },
+     "at": 0
+    }
+   ],
+   "dwell": 6000
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Strips used",
+   "value": "{{Ni|int}}",
+   "role": "work"
+  },
+  {
+   "label": "Exact work W = Q₁",
+   "value": "{{Wex|0}} J",
+   "role": "ans"
+  },
+  {
+   "label": "V₂ / V₁",
+   "value": "{{Vr|2}}",
+   "role": "hot"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Work as an area",
+   "tex": "W = \\displaystyle\\int_{V_1}^{V_2} P\\,dV",
+   "text": "Area under the P–V curve between the two volumes."
+  },
+  {
+   "title": "Isothermal work",
+   "tex": "W_{ab} = Q_1 = nRT_1\\ln\\dfrac{V_2}{V_1}",
+   "text": "Valid at constant temperature for an ideal gas.",
+   "filled": "W = 8.314 \\times {{T1|0}} \\times \\ln {{Vr|1}} = {{Wex|0}}\\ \\text{J}"
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "1 mol of an ideal gas expands isothermally at \\(400\\) K to **three times** its volume. Find the work done in J (\\(R=8.314\\) J/mol K).",
+   "answer": "8.314*400*ln(3)",
+   "hint": "Use \\(W=nRT\\ln(V_2/V_1)\\) with \\(V_2/V_1=3\\).",
+   "explain": "\\(W=8.314\\times400\\times\\ln3\\approx3654\\) J.",
+   "unit": "J",
+   "set": {
+    "T1": 400,
+    "Vr": 3.0
+   }
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Why can \\(nRT_1\\) be taken outside the integral?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Because the volume is constant"
+    },
+    {
+     "id": "b",
+     "label": "Because the temperature is constant on an isotherm"
+    },
+    {
+     "id": "c",
+     "label": "Because \\(P\\) is constant"
+    }
+   ],
+   "answer": "b",
+   "hint": "What stays fixed along an isotherm?",
+   "explain": "On an isotherm \\(T\\) does not change, so \\(nRT_1\\) is a constant multiplier. \\(P\\) and \\(V\\) both change."
+  }
+ ],
+ "takeaways": [
+  "Work = area under the P–V curve = \\(\\int P\\,dV\\).",
+  "On an isotherm \\(P=nRT/V\\), so \\(W=nRT\\ln(V_2/V_1)\\).",
+  "Since \\(\\Delta U=0\\), this is also the heat \\(Q_1\\) absorbed."
+ ]
+}

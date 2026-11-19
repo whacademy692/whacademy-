@@ -1,0 +1,610 @@
+{
+ "id": "g11-phys-c8-cn-d5-carnot-theorem",
+ "title": "Proof: no engine beats Carnot's",
+ "summary": "Suppose a super-engine X beat the Carnot engine. Run a reversed Carnot engine off its work: heat would flow cold → hot by itself. Impossible!",
+ "alt": "Engine X, claimed more efficient than a Carnot engine, drives a reversed Carnot engine. The combined machine would move heat from the cold reservoir to the hot one with no work, which the second law forbids.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder / axes",
+   "color": "#475569",
+   "text": "Walls of the cylinder and the graph axes.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Isothermal at T₁ (a→b)",
+   "color": "#ea580c",
+   "text": "Heat Q₁ flows IN from the hot reservoir; T stays T₁.",
+   "legend": true
+  },
+  "cold": {
+   "label": "Isothermal at T₂ (c→d)",
+   "color": "#2563eb",
+   "text": "Heat Q₂ flows OUT to the cold reservoir; T stays T₂.",
+   "legend": true
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by the gas (area under the curve / inside the loop).",
+   "legend": true
+  },
+  "adB": {
+   "label": "Engine X (claimed)",
+   "color": "#7c3aed",
+   "text": "No heat flows; the gas cools from T₁ to T₂.",
+   "legend": true
+  },
+  "ok": {
+   "label": "Reversed Carnot engine",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": true
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The result.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "T1",
+   "label": "Hot reservoir \\(T_1\\) (K)",
+   "type": "number",
+   "min": 480,
+   "max": 800,
+   "step": 10,
+   "default": 600,
+   "unit": "K"
+  },
+  {
+   "id": "T2",
+   "label": "Cold reservoir \\(T_2\\) (K)",
+   "type": "number",
+   "min": 260,
+   "max": 320,
+   "step": 10,
+   "default": 300,
+   "unit": "K"
+  },
+  {
+   "id": "ex",
+   "label": "Claimed efficiency of X (%)",
+   "type": "number",
+   "min": 20,
+   "max": 90,
+   "step": 1,
+   "default": 65,
+   "unit": "%"
+  }
+ ],
+ "derived": {
+  "ec": "1-T2/T1",
+  "exf": "ex/100",
+  "Q1x": "100",
+  "Wx": "Q1x*exf",
+  "Q2x": "Q1x-Wx",
+  "Q1c": "Wx/ec",
+  "Q2c": "Q1c-Wx",
+  "net": "Q1c-Q1x",
+  "bad": "net>0.05 ? 1 : 0"
+ },
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "H",
+   "x": 0.4,
+   "y": 12.75,
+   "w": 12.1,
+   "h": 1.25,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "Ht",
+   "at": [
+    6.45,
+    13.375
+   ],
+   "text": "HOT RESERVOIR  \\(T_1 = {{T1|0}}\\) K",
+   "role": "hot",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "C",
+   "x": 0.4,
+   "y": 0.6,
+   "w": 12.1,
+   "h": 1.25,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "Ct",
+   "at": [
+    6.45,
+    1.225
+   ],
+   "text": "COLD RESERVOIR  \\(T_2 = {{T2|0}}\\) K",
+   "role": "cold",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "X",
+   "x": 0.7,
+   "y": 6.0,
+   "w": 4.6,
+   "h": 3.3,
+   "role": "adB",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 3
+  },
+  {
+   "type": "text",
+   "id": "Xt",
+   "at": [
+    3.0,
+    8.4
+   ],
+   "text": "ENGINE X",
+   "role": "adB",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "Xt2",
+   "at": [
+    3.0,
+    7.65
+   ],
+   "text": "\\(\\eta_X = {{ex|0}}\\%\\)",
+   "role": "adB",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "Xt3",
+   "at": [
+    3.0,
+    6.85
+   ],
+   "text": "claimed: beats Carnot",
+   "role": "adB",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "rect",
+   "id": "Cb",
+   "x": 7.6,
+   "y": 6.0,
+   "w": 4.6,
+   "h": 3.3,
+   "role": "ok",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 3,
+   "appear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "Cbt",
+   "at": [
+    9.9,
+    8.4
+   ],
+   "text": "CARNOT FRIDGE",
+   "role": "ok",
+   "size": "m",
+   "bold": true,
+   "appear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "Cbt2",
+   "at": [
+    9.9,
+    7.65
+   ],
+   "text": "\\(\\eta_C = {{ec*100|0}}\\%\\)",
+   "role": "ok",
+   "size": "m",
+   "bold": true,
+   "appear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "Cbt3",
+   "at": [
+    9.9,
+    6.85
+   ],
+   "text": "Carnot run backwards",
+   "role": "ok",
+   "size": "s",
+   "bold": false,
+   "appear": "s2"
+  },
+  {
+   "type": "vector",
+   "id": "f1",
+   "from": [
+    3.0,
+    12.75
+   ],
+   "to": [
+    3.0,
+    9.3
+   ],
+   "role": "hot",
+   "strokeWidth": 6,
+   "appear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "f1t",
+   "at": [
+    1.6,
+    11.0
+   ],
+   "text": "\\(Q_1\\) = {{Q1x|0}} J",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s1"
+  },
+  {
+   "type": "vector",
+   "id": "f2",
+   "from": [
+    3.0,
+    6.0
+   ],
+   "to": [
+    3.0,
+    1.85
+   ],
+   "role": "cold",
+   "strokeWidth": 6,
+   "appear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "f2t",
+   "at": [
+    1.6,
+    3.9
+   ],
+   "text": "\\(Q_2\\) = {{Q2x|0}} J",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s1"
+  },
+  {
+   "type": "vector",
+   "id": "fw",
+   "from": [
+    5.3,
+    7.65
+   ],
+   "to": [
+    7.6,
+    7.65
+   ],
+   "role": "work",
+   "strokeWidth": 7,
+   "appear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "fwt",
+   "at": [
+    6.45,
+    7.050000000000001
+   ],
+   "text": "\\(W\\) = {{Wx|0}} J",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s1"
+  },
+  {
+   "type": "vector",
+   "id": "f3",
+   "from": [
+    9.9,
+    1.85
+   ],
+   "to": [
+    9.9,
+    6.0
+   ],
+   "role": "cold",
+   "strokeWidth": 6,
+   "appear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "f3t",
+   "at": [
+    11.4,
+    3.9
+   ],
+   "text": "\\(Q_2\\) = {{Q2c|0}} J",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s2"
+  },
+  {
+   "type": "vector",
+   "id": "f4",
+   "from": [
+    9.9,
+    9.3
+   ],
+   "to": [
+    9.9,
+    12.75
+   ],
+   "role": "hot",
+   "strokeWidth": 6,
+   "appear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "f4t",
+   "at": [
+    11.4,
+    11.0
+   ],
+   "text": "\\(Q_1\\) = {{Q1c|0}} J",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "n1",
+   "at": [
+    6.45,
+    5.0
+   ],
+   "text": "NET: {{net|0}} J cold → hot",
+   "role": "no",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "visible": "bad>0.5"
+  },
+  {
+   "type": "text",
+   "id": "n2",
+   "at": [
+    6.45,
+    4.4
+   ],
+   "text": "with no work!",
+   "role": "no",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "visible": "bad>0.5"
+  },
+  {
+   "type": "text",
+   "id": "n3",
+   "at": [
+    6.45,
+    4.7
+   ],
+   "text": "No net heat moves: allowed",
+   "role": "ok",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "visible": "bad<0.5"
+  },
+  {
+   "type": "text",
+   "id": "imp",
+   "at": [
+    6.45,
+    11.0
+   ],
+   "text": "IMPOSSIBLE",
+   "role": "no",
+   "size": "l",
+   "bold": true,
+   "appear": "s4",
+   "visible": "bad>0.5"
+  },
+  {
+   "type": "text",
+   "id": "imp2",
+   "at": [
+    6.45,
+    10.4
+   ],
+   "text": "(second law)",
+   "role": "no",
+   "size": "s",
+   "bold": false,
+   "appear": "s4",
+   "visible": "bad>0.5"
+  },
+  {
+   "type": "text",
+   "id": "okk",
+   "at": [
+    6.45,
+    10.6
+   ],
+   "text": "X is allowed: \\(\\eta_X\\le\\eta_C\\)",
+   "role": "ok",
+   "size": "m",
+   "bold": true,
+   "appear": "s4",
+   "visible": "bad<0.5"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The claim",
+   "text": "Suppose someone builds an engine **X** between the same two reservoirs that is **more efficient** than a Carnot engine: \\(\\eta_X>\\eta_C\\). Here \\(\\eta_C=1-T_2/T_1={{ec*100|0}}\\%\\) and the claim is \\(\\eta_X={{ex|0}}\\%\\). We shall show this leads to an impossibility.",
+   "actions": [],
+   "dwell": 6500
+  },
+  {
+   "id": "s1",
+   "title": "Run engine X",
+   "text": "X takes \\(Q_1={{Q1x|0}}\\) J from the hot reservoir, turns \\(\\eta_X Q_1=W={{Wx|0}}\\) J into work and dumps \\(Q_2={{Q2x|0}}\\) J into the cold one.",
+   "actions": [],
+   "dwell": 6000
+  },
+  {
+   "id": "s2",
+   "title": "Feed W to a reversed Carnot engine",
+   "text": "A Carnot engine is reversible, so we can run it **backwards** as a refrigerator. Give it that same work \\(W={{Wx|0}}\\) J. It takes \\(Q_2={{Q2c|0}}\\) J from the cold reservoir and delivers \\(Q_1=W/\\eta_C={{Q1c|0}}\\) J to the hot one.",
+   "actions": [],
+   "dwell": 6500
+  },
+  {
+   "id": "s3",
+   "title": "Add up both machines",
+   "text": "Hot reservoir: gave \\({{Q1x|0}}\\) J and got back \\({{Q1c|0}}\\) J, a net gain of {{net|0}} J. Cold reservoir: lost the same amount. The work \\(W\\) went round inside and none is left over. The pair moves heat from cold to hot **with no work done on it**.",
+   "actions": [],
+   "dwell": 7000
+  },
+  {
+   "id": "s4",
+   "title": "The contradiction",
+   "text": "The second law says heat cannot flow from a colder to a hotter body by itself. So engine X cannot exist. Move the **claimed efficiency** slider below \\(\\eta_C\\): the net heat becomes zero or negative and nothing is wrong. That is the real-engine case.",
+   "actions": [],
+   "dwell": 7000
+  },
+  {
+   "id": "s5",
+   "title": "The theorem",
+   "text": "**No engine working between two given temperatures is more efficient than a Carnot engine.** Swap the roles of two Carnot engines in the same argument and neither can beat the other, so **all** Carnot engines between \\(T_1\\) and \\(T_2\\) have the same efficiency \\(1-T_2/T_1\\), whatever the working substance.",
+   "actions": [],
+   "dwell": 7500
+  }
+ ],
+ "readouts": [
+  {
+   "label": "η of Carnot engine",
+   "value": "{{ec*100|1}} %",
+   "role": "ok"
+  },
+  {
+   "label": "Claimed η of X",
+   "value": "{{ex|0}} %",
+   "role": "adB"
+  },
+  {
+   "label": "Heat moved cold → hot (net)",
+   "value": "{{net|1}} J",
+   "role": "no"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Carnot's theorem",
+   "tex": "\\eta_X \\le \\eta_C = 1-\\dfrac{T_2}{T_1}",
+   "text": "No engine between the same two reservoirs can beat the Carnot engine."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "The Carnot engine here has \\(\\eta_C=50\\%\\) (\\(T_1=600\\) K, \\(T_2=300\\) K). Someone claims \\(\\eta_X=60\\%\\). With \\(Q_1=100\\) J, how many joules of heat would flow from the cold to the hot reservoir by themselves?",
+   "answer": 20,
+   "hint": "\\(W=60\\) J, so the reversed Carnot engine delivers \\(60/0.5\\) J to the hot side.",
+   "explain": "\\(W=60\\) J; the reversed Carnot engine delivers \\(Q_1=60/0.5=120\\) J to the hot side; the net is \\(120-100=20\\) J.",
+   "unit": "J",
+   "set": {
+    "T1": 600,
+    "T2": 300,
+    "ex": 60
+   }
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "If engine X has \\(\\eta_X\\) **less** than \\(\\eta_C\\), what happens?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Contradiction again"
+    },
+    {
+     "id": "b",
+     "label": "No contradiction; it is an ordinary (irreversible) engine"
+    },
+    {
+     "id": "c",
+     "label": "Heat flows cold → hot by itself"
+    }
+   ],
+   "answer": "b",
+   "hint": "Check the sign of the net heat in the slider.",
+   "explain": "The net heat to the hot reservoir is then zero or negative, so no law is broken. Real engines are of this kind.",
+   "set": {
+    "T1": 600,
+    "T2": 300,
+    "ex": 35
+   }
+  }
+ ],
+ "takeaways": [
+  "A more efficient engine would let heat flow cold → hot with no work: forbidden.",
+  "So \\(\\eta\\le\\eta_{\\text{Carnot}}=1-T_2/T_1\\) for every engine.",
+  "All reversible engines between the same temperatures have the same efficiency."
+ ],
+ "notes": [
+  {
+   "title": "Second-law form used",
+   "text": "We use the statement that heat cannot flow from a colder to a hotter body without work being done. Check it against the wording in your book."
+  }
+ ]
+}

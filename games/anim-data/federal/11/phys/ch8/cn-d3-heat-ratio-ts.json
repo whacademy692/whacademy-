@@ -1,0 +1,718 @@
+{
+ "id": "g11-phys-c8-cn-d3-heat-ratio-ts",
+ "title": "Derivation: Q₂/Q₁ = T₂/T₁",
+ "summary": "Put the equal volume ratios into the two isothermal heats; the logarithms cancel. A T–S rectangle shows it as a picture.",
+ "alt": "The heats Q1 and Q2 of the two isothermal strokes are divided; the equal logarithms cancel and Q2 over Q1 equals T2 over T1. The cycle is also drawn as a rectangle on a temperature versus entropy graph.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder / axes",
+   "color": "#475569",
+   "text": "Walls of the cylinder and the graph axes.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Isothermal at T₁ (a→b)",
+   "color": "#ea580c",
+   "text": "Heat Q₁ flows IN from the hot reservoir; T stays T₁.",
+   "legend": true
+  },
+  "adB": {
+   "label": "Adiabatic expansion (b→c)",
+   "color": "#7c3aed",
+   "text": "No heat flows; the gas cools from T₁ to T₂.",
+   "legend": true
+  },
+  "cold": {
+   "label": "Isothermal at T₂ (c→d)",
+   "color": "#2563eb",
+   "text": "Heat Q₂ flows OUT to the cold reservoir; T stays T₂.",
+   "legend": true
+  },
+  "adD": {
+   "label": "Adiabatic compression (d→a)",
+   "color": "#db2777",
+   "text": "No heat flows; the gas warms from T₂ to T₁.",
+   "legend": true
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by the gas (area under the curve / inside the loop).",
+   "legend": true
+  },
+  "me": {
+   "label": "Live state",
+   "color": "#16a34a",
+   "text": "Where the gas is on the graph right now.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The result.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Entropy S.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "T1",
+   "label": "Hot reservoir \\(T_1\\) (K)",
+   "type": "number",
+   "min": 480,
+   "max": 800,
+   "step": 10,
+   "default": 600,
+   "unit": "K"
+  },
+  {
+   "id": "T2",
+   "label": "Cold reservoir \\(T_2\\) (K)",
+   "type": "number",
+   "min": 260,
+   "max": 320,
+   "step": 10,
+   "default": 300,
+   "unit": "K"
+  },
+  {
+   "id": "Vr",
+   "label": "Expansion ratio \\(V_2/V_1\\)",
+   "type": "number",
+   "min": 1.5,
+   "max": 3.0,
+   "step": 0.1,
+   "default": 2.2
+  }
+ ],
+ "derived": {
+  "lam": "ln(Vr)",
+  "Q1": "8.314*T1*lam",
+  "Q2": "8.314*T2*lam",
+  "dS": "8.314*lam",
+  "Wn": "Q1-Q2",
+  "rT": "T2/T1",
+  "rQ": "Q2/Q1",
+  "XL": "1.6+1.5",
+  "XR": "XL+(dS/10.5*7.999999999999999)",
+  "Tmx": "T1*1.12",
+  "tY1": "7.0+T1/Tmx*6.0",
+  "tY2": "7.0+T2/Tmx*6.0"
+ },
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "sax",
+   "from": [
+    1.6,
+    7.0
+   ],
+   "to": [
+    12.2,
+    7.0
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "vector",
+   "id": "say",
+   "from": [
+    1.6,
+    7.0
+   ],
+   "to": [
+    1.6,
+    13.5
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "sxl",
+   "at": [
+    12.45,
+    7.05
+   ],
+   "text": "\\(S\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "syl",
+   "at": [
+    1.6500000000000001,
+    13.75
+   ],
+   "text": "\\(T\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "rQ2",
+   "x": "XL",
+   "y": 7.0,
+   "w": "XR-XL",
+   "h": "tY2-7.0",
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.38,
+   "strokeWidth": 0,
+   "stroke": false
+  },
+  {
+   "type": "rect",
+   "id": "rW",
+   "x": "XL",
+   "y": "tY2",
+   "w": "XR-XL",
+   "h": "tY1-tY2",
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 0,
+   "stroke": false
+  },
+  {
+   "type": "segment",
+   "id": "tg1",
+   "from": [
+    1.6,
+    "tY1"
+   ],
+   "to": [
+    "XL",
+    "tY1"
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "tg2",
+   "from": [
+    1.6,
+    "tY2"
+   ],
+   "to": [
+    "XL",
+    "tY2"
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "text",
+   "id": "tt1",
+   "at": [
+    1.0,
+    "tY1"
+   ],
+   "text": "\\(T_1\\)",
+   "role": "hot",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "tt2",
+   "at": [
+    1.0,
+    "tY2"
+   ],
+   "text": "\\(T_2\\)",
+   "role": "cold",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "vector",
+   "id": "sa",
+   "from": [
+    "XL",
+    "tY1"
+   ],
+   "to": [
+    "XR",
+    "tY1"
+   ],
+   "role": "hot",
+   "strokeWidth": 5
+  },
+  {
+   "type": "vector",
+   "id": "sb",
+   "from": [
+    "XR",
+    "tY1"
+   ],
+   "to": [
+    "XR",
+    "tY2"
+   ],
+   "role": "adB",
+   "strokeWidth": 5
+  },
+  {
+   "type": "vector",
+   "id": "sc",
+   "from": [
+    "XR",
+    "tY2"
+   ],
+   "to": [
+    "XL",
+    "tY2"
+   ],
+   "role": "cold",
+   "strokeWidth": 5
+  },
+  {
+   "type": "vector",
+   "id": "sd",
+   "from": [
+    "XL",
+    "tY2"
+   ],
+   "to": [
+    "XL",
+    "tY1"
+   ],
+   "role": "adD",
+   "strokeWidth": 5
+  },
+  {
+   "type": "text",
+   "id": "sla",
+   "at": [
+    "XL-0.45",
+    "tY1+0.4"
+   ],
+   "text": "\\(a\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "slb",
+   "at": [
+    "XR+0.45",
+    "tY1+0.4"
+   ],
+   "text": "\\(b\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "slc",
+   "at": [
+    "XR+0.45",
+    "tY2-0.4"
+   ],
+   "text": "\\(c\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "sld",
+   "at": [
+    "XL-0.45",
+    "tY2-0.4"
+   ],
+   "text": "\\(d\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "ta1",
+   "at": [
+    "(XL+XR)/2",
+    "tY1+0.55"
+   ],
+   "text": "\\(a\\to b\\): \\(Q_1\\) in",
+   "role": "hot",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "tc1",
+   "at": [
+    "(XL+XR)/2",
+    "tY2-0.55"
+   ],
+   "text": "\\(c\\to d\\): \\(Q_2\\) out",
+   "role": "cold",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "tb1",
+   "at": [
+    "XR+0.95",
+    "(tY1+tY2)/2+0.25"
+   ],
+   "text": "\\(b\\to c\\)",
+   "role": "adB",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "tb2",
+   "at": [
+    "XR+0.95",
+    "(tY1+tY2)/2-0.25"
+   ],
+   "text": "\\(\\Delta S=0\\)",
+   "role": "adB",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "td1",
+   "at": [
+    "XL-0.95",
+    "(tY1+tY2)/2+0.25"
+   ],
+   "text": "\\(d\\to a\\)",
+   "role": "adD",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "td2",
+   "at": [
+    "XL-0.95",
+    "(tY1+tY2)/2-0.25"
+   ],
+   "text": "\\(\\Delta S=0\\)",
+   "role": "adD",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "rq2",
+   "at": [
+    "(XL+XR)/2",
+    "(7.0+tY2)/2"
+   ],
+   "text": "\\(Q_2 = T_2\\,\\Delta S\\)",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s3"
+  },
+  {
+   "type": "text",
+   "id": "rw",
+   "at": [
+    "(XL+XR)/2",
+    "(tY1+tY2)/2"
+   ],
+   "text": "\\(W\\)",
+   "role": "work",
+   "size": "m",
+   "bold": true,
+   "appear": "s3"
+  },
+  {
+   "type": "text",
+   "id": "rq1",
+   "at": [
+    "(XL+XR)/2",
+    "tY1+1.15"
+   ],
+   "text": "\\(Q_1 = T_1\\,\\Delta S\\) = whole box",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s3"
+  },
+  {
+   "type": "segment",
+   "id": "dsb",
+   "from": [
+    "XL",
+    6.55
+   ],
+   "to": [
+    "XR",
+    6.55
+   ],
+   "role": "ans",
+   "strokeWidth": 4,
+   "appear": "s3"
+  },
+  {
+   "type": "text",
+   "id": "dst",
+   "at": [
+    "(XL+XR)/2",
+    6.05
+   ],
+   "text": "\\(\\Delta S\\)  (same width for both)",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "appear": "s3"
+  },
+  {
+   "type": "text",
+   "id": "e0",
+   "at": [
+    6.45,
+    5.15
+   ],
+   "text": "\\(Q_1 = nRT_1\\ln\\dfrac{V_2}{V_1}\\)    \\(Q_2 = nRT_2\\ln\\dfrac{V_3}{V_4}\\)",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "e1",
+   "at": [
+    6.45,
+    4.05
+   ],
+   "text": "but \\(\\dfrac{V_3}{V_4}=\\dfrac{V_2}{V_1}\\),  call \\(\\ln\\dfrac{V_2}{V_1}=\\lambda\\)",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "appear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "e1b",
+   "at": [
+    6.45,
+    3.05
+   ],
+   "text": "\\(Q_1 = nRT_1\\lambda\\)    \\(Q_2 = nRT_2\\lambda\\)",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "appear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "e2",
+   "at": [
+    6.45,
+    1.85
+   ],
+   "text": "\\(\\dfrac{Q_2}{Q_1}=\\dfrac{T_2}{T_1}\\)",
+   "role": "ans",
+   "size": "l",
+   "bold": true,
+   "appear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "e4",
+   "at": [
+    6.45,
+    0.7
+   ],
+   "text": "\\(\\dfrac{Q_1}{T_1}=\\dfrac{Q_2}{T_2}\\ \\Rightarrow\\ \\Delta S_{\\text{total}}=0\\)",
+   "role": "ent",
+   "size": "m",
+   "bold": true,
+   "appear": "s4"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Two heats",
+   "text": "Stroke \\(a\\to b\\) absorbs \\(Q_1=nRT_1\\ln\\dfrac{V_2}{V_1}\\) and stroke \\(c\\to d\\) rejects \\(Q_2=nRT_2\\ln\\dfrac{V_3}{V_4}\\). The graph above shows the same cycle on \\(T\\)–\\(S\\) axes (entropy \\(S\\) is **Beyond the book**): we read it at step 4.",
+   "actions": [],
+   "dwell": 6500
+  },
+  {
+   "id": "s1",
+   "title": "The two logs are equal",
+   "text": "From the previous derivation \\(V_3/V_4=V_2/V_1\\), so both heats contain the **same** logarithm \\(\\lambda=\\ln(V_2/V_1)\\): \\(Q_1=nRT_1\\lambda\\) and \\(Q_2=nRT_2\\lambda\\).",
+   "actions": [],
+   "dwell": 6000
+  },
+  {
+   "id": "s2",
+   "title": "Divide",
+   "text": "Divide \\(Q_2\\) by \\(Q_1\\). Everything cancels except the temperatures: \\(\\dfrac{Q_2}{Q_1}=\\dfrac{T_2}{T_1}\\). With \\(T_1={{T1|0}}\\) K and \\(T_2={{T2|0}}\\) K the ratio is \\({{rT|3}}\\).",
+   "actions": [],
+   "dwell": 6000
+  },
+  {
+   "id": "s3",
+   "title": "Read the T–S picture",
+   "text": "On a \\(T\\)–\\(S\\) graph (area under a line = heat, \\(Q=T\\,\\Delta S\\)) the Carnot cycle is a **rectangle**: the two adiabats are vertical because no heat means no change in \\(S\\). Both isotherms have the **same width** \\(\\Delta S\\), so their heats are in the ratio of their heights \\(T_2:T_1\\).",
+   "actions": [],
+   "dwell": 7000
+  },
+  {
+   "id": "s4",
+   "title": "Entropy bookkeeping",
+   "text": "The hot reservoir loses \\(Q_1/T_1\\) of entropy and the cold one gains \\(Q_2/T_2\\). The result above says these are **equal**, so the total change is zero. That is what \"reversible\" means.",
+   "actions": [],
+   "dwell": 6000
+  },
+  {
+   "id": "s5",
+   "title": "Numbers",
+   "text": "For \\(V_2/V_1={{Vr|1}}\\) (1 mol): \\(Q_1={{Q1|0}}\\) J, \\(Q_2={{Q2|0}}\\) J, so \\(W=Q_1-Q_2={{Wn|0}}\\) J and \\(Q_2/Q_1={{rQ|3}}\\) — exactly \\(T_2/T_1\\).",
+   "actions": [],
+   "dwell": 6000
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Q₁ (heat in)",
+   "value": "{{Q1|0}} J",
+   "role": "hot"
+  },
+  {
+   "label": "Q₂ (heat out)",
+   "value": "{{Q2|0}} J",
+   "role": "cold"
+  },
+  {
+   "label": "Q₂ / Q₁",
+   "value": "{{rQ|3}}",
+   "role": "ans"
+  },
+  {
+   "label": "T₂ / T₁",
+   "value": "{{rT|3}}",
+   "role": "ans"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Heat ratio",
+   "tex": "\\dfrac{Q_2}{Q_1}=\\dfrac{T_2}{T_1}",
+   "text": "True for a reversible (Carnot) engine; temperatures in kelvin.",
+   "filled": "\\dfrac{Q_2}{Q_1}=\\dfrac{ {{T2|0}} }{ {{T1|0}} } = {{rT|3}}"
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A Carnot engine takes \\(Q_1=1200\\) J from a reservoir at \\(600\\) K and rejects heat to a reservoir at \\(300\\) K. Find \\(Q_2\\) in J.",
+   "answer": 600,
+   "hint": "Use \\(Q_2=Q_1\\,T_2/T_1\\).",
+   "explain": "\\(Q_2=1200\\times300/600=600\\) J.",
+   "unit": "J"
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "On a T–S graph the Carnot cycle is…",
+   "options": [
+    {
+     "id": "a",
+     "label": "a circle"
+    },
+    {
+     "id": "b",
+     "label": "a rectangle"
+    },
+    {
+     "id": "c",
+     "label": "a triangle"
+    }
+   ],
+   "answer": "b",
+   "hint": "Adiabats have no heat flow, so \\(S\\) does not change.",
+   "explain": "The adiabats are vertical (constant \\(S\\)) and the isotherms are horizontal (constant \\(T\\)): a rectangle."
+  }
+ ],
+ "takeaways": [
+  "Both isothermal heats contain the same logarithm.",
+  "\\(Q_2/Q_1=T_2/T_1\\).",
+  "On \\(T\\)–\\(S\\) axes the cycle is a rectangle; \\(\\Delta S_{\\text{total}}=0\\)."
+ ],
+ "notes": [
+  {
+   "title": "Beyond the book",
+   "text": "Entropy \\(S\\) and the \\(T\\)–\\(S\\) diagram are not in your book. The result \\(Q_2/Q_1=T_2/T_1\\) is proved above without them; the picture is a bonus."
+  }
+ ]
+}

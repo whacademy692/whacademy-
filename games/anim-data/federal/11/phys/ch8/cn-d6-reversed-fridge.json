@@ -1,0 +1,1735 @@
+{
+ "id": "g11-phys-c8-cn-d6-reversed-fridge",
+ "title": "Reversed Carnot cycle: the refrigerator",
+ "summary": "Run the loop anticlockwise: work goes in, heat is pumped from cold to hot, and the coefficient of performance is T₂/(T₁−T₂).",
+ "alt": "The Carnot cycle is run backwards a to d to c to b to a on the P–V graph. Work is done on the gas, heat Q2 is taken from the cold reservoir and heat Q1 is delivered to the hot reservoir.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder / axes",
+   "color": "#475569",
+   "text": "Walls of the cylinder and the graph axes.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Isothermal at T₁ (a→b)",
+   "color": "#ea580c",
+   "text": "Heat Q₁ flows IN from the hot reservoir; T stays T₁.",
+   "legend": true
+  },
+  "adB": {
+   "label": "Adiabatic expansion (b→c)",
+   "color": "#7c3aed",
+   "text": "No heat flows; the gas cools from T₁ to T₂.",
+   "legend": true
+  },
+  "cold": {
+   "label": "Isothermal at T₂ (c→d)",
+   "color": "#2563eb",
+   "text": "Heat Q₂ flows OUT to the cold reservoir; T stays T₂.",
+   "legend": true
+  },
+  "adD": {
+   "label": "Adiabatic compression (d→a)",
+   "color": "#db2777",
+   "text": "No heat flows; the gas warms from T₂ to T₁.",
+   "legend": true
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by the gas (area under the curve / inside the loop).",
+   "legend": true
+  },
+  "me": {
+   "label": "Live state",
+   "color": "#16a34a",
+   "text": "Where the gas is on the graph right now.",
+   "legend": true
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The result.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "T1",
+   "label": "Hot reservoir \\(T_1\\) (K)",
+   "type": "number",
+   "min": 480,
+   "max": 800,
+   "step": 10,
+   "default": 600,
+   "unit": "K"
+  },
+  {
+   "id": "T2",
+   "label": "Cold reservoir \\(T_2\\) (K)",
+   "type": "number",
+   "min": 260,
+   "max": 320,
+   "step": 10,
+   "default": 300,
+   "unit": "K"
+  },
+  {
+   "id": "Vr",
+   "label": "Expansion ratio \\(V_2/V_1\\)",
+   "type": "number",
+   "min": 1.5,
+   "max": 3.0,
+   "step": 0.1,
+   "default": 2.2
+  },
+  {
+   "id": "ph",
+   "label": "Cycle (one stroke = 1)",
+   "type": "clock",
+   "min": 0,
+   "max": 4,
+   "step": 0.01,
+   "speed": 0.22,
+   "loop": "repeat",
+   "default": 0
+  },
+  {
+   "id": "wk",
+   "label": "wk",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0,
+   "hidden": true
+  },
+  {
+   "id": "lg",
+   "label": "Stretch the loop (log scale)",
+   "type": "toggle",
+   "default": 0
+  }
+ ],
+ "derived": {
+  "gm": "5/3",
+  "kk": "(T1/T2)^(1/(gm-1))",
+  "V1": "1",
+  "V2": "Vr",
+  "V3": "Vr*kk",
+  "V4": "kk",
+  "P1": "T1",
+  "P2": "T1/Vr",
+  "P3": "T2/V3",
+  "P4": "T2/V4",
+  "xmax": "V3*1.4",
+  "ymax": "P1*1.15",
+  "eph": "ph",
+  "leg": "min(3,floor(eph))",
+  "fr": "eph-leg",
+  "xmin": "0.8*V1",
+  "ymin": "P3*0.8",
+  "px0": "2.1",
+  "Vs": "leg==0 ? (V1) : (leg==1 ? (V4) : (leg==2 ? (V3) : (V2)))",
+  "Ve": "leg==0 ? (V4) : (leg==1 ? (V3) : (leg==2 ? (V2) : (V1)))",
+  "V": "Vs+(Ve-Vs)*fr",
+  "P": "leg==0 ? ((P4*(V4/(V))^gm)) : (leg==1 ? ((T2/(V))) : (leg==2 ? ((P2*(V2/(V))^gm)) : ((T1/(V)))))",
+  "T": "P*V",
+  "cwV": "(V2+V4)/2",
+  "cwP": "((cwV<=V2 ? T1/cwV : P2*(V2/cwV)^gm) + (cwV<=V4 ? P4*(V4/cwV)^gm : T2/cwV))/2",
+  "Ts": "leg==0 ? (T1) : (leg==1 ? (T2) : (leg==2 ? (T2) : (T1)))",
+  "iso": "leg==0 ? (0) : (leg==1 ? (1) : (leg==2 ? (0) : (1)))",
+  "dUl": "iso>0.5 ? 0 : 1.5*8.314*(T-Ts)",
+  "Wl": "iso>0.5 ? 8.314*T*ln(V/Vs) : -dUl",
+  "Ql": "iso>0.5 ? Wl : 0",
+  "L": "0.9+5.2*V/V3",
+  "vg": "2.2*sqrt(T/300)",
+  "Q1": "8.314*T1*ln(Vr)",
+  "Q2": "8.314*T2*ln(Vr)",
+  "Wn": "Q1-Q2",
+  "eta": "1-T2/T1",
+  "hotOn": "leg==3 ? 1 : 0",
+  "coldOn": "leg==1 ? 1 : 0",
+  "insOn": "1-hotOn-coldOn",
+  "cp": "T2/(T1-T2)",
+  "bA": "leg<0.5 ? 0 : (leg<1.5 ? Ql : Q2)",
+  "bB": "leg<2.5 ? 0 : -Ql",
+  "bW": "max(0, bB-bA+1.5*8.314*(T-T1))",
+  "bmax": "Q1+1.5*8.314*(T1-T2)"
+ },
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "gax",
+   "from": [
+    1.55,
+    1.0
+   ],
+   "to": [
+    12.350000000000001,
+    1.0
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "vector",
+   "id": "gay",
+   "from": [
+    1.55,
+    1.0
+   ],
+   "to": [
+    1.55,
+    8.1
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "gxl",
+   "at": [
+    12.55,
+    1.05
+   ],
+   "text": "\\(V\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "gyl",
+   "at": [
+    1.6,
+    8.25
+   ],
+   "text": "\\(P\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "repeat",
+   "id": "wstrips",
+   "count": 100,
+   "as": "i",
+   "template": {
+    "type": "rect",
+    "id": "wst",
+    "x": "(lg>0.5 ? 1.55+px0+ln((V1+(V3-V1)*(i+0.5)/100)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1+(V3-V1)*(i+0.5)/100)-xmin)/(xmax-xmin)*(10.4-px0))-(((lg>0.5 ? 1.55+px0+ln((V1+(V3-V1)*(i+0.5)/100+(V3-V1)/200)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1+(V3-V1)*(i+0.5)/100+(V3-V1)/200)-xmin)/(xmax-xmin)*(10.4-px0))-(lg>0.5 ? 1.55+px0+ln((V1+(V3-V1)*(i+0.5)/100-(V3-V1)/200)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1+(V3-V1)*(i+0.5)/100-(V3-V1)/200)-xmin)/(xmax-xmin)*(10.4-px0))))*0.53",
+    "y": "(lg>0.5 ? 1.0+ln(((V1+(V3-V1)*(i+0.5)/100)<=V4 ? P4*(V4/(V1+(V3-V1)*(i+0.5)/100))^gm : T2/(V1+(V3-V1)*(i+0.5)/100))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((V1+(V3-V1)*(i+0.5)/100)<=V4 ? P4*(V4/(V1+(V3-V1)*(i+0.5)/100))^gm : T2/(V1+(V3-V1)*(i+0.5)/100))-ymin)/(ymax-ymin)*6.6)",
+    "w": "(((lg>0.5 ? 1.55+px0+ln((V1+(V3-V1)*(i+0.5)/100+(V3-V1)/200)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1+(V3-V1)*(i+0.5)/100+(V3-V1)/200)-xmin)/(xmax-xmin)*(10.4-px0))-(lg>0.5 ? 1.55+px0+ln((V1+(V3-V1)*(i+0.5)/100-(V3-V1)/200)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1+(V3-V1)*(i+0.5)/100-(V3-V1)/200)-xmin)/(xmax-xmin)*(10.4-px0))))*1.06",
+    "h": "(lg>0.5 ? 1.0+ln(((V1+(V3-V1)*(i+0.5)/100)<=V2 ? T1/(V1+(V3-V1)*(i+0.5)/100) : P2*(V2/(V1+(V3-V1)*(i+0.5)/100))^gm)/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((V1+(V3-V1)*(i+0.5)/100)<=V2 ? T1/(V1+(V3-V1)*(i+0.5)/100) : P2*(V2/(V1+(V3-V1)*(i+0.5)/100))^gm)-ymin)/(ymax-ymin)*6.6)-(lg>0.5 ? 1.0+ln(((V1+(V3-V1)*(i+0.5)/100)<=V4 ? P4*(V4/(V1+(V3-V1)*(i+0.5)/100))^gm : T2/(V1+(V3-V1)*(i+0.5)/100))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((V1+(V3-V1)*(i+0.5)/100)<=V4 ? P4*(V4/(V1+(V3-V1)*(i+0.5)/100))^gm : T2/(V1+(V3-V1)*(i+0.5)/100))-ymin)/(ymax-ymin)*6.6)",
+    "role": "work",
+    "fill": true,
+    "fillOpacity": 0.6,
+    "strokeWidth": 0,
+    "stroke": false,
+    "layer": "back",
+    "visible": "wk>0.5"
+   }
+  },
+  {
+   "type": "segment",
+   "id": "gv1",
+   "from": [
+    "(lg>0.5 ? 1.55+px0+ln((V1)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 1.0+ln((P1)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((P1)-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "to": [
+    "(lg>0.5 ? 1.55+px0+ln((V1)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1)-xmin)/(xmax-xmin)*(10.4-px0))",
+    1.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "gp1",
+   "from": [
+    "(lg>0.5 ? 1.55+px0+ln((V1)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 1.0+ln((P1)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((P1)-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "to": [
+    1.55,
+    "(lg>0.5 ? 1.0+ln((P1)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((P1)-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "text",
+   "id": "tv1",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((V1)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1)-xmin)/(xmax-xmin)*(10.4-px0))+0",
+    0.55
+   ],
+   "text": "\\(V_1\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "tp1",
+   "at": [
+    0.4,
+    "(lg>0.5 ? 1.0+ln((P1)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((P1)-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "text": "\\(P_1\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "segment",
+   "id": "gv2",
+   "from": [
+    "(lg>0.5 ? 1.55+px0+ln((V2)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V2)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 1.0+ln((P2)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((P2)-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "to": [
+    "(lg>0.5 ? 1.55+px0+ln((V2)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V2)-xmin)/(xmax-xmin)*(10.4-px0))",
+    1.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "gp2",
+   "from": [
+    "(lg>0.5 ? 1.55+px0+ln((V2)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V2)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 1.0+ln((P2)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((P2)-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "to": [
+    1.55,
+    "(lg>0.5 ? 1.0+ln((P2)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((P2)-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "text",
+   "id": "tv2",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((V2)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V2)-xmin)/(xmax-xmin)*(10.4-px0))+(V2<V4 ? -0.3 : 0.3)",
+    0.55
+   ],
+   "text": "\\(V_2\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "tp2",
+   "at": [
+    0.4,
+    "(lg>0.5 ? 1.0+ln((P2)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((P2)-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "text": "\\(P_2\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "segment",
+   "id": "gv3",
+   "from": [
+    "(lg>0.5 ? 1.55+px0+ln((V3)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V3)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 1.0+ln((P3)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((P3)-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "to": [
+    "(lg>0.5 ? 1.55+px0+ln((V3)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V3)-xmin)/(xmax-xmin)*(10.4-px0))",
+    1.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "gp3",
+   "from": [
+    "(lg>0.5 ? 1.55+px0+ln((V3)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V3)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 1.0+ln((P3)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((P3)-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "to": [
+    1.55,
+    "(lg>0.5 ? 1.0+ln((P3)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((P3)-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "text",
+   "id": "tv3",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((V3)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V3)-xmin)/(xmax-xmin)*(10.4-px0))+0",
+    0.55
+   ],
+   "text": "\\(V_3\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "tp3",
+   "at": [
+    0.4,
+    "(lg>0.5 ? 1.0+ln((P3)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((P3)-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "text": "\\(P_3\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "segment",
+   "id": "gv4",
+   "from": [
+    "(lg>0.5 ? 1.55+px0+ln((V4)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V4)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 1.0+ln((P4)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((P4)-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "to": [
+    "(lg>0.5 ? 1.55+px0+ln((V4)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V4)-xmin)/(xmax-xmin)*(10.4-px0))",
+    1.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "gp4",
+   "from": [
+    "(lg>0.5 ? 1.55+px0+ln((V4)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V4)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 1.0+ln((P4)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((P4)-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "to": [
+    1.55,
+    "(lg>0.5 ? 1.0+ln((P4)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((P4)-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "text",
+   "id": "tv4",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((V4)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V4)-xmin)/(xmax-xmin)*(10.4-px0))+(V2<V4 ? 0.3 : -0.3)",
+    0.55
+   ],
+   "text": "\\(V_4\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "tp4",
+   "at": [
+    0.9,
+    "(lg>0.5 ? 1.0+ln((P4)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((P4)-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "text": "\\(P_4\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "plot",
+   "id": "cv0",
+   "x": "(lg>0.5 ? 1.55+px0+ln((V1+(V4-V1)*s)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1+(V4-V1)*s)-xmin)/(xmax-xmin)*(10.4-px0))",
+   "y": "(lg>0.5 ? 1.0+ln(((P4*(V4/(V1+(V4-V1)*s))^gm))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((P4*(V4/(V1+(V4-V1)*s))^gm))-ymin)/(ymax-ymin)*6.6)",
+   "var": "s",
+   "domain": [
+    0,
+    1
+   ],
+   "samples": 60,
+   "role": "adD",
+   "strokeWidth": 3,
+   "opacity": 0.55
+  },
+  {
+   "type": "plot",
+   "id": "cv1",
+   "x": "(lg>0.5 ? 1.55+px0+ln((V4+(V3-V4)*s)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V4+(V3-V4)*s)-xmin)/(xmax-xmin)*(10.4-px0))",
+   "y": "(lg>0.5 ? 1.0+ln(((T2/(V4+(V3-V4)*s)))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((T2/(V4+(V3-V4)*s)))-ymin)/(ymax-ymin)*6.6)",
+   "var": "s",
+   "domain": [
+    0,
+    1
+   ],
+   "samples": 60,
+   "role": "cold",
+   "strokeWidth": 3,
+   "opacity": 0.55
+  },
+  {
+   "type": "plot",
+   "id": "cv2",
+   "x": "(lg>0.5 ? 1.55+px0+ln((V3+(V2-V3)*s)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V3+(V2-V3)*s)-xmin)/(xmax-xmin)*(10.4-px0))",
+   "y": "(lg>0.5 ? 1.0+ln(((P2*(V2/(V3+(V2-V3)*s))^gm))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((P2*(V2/(V3+(V2-V3)*s))^gm))-ymin)/(ymax-ymin)*6.6)",
+   "var": "s",
+   "domain": [
+    0,
+    1
+   ],
+   "samples": 60,
+   "role": "adB",
+   "strokeWidth": 3,
+   "opacity": 0.55
+  },
+  {
+   "type": "plot",
+   "id": "cv3",
+   "x": "(lg>0.5 ? 1.55+px0+ln((V2+(V1-V2)*s)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V2+(V1-V2)*s)-xmin)/(xmax-xmin)*(10.4-px0))",
+   "y": "(lg>0.5 ? 1.0+ln(((T1/(V2+(V1-V2)*s)))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((T1/(V2+(V1-V2)*s)))-ymin)/(ymax-ymin)*6.6)",
+   "var": "s",
+   "domain": [
+    0,
+    1
+   ],
+   "samples": 60,
+   "role": "hot",
+   "strokeWidth": 3,
+   "opacity": 0.55
+  },
+  {
+   "type": "plot",
+   "id": "tr0",
+   "x": "(lg>0.5 ? 1.55+px0+ln((V1+(V4-V1)*s)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1+(V4-V1)*s)-xmin)/(xmax-xmin)*(10.4-px0))",
+   "y": "(lg>0.5 ? 1.0+ln(((P4*(V4/(V1+(V4-V1)*s))^gm))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((P4*(V4/(V1+(V4-V1)*s))^gm))-ymin)/(ymax-ymin)*6.6)",
+   "var": "s",
+   "domain": [
+    0,
+    1
+   ],
+   "samples": 60,
+   "role": "adD",
+   "strokeWidth": 7,
+   "upTo": "leg>0 ? 1 : (leg==0 ? fr : 0)"
+  },
+  {
+   "type": "plot",
+   "id": "tr1",
+   "x": "(lg>0.5 ? 1.55+px0+ln((V4+(V3-V4)*s)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V4+(V3-V4)*s)-xmin)/(xmax-xmin)*(10.4-px0))",
+   "y": "(lg>0.5 ? 1.0+ln(((T2/(V4+(V3-V4)*s)))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((T2/(V4+(V3-V4)*s)))-ymin)/(ymax-ymin)*6.6)",
+   "var": "s",
+   "domain": [
+    0,
+    1
+   ],
+   "samples": 60,
+   "role": "cold",
+   "strokeWidth": 7,
+   "upTo": "leg>1 ? 1 : (leg==1 ? fr : 0)"
+  },
+  {
+   "type": "plot",
+   "id": "tr2",
+   "x": "(lg>0.5 ? 1.55+px0+ln((V3+(V2-V3)*s)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V3+(V2-V3)*s)-xmin)/(xmax-xmin)*(10.4-px0))",
+   "y": "(lg>0.5 ? 1.0+ln(((P2*(V2/(V3+(V2-V3)*s))^gm))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((P2*(V2/(V3+(V2-V3)*s))^gm))-ymin)/(ymax-ymin)*6.6)",
+   "var": "s",
+   "domain": [
+    0,
+    1
+   ],
+   "samples": 60,
+   "role": "adB",
+   "strokeWidth": 7,
+   "upTo": "leg>2 ? 1 : (leg==2 ? fr : 0)"
+  },
+  {
+   "type": "plot",
+   "id": "tr3",
+   "x": "(lg>0.5 ? 1.55+px0+ln((V2+(V1-V2)*s)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V2+(V1-V2)*s)-xmin)/(xmax-xmin)*(10.4-px0))",
+   "y": "(lg>0.5 ? 1.0+ln(((T1/(V2+(V1-V2)*s)))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((T1/(V2+(V1-V2)*s)))-ymin)/(ymax-ymin)*6.6)",
+   "var": "s",
+   "domain": [
+    0,
+    1
+   ],
+   "samples": 60,
+   "role": "hot",
+   "strokeWidth": 7,
+   "upTo": "leg>3 ? 1 : (leg==3 ? fr : 0)"
+  },
+  {
+   "type": "vector",
+   "id": "ar0",
+   "from": [
+    "(lg>0.5 ? 1.55+px0+ln(((V1+(V4-V1)*0.36))/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+(((V1+(V4-V1)*0.36))-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 1.0+ln(((P4*(V4/((V1+(V4-V1)*0.36)))^gm))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((P4*(V4/((V1+(V4-V1)*0.36)))^gm))-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "to": [
+    "(lg>0.5 ? 1.55+px0+ln(((V1+(V4-V1)*0.64))/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+(((V1+(V4-V1)*0.64))-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 1.0+ln(((P4*(V4/((V1+(V4-V1)*0.64)))^gm))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((P4*(V4/((V1+(V4-V1)*0.64)))^gm))-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "role": "adD",
+   "strokeWidth": 4.5
+  },
+  {
+   "type": "vector",
+   "id": "ar1",
+   "from": [
+    "(lg>0.5 ? 1.55+px0+ln(((V4+(V3-V4)*0.36))/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+(((V4+(V3-V4)*0.36))-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 1.0+ln(((T2/((V4+(V3-V4)*0.36))))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((T2/((V4+(V3-V4)*0.36))))-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "to": [
+    "(lg>0.5 ? 1.55+px0+ln(((V4+(V3-V4)*0.64))/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+(((V4+(V3-V4)*0.64))-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 1.0+ln(((T2/((V4+(V3-V4)*0.64))))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((T2/((V4+(V3-V4)*0.64))))-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "role": "cold",
+   "strokeWidth": 4.5
+  },
+  {
+   "type": "vector",
+   "id": "ar2",
+   "from": [
+    "(lg>0.5 ? 1.55+px0+ln(((V3+(V2-V3)*0.36))/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+(((V3+(V2-V3)*0.36))-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 1.0+ln(((P2*(V2/((V3+(V2-V3)*0.36)))^gm))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((P2*(V2/((V3+(V2-V3)*0.36)))^gm))-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "to": [
+    "(lg>0.5 ? 1.55+px0+ln(((V3+(V2-V3)*0.64))/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+(((V3+(V2-V3)*0.64))-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 1.0+ln(((P2*(V2/((V3+(V2-V3)*0.64)))^gm))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((P2*(V2/((V3+(V2-V3)*0.64)))^gm))-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "role": "adB",
+   "strokeWidth": 4.5
+  },
+  {
+   "type": "vector",
+   "id": "ar3",
+   "from": [
+    "(lg>0.5 ? 1.55+px0+ln(((V2+(V1-V2)*0.36))/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+(((V2+(V1-V2)*0.36))-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 1.0+ln(((T1/((V2+(V1-V2)*0.36))))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((T1/((V2+(V1-V2)*0.36))))-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "to": [
+    "(lg>0.5 ? 1.55+px0+ln(((V2+(V1-V2)*0.64))/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+(((V2+(V1-V2)*0.64))-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 1.0+ln(((T1/((V2+(V1-V2)*0.64))))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((T1/((V2+(V1-V2)*0.64))))-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "role": "hot",
+   "strokeWidth": 4.5
+  },
+  {
+   "type": "text",
+   "id": "nt0",
+   "at": [
+    "min((lg>0.5 ? 1.55+px0+ln(((V1+(V4-V1)*0.68))/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+(((V1+(V4-V1)*0.68))-xmin)/(xmax-xmin)*(10.4-px0))+(-1.7), 11.2)",
+    "(lg>0.5 ? 1.0+ln(((P4*(V4/((V1+(V4-V1)*0.68)))^gm))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((P4*(V4/((V1+(V4-V1)*0.68)))^gm))-ymin)/(ymax-ymin)*6.6)+(0.0)+0.5"
+   ],
+   "text": "\\(a\\to d\\)",
+   "role": "adD",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "na0",
+   "at": [
+    "min((lg>0.5 ? 1.55+px0+ln(((V1+(V4-V1)*0.68))/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+(((V1+(V4-V1)*0.68))-xmin)/(xmax-xmin)*(10.4-px0))+(-1.7), 11.2)",
+    "(lg>0.5 ? 1.0+ln(((P4*(V4/((V1+(V4-V1)*0.68)))^gm))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((P4*(V4/((V1+(V4-V1)*0.68)))^gm))-ymin)/(ymax-ymin)*6.6)+(0.0)"
+   ],
+   "text": "Adiabatic",
+   "role": "adD",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "nb0",
+   "at": [
+    "min((lg>0.5 ? 1.55+px0+ln(((V1+(V4-V1)*0.68))/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+(((V1+(V4-V1)*0.68))-xmin)/(xmax-xmin)*(10.4-px0))+(-1.7), 11.2)",
+    "(lg>0.5 ? 1.0+ln(((P4*(V4/((V1+(V4-V1)*0.68)))^gm))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((P4*(V4/((V1+(V4-V1)*0.68)))^gm))-ymin)/(ymax-ymin)*6.6)+(0.0)-0.5"
+   ],
+   "text": "expansion",
+   "role": "adD",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "nt1",
+   "at": [
+    "min((lg>0.5 ? 1.55+px0+ln((V3)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V3)-xmin)/(xmax-xmin)*(10.4-px0))+(1.8), 11.2)",
+    "(lg>0.5 ? 1.0+ln(((T2/(V3)))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((T2/(V3)))-ymin)/(ymax-ymin)*6.6)+(1.35)+0.5"
+   ],
+   "text": "\\(d\\to c\\)",
+   "role": "cold",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "na1",
+   "at": [
+    "min((lg>0.5 ? 1.55+px0+ln((V3)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V3)-xmin)/(xmax-xmin)*(10.4-px0))+(1.8), 11.2)",
+    "(lg>0.5 ? 1.0+ln(((T2/(V3)))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((T2/(V3)))-ymin)/(ymax-ymin)*6.6)+(1.35)"
+   ],
+   "text": "Isothermal",
+   "role": "cold",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "nb1",
+   "at": [
+    "min((lg>0.5 ? 1.55+px0+ln((V3)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V3)-xmin)/(xmax-xmin)*(10.4-px0))+(1.8), 11.2)",
+    "(lg>0.5 ? 1.0+ln(((T2/(V3)))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((T2/(V3)))-ymin)/(ymax-ymin)*6.6)+(1.35)-0.5"
+   ],
+   "text": "expansion",
+   "role": "cold",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "nt2",
+   "at": [
+    "min((lg>0.5 ? 1.55+px0+ln(((V2+(V3-V2)*0.30))/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+(((V2+(V3-V2)*0.30))-xmin)/(xmax-xmin)*(10.4-px0))+(2.0), 11.2)",
+    "(lg>0.5 ? 1.0+ln(((P2*(V2/((V2+(V3-V2)*0.30)))^gm))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((P2*(V2/((V2+(V3-V2)*0.30)))^gm))-ymin)/(ymax-ymin)*6.6)+(0.75)+0.5"
+   ],
+   "text": "\\(c\\to b\\)",
+   "role": "adB",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "na2",
+   "at": [
+    "min((lg>0.5 ? 1.55+px0+ln(((V2+(V3-V2)*0.30))/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+(((V2+(V3-V2)*0.30))-xmin)/(xmax-xmin)*(10.4-px0))+(2.0), 11.2)",
+    "(lg>0.5 ? 1.0+ln(((P2*(V2/((V2+(V3-V2)*0.30)))^gm))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((P2*(V2/((V2+(V3-V2)*0.30)))^gm))-ymin)/(ymax-ymin)*6.6)+(0.75)"
+   ],
+   "text": "Adiabatic",
+   "role": "adB",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "nb2",
+   "at": [
+    "min((lg>0.5 ? 1.55+px0+ln(((V2+(V3-V2)*0.30))/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+(((V2+(V3-V2)*0.30))-xmin)/(xmax-xmin)*(10.4-px0))+(2.0), 11.2)",
+    "(lg>0.5 ? 1.0+ln(((P2*(V2/((V2+(V3-V2)*0.30)))^gm))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((P2*(V2/((V2+(V3-V2)*0.30)))^gm))-ymin)/(ymax-ymin)*6.6)+(0.75)-0.5"
+   ],
+   "text": "compression",
+   "role": "adB",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "nt3",
+   "at": [
+    "min((lg>0.5 ? 1.55+px0+ln(((V1+(V2-V1)*0.5))/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+(((V1+(V2-V1)*0.5))-xmin)/(xmax-xmin)*(10.4-px0))+(1.9), 11.2)",
+    "(lg>0.5 ? 1.0+ln(((T1/((V1+(V2-V1)*0.5))))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((T1/((V1+(V2-V1)*0.5))))-ymin)/(ymax-ymin)*6.6)+(0.85)+0.5"
+   ],
+   "text": "\\(b\\to a\\)",
+   "role": "hot",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "na3",
+   "at": [
+    "min((lg>0.5 ? 1.55+px0+ln(((V1+(V2-V1)*0.5))/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+(((V1+(V2-V1)*0.5))-xmin)/(xmax-xmin)*(10.4-px0))+(1.9), 11.2)",
+    "(lg>0.5 ? 1.0+ln(((T1/((V1+(V2-V1)*0.5))))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((T1/((V1+(V2-V1)*0.5))))-ymin)/(ymax-ymin)*6.6)+(0.85)"
+   ],
+   "text": "Isothermal",
+   "role": "hot",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "nb3",
+   "at": [
+    "min((lg>0.5 ? 1.55+px0+ln(((V1+(V2-V1)*0.5))/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+(((V1+(V2-V1)*0.5))-xmin)/(xmax-xmin)*(10.4-px0))+(1.9), 11.2)",
+    "(lg>0.5 ? 1.0+ln(((T1/((V1+(V2-V1)*0.5))))/ymin)/ln(ymax/ymin)*6.6 : 1.0+(((T1/((V1+(V2-V1)*0.5))))-ymin)/(ymax-ymin)*6.6)+(0.85)-0.5"
+   ],
+   "text": "compression",
+   "role": "hot",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "point",
+   "id": "pta",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((V1)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 1.0+ln((P1)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((P1)-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "role": "wall",
+   "r": 5
+  },
+  {
+   "type": "text",
+   "id": "cla",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((V1)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1)-xmin)/(xmax-xmin)*(10.4-px0))+(-0.5)",
+    "(lg>0.5 ? 1.0+ln((P1)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((P1)-ymin)/(ymax-ymin)*6.6)+(0.45)"
+   ],
+   "text": "\\(a\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "point",
+   "id": "ptb",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((V2)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V2)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 1.0+ln((P2)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((P2)-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "role": "wall",
+   "r": 5
+  },
+  {
+   "type": "text",
+   "id": "clb",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((V2)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V2)-xmin)/(xmax-xmin)*(10.4-px0))+(0.45)",
+    "(lg>0.5 ? 1.0+ln((P2)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((P2)-ymin)/(ymax-ymin)*6.6)+(0.5)"
+   ],
+   "text": "\\(b\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "point",
+   "id": "ptc",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((V3)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V3)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 1.0+ln((P3)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((P3)-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "role": "wall",
+   "r": 5
+  },
+  {
+   "type": "text",
+   "id": "clc",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((V3)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V3)-xmin)/(xmax-xmin)*(10.4-px0))+(0.45)",
+    "(lg>0.5 ? 1.0+ln((P3)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((P3)-ymin)/(ymax-ymin)*6.6)+(-0.5)"
+   ],
+   "text": "\\(c\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "point",
+   "id": "ptd",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((V4)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V4)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 1.0+ln((P4)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((P4)-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "role": "wall",
+   "r": 5
+  },
+  {
+   "type": "text",
+   "id": "cld",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((V4)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V4)-xmin)/(xmax-xmin)*(10.4-px0))+(-0.5)",
+    "(lg>0.5 ? 1.0+ln((P4)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((P4)-ymin)/(ymax-ymin)*6.6)+(-0.5)"
+   ],
+   "text": "\\(d\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "cw",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((cwV)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((cwV)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 1.0+ln((cwP)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((cwP)-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "text": "\\(\\circlearrowleft\\)",
+   "role": "work",
+   "size": "l",
+   "bold": true,
+   "layer": "front"
+  },
+  {
+   "type": "point",
+   "id": "live",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((V)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 1.0+ln((P)/ymin)/ln(ymax/ymin)*6.6 : 1.0+((P)-ymin)/(ymax-ymin)*6.6)"
+   ],
+   "role": "me",
+   "r": 8,
+   "layer": "front"
+  },
+  {
+   "type": "rect",
+   "id": "slabH0",
+   "x": 0.3,
+   "y": 13.55,
+   "w": 8.5,
+   "h": 0.9,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "rect",
+   "id": "slabH",
+   "x": 0.3,
+   "y": 13.55,
+   "w": 8.5,
+   "h": 0.9,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2.5,
+   "visible": "hotOn>0.5"
+  },
+  {
+   "type": "rect",
+   "id": "slabC0",
+   "x": 0.3,
+   "y": 9.8,
+   "w": 8.5,
+   "h": 0.9,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "rect",
+   "id": "slabC",
+   "x": 0.3,
+   "y": 9.8,
+   "w": 8.5,
+   "h": 0.9,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 2.5,
+   "visible": "coldOn>0.5"
+  },
+  {
+   "type": "text",
+   "id": "slH",
+   "at": [
+    4.55,
+    14.0
+   ],
+   "text": "HOT RESERVOIR  \\(T_1 = {{T1|0}}\\) K",
+   "role": "hot",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "slC",
+   "at": [
+    4.55,
+    10.25
+   ],
+   "text": "COLD RESERVOIR  \\(T_2 = {{T2|0}}\\) K",
+   "role": "cold",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "insT",
+   "x": 0.3,
+   "y": 12.989999999999998,
+   "w": 8.5,
+   "h": 0.5200000000000015,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.3,
+   "strokeWidth": 1.5,
+   "visible": "insOn>0.5"
+  },
+  {
+   "type": "rect",
+   "id": "insB",
+   "x": 0.3,
+   "y": 10.74,
+   "w": 8.5,
+   "h": 0.569999999999999,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.3,
+   "strokeWidth": 1.5,
+   "visible": "insOn>0.5"
+  },
+  {
+   "type": "text",
+   "id": "insL",
+   "at": [
+    4.55,
+    13.25
+   ],
+   "text": "INSULATED",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "visible": "insOn>0.5"
+  },
+  {
+   "type": "vector",
+   "id": "hq0",
+   "from": [
+    1.4,
+    12.399999999999999
+   ],
+   "to": [
+    1.4,
+    13.5
+   ],
+   "role": "hot",
+   "strokeWidth": 6,
+   "visible": "hotOn>0.5",
+   "layer": "front"
+  },
+  {
+   "type": "vector",
+   "id": "cq0",
+   "from": [
+    1.4,
+    10.750000000000002
+   ],
+   "to": [
+    1.4,
+    11.9
+   ],
+   "role": "cold",
+   "strokeWidth": 6,
+   "visible": "coldOn>0.5",
+   "layer": "front"
+  },
+  {
+   "type": "vector",
+   "id": "hq1",
+   "from": [
+    3.1,
+    12.399999999999999
+   ],
+   "to": [
+    3.1,
+    13.5
+   ],
+   "role": "hot",
+   "strokeWidth": 6,
+   "visible": "hotOn>0.5",
+   "layer": "front"
+  },
+  {
+   "type": "vector",
+   "id": "cq1",
+   "from": [
+    3.1,
+    10.750000000000002
+   ],
+   "to": [
+    3.1,
+    11.9
+   ],
+   "role": "cold",
+   "strokeWidth": 6,
+   "visible": "coldOn>0.5",
+   "layer": "front"
+  },
+  {
+   "type": "vector",
+   "id": "hq2",
+   "from": [
+    4.8,
+    12.399999999999999
+   ],
+   "to": [
+    4.8,
+    13.5
+   ],
+   "role": "hot",
+   "strokeWidth": 6,
+   "visible": "hotOn>0.5",
+   "layer": "front"
+  },
+  {
+   "type": "vector",
+   "id": "cq2",
+   "from": [
+    4.8,
+    10.750000000000002
+   ],
+   "to": [
+    4.8,
+    11.9
+   ],
+   "role": "cold",
+   "strokeWidth": 6,
+   "visible": "coldOn>0.5",
+   "layer": "front"
+  },
+  {
+   "type": "polyline",
+   "id": "cyl",
+   "pts": [
+    [
+     6.65,
+     12.95
+    ],
+    [
+     0.3,
+     12.95
+    ],
+    [
+     0.3,
+     11.35
+    ],
+    [
+     6.65,
+     11.35
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 4
+  },
+  {
+   "type": "rect",
+   "id": "pis",
+   "x": "L",
+   "y": 11.299999999999999,
+   "w": 0.4,
+   "h": 1.6999999999999997,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "segment",
+   "id": "rod",
+   "from": [
+    "L+0.4",
+    12.149999999999999
+   ],
+   "to": [
+    "L+1.5",
+    12.149999999999999
+   ],
+   "role": "pis",
+   "strokeWidth": 5
+  },
+  {
+   "type": "rect",
+   "id": "hdl",
+   "x": "L+1.5",
+   "y": 11.7,
+   "w": 0.3,
+   "h": 0.9,
+   "role": "pis",
+   "fill": true,
+   "fillOpacity": 0.7,
+   "strokeWidth": 2
+  },
+  {
+   "type": "gas",
+   "id": "g",
+   "x0": 0.3,
+   "x1": "L",
+   "y0": 11.35,
+   "y1": 12.95,
+   "n": 30,
+   "v": "vg",
+   "bath": 1,
+   "vref": 2.2,
+   "seed": 7,
+   "out": {
+    "vrms": "gv",
+    "P": "gp",
+    "hits": "gh"
+   }
+  },
+  {
+   "type": "vector",
+   "id": "wOut",
+   "from": [
+    "L+1.95",
+    12.149999999999999
+   ],
+   "to": [
+    "L+2.75",
+    12.149999999999999
+   ],
+   "role": "work",
+   "strokeWidth": 6,
+   "visible": "Ve>Vs",
+   "layer": "front"
+  },
+  {
+   "type": "vector",
+   "id": "wIn",
+   "from": [
+    "L+2.75",
+    12.149999999999999
+   ],
+   "to": [
+    "L+1.95",
+    12.149999999999999
+   ],
+   "role": "work",
+   "strokeWidth": 6,
+   "visible": "Ve<Vs",
+   "layer": "front"
+  },
+  {
+   "type": "text",
+   "id": "wLab",
+   "at": [
+    "L+2.35",
+    12.7
+   ],
+   "text": "W",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "visible": "Ve>Vs || Ve<Vs"
+  },
+  {
+   "type": "text",
+   "id": "h1_0",
+   "at": [
+    6.45,
+    9.4
+   ],
+   "text": "\\(a\\to d\\)  Adiabatic expansion",
+   "role": "adD",
+   "size": "m",
+   "bold": true,
+   "visible": "leg==0"
+  },
+  {
+   "type": "text",
+   "id": "h2_0",
+   "at": [
+    6.45,
+    8.75
+   ],
+   "text": "No heat flow  ·  gas cools \\(T_1\\to T_2\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "visible": "leg==0"
+  },
+  {
+   "type": "text",
+   "id": "h1_1",
+   "at": [
+    6.45,
+    9.4
+   ],
+   "text": "\\(d\\to c\\)  Isothermal expansion",
+   "role": "cold",
+   "size": "m",
+   "bold": true,
+   "visible": "leg==1"
+  },
+  {
+   "type": "text",
+   "id": "h2_1",
+   "at": [
+    6.45,
+    8.75
+   ],
+   "text": "Gas takes heat \\(Q_2\\) IN from the cold box",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "visible": "leg==1"
+  },
+  {
+   "type": "text",
+   "id": "h1_2",
+   "at": [
+    6.45,
+    9.4
+   ],
+   "text": "\\(c\\to b\\)  Adiabatic compression",
+   "role": "adB",
+   "size": "m",
+   "bold": true,
+   "visible": "leg==2"
+  },
+  {
+   "type": "text",
+   "id": "h2_2",
+   "at": [
+    6.45,
+    8.75
+   ],
+   "text": "No heat flow  ·  gas warms \\(T_2\\to T_1\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "visible": "leg==2"
+  },
+  {
+   "type": "text",
+   "id": "h1_3",
+   "at": [
+    6.45,
+    9.4
+   ],
+   "text": "\\(b\\to a\\)  Isothermal compression",
+   "role": "hot",
+   "size": "m",
+   "bold": true,
+   "visible": "leg==3"
+  },
+  {
+   "type": "text",
+   "id": "h2_3",
+   "at": [
+    6.45,
+    8.75
+   ],
+   "text": "Gas dumps heat \\(Q_1\\) OUT to the hot room",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "visible": "leg==3"
+  },
+  {
+   "type": "segment",
+   "id": "bbase",
+   "from": [
+    9.3,
+    10.05
+   ],
+   "to": [
+    12.85,
+    10.05
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "rect",
+   "id": "bar0",
+   "x": 9.45,
+   "y": 10.05,
+   "w": 0.8,
+   "h": "max(0.04, abs(bA)/bmax*2.6)",
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "bn0",
+   "at": [
+    9.85,
+    13.649999999999999
+   ],
+   "text": "\\(Q_2\\)",
+   "role": "cold",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "bv0",
+   "at": [
+    9.85,
+    "10.05+max(0.04, abs(bA)/bmax*2.6)+0.32"
+   ],
+   "text": "{{bA|int}}",
+   "role": "cold",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "bar1",
+   "x": 10.649999999999999,
+   "y": 10.05,
+   "w": 0.8,
+   "h": "max(0.04, abs(bW)/bmax*2.6)",
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "bn1",
+   "at": [
+    11.049999999999999,
+    13.649999999999999
+   ],
+   "text": "\\(W\\)",
+   "role": "work",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "bv1",
+   "at": [
+    11.049999999999999,
+    "10.05+max(0.04, abs(bW)/bmax*2.6)+0.32"
+   ],
+   "text": "{{bW|int}}",
+   "role": "work",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "bar2",
+   "x": 11.85,
+   "y": 10.05,
+   "w": 0.8,
+   "h": "max(0.04, abs(bB)/bmax*2.6)",
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "bn2",
+   "at": [
+    12.25,
+    13.649999999999999
+   ],
+   "text": "\\(Q_1\\)",
+   "role": "hot",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "bv2",
+   "at": [
+    12.25,
+    "10.05+max(0.04, abs(bB)/bmax*2.6)+0.32"
+   ],
+   "text": "{{bB|int}}",
+   "role": "hot",
+   "size": "s",
+   "bold": true
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Run it backwards",
+   "text": "Take the Carnot loop and go round it **anticlockwise**: \\(a\\to d\\to c\\to b\\to a\\). Every stroke is reversible, so each one now does the opposite. The engine becomes a **refrigerator**: it needs work.",
+   "actions": [
+    {
+     "set": {
+      "ph": 0,
+      "wk": 0
+     },
+     "at": 0
+    }
+   ],
+   "dwell": 5500
+  },
+  {
+   "id": "s1",
+   "title": "a → d: adiabatic expansion",
+   "text": "Insulated, the gas expands and **cools** from \\(T_1\\) to \\(T_2={{T2|0}}\\) K, colder than the cold box.",
+   "actions": [
+    {
+     "set": {
+      "wk": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "ph": 0.995
+     },
+     "at": 0,
+     "dur": 3600
+    }
+   ],
+   "dwell": 5200
+  },
+  {
+   "id": "s2",
+   "title": "d → c: isothermal expansion",
+   "text": "On the cold reservoir the gas expands at \\(T_2\\) and **absorbs** heat \\(Q_2\\) from it. This is the useful stroke: the cold box is being cooled.",
+   "actions": [
+    {
+     "set": {
+      "wk": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "ph": 1.995
+     },
+     "at": 0,
+     "dur": 3600
+    }
+   ],
+   "dwell": 5200
+  },
+  {
+   "id": "s3",
+   "title": "c → b: adiabatic compression",
+   "text": "Insulated again, the piston compresses the gas and it **warms** from \\(T_2\\) to \\(T_1={{T1|0}}\\) K, hotter than the room.",
+   "actions": [
+    {
+     "set": {
+      "wk": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "ph": 2.995
+     },
+     "at": 0,
+     "dur": 3600
+    }
+   ],
+   "dwell": 5200
+  },
+  {
+   "id": "s4",
+   "title": "b → a: isothermal compression",
+   "text": "On the hot reservoir the gas is compressed at \\(T_1\\) and **dumps** heat \\(Q_1\\) into it. Back at \\(a\\): one cycle done.",
+   "actions": [
+    {
+     "set": {
+      "wk": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "ph": 3.995
+     },
+     "at": 0,
+     "dur": 3600
+    }
+   ],
+   "dwell": 5200
+  },
+  {
+   "id": "s5",
+   "title": "Energy balance",
+   "text": "Over the cycle \\(\\Delta U=0\\). Heat in: \\(Q_2={{Q2|0}}\\) J. Heat out: \\(Q_1={{Q1|0}}\\) J. So the work **done on** the gas is \\(W=Q_1-Q_2={{Wn|0}}\\) J (the area of the loop, now an input).",
+   "actions": [
+    {
+     "set": {
+      "ph": 4,
+      "wk": 1
+     },
+     "at": 0
+    }
+   ],
+   "dwell": 6000
+  },
+  {
+   "id": "s6",
+   "title": "Coefficient of performance",
+   "text": "A fridge is judged by the heat it removes per joule of work: \\(\\text{CP}=\\dfrac{Q_2}{W}=\\dfrac{Q_2}{Q_1-Q_2}\\). With \\(Q_2/Q_1=T_2/T_1\\) this gives \\(\\text{CP}=\\dfrac{T_2}{T_1-T_2}={{cp|2}}\\). The smaller the temperature gap, the more heat per joule.",
+   "actions": [
+    {
+     "set": {
+      "ph": 4,
+      "wk": 1
+     },
+     "at": 0
+    }
+   ],
+   "dwell": 7000
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Heat taken from cold (Q₂)",
+   "value": "{{Q2|0}} J",
+   "role": "cold"
+  },
+  {
+   "label": "Work put in (W)",
+   "value": "{{Wn|0}} J",
+   "role": "work"
+  },
+  {
+   "label": "Heat dumped to hot (Q₁)",
+   "value": "{{Q1|0}} J",
+   "role": "hot"
+  },
+  {
+   "label": "CP = Q₂ / W",
+   "value": "{{cp|2}}",
+   "role": "ans"
+  }
+ ],
+ "presets": [
+  {
+   "name": "Textbook: 500 K and 300 K",
+   "values": {
+    "T1": 500,
+    "T2": 300,
+    "Vr": 2.0
+   }
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Coefficient of performance",
+   "tex": "\\text{CP}=\\dfrac{Q_2}{W}=\\dfrac{T_2}{T_1-T_2}",
+   "text": "For a reversed Carnot engine (an ideal refrigerator).",
+   "filled": "\\text{CP}=\\dfrac{ {{T2|0}} }{ {{T1|0}}-{{T2|0}} } = {{cp|2}}"
+  },
+  {
+   "title": "Energy balance",
+   "tex": "W = Q_1 - Q_2",
+   "text": "Work done on the gas, heat \\(Q_2\\) taken in at \\(T_2\\), heat \\(Q_1\\) rejected at \\(T_1\\)."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "An ideal refrigerator works between \\(T_2=300\\) K and \\(T_1=500\\) K. Find its coefficient of performance.",
+   "answer": 1.5,
+   "hint": "Use \\(T_2/(T_1-T_2)\\).",
+   "explain": "\\(\\text{CP}=300/(500-300)=1.5\\).",
+   "set": {
+    "T1": 500,
+    "T2": 300
+   }
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "In a refrigerator, heat flows from cold to hot. Why is that allowed?",
+   "options": [
+    {
+     "id": "a",
+     "label": "It is not allowed"
+    },
+    {
+     "id": "b",
+     "label": "Because work is done on the gas"
+    },
+    {
+     "id": "c",
+     "label": "Because \\(\\Delta U\\) is positive"
+    }
+   ],
+   "answer": "b",
+   "hint": "Think of the second law wording: \"by itself\".",
+   "explain": "Heat cannot flow cold → hot **by itself**. With work supplied by a motor it can."
+  }
+ ],
+ "takeaways": [
+  "Reverse the Carnot loop and it becomes a refrigerator: \\(W\\) in, \\(Q_2\\) from cold, \\(Q_1\\) to hot.",
+  "\\(W=Q_1-Q_2\\) as before.",
+  "\\(\\text{CP}=T_2/(T_1-T_2)\\)."
+ ],
+ "notes": [
+  {
+   "title": "Temperatures on the graph",
+   "text": "A household fridge works between temperatures much closer than the ones in the sliders; the loop would be too thin to see, so the sliders keep a wide gap."
+  }
+ ]
+}

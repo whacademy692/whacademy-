@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Carnot engine in 3D · W.H. Academy</title>
+<meta name="description" content="Rotate a 3D Carnot engine: cylinder, piston, hot and cold reservoirs, with the live P–V loop. Class 11 Physics, Heat and Thermodynamics.">
+<style>
+  :root{--ink:#0f172a;--mut:#64748b;--hot:#ea580c;--cold:#2563eb;--adb:#7c3aed;--add:#db2777;--work:#d97706;--ok:#16a34a;--bg:#f1f5f9;--card:#fff;--line:#e2e8f0}
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
+  .top{display:flex;align-items:center;gap:10px;padding:10px 14px;background:linear-gradient(90deg,#1e3a8a,#7c3aed);color:#fff}
+  .top a{color:#fff;text-decoration:none;font-weight:700;padding:6px 10px;border:1px solid rgba(255,255,255,.45);border-radius:10px;font-size:13px}
+  .top h1{font-size:16px;margin:0;flex:1}
+  .wrap{max-width:1100px;margin:0 auto;padding:12px;display:grid;gap:12px;grid-template-columns:1fr}
+  @media(min-width:900px){.wrap{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;box-shadow:0 1px 2px rgba(15,23,42,.05)}
+  #view{position:relative;height:min(62vh,430px);overflow:hidden;border-radius:14px;background:radial-gradient(ellipse at 50% 30%,#fff,#e2e8f0);touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+  #view:active{cursor:grabbing}
+  #cam{position:absolute;left:0;top:0;width:0;height:0;transform-style:preserve-3d;perspective:none}
+  #world{position:absolute;left:0;top:0;width:0;height:0;transform-style:preserve-3d}
+  #stage3d{position:absolute;left:50%;top:50%;width:0;height:0;perspective:1100px;perspective-origin:50% 50%;transform-style:preserve-3d}
+  .q{position:absolute;transform-style:preserve-3d;backface-visibility:visible}
+  .bb{position:absolute;white-space:nowrap;font-weight:800;font-size:12px;pointer-events:none;transform-style:flat;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff}
+  .pt{position:absolute;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;border-radius:50%;pointer-events:none}
+  .ctl{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;align-items:center}
+  button,.chip{font:inherit;font-weight:700;font-size:13px;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:10px;padding:7px 11px;cursor:pointer}
+  button.on{background:#1e3a8a;color:#fff;border-color:#1e3a8a}
+  button.s0{border-color:var(--hot);color:var(--hot)} button.s1{border-color:var(--adb);color:var(--adb)} button.s2{border-color:var(--cold);color:var(--cold)} button.s3{border-color:var(--add);color:var(--add)}
+  button.s0.on{background:var(--hot);color:#fff} button.s1.on{background:var(--adb);color:#fff} button.s2.on{background:var(--cold);color:#fff} button.s3.on{background:var(--add);color:#fff}
+  input[type=range]{width:100%;accent-color:#7c3aed}
+  .row{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center;margin-top:8px;font-size:13px}
+  #pv{width:100%;height:auto;aspect-ratio:13/10;border:1px solid var(--line);border-radius:12px;background:#fff}
+  .stat{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px}
+  .stat div{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:6px 8px;font-size:12px;color:var(--mut)}
+  .stat b{display:block;font-size:15px;color:var(--ink)}
+  h2{font-size:15px;margin:0 0 6px} p{margin:6px 0}
+  #name{font-weight:800;font-size:16px} .eqn{font-family:ui-monospace,Menlo,Consolas,monospace;background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:6px 9px;margin:6px 0;font-size:13px}
+  .tag{display:inline-block;font-size:11px;font-weight:800;background:#fef3c7;color:#92400e;border-radius:999px;padding:2px 8px}
+  noscript{display:block;padding:20px}
+</style>
+</head>
+<body>
+<div class="top"><a href="animations.html">‹ Animations</a><h1>Carnot engine in 3D</h1></div>
+<div class="wrap">
+  <div class="card">
+    <div id="view" aria-label="3D model of a Carnot engine. Drag to rotate."><div id="stage3d"><div id="cam"><div id="world"></div></div></div></div>
+    <div class="ctl" id="strokes">
+      <button class="s0" data-s="0">a→b</button><button class="s1" data-s="1">b→c</button><button class="s2" data-s="2">c→d</button><button class="s3" data-s="3">d→a</button>
+      <button id="play" class="on">⏸ Pause</button><button id="spin">⟳ Spin</button>
+    </div>
+    <div class="ctl" id="views"><span class="chip" style="border:0;padding-left:0">View:</span>
+      <button data-v="iso">3D</button><button data-v="front">Front</button><button data-v="side">Side</button><button data-v="top">Top</button>
+    </div>
+    <div class="row"><span>Cycle</span><input id="ph" type="range" min="0" max="3.999" step="0.001" value="0"><span id="phv">0.00</span></div>
+    <div class="row"><span>Hot T₁</span><input id="t1" type="range" min="480" max="800" step="10" value="600"><span id="t1v">600 K</span></div>
+    <div class="row"><span>Cold T₂</span><input id="t2" type="range" min="260" max="320" step="10" value="300"><span id="t2v">300 K</span></div>
+    <p style="color:var(--mut);font-size:12px;margin-top:8px">Drag the model to rotate it. Pinch or use the buttons for preset views. The gas colour shows its temperature (blue = cold, red = hot).</p>
+  </div>
+  <div style="display:grid;gap:12px;align-content:start">
+    <div class="card">
+      <div id="name">—</div>
+      <div id="sub" style="color:var(--mut)"></div>
+      <div class="eqn" id="eqn"></div>
+      <div class="stat">
+        <div>Temperature<b id="sT">—</b></div><div>Volume<b id="sV">—</b></div><div>Pressure<b id="sP">—</b></div>
+        <div>Heat in so far<b id="sQ">—</b></div><div>Work by gas so far<b id="sW">—</b></div><div>Internal energy change<b id="sU">—</b></div>
+      </div>
+    </div>
+    <div class="card"><h2>P–V graph (clockwise = engine)</h2><canvas id="pv" width="520" height="400"></canvas>
+      <p style="font-size:12px;color:var(--mut)">1 mol of ideal gas. Net work per cycle = area of the loop = Q₁ − Q₂. Efficiency η = 1 − T₂/T₁ = <b id="eta">—</b>.
+      <span class="tag">Adiabats drawn with γ = 5/3 (beyond the book)</span></p></div>
+  </div>
+</div>
+<script>
+(function(){
+'use strict';
+var Rg=8.314, gm=5/3, N=32, R=62, LC=330, PR=8;
+var T1=600, T2=300, Vr=2.2, ph=0, playing=true, spin=false;
+var rx=-20, ry=-32, tx=-20, ty=-32, drag=null, last=0;
+var COL=['#ea580c','#7c3aed','#2563eb','#db2777'];
+var NAMES=['a → b  Isothermal expansion','b → c  Adiabatic expansion','c → d  Isothermal compression','d → a  Adiabatic compression'];
+var SUBS=['Hot reservoir touches the cylinder. Heat Q₁ flows IN, T stays T₁.','Insulated. No heat flows. The gas cools from T₁ to T₂.','Cold reservoir touches the cylinder. Heat Q₂ flows OUT, T stays T₂.','Insulated. No heat flows. The gas warms from T₂ to T₁.'];
+var EQ=['Q₁ = W = nRT₁ ln(V₂/V₁),  ΔU = 0','Q = 0,  ΔU = −W','Q₂ = nRT₂ ln(V₃/V₄),  ΔU = 0','Q = 0,  ΔU = −W  (W < 0)'];
+var world=document.getElementById('world'), cam=document.getElementById('cam'), view=document.getElementById('view');
+
+/* ---------- geometry helpers ---------- */
+function el(cls,css,parent){var d=document.createElement('div');d.className=cls;if(css)d.style.cssText=css;(parent||world).appendChild(d);return d}
+function box(w,h,d,color,op,parent){ // centred box built from 6 quads
+  var g=el('q','width:0;height:0',parent), f=[];
+  var defs=[[w,h,'translateZ('+d/2+'px)'],[w,h,'rotateY(180deg) translateZ('+d/2+'px)'],[d,h,'rotateY(90deg) translateZ('+w/2+'px)'],[d,h,'rotateY(-90deg) translateZ('+w/2+'px)'],[w,d,'rotateX(90deg) translateZ('+h/2+'px)'],[w,d,'rotateX(-90deg) translateZ('+h/2+'px)']];
+  defs.forEach(function(q){var e=el('q','left:'+(-q[0]/2)+'px;top:'+(-q[1]/2)+'px;width:'+q[0]+'px;height:'+q[1]+'px;transform:'+q[2]+';background:'+color+';opacity:'+op+';border:1px solid rgba(15,23,42,.25)',g);f.push(e)});
+  g.faces=f; g.setColor=function(c,o){f.forEach(function(e){e.style.background=c;e.style.opacity=o})}; return g;
+}
+function disc(r,color,op,parent,rim){var e=el('q','left:'+(-r)+'px;top:'+(-r)+'px;width:'+(2*r)+'px;height:'+(2*r)+'px;border-radius:50%;background:'+color+';opacity:'+op+';border:'+(rim||2)+'px solid rgba(15,23,42,.35)',parent);return e}
+
+/* ---------- scene ---------- */
+var hot=box(LC*0.86,26,2*R*0.92,'#fb923c',.45); hot.style.transform='translate3d(0,'+(-(R+13+2))+'px,0)';
+var cold=box(LC*0.86,26,2*R*0.92,'#60a5fa',.45); cold.style.transform='translate3d(0,'+((R+13+2))+'px,0)';
+var insT=box(LC*0.86,10,2*R*0.92,'#94a3b8',.8); insT.style.transform='translate3d(0,'+(-(R+5))+'px,0)';
+var insB=box(LC*0.86,10,2*R*0.92,'#94a3b8',.8); insB.style.transform='translate3d(0,'+((R+5))+'px,0)';
+// cylinder shell (axis along x)
+var shell=el('q','width:0;height:0');
+for(var i=0;i<N;i++){var a=i*360/N, sw=2*Math.PI*R/N*1.04;
+  el('q','left:'+(-LC/2)+'px;top:'+(-sw/2)+'px;width:'+LC+'px;height:'+sw+'px;background:rgba(148,163,184,.22);border-top:1px solid rgba(71,85,105,.35);transform:rotateX('+a+'deg) translateZ('+R+'px)',shell)}
+var capL=el('q','width:0;height:0;transform:translateX('+(-LC/2)+'px) rotateY(90deg)'); disc(R,'rgba(148,163,184,.55)',1,capL,3);
+// piston group (translated along x)
+var pis=el('q','width:0;height:0');
+var pd=el('q','width:0;height:0;transform:rotateY(90deg)',pis); disc(R-2,'rgba(124,58,237,.85)',1,pd,3);
+var pd2=el('q','width:0;height:0;transform:translateX(10px) rotateY(90deg)',pis); disc(R-2,'rgba(124,58,237,.7)',1,pd2,3);
+var rod=el('q','left:10px;top:-4px;width:150px;height:8px;background:#6d28d9;border:1px solid #4c1d95;transform:translateZ(0)',pis);
+var rod2=el('q','left:10px;top:-4px;width:150px;height:8px;background:#6d28d9;border:1px solid #4c1d95;transform:rotateX(90deg)',pis);
+var hdl=el('q','width:0;height:0;transform:translateX('+(165)+'px) rotateY(90deg)',pis); disc(18,'#7c3aed',1,hdl,3);
+// work arrow (billboard-like flat arrow, always faces front of the world)
+var wArrow=el('bb','left:0;top:0;font-size:22px;color:#d97706',pis); wArrow.textContent='';
+// particles
+var parts=[];
+for(var k=0;k<38;k++){var p={x:Math.random(),y:(Math.random()*2-1),z:(Math.random()*2-1),vx:(Math.random()*2-1),vy:(Math.random()*2-1),vz:(Math.random()*2-1),e:el('pt')};parts.push(p)}
+// labels (billboards)
+var labs={};
+function lab(id,text,color,x,y,z){var e=el('bb','color:'+color);e.textContent=text;e._p=[x,y,z];labs[id]=e;return e}
+lab('hot','HOT  T₁','#c2410c',0,-(R+13+2)-24,0); lab('cold','COLD  T₂','#1d4ed8',0,(R+13+2)+24,0);
+lab('gas','GAS','#0369a1',-LC/2+60,0,0); lab('pis','PISTON','#6d28d9',0,-R-8,0); lab('ins','INSULATED','#475569',0,0,0);
+lab('w','W','#b45309',0,0,0);
+lab('q1','Q₁ ↓','#c2410c',-60,-(R+13+2)+4,0); lab('q2','Q₂ ↓','#1d4ed8',-60,(R+13+2)-8,0);
+
+/* ---------- physics (same numbers as the animations) ---------- */
+function derive(){var kk=Math.pow(T1/T2,1/(gm-1));return{kk:kk,V1:1,V2:Vr,V3:Vr*kk,V4:kk}}
+function state(p){
+  var d=derive(),leg=Math.min(3,Math.floor(p)),f=p-leg,V,T,iso;
+  if(leg===0){V=d.V1+(d.V2-d.V1)*f;T=T1;iso=1}
+  else if(leg===1){V=d.V2+(d.V3-d.V2)*f;T=T1*Math.pow(d.V2/V,gm-1);iso=0}
+  else if(leg===2){V=d.V3+(d.V4-d.V3)*f;T=T2;iso=1}
+  else{V=d.V4+(d.V1-d.V4)*f;T=T2*Math.pow(d.V4/V,gm-1);iso=0}
+  var Vs=[d.V1,d.V2,d.V3,d.V4][leg],Ts=[T1,T1,T2,T2][leg];
+  var dU=iso?0:1.5*Rg*(T-Ts),W=iso?Rg*T*Math.log(V/Vs):-dU,Q=iso?W:0;
+  var Q1=Rg*T1*Math.log(Vr),Q2=Rg*T2*Math.log(Vr);
+  var bA=leg<1?Q:Q1; // heat in so far
+  var bW=(leg<1?Q:Q1)-(leg<1.5?0:(leg<2.5?-Q:Q2))-1.5*Rg*(T-T1);
+  return{leg:leg,f:f,V:V,T:T,P:T/V,iso:iso,d:d,bA:bA,bW:bW,dUc:1.5*Rg*(T-T1)};
+}
+function Pat(kind,ref,V){return kind==='iso'?ref/V:ref[1]*Math.pow(ref[0]/V,gm)}
+
+/* ---------- drawing ---------- */
+function colourFor(T){var t=(T-T2)/(T1-T2);t=Math.max(0,Math.min(1,t));return 'hsl('+(210-210*t)+',90%,52%)'}
+function applyCam(){var k=Math.max(.5,Math.min(1.25,view.clientWidth/470));world.style.transform='scale('+k+') rotateX('+rx+'deg) rotateY('+ry+'deg)'}
+function bill(e,x,y,z){e.style.transform='translate3d('+x+'px,'+y+'px,'+z+'px) rotateY('+(-ry)+'deg) rotateX('+(-rx)+'deg) translate(-50%,-50%)'}
+function frame(dt){
+  if(playing){ph+=dt*0.22;if(ph>=4)ph-=4}
+  if(spin&&!drag){ry+=dt*28;tx=rx;ty=ry}
+  else if(!drag){rx+=(tx-rx)*Math.min(1,dt*7);ry+=(ty-ry)*Math.min(1,dt*7)}
+  applyCam();
+  var s=state(Math.min(ph,3.9999)),d=s.d,col=colourFor(s.T);
+  var xl=-LC/2, xp=xl+34+(s.V/d.V3)*(LC-70);
+  pis.style.transform='translateX('+xp+'px)';
+  // reservoirs light up when in contact
+  var hotOn=s.leg===0,coldOn=s.leg===2;
+  hot.setColor(hotOn?'#f97316':'#fed7aa',hotOn?.6:.3); cold.setColor(coldOn?'#3b82f6':'#bfdbfe',coldOn?.6:.3);
+  var ins=(!hotOn&&!coldOn);insT.style.display=insB.style.display=ins?'':'none';
+  // particles
+  var sp=0.35+0.85*Math.sqrt(s.T/T2)*0.7;
+  parts.forEach(function(p){
+    p.x+=p.vx*dt*sp*0.9; p.y+=p.vy*dt*sp*0.9; p.z+=p.vz*dt*sp*0.9;
+    if(p.y*p.y+p.z*p.z>1){var n=Math.hypot(p.y,p.z);var ny=p.y/n,nz=p.z/n;var dot=p.vy*ny+p.vz*nz;p.vy-=2*dot*ny;p.vz-=2*dot*nz;p.y=ny*.98;p.z=nz*.98}
+    if(p.x<0){p.x=0;p.vx=Math.abs(p.vx)} if(p.x>1){p.x=1;p.vx=-Math.abs(p.vx)}
+    var X=xl+6+p.x*(xp-xl-14), Y=p.y*(R-8), Z=p.z*(R-8);
+    p.e.style.background=col; bill(p.e,X,Y,Z);
+  });
+  // labels
+  bill(labs.hot,0,-(R+13+2)-26,0); bill(labs.cold,0,(R+13+2)+26,0);
+  bill(labs.gas,(xl+xp)/2,0,0); labs.gas.style.color=hotOn?'#c2410c':(coldOn?'#1d4ed8':'#0369a1');
+  bill(labs.pis,xp+5,-R-14,0);
+  labs.ins.style.display=ins?'':'none'; bill(labs.ins,0,-(R+8)-18,0);
+  labs.w.textContent=s.leg===0||s.leg===1?'W out →':'← W in'; bill(labs.w,xp+95,-24,0);
+  labs.q1.style.display=hotOn?'':'none'; labs.q2.style.display=coldOn?'':'none';
+  labs.q1.textContent='Q₁ '+'↓'; labs.q2.textContent='Q₂ '+'↓';
+  bill(labs.q1,-60,-(R+13+2)+40,0); bill(labs.q2,-60,(R+13+2)-40,0);
+  // text panel
+  var L=s.leg; document.getElementById('name').textContent=NAMES[L]; document.getElementById('name').style.color=COL[L];
+  document.getElementById('sub').textContent=SUBS[L]; document.getElementById('eqn').textContent=EQ[L];
+  document.getElementById('sT').textContent=Math.round(s.T)+' K'; document.getElementById('sV').textContent=(s.V/d.V1).toFixed(2)+' V₁'; document.getElementById('sP').textContent=(s.P/T1).toFixed(2)+' P₁';
+  var Q1=Rg*T1*Math.log(Vr), Q2=Rg*T2*Math.log(Vr);
+  document.getElementById('sQ').textContent=Math.round(s.bA)+' J'; document.getElementById('sW').textContent=Math.round(s.bW)+' J';
+  document.getElementById('sU').textContent=Math.round(s.dUc)+' J';
+  document.getElementById('eta').textContent=((1-T2/T1)*100).toFixed(1)+' %';
+  document.getElementById('ph').value=Math.min(ph,3.999); document.getElementById('phv').textContent=ph.toFixed(2);
+  [].forEach.call(document.querySelectorAll('#strokes button[data-s]'),function(b){b.classList.toggle('on',+b.dataset.s===L)});
+  drawPV(s);
+}
+
+/* ---------- P–V canvas ---------- */
+var cv=document.getElementById('pv'),cx=cv.getContext('2d');
+function drawPV(s){
+  var d=derive(),W=cv.width,H=cv.height,pad={l:58,r:20,t:26,b:42};
+  var P1=T1,P2=T1/d.V2,P3=T2/d.V3,P4=T2/d.V4;
+  var xmin=.8,xmax=d.V3*1.18,ymin=P3*.7,ymax=P1*1.12;
+  function X(v){return pad.l+(v-xmin)/(xmax-xmin)*(W-pad.l-pad.r)} function Y(p){return H-pad.b-(p-ymin)/(ymax-ymin)*(H-pad.t-pad.b)}
+  cx.clearRect(0,0,W,H); cx.lineWidth=2; cx.strokeStyle='#475569'; cx.fillStyle='#475569'; cx.font='600 15px system-ui';
+  cx.beginPath();cx.moveTo(pad.l,pad.t-6);cx.lineTo(pad.l,H-pad.b);cx.lineTo(W-pad.r+6,H-pad.b);cx.stroke(); cx.fillText('P',pad.l-22,pad.t+4); cx.fillText('V',W-pad.r-6,H-pad.b+30);
+  var legs=[['iso',T1,d.V1,d.V2],['adi',[d.V2,P2],d.V2,d.V3],['iso',T2,d.V3,d.V4],['adi',[d.V4,P4],d.V4,d.V1]];
+  var done=s.leg+s.f;
+  // loop area when a full cycle is shown
+  cx.beginPath();for(var i=0;i<=60;i++){var v=d.V1+(d.V2-d.V1)*i/60;cx.lineTo(X(v),Y(T1/v))}
+  for(i=0;i<=60;i++){v=d.V2+(d.V3-d.V2)*i/60;cx.lineTo(X(v),Y(P2*Math.pow(d.V2/v,gm)))}
+  for(i=0;i<=60;i++){v=d.V3+(d.V4-d.V3)*i/60;cx.lineTo(X(v),Y(T2/v))}
+  for(i=0;i<=60;i++){v=d.V4+(d.V1-d.V4)*i/60;cx.lineTo(X(v),Y(P4*Math.pow(d.V4/v,gm)))}
+  cx.closePath();cx.fillStyle='rgba(217,119,6,.22)';cx.fill();
+  legs.forEach(function(g,j){
+    cx.beginPath();cx.strokeStyle=COL[j];cx.globalAlpha=j<s.leg+(s.f>0?1:0)?1:.35;cx.lineWidth=j===s.leg?6:4;
+    for(var i=0;i<=60;i++){var f=i/60,v=g[2]+(g[3]-g[2])*f,p=Pat(g[0],g[1],v);(i?cx.lineTo:cx.moveTo).call(cx,X(v),Y(p))}
+    cx.stroke();cx.globalAlpha=1;
+    // arrowhead at the middle (direction of travel)
+    var f1=.46,f2=.54,va=g[2]+(g[3]-g[2])*f1,vb=g[2]+(g[3]-g[2])*f2;
+    var ax=X(va),ay=Y(Pat(g[0],g[1],va)),bx=X(vb),by=Y(Pat(g[0],g[1],vb)),an=Math.atan2(by-ay,bx-ax);
+    cx.save();cx.translate(bx,by);cx.rotate(an);cx.fillStyle=COL[j];cx.beginPath();cx.moveTo(10,0);cx.lineTo(-8,-8);cx.lineTo(-8,8);cx.closePath();cx.fill();cx.restore();
+  });
+  cx.font='700 17px system-ui';cx.fillStyle='#0f172a';
+  [['a',d.V1,P1,-16,-8],['b',d.V2,P2,10,-8],['c',d.V3,P3,10,-8],['d',d.V4,P4,-16,16]].forEach(function(c){cx.beginPath();cx.arc(X(c[1]),Y(c[2]),4,0,7);cx.fill();cx.fillText(c[0],X(c[1])+c[3],Y(c[2])+c[4])});
+  cx.font='700 13px system-ui';
+  cx.fillStyle=COL[0];cx.fillText('a→b isothermal',X(1.25)+4,Y(T1/1.25)-14);
+  cx.fillStyle=COL[1];cx.fillText('b→c adiabatic',X(d.V2*1.12)+8,Y(P2*Math.pow(1/1.12,gm))-12);
+  cx.fillStyle=COL[2];cx.fillText('c→d isothermal',X(d.V4*1.12)-4,Y(T2/(d.V4*1.12))+26);
+  cx.fillStyle=COL[3];cx.fillText('d→a adiabatic',X(d.V1)+8,Y(P4*Math.pow(d.V4/(d.V1+(d.V4-d.V1)*.55),gm))+6);
+  cx.fillStyle='#d97706';cx.font='700 26px system-ui';cx.fillText('↻',X((d.V2+d.V4)/2)-9,Y((T1/((d.V2+d.V4)/2)+T2/((d.V2+d.V4)/2))/2)+9);
+  cx.beginPath();cx.fillStyle='#16a34a';cx.arc(X(s.V),Y(s.P),9,0,7);cx.fill();cx.strokeStyle='#fff';cx.lineWidth=2;cx.stroke();
+}
+
+/* ---------- interaction ---------- */
+function setView(v){spin=false;document.getElementById('spin').classList.remove('on');
+  var m={iso:[-20,-32],front:[0,0],side:[0,-90],top:[-88,0]}[v];tx=m[0];ty=m[1]}
+view.addEventListener('pointerdown',function(e){drag={x:e.clientX,y:e.clientY};view.setPointerCapture(e.pointerId);spin=false;document.getElementById('spin').classList.remove('on')});
+view.addEventListener('pointermove',function(e){if(!drag)return;ry+=(e.clientX-drag.x)*0.45;rx-=(e.clientY-drag.y)*0.45;rx=Math.max(-90,Math.min(90,rx));drag={x:e.clientX,y:e.clientY};tx=rx;ty=ry});
+view.addEventListener('pointerup',function(){drag=null}); view.addEventListener('pointercancel',function(){drag=null});
+document.getElementById('views').addEventListener('click',function(e){var v=e.target.dataset&&e.target.dataset.v;if(v)setView(v)});
+document.getElementById('strokes').addEventListener('click',function(e){var s=e.target.dataset&&e.target.dataset.s;if(s!=null){ph=+s+0.02;playing=false;document.getElementById('play').textContent='▶ Play';document.getElementById('play').classList.remove('on')}});
+document.getElementById('play').addEventListener('click',function(){playing=!playing;this.textContent=playing?'⏸ Pause':'▶ Play';this.classList.toggle('on',playing)});
+document.getElementById('spin').addEventListener('click',function(){spin=!spin;this.classList.toggle('on',spin)});
+document.getElementById('ph').addEventListener('input',function(){ph=+this.value;playing=false;var b=document.getElementById('play');b.textContent='▶ Play';b.classList.remove('on')});
+document.getElementById('t1').addEventListener('input',function(){T1=+this.value;if(T1<=T2+100)T1=T2+100;document.getElementById('t1v').textContent=T1+' K'});
+document.getElementById('t2').addEventListener('input',function(){T2=+this.value;document.getElementById('t2v').textContent=T2+' K'});
+
+function loop(t){var dt=Math.min(.05,(t-last)/1000||0);last=t;frame(dt);requestAnimationFrame(loop)}
+if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){playing=false;document.getElementById('play').textContent='▶ Play';document.getElementById('play').classList.remove('on')}
+requestAnimationFrame(loop);
+})();
+</script>
+<noscript>This page needs JavaScript to show the 3D model.</noscript>
+</body>
+</html>

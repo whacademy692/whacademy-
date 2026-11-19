@@ -1,0 +1,810 @@
+{
+ "id": "g11-phys-c8-cn-d4-efficiency",
+ "title": "Derivation: η = 1 − T₂/T₁",
+ "summary": "From η = W/Q₁ to the Carnot efficiency, on a T–S rectangle and an efficiency curve — and why lowering T₂ beats raising T₁.",
+ "alt": "The efficiency W over Q1 is turned into one minus T2 over T1. A temperature versus entropy rectangle shows the work part of the heat, and a curve shows efficiency against T1.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder / axes",
+   "color": "#475569",
+   "text": "Walls of the cylinder and the graph axes.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Isothermal at T₁ (a→b)",
+   "color": "#ea580c",
+   "text": "Heat Q₁ flows IN from the hot reservoir; T stays T₁.",
+   "legend": true
+  },
+  "adB": {
+   "label": "Adiabatic expansion (b→c)",
+   "color": "#7c3aed",
+   "text": "No heat flows; the gas cools from T₁ to T₂.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Isothermal at T₂ (c→d)",
+   "color": "#2563eb",
+   "text": "Heat Q₂ flows OUT to the cold reservoir; T stays T₂.",
+   "legend": true
+  },
+  "adD": {
+   "label": "Adiabatic compression (d→a)",
+   "color": "#db2777",
+   "text": "No heat flows; the gas warms from T₂ to T₁.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by the gas (area under the curve / inside the loop).",
+   "legend": true
+  },
+  "me": {
+   "label": "Live state",
+   "color": "#16a34a",
+   "text": "Where the gas is on the graph right now.",
+   "legend": true
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The result.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "T1",
+   "label": "Hot reservoir \\(T_1\\) (K)",
+   "type": "number",
+   "min": 400,
+   "max": 1000,
+   "step": 10,
+   "default": 500,
+   "unit": "K"
+  },
+  {
+   "id": "T2",
+   "label": "Cold reservoir \\(T_2\\) (K)",
+   "type": "number",
+   "min": 250,
+   "max": 340,
+   "step": 10,
+   "default": 300,
+   "unit": "K"
+  }
+ ],
+ "derived": {
+  "eta": "1-T2/T1",
+  "Q1": "1000",
+  "W": "eta*Q1",
+  "Q2": "Q1-W",
+  "e50": "1-T2/(T1+50)",
+  "e50b": "1-(T2-50)/T1",
+  "XL": "1.6+1.5",
+  "XR": "XL+(5.6)",
+  "Tmx": "T1*1.1",
+  "tY1": "9.0+T1/Tmx*4.7",
+  "tY2": "9.0+T2/Tmx*4.7"
+ },
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "sax",
+   "from": [
+    1.6,
+    9.0
+   ],
+   "to": [
+    12.2,
+    9.0
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "vector",
+   "id": "say",
+   "from": [
+    1.6,
+    9.0
+   ],
+   "to": [
+    1.6,
+    14.2
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "sxl",
+   "at": [
+    12.45,
+    9.05
+   ],
+   "text": "\\(S\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "syl",
+   "at": [
+    1.6500000000000001,
+    14.45
+   ],
+   "text": "\\(T\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "rQ2",
+   "x": "XL",
+   "y": 9.0,
+   "w": "XR-XL",
+   "h": "tY2-9.0",
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.38,
+   "strokeWidth": 0,
+   "stroke": false
+  },
+  {
+   "type": "rect",
+   "id": "rW",
+   "x": "XL",
+   "y": "tY2",
+   "w": "XR-XL",
+   "h": "tY1-tY2",
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 0,
+   "stroke": false
+  },
+  {
+   "type": "segment",
+   "id": "tg1",
+   "from": [
+    1.6,
+    "tY1"
+   ],
+   "to": [
+    "XL",
+    "tY1"
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "tg2",
+   "from": [
+    1.6,
+    "tY2"
+   ],
+   "to": [
+    "XL",
+    "tY2"
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "text",
+   "id": "tt1",
+   "at": [
+    1.0,
+    "tY1"
+   ],
+   "text": "\\(T_1\\)",
+   "role": "hot",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "tt2",
+   "at": [
+    1.0,
+    "tY2"
+   ],
+   "text": "\\(T_2\\)",
+   "role": "cold",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "vector",
+   "id": "sa",
+   "from": [
+    "XL",
+    "tY1"
+   ],
+   "to": [
+    "XR",
+    "tY1"
+   ],
+   "role": "hot",
+   "strokeWidth": 5
+  },
+  {
+   "type": "vector",
+   "id": "sb",
+   "from": [
+    "XR",
+    "tY1"
+   ],
+   "to": [
+    "XR",
+    "tY2"
+   ],
+   "role": "adB",
+   "strokeWidth": 5
+  },
+  {
+   "type": "vector",
+   "id": "sc",
+   "from": [
+    "XR",
+    "tY2"
+   ],
+   "to": [
+    "XL",
+    "tY2"
+   ],
+   "role": "cold",
+   "strokeWidth": 5
+  },
+  {
+   "type": "vector",
+   "id": "sd",
+   "from": [
+    "XL",
+    "tY2"
+   ],
+   "to": [
+    "XL",
+    "tY1"
+   ],
+   "role": "adD",
+   "strokeWidth": 5
+  },
+  {
+   "type": "text",
+   "id": "sla",
+   "at": [
+    "XL-0.45",
+    "tY1+0.4"
+   ],
+   "text": "\\(a\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "slb",
+   "at": [
+    "XR+0.45",
+    "tY1+0.4"
+   ],
+   "text": "\\(b\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "slc",
+   "at": [
+    "XR+0.45",
+    "tY2-0.4"
+   ],
+   "text": "\\(c\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "sld",
+   "at": [
+    "XL-0.45",
+    "tY2-0.4"
+   ],
+   "text": "\\(d\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "rq2",
+   "at": [
+    "(XL+XR)/2",
+    "(9.0+tY2)/2"
+   ],
+   "text": "\\(Q_2\\) = {{Q2|0}} J",
+   "role": "cold",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "rw",
+   "at": [
+    "(XL+XR)/2",
+    "(tY1+tY2)/2"
+   ],
+   "text": "\\(W\\) = {{W|0}} J",
+   "role": "work",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "rq1",
+   "at": [
+    "(XL+XR)/2",
+    "tY1+0.6"
+   ],
+   "text": "\\(Q_1\\) = 1000 J  (the whole box)",
+   "role": "hot",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "rer",
+   "at": [
+    "XR+2.2",
+    "(tY1+tY2)/2+0.3"
+   ],
+   "text": "\\(\\eta=\\dfrac{W}{Q_1}\\)",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "rer2",
+   "at": [
+    "XR+2.2",
+    "(tY1+tY2)/2-0.4"
+   ],
+   "text": "= {{eta*100|1}} %",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s2"
+  },
+  {
+   "type": "vector",
+   "id": "hax",
+   "from": [
+    1.6,
+    4.0
+   ],
+   "to": [
+    12.2,
+    4.0
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "vector",
+   "id": "hay",
+   "from": [
+    1.6,
+    4.0
+   ],
+   "to": [
+    1.6,
+    7.8
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "hyl",
+   "at": [
+    1.6500000000000001,
+    8.05
+   ],
+   "text": "\\(\\eta\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "hxk",
+   "at": [
+    6.699999999999999,
+    3.05
+   ],
+   "text": "\\(T_1\\) in kelvin",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "plot",
+   "id": "ecurve",
+   "x": "(1.6+((t)-300)/700*10.2)",
+   "y": "(4.0+(max(0,1-T2/t))*3.3)",
+   "var": "t",
+   "domain": [
+    300,
+    1000
+   ],
+   "samples": 80,
+   "role": "ans",
+   "strokeWidth": 5,
+   "appear": "s3"
+  },
+  {
+   "type": "segment",
+   "id": "e100",
+   "from": [
+    1.6,
+    "(4.0+(1)*3.3)"
+   ],
+   "to": [
+    11.799999999999999,
+    "(4.0+(1)*3.3)"
+   ],
+   "role": "no",
+   "strokeWidth": 2,
+   "dash": [
+    6,
+    4
+   ],
+   "appear": "s3"
+  },
+  {
+   "type": "text",
+   "id": "e100t",
+   "at": [
+    5.800000000000001,
+    "(4.0+(1)*3.3)+0.35"
+   ],
+   "text": "100 %  (impossible)",
+   "role": "no",
+   "size": "s",
+   "bold": true,
+   "appear": "s3"
+  },
+  {
+   "type": "text",
+   "id": "e50t",
+   "at": [
+    0.9500000000000001,
+    "(4.0+(0.5)*3.3)"
+   ],
+   "text": "50%",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "e0t",
+   "at": [
+    1.1,
+    "(4.0+(0)*3.3)"
+   ],
+   "text": "0",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "segment",
+   "id": "e50l",
+   "from": [
+    1.6,
+    "(4.0+(0.5)*3.3)"
+   ],
+   "to": [
+    11.799999999999999,
+    "(4.0+(0.5)*3.3)"
+   ],
+   "role": "muted",
+   "strokeWidth": 1,
+   "dash": [
+    3,
+    5
+   ],
+   "appear": "s3"
+  },
+  {
+   "type": "text",
+   "id": "et400",
+   "at": [
+    "(1.6+((400)-300)/700*10.2)",
+    3.55
+   ],
+   "text": "400",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "et600",
+   "at": [
+    "(1.6+((600)-300)/700*10.2)",
+    3.55
+   ],
+   "text": "600",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "et800",
+   "at": [
+    "(1.6+((800)-300)/700*10.2)",
+    3.55
+   ],
+   "text": "800",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "et1000",
+   "at": [
+    "(1.6+((1000)-300)/700*10.2)",
+    3.55
+   ],
+   "text": "1000",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "point",
+   "id": "elive",
+   "at": [
+    "(1.6+((T1)-300)/700*10.2)",
+    "(4.0+(eta)*3.3)"
+   ],
+   "role": "me",
+   "r": 8,
+   "layer": "front",
+   "appear": "s3"
+  },
+  {
+   "type": "segment",
+   "id": "elg",
+   "from": [
+    "(1.6+((T1)-300)/700*10.2)",
+    "(4.0+(eta)*3.3)"
+   ],
+   "to": [
+    "(1.6+((T1)-300)/700*10.2)",
+    4.0
+   ],
+   "role": "me",
+   "strokeWidth": 1.5,
+   "dash": [
+    4,
+    4
+   ],
+   "appear": "s3"
+  },
+  {
+   "type": "text",
+   "id": "e0",
+   "at": [
+    6.45,
+    2.3
+   ],
+   "text": "\\(\\eta=\\dfrac{W}{Q_1}=\\dfrac{Q_1-Q_2}{Q_1}=1-\\dfrac{Q_2}{Q_1}\\)",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "e1",
+   "at": [
+    6.45,
+    1.4
+   ],
+   "text": "\\(\\dfrac{Q_2}{Q_1}=\\dfrac{T_2}{T_1}\\ \\Rightarrow\\ \\eta = 1-\\dfrac{T_2}{T_1}\\)",
+   "role": "ans",
+   "size": "l",
+   "bold": true,
+   "appear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "e2",
+   "at": [
+    6.45,
+    0.6
+   ],
+   "text": "\\(\\eta = 1-\\dfrac{ {{T2|0}} }{ {{T1|0}} } = {{eta*100|1}}\\%\\)",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s2"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Define efficiency",
+   "text": "Efficiency is the fraction of the heat taken in that comes out as useful work: \\(\\eta=W/Q_1\\). Over a cycle \\(\\Delta U=0\\), so \\(W=Q_1-Q_2\\), which gives \\(\\eta=1-Q_2/Q_1\\).",
+   "actions": [],
+   "dwell": 6000
+  },
+  {
+   "id": "s1",
+   "title": "Use Q₂/Q₁ = T₂/T₁",
+   "text": "The last derivation gave \\(Q_2/Q_1=T_2/T_1\\). Substitute: \\(\\eta=1-\\dfrac{T_2}{T_1}\\), with both temperatures in kelvin. Only the two reservoir temperatures matter.",
+   "actions": [],
+   "dwell": 6000
+  },
+  {
+   "id": "s2",
+   "title": "Read the rectangle",
+   "text": "The big box is \\(Q_1\\). The blue bottom part (height \\(T_2\\)) is the heat \\(Q_2\\) thrown away; the orange top part (height \\(T_1-T_2\\)) is the work. The efficiency is the **fraction of the box that is orange**: \\(\\dfrac{T_1-T_2}{T_1}\\). Here \\(\\eta={{eta*100|1}}\\%\\).",
+   "actions": [],
+   "dwell": 6500
+  },
+  {
+   "id": "s3",
+   "title": "Efficiency curve",
+   "text": "Keep \\(T_2={{T2|0}}\\) K and raise \\(T_1\\): \\(\\eta\\) climbs, but more and more slowly, and **never reaches 100 %**. Drag \\(T_1\\) and \\(T_2\\) and watch the dot.",
+   "actions": [],
+   "dwell": 6500
+  },
+  {
+   "id": "s4",
+   "title": "Lower T₂ or raise T₁?",
+   "text": "Try the same 50 K both ways. Raising \\(T_1\\) by 50 K gives \\(\\eta={{e50*100|1}}\\%\\); lowering \\(T_2\\) by 50 K gives \\(\\eta={{e50b*100|1}}\\%\\). Lowering \\(T_2\\) wins, because \\(T_2/T_1\\) changes by \\(\\Delta/T_1\\) when \\(T_2\\) falls by \\(\\Delta\\), but only by \\(\\dfrac{T_2}{T_1}\\cdot\\dfrac{\\Delta}{T_1+\\Delta}\\) (smaller, as \\(T_2<T_1\\)) when \\(T_1\\) rises.",
+   "actions": [],
+   "dwell": 8000
+  },
+  {
+   "id": "s5",
+   "title": "Why never 100 %?",
+   "text": "\\(\\eta=1\\) needs \\(T_2=0\\) K or \\(T_1\\to\\infty\\); neither can ever be reached. So even a perfect, frictionless engine must throw some heat \\(Q_2\\) away.",
+   "actions": [],
+   "dwell": 6000
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Efficiency η",
+   "value": "{{eta*100|1}} %",
+   "role": "ans"
+  },
+  {
+   "label": "Work W (per 1000 J in)",
+   "value": "{{W|0}} J",
+   "role": "work"
+  },
+  {
+   "label": "Heat out Q₂",
+   "value": "{{Q2|0}} J",
+   "role": "cold"
+  },
+  {
+   "label": "Raise T₁ by 50 K → η",
+   "value": "{{e50*100|1}} %",
+   "role": "hot"
+  },
+  {
+   "label": "Lower T₂ by 50 K → η",
+   "value": "{{e50b*100|1}} %",
+   "role": "cold"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Carnot efficiency",
+   "tex": "\\eta=\\dfrac{W}{Q_1}=1-\\dfrac{Q_2}{Q_1}=1-\\dfrac{T_2}{T_1}",
+   "text": "Kelvin temperatures. Independent of the working substance.",
+   "filled": "\\eta = 1-\\dfrac{ {{T2|0}} }{ {{T1|0}} } = {{eta*100|1}}\\%"
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A Carnot engine works between \\(500\\) K and \\(300\\) K. What is its efficiency in %?",
+   "answer": 40,
+   "hint": "Use \\(\\eta=1-T_2/T_1\\).",
+   "explain": "\\(\\eta=1-300/500=0.40=40\\%\\).",
+   "unit": "%",
+   "set": {
+    "T1": 500,
+    "T2": 300
+   }
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "The hot reservoir of that engine is at \\(500\\) K and the cold one at \\(300\\) K. If you **lower** \\(T_2\\) by \\(100\\) K, what is the new efficiency in %?",
+   "answer": 60,
+   "hint": "New \\(T_2=200\\) K.",
+   "explain": "\\(\\eta=1-200/500=0.60=60\\%\\). (Raising \\(T_1\\) by 100 K would give only \\(1-300/600=50\\%\\).)",
+   "unit": "%"
+  }
+ ],
+ "takeaways": [
+  "\\(\\eta=W/Q_1=1-Q_2/Q_1=1-T_2/T_1\\).",
+  "Lowering \\(T_2\\) helps more than raising \\(T_1\\) by the same amount.",
+  "\\(\\eta<1\\) always: some heat must be rejected."
+ ]
+}

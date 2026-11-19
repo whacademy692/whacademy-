@@ -1,0 +1,616 @@
+{
+ "id": "g11-phys-c8-cn-fun-real-engines",
+ "title": "Real engines vs the Carnot limit",
+ "summary": "Compare the best possible (Carnot) efficiency with typical real engines: a steam plant, a car, a gas turbine and an ocean-thermal plant.",
+ "alt": "Bars compare the Carnot efficiency, set by the hot and cold temperatures, with the typical efficiency of a real engine for four engine types.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder / axes",
+   "color": "#475569",
+   "text": "Walls of the cylinder and the graph axes.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Isothermal at T₁ (a→b)",
+   "color": "#ea580c",
+   "text": "Heat Q₁ flows IN from the hot reservoir; T stays T₁.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Wasted as heat",
+   "color": "#2563eb",
+   "text": "Heat Q₂ flows OUT to the cold reservoir; T stays T₂.",
+   "legend": true
+  },
+  "work": {
+   "label": "Typical real engine",
+   "color": "#d97706",
+   "text": "Work done by the gas (area under the curve / inside the loop).",
+   "legend": true
+  },
+  "ok": {
+   "label": "Carnot limit",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": true
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The result.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live state",
+   "color": "#16a34a",
+   "text": "Where the gas is on the graph right now.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "eng",
+   "label": "Engine",
+   "type": "choice",
+   "options": [
+    {
+     "value": 0,
+     "label": "Steam plant"
+    },
+    {
+     "value": 1,
+     "label": "Car engine"
+    },
+    {
+     "value": 2,
+     "label": "Gas turbine"
+    },
+    {
+     "value": 3,
+     "label": "Ocean thermal"
+    },
+    {
+     "value": 4,
+     "label": "Your own"
+    }
+   ],
+   "default": 0
+  },
+  {
+   "id": "cT1",
+   "label": "Your hot side \\(T_1\\) (K)",
+   "type": "number",
+   "min": 400,
+   "max": 2000,
+   "step": 10,
+   "default": 800,
+   "unit": "K"
+  },
+  {
+   "id": "cT2",
+   "label": "Your cold side \\(T_2\\) (K)",
+   "type": "number",
+   "min": 250,
+   "max": 350,
+   "step": 5,
+   "default": 300,
+   "unit": "K"
+  }
+ ],
+ "derived": {
+  "T1v": "eng==0 ? (823) : (eng==1 ? (1173) : (eng==2 ? (1473) : (eng==3 ? (298) : (cT1))))",
+  "T2v": "eng==0 ? (303) : (eng==1 ? (303) : (eng==2 ? (298) : (eng==3 ? (278) : (cT2))))",
+  "rl": "eng==0 ? (38) : (eng==1 ? (28) : (eng==2 ? (35) : (eng==3 ? (3) : (0))))",
+  "ec": "(1-T2v/T1v)*100",
+  "hasR": "eng<3.5 ? 1 : 0",
+  "gap": "ec-rl",
+  "frac": "rl/ec*100"
+ },
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "H",
+   "x": 0.4,
+   "y": 12.6,
+   "w": 12.1,
+   "h": 1.3,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.3,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "Ht",
+   "at": [
+    6.45,
+    13.25
+   ],
+   "text": "HOT SIDE  \\(T_1 = {{T1v|0}}\\) K  ({{T1v-273|0}} °C)",
+   "role": "hot",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "C",
+   "x": 0.4,
+   "y": 0.5,
+   "w": 12.1,
+   "h": 1.3,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.3,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "Ct",
+   "at": [
+    6.45,
+    1.15
+   ],
+   "text": "COLD SIDE  \\(T_2 = {{T2v|0}}\\) K  ({{T2v-273|0}} °C)",
+   "role": "cold",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "b100",
+   "from": [
+    1.2,
+    9.899999999999999
+   ],
+   "to": [
+    12.0,
+    9.899999999999999
+   ],
+   "role": "no",
+   "strokeWidth": 2,
+   "dash": [
+    6,
+    4
+   ]
+  },
+  {
+   "type": "text",
+   "id": "b100t",
+   "at": [
+    6.6,
+    10.249999999999998
+   ],
+   "text": "100 %  — no engine ever gets here",
+   "role": "no",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "b0",
+   "from": [
+    1.2,
+    3.3
+   ],
+   "to": [
+    12.0,
+    3.3
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "rect",
+   "id": "bar0",
+   "x": 2.3,
+   "y": 3.3,
+   "w": 2.2,
+   "h": "max(0.03,(ec)/100*6.6)",
+   "role": "ok",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "bv0",
+   "at": [
+    3.4,
+    "3.3+max(0.03,(ec)/100*6.6)+0.45"
+   ],
+   "text": "{{ec|1}} %",
+   "role": "ok",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "bn0",
+   "at": [
+    3.4,
+    2.8
+   ],
+   "text": "Carnot limit",
+   "role": "ok",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "bar1",
+   "x": 7.1,
+   "y": 3.3,
+   "w": 2.2,
+   "h": "max(0.03,(rl)/100*6.6)",
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.5,
+   "visible": "hasR>0.5"
+  },
+  {
+   "type": "text",
+   "id": "bv1",
+   "at": [
+    8.2,
+    "3.3+max(0.03,(rl)/100*6.6)+0.45"
+   ],
+   "text": "{{rl|1}} %",
+   "role": "work",
+   "size": "m",
+   "bold": true,
+   "visible": "hasR>0.5"
+  },
+  {
+   "type": "text",
+   "id": "bn1",
+   "at": [
+    8.2,
+    2.8
+   ],
+   "text": "Typical real",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "visible": "hasR>0.5"
+  },
+  {
+   "type": "text",
+   "id": "nr",
+   "at": [
+    8.2,
+    5.3
+   ],
+   "text": "typical value:",
+   "role": "work",
+   "size": "s",
+   "bold": false,
+   "visible": "hasR<0.5"
+  },
+  {
+   "type": "text",
+   "id": "nr2",
+   "at": [
+    8.2,
+    4.699999999999999
+   ],
+   "text": "set by you — real engines are lower",
+   "role": "work",
+   "size": "s",
+   "bold": false,
+   "visible": "hasR<0.5"
+  },
+  {
+   "type": "vector",
+   "id": "gapv",
+   "from": [
+    6.4,
+    "3.3+(rl)/100*6.6"
+   ],
+   "to": [
+    6.4,
+    "3.3+(ec)/100*6.6"
+   ],
+   "role": "no",
+   "strokeWidth": 3,
+   "visible": "hasR>0.5 && gap>3"
+  },
+  {
+   "type": "text",
+   "id": "gapt",
+   "at": [
+    11.2,
+    "3.3+(ec+rl)/200*6.6"
+   ],
+   "text": "lost to friction,",
+   "role": "no",
+   "size": "s",
+   "bold": true,
+   "visible": "hasR>0.5 && gap>3"
+  },
+  {
+   "type": "text",
+   "id": "gapt2",
+   "at": [
+    11.2,
+    "3.3+(ec+rl)/200*6.6-0.55"
+   ],
+   "text": "leaks, speed",
+   "role": "no",
+   "size": "s",
+   "bold": true,
+   "visible": "hasR>0.5 && gap>3"
+  },
+  {
+   "type": "text",
+   "id": "nm0",
+   "at": [
+    6.45,
+    11.8
+   ],
+   "text": "Steam power plant",
+   "role": "ans",
+   "size": "l",
+   "bold": true,
+   "visible": "eng==0"
+  },
+  {
+   "type": "text",
+   "id": "nm1",
+   "at": [
+    6.45,
+    11.8
+   ],
+   "text": "Petrol car engine",
+   "role": "ans",
+   "size": "l",
+   "bold": true,
+   "visible": "eng==1"
+  },
+  {
+   "type": "text",
+   "id": "nm2",
+   "at": [
+    6.45,
+    11.8
+   ],
+   "text": "Gas turbine",
+   "role": "ans",
+   "size": "l",
+   "bold": true,
+   "visible": "eng==2"
+  },
+  {
+   "type": "text",
+   "id": "nm3",
+   "at": [
+    6.45,
+    11.8
+   ],
+   "text": "Ocean thermal (OTEC)",
+   "role": "ans",
+   "size": "l",
+   "bold": true,
+   "visible": "eng==3"
+  },
+  {
+   "type": "text",
+   "id": "nm4",
+   "at": [
+    6.45,
+    11.8
+   ],
+   "text": "Your own engine",
+   "role": "ans",
+   "size": "l",
+   "bold": true,
+   "visible": "eng==4"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Steam power plant",
+   "text": "Steam at about 550 °C (\\(823\\) K) drives the turbine and the waste heat goes to a river or cooling tower near \\(30\\) °C (\\(303\\) K). Carnot limit: \\(1-303/823={{ec|1}}\\%\\). Real plants reach roughly \\(38\\%\\) (approximate typical value, Beyond the book).",
+   "actions": [
+    {
+     "set": {
+      "eng": 0
+     },
+     "at": 0
+    }
+   ],
+   "dwell": 7000
+  },
+  {
+   "id": "s1",
+   "title": "Petrol car engine",
+   "text": "Burning petrol gives gas at roughly \\(1173\\) K in the cylinder (an effective figure, not the flame temperature); the cold side is air near \\(303\\) K. Carnot limit: \\({{ec|1}}\\%\\). A real car turns only about \\(28\\%\\) of the fuel energy into motion (approximate, Beyond the book).",
+   "actions": [
+    {
+     "set": {
+      "eng": 1
+     },
+     "at": 0
+    }
+   ],
+   "dwell": 7000
+  },
+  {
+   "id": "s2",
+   "title": "Gas turbine",
+   "text": "A jet-style turbine runs at about \\(1473\\) K with air at \\(298\\) K. Carnot limit: \\({{ec|1}}\\%\\) — the hotter, the better. Real simple-cycle turbines manage about \\(35\\%\\) (approximate, Beyond the book).",
+   "actions": [
+    {
+     "set": {
+      "eng": 2
+     },
+     "at": 0
+    }
+   ],
+   "dwell": 7000
+  },
+  {
+   "id": "s3",
+   "title": "Ocean thermal (OTEC)",
+   "text": "Warm surface water (\\(298\\) K) and cold deep water (\\(278\\) K) differ by just \\(20\\) K. Carnot limit: \\({{ec|1}}\\%\\), and a real plant gets about \\(3\\%\\). Poor, but the fuel is free (approximate, Beyond the book).",
+   "actions": [
+    {
+     "set": {
+      "eng": 3
+     },
+     "at": 0
+    }
+   ],
+   "dwell": 7000
+  },
+  {
+   "id": "s4",
+   "title": "Your own engine",
+   "text": "Choose \\(T_1\\) and \\(T_2\\) with the sliders. The Carnot limit is \\(1-T_2/T_1={{ec|1}}\\%\\). Raise \\(T_1\\) or lower \\(T_2\\) and the limit climbs, but it never reaches \\(100\\%\\).",
+   "actions": [
+    {
+     "set": {
+      "eng": 4
+     },
+     "at": 0
+    }
+   ],
+   "dwell": 7000
+  },
+  {
+   "id": "s5",
+   "title": "Why is real < Carnot?",
+   "text": "The Carnot engine is **reversible**: no friction, no heat leaks, and every stroke so slow that the gas is always in equilibrium. Such an engine has zero power. Real engines must run fast, lose heat through walls and rub against themselves, so they fall short of \\(1-T_2/T_1\\).",
+   "actions": [
+    {
+     "set": {
+      "eng": 3
+     },
+     "at": 0
+    }
+   ],
+   "dwell": 7000
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Carnot limit",
+   "value": "{{ec|1}} %",
+   "role": "ok"
+  },
+  {
+   "label": "Typical real engine",
+   "value": "{{rl|0}} %",
+   "role": "work"
+  },
+  {
+   "label": "Hot side",
+   "value": "{{T1v|0}} K",
+   "role": "hot"
+  },
+  {
+   "label": "Cold side",
+   "value": "{{T2v|0}} K",
+   "role": "cold"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Carnot limit",
+   "tex": "\\eta_{\\max}=1-\\dfrac{T_2}{T_1}",
+   "text": "Temperatures in kelvin (°C + 273).",
+   "filled": "\\eta_{\\max}=1-\\dfrac{ {{T2v|0}} }{ {{T1v|0}} } = {{ec|1}}\\%"
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A steam plant runs between \\(823\\) K and \\(303\\) K. What is its Carnot (maximum possible) efficiency in %?",
+   "answer": "(1-303/823)*100",
+   "hint": "Use \\(1-T_2/T_1\\).",
+   "explain": "\\(1-303/823=0.632\\), so \\(63.2\\%\\).",
+   "unit": "%",
+   "set": {
+    "eng": 0
+   }
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "An inventor claims a plant between \\(823\\) K and \\(303\\) K with **80 %** efficiency. Is that possible?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Yes, with good engineering"
+    },
+    {
+     "id": "b",
+     "label": "No, it beats the Carnot limit of about 63 %"
+    },
+    {
+     "id": "c",
+     "label": "Yes, if it is very big"
+    }
+   ],
+   "answer": "b",
+   "hint": "Compare 80 % with \\(1-T_2/T_1\\).",
+   "explain": "No engine can beat the Carnot efficiency \\(63.2\\%\\) for these temperatures (Carnot theorem).",
+   "set": {
+    "eng": 0
+   }
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which change gives a **bigger** Carnot efficiency?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Raise \\(T_1\\) by 50 K"
+    },
+    {
+     "id": "b",
+     "label": "Lower \\(T_2\\) by 50 K"
+    }
+   ],
+   "answer": "b",
+   "hint": "See the derivation of \\(\\eta=1-T_2/T_1\\).",
+   "explain": "Lowering \\(T_2\\) by \\(\\Delta\\) always gains more than raising \\(T_1\\) by \\(\\Delta\\), because \\(T_2<T_1\\)."
+  }
+ ],
+ "takeaways": [
+  "The Carnot efficiency is a **ceiling**, not a promise.",
+  "Real engines reach roughly half to two-thirds of it.",
+  "A bigger temperature gap means a higher ceiling."
+ ],
+ "notes": [
+  {
+   "title": "Beyond the book",
+   "text": "The \"typical real\" efficiencies and the effective temperatures are round textbook-style figures for illustration, not measurements of one particular machine."
+  }
+ ]
+}

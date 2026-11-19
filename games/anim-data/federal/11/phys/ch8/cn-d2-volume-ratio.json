@@ -1,0 +1,1155 @@
+{
+ "id": "g11-phys-c8-cn-d2-volume-ratio",
+ "title": "Derivation: V₂/V₁ = V₃/V₄",
+ "summary": "Use the adiabatic law on b→c and d→a, divide the two equations, and the temperatures cancel.",
+ "alt": "The Carnot loop on log–log axes is a parallelogram. The adiabatic law T V to the power gamma minus 1 is applied to b to c and d to a and the equations are divided to show V2 over V1 equals V3 over V4.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder / axes",
+   "color": "#475569",
+   "text": "Walls of the cylinder and the graph axes.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Isothermal at T₁ (a→b)",
+   "color": "#ea580c",
+   "text": "Heat Q₁ flows IN from the hot reservoir; T stays T₁.",
+   "legend": true
+  },
+  "adB": {
+   "label": "Adiabatic expansion (b→c)",
+   "color": "#7c3aed",
+   "text": "No heat flows; the gas cools from T₁ to T₂.",
+   "legend": true
+  },
+  "cold": {
+   "label": "Isothermal at T₂ (c→d)",
+   "color": "#2563eb",
+   "text": "Heat Q₂ flows OUT to the cold reservoir; T stays T₂.",
+   "legend": true
+  },
+  "adD": {
+   "label": "Adiabatic compression (d→a)",
+   "color": "#db2777",
+   "text": "No heat flows; the gas warms from T₂ to T₁.",
+   "legend": true
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by the gas (area under the curve / inside the loop).",
+   "legend": false
+  },
+  "me": {
+   "label": "Live state",
+   "color": "#16a34a",
+   "text": "Where the gas is on the graph right now.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The result.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "T1",
+   "label": "Hot reservoir \\(T_1\\) (K)",
+   "type": "number",
+   "min": 480,
+   "max": 800,
+   "step": 10,
+   "default": 600,
+   "unit": "K"
+  },
+  {
+   "id": "T2",
+   "label": "Cold reservoir \\(T_2\\) (K)",
+   "type": "number",
+   "min": 260,
+   "max": 320,
+   "step": 10,
+   "default": 300,
+   "unit": "K"
+  },
+  {
+   "id": "Vr",
+   "label": "Expansion ratio \\(V_2/V_1\\)",
+   "type": "number",
+   "min": 1.5,
+   "max": 3.0,
+   "step": 0.1,
+   "default": 2.2
+  },
+  {
+   "id": "gm",
+   "label": "Gas type \\(\\gamma\\) (beyond the book)",
+   "type": "number",
+   "min": 1.3,
+   "max": 1.67,
+   "step": 0.01,
+   "default": 1.67
+  },
+  {
+   "id": "ph",
+   "label": "ph",
+   "type": "number",
+   "min": 0,
+   "max": 4,
+   "step": 0.01,
+   "default": 4,
+   "hidden": true
+  },
+  {
+   "id": "wk",
+   "label": "wk",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0,
+   "hidden": true
+  },
+  {
+   "id": "lg",
+   "label": "Log–log axes (straight lines)",
+   "type": "toggle",
+   "default": 1
+  }
+ ],
+ "derived": {
+  "kk": "(T1/T2)^(1/(gm-1))",
+  "V1": "1",
+  "V2": "Vr",
+  "V3": "Vr*kk",
+  "V4": "kk",
+  "P1": "T1",
+  "P2": "T1/Vr",
+  "P3": "T2/V3",
+  "P4": "T2/V4",
+  "xmax": "V3*1.4",
+  "ymax": "P1*1.15",
+  "eph": "ph",
+  "leg": "min(3,floor(eph))",
+  "fr": "eph-leg",
+  "xmin": "0.8*V1",
+  "ymin": "P3*0.8",
+  "px0": "2.1",
+  "Vs": "leg==0 ? (V1) : (leg==1 ? (V2) : (leg==2 ? (V3) : (V4)))",
+  "Ve": "leg==0 ? (V2) : (leg==1 ? (V3) : (leg==2 ? (V4) : (V1)))",
+  "V": "Vs+(Ve-Vs)*fr",
+  "P": "leg==0 ? ((T1/(V))) : (leg==1 ? ((P2*(V2/(V))^gm)) : (leg==2 ? ((T2/(V))) : ((P4*(V4/(V))^gm))))",
+  "T": "P*V",
+  "cwV": "(V2+V4)/2",
+  "cwP": "((cwV<=V2 ? T1/cwV : P2*(V2/cwV)^gm) + (cwV<=V4 ? P4*(V4/cwV)^gm : T2/cwV))/2",
+  "Ts": "leg==0 ? (T1) : (leg==1 ? (T1) : (leg==2 ? (T2) : (T2)))",
+  "iso": "leg==0 ? (1) : (leg==1 ? (0) : (leg==2 ? (1) : (0)))",
+  "dUl": "iso>0.5 ? 0 : 1.5*8.314*(T-Ts)",
+  "Wl": "iso>0.5 ? 8.314*T*ln(V/Vs) : -dUl",
+  "Ql": "iso>0.5 ? Wl : 0",
+  "L": "0.9+5.2*V/V3",
+  "vg": "2.2*sqrt(T/300)",
+  "Q1": "8.314*T1*ln(Vr)",
+  "Q2": "8.314*T2*ln(Vr)",
+  "Wn": "Q1-Q2",
+  "eta": "1-T2/T1",
+  "hotOn": "leg==0 ? 1 : 0",
+  "coldOn": "leg==2 ? 1 : 0",
+  "insOn": "1-hotOn-coldOn",
+  "Rx0": "1.2",
+  "Rw": "11"
+ },
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "gax",
+   "from": [
+    1.55,
+    6.75
+   ],
+   "to": [
+    12.350000000000001,
+    6.75
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "vector",
+   "id": "gay",
+   "from": [
+    1.55,
+    6.75
+   ],
+   "to": [
+    1.55,
+    13.15
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "gxl",
+   "at": [
+    12.55,
+    6.8
+   ],
+   "text": "\\(V\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "gyl",
+   "at": [
+    1.6,
+    13.3
+   ],
+   "text": "\\(P\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "repeat",
+   "id": "wstrips",
+   "count": 100,
+   "as": "i",
+   "template": {
+    "type": "rect",
+    "id": "wst",
+    "x": "(lg>0.5 ? 1.55+px0+ln((V1+(V3-V1)*(i+0.5)/100)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1+(V3-V1)*(i+0.5)/100)-xmin)/(xmax-xmin)*(10.4-px0))-(((lg>0.5 ? 1.55+px0+ln((V1+(V3-V1)*(i+0.5)/100+(V3-V1)/200)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1+(V3-V1)*(i+0.5)/100+(V3-V1)/200)-xmin)/(xmax-xmin)*(10.4-px0))-(lg>0.5 ? 1.55+px0+ln((V1+(V3-V1)*(i+0.5)/100-(V3-V1)/200)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1+(V3-V1)*(i+0.5)/100-(V3-V1)/200)-xmin)/(xmax-xmin)*(10.4-px0))))*0.53",
+    "y": "(lg>0.5 ? 6.75+ln(((V1+(V3-V1)*(i+0.5)/100)<=V4 ? P4*(V4/(V1+(V3-V1)*(i+0.5)/100))^gm : T2/(V1+(V3-V1)*(i+0.5)/100))/ymin)/ln(ymax/ymin)*5.9 : 6.75+(((V1+(V3-V1)*(i+0.5)/100)<=V4 ? P4*(V4/(V1+(V3-V1)*(i+0.5)/100))^gm : T2/(V1+(V3-V1)*(i+0.5)/100))-ymin)/(ymax-ymin)*5.9)",
+    "w": "(((lg>0.5 ? 1.55+px0+ln((V1+(V3-V1)*(i+0.5)/100+(V3-V1)/200)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1+(V3-V1)*(i+0.5)/100+(V3-V1)/200)-xmin)/(xmax-xmin)*(10.4-px0))-(lg>0.5 ? 1.55+px0+ln((V1+(V3-V1)*(i+0.5)/100-(V3-V1)/200)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1+(V3-V1)*(i+0.5)/100-(V3-V1)/200)-xmin)/(xmax-xmin)*(10.4-px0))))*1.06",
+    "h": "(lg>0.5 ? 6.75+ln(((V1+(V3-V1)*(i+0.5)/100)<=V2 ? T1/(V1+(V3-V1)*(i+0.5)/100) : P2*(V2/(V1+(V3-V1)*(i+0.5)/100))^gm)/ymin)/ln(ymax/ymin)*5.9 : 6.75+(((V1+(V3-V1)*(i+0.5)/100)<=V2 ? T1/(V1+(V3-V1)*(i+0.5)/100) : P2*(V2/(V1+(V3-V1)*(i+0.5)/100))^gm)-ymin)/(ymax-ymin)*5.9)-(lg>0.5 ? 6.75+ln(((V1+(V3-V1)*(i+0.5)/100)<=V4 ? P4*(V4/(V1+(V3-V1)*(i+0.5)/100))^gm : T2/(V1+(V3-V1)*(i+0.5)/100))/ymin)/ln(ymax/ymin)*5.9 : 6.75+(((V1+(V3-V1)*(i+0.5)/100)<=V4 ? P4*(V4/(V1+(V3-V1)*(i+0.5)/100))^gm : T2/(V1+(V3-V1)*(i+0.5)/100))-ymin)/(ymax-ymin)*5.9)",
+    "role": "work",
+    "fill": true,
+    "fillOpacity": 0.6,
+    "strokeWidth": 0,
+    "stroke": false,
+    "layer": "back",
+    "visible": "wk>0.5"
+   }
+  },
+  {
+   "type": "segment",
+   "id": "gv1",
+   "from": [
+    "(lg>0.5 ? 1.55+px0+ln((V1)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 6.75+ln((P1)/ymin)/ln(ymax/ymin)*5.9 : 6.75+((P1)-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "to": [
+    "(lg>0.5 ? 1.55+px0+ln((V1)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1)-xmin)/(xmax-xmin)*(10.4-px0))",
+    6.75
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "gp1",
+   "from": [
+    "(lg>0.5 ? 1.55+px0+ln((V1)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 6.75+ln((P1)/ymin)/ln(ymax/ymin)*5.9 : 6.75+((P1)-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "to": [
+    1.55,
+    "(lg>0.5 ? 6.75+ln((P1)/ymin)/ln(ymax/ymin)*5.9 : 6.75+((P1)-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "text",
+   "id": "tv1",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((V1)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1)-xmin)/(xmax-xmin)*(10.4-px0))+0",
+    6.3
+   ],
+   "text": "\\(V_1\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "tp1",
+   "at": [
+    0.4,
+    "(lg>0.5 ? 6.75+ln((P1)/ymin)/ln(ymax/ymin)*5.9 : 6.75+((P1)-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "text": "\\(P_1\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "segment",
+   "id": "gv2",
+   "from": [
+    "(lg>0.5 ? 1.55+px0+ln((V2)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V2)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 6.75+ln((P2)/ymin)/ln(ymax/ymin)*5.9 : 6.75+((P2)-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "to": [
+    "(lg>0.5 ? 1.55+px0+ln((V2)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V2)-xmin)/(xmax-xmin)*(10.4-px0))",
+    6.75
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "gp2",
+   "from": [
+    "(lg>0.5 ? 1.55+px0+ln((V2)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V2)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 6.75+ln((P2)/ymin)/ln(ymax/ymin)*5.9 : 6.75+((P2)-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "to": [
+    1.55,
+    "(lg>0.5 ? 6.75+ln((P2)/ymin)/ln(ymax/ymin)*5.9 : 6.75+((P2)-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "text",
+   "id": "tv2",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((V2)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V2)-xmin)/(xmax-xmin)*(10.4-px0))+(V2<V4 ? -0.3 : 0.3)",
+    6.3
+   ],
+   "text": "\\(V_2\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "tp2",
+   "at": [
+    0.4,
+    "(lg>0.5 ? 6.75+ln((P2)/ymin)/ln(ymax/ymin)*5.9 : 6.75+((P2)-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "text": "\\(P_2\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "segment",
+   "id": "gv3",
+   "from": [
+    "(lg>0.5 ? 1.55+px0+ln((V3)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V3)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 6.75+ln((P3)/ymin)/ln(ymax/ymin)*5.9 : 6.75+((P3)-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "to": [
+    "(lg>0.5 ? 1.55+px0+ln((V3)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V3)-xmin)/(xmax-xmin)*(10.4-px0))",
+    6.75
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "gp3",
+   "from": [
+    "(lg>0.5 ? 1.55+px0+ln((V3)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V3)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 6.75+ln((P3)/ymin)/ln(ymax/ymin)*5.9 : 6.75+((P3)-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "to": [
+    1.55,
+    "(lg>0.5 ? 6.75+ln((P3)/ymin)/ln(ymax/ymin)*5.9 : 6.75+((P3)-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "text",
+   "id": "tv3",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((V3)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V3)-xmin)/(xmax-xmin)*(10.4-px0))+0",
+    6.3
+   ],
+   "text": "\\(V_3\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "tp3",
+   "at": [
+    0.4,
+    "(lg>0.5 ? 6.75+ln((P3)/ymin)/ln(ymax/ymin)*5.9 : 6.75+((P3)-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "text": "\\(P_3\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "segment",
+   "id": "gv4",
+   "from": [
+    "(lg>0.5 ? 1.55+px0+ln((V4)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V4)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 6.75+ln((P4)/ymin)/ln(ymax/ymin)*5.9 : 6.75+((P4)-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "to": [
+    "(lg>0.5 ? 1.55+px0+ln((V4)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V4)-xmin)/(xmax-xmin)*(10.4-px0))",
+    6.75
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "gp4",
+   "from": [
+    "(lg>0.5 ? 1.55+px0+ln((V4)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V4)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 6.75+ln((P4)/ymin)/ln(ymax/ymin)*5.9 : 6.75+((P4)-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "to": [
+    1.55,
+    "(lg>0.5 ? 6.75+ln((P4)/ymin)/ln(ymax/ymin)*5.9 : 6.75+((P4)-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "role": "muted",
+   "strokeWidth": 1.5,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "text",
+   "id": "tv4",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((V4)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V4)-xmin)/(xmax-xmin)*(10.4-px0))+(V2<V4 ? 0.3 : -0.3)",
+    6.3
+   ],
+   "text": "\\(V_4\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "text",
+   "id": "tp4",
+   "at": [
+    0.9,
+    "(lg>0.5 ? 6.75+ln((P4)/ymin)/ln(ymax/ymin)*5.9 : 6.75+((P4)-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "text": "\\(P_4\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": false
+  },
+  {
+   "type": "plot",
+   "id": "cv0",
+   "x": "(lg>0.5 ? 1.55+px0+ln((V1+(V2-V1)*s)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1+(V2-V1)*s)-xmin)/(xmax-xmin)*(10.4-px0))",
+   "y": "(lg>0.5 ? 6.75+ln(((T1/(V1+(V2-V1)*s)))/ymin)/ln(ymax/ymin)*5.9 : 6.75+(((T1/(V1+(V2-V1)*s)))-ymin)/(ymax-ymin)*5.9)",
+   "var": "s",
+   "domain": [
+    0,
+    1
+   ],
+   "samples": 60,
+   "role": "hot",
+   "strokeWidth": 3,
+   "opacity": 0.55
+  },
+  {
+   "type": "plot",
+   "id": "cv1",
+   "x": "(lg>0.5 ? 1.55+px0+ln((V2+(V3-V2)*s)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V2+(V3-V2)*s)-xmin)/(xmax-xmin)*(10.4-px0))",
+   "y": "(lg>0.5 ? 6.75+ln(((P2*(V2/(V2+(V3-V2)*s))^gm))/ymin)/ln(ymax/ymin)*5.9 : 6.75+(((P2*(V2/(V2+(V3-V2)*s))^gm))-ymin)/(ymax-ymin)*5.9)",
+   "var": "s",
+   "domain": [
+    0,
+    1
+   ],
+   "samples": 60,
+   "role": "adB",
+   "strokeWidth": 3,
+   "opacity": 0.55
+  },
+  {
+   "type": "plot",
+   "id": "cv2",
+   "x": "(lg>0.5 ? 1.55+px0+ln((V3+(V4-V3)*s)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V3+(V4-V3)*s)-xmin)/(xmax-xmin)*(10.4-px0))",
+   "y": "(lg>0.5 ? 6.75+ln(((T2/(V3+(V4-V3)*s)))/ymin)/ln(ymax/ymin)*5.9 : 6.75+(((T2/(V3+(V4-V3)*s)))-ymin)/(ymax-ymin)*5.9)",
+   "var": "s",
+   "domain": [
+    0,
+    1
+   ],
+   "samples": 60,
+   "role": "cold",
+   "strokeWidth": 3,
+   "opacity": 0.55
+  },
+  {
+   "type": "plot",
+   "id": "cv3",
+   "x": "(lg>0.5 ? 1.55+px0+ln((V4+(V1-V4)*s)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V4+(V1-V4)*s)-xmin)/(xmax-xmin)*(10.4-px0))",
+   "y": "(lg>0.5 ? 6.75+ln(((P4*(V4/(V4+(V1-V4)*s))^gm))/ymin)/ln(ymax/ymin)*5.9 : 6.75+(((P4*(V4/(V4+(V1-V4)*s))^gm))-ymin)/(ymax-ymin)*5.9)",
+   "var": "s",
+   "domain": [
+    0,
+    1
+   ],
+   "samples": 60,
+   "role": "adD",
+   "strokeWidth": 3,
+   "opacity": 0.55
+  },
+  {
+   "type": "plot",
+   "id": "tr0",
+   "x": "(lg>0.5 ? 1.55+px0+ln((V1+(V2-V1)*s)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1+(V2-V1)*s)-xmin)/(xmax-xmin)*(10.4-px0))",
+   "y": "(lg>0.5 ? 6.75+ln(((T1/(V1+(V2-V1)*s)))/ymin)/ln(ymax/ymin)*5.9 : 6.75+(((T1/(V1+(V2-V1)*s)))-ymin)/(ymax-ymin)*5.9)",
+   "var": "s",
+   "domain": [
+    0,
+    1
+   ],
+   "samples": 60,
+   "role": "hot",
+   "strokeWidth": 7,
+   "upTo": "leg>0 ? 1 : (leg==0 ? fr : 0)"
+  },
+  {
+   "type": "plot",
+   "id": "tr1",
+   "x": "(lg>0.5 ? 1.55+px0+ln((V2+(V3-V2)*s)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V2+(V3-V2)*s)-xmin)/(xmax-xmin)*(10.4-px0))",
+   "y": "(lg>0.5 ? 6.75+ln(((P2*(V2/(V2+(V3-V2)*s))^gm))/ymin)/ln(ymax/ymin)*5.9 : 6.75+(((P2*(V2/(V2+(V3-V2)*s))^gm))-ymin)/(ymax-ymin)*5.9)",
+   "var": "s",
+   "domain": [
+    0,
+    1
+   ],
+   "samples": 60,
+   "role": "adB",
+   "strokeWidth": 7,
+   "upTo": "leg>1 ? 1 : (leg==1 ? fr : 0)"
+  },
+  {
+   "type": "plot",
+   "id": "tr2",
+   "x": "(lg>0.5 ? 1.55+px0+ln((V3+(V4-V3)*s)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V3+(V4-V3)*s)-xmin)/(xmax-xmin)*(10.4-px0))",
+   "y": "(lg>0.5 ? 6.75+ln(((T2/(V3+(V4-V3)*s)))/ymin)/ln(ymax/ymin)*5.9 : 6.75+(((T2/(V3+(V4-V3)*s)))-ymin)/(ymax-ymin)*5.9)",
+   "var": "s",
+   "domain": [
+    0,
+    1
+   ],
+   "samples": 60,
+   "role": "cold",
+   "strokeWidth": 7,
+   "upTo": "leg>2 ? 1 : (leg==2 ? fr : 0)"
+  },
+  {
+   "type": "plot",
+   "id": "tr3",
+   "x": "(lg>0.5 ? 1.55+px0+ln((V4+(V1-V4)*s)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V4+(V1-V4)*s)-xmin)/(xmax-xmin)*(10.4-px0))",
+   "y": "(lg>0.5 ? 6.75+ln(((P4*(V4/(V4+(V1-V4)*s))^gm))/ymin)/ln(ymax/ymin)*5.9 : 6.75+(((P4*(V4/(V4+(V1-V4)*s))^gm))-ymin)/(ymax-ymin)*5.9)",
+   "var": "s",
+   "domain": [
+    0,
+    1
+   ],
+   "samples": 60,
+   "role": "adD",
+   "strokeWidth": 7,
+   "upTo": "leg>3 ? 1 : (leg==3 ? fr : 0)"
+  },
+  {
+   "type": "vector",
+   "id": "ar0",
+   "from": [
+    "(lg>0.5 ? 1.55+px0+ln(((V1+(V2-V1)*0.36))/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+(((V1+(V2-V1)*0.36))-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 6.75+ln(((T1/((V1+(V2-V1)*0.36))))/ymin)/ln(ymax/ymin)*5.9 : 6.75+(((T1/((V1+(V2-V1)*0.36))))-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "to": [
+    "(lg>0.5 ? 1.55+px0+ln(((V1+(V2-V1)*0.64))/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+(((V1+(V2-V1)*0.64))-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 6.75+ln(((T1/((V1+(V2-V1)*0.64))))/ymin)/ln(ymax/ymin)*5.9 : 6.75+(((T1/((V1+(V2-V1)*0.64))))-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "role": "hot",
+   "strokeWidth": 4.5
+  },
+  {
+   "type": "vector",
+   "id": "ar1",
+   "from": [
+    "(lg>0.5 ? 1.55+px0+ln(((V2+(V3-V2)*0.36))/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+(((V2+(V3-V2)*0.36))-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 6.75+ln(((P2*(V2/((V2+(V3-V2)*0.36)))^gm))/ymin)/ln(ymax/ymin)*5.9 : 6.75+(((P2*(V2/((V2+(V3-V2)*0.36)))^gm))-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "to": [
+    "(lg>0.5 ? 1.55+px0+ln(((V2+(V3-V2)*0.64))/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+(((V2+(V3-V2)*0.64))-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 6.75+ln(((P2*(V2/((V2+(V3-V2)*0.64)))^gm))/ymin)/ln(ymax/ymin)*5.9 : 6.75+(((P2*(V2/((V2+(V3-V2)*0.64)))^gm))-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "role": "adB",
+   "strokeWidth": 4.5
+  },
+  {
+   "type": "vector",
+   "id": "ar2",
+   "from": [
+    "(lg>0.5 ? 1.55+px0+ln(((V3+(V4-V3)*0.36))/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+(((V3+(V4-V3)*0.36))-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 6.75+ln(((T2/((V3+(V4-V3)*0.36))))/ymin)/ln(ymax/ymin)*5.9 : 6.75+(((T2/((V3+(V4-V3)*0.36))))-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "to": [
+    "(lg>0.5 ? 1.55+px0+ln(((V3+(V4-V3)*0.64))/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+(((V3+(V4-V3)*0.64))-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 6.75+ln(((T2/((V3+(V4-V3)*0.64))))/ymin)/ln(ymax/ymin)*5.9 : 6.75+(((T2/((V3+(V4-V3)*0.64))))-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "role": "cold",
+   "strokeWidth": 4.5
+  },
+  {
+   "type": "vector",
+   "id": "ar3",
+   "from": [
+    "(lg>0.5 ? 1.55+px0+ln(((V4+(V1-V4)*0.36))/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+(((V4+(V1-V4)*0.36))-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 6.75+ln(((P4*(V4/((V4+(V1-V4)*0.36)))^gm))/ymin)/ln(ymax/ymin)*5.9 : 6.75+(((P4*(V4/((V4+(V1-V4)*0.36)))^gm))-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "to": [
+    "(lg>0.5 ? 1.55+px0+ln(((V4+(V1-V4)*0.64))/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+(((V4+(V1-V4)*0.64))-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 6.75+ln(((P4*(V4/((V4+(V1-V4)*0.64)))^gm))/ymin)/ln(ymax/ymin)*5.9 : 6.75+(((P4*(V4/((V4+(V1-V4)*0.64)))^gm))-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "role": "adD",
+   "strokeWidth": 4.5
+  },
+  {
+   "type": "point",
+   "id": "pta",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((V1)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 6.75+ln((P1)/ymin)/ln(ymax/ymin)*5.9 : 6.75+((P1)-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "role": "wall",
+   "r": 5
+  },
+  {
+   "type": "text",
+   "id": "cla",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((V1)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V1)-xmin)/(xmax-xmin)*(10.4-px0))+(-0.5)",
+    "(lg>0.5 ? 6.75+ln((P1)/ymin)/ln(ymax/ymin)*5.9 : 6.75+((P1)-ymin)/(ymax-ymin)*5.9)+(0.45)"
+   ],
+   "text": "\\(a\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "point",
+   "id": "ptb",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((V2)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V2)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 6.75+ln((P2)/ymin)/ln(ymax/ymin)*5.9 : 6.75+((P2)-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "role": "wall",
+   "r": 5
+  },
+  {
+   "type": "text",
+   "id": "clb",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((V2)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V2)-xmin)/(xmax-xmin)*(10.4-px0))+(0.45)",
+    "(lg>0.5 ? 6.75+ln((P2)/ymin)/ln(ymax/ymin)*5.9 : 6.75+((P2)-ymin)/(ymax-ymin)*5.9)+(0.5)"
+   ],
+   "text": "\\(b\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "point",
+   "id": "ptc",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((V3)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V3)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 6.75+ln((P3)/ymin)/ln(ymax/ymin)*5.9 : 6.75+((P3)-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "role": "wall",
+   "r": 5
+  },
+  {
+   "type": "text",
+   "id": "clc",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((V3)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V3)-xmin)/(xmax-xmin)*(10.4-px0))+(0.45)",
+    "(lg>0.5 ? 6.75+ln((P3)/ymin)/ln(ymax/ymin)*5.9 : 6.75+((P3)-ymin)/(ymax-ymin)*5.9)+(-0.5)"
+   ],
+   "text": "\\(c\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "point",
+   "id": "ptd",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((V4)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V4)-xmin)/(xmax-xmin)*(10.4-px0))",
+    "(lg>0.5 ? 6.75+ln((P4)/ymin)/ln(ymax/ymin)*5.9 : 6.75+((P4)-ymin)/(ymax-ymin)*5.9)"
+   ],
+   "role": "wall",
+   "r": 5
+  },
+  {
+   "type": "text",
+   "id": "cld",
+   "at": [
+    "(lg>0.5 ? 1.55+px0+ln((V4)/xmin)/ln(xmax/xmin)*(10.4-px0) : 1.55+px0+((V4)-xmin)/(xmax-xmin)*(10.4-px0))+(-0.5)",
+    "(lg>0.5 ? 6.75+ln((P4)/ymin)/ln(ymax/ymin)*5.9 : 6.75+((P4)-ymin)/(ymax-ymin)*5.9)+(-0.5)"
+   ],
+   "text": "\\(d\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "rbh",
+   "from": [
+    "(Rx0+ln((V1)/V1)/ln(V3/V1)*Rw)",
+    2.15
+   ],
+   "to": [
+    "(Rx0+ln((V2)/V1)/ln(V3/V1)*Rw)",
+    2.15
+   ],
+   "role": "hot",
+   "strokeWidth": 5,
+   "appear": "s4"
+  },
+  {
+   "type": "segment",
+   "id": "rlh",
+   "from": [
+    "(Rx0+ln((V1)/V1)/ln(V3/V1)*Rw)",
+    1.97
+   ],
+   "to": [
+    "(Rx0+ln((V1)/V1)/ln(V3/V1)*Rw)",
+    2.33
+   ],
+   "role": "hot",
+   "strokeWidth": 3,
+   "appear": "s4"
+  },
+  {
+   "type": "segment",
+   "id": "rrh",
+   "from": [
+    "(Rx0+ln((V2)/V1)/ln(V3/V1)*Rw)",
+    1.97
+   ],
+   "to": [
+    "(Rx0+ln((V2)/V1)/ln(V3/V1)*Rw)",
+    2.33
+   ],
+   "role": "hot",
+   "strokeWidth": 3,
+   "appear": "s4"
+  },
+  {
+   "type": "segment",
+   "id": "rbc",
+   "from": [
+    "(Rx0+ln((V4)/V1)/ln(V3/V1)*Rw)",
+    1.75
+   ],
+   "to": [
+    "(Rx0+ln((V3)/V1)/ln(V3/V1)*Rw)",
+    1.75
+   ],
+   "role": "cold",
+   "strokeWidth": 5,
+   "appear": "s4"
+  },
+  {
+   "type": "segment",
+   "id": "rlc",
+   "from": [
+    "(Rx0+ln((V4)/V1)/ln(V3/V1)*Rw)",
+    1.57
+   ],
+   "to": [
+    "(Rx0+ln((V4)/V1)/ln(V3/V1)*Rw)",
+    1.93
+   ],
+   "role": "cold",
+   "strokeWidth": 3,
+   "appear": "s4"
+  },
+  {
+   "type": "segment",
+   "id": "rrc",
+   "from": [
+    "(Rx0+ln((V3)/V1)/ln(V3/V1)*Rw)",
+    1.57
+   ],
+   "to": [
+    "(Rx0+ln((V3)/V1)/ln(V3/V1)*Rw)",
+    1.93
+   ],
+   "role": "cold",
+   "strokeWidth": 3,
+   "appear": "s4"
+  },
+  {
+   "type": "text",
+   "id": "rv1",
+   "at": [
+    "(Rx0+ln((V1)/V1)/ln(V3/V1)*Rw)",
+    2.57
+   ],
+   "text": "\\(V_1\\)",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s4"
+  },
+  {
+   "type": "text",
+   "id": "rv2",
+   "at": [
+    "(Rx0+ln((V2)/V1)/ln(V3/V1)*Rw)",
+    2.57
+   ],
+   "text": "\\(V_2\\)",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s4"
+  },
+  {
+   "type": "text",
+   "id": "rv4",
+   "at": [
+    "(Rx0+ln((V4)/V1)/ln(V3/V1)*Rw)",
+    1.35
+   ],
+   "text": "\\(V_4\\)",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s4"
+  },
+  {
+   "type": "text",
+   "id": "rv3",
+   "at": [
+    "(Rx0+ln((V3)/V1)/ln(V3/V1)*Rw)",
+    1.35
+   ],
+   "text": "\\(V_3\\)",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s4"
+  },
+  {
+   "type": "text",
+   "id": "e0",
+   "at": [
+    6.45,
+    5.55
+   ],
+   "text": "\\(TV^{\\gamma-1} = \\text{constant}\\)  on every adiabat",
+   "role": "adB",
+   "size": "m",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "e1",
+   "at": [
+    6.45,
+    4.85
+   ],
+   "text": "b→c:  \\(T_1V_2^{\\gamma-1} = T_2V_3^{\\gamma-1}\\)",
+   "role": "adB",
+   "size": "m",
+   "bold": true,
+   "appear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "e2",
+   "at": [
+    6.45,
+    4.2
+   ],
+   "text": "d→a:  \\(T_1V_1^{\\gamma-1} = T_2V_4^{\\gamma-1}\\)",
+   "role": "adD",
+   "size": "m",
+   "bold": true,
+   "appear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "e3",
+   "at": [
+    6.45,
+    3.3
+   ],
+   "text": "\\(\\left(\\dfrac{V_2}{V_1}\\right)^{\\gamma-1} = \\left(\\dfrac{V_3}{V_4}\\right)^{\\gamma-1}\\)",
+   "role": "ink",
+   "size": "m",
+   "bold": true,
+   "appear": "s3"
+  },
+  {
+   "type": "text",
+   "id": "e4",
+   "at": [
+    6.45,
+    0.75
+   ],
+   "text": "\\(\\Rightarrow\\ \\dfrac{V_2}{V_1} = \\dfrac{V_3}{V_4}\\)",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s4"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Adiabats obey a law",
+   "text": "For an adiabatic change of an ideal gas, \\(PV^{\\gamma}=\\text{const}\\). With \\(P=nRT/V\\) this becomes \\(TV^{\\gamma-1}=\\text{const}\\). \\(\\gamma\\) is **Beyond the book** (Physics F8): your book never defines it, and the final result below does not depend on its value.",
+   "actions": [
+    {
+     "set": {
+      "ph": 4
+     },
+     "at": 0
+    }
+   ],
+   "dwell": 6500
+  },
+  {
+   "id": "s1",
+   "title": "Apply it to b → c",
+   "text": "Point \\(b\\) has \\((T_1, V_2)\\) and point \\(c\\) has \\((T_2, V_3)\\). Both lie on the same adiabat, so \\(T_1V_2^{\\gamma-1}=T_2V_3^{\\gamma-1}\\).",
+   "actions": [
+    {
+     "set": {
+      "ph": 4
+     },
+     "at": 0
+    }
+   ],
+   "dwell": 5200
+  },
+  {
+   "id": "s2",
+   "title": "Apply it to d → a",
+   "text": "Point \\(d\\) has \\((T_2, V_4)\\) and point \\(a\\) has \\((T_1, V_1)\\) on the other adiabat: \\(T_1V_1^{\\gamma-1}=T_2V_4^{\\gamma-1}\\).",
+   "actions": [
+    {
+     "set": {
+      "ph": 4
+     },
+     "at": 0
+    }
+   ],
+   "dwell": 5200
+  },
+  {
+   "id": "s3",
+   "title": "Divide the two equations",
+   "text": "Divide the first equation by the second. \\(T_1\\) and \\(T_2\\) cancel completely and what is left is \\(\\left(\\dfrac{V_2}{V_1}\\right)^{\\gamma-1}=\\left(\\dfrac{V_3}{V_4}\\right)^{\\gamma-1}\\).",
+   "actions": [
+    {
+     "set": {
+      "ph": 4
+     },
+     "at": 0
+    }
+   ],
+   "dwell": 6000
+  },
+  {
+   "id": "s4",
+   "title": "Take the root",
+   "text": "Both sides have the same power \\(\\gamma-1\\), so the bases are equal: \\(\\dfrac{V_2}{V_1}=\\dfrac{V_3}{V_4}\\). On the \\(\\ln V\\) ruler the **orange** and **blue** brackets have the same length.",
+   "actions": [
+    {
+     "set": {
+      "ph": 4
+     },
+     "at": 0
+    }
+   ],
+   "dwell": 6000
+  },
+  {
+   "id": "s5",
+   "title": "A picture on log axes",
+   "text": "On log–log axes an isotherm is a line of slope \\(-1\\) and an adiabat a line of slope \\(-\\gamma\\). The Carnot loop becomes a **parallelogram**, and opposite sides of a parallelogram have equal horizontal extent. That is the same result seen as a picture. Try \\(\\gamma\\) and the temperatures.",
+   "actions": [
+    {
+     "set": {
+      "ph": 4,
+      "lg": 1
+     },
+     "at": 0
+    }
+   ],
+   "dwell": 6500
+  }
+ ],
+ "readouts": [
+  {
+   "label": "V₂ / V₁",
+   "value": "{{V2/V1|3}}",
+   "role": "hot"
+  },
+  {
+   "label": "V₃ / V₄",
+   "value": "{{V3/V4|3}}",
+   "role": "cold"
+  },
+  {
+   "label": "γ (beyond the book)",
+   "value": "{{gm|2}}",
+   "role": "adB"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Adiabatic law (beyond the book)",
+   "tex": "TV^{\\gamma-1}=\\text{const}",
+   "text": "Follows from \\(PV^{\\gamma}=\\text{const}\\) and \\(PV=nRT\\). \\(\\gamma\\) is not defined in the book."
+  },
+  {
+   "title": "Volume ratio",
+   "tex": "\\dfrac{V_2}{V_1}=\\dfrac{V_3}{V_4}",
+   "text": "The expansion ratio on the hot isotherm equals the compression ratio on the cold one."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "In a Carnot cycle \\(V_1=2\\) L, \\(V_2=6\\) L and \\(V_4=3\\) L. Find \\(V_3\\) in litres.",
+   "answer": 9,
+   "hint": "Use \\(V_2/V_1=V_3/V_4\\).",
+   "explain": "\\(V_3=V_4\\,V_2/V_1=3\\times6/2=9\\) L.",
+   "unit": "L"
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which equation does the point pair \\(d\\) and \\(a\\) satisfy?",
+   "options": [
+    {
+     "id": "a",
+     "label": "\\(T_1V_1^{\\gamma-1}=T_2V_4^{\\gamma-1}\\)"
+    },
+    {
+     "id": "b",
+     "label": "\\(T_1V_4^{\\gamma-1}=T_2V_1^{\\gamma-1}\\)"
+    },
+    {
+     "id": "c",
+     "label": "\\(T_1V_1=T_2V_4\\)"
+    }
+   ],
+   "answer": "a",
+   "hint": "Point a has \\((T_1,V_1)\\); point d has \\((T_2,V_4)\\).",
+   "explain": "Each temperature goes with its own volume: \\(a=(T_1,V_1)\\), \\(d=(T_2,V_4)\\)."
+  }
+ ],
+ "takeaways": [
+  "\\(TV^{\\gamma-1}\\) is the same at both ends of an adiabat.",
+  "Dividing the two adiabat equations cancels \\(T_1\\) and \\(T_2\\).",
+  "Result: \\(V_2/V_1=V_3/V_4\\) — the hot and cold isotherms have the same volume ratio."
+ ],
+ "notes": [
+  {
+   "title": "Beyond the book",
+   "text": "The exponent \\(\\gamma\\) (ratio of specific heats) is not defined in your book. It is used here only to prove the volume ratio; the book states the result."
+  }
+ ]
+}
