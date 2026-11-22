@@ -1323,9 +1323,9 @@ window.WHA_CONTENT = {
             "n": 2,
             "unit": 2,
             "title": "Matrices and Determinants",
-            "notes": null,
+            "notes": "https://whacademypk.com/notes/class-11/math/matrices-and-determinants.html",
             "quiz": null,
-            "game": null
+            "game": "https://whacademypk.com/games/chapter.html?ch=11/math/matrices_and_determinants"
           },
           {
             "n": 3,
