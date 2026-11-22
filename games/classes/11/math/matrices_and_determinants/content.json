@@ -1,0 +1,159 @@
+{
+  "chapterId": "class11-math-matrices_and_determinants",
+  "classLevel": 11,
+  "subject": "Mathematics",
+  "subjectKey": "math",
+  "title": "Matrices and Determinants",
+  "chapterRef": "class11/subjects/math/matrices_and_determinants",
+  "schemaVersion": "1.0.0",
+  "learningOutcomes": [
+    "Define a matrix, state its order, and recognise row, column, square, zero, diagonal, scalar, identity, triangular, symmetric and skew-symmetric matrices; find the transpose.",
+    "Add, subtract and scalar-multiply matrices and multiply compatible matrices (real or complex entries); state which laws hold and why \\(AB\\ne BA\\) in general.",
+    "Evaluate \\(2\\times2\\) and \\(3\\times3\\) determinants using minors and cofactors, and use the properties of determinants (row/column swaps, common factors, proportional rows, row operations) to simplify or prove results.",
+    "Find the adjoint and inverse of a non-singular matrix, using \\(A^{-1}=\\frac{1}{|A|}\\operatorname{adj}A\\), and verify \\(AA^{-1}=I\\).",
+    "Use elementary row operations to reduce a matrix to echelon form, find its rank and find its inverse by \\([A\\,|\\,I]\\to[I\\,|\\,A^{-1}]\\).",
+    "Decide whether a linear system is consistent or inconsistent using \\(\\operatorname{rank}A\\) and \\(\\operatorname{rank}[A\\,|\\,B]\\), and solve \\(3\\times3\\) non-homogeneous systems by matrix inversion, Cramer's rule and Gaussian elimination.",
+    "Solve homogeneous systems \\(AX=O\\), find the parameter that gives non-trivial solutions, and apply matrices to cryptography, translations, networks and other real-world problems."
+  ],
+  "theory": {
+    "sections": [
+      {
+        "heading": "Matrices and Their Types",
+        "body": "A matrix is a rectangular array of numbers in \\(m\\) rows and \\(n\\) columns; its order is \\(m\\times n\\) (rows first). A matrix with equal rows and columns is square. Special square matrices: diagonal (all off-diagonal entries zero), scalar (diagonal entries equal), identity \\(I\\) (scalar with \\(1\\)s), upper or lower triangular. The transpose \\(A^{T}\\) swaps rows and columns. \\(A\\) is symmetric if \\(A^{T}=A\\) and skew-symmetric if \\(A^{T}=-A\\); a skew-symmetric matrix has zero diagonal."
+      },
+      {
+        "heading": "Matrix Algebra",
+        "body": "Matrices of the same order add and subtract entry by entry; a scalar multiplies every entry. \\(AB\\) exists only when the columns of \\(A\\) equal the rows of \\(B\\); the \\((i,j)\\) entry is row \\(i\\) of \\(A\\) times column \\(j\\) of \\(B\\), and the order of \\(AB\\) is (rows of \\(A\\))\\(\\times\\)(columns of \\(B\\)). Multiplication is associative and distributes over addition, but in general \\(AB\\ne BA\\), and \\(AB=O\\) does not force \\(A=O\\) or \\(B=O\\). Also \\((AB)^{T}=B^{T}A^{T}\\)."
+      },
+      {
+        "heading": "Determinants, Minors and Cofactors",
+        "body": "Only a square matrix has a determinant. \\(\\begin{vmatrix}a&b\\\\c&d\\end{vmatrix}=ad-bc\\). The minor \\(M_{ij}\\) is the determinant left after deleting row \\(i\\) and column \\(j\\); the cofactor is \\(A_{ij}=(-1)^{i+j}M_{ij}\\). A determinant equals the sum of (entry \\(\\times\\) cofactor) along any one row or column, so expand along the row or column with the most zeros."
+      },
+      {
+        "heading": "Properties of Determinants",
+        "body": "Swapping two rows changes the sign. A common factor of a row can be taken out. Two identical or proportional rows (or a zero row) give determinant \\(0\\). Adding a multiple of one row to another leaves the value unchanged. \\(|A^{T}|=|A|\\), \\(|AB|=|A||B|\\), \\(|kA|=k^{n}|A|\\) for an \\(n\\times n\\) matrix. The determinant of a triangular matrix is the product of its diagonal entries."
+      },
+      {
+        "heading": "Adjoint and Inverse",
+        "body": "The adjoint \\(\\operatorname{adj}A\\) is the transpose of the matrix of cofactors. \\(A\\,(\\operatorname{adj}A)=|A|\\,I\\). If \\(|A|\\ne0\\), \\(A\\) is non-singular and \\(A^{-1}=\\frac{1}{|A|}\\operatorname{adj}A\\); if \\(|A|=0\\), \\(A\\) is singular and has no inverse. For \\(2\\times2\\): swap the diagonal, change the signs of the other two entries, divide by \\(|A|\\). Also \\((AB)^{-1}=B^{-1}A^{-1}\\)."
+      },
+      {
+        "heading": "Row Operations, Echelon Form and Rank",
+        "body": "The elementary row operations are: swap two rows, multiply a row by a non-zero number, add a multiple of one row to another. They do not change the solutions of a system or the rank. In echelon form each non-zero row starts further right than the one above it and zero rows are at the bottom. The rank is the number of non-zero rows of an echelon form. \\(A^{-1}\\) is found by row-reducing \\([A\\,|\\,I]\\) to \\([I\\,|\\,A^{-1}]\\)."
+      },
+      {
+        "heading": "Systems of Linear Equations",
+        "body": "\\(AX=B\\) is consistent if \\(\\operatorname{rank}A=\\operatorname{rank}[A\\,|\\,B]\\) (unique solution when this rank equals the number of unknowns, infinitely many otherwise) and inconsistent if the ranks differ. For a \\(3\\times3\\) system with \\(|A|\\ne0\\): by inverse \\(X=A^{-1}B\\); by Cramer's rule \\(x=\\frac{|A_x|}{|A|}\\) (replace the column of the unknown by \\(B\\)); or by Gaussian elimination. A homogeneous system \\(AX=O\\) always has the trivial solution and has non-trivial solutions exactly when \\(|A|=0\\)."
+      },
+      {
+        "heading": "Applications",
+        "body": "Cryptography: a message turned into numbers is multiplied by an invertible key matrix to encode and by its inverse to decode. Computer graphics: adding a matrix translates a shape and multiplying by a matrix reflects, stretches or turns it. Networks: for an adjacency matrix \\(A\\), the \\((i,j)\\) entry of \\(A^{2}\\) counts two-step connections. Seismic analysis, billing and balancing problems become \\(AX=B\\) and are solved by the methods above."
+      }
+    ],
+    "definitions": [
+      {
+        "term": "Matrix",
+        "definition": "A rectangular array of numbers arranged in rows and columns; its order is rows \\(\\times\\) columns."
+      },
+      {
+        "term": "Square matrix",
+        "definition": "A matrix with the same number of rows and columns."
+      },
+      {
+        "term": "Identity matrix",
+        "definition": "A square matrix with \\(1\\) on the main diagonal and \\(0\\) elsewhere; \\(AI=IA=A\\)."
+      },
+      {
+        "term": "Transpose",
+        "definition": "The matrix \\(A^{T}\\) obtained by interchanging the rows and columns of \\(A\\)."
+      },
+      {
+        "term": "Symmetric / skew-symmetric",
+        "definition": "\\(A^{T}=A\\) is symmetric; \\(A^{T}=-A\\) is skew-symmetric (its diagonal entries are zero)."
+      },
+      {
+        "term": "Minor and cofactor",
+        "definition": "\\(M_{ij}\\) is the determinant left after deleting row \\(i\\) and column \\(j\\); the cofactor is \\(A_{ij}=(-1)^{i+j}M_{ij}\\)."
+      },
+      {
+        "term": "Singular / non-singular",
+        "definition": "A square matrix is singular if \\(|A|=0\\) and non-singular if \\(|A|\\ne0\\); only a non-singular matrix has an inverse."
+      },
+      {
+        "term": "Adjoint",
+        "definition": "The transpose of the matrix of cofactors; \\(A^{-1}=\\frac{1}{|A|}\\operatorname{adj}A\\)."
+      },
+      {
+        "term": "Rank",
+        "definition": "The number of non-zero rows in an echelon form of the matrix."
+      },
+      {
+        "term": "Consistent system",
+        "definition": "A system of linear equations that has at least one solution (\\(\\operatorname{rank}A=\\operatorname{rank}[A\\,|\\,B]\\))."
+      }
+    ],
+    "examTips": [
+      "Check the orders first: \\(AB\\) exists only if columns of \\(A\\) = rows of \\(B\\), and a determinant or inverse needs a square matrix.",
+      "Before expanding a \\(3\\times3\\) determinant, look for a zero, a common factor, or proportional rows. Properties often give the answer in seconds.",
+      "Always carry the sign pattern \\(\\begin{smallmatrix}+&-&+\\\\-&+&-\\\\+&-&+\\end{smallmatrix}\\) when finding cofactors, and remember to transpose the cofactor matrix to get the adjoint.",
+      "Verify an inverse with \\(AA^{-1}=I\\); in a \"hence\" question the next part depends on this one being right.",
+      "For \\(|kA|\\) use \\(k^{n}|A|\\), not \\(k|A|\\); for a homogeneous system with a parameter, set \\(|A|=0\\).",
+      "In a word problem or stimulus, write the data once as \\(AX=B\\) and then answer every part from that single setup."
+    ]
+  },
+  "achievementHooks": [
+    "first-chapter-complete",
+    "ninety-percent-accuracy-subject"
+  ],
+  "notesUrl": "https://whacademypk.com/notes/class-11/math/matrices-and-determinants.html",
+  "practiceBanks": [
+    {
+      "mechanicId": "mcq-arena",
+      "name": "Multiple Choice",
+      "description": "Pick the correct answer. A quick way to check what you know.",
+      "count": 300
+    },
+    {
+      "mechanicId": "speed-challenge",
+      "name": "Speed Quiz",
+      "description": "Answer before the timer runs out. Quick recall practice.",
+      "count": 300
+    },
+    {
+      "mechanicId": "rapid-fire",
+      "name": "Rapid Fire",
+      "description": "Even faster! Short timer, back-to-back questions.",
+      "count": 300
+    },
+    {
+      "mechanicId": "true-false-sprint",
+      "name": "True or False",
+      "description": "Read the statement and tap True or False.",
+      "count": 300
+    },
+    {
+      "mechanicId": "fill-in-the-blank",
+      "name": "Fill in the Blank",
+      "description": "Type the missing word or number to complete the sentence.",
+      "count": 300
+    },
+    {
+      "mechanicId": "matching-grid",
+      "name": "Match the Pairs",
+      "description": "Match each item to its correct partner.",
+      "count": 300
+    },
+    {
+      "mechanicId": "drag-drop-classification",
+      "name": "Sort into Groups",
+      "description": "Drag each item into the correct group.",
+      "count": 300
+    },
+    {
+      "mechanicId": "ordering-sequencing",
+      "name": "Put in Order",
+      "description": "Arrange the steps in the correct sequence.",
+      "count": 300
+    }
+  ]
+}

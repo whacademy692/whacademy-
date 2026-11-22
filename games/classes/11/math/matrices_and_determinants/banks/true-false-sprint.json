@@ -1,0 +1,3305 @@
+{
+ "mechanicId": "true-false-sprint",
+ "questions": [
+  {
+   "id": "tf-001",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "For \\(A=\\begin{bmatrix}-3&5\\\\3&2\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-1&-4&1\\\\-2&4&-1\\end{bmatrix}\\), the (2,1) entry of \\(AB\\) is -3.",
+   "explanation": "This statement is false. The correct value is -7. Row 2 of A times column 1 of B: 3((-1)) + 2((-2)) = -7.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-002",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "If \\(|A|=-4\\) and \\(|B|=-4\\), then \\(|A^{T}B|\\) = 15.",
+   "explanation": "This statement is false. The correct value is 16. Use \\(|XY|=|X||Y|\\) and \\(|X^{T}|=|X|\\): \\(|A^{T}B|\\) = 16.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-003",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "inverse-by-row-ops",
+   "prompt": "Every square matrix can be reduced to I by row operations.",
+   "explanation": "This statement is false. The correct statement is: If a square matrix cannot be reduced to I by row operations, it has no inverse. A zero row appears, so the rank is below \\(n\\) and the matrix has no inverse.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-004",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "inverse-2x2",
+   "prompt": "For \\(A=\\begin{bmatrix}5&-4\\\\-1&2\\end{bmatrix}\\), the (2,1) entry of \\(A^{-1}\\) is \\(1\\).",
+   "explanation": "This statement is false. The correct value is \\(\\frac{1}{6}\\). \\(|A|=6\\) and \\(\\operatorname{adj}A=\\begin{bmatrix}2&4\\\\1&5\\end{bmatrix}\\), so \\(A^{-1}=\\frac{1}{|A|}\\operatorname{adj}A\\) has (2,1) entry \\(\\frac{1}{6}\\).",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-005",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "\\(\\begin{vmatrix}2&3&1\\\\2&2&-2\\\\1&2&0\\end{vmatrix}=4\\)",
+   "explanation": "This statement is true. Positive terms (aei + bfg + cdh) = -2; negative terms (ceg + afh + bdi) = -6. So the value is -2 - (-6) = 4.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-006",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "consistency",
+   "prompt": "A system whose reduced augmented matrix is \\(\\left[\\begin{array}{ccc|c}1&1&-3&1\\\\0&1&-1&-2\\\\0&0&0&-2\\end{array}\\right]\\) has: Unique solution.",
+   "explanation": "This statement is false. The correct value is No solution. rank A = 2 and rank [A:B] = 3, with n = 3 unknowns. rank A is less than rank [A:B] (a row 0 0 0 | non-zero): the system is inconsistent.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-007",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "\\(\\begin{vmatrix}-4&0&4\\\\-2&-4&4\\\\-6&-4&8\\end{vmatrix}=1\\) (no expansion is needed).",
+   "explanation": "This statement is false. The correct value is 0. The determinant is 0 because the matrix has R3 = R1 + R2, so the rows are dependent.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-008",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "sym-skew-decomposition",
+   "prompt": "For \\(A=\\begin{bmatrix}-8&-5\\\\-3&4\\end{bmatrix}\\), the (2,1) entry of \\(\\frac{1}{2}(A-A^{T})\\) is 1.",
+   "explanation": "This statement is true. \\(\\frac{1}{2}(A-A^{T})\\) has entry (2,1) = (\\(a_{21}\\) - \\(a_{12}\\))/2 = (-3 - (-5))/2 = 1.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-009",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "minor-cofactor",
+   "prompt": "\\(C_{ij}=(-1)^{i+j}M_{ij}\\).",
+   "explanation": "This statement is true. The cofactor is the minor with the place-sign \\((-1)^{i+j}\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-010",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "inverse-3x3",
+   "prompt": "For \\(A=\\begin{bmatrix}1&-1&1\\\\0&3&-1\\\\0&1&0\\end{bmatrix}\\), the (3,3) entry of \\(A^{-1}\\) is 3.",
+   "explanation": "This statement is true. \\(|A|=1\\), so \\(A^{-1}=\\operatorname{adj}A/|A|\\) = \\(\\operatorname{adj}A\\). Its (3,3) entry is 3.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-011",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "product-entry",
+   "prompt": "For \\(A=\\begin{bmatrix}-3&0&1\\\\1&2&4\\\\-4&-4&4\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}1&4&-3\\\\-2&-2&2\\\\1&3&5\\end{bmatrix}\\), the (1,3) entry of \\(AB\\) is 17.",
+   "explanation": "This statement is false. The correct value is 14. Row 1 of A times column 3 of B: (-3)((-3)) + 0(2) + 1(5) = 14.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-012",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "\\(\\begin{vmatrix}-9&-8\\\\-2&-8\\end{vmatrix}=54\\)",
+   "explanation": "This statement is false. The correct value is 56. \\(ad-bc = (-9)((-8)) - (-8)((-2)) = 72 - 16 = 56\\)",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-013",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "solve-by-inverse",
+   "prompt": "\\(X=A^{-1}B\\) (pre-multiply by the inverse).",
+   "explanation": "This statement is true. Multiply both sides on the left by \\(A^{-1}\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-014",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "matrix-product-application",
+   "prompt": "With prices \\(P=\\begin{bmatrix}6&19&19\\\\3&18&3\\end{bmatrix}\\) and quantities \\(Q=\\begin{bmatrix}9\\\\5\\\\2\\end{bmatrix}\\), the bill at Shop 2 is Rs 123.",
+   "explanation": "This statement is true. The bill is the entry of \\(PQ\\) in row 2: 3(9) + 18(5) + 3(2) = 123.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-015",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "inverse-3x3",
+   "prompt": "For \\(A=\\begin{bmatrix}2&-1&0\\\\-1&1&0\\\\2&-1&1\\end{bmatrix}\\), the (3,2) entry of \\(A^{-1}\\) is 1.",
+   "explanation": "This statement is false. The correct value is 0. \\(|A|=1\\), so \\(A^{-1}=\\operatorname{adj}A/|A|\\) = \\(\\operatorname{adj}A\\). Its (3,2) entry is 0.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-016",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "inverse-2x2",
+   "prompt": "For \\(A=\\begin{bmatrix}5&-4\\\\-5&5\\end{bmatrix}\\), the (1,2) entry of \\(A^{-1}\\) is \\(4\\).",
+   "explanation": "This statement is false. The correct value is \\(\\frac{4}{5}\\). \\(|A|=5\\) and \\(\\operatorname{adj}A=\\begin{bmatrix}5&4\\\\5&5\\end{bmatrix}\\), so \\(A^{-1}=\\frac{1}{|A|}\\operatorname{adj}A\\) has (1,2) entry \\(\\frac{4}{5}\\).",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-017",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "scalar-multiple",
+   "prompt": "If \\(A=\\begin{bmatrix}2&-2&1\\\\2&-5&2\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}5&-5&-1\\\\-1&6&7\\end{bmatrix}\\), the (2,3) entry of \\(3A+B\\) is 13.",
+   "explanation": "This statement is true. Multiply each matrix by its scalar, then add: 3(2) + 1(7) = 13.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-018",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "networks",
+   "prompt": "For the friendship matrix \\(A=\\begin{bmatrix}0&1&1&1\\\\1&0&0&0\\\\1&0&0&1\\\\1&0&1&0\\end{bmatrix}\\), the (3,2) entry of \\(A^{2}\\) is 8.",
+   "explanation": "This statement is false. The correct value is 1. Row 3 of A times column 2 of A = 1·1 + 0·0 + 0·0 + 1·0 = 1.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-019",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "adjoint",
+   "prompt": "For \\(A=\\begin{bmatrix}7&4\\\\6&-5\\end{bmatrix}\\), the (2,2) entry of \\(\\operatorname{adj}A\\) is 7.",
+   "explanation": "This statement is true. For a 2×2 matrix swap the diagonal entries and change the sign of the other two: \\(\\operatorname{adj}A=\\begin{bmatrix}-5&-4\\\\-6&7\\end{bmatrix}\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-020",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "types-of-matrices",
+   "prompt": "A diagonal matrix with equal diagonal entries is called a scalar matrix.",
+   "explanation": "This statement is true. Equal diagonal entries make the matrix scalar, \\(kI\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-021",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "row-operations",
+   "prompt": "Applying \\(R_{2}\\to R_{2}+4R_{1}\\) to \\(A=\\begin{bmatrix}-6&-2\\\\0&4\\end{bmatrix}\\) gives -24 in row 2, column 1.",
+   "explanation": "This statement is true. New entry = 0 + 4((-6)) = -24.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-022",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "inverse-properties",
+   "prompt": "If \\(A^{-1}=\\begin{bmatrix}0&-1\\\\1&-3\\end{bmatrix}\\) and \\(B^{-1}=\\begin{bmatrix}0&1\\\\1&3\\end{bmatrix}\\), the (1,1) entry of \\((AB)^{-1}\\) is 5.",
+   "explanation": "This statement is false. The correct value is 1. \\((AB)^{-1}=B^{-1}A^{-1}\\) (reverse order). Multiplying, the (1,1) entry is 1; the other order \\(A^{-1}B^{-1}\\) would give -1.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-023",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "transpose",
+   "prompt": "\\((A+B)^{T}=A^{T}B^{T}\\).",
+   "explanation": "This statement is false. The correct statement is: \\((A+B)^{T}=A^{T}+B^{T}\\). The transpose of a sum is the sum of the transposes.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-024",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "transpose-of-product",
+   "prompt": "\\((AB)^{T}=B^{T}A^{T}\\).",
+   "explanation": "This statement is true. The transpose of a product reverses the order: \\((AB)^{T}=B^{T}A^{T}\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-025",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "non-commutative",
+   "prompt": "Matrix multiplication is not commutative in general.",
+   "explanation": "This statement is true. Matrix multiplication is not commutative in general; \\(AB=BA\\) holds only for special pairs.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-026",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "singular-nonsingular",
+   "prompt": "A square matrix has an inverse exactly when it is non-singular.",
+   "explanation": "This statement is true. The inverse exists exactly when \\(|A|\\neq0\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-027",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "matrix-equality",
+   "prompt": "If \\(\\begin{bmatrix}2x+4&1\\\\-3&y+2\\end{bmatrix}=\\begin{bmatrix}6&1\\\\-3&-2\\end{bmatrix}\\), then \\(y\\)=-7.",
+   "explanation": "This statement is false. The correct value is -4. Equal matrices have equal corresponding entries: \\(2x+4=6\\) gives x = 1; \\(y+2=-2\\) gives y = -4. So y = -4.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-028",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "det-row-ops",
+   "prompt": "A 3×3 matrix with determinant 1 has determinant 0 after the operations R1 ↔ R2; then R3 → R3 - 2R1 (in this order).",
+   "explanation": "This statement is false. The correct value is -1. Track each operation: R1 ↔ R2: sign changes; R3 → R3 - 2R1: no change. Result: -1.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-029",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "det-properties",
+   "prompt": "If A is 2×2 with \\(|A|=-2\\), then \\(|\\operatorname{adj}A|\\) = -1.",
+   "explanation": "This statement is false. The correct value is -2. \\(|\\operatorname{adj}A|=|A|^{n-1}\\): \\((-2)^{1}=-2\\).",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-030",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "entry-notation",
+   "prompt": "In \\(A=\\begin{bmatrix}-7&7&-7\\\\-3&-4&4\\\\2&-1&9\\end{bmatrix}\\), the entry \\(a_{11}\\) equals -7.",
+   "explanation": "This statement is true. \\(a_{11}\\) lies in row 1 and column 1, so it is -7.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-031",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "If A is 3×3 with \\(|A|=-1\\), then \\(|3A|\\) = -24.",
+   "explanation": "This statement is false. The correct value is -27. For an n×n matrix \\(|kA|=k^{n}|A|\\). Here n = 3: \\(3^{3}\\)(-1) = -27.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-032",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}6x + y &= 19\\\\-5x + y &= -25\\end{aligned}\\right.\\), \\(D\\) = 11.",
+   "explanation": "This statement is true. \\(D=\\begin{vmatrix}6&1\\\\-5&1\\end{vmatrix}\\) = 11.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-033",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "cipher-decode",
+   "prompt": "A word coded as \\(\\begin{bmatrix}-57&78\\end{bmatrix}\\) with \\(K^{-1}=\\begin{bmatrix}-3&4\\\\-2&3\\end{bmatrix}\\) (A=1,…,Z=26) has letter 1 equal to O.",
+   "explanation": "This statement is true. Decode by post-multiplying by the inverse key: \\(\\begin{bmatrix}-57&78\\end{bmatrix}\\begin{bmatrix}-3&4\\\\-2&3\\end{bmatrix}=\\begin{bmatrix}15&6\\end{bmatrix}\\), so the numbers are 15 and 6, i.e. OF. Letter 1 is O.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-034",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "cipher-encode",
+   "prompt": "If the word HE (A=1,…,Z=26) is coded as a row matrix times the key \\(K=\\begin{bmatrix}-1&2\\\\1&-1\\end{bmatrix}\\), entry 2 of the coded row is 11.",
+   "explanation": "This statement is true. HE → \\(\\begin{bmatrix}8&5\\end{bmatrix}\\). Coded row = \\(\\begin{bmatrix}8&5\\end{bmatrix}\\begin{bmatrix}-1&2\\\\1&-1\\end{bmatrix}=\\begin{bmatrix}-3&11\\end{bmatrix}\\); entry 2 is 11.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-035",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "For \\(A=\\begin{bmatrix}5&3\\\\5&3\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}4&3&-2\\\\1&4&4\\end{bmatrix}\\), the (2,1) entry of \\(AB\\) is 23.",
+   "explanation": "This statement is true. Row 2 of A times column 1 of B: 5(4) + 3(1) = 23.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-036",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "For \\(A=\\begin{bmatrix}-2&4\\\\-1&4\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-1&-2&-3\\\\0&2&-4\\end{bmatrix}\\), the (2,2) entry of \\(AB\\) is 0.",
+   "explanation": "This statement is false. The correct value is 10. Row 2 of A times column 2 of B: (-1)((-2)) + 4(2) = 10.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-037",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "translation",
+   "prompt": "A translation taking (6, -6) to (9, -2) has \\(h+k\\) = 7.",
+   "explanation": "This statement is true. \\(h=9-(6)=3\\) and \\(k=-2-(-6)=4\\), so \\(h+k\\) = 7.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-038",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "det-properties",
+   "prompt": "If A is 2×2 with \\(|A|=-3\\), then \\(|A^{-1}|\\) = \\(\\frac{1}{3}\\).",
+   "explanation": "This statement is false. The correct value is \\(-\\frac{1}{3}\\). \\(|A^{-1}|=\\frac{1}{|A|}\\) = \\(-\\frac{1}{3}\\).",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-039",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "types-of-matrices",
+   "prompt": "The matrix \\(\\begin{bmatrix}-4&0\\\\0&-4\\end{bmatrix}\\) is described as: Scalar matrix.",
+   "explanation": "This statement is true. This is a scalar matrix because it is diagonal with equal diagonal entries.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-040",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "sym-skew-decomposition",
+   "prompt": "For \\(A=\\begin{bmatrix}6&-8\\\\0&8\\end{bmatrix}\\), the (2,1) entry of \\(\\frac{1}{2}(A+A^{T})\\) is 4.",
+   "explanation": "This statement is false. The correct value is -4. \\(\\frac{1}{2}(A+A^{T})\\) has entry (2,1) = (\\(a_{21}\\) + \\(a_{12}\\))/2 = (0 + (-8))/2 = -4.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-041",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "adjoint",
+   "prompt": "For a 2×2 matrix with \\(|A|=-5\\), the (1,2) entry of \\(A\\operatorname{adj}A\\) is 0.",
+   "explanation": "This statement is true. \\(A\\operatorname{adj}A=|A|I\\) is a scalar matrix, so every off-diagonal entry is 0.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-042",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "rank",
+   "prompt": "An \\(n\\times n\\) matrix is non-singular exactly when its rank is \\(n\\).",
+   "explanation": "This statement is true. Rank \\(n\\) means \\(n\\) non-zero rows, i.e. non-zero determinant.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-043",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "powers",
+   "prompt": "If \\(A=\\begin{bmatrix}1&-1\\\\0&1\\end{bmatrix}\\), the (1,2) entry of \\(A^{6}\\) is -8.",
+   "explanation": "This statement is false. The correct value is -6. \\(A^{2}=\\begin{bmatrix}1&-2\\\\0&1\\end{bmatrix}\\), and by induction \\(A^{n}\\) has (1,2) entry n·k. So the (1,2) entry of \\(A^{6}\\) is 6((-1)) = -6.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-044",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "matrix-equality",
+   "prompt": "If \\(\\begin{bmatrix}2x-4&2\\\\-1&-3y-1\\end{bmatrix}=\\begin{bmatrix}0&2\\\\-1&11\\end{bmatrix}\\), then \\(y\\)=-3.",
+   "explanation": "This statement is false. The correct value is -4. Equal matrices have equal corresponding entries: \\(2x-4=0\\) gives x = 2; \\(-3y-1=11\\) gives y = -4. So y = -4.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-045",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "adjoint",
+   "prompt": "For \\(A=\\begin{bmatrix}6&-5\\\\3&8\\end{bmatrix}\\), the (2,1) entry of \\(\\operatorname{adj}A\\) is -3.",
+   "explanation": "This statement is true. For a 2×2 matrix swap the diagonal entries and change the sign of the other two: \\(\\operatorname{adj}A=\\begin{bmatrix}8&5\\\\-3&6\\end{bmatrix}\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-046",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "For \\(A=\\begin{bmatrix}5&1\\\\2&-4\\\\1&3\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-3&0&-4\\\\-4&-4&-2\\end{bmatrix}\\), the (2,3) entry of \\(AB\\) is 16.",
+   "explanation": "This statement is false. The correct value is 0. Row 2 of A times column 3 of B: 2((-4)) + (-4)((-2)) = 0.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-047",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "cofactor-expansion",
+   "prompt": "A determinant can be expanded along any row or any column.",
+   "explanation": "This statement is true. Expansion along any row or column gives the same value.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-048",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "consistency",
+   "prompt": "A system with no solution is called consistent.",
+   "explanation": "This statement is false. The correct statement is: A system with no solution is called inconsistent. Consistent means at least one solution; inconsistent means none.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-049",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "inverse-2x2",
+   "prompt": "For \\(A=\\begin{bmatrix}-3&3\\\\-3&6\\end{bmatrix}\\), the (1,1) entry of \\(A^{-1}\\) is \\(6\\).",
+   "explanation": "This statement is false. The correct value is \\(-\\frac{2}{3}\\). \\(|A|=-9\\) and \\(\\operatorname{adj}A=\\begin{bmatrix}6&-3\\\\3&-3\\end{bmatrix}\\), so \\(A^{-1}=\\frac{1}{|A|}\\operatorname{adj}A\\) has (1,1) entry \\(-\\frac{2}{3}\\).",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-050",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "\\(\\begin{vmatrix}0&-1&5\\\\-4&1&4\\\\-1&2&1\\end{vmatrix}=-35\\)",
+   "explanation": "This statement is true. Positive terms (aei + bfg + cdh) = -36; negative terms (ceg + afh + bdi) = -1. So the value is -36 - (-1) = -35.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-051",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "cofactor-expansion",
+   "prompt": "If row 1 of a 3×3 determinant is \\(1,3,-2\\) with cofactors \\(5,-1,1\\), the determinant is 0.",
+   "explanation": "This statement is true. Expand along row 1: 1(5) + 3((-1)) + (-2)(1) = 0.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-052",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "rank",
+   "prompt": "The rank of \\(A=\\begin{bmatrix}-4&-4&-6&4\\\\2&2&3&-2\\\\6&6&9&-6\\end{bmatrix}\\) is 0.",
+   "explanation": "This statement is false. The correct value is 1. Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 1.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-053",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "cramers-rule",
+   "prompt": "Cramer's rule gives y = 0 for the system \\(\\left\\{\\begin{aligned}3x - 2y - z &= 9\\\\-2x - z &= -5\\\\-x + 2y + z &= -1\\end{aligned}\\right.\\).",
+   "explanation": "This statement is false. The correct value is 3. \\(D=4\\) and \\(D_{y}=12\\), so y = 12/4 = 3.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-054",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "order-of-matrix",
+   "prompt": "The matrix \\(\\begin{bmatrix}5\\\\-7\\\\-6\\\\6\\end{bmatrix}\\) has order 4 × 1.",
+   "explanation": "This statement is true. It has 4 row(s) and 1 column(s), so its order is 4 × 1 (rows first, then columns).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-055",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "cramers-rule",
+   "prompt": "Cramer's rule gives y = -4 for the system \\(\\left\\{\\begin{aligned}-2x - 5y &= 22\\\\-4x + 5y &= -16\\end{aligned}\\right.\\).",
+   "explanation": "This statement is true. \\(D=-30\\), \\(D_{y}=120\\), so \\(y=D_{y}/D\\) = 120/-30 = -4.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-056",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "symmetric-skew",
+   "prompt": "For a 3×3 skew-symmetric matrix with \\(a_{12}=-1\\), \\(a_{13}=3\\), \\(a_{23}=-4\\), \\(a_{31}\\) equals -3.",
+   "explanation": "This statement is true. Skew-symmetry gives \\(a_{ji}\\) = -\\(a_{ij}\\), so \\(a_{31}\\) = -(3) = -3.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-057",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "inverse-3x3",
+   "prompt": "For \\(A=\\begin{bmatrix}1&1&2\\\\4&5&10\\\\0&0&1\\end{bmatrix}\\), the (3,2) entry of \\(A^{-1}\\) is 0.",
+   "explanation": "This statement is true. \\(|A|=1\\), so \\(A^{-1}=\\operatorname{adj}A/|A|\\) = \\(\\operatorname{adj}A\\). Its (3,2) entry is 0.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-058",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}-x + 3y &= 13\\\\-x + y + 3z &= -1\\\\-2x + y + 3z &= 0\\end{aligned}\\right.\\), \\(D_{x}\\) = 9.",
+   "explanation": "This statement is true. Replace the x-column by the constants: \\(D_{x}=\\begin{vmatrix}13&3&0\\\\-1&1&3\\\\0&1&3\\end{vmatrix}\\) = 9.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-059",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}-5&-1&7\\\\6&3&7\\\\7&0&2\\end{bmatrix}\\), the minor \\(M_{21}\\) is -2.",
+   "explanation": "This statement is true. Delete row 2 and column 1: \\(M_{21}=\\begin{vmatrix}-1&7\\\\0&2\\end{vmatrix}\\) = -2.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-060",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "\\(\\begin{vmatrix}5&-2&2\\\\-2&5&-5\\\\3&3&-3\\end{vmatrix}=0\\) (no expansion is needed).",
+   "explanation": "This statement is true. The determinant is 0 because the matrix has R3 = R1 + R2, so the rows are dependent.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-061",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "symmetric-skew",
+   "prompt": "For a 3×3 skew-symmetric matrix with \\(a_{12}=2\\), \\(a_{13}=-1\\), \\(a_{23}=8\\), \\(a_{32}\\) equals -1.",
+   "explanation": "This statement is false. The correct value is -8. Skew-symmetry gives \\(a_{ji}\\) = -\\(a_{ij}\\), so \\(a_{32}\\) = -(8) = -8.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-062",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "rank",
+   "prompt": "The rank of \\(A=\\begin{bmatrix}3&-1&1&3\\\\6&-2&-4&4\\end{bmatrix}\\) is 0.",
+   "explanation": "This statement is false. The correct value is 2. Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 2.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-063",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "cramers-rule",
+   "prompt": "Cramer's rule gives x = 4 for the system \\(\\left\\{\\begin{aligned}3x + y + z &= 13\\\\-x - y + z &= 3\\\\2x + 3y &= -1\\end{aligned}\\right.\\).",
+   "explanation": "This statement is true. \\(D=-8\\) and \\(D_{x}=-32\\), so x = -32/-8 = 4.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-064",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "cramers-rule",
+   "prompt": "Cramer's rule gives y = -2 for the system \\(\\left\\{\\begin{aligned}-x + 3y + z &= -13\\\\2x + 3z &= -1\\\\-x - 2y - 2z &= 6\\end{aligned}\\right.\\).",
+   "explanation": "This statement is true. \\(D=-7\\) and \\(D_{y}=14\\), so y = 14/-7 = -2.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-065",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}2&6&0\\\\0&-3&4\\\\-3&-5&2\\end{bmatrix}\\), the cofactor \\(C_{12}\\) is -12.",
+   "explanation": "This statement is true. \\(M_{12}\\) = 12, and the sign is \\((-1)^{1+2}\\) = -1. So \\(C_{12}\\) = -12.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-066",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "scalar-multiple",
+   "prompt": "If \\(A=\\begin{bmatrix}-2&7\\\\7&6\\\\4&1\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-5&4\\\\-5&-6\\\\3&-2\\end{bmatrix}\\), the (1,2) entry of \\(-A-B\\) is -14.",
+   "explanation": "This statement is false. The correct value is -11. Multiply each matrix by its scalar, then add: (-1)(7) + (-1)(4) = -11.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-067",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "For \\(A=\\begin{bmatrix}1&-1&-1\\\\-1&2&4\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-3&3&1\\\\4&1&0\\\\4&2&-4\\end{bmatrix}\\), the (2,2) entry of \\(AB\\) is 7.",
+   "explanation": "This statement is true. Row 2 of A times column 2 of B: (-1)(3) + 2(1) + 4(2) = 7.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-068",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}-3&-4&7\\\\-6&3&5\\\\-4&-3&5\\end{bmatrix}\\), the cofactor \\(C_{21}\\) is -1.",
+   "explanation": "This statement is true. \\(M_{21}\\) = 1, and the sign is \\((-1)^{2+1}\\) = -1. So \\(C_{21}\\) = -1.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-069",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "singular-nonsingular",
+   "prompt": "The matrix \\(\\begin{bmatrix}-3&1\\\\-9&3\\end{bmatrix}\\) is Singular.",
+   "explanation": "This statement is true. \\(|A|=(-3)3 - 1(-9)=0\\). A matrix is singular when |A| = 0, so this matrix is singular.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-070",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "inverse-2x2",
+   "prompt": "In the inverse of a 2×2 matrix the diagonal entries are swapped and the other two change sign.",
+   "explanation": "This statement is true. Swap the diagonal entries, change the sign of the other two, divide by the determinant.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-071",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "If \\(|A|=1\\) and \\(|B|=3\\), then \\(|A^{T}B|\\) = 3.",
+   "explanation": "This statement is true. Use \\(|XY|=|X||Y|\\) and \\(|X^{T}|=|X|\\): \\(|A^{T}B|\\) = 3.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-072",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "non-commutative",
+   "prompt": "For \\(A=\\begin{bmatrix}1&1\\\\2&4\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-4&4\\\\-2&-3\\end{bmatrix}\\), \\((AB)_{11}-(BA)_{11}\\) equals -5.",
+   "explanation": "This statement is false. The correct value is -10. \\((AB)_{11}\\) = -6 and \\((BA)_{11}\\) = 4, so the difference is -10. In general AB and BA are not equal.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-073",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "homogeneous-systems",
+   "prompt": "A homogeneous system with more unknowns than equations has a non-trivial solution.",
+   "explanation": "This statement is true. Rank is at most the number of equations, so there are free variables.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-074",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "cramers-rule",
+   "prompt": "Cramer's rule gives y = -1 for the system \\(\\left\\{\\begin{aligned}x + 4y &= -7\\\\4x + 5y &= -17\\end{aligned}\\right.\\).",
+   "explanation": "This statement is true. \\(D=-11\\), \\(D_{y}=11\\), so \\(y=D_{y}/D\\) = 11/-11 = -1.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-075",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "cipher-decode",
+   "prompt": "A word coded as \\(\\begin{bmatrix}-8&1\\end{bmatrix}\\) with \\(K^{-1}=\\begin{bmatrix}-1&-2\\\\-1&-1\\end{bmatrix}\\) (A=1,…,Z=26) has letter 1 equal to G.",
+   "explanation": "This statement is true. Decode by post-multiplying by the inverse key: \\(\\begin{bmatrix}-8&1\\end{bmatrix}\\begin{bmatrix}-1&-2\\\\-1&-1\\end{bmatrix}=\\begin{bmatrix}7&15\\end{bmatrix}\\), so the numbers are 7 and 15, i.e. GO. Letter 1 is G.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-076",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "transpose",
+   "prompt": "If \\(A=\\begin{bmatrix}-6&-4&9&5\\\\9&7&6&-2\\end{bmatrix}\\), the (row 3, column 2) entry of \\(A^{T}\\) is 6.",
+   "explanation": "This statement is true. The (i, j) entry of \\(A^{T}\\) is the (j, i) entry of A, so it is \\(a_{23}\\) = 6.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-077",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "consistency",
+   "prompt": "A system whose reduced augmented matrix is \\(\\left[\\begin{array}{ccc|c}1&-2&-1&6\\\\0&1&1&-1\\\\0&0&0&-3\\end{array}\\right]\\) has: No solution.",
+   "explanation": "This statement is true. rank A = 2 and rank [A:B] = 3, with n = 3 unknowns. rank A is less than rank [A:B] (a row 0 0 0 | non-zero): the system is inconsistent.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-078",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "gaussian-elimination",
+   "prompt": "Gaussian elimination reduces the augmented matrix to echelon form and then uses back-substitution.",
+   "explanation": "This statement is true. Gauss: echelon form then back-substitute. Gauss–Jordan goes on to the reduced form.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-079",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "For \\(A=\\begin{bmatrix}2&3&-4\\\\-1&5&5\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}5&3&2\\\\-3&5&-2\\\\-2&1&5\\end{bmatrix}\\), the (1,3) entry of \\(AB\\) is -22.",
+   "explanation": "This statement is true. Row 1 of A times column 3 of B: 2(2) + 3((-2)) + (-4)(5) = -22.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-080",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "gaussian-elimination",
+   "prompt": "If Gaussian elimination reduces a system to \\(\\left[\\begin{array}{ccc|c}1&-2&4&29\\\\0&1&-1&-7\\\\0&0&1&5\\end{array}\\right]\\), then y = 2.",
+   "explanation": "This statement is false. The correct value is -2. From the last row z = 5. The second row gives y = -7 - (-1)(5) = -2. ",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-081",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "area-by-determinant",
+   "prompt": "The points (2, 5), (-3, -2) and (-3, k) are collinear when k = -2.",
+   "explanation": "This statement is true. Collinear points give a zero determinant \\(\\begin{vmatrix}2&5&1\\\\-3&-2&1\\\\-3&k&1\\end{vmatrix}\\) = 0, which expands to \\(- 5 k - 10=0\\). So k = -2.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-082",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "scalar-multiple",
+   "prompt": "If \\(A=\\begin{bmatrix}7&-4&5\\\\0&-1&-6\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-6&-3&-5\\\\0&-5&0\\end{bmatrix}\\), the (1,1) entry of \\(-3A-B\\) is 1.",
+   "explanation": "This statement is false. The correct value is -15. Multiply each matrix by its scalar, then add: (-3)(7) + (-1)((-6)) = -15.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-083",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "sym-skew-decomposition",
+   "prompt": "For \\(A=\\begin{bmatrix}-6&2\\\\4&0\\end{bmatrix}\\), the (2,2) entry of \\(\\frac{1}{2}(A+A^{T})\\) is 0.",
+   "explanation": "This statement is true. \\(\\frac{1}{2}(A+A^{T})\\) has entry (2,2) = (\\(a_{22}\\) + \\(a_{22}\\))/2 = (0 + 0)/2 = 0.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-084",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "symmetric-skew",
+   "prompt": "A skew-symmetric matrix can have non-zero diagonal entries.",
+   "explanation": "This statement is false. The correct statement is: Every diagonal entry of a skew-symmetric matrix is 0. \\(a_{ii}=-a_{ii}\\) forces \\(a_{ii}=0\\).",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-085",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "If A is 2×2 with \\(|A|=-1\\), then \\(|-1A|\\) = 2.",
+   "explanation": "This statement is false. The correct value is -1. For an n×n matrix \\(|kA|=k^{n}|A|\\). Here n = 2: \\((-1)^{2}\\)(-1) = -1.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-086",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "If A is 2×2 with \\(|A|=5\\), then \\(|2A|\\) = 20.",
+   "explanation": "This statement is true. For an n×n matrix \\(|kA|=k^{n}|A|\\). Here n = 2: \\(2^{2}\\)(5) = 20.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-087",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "multiplication-laws",
+   "prompt": "\\((A+B)^{2}=A^{2}+AB+BA+B^{2}\\) for square matrices.",
+   "explanation": "This statement is true. \\((A+B)^{2}=A^{2}+AB+BA+B^{2}\\), which equals \\(A^{2}+2AB+B^{2}\\) only if \\(AB=BA\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-088",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "add-subtract",
+   "prompt": "Two matrices can be added only if they have the same order.",
+   "explanation": "This statement is true. Addition is done entry by entry, so the matrices must have the same order.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-089",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "\\(\\begin{vmatrix}-2&7\\\\-8&2\\end{vmatrix}=49\\)",
+   "explanation": "This statement is false. The correct value is 52. \\(ad-bc = (-2)(2) - 7((-8)) = -4 - (-56) = 52\\)",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-090",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "cramers-rule",
+   "prompt": "Cramer's rule gives z = 1 for the system \\(\\left\\{\\begin{aligned}-x + y &= 3\\\\2x + 3y - z &= 3\\\\-x + 2y + z &= 6\\end{aligned}\\right.\\).",
+   "explanation": "This statement is true. \\(D=-6\\) and \\(D_{z}=-6\\), so z = -6/-6 = 1.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-091",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "transpose",
+   "prompt": "If \\(A=\\begin{bmatrix}-2&1&-6&-3\\\\6&0&-5&-1\\end{bmatrix}\\), the (row 1, column 1) entry of \\(A^{T}\\) is -2.",
+   "explanation": "This statement is true. The (i, j) entry of \\(A^{T}\\) is the (j, i) entry of A, so it is \\(a_{11}\\) = -2.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-092",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "inverse-3x3",
+   "prompt": "For \\(A=\\begin{bmatrix}0&1&2\\\\1&0&0\\\\3&0&1\\end{bmatrix}\\), the (1,1) entry of \\(A^{-1}\\) is 0.",
+   "explanation": "This statement is true. \\(|A|=-1\\), so \\(A^{-1}=\\operatorname{adj}A/|A|\\) = \\(-\\operatorname{adj}A\\). Its (1,1) entry is 0.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-093",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "adjoint",
+   "prompt": "For \\(A=\\begin{bmatrix}2&0&-1\\\\-1&2&4\\\\2&-3&4\\end{bmatrix}\\), the (3,2) entry of \\(\\operatorname{adj}A\\) is 6.",
+   "explanation": "This statement is true. \\(\\operatorname{adj}A\\) is the transpose of the cofactor matrix, so its (3,2) entry is the cofactor \\(C_{23}\\) = 6.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-094",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}-2&7&-1\\\\-6&1&6\\\\5&3&1\\end{bmatrix}\\), the cofactor \\(C_{31}\\) is 43.",
+   "explanation": "This statement is true. \\(M_{31}\\) = 43, and the sign is \\((-1)^{3+1}\\) = +1. So \\(C_{31}\\) = 43.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-095",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "transpose",
+   "prompt": "\\((A^{T})^{T}=-A\\).",
+   "explanation": "This statement is false. The correct statement is: \\((A^{T})^{T}=A\\). Transposing twice returns the original matrix.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-096",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "networks",
+   "prompt": "The adjacency matrix of an undirected network without loops is symmetric.",
+   "explanation": "This statement is true. Link i–j is the same as link j–i, so \\(a_{ij}=a_{ji}\\); no loops means \\(a_{ii}=0\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-097",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "translation",
+   "prompt": "The order in which transformations are applied can change the final result.",
+   "explanation": "This statement is true. Matrix products depend on order, so the order of transformations matters.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-098",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "cipher-encode",
+   "prompt": "If the word ZIP (A=1,…,Z=26) is coded as a row matrix times the key \\(K=\\begin{bmatrix}7&-9&0\\\\3&-4&0\\\\0&0&1\\end{bmatrix}\\), entry 2 of the coded row is -273.",
+   "explanation": "This statement is false. The correct value is -270. ZIP → \\(\\begin{bmatrix}26&9&16\\end{bmatrix}\\). Coded row = \\(\\begin{bmatrix}26&9&16\\end{bmatrix}\\begin{bmatrix}7&-9&0\\\\3&-4&0\\\\0&0&1\\end{bmatrix}=\\begin{bmatrix}209&-270&16\\end{bmatrix}\\); entry 2 is -270.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-099",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "If \\(|A|=4\\) and \\(|B|=3\\), then \\(|A^{2}|\\) = 16.",
+   "explanation": "This statement is true. Use \\(|XY|=|X||Y|\\) and \\(|X^{T}|=|X|\\): \\(|A^{2}|\\) = 16.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-100",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "rank",
+   "prompt": "The rank of \\(A=\\begin{bmatrix}6&-9&-6&-6\\\\-2&3&2&2\\end{bmatrix}\\) is 0.",
+   "explanation": "This statement is false. The correct value is 1. Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 1.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-101",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "\\(\\begin{vmatrix}6&3\\\\9&4\\end{vmatrix}=4\\)",
+   "explanation": "This statement is false. The correct value is -3. \\(ad-bc = 6(4) - 3(9) = 24 - 27 = -3\\)",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-102",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "rank",
+   "prompt": "The rank of \\(A=\\begin{bmatrix}3&3&-2&1\\\\-6&6&0&2\\end{bmatrix}\\) is 0.",
+   "explanation": "This statement is false. The correct value is 2. Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 2.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-103",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}-3x + 5y &= 32\\\\-x - 4y &= -12\\end{aligned}\\right.\\), \\(D\\) = 4.",
+   "explanation": "This statement is false. The correct value is 17. \\(D=\\begin{vmatrix}-3&5\\\\-1&-4\\end{vmatrix}\\) = 17.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-104",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "symmetric-skew",
+   "prompt": "For a 3×3 skew-symmetric matrix with \\(a_{12}=-4\\), \\(a_{13}=5\\), \\(a_{23}=-5\\), \\(a_{31}\\) equals -5.",
+   "explanation": "This statement is true. Skew-symmetry gives \\(a_{ji}\\) = -\\(a_{ij}\\), so \\(a_{31}\\) = -(5) = -5.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-105",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "cramers-rule",
+   "prompt": "Cramer's rule gives x = 3 for the system \\(\\left\\{\\begin{aligned}-2x + 2y &= -16\\\\5x - 2y &= 25\\end{aligned}\\right.\\).",
+   "explanation": "This statement is true. \\(D=-6\\), \\(D_{x}=-18\\), so \\(x=D_{x}/D\\) = -18/-6 = 3.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-106",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}-x - 2y + z &= -3\\\\-2x - 2y - z &= -2\\\\3x + 3y + 2z &= 2\\end{aligned}\\right.\\), \\(D_{x}\\) = 3.",
+   "explanation": "This statement is false. The correct value is -3. Replace the x-column by the constants: \\(D_{x}=\\begin{vmatrix}-3&-2&1\\\\-2&-2&-1\\\\2&3&2\\end{vmatrix}\\) = -3.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-107",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "rank",
+   "prompt": "The rank of \\(I_{n}\\) is \\(n\\).",
+   "explanation": "This statement is true. All \\(n\\) rows are non-zero in echelon form.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-108",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "gaussian-elimination",
+   "prompt": "If Gaussian elimination reduces a system to \\(\\left[\\begin{array}{ccc|c}1&-3&-3&-7\\\\0&1&1&2\\\\0&0&1&-2\\end{array}\\right]\\), then x = -11.",
+   "explanation": "This statement is false. The correct value is -1. From the last row z = -2. The second row gives y = 2 - 1(-2) = 4. The first row gives x = -7 - (-3)(4) - (-3)(-2) = -1.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-109",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}1&-2&1\\\\-3&-2&5\\\\3&3&4\\end{bmatrix}\\), the cofactor \\(C_{22}\\) is 0.",
+   "explanation": "This statement is false. The correct value is 1. \\(M_{22}\\) = 1, and the sign is \\((-1)^{2+2}\\) = +1. So \\(C_{22}\\) = 1.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-110",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "symmetric-skew",
+   "prompt": "A matrix is symmetric when \\(A^{T}=-A\\).",
+   "explanation": "This statement is false. The correct statement is: A matrix is symmetric when \\(A^{T}=A\\). Symmetric means \\(a_{ij}=a_{ji}\\) for all \\(i,j\\), i.e. \\(A^{T}=A\\).",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-111",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "inverse-properties",
+   "prompt": "A non-singular matrix can have more than one inverse.",
+   "explanation": "This statement is false. The correct statement is: The inverse of a non-singular matrix is unique. The inverse of a matrix, when it exists, is unique.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-112",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "rank",
+   "prompt": "The rank of \\(A=\\begin{bmatrix}7&5\\\\-4&-4\\\\-1&1\\end{bmatrix}\\) is 0.",
+   "explanation": "This statement is false. The correct value is 2. Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 2.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-113",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "solve-by-inverse",
+   "prompt": "If \\(A^{-1}=\\begin{bmatrix}5&2\\\\2&1\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}16\\\\-37\\end{bmatrix}\\), the solution of \\(AX=B\\) has y = -5.",
+   "explanation": "This statement is true. \\(X=A^{-1}B\\): y = 2(16) + 1((-37)) = -5.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-114",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "If A is 2×2 with \\(|A|=1\\), then \\(|-2A|\\) = 4.",
+   "explanation": "This statement is true. For an n×n matrix \\(|kA|=k^{n}|A|\\). Here n = 2: \\((-2)^{2}\\)(1) = 4.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-115",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "order-of-matrix",
+   "prompt": "In the order \\(m\\times n\\) of a matrix, \\(m\\) is the number of rows.",
+   "explanation": "This statement is true. The order is written rows × columns, so \\(m\\) is the number of rows.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-116",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "sym-skew-decomposition",
+   "prompt": "For every square matrix A, \\(A+A^{T}\\) is symmetric.",
+   "explanation": "This statement is true. \\((A+A^{T})^{T}=A^{T}+A=A+A^{T}\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-117",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "matrix-equality",
+   "prompt": "If \\(\\begin{bmatrix}2x+2&-2\\\\-4&3y+5\\end{bmatrix}=\\begin{bmatrix}0&-2\\\\-4&17\\end{bmatrix}\\), then \\(x+y\\)=7.",
+   "explanation": "This statement is false. The correct value is 3. Equal matrices have equal corresponding entries: \\(2x+2=0\\) gives x = -1; \\(3y+5=17\\) gives y = 4. So x+y = 3.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-118",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "echelon-form",
+   "prompt": "In reduced row echelon form a leading 1 may have non-zero entries above it in its column.",
+   "explanation": "This statement is false. The correct statement is: In reduced row echelon form a leading 1 is the only non-zero entry in its column. RREF clears every other entry in the pivot column.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-119",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "adjoint",
+   "prompt": "For \\(A=\\begin{bmatrix}4&-4\\\\1&4\\end{bmatrix}\\), the (1,1) entry of \\(\\operatorname{adj}A\\) is 14.",
+   "explanation": "This statement is false. The correct value is 4. For a 2×2 matrix swap the diagonal entries and change the sign of the other two: \\(\\operatorname{adj}A=\\begin{bmatrix}4&4\\\\-1&4\\end{bmatrix}\\).",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-120",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}2x + 3y &= 10\\\\y + 3z &= 11\\\\-2x - y + 3z &= 3\\end{aligned}\\right.\\), \\(D_{x}\\) = -9.",
+   "explanation": "This statement is false. The correct value is -12. Replace the x-column by the constants: \\(D_{x}=\\begin{vmatrix}10&3&0\\\\11&1&3\\\\3&-1&3\\end{vmatrix}\\) = -12.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-121",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "adjoint",
+   "prompt": "\\(A\\operatorname{adj}A=I\\) for every square matrix A.",
+   "explanation": "This statement is false. The correct statement is: \\(A\\operatorname{adj}A=|A|I\\). The key identity is \\(A\\operatorname{adj}A=\\operatorname{adj}A\\,A=|A|I\\).",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-122",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "transpose",
+   "prompt": "The transpose of a matrix is obtained by changing the sign of every entry.",
+   "explanation": "This statement is false. The correct statement is: The transpose of a matrix is obtained by writing its rows as columns. The rows of A become the columns of \\(A^{T}\\).",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-123",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "consistency",
+   "prompt": "A system whose reduced augmented matrix is \\(\\left[\\begin{array}{ccc|c}1&-3&2&-3\\\\0&1&2&2\\\\0&0&1&-5\\end{array}\\right]\\) has: Infinitely many solutions.",
+   "explanation": "This statement is false. The correct value is Unique solution. rank A = 3 and rank [A:B] = 3, with n = 3 unknowns. Ranks equal and equal to n: exactly one solution.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-124",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "rank",
+   "prompt": "Elementary row operations can change the rank of a matrix.",
+   "explanation": "This statement is false. The correct statement is: Elementary row operations do not change the rank of a matrix. Row-equivalent matrices have the same rank.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-125",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "powers",
+   "prompt": "If \\(A=\\begin{bmatrix}0&5\\\\0&-3\\end{bmatrix}\\), the (1,1) entry of \\(A^{2}\\) is -2.",
+   "explanation": "This statement is false. The correct value is 0. \\(A^{2}=AA\\); row 1 times column 1: 0(0) + 5(0) = 0. (It is not just squaring each entry.)",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-126",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "multiplication-laws",
+   "prompt": "\\(AI=O\\).",
+   "explanation": "This statement is false. The correct statement is: \\(AI=IA=A\\). The identity matrix behaves like the number 1 in multiplication.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-127",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "det-row-ops",
+   "prompt": "A 3×3 matrix with determinant -1 has determinant -2 after the operations R2 → -R2; then R1 → -R1; then R2 → 2R2 (in this order).",
+   "explanation": "This statement is true. Track each operation: R2 → -R2: multiplies the determinant by -1; R1 → -R1: multiplies the determinant by -1; R2 → 2R2: multiplies the determinant by 2. Result: -2.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-128",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "\\(\\begin{vmatrix}5&-3&3\\\\2&-2&-4\\\\-4&0&5\\end{vmatrix}=-93\\)",
+   "explanation": "This statement is false. The correct value is -92. Positive terms (aei + bfg + cdh) = -98; negative terms (ceg + afh + bdi) = -6. So the value is -98 - (-6) = -92.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-129",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "inverse-2x2",
+   "prompt": "For \\(A=\\begin{bmatrix}-5&-3\\\\-2&-1\\end{bmatrix}\\), the (2,1) entry of \\(A^{-1}\\) is -2.",
+   "explanation": "This statement is true. \\(|A|=-1\\) and \\(\\operatorname{adj}A=\\begin{bmatrix}-1&3\\\\2&-5\\end{bmatrix}\\), so \\(A^{-1}=\\frac{1}{|A|}\\operatorname{adj}A\\) has (2,1) entry \\(-2\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-130",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "homogeneous-systems",
+   "prompt": "A square homogeneous system has non-trivial solutions iff \\(|A|=0\\).",
+   "explanation": "This statement is true. Non-trivial solutions exist exactly when the coefficient matrix is singular.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-131",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "cipher-encode",
+   "prompt": "If the word ON (A=1,…,Z=26) is coded as a row matrix times the key \\(K=\\begin{bmatrix}-5&1\\\\6&-1\\end{bmatrix}\\), entry 2 of the coded row is 1.",
+   "explanation": "This statement is true. ON → \\(\\begin{bmatrix}15&14\\end{bmatrix}\\). Coded row = \\(\\begin{bmatrix}15&14\\end{bmatrix}\\begin{bmatrix}-5&1\\\\6&-1\\end{bmatrix}=\\begin{bmatrix}9&1\\end{bmatrix}\\); entry 2 is 1.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-132",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "cramers-rule",
+   "prompt": "Cramer's rule gives z = -1 for the system \\(\\left\\{\\begin{aligned}3y + z &= 5\\\\-y - z &= -1\\\\-2x - y - z &= -5\\end{aligned}\\right.\\).",
+   "explanation": "This statement is true. \\(D=4\\) and \\(D_{z}=-4\\), so z = -4/4 = -1.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-133",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "det-row-ops",
+   "prompt": "A 3×3 matrix with determinant -4 has determinant 8 after the operations R3 → 2R3; then R2 → R2 + 2R3; then R2 ↔ R1 (in this order).",
+   "explanation": "This statement is true. Track each operation: R3 → 2R3: multiplies the determinant by 2; R2 → R2 + 2R3: no change; R2 ↔ R1: sign changes. Result: 8.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-134",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}2&5&5\\\\-4&-3&6\\\\-5&0&-5\\end{bmatrix}\\), the cofactor \\(C_{22}\\) is 15.",
+   "explanation": "This statement is true. \\(M_{22}\\) = 15, and the sign is \\((-1)^{2+2}\\) = +1. So \\(C_{22}\\) = 15.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-135",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "inverse-properties",
+   "prompt": "\\(|A^{-1}|=\\dfrac{1}{|A|}\\).",
+   "explanation": "This statement is true. \\(|AA^{-1}|=|I|=1\\), so \\(|A^{-1}|=1/|A|\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-136",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "det-properties",
+   "prompt": "\\(|A^{T}|=|A|\\).",
+   "explanation": "This statement is true. A matrix and its transpose have the same determinant.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-137",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "networks",
+   "prompt": "For the friendship matrix \\(A=\\begin{bmatrix}0&1&1&0\\\\1&0&1&1\\\\1&1&0&0\\\\0&1&0&0\\end{bmatrix}\\), the (3,3) entry of \\(A^{2}\\) is -1.",
+   "explanation": "This statement is false. The correct value is 2. \\((A^{2})_{33}\\) = (row 3)·(row 3) = 2; it equals the number of friends of C.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-138",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "matrix-equation",
+   "prompt": "If \\(X+A=B\\) where \\(A=\\begin{bmatrix}1&1&-4\\\\4&4&0\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}7&4&0\\\\-1&4&4\\end{bmatrix}\\), the (1,2) entry of X is 3.",
+   "explanation": "This statement is true. \\(X=B-A\\); entry (1,2): (4 - 1) = 3.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-139",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "row-operations",
+   "prompt": "Adding the same number to every entry of a row is an elementary row operation.",
+   "explanation": "This statement is false. The correct statement is: Multiplying a row by a non-zero number is an elementary row operation. The three elementary operations are: interchange rows, multiply a row by a non-zero scalar, add a multiple of one row to another.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-140",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "det-properties",
+   "prompt": "Interchanging two rows changes the sign of a determinant.",
+   "explanation": "This statement is true. Swapping two rows multiplies the determinant by \\(-1\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-141",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "For \\(A=\\begin{bmatrix}5&4&5\\\\2&5&3\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}3&1\\\\4&3\\\\0&-2\\end{bmatrix}\\), the (2,2) entry of \\(AB\\) is 22.",
+   "explanation": "This statement is false. The correct value is 11. Row 2 of A times column 2 of B: 2(1) + 5(3) + 3((-2)) = 11.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-142",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "cipher-decode",
+   "prompt": "The key matrix in matrix encryption must be invertible.",
+   "explanation": "This statement is true. Decoding needs \\(K^{-1}\\), so \\(|K|\\neq0\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-143",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "singular-nonsingular",
+   "prompt": "The matrix \\(\\begin{bmatrix}6&15\\\\2&5\\end{bmatrix}\\) is Non-singular.",
+   "explanation": "This statement is false. The correct value is Singular. \\(|A|=65 - 152=0\\). A matrix is singular when |A| = 0, so this matrix is singular.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-144",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "add-subtract",
+   "prompt": "If \\(A=\\begin{bmatrix}-8&-4&7\\\\4&1&7\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}2&-3&-3\\\\1&-3&5\\end{bmatrix}\\), the (1,3) entry of \\(A-B\\) is 12.",
+   "explanation": "This statement is false. The correct value is 10. Add/subtract corresponding entries: 7 - (-3) = 10.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-145",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "entry-notation",
+   "prompt": "In \\(a_{ij}\\), \\(i\\) is the row number and \\(j\\) the column number.",
+   "explanation": "This statement is true. \\(a_{ij}\\) is the entry in row \\(i\\) and column \\(j\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-146",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "\\(|AB|=|A|+|B|\\).",
+   "explanation": "This statement is false. The correct statement is: \\(|AB|=|A||B|\\) for square matrices of the same order. The determinant of a product is the product of the determinants.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-147",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "inverse-formula",
+   "prompt": "\\(A^{-1}=\\dfrac{1}{|A|}\\operatorname{adj}A\\).",
+   "explanation": "This statement is true. Divide the adjoint by the determinant.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-148",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "gaussian-elimination",
+   "prompt": "If Gaussian elimination reduces a system to \\(\\left[\\begin{array}{ccc|c}1&-1&0&-6\\\\0&1&-1&6\\\\0&0&1&-1\\end{array}\\right]\\), then x = -1.",
+   "explanation": "This statement is true. From the last row z = -1. The second row gives y = 6 - (-1)(-1) = 5. The first row gives x = -6 - (-1)(5) - 0(-1) = -1.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-149",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "trace",
+   "prompt": "The trace of \\(A=\\begin{bmatrix}5&-1&-8&-6\\\\-6&6&4&-8\\\\5&-4&-3&6\\\\-2&7&3&5\\end{bmatrix}\\) is 13.",
+   "explanation": "This statement is true. Trace = 5 + 6 + (-3) + 5 = 13.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-150",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "det-properties",
+   "prompt": "\\(\\begin{vmatrix}0&0&0\\\\5&4&-7\\\\8&-2&-6\\end{vmatrix}=0\\) (no expansion is needed).",
+   "explanation": "This statement is true. The determinant is 0 because the matrix has a row of zeros.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-151",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "rank",
+   "prompt": "The rank of \\(A=\\begin{bmatrix}9&0&-6\\\\3&0&-2\\end{bmatrix}\\) is 1.",
+   "explanation": "This statement is true. Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 1.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-152",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "singular-nonsingular",
+   "prompt": "A square matrix is singular when its determinant is 0.",
+   "explanation": "This statement is true. Singular means the determinant is zero (no inverse).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-153",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "cramers-rule",
+   "prompt": "In Cramer's rule \\(D_{x}\\) replaces the x-row of the coefficient matrix by the constants.",
+   "explanation": "This statement is false. The correct statement is: In Cramer's rule \\(D_{x}\\) replaces the x-column of the coefficient matrix by the constants. Replace the column of the unknown by the right-hand-side column.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-154",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "cipher-encode",
+   "prompt": "If the word YES (A=1,…,Z=26) is coded as a row matrix times the key \\(K=\\begin{bmatrix}3&2&0\\\\0&-2&1\\\\1&1&0\\end{bmatrix}\\), entry 3 of the coded row is 5.",
+   "explanation": "This statement is true. YES → \\(\\begin{bmatrix}25&5&19\\end{bmatrix}\\). Coded row = \\(\\begin{bmatrix}25&5&19\\end{bmatrix}\\begin{bmatrix}3&2&0\\\\0&-2&1\\\\1&1&0\\end{bmatrix}=\\begin{bmatrix}94&59&5\\end{bmatrix}\\); entry 3 is 5.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-155",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "inverse-2x2",
+   "prompt": "For \\(A=\\begin{bmatrix}-5&2\\\\-3&1\\end{bmatrix}\\), the (2,2) entry of \\(A^{-1}\\) is -5.",
+   "explanation": "This statement is true. \\(|A|=1\\) and \\(\\operatorname{adj}A=\\begin{bmatrix}1&-2\\\\3&-5\\end{bmatrix}\\), so \\(A^{-1}=\\frac{1}{|A|}\\operatorname{adj}A\\) has (2,2) entry \\(-5\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-156",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "matrix-product-application",
+   "prompt": "With prices \\(P=\\begin{bmatrix}12&11&14\\\\14&16&11\\end{bmatrix}\\) and quantities \\(Q=\\begin{bmatrix}1\\\\8\\\\1\\end{bmatrix}\\), the bill at Shop 2 is Rs 157.",
+   "explanation": "This statement is false. The correct value is 153. The bill is the entry of \\(PQ\\) in row 2: 14(1) + 16(8) + 11(1) = 153.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-157",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "area-by-determinant",
+   "prompt": "The triangle with vertices (4, 3), (4, -3), (2, 2) has area 6 square units.",
+   "explanation": "This statement is true. Area = ½|\\(\\begin{vmatrix}4&3&1\\\\4&-3&1\\\\2&2&1\\end{vmatrix}\\)| = ½|-12| = \\(6\\) square units.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-158",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "det-row-ops",
+   "prompt": "A 3×3 matrix with determinant 1 has determinant -9 after the operations R2 ↔ R3; then R2 → -R2; then R1 → R1 - 2R2 (in this order).",
+   "explanation": "This statement is false. The correct value is 1. Track each operation: R2 ↔ R3: sign changes; R2 → -R2: multiplies the determinant by -1; R1 → R1 - 2R2: no change. Result: 1.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-159",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "row-operations",
+   "prompt": "A row operation must be reversible, so a row is never multiplied by 0.",
+   "explanation": "This statement is true. Row operations must be reversible; multiplying by 0 destroys the row.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-160",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "rank",
+   "prompt": "The rank of a matrix is the number of non-zero rows in its echelon form.",
+   "explanation": "This statement is true. Reduce to echelon form and count the non-zero rows.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-161",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "scalar-multiple",
+   "prompt": "If \\(A=\\begin{bmatrix}-3&-4\\\\-5&5\\\\4&-1\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}5&-6\\\\0&7\\\\3&-6\\end{bmatrix}\\), the (3,1) entry of \\(-A+2B\\) is 2.",
+   "explanation": "This statement is true. Multiply each matrix by its scalar, then add: (-1)(4) + 2(3) = 2.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-162",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "row-operations",
+   "prompt": "Applying \\(R_{2}\\to R_{2}+3R_{3}\\) to \\(A=\\begin{bmatrix}3&-1&5\\\\-4&2&0\\\\-2&-6&2\\end{bmatrix}\\) gives -4 in row 2, column 3.",
+   "explanation": "This statement is false. The correct value is 6. New entry = 0 + 3(2) = 6.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-163",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "det-row-ops",
+   "prompt": "A 3×3 matrix with determinant -1 has determinant -6 after the operations R1 → R1 + 2R2; then R3 ↔ R2; then R3 → 4R3 (in this order).",
+   "explanation": "This statement is false. The correct value is 4. Track each operation: R1 → R1 + 2R2: no change; R3 ↔ R2: sign changes; R3 → 4R3: multiplies the determinant by 4. Result: 4.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-164",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "det-properties",
+   "prompt": "If A is 3×3 with \\(|A|=-5\\), then \\(|\\operatorname{adj}A|\\) = 25.",
+   "explanation": "This statement is true. \\(|\\operatorname{adj}A|=|A|^{n-1}\\): \\((-5)^{2}=25\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-165",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "sym-skew-decomposition",
+   "prompt": "For \\(A=\\begin{bmatrix}-4&-5\\\\-3&-6\\end{bmatrix}\\), the (2,1) entry of \\(\\frac{1}{2}(A-A^{T})\\) is 1.",
+   "explanation": "This statement is true. \\(\\frac{1}{2}(A-A^{T})\\) has entry (2,1) = (\\(a_{21}\\) - \\(a_{12}\\))/2 = (-3 - (-5))/2 = 1.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-166",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "transpose",
+   "prompt": "If A has order 3×5 then \\(A^{T}\\) has order 3×5.",
+   "explanation": "This statement is false. The correct statement is: If A has order 3×5 then \\(A^{T}\\) has order 5×3. Rows and columns swap, so \\(3\\times 5\\) becomes \\(5\\times 3\\).",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-167",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "product-order",
+   "prompt": "The product AB is defined only when A and B have the same order.",
+   "explanation": "This statement is false. The correct statement is: The product AB is defined when the columns of A equal the rows of B. Row-by-column multiplication needs \\(n\\) columns in A to match \\(n\\) rows in B.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-168",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "inverse-by-row-ops",
+   "prompt": "Reducing \\([A:I]\\) to \\([I:A^{-1}]\\) gives the inverse of A.",
+   "explanation": "This statement is true. The same operations that turn A into I turn I into \\(A^{-1}\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-169",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "types-of-matrices",
+   "prompt": "The matrix \\(\\begin{bmatrix}4&6&1\\\\0&-2&-1\\\\0&0&2\\end{bmatrix}\\) is described as: Upper triangular matrix.",
+   "explanation": "This statement is true. This is an upper triangular matrix because all entries below the main diagonal are 0.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-170",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "cofactor-expansion",
+   "prompt": "Entries of one row multiplied by the cofactors of another row add to 0.",
+   "explanation": "This statement is true. Entries of one row with the cofactors of a different row always give 0 (it is a determinant with two equal rows).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-171",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "networks",
+   "prompt": "For the friendship matrix \\(A=\\begin{bmatrix}0&0&1&0\\\\0&0&0&1\\\\1&0&0&1\\\\0&1&1&0\\end{bmatrix}\\), the (3,4) entry of \\(A^{2}\\) is 0.",
+   "explanation": "This statement is true. Row 3 of A times column 4 of A = 1·0 + 0·1 + 0·1 + 1·0 = 0.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-172",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "Multiplying one row by \\(k\\) multiplies the determinant by \\(k\\).",
+   "explanation": "This statement is true. A common factor of a single row can be taken outside the determinant.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-173",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "adjoint",
+   "prompt": "If \\(|A|=-3\\) for a 3×3 matrix, then \\(A\\operatorname{adj}A=kI\\) with k = -3.",
+   "explanation": "This statement is true. \\(A\\operatorname{adj}A=|A|I\\), so k = -3.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-174",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "rank",
+   "prompt": "The rank of \\(A=\\begin{bmatrix}-2&-4\\\\2&0\\\\-2&6\\end{bmatrix}\\) is 2.",
+   "explanation": "This statement is true. Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 2.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-175",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "consistency",
+   "prompt": "A system whose reduced augmented matrix is \\(\\left[\\begin{array}{ccc|c}1&4&4&6\\\\0&1&4&-3\\\\0&0&0&0\\end{array}\\right]\\) has: Unique solution.",
+   "explanation": "This statement is false. The correct value is Infinitely many solutions. rank A = 2 and rank [A:B] = 2, with n = 3 unknowns. Ranks equal but less than n: infinitely many solutions (free variables).",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-176",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "entry-notation",
+   "prompt": "In \\(A=\\begin{bmatrix}1&0&-1\\\\-7&-2&7\\end{bmatrix}\\), the entry \\(a_{12}\\) equals 0.",
+   "explanation": "This statement is true. \\(a_{12}\\) lies in row 1 and column 2, so it is 0.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-177",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "consistency",
+   "prompt": "A system with at least one solution is called inconsistent.",
+   "explanation": "This statement is false. The correct statement is: A system with at least one solution is called consistent. At least one solution means the system is consistent.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-178",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "inverse-3x3",
+   "prompt": "For \\(A=\\begin{bmatrix}1&0&0\\\\-1&1&2\\\\-1&0&1\\end{bmatrix}\\), the (3,1) entry of \\(A^{-1}\\) is 1.",
+   "explanation": "This statement is true. \\(|A|=1\\), so \\(A^{-1}=\\operatorname{adj}A/|A|\\) = \\(\\operatorname{adj}A\\). Its (3,1) entry is 1.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-179",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "adjoint",
+   "prompt": "For \\(A=\\begin{bmatrix}8&6\\\\2&-1\\end{bmatrix}\\), the (1,2) entry of \\(\\operatorname{adj}A\\) is -6.",
+   "explanation": "This statement is true. For a 2×2 matrix swap the diagonal entries and change the sign of the other two: \\(\\operatorname{adj}A=\\begin{bmatrix}-1&-6\\\\-2&8\\end{bmatrix}\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-180",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "multiplication-laws",
+   "prompt": "A product of two non-zero matrices can be the zero matrix.",
+   "explanation": "This statement is true. Unlike real numbers, two non-zero matrices can have a zero product, e.g. \\(\\begin{bmatrix}1&0\\\\0&0\\end{bmatrix}\\begin{bmatrix}0&0\\\\0&1\\end{bmatrix}=O\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-181",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "cipher-decode",
+   "prompt": "A word coded as \\(\\begin{bmatrix}1&2\\end{bmatrix}\\) with \\(K^{-1}=\\begin{bmatrix}0&1\\\\1&2\\end{bmatrix}\\) (A=1,…,Z=26) has letter 2 equal to F.",
+   "explanation": "This statement is false. The correct value is E. Decode by post-multiplying by the inverse key: \\(\\begin{bmatrix}1&2\\end{bmatrix}\\begin{bmatrix}0&1\\\\1&2\\end{bmatrix}=\\begin{bmatrix}2&5\\end{bmatrix}\\), so the numbers are 2 and 5, i.e. BE. Letter 2 is E.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-182",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "inverse-2x2",
+   "prompt": "For \\(A=\\begin{bmatrix}0&1\\\\-1&0\\end{bmatrix}\\), the (1,1) entry of \\(A^{-1}\\) is 0.",
+   "explanation": "This statement is true. \\(|A|=1\\) and \\(\\operatorname{adj}A=\\begin{bmatrix}0&-1\\\\1&0\\end{bmatrix}\\), so \\(A^{-1}=\\frac{1}{|A|}\\operatorname{adj}A\\) has (1,1) entry \\(0\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-183",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "singular-nonsingular",
+   "prompt": "The matrix \\(\\begin{bmatrix}6&8\\\\3&4\\end{bmatrix}\\) is Non-singular.",
+   "explanation": "This statement is false. The correct value is Singular. \\(|A|=64 - 83=0\\). A matrix is singular when |A| = 0, so this matrix is singular.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-184",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "\\(\\begin{vmatrix}0&3&1\\\\5&5&4\\\\0&-2&-4\\end{vmatrix}=-70\\)",
+   "explanation": "This statement is false. The correct value is 50. Positive terms (aei + bfg + cdh) = -10; negative terms (ceg + afh + bdi) = -60. So the value is -10 - (-60) = 50.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-185",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "matrix-equality",
+   "prompt": "If \\(\\begin{bmatrix}-2x&-1\\\\-4&-y-3\\end{bmatrix}=\\begin{bmatrix}0&-1\\\\-4&-4\\end{bmatrix}\\), then \\(x\\)=0.",
+   "explanation": "This statement is true. Equal matrices have equal corresponding entries: \\(-2x=0\\) gives x = 0; \\(-y-3=-4\\) gives y = 1. So x = 0.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-186",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "rank",
+   "prompt": "The rank of \\(A=\\begin{bmatrix}-1&-8&2\\\\3&-9&-6\\\\-1&-3&4\\end{bmatrix}\\) is 0.",
+   "explanation": "This statement is false. The correct value is 3. Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 3.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-187",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "adjoint",
+   "prompt": "For \\(A=\\begin{bmatrix}4&-4&-4\\\\2&-4&2\\\\5&-1&2\\end{bmatrix}\\), the (1,2) entry of \\(\\operatorname{adj}A\\) is 12.",
+   "explanation": "This statement is true. \\(\\operatorname{adj}A\\) is the transpose of the cofactor matrix, so its (1,2) entry is the cofactor \\(C_{21}\\) = 12.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-188",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "transpose-of-product",
+   "prompt": "For \\(A=\\begin{bmatrix}1&3&-2\\\\1&-1&1\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}4&5\\\\-2&0\\\\0&1\\end{bmatrix}\\), the (2,1) entry of \\((AB)^{T}\\) is 3.",
+   "explanation": "This statement is true. The (2,1) entry of \\((AB)^{T}\\) is the (1,2) entry of AB: row 1 of A times column 2 of B = 3. (Same as \\(B^{T}A^{T}\\).)",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-189",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "product-order",
+   "prompt": "If A has order 2 × 2 and B has order 3 × 2, the order of AB is 2 × 2.",
+   "explanation": "This statement is false. The correct value is Not defined. AB is not defined: the columns of A (2) do not equal the rows of B (3).",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-190",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}5&3&7\\\\0&3&2\\\\0&5&3\\end{bmatrix}\\), the minor \\(M_{32}\\) is 10.",
+   "explanation": "This statement is true. Delete row 3 and column 2: \\(M_{32}=\\begin{vmatrix}5&7\\\\0&2\\end{vmatrix}\\) = 10.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-191",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "translation",
+   "prompt": "Translating (-4, 2) by \\((-4,6)\\) gives a new y-coordinate of 9.",
+   "explanation": "This statement is false. The correct value is 8. New y = old y + shift = 2 + 6 = 8.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-192",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "homogeneous-k",
+   "prompt": "The system \\(\\left\\{\\begin{aligned}-x &= 0\\\\-x - 2y &= 0\\\\2y + kz &= 0\\end{aligned}\\right.\\) has non-trivial solutions exactly when k = 2.",
+   "explanation": "This statement is false. The correct value is 0. Non-trivial solutions exist iff \\(|A|=0\\). Expanding \\(\\begin{vmatrix}-1&0&0\\\\-1&-2&0\\\\0&2&k\\end{vmatrix}\\) gives \\(2 k=0\\), so k = 0.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-193",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "networks",
+   "prompt": "The entry \\((A^{2})_{ij}\\) counts the walks of length 2 from node \\(i\\) to node \\(j\\).",
+   "explanation": "This statement is true. Row \\(i\\) times column \\(j\\) counts the middle nodes that link both.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-194",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "adjoint",
+   "prompt": "For \\(A=\\begin{bmatrix}6&-1\\\\-8&-4\\end{bmatrix}\\), the (1,2) entry of \\(\\operatorname{adj}A\\) is 1.",
+   "explanation": "This statement is true. For a 2×2 matrix swap the diagonal entries and change the sign of the other two: \\(\\operatorname{adj}A=\\begin{bmatrix}-4&1\\\\8&6\\end{bmatrix}\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-195",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "matrix-equality",
+   "prompt": "If \\(\\begin{bmatrix}x-2&-4\\\\2&y-5\\end{bmatrix}=\\begin{bmatrix}2&-4\\\\2&-7\\end{bmatrix}\\), then \\(y\\)=-2.",
+   "explanation": "This statement is true. Equal matrices have equal corresponding entries: \\(x-2=2\\) gives x = 4; \\(y-5=-7\\) gives y = -2. So y = -2.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-196",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}1&3&0\\\\0&7&-6\\\\1&-6&-2\\end{bmatrix}\\), the minor \\(M_{22}\\) is -2.",
+   "explanation": "This statement is true. Delete row 2 and column 2: \\(M_{22}=\\begin{vmatrix}1&0\\\\1&-2\\end{vmatrix}\\) = -2.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-197",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "singular-nonsingular",
+   "prompt": "The matrix \\(\\begin{bmatrix}-3&-4\\\\2&-1\\end{bmatrix}\\) is Singular.",
+   "explanation": "This statement is false. The correct value is Non-singular. \\(|A|=(-3)(-1) - (-4)2=11\\). A matrix is singular when |A| = 0, so this matrix is non-singular.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-198",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "applications-seismic",
+   "prompt": "Station readings can never be written as a system of linear equations.",
+   "explanation": "This statement is false. The correct statement is: Station readings can be turned into a system of linear equations in matrix form. The readings give equations; Cramer's rule or elimination solves them (as in the FBISE sample paper).",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-199",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "singular-k",
+   "prompt": "\\(\\begin{vmatrix}-3&3\\\\3&k\\end{vmatrix}\\) is singular exactly when k = -3.",
+   "explanation": "This statement is true. \\(\\begin{vmatrix}-3&3\\\\3&k\\end{vmatrix}=-3k - 9\\); setting it to 0 gives \\(-3k=9\\), so k = -3.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-200",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "det-triangular",
+   "prompt": "The determinant of a triangular matrix is the product of its diagonal entries.",
+   "explanation": "This statement is true. For triangular (and diagonal) matrices only the diagonal terms survive.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-201",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "product-order",
+   "prompt": "If A has order 3 × 1 and B has order 3 × 3, the order of AB is Not defined.",
+   "explanation": "This statement is true. AB is not defined: the columns of A (1) do not equal the rows of B (3).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-202",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "\\(\\begin{vmatrix}-2&-1&2\\\\-3&2&4\\\\-1&5&1\\end{vmatrix}=-71\\)",
+   "explanation": "This statement is false. The correct value is 11. Positive terms (aei + bfg + cdh) = -30; negative terms (ceg + afh + bdi) = -41. So the value is -30 - (-41) = 11.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-203",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "matrix-equality",
+   "prompt": "Two matrices with the same number of entries are always equal.",
+   "explanation": "This statement is false. The correct statement is: Two matrices are equal only if they have the same order and equal corresponding entries. Equality needs the same order and every corresponding entry equal. Two matrices with the same number of entries (e.g. 2×3 and 3×2) are not equal.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-204",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "cipher-decode",
+   "prompt": "\\(M=K^{-1}C\\) decodes \\(C=MK\\).",
+   "explanation": "This statement is false. The correct statement is: \\(M=CK^{-1}\\) decodes \\(C=MK\\). Multiply the coded matrix by the inverse of the key on the right.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-205",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "cramers-rule",
+   "prompt": "Cramer's rule gives x = -5 for the system \\(\\left\\{\\begin{aligned}4x + 2y &= -8\\\\5x + 4y &= -1\\end{aligned}\\right.\\).",
+   "explanation": "This statement is true. \\(D=6\\), \\(D_{x}=-30\\), so \\(x=D_{x}/D\\) = -30/6 = -5.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-206",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "order-of-matrix",
+   "prompt": "The matrix \\(\\begin{bmatrix}-1&-8&-3\\\\-8&-4&-7\\\\1&-4&-9\\end{bmatrix}\\) has order 3 × 3.",
+   "explanation": "This statement is true. It has 3 row(s) and 3 column(s), so its order is 3 × 3 (rows first, then columns).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-207",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "types-of-matrices",
+   "prompt": "In the identity matrix every diagonal entry is 1.",
+   "explanation": "This statement is true. All diagonal entries of \\(I\\) are 1 and all other entries are 0.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-208",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "types-of-matrices",
+   "prompt": "The matrix \\(\\begin{bmatrix}3&-4&-2\\\\-4&-1&-6\\\\-2&-6&2\\end{bmatrix}\\) is described as: Symmetric matrix.",
+   "explanation": "This statement is true. This is a symmetric matrix because it equals its transpose, \\(a_{ij}\\) = \\(a_{ji}\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-209",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "\\(\\begin{vmatrix}4&-1\\\\-5&-3\\end{vmatrix}=-17\\)",
+   "explanation": "This statement is true. \\(ad-bc = 4((-3)) - (-1)((-5)) = -12 - 5 = -17\\)",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-210",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "consistency",
+   "prompt": "If rank A = rank [A:B] < n then there is exactly one solution.",
+   "explanation": "This statement is false. The correct statement is: If rank A = rank [A:B] < n then there are infinitely many solutions. Consistent, with \\(n-\\operatorname{rank}A\\) free variables.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-211",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "multiplication-laws",
+   "prompt": "\\((AB)C=A(BC)\\) whenever the products are defined.",
+   "explanation": "This statement is true. Matrix multiplication is associative.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-212",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "rank",
+   "prompt": "The rank of \\(A=\\begin{bmatrix}7&2&-4\\\\-7&0&2\\\\2&-2&4\\end{bmatrix}\\) is 0.",
+   "explanation": "This statement is false. The correct value is 3. Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 3.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-213",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "\\(\\begin{vmatrix}4&-7\\\\6&-6\\end{vmatrix}=18\\)",
+   "explanation": "This statement is true. \\(ad-bc = 4((-6)) - (-7)(6) = -24 - (-42) = 18\\)",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-214",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "singular-nonsingular",
+   "prompt": "The matrix \\(\\begin{bmatrix}-4&-2\\\\8&4\\end{bmatrix}\\) is Singular.",
+   "explanation": "This statement is true. \\(|A|=(-4)4 - (-2)8=0\\). A matrix is singular when |A| = 0, so this matrix is singular.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-215",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "rank",
+   "prompt": "The rank of \\(A=\\begin{bmatrix}3&-7&5&1\\\\-1&0&1&-2\\\\2&2&0&2\\end{bmatrix}\\) is 0.",
+   "explanation": "This statement is false. The correct value is 3. Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 3.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-216",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "cofactor-expansion",
+   "prompt": "If row 2 of a 3×3 determinant is \\(5,0,3\\) with cofactors \\(-4,-4,-1\\), the determinant is -22.",
+   "explanation": "This statement is false. The correct value is -23. Expand along row 2: 5((-4)) + 0((-4)) + 3((-1)) = -23.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-217",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "det-properties",
+   "prompt": "A determinant with two identical rows has value 1.",
+   "explanation": "This statement is false. The correct statement is: A determinant with two identical rows has value 0. Interchanging the two identical rows changes the sign but not the matrix, so \\(D=-D\\), hence \\(D=0\\).",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-218",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "non-commutative",
+   "prompt": "For \\(A=\\begin{bmatrix}-1&-4\\\\5&5\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}3&-3\\\\-2&-4\\end{bmatrix}\\), \\((AB)_{11}-(BA)_{11}\\) equals 23.",
+   "explanation": "This statement is true. \\((AB)_{11}\\) = 5 and \\((BA)_{11}\\) = -18, so the difference is 23. In general AB and BA are not equal.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-219",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "consistency",
+   "prompt": "If rank A = rank [A:B] = n then the system has a unique solution.",
+   "explanation": "This statement is true. Equal ranks mean consistent; rank = n means no free variables.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-220",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "product-entry",
+   "prompt": "For \\(A=\\begin{bmatrix}1&-4&-1\\\\3&2&2\\\\-3&-4&1\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-2&-3&1\\\\-1&3&-1\\\\1&-2&5\\end{bmatrix}\\), the (1,2) entry of \\(AB\\) is -13.",
+   "explanation": "This statement is true. Row 1 of A times column 2 of B: 1((-3)) + (-4)(3) + (-1)((-2)) = -13.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-221",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}3&2&4\\\\1&5&0\\\\3&-3&-6\\end{bmatrix}\\), the minor \\(M_{21}\\) is 1.",
+   "explanation": "This statement is false. The correct value is 0. Delete row 2 and column 1: \\(M_{21}=\\begin{vmatrix}2&4\\\\-3&-6\\end{vmatrix}\\) = 0.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-222",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "echelon-form",
+   "prompt": "In echelon form the zero rows are at the top of the matrix.",
+   "explanation": "This statement is false. The correct statement is: In echelon form the zero rows are at the bottom of the matrix. Zero rows are placed below all non-zero rows.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-223",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "\\(|kA|=k^{n}|A|\\) for an \\(n\\times n\\) matrix.",
+   "explanation": "This statement is true. Each of the \\(n\\) rows contributes a factor \\(k\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-224",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "singular-nonsingular",
+   "prompt": "A square matrix with a zero row is singular.",
+   "explanation": "This statement is true. A zero row makes the determinant 0.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-225",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "transpose-of-product",
+   "prompt": "For \\(A=\\begin{bmatrix}2&4&-1\\\\-4&0&-4\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}0&5\\\\5&2\\\\1&-1\\end{bmatrix}\\), the (1,2) entry of \\((AB)^{T}\\) is 5.",
+   "explanation": "This statement is false. The correct value is -4. The (1,2) entry of \\((AB)^{T}\\) is the (2,1) entry of AB: row 2 of A times column 1 of B = -4. (Same as \\(B^{T}A^{T}\\).)",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-226",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}-4&-3&0\\\\5&-3&-4\\\\-3&-4&0\\end{bmatrix}\\), the minor \\(M_{31}\\) is 12.",
+   "explanation": "This statement is true. Delete row 3 and column 1: \\(M_{31}=\\begin{vmatrix}-3&0\\\\-3&-4\\end{vmatrix}\\) = 12.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-227",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "cipher-encode",
+   "prompt": "If the word US (A=1,…,Z=26) is coded as a row matrix times the key \\(K=\\begin{bmatrix}5&3\\\\-2&-1\\end{bmatrix}\\), entry 1 of the coded row is 67.",
+   "explanation": "This statement is true. US → \\(\\begin{bmatrix}21&19\\end{bmatrix}\\). Coded row = \\(\\begin{bmatrix}21&19\\end{bmatrix}\\begin{bmatrix}5&3\\\\-2&-1\\end{bmatrix}=\\begin{bmatrix}67&44\\end{bmatrix}\\); entry 1 is 67.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-228",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "sym-skew-decomposition",
+   "prompt": "Every square matrix is the sum of a symmetric and a skew-symmetric matrix.",
+   "explanation": "This statement is true. \\(A=\\tfrac12(A+A^{T})+\\tfrac12(A-A^{T})\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-229",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "translation",
+   "prompt": "The translation matrix has 1s on the diagonal and h, k in the last column.",
+   "explanation": "This statement is true. Multiplying it by \\((x,y,1)^{T}\\) gives \\((x+h,y+k,1)^{T}\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-230",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "\\(\\begin{vmatrix}2&2&5\\\\2&4&0\\\\-3&2&4\\end{vmatrix}=96\\)",
+   "explanation": "This statement is true. Positive terms (aei + bfg + cdh) = 52; negative terms (ceg + afh + bdi) = -44. So the value is 52 - (-44) = 96.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-231",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "symmetric-skew",
+   "prompt": "For a 3×3 skew-symmetric matrix with \\(a_{12}=-2\\), \\(a_{13}=-2\\), \\(a_{23}=3\\), \\(a_{31}\\) equals 2.",
+   "explanation": "This statement is true. Skew-symmetry gives \\(a_{ji}\\) = -\\(a_{ij}\\), so \\(a_{31}\\) = -(-2) = 2.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-232",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "gaussian-elimination",
+   "prompt": "If Gaussian elimination reduces a system to \\(\\left[\\begin{array}{ccc|c}1&-3&-2&1\\\\0&1&-1&3\\\\0&0&1&-2\\end{array}\\right]\\), then x = 0.",
+   "explanation": "This statement is true. From the last row z = -2. The second row gives y = 3 - (-1)(-2) = 1. The first row gives x = 1 - (-3)(1) - (-2)(-2) = 0.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-233",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "order-of-matrix",
+   "prompt": "The matrix \\(\\begin{bmatrix}-5&-3&3&5\\\\8&6&4&2\\\\8&-4&-3&-8\\end{bmatrix}\\) has order 4 × 3.",
+   "explanation": "This statement is false. The correct value is 3 × 4. It has 3 row(s) and 4 column(s), so its order is 3 × 4 (rows first, then columns).",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-234",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "\\(\\begin{vmatrix}5&4&-1\\\\0&4&2\\\\0&-1&-1\\end{vmatrix}=-10\\)",
+   "explanation": "This statement is true. Positive terms (aei + bfg + cdh) = -20; negative terms (ceg + afh + bdi) = -10. So the value is -20 - (-10) = -10.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-235",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "For \\(A=\\begin{bmatrix}5&-1&-1\\\\1&-3&1\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-4&4&4\\\\-4&4&-2\\\\-2&1&-1\\end{bmatrix}\\), the (1,1) entry of \\(AB\\) is -14.",
+   "explanation": "This statement is true. Row 1 of A times column 1 of B: 5((-4)) + (-1)((-4)) + (-1)((-2)) = -14.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-236",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}-5x - 5y &= -10\\\\-4y &= 4\\end{aligned}\\right.\\), \\(D\\) = 20.",
+   "explanation": "This statement is true. \\(D=\\begin{vmatrix}-5&-5\\\\0&-4\\end{vmatrix}\\) = 20.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-237",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "product-entry",
+   "prompt": "For \\(A=\\begin{bmatrix}6&-3\\\\-1&-3\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}3&-2\\\\2&-5\\end{bmatrix}\\), the trace of \\(AB\\) is 28.",
+   "explanation": "This statement is false. The correct value is 29. \\(AB=\\begin{bmatrix}12&3\\\\-9&17\\end{bmatrix}\\), so the trace is 12 + 17 = 29.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-238",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "symmetric-skew",
+   "prompt": "A matrix is skew-symmetric when \\(A^{T}=-A\\).",
+   "explanation": "This statement is true. Skew-symmetric means \\(a_{ji}=-a_{ij}\\), i.e. \\(A^{T}=-A\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-239",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "cipher-decode",
+   "prompt": "A word coded as \\(\\begin{bmatrix}18&-13\\end{bmatrix}\\) with \\(K^{-1}=\\begin{bmatrix}0&1\\\\-1&1\\end{bmatrix}\\) (A=1,…,Z=26) has letter 1 equal to M.",
+   "explanation": "This statement is true. Decode by post-multiplying by the inverse key: \\(\\begin{bmatrix}18&-13\\end{bmatrix}\\begin{bmatrix}0&1\\\\-1&1\\end{bmatrix}=\\begin{bmatrix}13&5\\end{bmatrix}\\), so the numbers are 13 and 5, i.e. ME. Letter 1 is M.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-240",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "order-of-matrix",
+   "prompt": "A matrix of order 4 × 4 has 12 entries.",
+   "explanation": "This statement is false. The correct value is 16. Number of entries = rows × columns = 4 × 4 = 16.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-241",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "types-of-matrices",
+   "prompt": "The matrix \\(\\begin{bmatrix}-4\\\\5\\\\-3\\\\0\\end{bmatrix}\\) is described as: Column matrix.",
+   "explanation": "This statement is true. This is a column matrix because it has only one column.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-242",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "trace",
+   "prompt": "The trace of a square matrix is the sum of its diagonal entries.",
+   "explanation": "This statement is true. Trace = \\(a_{11}+a_{22}+\\cdots+a_{nn}\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-243",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "For \\(A=\\begin{bmatrix}5&0&-1\\\\5&-1&-1\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-4&1\\\\0&-3\\\\-3&4\\end{bmatrix}\\), the (2,2) entry of \\(AB\\) is 4.",
+   "explanation": "This statement is true. Row 2 of A times column 2 of B: 5(1) + (-1)((-3)) + (-1)(4) = 4.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-244",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "cipher-encode",
+   "prompt": "In matrix cryptography the coded message is the message matrix multiplied by the key matrix.",
+   "explanation": "This statement is true. Coded = message × key (the book post-multiplies).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-245",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "homogeneous-systems",
+   "prompt": "A homogeneous system can be inconsistent.",
+   "explanation": "This statement is false. The correct statement is: A homogeneous system always has the trivial solution. Putting every unknown equal to 0 satisfies \\(AX=O\\).",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-246",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "cipher-encode",
+   "prompt": "If the word NO (A=1,…,Z=26) is coded as a row matrix times the key \\(K=\\begin{bmatrix}-1&1\\\\-3&4\\end{bmatrix}\\), entry 1 of the coded row is -59.",
+   "explanation": "This statement is true. NO → \\(\\begin{bmatrix}14&15\\end{bmatrix}\\). Coded row = \\(\\begin{bmatrix}14&15\\end{bmatrix}\\begin{bmatrix}-1&1\\\\-3&4\\end{bmatrix}=\\begin{bmatrix}-59&74\\end{bmatrix}\\); entry 1 is -59.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-247",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "adjoint",
+   "prompt": "For \\(A=\\begin{bmatrix}-8&6\\\\0&7\\end{bmatrix}\\), the (2,2) entry of \\(\\operatorname{adj}A\\) is -8.",
+   "explanation": "This statement is true. For a 2×2 matrix swap the diagonal entries and change the sign of the other two: \\(\\operatorname{adj}A=\\begin{bmatrix}7&-6\\\\0&-8\\end{bmatrix}\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-248",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "cramers-rule",
+   "prompt": "Cramer's rule needs the coefficient determinant D to be non-zero.",
+   "explanation": "This statement is true. The formulas \\(x=D_{x}/D\\) etc. divide by \\(D\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-249",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "product-order",
+   "prompt": "If A has order 2 × 4 and B has order 4 × 1, the order of AB is 2 × 1.",
+   "explanation": "This statement is true. AB is defined because the columns of A (4) equal the rows of B (4); the order is rows of A × columns of B = 2 × 1.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-250",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "matrix-equality",
+   "prompt": "If \\(\\begin{bmatrix}-2x&-5\\\\0&2y-4\\end{bmatrix}=\\begin{bmatrix}-4&-5\\\\0&0\\end{bmatrix}\\), then \\(x+y\\)=4.",
+   "explanation": "This statement is true. Equal matrices have equal corresponding entries: \\(-2x=-4\\) gives x = 2; \\(2y-4=0\\) gives y = 2. So x+y = 4.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-251",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "singular-nonsingular",
+   "prompt": "The matrix \\(\\begin{bmatrix}3&3\\\\9&9\\end{bmatrix}\\) is Non-singular.",
+   "explanation": "This statement is false. The correct value is Singular. \\(|A|=39 - 39=0\\). A matrix is singular when |A| = 0, so this matrix is singular.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-252",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "singular-k",
+   "prompt": "\\(\\begin{vmatrix}-4&4\\\\1&k\\end{vmatrix}\\) is singular exactly when k = -1.",
+   "explanation": "This statement is true. \\(\\begin{vmatrix}-4&4\\\\1&k\\end{vmatrix}=-4k - 4\\); setting it to 0 gives \\(-4k=4\\), so k = -1.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-253",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "area-by-determinant",
+   "prompt": "The points (-4, 1), (-3, 1) and (5, k) are collinear when k = 1.",
+   "explanation": "This statement is true. Collinear points give a zero determinant \\(\\begin{vmatrix}-4&1&1\\\\-3&1&1\\\\5&k&1\\end{vmatrix}\\) = 0, which expands to \\(k - 1=0\\). So k = 1.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-254",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "gaussian-elimination",
+   "prompt": "If Gaussian elimination reduces a system to \\(\\left[\\begin{array}{ccc|c}1&0&0&-1\\\\0&1&1&2\\\\0&0&1&-2\\end{array}\\right]\\), then x = 1.",
+   "explanation": "This statement is false. The correct value is -1. From the last row z = -2. The second row gives y = 2 - 1(-2) = 4. The first row gives x = -1 - 0(4) - 0(-2) = -1.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-255",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "inverse-properties",
+   "prompt": "If \\(A^{-1}=\\begin{bmatrix}7&3\\\\2&1\\end{bmatrix}\\) and \\(B^{-1}=\\begin{bmatrix}-1&1\\\\0&1\\end{bmatrix}\\), the (2,1) entry of \\((AB)^{-1}\\) is 2.",
+   "explanation": "This statement is true. \\((AB)^{-1}=B^{-1}A^{-1}\\) (reverse order). Multiplying, the (2,1) entry is 2; the other order \\(A^{-1}B^{-1}\\) would give -2.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-256",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "matrix-equality",
+   "prompt": "If \\(\\begin{bmatrix}-x-4&-2\\\\-3&-2y-5\\end{bmatrix}=\\begin{bmatrix}-4&-2\\\\-3&-3\\end{bmatrix}\\), then \\(x\\)=-2.",
+   "explanation": "This statement is false. The correct value is 0. Equal matrices have equal corresponding entries: \\(-x-4=-4\\) gives x = 0; \\(-2y-5=-3\\) gives y = -1. So x = 0.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-257",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "scalar-multiple",
+   "prompt": "Multiplying a matrix by \\(k\\) multiplies every entry by \\(k\\).",
+   "explanation": "This statement is true. Each entry is multiplied by \\(k\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-258",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "area-by-determinant",
+   "prompt": "The triangle with vertices (2, 1), (4, 1), (5, -2) has area 3 square units.",
+   "explanation": "This statement is true. Area = ½|\\(\\begin{vmatrix}2&1&1\\\\4&1&1\\\\5&-2&1\\end{vmatrix}\\)| = ½|-6| = \\(3\\) square units.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-259",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "homogeneous-k",
+   "prompt": "The system \\(\\left\\{\\begin{aligned}x + 2y + 3z &= 0\\\\3x &= 0\\\\2x + kz &= 0\\end{aligned}\\right.\\) has non-trivial solutions exactly when k = 0.",
+   "explanation": "This statement is true. Non-trivial solutions exist iff \\(|A|=0\\). Expanding \\(\\begin{vmatrix}1&2&3\\\\3&0&0\\\\2&0&k\\end{vmatrix}\\) gives \\(- 6 k=0\\), so k = 0.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-260",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "\\(\\begin{vmatrix}9&4\\\\-8&-1\\end{vmatrix}=23\\)",
+   "explanation": "This statement is true. \\(ad-bc = 9((-1)) - 4((-8)) = -9 - (-32) = 23\\)",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-261",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "add-subtract",
+   "prompt": "If \\(A=\\begin{bmatrix}-5&-3&-9\\\\-2&6&8\\\\6&8&-5\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}9&7&-7\\\\8&-9&9\\\\2&-7&-4\\end{bmatrix}\\), the (1,1) entry of \\(A+B\\) is 4.",
+   "explanation": "This statement is true. Add/subtract corresponding entries: (-5) + 9 = 4.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-262",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "Adding a multiple of one row to another row does not change the determinant.",
+   "explanation": "This statement is true. The operation \\(R_{i}\\to R_{i}+kR_{j}\\) leaves the value unchanged.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-263",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "homogeneous-k",
+   "prompt": "The system \\(2x - y = 0\\), \\(-4x + ky = 0\\) has non-trivial solutions when k = 2.",
+   "explanation": "This statement is true. A homogeneous system has non-trivial solutions iff the coefficient determinant is 0: \\(\\begin{vmatrix}2&-1\\\\-4&k\\end{vmatrix}=2k-4=0\\), so k = 2.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-264",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "\\(\\begin{vmatrix}1&-3&4\\\\1&0&3\\\\2&-3&7\\end{vmatrix}=1\\) (no expansion is needed).",
+   "explanation": "This statement is false. The correct value is 0. The determinant is 0 because the matrix has R3 = R1 + R2, so the rows are dependent.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-265",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "sym-skew-decomposition",
+   "prompt": "For every square matrix A, \\(A-A^{T}\\) is symmetric.",
+   "explanation": "This statement is false. The correct statement is: For every square matrix A, \\(A-A^{T}\\) is skew-symmetric. \\((A-A^{T})^{T}=A^{T}-A=-(A-A^{T})\\).",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-266",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "If \\(|A|=4\\) and \\(|B|=-2\\), then \\(|AB|\\) = -9.",
+   "explanation": "This statement is false. The correct value is -8. Use \\(|XY|=|X||Y|\\) and \\(|X^{T}|=|X|\\): \\(|AB|\\) = -8.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-267",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "powers",
+   "prompt": "If \\(A=\\begin{bmatrix}4&0\\\\0&5\\end{bmatrix}\\), the (2,2) entry of \\(A^{5}\\) is 3125.",
+   "explanation": "This statement is true. For a diagonal matrix, \\(A^{5}\\) has diagonal entries \\(4^{5}\\) and \\(5^{5}\\); the (2,2) entry is \\(5^{5}\\) = 3125.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-268",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "det-vandermonde",
+   "prompt": "\\(\\begin{vmatrix}1&1&1\\\\a&b&c\\\\a^{2}&b^{2}&c^{2}\\end{vmatrix}\\) = -42 for \\(a=-3,\\ b=4,\\ c=-2\\).",
+   "explanation": "This statement is true. The determinant equals \\((b-a)(c-a)(c-b)\\) = (7)(1)(-6) = -42.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-269",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "adjoint",
+   "prompt": "For \\(A=\\begin{bmatrix}-8&3\\\\6&8\\end{bmatrix}\\), the (1,2) entry of \\(\\operatorname{adj}A\\) is -3.",
+   "explanation": "This statement is true. For a 2×2 matrix swap the diagonal entries and change the sign of the other two: \\(\\operatorname{adj}A=\\begin{bmatrix}8&-3\\\\-6&-8\\end{bmatrix}\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-270",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "consistency",
+   "prompt": "A system whose reduced augmented matrix is \\(\\left[\\begin{array}{ccc|c}1&1&-2&3\\\\0&1&3&-3\\\\0&0&0&0\\end{array}\\right]\\) has: Infinitely many solutions.",
+   "explanation": "This statement is true. rank A = 2 and rank [A:B] = 2, with n = 3 unknowns. Ranks equal but less than n: infinitely many solutions (free variables).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-271",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "minor-cofactor",
+   "prompt": "The cofactor of the (2,3) entry has sign \\((-1)^{2+3}=-1\\).",
+   "explanation": "This statement is true. \\((-1)^{2+3}=-1\\).",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-272",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "matrix-product-application",
+   "prompt": "With prices \\(P=\\begin{bmatrix}9&12&5\\\\11&16&11\\end{bmatrix}\\) and quantities \\(Q=\\begin{bmatrix}4\\\\6\\\\3\\end{bmatrix}\\), the bill at Shop 2 is Rs 175.",
+   "explanation": "This statement is false. The correct value is 173. The bill is the entry of \\(PQ\\) in row 2: 11(4) + 16(6) + 11(3) = 173.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-273",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "det-triangular",
+   "prompt": "\\(\\begin{vmatrix}-1&0&0\\\\6&5&0\\\\2&-3&1\\end{vmatrix}=-5\\)",
+   "explanation": "This statement is true. The matrix is lower triangular, so the determinant is the product of the diagonal entries: (-1) · 5 · 1 = -5.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-274",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "product-entry",
+   "prompt": "For \\(A=\\begin{bmatrix}-4&4\\\\2&-2\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}5&3\\\\4&1\\end{bmatrix}\\), the trace of \\(AB\\) is -1.",
+   "explanation": "This statement is false. The correct value is 0. \\(AB=\\begin{bmatrix}-4&-8\\\\2&4\\end{bmatrix}\\), so the trace is -4 + 4 = 0.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-275",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "translation",
+   "prompt": "A translation taking (6, 3) to (2, -1) has \\(h+k\\) = -8.",
+   "explanation": "This statement is true. \\(h=2-(6)=-4\\) and \\(k=-1-(3)=-4\\), so \\(h+k\\) = -8.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-276",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}-4&7&-6\\\\-4&2&-2\\\\-3&4&4\\end{bmatrix}\\), the minor \\(M_{13}\\) is -10.",
+   "explanation": "This statement is true. Delete row 1 and column 3: \\(M_{13}=\\begin{vmatrix}-4&2\\\\-3&4\\end{vmatrix}\\) = -10.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-277",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "consistency",
+   "prompt": "If rank A < rank [A:B] the system has a unique solution.",
+   "explanation": "This statement is false. The correct statement is: If rank A < rank [A:B] the system is inconsistent. A row like \\(0\\;0\\;0\\;|\\;c\\) with \\(c\\ne0\\) appears: inconsistent.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-278",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "If \\(|A|=1\\) and \\(|B|=2\\), then \\(|AB|\\) = 1.",
+   "explanation": "This statement is false. The correct value is 2. Use \\(|XY|=|X||Y|\\) and \\(|X^{T}|=|X|\\): \\(|AB|\\) = 2.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-279",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}1&-3&3\\\\-1&4&-4\\\\-6&0&-1\\end{bmatrix}\\), the minor \\(M_{23}\\) is -18.",
+   "explanation": "This statement is true. Delete row 2 and column 3: \\(M_{23}=\\begin{vmatrix}1&-3\\\\-6&0\\end{vmatrix}\\) = -18.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-280",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "inverse-properties",
+   "prompt": "If \\(A^{-1}=\\begin{bmatrix}1&2\\\\1&1\\end{bmatrix}\\) and \\(B^{-1}=\\begin{bmatrix}-7&-5\\\\-3&-2\\end{bmatrix}\\), the (1,1) entry of \\((AB)^{-1}\\) is -6.",
+   "explanation": "This statement is false. The correct value is -12. \\((AB)^{-1}=B^{-1}A^{-1}\\) (reverse order). Multiplying, the (1,1) entry is -12; the other order \\(A^{-1}B^{-1}\\) would give -13.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-281",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "\\(\\begin{vmatrix}-8&-7\\\\7&-5\\end{vmatrix}=89\\)",
+   "explanation": "This statement is true. \\(ad-bc = (-8)((-5)) - (-7)(7) = 40 - (-49) = 89\\)",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-282",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "\\(\\begin{vmatrix}4&4&-1\\\\-2&-2&3\\\\-1&3&0\\end{vmatrix}=-50\\)",
+   "explanation": "This statement is false. The correct value is -40. Positive terms (aei + bfg + cdh) = -6; negative terms (ceg + afh + bdi) = 34. So the value is -6 - 34 = -40.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-283",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "cipher-decode",
+   "prompt": "A word coded as \\(\\begin{bmatrix}-13&28\\end{bmatrix}\\) with \\(K^{-1}=\\begin{bmatrix}7&5\\\\4&3\\end{bmatrix}\\) (A=1,…,Z=26) has letter 2 equal to S.",
+   "explanation": "This statement is true. Decode by post-multiplying by the inverse key: \\(\\begin{bmatrix}-13&28\\end{bmatrix}\\begin{bmatrix}7&5\\\\4&3\\end{bmatrix}=\\begin{bmatrix}21&19\\end{bmatrix}\\), so the numbers are 21 and 19, i.e. US. Letter 2 is S.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-284",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "inverse-properties",
+   "prompt": "\\((A^{T})^{-1}=(A^{-1})^{T}\\).",
+   "explanation": "This statement is true. Inverting and transposing can be done in either order.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-285",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "transpose",
+   "prompt": "If \\(A=\\begin{bmatrix}0&5&3\\\\6&-6&-6\\end{bmatrix}\\), the (row 1, column 2) entry of \\(A^{T}\\) is 6.",
+   "explanation": "This statement is true. The (i, j) entry of \\(A^{T}\\) is the (j, i) entry of A, so it is \\(a_{21}\\) = 6.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-286",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "adjoint",
+   "prompt": "If \\(|A|=-4\\) for a 3×3 matrix, then \\(A\\operatorname{adj}A=kI\\) with k = -4.",
+   "explanation": "This statement is true. \\(A\\operatorname{adj}A=|A|I\\), so k = -4.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-287",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "adjoint",
+   "prompt": "For a 3×3 matrix with \\(|A|=-1\\), the (1,2) entry of \\(A\\operatorname{adj}A\\) is -1.",
+   "explanation": "This statement is false. The correct value is 0. \\(A\\operatorname{adj}A=|A|I\\) is a scalar matrix, so every off-diagonal entry is 0.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-288",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "matrix-equation",
+   "prompt": "If \\(3X+A=B\\) where \\(A=\\begin{bmatrix}3&2&4\\\\2&5&-2\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-9&14&-11\\\\-7&17&16\\end{bmatrix}\\), the (2,3) entry of X is 14.",
+   "explanation": "This statement is false. The correct value is 6. \\(3X=B-A\\); entry (2,3): (16 - (-2)) / 3 = 6.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-289",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "product-order",
+   "prompt": "If A has order 1 × 4 and B has order 4 × 3, the order of AB is 1 × 3.",
+   "explanation": "This statement is true. AB is defined because the columns of A (4) equal the rows of B (4); the order is rows of A × columns of B = 1 × 3.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-290",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "For \\(A=\\begin{bmatrix}2&5&2\\\\2&4&-1\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}2&-3&2\\\\2&3&4\\\\1&1&5\\end{bmatrix}\\), the (2,2) entry of \\(AB\\) is 5.",
+   "explanation": "This statement is true. Row 2 of A times column 2 of B: 2((-3)) + 4(3) + (-1)(1) = 5.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-291",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Hard",
+   "topicTag": "networks",
+   "prompt": "For the friendship matrix \\(A=\\begin{bmatrix}0&0&0&1\\\\0&0&0&1\\\\0&0&0&1\\\\1&1&1&0\\end{bmatrix}\\), the (4,4) entry of \\(A^{2}\\) is -7.",
+   "explanation": "This statement is false. The correct value is 3. \\((A^{2})_{44}\\) = (row 4)·(row 4) = 3; it equals the number of friends of D.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-292",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "cramers-rule",
+   "prompt": "Cramer's rule gives y = 6 for the system \\(\\left\\{\\begin{aligned}y &= 6\\\\-3x - 4y &= -15\\end{aligned}\\right.\\).",
+   "explanation": "This statement is true. \\(D=3\\), \\(D_{y}=18\\), so \\(y=D_{y}/D\\) = 18/3 = 6.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-293",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "types-of-matrices",
+   "prompt": "A matrix of order \\(m\\times 1\\) is a row matrix.",
+   "explanation": "This statement is false. The correct statement is: A matrix of order \\(m\\times 1\\) is a column matrix. A matrix of order \\(m\\times 1\\) is a column matrix.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-294",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "adjoint",
+   "prompt": "If \\(|A|=-2\\) for a 3×3 matrix, then \\(A\\operatorname{adj}A=kI\\) with k = 2.",
+   "explanation": "This statement is false. The correct value is -2. \\(A\\operatorname{adj}A=|A|I\\), so k = -2.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-295",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "types-of-matrices",
+   "prompt": "A matrix of order \\(1\\times n\\) is called a column matrix.",
+   "explanation": "This statement is false. The correct statement is: A matrix of order \\(1\\times n\\) is called a row matrix. A matrix of order \\(1\\times n\\) is a row matrix.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-296",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Easy",
+   "topicTag": "minor-cofactor",
+   "prompt": "The minor \\(M_{ij}\\) is the sum of the entries left after deleting row \\(i\\) and column \\(j\\).",
+   "explanation": "This statement is false. The correct statement is: The minor \\(M_{ij}\\) is the determinant left after deleting row \\(i\\) and column \\(j\\). Delete row \\(i\\) and column \\(j\\) and take the determinant of what is left.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-297",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "gaussian-elimination",
+   "prompt": "Gauss–Jordan elimination stops at echelon form and uses back-substitution.",
+   "explanation": "This statement is false. The correct statement is: Gauss–Jordan elimination reduces the coefficient part to reduced row echelon form. Gauss–Jordan reads the solution directly from the reduced form.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-298",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "cofactor-expansion",
+   "prompt": "If row 2 of a 3×3 determinant is \\(4,1,-3\\) with cofactors \\(1,6,-2\\), the determinant is 14.",
+   "explanation": "This statement is false. The correct value is 16. Expand along row 2: 4(1) + 1(6) + (-3)((-2)) = 16.",
+   "payload": {
+    "correctBoolean": false
+   }
+  },
+  {
+   "id": "tf-299",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "For \\(A=\\begin{bmatrix}5&5&2\\\\1&4&-3\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-3&1&-3\\\\3&-1&-2\\\\1&2&-2\\end{bmatrix}\\), the (2,3) entry of \\(AB\\) is -5.",
+   "explanation": "This statement is true. Row 2 of A times column 3 of B: 1((-3)) + 4((-2)) + (-3)((-2)) = -5.",
+   "payload": {
+    "correctBoolean": true
+   }
+  },
+  {
+   "id": "tf-300",
+   "mechanicId": "true-false-sprint",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "\\(\\begin{vmatrix}5&1&-2\\\\-2&3&1\\\\-1&4&3\\end{vmatrix}=41\\)",
+   "explanation": "This statement is false. The correct value is 40. Positive terms (aei + bfg + cdh) = 60; negative terms (ceg + afh + bdi) = 20. So the value is 60 - 20 = 40.",
+   "payload": {
+    "correctBoolean": false
+   }
+  }
+ ]
+}

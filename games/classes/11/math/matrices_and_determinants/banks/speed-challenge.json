@@ -1,0 +1,5405 @@
+{
+ "mechanicId": "speed-challenge",
+ "questions": [
+  {
+   "id": "speed-001",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "singular-nonsingular",
+   "prompt": "Is the matrix \\(\\begin{bmatrix}3&-4\\\\2&-5\\end{bmatrix}\\) singular or non-singular?",
+   "explanation": "\\(|A|=3(-5) - (-4)2=-7\\). A matrix is singular when |A| = 0, so this matrix is non-singular.",
+   "payload": {
+    "options": [
+     "Non-singular",
+     "Not a square matrix",
+     "Singular",
+     "Cannot be determined"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-002",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "singular-nonsingular",
+   "prompt": "Is the matrix \\(\\begin{bmatrix}-5&-1\\\\2&4\\end{bmatrix}\\) singular or non-singular?",
+   "explanation": "\\(|A|=(-5)4 - (-1)2=-18\\). A matrix is singular when |A| = 0, so this matrix is non-singular.",
+   "payload": {
+    "options": [
+     "Not a square matrix",
+     "Non-singular",
+     "Singular",
+     "Cannot be determined"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-003",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "adjoint",
+   "prompt": "For \\(A=\\begin{bmatrix}8&-1\\\\1&8\\end{bmatrix}\\), find the (1,2) entry of \\(\\operatorname{adj}A\\).",
+   "explanation": "For a 2×2 matrix swap the diagonal entries and change the sign of the other two: \\(\\operatorname{adj}A=\\begin{bmatrix}8&1\\\\-1&8\\end{bmatrix}\\).",
+   "payload": {
+    "options": [
+     "-9",
+     "0",
+     "1",
+     "-2"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-004",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "det-triangular",
+   "prompt": "Evaluate \\(\\begin{vmatrix}6&-3&2\\\\0&2&-4\\\\0&0&4\\end{vmatrix}\\).",
+   "explanation": "The matrix is upper triangular, so the determinant is the product of the diagonal entries: 6 · 2 · 4 = 48.",
+   "payload": {
+    "options": [
+     "46",
+     "97",
+     "24",
+     "48"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-005",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "rank",
+   "prompt": "What is the largest possible rank of a 5×5 matrix?",
+   "explanation": "Rank cannot exceed the number of rows or the number of columns, so the maximum is min(5, 5) = 5.",
+   "payload": {
+    "options": [
+     "5",
+     "3",
+     "10",
+     "4"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-006",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "powers",
+   "prompt": "If \\(A=\\begin{bmatrix}4&0\\\\0&-2\\end{bmatrix}\\), find the (2,2) entry of \\(A^{5}\\).",
+   "explanation": "For a diagonal matrix, \\(A^{5}\\) has diagonal entries \\(4^{5}\\) and -\\(2^{5}\\); the (2,2) entry is \\((-2)^{5}\\) = -32.",
+   "payload": {
+    "options": [
+     "-30",
+     "-32",
+     "-31",
+     "32"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-007",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "Evaluate \\(\\begin{vmatrix}1&1&4\\\\2&4&-3\\\\4&-1&-1\\end{vmatrix}\\).",
+   "explanation": "Positive terms (aei + bfg + cdh) = -24; negative terms (ceg + afh + bdi) = 65. So the value is -24 - 65 = -89.",
+   "payload": {
+    "options": [
+     "-92",
+     "-24",
+     "-89",
+     "-177"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-008",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "row-operations",
+   "prompt": "Multiplying a row by 0 is not allowed as a row operation because:",
+   "explanation": "Row operations must be reversible; multiplying by 0 destroys the row.",
+   "payload": {
+    "options": [
+     "it makes the matrix singular only for 2×2",
+     "it changes the order",
+     "it changes the rank upward",
+     "it cannot be undone"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-009",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "minor-cofactor",
+   "prompt": "For the entry in row 2, column 3 of a 3×3 matrix, the sign of its cofactor is:",
+   "explanation": "\\((-1)^{2+3}=-1\\).",
+   "payload": {
+    "options": [
+     "negative",
+     "zero",
+     "depends on the entry",
+     "positive"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-010",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "transpose",
+   "prompt": "If \\(A=\\begin{bmatrix}-6&-5&8\\\\-4&6&9\\end{bmatrix}\\), find the entry in row 1, column 2 of \\(A^{T}\\).",
+   "explanation": "The (i, j) entry of \\(A^{T}\\) is the (j, i) entry of A, so it is \\(a_{21}\\) = -4.",
+   "payload": {
+    "options": [
+     "8",
+     "-4",
+     "4",
+     "-5"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-011",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "rank",
+   "prompt": "Find the rank of \\(A=\\begin{bmatrix}-3&1&1&1\\\\3&-1&-1&-1\\end{bmatrix}\\).",
+   "explanation": "Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 1.",
+   "payload": {
+    "options": [
+     "-1",
+     "4",
+     "1",
+     "2"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-012",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "row-operations",
+   "prompt": "Apply \\(R_{1}\\to R_{1}-3R_{2}\\) to \\(A=\\begin{bmatrix}0&4&-2\\\\5&-6&1\\end{bmatrix}\\). What is the new entry in row 1, column 1?",
+   "explanation": "New entry = 0 - 3(5) = -15.",
+   "payload": {
+    "options": [
+     "-29",
+     "-12",
+     "-5",
+     "-15"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-013",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "cipher-decode",
+   "prompt": "A coded message \\(C=MK\\) is decoded by:",
+   "explanation": "Multiply the coded matrix by the inverse of the key on the right.",
+   "payload": {
+    "options": [
+     "\\(M=CK^{-1}\\)",
+     "\\(M=CK\\)",
+     "\\(M=K^{-1}C\\)",
+     "\\(M=C-K\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-014",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "homogeneous-k",
+   "prompt": "For what value of k does the system \\(\\left\\{\\begin{aligned}4x + 3y - z &= 0\\\\2x + ky + 2z &= 0\\\\x + 3y + 2z &= 0\\end{aligned}\\right.\\) have a non-trivial solution?",
+   "explanation": "Non-trivial solutions exist iff \\(|A|=0\\). Expanding \\(\\begin{vmatrix}4&3&-1\\\\2&k&2\\\\1&3&2\\end{vmatrix}\\) gives \\(9 k - 36=0\\), so k = 4.",
+   "payload": {
+    "options": [
+     "9",
+     "4",
+     "2",
+     "-4"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-015",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "adjoint",
+   "prompt": "For \\(A=\\begin{bmatrix}1&5&-1\\\\0&1&4\\\\4&2&-2\\end{bmatrix}\\), find the (3,1) entry of \\(\\operatorname{adj}A\\).",
+   "explanation": "\\(\\operatorname{adj}A\\) is the transpose of the cofactor matrix, so its (3,1) entry is the cofactor \\(C_{13}\\) = -4.",
+   "payload": {
+    "options": [
+     "4",
+     "-5",
+     "-4",
+     "-3"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-016",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "Evaluate \\(\\begin{vmatrix}-2&9\\\\6&6\\end{vmatrix}\\).",
+   "explanation": "\\(ad-bc = (-2)(6) - 9(6) = -12 - 54 = -66\\)",
+   "payload": {
+    "options": [
+     "-131",
+     "-67",
+     "-76",
+     "-66"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-017",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "cofactor-expansion",
+   "prompt": "Row 2 of a 3×3 determinant is \\(-1,-3,0\\) and the cofactors of these entries are \\(-5,2,4\\). Find the determinant.",
+   "explanation": "Expand along row 2: (-1)((-5)) + (-3)(2) + 0(4) = -1.",
+   "payload": {
+    "options": [
+     "-1",
+     "9",
+     "2",
+     "-3"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-018",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "Let \\(A=\\begin{bmatrix}1&-3\\\\-4&0\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-2&3&-1\\\\4&5&-4\\end{bmatrix}\\). Find the (2,2) entry of \\(AB\\).",
+   "explanation": "Row 2 of A times column 2 of B: (-4)(3) + 0(5) = -12.",
+   "payload": {
+    "options": [
+     "-22",
+     "-12",
+     "-6",
+     "-10"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-019",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "consistency",
+   "prompt": "After row operations the augmented matrix of a system in x, y, z is \\(\\left[\\begin{array}{ccc|c}1&-3&-1&-5\\\\0&1&-1&2\\\\0&0&0&-4\\end{array}\\right]\\). How many solutions does the system have?",
+   "explanation": "rank A = 2 and rank [A:B] = 3, with n = 3 unknowns. rank A is less than rank [A:B] (a row 0 0 0 | non-zero): the system is inconsistent.",
+   "payload": {
+    "options": [
+     "Unique solution",
+     "Only the trivial solution",
+     "No solution",
+     "Infinitely many solutions"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-020",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "Let \\(A=\\begin{bmatrix}-4&-2\\\\5&0\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}3&5&1\\\\2&-4&3\\end{bmatrix}\\). Find the (2,1) entry of \\(AB\\).",
+   "explanation": "Row 2 of A times column 1 of B: 5(3) + 0(2) = 15.",
+   "payload": {
+    "options": [
+     "-15",
+     "30",
+     "5",
+     "15"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-021",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "row-operations",
+   "prompt": "Which of these is NOT an elementary row operation?",
+   "explanation": "The three elementary operations are: interchange rows, multiply a row by a non-zero scalar, add a multiple of one row to another.",
+   "payload": {
+    "options": [
+     "adding a number to every entry of a row",
+     "adding a multiple of one row to another",
+     "multiplying a row by a non-zero number",
+     "interchanging two rows"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-022",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "det-triangular",
+   "prompt": "Evaluate \\(\\begin{vmatrix}4&0&0\\\\-3&1&0\\\\-2&1&3\\end{vmatrix}\\).",
+   "explanation": "The matrix is lower triangular, so the determinant is the product of the diagonal entries: 4 · 1 · 3 = 12.",
+   "payload": {
+    "options": [
+     "25",
+     "12",
+     "24",
+     "-12"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-023",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "inverse-properties",
+   "prompt": "\\(A^{-1}=\\begin{bmatrix}-3&-5\\\\2&3\\end{bmatrix}\\) and \\(B^{-1}=\\begin{bmatrix}-10&-3\\\\3&1\\end{bmatrix}\\). Find the (1,2) entry of \\((AB)^{-1}\\).",
+   "explanation": "\\((AB)^{-1}=B^{-1}A^{-1}\\) (reverse order). Multiplying, the (1,2) entry is 41; the other order \\(A^{-1}B^{-1}\\) would give 4.",
+   "payload": {
+    "options": [
+     "44",
+     "-41",
+     "41",
+     "38"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-024",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}2x + 3y &= 6\\\\-x + z &= 2\\\\x + z &= 2\\end{aligned}\\right.\\), find the determinant \\(D\\) of the coefficient matrix.",
+   "explanation": "\\(D=\\begin{vmatrix}2&3&0\\\\-1&0&1\\\\1&0&1\\end{vmatrix}\\) = 6.",
+   "payload": {
+    "options": [
+     "12",
+     "-6",
+     "4",
+     "6"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-025",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "types-of-matrices",
+   "prompt": "Which name describes the matrix \\(\\begin{bmatrix}0&1&-2\\\\-1&0&-4\\\\2&4&0\\end{bmatrix}\\)?",
+   "explanation": "This is a skew-symmetric matrix because \\(a_{ij}\\) = -\\(a_{ji}\\), so the diagonal is 0.",
+   "payload": {
+    "options": [
+     "Skew-symmetric matrix",
+     "Symmetric matrix",
+     "Lower triangular matrix",
+     "Row matrix"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-026",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "translation",
+   "prompt": "The point (5, -1) is translated by \\((2,-3)\\) (add 2 to x and -3 to y). Find the new x-coordinate.",
+   "explanation": "New x = old x + shift = 5 + 2 = 7.",
+   "payload": {
+    "options": [
+     "4",
+     "7",
+     "8",
+     "10"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-027",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "cipher-decode",
+   "prompt": "A two-letter word (A=1,…,Z=26) was coded as \\(\\begin{bmatrix}41&20\\end{bmatrix}\\) using a key whose inverse is \\(K^{-1}=\\begin{bmatrix}1&-1\\\\-2&3\\end{bmatrix}\\). What is letter 2 of the word?",
+   "explanation": "Decode by post-multiplying by the inverse key: \\(\\begin{bmatrix}41&20\\end{bmatrix}\\begin{bmatrix}1&-1\\\\-2&3\\end{bmatrix}=\\begin{bmatrix}1&19\\end{bmatrix}\\), so the numbers are 1 and 19, i.e. AS. Letter 2 is S.",
+   "payload": {
+    "options": [
+     "T",
+     "U",
+     "S",
+     "R"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-028",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "area-by-determinant",
+   "prompt": "Find the area of the triangle with vertices (3, 5), (3, 1), (4, 0) using a determinant.",
+   "explanation": "Area = ½|\\(\\begin{vmatrix}3&5&1\\\\3&1&1\\\\4&0&1\\end{vmatrix}\\)| = ½|4| = \\(2\\) square units.",
+   "payload": {
+    "options": [
+     "1",
+     "-2",
+     "0",
+     "2"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-029",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "add-subtract",
+   "prompt": "If \\(A=\\begin{bmatrix}1&-1&-3\\\\-8&-6&8\\\\9&7&-4\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}5&3&4\\\\-8&-6&2\\\\-3&3&0\\end{bmatrix}\\), find the (2,2) entry of \\(A+B\\).",
+   "explanation": "Add/subtract corresponding entries: (-6) + (-6) = -12.",
+   "payload": {
+    "options": [
+     "-12",
+     "-9",
+     "-2",
+     "-11"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-030",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "singular-nonsingular",
+   "prompt": "Is the matrix \\(\\begin{bmatrix}-6&3\\\\1&1\\end{bmatrix}\\) singular or non-singular?",
+   "explanation": "\\(|A|=(-6)1 - 31=-9\\). A matrix is singular when |A| = 0, so this matrix is non-singular.",
+   "payload": {
+    "options": [
+     "Cannot be determined",
+     "Non-singular",
+     "Not a square matrix",
+     "Singular"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-031",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}3&2&6\\\\-5&7&0\\\\5&-3&0\\end{bmatrix}\\), find the minor \\(M_{31}\\).",
+   "explanation": "Delete row 3 and column 1: \\(M_{31}=\\begin{vmatrix}2&6\\\\7&0\\end{vmatrix}\\) = -42.",
+   "payload": {
+    "options": [
+     "43",
+     "-43",
+     "-42",
+     "-52"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-032",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "Let \\(A=\\begin{bmatrix}1&0\\\\0&-1\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}2&-4\\\\-3&3\\end{bmatrix}\\). Find the (2,2) entry of \\(AB\\).",
+   "explanation": "Row 2 of A times column 2 of B: 0((-4)) + (-1)(3) = -3.",
+   "payload": {
+    "options": [
+     "4",
+     "0",
+     "7",
+     "-3"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-033",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "singular-nonsingular",
+   "prompt": "Is the matrix \\(\\begin{bmatrix}-4&-2\\\\-1&-6\\end{bmatrix}\\) singular or non-singular?",
+   "explanation": "\\(|A|=(-4)(-6) - (-2)(-1)=22\\). A matrix is singular when |A| = 0, so this matrix is non-singular.",
+   "payload": {
+    "options": [
+     "Non-singular",
+     "Singular",
+     "Cannot be determined",
+     "Not a square matrix"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-034",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "row-operations",
+   "prompt": "Apply \\(R_{2}\\to R_{2}+4R_{1}\\) to \\(A=\\begin{bmatrix}2&-6\\\\-6&-4\\end{bmatrix}\\). What is the new entry in row 2, column 1?",
+   "explanation": "New entry = (-6) + 4(2) = 2.",
+   "payload": {
+    "options": [
+     "5",
+     "2",
+     "1",
+     "-8"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-035",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "trace",
+   "prompt": "Find the trace of \\(A=\\begin{bmatrix}9&-8\\\\2&-4\\end{bmatrix}\\) (the sum of the main-diagonal entries).",
+   "explanation": "Trace = 9 + (-4) = 5.",
+   "payload": {
+    "options": [
+     "4",
+     "3",
+     "5",
+     "2"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-036",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "networks",
+   "prompt": "The matrix \\(\\begin{bmatrix}0&1&1&0\\\\1&0&1&1\\\\1&1&0&0\\\\0&1&0&0\\end{bmatrix}\\) shows friendships among 4 people. How many friendships (pairs) are there in total?",
+   "explanation": "The sum of all entries is 8, and each friendship is counted twice, so there are 4 pairs.",
+   "payload": {
+    "options": [
+     "8",
+     "9",
+     "1",
+     "4"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-037",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "rank",
+   "prompt": "Find the rank of \\(A=\\begin{bmatrix}-1&3&-2\\\\1&-3&2\\\\-3&9&-6\\end{bmatrix}\\).",
+   "explanation": "Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 1.",
+   "payload": {
+    "options": [
+     "1",
+     "-1",
+     "6",
+     "3"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-038",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "types-of-matrices",
+   "prompt": "The identity matrix \\(I\\) is a scalar matrix whose diagonal entries are:",
+   "explanation": "All diagonal entries of \\(I\\) are 1 and all other entries are 0.",
+   "payload": {
+    "options": [
+     "any non-zero number",
+     "1",
+     "-1",
+     "0"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-039",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "singular-nonsingular",
+   "prompt": "Is the matrix \\(\\begin{bmatrix}4&3\\\\8&6\\end{bmatrix}\\) singular or non-singular?",
+   "explanation": "\\(|A|=46 - 38=0\\). A matrix is singular when |A| = 0, so this matrix is singular.",
+   "payload": {
+    "options": [
+     "Not a square matrix",
+     "Cannot be determined",
+     "Singular",
+     "Non-singular"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-040",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "consistency",
+   "prompt": "After row operations the augmented matrix of a system in x, y, z is \\(\\left[\\begin{array}{ccc|c}1&-2&-1&6\\\\0&1&-2&-2\\\\0&0&1&-4\\end{array}\\right]\\). How many solutions does the system have?",
+   "explanation": "rank A = 3 and rank [A:B] = 3, with n = 3 unknowns. Ranks equal and equal to n: exactly one solution.",
+   "payload": {
+    "options": [
+     "Only the trivial solution",
+     "Infinitely many solutions",
+     "No solution",
+     "Unique solution"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-041",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "scalar-multiple",
+   "prompt": "If \\(A=\\begin{bmatrix}3&-3&7\\\\0&6&-5\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}1&3&7\\\\-6&-3&0\\end{bmatrix}\\), find the (2,3) entry of \\(-2A+2B\\).",
+   "explanation": "Multiply each matrix by its scalar, then add: (-2)((-5)) + 2(0) = 10.",
+   "payload": {
+    "options": [
+     "10",
+     "5",
+     "12",
+     "11"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-042",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "singular-nonsingular",
+   "prompt": "Is the matrix \\(\\begin{bmatrix}-1&-1\\\\-6&-5\\end{bmatrix}\\) singular or non-singular?",
+   "explanation": "\\(|A|=(-1)(-5) - (-1)(-6)=-1\\). A matrix is singular when |A| = 0, so this matrix is non-singular.",
+   "payload": {
+    "options": [
+     "Cannot be determined",
+     "Non-singular",
+     "Singular",
+     "Not a square matrix"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-043",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "symmetric-skew",
+   "prompt": "Find k so that \\(A=\\begin{bmatrix}-2&k\\\\-2k+12&4\\end{bmatrix}\\) is symmetric (\\(a_{12}=a_{21}\\)).",
+   "explanation": "Symmetric needs \\(a_{12}\\) = \\(a_{21}\\): \\(k=-2k+12\\), so \\(3k=12\\) and k = 4.",
+   "payload": {
+    "options": [
+     "-6",
+     "7",
+     "4",
+     "2"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-044",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "singular-k",
+   "prompt": "For what value of k is \\(\\begin{vmatrix}2&1\\\\-2&k\\end{vmatrix}\\) singular (determinant 0)?",
+   "explanation": "\\(\\begin{vmatrix}2&1\\\\-2&k\\end{vmatrix}=2k - (-2)\\); setting it to 0 gives \\(2k=-2\\), so k = -1.",
+   "payload": {
+    "options": [
+     "-11",
+     "9",
+     "3",
+     "-1"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-045",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "scalar-multiple",
+   "prompt": "If \\(A=\\begin{bmatrix}-4&6\\\\-1&6\\\\-2&-4\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}1&-1\\\\-2&-3\\\\-3&-5\\end{bmatrix}\\), find the (1,2) entry of \\(-2A+4B\\).",
+   "explanation": "Multiply each matrix by its scalar, then add: (-2)(6) + 4((-1)) = -16.",
+   "payload": {
+    "options": [
+     "-16",
+     "17",
+     "-6",
+     "-26"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-046",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "powers",
+   "prompt": "If \\(A=\\begin{bmatrix}-2&-1\\\\2&0\\end{bmatrix}\\), find the (2,1) entry of \\(A^{2}\\).",
+   "explanation": "\\(A^{2}=AA\\); row 2 times column 1: 2((-2)) + 0(2) = -4. (It is not just squaring each entry.)",
+   "payload": {
+    "options": [
+     "6",
+     "-4",
+     "-5",
+     "-14"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-047",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "rank",
+   "prompt": "Find the rank of \\(A=\\begin{bmatrix}3&5\\\\0&3\\end{bmatrix}\\).",
+   "explanation": "Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 2.",
+   "payload": {
+    "options": [
+     "7",
+     "-2",
+     "2",
+     "1"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-048",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "scalar-multiple",
+   "prompt": "If \\(A=\\begin{bmatrix}-5&2\\\\-1&-1\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-1&5\\\\0&-5\\end{bmatrix}\\), find the (2,1) entry of \\(2A-B\\).",
+   "explanation": "Multiply each matrix by its scalar, then add: 2((-1)) + (-1)(0) = -2.",
+   "payload": {
+    "options": [
+     "-5",
+     "8",
+     "-12",
+     "-2"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-049",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "transpose",
+   "prompt": "The transpose \\(A^{T}\\) of a matrix is obtained by:",
+   "explanation": "The rows of A become the columns of \\(A^{T}\\).",
+   "payload": {
+    "options": [
+     "interchanging rows and columns",
+     "changing the sign of every entry",
+     "taking the inverse",
+     "adding the rows"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-050",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "add-subtract",
+   "prompt": "If \\(A=\\begin{bmatrix}3&1\\\\9&-5\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}3&-8\\\\4&-7\\end{bmatrix}\\), find the (2,2) entry of \\(A+B\\).",
+   "explanation": "Add/subtract corresponding entries: (-5) + (-7) = -12.",
+   "payload": {
+    "options": [
+     "-13",
+     "-12",
+     "12",
+     "-22"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-051",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "Without expanding, find the value of \\(\\begin{vmatrix}5&4&2\\\\-5&3&-1\\\\0&7&1\\end{vmatrix}\\).",
+   "explanation": "The determinant is 0 because the matrix has R3 = R1 + R2, so the rows are dependent.",
+   "payload": {
+    "options": [
+     "2",
+     "-1",
+     "0",
+     "1"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-052",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "matrix-equality",
+   "prompt": "If \\(\\begin{bmatrix}-2x-1&-3\\\\4&4y+2\\end{bmatrix}=\\begin{bmatrix}-1&-3\\\\4&14\\end{bmatrix}\\), find \\(x\\).",
+   "explanation": "Equal matrices have equal corresponding entries: \\(-2x-1=-1\\) gives x = 0; \\(4y+2=14\\) gives y = 3. So x = 0.",
+   "payload": {
+    "options": [
+     "-10",
+     "-1",
+     "2",
+     "0"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-053",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "det-properties",
+   "prompt": "If A is a 2×2 matrix with \\(|A|=5\\), find \\(|A^{-1}|\\).",
+   "explanation": "\\(|A^{-1}|=\\frac{1}{|A|}\\) = \\(\\frac{1}{5}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{1}{5}\\)",
+     "\\(\\frac{1}{6}\\)",
+     "\\(\\frac{1}{10}\\)",
+     "\\(-\\frac{1}{5}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-054",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "consistency",
+   "prompt": "After row operations the augmented matrix of a system in x, y, z is \\(\\left[\\begin{array}{ccc|c}1&4&3&-4\\\\0&1&-2&0\\\\0&0&1&2\\end{array}\\right]\\). How many solutions does the system have?",
+   "explanation": "rank A = 3 and rank [A:B] = 3, with n = 3 unknowns. Ranks equal and equal to n: exactly one solution.",
+   "payload": {
+    "options": [
+     "Only the trivial solution",
+     "Unique solution",
+     "No solution",
+     "Infinitely many solutions"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-055",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "Evaluate \\(\\begin{vmatrix}2&-4&-4\\\\-4&-1&-1\\\\2&-2&4\\end{vmatrix}\\).",
+   "explanation": "Positive terms (aei + bfg + cdh) = -32; negative terms (ceg + afh + bdi) = 76. So the value is -32 - 76 = -108.",
+   "payload": {
+    "options": [
+     "-105",
+     "-54",
+     "-108",
+     "-216"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-056",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "singular-k",
+   "prompt": "For what value of k is \\(\\begin{vmatrix}-2&2\\\\-4&k\\end{vmatrix}\\) singular (determinant 0)?",
+   "explanation": "\\(\\begin{vmatrix}-2&2\\\\-4&k\\end{vmatrix}=-2k - (-8)\\); setting it to 0 gives \\(-2k=-8\\), so k = 4.",
+   "payload": {
+    "options": [
+     "-6",
+     "1",
+     "2",
+     "4"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-057",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "trace",
+   "prompt": "Find the trace of \\(A=\\begin{bmatrix}8&9&4\\\\-8&4&-3\\\\6&-3&3\\end{bmatrix}\\) (the sum of the main-diagonal entries).",
+   "explanation": "Trace = 8 + 4 + 3 = 15.",
+   "payload": {
+    "options": [
+     "15",
+     "25",
+     "-15",
+     "18"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-058",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "product-order",
+   "prompt": "If \\(A\\) has order 3 × 2 and \\(B\\) has order 2 × 4, what is the order of \\(AB\\)?",
+   "explanation": "AB is defined because the columns of A (2) equal the rows of B (2); the order is rows of A × columns of B = 3 × 4.",
+   "payload": {
+    "options": [
+     "4 × 3",
+     "3 × 4",
+     "3 × 2",
+     "2 × 4"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-059",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "minor-cofactor",
+   "prompt": "The cofactor \\(C_{ij}\\) is related to the minor by:",
+   "explanation": "The cofactor is the minor with the place-sign \\((-1)^{i+j}\\).",
+   "payload": {
+    "options": [
+     "\\(C_{ij}=-M_{ij}\\)",
+     "\\(C_{ij}=M_{ij}\\)",
+     "\\(C_{ij}=(-1)^{i+j}M_{ij}\\)",
+     "\\(C_{ij}=M_{ji}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-060",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "inverse-properties",
+   "prompt": "A square matrix that has an inverse has:",
+   "explanation": "The inverse of a matrix, when it exists, is unique.",
+   "payload": {
+    "options": [
+     "two inverses",
+     "infinitely many inverses",
+     "no inverse",
+     "exactly one inverse"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-061",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "Evaluate \\(\\begin{vmatrix}5&-4\\\\6&-3\\end{vmatrix}\\).",
+   "explanation": "\\(ad-bc = 5((-3)) - (-4)(6) = -15 - (-24) = 9\\)",
+   "payload": {
+    "options": [
+     "9",
+     "19",
+     "10",
+     "18"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-062",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "transpose",
+   "prompt": "If \\(A=\\begin{bmatrix}7&-2&0\\\\-1&7&5\\\\1&5&2\\end{bmatrix}\\), find the entry in row 1, column 2 of \\(A^{T}\\).",
+   "explanation": "The (i, j) entry of \\(A^{T}\\) is the (j, i) entry of A, so it is \\(a_{21}\\) = -1.",
+   "payload": {
+    "options": [
+     "1",
+     "-1",
+     "-3",
+     "-2"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-063",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "Let \\(A=\\begin{bmatrix}-3&3&-4\\\\0&2&2\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}1&0&3\\\\-3&-3&5\\\\2&0&-2\\end{bmatrix}\\). Find the (2,3) entry of \\(AB\\).",
+   "explanation": "Row 2 of A times column 3 of B: 0(3) + 2(5) + 2((-2)) = 6.",
+   "payload": {
+    "options": [
+     "5",
+     "7",
+     "6",
+     "-6"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-064",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "area-by-determinant",
+   "prompt": "The points (1, 3), (5, 3) and (0, k) are collinear. Find k.",
+   "explanation": "Collinear points give a zero determinant \\(\\begin{vmatrix}1&3&1\\\\5&3&1\\\\0&k&1\\end{vmatrix}\\) = 0, which expands to \\(4 k - 12=0\\). So k = 3.",
+   "payload": {
+    "options": [
+     "-3",
+     "1",
+     "7",
+     "3"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-065",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "transpose",
+   "prompt": "If \\(A=\\begin{bmatrix}8&-9\\\\-7&8\\\\-4&-6\\\\1&-7\\end{bmatrix}\\), find the entry in row 2, column 2 of \\(A^{T}\\).",
+   "explanation": "The (i, j) entry of \\(A^{T}\\) is the (j, i) entry of A, so it is \\(a_{22}\\) = 8.",
+   "payload": {
+    "options": [
+     "8",
+     "-4",
+     "-6",
+     "-8"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-066",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "row-operations",
+   "prompt": "Apply \\(R_{2}\\to R_{2}+R_{1}\\) to \\(A=\\begin{bmatrix}2&1&2\\\\2&2&-2\\\\-2&4&4\\end{bmatrix}\\). What is the new entry in row 2, column 3?",
+   "explanation": "New entry = (-2) + 1(2) = 0.",
+   "payload": {
+    "options": [
+     "-3",
+     "0",
+     "10",
+     "1"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-067",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "det-triangular",
+   "prompt": "Evaluate \\(\\begin{vmatrix}1&-6&6&-6\\\\0&6&2&-6\\\\0&0&-1&5\\\\0&0&0&-3\\end{vmatrix}\\).",
+   "explanation": "The matrix is upper triangular, so the determinant is the product of the diagonal entries: 1 · 6 · (-1) · (-3) = 18.",
+   "payload": {
+    "options": [
+     "37",
+     "-18",
+     "18",
+     "3"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-068",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "Square matrices A and B of the same order have \\(|A|=4\\) and \\(|B|=2\\). Find \\(|ABA|\\).",
+   "explanation": "Use \\(|XY|=|X||Y|\\) and \\(|X^{T}|=|X|\\): \\(|ABA|\\) = 32.",
+   "payload": {
+    "options": [
+     "42",
+     "34",
+     "-32",
+     "32"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-069",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "Evaluate \\(\\begin{vmatrix}3&1&-4\\\\-2&-2&0\\\\-3&-4&2\\end{vmatrix}\\).",
+   "explanation": "Positive terms (aei + bfg + cdh) = -44; negative terms (ceg + afh + bdi) = -28. So the value is -44 - (-28) = -16.",
+   "payload": {
+    "options": [
+     "-16",
+     "-14",
+     "-6",
+     "-31"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-070",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}5&7&7\\\\2&1&5\\\\-3&-4&-3\\end{bmatrix}\\), find the cofactor \\(C_{33}\\).",
+   "explanation": "\\(M_{33}\\) = -9, and the sign is \\((-1)^{3+3}\\) = +1. So \\(C_{33}\\) = -9.",
+   "payload": {
+    "options": [
+     "-8",
+     "-9",
+     "-18",
+     "-6"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-071",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "cramers-rule",
+   "prompt": "Cramer's rule can be used for a square system only when:",
+   "explanation": "The formulas \\(x=D_{x}/D\\) etc. divide by \\(D\\).",
+   "payload": {
+    "options": [
+     "\\(D_{x}=0\\)",
+     "\\(D=0\\)",
+     "\\(D=|A|\\neq0\\)",
+     "the system is homogeneous"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-072",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "symmetric-skew",
+   "prompt": "Find k so that \\(A=\\begin{bmatrix}0&-3k-1\\\\4&0\\end{bmatrix}\\) is skew-symmetric (\\(a_{12}=-a_{21}\\)).",
+   "explanation": "Skew-symmetric needs \\(a_{12}\\) = -\\(a_{21}\\), so \\(-3k-1=-4\\), i.e. \\(-3k=-3\\), giving k = 1.",
+   "payload": {
+    "options": [
+     "-1",
+     "11",
+     "3",
+     "1"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-073",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "inverse-2x2",
+   "prompt": "Find the (2,1) entry of \\(A^{-1}\\) for \\(A=\\begin{bmatrix}1&-2\\\\-1&3\\end{bmatrix}\\).",
+   "explanation": "\\(|A|=1\\) and \\(\\operatorname{adj}A=\\begin{bmatrix}3&2\\\\1&1\\end{bmatrix}\\), so \\(A^{-1}=\\frac{1}{|A|}\\operatorname{adj}A\\) has (2,1) entry \\(1\\).",
+   "payload": {
+    "options": [
+     "1",
+     "-1",
+     "2",
+     "3"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-074",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "order-of-matrix",
+   "prompt": "State the order of the matrix \\(\\begin{bmatrix}8&2&-6\\end{bmatrix}\\).",
+   "explanation": "It has 1 row(s) and 3 column(s), so its order is 1 × 3 (rows first, then columns).",
+   "payload": {
+    "options": [
+     "3 × 1",
+     "1 × 3",
+     "1 × 1",
+     "3 × 3"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-075",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "Evaluate \\(\\begin{vmatrix}-8&3\\\\-8&2\\end{vmatrix}\\).",
+   "explanation": "\\(ad-bc = (-8)(2) - 3((-8)) = -16 - (-24) = 8\\)",
+   "payload": {
+    "options": [
+     "4",
+     "-2",
+     "8",
+     "16"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-076",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "Evaluate \\(\\begin{vmatrix}5&1\\\\9&0\\end{vmatrix}\\).",
+   "explanation": "\\(ad-bc = 5(0) - 1(9) = 0 - 9 = -9\\)",
+   "payload": {
+    "options": [
+     "10",
+     "-7",
+     "-12",
+     "-9"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-077",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "Evaluate \\(\\begin{vmatrix}4&-2&3\\\\3&-1&0\\\\4&3&-1\\end{vmatrix}\\).",
+   "explanation": "Positive terms (aei + bfg + cdh) = 31; negative terms (ceg + afh + bdi) = -6. So the value is 31 - (-6) = 37.",
+   "payload": {
+    "options": [
+     "37",
+     "31",
+     "-37",
+     "75"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-078",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "product-entry",
+   "prompt": "Let \\(A=\\begin{bmatrix}-2&1\\\\-3&-4\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}3&-1\\\\-1&2\\end{bmatrix}\\). Find the trace of \\(AB\\).",
+   "explanation": "\\(AB=\\begin{bmatrix}-7&4\\\\-5&-5\\end{bmatrix}\\), so the trace is -7 + (-5) = -12.",
+   "payload": {
+    "options": [
+     "-22",
+     "-12",
+     "-9",
+     "-23"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-079",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "det-row-ops",
+   "prompt": "A 3×3 matrix has determinant -1. Its determinant after the row operations R1 → R1 - R2; then R2 → -2R2; then R3 → 4R3 (in this order) is:",
+   "explanation": "Track each operation: R1 → R1 - R2: no change; R2 → -2R2: multiplies the determinant by -2; R3 → 4R3: multiplies the determinant by 4. Result: 8.",
+   "payload": {
+    "options": [
+     "5",
+     "-1",
+     "8",
+     "16"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-080",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "row-operations",
+   "prompt": "Apply \\(R_{1}\\to R_{1}-4R_{2}\\) to \\(A=\\begin{bmatrix}-5&4&1\\\\7&5&0\\\\4&5&1\\end{bmatrix}\\). What is the new entry in row 1, column 3?",
+   "explanation": "New entry = 1 - 4(0) = 1.",
+   "payload": {
+    "options": [
+     "3",
+     "5",
+     "-1",
+     "1"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-081",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "translation",
+   "prompt": "The point (-4, -6) is translated by \\((-2,-4)\\) (add -2 to x and -4 to y). Find the new x-coordinate.",
+   "explanation": "New x = old x + shift = (-4) + (-2) = -6.",
+   "payload": {
+    "options": [
+     "-6",
+     "-11",
+     "-16",
+     "-8"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-082",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "types-of-matrices",
+   "prompt": "Which name describes the matrix \\(\\begin{bmatrix}6&-2\\\\-2&-4\\end{bmatrix}\\)?",
+   "explanation": "This is a symmetric matrix because it equals its transpose, \\(a_{ij}\\) = \\(a_{ji}\\).",
+   "payload": {
+    "options": [
+     "Row matrix",
+     "Symmetric matrix",
+     "Skew-symmetric matrix",
+     "Column matrix"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-083",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "Square matrices A and B of the same order have \\(|A|=-5\\) and \\(|B|=-1\\). Find \\(|ABA|\\).",
+   "explanation": "Use \\(|XY|=|X||Y|\\) and \\(|X^{T}|=|X|\\): \\(|ABA|\\) = -25.",
+   "payload": {
+    "options": [
+     "-35",
+     "-26",
+     "-25",
+     "-21"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-084",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}2x + 6y &= -32\\\\-2x - 5y &= 28\\end{aligned}\\right.\\), find the determinant \\(D\\) of the coefficient matrix.",
+   "explanation": "\\(D=\\begin{vmatrix}2&6\\\\-2&-5\\end{vmatrix}\\) = 2.",
+   "payload": {
+    "options": [
+     "1",
+     "4",
+     "-1",
+     "2"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-085",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "cipher-decode",
+   "prompt": "A two-letter word (A=1,…,Z=26) was coded as \\(\\begin{bmatrix}24&9\\end{bmatrix}\\) using a key whose inverse is \\(K^{-1}=\\begin{bmatrix}1&1\\\\-1&-2\\end{bmatrix}\\). What is letter 2 of the word?",
+   "explanation": "Decode by post-multiplying by the inverse key: \\(\\begin{bmatrix}24&9\\end{bmatrix}\\begin{bmatrix}1&1\\\\-1&-2\\end{bmatrix}=\\begin{bmatrix}15&6\\end{bmatrix}\\), so the numbers are 15 and 6, i.e. OF. Letter 2 is F.",
+   "payload": {
+    "options": [
+     "F",
+     "G",
+     "E",
+     "H"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-086",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}5&-5&7\\\\-1&6&0\\\\5&-4&5\\end{bmatrix}\\), find the cofactor \\(C_{13}\\).",
+   "explanation": "\\(M_{13}\\) = -26, and the sign is \\((-1)^{1+3}\\) = +1. So \\(C_{13}\\) = -26.",
+   "payload": {
+    "options": [
+     "-13",
+     "-26",
+     "-52",
+     "-16"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-087",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "inverse-properties",
+   "prompt": "\\(A^{-1}=\\begin{bmatrix}0&1\\\\1&-1\\end{bmatrix}\\) and \\(B^{-1}=\\begin{bmatrix}-1&1\\\\1&-2\\end{bmatrix}\\). Find the (2,2) entry of \\((AB)^{-1}\\).",
+   "explanation": "\\((AB)^{-1}=B^{-1}A^{-1}\\) (reverse order). Multiplying, the (2,2) entry is 3; the other order \\(A^{-1}B^{-1}\\) would give 3.",
+   "payload": {
+    "options": [
+     "2",
+     "-3",
+     "3",
+     "13"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-088",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "scalar-multiple",
+   "prompt": "If \\(A=\\begin{bmatrix}3&-2&1\\\\4&-2&-3\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}5&2&1\\\\-4&3&-3\\end{bmatrix}\\), find the (2,3) entry of \\(4A+4B\\).",
+   "explanation": "Multiply each matrix by its scalar, then add: 4((-3)) + 4((-3)) = -24.",
+   "payload": {
+    "options": [
+     "-27",
+     "-34",
+     "-48",
+     "-24"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-089",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "singular-k",
+   "prompt": "For what value of k is \\(\\begin{vmatrix}-3&-5\\\\3&k\\end{vmatrix}\\) singular (determinant 0)?",
+   "explanation": "\\(\\begin{vmatrix}-3&-5\\\\3&k\\end{vmatrix}=-3k - (-15)\\); setting it to 0 gives \\(-3k=-15\\), so k = 5.",
+   "payload": {
+    "options": [
+     "5",
+     "6",
+     "-5",
+     "11"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-090",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "det-triangular",
+   "prompt": "Evaluate \\(\\begin{vmatrix}-2&-4&1\\\\0&-4&6\\\\0&0&-5\\end{vmatrix}\\).",
+   "explanation": "The matrix is upper triangular, so the determinant is the product of the diagonal entries: (-2) · (-4) · (-5) = -40.",
+   "payload": {
+    "options": [
+     "-30",
+     "-40",
+     "-42",
+     "-38"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-091",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "powers",
+   "prompt": "If \\(A=\\begin{bmatrix}-1&0\\\\0&2\\end{bmatrix}\\), find the (2,2) entry of \\(A^{5}\\).",
+   "explanation": "For a diagonal matrix, \\(A^{5}\\) has diagonal entries -\\(1^{5}\\) and \\(2^{5}\\); the (2,2) entry is \\(2^{5}\\) = 32.",
+   "payload": {
+    "options": [
+     "22",
+     "42",
+     "32",
+     "65"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-092",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "singular-nonsingular",
+   "prompt": "Is the matrix \\(\\begin{bmatrix}-5&4\\\\-3&3\\end{bmatrix}\\) singular or non-singular?",
+   "explanation": "\\(|A|=(-5)3 - 4(-3)=-3\\). A matrix is singular when |A| = 0, so this matrix is non-singular.",
+   "payload": {
+    "options": [
+     "Not a square matrix",
+     "Singular",
+     "Cannot be determined",
+     "Non-singular"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-093",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "Square matrices A and B of the same order have \\(|A|=-4\\) and \\(|B|=4\\). Find \\(|A^{2}|\\).",
+   "explanation": "Use \\(|XY|=|X||Y|\\) and \\(|X^{T}|=|X|\\): \\(|A^{2}|\\) = 16.",
+   "payload": {
+    "options": [
+     "16",
+     "0",
+     "26",
+     "17"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-094",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}x + 4y &= -21\\\\-3x - 3y &= 27\\end{aligned}\\right.\\), find the determinant \\(D\\) of the coefficient matrix.",
+   "explanation": "\\(D=\\begin{vmatrix}1&4\\\\-3&-3\\end{vmatrix}\\) = 9.",
+   "payload": {
+    "options": [
+     "11",
+     "9",
+     "6",
+     "18"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-095",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "cipher-encode",
+   "prompt": "Using \\(A=1,\\ B=2,\\dots,Z=26\\), the word OF is written as a row matrix and multiplied on the right by the key \\(K=\\begin{bmatrix}3&2\\\\2&1\\end{bmatrix}\\). Find entry 2 of the coded row.",
+   "explanation": "OF → \\(\\begin{bmatrix}15&6\\end{bmatrix}\\). Coded row = \\(\\begin{bmatrix}15&6\\end{bmatrix}\\begin{bmatrix}3&2\\\\2&1\\end{bmatrix}=\\begin{bmatrix}57&36\\end{bmatrix}\\); entry 2 is 36.",
+   "payload": {
+    "options": [
+     "35",
+     "37",
+     "36",
+     "38"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-096",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "gaussian-elimination",
+   "prompt": "Gaussian elimination reduces a system to \\(\\left[\\begin{array}{ccc|c}1&-2&1&-10\\\\0&1&3&5\\\\0&0&1&0\\end{array}\\right]\\). Find x by back-substitution.",
+   "explanation": "From the last row z = 0. The second row gives y = 5 - 3(0) = 5. The first row gives x = -10 - (-2)(5) - 1(0) = 0.",
+   "payload": {
+    "options": [
+     "1",
+     "3",
+     "10",
+     "0"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-097",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "row-operations",
+   "prompt": "Apply \\(R_{3}\\to R_{3}-4R_{2}\\) to \\(A=\\begin{bmatrix}-4&6&4&7\\\\-5&3&4&3\\\\-6&7&-1&-4\\end{bmatrix}\\). What is the new entry in row 3, column 3?",
+   "explanation": "New entry = (-1) - 4(4) = -17.",
+   "payload": {
+    "options": [
+     "-17",
+     "-13",
+     "-14",
+     "18"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-098",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "singular-nonsingular",
+   "prompt": "Is the matrix \\(\\begin{bmatrix}-6&5\\\\-6&0\\end{bmatrix}\\) singular or non-singular?",
+   "explanation": "\\(|A|=(-6)0 - 5(-6)=30\\). A matrix is singular when |A| = 0, so this matrix is non-singular.",
+   "payload": {
+    "options": [
+     "Cannot be determined",
+     "Non-singular",
+     "Not a square matrix",
+     "Singular"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-099",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "matrix-equality",
+   "prompt": "If \\(\\begin{bmatrix}-x&0\\\\5&y-4\\end{bmatrix}=\\begin{bmatrix}1&0\\\\5&-3\\end{bmatrix}\\), find \\(x\\).",
+   "explanation": "Equal matrices have equal corresponding entries: \\(-x=1\\) gives x = -1; \\(y-4=-3\\) gives y = 1. So x = -1.",
+   "payload": {
+    "options": [
+     "-3",
+     "-2",
+     "-1",
+     "1"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-100",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "inverse-3x3",
+   "prompt": "Find the (2,2) entry of \\(A^{-1}\\) for \\(A=\\begin{bmatrix}-2&1&10\\\\-1&0&5\\\\-1&0&4\\end{bmatrix}\\).",
+   "explanation": "\\(|A|=-1\\), so \\(A^{-1}=\\operatorname{adj}A/|A|\\) = \\(-\\operatorname{adj}A\\). Its (2,2) entry is -2.",
+   "payload": {
+    "options": [
+     "2",
+     "1",
+     "8",
+     "-2"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-101",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "product-entry",
+   "prompt": "Let \\(A=\\begin{bmatrix}5&2\\\\1&5\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}0&2\\\\5&5\\end{bmatrix}\\). Find the trace of \\(AB\\).",
+   "explanation": "\\(AB=\\begin{bmatrix}10&20\\\\25&27\\end{bmatrix}\\), so the trace is 10 + 27 = 37.",
+   "payload": {
+    "options": [
+     "37",
+     "41",
+     "-37",
+     "40"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-102",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "matrix-product-application",
+   "prompt": "The rows of \\(P=\\begin{bmatrix}3&9&7\\\\17&8&2\\end{bmatrix}\\) give the prices (Rs) of rulers, pencils and markers at Shop 1 and Shop 2. A student buys 3, 9 and 1 of them, i.e. \\(Q=\\begin{bmatrix}3\\\\9\\\\1\\end{bmatrix}\\). What is the total bill at Shop 1 (in Rs)?",
+   "explanation": "The bill is the entry of \\(PQ\\) in row 1: 3(3) + 9(9) + 7(1) = 97.",
+   "payload": {
+    "options": [
+     "99",
+     "97",
+     "-97",
+     "195"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-103",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "inverse-properties",
+   "prompt": "\\((AB)^{-1}\\) equals:",
+   "explanation": "The inverse of a product reverses the order.",
+   "payload": {
+    "options": [
+     "\\(A^{-1}+B^{-1}\\)",
+     "\\(A^{-1}B^{-1}\\)",
+     "\\(B^{-1}A^{-1}\\)",
+     "\\((BA)^{-1}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-104",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "Evaluate \\(\\begin{vmatrix}1&-2&-3\\\\-1&-1&2\\\\0&0&1\\end{vmatrix}\\).",
+   "explanation": "Positive terms (aei + bfg + cdh) = -1; negative terms (ceg + afh + bdi) = 2. So the value is -1 - 2 = -3.",
+   "payload": {
+    "options": [
+     "7",
+     "-2",
+     "-13",
+     "-3"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-105",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "consistency",
+   "prompt": "A non-homogeneous system has 4 unknowns, \\(\\operatorname{rank}A=2\\) and \\(\\operatorname{rank}[A:B]=2\\). The system has:",
+   "explanation": "Compare the ranks: equal ranks that are less than n = 4 give infinitely many solutions.",
+   "payload": {
+    "options": [
+     "Infinitely many solutions",
+     "No solution",
+     "Only the trivial solution",
+     "Unique solution"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-106",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "Without expanding, find the value of \\(\\begin{vmatrix}-1&-5&-3\\\\-5&4&-1\\\\-6&-1&-4\\end{vmatrix}\\).",
+   "explanation": "The determinant is 0 because the matrix has R3 = R1 + R2, so the rows are dependent.",
+   "payload": {
+    "options": [
+     "2",
+     "0",
+     "-1",
+     "-2"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-107",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "product-order",
+   "prompt": "If \\(A\\) has order 4 × 3 and \\(B\\) has order 3 × 3, what is the order of \\(AB\\)?",
+   "explanation": "AB is defined because the columns of A (3) equal the rows of B (3); the order is rows of A × columns of B = 4 × 3.",
+   "payload": {
+    "options": [
+     "3 × 3",
+     "3 × 4",
+     "4 × 3",
+     "Not defined"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-108",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "powers",
+   "prompt": "If \\(A=\\begin{bmatrix}-2&-1\\\\4&-2\\end{bmatrix}\\), find the (2,2) entry of \\(A^{2}\\).",
+   "explanation": "\\(A^{2}=AA\\); row 2 times column 2: 4((-1)) + (-2)((-2)) = 0. (It is not just squaring each entry.)",
+   "payload": {
+    "options": [
+     "-3",
+     "1",
+     "-10",
+     "0"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-109",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "singular-nonsingular",
+   "prompt": "Is the matrix \\(\\begin{bmatrix}-6&-2\\\\3&5\\end{bmatrix}\\) singular or non-singular?",
+   "explanation": "\\(|A|=(-6)5 - (-2)3=-24\\). A matrix is singular when |A| = 0, so this matrix is non-singular.",
+   "payload": {
+    "options": [
+     "Non-singular",
+     "Not a square matrix",
+     "Singular",
+     "Cannot be determined"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-110",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "Evaluate \\(\\begin{vmatrix}3&8\\\\-4&-8\\end{vmatrix}\\).",
+   "explanation": "\\(ad-bc = 3((-8)) - 8((-4)) = -24 - (-32) = 8\\)",
+   "payload": {
+    "options": [
+     "6",
+     "8",
+     "18",
+     "16"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-111",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "consistency",
+   "prompt": "After row operations the augmented matrix of a system in x, y, z is \\(\\left[\\begin{array}{ccc|c}1&-3&2&0\\\\0&1&4&2\\\\0&0&0&-1\\end{array}\\right]\\). How many solutions does the system have?",
+   "explanation": "rank A = 2 and rank [A:B] = 3, with n = 3 unknowns. rank A is less than rank [A:B] (a row 0 0 0 | non-zero): the system is inconsistent.",
+   "payload": {
+    "options": [
+     "Only the trivial solution",
+     "Infinitely many solutions",
+     "No solution",
+     "Unique solution"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-112",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "det-properties",
+   "prompt": "Without expanding, find the value of \\(\\begin{vmatrix}0&0&0\\\\7&-9&4\\\\-6&3&2\\end{vmatrix}\\).",
+   "explanation": "The determinant is 0 because the matrix has a row of zeros.",
+   "payload": {
+    "options": [
+     "-1",
+     "10",
+     "-2",
+     "0"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-113",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "Square matrices A and B of the same order have \\(|A|=3\\) and \\(|B|=3\\). Find \\(|AB|\\).",
+   "explanation": "Use \\(|XY|=|X||Y|\\) and \\(|X^{T}|=|X|\\): \\(|AB|\\) = 9.",
+   "payload": {
+    "options": [
+     "9",
+     "8",
+     "10",
+     "13"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-114",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "det-triangular",
+   "prompt": "Evaluate \\(\\begin{vmatrix}4&0&0\\\\-4&6&0\\\\5&5&1\\end{vmatrix}\\).",
+   "explanation": "The matrix is lower triangular, so the determinant is the product of the diagonal entries: 4 · 6 · 1 = 24.",
+   "payload": {
+    "options": [
+     "21",
+     "24",
+     "34",
+     "27"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-115",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "area-by-determinant",
+   "prompt": "Find the area of the triangle with vertices (-2, -2), (5, 2), (4, 4) using a determinant.",
+   "explanation": "Area = ½|\\(\\begin{vmatrix}-2&-2&1\\\\5&2&1\\\\4&4&1\\end{vmatrix}\\)| = ½|18| = \\(9\\) square units.",
+   "payload": {
+    "options": [
+     "8",
+     "-9",
+     "9",
+     "18"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-116",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "add-subtract",
+   "prompt": "If \\(A=\\begin{bmatrix}-2&-2&-2\\\\0&-8&-5\\\\-2&4&-7\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-4&0&7\\\\-8&3&2\\\\-8&-8&-8\\end{bmatrix}\\), find the (1,2) entry of \\(A+B\\).",
+   "explanation": "Add/subtract corresponding entries: (-2) + 0 = -2.",
+   "payload": {
+    "options": [
+     "-3",
+     "2",
+     "1",
+     "-2"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-117",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "Square matrices A and B of the same order have \\(|A|=-3\\) and \\(|B|=5\\). Find \\(|AB|\\).",
+   "explanation": "Use \\(|XY|=|X||Y|\\) and \\(|X^{T}|=|X|\\): \\(|AB|\\) = -15.",
+   "payload": {
+    "options": [
+     "-15",
+     "-30",
+     "-18",
+     "-11"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-118",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "types-of-matrices",
+   "prompt": "Which name describes the matrix \\(\\begin{bmatrix}3&-2&-3\\\\-2&3&7\\\\-3&7&-6\\end{bmatrix}\\)?",
+   "explanation": "This is a symmetric matrix because it equals its transpose, \\(a_{ij}\\) = \\(a_{ji}\\).",
+   "payload": {
+    "options": [
+     "Upper triangular matrix",
+     "Symmetric matrix",
+     "Scalar matrix",
+     "Lower triangular matrix"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-119",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "inverse-properties",
+   "prompt": "\\(|A^{-1}|\\) equals:",
+   "explanation": "\\(|AA^{-1}|=|I|=1\\), so \\(|A^{-1}|=1/|A|\\).",
+   "payload": {
+    "options": [
+     "\\(|A|\\)",
+     "\\(|A|^{2}\\)",
+     "\\(\\dfrac{1}{|A|}\\)",
+     "\\(-|A|\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-120",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "cofactor-expansion",
+   "prompt": "Row 3 of a 3×3 determinant is \\(-5,4,-1\\) and the cofactors of these entries are \\(-1,-3,1\\). Find the determinant.",
+   "explanation": "Expand along row 3: (-5)((-1)) + 4((-3)) + (-1)(1) = -8.",
+   "payload": {
+    "options": [
+     "2",
+     "9",
+     "-16",
+     "-8"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-121",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "order-of-matrix",
+   "prompt": "State the order of the matrix \\(\\begin{bmatrix}5&6&3&-1\\\\7&1&2&-1\\\\6&-3&8&-5\\end{bmatrix}\\).",
+   "explanation": "It has 3 row(s) and 4 column(s), so its order is 3 × 4 (rows first, then columns).",
+   "payload": {
+    "options": [
+     "3 × 4",
+     "3 × 3",
+     "4 × 4",
+     "4 × 3"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-122",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "consistency",
+   "prompt": "A non-homogeneous system has 3 unknowns, \\(\\operatorname{rank}A=2\\) and \\(\\operatorname{rank}[A:B]=3\\). The system has:",
+   "explanation": "Compare the ranks: unequal ranks mean the system is inconsistent, so there is no solution.",
+   "payload": {
+    "options": [
+     "Only the trivial solution",
+     "No solution",
+     "Infinitely many solutions",
+     "Unique solution"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-123",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "symmetric-skew",
+   "prompt": "Every diagonal entry of a skew-symmetric matrix is:",
+   "explanation": "\\(a_{ii}=-a_{ii}\\) forces \\(a_{ii}=0\\).",
+   "payload": {
+    "options": [
+     "any non-zero number",
+     "1",
+     "0",
+     "-1"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-124",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "scalar-multiple",
+   "prompt": "If \\(A=\\begin{bmatrix}1&-6\\\\0&-1\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-1&4\\\\0&5\\end{bmatrix}\\), find the (1,1) entry of \\(4A-B\\).",
+   "explanation": "Multiply each matrix by its scalar, then add: 4(1) + (-1)((-1)) = 5.",
+   "payload": {
+    "options": [
+     "2",
+     "4",
+     "11",
+     "5"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-125",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "Evaluate \\(\\begin{vmatrix}5&0&3\\\\2&-3&5\\\\-1&-1&1\\end{vmatrix}\\).",
+   "explanation": "Positive terms (aei + bfg + cdh) = -21; negative terms (ceg + afh + bdi) = -16. So the value is -21 - (-16) = -5.",
+   "payload": {
+    "options": [
+     "-5",
+     "6",
+     "-10",
+     "-15"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-126",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "powers",
+   "prompt": "If \\(A=\\begin{bmatrix}1&4\\\\0&1\\end{bmatrix}\\), find the (1,2) entry of \\(A^{5}\\).",
+   "explanation": "\\(A^{2}=\\begin{bmatrix}1&8\\\\0&1\\end{bmatrix}\\), and by induction \\(A^{n}\\) has (1,2) entry n·k. So the (1,2) entry of \\(A^{5}\\) is 5(4) = 20.",
+   "payload": {
+    "options": [
+     "40",
+     "20",
+     "10",
+     "41"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-127",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "order-of-matrix",
+   "prompt": "State the order of the matrix \\(\\begin{bmatrix}6&-5\\\\6&2\\\\9&7\\\\1&-2\\\\-5&-9\\end{bmatrix}\\).",
+   "explanation": "It has 5 row(s) and 2 column(s), so its order is 5 × 2 (rows first, then columns).",
+   "payload": {
+    "options": [
+     "2 × 2",
+     "2 × 5",
+     "5 × 2",
+     "5 × 5"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-128",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}0&6&6\\\\-3&5&7\\\\-1&-1&0\\end{bmatrix}\\), find the minor \\(M_{13}\\).",
+   "explanation": "Delete row 1 and column 3: \\(M_{13}=\\begin{vmatrix}-3&5\\\\-1&-1\\end{vmatrix}\\) = 8.",
+   "payload": {
+    "options": [
+     "10",
+     "16",
+     "5",
+     "8"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-129",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "Square matrices A and B of the same order have \\(|A|=3\\) and \\(|B|=4\\). Find \\(|A^{2}|\\).",
+   "explanation": "Use \\(|XY|=|X||Y|\\) and \\(|X^{T}|=|X|\\): \\(|A^{2}|\\) = 9.",
+   "payload": {
+    "options": [
+     "9",
+     "7",
+     "10",
+     "18"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-130",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "types-of-matrices",
+   "prompt": "Which name describes the matrix \\(\\begin{bmatrix}3&0&0\\\\-3&-4&0\\\\-6&2&-2\\end{bmatrix}\\)?",
+   "explanation": "This is a lower triangular matrix because all entries above the main diagonal are 0.",
+   "payload": {
+    "options": [
+     "Zero matrix",
+     "Lower triangular matrix",
+     "Upper triangular matrix",
+     "Row matrix"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-131",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "rank",
+   "prompt": "What is the largest possible rank of a 6×4 matrix?",
+   "explanation": "Rank cannot exceed the number of rows or the number of columns, so the maximum is min(6, 4) = 4.",
+   "payload": {
+    "options": [
+     "3",
+     "2",
+     "4",
+     "6"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-132",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "adjoint",
+   "prompt": "For \\(A=\\begin{bmatrix}3&2\\\\-3&3\\end{bmatrix}\\), find the (1,1) entry of \\(\\operatorname{adj}A\\).",
+   "explanation": "For a 2×2 matrix swap the diagonal entries and change the sign of the other two: \\(\\operatorname{adj}A=\\begin{bmatrix}3&-2\\\\3&3\\end{bmatrix}\\).",
+   "payload": {
+    "options": [
+     "7",
+     "-7",
+     "6",
+     "3"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-133",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "Let \\(A=\\begin{bmatrix}5&-3&3\\\\-3&5&4\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}3&-3\\\\1&5\\\\-3&1\\end{bmatrix}\\). Find the (1,1) entry of \\(AB\\).",
+   "explanation": "Row 1 of A times column 1 of B: 5(3) + (-3)(1) + 3((-3)) = 3.",
+   "payload": {
+    "options": [
+     "3",
+     "6",
+     "7",
+     "-27"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-134",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "add-subtract",
+   "prompt": "If \\(A=\\begin{bmatrix}4&-2&-9\\\\-4&-4&-6\\\\6&-2&7\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}3&-4&4\\\\8&0&5\\\\1&2&9\\end{bmatrix}\\), find the (2,1) entry of \\(A+B\\).",
+   "explanation": "Add/subtract corresponding entries: (-4) + 8 = 4.",
+   "payload": {
+    "options": [
+     "6",
+     "4",
+     "-6",
+     "2"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-135",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "rank",
+   "prompt": "Find the rank of \\(A=\\begin{bmatrix}2&3\\\\-2&-3\\end{bmatrix}\\).",
+   "explanation": "Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 1.",
+   "payload": {
+    "options": [
+     "3",
+     "6",
+     "1",
+     "0"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-136",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "singular-nonsingular",
+   "prompt": "Is the matrix \\(\\begin{bmatrix}-2&-1\\\\-2&-1\\end{bmatrix}\\) singular or non-singular?",
+   "explanation": "\\(|A|=(-2)(-1) - (-1)(-2)=0\\). A matrix is singular when |A| = 0, so this matrix is singular.",
+   "payload": {
+    "options": [
+     "Non-singular",
+     "Not a square matrix",
+     "Cannot be determined",
+     "Singular"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-137",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "If A is a 4×4 matrix with \\(|A|=-1\\), find \\(|3A|\\).",
+   "explanation": "For an n×n matrix \\(|kA|=k^{n}|A|\\). Here n = 4: \\(3^{4}\\)(-1) = -81.",
+   "payload": {
+    "options": [
+     "-81",
+     "-77",
+     "-3",
+     "-82"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-138",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "Let \\(A=\\begin{bmatrix}0&-4\\\\4&0\\\\2&3\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-4&2&-3\\\\-1&3&-4\\end{bmatrix}\\). Find the (3,2) entry of \\(AB\\).",
+   "explanation": "Row 3 of A times column 2 of B: 2(2) + 3(3) = 13.",
+   "payload": {
+    "options": [
+     "15",
+     "13",
+     "12",
+     "26"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-139",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "Let \\(A=\\begin{bmatrix}-1&-2\\\\1&5\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}1&3\\\\4&4\\end{bmatrix}\\). Find the (2,2) entry of \\(AB\\).",
+   "explanation": "Row 2 of A times column 2 of B: 1(3) + 5(4) = 23.",
+   "payload": {
+    "options": [
+     "47",
+     "25",
+     "23",
+     "21"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-140",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "cipher-encode",
+   "prompt": "In matrix encryption, a message written as a matrix M is coded using a key matrix K by:",
+   "explanation": "Coded = message × key (the book post-multiplies).",
+   "payload": {
+    "options": [
+     "\\(C=M+K\\)",
+     "\\(C=|K|M\\)",
+     "\\(C=K^{-1}\\)",
+     "\\(C=MK\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-141",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "area-by-determinant",
+   "prompt": "Find the area of the triangle with vertices (-2, 5), (1, 0), (-4, -1) using a determinant.",
+   "explanation": "Area = ½|\\(\\begin{vmatrix}-2&5&1\\\\1&0&1\\\\-4&-1&1\\end{vmatrix}\\)| = ½|-28| = \\(14\\) square units.",
+   "payload": {
+    "options": [
+     "14",
+     "13",
+     "28",
+     "12"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-142",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "order-of-matrix",
+   "prompt": "State the order of the matrix \\(\\begin{bmatrix}3&3\\\\-7&1\\\\2&2\\end{bmatrix}\\).",
+   "explanation": "It has 3 row(s) and 2 column(s), so its order is 3 × 2 (rows first, then columns).",
+   "payload": {
+    "options": [
+     "3 × 3",
+     "3 × 2",
+     "2 × 2",
+     "2 × 3"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-143",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "product-entry",
+   "prompt": "Let \\(A=\\begin{bmatrix}1&1\\\\-2&0\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}0&-5\\\\0&-5\\end{bmatrix}\\). Find the trace of \\(AB\\).",
+   "explanation": "\\(AB=\\begin{bmatrix}0&-10\\\\0&10\\end{bmatrix}\\), so the trace is 0 + 10 = 10.",
+   "payload": {
+    "options": [
+     "9",
+     "20",
+     "10",
+     "7"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-144",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "solve-by-inverse",
+   "prompt": "For \\(AX=B\\) with \\(A^{-1}=\\begin{bmatrix}9&4\\\\2&1\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-16\\\\35\\end{bmatrix}\\), find y where \\(X=\\begin{bmatrix}x\\\\y\\end{bmatrix}\\).",
+   "explanation": "\\(X=A^{-1}B\\): y = 2((-16)) + 1(35) = 3.",
+   "payload": {
+    "options": [
+     "1",
+     "-3",
+     "2",
+     "3"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-145",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}-y &= 3\\\\x + 2y + z &= -10\\\\-x - y &= 5\\end{aligned}\\right.\\), find \\(D_{x}\\).",
+   "explanation": "Replace the x-column by the constants: \\(D_{x}=\\begin{vmatrix}3&-1&0\\\\-10&2&1\\\\5&-1&0\\end{vmatrix}\\) = -2.",
+   "payload": {
+    "options": [
+     "-2",
+     "3",
+     "-5",
+     "0"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-146",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "inverse-2x2",
+   "prompt": "Find the (2,1) entry of \\(A^{-1}\\) for \\(A=\\begin{bmatrix}1&0\\\\0&1\\end{bmatrix}\\).",
+   "explanation": "\\(|A|=1\\) and \\(\\operatorname{adj}A=\\begin{bmatrix}1&0\\\\0&1\\end{bmatrix}\\), so \\(A^{-1}=\\frac{1}{|A|}\\operatorname{adj}A\\) has (2,1) entry \\(0\\).",
+   "payload": {
+    "options": [
+     "-1",
+     "0",
+     "-2",
+     "1"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-147",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "cipher-decode",
+   "prompt": "A two-letter word (A=1,…,Z=26) was coded as \\(\\begin{bmatrix}35&230\\end{bmatrix}\\) using a key whose inverse is \\(K^{-1}=\\begin{bmatrix}-6&7\\\\1&-1\\end{bmatrix}\\). What is letter 2 of the word?",
+   "explanation": "Decode by post-multiplying by the inverse key: \\(\\begin{bmatrix}35&230\\end{bmatrix}\\begin{bmatrix}-6&7\\\\1&-1\\end{bmatrix}=\\begin{bmatrix}20&15\\end{bmatrix}\\), so the numbers are 20 and 15, i.e. TO. Letter 2 is O.",
+   "payload": {
+    "options": [
+     "P",
+     "Q",
+     "O",
+     "N"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-148",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "solve-by-inverse",
+   "prompt": "The system \\(AX=B\\) with non-singular A has the solution:",
+   "explanation": "Multiply both sides on the left by \\(A^{-1}\\).",
+   "payload": {
+    "options": [
+     "\\(X=AB^{-1}\\)",
+     "\\(X=BA^{-1}\\)",
+     "\\(X=B^{-1}A\\)",
+     "\\(X=A^{-1}B\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-149",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "det-triangular",
+   "prompt": "Evaluate \\(\\begin{vmatrix}3&-5&7&4\\\\0&-3&-5&-5\\\\0&0&6&3\\\\0&0&0&-1\\end{vmatrix}\\).",
+   "explanation": "The matrix is upper triangular, so the determinant is the product of the diagonal entries: 3 · (-3) · 6 · (-1) = 54.",
+   "payload": {
+    "options": [
+     "54",
+     "108",
+     "57",
+     "5"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-150",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "singular-k",
+   "prompt": "For what value of k is \\(\\begin{vmatrix}-3&-3\\\\4&k\\end{vmatrix}\\) singular (determinant 0)?",
+   "explanation": "\\(\\begin{vmatrix}-3&-3\\\\4&k\\end{vmatrix}=-3k - (-12)\\); setting it to 0 gives \\(-3k=-12\\), so k = 4.",
+   "payload": {
+    "options": [
+     "-4",
+     "4",
+     "-3",
+     "9"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-151",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "inverse-2x2",
+   "prompt": "Find the (2,1) entry of \\(A^{-1}\\) for \\(A=\\begin{bmatrix}0&-1\\\\-1&-1\\end{bmatrix}\\).",
+   "explanation": "\\(|A|=-1\\) and \\(\\operatorname{adj}A=\\begin{bmatrix}-1&1\\\\1&0\\end{bmatrix}\\), so \\(A^{-1}=\\frac{1}{|A|}\\operatorname{adj}A\\) has (2,1) entry \\(-1\\).",
+   "payload": {
+    "options": [
+     "4",
+     "0",
+     "-1",
+     "1"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-152",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "det-properties",
+   "prompt": "If two rows of a determinant are identical, its value is:",
+   "explanation": "Interchanging the two identical rows changes the sign but not the matrix, so \\(D=-D\\), hence \\(D=0\\).",
+   "payload": {
+    "options": [
+     "twice the row",
+     "-1",
+     "1",
+     "0"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-153",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "Let \\(A=\\begin{bmatrix}-2&5\\\\1&-3\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}5&1\\\\5&-4\\end{bmatrix}\\). Find the (2,1) entry of \\(AB\\).",
+   "explanation": "Row 2 of A times column 1 of B: 1(5) + (-3)(5) = -10.",
+   "payload": {
+    "options": [
+     "-10",
+     "-8",
+     "11",
+     "0"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-154",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "singular-nonsingular",
+   "prompt": "Is the matrix \\(\\begin{bmatrix}1&5\\\\6&-2\\end{bmatrix}\\) singular or non-singular?",
+   "explanation": "\\(|A|=1(-2) - 56=-32\\). A matrix is singular when |A| = 0, so this matrix is non-singular.",
+   "payload": {
+    "options": [
+     "Cannot be determined",
+     "Non-singular",
+     "Not a square matrix",
+     "Singular"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-155",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "If A is a 4×4 matrix with \\(|A|=5\\), find \\(|5A|\\).",
+   "explanation": "For an n×n matrix \\(|kA|=k^{n}|A|\\). Here n = 4: \\(5^{4}\\)(5) = 3125.",
+   "payload": {
+    "options": [
+     "-3125",
+     "3115",
+     "3125",
+     "3124"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-156",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "inverse-3x3",
+   "prompt": "Find the (2,2) entry of \\(A^{-1}\\) for \\(A=\\begin{bmatrix}1&1&-1\\\\1&2&0\\\\0&0&-1\\end{bmatrix}\\).",
+   "explanation": "\\(|A|=-1\\), so \\(A^{-1}=\\operatorname{adj}A/|A|\\) = \\(-\\operatorname{adj}A\\). Its (2,2) entry is 1.",
+   "payload": {
+    "options": [
+     "4",
+     "-2",
+     "2",
+     "1"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-157",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "singular-nonsingular",
+   "prompt": "Is the matrix \\(\\begin{bmatrix}3&4\\\\1&-2\\end{bmatrix}\\) singular or non-singular?",
+   "explanation": "\\(|A|=3(-2) - 41=-10\\). A matrix is singular when |A| = 0, so this matrix is non-singular.",
+   "payload": {
+    "options": [
+     "Non-singular",
+     "Not a square matrix",
+     "Cannot be determined",
+     "Singular"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-158",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "Let \\(A=\\begin{bmatrix}4&0\\\\-3&-1\\\\-3&1\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}4&2&-3\\\\-3&2&3\\end{bmatrix}\\). Find the (3,3) entry of \\(AB\\).",
+   "explanation": "Row 3 of A times column 3 of B: (-3)((-3)) + 1(3) = 12.",
+   "payload": {
+    "options": [
+     "6",
+     "12",
+     "15",
+     "-6"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-159",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "add-subtract",
+   "prompt": "If \\(A=\\begin{bmatrix}1&-3&-6\\\\-9&-3&5\\\\1&6&-8\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-7&4&-1\\\\2&2&8\\\\-4&-6&7\\end{bmatrix}\\), find the (2,2) entry of \\(A-B\\).",
+   "explanation": "Add/subtract corresponding entries: (-3) - 2 = -5.",
+   "payload": {
+    "options": [
+     "5",
+     "-4",
+     "-5",
+     "-7"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-160",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "networks",
+   "prompt": "The matrix \\(\\begin{bmatrix}0&0&0&1\\\\0&0&1&0\\\\0&1&0&1\\\\1&0&1&0\\end{bmatrix}\\) shows who is friends with whom among A, B, C, D (1 = friends). How many friends does B have?",
+   "explanation": "Add the entries of row 2: 0 + 0 + 1 + 0 = 1.",
+   "payload": {
+    "options": [
+     "5",
+     "-9",
+     "2",
+     "1"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-161",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}-5&5&-4\\\\4&-1&-6\\\\-6&1&1\\end{bmatrix}\\), find the minor \\(M_{13}\\).",
+   "explanation": "Delete row 1 and column 3: \\(M_{13}=\\begin{vmatrix}4&-1\\\\-6&1\\end{vmatrix}\\) = -2.",
+   "payload": {
+    "options": [
+     "-2",
+     "3",
+     "1",
+     "-5"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-162",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "add-subtract",
+   "prompt": "If \\(A=\\begin{bmatrix}-2&6&3\\\\5&4&-4\\\\-3&-2&9\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-3&-6&1\\\\8&0&9\\\\-4&-1&-2\\end{bmatrix}\\), find the (1,3) entry of \\(A+B\\).",
+   "explanation": "Add/subtract corresponding entries: 3 + 1 = 4.",
+   "payload": {
+    "options": [
+     "14",
+     "4",
+     "-6",
+     "-4"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-163",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "consistency",
+   "prompt": "After row operations the augmented matrix of a system in x, y, z is \\(\\left[\\begin{array}{ccc|c}1&3&3&-4\\\\0&1&-1&5\\\\0&0&0&-3\\end{array}\\right]\\). How many solutions does the system have?",
+   "explanation": "rank A = 2 and rank [A:B] = 3, with n = 3 unknowns. rank A is less than rank [A:B] (a row 0 0 0 | non-zero): the system is inconsistent.",
+   "payload": {
+    "options": [
+     "Unique solution",
+     "Infinitely many solutions",
+     "No solution",
+     "Only the trivial solution"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-164",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "det-properties",
+   "prompt": "Find the determinant of the identity matrix \\(I_{3}\\).",
+   "explanation": "The identity matrix is triangular with diagonal entries all 1, so its determinant is 1.",
+   "payload": {
+    "options": [
+     "0",
+     "-1",
+     "6",
+     "1"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-165",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "order-of-matrix",
+   "prompt": "State the order of the matrix \\(\\begin{bmatrix}-8&3\\\\-5&-5\\end{bmatrix}\\).",
+   "explanation": "It has 2 row(s) and 2 column(s), so its order is 2 × 2 (rows first, then columns).",
+   "payload": {
+    "options": [
+     "2 × 2",
+     "4 × 1",
+     "2 × 3",
+     "3 × 2"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-166",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "det-row-ops",
+   "prompt": "A 3×3 matrix has determinant 3. Its determinant after the row operations R1 → R1 + 2R2; then R3 → R3 + 2R1 (in this order) is:",
+   "explanation": "Track each operation: R1 → R1 + 2R2: no change; R3 → R3 + 2R1: no change. Result: 3.",
+   "payload": {
+    "options": [
+     "0",
+     "3",
+     "13",
+     "2"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-167",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "singular-k",
+   "prompt": "Find k so that \\(\\begin{vmatrix}k&0&-1\\\\4&-3&1\\\\1&-2&-1\\end{vmatrix}\\) is singular.",
+   "explanation": "Expanding, \\(|A|=5 k + 5\\). Setting \\(|A|=0\\) gives k = -1.",
+   "payload": {
+    "options": [
+     "1",
+     "3",
+     "-1",
+     "-11"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-168",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "cramers-rule",
+   "prompt": "Solve the system \\(\\left\\{\\begin{aligned}3x - 2y + 2z &= -6\\\\-x - 2y &= 4\\\\x &= -2\\end{aligned}\\right.\\) by Cramer's rule. Find x.",
+   "explanation": "\\(D=4\\) and \\(D_{x}=-8\\), so x = -8/4 = -2.",
+   "payload": {
+    "options": [
+     "8",
+     "-12",
+     "-3",
+     "-2"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-169",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "gaussian-elimination",
+   "prompt": "Gaussian elimination reduces a system to \\(\\left[\\begin{array}{ccc|c}1&3&3&23\\\\0&1&-1&2\\\\0&0&1&3\\end{array}\\right]\\). Find y by back-substitution.",
+   "explanation": "From the last row z = 3. The second row gives y = 2 - (-1)(3) = 5. ",
+   "payload": {
+    "options": [
+     "5",
+     "2",
+     "7",
+     "4"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-170",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "inverse-by-row-ops",
+   "prompt": "To find \\(A^{-1}\\) by row operations we reduce:",
+   "explanation": "The same operations that turn A into I turn I into \\(A^{-1}\\).",
+   "payload": {
+    "options": [
+     "\\([A:A]\\) to \\([I:I]\\)",
+     "\\([A:I]\\) to \\([I:A^{-1}]\\)",
+     "\\([A:I]\\) to \\([A^{-1}:I]\\)",
+     "\\([I:A]\\) to \\([A^{-1}:I]\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-171",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "types-of-matrices",
+   "prompt": "Which name describes the matrix \\(\\begin{bmatrix}1&0&0\\\\0&1&0\\\\0&0&1\\end{bmatrix}\\)?",
+   "explanation": "This is an identity matrix because diagonal entries are 1 and all other entries are 0.",
+   "payload": {
+    "options": [
+     "Skew-symmetric matrix",
+     "Column matrix",
+     "Identity matrix",
+     "Zero matrix"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-172",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "types-of-matrices",
+   "prompt": "Which name describes the matrix \\(\\begin{bmatrix}-3&0&0\\\\0&-1&0\\\\0&0&3\\end{bmatrix}\\)?",
+   "explanation": "This is a diagonal matrix because all entries off the main diagonal are 0.",
+   "payload": {
+    "options": [
+     "Scalar matrix",
+     "Row matrix",
+     "Skew-symmetric matrix",
+     "Diagonal matrix"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-173",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "Without expanding, find the value of \\(\\begin{vmatrix}-2&-4&0\\\\2&6&-3\\\\0&2&-3\\end{vmatrix}\\).",
+   "explanation": "The determinant is 0 because the matrix has R3 = R1 + R2, so the rows are dependent.",
+   "payload": {
+    "options": [
+     "0",
+     "2",
+     "1",
+     "-1"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-174",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "rank",
+   "prompt": "What is the largest possible rank of a 4×3 matrix?",
+   "explanation": "Rank cannot exceed the number of rows or the number of columns, so the maximum is min(4, 3) = 3.",
+   "payload": {
+    "options": [
+     "2",
+     "3",
+     "12",
+     "1"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-175",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "inverse-2x2",
+   "prompt": "Find the (2,1) entry of \\(A^{-1}\\) for \\(A=\\begin{bmatrix}1&-2\\\\1&-1\\end{bmatrix}\\).",
+   "explanation": "\\(|A|=1\\) and \\(\\operatorname{adj}A=\\begin{bmatrix}-1&2\\\\-1&1\\end{bmatrix}\\), so \\(A^{-1}=\\frac{1}{|A|}\\operatorname{adj}A\\) has (2,1) entry \\(-1\\).",
+   "payload": {
+    "options": [
+     "4",
+     "2",
+     "-1",
+     "-3"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-176",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "cipher-encode",
+   "prompt": "Using \\(A=1,\\ B=2,\\dots,Z=26\\), the word COW is written as a row matrix and multiplied on the right by the key \\(K=\\begin{bmatrix}0&0&1\\\\0&1&-4\\\\1&2&-2\\end{bmatrix}\\). Find entry 1 of the coded row.",
+   "explanation": "COW → \\(\\begin{bmatrix}3&15&23\\end{bmatrix}\\). Coded row = \\(\\begin{bmatrix}3&15&23\\end{bmatrix}\\begin{bmatrix}0&0&1\\\\0&1&-4\\\\1&2&-2\\end{bmatrix}=\\begin{bmatrix}23&61&-103\\end{bmatrix}\\); entry 1 is 23.",
+   "payload": {
+    "options": [
+     "46",
+     "27",
+     "33",
+     "23"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-177",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "add-subtract",
+   "prompt": "If \\(A=\\begin{bmatrix}-9&3\\\\6&8\\\\4&5\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}3&3\\\\7&-8\\\\-5&-5\\end{bmatrix}\\), find the (1,1) entry of \\(A-B\\).",
+   "explanation": "Add/subtract corresponding entries: (-9) - 3 = -12.",
+   "payload": {
+    "options": [
+     "-12",
+     "-14",
+     "12",
+     "-2"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-178",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "adjoint",
+   "prompt": "A is 3×3 with \\(|A|=-6\\). Find the (1,1) entry of \\(A\\operatorname{adj}A\\).",
+   "explanation": "\\(A\\operatorname{adj}A=|A|I\\), so the (1,1) entry is -6.",
+   "payload": {
+    "options": [
+     "6",
+     "-6",
+     "1",
+     "0"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-179",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "det-triangular",
+   "prompt": "Evaluate \\(\\begin{vmatrix}-2&5&-2\\\\0&-4&-2\\\\0&0&-5\\end{vmatrix}\\).",
+   "explanation": "The matrix is upper triangular, so the determinant is the product of the diagonal entries: (-2) · (-4) · (-5) = -40.",
+   "payload": {
+    "options": [
+     "-11",
+     "40",
+     "-40",
+     "8"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-180",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "add-subtract",
+   "prompt": "Matrices A and B can be added only if:",
+   "explanation": "Addition is done entry by entry, so the matrices must have the same order.",
+   "payload": {
+    "options": [
+     "A is a square matrix",
+     "B is a column matrix",
+     "|A| = |B|",
+     "they have the same order"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-181",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "translation",
+   "prompt": "The point (7, -2) is translated by \\((-2,4)\\) (add -2 to x and 4 to y). Find the new x-coordinate.",
+   "explanation": "New x = old x + shift = 7 + (-2) = 5.",
+   "payload": {
+    "options": [
+     "5",
+     "2",
+     "4",
+     "10"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-182",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "powers",
+   "prompt": "If \\(A=\\begin{bmatrix}4&5\\\\1&0\\end{bmatrix}\\), find the (2,2) entry of \\(A^{2}\\).",
+   "explanation": "\\(A^{2}=AA\\); row 2 times column 2: 1(5) + 0(0) = 5. (It is not just squaring each entry.)",
+   "payload": {
+    "options": [
+     "-5",
+     "5",
+     "8",
+     "9"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-183",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "cipher-encode",
+   "prompt": "Using \\(A=1,\\ B=2,\\dots,Z=26\\), the word SO is written as a row matrix and multiplied on the right by the key \\(K=\\begin{bmatrix}-3&-2\\\\1&1\\end{bmatrix}\\). Find entry 1 of the coded row.",
+   "explanation": "SO → \\(\\begin{bmatrix}19&15\\end{bmatrix}\\). Coded row = \\(\\begin{bmatrix}19&15\\end{bmatrix}\\begin{bmatrix}-3&-2\\\\1&1\\end{bmatrix}=\\begin{bmatrix}-42&-23\\end{bmatrix}\\); entry 1 is -42.",
+   "payload": {
+    "options": [
+     "-40",
+     "-43",
+     "-42",
+     "-84"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-184",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "Let \\(A=\\begin{bmatrix}0&-1\\\\-4&1\\\\-2&1\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}1&0&4\\\\-4&3&-3\\end{bmatrix}\\). Find the (2,1) entry of \\(AB\\).",
+   "explanation": "Row 2 of A times column 1 of B: (-4)(1) + 1((-4)) = -8.",
+   "payload": {
+    "options": [
+     "-18",
+     "-16",
+     "-9",
+     "-8"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-185",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "consistency",
+   "prompt": "A non-homogeneous system has 3 unknowns, \\(\\operatorname{rank}A=3\\) and \\(\\operatorname{rank}[A:B]=3\\). The system has:",
+   "explanation": "Compare the ranks: equal ranks and equal to n = 3 give a unique solution.",
+   "payload": {
+    "options": [
+     "Unique solution",
+     "Only the trivial solution",
+     "Infinitely many solutions",
+     "No solution"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-186",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "cipher-encode",
+   "prompt": "Using \\(A=1,\\ B=2,\\dots,Z=26\\), the word AS is written as a row matrix and multiplied on the right by the key \\(K=\\begin{bmatrix}-2&1\\\\1&0\\end{bmatrix}\\). Find entry 2 of the coded row.",
+   "explanation": "AS → \\(\\begin{bmatrix}1&19\\end{bmatrix}\\). Coded row = \\(\\begin{bmatrix}1&19\\end{bmatrix}\\begin{bmatrix}-2&1\\\\1&0\\end{bmatrix}=\\begin{bmatrix}17&1\\end{bmatrix}\\); entry 2 is 1.",
+   "payload": {
+    "options": [
+     "-9",
+     "1",
+     "11",
+     "-2"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-187",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "types-of-matrices",
+   "prompt": "Which name describes the matrix \\(\\begin{bmatrix}8\\\\5\\\\-2\\end{bmatrix}\\)?",
+   "explanation": "This is a column matrix because it has only one column.",
+   "payload": {
+    "options": [
+     "Row matrix",
+     "Scalar matrix",
+     "Column matrix",
+     "Upper triangular matrix"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-188",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "cipher-encode",
+   "prompt": "Using \\(A=1,\\ B=2,\\dots,Z=26\\), the word HE is written as a row matrix and multiplied on the right by the key \\(K=\\begin{bmatrix}-2&1\\\\1&0\\end{bmatrix}\\). Find entry 1 of the coded row.",
+   "explanation": "HE → \\(\\begin{bmatrix}8&5\\end{bmatrix}\\). Coded row = \\(\\begin{bmatrix}8&5\\end{bmatrix}\\begin{bmatrix}-2&1\\\\1&0\\end{bmatrix}=\\begin{bmatrix}-11&8\\end{bmatrix}\\); entry 1 is -11.",
+   "payload": {
+    "options": [
+     "11",
+     "-1",
+     "-7",
+     "-11"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-189",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}0&6&-1\\\\-5&6&-6\\\\3&7&1\\end{bmatrix}\\), find the minor \\(M_{32}\\).",
+   "explanation": "Delete row 3 and column 2: \\(M_{32}=\\begin{vmatrix}0&-1\\\\-5&-6\\end{vmatrix}\\) = -5.",
+   "payload": {
+    "options": [
+     "-5",
+     "5",
+     "-3",
+     "-8"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-190",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "powers",
+   "prompt": "If \\(A=\\begin{bmatrix}-1&0\\\\-3&-2\\end{bmatrix}\\), find the (1,1) entry of \\(A^{2}\\).",
+   "explanation": "\\(A^{2}=AA\\); row 1 times column 1: (-1)((-1)) + 0((-3)) = 1. (It is not just squaring each entry.)",
+   "payload": {
+    "options": [
+     "4",
+     "1",
+     "5",
+     "0"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-191",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "product-order",
+   "prompt": "The product \\(AB\\) is defined only when:",
+   "explanation": "Row-by-column multiplication needs \\(n\\) columns in A to match \\(n\\) rows in B.",
+   "payload": {
+    "options": [
+     "A and B are both square",
+     "A and B have the same order",
+     "the number of columns of A equals the number of rows of B",
+     "the number of rows of A equals the number of rows of B"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-192",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "Evaluate \\(\\begin{vmatrix}8&7\\\\6&3\\end{vmatrix}\\).",
+   "explanation": "\\(ad-bc = 8(3) - 7(6) = 24 - 42 = -18\\)",
+   "payload": {
+    "options": [
+     "-36",
+     "-8",
+     "-17",
+     "-18"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-193",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "Evaluate \\(\\begin{vmatrix}6&-7\\\\-8&4\\end{vmatrix}\\).",
+   "explanation": "\\(ad-bc = 6(4) - (-7)((-8)) = 24 - 56 = -32\\)",
+   "payload": {
+    "options": [
+     "-32",
+     "80",
+     "-64",
+     "32"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-194",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "det-triangular",
+   "prompt": "Evaluate \\(\\begin{vmatrix}-4&-2&3&-2\\\\0&-3&-3&7\\\\0&0&-5&-6\\\\0&0&0&5\\end{vmatrix}\\).",
+   "explanation": "The matrix is upper triangular, so the determinant is the product of the diagonal entries: (-4) · (-3) · (-5) · 5 = -300.",
+   "payload": {
+    "options": [
+     "-599",
+     "-300",
+     "300",
+     "301"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-195",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "homogeneous-free-vars",
+   "prompt": "A homogeneous system has 4 unknowns and its coefficient matrix has rank 1. How many free (arbitrary) variables are there in the solution?",
+   "explanation": "Number of free variables = n - rank = 4 - 1 = 3.",
+   "payload": {
+    "options": [
+     "4",
+     "1",
+     "3",
+     "2"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-196",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "area-by-determinant",
+   "prompt": "The points (-4, 1), (0, -3) and (-1, k) are collinear. Find k.",
+   "explanation": "Collinear points give a zero determinant \\(\\begin{vmatrix}-4&1&1\\\\0&-3&1\\\\-1&k&1\\end{vmatrix}\\) = 0, which expands to \\(4 k + 8=0\\). So k = -2.",
+   "payload": {
+    "options": [
+     "3",
+     "0",
+     "-3",
+     "-2"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-197",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "matrix-equality",
+   "prompt": "If \\(\\begin{bmatrix}-x-4&-4\\\\2&y-5\\end{bmatrix}=\\begin{bmatrix}-9&-4\\\\2&0\\end{bmatrix}\\), find \\(x\\).",
+   "explanation": "Equal matrices have equal corresponding entries: \\(-x-4=-9\\) gives x = 5; \\(y-5=0\\) gives y = 5. So x = 5.",
+   "payload": {
+    "options": [
+     "5",
+     "8",
+     "7",
+     "15"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-198",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "inverse-properties",
+   "prompt": "\\(A^{-1}=\\begin{bmatrix}1&0\\\\0&-1\\end{bmatrix}\\) and \\(B^{-1}=\\begin{bmatrix}4&1\\\\1&0\\end{bmatrix}\\). Find the (2,1) entry of \\((AB)^{-1}\\).",
+   "explanation": "\\((AB)^{-1}=B^{-1}A^{-1}\\) (reverse order). Multiplying, the (2,1) entry is 1; the other order \\(A^{-1}B^{-1}\\) would give -1.",
+   "payload": {
+    "options": [
+     "0",
+     "1",
+     "3",
+     "2"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-199",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "Evaluate \\(\\begin{vmatrix}1&-3&1\\\\-3&-3&4\\\\3&-3&-1\\end{vmatrix}\\).",
+   "explanation": "Positive terms (aei + bfg + cdh) = -24; negative terms (ceg + afh + bdi) = -30. So the value is -24 - (-30) = 6.",
+   "payload": {
+    "options": [
+     "4",
+     "-6",
+     "6",
+     "3"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-200",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "translation",
+   "prompt": "The point (6, 4) is translated by \\((-4,-5)\\) (add -4 to x and -5 to y). Find the new y-coordinate.",
+   "explanation": "New y = old y + shift = 4 + (-5) = -1.",
+   "payload": {
+    "options": [
+     "-4",
+     "-3",
+     "1",
+     "-1"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-201",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "symmetric-skew",
+   "prompt": "Find k so that \\(A=\\begin{bmatrix}2&-3k-2\\\\-k-6&-4\\end{bmatrix}\\) is symmetric (\\(a_{12}=a_{21}\\)).",
+   "explanation": "Symmetric needs \\(a_{12}\\) = \\(a_{21}\\): \\(-3k-2=-k-6\\), so \\(-2k=-4\\) and k = 2.",
+   "payload": {
+    "options": [
+     "2",
+     "0",
+     "3",
+     "4"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-202",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "trace",
+   "prompt": "The trace of a square matrix is:",
+   "explanation": "Trace = \\(a_{11}+a_{22}+\\cdots+a_{nn}\\).",
+   "payload": {
+    "options": [
+     "the sum of all its entries",
+     "the sum of its main-diagonal entries",
+     "its determinant",
+     "the product of its diagonal entries"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-203",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}6&-1&-1\\\\-1&-4&3\\\\-1&-6&-4\\end{bmatrix}\\), find the minor \\(M_{23}\\).",
+   "explanation": "Delete row 2 and column 3: \\(M_{23}=\\begin{vmatrix}6&-1\\\\-1&-6\\end{vmatrix}\\) = -37.",
+   "payload": {
+    "options": [
+     "-35",
+     "-36",
+     "-37",
+     "-27"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-204",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "matrix-product-application",
+   "prompt": "The rows of \\(P=\\begin{bmatrix}19&11&3\\\\3&4&10\\end{bmatrix}\\) give the prices (Rs) of apples, oranges and bananas at Shop 1 and Shop 2. A student buys 2, 6 and 8 of them, i.e. \\(Q=\\begin{bmatrix}2\\\\6\\\\8\\end{bmatrix}\\). What is the total bill at Shop 1 (in Rs)?",
+   "explanation": "The bill is the entry of \\(PQ\\) in row 1: 19(2) + 11(6) + 3(8) = 128.",
+   "payload": {
+    "options": [
+     "118",
+     "138",
+     "126",
+     "128"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-205",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "cipher-encode",
+   "prompt": "Using \\(A=1,\\ B=2,\\dots,Z=26\\), the word GO is written as a row matrix and multiplied on the right by the key \\(K=\\begin{bmatrix}1&-1\\\\6&-5\\end{bmatrix}\\). Find entry 2 of the coded row.",
+   "explanation": "GO → \\(\\begin{bmatrix}7&15\\end{bmatrix}\\). Coded row = \\(\\begin{bmatrix}7&15\\end{bmatrix}\\begin{bmatrix}1&-1\\\\6&-5\\end{bmatrix}=\\begin{bmatrix}97&-82\\end{bmatrix}\\); entry 2 is -82.",
+   "payload": {
+    "options": [
+     "-82",
+     "-164",
+     "-80",
+     "-92"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-206",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "transpose",
+   "prompt": "If \\(A=\\begin{bmatrix}2&0&-3\\\\-8&3&3\\\\-8&4&-2\\end{bmatrix}\\), find the entry in row 1, column 1 of \\(A^{T}\\).",
+   "explanation": "The (i, j) entry of \\(A^{T}\\) is the (j, i) entry of A, so it is \\(a_{11}\\) = 2.",
+   "payload": {
+    "options": [
+     "0",
+     "2",
+     "-2",
+     "-8"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-207",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "Evaluate \\(\\begin{vmatrix}-5&0\\\\-2&1\\end{vmatrix}\\).",
+   "explanation": "\\(ad-bc = (-5)(1) - 0((-2)) = -5 - 0 = -5\\)",
+   "payload": {
+    "options": [
+     "-10",
+     "-2",
+     "-5",
+     "-8"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-208",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}3&-3&1\\\\7&-1&7\\\\-4&2&1\\end{bmatrix}\\), find the minor \\(M_{11}\\).",
+   "explanation": "Delete row 1 and column 1: \\(M_{11}=\\begin{vmatrix}-1&7\\\\2&1\\end{vmatrix}\\) = -15.",
+   "payload": {
+    "options": [
+     "-18",
+     "-25",
+     "-12",
+     "-15"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-209",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}-3&0&-2\\\\4&1&-5\\\\-5&5&1\\end{bmatrix}\\), find the cofactor \\(C_{33}\\).",
+   "explanation": "\\(M_{33}\\) = -3, and the sign is \\((-1)^{3+3}\\) = +1. So \\(C_{33}\\) = -3.",
+   "payload": {
+    "options": [
+     "-3",
+     "4",
+     "3",
+     "7"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-210",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "types-of-matrices",
+   "prompt": "Which name describes the matrix \\(\\begin{bmatrix}-4&0\\\\7&3\\end{bmatrix}\\)?",
+   "explanation": "This is a lower triangular matrix because all entries above the main diagonal are 0.",
+   "payload": {
+    "options": [
+     "Skew-symmetric matrix",
+     "Lower triangular matrix",
+     "Column matrix",
+     "Zero matrix"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-211",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "cipher-decode",
+   "prompt": "A two-letter word (A=1,…,Z=26) was coded as \\(\\begin{bmatrix}28&-5\\end{bmatrix}\\) using a key whose inverse is \\(K^{-1}=\\begin{bmatrix}1&0\\\\4&-1\\end{bmatrix}\\). What is letter 2 of the word?",
+   "explanation": "Decode by post-multiplying by the inverse key: \\(\\begin{bmatrix}28&-5\\end{bmatrix}\\begin{bmatrix}1&0\\\\4&-1\\end{bmatrix}=\\begin{bmatrix}8&5\\end{bmatrix}\\), so the numbers are 8 and 5, i.e. HE. Letter 2 is E.",
+   "payload": {
+    "options": [
+     "F",
+     "D",
+     "E",
+     "G"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-212",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "transpose",
+   "prompt": "If A has order \\(3\\times 5\\), the order of \\(A^{T}\\) is:",
+   "explanation": "Rows and columns swap, so \\(3\\times 5\\) becomes \\(5\\times 3\\).",
+   "payload": {
+    "options": [
+     "3 × 3",
+     "5 × 5",
+     "3 × 5",
+     "5 × 3"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-213",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "Square matrices A and B of the same order have \\(|A|=-3\\) and \\(|B|=-3\\). Find \\(|A^{2}|\\).",
+   "explanation": "Use \\(|XY|=|X||Y|\\) and \\(|X^{T}|=|X|\\): \\(|A^{2}|\\) = 9.",
+   "payload": {
+    "options": [
+     "9",
+     "10",
+     "18",
+     "-6"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-214",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "transpose",
+   "prompt": "If \\(A=\\begin{bmatrix}7&4&5&-7\\\\-7&-7&-6&-6\\end{bmatrix}\\), find the entry in row 2, column 1 of \\(A^{T}\\).",
+   "explanation": "The (i, j) entry of \\(A^{T}\\) is the (j, i) entry of A, so it is \\(a_{12}\\) = 4.",
+   "payload": {
+    "options": [
+     "-6",
+     "4",
+     "3",
+     "-4"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-215",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}0&5&-4\\\\-1&-5&-1\\\\4&-3&-5\\end{bmatrix}\\), find the minor \\(M_{33}\\).",
+   "explanation": "Delete row 3 and column 3: \\(M_{33}=\\begin{vmatrix}0&5\\\\-1&-5\\end{vmatrix}\\) = 5.",
+   "payload": {
+    "options": [
+     "7",
+     "4",
+     "5",
+     "9"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-216",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "trace",
+   "prompt": "Find the trace of \\(A=\\begin{bmatrix}6&4&4\\\\-2&6&-6\\\\4&1&-7\\end{bmatrix}\\) (the sum of the main-diagonal entries).",
+   "explanation": "Trace = 6 + 6 + (-7) = 5.",
+   "payload": {
+    "options": [
+     "8",
+     "2",
+     "6",
+     "5"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-217",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "det-triangular",
+   "prompt": "Evaluate \\(\\begin{vmatrix}1&-1&6\\\\0&-4&4\\\\0&0&2\\end{vmatrix}\\).",
+   "explanation": "The matrix is upper triangular, so the determinant is the product of the diagonal entries: 1 · (-4) · 2 = -8.",
+   "payload": {
+    "options": [
+     "-8",
+     "-5",
+     "2",
+     "-6"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-218",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "types-of-matrices",
+   "prompt": "Which name describes the matrix \\(\\begin{bmatrix}0&0\\\\0&0\\end{bmatrix}\\)?",
+   "explanation": "This is a zero matrix because every entry is 0.",
+   "payload": {
+    "options": [
+     "Row matrix",
+     "Zero matrix",
+     "Identity matrix",
+     "Column matrix"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-219",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "symmetric-skew",
+   "prompt": "A 3×3 skew-symmetric matrix has \\(a_{12}=-4\\), \\(a_{13}=5\\), \\(a_{23}=-1\\). Find \\(a_{32}\\).",
+   "explanation": "Skew-symmetry gives \\(a_{ji}\\) = -\\(a_{ij}\\), so \\(a_{32}\\) = -(-1) = 1.",
+   "payload": {
+    "options": [
+     "11",
+     "-2",
+     "1",
+     "0"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-220",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "consistency",
+   "prompt": "After row operations the augmented matrix of a system in x, y, z is \\(\\left[\\begin{array}{ccc|c}1&2&3&5\\\\0&1&1&3\\\\0&0&0&1\\end{array}\\right]\\). How many solutions does the system have?",
+   "explanation": "rank A = 2 and rank [A:B] = 3, with n = 3 unknowns. rank A is less than rank [A:B] (a row 0 0 0 | non-zero): the system is inconsistent.",
+   "payload": {
+    "options": [
+     "Infinitely many solutions",
+     "Unique solution",
+     "Only the trivial solution",
+     "No solution"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-221",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "det-vandermonde",
+   "prompt": "Evaluate \\(\\begin{vmatrix}1&1&1\\\\a&b&c\\\\a^{2}&b^{2}&c^{2}\\end{vmatrix}\\) for \\(a=2,\\ b=3,\\ c=-2\\).",
+   "explanation": "The determinant equals \\((b-a)(c-a)(c-b)\\) = (1)(-4)(-5) = 20.",
+   "payload": {
+    "options": [
+     "20",
+     "40",
+     "-20",
+     "17"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-222",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "area-by-determinant",
+   "prompt": "Find the area of the triangle with vertices (-2, 3), (2, -2), (-4, 0) using a determinant.",
+   "explanation": "Area = ½|\\(\\begin{vmatrix}-2&3&1\\\\2&-2&1\\\\-4&0&1\\end{vmatrix}\\)| = ½|-22| = \\(11\\) square units.",
+   "payload": {
+    "options": [
+     "12",
+     "11",
+     "9",
+     "10"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-223",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "networks",
+   "prompt": "For the friendship matrix \\(A=\\begin{bmatrix}0&1&0&1\\\\1&0&1&1\\\\0&1&0&1\\\\1&1&1&0\\end{bmatrix}\\), find the (2,2) entry of \\(A^{2}\\).",
+   "explanation": "\\((A^{2})_{22}\\) = (row 2)·(row 2) = 3; it equals the number of friends of B.",
+   "payload": {
+    "options": [
+     "4",
+     "7",
+     "3",
+     "6"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-224",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "networks",
+   "prompt": "For the friendship matrix \\(A=\\begin{bmatrix}0&1&1&1\\\\1&0&1&0\\\\1&1&0&1\\\\1&0&1&0\\end{bmatrix}\\), the (4,3) entry of \\(A^{2}\\) counts the 2-step links from D to C. Find it.",
+   "explanation": "Row 4 of A times column 3 of A = 1·1 + 0·1 + 1·0 + 0·1 = 1.",
+   "payload": {
+    "options": [
+     "11",
+     "-1",
+     "-9",
+     "1"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-225",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "det-triangular",
+   "prompt": "Evaluate \\(\\begin{vmatrix}1&3&-6\\\\0&6&-6\\\\0&0&-5\\end{vmatrix}\\).",
+   "explanation": "The matrix is upper triangular, so the determinant is the product of the diagonal entries: 1 · 6 · (-5) = -30.",
+   "payload": {
+    "options": [
+     "-30",
+     "31",
+     "30",
+     "-29"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-226",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "singular-k",
+   "prompt": "For what value of k is \\(\\begin{vmatrix}2&-6\\\\1&k\\end{vmatrix}\\) singular (determinant 0)?",
+   "explanation": "\\(\\begin{vmatrix}2&-6\\\\1&k\\end{vmatrix}=2k - (-6)\\); setting it to 0 gives \\(2k=-6\\), so k = -3.",
+   "payload": {
+    "options": [
+     "-4",
+     "-3",
+     "-2",
+     "1"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-227",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "scalar-multiple",
+   "prompt": "If \\(A=\\begin{bmatrix}0&-6&0\\\\-3&-6&3\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}4&4&7\\\\7&6&7\\end{bmatrix}\\), find the (1,3) entry of \\(A-B\\).",
+   "explanation": "Multiply each matrix by its scalar, then add: 1(0) + (-1)(7) = -7.",
+   "payload": {
+    "options": [
+     "3",
+     "-9",
+     "-7",
+     "-8"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-228",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications-seismic",
+   "prompt": "In locating an earthquake from station readings, the unknowns are found by:",
+   "explanation": "The readings give equations; Cramer's rule or elimination solves them (as in the FBISE sample paper).",
+   "payload": {
+    "options": [
+     "taking the transpose of the map",
+     "adding the stations",
+     "multiplying by a zero matrix",
+     "solving a system of linear equations"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-229",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "rank",
+   "prompt": "Find the rank of \\(A=\\begin{bmatrix}-9&-6&5&-1\\\\9&3&-5&-1\\\\-2&-3&2&-1\\end{bmatrix}\\).",
+   "explanation": "Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 3.",
+   "payload": {
+    "options": [
+     "3",
+     "5",
+     "-3",
+     "0"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-230",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}0&2&-1\\\\-2&3&-4\\\\0&6&-5\\end{bmatrix}\\), find the minor \\(M_{11}\\).",
+   "explanation": "Delete row 1 and column 1: \\(M_{11}=\\begin{vmatrix}3&-4\\\\6&-5\\end{vmatrix}\\) = 9.",
+   "payload": {
+    "options": [
+     "11",
+     "9",
+     "19",
+     "18"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-231",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}-5&5&0\\\\1&-3&-1\\\\3&5&7\\end{bmatrix}\\), find the minor \\(M_{22}\\).",
+   "explanation": "Delete row 2 and column 2: \\(M_{22}=\\begin{vmatrix}-5&0\\\\3&7\\end{vmatrix}\\) = -35.",
+   "payload": {
+    "options": [
+     "-69",
+     "-38",
+     "-35",
+     "-70"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-232",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "rank",
+   "prompt": "Find the rank of \\(A=\\begin{bmatrix}3&3&3\\\\-2&-2&-2\\end{bmatrix}\\).",
+   "explanation": "Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 1.",
+   "payload": {
+    "options": [
+     "-1",
+     "3",
+     "6",
+     "1"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-233",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}-1&1&5\\\\-5&-6&4\\\\0&-3&6\\end{bmatrix}\\), find the minor \\(M_{21}\\).",
+   "explanation": "Delete row 2 and column 1: \\(M_{21}=\\begin{vmatrix}1&5\\\\-3&6\\end{vmatrix}\\) = 21.",
+   "payload": {
+    "options": [
+     "21",
+     "-21",
+     "25",
+     "24"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-234",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "gaussian-elimination",
+   "prompt": "Gaussian elimination reduces a system to \\(\\left[\\begin{array}{ccc|c}1&1&-1&-10\\\\0&1&3&13\\\\0&0&1&5\\end{array}\\right]\\). Find x by back-substitution.",
+   "explanation": "From the last row z = 5. The second row gives y = 13 - 3(5) = -2. The first row gives x = -10 - 1(-2) - (-1)(5) = -3.",
+   "payload": {
+    "options": [
+     "-4",
+     "-3",
+     "-6",
+     "-13"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-235",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "transpose",
+   "prompt": "If \\(A=\\begin{bmatrix}-9&-3&-4&-7\\\\5&1&-4&-9\\end{bmatrix}\\), find the entry in row 1, column 2 of \\(A^{T}\\).",
+   "explanation": "The (i, j) entry of \\(A^{T}\\) is the (j, i) entry of A, so it is \\(a_{21}\\) = 5.",
+   "payload": {
+    "options": [
+     "-5",
+     "-3",
+     "5",
+     "1"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-236",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "types-of-matrices",
+   "prompt": "Which name describes the matrix \\(\\begin{bmatrix}0&1&3\\\\-1&0&2\\\\-3&-2&0\\end{bmatrix}\\)?",
+   "explanation": "This is a skew-symmetric matrix because \\(a_{ij}\\) = -\\(a_{ji}\\), so the diagonal is 0.",
+   "payload": {
+    "options": [
+     "Scalar matrix",
+     "Row matrix",
+     "Column matrix",
+     "Skew-symmetric matrix"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-237",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "gaussian-elimination",
+   "prompt": "Gaussian elimination reduces a system to \\(\\left[\\begin{array}{ccc|c}1&0&4&21\\\\0&1&1&8\\\\0&0&1&5\\end{array}\\right]\\). Find y by back-substitution.",
+   "explanation": "From the last row z = 5. The second row gives y = 8 - 1(5) = 3. ",
+   "payload": {
+    "options": [
+     "3",
+     "6",
+     "5",
+     "4"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-238",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "scalar-multiple",
+   "prompt": "If \\(A=\\begin{bmatrix}7&-2&-5\\\\-1&-6&-4\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}1&2&-6\\\\5&-6&-3\\end{bmatrix}\\), find the (1,1) entry of \\(3A+2B\\).",
+   "explanation": "Multiply each matrix by its scalar, then add: 3(7) + 2(1) = 23.",
+   "payload": {
+    "options": [
+     "22",
+     "23",
+     "46",
+     "8"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-239",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "row-operations",
+   "prompt": "Apply \\(R_{3}\\to R_{3}+R_{2}\\) to \\(A=\\begin{bmatrix}3&0&4\\\\6&6&0\\\\7&3&6\\end{bmatrix}\\). What is the new entry in row 3, column 3?",
+   "explanation": "New entry = 6 + 1(0) = 6.",
+   "payload": {
+    "options": [
+     "12",
+     "-4",
+     "6",
+     "7"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-240",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "homogeneous-k",
+   "prompt": "The system \\(4x + 4y = 0\\), \\(3x + ky = 0\\) has a non-trivial solution. Find k.",
+   "explanation": "A homogeneous system has non-trivial solutions iff the coefficient determinant is 0: \\(\\begin{vmatrix}4&4\\\\3&k\\end{vmatrix}=4k-12=0\\), so k = 3.",
+   "payload": {
+    "options": [
+     "2",
+     "5",
+     "-3",
+     "3"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-241",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "row-operations",
+   "prompt": "Apply \\(R_{1}\\to R_{1}-3R_{3}\\) to \\(A=\\begin{bmatrix}-6&6&-6&6\\\\-2&6&-5&-6\\\\-5&5&-2&2\\end{bmatrix}\\). What is the new entry in row 1, column 3?",
+   "explanation": "New entry = (-6) - 3((-2)) = 0.",
+   "payload": {
+    "options": [
+     "0",
+     "-10",
+     "2",
+     "-2"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-242",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "networks",
+   "prompt": "The matrix \\(\\begin{bmatrix}0&0&0&1\\\\0&0&0&1\\\\0&0&0&1\\\\1&1&1&0\\end{bmatrix}\\) shows who is friends with whom among A, B, C, D (1 = friends). How many friends does A have?",
+   "explanation": "Add the entries of row 1: 0 + 0 + 0 + 1 = 1.",
+   "payload": {
+    "options": [
+     "-9",
+     "1",
+     "5",
+     "-1"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-243",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "singular-nonsingular",
+   "prompt": "Is the matrix \\(\\begin{bmatrix}-3&-2\\\\5&-2\\end{bmatrix}\\) singular or non-singular?",
+   "explanation": "\\(|A|=(-3)(-2) - (-2)5=16\\). A matrix is singular when |A| = 0, so this matrix is non-singular.",
+   "payload": {
+    "options": [
+     "Singular",
+     "Cannot be determined",
+     "Non-singular",
+     "Not a square matrix"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-244",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "powers",
+   "prompt": "If \\(A=\\begin{bmatrix}-2&-1\\\\-3&-1\\end{bmatrix}\\), find the (2,2) entry of \\(A^{2}\\).",
+   "explanation": "\\(A^{2}=AA\\); row 2 times column 2: (-3)((-1)) + (-1)((-1)) = 4. (It is not just squaring each entry.)",
+   "payload": {
+    "options": [
+     "7",
+     "1",
+     "-4",
+     "4"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-245",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "rank",
+   "prompt": "Find the rank of \\(A=\\begin{bmatrix}9&3\\\\0&-2\\\\0&2\\end{bmatrix}\\).",
+   "explanation": "Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 2.",
+   "payload": {
+    "options": [
+     "2",
+     "1",
+     "3",
+     "-2"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-246",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "cipher-decode",
+   "prompt": "A two-letter word (A=1,…,Z=26) was coded as \\(\\begin{bmatrix}-141&-39\\end{bmatrix}\\) using a key whose inverse is \\(K^{-1}=\\begin{bmatrix}1&3\\\\-4&-11\\end{bmatrix}\\). What is letter 1 of the word?",
+   "explanation": "Decode by post-multiplying by the inverse key: \\(\\begin{bmatrix}-141&-39\\end{bmatrix}\\begin{bmatrix}1&3\\\\-4&-11\\end{bmatrix}=\\begin{bmatrix}15&6\\end{bmatrix}\\), so the numbers are 15 and 6, i.e. OF. Letter 1 is O.",
+   "payload": {
+    "options": [
+     "Q",
+     "O",
+     "P",
+     "N"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-247",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "product-order",
+   "prompt": "If \\(A\\) has order 4 × 1 and \\(B\\) has order 1 × 1, what is the order of \\(AB\\)?",
+   "explanation": "AB is defined because the columns of A (1) equal the rows of B (1); the order is rows of A × columns of B = 4 × 1.",
+   "payload": {
+    "options": [
+     "1 × 1",
+     "Not defined",
+     "4 × 1",
+     "1 × 4"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-248",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "networks",
+   "prompt": "For the friendship matrix \\(A=\\begin{bmatrix}0&1&0&1\\\\1&0&1&1\\\\0&1&0&0\\\\1&1&0&0\\end{bmatrix}\\), find the (2,2) entry of \\(A^{2}\\).",
+   "explanation": "\\((A^{2})_{22}\\) = (row 2)·(row 2) = 3; it equals the number of friends of B.",
+   "payload": {
+    "options": [
+     "0",
+     "5",
+     "8",
+     "3"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-249",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "adjoint",
+   "prompt": "For \\(A=\\begin{bmatrix}6&4\\\\-5&2\\end{bmatrix}\\), find the (1,1) entry of \\(\\operatorname{adj}A\\).",
+   "explanation": "For a 2×2 matrix swap the diagonal entries and change the sign of the other two: \\(\\operatorname{adj}A=\\begin{bmatrix}2&-4\\\\5&6\\end{bmatrix}\\).",
+   "payload": {
+    "options": [
+     "2",
+     "-1",
+     "6",
+     "-2"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-250",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "matrix-equality",
+   "prompt": "If \\(\\begin{bmatrix}3x-4&1\\\\1&-3y-4\\end{bmatrix}=\\begin{bmatrix}2&1\\\\1&-1\\end{bmatrix}\\), find \\(x+y\\).",
+   "explanation": "Equal matrices have equal corresponding entries: \\(3x-4=2\\) gives x = 2; \\(-3y-4=-1\\) gives y = -1. So x+y = 1.",
+   "payload": {
+    "options": [
+     "11",
+     "1",
+     "-2",
+     "-1"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-251",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "Evaluate \\(\\begin{vmatrix}3&9\\\\-5&-1\\end{vmatrix}\\).",
+   "explanation": "\\(ad-bc = 3((-1)) - 9((-5)) = -3 - (-45) = 42\\)",
+   "payload": {
+    "options": [
+     "43",
+     "45",
+     "42",
+     "84"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-252",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "consistency",
+   "prompt": "After row operations the augmented matrix of a system in x, y, z is \\(\\left[\\begin{array}{ccc|c}1&-3&1&-3\\\\0&1&-1&3\\\\0&0&0&-1\\end{array}\\right]\\). How many solutions does the system have?",
+   "explanation": "rank A = 2 and rank [A:B] = 3, with n = 3 unknowns. rank A is less than rank [A:B] (a row 0 0 0 | non-zero): the system is inconsistent.",
+   "payload": {
+    "options": [
+     "Only the trivial solution",
+     "Infinitely many solutions",
+     "Unique solution",
+     "No solution"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-253",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "solve-by-inverse",
+   "prompt": "For \\(AX=B\\) with \\(A^{-1}=\\begin{bmatrix}-5&-7\\\\3&4\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-32\\\\23\\end{bmatrix}\\), find y where \\(X=\\begin{bmatrix}x\\\\y\\end{bmatrix}\\).",
+   "explanation": "\\(X=A^{-1}B\\): y = 3((-32)) + 4(23) = -4.",
+   "payload": {
+    "options": [
+     "-4",
+     "-14",
+     "-1",
+     "-7"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-254",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "row-operations",
+   "prompt": "Apply \\(R_{1}\\to R_{1}+3R_{2}\\) to \\(A=\\begin{bmatrix}1&-5\\\\4&5\\end{bmatrix}\\). What is the new entry in row 1, column 1?",
+   "explanation": "New entry = 1 + 3(4) = 13.",
+   "payload": {
+    "options": [
+     "-11",
+     "13",
+     "11",
+     "12"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-255",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "symmetric-skew",
+   "prompt": "Find k so that \\(A=\\begin{bmatrix}0&-k+3\\\\-7&0\\end{bmatrix}\\) is skew-symmetric (\\(a_{12}=-a_{21}\\)).",
+   "explanation": "Skew-symmetric needs \\(a_{12}\\) = -\\(a_{21}\\), so \\(-k+3=7\\), i.e. \\(-k=4\\), giving k = -4.",
+   "payload": {
+    "options": [
+     "-8",
+     "-14",
+     "-4",
+     "-3"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-256",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "transpose-of-product",
+   "prompt": "\\((AB)^{T}\\) equals:",
+   "explanation": "The transpose of a product reverses the order: \\((AB)^{T}=B^{T}A^{T}\\).",
+   "payload": {
+    "options": [
+     "\\(A^{T}+B^{T}\\)",
+     "\\(A^{T}B^{T}\\)",
+     "\\(AB\\)",
+     "\\(B^{T}A^{T}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-257",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "cipher-decode",
+   "prompt": "A two-letter word (A=1,…,Z=26) was coded as \\(\\begin{bmatrix}74&19\\end{bmatrix}\\) using a key whose inverse is \\(K^{-1}=\\begin{bmatrix}-1&0\\\\5&1\\end{bmatrix}\\). What is letter 1 of the word?",
+   "explanation": "Decode by post-multiplying by the inverse key: \\(\\begin{bmatrix}74&19\\end{bmatrix}\\begin{bmatrix}-1&0\\\\5&1\\end{bmatrix}=\\begin{bmatrix}21&19\\end{bmatrix}\\), so the numbers are 21 and 19, i.e. US. Letter 1 is U.",
+   "payload": {
+    "options": [
+     "U",
+     "T",
+     "W",
+     "V"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-258",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "entry-notation",
+   "prompt": "In \\(A=\\begin{bmatrix}-2&1&3\\\\-6&9&-2\\end{bmatrix}\\), find the entry \\(a_{23}\\).",
+   "explanation": "\\(a_{23}\\) lies in row 2 and column 3, so it is -2.",
+   "payload": {
+    "options": [
+     "-1",
+     "-2",
+     "0",
+     "-6"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-259",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}-4x - 2y &= -16\\\\2x + 2y &= 6\\end{aligned}\\right.\\), find \\(D_{y}\\) (the determinant with the y-column replaced by the constants).",
+   "explanation": "\\(D_{y}=\\begin{vmatrix}-4&-16\\\\2&6\\end{vmatrix}\\) = 8.",
+   "payload": {
+    "options": [
+     "-4",
+     "9",
+     "8",
+     "16"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-260",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "cofactor-expansion",
+   "prompt": "Row 1 of a 3×3 determinant is \\(-4,-2,6\\) and the cofactors of these entries are \\(-5,3,-2\\). Find the determinant.",
+   "explanation": "Expand along row 1: (-4)((-5)) + (-2)(3) + 6((-2)) = 2.",
+   "payload": {
+    "options": [
+     "5",
+     "-8",
+     "-4",
+     "2"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-261",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}6x - 4y &= -14\\\\5x - 4y &= -15\\end{aligned}\\right.\\), find the determinant \\(D\\) of the coefficient matrix.",
+   "explanation": "\\(D=\\begin{vmatrix}6&-4\\\\5&-4\\end{vmatrix}\\) = -4.",
+   "payload": {
+    "options": [
+     "-4",
+     "-2",
+     "4",
+     "-20"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-262",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "det-vandermonde",
+   "prompt": "Evaluate \\(\\begin{vmatrix}1&1&1\\\\a&b&c\\\\a^{2}&b^{2}&c^{2}\\end{vmatrix}\\) for \\(a=5,\\ b=-1,\\ c=4\\).",
+   "explanation": "The determinant equals \\((b-a)(c-a)(c-b)\\) = (-6)(-1)(5) = 30.",
+   "payload": {
+    "options": [
+     "33",
+     "30",
+     "29",
+     "20"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-263",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "cipher-decode",
+   "prompt": "A key matrix for encryption must be:",
+   "explanation": "Decoding needs \\(K^{-1}\\), so \\(|K|\\neq0\\).",
+   "payload": {
+    "options": [
+     "a row matrix",
+     "a zero matrix",
+     "invertible (non-singular)",
+     "singular"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-264",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "order-of-matrix",
+   "prompt": "State the order of the matrix \\(\\begin{bmatrix}5&-1&3\\\\-7&4&1\\\\0&9&3\\\\6&-4&-8\\end{bmatrix}\\).",
+   "explanation": "It has 4 row(s) and 3 column(s), so its order is 4 × 3 (rows first, then columns).",
+   "payload": {
+    "options": [
+     "3 × 4",
+     "4 × 4",
+     "3 × 3",
+     "4 × 3"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-265",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "Evaluate \\(\\begin{vmatrix}3&3&3\\\\-1&5&-1\\\\2&3&-4\\end{vmatrix}\\).",
+   "explanation": "Positive terms (aei + bfg + cdh) = -75; negative terms (ceg + afh + bdi) = 33. So the value is -75 - 33 = -108.",
+   "payload": {
+    "options": [
+     "-108",
+     "-33",
+     "109",
+     "-105"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-266",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "rank",
+   "prompt": "Find the rank of \\(A=\\begin{bmatrix}9&-9\\\\0&-3\\\\6&-6\\end{bmatrix}\\).",
+   "explanation": "Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 2.",
+   "payload": {
+    "options": [
+     "1",
+     "2",
+     "4",
+     "0"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-267",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "Evaluate \\(\\begin{vmatrix}-2&1&-3\\\\-3&3&0\\\\2&1&3\\end{vmatrix}\\).",
+   "explanation": "Positive terms (aei + bfg + cdh) = -9; negative terms (ceg + afh + bdi) = -27. So the value is -9 - (-27) = 18.",
+   "payload": {
+    "options": [
+     "-18",
+     "28",
+     "18",
+     "8"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-268",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "row-operations",
+   "prompt": "Apply \\(R_{1}\\to R_{1}-3R_{2}\\) to \\(A=\\begin{bmatrix}-3&-6&-6\\\\0&6&3\\end{bmatrix}\\). What is the new entry in row 1, column 2?",
+   "explanation": "New entry = (-6) - 3(6) = -24.",
+   "payload": {
+    "options": [
+     "-47",
+     "-34",
+     "-25",
+     "-24"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-269",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "scalar-multiple",
+   "prompt": "If \\(A=\\begin{bmatrix}-5&6&0\\\\-5&0&0\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}1&2&4\\\\0&6&-4\\end{bmatrix}\\), find the (1,1) entry of \\(A+B\\).",
+   "explanation": "Multiply each matrix by its scalar, then add: 1((-5)) + 1(1) = -4.",
+   "payload": {
+    "options": [
+     "-4",
+     "-8",
+     "-14",
+     "6"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-270",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "product-order",
+   "prompt": "If \\(A\\) has order 3 × 4 and \\(B\\) has order 2 × 3, what is the order of \\(AB\\)?",
+   "explanation": "AB is not defined: the columns of A (4) do not equal the rows of B (2).",
+   "payload": {
+    "options": [
+     "2 × 3",
+     "Not defined",
+     "3 × 3",
+     "3 × 4"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-271",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "entry-notation",
+   "prompt": "In \\(A=\\begin{bmatrix}-1&0\\\\-7&-1\\\\6&6\\end{bmatrix}\\), find the entry \\(a_{11}\\).",
+   "explanation": "\\(a_{11}\\) lies in row 1 and column 1, so it is -1.",
+   "payload": {
+    "options": [
+     "-2",
+     "0",
+     "-1",
+     "-7"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-272",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}-2y - z &= -8\\\\x - 2z &= -6\\\\-x + z &= 4\\end{aligned}\\right.\\), find the determinant \\(D\\) of the coefficient matrix.",
+   "explanation": "\\(D=\\begin{vmatrix}0&-2&-1\\\\1&0&-2\\\\-1&0&1\\end{vmatrix}\\) = -2.",
+   "payload": {
+    "options": [
+     "-5",
+     "2",
+     "-1",
+     "-2"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-273",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "transpose",
+   "prompt": "If \\(A=\\begin{bmatrix}-1&-3\\\\-3&5\\\\8&-1\\end{bmatrix}\\), find the entry in row 1, column 3 of \\(A^{T}\\).",
+   "explanation": "The (i, j) entry of \\(A^{T}\\) is the (j, i) entry of A, so it is \\(a_{31}\\) = 8.",
+   "payload": {
+    "options": [
+     "8",
+     "9",
+     "-8",
+     "-1"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-274",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "Evaluate \\(\\begin{vmatrix}1&4&2\\\\4&3&1\\\\-1&-4&3\\end{vmatrix}\\).",
+   "explanation": "Positive terms (aei + bfg + cdh) = -27; negative terms (ceg + afh + bdi) = 38. So the value is -27 - 38 = -65.",
+   "payload": {
+    "options": [
+     "-130",
+     "-65",
+     "-61",
+     "-75"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-275",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "det-triangular",
+   "prompt": "Evaluate \\(\\begin{vmatrix}4&4&1\\\\0&6&2\\\\0&0&5\\end{vmatrix}\\).",
+   "explanation": "The matrix is upper triangular, so the determinant is the product of the diagonal entries: 4 · 6 · 5 = 120.",
+   "payload": {
+    "options": [
+     "24",
+     "-120",
+     "120",
+     "241"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-276",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "transpose-of-product",
+   "prompt": "Let \\(A=\\begin{bmatrix}-3&-2&-1\\\\2&-3&-2\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}3&-2\\\\3&-3\\\\4&2\\end{bmatrix}\\). Find the (2,1) entry of \\((AB)^{T}\\).",
+   "explanation": "The (2,1) entry of \\((AB)^{T}\\) is the (1,2) entry of AB: row 1 of A times column 2 of B = 10. (Same as \\(B^{T}A^{T}\\).)",
+   "payload": {
+    "options": [
+     "20",
+     "8",
+     "12",
+     "10"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-277",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "cofactor-expansion",
+   "prompt": "The value of a determinant can be found by expanding along:",
+   "explanation": "Expansion along any row or column gives the same value.",
+   "payload": {
+    "options": [
+     "any row or any column",
+     "the main diagonal only",
+     "the first column only",
+     "the first row only"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-278",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "scalar-multiple",
+   "prompt": "If \\(A=\\begin{bmatrix}4&-5&0\\\\-5&-5&4\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}3&-3&-4\\\\4&-3&-4\\end{bmatrix}\\), find the (2,2) entry of \\(3A-B\\).",
+   "explanation": "Multiply each matrix by its scalar, then add: 3((-5)) + (-1)((-3)) = -12.",
+   "payload": {
+    "options": [
+     "-10",
+     "-12",
+     "-24",
+     "-23"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-279",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}x + 2y + 2z &= 1\\\\-x - 2z &= 3\\\\2x + 3y &= 0\\end{aligned}\\right.\\), find \\(D_{x}\\).",
+   "explanation": "Replace the x-column by the constants: \\(D_{x}=\\begin{vmatrix}1&2&2\\\\3&0&-2\\\\0&3&0\\end{vmatrix}\\) = 24.",
+   "payload": {
+    "options": [
+     "-24",
+     "14",
+     "24",
+     "0"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-280",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "consistency",
+   "prompt": "After row operations the augmented matrix of a system in x, y, z is \\(\\left[\\begin{array}{ccc|c}1&4&4&-4\\\\0&1&-1&2\\\\0&0&0&0\\end{array}\\right]\\). How many solutions does the system have?",
+   "explanation": "rank A = 2 and rank [A:B] = 2, with n = 3 unknowns. Ranks equal but less than n: infinitely many solutions (free variables).",
+   "payload": {
+    "options": [
+     "No solution",
+     "Unique solution",
+     "Only the trivial solution",
+     "Infinitely many solutions"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-281",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "Evaluate \\(\\begin{vmatrix}-1&-9\\\\3&0\\end{vmatrix}\\).",
+   "explanation": "\\(ad-bc = (-1)(0) - (-9)(3) = 0 - (-27) = 27\\)",
+   "payload": {
+    "options": [
+     "27",
+     "30",
+     "55",
+     "25"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-282",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "add-subtract",
+   "prompt": "If \\(A=\\begin{bmatrix}-5&-7&9\\\\-5&-6&-2\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-2&7&-5\\\\-1&0&9\\end{bmatrix}\\), find the (1,1) entry of \\(A+B\\).",
+   "explanation": "Add/subtract corresponding entries: (-5) + (-2) = -7.",
+   "payload": {
+    "options": [
+     "8",
+     "-7",
+     "-14",
+     "-8"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-283",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}2&-4&6\\\\1&-2&0\\\\-3&1&1\\end{bmatrix}\\), find the minor \\(M_{31}\\).",
+   "explanation": "Delete row 3 and column 1: \\(M_{31}=\\begin{vmatrix}-4&6\\\\-2&0\\end{vmatrix}\\) = 12.",
+   "payload": {
+    "options": [
+     "2",
+     "14",
+     "12",
+     "15"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-284",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "powers",
+   "prompt": "If \\(A=\\begin{bmatrix}3&0\\\\0&4\\end{bmatrix}\\), find the (2,2) entry of \\(A^{5}\\).",
+   "explanation": "For a diagonal matrix, \\(A^{5}\\) has diagonal entries \\(3^{5}\\) and \\(4^{5}\\); the (2,2) entry is \\(4^{5}\\) = 1024.",
+   "payload": {
+    "options": [
+     "512",
+     "1014",
+     "243",
+     "1024"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-285",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "adjoint",
+   "prompt": "For \\(A=\\begin{bmatrix}3&1&-2\\\\-1&-1&1\\\\-1&3&-2\\end{bmatrix}\\), find the (3,2) entry of \\(\\operatorname{adj}A\\).",
+   "explanation": "\\(\\operatorname{adj}A\\) is the transpose of the cofactor matrix, so its (3,2) entry is the cofactor \\(C_{23}\\) = -10.",
+   "payload": {
+    "options": [
+     "-10",
+     "0",
+     "-11",
+     "-9"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-286",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "rank",
+   "prompt": "Find the rank of \\(A=\\begin{bmatrix}3&-9&3&0\\\\1&-3&1&0\\end{bmatrix}\\).",
+   "explanation": "Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 1.",
+   "payload": {
+    "options": [
+     "3",
+     "1",
+     "0",
+     "-1"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-287",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "networks",
+   "prompt": "The matrix \\(\\begin{bmatrix}0&0&1&0\\\\0&0&1&1\\\\1&1&0&0\\\\0&1&0&0\\end{bmatrix}\\) shows friendships among 4 people. How many friendships (pairs) are there in total?",
+   "explanation": "The sum of all entries is 6, and each friendship is counted twice, so there are 3 pairs.",
+   "payload": {
+    "options": [
+     "0",
+     "5",
+     "3",
+     "7"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-288",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}-2&-4&1\\\\0&2&-6\\\\1&4&0\\end{bmatrix}\\), find the minor \\(M_{33}\\).",
+   "explanation": "Delete row 3 and column 3: \\(M_{33}=\\begin{vmatrix}-2&-4\\\\0&2\\end{vmatrix}\\) = -4.",
+   "payload": {
+    "options": [
+     "6",
+     "-7",
+     "-14",
+     "-4"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-289",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "types-of-matrices",
+   "prompt": "Which name describes the matrix \\(\\begin{bmatrix}9&3&4&9\\end{bmatrix}\\)?",
+   "explanation": "This is a row matrix because it has only one row.",
+   "payload": {
+    "options": [
+     "Row matrix",
+     "Skew-symmetric matrix",
+     "Upper triangular matrix",
+     "Lower triangular matrix"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-290",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "det-triangular",
+   "prompt": "The determinant of a triangular matrix is:",
+   "explanation": "For triangular (and diagonal) matrices only the diagonal terms survive.",
+   "payload": {
+    "options": [
+     "always zero",
+     "the product of its diagonal entries",
+     "the product of all entries",
+     "the sum of its diagonal entries"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-291",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "types-of-matrices",
+   "prompt": "Which name describes the matrix \\(\\begin{bmatrix}-1&-5&3\\\\-5&4&1\\\\3&1&4\\end{bmatrix}\\)?",
+   "explanation": "This is a symmetric matrix because it equals its transpose, \\(a_{ij}\\) = \\(a_{ji}\\).",
+   "payload": {
+    "options": [
+     "Skew-symmetric matrix",
+     "Diagonal matrix",
+     "Symmetric matrix",
+     "Upper triangular matrix"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-292",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "matrix-product-application",
+   "prompt": "The rows of \\(P=\\begin{bmatrix}20&18&17\\\\6&13&13\\end{bmatrix}\\) give the prices (Rs) of apples, oranges and bananas at Shop 1 and Shop 2. A student buys 7, 3 and 8 of them, i.e. \\(Q=\\begin{bmatrix}7\\\\3\\\\8\\end{bmatrix}\\). What is the total bill at Shop 2 (in Rs)?",
+   "explanation": "The bill is the entry of \\(PQ\\) in row 2: 6(7) + 13(3) + 13(8) = 185.",
+   "payload": {
+    "options": [
+     "189",
+     "183",
+     "330",
+     "185"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-293",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "Evaluate \\(\\begin{vmatrix}5&-4&-3\\\\0&2&3\\\\-3&-4&5\\end{vmatrix}\\).",
+   "explanation": "Positive terms (aei + bfg + cdh) = 86; negative terms (ceg + afh + bdi) = -42. So the value is 86 - (-42) = 128.",
+   "payload": {
+    "options": [
+     "128",
+     "129",
+     "130",
+     "257"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-294",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "inverse-2x2",
+   "prompt": "Find the (2,2) entry of \\(A^{-1}\\) for \\(A=\\begin{bmatrix}3&-1\\\\5&-2\\end{bmatrix}\\).",
+   "explanation": "\\(|A|=-1\\) and \\(\\operatorname{adj}A=\\begin{bmatrix}-2&1\\\\-5&3\\end{bmatrix}\\), so \\(A^{-1}=\\frac{1}{|A|}\\operatorname{adj}A\\) has (2,2) entry \\(-3\\).",
+   "payload": {
+    "options": [
+     "-5",
+     "-3",
+     "-4",
+     "3"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-295",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "gaussian-elimination",
+   "prompt": "Gaussian elimination reduces a system to \\(\\left[\\begin{array}{ccc|c}1&-3&-2&8\\\\0&1&2&-1\\\\0&0&1&1\\end{array}\\right]\\). Find x by back-substitution.",
+   "explanation": "From the last row z = 1. The second row gives y = -1 - 2(1) = -3. The first row gives x = 8 - (-3)(-3) - (-2)(1) = 1.",
+   "payload": {
+    "options": [
+     "2",
+     "5",
+     "1",
+     "-1"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-296",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "translation",
+   "prompt": "A translation moves (1, 0) to (3, -2). What is the translation vector \\((h,k)\\)? Give h + k.",
+   "explanation": "\\(h=3-(1)=2\\) and \\(k=-2-(0)=-2\\), so \\(h+k\\) = 0.",
+   "payload": {
+    "options": [
+     "10",
+     "4",
+     "3",
+     "0"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-297",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "singular-k",
+   "prompt": "For what value of k is \\(\\begin{vmatrix}1&-4\\\\1&k\\end{vmatrix}\\) singular (determinant 0)?",
+   "explanation": "\\(\\begin{vmatrix}1&-4\\\\1&k\\end{vmatrix}=k - (-4)\\); setting it to 0 gives \\(k=-4\\), so k = -4.",
+   "payload": {
+    "options": [
+     "-4",
+     "-6",
+     "5",
+     "6"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-298",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "product-order",
+   "prompt": "If \\(A\\) has order 4 × 5 and \\(B\\) has order 5 × 5, what is the order of \\(AB\\)?",
+   "explanation": "AB is defined because the columns of A (5) equal the rows of B (5); the order is rows of A × columns of B = 4 × 5.",
+   "payload": {
+    "options": [
+     "5 × 5",
+     "4 × 5",
+     "Not defined",
+     "5 × 4"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-299",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "symmetric-skew",
+   "prompt": "Find k so that \\(A=\\begin{bmatrix}0&-2k-3\\\\-5&0\\end{bmatrix}\\) is skew-symmetric (\\(a_{12}=-a_{21}\\)).",
+   "explanation": "Skew-symmetric needs \\(a_{12}\\) = -\\(a_{21}\\), so \\(-2k-3=5\\), i.e. \\(-2k=8\\), giving k = -4.",
+   "payload": {
+    "options": [
+     "-8",
+     "-1",
+     "-4",
+     "5"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-300",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "cramers-rule",
+   "prompt": "Solve the system \\(\\left\\{\\begin{aligned}-2x - 2y + 2z &= 16\\\\2y + z &= -2\\\\-2y + z &= 10\\end{aligned}\\right.\\) by Cramer's rule. Find x.",
+   "explanation": "\\(D=-8\\) and \\(D_{x}=8\\), so x = 8/-8 = -1.",
+   "payload": {
+    "options": [
+     "4",
+     "9",
+     "1",
+     "-1"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  }
+ ]
+}

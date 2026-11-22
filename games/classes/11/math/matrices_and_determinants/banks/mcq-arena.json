@@ -1,0 +1,5105 @@
+{
+ "mechanicId": "mcq-arena",
+ "questions": [
+  {
+   "id": "mcq-001",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "Let \\(A=\\begin{bmatrix}4&-3&3\\\\1&-4&0\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}1&2\\\\-1&-2\\\\5&5\\end{bmatrix}\\). Find the (1,1) entry of \\(AB\\).",
+   "explanation": "Row 1 of A times column 1 of B: 4(1) + (-3)((-1)) + 3(5) = 22.",
+   "payload": {
+    "options": [
+     "22",
+     "25",
+     "-22",
+     "20"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-002",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "transpose-of-product",
+   "prompt": "Let \\(A=\\begin{bmatrix}5&3&4\\\\5&3&-2\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}2&4\\\\-2&-3\\\\3&4\\end{bmatrix}\\). Find the (2,2) entry of \\((AB)^{T}\\).",
+   "explanation": "The (2,2) entry of \\((AB)^{T}\\) is the (2,2) entry of AB: row 2 of A times column 2 of B = 3. (Same as \\(B^{T}A^{T}\\).)",
+   "payload": {
+    "options": [
+     "4",
+     "3",
+     "6",
+     "5"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-003",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "rank",
+   "prompt": "What is the largest possible rank of a 2×3 matrix?",
+   "explanation": "Rank cannot exceed the number of rows or the number of columns, so the maximum is min(2, 3) = 2.",
+   "payload": {
+    "options": [
+     "5",
+     "6",
+     "2",
+     "1"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-004",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "add-subtract",
+   "prompt": "If \\(A=\\begin{bmatrix}-9&7&8\\\\-1&-9&-5\\\\4&-7&6\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}8&0&1\\\\-2&8&1\\\\5&2&-4\\end{bmatrix}\\), find the (3,1) entry of \\(A-B\\).",
+   "explanation": "Add/subtract corresponding entries: 4 - 5 = -1.",
+   "payload": {
+    "options": [
+     "0",
+     "9",
+     "3",
+     "-1"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-005",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}-x - y &= -6\\\\5x + 2y &= 15\\end{aligned}\\right.\\), find \\(D_{y}\\) (the determinant with the y-column replaced by the constants).",
+   "explanation": "\\(D_{y}=\\begin{vmatrix}-1&-6\\\\5&15\\end{vmatrix}\\) = 15.",
+   "payload": {
+    "options": [
+     "15",
+     "25",
+     "30",
+     "17"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-006",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "gaussian-elimination",
+   "prompt": "Gaussian elimination reduces a system to \\(\\left[\\begin{array}{ccc|c}1&0&1&-2\\\\0&1&-3&-6\\\\0&0&1&1\\end{array}\\right]\\). Find x by back-substitution.",
+   "explanation": "From the last row z = 1. The second row gives y = -6 - (-3)(1) = -3. The first row gives x = -2 - 0(-3) - 1(1) = -3.",
+   "payload": {
+    "options": [
+     "-4",
+     "-3",
+     "0",
+     "-5"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-007",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "consistency",
+   "prompt": "After row operations the augmented matrix of a system in x, y, z is \\(\\left[\\begin{array}{ccc|c}1&1&-2&2\\\\0&1&0&5\\\\0&0&1&1\\end{array}\\right]\\). How many solutions does the system have?",
+   "explanation": "rank A = 3 and rank [A:B] = 3, with n = 3 unknowns. Ranks equal and equal to n: exactly one solution.",
+   "payload": {
+    "options": [
+     "Only the trivial solution",
+     "Infinitely many solutions",
+     "Unique solution",
+     "No solution"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-008",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "cofactor-expansion",
+   "prompt": "Row 3 of a 3×3 determinant is \\(2,2,-3\\) and the cofactors of these entries are \\(3,2,1\\). Find the determinant.",
+   "explanation": "Expand along row 3: 2(3) + 2(2) + (-3)(1) = 7.",
+   "payload": {
+    "options": [
+     "5",
+     "10",
+     "-3",
+     "7"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-009",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "matrix-product-application",
+   "prompt": "The rows of \\(P=\\begin{bmatrix}5&9&2\\\\19&2&12\\end{bmatrix}\\) give the prices (Rs) of rulers, pencils and markers at Shop 1 and Shop 2. A student buys 4, 1 and 3 of them, i.e. \\(Q=\\begin{bmatrix}4\\\\1\\\\3\\end{bmatrix}\\). What is the total bill at Shop 1 (in Rs)?",
+   "explanation": "The bill is the entry of \\(PQ\\) in row 1: 5(4) + 9(1) + 2(3) = 35.",
+   "payload": {
+    "options": [
+     "35",
+     "-35",
+     "25",
+     "39"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-010",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "Evaluate \\(\\begin{vmatrix}-3&4&5\\\\-2&3&4\\\\5&0&-1\\end{vmatrix}\\).",
+   "explanation": "Positive terms (aei + bfg + cdh) = 89; negative terms (ceg + afh + bdi) = 83. So the value is 89 - 83 = 6.",
+   "payload": {
+    "options": [
+     "-6",
+     "6",
+     "89",
+     "3"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-011",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "adjoint",
+   "prompt": "If A is a 2×2 matrix with \\(|A|=-5\\), then \\(A\\operatorname{adj}A=kI\\). Find k.",
+   "explanation": "\\(A\\operatorname{adj}A=|A|I\\), so k = -5.",
+   "payload": {
+    "options": [
+     "0",
+     "25",
+     "-5",
+     "-4"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-012",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "cofactor-expansion",
+   "prompt": "The sum \\(a_{11}C_{21}+a_{12}C_{22}+a_{13}C_{23}\\) (entries of row 1 with cofactors of row 2) equals:",
+   "explanation": "Entries of one row with the cofactors of a different row always give 0 (it is a determinant with two equal rows).",
+   "payload": {
+    "options": [
+     "1",
+     "\\(|A|\\)",
+     "\\(-|A|\\)",
+     "0"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-013",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "area-by-determinant",
+   "prompt": "Find the area of the triangle with vertices (-1, -1), (5, 1), (0, 5) using a determinant.",
+   "explanation": "Area = ½|\\(\\begin{vmatrix}-1&-1&1\\\\5&1&1\\\\0&5&1\\end{vmatrix}\\)| = ½|34| = \\(17\\) square units.",
+   "payload": {
+    "options": [
+     "17",
+     "34",
+     "19",
+     "18"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-014",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "Evaluate \\(\\begin{vmatrix}1&2&3\\\\4&1&-1\\\\0&3&0\\end{vmatrix}\\).",
+   "explanation": "Positive terms (aei + bfg + cdh) = 36; negative terms (ceg + afh + bdi) = -3. So the value is 36 - (-3) = 39.",
+   "payload": {
+    "options": [
+     "-39",
+     "39",
+     "40",
+     "42"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-015",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "If A is a 2×2 matrix with \\(|A|=-1\\), find \\(|5A|\\).",
+   "explanation": "For an n×n matrix \\(|kA|=k^{n}|A|\\). Here n = 2: \\(5^{2}\\)(-1) = -25.",
+   "payload": {
+    "options": [
+     "-24",
+     "-27",
+     "-25",
+     "-49"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-016",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "Square matrices A and B of the same order have \\(|A|=5\\) and \\(|B|=-1\\). Find \\(|AB^{T}|\\).",
+   "explanation": "Use \\(|XY|=|X||Y|\\) and \\(|X^{T}|=|X|\\): \\(|AB^{T}|\\) = -5.",
+   "payload": {
+    "options": [
+     "-4",
+     "-15",
+     "-6",
+     "-5"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-017",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "trace",
+   "prompt": "Find the trace of \\(A=\\begin{bmatrix}9&-6&8\\\\-4&-3&6\\\\-7&2&-3\\end{bmatrix}\\) (the sum of the main-diagonal entries).",
+   "explanation": "Trace = 9 + (-3) + (-3) = 3.",
+   "payload": {
+    "options": [
+     "3",
+     "13",
+     "-2",
+     "2"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-018",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "sym-skew-decomposition",
+   "prompt": "For \\(A=\\begin{bmatrix}-8&8\\\\-8&-5\\end{bmatrix}\\), find the (1,2) entry of the skew-symmetric part \\(\\frac{1}{2}(A-A^{T})\\).",
+   "explanation": "\\(\\frac{1}{2}(A-A^{T})\\) has entry (1,2) = (\\(a_{12}\\) - \\(a_{21}\\))/2 = (8 - (-8))/2 = 8.",
+   "payload": {
+    "options": [
+     "0",
+     "8",
+     "-8",
+     "5"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-019",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}-3y &= 12\\\\3x + 4y &= -7\\end{aligned}\\right.\\), find \\(D_{x}\\) (the determinant with the x-column replaced by the constants).",
+   "explanation": "\\(D_{x}=\\begin{vmatrix}12&-3\\\\-7&4\\end{vmatrix}\\) = 27.",
+   "payload": {
+    "options": [
+     "31",
+     "37",
+     "27",
+     "-36"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-020",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}7&-3&-6\\\\-4&7&-1\\\\7&-6&3\\end{bmatrix}\\), find the cofactor \\(C_{11}\\).",
+   "explanation": "\\(M_{11}\\) = 15, and the sign is \\((-1)^{1+1}\\) = +1. So \\(C_{11}\\) = 15.",
+   "payload": {
+    "options": [
+     "16",
+     "13",
+     "14",
+     "15"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-021",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "networks",
+   "prompt": "For an adjacency matrix A, the entry \\((A^{2})_{ij}\\) counts:",
+   "explanation": "Row \\(i\\) times column \\(j\\) counts the middle nodes that link both.",
+   "payload": {
+    "options": [
+     "the walks of length 2 from i to j",
+     "the walks of length 3",
+     "the total number of nodes",
+     "the direct links from i to j"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-022",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "homogeneous-free-vars",
+   "prompt": "A homogeneous system has 5 unknowns and its coefficient matrix has rank 1. How many free (arbitrary) variables are there in the solution?",
+   "explanation": "Number of free variables = n - rank = 5 - 1 = 4.",
+   "payload": {
+    "options": [
+     "-4",
+     "4",
+     "6",
+     "1"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-023",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "scalar-multiple",
+   "prompt": "If \\(A=\\begin{bmatrix}7&2\\\\1&1\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}5&-4\\\\-2&6\\end{bmatrix}\\), find the (2,1) entry of \\(-2A+B\\).",
+   "explanation": "Multiply each matrix by its scalar, then add: (-2)(1) + 1((-2)) = -4.",
+   "payload": {
+    "options": [
+     "-6",
+     "-5",
+     "-4",
+     "-14"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-024",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "Let \\(A=\\begin{bmatrix}4&-3&4\\\\0&1&-3\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}5&1\\\\2&-4\\\\-1&4\\end{bmatrix}\\). Find the (1,1) entry of \\(AB\\).",
+   "explanation": "Row 1 of A times column 1 of B: 4(5) + (-3)(2) + 4((-1)) = 10.",
+   "payload": {
+    "options": [
+     "0",
+     "20",
+     "7",
+     "10"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-025",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "Evaluate \\(\\begin{vmatrix}4&8\\\\-4&-3\\end{vmatrix}\\).",
+   "explanation": "\\(ad-bc = 4((-3)) - 8((-4)) = -12 - (-32) = 20\\)",
+   "payload": {
+    "options": [
+     "20",
+     "40",
+     "19",
+     "18"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-026",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "cramers-rule",
+   "prompt": "Solve the system \\(\\left\\{\\begin{aligned}-2x + y + 3z &= 10\\\\x - 2y + z &= 1\\\\2z &= 6\\end{aligned}\\right.\\) by Cramer's rule. Find x.",
+   "explanation": "\\(D=6\\) and \\(D_{x}=0\\), so x = 0/6 = 0.",
+   "payload": {
+    "options": [
+     "10",
+     "0",
+     "-10",
+     "-2"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-027",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "symmetric-skew",
+   "prompt": "A 3×3 skew-symmetric matrix has \\(a_{12}=-3\\), \\(a_{13}=-5\\), \\(a_{23}=5\\). Find \\(a_{32}\\).",
+   "explanation": "Skew-symmetry gives \\(a_{ji}\\) = -\\(a_{ij}\\), so \\(a_{32}\\) = -(5) = -5.",
+   "payload": {
+    "options": [
+     "-10",
+     "-2",
+     "-5",
+     "-3"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-028",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "inverse-2x2",
+   "prompt": "Find the (2,2) entry of \\(A^{-1}\\) for \\(A=\\begin{bmatrix}-4&-1\\\\-3&-1\\end{bmatrix}\\).",
+   "explanation": "\\(|A|=1\\) and \\(\\operatorname{adj}A=\\begin{bmatrix}-1&1\\\\3&-4\\end{bmatrix}\\), so \\(A^{-1}=\\frac{1}{|A|}\\operatorname{adj}A\\) has (2,2) entry \\(-4\\).",
+   "payload": {
+    "options": [
+     "-6",
+     "-3",
+     "4",
+     "-4"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-029",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "inverse-3x3",
+   "prompt": "Find the (3,3) entry of \\(A^{-1}\\) for \\(A=\\begin{bmatrix}1&-1&1\\\\0&1&-2\\\\2&-2&3\\end{bmatrix}\\).",
+   "explanation": "\\(|A|=1\\), so \\(A^{-1}=\\operatorname{adj}A/|A|\\) = \\(\\operatorname{adj}A\\). Its (3,3) entry is 1.",
+   "payload": {
+    "options": [
+     "1",
+     "-1",
+     "-9",
+     "3"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-030",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "matrix-equation",
+   "prompt": "If \\(2X+A=B\\) where \\(A=\\begin{bmatrix}-5&5\\\\-4&5\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}5&9\\\\6&5\\end{bmatrix}\\), find the (1,1) entry of X.",
+   "explanation": "\\(2X=B-A\\); entry (1,1): (5 - (-5)) / 2 = 5.",
+   "payload": {
+    "options": [
+     "2",
+     "5",
+     "8",
+     "11"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-031",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "inverse-2x2",
+   "prompt": "Find the (1,1) entry of \\(A^{-1}\\) for \\(A=\\begin{bmatrix}1&3\\\\0&1\\end{bmatrix}\\).",
+   "explanation": "\\(|A|=1\\) and \\(\\operatorname{adj}A=\\begin{bmatrix}1&-3\\\\0&1\\end{bmatrix}\\), so \\(A^{-1}=\\frac{1}{|A|}\\operatorname{adj}A\\) has (1,1) entry \\(1\\).",
+   "payload": {
+    "options": [
+     "6",
+     "-1",
+     "1",
+     "3"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-032",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "det-row-ops",
+   "prompt": "A 3×3 matrix has determinant -3. Its determinant after the row operations R2 ↔ R3; then R2 ↔ R3 (in this order) is:",
+   "explanation": "Track each operation: R2 ↔ R3: sign changes; R2 ↔ R3: sign changes. Result: -3.",
+   "payload": {
+    "options": [
+     "1",
+     "-13",
+     "-6",
+     "-3"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-033",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "inverse-by-row-ops",
+   "prompt": "If A cannot be reduced to the identity matrix by row operations, then A is:",
+   "explanation": "A zero row appears, so the rank is below \\(n\\) and the matrix has no inverse.",
+   "payload": {
+    "options": [
+     "singular",
+     "symmetric",
+     "an identity matrix",
+     "non-singular"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-034",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "entry-notation",
+   "prompt": "In \\(A=\\begin{bmatrix}7&-9&-9&7\\\\5&-5&1&9\\end{bmatrix}\\), find the entry \\(a_{13}\\).",
+   "explanation": "\\(a_{13}\\) lies in row 1 and column 3, so it is -9.",
+   "payload": {
+    "options": [
+     "-11",
+     "-9",
+     "-7",
+     "-10"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-035",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}0&4&4\\\\-5&-3&2\\\\6&-4&-4\\end{bmatrix}\\), find the cofactor \\(C_{23}\\).",
+   "explanation": "\\(M_{23}\\) = -24, and the sign is \\((-1)^{2+3}\\) = -1. So \\(C_{23}\\) = 24.",
+   "payload": {
+    "options": [
+     "25",
+     "23",
+     "24",
+     "34"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-036",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "det-properties",
+   "prompt": "If A is a 2×2 matrix with \\(|A|=-5\\), find \\(|A^{-1}|\\).",
+   "explanation": "\\(|A^{-1}|=\\frac{1}{|A|}\\) = \\(-\\frac{1}{5}\\).",
+   "payload": {
+    "options": [
+     "\\(-\\frac{1}{10}\\)",
+     "\\(-\\frac{1}{4}\\)",
+     "\\(25\\)",
+     "\\(-\\frac{1}{5}\\)"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-037",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "cramers-rule",
+   "prompt": "Solve the system \\(\\left\\{\\begin{aligned}-y &= -1\\\\-3x + 6y &= -3\\end{aligned}\\right.\\) by Cramer's rule. Find x.",
+   "explanation": "\\(D=-3\\), \\(D_{x}=-9\\), so \\(x=D_{x}/D\\) = -9/-3 = 3.",
+   "payload": {
+    "options": [
+     "3",
+     "5",
+     "7",
+     "2"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-038",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}4&7&-1\\\\-2&-3&0\\\\-6&-2&5\\end{bmatrix}\\), find the minor \\(M_{32}\\).",
+   "explanation": "Delete row 3 and column 2: \\(M_{32}=\\begin{vmatrix}4&-1\\\\-2&0\\end{vmatrix}\\) = -2.",
+   "payload": {
+    "options": [
+     "0",
+     "-2",
+     "-5",
+     "-12"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-039",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "Evaluate \\(\\begin{vmatrix}-1&1&1\\\\2&-4&0\\\\3&2&5\\end{vmatrix}\\).",
+   "explanation": "Positive terms (aei + bfg + cdh) = 24; negative terms (ceg + afh + bdi) = -2. So the value is 24 - (-2) = 26.",
+   "payload": {
+    "options": [
+     "13",
+     "52",
+     "26",
+     "16"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-040",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "Evaluate \\(\\begin{vmatrix}-4&-2\\\\4&5\\end{vmatrix}\\).",
+   "explanation": "\\(ad-bc = (-4)(5) - (-2)(4) = -20 - (-8) = -12\\)",
+   "payload": {
+    "options": [
+     "-15",
+     "12",
+     "-9",
+     "-12"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-041",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "inverse-properties",
+   "prompt": "\\(A^{-1}=\\begin{bmatrix}4&1\\\\3&1\\end{bmatrix}\\) and \\(B^{-1}=\\begin{bmatrix}0&1\\\\1&2\\end{bmatrix}\\). Find the (1,1) entry of \\((AB)^{-1}\\).",
+   "explanation": "\\((AB)^{-1}=B^{-1}A^{-1}\\) (reverse order). Multiplying, the (1,1) entry is 3; the other order \\(A^{-1}B^{-1}\\) would give 1.",
+   "payload": {
+    "options": [
+     "3",
+     "4",
+     "-7",
+     "0"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-042",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}x + 3y &= -16\\\\5x &= -5\\end{aligned}\\right.\\), find \\(D_{x}\\) (the determinant with the x-column replaced by the constants).",
+   "explanation": "\\(D_{x}=\\begin{vmatrix}-16&3\\\\-5&0\\end{vmatrix}\\) = 15.",
+   "payload": {
+    "options": [
+     "-5",
+     "15",
+     "25",
+     "18"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-043",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "det-properties",
+   "prompt": "Without expanding, find the value of \\(\\begin{vmatrix}4&0&-6\\\\-4&-5&1\\\\0&0&0\\end{vmatrix}\\).",
+   "explanation": "The determinant is 0 because the matrix has a row of zeros.",
+   "payload": {
+    "options": [
+     "-1",
+     "10",
+     "0",
+     "8"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-044",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "If A is a 3×3 matrix with \\(|A|=4\\), find \\(|-2A|\\).",
+   "explanation": "For an n×n matrix \\(|kA|=k^{n}|A|\\). Here n = 3: \\((-2)^{3}\\)(4) = -32.",
+   "payload": {
+    "options": [
+     "33",
+     "-33",
+     "-35",
+     "-32"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-045",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "consistency",
+   "prompt": "A non-homogeneous system has 3 unknowns, \\(\\operatorname{rank}A=1\\) and \\(\\operatorname{rank}[A:B]=2\\). The system has:",
+   "explanation": "Compare the ranks: unequal ranks mean the system is inconsistent, so there is no solution.",
+   "payload": {
+    "options": [
+     "No solution",
+     "Unique solution",
+     "Infinitely many solutions",
+     "Only the trivial solution"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-046",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "matrix-equality",
+   "prompt": "If \\(\\begin{bmatrix}-3x-3&-6\\\\1&-3y+4\\end{bmatrix}=\\begin{bmatrix}-3&-6\\\\1&-2\\end{bmatrix}\\), find \\(y\\).",
+   "explanation": "Equal matrices have equal corresponding entries: \\(-3x-3=-3\\) gives x = 0; \\(-3y+4=-2\\) gives y = 2. So y = 2.",
+   "payload": {
+    "options": [
+     "0",
+     "2",
+     "5",
+     "1"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-047",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "gaussian-elimination",
+   "prompt": "Gaussian elimination reduces a system to \\(\\left[\\begin{array}{ccc|c}1&-2&3&-4\\\\0&1&-2&2\\\\0&0&1&-1\\end{array}\\right]\\). Find y by back-substitution.",
+   "explanation": "From the last row z = -1. The second row gives y = 2 - (-2)(-1) = 0. ",
+   "payload": {
+    "options": [
+     "-3",
+     "10",
+     "0",
+     "-1"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-048",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "multiplication-laws",
+   "prompt": "Which statement is true (products defined)?",
+   "explanation": "Multiplication distributes over addition.",
+   "payload": {
+    "options": [
+     "\\((A+B)C=AC+B\\)",
+     "\\(A(B+C)=AB+C\\)",
+     "\\(A(BC)=ABC+A\\)",
+     "\\(A(B+C)=AB+AC\\)"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-049",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "Find the determinant of the scalar matrix \\(2I_{4}\\).",
+   "explanation": "It is diagonal with 4 entries 2, so the determinant is \\(2^{4}\\) = 16.",
+   "payload": {
+    "options": [
+     "16",
+     "13",
+     "14",
+     "18"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-050",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}-3x - 5y &= 12\\\\-2x + y &= 8\\end{aligned}\\right.\\), find the determinant \\(D\\) of the coefficient matrix.",
+   "explanation": "\\(D=\\begin{vmatrix}-3&-5\\\\-2&1\\end{vmatrix}\\) = -13.",
+   "payload": {
+    "options": [
+     "-3",
+     "-13",
+     "-26",
+     "-14"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-051",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "consistency",
+   "prompt": "A non-homogeneous system has 4 unknowns, \\(\\operatorname{rank}A=4\\) and \\(\\operatorname{rank}[A:B]=4\\). The system has:",
+   "explanation": "Compare the ranks: equal ranks and equal to n = 4 give a unique solution.",
+   "payload": {
+    "options": [
+     "Infinitely many solutions",
+     "No solution",
+     "Unique solution",
+     "Only the trivial solution"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-052",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "matrix-equation",
+   "prompt": "If \\(3X+A=B\\) where \\(A=\\begin{bmatrix}3&5&5\\\\-6&4&-3\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}12&8&23\\\\9&10&9\\end{bmatrix}\\), find the (2,2) entry of X.",
+   "explanation": "\\(3X=B-A\\); entry (2,2): (10 - 4) / 3 = 2.",
+   "payload": {
+    "options": [
+     "1",
+     "10",
+     "3",
+     "2"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-053",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "Square matrices A and B of the same order have \\(|A|=-5\\) and \\(|B|=4\\). Find \\(|AB^{T}|\\).",
+   "explanation": "Use \\(|XY|=|X||Y|\\) and \\(|X^{T}|=|X|\\): \\(|AB^{T}|\\) = -20.",
+   "payload": {
+    "options": [
+     "-20",
+     "20",
+     "-22",
+     "-10"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-054",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "singular-k",
+   "prompt": "For what value of k is \\(\\begin{vmatrix}5&-30\\\\-1&k\\end{vmatrix}\\) singular (determinant 0)?",
+   "explanation": "\\(\\begin{vmatrix}5&-30\\\\-1&k\\end{vmatrix}=5k - 30\\); setting it to 0 gives \\(5k=30\\), so k = 6.",
+   "payload": {
+    "options": [
+     "-30",
+     "6",
+     "8",
+     "-4"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-055",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "matrix-equality",
+   "prompt": "If \\(\\begin{bmatrix}3x-5&-3\\\\-6&y+5\\end{bmatrix}=\\begin{bmatrix}-14&-3\\\\-6&8\\end{bmatrix}\\), find \\(y\\).",
+   "explanation": "Equal matrices have equal corresponding entries: \\(3x-5=-14\\) gives x = -3; \\(y+5=8\\) gives y = 3. So y = 3.",
+   "payload": {
+    "options": [
+     "0",
+     "-6",
+     "3",
+     "2"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-056",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "Let \\(A=\\begin{bmatrix}0&0&0\\\\3&-3&4\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-4&5&5\\\\2&-2&4\\\\-4&5&-3\\end{bmatrix}\\). Find the (1,3) entry of \\(AB\\).",
+   "explanation": "Row 1 of A times column 3 of B: 0(5) + 0(4) + 0((-3)) = 0.",
+   "payload": {
+    "options": [
+     "-3",
+     "1",
+     "-10",
+     "0"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-057",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "singular-k",
+   "prompt": "Find k so that \\(\\begin{vmatrix}-2&2&1\\\\0&1&-3\\\\-2&3&k\\end{vmatrix}\\) is singular.",
+   "explanation": "Expanding, \\(|A|=- 2 k - 4\\). Setting \\(|A|=0\\) gives k = -2.",
+   "payload": {
+    "options": [
+     "-2",
+     "-5",
+     "8",
+     "2"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-058",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "Evaluate \\(\\begin{vmatrix}-9&1\\\\0&-4\\end{vmatrix}\\).",
+   "explanation": "\\(ad-bc = (-9)((-4)) - 1(0) = 36 - 0 = 36\\)",
+   "payload": {
+    "options": [
+     "46",
+     "36",
+     "-36",
+     "33"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-059",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "det-triangular",
+   "prompt": "Evaluate \\(\\begin{vmatrix}-1&-2&1&3\\\\0&-3&-6&4\\\\0&0&3&7\\\\0&0&0&-2\\end{vmatrix}\\).",
+   "explanation": "The matrix is upper triangular, so the determinant is the product of the diagonal entries: (-1) · (-3) · 3 · (-2) = -18.",
+   "payload": {
+    "options": [
+     "18",
+     "-19",
+     "-18",
+     "-35"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-060",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}-5x + 5y &= -30\\\\2x + 3y &= 7\\end{aligned}\\right.\\), find \\(D_{y}\\) (the determinant with the y-column replaced by the constants).",
+   "explanation": "\\(D_{y}=\\begin{vmatrix}-5&-30\\\\2&7\\end{vmatrix}\\) = 25.",
+   "payload": {
+    "options": [
+     "51",
+     "-125",
+     "27",
+     "25"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-061",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "multiplication-laws",
+   "prompt": "For a square matrix A and the identity matrix I of the same order:",
+   "explanation": "The identity matrix behaves like the number 1 in multiplication.",
+   "payload": {
+    "options": [
+     "\\(AI=IA=A\\)",
+     "\\(AI=2A\\)",
+     "\\(AI=I^{2}A\\)",
+     "\\(AI=O\\)"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-062",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "cipher-encode",
+   "prompt": "Using \\(A=1,\\ B=2,\\dots,Z=26\\), the word AM is written as a row matrix and multiplied on the right by the key \\(K=\\begin{bmatrix}2&1\\\\1&0\\end{bmatrix}\\). Find entry 2 of the coded row.",
+   "explanation": "AM → \\(\\begin{bmatrix}1&13\\end{bmatrix}\\). Coded row = \\(\\begin{bmatrix}1&13\\end{bmatrix}\\begin{bmatrix}2&1\\\\1&0\\end{bmatrix}=\\begin{bmatrix}15&1\\end{bmatrix}\\); entry 2 is 1.",
+   "payload": {
+    "options": [
+     "2",
+     "1",
+     "3",
+     "11"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-063",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "inverse-3x3",
+   "prompt": "Find the (2,2) entry of \\(A^{-1}\\) for \\(A=\\begin{bmatrix}-2&1&0\\\\3&-2&0\\\\0&0&1\\end{bmatrix}\\).",
+   "explanation": "\\(|A|=1\\), so \\(A^{-1}=\\operatorname{adj}A/|A|\\) = \\(\\operatorname{adj}A\\). Its (2,2) entry is -2.",
+   "payload": {
+    "options": [
+     "8",
+     "-4",
+     "-2",
+     "-5"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-064",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}6x - 2y &= 6\\\\-2x + y &= 0\\end{aligned}\\right.\\), find \\(D_{y}\\) (the determinant with the y-column replaced by the constants).",
+   "explanation": "\\(D_{y}=\\begin{vmatrix}6&6\\\\-2&0\\end{vmatrix}\\) = 12.",
+   "payload": {
+    "options": [
+     "13",
+     "24",
+     "6",
+     "12"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-065",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "rank",
+   "prompt": "What is the largest possible rank of a 4×7 matrix?",
+   "explanation": "Rank cannot exceed the number of rows or the number of columns, so the maximum is min(4, 7) = 4.",
+   "payload": {
+    "options": [
+     "4",
+     "5",
+     "7",
+     "6"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-066",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "sym-skew-decomposition",
+   "prompt": "For \\(A=\\begin{bmatrix}1&0\\\\-2&9\\end{bmatrix}\\), find the (2,2) entry of the skew-symmetric part \\(\\frac{1}{2}(A-A^{T})\\).",
+   "explanation": "\\(\\frac{1}{2}(A-A^{T})\\) has entry (2,2) = (\\(a_{22}\\) - \\(a_{22}\\))/2 = (9 - 9)/2 = 0.",
+   "payload": {
+    "options": [
+     "10",
+     "0",
+     "-1",
+     "9"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-067",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "Let \\(A=\\begin{bmatrix}5&2&-2\\\\0&-2&5\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-2&1&2\\\\2&0&4\\\\4&-4&-1\\end{bmatrix}\\). Find the (2,3) entry of \\(AB\\).",
+   "explanation": "Row 2 of A times column 3 of B: 0(2) + (-2)(4) + 5((-1)) = -13.",
+   "payload": {
+    "options": [
+     "-9",
+     "-10",
+     "-13",
+     "-25"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-068",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "cipher-encode",
+   "prompt": "Using \\(A=1,\\ B=2,\\dots,Z=26\\), the word IN is written as a row matrix and multiplied on the right by the key \\(K=\\begin{bmatrix}2&1\\\\1&0\\end{bmatrix}\\). Find entry 2 of the coded row.",
+   "explanation": "IN → \\(\\begin{bmatrix}9&14\\end{bmatrix}\\). Coded row = \\(\\begin{bmatrix}9&14\\end{bmatrix}\\begin{bmatrix}2&1\\\\1&0\\end{bmatrix}=\\begin{bmatrix}32&9\\end{bmatrix}\\); entry 2 is 9.",
+   "payload": {
+    "options": [
+     "8",
+     "11",
+     "10",
+     "9"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-069",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "area-by-determinant",
+   "prompt": "The points (3, -2), (1, 4) and (1, k) are collinear. Find k.",
+   "explanation": "Collinear points give a zero determinant \\(\\begin{vmatrix}3&-2&1\\\\1&4&1\\\\1&k&1\\end{vmatrix}\\) = 0, which expands to \\(8 - 2 k=0\\). So k = 4.",
+   "payload": {
+    "options": [
+     "4",
+     "7",
+     "-4",
+     "14"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-070",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "det-vandermonde",
+   "prompt": "Evaluate \\(\\begin{vmatrix}1&1&1\\\\a&b&c\\\\a^{2}&b^{2}&c^{2}\\end{vmatrix}\\) for \\(a=-3,\\ b=-1,\\ c=2\\).",
+   "explanation": "The determinant equals \\((b-a)(c-a)(c-b)\\) = (2)(5)(3) = 30.",
+   "payload": {
+    "options": [
+     "60",
+     "30",
+     "40",
+     "33"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-071",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "types-of-matrices",
+   "prompt": "Which name describes the matrix \\(\\begin{bmatrix}-3&4&1\\\\0&-2&3\\\\0&0&1\\end{bmatrix}\\)?",
+   "explanation": "This is an upper triangular matrix because all entries below the main diagonal are 0.",
+   "payload": {
+    "options": [
+     "Zero matrix",
+     "Skew-symmetric matrix",
+     "Upper triangular matrix",
+     "Diagonal matrix"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-072",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "Evaluate \\(\\begin{vmatrix}4&4&5\\\\0&-1&4\\\\-4&-1&-1\\end{vmatrix}\\).",
+   "explanation": "Positive terms (aei + bfg + cdh) = -60; negative terms (ceg + afh + bdi) = 4. So the value is -60 - 4 = -64.",
+   "payload": {
+    "options": [
+     "65",
+     "-54",
+     "-65",
+     "-64"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-073",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "add-subtract",
+   "prompt": "If \\(A=\\begin{bmatrix}8&6\\\\-8&1\\\\-3&-5\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-1&8\\\\0&3\\\\0&9\\end{bmatrix}\\), find the (1,1) entry of \\(A+B\\).",
+   "explanation": "Add/subtract corresponding entries: 8 + (-1) = 7.",
+   "payload": {
+    "options": [
+     "7",
+     "5",
+     "-3",
+     "8"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-074",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "singular-k",
+   "prompt": "For what value of k is \\(\\begin{vmatrix}-1&0\\\\-5&k\\end{vmatrix}\\) singular (determinant 0)?",
+   "explanation": "\\(\\begin{vmatrix}-1&0\\\\-5&k\\end{vmatrix}=-k - 0\\); setting it to 0 gives \\(-k=0\\), so k = 0.",
+   "payload": {
+    "options": [
+     "-1",
+     "0",
+     "-10",
+     "10"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-075",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "cramers-rule",
+   "prompt": "Solve the system \\(\\left\\{\\begin{aligned}-y + z &= -4\\\\3x + y + z &= 7\\\\-x + 2y - z &= 7\\end{aligned}\\right.\\) by Cramer's rule. Find x.",
+   "explanation": "\\(D=5\\) and \\(D_{x}=5\\), so x = 5/5 = 1.",
+   "payload": {
+    "options": [
+     "2",
+     "-2",
+     "1",
+     "5"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-076",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "non-commutative",
+   "prompt": "For \\(A=\\begin{bmatrix}5&3\\\\0&1\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}5&-3\\\\-2&-4\\end{bmatrix}\\), find \\((AB)_{22}-(BA)_{22}\\).",
+   "explanation": "\\((AB)_{22}\\) = -4 and \\((BA)_{22}\\) = -10, so the difference is 6. In general AB and BA are not equal.",
+   "payload": {
+    "options": [
+     "8",
+     "12",
+     "16",
+     "6"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-077",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "powers",
+   "prompt": "If \\(A=\\begin{bmatrix}1&2\\\\0&1\\end{bmatrix}\\), find the (1,2) entry of \\(A^{5}\\).",
+   "explanation": "\\(A^{2}=\\begin{bmatrix}1&4\\\\0&1\\end{bmatrix}\\), and by induction \\(A^{n}\\) has (1,2) entry n·k. So the (1,2) entry of \\(A^{5}\\) is 5(2) = 10.",
+   "payload": {
+    "options": [
+     "10",
+     "13",
+     "-10",
+     "20"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-078",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "symmetric-skew",
+   "prompt": "A 3×3 skew-symmetric matrix has \\(a_{12}=6\\), \\(a_{13}=1\\), \\(a_{23}=8\\). Find \\(a_{32}\\).",
+   "explanation": "Skew-symmetry gives \\(a_{ji}\\) = -\\(a_{ij}\\), so \\(a_{32}\\) = -(8) = -8.",
+   "payload": {
+    "options": [
+     "-15",
+     "-8",
+     "-4",
+     "-5"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-079",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "consistency",
+   "prompt": "A non-homogeneous system has 3 unknowns, \\(\\operatorname{rank}A=2\\) and \\(\\operatorname{rank}[A:B]=2\\). The system has:",
+   "explanation": "Compare the ranks: equal ranks that are less than n = 3 give infinitely many solutions.",
+   "payload": {
+    "options": [
+     "No solution",
+     "Only the trivial solution",
+     "Infinitely many solutions",
+     "Unique solution"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-080",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "translation",
+   "prompt": "A translation moves (5, 6) to (2, 4). What is the translation vector \\((h,k)\\)? Give h + k.",
+   "explanation": "\\(h=2-(5)=-3\\) and \\(k=4-(6)=-2\\), so \\(h+k\\) = -5.",
+   "payload": {
+    "options": [
+     "6",
+     "-3",
+     "-1",
+     "-5"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-081",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "matrix-product-application",
+   "prompt": "The rows of \\(P=\\begin{bmatrix}3&8&3\\\\4&10&14\\end{bmatrix}\\) give the prices (Rs) of samosas, rolls and drinks at Shop 1 and Shop 2. A student buys 5, 8 and 8 of them, i.e. \\(Q=\\begin{bmatrix}5\\\\8\\\\8\\end{bmatrix}\\). What is the total bill at Shop 2 (in Rs)?",
+   "explanation": "The bill is the entry of \\(PQ\\) in row 2: 4(5) + 10(8) + 14(8) = 212.",
+   "payload": {
+    "options": [
+     "212",
+     "424",
+     "211",
+     "215"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-082",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "translation",
+   "prompt": "Doing a translation followed by a rotation:",
+   "explanation": "Matrix products depend on order, so the order of transformations matters.",
+   "payload": {
+    "options": [
+     "always gives the same result",
+     "may give a different result from rotation followed by translation",
+     "gives the identity",
+     "cannot be written with matrices"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-083",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "cramers-rule",
+   "prompt": "Solve the system \\(\\left\\{\\begin{aligned}-3x - 4y &= 20\\\\6x + 5y &= -34\\end{aligned}\\right.\\) by Cramer's rule. Find x.",
+   "explanation": "\\(D=9\\), \\(D_{x}=-36\\), so \\(x=D_{x}/D\\) = -36/9 = -4.",
+   "payload": {
+    "options": [
+     "-18",
+     "5",
+     "-4",
+     "-5"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-084",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "Evaluate \\(\\begin{vmatrix}1&-1\\\\-9&2\\end{vmatrix}\\).",
+   "explanation": "\\(ad-bc = 1(2) - (-1)((-9)) = 2 - 9 = -7\\)",
+   "payload": {
+    "options": [
+     "-13",
+     "-14",
+     "-17",
+     "-7"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-085",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "powers",
+   "prompt": "If \\(A=\\begin{bmatrix}5&-3\\\\2&4\\end{bmatrix}\\), find the (2,2) entry of \\(A^{2}\\).",
+   "explanation": "\\(A^{2}=AA\\); row 2 times column 2: 2((-3)) + 4(4) = 10. (It is not just squaring each entry.)",
+   "payload": {
+    "options": [
+     "10",
+     "8",
+     "13",
+     "9"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-086",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "det-properties",
+   "prompt": "Interchanging two rows of a determinant:",
+   "explanation": "Swapping two rows multiplies the determinant by \\(-1\\).",
+   "payload": {
+    "options": [
+     "leaves it unchanged",
+     "changes its sign",
+     "makes it zero",
+     "doubles it"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-087",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "non-commutative",
+   "prompt": "For two square matrices A and B, in general:",
+   "explanation": "Matrix multiplication is not commutative in general; \\(AB=BA\\) holds only for special pairs.",
+   "payload": {
+    "options": [
+     "\\(AB=A+B\\)",
+     "\\(AB=O\\)",
+     "\\(AB\\neq BA\\)",
+     "\\(AB=BA\\)"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-088",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "det-vandermonde",
+   "prompt": "Evaluate \\(\\begin{vmatrix}1&1&1\\\\a&b&c\\\\a^{2}&b^{2}&c^{2}\\end{vmatrix}\\) for \\(a=1,\\ b=-3,\\ c=0\\).",
+   "explanation": "The determinant equals \\((b-a)(c-a)(c-b)\\) = (-4)(-1)(3) = 12.",
+   "payload": {
+    "options": [
+     "15",
+     "6",
+     "14",
+     "12"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-089",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "transpose",
+   "prompt": "If \\(A=\\begin{bmatrix}8&-1&2&-8\\\\-4&7&-2&3\\end{bmatrix}\\), find the entry in row 1, column 1 of \\(A^{T}\\).",
+   "explanation": "The (i, j) entry of \\(A^{T}\\) is the (j, i) entry of A, so it is \\(a_{11}\\) = 8.",
+   "payload": {
+    "options": [
+     "8",
+     "-1",
+     "2",
+     "-2"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-090",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "singular-nonsingular",
+   "prompt": "Is the matrix \\(\\begin{bmatrix}-3&-6\\\\6&5\\end{bmatrix}\\) singular or non-singular?",
+   "explanation": "\\(|A|=(-3)5 - (-6)6=21\\). A matrix is singular when |A| = 0, so this matrix is non-singular.",
+   "payload": {
+    "options": [
+     "Cannot be determined",
+     "Non-singular",
+     "Not a square matrix",
+     "Singular"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-091",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "adjoint",
+   "prompt": "For \\(A=\\begin{bmatrix}3&-6\\\\-1&-3\\end{bmatrix}\\), find the (2,1) entry of \\(\\operatorname{adj}A\\).",
+   "explanation": "For a 2×2 matrix swap the diagonal entries and change the sign of the other two: \\(\\operatorname{adj}A=\\begin{bmatrix}-3&6\\\\1&3\\end{bmatrix}\\).",
+   "payload": {
+    "options": [
+     "4",
+     "2",
+     "1",
+     "-1"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-092",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "symmetric-skew",
+   "prompt": "Find k so that \\(A=\\begin{bmatrix}0&2k+3\\\\-5&0\\end{bmatrix}\\) is skew-symmetric (\\(a_{12}=-a_{21}\\)).",
+   "explanation": "Skew-symmetric needs \\(a_{12}\\) = -\\(a_{21}\\), so \\(2k+3=5\\), i.e. \\(2k=2\\), giving k = 1.",
+   "payload": {
+    "options": [
+     "5",
+     "3",
+     "11",
+     "1"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-093",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "transpose-of-product",
+   "prompt": "Let \\(A=\\begin{bmatrix}-2&4&0\\\\-3&1&4\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}0&-4\\\\3&-4\\\\1&1\\end{bmatrix}\\). Find the (1,1) entry of \\((AB)^{T}\\).",
+   "explanation": "The (1,1) entry of \\((AB)^{T}\\) is the (1,1) entry of AB: row 1 of A times column 1 of B = 12. (Same as \\(B^{T}A^{T}\\).)",
+   "payload": {
+    "options": [
+     "12",
+     "9",
+     "13",
+     "10"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-094",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "cramers-rule",
+   "prompt": "Solve the system \\(\\left\\{\\begin{aligned}-x + 2y - 2z &= 7\\\\3x - 2y - z &= -4\\\\x - y + z &= -5\\end{aligned}\\right.\\) by Cramer's rule. Find y.",
+   "explanation": "\\(D=-3\\) and \\(D_{y}=3\\), so y = 3/-3 = -1.",
+   "payload": {
+    "options": [
+     "3",
+     "-1",
+     "-2",
+     "9"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-095",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "non-commutative",
+   "prompt": "For \\(A=\\begin{bmatrix}-3&1\\\\-2&-4\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}0&3\\\\3&3\\end{bmatrix}\\), find \\((AB)_{12}-(BA)_{12}\\).",
+   "explanation": "\\((AB)_{12}\\) = -6 and \\((BA)_{12}\\) = -12, so the difference is 6. In general AB and BA are not equal.",
+   "payload": {
+    "options": [
+     "-4",
+     "12",
+     "6",
+     "8"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-096",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "scalar-multiple",
+   "prompt": "If \\(A=\\begin{bmatrix}6&4\\\\1&5\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-4&6\\\\1&3\\end{bmatrix}\\), find the (1,2) entry of \\(4A-2B\\).",
+   "explanation": "Multiply each matrix by its scalar, then add: 4(4) + (-2)(6) = 4.",
+   "payload": {
+    "options": [
+     "3",
+     "28",
+     "9",
+     "4"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-097",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "rank",
+   "prompt": "Find the rank of \\(A=\\begin{bmatrix}6&3\\\\2&4\\\\5&1\\end{bmatrix}\\).",
+   "explanation": "Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 2.",
+   "payload": {
+    "options": [
+     "2",
+     "0",
+     "-2",
+     "7"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-098",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "networks",
+   "prompt": "For the friendship matrix \\(A=\\begin{bmatrix}0&0&1&1\\\\0&0&0&1\\\\1&0&0&1\\\\1&1&1&0\\end{bmatrix}\\), the (3,4) entry of \\(A^{2}\\) counts the 2-step links from C to D. Find it.",
+   "explanation": "Row 3 of A times column 4 of A = 1·1 + 0·1 + 0·1 + 1·0 = 1.",
+   "payload": {
+    "options": [
+     "-9",
+     "1",
+     "4",
+     "-2"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-099",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "det-triangular",
+   "prompt": "Evaluate \\(\\begin{vmatrix}-5&0&0&0\\\\1&-2&0&0\\\\4&-6&5&0\\\\7&-4&7&-2\\end{vmatrix}\\).",
+   "explanation": "The matrix is lower triangular, so the determinant is the product of the diagonal entries: (-5) · (-2) · 5 · (-2) = -100.",
+   "payload": {
+    "options": [
+     "-98",
+     "-200",
+     "-100",
+     "-110"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-100",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "area-by-determinant",
+   "prompt": "Find the area of the triangle with vertices (2, 3), (-2, 2), (-1, 2) using a determinant.",
+   "explanation": "Area = ½|\\(\\begin{vmatrix}2&3&1\\\\-2&2&1\\\\-1&2&1\\end{vmatrix}\\)| = ½|1| = \\(\\frac{1}{2}\\) square units.",
+   "payload": {
+    "options": [
+     "\\(1\\)",
+     "\\(\\frac{1}{4}\\)",
+     "\\(\\frac{3}{2}\\)",
+     "\\(\\frac{1}{2}\\)"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-101",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "powers",
+   "prompt": "If \\(A=\\begin{bmatrix}4&0\\\\0&3\\end{bmatrix}\\), find the (2,2) entry of \\(A^{5}\\).",
+   "explanation": "For a diagonal matrix, \\(A^{5}\\) has diagonal entries \\(4^{5}\\) and \\(3^{5}\\); the (2,2) entry is \\(3^{5}\\) = 243.",
+   "payload": {
+    "options": [
+     "243",
+     "244",
+     "487",
+     "1024"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-102",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "Square matrices A and B of the same order have \\(|A|=5\\) and \\(|B|=4\\). Find \\(|A^{2}|\\).",
+   "explanation": "Use \\(|XY|=|X||Y|\\) and \\(|X^{T}|=|X|\\): \\(|A^{2}|\\) = 25.",
+   "payload": {
+    "options": [
+     "29",
+     "25",
+     "9",
+     "28"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-103",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "gaussian-elimination",
+   "prompt": "Gaussian elimination reduces a system to \\(\\left[\\begin{array}{ccc|c}1&-3&-3&-17\\\\0&1&-3&-3\\\\0&0&1&2\\end{array}\\right]\\). Find y by back-substitution.",
+   "explanation": "From the last row z = 2. The second row gives y = -3 - (-3)(2) = 3. ",
+   "payload": {
+    "options": [
+     "-7",
+     "-3",
+     "3",
+     "6"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-104",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "row-operations",
+   "prompt": "Apply \\(R_{2}\\to R_{2}+3R_{1}\\) to \\(A=\\begin{bmatrix}-6&3&7\\\\-5&-3&4\\end{bmatrix}\\). What is the new entry in row 2, column 1?",
+   "explanation": "New entry = (-5) + 3((-6)) = -23.",
+   "payload": {
+    "options": [
+     "-45",
+     "-13",
+     "24",
+     "-23"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-105",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "det-properties",
+   "prompt": "If A is 2×2 with \\(|A|=-3\\), find \\(|(A^{2})^{-1}|\\).",
+   "explanation": "\\(|A^{2}|\\) = 9, so its inverse has determinant \\(\\frac{1}{9}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{1}{9}\\)",
+     "\\(-\\frac{1}{6}\\)",
+     "\\(\\frac{1}{3}\\)",
+     "\\(-3\\)"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-106",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "Let \\(A=\\begin{bmatrix}-3&-1\\\\0&-1\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}5&2\\\\-2&-1\\end{bmatrix}\\). Find the (1,2) entry of \\(AB\\).",
+   "explanation": "Row 1 of A times column 2 of B: (-3)(2) + (-1)((-1)) = -5.",
+   "payload": {
+    "options": [
+     "7",
+     "-5",
+     "-9",
+     "6"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-107",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "singular-k",
+   "prompt": "Find k so that \\(\\begin{vmatrix}k&3&-2\\\\0&2&4\\\\-1&-3&2\\end{vmatrix}\\) is singular.",
+   "explanation": "Expanding, \\(|A|=16 k - 16\\). Setting \\(|A|=0\\) gives k = 1.",
+   "payload": {
+    "options": [
+     "2",
+     "-9",
+     "1",
+     "4"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-108",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}-2&7&7\\\\6&3&5\\\\1&0&-4\\end{bmatrix}\\), find the cofactor \\(C_{13}\\).",
+   "explanation": "\\(M_{13}\\) = -3, and the sign is \\((-1)^{1+3}\\) = +1. So \\(C_{13}\\) = -3.",
+   "payload": {
+    "options": [
+     "-13",
+     "7",
+     "0",
+     "-3"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-109",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "inverse-3x3",
+   "prompt": "Find the (2,1) entry of \\(A^{-1}\\) for \\(A=\\begin{bmatrix}3&10&-3\\\\-1&-3&1\\\\0&-2&1\\end{bmatrix}\\).",
+   "explanation": "\\(|A|=1\\), so \\(A^{-1}=\\operatorname{adj}A/|A|\\) = \\(\\operatorname{adj}A\\). Its (2,1) entry is 1.",
+   "payload": {
+    "options": [
+     "1",
+     "-4",
+     "-1",
+     "2"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-110",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "cofactor-expansion",
+   "prompt": "Row 3 of a 3×3 determinant is \\(3,-2,2\\) and the cofactors of these entries are \\(2,3,-5\\). Find the determinant.",
+   "explanation": "Expand along row 3: 3(2) + (-2)(3) + 2((-5)) = -10.",
+   "payload": {
+    "options": [
+     "3",
+     "-10",
+     "-5",
+     "-19"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-111",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "entry-notation",
+   "prompt": "In \\(A=\\begin{bmatrix}-6&-7&8&1\\\\5&3&5&-1\\\\2&1&3&2\\end{bmatrix}\\), find the entry \\(a_{11}\\).",
+   "explanation": "\\(a_{11}\\) lies in row 1 and column 1, so it is -6.",
+   "payload": {
+    "options": [
+     "1",
+     "2",
+     "-6",
+     "-5"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-112",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}5&-2&5\\\\-1&6&-4\\\\4&0&5\\end{bmatrix}\\), find the minor \\(M_{12}\\).",
+   "explanation": "Delete row 1 and column 2: \\(M_{12}=\\begin{vmatrix}-1&-4\\\\4&5\\end{vmatrix}\\) = 11.",
+   "payload": {
+    "options": [
+     "23",
+     "12",
+     "1",
+     "11"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-113",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "networks",
+   "prompt": "The matrix \\(\\begin{bmatrix}0&1&1&0\\\\1&0&1&0\\\\1&1&0&1\\\\0&0&1&0\\end{bmatrix}\\) shows friendships among 4 people. How many friendships (pairs) are there in total?",
+   "explanation": "The sum of all entries is 8, and each friendship is counted twice, so there are 4 pairs.",
+   "payload": {
+    "options": [
+     "4",
+     "-4",
+     "5",
+     "-6"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-114",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}6x - 3y &= -21\\\\-5x + 2y &= 17\\end{aligned}\\right.\\), find \\(D_{x}\\) (the determinant with the x-column replaced by the constants).",
+   "explanation": "\\(D_{x}=\\begin{vmatrix}-21&-3\\\\17&2\\end{vmatrix}\\) = 9.",
+   "payload": {
+    "options": [
+     "1",
+     "9",
+     "18",
+     "-3"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-115",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "det-triangular",
+   "prompt": "Evaluate \\(\\begin{vmatrix}-5&7&7&3\\\\0&-5&-2&5\\\\0&0&5&-4\\\\0&0&0&-1\\end{vmatrix}\\).",
+   "explanation": "The matrix is upper triangular, so the determinant is the product of the diagonal entries: (-5) · (-5) · 5 · (-1) = -125.",
+   "payload": {
+    "options": [
+     "126",
+     "-122",
+     "-125",
+     "125"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-116",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "Square matrices A and B of the same order have \\(|A|=-5\\) and \\(|B|=-3\\). Find \\(|A^{T}B|\\).",
+   "explanation": "Use \\(|XY|=|X||Y|\\) and \\(|X^{T}|=|X|\\): \\(|A^{T}B|\\) = 15.",
+   "payload": {
+    "options": [
+     "12",
+     "18",
+     "16",
+     "15"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-117",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "consistency",
+   "prompt": "A non-homogeneous system has 4 unknowns, \\(\\operatorname{rank}A=4\\) and \\(\\operatorname{rank}[A:B]=5\\). The system has:",
+   "explanation": "Compare the ranks: unequal ranks mean the system is inconsistent, so there is no solution.",
+   "payload": {
+    "options": [
+     "No solution",
+     "Only the trivial solution",
+     "Unique solution",
+     "Infinitely many solutions"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-118",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "consistency",
+   "prompt": "A non-homogeneous system has 3 unknowns, \\(\\operatorname{rank}A=3\\) and \\(\\operatorname{rank}[A:B]=4\\). The system has:",
+   "explanation": "Compare the ranks: unequal ranks mean the system is inconsistent, so there is no solution.",
+   "payload": {
+    "options": [
+     "Infinitely many solutions",
+     "No solution",
+     "Only the trivial solution",
+     "Unique solution"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-119",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "singular-k",
+   "prompt": "Find k so that \\(\\begin{vmatrix}-3&-3&-2\\\\0&k&0\\\\-1&-1&3\\end{vmatrix}\\) is singular.",
+   "explanation": "Expanding, \\(|A|=- 11 k\\). Setting \\(|A|=0\\) gives k = 0.",
+   "payload": {
+    "options": [
+     "-10",
+     "3",
+     "0",
+     "10"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-120",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "matrix-equation",
+   "prompt": "If \\(X+A=B\\) where \\(A=\\begin{bmatrix}6&1\\\\-2&2\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}5&4\\\\0&5\\end{bmatrix}\\), find the (1,1) entry of X.",
+   "explanation": "\\(X=B-A\\); entry (1,1): (5 - 6) = -1.",
+   "payload": {
+    "options": [
+     "9",
+     "11",
+     "-11",
+     "-1"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-121",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "gaussian-elimination",
+   "prompt": "Gaussian elimination reduces a system to \\(\\left[\\begin{array}{ccc|c}1&-3&2&6\\\\0&1&4&20\\\\0&0&1&5\\end{array}\\right]\\). Find y by back-substitution.",
+   "explanation": "From the last row z = 5. The second row gives y = 20 - 4(5) = 0. ",
+   "payload": {
+    "options": [
+     "0",
+     "2",
+     "-10",
+     "-2"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-122",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "symmetric-skew",
+   "prompt": "Find k so that \\(A=\\begin{bmatrix}-5&-k-5\\\\3k+7&-4\\end{bmatrix}\\) is symmetric (\\(a_{12}=a_{21}\\)).",
+   "explanation": "Symmetric needs \\(a_{12}\\) = \\(a_{21}\\): \\(-k-5=3k+7\\), so \\(-4k=12\\) and k = -3.",
+   "payload": {
+    "options": [
+     "0",
+     "-3",
+     "1",
+     "-6"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-123",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "Adding a multiple of one row to another row:",
+   "explanation": "The operation \\(R_{i}\\to R_{i}+kR_{j}\\) leaves the value unchanged.",
+   "payload": {
+    "options": [
+     "makes it zero",
+     "multiplies it by the multiple",
+     "does not change the determinant",
+     "changes its sign"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-124",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "transpose",
+   "prompt": "If \\(A=\\begin{bmatrix}-2&-3&7&-6\\\\-1&0&5&-6\\end{bmatrix}\\), find the entry in row 4, column 1 of \\(A^{T}\\).",
+   "explanation": "The (i, j) entry of \\(A^{T}\\) is the (j, i) entry of A, so it is \\(a_{14}\\) = -6.",
+   "payload": {
+    "options": [
+     "5",
+     "-1",
+     "-3",
+     "-6"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-125",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "singular-k",
+   "prompt": "Find k so that \\(\\begin{vmatrix}-2&4&0\\\\-1&-1&-3\\\\0&0&k\\end{vmatrix}\\) is singular.",
+   "explanation": "Expanding, \\(|A|=6 k\\). Setting \\(|A|=0\\) gives k = 0.",
+   "payload": {
+    "options": [
+     "0",
+     "-1",
+     "-3",
+     "-10"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-126",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "cipher-decode",
+   "prompt": "A two-letter word (A=1,…,Z=26) was coded as \\(\\begin{bmatrix}-27&-13\\end{bmatrix}\\) using a key whose inverse is \\(K^{-1}=\\begin{bmatrix}-1&-2\\\\1&3\\end{bmatrix}\\). What is letter 1 of the word?",
+   "explanation": "Decode by post-multiplying by the inverse key: \\(\\begin{bmatrix}-27&-13\\end{bmatrix}\\begin{bmatrix}-1&-2\\\\1&3\\end{bmatrix}=\\begin{bmatrix}14&15\\end{bmatrix}\\), so the numbers are 14 and 15, i.e. NO. Letter 1 is N.",
+   "payload": {
+    "options": [
+     "P",
+     "N",
+     "M",
+     "O"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-127",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "symmetric-skew",
+   "prompt": "Find k so that \\(A=\\begin{bmatrix}0&4k+3\\\\-3&0\\end{bmatrix}\\) is skew-symmetric (\\(a_{12}=-a_{21}\\)).",
+   "explanation": "Skew-symmetric needs \\(a_{12}\\) = -\\(a_{21}\\), so \\(4k+3=3\\), i.e. \\(4k=0\\), giving k = 0.",
+   "payload": {
+    "options": [
+     "-10",
+     "-2",
+     "0",
+     "-3"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-128",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "If A is a 2×2 matrix with \\(|A|=-2\\), find \\(|-2A|\\).",
+   "explanation": "For an n×n matrix \\(|kA|=k^{n}|A|\\). Here n = 2: \\((-2)^{2}\\)(-2) = -8.",
+   "payload": {
+    "options": [
+     "-7",
+     "-16",
+     "4",
+     "-8"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-129",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "rank",
+   "prompt": "Find the rank of \\(A=\\begin{bmatrix}0&4&-2\\\\-6&4&1\\\\4&-4&0\\end{bmatrix}\\).",
+   "explanation": "Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 2.",
+   "payload": {
+    "options": [
+     "2",
+     "4",
+     "0",
+     "3"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-130",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "adjoint",
+   "prompt": "\\(A\\,\\operatorname{adj}A\\) equals:",
+   "explanation": "The key identity is \\(A\\operatorname{adj}A=\\operatorname{adj}A\\,A=|A|I\\).",
+   "payload": {
+    "options": [
+     "\\(|A|A\\)",
+     "\\(|A|I\\)",
+     "\\(A^{2}\\)",
+     "\\(I\\)"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-131",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "rank",
+   "prompt": "Find the rank of \\(A=\\begin{bmatrix}2&4&2\\\\-4&-8&8\\\\-5&-3&9\\end{bmatrix}\\).",
+   "explanation": "Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 3.",
+   "payload": {
+    "options": [
+     "5",
+     "-3",
+     "3",
+     "4"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-132",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "Square matrices A and B of the same order have \\(|A|=4\\) and \\(|B|=5\\). Find \\(|AB|\\).",
+   "explanation": "Use \\(|XY|=|X||Y|\\) and \\(|X^{T}|=|X|\\): \\(|AB|\\) = 20.",
+   "payload": {
+    "options": [
+     "-20",
+     "23",
+     "18",
+     "20"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-133",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "product-entry",
+   "prompt": "Let \\(A=\\begin{bmatrix}-3&-2\\\\3&1\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}3&-5\\\\-4&-3\\end{bmatrix}\\). Find the trace of \\(AB\\).",
+   "explanation": "\\(AB=\\begin{bmatrix}-1&21\\\\5&-18\\end{bmatrix}\\), so the trace is -1 + (-18) = -19.",
+   "payload": {
+    "options": [
+     "-19",
+     "-9",
+     "-20",
+     "-17"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-134",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "singular-k",
+   "prompt": "For what value of k is \\(\\begin{vmatrix}-2&4\\\\-2&k\\end{vmatrix}\\) singular (determinant 0)?",
+   "explanation": "\\(\\begin{vmatrix}-2&4\\\\-2&k\\end{vmatrix}=-2k - (-8)\\); setting it to 0 gives \\(-2k=-8\\), so k = 4.",
+   "payload": {
+    "options": [
+     "5",
+     "4",
+     "8",
+     "6"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-135",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}3&0&7\\\\-3&-2&-3\\\\7&2&-5\\end{bmatrix}\\), find the cofactor \\(C_{13}\\).",
+   "explanation": "\\(M_{13}\\) = 8, and the sign is \\((-1)^{1+3}\\) = +1. So \\(C_{13}\\) = 8.",
+   "payload": {
+    "options": [
+     "16",
+     "7",
+     "8",
+     "-2"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-136",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "add-subtract",
+   "prompt": "If \\(A=\\begin{bmatrix}5&-7\\\\5&-5\\\\-5&5\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-2&6\\\\9&-6\\\\0&-5\\end{bmatrix}\\), find the (1,1) entry of \\(A-B\\).",
+   "explanation": "Add/subtract corresponding entries: 5 - (-2) = 7.",
+   "payload": {
+    "options": [
+     "14",
+     "3",
+     "9",
+     "7"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-137",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "symmetric-skew",
+   "prompt": "Find k so that \\(A=\\begin{bmatrix}-1&2k-4\\\\-3k+11&-2\\end{bmatrix}\\) is symmetric (\\(a_{12}=a_{21}\\)).",
+   "explanation": "Symmetric needs \\(a_{12}\\) = \\(a_{21}\\): \\(2k-4=-3k+11\\), so \\(5k=15\\) and k = 3.",
+   "payload": {
+    "options": [
+     "3",
+     "-7",
+     "1",
+     "5"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-138",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "rank",
+   "prompt": "Find the rank of \\(A=\\begin{bmatrix}-2&-5\\\\-6&3\\end{bmatrix}\\).",
+   "explanation": "Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 2.",
+   "payload": {
+    "options": [
+     "4",
+     "2",
+     "0",
+     "7"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-139",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "consistency",
+   "prompt": "After row operations the augmented matrix of a system in x, y, z is \\(\\left[\\begin{array}{ccc|c}1&1&0&-5\\\\0&1&-1&0\\\\0&0&0&0\\end{array}\\right]\\). How many solutions does the system have?",
+   "explanation": "rank A = 2 and rank [A:B] = 2, with n = 3 unknowns. Ranks equal but less than n: infinitely many solutions (free variables).",
+   "payload": {
+    "options": [
+     "Only the trivial solution",
+     "Unique solution",
+     "Infinitely many solutions",
+     "No solution"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-140",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "det-row-ops",
+   "prompt": "A 3×3 matrix has determinant 1. Its determinant after the row operations R1 → 2R1; then R3 → R3 + 3R2; then R3 → R3 + 3R1 (in this order) is:",
+   "explanation": "Track each operation: R1 → 2R1: multiplies the determinant by 2; R3 → R3 + 3R2: no change; R3 → R3 + 3R1: no change. Result: 2.",
+   "payload": {
+    "options": [
+     "0",
+     "12",
+     "-2",
+     "2"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-141",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "Evaluate \\(\\begin{vmatrix}-2&-9\\\\1&-5\\end{vmatrix}\\).",
+   "explanation": "\\(ad-bc = (-2)((-5)) - (-9)(1) = 10 - (-9) = 19\\)",
+   "payload": {
+    "options": [
+     "19",
+     "9",
+     "39",
+     "16"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-142",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "area-by-determinant",
+   "prompt": "Find the area of the triangle with vertices (2, -3), (-1, 1), (1, -3) using a determinant.",
+   "explanation": "Area = ½|\\(\\begin{vmatrix}2&-3&1\\\\-1&1&1\\\\1&-3&1\\end{vmatrix}\\)| = ½|4| = \\(2\\) square units.",
+   "payload": {
+    "options": [
+     "4",
+     "2",
+     "3",
+     "0"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-143",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "product-order",
+   "prompt": "If \\(A\\) has order 5 × 5 and \\(B\\) has order 5 × 3, what is the order of \\(AB\\)?",
+   "explanation": "AB is defined because the columns of A (5) equal the rows of B (5); the order is rows of A × columns of B = 5 × 3.",
+   "payload": {
+    "options": [
+     "Not defined",
+     "5 × 5",
+     "5 × 3",
+     "3 × 5"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-144",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "adjoint",
+   "prompt": "For \\(A=\\begin{bmatrix}7&1\\\\-4&-4\\end{bmatrix}\\), find the (2,1) entry of \\(\\operatorname{adj}A\\).",
+   "explanation": "For a 2×2 matrix swap the diagonal entries and change the sign of the other two: \\(\\operatorname{adj}A=\\begin{bmatrix}-4&-1\\\\4&7\\end{bmatrix}\\).",
+   "payload": {
+    "options": [
+     "1",
+     "9",
+     "3",
+     "4"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-145",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "rank",
+   "prompt": "What is the largest possible rank of a 2×5 matrix?",
+   "explanation": "Rank cannot exceed the number of rows or the number of columns, so the maximum is min(2, 5) = 2.",
+   "payload": {
+    "options": [
+     "2",
+     "7",
+     "1",
+     "3"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-146",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "det-properties",
+   "prompt": "Without expanding, find the value of \\(\\begin{vmatrix}4&-6&-2\\\\0&0&0\\\\5&-1&-3\\end{vmatrix}\\).",
+   "explanation": "The determinant is 0 because the matrix has a row of zeros.",
+   "payload": {
+    "options": [
+     "-2",
+     "0",
+     "-1",
+     "2"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-147",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "product-entry",
+   "prompt": "Let \\(A=\\begin{bmatrix}0&0&-4\\\\-3&3&-4\\\\-2&5&-2\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-2&-1&-3\\\\-2&-1&-2\\\\2&0&1\\end{bmatrix}\\). Find the (2,2) entry of \\(AB\\).",
+   "explanation": "Row 2 of A times column 2 of B: (-3)((-1)) + 3((-1)) + (-4)(0) = 0.",
+   "payload": {
+    "options": [
+     "-3",
+     "1",
+     "0",
+     "-1"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-148",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "det-properties",
+   "prompt": "Find the determinant of the identity matrix \\(I_{2}\\).",
+   "explanation": "The identity matrix is triangular with diagonal entries all 1, so its determinant is 1.",
+   "payload": {
+    "options": [
+     "0",
+     "-1",
+     "3",
+     "1"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-149",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "translation",
+   "prompt": "The point (-6, 7) is translated by \\((-3,-2)\\) (add -3 to x and -2 to y). Find the new x-coordinate.",
+   "explanation": "New x = old x + shift = (-6) + (-3) = -9.",
+   "payload": {
+    "options": [
+     "-9",
+     "-12",
+     "-6",
+     "1"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-150",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "Evaluate \\(\\begin{vmatrix}7&-5\\\\-9&-7\\end{vmatrix}\\).",
+   "explanation": "\\(ad-bc = 7((-7)) - (-5)((-9)) = -49 - 45 = -94\\)",
+   "payload": {
+    "options": [
+     "-97",
+     "-94",
+     "-104",
+     "-4"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-151",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "If A is a 3×3 matrix with \\(|A|=-2\\), find \\(|4A|\\).",
+   "explanation": "For an n×n matrix \\(|kA|=k^{n}|A|\\). Here n = 3: \\(4^{3}\\)(-2) = -128.",
+   "payload": {
+    "options": [
+     "128",
+     "129",
+     "-128",
+     "-130"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-152",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "transpose-of-product",
+   "prompt": "Let \\(A=\\begin{bmatrix}3&5&5\\\\4&2&1\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}1&-3\\\\5&-2\\\\0&-1\\end{bmatrix}\\). Find the (2,1) entry of \\((AB)^{T}\\).",
+   "explanation": "The (2,1) entry of \\((AB)^{T}\\) is the (1,2) entry of AB: row 1 of A times column 2 of B = -24. (Same as \\(B^{T}A^{T}\\).)",
+   "payload": {
+    "options": [
+     "-47",
+     "-23",
+     "-14",
+     "-24"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-153",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "non-commutative",
+   "prompt": "For \\(A=\\begin{bmatrix}5&2\\\\-4&-2\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-3&3\\\\4&4\\end{bmatrix}\\), find \\((AB)_{21}-(BA)_{21}\\).",
+   "explanation": "\\((AB)_{21}\\) = 4 and \\((BA)_{21}\\) = 4, so the difference is 0. In general AB and BA are not equal.",
+   "payload": {
+    "options": [
+     "0",
+     "3",
+     "1",
+     "-3"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-154",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}-2x + y &= 9\\\\-2x - 4y &= -6\\end{aligned}\\right.\\), find \\(D_{x}\\) (the determinant with the x-column replaced by the constants).",
+   "explanation": "\\(D_{x}=\\begin{vmatrix}9&1\\\\-6&-4\\end{vmatrix}\\) = -30.",
+   "payload": {
+    "options": [
+     "-15",
+     "-30",
+     "-3",
+     "10"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-155",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "transpose",
+   "prompt": "\\((kA)^{T}\\) equals:",
+   "explanation": "A scalar can be taken out of a transpose.",
+   "payload": {
+    "options": [
+     "\\(A^{T}/k\\)",
+     "\\((A^{T})^{-1}\\)",
+     "\\(kA^{T}\\)",
+     "\\(k^{2}A^{T}\\)"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-156",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "consistency",
+   "prompt": "After row operations the augmented matrix of a system in x, y, z is \\(\\left[\\begin{array}{ccc|c}1&2&-2&3\\\\0&1&-1&3\\\\0&0&0&0\\end{array}\\right]\\). How many solutions does the system have?",
+   "explanation": "rank A = 2 and rank [A:B] = 2, with n = 3 unknowns. Ranks equal but less than n: infinitely many solutions (free variables).",
+   "payload": {
+    "options": [
+     "No solution",
+     "Only the trivial solution",
+     "Unique solution",
+     "Infinitely many solutions"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-157",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "det-row-ops",
+   "prompt": "A 3×3 matrix has determinant 4. Its determinant after the row operations R1 → R1 - 2R3; then R3 → -R3 (in this order) is:",
+   "explanation": "Track each operation: R1 → R1 - 2R3: no change; R3 → -R3: multiplies the determinant by -1. Result: -4.",
+   "payload": {
+    "options": [
+     "-4",
+     "-5",
+     "6",
+     "-1"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-158",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}1&0&-2\\\\6&-1&-6\\\\6&4&-4\\end{bmatrix}\\), find the minor \\(M_{23}\\).",
+   "explanation": "Delete row 2 and column 3: \\(M_{23}=\\begin{vmatrix}1&0\\\\6&4\\end{vmatrix}\\) = 4.",
+   "payload": {
+    "options": [
+     "1",
+     "4",
+     "8",
+     "9"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-159",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "multiplication-laws",
+   "prompt": "Which law holds for matrix multiplication (when the products are defined)?",
+   "explanation": "Matrix multiplication is associative.",
+   "payload": {
+    "options": [
+     "\\(A(BC)=(AB)(AC)\\)",
+     "\\(AB=BA\\)",
+     "\\((AB)C=A(BC)\\)",
+     "\\((AB)^{T}=A^{T}B^{T}\\)"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-160",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "multiplication-laws",
+   "prompt": "\\((A+B)^{2}\\) equals \\(A^{2}+2AB+B^{2}\\):",
+   "explanation": "\\((A+B)^{2}=A^{2}+AB+BA+B^{2}\\), which equals \\(A^{2}+2AB+B^{2}\\) only if \\(AB=BA\\).",
+   "payload": {
+    "options": [
+     "never",
+     "always",
+     "only when A = B",
+     "only when AB = BA"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-161",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "non-commutative",
+   "prompt": "For \\(A=\\begin{bmatrix}3&-3\\\\3&0\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}2&5\\\\4&-3\\end{bmatrix}\\), find \\((AB)_{21}-(BA)_{21}\\).",
+   "explanation": "\\((AB)_{21}\\) = 6 and \\((BA)_{21}\\) = 3, so the difference is 3. In general AB and BA are not equal.",
+   "payload": {
+    "options": [
+     "3",
+     "4",
+     "2",
+     "13"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-162",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "Find the determinant of the scalar matrix \\(5I_{2}\\).",
+   "explanation": "It is diagonal with 2 entries 5, so the determinant is \\(5^{2}\\) = 25.",
+   "payload": {
+    "options": [
+     "28",
+     "25",
+     "15",
+     "-25"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-163",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "types-of-matrices",
+   "prompt": "A matrix with exactly one row is called a:",
+   "explanation": "A matrix of order \\(1\\times n\\) is a row matrix.",
+   "payload": {
+    "options": [
+     "scalar matrix",
+     "square matrix",
+     "row matrix",
+     "column matrix"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-164",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "scalar-multiple",
+   "prompt": "If \\(A=\\begin{bmatrix}6&7\\\\2&6\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-4&-3\\\\5&-4\\end{bmatrix}\\), find the (2,2) entry of \\(3A+4B\\).",
+   "explanation": "Multiply each matrix by its scalar, then add: 3(6) + 4((-4)) = 2.",
+   "payload": {
+    "options": [
+     "4",
+     "1",
+     "-2",
+     "2"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-165",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "add-subtract",
+   "prompt": "If \\(A=\\begin{bmatrix}-1&-4&-7\\\\-4&0&1\\\\2&-3&7\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}1&-5&-1\\\\9&-7&-2\\\\5&5&-9\\end{bmatrix}\\), find the (2,1) entry of \\(A+B\\).",
+   "explanation": "Add/subtract corresponding entries: (-4) + 9 = 5.",
+   "payload": {
+    "options": [
+     "5",
+     "8",
+     "3",
+     "4"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-166",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "sym-skew-decomposition",
+   "prompt": "For \\(A=\\begin{bmatrix}9&6\\\\-6&-5\\end{bmatrix}\\), find the (2,1) entry of the skew-symmetric part \\(\\frac{1}{2}(A-A^{T})\\).",
+   "explanation": "\\(\\frac{1}{2}(A-A^{T})\\) has entry (2,1) = (\\(a_{21}\\) - \\(a_{12}\\))/2 = (-6 - 6)/2 = -6.",
+   "payload": {
+    "options": [
+     "-5",
+     "-6",
+     "-16",
+     "6"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-167",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "If A is a 3×3 matrix with \\(|A|=2\\), find \\(|5A|\\).",
+   "explanation": "For an n×n matrix \\(|kA|=k^{n}|A|\\). Here n = 3: \\(5^{3}\\)(2) = 250.",
+   "payload": {
+    "options": [
+     "260",
+     "1250",
+     "250",
+     "240"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-168",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "matrix-equation",
+   "prompt": "If \\(3X+A=B\\) where \\(A=\\begin{bmatrix}3&3\\\\-6&-1\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-6&9\\\\12&-13\\end{bmatrix}\\), find the (1,2) entry of X.",
+   "explanation": "\\(3X=B-A\\); entry (1,2): (9 - 3) / 3 = 2.",
+   "payload": {
+    "options": [
+     "-8",
+     "12",
+     "9",
+     "2"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-169",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}3&-6&-1\\\\7&-6&3\\\\-5&6&1\\end{bmatrix}\\), find the cofactor \\(C_{13}\\).",
+   "explanation": "\\(M_{13}\\) = 12, and the sign is \\((-1)^{1+3}\\) = +1. So \\(C_{13}\\) = 12.",
+   "payload": {
+    "options": [
+     "12",
+     "10",
+     "22",
+     "2"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-170",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "Evaluate \\(\\begin{vmatrix}5&3&-4\\\\1&-1&-3\\\\2&-1&3\\end{vmatrix}\\).",
+   "explanation": "Positive terms (aei + bfg + cdh) = -29; negative terms (ceg + afh + bdi) = 32. So the value is -29 - 32 = -61.",
+   "payload": {
+    "options": [
+     "-51",
+     "-61",
+     "-121",
+     "-122"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-171",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "types-of-matrices",
+   "prompt": "Which name describes the matrix \\(\\begin{bmatrix}2\\\\-5\\end{bmatrix}\\)?",
+   "explanation": "This is a column matrix because it has only one column.",
+   "payload": {
+    "options": [
+     "Skew-symmetric matrix",
+     "Diagonal matrix",
+     "Column matrix",
+     "Upper triangular matrix"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-172",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "consistency",
+   "prompt": "A system of linear equations with no solution is called:",
+   "explanation": "Consistent means at least one solution; inconsistent means none.",
+   "payload": {
+    "options": [
+     "dependent",
+     "homogeneous",
+     "consistent",
+     "inconsistent"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-173",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "product-order",
+   "prompt": "If \\(A\\) has order 3 × 1 and \\(B\\) has order 1 × 1, what is the order of \\(AB\\)?",
+   "explanation": "AB is defined because the columns of A (1) equal the rows of B (1); the order is rows of A × columns of B = 3 × 1.",
+   "payload": {
+    "options": [
+     "3 × 1",
+     "Not defined",
+     "1 × 3",
+     "1 × 1"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-174",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "networks",
+   "prompt": "For the friendship matrix \\(A=\\begin{bmatrix}0&1&0&0\\\\1&0&1&1\\\\0&1&0&1\\\\0&1&1&0\\end{bmatrix}\\), the (4,2) entry of \\(A^{2}\\) counts the 2-step links from D to B. Find it.",
+   "explanation": "Row 4 of A times column 2 of A = 0·1 + 1·0 + 1·1 + 0·1 = 1.",
+   "payload": {
+    "options": [
+     "8",
+     "1",
+     "3",
+     "-2"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-175",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "sym-skew-decomposition",
+   "prompt": "For \\(A=\\begin{bmatrix}-5&6\\\\-4&-4\\end{bmatrix}\\), find the (1,2) entry of the skew-symmetric part \\(\\frac{1}{2}(A-A^{T})\\).",
+   "explanation": "\\(\\frac{1}{2}(A-A^{T})\\) has entry (1,2) = (\\(a_{12}\\) - \\(a_{21}\\))/2 = (6 - (-4))/2 = 5.",
+   "payload": {
+    "options": [
+     "8",
+     "15",
+     "5",
+     "9"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-176",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "Square matrices A and B of the same order have \\(|A|=3\\) and \\(|B|=1\\). Find \\(|A^{T}B|\\).",
+   "explanation": "Use \\(|XY|=|X||Y|\\) and \\(|X^{T}|=|X|\\): \\(|A^{T}B|\\) = 3.",
+   "payload": {
+    "options": [
+     "-7",
+     "2",
+     "-3",
+     "3"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-177",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "gaussian-elimination",
+   "prompt": "Gaussian elimination reduces a system to \\(\\left[\\begin{array}{ccc|c}1&0&-1&0\\\\0&1&0&2\\\\0&0&1&-3\\end{array}\\right]\\). Find x by back-substitution.",
+   "explanation": "From the last row z = -3. The second row gives y = 2 - 0(-3) = 2. The first row gives x = 0 - 0(2) - (-1)(-3) = -3.",
+   "payload": {
+    "options": [
+     "-3",
+     "-5",
+     "-4",
+     "3"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-178",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "rank",
+   "prompt": "Find the rank of \\(A=\\begin{bmatrix}1&-5&-4\\\\-3&7&0\\\\-4&3&-2\\end{bmatrix}\\).",
+   "explanation": "Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 3.",
+   "payload": {
+    "options": [
+     "0",
+     "3",
+     "2",
+     "-3"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-179",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "networks",
+   "prompt": "The adjacency matrix of an undirected network (no loops) is:",
+   "explanation": "Link i–j is the same as link j–i, so \\(a_{ij}=a_{ji}\\); no loops means \\(a_{ii}=0\\).",
+   "payload": {
+    "options": [
+     "skew-symmetric",
+     "always singular",
+     "symmetric with zeros on the diagonal",
+     "an identity matrix"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-180",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "Evaluate \\(\\begin{vmatrix}-4&2&0\\\\-2&-4&3\\\\-3&-2&3\\end{vmatrix}\\).",
+   "explanation": "Positive terms (aei + bfg + cdh) = 30; negative terms (ceg + afh + bdi) = 12. So the value is 30 - 12 = 18.",
+   "payload": {
+    "options": [
+     "9",
+     "36",
+     "19",
+     "18"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-181",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "trace",
+   "prompt": "Find the trace of \\(A=\\begin{bmatrix}-6&-7&-8\\\\-2&0&-8\\\\-8&-1&8\\end{bmatrix}\\) (the sum of the main-diagonal entries).",
+   "explanation": "Trace = (-6) + 0 + 8 = 2.",
+   "payload": {
+    "options": [
+     "2",
+     "-34",
+     "1",
+     "-1"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-182",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "powers",
+   "prompt": "If \\(A=\\begin{bmatrix}0&2\\\\5&4\\end{bmatrix}\\), find the (2,1) entry of \\(A^{2}\\).",
+   "explanation": "\\(A^{2}=AA\\); row 2 times column 1: 5(0) + 4(5) = 20. (It is not just squaring each entry.)",
+   "payload": {
+    "options": [
+     "30",
+     "20",
+     "25",
+     "40"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-183",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}5x - 5y &= 20\\\\-4x + 3y &= -15\\end{aligned}\\right.\\), find \\(D_{x}\\) (the determinant with the x-column replaced by the constants).",
+   "explanation": "\\(D_{x}=\\begin{vmatrix}20&-5\\\\-15&3\\end{vmatrix}\\) = -15.",
+   "payload": {
+    "options": [
+     "16",
+     "-29",
+     "-15",
+     "-11"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-184",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "transpose-of-product",
+   "prompt": "Let \\(A=\\begin{bmatrix}1&2&4\\\\3&0&1\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}5&-4\\\\4&3\\\\-4&3\\end{bmatrix}\\). Find the (1,2) entry of \\((AB)^{T}\\).",
+   "explanation": "The (1,2) entry of \\((AB)^{T}\\) is the (2,1) entry of AB: row 2 of A times column 1 of B = 11. (Same as \\(B^{T}A^{T}\\).)",
+   "payload": {
+    "options": [
+     "13",
+     "12",
+     "1",
+     "11"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-185",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "order-of-matrix",
+   "prompt": "State the order of the matrix \\(\\begin{bmatrix}-7&-5\\\\0&-7\\end{bmatrix}\\).",
+   "explanation": "It has 2 row(s) and 2 column(s), so its order is 2 × 2 (rows first, then columns).",
+   "payload": {
+    "options": [
+     "2 × 2",
+     "3 × 2",
+     "4 × 1",
+     "2 × 3"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-186",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "cramers-rule",
+   "prompt": "Solve the system \\(\\left\\{\\begin{aligned}-2x + 3y - 2z &= 6\\\\-2x + 2z &= 12\\\\-x + y &= 5\\end{aligned}\\right.\\) by Cramer's rule. Find z.",
+   "explanation": "\\(D=2\\) and \\(D_{z}=6\\), so z = 6/2 = 3.",
+   "payload": {
+    "options": [
+     "6",
+     "3",
+     "7",
+     "5"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-187",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "det-basics",
+   "prompt": "A determinant can be found only for a:",
+   "explanation": "Determinants are defined for square matrices only.",
+   "payload": {
+    "options": [
+     "row matrix",
+     "rectangular matrix",
+     "square matrix",
+     "column matrix"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-188",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "det-properties",
+   "prompt": "If A is a 3×3 matrix with \\(|A|=4\\), find \\(|A^{-1}|\\).",
+   "explanation": "\\(|A^{-1}|=\\frac{1}{|A|}\\) = \\(\\frac{1}{4}\\).",
+   "payload": {
+    "options": [
+     "\\(4\\)",
+     "\\(\\frac{1}{8}\\)",
+     "\\(-\\frac{1}{4}\\)",
+     "\\(\\frac{1}{4}\\)"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-189",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "networks",
+   "prompt": "The matrix \\(\\begin{bmatrix}0&1&0&1\\\\1&0&0&0\\\\0&0&0&1\\\\1&0&1&0\\end{bmatrix}\\) shows friendships among 4 people. How many friendships (pairs) are there in total?",
+   "explanation": "The sum of all entries is 6, and each friendship is counted twice, so there are 3 pairs.",
+   "payload": {
+    "options": [
+     "3",
+     "1",
+     "5",
+     "7"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-190",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "inverse-2x2",
+   "prompt": "Find the (1,1) entry of \\(A^{-1}\\) for \\(A=\\begin{bmatrix}-3&4\\\\-5&4\\end{bmatrix}\\).",
+   "explanation": "\\(|A|=8\\) and \\(\\operatorname{adj}A=\\begin{bmatrix}4&-4\\\\5&-3\\end{bmatrix}\\), so \\(A^{-1}=\\frac{1}{|A|}\\operatorname{adj}A\\) has (1,1) entry \\(\\frac{1}{2}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{3}{2}\\)",
+     "\\(\\frac{1}{2}\\)",
+     "\\(-\\frac{1}{2}\\)",
+     "\\(32\\)"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-191",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "singular-k",
+   "prompt": "For what value of k is \\(\\begin{vmatrix}5&0\\\\1&k\\end{vmatrix}\\) singular (determinant 0)?",
+   "explanation": "\\(\\begin{vmatrix}5&0\\\\1&k\\end{vmatrix}=5k - 0\\); setting it to 0 gives \\(5k=0\\), so k = 0.",
+   "payload": {
+    "options": [
+     "-10",
+     "-2",
+     "0",
+     "-3"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-192",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "cipher-encode",
+   "prompt": "Using \\(A=1,\\ B=2,\\dots,Z=26\\), the word IN is written as a row matrix and multiplied on the right by the key \\(K=\\begin{bmatrix}1&3\\\\1&4\\end{bmatrix}\\). Find entry 1 of the coded row.",
+   "explanation": "IN → \\(\\begin{bmatrix}9&14\\end{bmatrix}\\). Coded row = \\(\\begin{bmatrix}9&14\\end{bmatrix}\\begin{bmatrix}1&3\\\\1&4\\end{bmatrix}=\\begin{bmatrix}23&83\\end{bmatrix}\\); entry 1 is 23.",
+   "payload": {
+    "options": [
+     "33",
+     "27",
+     "25",
+     "23"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-193",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "matrix-equality",
+   "prompt": "If \\(\\begin{bmatrix}4x-2&-4\\\\3&3y+3\\end{bmatrix}=\\begin{bmatrix}14&-4\\\\3&-9\\end{bmatrix}\\), find \\(x\\).",
+   "explanation": "Equal matrices have equal corresponding entries: \\(4x-2=14\\) gives x = 4; \\(3y+3=-9\\) gives y = -4. So x = 4.",
+   "payload": {
+    "options": [
+     "4",
+     "14",
+     "-4",
+     "7"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-194",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "Evaluate \\(\\begin{vmatrix}-6&-4\\\\-3&-8\\end{vmatrix}\\).",
+   "explanation": "\\(ad-bc = (-6)((-8)) - (-4)((-3)) = 48 - 12 = 36\\)",
+   "payload": {
+    "options": [
+     "73",
+     "36",
+     "37",
+     "38"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-195",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "scalar-multiple",
+   "prompt": "If \\(A=\\begin{bmatrix}-2&-3&5\\\\6&-2&7\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-2&0&1\\\\-1&3&-4\\end{bmatrix}\\), find the (1,2) entry of \\(-A+3B\\).",
+   "explanation": "Multiply each matrix by its scalar, then add: (-1)((-3)) + 3(0) = 3.",
+   "payload": {
+    "options": [
+     "13",
+     "4",
+     "3",
+     "6"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-196",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "rank",
+   "prompt": "Find the rank of \\(A=\\begin{bmatrix}6&3\\\\0&0\\end{bmatrix}\\).",
+   "explanation": "Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 1.",
+   "payload": {
+    "options": [
+     "-1",
+     "2",
+     "6",
+     "1"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-197",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "powers",
+   "prompt": "If \\(A=\\begin{bmatrix}2&4\\\\1&4\\end{bmatrix}\\), find the (1,2) entry of \\(A^{2}\\).",
+   "explanation": "\\(A^{2}=AA\\); row 1 times column 2: 2(4) + 4(4) = 24. (It is not just squaring each entry.)",
+   "payload": {
+    "options": [
+     "24",
+     "12",
+     "23",
+     "49"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-198",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "rank",
+   "prompt": "Find the rank of \\(A=\\begin{bmatrix}-6&0\\\\6&-4\\end{bmatrix}\\).",
+   "explanation": "Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 2.",
+   "payload": {
+    "options": [
+     "7",
+     "2",
+     "1",
+     "-2"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-199",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "inverse-3x3",
+   "prompt": "Find the (1,2) entry of \\(A^{-1}\\) for \\(A=\\begin{bmatrix}1&0&-2\\\\-1&1&2\\\\1&-1&-1\\end{bmatrix}\\).",
+   "explanation": "\\(|A|=1\\), so \\(A^{-1}=\\operatorname{adj}A/|A|\\) = \\(\\operatorname{adj}A\\). Its (1,2) entry is 2.",
+   "payload": {
+    "options": [
+     "4",
+     "5",
+     "2",
+     "0"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-200",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "inverse-2x2",
+   "prompt": "Find the (2,1) entry of \\(A^{-1}\\) for \\(A=\\begin{bmatrix}3&0\\\\6&1\\end{bmatrix}\\).",
+   "explanation": "\\(|A|=3\\) and \\(\\operatorname{adj}A=\\begin{bmatrix}1&0\\\\-6&3\\end{bmatrix}\\), so \\(A^{-1}=\\frac{1}{|A|}\\operatorname{adj}A\\) has (2,1) entry \\(-2\\).",
+   "payload": {
+    "options": [
+     "0",
+     "-18",
+     "-3",
+     "-2"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-201",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "inverse-properties",
+   "prompt": "\\(A^{-1}=\\begin{bmatrix}2&1\\\\1&0\\end{bmatrix}\\) and \\(B^{-1}=\\begin{bmatrix}2&1\\\\1&1\\end{bmatrix}\\). Find the (1,1) entry of \\((AB)^{-1}\\).",
+   "explanation": "\\((AB)^{-1}=B^{-1}A^{-1}\\) (reverse order). Multiplying, the (1,1) entry is 5; the other order \\(A^{-1}B^{-1}\\) would give 5.",
+   "payload": {
+    "options": [
+     "5",
+     "6",
+     "7",
+     "4"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-202",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "inverse-properties",
+   "prompt": "\\(A^{-1}=\\begin{bmatrix}0&1\\\\1&-3\\end{bmatrix}\\) and \\(B^{-1}=\\begin{bmatrix}2&-3\\\\-3&4\\end{bmatrix}\\). Find the (1,2) entry of \\((AB)^{-1}\\).",
+   "explanation": "\\((AB)^{-1}=B^{-1}A^{-1}\\) (reverse order). Multiplying, the (1,2) entry is 11; the other order \\(A^{-1}B^{-1}\\) would give 4.",
+   "payload": {
+    "options": [
+     "21",
+     "11",
+     "10",
+     "12"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-203",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "det-triangular",
+   "prompt": "Evaluate \\(\\begin{vmatrix}3&2&-3\\\\0&5&6\\\\0&0&6\\end{vmatrix}\\).",
+   "explanation": "The matrix is upper triangular, so the determinant is the product of the diagonal entries: 3 · 5 · 6 = 90.",
+   "payload": {
+    "options": [
+     "15",
+     "14",
+     "90",
+     "89"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-204",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "symmetric-skew",
+   "prompt": "Find k so that \\(A=\\begin{bmatrix}-5&3k-5\\\\-2k-10&1\\end{bmatrix}\\) is symmetric (\\(a_{12}=a_{21}\\)).",
+   "explanation": "Symmetric needs \\(a_{12}\\) = \\(a_{21}\\): \\(3k-5=-2k-10\\), so \\(5k=-5\\) and k = -1.",
+   "payload": {
+    "options": [
+     "2",
+     "-11",
+     "9",
+     "-1"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-205",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}-x - 3y &= 4\\\\-4x + 6y &= 16\\end{aligned}\\right.\\), find \\(D_{y}\\) (the determinant with the y-column replaced by the constants).",
+   "explanation": "\\(D_{y}=\\begin{vmatrix}-1&4\\\\-4&16\\end{vmatrix}\\) = 0.",
+   "payload": {
+    "options": [
+     "0",
+     "-18",
+     "72",
+     "-1"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-206",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "adjoint",
+   "prompt": "A is 2×2 with \\(|A|=-4\\). Find the (1,2) entry of \\(A\\operatorname{adj}A\\).",
+   "explanation": "\\(A\\operatorname{adj}A=|A|I\\) is a scalar matrix, so every off-diagonal entry is 0.",
+   "payload": {
+    "options": [
+     "1",
+     "0",
+     "16",
+     "-4"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-207",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "homogeneous-k",
+   "prompt": "The system \\(-2x + y = 0\\), \\(4x + ky = 0\\) has a non-trivial solution. Find k.",
+   "explanation": "A homogeneous system has non-trivial solutions iff the coefficient determinant is 0: \\(\\begin{vmatrix}-2&1\\\\4&k\\end{vmatrix}=-2k-4=0\\), so k = -2.",
+   "payload": {
+    "options": [
+     "-1",
+     "2",
+     "-2",
+     "8"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-208",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "consistency",
+   "prompt": "After row operations the augmented matrix of a system in x, y, z is \\(\\left[\\begin{array}{ccc|c}1&-1&-2&-1\\\\0&1&4&-2\\\\0&0&0&0\\end{array}\\right]\\). How many solutions does the system have?",
+   "explanation": "rank A = 2 and rank [A:B] = 2, with n = 3 unknowns. Ranks equal but less than n: infinitely many solutions (free variables).",
+   "payload": {
+    "options": [
+     "Only the trivial solution",
+     "Unique solution",
+     "No solution",
+     "Infinitely many solutions"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-209",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "inverse-3x3",
+   "prompt": "Find the (3,1) entry of \\(A^{-1}\\) for \\(A=\\begin{bmatrix}3&1&0\\\\4&0&1\\\\-4&-1&0\\end{bmatrix}\\).",
+   "explanation": "\\(|A|=-1\\), so \\(A^{-1}=\\operatorname{adj}A/|A|\\) = \\(-\\operatorname{adj}A\\). Its (3,1) entry is 4.",
+   "payload": {
+    "options": [
+     "4",
+     "3",
+     "2",
+     "14"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-210",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "row-operations",
+   "prompt": "Apply \\(R_{1}\\to R_{1}-4R_{2}\\) to \\(A=\\begin{bmatrix}3&-6\\\\2&-1\\end{bmatrix}\\). What is the new entry in row 1, column 2?",
+   "explanation": "New entry = (-6) - 4((-1)) = -2.",
+   "payload": {
+    "options": [
+     "0",
+     "-2",
+     "8",
+     "-5"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-211",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "adjoint",
+   "prompt": "A is 2×2 with \\(|A|=-6\\). Find the (1,2) entry of \\(A\\operatorname{adj}A\\).",
+   "explanation": "\\(A\\operatorname{adj}A=|A|I\\) is a scalar matrix, so every off-diagonal entry is 0.",
+   "payload": {
+    "options": [
+     "-1",
+     "6",
+     "0",
+     "1"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-212",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "row-operations",
+   "prompt": "Apply \\(R_{2}\\to R_{2}-2R_{1}\\) to \\(A=\\begin{bmatrix}-4&-3&-2\\\\-3&-5&7\\\\6&4&1\\end{bmatrix}\\). What is the new entry in row 2, column 3?",
+   "explanation": "New entry = 7 - 2((-2)) = 11.",
+   "payload": {
+    "options": [
+     "23",
+     "22",
+     "3",
+     "11"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-213",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}-2x - 2y - z &= -2\\\\-2y - 2z &= -6\\\\-x + 3z &= 2\\end{aligned}\\right.\\), find the determinant \\(D\\) of the coefficient matrix.",
+   "explanation": "\\(D=\\begin{vmatrix}-2&-2&-1\\\\0&-2&-2\\\\-1&0&3\\end{vmatrix}\\) = 10.",
+   "payload": {
+    "options": [
+     "10",
+     "12",
+     "3",
+     "13"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-214",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "symmetric-skew",
+   "prompt": "Find k so that \\(A=\\begin{bmatrix}0&-2k-2\\\\-6&0\\end{bmatrix}\\) is skew-symmetric (\\(a_{12}=-a_{21}\\)).",
+   "explanation": "Skew-symmetric needs \\(a_{12}\\) = -\\(a_{21}\\), so \\(-2k-2=6\\), i.e. \\(-2k=8\\), giving k = -4.",
+   "payload": {
+    "options": [
+     "-3",
+     "-4",
+     "-14",
+     "-6"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-215",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "consistency",
+   "prompt": "A non-homogeneous system has 4 unknowns, \\(\\operatorname{rank}A=3\\) and \\(\\operatorname{rank}[A:B]=3\\). The system has:",
+   "explanation": "Compare the ranks: equal ranks that are less than n = 4 give infinitely many solutions.",
+   "payload": {
+    "options": [
+     "Unique solution",
+     "No solution",
+     "Infinitely many solutions",
+     "Only the trivial solution"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-216",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}3x + 2y + 2z &= -2\\\\x - y &= 0\\\\x + y + 2z &= -2\\end{aligned}\\right.\\), find the determinant \\(D\\) of the coefficient matrix.",
+   "explanation": "\\(D=\\begin{vmatrix}3&2&2\\\\1&-1&0\\\\1&1&2\\end{vmatrix}\\) = -6.",
+   "payload": {
+    "options": [
+     "-12",
+     "-9",
+     "4",
+     "-6"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-217",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "translation",
+   "prompt": "Multiply \\(\\begin{bmatrix}1&0&-1\\\\0&1&1\\\\0&0&1\\end{bmatrix}\\) by the column \\(\\begin{bmatrix}-5\\\\3\\\\1\\end{bmatrix}\\). What is the first entry of the result?",
+   "explanation": "The product is \\(\\begin{bmatrix}-6\\\\4\\\\1\\end{bmatrix}\\), i.e. the point (-6, 4); the first entry is -6.",
+   "payload": {
+    "options": [
+     "-6",
+     "-12",
+     "-7",
+     "-3"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-218",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "For an \\(n\\times n\\) matrix A, \\(|kA|\\) equals:",
+   "explanation": "Each of the \\(n\\) rows contributes a factor \\(k\\).",
+   "payload": {
+    "options": [
+     "\\(n k|A|\\)",
+     "\\(k^{n}|A|\\)",
+     "\\(k^{n-1}|A|\\)",
+     "\\(k|A|\\)"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-219",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "types-of-matrices",
+   "prompt": "Which name describes the matrix \\(\\begin{bmatrix}3&0\\\\0&3\\end{bmatrix}\\)?",
+   "explanation": "This is a scalar matrix because it is diagonal with equal diagonal entries.",
+   "payload": {
+    "options": [
+     "Row matrix",
+     "Identity matrix",
+     "Scalar matrix",
+     "Skew-symmetric matrix"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-220",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "Evaluate \\(\\begin{vmatrix}4&0&-2\\\\-4&-4&-2\\\\-1&4&-3\\end{vmatrix}\\).",
+   "explanation": "Positive terms (aei + bfg + cdh) = 80; negative terms (ceg + afh + bdi) = -40. So the value is 80 - (-40) = 120.",
+   "payload": {
+    "options": [
+     "121",
+     "80",
+     "119",
+     "120"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-221",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}-y &= -6\\\\6x + 6y &= 48\\end{aligned}\\right.\\), find \\(D_{x}\\) (the determinant with the x-column replaced by the constants).",
+   "explanation": "\\(D_{x}=\\begin{vmatrix}-6&-1\\\\48&6\\end{vmatrix}\\) = 12.",
+   "payload": {
+    "options": [
+     "12",
+     "15",
+     "24",
+     "14"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-222",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "product-entry",
+   "prompt": "Let \\(A=\\begin{bmatrix}1&-4\\\\4&-4\\\\0&5\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}2&3&2\\\\-2&3&-1\\end{bmatrix}\\). Find the (1,1) entry of \\(AB\\).",
+   "explanation": "Row 1 of A times column 1 of B: 1(2) + (-4)((-2)) = 10.",
+   "payload": {
+    "options": [
+     "-10",
+     "10",
+     "21",
+     "9"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-223",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "non-commutative",
+   "prompt": "For \\(A=\\begin{bmatrix}0&2\\\\3&5\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}5&-2\\\\4&-4\\end{bmatrix}\\), find \\((AB)_{12}-(BA)_{12}\\).",
+   "explanation": "\\((AB)_{12}\\) = -8 and \\((BA)_{12}\\) = 0, so the difference is -8. In general AB and BA are not equal.",
+   "payload": {
+    "options": [
+     "2",
+     "9",
+     "-8",
+     "-5"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-224",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}-4y &= 0\\\\-x - 3y &= -3\\end{aligned}\\right.\\), find the determinant \\(D\\) of the coefficient matrix.",
+   "explanation": "\\(D=\\begin{vmatrix}0&-4\\\\-1&-3\\end{vmatrix}\\) = -4.",
+   "payload": {
+    "options": [
+     "-14",
+     "4",
+     "-2",
+     "-4"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-225",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "rank",
+   "prompt": "The rank of a matrix equals:",
+   "explanation": "Reduce to echelon form and count the non-zero rows.",
+   "payload": {
+    "options": [
+     "the number of non-zero rows in its echelon form",
+     "its determinant",
+     "the sum of the diagonal entries",
+     "the number of columns"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-226",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "translation",
+   "prompt": "The point (-2, -5) is translated by \\((2,2)\\) (add 2 to x and 2 to y). Find the new x-coordinate.",
+   "explanation": "New x = old x + shift = (-2) + 2 = 0.",
+   "payload": {
+    "options": [
+     "2",
+     "0",
+     "10",
+     "-10"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-227",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "inverse-3x3",
+   "prompt": "Find the (1,2) entry of \\(A^{-1}\\) for \\(A=\\begin{bmatrix}-1&0&1\\\\1&1&-1\\\\0&-2&1\\end{bmatrix}\\).",
+   "explanation": "\\(|A|=-1\\), so \\(A^{-1}=\\operatorname{adj}A/|A|\\) = \\(-\\operatorname{adj}A\\). Its (1,2) entry is 2.",
+   "payload": {
+    "options": [
+     "-2",
+     "-8",
+     "2",
+     "1"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-228",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "Evaluate \\(\\begin{vmatrix}0&-4&-3\\\\1&-3&-1\\\\2&4&-1\\end{vmatrix}\\).",
+   "explanation": "Positive terms (aei + bfg + cdh) = -4; negative terms (ceg + afh + bdi) = 22. So the value is -4 - 22 = -26.",
+   "payload": {
+    "options": [
+     "-36",
+     "-24",
+     "-13",
+     "-26"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-229",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "solve-by-inverse",
+   "prompt": "For \\(AX=B\\) with \\(A^{-1}=\\begin{bmatrix}-1&-1\\\\4&3\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}15\\\\-21\\end{bmatrix}\\), find x where \\(X=\\begin{bmatrix}x\\\\y\\end{bmatrix}\\).",
+   "explanation": "\\(X=A^{-1}B\\): x = (-1)(15) + (-1)((-21)) = 6.",
+   "payload": {
+    "options": [
+     "6",
+     "16",
+     "3",
+     "9"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-230",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}6x - 4y &= -20\\\\x &= -4\\end{aligned}\\right.\\), find \\(D_{y}\\) (the determinant with the y-column replaced by the constants).",
+   "explanation": "\\(D_{y}=\\begin{vmatrix}6&-20\\\\1&-4\\end{vmatrix}\\) = -4.",
+   "payload": {
+    "options": [
+     "-8",
+     "-4",
+     "6",
+     "4"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-231",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "singular-nonsingular",
+   "prompt": "Is the matrix \\(\\begin{bmatrix}3&5\\\\-2&-1\\end{bmatrix}\\) singular or non-singular?",
+   "explanation": "\\(|A|=3(-1) - 5(-2)=7\\). A matrix is singular when |A| = 0, so this matrix is non-singular.",
+   "payload": {
+    "options": [
+     "Not a square matrix",
+     "Cannot be determined",
+     "Non-singular",
+     "Singular"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-232",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "transpose",
+   "prompt": "If \\(A=\\begin{bmatrix}-3&1&1&1\\\\-9&8&-4&2\\end{bmatrix}\\), find the entry in row 2, column 2 of \\(A^{T}\\).",
+   "explanation": "The (i, j) entry of \\(A^{T}\\) is the (j, i) entry of A, so it is \\(a_{22}\\) = 8.",
+   "payload": {
+    "options": [
+     "-4",
+     "1",
+     "9",
+     "8"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-233",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "add-subtract",
+   "prompt": "If \\(A=\\begin{bmatrix}-1&-2\\\\-9&4\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}8&4\\\\-8&0\\end{bmatrix}\\), find the (2,2) entry of \\(A+B\\).",
+   "explanation": "Add/subtract corresponding entries: 4 + 0 = 4.",
+   "payload": {
+    "options": [
+     "4",
+     "-4",
+     "9",
+     "3"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-234",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "area-by-determinant",
+   "prompt": "Find the area of the triangle with vertices (4, 4), (4, -2), (3, 4) using a determinant.",
+   "explanation": "Area = ½|\\(\\begin{vmatrix}4&4&1\\\\4&-2&1\\\\3&4&1\\end{vmatrix}\\)| = ½|-6| = \\(3\\) square units.",
+   "payload": {
+    "options": [
+     "1",
+     "3",
+     "2",
+     "5"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-235",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "symmetric-skew",
+   "prompt": "A square matrix A is symmetric if:",
+   "explanation": "Symmetric means \\(a_{ij}=a_{ji}\\) for all \\(i,j\\), i.e. \\(A^{T}=A\\).",
+   "payload": {
+    "options": [
+     "\\(A^{2}=A\\)",
+     "\\(A^{T}=-A\\)",
+     "\\(A^{T}=A\\)",
+     "\\(A^{-1}=A^{T}\\)"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-236",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "det-triangular",
+   "prompt": "Evaluate \\(\\begin{vmatrix}-1&0&0&0\\\\3&4&0&0\\\\5&7&5&0\\\\-3&0&3&5\\end{vmatrix}\\).",
+   "explanation": "The matrix is lower triangular, so the determinant is the product of the diagonal entries: (-1) · 4 · 5 · 5 = -100.",
+   "payload": {
+    "options": [
+     "-101",
+     "-99",
+     "13",
+     "-100"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-237",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "scalar-multiple",
+   "prompt": "If \\(A=\\begin{bmatrix}-4&7\\\\1&7\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-4&1\\\\-3&0\\end{bmatrix}\\), find the (1,2) entry of \\(3A+B\\).",
+   "explanation": "Multiply each matrix by its scalar, then add: 3(7) + 1(1) = 22.",
+   "payload": {
+    "options": [
+     "22",
+     "23",
+     "-22",
+     "11"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-238",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "transpose",
+   "prompt": "\\((A^{T})^{T}\\) is equal to:",
+   "explanation": "Transposing twice returns the original matrix.",
+   "payload": {
+    "options": [
+     "\\(-A\\)",
+     "\\(A\\)",
+     "\\(2A\\)",
+     "\\(A^{-1}\\)"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-239",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "types-of-matrices",
+   "prompt": "A matrix with exactly one column is called a:",
+   "explanation": "A matrix of order \\(m\\times 1\\) is a column matrix.",
+   "payload": {
+    "options": [
+     "identity matrix",
+     "row matrix",
+     "column matrix",
+     "diagonal matrix"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-240",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "If A is a 3×3 matrix with \\(|A|=-2\\), find \\(|2A|\\).",
+   "explanation": "For an n×n matrix \\(|kA|=k^{n}|A|\\). Here n = 3: \\(2^{3}\\)(-2) = -16.",
+   "payload": {
+    "options": [
+     "-4",
+     "-19",
+     "-14",
+     "-16"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-241",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "powers",
+   "prompt": "If \\(A=\\begin{bmatrix}-1&0\\\\0&-2\\end{bmatrix}\\), find the (2,2) entry of \\(A^{4}\\).",
+   "explanation": "For a diagonal matrix, \\(A^{4}\\) has diagonal entries -\\(1^{4}\\) and -\\(2^{4}\\); the (2,2) entry is \\((-2)^{4}\\) = 16.",
+   "payload": {
+    "options": [
+     "16",
+     "26",
+     "19",
+     "-8"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-242",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "sym-skew-decomposition",
+   "prompt": "For \\(A=\\begin{bmatrix}3&1\\\\-3&3\\end{bmatrix}\\), find the (1,1) entry of the skew-symmetric part \\(\\frac{1}{2}(A-A^{T})\\).",
+   "explanation": "\\(\\frac{1}{2}(A-A^{T})\\) has entry (1,1) = (\\(a_{11}\\) - \\(a_{11}\\))/2 = (3 - 3)/2 = 0.",
+   "payload": {
+    "options": [
+     "-10",
+     "0",
+     "2",
+     "-2"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-243",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "adjoint",
+   "prompt": "For \\(A=\\begin{bmatrix}8&-5\\\\8&7\\end{bmatrix}\\), find the (2,1) entry of \\(\\operatorname{adj}A\\).",
+   "explanation": "For a 2×2 matrix swap the diagonal entries and change the sign of the other two: \\(\\operatorname{adj}A=\\begin{bmatrix}7&5\\\\-8&8\\end{bmatrix}\\).",
+   "payload": {
+    "options": [
+     "-9",
+     "-18",
+     "-8",
+     "-16"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-244",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "entry-notation",
+   "prompt": "In \\(A=\\begin{bmatrix}0&-4&0\\\\-5&-5&-6\\\\1&-8&2\\end{bmatrix}\\), find the entry \\(a_{31}\\).",
+   "explanation": "\\(a_{31}\\) lies in row 3 and column 1, so it is 1.",
+   "payload": {
+    "options": [
+     "3",
+     "-8",
+     "-1",
+     "1"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-245",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "powers",
+   "prompt": "If \\(A=\\begin{bmatrix}3&-2\\\\-4&1\\end{bmatrix}\\), find the (1,1) entry of \\(A^{2}\\).",
+   "explanation": "\\(A^{2}=AA\\); row 1 times column 1: 3(3) + (-2)((-4)) = 17. (It is not just squaring each entry.)",
+   "payload": {
+    "options": [
+     "17",
+     "7",
+     "14",
+     "27"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-246",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "transpose",
+   "prompt": "If \\(A=\\begin{bmatrix}-8&0&-5\\\\3&-9&1\\\\4&6&-5\\end{bmatrix}\\), find the entry in row 1, column 1 of \\(A^{T}\\).",
+   "explanation": "The (i, j) entry of \\(A^{T}\\) is the (j, i) entry of A, so it is \\(a_{11}\\) = -8.",
+   "payload": {
+    "options": [
+     "-5",
+     "-8",
+     "4",
+     "0"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-247",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "powers",
+   "prompt": "If \\(A=\\begin{bmatrix}-2&0\\\\0&-2\\end{bmatrix}\\), find the (2,2) entry of \\(A^{3}\\).",
+   "explanation": "For a diagonal matrix, \\(A^{3}\\) has diagonal entries -\\(2^{3}\\) and -\\(2^{3}\\); the (2,2) entry is \\((-2)^{3}\\) = -8.",
+   "payload": {
+    "options": [
+     "-9",
+     "-6",
+     "-8",
+     "9"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-248",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "consistency",
+   "prompt": "A non-homogeneous system has 3 unknowns, \\(\\operatorname{rank}A=1\\) and \\(\\operatorname{rank}[A:B]=1\\). The system has:",
+   "explanation": "Compare the ranks: equal ranks that are less than n = 3 give infinitely many solutions.",
+   "payload": {
+    "options": [
+     "Unique solution",
+     "No solution",
+     "Only the trivial solution",
+     "Infinitely many solutions"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-249",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "adjoint",
+   "prompt": "For a 3×3 matrix A, \\(|\\operatorname{adj}A|\\) equals:",
+   "explanation": "\\(|\\operatorname{adj}A|=|A|^{n-1}\\) with \\(n=3\\).",
+   "payload": {
+    "options": [
+     "\\(|A|^{2}\\)",
+     "\\(|A|\\)",
+     "\\(|A|^{3}\\)",
+     "\\(3|A|\\)"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-250",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "solve-by-inverse",
+   "prompt": "For \\(AX=B\\) with \\(A^{-1}=\\begin{bmatrix}-1&2\\\\0&1\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}8\\\\3\\end{bmatrix}\\), find x where \\(X=\\begin{bmatrix}x\\\\y\\end{bmatrix}\\).",
+   "explanation": "\\(X=A^{-1}B\\): x = (-1)(8) + 2(3) = -2.",
+   "payload": {
+    "options": [
+     "3",
+     "-2",
+     "1",
+     "-3"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-251",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "inverse-2x2",
+   "prompt": "Find the (1,1) entry of \\(A^{-1}\\) for \\(A=\\begin{bmatrix}5&-1\\\\1&0\\end{bmatrix}\\).",
+   "explanation": "\\(|A|=1\\) and \\(\\operatorname{adj}A=\\begin{bmatrix}0&1\\\\-1&5\\end{bmatrix}\\), so \\(A^{-1}=\\frac{1}{|A|}\\operatorname{adj}A\\) has (1,1) entry \\(0\\).",
+   "payload": {
+    "options": [
+     "-1",
+     "1",
+     "0",
+     "5"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-252",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "symmetric-skew",
+   "prompt": "A 3×3 skew-symmetric matrix has \\(a_{12}=1\\), \\(a_{13}=7\\), \\(a_{23}=-7\\). Find \\(a_{32}\\).",
+   "explanation": "Skew-symmetry gives \\(a_{ji}\\) = -\\(a_{ij}\\), so \\(a_{32}\\) = -(-7) = 7.",
+   "payload": {
+    "options": [
+     "5",
+     "6",
+     "15",
+     "7"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-253",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "cofactor-expansion",
+   "prompt": "Row 1 of a 3×3 determinant is \\(1,6,2\\) and the cofactors of these entries are \\(2,0,5\\). Find the determinant.",
+   "explanation": "Expand along row 1: 1(2) + 6(0) + 2(5) = 12.",
+   "payload": {
+    "options": [
+     "12",
+     "24",
+     "15",
+     "9"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-254",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "gaussian-elimination",
+   "prompt": "Gaussian elimination reduces a system to \\(\\left[\\begin{array}{ccc|c}1&4&-2&23\\\\0&1&1&0\\\\0&0&1&-3\\end{array}\\right]\\). Find x by back-substitution.",
+   "explanation": "From the last row z = -3. The second row gives y = 0 - 1(-3) = 3. The first row gives x = 23 - 4(3) - (-2)(-3) = 5.",
+   "payload": {
+    "options": [
+     "7",
+     "5",
+     "10",
+     "9"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-255",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "sym-skew-decomposition",
+   "prompt": "For any square matrix A, the matrix \\(A-A^{T}\\) is always:",
+   "explanation": "\\((A-A^{T})^{T}=A^{T}-A=-(A-A^{T})\\).",
+   "payload": {
+    "options": [
+     "invertible",
+     "symmetric",
+     "skew-symmetric",
+     "the identity matrix"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-256",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "cramers-rule",
+   "prompt": "Solve the system \\(\\left\\{\\begin{aligned}-x + 4y &= -11\\\\-2x + 6y &= -14\\end{aligned}\\right.\\) by Cramer's rule. Find y.",
+   "explanation": "\\(D=2\\), \\(D_{y}=-8\\), so \\(y=D_{y}/D\\) = -8/2 = -4.",
+   "payload": {
+    "options": [
+     "-7",
+     "-8",
+     "5",
+     "-4"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-257",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "powers",
+   "prompt": "If \\(A=\\begin{bmatrix}1&-2\\\\0&1\\end{bmatrix}\\), find the (1,2) entry of \\(A^{2}\\).",
+   "explanation": "\\(A^{2}=\\begin{bmatrix}1&-4\\\\0&1\\end{bmatrix}\\), and by induction \\(A^{n}\\) has (1,2) entry n·k. So the (1,2) entry of \\(A^{2}\\) is 2((-2)) = -4.",
+   "payload": {
+    "options": [
+     "-4",
+     "-8",
+     "4",
+     "5"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-258",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "consistency",
+   "prompt": "If \\(\\operatorname{rank}A<\\operatorname{rank}[A:B]\\), the system:",
+   "explanation": "A row like \\(0\\;0\\;0\\;|\\;c\\) with \\(c\\ne0\\) appears: inconsistent.",
+   "payload": {
+    "options": [
+     "has infinitely many solutions",
+     "has no solution",
+     "is homogeneous",
+     "has a unique solution"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-259",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "transpose",
+   "prompt": "If \\(A=\\begin{bmatrix}1&5&8\\\\-6&2&-9\\\\-2&-9&5\\end{bmatrix}\\), find the entry in row 1, column 1 of \\(A^{T}\\).",
+   "explanation": "The (i, j) entry of \\(A^{T}\\) is the (j, i) entry of A, so it is \\(a_{11}\\) = 1.",
+   "payload": {
+    "options": [
+     "-2",
+     "5",
+     "1",
+     "-6"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-260",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "consistency",
+   "prompt": "After row operations the augmented matrix of a system in x, y, z is \\(\\left[\\begin{array}{ccc|c}1&3&-2&-3\\\\0&1&-1&6\\\\0&0&0&-1\\end{array}\\right]\\). How many solutions does the system have?",
+   "explanation": "rank A = 2 and rank [A:B] = 3, with n = 3 unknowns. rank A is less than rank [A:B] (a row 0 0 0 | non-zero): the system is inconsistent.",
+   "payload": {
+    "options": [
+     "Only the trivial solution",
+     "Infinitely many solutions",
+     "Unique solution",
+     "No solution"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-261",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "entry-notation",
+   "prompt": "In \\(A=\\begin{bmatrix}9&-2\\\\1&1\\\\0&6\\end{bmatrix}\\), find the entry \\(a_{32}\\).",
+   "explanation": "\\(a_{32}\\) lies in row 3 and column 2, so it is 6.",
+   "payload": {
+    "options": [
+     "6",
+     "7",
+     "0",
+     "8"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-262",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "networks",
+   "prompt": "For the friendship matrix \\(A=\\begin{bmatrix}0&1&1&0\\\\1&0&1&1\\\\1&1&0&0\\\\0&1&0&0\\end{bmatrix}\\), find the (2,2) entry of \\(A^{2}\\).",
+   "explanation": "\\((A^{2})_{22}\\) = (row 2)·(row 2) = 3; it equals the number of friends of B.",
+   "payload": {
+    "options": [
+     "5",
+     "3",
+     "1",
+     "13"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-263",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "singular-nonsingular",
+   "prompt": "Is the matrix \\(\\begin{bmatrix}2&-10\\\\-1&5\\end{bmatrix}\\) singular or non-singular?",
+   "explanation": "\\(|A|=25 - (-10)(-1)=0\\). A matrix is singular when |A| = 0, so this matrix is singular.",
+   "payload": {
+    "options": [
+     "Cannot be determined",
+     "Not a square matrix",
+     "Singular",
+     "Non-singular"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-264",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "powers",
+   "prompt": "If \\(A=\\begin{bmatrix}-4&-4\\\\-1&4\\end{bmatrix}\\), find the (2,2) entry of \\(A^{2}\\).",
+   "explanation": "\\(A^{2}=AA\\); row 2 times column 2: (-1)((-4)) + 4(4) = 20. (It is not just squaring each entry.)",
+   "payload": {
+    "options": [
+     "23",
+     "17",
+     "41",
+     "20"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-265",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "entry-notation",
+   "prompt": "In \\(A=\\begin{bmatrix}-6&4&-1&-6\\\\-3&9&5&9\\end{bmatrix}\\), find the entry \\(a_{14}\\).",
+   "explanation": "\\(a_{14}\\) lies in row 1 and column 4, so it is -6.",
+   "payload": {
+    "options": [
+     "-6",
+     "-7",
+     "-5",
+     "-4"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-266",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "gaussian-elimination",
+   "prompt": "Gaussian elimination reduces a system to \\(\\left[\\begin{array}{ccc|c}1&4&-2&3\\\\0&1&-1&1\\\\0&0&1&1\\end{array}\\right]\\). Find x by back-substitution.",
+   "explanation": "From the last row z = 1. The second row gives y = 1 - (-1)(1) = 2. The first row gives x = 3 - 4(2) - (-2)(1) = -3.",
+   "payload": {
+    "options": [
+     "7",
+     "-3",
+     "3",
+     "-2"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-267",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "minor-cofactor",
+   "prompt": "For \\(A=\\begin{bmatrix}1&4&-4\\\\2&6&6\\\\2&-1&6\\end{bmatrix}\\), find the cofactor \\(C_{33}\\).",
+   "explanation": "\\(M_{33}\\) = -2, and the sign is \\((-1)^{3+3}\\) = +1. So \\(C_{33}\\) = -2.",
+   "payload": {
+    "options": [
+     "3",
+     "8",
+     "-2",
+     "2"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-268",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "cofactor-expansion",
+   "prompt": "Row 2 of a 3×3 determinant is \\(-4,3,-4\\) and the cofactors of these entries are \\(6,5,-5\\). Find the determinant.",
+   "explanation": "Expand along row 2: (-4)(6) + 3(5) + (-4)((-5)) = 11.",
+   "payload": {
+    "options": [
+     "-11",
+     "10",
+     "15",
+     "11"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-269",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "product-order",
+   "prompt": "If \\(A\\) has order 3 × 4 and \\(B\\) has order 5 × 4, what is the order of \\(AB\\)?",
+   "explanation": "AB is not defined: the columns of A (4) do not equal the rows of B (5).",
+   "payload": {
+    "options": [
+     "Not defined",
+     "4 × 3",
+     "5 × 4",
+     "3 × 4"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-270",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "cramers-rule",
+   "prompt": "Solve the system \\(\\left\\{\\begin{aligned}-2x - 5y &= -24\\\\3x + 4y &= 15\\end{aligned}\\right.\\) by Cramer's rule. Find x.",
+   "explanation": "\\(D=7\\), \\(D_{x}=-21\\), so \\(x=D_{x}/D\\) = -21/7 = -3.",
+   "payload": {
+    "options": [
+     "1",
+     "-3",
+     "-4",
+     "42"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-271",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "Evaluate \\(\\begin{vmatrix}3&-3&-2\\\\-4&1&-2\\\\4&4&-1\\end{vmatrix}\\).",
+   "explanation": "Positive terms (aei + bfg + cdh) = 53; negative terms (ceg + afh + bdi) = -44. So the value is 53 - (-44) = 97.",
+   "payload": {
+    "options": [
+     "94",
+     "95",
+     "97",
+     "44"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-272",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-3x3",
+   "prompt": "Evaluate \\(\\begin{vmatrix}3&3&3\\\\4&4&4\\\\-1&5&-4\\end{vmatrix}\\).",
+   "explanation": "Positive terms (aei + bfg + cdh) = 0; negative terms (ceg + afh + bdi) = 0. So the value is 0 - 0 = 0.",
+   "payload": {
+    "options": [
+     "-2",
+     "-3",
+     "2",
+     "0"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-273",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "homogeneous-free-vars",
+   "prompt": "A homogeneous system has 5 unknowns and its coefficient matrix has rank 3. How many free (arbitrary) variables are there in the solution?",
+   "explanation": "Number of free variables = n - rank = 5 - 3 = 2.",
+   "payload": {
+    "options": [
+     "2",
+     "0",
+     "1",
+     "4"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-274",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "trace",
+   "prompt": "Find the trace of \\(A=\\begin{bmatrix}2&2&6&2\\\\9&-6&-6&6\\\\2&-3&-2&-4\\\\7&-5&1&4\\end{bmatrix}\\) (the sum of the main-diagonal entries).",
+   "explanation": "Trace = 2 + (-6) + (-2) + 4 = -2.",
+   "payload": {
+    "options": [
+     "17",
+     "-2",
+     "0",
+     "2"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-275",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "non-commutative",
+   "prompt": "For \\(A=\\begin{bmatrix}-1&3\\\\5&0\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}4&-4\\\\1&-1\\end{bmatrix}\\), find \\((AB)_{11}-(BA)_{11}\\).",
+   "explanation": "\\((AB)_{11}\\) = -1 and \\((BA)_{11}\\) = -24, so the difference is 23. In general AB and BA are not equal.",
+   "payload": {
+    "options": [
+     "22",
+     "24",
+     "23",
+     "13"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-276",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "translation",
+   "prompt": "The point (-2, -6) is translated by \\((0,2)\\) (add 0 to x and 2 to y). Find the new y-coordinate.",
+   "explanation": "New y = old y + shift = (-6) + 2 = -4.",
+   "payload": {
+    "options": [
+     "-6",
+     "-5",
+     "4",
+     "-4"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-277",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "homogeneous-k",
+   "prompt": "For what value of k does the system \\(\\left\\{\\begin{aligned}kx + 4y - z &= 0\\\\-x + 3y &= 0\\\\4x - 3z &= 0\\end{aligned}\\right.\\) have a non-trivial solution?",
+   "explanation": "Non-trivial solutions exist iff \\(|A|=0\\). Expanding \\(\\begin{vmatrix}k&4&-1\\\\-1&3&0\\\\4&0&-3\\end{vmatrix}\\) gives \\(- 9 k=0\\), so k = 0.",
+   "payload": {
+    "options": [
+     "0",
+     "2",
+     "-10",
+     "-2"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-278",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "symmetric-skew",
+   "prompt": "A 3×3 skew-symmetric matrix has \\(a_{12}=-5\\), \\(a_{13}=-5\\), \\(a_{23}=-3\\). Find \\(a_{21}\\).",
+   "explanation": "Skew-symmetry gives \\(a_{ji}\\) = -\\(a_{ij}\\), so \\(a_{21}\\) = -(-5) = 5.",
+   "payload": {
+    "options": [
+     "8",
+     "5",
+     "2",
+     "6"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-279",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "det-properties",
+   "prompt": "If A is a 4×4 matrix with \\(|A|=5\\), find \\(|-2A|\\).",
+   "explanation": "For an n×n matrix \\(|kA|=k^{n}|A|\\). Here n = 4: \\((-2)^{4}\\)(5) = 80.",
+   "payload": {
+    "options": [
+     "81",
+     "90",
+     "80",
+     "83"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-280",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "matrix-equality",
+   "prompt": "If \\(\\begin{bmatrix}2x+2&-2\\\\6&-2y-2\\end{bmatrix}=\\begin{bmatrix}-4&-2\\\\6&-2\\end{bmatrix}\\), find \\(x\\).",
+   "explanation": "Equal matrices have equal corresponding entries: \\(2x+2=-4\\) gives x = -3; \\(-2y-2=-2\\) gives y = 0. So x = -3.",
+   "payload": {
+    "options": [
+     "0",
+     "-6",
+     "-1",
+     "-3"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-281",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "inverse-properties",
+   "prompt": "\\(A^{-1}=\\begin{bmatrix}1&1\\\\1&0\\end{bmatrix}\\) and \\(B^{-1}=\\begin{bmatrix}1&4\\\\-2&-7\\end{bmatrix}\\). Find the (2,1) entry of \\((AB)^{-1}\\).",
+   "explanation": "\\((AB)^{-1}=B^{-1}A^{-1}\\) (reverse order). Multiplying, the (2,1) entry is -9; the other order \\(A^{-1}B^{-1}\\) would give 1.",
+   "payload": {
+    "options": [
+     "-9",
+     "-5",
+     "-10",
+     "-19"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-282",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "Evaluate \\(\\begin{vmatrix}-2&5\\\\1&6\\end{vmatrix}\\).",
+   "explanation": "\\(ad-bc = (-2)(6) - 5(1) = -12 - 5 = -17\\)",
+   "payload": {
+    "options": [
+     "-7",
+     "-17",
+     "-19",
+     "17"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-283",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "consistency",
+   "prompt": "If \\(\\operatorname{rank}A=\\operatorname{rank}[A:B]=n\\) (the number of unknowns), the system has:",
+   "explanation": "Equal ranks mean consistent; rank = n means no free variables.",
+   "payload": {
+    "options": [
+     "only the trivial solution",
+     "infinitely many solutions",
+     "a unique solution",
+     "no solution"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-284",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "scalar-multiple",
+   "prompt": "If \\(A=\\begin{bmatrix}6&-1\\\\-2&-6\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}7&-5\\\\6&7\\end{bmatrix}\\), find the (1,1) entry of \\(4A+3B\\).",
+   "explanation": "Multiply each matrix by its scalar, then add: 4(6) + 3(7) = 45.",
+   "payload": {
+    "options": [
+     "44",
+     "35",
+     "13",
+     "45"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-285",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "Evaluate \\(\\begin{vmatrix}-6&0\\\\5&-3\\end{vmatrix}\\).",
+   "explanation": "\\(ad-bc = (-6)((-3)) - 0(5) = 18 - 0 = 18\\)",
+   "payload": {
+    "options": [
+     "18",
+     "36",
+     "20",
+     "19"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-286",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "rank",
+   "prompt": "Find the rank of \\(A=\\begin{bmatrix}6&2&-4\\\\-6&-2&4\\\\3&1&-2\\end{bmatrix}\\).",
+   "explanation": "Reduce to echelon form with row operations; the number of non-zero rows left is the rank. Here the rank is 1.",
+   "payload": {
+    "options": [
+     "4",
+     "1",
+     "6",
+     "-1"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-287",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "singular-nonsingular",
+   "prompt": "Is the matrix \\(\\begin{bmatrix}-4&1\\\\-4&-1\\end{bmatrix}\\) singular or non-singular?",
+   "explanation": "\\(|A|=(-4)(-1) - 1(-4)=8\\). A matrix is singular when |A| = 0, so this matrix is non-singular.",
+   "payload": {
+    "options": [
+     "Singular",
+     "Cannot be determined",
+     "Non-singular",
+     "Not a square matrix"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-288",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "symmetric-skew",
+   "prompt": "A square matrix A is skew-symmetric if:",
+   "explanation": "Skew-symmetric means \\(a_{ji}=-a_{ij}\\), i.e. \\(A^{T}=-A\\).",
+   "payload": {
+    "options": [
+     "\\(A^{T}=A^{-1}\\)",
+     "\\(A^{2}=O\\)",
+     "\\(A^{T}=A\\)",
+     "\\(A^{T}=-A\\)"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-289",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "types-of-matrices",
+   "prompt": "Which name describes the matrix \\(\\begin{bmatrix}-3&7&3&-1\\end{bmatrix}\\)?",
+   "explanation": "This is a row matrix because it has only one row.",
+   "payload": {
+    "options": [
+     "Row matrix",
+     "Zero matrix",
+     "Column matrix",
+     "Upper triangular matrix"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-290",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "area-by-determinant",
+   "prompt": "Find the area of the triangle with vertices (2, 0), (3, -2), (1, -2) using a determinant.",
+   "explanation": "Area = ½|\\(\\begin{vmatrix}2&0&1\\\\3&-2&1\\\\1&-2&1\\end{vmatrix}\\)| = ½|-4| = \\(2\\) square units.",
+   "payload": {
+    "options": [
+     "-2",
+     "2",
+     "0",
+     "7"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-291",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "consistency",
+   "prompt": "After row operations the augmented matrix of a system in x, y, z is \\(\\left[\\begin{array}{ccc|c}1&4&-3&-2\\\\0&1&0&4\\\\0&0&0&0\\end{array}\\right]\\). How many solutions does the system have?",
+   "explanation": "rank A = 2 and rank [A:B] = 2, with n = 3 unknowns. Ranks equal but less than n: infinitely many solutions (free variables).",
+   "payload": {
+    "options": [
+     "Only the trivial solution",
+     "No solution",
+     "Infinitely many solutions",
+     "Unique solution"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-292",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "solve-by-inverse",
+   "prompt": "For \\(AX=B\\) with \\(A^{-1}=\\begin{bmatrix}-1&0\\\\-3&1\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}4\\\\17\\end{bmatrix}\\), find x where \\(X=\\begin{bmatrix}x\\\\y\\end{bmatrix}\\).",
+   "explanation": "\\(X=A^{-1}B\\): x = (-1)(4) + 0(17) = -4.",
+   "payload": {
+    "options": [
+     "5",
+     "-14",
+     "-1",
+     "-4"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-293",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "inverse-3x3",
+   "prompt": "Find the (1,1) entry of \\(A^{-1}\\) for \\(A=\\begin{bmatrix}5&-2&-2\\\\-2&1&0\\\\-8&3&5\\end{bmatrix}\\).",
+   "explanation": "\\(|A|=1\\), so \\(A^{-1}=\\operatorname{adj}A/|A|\\) = \\(\\operatorname{adj}A\\). Its (1,1) entry is 5.",
+   "payload": {
+    "options": [
+     "5",
+     "11",
+     "4",
+     "3"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-294",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "cofactor-expansion",
+   "prompt": "Row 2 of a 3×3 determinant is \\(0,-1,-1\\) and the cofactors of these entries are \\(-3,1,-5\\). Find the determinant.",
+   "explanation": "Expand along row 2: 0((-3)) + (-1)(1) + (-1)((-5)) = 4.",
+   "payload": {
+    "options": [
+     "1",
+     "4",
+     "7",
+     "-9"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-295",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "area-by-determinant",
+   "prompt": "Find the area of the triangle with vertices (1, -1), (5, -2), (3, -3) using a determinant.",
+   "explanation": "Area = ½|\\(\\begin{vmatrix}1&-1&1\\\\5&-2&1\\\\3&-3&1\\end{vmatrix}\\)| = ½|-6| = \\(3\\) square units.",
+   "payload": {
+    "options": [
+     "2",
+     "4",
+     "3",
+     "5"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-296",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "det-triangular",
+   "prompt": "Evaluate \\(\\begin{vmatrix}-1&0&0\\\\0&2&0\\\\-6&-6&-2\\end{vmatrix}\\).",
+   "explanation": "The matrix is lower triangular, so the determinant is the product of the diagonal entries: (-1) · 2 · (-2) = 4.",
+   "payload": {
+    "options": [
+     "-2",
+     "-6",
+     "-4",
+     "4"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-297",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "cramers-rule",
+   "prompt": "For the system \\(\\left\\{\\begin{aligned}4x - 2y &= -16\\\\-y &= -6\\end{aligned}\\right.\\), find \\(D_{y}\\) (the determinant with the y-column replaced by the constants).",
+   "explanation": "\\(D_{y}=\\begin{vmatrix}4&-16\\\\0&-6\\end{vmatrix}\\) = -24.",
+   "payload": {
+    "options": [
+     "-24",
+     "25",
+     "-27",
+     "-1"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-298",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "matrix-equation",
+   "prompt": "If \\(3X+A=B\\) where \\(A=\\begin{bmatrix}7&-1\\\\-5&3\\end{bmatrix}\\) and \\(B=\\begin{bmatrix}-5&-1\\\\4&-3\\end{bmatrix}\\), find the (1,1) entry of X.",
+   "explanation": "\\(3X=B-A\\); entry (1,1): ((-5) - 7) / 3 = -4.",
+   "payload": {
+    "options": [
+     "-3",
+     "-4",
+     "-6",
+     "4"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-299",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "inverse-2x2",
+   "prompt": "Find the (2,2) entry of \\(A^{-1}\\) for \\(A=\\begin{bmatrix}-7&3\\\\5&-2\\end{bmatrix}\\).",
+   "explanation": "\\(|A|=-1\\) and \\(\\operatorname{adj}A=\\begin{bmatrix}-2&-3\\\\-5&-7\\end{bmatrix}\\), so \\(A^{-1}=\\frac{1}{|A|}\\operatorname{adj}A\\) has (2,2) entry \\(7\\).",
+   "payload": {
+    "options": [
+     "5",
+     "12",
+     "7",
+     "-7"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-300",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "det-2x2",
+   "prompt": "Evaluate \\(\\begin{vmatrix}-2&1\\\\-2&-2\\end{vmatrix}\\).",
+   "explanation": "\\(ad-bc = (-2)((-2)) - 1((-2)) = 4 - (-2) = 6\\)",
+   "payload": {
+    "options": [
+     "12",
+     "7",
+     "5",
+     "6"
+    ],
+    "correctIndex": 3
+   }
+  }
+ ]
+}
