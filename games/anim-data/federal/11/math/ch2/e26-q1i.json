@@ -1,0 +1,957 @@
+{
+ "id": "g11-math-c2-e26-q1i",
+ "title": "Exercise 2.6 · Q1(i)",
+ "summary": "Find the non-trivial solution, if it exists: 2x₁ − 3x₂ + 4x₃ = 0; x₁ − 2x₂ + 3x₃ = 0; 4x₁ + x₂ − 6x₃ = 0.",
+ "alt": "Exercise 2.6 · Q1(i): Find the non-trivial solution, if it exists: 2x₁ − 3x₂ + 4x₃ = 0; x₁ − 2x₂ + 3x₃ = 0; 4x₁ + x₂ − 6x₃ = 0.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   0,
+   112
+  ],
+  "y": [
+   0,
+   63
+  ],
+  "pad": 6
+ },
+ "roles": {
+  "now": {
+   "label": "Current step",
+   "color": "#2563eb",
+   "text": "The step being explained right now.",
+   "legend": false
+  },
+  "done": {
+   "label": "Steps so far",
+   "color": "#059669",
+   "text": "Steps you have already seen.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Last step",
+   "color": "#d97706",
+   "text": "The last step of the solution.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "cur",
+   "label": "Current step",
+   "min": 0,
+   "max": 30,
+   "step": 1,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "text",
+   "id": "ttl",
+   "at": [
+    56,
+    58
+   ],
+   "text": "Exercise 2.6 · Q1(i)",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "nd0",
+   "c": [
+    8,
+    49
+   ],
+   "r": 3.4,
+   "role": "done",
+   "fill": "done",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "id": "nn0",
+   "at": [
+    8,
+    49
+   ],
+   "text": "1",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "appearDur": 380,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "cp0",
+   "at": [
+    25.0,
+    49
+   ],
+   "text": "The system",
+   "role": "ink",
+   "size": "m",
+   "bold": false,
+   "appear": "s0",
+   "appearDur": 420,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "rg0",
+   "c": [
+    8,
+    49
+   ],
+   "r": 5.4,
+   "role": "now",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "abs(cur-0)<0.5",
+   "appear": "s0",
+   "appearDur": 300
+  },
+  {
+   "type": "segment",
+   "id": "cn1",
+   "from": [
+    8,
+    45.4
+   ],
+   "to": [
+    8,
+    43.6
+   ],
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "draw",
+   "appear": "s1",
+   "appearDur": 350,
+   "layer": "back"
+  },
+  {
+   "type": "circle",
+   "id": "nd1",
+   "c": [
+    8,
+    40
+   ],
+   "r": 3.4,
+   "role": "done",
+   "fill": "done",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "id": "nn1",
+   "at": [
+    8,
+    40
+   ],
+   "text": "2",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "appearDur": 380,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "cp1",
+   "at": [
+    26.4,
+    40
+   ],
+   "text": "Choose a row",
+   "role": "ink",
+   "size": "m",
+   "bold": false,
+   "appear": "s1",
+   "appearDur": 420,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "rg1",
+   "c": [
+    8,
+    40
+   ],
+   "r": 5.4,
+   "role": "now",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "abs(cur-1)<0.5",
+   "appear": "s1",
+   "appearDur": 300
+  },
+  {
+   "type": "segment",
+   "id": "cn2",
+   "from": [
+    8,
+    36.4
+   ],
+   "to": [
+    8,
+    34.6
+   ],
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "draw",
+   "appear": "s2",
+   "appearDur": 350,
+   "layer": "back"
+  },
+  {
+   "type": "circle",
+   "id": "nd2",
+   "c": [
+    8,
+    31
+   ],
+   "r": 3.4,
+   "role": "done",
+   "fill": "done",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "id": "nn2",
+   "at": [
+    8,
+    31
+   ],
+   "text": "3",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "appearDur": 380,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "cp2",
+   "at": [
+    22.2,
+    31
+   ],
+   "text": "Minors",
+   "role": "ink",
+   "size": "m",
+   "bold": false,
+   "appear": "s2",
+   "appearDur": 420,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "rg2",
+   "c": [
+    8,
+    31
+   ],
+   "r": 5.4,
+   "role": "now",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "abs(cur-2)<0.5",
+   "appear": "s2",
+   "appearDur": 300
+  },
+  {
+   "type": "segment",
+   "id": "cn3",
+   "from": [
+    8,
+    27.4
+   ],
+   "to": [
+    8,
+    25.6
+   ],
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "draw",
+   "appear": "s3",
+   "appearDur": 350,
+   "layer": "back"
+  },
+  {
+   "type": "circle",
+   "id": "nd3",
+   "c": [
+    8,
+    22
+   ],
+   "r": 3.4,
+   "role": "done",
+   "fill": "done",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "appear": "s3",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "id": "nn3",
+   "at": [
+    8,
+    22
+   ],
+   "text": "4",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "appearDur": 380,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "cp3",
+   "at": [
+    22.2,
+    22
+   ],
+   "text": "Add up",
+   "role": "ink",
+   "size": "m",
+   "bold": false,
+   "appear": "s3",
+   "appearDur": 420,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "rg3",
+   "c": [
+    8,
+    22
+   ],
+   "r": 5.4,
+   "role": "now",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "abs(cur-3)<0.5",
+   "appear": "s3",
+   "appearDur": 300
+  },
+  {
+   "type": "segment",
+   "id": "cn4",
+   "from": [
+    8,
+    18.4
+   ],
+   "to": [
+    8,
+    16.6
+   ],
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "draw",
+   "appear": "s4",
+   "appearDur": 350,
+   "layer": "back"
+  },
+  {
+   "type": "circle",
+   "id": "nd4",
+   "c": [
+    8,
+    13
+   ],
+   "r": 3.4,
+   "role": "done",
+   "fill": "done",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "appear": "s4",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "id": "nn4",
+   "at": [
+    8,
+    13
+   ],
+   "text": "5",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "appearDur": 380,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "cp4",
+   "at": [
+    22.2,
+    13
+   ],
+   "text": "Decide",
+   "role": "ink",
+   "size": "m",
+   "bold": false,
+   "appear": "s4",
+   "appearDur": 420,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "rg4",
+   "c": [
+    8,
+    13
+   ],
+   "r": 5.4,
+   "role": "now",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "abs(cur-4)<0.5",
+   "appear": "s4",
+   "appearDur": 300
+  },
+  {
+   "type": "circle",
+   "id": "nd5",
+   "c": [
+    60,
+    49
+   ],
+   "r": 3.4,
+   "role": "done",
+   "fill": "done",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "appear": "s5",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "id": "nn5",
+   "at": [
+    60,
+    49
+   ],
+   "text": "6",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s5",
+   "appearDur": 380,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "cp5",
+   "at": [
+    79.8,
+    49
+   ],
+   "text": "Matrix [A | 0]",
+   "role": "ink",
+   "size": "m",
+   "bold": false,
+   "appear": "s5",
+   "appearDur": 420,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "rg5",
+   "c": [
+    60,
+    49
+   ],
+   "r": 5.4,
+   "role": "now",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "abs(cur-5)<0.5",
+   "appear": "s5",
+   "appearDur": 300
+  },
+  {
+   "type": "segment",
+   "id": "cn6",
+   "from": [
+    60,
+    45.4
+   ],
+   "to": [
+    60,
+    43.6
+   ],
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "draw",
+   "appear": "s6",
+   "appearDur": 350,
+   "layer": "back"
+  },
+  {
+   "type": "circle",
+   "id": "nd6",
+   "c": [
+    60,
+    40
+   ],
+   "r": 3.4,
+   "role": "done",
+   "fill": "done",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "appear": "s6",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "id": "nn6",
+   "at": [
+    60,
+    40
+   ],
+   "text": "7",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s6",
+   "appearDur": 380,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "cp6",
+   "at": [
+    79.8,
+    40
+   ],
+   "text": "Row operations",
+   "role": "ink",
+   "size": "m",
+   "bold": false,
+   "appear": "s6",
+   "appearDur": 420,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "rg6",
+   "c": [
+    60,
+    40
+   ],
+   "r": 5.4,
+   "role": "now",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "abs(cur-6)<0.5",
+   "appear": "s6",
+   "appearDur": 300
+  },
+  {
+   "type": "segment",
+   "id": "cn7",
+   "from": [
+    60,
+    36.4
+   ],
+   "to": [
+    60,
+    34.6
+   ],
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "draw",
+   "appear": "s7",
+   "appearDur": 350,
+   "layer": "back"
+  },
+  {
+   "type": "circle",
+   "id": "nd7",
+   "c": [
+    60,
+    31
+   ],
+   "r": 3.4,
+   "role": "done",
+   "fill": "done",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "appear": "s7",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "id": "nn7",
+   "at": [
+    60,
+    31
+   ],
+   "text": "8",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s7",
+   "appearDur": 380,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "cp7",
+   "at": [
+    79.8,
+    31
+   ],
+   "text": "Row operations",
+   "role": "ink",
+   "size": "m",
+   "bold": false,
+   "appear": "s7",
+   "appearDur": 420,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "rg7",
+   "c": [
+    60,
+    31
+   ],
+   "r": 5.4,
+   "role": "now",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "abs(cur-7)<0.5",
+   "appear": "s7",
+   "appearDur": 300
+  },
+  {
+   "type": "segment",
+   "id": "cn8",
+   "from": [
+    60,
+    27.4
+   ],
+   "to": [
+    60,
+    25.6
+   ],
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "draw",
+   "appear": "s8",
+   "appearDur": 350,
+   "layer": "back"
+  },
+  {
+   "type": "circle",
+   "id": "nd8",
+   "c": [
+    60,
+    22
+   ],
+   "r": 3.4,
+   "role": "done",
+   "fill": "done",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "appear": "s8",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "id": "nn8",
+   "at": [
+    60,
+    22
+   ],
+   "text": "9",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s8",
+   "appearDur": 380,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "cp8",
+   "at": [
+    81.9,
+    22
+   ],
+   "text": "Back-substitution",
+   "role": "ink",
+   "size": "m",
+   "bold": false,
+   "appear": "s8",
+   "appearDur": 420,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "rg8",
+   "c": [
+    60,
+    22
+   ],
+   "r": 5.4,
+   "role": "now",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "abs(cur-8)<0.5",
+   "appear": "s8",
+   "appearDur": 300
+  },
+  {
+   "type": "segment",
+   "id": "cn9",
+   "from": [
+    60,
+    18.4
+   ],
+   "to": [
+    60,
+    16.6
+   ],
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "draw",
+   "appear": "s9",
+   "appearDur": 350,
+   "layer": "back"
+  },
+  {
+   "type": "circle",
+   "id": "nd9",
+   "c": [
+    60,
+    13
+   ],
+   "r": 3.4,
+   "role": "ans",
+   "fill": "ans",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "appear": "s9",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "id": "nn9",
+   "at": [
+    60,
+    13
+   ],
+   "text": "10",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s9",
+   "appearDur": 380,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "cp9",
+   "at": [
+    80.5,
+    13
+   ],
+   "text": "Solution family",
+   "role": "ink",
+   "size": "m",
+   "bold": false,
+   "appear": "s9",
+   "appearDur": 420,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "rg9",
+   "c": [
+    60,
+    13
+   ],
+   "r": 5.4,
+   "role": "now",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "abs(cur-9)<0.5",
+   "appear": "s9",
+   "appearDur": 300
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The system",
+   "text": "\\[\\begin{aligned}&\\left\\{\\begin{array}{l}2x_1 - 3x_2 + 4x_3=0\\\\x_1 - 2x_2 + 3x_3=0\\\\4x_1 + x_2 - 6x_3=0\\end{array}\\right.\\\\[5pt]&\\text{Non$-$trivial solutions exist only when}\\\\[5pt]&\\text{|A| = 0.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Choose a row",
+   "text": "\\[\\begin{aligned}&\\text{Expand along row 1 (we start with the}\\\\[5pt]&\\text{first row).}\\\\[5pt]&|A|=\\begin{vmatrix}2&-3&4\\\\1&-2&3\\\\4&1&-6\\end{vmatrix}\\\\[5pt]&|A|=a_{11}A_{11} + a_{12}A_{12} + a_{13}A_{13}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Minors",
+   "text": "\\[\\begin{aligned}&\\text{Cross out the row and column of each}\\\\[5pt]&\\text{entry; the signs alternate + $-$ +.}\\\\[5pt]&M_{11}=\\begin{vmatrix}-2&3\\\\1&-6\\end{vmatrix}=(-2)(-6)-31=9\\\\[5pt]&M_{12}=\\begin{vmatrix}1&3\\\\4&-6\\end{vmatrix}=1(-6)-34=-18\\\\[5pt]&M_{13}=\\begin{vmatrix}1&-2\\\\4&1\\end{vmatrix}=11-(-2)4=9\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Add up",
+   "text": "\\[\\begin{aligned}&|A|=2(9) - (-3)(-18) + 4(9)\\\\[5pt]&{}=\\textcolor{#047857}{\\mathbf{0}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Decide",
+   "text": "\\[\\begin{aligned}&|A|=0\\ \\Rightarrow\\ \\text{non-trivial solutions exist}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 4
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Matrix [A | 0]",
+   "text": "\\[\\begin{aligned}&\\left[\\begin{array}{ccc|c}2&-3&4&0\\\\1&-2&3&0\\\\4&1&-6&0\\end{array}\\right]\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 5
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "title": "Row operations",
+   "text": "\\[\\begin{aligned}&R_1\\leftrightarrow R_2:\\quad \\left[\\begin{array}{ccc|c}1&-2&3&0\\\\2&-3&4&0\\\\4&1&-6&0\\end{array}\\right]\\\\[5pt]&R_2\\to R_2-2R_1:\\quad \\left[\\begin{array}{ccc|c}1&-2&3&0\\\\0&1&-2&0\\\\4&1&-6&0\\end{array}\\right]\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 6
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s7",
+   "title": "Row operations",
+   "text": "\\[\\begin{aligned}&R_3\\to R_3-4R_1:\\quad \\left[\\begin{array}{ccc|c}1&-2&3&0\\\\0&1&-2&0\\\\0&9&-18&0\\end{array}\\right]\\\\[5pt]&R_3\\to R_3-9R_2:\\quad \\left[\\begin{array}{ccc|c}1&-2&3&0\\\\0&1&-2&0\\\\0&0&0&0\\end{array}\\right]\\\\[5pt]&\\text{This is an echelon form: rank = 2, which}\\\\[5pt]&\\text{is less than 3 unknowns, so there is 1}\\\\[5pt]&\\text{free variable.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 7
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s8",
+   "title": "Back-substitution",
+   "text": "\\[\\begin{aligned}&x_3=t\\quad(\\text{free variable})\\\\[5pt]&x_2 - 2x_3=0\\ \\Rightarrow\\ x_2=2 t\\\\[5pt]&x_1 - 2x_2 + 3x_3=0\\ \\Rightarrow\\ x_1=t\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 8
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s9",
+   "title": "Solution family",
+   "text": "\\[\\begin{aligned}&\\text{Take t = k.}\\\\[5pt]&(x_1,x_2,x_3)=\\textcolor{#047857}{\\mathbf{(k,\\ 2k,\\ k)}}\\quad k\\in\\mathbb{R}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 9
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}
