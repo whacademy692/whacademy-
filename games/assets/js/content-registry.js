@@ -1331,9 +1331,9 @@ window.WHA_CONTENT = {
             "n": 3,
             "unit": 3,
             "title": "Vectors",
-            "notes": null,
+            "notes": "https://whacademypk.com/notes/class-11/math/vectors.html",
             "quiz": null,
-            "game": null
+            "game": "https://whacademypk.com/games/chapter.html?ch=11/math/vectors"
           },
           {
             "n": 4,

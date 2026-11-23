@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self'">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FBISE Class 11 Math Unit 3: Vectors in Space Notes | W.H. Academy</title>
+<meta name="description" content="Free FBISE (Federal Board) Class 11 Mathematics Unit 3 notes, Q&amp;A and game: vectors in space, section formula, dot product, cross product, scalar triple product and applications, with interactive 2D and 3D graphs, common mistakes and solved book examples. By W.H. Academy Rawalpindi.">
+<meta name="keywords" content="fbise class 11 math notes, hssc-i mathematics unit 3, vectors in space class 11 notes, federal board 1st year math chapter 3, dot product, cross product, scalar triple product, direction cosines, W.H. Academy federal board notes">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="author" content="M. Rehan Safdar — W.H. Academy">
+<link rel="canonical" href="https://whacademypk.com/notes/class-11/math/vectors.html">
+<meta property="og:title" content="FBISE Class 11 Math Unit 3: Vectors in Space Notes | W.H. Academy">
+<meta property="og:description" content="Free notes, Q&amp;A, interactive graphs and game — FBISE Class 11 Math Unit 3: Vectors in Space. Common mistakes and solved book examples. By W.H. Academy.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://whacademypk.com/notes/class-11/math/vectors.html">
+<meta property="og:site_name" content="W.H. Academy">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Course", "name": "FBISE Class 11 Mathematics Unit 3 — Vectors in Space", "description": "Free FBISE (Federal Board) Class 11 Mathematics Unit 3 notes, Q&A and game: vectors in space, section formula, dot product, cross product, scalar triple product and applications, with interactive 2D and 3D graphs, common mistakes and solved book examples. By W.H. Academy Rawalpindi.", "provider": {"@type": "EducationalOrganization", "name": "W.H. Academy", "url": "https://whacademypk.com/"}, "educationalLevel": "Class 11"}</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://whacademypk.com/"}, {"@type": "ListItem", "position": 2, "name": "Notes", "item": "https://whacademypk.com/notes/"}, {"@type": "ListItem", "position": 3, "name": "Class 11", "item": "https://whacademypk.com/notes/class-11/"}, {"@type": "ListItem", "position": 4, "name": "Mathematics", "item": "https://whacademypk.com/notes/class-11/math/"}, {"@type": "ListItem", "position": 5, "name": "Vectors in Space", "item": "https://whacademypk.com/notes/class-11/math/vectors.html"}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Self-hosted KaTeX (CSP default-src 'self'): renders \(...\) and \[...\] in the notes. -->
+<link rel="stylesheet" href="/games/assets/vendor/katex/katex.min.css">
+<script defer src="/games/assets/vendor/katex/katex.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --primary:#4f46e5;--secondary:#4338ca;
+  --bg:#f8faff;--card:#fff;--border:#cbd5e1;
+  --text-dark:#0f172a;--text-body:#334155;--text-muted:#475569;
+  --font-body:'Plus Jakarta Sans',sans-serif;
+  --font-display:'Playfair Display',serif;
+  --radius:16px;--shadow:0 6px 22px rgba(15,23,42,.11);
+}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text-body);line-height:1.75}
+.skip-link{position:absolute;top:-100px;left:0;background:var(--primary);color:#fff;padding:10px 20px;z-index:9999;border-radius:0 0 8px 0;font-weight:700;transition:top .2s}
+.skip-link:focus{top:0}
+nav{background:#fff;border-bottom:1px solid var(--border);padding:0 5%;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-back{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--primary);font-weight:600;font-size:.9rem;padding:8px 16px;border:1.5px solid var(--primary);border-radius:50px;transition:all .2s}
+.nav-back:hover{background:var(--primary);color:#fff}
+.breadcrumb{max-width:1200px;margin:0 auto;padding:14px 5%;font-size:.8rem;color:var(--text-muted);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.breadcrumb a{color:var(--primary);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.hero{padding:56px 5%;position:relative;overflow:hidden}
+.hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);color:rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.2);border-radius:50px;padding:6px 16px;font-size:.78rem;font-weight:700;margin-bottom:18px;backdrop-filter:blur(8px)}
+.hero h1{font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;color:#fff;line-height:1.25;margin-bottom:14px}
+.hero h1 span{color:#c7d2fe}
+.hero-sub{color:rgba(255,255,255,.72);font-size:.96rem;margin-bottom:28px;max-width:640px}
+main{max-width:1200px;margin:0 auto;padding:44px 5%}
+.section-label{display:flex;align-items:center;gap:8px;font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;color:var(--primary)}
+.section-title{font-family:var(--font-display);font-size:1.55rem;font-weight:800;color:var(--text-dark);margin-bottom:6px}
+.section-title span{color:var(--primary)}
+.section-sub{color:var(--text-muted);font-size:.92rem;margin-bottom:28px}
+.enroll-box{background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:var(--radius);padding:36px;text-align:center;margin-bottom:44px}
+.enroll-box h2{font-family:var(--font-display);font-size:1.4rem;color:#fff;font-weight:800;margin-bottom:8px}
+.enroll-box p{color:rgba(255,255,255,.7);margin-bottom:20px;font-size:.92rem}
+.enroll-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-home{display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:#fff;font-weight:700;font-size:.88rem;padding:11px 22px;border-radius:50px;text-decoration:none;transition:opacity .2s}
+.btn-home:hover{opacity:.88}
+.btn-wa{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--primary);font-weight:600;font-size:.88rem;padding:10px 22px;border-radius:50px;text-decoration:none;border:1.5px solid var(--primary);transition:all .2s}
+.btn-wa:hover{background:var(--primary);color:#fff}
+.enroll-box .btn-wa{color:#fff;border-color:#fff}
+.enroll-box .btn-wa:hover{background:#fff;color:var(--primary)}
+footer{background:#0a0f1e;padding:28px 5%;text-align:center}
+footer p{color:#64748b;font-size:.81rem}
+footer a{color:#818cf8;text-decoration:none}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-quiz{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;font-weight:700;font-size:.93rem;padding:12px 26px;border-radius:50px;text-decoration:none;box-shadow:0 6px 20px rgba(245,158,11,.4);transition:transform .2s}
+.btn-quiz:hover{transform:translateY(-3px)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;font-weight:600;font-size:.88rem;padding:11px 22px;border-radius:50px;text-decoration:none;border:1px solid rgba(255,255,255,.3);transition:all .2s}
+.btn-outline:hover{background:rgba(255,255,255,.2)}
+.pdf-box{background:linear-gradient(135deg,rgba(79,70,229,.06),rgba(67,56,202,.04));border:1px solid rgba(79,70,229,.2);border-radius:var(--radius);padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:22px}
+.pdf-box-left{display:flex;align-items:center;gap:14px}
+.pdf-box-left .icon{font-size:2.2rem;color:var(--primary)}
+.pdf-box-left h3{font-size:.97rem;font-weight:700;color:var(--text-dark);margin-bottom:3px}
+.pdf-box-left p{font-size:.81rem;color:var(--text-muted)}
+.btn-pdf{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,#4f46e5,#4338ca);color:#fff;font-weight:700;font-size:.88rem;padding:11px 22px;border-radius:50px;text-decoration:none;box-shadow:0 5px 16px rgba(79,70,229,.35);transition:transform .2s;white-space:nowrap}
+.btn-pdf:hover{transform:translateY(-2px)}
+.qa-section{margin-bottom:44px}
+.qa-topic-block{margin-bottom:36px}
+.qa-topic-title{font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:var(--text-dark);margin-bottom:16px;padding:12px 18px;background:linear-gradient(135deg,rgba(79,70,229,.07),rgba(67,56,202,.04));border-left:4px solid var(--primary);border-radius:0 10px 10px 0;display:flex;align-items:center;gap:10px}
+.qa-item{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden;transition:box-shadow .2s}
+.qa-item:hover{box-shadow:0 4px 16px rgba(79,70,229,.1)}
+.qa-item summary{font-weight:700;font-size:.94rem;color:var(--text-dark);cursor:pointer;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:16px 20px;list-style:none;user-select:none}
+.qa-item summary::-webkit-details-marker{display:none}
+.qa-toggle{width:28px;height:28px;border-radius:50%;background:rgba(79,70,229,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--primary);font-size:.75rem;transition:all .25s;margin-top:1px}
+.qa-item[open] .qa-toggle{background:var(--primary);color:#fff;transform:rotate(180deg)}
+.qa-phrasings{padding:0 20px 4px;display:flex;flex-direction:column;gap:3px;border-top:1px dashed var(--border)}
+.qa-phrasing{font-size:.79rem;color:var(--text-muted);font-style:italic;padding-top:6px}
+.qa-answer{padding:14px 20px 18px;font-size:.93rem;color:var(--text-body);line-height:1.8;border-top:1px solid var(--border)}
+.qa-answer strong{color:var(--text-dark)}
+.qa-answer p+p{margin-top:8px}
+.vocab-table,.cmp-table{width:100%;border-collapse:collapse;margin-bottom:24px;border-radius:12px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
+.vocab-table th,.cmp-table th{background:var(--primary);color:#fff;padding:12px 16px;text-align:left;font-size:.85rem;font-weight:700}
+.vocab-table td,.cmp-table td{padding:11px 16px;font-size:.88rem;border-bottom:1px solid var(--border);vertical-align:top}
+.vocab-table tr:nth-child(even) td,.cmp-table tr:nth-child(even) td{background:#f5f5ff}
+.vocab-table td:first-child,.cmp-table td:first-child{font-weight:700;color:var(--text-dark)}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:6px}
+.table-wrap .cmp-table{min-width:560px}
+.tbl-cap{font-size:.8rem;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:1px;margin:6px 0 8px}
+.callout{display:flex;align-items:flex-start;gap:12px;border-radius:12px;padding:14px 18px;margin-bottom:16px;font-size:.88rem;line-height:1.65}
+.callout i{margin-top:3px;flex-shrink:0;font-size:1.1rem}
+.callout b{display:block;margin-bottom:2px}
+.callout.fyi{background:#eef2ff;border:1px solid #c7d2fe;color:#312e81}
+.callout.fyi i{color:#4f46e5}
+.callout.mis{background:#fef2f2;border:1px solid #fecaca;color:#7f1d1d}
+.callout.mis i{color:#dc2626}
+.callout.tip{background:#fffbeb;border:1px solid #fde68a;color:#78350f}
+.callout.tip i{color:#d97706}
+.callout.sts{background:#ecfdf5;border:1px solid #a7f3d0;color:#064e3b}
+.callout.sts i{color:#059669}
+.topics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-bottom:32px}
+.topic-item{display:flex;align-items:flex-start;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 16px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.topic-item i{flex-shrink:0;margin-top:3px}
+.topic-item span{font-size:.88rem;color:var(--text-body);font-weight:500}
+.back-bar{padding:28px 0 0;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.slo{display:inline-block;background:#eef2ff;color:#4f46e5;font-size:.7rem;font-weight:800;padding:2px 9px;border-radius:50px;margin-left:8px;letter-spacing:.5px;vertical-align:middle}
+@media(max-width:600px){
+  .pdf-box{flex-direction:column;text-align:center}
+  .pdf-box-left{flex-direction:column;align-items:center;text-align:center}
+  .back-bar{flex-direction:column;align-items:flex-start}
+  .hero h1{font-size:1.5rem}
+}
+.quick-notes{background:#fff;border:1px solid var(--border);border-left:4px solid var(--secondary);border-radius:12px;padding:14px 18px;margin-bottom:18px;font-size:.9rem;line-height:1.7}
+.quick-notes .qn-title{display:block;color:var(--text-dark);margin-bottom:4px}
+.quick-notes ul{margin:4px 0 0 20px}.quick-notes li{margin:4px 0}
+.qa-opts{list-style:none;margin:0 0 8px;padding:0;display:grid;gap:4px}
+.qa-opts li{padding:5px 10px;background:#f5f5ff;border:1px solid var(--border);border-radius:8px;font-size:.9rem}
+sup,sub{font-size:.7em;line-height:0}
+
+.qa-answer .formula{background:#eef2ff;border:1px solid #c7d2fe;padding:10px 16px;border-radius:8px;font-size:.95rem;margin:8px 0;color:var(--primary);font-weight:600;text-align:center;overflow-x:auto}
+.qa-answer .note{background:#fffbeb;border-left:3px solid #f59e0b;padding:8px 12px;border-radius:0 8px 8px 0;font-size:.85rem;color:#92400e;margin-top:10px}
+.qa-answer .warn{background:#fef2f2;border-left:3px solid #ef4444;padding:8px 12px;border-radius:0 8px 8px 0;font-size:.85rem;color:#991b1b;margin-top:10px}
+.qa-answer .trick{background:linear-gradient(135deg,#fffbeb,#fef3c7);border:1px solid #fcd34d;border-radius:10px;padding:10px 14px;margin:8px 0;font-size:.9rem;color:#78350f}
+.qa-answer .trick>b{display:block;color:#b45309;margin-bottom:4px}
+.qa-answer .trick .cmp-table{min-width:0}
+.qa-answer .calc{background:#f5f5ff;border:1px solid var(--border);border-left:4px solid var(--primary);border-radius:8px;padding:10px 14px;margin:8px 0;font-size:.9rem;line-height:2.4;overflow-x:auto}
+.qa-answer ul.steps,.qa-answer ol.steps,.callout ul.steps{margin:6px 0 4px 22px}
+.qa-answer ul.steps li,.qa-answer ol.steps li,.callout ul.steps li{margin:3px 0}
+.qa-answer .cmp-table .katex{font-size:1em}
+.katex-display{margin:6px 0}
+.app-wrap{overflow:auto;max-height:560px;border:1px solid var(--border);border-radius:10px;background:#fff;margin-top:10px}
+.logtbl{border-collapse:collapse;font-size:.74rem;font-variant-numeric:tabular-nums;min-width:860px;width:100%;text-align:center}
+.logtbl th,.logtbl td{padding:3px 5px;border:1px solid #e2e8f0}
+.logtbl thead th{position:sticky;top:0;background:var(--primary);color:#fff;z-index:2}
+.logtbl th.rowh{position:sticky;left:0;background:#eef2ff;color:#312e81;font-weight:800;z-index:1}
+.logtbl thead th.rowh{background:var(--primary);color:#fff;z-index:3}
+.logtbl td.md,.logtbl th.md{background:#fff7ed;color:#9a3412}
+.logtbl thead th.md{background:#ea580c;color:#fff}
+.logtbl tbody tr:nth-child(even) td:not(.md){background:#f5f5ff}
+.callout ul.steps{margin-top:6px}
+.sec-nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 32px}
+.sec-nav a{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-size:.8rem;font-weight:700;color:var(--primary);background:#eef2ff;border:1px solid #c7d2fe;border-radius:50px;padding:6px 14px}
+.sec-nav a:hover{background:var(--primary);color:#fff}
+
+/* free exercise samples */
+table.vocab-table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.ex-h{font-family:var(--font-display);font-size:1.12rem;color:var(--text-dark);margin:26px 0 10px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.ex-h small{font-family:var(--font-body);font-size:.78rem;font-weight:600;color:var(--text-muted)}
+.ex-lv{flex-shrink:0;font-size:.68rem;font-weight:800;letter-spacing:.03em;text-transform:uppercase;padding:3px 9px;border-radius:50px;margin-left:8px}
+.ex-lv.easy{background:#dcfce7;color:#166534}.ex-lv.med{background:#fef3c7;color:#92400e}.ex-lv.hard{background:#fee2e2;color:#991b1b}
+.ex-q{background:#f1f5f9;border-left:4px solid var(--primary);border-radius:8px;padding:10px 14px;margin-bottom:12px}
+.ex-item pre.steps{background:#f8fafc;border:1px solid var(--border);border-left:4px solid var(--primary);border-radius:8px;padding:12px 14px;margin:8px 0;overflow-x:auto;white-space:pre;font:.88rem/1.65 ui-monospace,Menlo,Consolas,monospace;color:var(--text-dark)}
+.ex-item pre.steps code{font:inherit;background:none;padding:0}
+.ex-item .qa-answer table{border-collapse:collapse;margin:8px 0;max-width:100%;display:block;overflow-x:auto}
+.ex-item .qa-answer th,.ex-item .qa-answer td{border:1px solid var(--border);padding:5px 10px;font-size:.88rem}
+.ex-item .qa-answer ul{margin:6px 0 6px 22px}
+.ex-lock{display:flex;gap:10px;align-items:flex-start;background:#f8fafc;border:1.5px dashed var(--border);border-radius:12px;padding:11px 15px;margin:10px 0 4px;font-size:.86rem;color:var(--text-muted)}
+.ex-lock i{color:var(--primary);margin-top:4px}
+.ex-unlock{margin-top:30px;background:linear-gradient(135deg,#312e81,#4f46e5);border-radius:var(--radius);padding:26px 26px 22px;color:#fff}
+.ex-unlock h3{font-family:var(--font-display);font-size:1.2rem;margin-bottom:6px;color:#fff}
+.ex-unlock p{color:rgba(255,255,255,.82);font-size:.9rem;margin-bottom:12px}
+.ex-unlock ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:8px 18px;margin:0 0 16px}
+.ex-unlock li{font-size:.88rem;color:#fff;display:flex;gap:9px;align-items:flex-start}
+.ex-unlock li i{color:#c7d2fe;margin-top:5px}
+.ex-unlock .acts{display:flex;gap:10px;flex-wrap:wrap}
+.ex-unlock .acts a{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:50px;font-weight:700;font-size:.88rem;text-decoration:none}
+.ex-unlock .acts a.p{background:#fff;color:#312e81}.ex-unlock .acts a.s{border:1.5px solid #c7d2fe;color:#fff}
+
+.callout b{display:inline;margin:0}.callout>div>b:first-child{display:block;margin-bottom:2px}.callout div i{font-size:inherit;margin:0;flex-shrink:initial;color:inherit}.callout p{margin:0 0 6px}
+
+.table-wrap,.qa-answer .formula,.qa-answer .calc,table.vocab-table,.ex-item .qa-answer table,.qa-answer,.topic-item,.callout,.quick-notes,.note,.warn,.trick{position:relative}
+.qa-answer .formula,.qa-answer .calc,.note,.warn,.trick,.callout,.quick-notes{overflow-x:auto;max-width:100%}
+/* interactive diagrams */
+.viz{background:#fff;border:1.5px solid #c7d2fe;border-radius:16px;padding:16px 16px 14px;margin:18px 0 26px;box-shadow:0 6px 22px rgba(79,70,229,.10);max-width:100%;overflow:hidden}
+.viz-t{display:flex;align-items:center;gap:8px;font-weight:800;color:#312e81;font-size:1rem;margin-bottom:4px;font-family:var(--font-display)}
+.viz-t i{color:#4f46e5}
+.viz-cap{font-size:.84rem;color:#475569;margin:0 0 12px;line-height:1.6}
+.viz-body{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start;justify-content:center}
+.viz-svg{width:100%;max-width:400px;height:auto;background:#f8faff;border:1px solid #e2e8f0;border-radius:12px;touch-action:pan-y pinch-zoom;user-select:none;-webkit-user-select:none;display:block}
+.viz-svg.viz-wide{max-width:620px}
+.viz-svg text{pointer-events:none;font-family:inherit}
+.viz-ctl{display:flex;flex-wrap:wrap;gap:10px 16px;margin:12px 0 0;align-items:center;justify-content:center}
+.viz-btn{font:700 .8rem var(--font-body);background:#eef2ff;color:#4338ca;border:1.5px solid #c7d2fe;border-radius:50px;padding:7px 15px;cursor:pointer;transition:background .15s,color .15s}
+.viz-btn:hover,.viz-btn.on{background:#4f46e5;color:#fff;border-color:#4f46e5}
+.viz-sl{font-size:.8rem;font-weight:700;color:#334155;display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap}
+.viz-sl b{color:#4338ca;min-width:2.2em;display:inline-block}
+.viz input[type=range]{accent-color:#4f46e5;width:140px;height:28px}
+.viz-sel{font:600 .82rem var(--font-body);padding:7px 10px;border:1.5px solid #c7d2fe;border-radius:10px;background:#fff;color:#312e81;max-width:100%}
+.viz-ck{font-size:.82rem;font-weight:700;color:#334155;display:inline-flex;align-items:center;gap:6px}
+.viz-out{margin-top:12px;background:#eef2ff;border:1px solid #c7d2fe;border-radius:10px;padding:9px 13px;font-size:.88rem;color:#1e1b4b;line-height:1.75;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.viz-out b{color:#4338ca}
+.viz-try{font-size:.8rem;color:#78350f;background:#fffbeb;border-left:3px solid #f59e0b;padding:7px 11px;border-radius:0 8px 8px 0;margin-top:10px;line-height:1.6}
+.viz-hd:focus{outline:none}.viz-hd:focus circle:last-child{stroke:#f59e0b}
+.viz-static{background:#fff;border:1.5px solid #e2e8f0;border-radius:16px;padding:14px;margin:16px 0 24px;text-align:center}
+.viz-static svg{max-width:100%;height:auto}
+.viz-static figcaption{font-size:.82rem;color:#475569;margin-top:6px}
+@media(max-width:600px){.viz{padding:12px 10px}.viz input[type=range]{width:120px}}
+@media(prefers-reduced-motion:reduce){.viz *{transition:none!important}}
+
+</style>
+<link rel="stylesheet" href="/assets/brand.css">
+<link rel="stylesheet" href="/assets/public-chrome.css">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<nav aria-label="Page navigation">
+  <div class="nav-inner">
+    <a href="https://whacademypk.com/" class="nav-brand wh-logo" aria-label="W.H. Academy Homepage"><span class="wh-mark">W.H.</span><span class="wh-text"><span class="wh-l1">ACADEMY</span><span class="wh-l2">MATHEMATICS</span></span></a>
+    <a href="https://whacademypk.com/" class="nav-back" aria-label="Back to homepage"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Home</a>
+  </div>
+</nav>
+<nav aria-label="Breadcrumb"><div class="breadcrumb"><a href="https://whacademypk.com/">Home</a><span aria-hidden="true">›</span><a href="https://whacademypk.com/notes/">Notes</a><span aria-hidden="true">›</span><a href="https://whacademypk.com/notes/class-11/">Class 11</a><span aria-hidden="true">›</span><a href="https://whacademypk.com/notes/class-11/math/">Mathematics</a><span aria-hidden="true">›</span><span aria-current="page">Unit 3: Vectors in Space</span></div></nav>
+<header class="hero" style="background:linear-gradient(135deg,#1e1b4b 0%,#312e81 50%,#4f46e5 100%);" role="banner">
+  <div class="hero-inner">
+    <div class="hero-badge"><i class="fas fa-arrow-trend-up" aria-hidden="true"></i> FBISE Federal Board · Class 11 (HSSC-I) · Mathematics · Unit 3</div>
+    <h1><span>Vectors in Space</span><br>Complete Notes &amp; Free Quiz</h1>
+    <p class="hero-sub">Prepared for the <strong>Federal Board (FBISE)</strong> Class 11 Mathematics textbook. Every idea is shown as a picture you can move with your finger: head minus tail, the section formula, the dot product and its shadow, the right-hand rule, the area of a triangle, the box of the triple product. Every book example step by step, common mistakes and free solved exercise samples, by W.H. Academy.</p>
+    <div class="hero-actions">
+      <a href="https://whacademypk.com/games/chapter.html?ch=11/math/vectors" class="btn-quiz" target="_blank" rel="noopener noreferrer"><i class="fas fa-circle-play" aria-hidden="true"></i> Play the Free Game</a>
+    </div>
+  </div>
+</header>
+<main id="main-content">
+<section style="margin-bottom:44px"><div class="section-label"><i class="fas fa-bullseye" aria-hidden="true"></i> Learning Objectives</div><h2 class="section-title">Chapter <span>Overview</span></h2><p class="section-sub">After studying Unit 3 you will be able to do the following. These are the eleven objectives printed in the textbook.</p><div class="topics-grid"><div class="topic-item"><i class="fas fa-check-circle" style="color:#4f46e5" aria-hidden="true"></i><span>Recognise rectangular coordinates in space <span class="slo">M11-03-01</span></span></div><div class="topic-item"><i class="fas fa-check-circle" style="color:#4f46e5" aria-hidden="true"></i><span>Recognise a unit vector and the \(x,y,z\) components of a vector <span class="slo">M11-03-02</span></span></div><div class="topic-item"><i class="fas fa-check-circle" style="color:#4f46e5" aria-hidden="true"></i><span>Find the magnitude of a vector in space <span class="slo">M11-03-03</span></span></div><div class="topic-item"><i class="fas fa-check-circle" style="color:#4f46e5" aria-hidden="true"></i><span>Repeat the plane operations in space: add, subtract, scalar multiple and the section formula <span class="slo">M11-03-04</span></span></div><div class="topic-item"><i class="fas fa-check-circle" style="color:#4f46e5" aria-hidden="true"></i><span>Prove the properties of vector addition (commutative, associative, zero vector, negative vector) <span class="slo">M11-03-05</span></span></div><div class="topic-item"><i class="fas fa-check-circle" style="color:#4f46e5" aria-hidden="true"></i><span>Explain the dot product: meaning, components, orthogonality, projection, work done and daily-life problems <span class="slo">M11-03-06</span></span></div><div class="topic-item"><i class="fas fa-check-circle" style="color:#4f46e5" aria-hidden="true"></i><span>Explain the cross product: meaning, angle between vectors and daily-life situations <span class="slo">M11-03-07</span></span></div><div class="topic-item"><i class="fas fa-check-circle" style="color:#4f46e5" aria-hidden="true"></i><span>Describe the scalar triple product, its determinant form and show that dot and cross are interchangeable <span class="slo">M11-03-08</span></span></div><div class="topic-item"><i class="fas fa-check-circle" style="color:#4f46e5" aria-hidden="true"></i><span>Find the volume of a parallelepiped and of a tetrahedron <span class="slo">M11-03-09</span></span></div><div class="topic-item"><i class="fas fa-check-circle" style="color:#4f46e5" aria-hidden="true"></i><span>Define coplanar vectors and use the condition for coplanarity <span class="slo">M11-03-10</span></span></div><div class="topic-item"><i class="fas fa-check-circle" style="color:#4f46e5" aria-hidden="true"></i><span>Apply vectors to real-world problems <span class="slo">M11-03-11</span></span></div></div></section>
+<section class="qa-section" style="margin-bottom:44px" id="part-0"><div class="section-label"><i class="fas fa-brain" aria-hidden="true"></i> Start Here</div><h2 class="section-title">Chapter <span>Psychology</span></h2><p class="section-sub">What this unit is really about, and where the exercise marks are.</p><div class="qa-topic-block"><h3 class="qa-topic-title"><i class="fas fa-brain" aria-hidden="true"></i> The one idea behind this unit</h3><details class="qa-item"><summary><span>1. What is the one idea that holds Unit 3 together?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• How should I study Vectors in Space?</span><span class="qa-phrasing">• What is this unit really testing?</span></div><div class="qa-answer"><p>A vector is an <b>arrow</b>: it has a length and a direction. In space we write it with three numbers, \(\vec r=x\hat i+y\hat j+z\hat k\), and every operation becomes a small piece of arithmetic on those three numbers:</p><ul class="steps"><li><b>adding</b> and <b>subtracting</b> arrows is adding or subtracting the matching numbers;</li><li>the <b>dot product</b> multiplies matching numbers and adds them: it gives one number (angle, projection, work);</li><li>the <b>cross product</b> is a determinant: it gives a new arrow that is perpendicular to both (area, moment);</li><li>the <b>triple product</b> is a \(3\times3\) determinant: it gives one number (volume, coplanar test).</li></ul><div class="callout sts"><i class="fas fa-comments" aria-hidden="true"></i><div><b>In simple words</b><p>Draw the arrow first. Then ask: "Do I need a number (dot, triple product) or an arrow (cross product)?" That one question picks the right tool for most exercise questions. Every diagram on this page can be moved with your finger.</p></div></div></div></details><h3 class="qa-topic-title" style="margin-top:22px"><i class="fas fa-map" aria-hidden="true"></i> Where the exercise marks are (counts from the book)</h3><div class="table-wrap"><table class="cmp-table"><thead><tr><th>Part of the unit</th><th>Book exercise</th><th>Questions</th><th>What it trains</th></tr></thead><tbody><tr><td>3.1 to 3.4: vectors, Head \(-\) Tail, section formula, magnitude, properties</td><td>Exercise 3.1</td><td>16</td><td>Components, unit vectors, collinear points, parallelograms, geometry proofs with vectors.</td></tr><tr><td>3.5: dot product</td><td>Exercise 3.2</td><td>16</td><td>Angle, perpendicular, direction cosines, projection, work done.</td></tr><tr><td>3.6: cross product</td><td>Exercise 3.3</td><td>17</td><td>Cross product, area, unit perpendicular vector, moment of a force.</td></tr><tr><td>3.7: scalar triple product</td><td>Exercise 3.4</td><td>7</td><td>Triple product, coplanar vectors, volume of a parallelepiped and a tetrahedron.</td></tr><tr><td>The whole unit</td><td>Review Exercise</td><td>9</td><td>10 MCQs and mixed questions, airplane and wind.</td></tr><tr><td><b>Total</b></td><td></td><td><b>65</b></td><td></td></tr></tbody></table></div></div></section><section class="qa-section" style="margin-bottom:44px" id="s31"><div class="section-label"><i class="fas fa-arrow-right" aria-hidden="true"></i> Section 3.1</div><h2 class="section-title">Vectors: <span>Arrows with Direction</span></h2><p class="section-sub">Scalars and vectors, the basic words, and how to add, subtract and scale vectors.</p><div class="qa-topic-block"><h3 class="qa-topic-title"><i class="fas fa-location-arrow" aria-hidden="true"></i> Scalar, vector and the picture of a vector</h3><details class="qa-item"><summary><span>2. What is the difference between a scalar and a vector?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• Define scalar and vector with examples.</span><span class="qa-phrasing">• Which of these is a vector quantity?</span></div><div class="qa-answer"><p>A <b>scalar</b> has only a size (magnitude): mass, time, distance, speed, temperature, work. A <b>vector</b> has a size <b>and</b> a direction: displacement, velocity, force, acceleration, weight, moment.</p><div class="table-wrap"><table class="cmp-table"><thead><tr><th>Scalar</th><th>Vector</th></tr></thead><tbody><tr><td>distance \(=5\) km</td><td>displacement \(=5\) km towards north</td></tr><tr><td>speed \(=60\) km/h</td><td>velocity \(=60\) km/h towards east</td></tr><tr><td>mass, time, energy, work</td><td>force, momentum, moment of a force</td></tr></tbody></table></div><div class="callout mis"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i><div><b>Tricky pair</b><p>Speed and velocity are not the same. A car going round a circle at \(60\) km/h has constant speed but changing velocity, because its direction keeps changing.</p></div></div></div></details><details class="qa-item"><summary><span>3. How is a vector drawn, and what are its tail and head?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• What is the geometrical representation of a vector?</span></div><div class="qa-answer"><p>A vector is drawn as an arrow. The starting end is the <b>tail</b> (initial point) and the pointed end is the <b>head</b> (terminal point). For the arrow from \(A\) to \(B\) we write \(\overrightarrow{AB}\) or \(\vec a\). The length of the arrow is the magnitude \(|\overrightarrow{AB}|\) and the arrow head shows the direction. Two arrows with the same length and the same direction are the <b>same vector</b>, wherever they are drawn.</p></div></details><h3 class="qa-topic-title"><i class="fas fa-book" aria-hidden="true"></i> Basic words you must know</h3><details class="qa-item"><summary><span>4. What are equal, negative, zero, unit and parallel vectors?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• Define unit vector and position vector.</span><span class="qa-phrasing">• When are two vectors parallel?</span></div><div class="qa-answer"><div class="table-wrap"><table class="cmp-table"><thead><tr><th>Name</th><th>Meaning</th><th>Symbol / test</th></tr></thead><tbody><tr><td>Magnitude</td><td>the length of the arrow</td><td>\(|\vec a|\ge 0\)</td></tr><tr><td>Equal vectors</td><td>same magnitude and same direction</td><td>\(\vec a=\vec b\)</td></tr><tr><td>Negative of \(\vec a\)</td><td>same length, opposite direction</td><td>\(-\vec a\) with \(\overrightarrow{BA}=-\overrightarrow{AB}\)</td></tr><tr><td>Zero (null) vector</td><td>magnitude \(0\), no definite direction</td><td>\(\vec 0\)</td></tr><tr><td>Unit vector</td><td>magnitude \(1\)</td><td>\(\hat a=\dfrac{\vec a}{|\vec a|}\)</td></tr><tr><td>Parallel vectors</td><td>same or opposite direction</td><td>\(\vec a=\lambda\vec b\) for a scalar \(\lambda\)</td></tr><tr><td>Position vector of \(P\)</td><td>the arrow from the origin \(O\) to \(P\)</td><td>\(\overrightarrow{OP}\)</td></tr></tbody></table></div><div class="callout tip"><i class="fas fa-lightbulb" aria-hidden="true"></i><div><b>Hat means unit</b><p>\(\hat a\) (with a hat) always has length \(1\). To make a unit vector, divide the vector by its own length.</p></div></div></div></details><details class="qa-item"><summary><span>5. How do I find \(\overrightarrow{AB}\) from the points \(A\) and \(B\)? (Head \(-\) Tail)</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• Find the vector joining two points.</span><span class="qa-phrasing">• What is the Head minus Tail rule?</span></div><div class="qa-answer"><p>If \(A\) and \(B\) have position vectors \(\vec a\) and \(\vec b\), then \(\overrightarrow{AB}=\overrightarrow{OB}-\overrightarrow{OA}\).</p><div class="formula">\(\overrightarrow{AB}=\vec b-\vec a=\text{Head}-\text{Tail}\)</div><div class="viz" data-viz="headtail" data-title="Head minus Tail" data-cap="Drag the points \(A\) and \(B\). The green arrow \(\overrightarrow{AB}\) always equals \(\vec b-\vec a\), the position vector of the head minus the position vector of the tail." data-try="put A in the third quadrant and B in the first, then swap their places and watch AB turn into BA = −AB."></div><p><b>Worked example.</b> For \(A(2,-1,3)\) and \(B(5,3,-2)\):</p><div class="calc">\(\overrightarrow{AB}=(5-2,\ 3-(-1),\ -2-3)=(3,4,-5)=3\hat i+4\hat j-5\hat k\)<br>\(|\overrightarrow{AB}|=\sqrt{9+16+25}=\sqrt{50}=5\sqrt2\)</div><div class="callout mis"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i><div><b>Common mistake</b><p>Writing \(A-B\) instead of \(B-A\). The <b>head</b> comes first: the point where the arrow ends, minus the point where it starts.</p></div></div></div></details><h3 class="qa-topic-title"><i class="fas fa-plus-minus" aria-hidden="true"></i> Adding, subtracting and scaling</h3><details class="qa-item"><summary><span>6. How do I add two vectors? (triangle law and parallelogram law)</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• State the triangle law of addition.</span><span class="qa-phrasing">• What is the parallelogram law?</span></div><div class="qa-answer"><p><b>Triangle law (head to tail):</b> put the tail of \(\vec b\) on the head of \(\vec a\). The arrow from the start of \(\vec a\) to the end of \(\vec b\) is \(\vec a+\vec b\). <b>Parallelogram law:</b> draw \(\vec a\) and \(\vec b\) from the same point; the diagonal of the parallelogram is \(\vec a+\vec b\). <b>Polygon law:</b> for many vectors, join them head to tail; the closing arrow is the sum.</p><div class="viz" data-viz="addlaw" data-title="Triangle and parallelogram law" data-cap="Drag the tips of \(\vec a\) and \(\vec b\). Switch between the two laws: the green sum is the same arrow, and tick &quot;show a − b&quot; to see the difference." data-try="put b on the opposite side of a and watch the sum get shorter; make them point the same way and it gets longest."></div><p>In components just add the matching numbers: \((a_1\hat i+a_2\hat j+a_3\hat k)+(b_1\hat i+b_2\hat j+b_3\hat k)=(a_1+b_1)\hat i+(a_2+b_2)\hat j+(a_3+b_3)\hat k\).</p></div></details><details class="qa-item"><summary><span>7. Book Example 1: check that \(\vec a+\vec b=\vec b+\vec a\) for \(\vec a=2\hat i+3\hat j-5\hat k\), \(\vec b=\hat i-5\hat j+2\hat k\).</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-answer"><div class="calc">\(\vec a+\vec b=(2+1)\hat i+(3-5)\hat j+(-5+2)\hat k=3\hat i-2\hat j-3\hat k\)<br>\(\vec b+\vec a=(1+2)\hat i+(-5+3)\hat j+(2-5)\hat k=3\hat i-2\hat j-3\hat k\)</div><p>Both orders give the same vector, so addition is <b>commutative</b>.</p><div class="callout tip"><i class="fas fa-lightbulb" aria-hidden="true"></i><div><b>Golden rule</b><p>Add \(\hat i\) with \(\hat i\), \(\hat j\) with \(\hat j\), and \(\hat k\) with \(\hat k\), like counting mangoes with mangoes and bananas with bananas.</p></div></div></div></details><details class="qa-item"><summary><span>8. How do I subtract vectors, and what does \(\vec a-\vec b\) look like?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• What is the negative of a vector and how do I subtract?</span></div><div class="qa-answer"><p>\(\vec a-\vec b=\vec a+(-\vec b)\): add the negative. Component by component, subtract the matching numbers. Geometrically \(\vec a-\vec b\) is the arrow <b>from the tip of \(\vec b\) to the tip of \(\vec a\)</b> (tick "show a − b" in the diagram above).</p><p><b>Worked example.</b> \(\vec a=4\hat i+\hat j-2\hat k\), \(\vec b=\hat i-3\hat j+5\hat k\):</p><div class="calc">\(\vec a-\vec b=(4-1)\hat i+(1+3)\hat j+(-2-5)\hat k=3\hat i+4\hat j-7\hat k\)</div></div></details><details class="qa-item"><summary><span>9. Book Example 3: what is \(\lambda\vec a\) for \(\lambda=5\) and \(\vec a=10\hat i+9\hat j+17\hat k\)?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• What is scalar multiplication of a vector?</span></div><div class="qa-answer"><p>Multiplying by a scalar multiplies <b>every</b> component.</p><div class="calc">\(5\vec a=5(10)\hat i+5(9)\hat j+5(17)\hat k=50\hat i+45\hat j+85\hat k\)</div><p>If \(\lambda>0\) the direction stays the same; if \(\lambda<0\) it reverses; \(|\lambda\vec a|=|\lambda||\vec a|\).</p></div></details></div></section><section class="qa-section" style="margin-bottom:44px" id="s314"><div class="section-label"><i class="fas fa-scissors" aria-hidden="true"></i> Sections 3.1.4 and 3.1.5</div><h2 class="section-title">Section Formula and <span>Geometry with Vectors</span></h2><p class="section-sub">How to find a point that divides a segment in a given ratio, and how to prove geometry results using vectors.</p><div class="qa-topic-block"><h3 class="qa-topic-title"><i class="fas fa-divide" aria-hidden="true"></i> The section formula</h3><details class="qa-item"><summary><span>10. How do I find the point \(P\) that divides \(\overline{AB}\) in the ratio \(AP:PB=m:n\)?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• State the section formula.</span><span class="qa-phrasing">• Find the position vector of the point dividing a line in the ratio m:n.</span></div><div class="qa-answer"><p>Let \(A\) and \(B\) have position vectors \(\vec a\) and \(\vec b\). For a point \(P\) <b>between</b> them (internal division) and for a point \(P\) <b>outside</b> the segment (external division):</p><div class="formula">Internal: \(\vec r=\dfrac{n\vec a+m\vec b}{m+n}\) &nbsp;&nbsp; External: \(\vec r=\dfrac{m\vec b-n\vec a}{m-n}\) &nbsp;&nbsp; Midpoint (\(m=n=1\)): \(\dfrac{\vec a+\vec b}{2}\)</div><div class="viz" data-viz="section" data-title="Section formula" data-cap="Drag \(A\) and \(B\), change the ratio \(m:n\) and switch between internal and external division. The check line measures \(AP\) and \(PB\) and confirms the ratio." data-try="set m = n for the internal case: P becomes the midpoint. Then try external division with m = n and see why it fails."></div><div class="callout tip"><i class="fas fa-lightbulb" aria-hidden="true"></i><div><b>Memory trick (cross-weights)</b><p>In \(AP:PB=m:n\), \(\vec b\) is multiplied by \(m\) (the part \(AP\)) and \(\vec a\) is multiplied by \(n\) (the part \(PB\)). So \(P\) is pulled towards the vector with the larger weight: if \(m<n\) the point \(P\) is nearer to \(A\). The same formula works in the plane and in space.</p></div></div></div></details><details class="qa-item"><summary><span>11. Worked example: internal and external division in space</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-answer"><p>Let \(A(2,4,-1)\) and \(B(7,-1,9)\).</p><p><b>Internal, \(AP:PB=2:3\):</b> here \(m=2,\ n=3\).</p><div class="calc">\(\vec r=\dfrac{3\vec a+2\vec b}{5}=\dfrac{3(2,4,-1)+2(7,-1,9)}{5}=\dfrac{(6+14,\ 12-2,\ -3+18)}{5}=(4,2,3)\)</div><p><b>External, \(AP:PB=3:2\):</b> here \(m=3,\ n=2\).</p><div class="calc">\(\vec r=\dfrac{3\vec b-2\vec a}{3-2}=3(7,-1,9)-2(2,4,-1)=(21-4,\ -3-8,\ 27+2)=(17,-11,29)\)</div><p><b>Check:</b> \(\overrightarrow{AP}=(15,-15,30)\) and \(\overrightarrow{PB}=(-10,10,-20)\); their lengths are in the ratio \(3:2\).</p><div class="callout mis"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i><div><b>Common mistake</b><p>Mixing up \(m\) and \(n\). Always write down which part is \(AP\) and which is \(PB\), then check the answer by finding \(\overrightarrow{AP}\) and \(\overrightarrow{PB}\).</p></div></div></div></details><h3 class="qa-topic-title"><i class="fas fa-shapes" aria-hidden="true"></i> Geometry proofs with vectors</h3><details class="qa-item"><summary><span>12. How do I prove that the diagonals of a parallelogram bisect each other?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-answer"><p>Take \(ABCD\) with position vectors \(\vec a,\vec b,\vec c,\vec d\). In a parallelogram \(\overrightarrow{AB}=\overrightarrow{DC}\), so \(\vec b-\vec a=\vec c-\vec d\), which gives \(\vec a+\vec c=\vec b+\vec d\).</p><ul class="steps"><li>The midpoint of \(AC\) is \(\dfrac{\vec a+\vec c}{2}\).</li><li>The midpoint of \(BD\) is \(\dfrac{\vec b+\vec d}{2}\).</li><li>These are equal, so the diagonals bisect each other.</li></ul><div class="callout tip"><i class="fas fa-lightbulb" aria-hidden="true"></i><div><b>Why this is useful</b><p><b>Fourth vertex of a parallelogram:</b> if \(A,B,C\) are given in order, then \(\vec d=\vec a+\vec c-\vec b\).</p></div></div></div></details><details class="qa-item"><summary><span>13. How do I prove that the line joining the midpoints of two sides of a triangle is parallel to the third side?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-answer"><p>Triangle \(ABC\); \(M\) and \(N\) are the midpoints of \(AB\) and \(AC\). Then \(\vec m=\dfrac{\vec a+\vec b}{2}\) and \(\vec n=\dfrac{\vec a+\vec c}{2}\).</p><div class="calc">\(\overrightarrow{MN}=\vec n-\vec m=\dfrac{\vec c-\vec b}{2}=\tfrac12\overrightarrow{BC}\)</div><p>So \(MN\parallel BC\) and \(MN=\tfrac12 BC\).</p></div></details></div></section><section class="qa-section" style="margin-bottom:44px" id="s32"><div class="section-label"><i class="fas fa-cube" aria-hidden="true"></i> Section 3.2</div><h2 class="section-title">Vectors in <span>Three-Dimensional Space</span></h2><p class="section-sub">Axes, octants, components, magnitude, unit vectors and the distance formula.</p><div class="qa-topic-block"><h3 class="qa-topic-title"><i class="fas fa-location-dot" aria-hidden="true"></i> Coordinates in space</h3><details class="qa-item"><summary><span>14. How do I locate a point in space, and what are octants?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• What are the coordinate planes and octants?</span><span class="qa-phrasing">• How do I find the octant of a point?</span></div><div class="qa-answer"><p>Three mutually perpendicular axes \(Ox,\ Oy,\ Oz\) meet at the origin \(O\). The point \(P(x,y,z)\) is reached by moving \(x\) along the \(x\)-axis, then \(y\) parallel to the \(y\)-axis, then \(z\) parallel to the \(z\)-axis. The three <b>coordinate planes</b> (\(xy\), \(yz\), \(zx\)) cut space into <b>eight octants</b>, decided by the signs of \(x,y,z\).</p><div class="table-wrap"><table class="cmp-table"><thead><tr><th>Octant</th><th>I</th><th>II</th><th>III</th><th>IV</th><th>V</th><th>VI</th><th>VII</th><th>VIII</th></tr></thead><tbody><tr><td>Signs of \(x,y,z\)</td><td>+ + +</td><td>− + +</td><td>− − +</td><td>+ − +</td><td>+ + −</td><td>− + −</td><td>− − −</td><td>+ − −</td></tr></tbody></table></div><div class="viz" data-viz="octants" data-title="Moving around in space" data-cap="Use the sliders to move \(P(x,y,z)\) and turn the picture with &quot;turn&quot; and &quot;tilt&quot;. The coloured path shows the three steps \(x\), then \(y\), then \(z\)." data-try="make one coordinate zero (the point falls into a coordinate plane), then two coordinates zero (it lands on an axis)."></div><ul class="steps"><li>One coordinate \(=0\): the point lies in a <b>coordinate plane</b> (for example \(z=0\) is the \(xy\)-plane).</li><li>Two coordinates \(=0\): the point lies on an <b>axis</b> (for example \((0,0,z)\) is on the \(z\)-axis).</li></ul><p><b>Examples.</b> \((3,-2,5)\) has signs \((+,-,+)\): octant IV. \((0,4,-3)\) is in the \(yz\)-plane. \((0,0,-6)\) is on the \(z\)-axis.</p></div></details><h3 class="qa-topic-title" style="margin-top:22px"><i class="fas fa-ruler-combined" aria-hidden="true"></i> Components, magnitude and unit vectors</h3><details class="qa-item"><summary><span>15. What are \(\hat i,\hat j,\hat k\), and how do I write a vector in components?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• What are the components of a vector in space?</span></div><div class="qa-answer"><p>\(\hat i,\hat j,\hat k\) are the unit vectors along the positive \(x\)-, \(y\)- and \(z\)-axes. The position vector of \(P(x,y,z)\) is</p><div class="formula">\(\overrightarrow{OP}=\vec r=x\hat i+y\hat j+z\hat k\)</div><p>\(x,y,z\) are the <b>components</b> of \(\vec r\). Two vectors are equal exactly when all three components are equal.</p></div></details><details class="qa-item"><summary><span>16. How do I find the magnitude of \(\vec r=x\hat i+y\hat j+z\hat k\)?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• Find the magnitude of a vector in space.</span><span class="qa-phrasing">• How do I find a unit vector?</span></div><div class="qa-answer"><p>Use Pythagoras twice: first on the floor triangle, then on the upright triangle.</p><div class="formula">\(|\vec r|=\sqrt{x^2+y^2+z^2}\)</div><div class="viz" data-viz="magnitude3d" data-title="Pythagoras in space" data-cap="Change \(x,y,z\). The floor diagonal \(OQ=\sqrt{x^2+y^2}\) is orange; then \(OP=\sqrt{OQ^2+z^2}\). The unit vector is shown below." data-try="try (2, 3, 6): the length is exactly 7. Then try (1, 2, 2), which gives 3."></div><p><b>Worked example.</b> \(\vec a=3\hat i-4\hat j+12\hat k\):</p><div class="calc">\(|\vec a|=\sqrt{9+16+144}=\sqrt{169}=13\)<br>\(\hat a=\dfrac{\vec a}{|\vec a|}=\dfrac{3}{13}\hat i-\dfrac{4}{13}\hat j+\dfrac{12}{13}\hat k\)</div></div></details><details class="qa-item"><summary><span>17. How do I find the distance between two points \(P\) and \(Q\)?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• State the distance formula in space.</span></div><div class="qa-answer"><p>The distance is the magnitude of \(\overrightarrow{PQ}=Q-P\):</p><div class="formula">\(PQ=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2+(z_2-z_1)^2}\)</div><p><b>Worked example.</b> \(P(1,2,3)\) and \(Q(4,6,15)\):</p><div class="calc">\(\overrightarrow{PQ}=(3,4,12)\), &nbsp; \(PQ=\sqrt{9+16+144}=13\)</div><div class="callout tip"><i class="fas fa-lightbulb" aria-hidden="true"></i><div><b>Pythagorean quadruples</b><p>Some triples of squares add up to a perfect square: \((1,2,2)\to3\), \((2,3,6)\to7\), \((3,4,12)\to13\), \((2,6,9)\to11\). Examiners love these because the answer is a whole number.</p></div></div></div></details><details class="qa-item"><summary><span>18. How do I find a vector of given magnitude in a given direction?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-answer"><p>A vector of magnitude \(M\) along \(\vec v\) is \(M\hat v=M\dfrac{\vec v}{|\vec v|}\). For the opposite direction use \(-M\hat v\).</p><p><b>Worked example.</b> A vector of magnitude \(10\) along \(\vec v=2\hat i-\hat j+2\hat k\): \(|\vec v|=3\), so the vector is \(\dfrac{10}{3}(2,-1,2)=\left(\dfrac{20}{3},-\dfrac{10}{3},\dfrac{20}{3}\right)\).</p></div></details></div></section><section class="qa-section" style="margin-bottom:44px" id="s334"><div class="section-label"><i class="fas fa-scale-balanced" aria-hidden="true"></i> Sections 3.3 and 3.4</div><h2 class="section-title">Properties of <span>Addition and Scalar Multiplication</span></h2><p class="section-sub">The laws that let you rearrange vector expressions like ordinary algebra.</p><div class="qa-topic-block"><h3 class="qa-topic-title"><i class="fas fa-list-check" aria-hidden="true"></i> The laws</h3><details class="qa-item"><summary><span>19. Which properties does vector addition satisfy?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• Prove the commutative property of vector addition.</span></div><div class="qa-answer"><div class="table-wrap"><table class="cmp-table"><thead><tr><th>Property</th><th>Statement</th><th>Why</th></tr></thead><tbody><tr><td>Commutative</td><td>\(\vec a+\vec b=\vec b+\vec a\)</td><td>the numbers \(a_i+b_i=b_i+a_i\)</td></tr><tr><td>Associative</td><td>\((\vec a+\vec b)+\vec c=\vec a+(\vec b+\vec c)\)</td><td>addition of numbers is associative</td></tr><tr><td>Zero vector</td><td>\(\vec a+\vec 0=\vec a\)</td><td>\(\vec 0=(0,0,0)\)</td></tr><tr><td>Additive inverse</td><td>\(\vec a+(-\vec a)=\vec 0\)</td><td>\(-\vec a=(-a_1,-a_2,-a_3)\)</td></tr></tbody></table></div><p>Each law is proved by writing both sides in components; the law then follows from the same law for real numbers.</p></div></details><details class="qa-item"><summary><span>20. Which properties does scalar multiplication satisfy?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-answer"><div class="table-wrap"><table class="cmp-table"><thead><tr><th>Property</th><th>Statement</th></tr></thead><tbody><tr><td>Distributes over vectors</td><td>\(m(\vec a+\vec b)=m\vec a+m\vec b\)</td></tr><tr><td>Distributes over scalars</td><td>\((m+n)\vec a=m\vec a+n\vec a\)</td></tr><tr><td>Associative</td><td>\(m(n\vec a)=(mn)\vec a\)</td></tr><tr><td>Identity</td><td>\(1\cdot\vec a=\vec a\) and \(0\cdot\vec a=\vec 0\)</td></tr><tr><td>Length</td><td>\(|m\vec a|=|m||\vec a|\)</td></tr></tbody></table></div><div class="calc"><b>Check:</b> \(2(\vec a+\vec b)\) with \(\vec a=(1,2,3)\), \(\vec b=(4,0,-1)\): \(2(5,2,2)=(10,4,4)\) and \(2\vec a+2\vec b=(2,4,6)+(8,0,-2)=(10,4,4)\).</div></div></details></div></section>
+<section class="qa-section" style="margin-bottom:44px" id="s35"><div class="section-label"><i class="fas fa-circle-dot" aria-hidden="true"></i> Section 3.5</div><h2 class="section-title">The Dot or <span>Scalar Product</span></h2><p class="section-sub">Angle, perpendicular vectors, direction cosines, projection and work done.</p><div class="qa-topic-block"><h3 class="qa-topic-title"><i class="fas fa-dot" aria-hidden="true"></i> Definition and rules</h3><details class="qa-item"><summary><span>21. What is the dot product \(\vec a\cdot\vec b\) and how do I calculate it?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• Define the scalar product of two vectors.</span><span class="qa-phrasing">• State the dot product in component form.</span></div><div class="qa-answer"><p>The dot product multiplies the lengths and the cosine of the angle between the vectors. The result is a <b>number</b> (a scalar).</p><div class="formula">\(\vec a\cdot\vec b=|\vec a||\vec b|\cos\theta=a_1b_1+a_2b_2+a_3b_3\), &nbsp; \(0\le\theta\le\pi\)</div><div class="table-wrap"><table class="cmp-table"><thead><tr><th>Rule</th><th>Statement</th></tr></thead><tbody><tr><td>Commutative</td><td>\(\vec a\cdot\vec b=\vec b\cdot\vec a\)</td></tr><tr><td>Distributive</td><td>\(\vec a\cdot(\vec b+\vec c)=\vec a\cdot\vec b+\vec a\cdot\vec c\)</td></tr><tr><td>Square of a vector</td><td>\(\vec a\cdot\vec a=|\vec a|^2\)</td></tr><tr><td>Unit vectors</td><td>\(\hat i\cdot\hat i=\hat j\cdot\hat j=\hat k\cdot\hat k=1\); &nbsp; \(\hat i\cdot\hat j=\hat j\cdot\hat k=\hat k\cdot\hat i=0\)</td></tr><tr><td>Scalar factor</td><td>\((m\vec a)\cdot\vec b=m(\vec a\cdot\vec b)\)</td></tr></tbody></table></div><p><b>Worked example.</b> \(\vec a=2\hat i-3\hat j+\hat k\), \(\vec b=\hat i+4\hat j-2\hat k\):</p><div class="calc">\(\vec a\cdot\vec b=(2)(1)+(-3)(4)+(1)(-2)=2-12-2=-12\)</div><div class="callout mis"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i><div><b>Common mistake</b><p>Writing \(\vec a\cdot\vec b\) as a vector. It is a single number. Also \(\vec a\cdot\vec b\cdot\vec c\) has no meaning, because a number cannot be dotted with a vector.</p></div></div></div></details><details class="qa-item"><summary><span>22. What does the sign of the dot product tell me?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• What does a zero dot product mean?</span></div><div class="qa-answer"><div class="viz" data-viz="dotshadow" data-title="Dot product, angle and shadow" data-cap="Drag the tips of \(\vec a\) and \(\vec b\). The dot product is positive for an acute angle, zero at a right angle and negative for an obtuse angle. The green arrow is the shadow (projection) of \(\vec b\) on \(\vec a\)." data-try="drag b until the dashed line meets a at 90 degrees: the dot product becomes 0. Push b further and it turns negative."></div><div class="table-wrap"><table class="cmp-table"><thead><tr><th>\(\vec a\cdot\vec b\)</th><th>Angle \(\theta\)</th></tr></thead><tbody><tr><td>positive</td><td>acute (\(\theta<90^\circ\))</td></tr><tr><td>zero</td><td>right angle: <b>perpendicular</b> (orthogonal) vectors</td></tr><tr><td>negative</td><td>obtuse (\(\theta>90^\circ\))</td></tr></tbody></table></div></div></details><h3 class="qa-topic-title" style="margin-top:22px"><i class="fas fa-angle-right" aria-hidden="true"></i> Angle between two vectors</h3><details class="qa-item"><summary><span>23. How do I find the angle between two vectors?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• Find the angle between two given vectors.</span></div><div class="qa-answer"><div class="formula">\(\cos\theta=\dfrac{\vec a\cdot\vec b}{|\vec a||\vec b|}\)</div><ul class="steps"><li>Find the dot product.</li><li>Find both magnitudes.</li><li>Divide, then take \(\cos^{-1}\).</li></ul><p><b>Book Example 11.</b> Find the angle between \(\hat i-2\hat j+\hat k\) and \(2\hat i-3\hat j+\hat k\).</p><div class="calc">\(\vec a\cdot\vec b=(1)(2)+(-2)(-3)+(1)(1)=2+6+1=9\)<br>\(|\vec a|=\sqrt{1+4+1}=\sqrt6,\quad |\vec b|=\sqrt{4+9+1}=\sqrt{14}\)<br>\(\cos\theta=\dfrac{9}{\sqrt6\sqrt{14}}=\dfrac{9}{\sqrt{84}}\ \Rightarrow\ \theta\approx10.89^\circ\)</div></div></details><details class="qa-item"><summary><span>24. When are two vectors perpendicular, and how do I find an unknown \(\lambda\)?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• State the condition for two vectors to be orthogonal.</span></div><div class="qa-answer"><p>Perpendicular \(\Leftrightarrow\ \vec a\cdot\vec b=0\). <b>Worked example.</b> Find \(\lambda\) so that \(\vec a=3\hat i-2\hat j+6\hat k\) and \(\vec b=\hat i-\lambda\hat j+3\lambda\hat k\) are perpendicular.</p><div class="calc">\(\vec a\cdot\vec b=3+2\lambda+18\lambda=3+20\lambda=0\ \Rightarrow\ \lambda=-\dfrac{3}{20}\)</div></div></details><h3 class="qa-topic-title" style="margin-top:22px"><i class="fas fa-compass" aria-hidden="true"></i> Direction cosines</h3><details class="qa-item"><summary><span>25. What are direction cosines \(l,m,n\)?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• Define direction cosines and direction angles.</span><span class="qa-phrasing">• Find the third direction angle when two are given.</span></div><div class="qa-answer"><p>If \(\vec r\) makes angles \(\alpha,\beta,\gamma\) with the positive \(x,y,z\)-axes, then \(l=\cos\alpha,\ m=\cos\beta,\ n=\cos\gamma\). Since \(\cos\alpha=\dfrac{\vec r\cdot\hat i}{|\vec r|}\):</p><div class="formula">\(l=\dfrac{x}{|\vec r|},\ m=\dfrac{y}{|\vec r|},\ n=\dfrac{z}{|\vec r|}\), &nbsp; \(l^2+m^2+n^2=1\), &nbsp; \(\hat r=l\hat i+m\hat j+n\hat k\)</div><div class="viz" data-viz="dircos" data-title="Direction cosines" data-cap="Change \(x,y,z\). The angles with the three axes change but \(l^2+m^2+n^2\) stays exactly \(1\)." data-try="choose (0, 0, 5): the vector lies along the z-axis, so gamma is 0 degrees and alpha, beta are 90 degrees."></div><p><b>Book Example 10.</b> Two direction angles of \(\vec r\) are \(30^\circ\) and \(60^\circ\). Find the third and \(\hat r\).</p><div class="calc">\(\cos^2 30^\circ+\cos^2 60^\circ+\cos^2\gamma=1\)<br>\(\tfrac34+\tfrac14+\cos^2\gamma=1\ \Rightarrow\ \cos\gamma=0\ \Rightarrow\ \gamma=90^\circ\)<br>\(\hat r=\cos30^\circ\,\hat i+\cos60^\circ\,\hat j+\cos90^\circ\,\hat k=\dfrac{\sqrt3}{2}\hat i+\tfrac12\hat j\)</div><div class="callout fyi"><i class="fas fa-circle-info" aria-hidden="true"></i><div><b>Why 90 and not 270?</b><p>A direction angle always lies between \(0^\circ\) and \(180^\circ\).</p></div></div></div></details><h3 class="qa-topic-title" style="margin-top:22px"><i class="fas fa-right-left" aria-hidden="true"></i> Projection and work done</h3><details class="qa-item"><summary><span>26. How do I find the projection of one vector along another?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• What is the projection of a vector along another?</span></div><div class="qa-answer"><div class="formula">Projection of \(\vec b\) along \(\vec a\) \(=\dfrac{\vec a\cdot\vec b}{|\vec a|}\) &nbsp; (a number)</div><p><b>Book Example 12.</b> \(\vec a=\hat i-\hat j+\hat k\), \(\vec b=-\hat i+\hat j+3\hat k\). Find the projection of \(\vec a\) along \(\vec b\) and of \(\vec b\) along \(\vec a\).</p><div class="calc">\(\vec a\cdot\vec b=-1-1+3=1,\quad |\vec a|=\sqrt3,\quad |\vec b|=\sqrt{11}\)<br>Projection of \(\vec a\) along \(\vec b\) \(=\dfrac{1}{\sqrt{11}}\)<br>Projection of \(\vec b\) along \(\vec a\) \(=\dfrac{1}{\sqrt3}\)</div><div class="callout mis"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i><div><b>Common mistake</b><p>Dividing by the wrong length. For the projection <b>along</b> \(\vec a\), divide by \(|\vec a|\), the vector you project <b>onto</b>.</p></div></div></div></details><details class="qa-item"><summary><span>27. What is work done by a constant force?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• Define work done by a constant force.</span></div><div class="qa-answer"><p>If a force \(\vec F\) moves a body through a displacement \(\vec S\), the work done is the dot product:</p><div class="formula">\(W=\vec F\cdot\vec S=|\vec F||\vec S|\cos\theta\)</div><div class="viz" data-viz="work" data-title="Work done by a force at an angle" data-cap="Only the part of the force along the motion, \(F\cos\theta\), does work. Change the force, the angle and the distance." data-try="set the angle to 90 degrees and watch the work fall to zero; at 0 degrees it is the largest."></div><p><b>Worked example.</b> \(\vec F=2\hat i+3\hat j+\hat k\) N moves a body from \(P(1,0,2)\) to \(Q(4,2,3)\).</p><div class="calc">\(\vec S=\overrightarrow{PQ}=(3,2,1)\)<br>\(W=\vec F\cdot\vec S=6+6+1=13\) J</div><div class="callout fyi"><i class="fas fa-circle-info" aria-hidden="true"></i><div><b>Units</b><p>Work is in joules (J) when force is in newtons and distance in metres.</p></div></div></div></details><h3 class="qa-topic-title" style="margin-top:22px"><i class="fas fa-square-root-variable" aria-hidden="true"></i> A proof with the dot product</h3><details class="qa-item"><summary><span>28. Book Example 13: prove that \(\cos(\alpha-\beta)=\cos\alpha\cos\beta+\sin\alpha\sin\beta\).</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• Prove a trigonometric identity using vectors.</span></div><div class="qa-answer"><p>Take two unit vectors in the plane: \(\hat u=\cos\alpha\,\hat i+\sin\alpha\,\hat j\) and \(\hat v=\cos\beta\,\hat i+\sin\beta\,\hat j\). The angle between them is \(\alpha-\beta\).</p><div class="calc">By the definition: \(\hat u\cdot\hat v=|\hat u||\hat v|\cos(\alpha-\beta)=\cos(\alpha-\beta)\)<br>By components: \(\hat u\cdot\hat v=\cos\alpha\cos\beta+\sin\alpha\sin\beta\)</div><p>Equating the two values proves the result.</p></div></details></div></section><section class="qa-section" style="margin-bottom:44px" id="s36"><div class="section-label"><i class="fas fa-xmark" aria-hidden="true"></i> Section 3.6</div><h2 class="section-title">The Cross or <span>Vector Product</span></h2><p class="section-sub">A new arrow perpendicular to both: right-hand rule, determinant, area and moment.</p><div class="qa-topic-block"><h3 class="qa-topic-title"><i class="fas fa-hand" aria-hidden="true"></i> Definition and the right-hand rule</h3><details class="qa-item"><summary><span>29. What is the cross product \(\vec a\times\vec b\)?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• Define the vector product of two vectors.</span><span class="qa-phrasing">• State the right-hand rule.</span></div><div class="qa-answer"><p>The cross product of two vectors is a <b>vector</b> perpendicular to both of them:</p><div class="formula">\(\vec a\times\vec b=|\vec a||\vec b|\sin\theta\ \hat n\)</div><p>Here \(\hat n\) is the unit vector perpendicular to \(\vec a\) and \(\vec b\) given by the <b>right-hand rule</b>: curl the fingers of your right hand from \(\vec a\) towards \(\vec b\) (through the smaller angle); your thumb points along \(\vec a\times\vec b\).</p><div class="viz" data-viz="rhr" data-title="Right-hand rule" data-cap="The shaded parallelogram is spanned by \(\vec a\) and \(\vec b\); its area is \(|\vec a\times\vec b|\). Press the swap button to see that \(\vec b\times\vec a\) points the opposite way." data-try="drag the angle to 0 or 180 degrees: the parallelogram collapses and the cross product becomes zero."></div><div class="table-wrap"><table class="cmp-table"><thead><tr><th>Rule</th><th>Statement</th></tr></thead><tbody><tr><td>Anti-commutative</td><td>\(\vec b\times\vec a=-\,\vec a\times\vec b\)</td></tr><tr><td>Distributive</td><td>\(\vec a\times(\vec b+\vec c)=\vec a\times\vec b+\vec a\times\vec c\)</td></tr><tr><td>Parallel vectors</td><td>\(\vec a\times\vec b=\vec 0\Leftrightarrow\vec a\parallel\vec b\), so \(\vec a\times\vec a=\vec 0\)</td></tr><tr><td>Unit vectors</td><td>\(\hat i\times\hat j=\hat k,\ \hat j\times\hat k=\hat i,\ \hat k\times\hat i=\hat j\); reversing the order gives a minus sign</td></tr></tbody></table></div></div></details><details class="qa-item"><summary><span>30. How do I calculate \(\vec a\times\vec b\) from components?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• Find the cross product of two vectors in component form.</span></div><div class="qa-answer"><p>Use a determinant with \(\hat i,\hat j,\hat k\) in the first row:</p><div class="formula">\(\vec a\times\vec b=\begin{vmatrix}\hat i&\hat j&\hat k\\a_1&a_2&a_3\\b_1&b_2&b_3\end{vmatrix}=\hat i(a_2b_3-a_3b_2)-\hat j(a_1b_3-a_3b_1)+\hat k(a_1b_2-a_2b_1)\)</div><div class="viz" data-viz="crossdet" data-title="Cross product step by step" data-cap="Choose an example. The expansion is written below the picture, with the two checks that \(\vec a\times\vec b\) is perpendicular to both vectors and that its length is the parallelogram area." data-try="pick the example with parallel vectors: the parallelogram collapses and the cross product is the zero vector."></div><div class="callout mis"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i><div><b>Common mistake</b><p>Forgetting the <b>minus sign</b> in front of the \(\hat j\) term. The signs go \(+,\,-,\,+\).</p></div></div></div></details><h3 class="qa-topic-title" style="margin-top:22px"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i> Uses of the cross product</h3><details class="qa-item"><summary><span>31. How do I find the area of a parallelogram and of a triangle?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• Find the area of a parallelogram from adjacent sides.</span><span class="qa-phrasing">• Find the area of a triangle from its vertices.</span></div><div class="qa-answer"><div class="formula">Parallelogram \(=|\vec a\times\vec b|\) &nbsp;&nbsp; Triangle \(=\tfrac12|\vec a\times\vec b|\)</div><div class="viz" data-viz="triarea" data-title="Area of a triangle" data-cap="Drag the vertices \(A,B,C\). The triangle area is half the parallelogram built on \(\overrightarrow{AB}\) and \(\overrightarrow{AC}\)." data-try="put the three points on one straight line: the area becomes zero."></div><p><b>Book Example 16.</b> \(\vec a=2\hat i+5\hat j-2\hat k\) and \(\vec b=\hat i-\hat j+3\hat k\) are adjacent sides of a parallelogram. Find its area.</p><div class="calc">\(\vec a\times\vec b=\begin{vmatrix}\hat i&\hat j&\hat k\\2&5&-2\\1&-1&3\end{vmatrix}=(15-2)\hat i-(6+2)\hat j+(-2-5)\hat k=13\hat i-8\hat j-7\hat k\)<br>Area \(=|\vec a\times\vec b|=\sqrt{169+64+49}=\sqrt{282}\) sq. units</div><p><b>Book Example 17.</b> Find the area of the triangle with vertices \(A(0,0)\), \(B(2,9)\), \(C(3,5)\). Take \(\vec a=\overrightarrow{AC}=(3,5,0)\) and \(\vec b=\overrightarrow{AB}=(2,9,0)\).</p><div class="calc">\(\vec a\times\vec b=\begin{vmatrix}\hat i&\hat j&\hat k\\3&5&0\\2&9&0\end{vmatrix}=(27-10)\hat k=17\hat k\)<br>Area \(=\tfrac12|\vec a\times\vec b|=\dfrac{17}{2}\) sq. units</div></div></details><details class="qa-item"><summary><span>32. Book Example 18: find the angle between \(\vec a+\vec b\) and \(\vec a+\vec c\), where \(\vec a=2\hat i-\hat j+\hat k\), \(\vec b=-\hat i+2\hat j-\hat k\), \(\vec c=\hat i+\hat j-3\hat k\).</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• Find the angle between two vectors using the cross product.</span></div><div class="qa-answer"><div class="calc">\(\vec a+\vec b=\hat i+\hat j\), &nbsp; \(\vec a+\vec c=3\hat i-2\hat k\)<br>\((\vec a+\vec b)\times(\vec a+\vec c)=\begin{vmatrix}\hat i&\hat j&\hat k\\1&1&0\\3&0&-2\end{vmatrix}=-2\hat i+2\hat j-3\hat k\), magnitude \(\sqrt{4+4+9}=\sqrt{17}\)<br>\(|\vec a+\vec b|=\sqrt2,\quad |\vec a+\vec c|=\sqrt{13}\)<br>\(\sin\theta=\dfrac{\sqrt{17}}{\sqrt2\sqrt{13}}=\sqrt{\dfrac{17}{26}}\ \Rightarrow\ \theta\approx53.96^\circ\)</div><p>Check with the dot product: \((\vec a+\vec b)\cdot(\vec a+\vec c)=3\), so \(\cos\theta=\dfrac{3}{\sqrt{26}}\), the same angle.</p></div></details><details class="qa-item"><summary><span>33. How do I find a unit vector perpendicular to two vectors?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• Find a unit vector perpendicular to two given vectors.</span></div><div class="qa-answer"><p>Compute \(\vec a\times\vec b\) and divide by its length: \(\hat n=\pm\dfrac{\vec a\times\vec b}{|\vec a\times\vec b|}\). Use \(\pm\) because both directions are perpendicular. For a vector of length \(M\), multiply \(\hat n\) by \(M\).</p><p><b>Worked example.</b> \(\vec a=\hat i+\hat j\), \(\vec b=\hat j+\hat k\).</p><div class="calc">\(\vec a\times\vec b=\begin{vmatrix}\hat i&\hat j&\hat k\\1&1&0\\0&1&1\end{vmatrix}=\hat i-\hat j+\hat k\), length \(\sqrt3\)<br>\(\hat n=\pm\dfrac{1}{\sqrt3}(\hat i-\hat j+\hat k)\)</div></div></details><details class="qa-item"><summary><span>34. Book Example 19: show that \(\sin(\alpha-\beta)=\sin\alpha\cos\beta-\cos\alpha\sin\beta\).</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• Prove a trigonometric identity using the cross product.</span></div><div class="qa-answer"><p>Let \(\hat u=\cos\alpha\,\hat i+\sin\alpha\,\hat j\) and \(\hat v=\cos\beta\,\hat i+\sin\beta\,\hat j\). The angle between them is \(\alpha-\beta\).</p><div class="calc">\(\hat v\times\hat u=\begin{vmatrix}\hat i&\hat j&\hat k\\\cos\beta&\sin\beta&0\\\cos\alpha&\sin\alpha&0\end{vmatrix}=(\sin\alpha\cos\beta-\cos\alpha\sin\beta)\,\hat k\)<br>so \(|\hat v\times\hat u|=\sin\alpha\cos\beta-\cos\alpha\sin\beta\) &nbsp; (1)<br>Also \(|\hat v\times\hat u|=|\hat v||\hat u|\sin(\alpha-\beta)=\sin(\alpha-\beta)\) &nbsp; (2)</div><p>From (1) and (2) the identity follows.</p></div></details><h3 class="qa-topic-title" style="margin-top:22px"><i class="fas fa-gears" aria-hidden="true"></i> Moment (torque) of a force</h3><details class="qa-item"><summary><span>35. What is the moment of a force, and how do I find it?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• Define the moment of a force.</span><span class="qa-phrasing">• Find the moment of a force about a point.</span></div><div class="qa-answer"><p>A force \(\vec F\) applied at a point \(P\) tries to turn a body about a point \(O\). The <b>moment</b> is:</p><div class="formula">\(\vec M=\vec r\times\vec F,\quad \vec r=\overrightarrow{OP}\), &nbsp; \(|\vec M|=rF\sin\theta\)</div><div class="viz" data-viz="moment" data-title="Turning a door" data-cap="The force is applied to a door at distance \(r\) from the hinge. Change the distance, the angle and the force. The turning effect is largest when the force is perpendicular to the door." data-try="set the angle to 0 degrees: you are pushing along the door and it does not turn at all."></div><p><b>Book Example 20.</b> Find the moment of \(\vec F=3\hat i-2\hat j+5\hat k\) about the point \((2,1,-1)\) when it is applied at \((3,0,2)\).</p><div class="calc">\(\vec r=(3-2,\ 0-1,\ 2+1)=\hat i-\hat j+3\hat k\)<br>\(\vec M=\vec r\times\vec F=\begin{vmatrix}\hat i&\hat j&\hat k\\1&-1&3\\3&-2&5\end{vmatrix}=(-5+6)\hat i-(5-9)\hat j+(-2+3)\hat k=\hat i+4\hat j+\hat k\)</div><p><b>Book Example 21.</b> A force \(\vec F=7\hat i+4\hat j+2\hat k\) acts at the door handle \((2,1,4)\); the hinge is at \((0,0,1)\).</p><div class="calc">\(\vec r=(2,1,3)\)<br>\(\vec M=\begin{vmatrix}\hat i&\hat j&\hat k\\2&1&3\\7&4&2\end{vmatrix}=(2-12)\hat i-(4-21)\hat j+(8-7)\hat k=-10\hat i+17\hat j+\hat k\)</div><div class="callout tip"><i class="fas fa-lightbulb" aria-hidden="true"></i><div><b>Which point is the tail?</b><p>\(\vec r\) goes <b>from the point you turn about to the point where the force acts</b>: \(\vec r=\) (point of force) \(-\) (pivot).</p></div></div></div></details></div></section>
+<section class="qa-section" style="margin-bottom:44px" id="s37"><div class="section-label"><i class="fas fa-cube" aria-hidden="true"></i> Section 3.7</div><h2 class="section-title">The Scalar <span>Triple Product</span></h2><p class="section-sub">A determinant that measures volume and tests for coplanarity.</p><div class="qa-topic-block"><h3 class="qa-topic-title"><i class="fas fa-cube" aria-hidden="true"></i> Definition and determinant form</h3><details class="qa-item"><summary><span>36. What is the scalar triple product \(\vec a\cdot\vec b\times\vec c\)?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• Define the scalar triple product.</span><span class="qa-phrasing">• Write the scalar triple product as a determinant.</span></div><div class="qa-answer"><p>Take the cross product \(\vec b\times\vec c\) first (a vector), then dot it with \(\vec a\). The answer is a <b>number</b>.</p><div class="formula">\(\vec a\cdot\vec b\times\vec c=\begin{vmatrix}a_1&a_2&a_3\\b_1&b_2&b_3\\c_1&c_2&c_3\end{vmatrix}\)</div><div class="table-wrap"><table class="cmp-table"><thead><tr><th>Property</th><th>Statement</th></tr></thead><tbody><tr><td>Dot and cross can swap</td><td>\(\vec a\cdot(\vec b\times\vec c)=(\vec a\times\vec b)\cdot\vec c\)</td></tr><tr><td>Cyclic order</td><td>\(\vec a\cdot\vec b\times\vec c=\vec b\cdot\vec c\times\vec a=\vec c\cdot\vec a\times\vec b\)</td></tr><tr><td>Swapping two vectors</td><td>changes the sign of the answer</td></tr><tr><td>Unit vectors</td><td>\(\hat i\cdot\hat j\times\hat k=1\)</td></tr><tr><td>Repeated or parallel vector</td><td>gives zero</td></tr></tbody></table></div><div class="callout mis"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i><div><b>Common mistake</b><p>Writing \((\vec a\cdot\vec b)\times\vec c\). The dot product of the first two is a number, and a number cannot be crossed with a vector, so the brackets must go around \(\vec b\times\vec c\).</p></div></div></div></details><details class="qa-item"><summary><span>37. Book Example 23: find \(\vec a\cdot\vec b\times\vec c\) for \(\vec a=2\hat i-3\hat j+\hat k\), \(\vec b=-3\hat i+2\hat j+3\hat k\), \(\vec c=-\hat i+\hat j-\hat k\).</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• Find the scalar triple product of three given vectors.</span></div><div class="qa-answer"><div class="calc">\(\vec a\cdot\vec b\times\vec c=\begin{vmatrix}2&-3&1\\-3&2&3\\-1&1&-1\end{vmatrix}\)<br>\(=2(-2-3)-(-3)(3+3)+1(-3+2)\)<br>\(=-10+18-1=7\)</div><div class="callout tip"><i class="fas fa-lightbulb" aria-hidden="true"></i><div><b>Expanding a 3 by 3 determinant</b><p>Go along the first row with signs \(+,-,+\). Each number multiplies the \(2\times2\) determinant left after deleting its row and column. When the middle number is negative, \(-(-3)\) becomes \(+3\).</p></div></div></div></details><details class="qa-item"><summary><span>38. Book Example 24: if \(\vec b\parallel\vec c\), what is \(\vec a\cdot\vec b\times\vec c\)?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• What is the scalar triple product when two vectors are parallel?</span></div><div class="qa-answer"><p>Since \(\vec b\parallel\vec c\), write \(\vec b=\lambda\vec c\). Then row 2 of the determinant is \(\lambda\) times row 3:</p><div class="calc">\(\vec a\cdot\vec b\times\vec c=\begin{vmatrix}a_1&a_2&a_3\\\lambda c_1&\lambda c_2&\lambda c_3\\c_1&c_2&c_3\end{vmatrix}=\lambda\begin{vmatrix}a_1&a_2&a_3\\c_1&c_2&c_3\\c_1&c_2&c_3\end{vmatrix}=\lambda(0)=0\)</div><p>Two identical rows make a determinant zero. Directly: \(\vec b\times\vec c=\vec 0\), so \(\vec a\cdot\vec 0=0\).</p></div></details><h3 class="qa-topic-title" style="margin-top:22px"><i class="fas fa-cubes" aria-hidden="true"></i> Volume of a parallelepiped and a tetrahedron</h3><details class="qa-item"><summary><span>39. How do I find the volume of a parallelepiped and of a tetrahedron?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• Find the volume of a parallelepiped from three edges.</span><span class="qa-phrasing">• Find the volume of a tetrahedron from its vertices.</span></div><div class="qa-answer"><p>The base area is \(|\vec b\times\vec c|\) and the height is the part of \(\vec a\) perpendicular to the base. So:</p><div class="formula">Parallelepiped \(=|\vec a\cdot\vec b\times\vec c|\) &nbsp;&nbsp; Tetrahedron \(=\dfrac16|\vec a\cdot\vec b\times\vec c|\)</div><div class="viz" data-viz="triple3d" data-title="Box spanned by three vectors" data-cap="Move the three vectors. The volume of the box is \(|\vec a\cdot\vec b\times\vec c|\). When the three vectors lie in one plane the box is flat and the volume is zero." data-try="keep a and b in the flat (xy) plane and set c3 to 0: the box is flat, the volume becomes 0, which is the coplanarity test."></div><p><b>Book Example 25.</b> Find the volume of the parallelepiped with adjacent sides \(\vec a=\hat i-2\hat j+\hat k\), \(\vec b=3\hat i-3\hat j+\hat k\), \(\vec c=-\hat i-\hat j+2\hat k\).</p><div class="calc">\(\vec a\cdot\vec b\times\vec c=\begin{vmatrix}1&-2&1\\3&-3&1\\-1&-1&2\end{vmatrix}\)<br>\(=1(-6+1)+2(6+1)+1(-3-3)=-5+14-6=3\)<br>Volume \(=3\) cubic units</div><p><b>Book Example 26.</b> Find the volume of the tetrahedron with vertices \(A(0,0,0)\), \(B(1,3,-1)\), \(C(2,2,1)\), \(D(1,6,5)\).</p><div class="calc">\(\vec a=\overrightarrow{AB}=(1,3,-1),\ \ \vec b=\overrightarrow{AC}=(2,2,1),\ \ \vec c=\overrightarrow{AD}=(1,6,5)\)<br>\(\vec a\cdot\vec b\times\vec c=\begin{vmatrix}1&3&-1\\2&2&1\\1&6&5\end{vmatrix}=1(10-6)-3(10-1)-1(12-2)=4-27-10=-33\)<br>Volume \(=\dfrac16|-33|=\dfrac{11}{2}\) cubic units</div><div class="callout fyi"><i class="fas fa-circle-info" aria-hidden="true"></i><div><b>Volume is never negative</b><p>A negative determinant only means the vectors are in left-handed order. Take the absolute value.</p></div></div></div></details><h3 class="qa-topic-title" style="margin-top:22px"><i class="fas fa-layer-group" aria-hidden="true"></i> Coplanar vectors</h3><details class="qa-item"><summary><span>40. How do I test whether three vectors are coplanar?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• State the condition for three vectors to be coplanar.</span></div><div class="qa-answer"><p>Three vectors lying in one plane are <b>coplanar</b>. Then \(\vec a\times\vec b\) is perpendicular to the plane, so it is also perpendicular to \(\vec c\):</p><div class="formula">\(\vec a,\vec b,\vec c\) coplanar \(\Longleftrightarrow\ \vec a\cdot\vec b\times\vec c=0\)</div><p><b>Worked example.</b> Find \(\lambda\) so that \(\vec a=\hat i+2\hat j-\hat k\), \(\vec b=2\hat i+\lambda\hat j+\hat k\), \(\vec c=3\hat i+5\hat j\) are coplanar.</p><div class="calc">\(\begin{vmatrix}1&2&-1\\2&\lambda&1\\3&5&0\end{vmatrix}=1(0-5)-2(0-3)+(-1)(10-3\lambda)\)<br>\(=-5+6-10+3\lambda=3\lambda-9=0\ \Rightarrow\ \lambda=3\)</div><p>For four points \(A,B,C,D\), test \(\overrightarrow{AB}\cdot\overrightarrow{AC}\times\overrightarrow{AD}=0\).</p><div class="callout tip"><i class="fas fa-lightbulb" aria-hidden="true"></i><div><b>Quick check</b><p>If two of the three vectors are parallel, or one is the zero vector, the three are always coplanar.</p></div></div></div></details></div></section><section class="qa-section" style="margin-bottom:44px" id="s38"><div class="section-label"><i class="fas fa-earth-asia" aria-hidden="true"></i> Section 3.8</div><h2 class="section-title">Applications of <span>Vectors</span></h2><p class="section-sub">Wind, projectiles and forces: where the algebra meets the real world.</p><div class="qa-topic-block"><h3 class="qa-topic-title"><i class="fas fa-plane" aria-hidden="true"></i> Vectors in the real world</h3><details class="qa-item"><summary><span>41. Where are vectors used outside the classroom?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• Give two applications of vectors.</span></div><div class="qa-answer"><p>Wherever a quantity needs both a size and a direction: air-traffic controllers tracking planes, meteorologists describing wind, programmers building virtual worlds, and in physics for work, torque and magnetic force.</p><div class="table-wrap"><table class="cmp-table"><thead><tr><th>Application</th><th>Vector idea</th></tr></thead><tbody><tr><td>Work done by a force</td><td>dot product \(\vec F\cdot\vec S\)</td></tr><tr><td>Torque (turning effect)</td><td>cross product \(\vec r\times\vec F\)</td></tr><tr><td>Projectile motion</td><td>splitting the velocity into components</td></tr><tr><td>Sharpening a pencil</td><td>force split into parts perpendicular and parallel to the pencil</td></tr><tr><td>Earth's magnetic field</td><td>a vertical part \(B\) and a horizontal part \(H\)</td></tr></tbody></table></div></div></details><details class="qa-item"><summary><span>42. How does adding vectors help a pilot who flies in wind?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• How do vectors help in finding the ground velocity of a plane?</span></div><div class="qa-answer"><p>The velocity of the plane over the ground is the <b>vector sum</b> of its velocity through the air and the velocity of the wind.</p><div class="viz" data-viz="windplane" data-title="Plane in a crosswind" data-cap="Change the air speed, the wind speed and the wind direction. The ground velocity is the sum of the two vectors." data-try="make the wind blow along the flight path (a tail wind) and the ground speed is the largest; against it, the smallest."></div><p><b>Worked example.</b> A plane flies east at \(400\) km/h through the air while a wind blows north at \(100\) km/h.</p><div class="calc">\(\vec v_{\text{ground}}=400\hat i+100\hat j\)<br>Speed \(=\sqrt{400^2+100^2}=100\sqrt{17}\approx412.31\) km/h<br>Direction: \(\tan\phi=\dfrac{100}{400}\ \Rightarrow\ \phi\approx14.04^\circ\) north of east</div></div></details><details class="qa-item"><summary><span>43. How do components describe projectile motion?</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-phrasings"><span class="qa-phrasing">• Write the components of the velocity of a projectile.</span></div><div class="qa-answer"><p>A stone thrown with speed \(u\) at angle \(\phi\) to the horizontal has the components:</p><div class="formula">\(v_x=u\cos\phi\) (constant), &nbsp;&nbsp; \(v_y=u\sin\phi-gt\)</div><p><b>Worked example.</b> \(u=20\) m/s, \(\phi=30^\circ\), \(t=1\) s, \(g=9.8\) m/s\(^2\).</p><div class="calc">\(v_x=20\cos30^\circ=17.32\) m/s<br>\(v_y=20\sin30^\circ-9.8(1)=10-9.8=0.2\) m/s<br>Speed \(=\sqrt{17.32^2+0.2^2}\approx17.32\) m/s</div></div></details></div></section>
+<section style="margin-bottom:44px" id="cheat"><div class="section-label"><i class="fas fa-list-check" aria-hidden="true"></i> Cheat Sheet</div><h2 class="section-title">One-Page <span>Cheat Sheet</span></h2><p class="section-sub">Read this just before the exam.</p><div class="tbl-cap">Formula sheet of Unit 3</div><div class="table-wrap"><table class="cmp-table"><thead><tr><th>Topic</th><th>Result</th></tr></thead><tbody><tr><td>Vector from \(A\) to \(B\)</td><td>\(\overrightarrow{AB}=\vec b-\vec a\) (Head \(-\) Tail)</td></tr><tr><td>Magnitude, unit vector</td><td>\(|\vec r|=\sqrt{x^2+y^2+z^2}\); &nbsp; \(\hat r=\dfrac{\vec r}{|\vec r|}\)</td></tr><tr><td>Distance between two points</td><td>\(|\overrightarrow{AB}|=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2+(z_2-z_1)^2}\)</td></tr><tr><td>Section formula (\(AP:PB=m:n\))</td><td>internal: \(\vec r=\dfrac{n\vec a+m\vec b}{m+n}\); &nbsp; external: \(\vec r=\dfrac{m\vec b-n\vec a}{m-n}\); &nbsp; midpoint: \(\dfrac{\vec a+\vec b}{2}\)</td></tr><tr><td>Parallel vectors</td><td>\(\vec a=\lambda\vec b\), equivalently \(\vec a\times\vec b=\vec 0\)</td></tr><tr><td>Dot product</td><td>\(\vec a\cdot\vec b=|\vec a||\vec b|\cos\theta=a_1b_1+a_2b_2+a_3b_3\) (a number)</td></tr><tr><td>Angle, perpendicular</td><td>\(\cos\theta=\dfrac{\vec a\cdot\vec b}{|\vec a||\vec b|}\); &nbsp; perpendicular \(\Leftrightarrow\vec a\cdot\vec b=0\)</td></tr><tr><td>Direction cosines</td><td>\(l=\dfrac{x}{|\vec r|},\ m=\dfrac{y}{|\vec r|},\ n=\dfrac{z}{|\vec r|}\); &nbsp; \(l^2+m^2+n^2=1\)</td></tr><tr><td>Projection of \(\vec b\) along \(\vec a\)</td><td>\(\dfrac{\vec a\cdot\vec b}{|\vec a|}\)</td></tr><tr><td>Work done</td><td>\(W=\vec F\cdot\vec S\), with \(\vec S\) the displacement</td></tr><tr><td>Cross product</td><td>\(\vec a\times\vec b=|\vec a||\vec b|\sin\theta\,\hat n=\begin{vmatrix}\hat i&\hat j&\hat k\\a_1&a_2&a_3\\b_1&b_2&b_3\end{vmatrix}\) (a vector); &nbsp; \(\vec b\times\vec a=-\vec a\times\vec b\)</td></tr><tr><td>Sine of the angle</td><td>\(\sin\theta=\dfrac{|\vec a\times\vec b|}{|\vec a||\vec b|}\); &nbsp; \(|\vec a\times\vec b|^2+(\vec a\cdot\vec b)^2=|\vec a|^2|\vec b|^2\)</td></tr><tr><td>Areas</td><td>parallelogram \(=|\vec a\times\vec b|\); &nbsp; triangle \(=\tfrac12|\vec a\times\vec b|\)</td></tr><tr><td>Moment of a force</td><td>\(\vec M=\vec r\times\vec F\), with \(\vec r\) from the pivot to the point of the force</td></tr><tr><td>Scalar triple product</td><td>\(\vec a\cdot\vec b\times\vec c=\begin{vmatrix}a_1&a_2&a_3\\b_1&b_2&b_3\\c_1&c_2&c_3\end{vmatrix}\); cyclic order keeps the value, a swap changes the sign</td></tr><tr><td>Volumes</td><td>parallelepiped \(=|\vec a\cdot\vec b\times\vec c|\); &nbsp; tetrahedron \(=\tfrac16|\vec a\cdot\vec b\times\vec c|\)</td></tr><tr><td>Coplanar</td><td>\(\vec a\cdot\vec b\times\vec c=0\)</td></tr><tr><td>Projectile</td><td>\(v_x=u\cos\phi,\ \ v_y=u\sin\phi-gt\)</td></tr></tbody></table></div></section>
+<section style="margin-bottom:44px" id="vocab"><div class="section-label"><i class="fas fa-book" aria-hidden="true"></i> Key Vocabulary</div><h2 class="section-title">Unit 3 <span>Vocabulary</span></h2><p class="section-sub">Important terms you must know: learn these definitions for exam questions.</p><table class="vocab-table" aria-label="Key vocabulary"><thead><tr><th>Term</th><th>Meaning</th></tr></thead><tbody><tr><td>Scalar</td><td>A quantity with magnitude only (mass, time, work).</td></tr><tr><td>Vector</td><td>A quantity with magnitude and direction (displacement, force, velocity).</td></tr><tr><td>Magnitude</td><td>The length of a vector, \(|\vec r|=\sqrt{x^2+y^2+z^2}\).</td></tr><tr><td>Unit vector</td><td>A vector of magnitude \(1\); \(\hat a=\vec a/|\vec a|\).</td></tr><tr><td>Position vector</td><td>The vector \(\overrightarrow{OP}\) from the origin to the point \(P\).</td></tr><tr><td>Parallel vectors</td><td>Vectors with the same or opposite direction: \(\vec a=\lambda\vec b\).</td></tr><tr><td>Orthogonal vectors</td><td>Perpendicular vectors; their dot product is \(0\).</td></tr><tr><td>Direction cosines</td><td>The cosines \(l,m,n\) of the angles a vector makes with the \(x,y,z\)-axes; \(l^2+m^2+n^2=1\).</td></tr><tr><td>Scalar (dot) product</td><td>\(\vec a\cdot\vec b=|\vec a||\vec b|\cos\theta\), a number.</td></tr><tr><td>Projection</td><td>The component of one vector along another, \(\dfrac{\vec a\cdot\vec b}{|\vec a|}\).</td></tr><tr><td>Work done</td><td>The dot product of the force and the displacement.</td></tr><tr><td>Vector (cross) product</td><td>\(\vec a\times\vec b\), a vector perpendicular to both \(\vec a\) and \(\vec b\), with magnitude \(|\vec a||\vec b|\sin\theta\).</td></tr><tr><td>Right-hand rule</td><td>Curl the fingers of the right hand from \(\vec a\) to \(\vec b\); the thumb shows \(\vec a\times\vec b\).</td></tr><tr><td>Moment (torque)</td><td>\(\vec M=\vec r\times\vec F\), the turning effect of a force about a point.</td></tr><tr><td>Scalar triple product</td><td>\(\vec a\cdot\vec b\times\vec c\), the determinant of the three vectors; a number.</td></tr><tr><td>Parallelepiped</td><td>A solid with six faces that are parallelograms; its volume is \(|\vec a\cdot\vec b\times\vec c|\).</td></tr><tr><td>Tetrahedron</td><td>A solid with four triangular faces; its volume is one sixth of the parallelepiped on the same edges.</td></tr><tr><td>Coplanar vectors</td><td>Vectors that lie in one plane; for three vectors, \(\vec a\cdot\vec b\times\vec c=0\).</td></tr></tbody></table></section>
+<section class="qa-section ex-sample" id="exercise-samples" style="margin-bottom:44px"><div class="section-label" style="color:var(--primary)"><i class="fas fa-pen-to-square" aria-hidden="true"></i> Exercises</div><h2 class="section-title">Free Exercise <span>Samples</span></h2><p class="section-sub">From every exercise of this chapter we have solved a few questions step by step, easy, medium and challenging, in the textbook\'s own method. The solutions of all the other questions are inside the W.H. Academy student dashboard.</p><h3 class="ex-h">Exercise 3.1 <small>free sample: 4 of 16 questions</small></h3><div class="qa-topic-block"><details class="qa-item ex-item"><summary><span>Ex 3.1 · Q1 (ii) — Find \(3\overrightarrow{PQ}-\overrightarrow{RS}\) for \(P(3,-1)\), \(Q(-4,-6)\), \(R(1,4)\), \(S(2,5)\).</span><span class="ex-lv easy">Basic</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-answer"><div class="ex-q"><strong>Question:</strong> <p>Find \(3\overrightarrow{PQ}-\overrightarrow{RS}\) in component form, where \(P=(3,-1)\), \(Q=(-4,-6)\), \(R=(1,4)\), \(S=(2,5)\).</p></div><div class="calc">\(\overrightarrow{PQ}=Q-P=(-7,-5)\), &nbsp; \(\overrightarrow{RS}=S-R=(1,1)\)<br>\(3\overrightarrow{PQ}-\overrightarrow{RS}=(-21,-15)-(1,1)=(-22,-16)\)</div><p><b>Answer:</b> \(-22\hat i-16\hat j\)</p></div></details><details class="qa-item ex-item"><summary><span>Ex 3.1 · Q5 (i) — Unit vector along \(2\vec a-3\vec b+\vec c\).</span><span class="ex-lv easy">Basic</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-answer"><div class="ex-q"><strong>Question:</strong> <p>If \(\vec a=\hat i-2\hat j+\hat k\), \(\vec b=\hat i-\hat j-\hat k\) and \(\vec c=2\hat i+\hat k\), find a unit vector in the direction of \(2\vec a-3\vec b+\vec c\).</p></div><div class="calc">\(2\vec a=(2,-4,2)\), &nbsp; \(3\vec b=(3,-3,-3)\), &nbsp; \(\vec c=(2,0,1)\)<br>\(2\vec a-3\vec b+\vec c=(2-3+2,\ -4+3+0,\ 2+3+1)=(1,-1,6)\)<br>Magnitude \(=\sqrt{1+1+36}=\sqrt{38}\)</div><p><b>Answer:</b> \(\dfrac{\hat i-\hat j+6\hat k}{\sqrt{38}}\)</p></div></details><details class="qa-item ex-item"><summary><span>Ex 3.1 · Q10 (i) — Fourth vertex of a parallelogram.</span><span class="ex-lv med">Intermediate</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-answer"><div class="ex-q"><strong>Question:</strong> <p>The three vertices of a parallelogram \(ABCD\), taken in order, are \(A(3,-4)\), \(B(-1,-3)\), \(C(-6,2)\). Find the fourth vertex \(D\).</p></div><div class="calc">The diagonals \(AC\) and \(BD\) have the same midpoint, so \(\vec a+\vec c=\vec b+\vec d\)<br>\(\vec d=\vec a+\vec c-\vec b=(3-6+1,\ -4+2+3)=(-2,1)\)<br>Check: \(\overrightarrow{AB}=(-4,1)\) and \(\overrightarrow{DC}=(-6+2,\ 2-1)=(-4,1)\)</div><p><b>Answer:</b> \(D=(-2,1)\)</p></div></details><details class="qa-item ex-item"><summary><span>Ex 3.1 · Q11 — Midpoints of the sides of a quadrilateral.</span><span class="ex-lv hard">Advance</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-answer"><div class="ex-q"><strong>Question:</strong> <p>Show that the line segments joining the midpoints of the sides of a quadrilateral, taken in order, form a parallelogram.</p></div><div class="calc">Let \(ABCD\) have position vectors \(\vec a,\vec b,\vec c,\vec d\), and let \(P,Q,R,S\) be the midpoints of \(AB,BC,CD,DA\).<br>\(\vec p=\dfrac{\vec a+\vec b}{2},\ \vec q=\dfrac{\vec b+\vec c}{2},\ \vec r=\dfrac{\vec c+\vec d}{2},\ \vec s=\dfrac{\vec d+\vec a}{2}\)<br>\(\overrightarrow{PQ}=\vec q-\vec p=\dfrac{\vec c-\vec a}{2}\)<br>\(\overrightarrow{SR}=\vec r-\vec s=\dfrac{\vec c-\vec a}{2}\)<br>So \(\overrightarrow{PQ}=\overrightarrow{SR}\): one pair of opposite sides is equal and parallel.</div><p><b>Answer:</b> \(PQRS\) is a parallelogram.</p></div></details></div><div class="ex-lock"><i class="fas fa-lock" aria-hidden="true"></i> <span>12 more questions of Exercise 3.1 — full step-by-step solutions are inside the W.H. Academy student dashboard.</span></div><h3 class="ex-h">Exercise 3.2 <small>free sample: 4 of 16 questions</small></h3><div class="qa-topic-block"><details class="qa-item ex-item"><summary><span>Ex 3.2 · Q1 (i) — Find \(\vec a\cdot\vec b\).</span><span class="ex-lv easy">Basic</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-answer"><div class="ex-q"><strong>Question:</strong> <p>If \(\vec a=2\hat i-3\hat j+\hat k\) and \(\vec b=\hat i-3\hat j+4\hat k\), find \(\vec a\cdot\vec b\).</p></div><div class="calc">\(\vec a\cdot\vec b=(2)(1)+(-3)(-3)+(1)(4)=2+9+4\)</div><p><b>Answer:</b> \(15\)</p></div></details><details class="qa-item ex-item"><summary><span>Ex 3.2 · Q2 (i) — Angle between \(\vec a\) and \(3\vec b\).</span><span class="ex-lv med">Intermediate</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-answer"><div class="ex-q"><strong>Question:</strong> <p>If \(\vec a=\hat j-\hat k\) and \(\vec b=3\hat i-4\hat j+\hat k\), find the angle between \(\vec a\) and \(3\vec b\).</p></div><div class="calc">\(3\vec b=(9,-12,3)\), &nbsp; \(\vec a=(0,1,-1)\)<br>\(\vec a\cdot3\vec b=0-12-3=-15\)<br>\(|\vec a|=\sqrt2\), &nbsp; \(|3\vec b|=3\sqrt{9+16+1}=3\sqrt{26}\)<br>\(\cos\theta=\dfrac{-15}{\sqrt2\cdot3\sqrt{26}}=\dfrac{-5}{\sqrt{52}}=-\dfrac{5}{2\sqrt{13}}\)</div><p><b>Answer:</b> \(\theta=\cos^{-1}\!\left(-\dfrac{5}{2\sqrt{13}}\right)\approx133.90^\circ\)</p></div></details><details class="qa-item ex-item"><summary><span>Ex 3.2 · Q4 (i) — Find \(\lambda\) so that \(\vec a-\lambda\vec b\perp\vec c\).</span><span class="ex-lv med">Intermediate</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-answer"><div class="ex-q"><strong>Question:</strong> <p>If \(\vec a=\hat i-3\hat j+4\hat k\), \(\vec b=7\hat i-9\hat j+\hat k\), \(\vec c=3\hat i-2\hat j+5\hat k\), find \(\lambda\) so that \(\vec a-\lambda\vec b\) is perpendicular to \(\vec c\).</p></div><div class="calc">\((\vec a-\lambda\vec b)\cdot\vec c=0\ \Rightarrow\ \vec a\cdot\vec c-\lambda(\vec b\cdot\vec c)=0\)<br>\(\vec a\cdot\vec c=3+6+20=29\), &nbsp; \(\vec b\cdot\vec c=21+18+5=44\)<br>\(29-44\lambda=0\)</div><p><b>Answer:</b> \(\lambda=\dfrac{29}{44}\)</p></div></details><details class="qa-item ex-item"><summary><span>Ex 3.2 · Q14 — Work done by a force.</span><span class="ex-lv hard">Advance</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-answer"><div class="ex-q"><strong>Question:</strong> <p>A force \(\vec F=3\hat i-5\hat j+7\hat k\) newtons moves a body \(14\) metres in the direction of \(\hat i-3\hat j+\hat k\). How much work is done?</p></div><div class="calc">Unit vector of the direction: \(\hat d=\dfrac{\hat i-3\hat j+\hat k}{\sqrt{11}}\), so \(\vec S=14\hat d\)<br>\(\vec F\cdot(\hat i-3\hat j+\hat k)=3+15+7=25\)<br>\(W=\vec F\cdot\vec S=\dfrac{14\times25}{\sqrt{11}}=\dfrac{350}{\sqrt{11}}\)</div><p><b>Answer:</b> \(\dfrac{350\sqrt{11}}{11}\approx105.53\) J</p></div></details></div><div class="ex-lock"><i class="fas fa-lock" aria-hidden="true"></i> <span>12 more questions of Exercise 3.2 — full step-by-step solutions are inside the W.H. Academy student dashboard.</span></div><h3 class="ex-h">Exercise 3.3 <small>free sample: 4 of 17 questions</small></h3><div class="qa-topic-block"><details class="qa-item ex-item"><summary><span>Ex 3.3 · Q1 (i) — Find \(\vec a\times\vec b\) and \(\vec b\times\vec a\).</span><span class="ex-lv easy">Basic</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-answer"><div class="ex-q"><strong>Question:</strong> <p>For \(\vec a=2\hat i+\hat j-\hat k\) and \(\vec b=\hat i-3\hat j+7\hat k\), find \(\vec a\times\vec b\) and \(\vec b\times\vec a\), and show that \(\vec a\times\vec b=-\vec b\times\vec a\).</p></div><div class="calc">\(\vec a\times\vec b=\begin{vmatrix}\hat i&\hat j&\hat k\\2&1&-1\\1&-3&7\end{vmatrix}=\hat i(7-3)-\hat j(14+1)+\hat k(-6-1)=4\hat i-15\hat j-7\hat k\)<br>\(\vec b\times\vec a=\begin{vmatrix}\hat i&\hat j&\hat k\\1&-3&7\\2&1&-1\end{vmatrix}=\hat i(3-7)-\hat j(-1-14)+\hat k(1+6)=-4\hat i+15\hat j+7\hat k\)</div><p><b>Answer:</b> \(\vec a\times\vec b=4\hat i-15\hat j-7\hat k\) and \(\vec b\times\vec a=-4\hat i+15\hat j+7\hat k=-\vec a\times\vec b\)</p></div></details><details class="qa-item ex-item"><summary><span>Ex 3.3 · Q3 (i) — Sine of the angle between two vectors.</span><span class="ex-lv med">Intermediate</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-answer"><div class="ex-q"><strong>Question:</strong> <p>Find the sine of the angle between \(\vec a=2\hat i-4\hat j+3\hat k\) and \(\vec b=\hat i-3\hat j+4\hat k\).</p></div><div class="calc">\(\vec a\times\vec b=\begin{vmatrix}\hat i&\hat j&\hat k\\2&-4&3\\1&-3&4\end{vmatrix}=\hat i(-16+9)-\hat j(8-3)+\hat k(-6+4)=-7\hat i-5\hat j-2\hat k\)<br>\(|\vec a\times\vec b|=\sqrt{49+25+4}=\sqrt{78}\), &nbsp; \(|\vec a|=\sqrt{29}\), &nbsp; \(|\vec b|=\sqrt{26}\)<br>\(\sin\theta=\dfrac{\sqrt{78}}{\sqrt{29}\sqrt{26}}=\sqrt{\dfrac{78}{754}}=\sqrt{\dfrac{3}{29}}\)</div><p><b>Answer:</b> \(\dfrac{\sqrt{87}}{29}\approx0.3216\)</p></div></details><details class="qa-item ex-item"><summary><span>Ex 3.3 · Q10 (i) — Area of a parallelogram.</span><span class="ex-lv med">Intermediate</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-answer"><div class="ex-q"><strong>Question:</strong> <p>Find the area of the parallelogram whose adjacent sides are \(\vec a=2\hat i-3\hat j+\hat k\) and \(\vec b=\hat i-2\hat j+7\hat k\).</p></div><div class="calc">\(\vec a\times\vec b=\begin{vmatrix}\hat i&\hat j&\hat k\\2&-3&1\\1&-2&7\end{vmatrix}=\hat i(-21+2)-\hat j(14-1)+\hat k(-4+3)=-19\hat i-13\hat j-\hat k\)<br>\(|\vec a\times\vec b|=\sqrt{361+169+1}=\sqrt{531}\)</div><p><b>Answer:</b> \(3\sqrt{59}\approx23.04\) square units</p></div></details><details class="qa-item ex-item"><summary><span>Ex 3.3 · Q16 — Moment of a force on a toy car.</span><span class="ex-lv hard">Advance</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-answer"><div class="ex-q"><strong>Question:</strong> <p>A toy car is at the point \((2,3,5)\) relative to the origin. A force \(3\hat i+2\hat j+7\hat k\) makes it rotate about the origin. Find the moment of the force.</p></div><div class="calc">\(\vec r=2\hat i+3\hat j+5\hat k\), &nbsp; \(\vec F=3\hat i+2\hat j+7\hat k\)<br>\(\vec M=\vec r\times\vec F=\begin{vmatrix}\hat i&\hat j&\hat k\\2&3&5\\3&2&7\end{vmatrix}=\hat i(21-10)-\hat j(14-15)+\hat k(4-9)\)<br>Check: \(\vec M\cdot\vec r=22+3-25=0\) and \(\vec M\cdot\vec F=33+2-35=0\)</div><p><b>Answer:</b> \(11\hat i+\hat j-5\hat k\)</p></div></details></div><div class="ex-lock"><i class="fas fa-lock" aria-hidden="true"></i> <span>13 more questions of Exercise 3.3 — full step-by-step solutions are inside the W.H. Academy student dashboard.</span></div><h3 class="ex-h">Exercise 3.4 <small>free sample: 2 of 7 questions</small></h3><div class="qa-topic-block"><details class="qa-item ex-item"><summary><span>Ex 3.4 · Q3 (i) — Show that three vectors are coplanar.</span><span class="ex-lv med">Intermediate</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-answer"><div class="ex-q"><strong>Question:</strong> <p>Show that \(\vec a=-4\hat i-6\hat j-54\hat k\), \(\vec b=-\hat i+4\hat j+3\hat k\) and \(\vec c=-\hat i+2\hat j-3\hat k\) are coplanar.</p></div><div class="calc">\(\vec a\cdot\vec b\times\vec c=\begin{vmatrix}-4&-6&-54\\-1&4&3\\-1&2&-3\end{vmatrix}\)<br>\(=-4(-12-6)+6(3+3)-54(-2+4)=72+36-108=0\)</div><p><b>Answer:</b> The triple product is \(0\), so the vectors are coplanar.</p></div></details><details class="qa-item ex-item"><summary><span>Ex 3.4 · Q7 (ii) — Volume of a tetrahedron.</span><span class="ex-lv med">Intermediate</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-answer"><div class="ex-q"><strong>Question:</strong> <p>Find the volume of the tetrahedron with vertices \(A(0,1,0)\), \(B(2,0,1)\), \(C(3,1,2)\), \(D(5,6,-1)\).</p></div><div class="calc">\(\overrightarrow{AB}=(2,-1,1)\), &nbsp; \(\overrightarrow{AC}=(3,0,2)\), &nbsp; \(\overrightarrow{AD}=(5,5,-1)\)<br>\(\begin{vmatrix}2&-1&1\\3&0&2\\5&5&-1\end{vmatrix}=2(0-10)+1(-3-10)+1(15-0)=-20-13+15=-18\)<br>\(V=\tfrac16|-18|\)</div><p><b>Answer:</b> \(3\) cubic units</p></div></details></div><div class="ex-lock"><i class="fas fa-lock" aria-hidden="true"></i> <span>5 more questions of Exercise 3.4 — full step-by-step solutions are inside the W.H. Academy student dashboard.</span></div><h3 class="ex-h">Review Exercise <small>free sample: 2 of 9 questions</small></h3><div class="qa-topic-block"><details class="qa-item ex-item"><summary><span>Review · Q2 — Value of \(\lambda\): parallel and perpendicular.</span><span class="ex-lv med">Intermediate</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-answer"><div class="ex-q"><strong>Question:</strong> <p>Find \(\lambda\) so that \(\vec a=3\hat i-2\hat j+6\hat k\) and \(\vec b=\hat i-\lambda\hat j+3\lambda\hat k\) are (i) parallel, (ii) perpendicular.</p></div><div class="calc">(i) Parallel: \(\dfrac31=\dfrac{-2}{-\lambda}\Rightarrow\dfrac{2}{\lambda}=3\Rightarrow\lambda=\dfrac23\). Check: \(\dfrac{6}{3\lambda}=\dfrac{2}{\lambda}=3\).<br>(ii) Perpendicular: \(\vec a\cdot\vec b=3+2\lambda+18\lambda=3+20\lambda=0\Rightarrow\lambda=-\dfrac{3}{20}\)</div><p><b>Answer:</b> (i) \(\lambda=\dfrac23\) &nbsp; (ii) \(\lambda=-\dfrac{3}{20}\)</p></div></details><details class="qa-item ex-item"><summary><span>Review · Q3 — Component of \(\vec a+\vec b\) along \(\vec a-\vec b\).</span><span class="ex-lv hard">Advance</span><span class="qa-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span></summary><div class="qa-answer"><div class="ex-q"><strong>Question:</strong> <p>If \(\vec a=-3\hat i+2\hat j+4\hat k\) and \(\vec b=\hat i-2\hat j+4\hat k\), find the component of \(\vec a+\vec b\) along \(\vec a-\vec b\).</p></div><div class="calc">\(\vec a+\vec b=(-2,0,8)\), &nbsp; \(\vec a-\vec b=(-4,4,0)\)<br>\((\vec a+\vec b)\cdot(\vec a-\vec b)=8\), &nbsp; \(|\vec a-\vec b|=\sqrt{32}=4\sqrt2\)<br>Component \(=\dfrac{8}{4\sqrt2}\)</div><p><b>Answer:</b> \(\sqrt2\)</p></div></details></div><div class="ex-lock"><i class="fas fa-lock" aria-hidden="true"></i> <span>7 more questions of the Review Exercise — full step-by-step solutions are inside the W.H. Academy student dashboard.</span></div><div class="ex-unlock"><h3>Want every question solved? Enrol in W.H. Academy</h3><p>Concepts are free here. Enrolled students get the complete working for all 65 exercise questions of this chapter, and much more:</p><ul><li><i class="fas fa-check-circle" aria-hidden="true"></i> Step-by-step solutions of every exercise question, shown inside the student dashboard</li><li><i class="fas fa-check-circle" aria-hidden="true"></i> Interactive animations that walk through solutions (Max plan)</li><li><i class="fas fa-check-circle" aria-hidden="true"></i> 8 learning games with 2,400 chapter questions, plus XP, coins and ranks</li><li><i class="fas fa-check-circle" aria-hidden="true"></i> Advanced games (Neon Racer and Auto Defense) for Max plan students</li><li><i class="fas fa-check-circle" aria-hidden="true"></i> Recorded lectures, monthly mock tests and WhatsApp support (Plus and Max plans)</li><li><i class="fas fa-check-circle" aria-hidden="true"></i> Live online classes, arranged with the academy as you need them</li></ul><div class="acts"><a class="p" href="https://whacademypk.com/enroll.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-pen-to-square" aria-hidden="true"></i> Enrol now</a><a class="s" href="https://whacademypk.com/student-dashboard-explained.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-table-columns" aria-hidden="true"></i> See what the dashboard includes</a></div></div></section>
+<section style="margin-bottom:44px;background:linear-gradient(135deg,#1e1b4b,#4f46e5);border-radius:var(--radius);padding:36px;text-align:center">
+  <h2 style="font-family:var(--font-display);color:#fff;font-size:1.4rem;margin-bottom:10px">Play the Learning Game</h2>
+  <p style="color:rgba(255,255,255,.75);margin-bottom:24px;font-size:.93rem">2,400 questions in 8 game modes on Vectors in Space. No login required to try. Instant results.</p>
+  <a href="https://whacademypk.com/games/chapter.html?ch=11/math/vectors" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="Play the learning game" style="border-color:#c7d2fe;color:#fff"><i class="fas fa-gamepad" aria-hidden="true"></i> Play the Learning Game</a>
+</section>
+<div style="margin-bottom:44px"></div>
+<div class="enroll-box">
+  <h2>Want Live Explanation of <span style="color:#c7d2fe">Vectors in Space?</span></h2>
+  <p>Join W.H. Academy: Live tutoring, recorded lectures and full chapter solutions for FBISE and Punjab Board students in Rawalpindi and online across Pakistan.</p>
+  <div class="enroll-actions">
+    <a href="https://whacademypk.com/enroll.html" target="_blank" rel="noopener noreferrer" class="btn-home"><i class="fas fa-pen-to-square" aria-hidden="true"></i> Enroll Free</a>
+    <a href="https://wa.me/923295215703" target="_blank" rel="noopener noreferrer" class="btn-wa"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp Us</a>
+  </div>
+</div>
+<div class="back-bar">
+  <a href="https://whacademypk.com/notes/class-11/math/" class="btn-home"><i class="fas fa-arrow-left" aria-hidden="true"></i> All Class 11 Math Chapters</a>
+</div>
+</main>
+<footer role="contentinfo">
+  <p>&copy; 2026 <a href="https://whacademypk.com/">W.H. Academy</a> — M. Rehan Safdar |
+  <a href="https://whacademypk.com/privacy-policy.html">Privacy Policy</a> |
+  <a href="https://whacademypk.com/terms.html">Terms of Service</a></p>
+  <p style="margin-top:6px">Expert Math and Science Tutoring · APSACS · FBISE · Punjab Board · Rawalpindi and Online Pakistan</p>
+</footer>
+
+<script>
+/* W.H. Academy - Vectors in Space: light interactive diagrams (self-contained, CSP-safe, no libraries). */
+(function () {
+  'use strict';
+  var NS = 'http://www.w3.org/2000/svg';
+  var REDUCED = false;
+  try { REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+  var C = { a: '#4f46e5', b: '#db2777', r: '#059669', c: '#d97706', x: '#dc2626', y: '#16a34a', z: '#2563eb', h: '#94a3b8', ink: '#0f172a', soft: '#cbd5e1' };
+  var IH = 'î', JH = 'ĵ', KH = 'k̂', MN = '−', DEG = 180 / Math.PI;
+
+  function E(n, a, p) { var e = document.createElementNS(NS, n); if (a) for (var k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; }
+  function H(t, a, kids) {
+    var e = document.createElement(t);
+    if (a) for (var k in a) { if (k === 'text') e.textContent = a[k]; else if (k === 'html') e.innerHTML = a[k]; else e.setAttribute(k, a[k]); }
+    (kids || []).forEach(function (c) { e.appendChild(c); }); return e;
+  }
+  function fmt(v, d) {
+    d = d == null ? 2 : d; var m = Math.pow(10, d), r = Math.round(v * m) / m; if (r === 0) r = 0;
+    return String(r).replace('-', MN);
+  }
+  function sgn(v, d) { return (v < 0 ? MN : '+') + fmt(Math.abs(v), d); }
+  function vs(v, d) {                    // vector as  3i - 2j + k
+    var u = [IH, JH, KH], out = '', i, x, ab, co;
+    for (i = 0; i < 3; i++) {
+      x = v[i]; if (Math.abs(x) < 0.0005) continue;
+      ab = fmt(Math.abs(x), d); co = (ab === '1' ? '' : ab);
+      out += out === '' ? (x < 0 ? MN : '') + co + u[i] : (x < 0 ? ' ' + MN + ' ' : ' + ') + co + u[i];
+    }
+    return out === '' ? '0' : out;
+  }
+  function tup(v, d) { return '(' + v.map(function (x) { return fmt(x, d); }).join(', ') + ')'; }
+  function dot(a, b) { return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]; }
+  function cross(a, b) { return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]]; }
+  function nrm(a) { return Math.sqrt(dot(a, a)); }
+  function sub(a, b) { return a.map(function (x, i) { return x - b[i]; }); }
+  function add(a, b) { return a.map(function (x, i) { return x + b[i]; }); }
+  function mul(k, a) { return a.map(function (x) { return k * x; }); }
+  function deg(r) { return fmt(r * DEG, 1) + '°'; }
+
+  /* ---------- shell: title, caption, body, controls, output ---------- */
+  function shell(el) {
+    var t = el.getAttribute('data-title') || '', cap = el.getAttribute('data-cap') || '', tr = el.getAttribute('data-try') || '';
+    el.classList.add('viz'); el.innerHTML = '';
+    el.appendChild(H('div', { 'class': 'viz-t' }, [H('i', { 'class': 'fas fa-hand-pointer', 'aria-hidden': 'true' }), document.createTextNode(' ' + t)]));
+    if (cap) el.appendChild(H('p', { 'class': 'viz-cap', text: cap }));
+    var body = H('div', { 'class': 'viz-body' }); el.appendChild(body);
+    var out = H('div', { 'class': 'viz-out', 'aria-live': 'polite' }); el.appendChild(out);
+    if (tr) el.appendChild(H('div', { 'class': 'viz-try', text: 'Try it: ' + tr }));
+    return { el: el, body: body, out: out };
+  }
+  function bar(u) { var b = H('div', { 'class': 'viz-ctl' }); u.el.insertBefore(b, u.out); return b; }
+  function slider(parent, label, min, max, step, val, cb, ff) {
+    var lab = H('label', { 'class': 'viz-sl' }); lab.appendChild(document.createTextNode(label + ' '));
+    var vb = H('b'); var inp = H('input', { type: 'range', min: min, max: max, step: step, value: val, 'aria-label': label });
+    function upd() { vb.textContent = (ff || fmt)(+inp.value); }
+    inp.addEventListener('input', function () { upd(); cb(+inp.value); });
+    lab.appendChild(vb); lab.appendChild(inp); parent.appendChild(lab); upd();
+    return { inp: inp, get: function () { return +inp.value; }, set: function (v) { inp.value = v; upd(); } };
+  }
+  function button(parent, label, cb, on) {
+    var b = H('button', { type: 'button', 'class': 'viz-btn' + (on ? ' on' : ''), text: label }); b.addEventListener('click', function () { cb(b); }); parent.appendChild(b); return b;
+  }
+  function group(parent, labels, cb, first) {
+    var bs = [];
+    labels.forEach(function (l, i) {
+      var b = button(parent, l, function () { bs.forEach(function (x) { x.classList.remove('on'); }); b.classList.add('on'); cb(i); }, i === (first || 0)); bs.push(b);
+    });
+    return bs;
+  }
+  function select(parent, labels, cb) {
+    var s = H('select', { 'class': 'viz-sel', 'aria-label': 'choose an example' });
+    labels.forEach(function (l, i) { s.appendChild(H('option', { value: i, text: l })); });
+    s.addEventListener('change', function () { cb(+s.value); }); parent.appendChild(s); return s;
+  }
+
+  /* ---------- 2D plane ---------- */
+  function Plane(host, o) {
+    var W = o.w || 360, Hh = o.h || 360, x0 = o.x0, x1 = o.x1, y0 = o.y0, y1 = o.y1, snap = o.snap == null ? 1 : o.snap;
+    var svg = E('svg', { viewBox: '0 0 ' + W + ' ' + Hh, 'class': 'viz-svg' + (o.wide ? ' viz-wide' : ''), role: 'img', 'aria-label': o.label || 'diagram' }, null);
+    host.appendChild(svg);
+    var P = { svg: svg, W: W, H: Hh };
+    P.X = function (x) { return (x - x0) / (x1 - x0) * W; };
+    P.Y = function (y) { return Hh - (y - y0) / (y1 - y0) * Hh; };
+    var gg = E('g', {}, svg), g = E('g', {}, svg), hg = E('g', {}, svg), i;
+    for (i = Math.ceil(x0); i <= x1; i++) E('line', { x1: P.X(i), y1: 0, x2: P.X(i), y2: Hh, stroke: i === 0 ? '#64748b' : '#e2e8f0', 'stroke-width': i === 0 ? 1.6 : 1 }, gg);
+    for (i = Math.ceil(y0); i <= y1; i++) E('line', { x1: 0, y1: P.Y(i), x2: W, y2: P.Y(i), stroke: i === 0 ? '#64748b' : '#e2e8f0', 'stroke-width': i === 0 ? 1.6 : 1 }, gg);
+    if (!o.nolabels) {
+      var step = (x1 - x0) > 14 ? 2 : 1;
+      for (i = Math.ceil(x0); i <= x1; i += 1) if (i !== 0 && i % step === 0) { var t = E('text', { x: P.X(i), y: P.Y(0) + 13, 'text-anchor': 'middle', 'font-size': 10, fill: '#64748b' }, gg); t.textContent = fmt(i, 0); }
+      for (i = Math.ceil(y0); i <= y1; i += 1) if (i !== 0 && i % step === 0) { var t2 = E('text', { x: P.X(0) - 4, y: P.Y(i) + 3, 'text-anchor': 'end', 'font-size': 10, fill: '#64748b' }, gg); t2.textContent = fmt(i, 0); }
+    }
+    P.clear = function () { while (g.firstChild) g.removeChild(g.firstChild); };
+    P.line = function (ax, ay, bx, by, col, w, dash) { return E('line', { x1: P.X(ax), y1: P.Y(ay), x2: P.X(bx), y2: P.Y(by), stroke: col, 'stroke-width': w || 2, 'stroke-dasharray': dash || '', 'stroke-linecap': 'round' }, g); };
+    P.arrow = function (ax, ay, bx, by, col, w, dash) {
+      var px = P.X(ax), py = P.Y(ay), qx = P.X(bx), qy = P.Y(by), dx = qx - px, dy = qy - py, L = Math.sqrt(dx * dx + dy * dy);
+      if (L < 3) { E('circle', { cx: qx, cy: qy, r: 2.5, fill: col }, g); return; }
+      var ux = dx / L, uy = dy / L, hs = 10, ex = qx - ux * hs * 0.6, ey = qy - uy * hs * 0.6;
+      E('line', { x1: px, y1: py, x2: ex, y2: ey, stroke: col, 'stroke-width': w || 2.4, 'stroke-dasharray': dash || '', 'stroke-linecap': 'round' }, g);
+      E('polygon', { points: qx + ',' + qy + ' ' + (qx - ux * hs + uy * hs * 0.45) + ',' + (qy - uy * hs - ux * hs * 0.45) + ' ' + (qx - ux * hs - uy * hs * 0.45) + ',' + (qy - uy * hs + ux * hs * 0.45), fill: col }, g);
+    };
+    P.dot = function (x, y, col, r) { E('circle', { cx: P.X(x), cy: P.Y(y), r: r || 4, fill: col }, g); };
+    P.text = function (x, y, s, col, dx, dy, anc, size) {
+      var t = E('text', { x: P.X(x) + (dx || 0), y: P.Y(y) + (dy || 0), fill: col || C.ink, 'font-size': size || 13, 'font-weight': 700, 'text-anchor': anc || 'middle' }, g); t.textContent = s; return t;
+    };
+    P.poly = function (pts, fill, op, stroke) {
+      E('polygon', { points: pts.map(function (p) { return P.X(p[0]) + ',' + P.Y(p[1]); }).join(' '), fill: fill, 'fill-opacity': op == null ? 0.18 : op, stroke: stroke || 'none', 'stroke-width': 1.2 }, g);
+    };
+    P.arc = function (cx, cy, r, a1, a2, col) {
+      var d = a2 - a1; while (d > Math.PI) d -= 2 * Math.PI; while (d < -Math.PI) d += 2 * Math.PI;
+      var pts = [], n = 24, k; for (k = 0; k <= n; k++) { var a = a1 + d * k / n; pts.push(P.X(cx + r * Math.cos(a)) + ',' + P.Y(cy + r * Math.sin(a))); }
+      E('polyline', { points: pts.join(' '), fill: 'none', stroke: col, 'stroke-width': 1.8 }, g);
+    };
+    P.pt = function (ev) {
+      var q = svg.createSVGPoint(); q.x = ev.clientX; q.y = ev.clientY; var m = svg.getScreenCTM(); if (!m) return [0, 0];
+      var r = q.matrixTransform(m.inverse()); return [x0 + r.x / W * (x1 - x0), y1 - r.y / Hh * (y1 - y0)];
+    };
+    P.handle = function (h) {                 // h: {pos:[x,y], col, name, onmove}
+      var gr = E('g', { 'class': 'viz-hd', tabindex: 0, role: 'slider', 'aria-label': 'drag point ' + (h.name || '') + '; arrow keys move it', style: 'cursor:grab;touch-action:none' }, hg);
+      var halo = E('circle', { r: 17, fill: 'transparent' }, gr), ring = E('circle', { r: 8, fill: h.col, stroke: '#fff', 'stroke-width': 2.2 }, gr);
+      var dragging = false;
+      function place() { gr.setAttribute('transform', 'translate(' + P.X(h.pos[0]) + ',' + P.Y(h.pos[1]) + ')'); }
+      function setp(x, y) {
+        x = Math.max(x0 + 0.01, Math.min(x1 - 0.01, x)); y = Math.max(y0 + 0.01, Math.min(y1 - 0.01, y));
+        if (snap) { x = Math.round(x / snap) * snap; y = Math.round(y / snap) * snap; }
+        h.pos[0] = x; h.pos[1] = y; place(); if (h.onmove) h.onmove();
+      }
+      gr.addEventListener('pointerdown', function (ev) { dragging = true; try { gr.setPointerCapture(ev.pointerId); } catch (e) {} ev.preventDefault(); gr.focus(); });
+      gr.addEventListener('pointermove', function (ev) { if (!dragging) return; var p = P.pt(ev); setp(p[0], p[1]); });
+      gr.addEventListener('pointerup', function () { dragging = false; });
+      gr.addEventListener('pointercancel', function () { dragging = false; });
+      gr.addEventListener('keydown', function (ev) {
+        var s = snap || 0.5, k = ev.key, dx = 0, dy = 0;
+        if (k === 'ArrowLeft') dx = -s; else if (k === 'ArrowRight') dx = s; else if (k === 'ArrowUp') dy = s; else if (k === 'ArrowDown') dy = -s; else return;
+        ev.preventDefault(); setp(h.pos[0] + dx, h.pos[1] + dy);
+      });
+      place(); h.place = place; h.set = setp; return h;
+    };
+    return P;
+  }
+
+  /* ---------- 3D isometric space ---------- */
+  function Space(host, o) {
+    var W = o.w || 440, Hh = o.h || 400, s = o.s || 30, ox = o.ox || 0, oy = o.oy || 0;
+    var S = { az: (o.az == null ? 250 : o.az) * Math.PI / 180, el: (o.el == null ? 22 : o.el) * Math.PI / 180, s: s };
+    var svg = E('svg', { viewBox: '0 0 ' + W + ' ' + Hh, 'class': 'viz-svg', style: 'max-width:' + W + 'px', role: 'img', 'aria-label': o.label || '3D diagram' }, null);
+    host.appendChild(svg);
+    var g = E('g', {}, svg);
+    S.svg = svg;
+    S.p = function (v) {
+      var ca = Math.cos(S.az), sa = Math.sin(S.az), ce = Math.cos(S.el), se = Math.sin(S.el);
+      var x1 = v[0] * ca - v[1] * sa, y1 = v[0] * sa + v[1] * ca, up = v[2] * ce + y1 * se;
+      return [W / 2 + ox + S.s * x1, Hh / 2 + oy - S.s * up, y1 * ce - v[2] * se];
+    };
+    S.clear = function () { while (g.firstChild) g.removeChild(g.firstChild); };
+    S.line = function (a, b, col, w, dash) { var p = S.p(a), q = S.p(b); E('line', { x1: p[0], y1: p[1], x2: q[0], y2: q[1], stroke: col, 'stroke-width': w || 1.6, 'stroke-dasharray': dash || '', 'stroke-linecap': 'round' }, g); };
+    S.arrow = function (a, b, col, w, dash) {
+      var p = S.p(a), q = S.p(b), dx = q[0] - p[0], dy = q[1] - p[1], L = Math.sqrt(dx * dx + dy * dy);
+      if (L < 3) { E('circle', { cx: q[0], cy: q[1], r: 2.5, fill: col }, g); return; }
+      var ux = dx / L, uy = dy / L, hs = 10;
+      E('line', { x1: p[0], y1: p[1], x2: q[0] - ux * hs * 0.6, y2: q[1] - uy * hs * 0.6, stroke: col, 'stroke-width': w || 2.6, 'stroke-dasharray': dash || '', 'stroke-linecap': 'round' }, g);
+      E('polygon', { points: q[0] + ',' + q[1] + ' ' + (q[0] - ux * hs + uy * hs * 0.45) + ',' + (q[1] - uy * hs - ux * hs * 0.45) + ' ' + (q[0] - ux * hs - uy * hs * 0.45) + ',' + (q[1] - uy * hs + ux * hs * 0.45), fill: col }, g);
+    };
+    S.dot = function (a, col, r) { var p = S.p(a); E('circle', { cx: p[0], cy: p[1], r: r || 4.5, fill: col, stroke: '#fff', 'stroke-width': 1.5 }, g); };
+    S.text = function (a, str, col, dx, dy, anc, size) { var p = S.p(a), t = E('text', { x: p[0] + (dx || 0), y: p[1] + (dy || 0), fill: col || C.ink, 'font-size': size || 13, 'font-weight': 700, 'text-anchor': anc || 'middle' }, g); t.textContent = str; };
+    S.poly = function (pts, fill, op, stroke) {
+      E('polygon', { points: pts.map(function (v) { var p = S.p(v); return p[0] + ',' + p[1]; }).join(' '), fill: fill, 'fill-opacity': op == null ? 0.2 : op, stroke: stroke || 'none', 'stroke-width': 1, 'stroke-linejoin': 'round' }, g);
+    };
+    S.axes = function (L, grid) {
+      var i;
+      if (grid) for (i = -grid; i <= grid; i++) { S.line([i, -grid, 0], [i, grid, 0], '#e2e8f0', 1); S.line([-grid, i, 0], [grid, i, 0], '#e2e8f0', 1); }
+      S.line([-L, 0, 0], [0, 0, 0], C.x, 1.2, '4 4'); S.line([0, -L, 0], [0, 0, 0], C.y, 1.2, '4 4'); S.line([0, 0, -L], [0, 0, 0], C.z, 1.2, '4 4');
+      S.arrow([0, 0, 0], [L, 0, 0], C.x, 1.8); S.arrow([0, 0, 0], [0, L, 0], C.y, 1.8); S.arrow([0, 0, 0], [0, 0, L], C.z, 1.8);
+      S.text([L + 0.5, 0, 0], 'x', C.x, 0, 5); S.text([0, L + 0.5, 0], 'y', C.y, 0, 5); S.text([0, 0, L + 0.6], 'z', C.z, 0, 4);
+      S.text([0, 0, 0], 'O', C.ink, -9, 14, 'middle', 12);
+    };
+    S.box = function (v, col) {            // dashed cuboid from the origin to v, and the x-y-z path
+      var x = v[0], y = v[1], z = v[2];
+      var cs = [[0, 0, 0], [x, 0, 0], [x, y, 0], [0, y, 0], [0, 0, z], [x, 0, z], [x, y, z], [0, y, z]];
+      [[0, 1], [1, 2], [2, 3], [3, 0], [4, 5], [5, 6], [6, 7], [7, 4], [0, 4], [1, 5], [2, 6], [3, 7]].forEach(function (e) { S.line(cs[e[0]], cs[e[1]], '#cbd5e1', 1.1, '3 3'); });
+      S.line([0, 0, 0], [x, 0, 0], C.x, 2.4); S.line([x, 0, 0], [x, y, 0], C.y, 2.4); S.line([x, y, 0], [x, y, z], C.z, 2.4);
+    };
+    S.rotControls = function (u, redraw) {
+      var b = bar(u);
+      var a = slider(b, 'turn', 0, 359, 1, Math.round(S.az * DEG), function (v) { S.az = v / DEG; redraw(); }, function (v) { return fmt(v, 0) + '°'; });
+      var e = slider(b, 'tilt', 5, 80, 1, Math.round(S.el * DEG), function (v) { S.el = v / DEG; redraw(); }, function (v) { return fmt(v, 0) + '°'; });
+      return { a: a, e: e };
+    };
+    return S;
+  }
+
+  var INIT = {};
+
+  /* 1. Head - Tail ------------------------------------------------------ */
+  INIT.headtail = function (el) {
+    var u = shell(el), P = Plane(u.body, { x0: -6, x1: 6, y0: -6, y1: 6, label: 'Points A and B in the plane and the vector AB' });
+    var A = { pos: [-3, -2], col: C.a, name: 'A' }, B = { pos: [4, 3], col: C.b, name: 'B' };
+    function draw() {
+      P.clear(); var a = A.pos, b = B.pos;
+      P.arrow(0, 0, a[0], a[1], C.h, 1.6, '4 3'); P.arrow(0, 0, b[0], b[1], C.h, 1.6, '4 3');
+      P.arrow(a[0], a[1], b[0], b[1], C.r, 3.2);
+      P.dot(0, 0, C.ink, 3.5);
+      P.text(a[0], a[1], 'A', C.a, -12, 16); P.text(b[0], b[1], 'B', C.b, 12, -10);
+      var d = [b[0] - a[0], b[1] - a[1]];
+      u.out.innerHTML = 'a = OA = ' + tup(a, 0) + ' &nbsp; b = OB = ' + tup(b, 0) + '<br>' +
+        '<b>AB = b ' + MN + ' a</b> (Head ' + MN + ' Tail) = (' + fmt(b[0], 0) + ' ' + MN + ' (' + fmt(a[0], 0) + '), ' + fmt(b[1], 0) + ' ' + MN + ' (' + fmt(a[1], 0) + ')) = <b>' + tup(d, 0) + ' = ' + vs([d[0], d[1], 0], 0) + '</b><br>' +
+        '|AB| = √(' + fmt(d[0] * d[0], 0) + ' + ' + fmt(d[1] * d[1], 0) + ') = <b>' + fmt(Math.sqrt(d[0] * d[0] + d[1] * d[1])) + '</b> &nbsp; BA = ' + MN + 'AB = ' + tup([-d[0], -d[1]], 0);
+    }
+    A.onmove = B.onmove = draw; P.handle(A); P.handle(B); draw();
+  };
+
+  /* 2. Addition laws ----------------------------------------------------- */
+  INIT.addlaw = function (el) {
+    var u = shell(el), P = Plane(u.body, { x0: -6, x1: 8, y0: -3, y1: 9, w: 392, h: 336, label: 'Triangle and parallelogram law of vector addition' });
+    var A = { pos: [4, 1], col: C.a, name: 'tip of a' }, B = { pos: [1, 4], col: C.b, name: 'tip of b' }, mode = 0, showSub = false;
+    var K = bar(u);
+    group(K, ['Triangle law (head to tail)', 'Parallelogram law'], function (i) { mode = i; draw(); });
+    var lab = H('label', { 'class': 'viz-ck' }), ck = H('input', { type: 'checkbox' }); lab.appendChild(ck); lab.appendChild(document.createTextNode(' show a − b')); K.appendChild(lab);
+    ck.addEventListener('change', function () { showSub = ck.checked; draw(); });
+    function draw() {
+      P.clear(); var a = A.pos, b = B.pos, s = [a[0] + b[0], a[1] + b[1]];
+      if (mode === 0) { P.arrow(a[0], a[1], s[0], s[1], C.b, 2, '5 4'); }
+      else { P.arrow(a[0], a[1], s[0], s[1], C.b, 1.6, '5 4'); P.arrow(b[0], b[1], s[0], s[1], C.a, 1.6, '5 4'); P.poly([[0, 0], a, s, b], C.c, 0.12); }
+      P.arrow(0, 0, a[0], a[1], C.a, 3); P.arrow(0, 0, b[0], b[1], C.b, 3); P.arrow(0, 0, s[0], s[1], C.r, 3.4);
+      if (showSub) P.arrow(b[0], b[1], a[0], a[1], C.c, 2.6);
+      P.text(a[0] / 2, a[1] / 2, 'a', C.a, 6, 16); P.text(b[0] / 2, b[1] / 2, 'b', C.b, -10, -4); P.text(s[0] / 2, s[1] / 2, 'a+b', C.r, 16, 4);
+      if (showSub) P.text((a[0] + b[0]) / 2, (a[1] + b[1]) / 2, 'a−b', C.c, 14, 14);
+      u.out.innerHTML = 'a = ' + tup(a, 0) + ', b = ' + tup(b, 0) + '<br><b>a + b = ' + tup(s, 0) + '</b> (add the matching components)' +
+        (showSub ? '<br><b>a ' + MN + ' b = ' + tup([a[0] - b[0], a[1] - b[1]], 0) + '</b> (the arrow from the tip of b to the tip of a)' : '') +
+        '<br>b + a gives the same point, so addition is <b>commutative</b>.';
+    }
+    A.onmove = B.onmove = draw; P.handle(A); P.handle(B); draw();
+  };
+
+  /* 3. Section formula --------------------------------------------------- */
+  INIT.section = function (el) {
+    var u = shell(el), P = Plane(u.body, { x0: -8, x1: 8, y0: -6, y1: 6, w: 400, h: 300, label: 'Point dividing a line segment in the ratio m to n' });
+    var A = { pos: [-4, -2], col: C.a, name: 'A' }, B = { pos: [5, 3], col: C.b, name: 'B' }, m = 2, n = 3, ext = false;
+    var K = bar(u);
+    group(K, ['Internal division', 'External division'], function (i) { ext = i === 1; draw(); });
+    var sm = slider(K, 'm', 1, 6, 1, 2, function (v) { m = v; draw(); }, function (v) { return fmt(v, 0); });
+    var sn = slider(K, 'n', 1, 6, 1, 3, function (v) { n = v; draw(); }, function (v) { return fmt(v, 0); });
+    function draw() {
+      P.clear(); var a = A.pos, b = B.pos;
+      P.line(a[0], a[1], b[0], b[1], C.h, 2);
+      if (ext) P.line(a[0] - (b[0] - a[0]) * 2, a[1] - (b[1] - a[1]) * 2, b[0] + (b[0] - a[0]) * 2, b[1] + (b[1] - a[1]) * 2, C.soft, 1.4, '5 4');
+      var ok = !(ext && m === n), p = null;
+      if (ok) p = ext ? [(m * b[0] - n * a[0]) / (m - n), (m * b[1] - n * a[1]) / (m - n)] : [(n * a[0] + m * b[0]) / (m + n), (n * a[1] + m * b[1]) / (m + n)];
+      P.text(a[0], a[1], 'A', C.a, -10, 16); P.text(b[0], b[1], 'B', C.b, 10, -10);
+      var msg;
+      if (!ok) msg = 'When m = n the external point does not exist (it would be at infinity). Change m or n.';
+      else {
+        P.dot(p[0], p[1], C.r, 6); P.text(p[0], p[1], 'P', C.r, 0, -12);
+        var ap = Math.hypot(p[0] - a[0], p[1] - a[1]), pb = Math.hypot(b[0] - p[0], b[1] - p[1]);
+        msg = ext ? '<b>P = (m·b ' + MN + ' n·a) / (m ' + MN + ' n)</b> = (' + m + '·' + tup(b, 0) + ' ' + MN + ' ' + n + '·' + tup(a, 0) + ') / ' + fmt(m - n, 0) + ' = <b>' + tup(p, 2) + '</b>'
+          : '<b>P = (n·a + m·b) / (m + n)</b> = (' + n + '·' + tup(a, 0) + ' + ' + m + '·' + tup(b, 0) + ') / ' + (m + n) + ' = <b>' + tup(p, 2) + '</b>';
+        msg += '<br>Check: AP = ' + fmt(ap) + ', PB = ' + fmt(pb) + ', AP : PB = ' + fmt(ap / pb) + ' = m : n = ' + m + ' : ' + n + ' (' + fmt(m / n) + ')';
+      }
+      u.out.innerHTML = 'A = ' + tup(a, 0) + ', B = ' + tup(b, 0) + ', AP : PB = ' + m + ' : ' + n + (ext ? ' externally' : ' internally') + '<br>' + msg;
+    }
+    A.onmove = B.onmove = draw; P.handle(A); P.handle(B); draw();
+  };
+
+  /* 4. Octants ----------------------------------------------------------- */
+  var OCT = { '+++': 'I', '-++': 'II', '--+': 'III', '+-+': 'IV', '++-': 'V', '-+-': 'VI', '---': 'VII', '+--': 'VIII' };
+  INIT.octants = function (el) {
+    var u = shell(el), S = Space(u.body, { s: 27, oy: 8, label: 'A point in three-dimensional space' });
+    var v = [3, 2, 2];
+    function draw() {
+      S.clear(); S.axes(6, 6); S.box(v);
+      S.arrow([0, 0, 0], v, C.a, 2.6); S.dot(v, C.a, 5.5); S.text(v, 'P' + tup(v, 0), C.a, 8, -10, 'start', 12);
+      var sg = v.map(function (q) { return q > 0 ? '+' : q < 0 ? '-' : '0'; }), z = sg.filter(function (c) { return c === '0'; }).length, where;
+      if (z === 0) where = 'in octant <b>' + OCT[sg.join('')] + '</b> (signs ' + sg.map(function (c) { return c === '+' ? '+' : MN; }).join(', ') + ')';
+      else if (z === 1) where = 'in the <b>' + (v[2] === 0 ? 'xy' : v[0] === 0 ? 'yz' : 'zx') + '-plane</b> (one coordinate is 0)';
+      else if (z === 2) where = 'on the <b>' + (v[0] !== 0 ? 'x' : v[1] !== 0 ? 'y' : 'z') + '-axis</b> (two coordinates are 0)';
+      else where = 'at the <b>origin</b>';
+      u.out.innerHTML = 'P = ' + tup(v, 0) + ' &nbsp; OP = ' + vs(v, 0) + '<br>P lies ' + where + '.';
+    }
+    S.rotControls(u, draw);
+    var K = bar(u);
+    ['x', 'y', 'z'].forEach(function (nm, i) { slider(K, nm, -5, 5, 1, v[i], function (q) { v[i] = q; draw(); }, function (q) { return fmt(q, 0); }); });
+    draw();
+  };
+
+  /* 5. Magnitude in space ------------------------------------------------- */
+  INIT.magnitude3d = function (el) {
+    var u = shell(el), S = Space(u.body, { s: 26, oy: 8, label: 'Magnitude of a vector in space by two right triangles' });
+    var v = [2, 3, 6];
+    function draw() {
+      S.clear(); S.axes(7, 0);
+      var q = [v[0], v[1], 0];
+      S.poly([[0, 0, 0], q, v], C.c, 0.15);
+      S.line([0, 0, 0], [v[0], 0, 0], '#cbd5e1', 1, '3 3'); S.line([v[0], 0, 0], q, '#cbd5e1', 1, '3 3'); S.line(q, v, C.z, 2, '5 3');
+      S.line([0, 0, 0], q, C.c, 2.4, '5 3');
+      S.arrow([0, 0, 0], v, C.a, 3); S.dot(v, C.a, 5.5);
+      var oq = Math.hypot(v[0], v[1]), r = nrm(v);
+      S.text(v, 'P', C.a, 10, -8, 'start'); S.text(q, 'Q', C.c, 10, 10, 'start');
+      u.out.innerHTML = 'r = ' + vs(v, 0) + '<br>Step 1 (floor triangle): OQ = √(x² + y²) = √(' + fmt(v[0] * v[0], 0) + ' + ' + fmt(v[1] * v[1], 0) + ') = ' + fmt(oq) + '<br>' +
+        'Step 2 (upright triangle): OP = √(OQ² + z²) = √(x² + y² + z²) = √' + fmt(dot(v, v), 0) + ' = <b>' + fmt(r) + '</b>' +
+        (r > 0 ? '<br>Unit vector r̂ = r / |r| = ' + tup(v.map(function (x) { return x / r; }), 3) : '');
+    }
+    S.rotControls(u, draw);
+    var K = bar(u);
+    ['x', 'y', 'z'].forEach(function (nm, i) { slider(K, nm, -6, 6, 1, v[i], function (q) { v[i] = q; draw(); }, function (q) { return fmt(q, 0); }); });
+    draw();
+  };
+
+  /* 6. Dot product and shadow --------------------------------------------- */
+  INIT.dotshadow = function (el) {
+    var u = shell(el), P = Plane(u.body, { x0: -2, x1: 8, y0: -2, y1: 8, w: 360, h: 360, label: 'Dot product, angle and projection of one vector on another' });
+    var A = { pos: [5, 1], col: C.a, name: 'tip of a' }, B = { pos: [2, 5], col: C.b, name: 'tip of b' };
+    function draw() {
+      P.clear(); var a = A.pos, b = B.pos, la = Math.hypot(a[0], a[1]), lb = Math.hypot(b[0], b[1]), d = a[0] * b[0] + a[1] * b[1];
+      if (la > 0) {
+        var k = d / (la * la), f = [k * a[0], k * a[1]];
+        P.line(-2 * a[0] / la, -2 * a[1] / la, 8 * a[0] / la, 8 * a[1] / la, C.soft, 1, '4 4');
+        P.line(b[0], b[1], f[0], f[1], C.c, 1.6, '4 3'); P.arrow(0, 0, f[0], f[1], C.r, 5);
+      }
+      P.arrow(0, 0, a[0], a[1], C.a, 2.8); P.arrow(0, 0, b[0], b[1], C.b, 2.8);
+      if (la > 0 && lb > 0) { var c = Math.max(-1, Math.min(1, d / (la * lb))); P.arc(0, 0, 0.9, Math.atan2(a[1], a[0]), Math.atan2(b[1], b[0]), C.ink); }
+      P.text(a[0], a[1], 'a', C.a, 12, 4); P.text(b[0], b[1], 'b', C.b, -4, -12);
+      var th = (la > 0 && lb > 0) ? Math.acos(Math.max(-1, Math.min(1, d / (la * lb)))) : 0;
+      var kind = d > 0 ? 'positive → acute angle' : d < 0 ? 'negative → obtuse angle' : 'zero → <b>perpendicular</b>';
+      u.out.innerHTML = 'a = ' + tup(a, 0) + ', b = ' + tup(b, 0) + '<br><b>a·b = a₁b₁ + a₂b₂ = ' + fmt(a[0] * b[0], 0) + ' + ' + fmt(a[1] * b[1], 0) + ' = ' + fmt(d, 0) + '</b> (' + kind + ')<br>' +
+        '|a| = ' + fmt(la) + ', |b| = ' + fmt(lb) + ', angle θ = ' + (la > 0 && lb > 0 ? deg(th) : 'undefined') + '; check |a||b|cosθ = ' + fmt(la * lb * Math.cos(th)) + '<br>' +
+        'Projection of b on a (green) = a·b / |a| = ' + (la > 0 ? fmt(d / la) : 'undefined');
+    }
+    A.onmove = B.onmove = draw; P.handle(A); P.handle(B); draw();
+  };
+
+  /* 7. Direction cosines ---------------------------------------------------- */
+  INIT.dircos = function (el) {
+    var u = shell(el), S = Space(u.body, { s: 26, oy: 8, label: 'Direction cosines of a vector' });
+    var v = [2, 3, 6];
+    function draw() {
+      S.clear(); S.axes(7, 0); S.box(v);
+      var r = nrm(v); S.arrow([0, 0, 0], v, C.a, 3); S.dot(v, C.a, 5.5); S.text(v, 'r', C.a, 10, -8, 'start');
+      if (r < 1e-9) { u.out.textContent = 'Choose a non-zero vector.'; return; }
+      var l = v[0] / r, m = v[1] / r, n = v[2] / r;
+      u.out.innerHTML = '|r| = √' + fmt(dot(v, v), 0) + ' = ' + fmt(r) + '<br>' +
+        '<b>l</b> = cosα = x/|r| = ' + fmt(l, 3) + ' (α = ' + deg(Math.acos(l)) + ') &nbsp; <b>m</b> = cosβ = ' + fmt(m, 3) + ' (β = ' + deg(Math.acos(m)) + ') &nbsp; <b>n</b> = cosγ = ' + fmt(n, 3) + ' (γ = ' + deg(Math.acos(n)) + ')<br>' +
+        'l² + m² + n² = ' + fmt(l * l + m * m + n * n, 3) + ' = 1 always. The direction cosines (l, m, n) are the components of the unit vector r̂.';
+    }
+    S.rotControls(u, draw);
+    var K = bar(u);
+    ['x', 'y', 'z'].forEach(function (nm, i) { slider(K, nm, -6, 6, 1, v[i], function (q) { v[i] = q; draw(); }, function (q) { return fmt(q, 0); }); });
+    draw();
+  };
+
+  /* 8. Work done ----------------------------------------------------------- */
+  INIT.work = function (el) {
+    var u = shell(el), P = Plane(u.body, { x0: 0, x1: 16, y0: -2, y1: 8, w: 480, h: 300, wide: true, nolabels: true, label: 'Work done by a force at an angle to the motion' });
+    var Fm = 30, th = 30, d = 10;
+    function draw() {
+      P.clear(); var t = th / DEG, f = Fm / 10, fx = f * Math.cos(t), fy = f * Math.sin(t), x0 = 1.5, sx = d * 0.9;
+      P.poly([[0, -2], [16, -2], [16, 0], [0, 0]], C.h, 0.12);
+      P.arrow(x0, -0.6, x0 + sx, -0.6, C.c, 2.8); P.text(x0 + sx / 2, -0.6, 'displacement ' + fmt(d, 0) + ' m', C.c, 0, 18, 'middle', 12);
+      P.poly([[x0 + sx - 1.4, 0], [x0 + sx + 0.6, 0], [x0 + sx + 0.6, 1.1], [x0 + sx - 1.4, 1.1]], C.a, 0.25, C.a);
+      var bx = x0 + sx - 0.4, by = 0.55;
+      P.arrow(bx, by, bx + fx, by + fy, C.b, 3.2); P.text(bx + fx / 2, by + fy / 2, 'F', C.b, -10, -8);
+      P.arrow(bx, by, bx + fx, by, C.r, 2.2, '4 3'); P.line(bx + fx, by, bx + fx, by + fy, C.h, 1.2, '3 3');
+      P.text(bx + fx / 2, by, 'F cosθ', C.r, 0, 16, 'middle', 11); P.arc(bx, by, 1.1, 0, t, C.ink);
+      var w = Fm * d * Math.cos(t);
+      u.out.innerHTML = 'F = ' + fmt(Fm, 0) + ' N, θ = ' + fmt(th, 0) + '°, distance = ' + fmt(d, 0) + ' m<br><b>W = F·S = |F||S|cosθ = ' + fmt(Fm, 0) + ' × ' + fmt(d, 0) + ' × ' + fmt(Math.cos(t), 3) + ' = ' + fmt(w) + ' J</b>' +
+        '<br>Only the horizontal part F cosθ = ' + fmt(Fm * Math.cos(t)) + ' N (green) does work; the upward part does none.';
+    }
+    var K = bar(u);
+    slider(K, 'force (N)', 5, 60, 5, Fm, function (v) { Fm = v; draw(); }, function (v) { return fmt(v, 0); });
+    slider(K, 'angle θ', 0, 90, 5, th, function (v) { th = v; draw(); }, function (v) { return fmt(v, 0) + '°'; });
+    slider(K, 'distance (m)', 1, 14, 1, d, function (v) { d = v; draw(); }, function (v) { return fmt(v, 0); });
+    draw();
+  };
+
+  /* 9. Right-hand rule ------------------------------------------------------- */
+  INIT.rhr = function (el) {
+    var u = shell(el), S = Space(u.body, { s: 30, oy: 20, label: 'Cross product and the right-hand rule' });
+    var th = 60, mb = 3, swap = false;
+    function draw() {
+      S.clear(); S.axes(5, 0);
+      var t = th / DEG, a = [2, 0, 0], b = [mb * Math.cos(t), mb * Math.sin(t), 0], ab = a[0] * b[1];
+      var first = swap ? b : a, second = swap ? a : b, res = swap ? -ab : ab;
+      S.poly([[0, 0, 0], a, add(a, b), b], C.c, 0.22, C.c);
+      S.arrow([0, 0, 0], a, C.a, 3); S.arrow([0, 0, 0], b, C.b, 3);
+      S.text(a, 'a', C.a, 10, 14); S.text(b, 'b', C.b, 10, -8);
+      if (Math.abs(res) > 0.02) { var tip = [0, 0, Math.max(-6, Math.min(6, res)) * 0.5]; S.arrow([0, 0, 0], tip, C.r, 3.6); S.text(tip, swap ? 'b×a' : 'a×b', C.r, 14, swap ? 14 : -6, 'start'); }
+      u.out.innerHTML = '|a| = 2, |b| = ' + fmt(mb, 0) + ', θ = ' + fmt(th, 0) + '°<br><b>|a×b| = |a||b|sinθ = ' + fmt(2 * mb * Math.sin(t)) + '</b> = area of the shaded parallelogram<br>' +
+        (swap ? 'b×a' : 'a×b') + ' points ' + (res > 0.001 ? '<b>up (+z)</b>' : res < -0.001 ? '<b>down (' + MN + 'z)</b>' : '<b>nowhere: the vectors are parallel, so the cross product is 0</b>') +
+        '. Right-hand rule: curl the fingers of your right hand from ' + (swap ? 'b to a' : 'a to b') + '; the thumb gives the direction.';
+    }
+    S.rotControls(u, draw);
+    var K = bar(u);
+    slider(K, 'angle θ', 0, 180, 5, th, function (v) { th = v; draw(); }, function (v) { return fmt(v, 0) + '°'; });
+    slider(K, '|b|', 1, 4, 1, mb, function (v) { mb = v; draw(); }, function (v) { return fmt(v, 0); });
+    var bsw = button(K, 'swap order (b×a)', function () { swap = !swap; bsw.classList.toggle('on', swap); draw(); });
+    draw();
+  };
+
+  /* 10. Cross product by determinant ----------------------------------------- */
+  INIT.crossdet = function (el) {
+    var u = shell(el), S = Space(u.body, { s: 24, oy: 8, label: 'Cross product of two chosen vectors' });
+    var PRE = [[[2, 1, -1], [1, -3, 7]], [[3, -6, 2], [2, -3, 4]], [[4, -2, 3], [1, 1, -3]], [[1, 0, -2], [3, 2, 0]], [[1, 2, 0], [2, 4, 0]]], cur = 0;
+    function draw() {
+      S.clear(); var a = PRE[cur][0], b = PRE[cur][1], c = cross(a, b), mx = Math.max(nrm(a), nrm(b), nrm(c)), sc = mx > 7 ? 7 / mx : 1;
+      S.s = 168 / Math.max(6, mx * sc); S.axes(Math.ceil(Math.max(6, mx * sc)), 0);
+      S.poly([[0, 0, 0], a, add(a, b), b], C.c, 0.22, C.c); S.arrow([0, 0, 0], a, C.a, 3); S.arrow([0, 0, 0], b, C.b, 3);
+      if (nrm(c) > 1e-9) { S.arrow([0, 0, 0], mul(sc, c), C.r, 3.6); S.text(mul(sc, c), 'a×b' + (sc < 1 ? ' (drawn smaller)' : ''), C.r, 8, -8, 'start', 12); }
+      S.text(a, 'a', C.a, 10, 12); S.text(b, 'b', C.b, 10, -8);
+      var A = a, B = b;
+      u.out.innerHTML = 'a = ' + vs(a, 0) + ', b = ' + vs(b, 0) + '<br>' +
+        '<b>a×b</b> = ' + IH + '(' + A[1] + '·' + B[2] + ' ' + MN + ' ' + A[2] + '·' + B[1] + ') ' + MN + ' ' + JH + '(' + A[0] + '·' + B[2] + ' ' + MN + ' ' + A[2] + '·' + B[0] + ') + ' + KH + '(' + A[0] + '·' + B[1] + ' ' + MN + ' ' + A[1] + '·' + B[0] + ') = <b>' + vs(c, 0) + '</b><br>' +
+        'Checks: (a×b)·a = ' + fmt(dot(c, a), 0) + ' and (a×b)·b = ' + fmt(dot(c, b), 0) + ' (both 0, so a×b is perpendicular to both)<br>' +
+        'Area of the parallelogram = |a×b| = ' + fmt(nrm(c)) + (nrm(c) < 1e-9 ? ' (zero: a and b are parallel)' : ' &nbsp; sinθ = ' + fmt(nrm(c) / (nrm(a) * nrm(b)), 3));
+    }
+    S.rotControls(u, draw);
+    var K = bar(u);
+    select(K, PRE.map(function (p, i) { return 'Example ' + (i + 1) + ': a = ' + tup(p[0], 0) + ', b = ' + tup(p[1], 0); }), function (i) { cur = i; draw(); });
+    draw();
+  };
+
+  /* 11. Area of a triangle ---------------------------------------------------- */
+  INIT.triarea = function (el) {
+    var u = shell(el), P = Plane(u.body, { x0: -6, x1: 6, y0: -6, y1: 6, label: 'Area of a triangle from the cross product' });
+    var A = { pos: [-3, -2], col: C.a, name: 'A' }, B = { pos: [4, -1], col: C.b, name: 'B' }, Cc = { pos: [1, 4], col: C.r, name: 'C' };
+    function draw() {
+      P.clear(); var a = A.pos, b = B.pos, c = Cc.pos, ab = [b[0] - a[0], b[1] - a[1]], ac = [c[0] - a[0], c[1] - a[1]], z = ab[0] * ac[1] - ab[1] * ac[0];
+      P.poly([a, b, [b[0] + ac[0], b[1] + ac[1]], c], C.c, 0.10); P.poly([a, b, c], C.r, 0.28, C.r);
+      P.arrow(a[0], a[1], b[0], b[1], C.a, 2.6); P.arrow(a[0], a[1], c[0], c[1], C.b, 2.6);
+      P.text(a[0], a[1], 'A', C.a, -10, 16); P.text(b[0], b[1], 'B', C.b, 10, 16); P.text(c[0], c[1], 'C', C.r, 8, -10);
+      u.out.innerHTML = 'AB = ' + tup(ab, 0) + ', AC = ' + tup(ac, 0) + '<br>AB × AC = (0, 0, ' + fmt(ab[0], 0) + '·' + fmt(ac[1], 0) + ' ' + MN + ' ' + fmt(ab[1], 0) + '·' + fmt(ac[0], 0) + ') = (0, 0, ' + fmt(z, 0) + ')<br>' +
+        '<b>Area of triangle ABC = ½|AB × AC| = ½·' + fmt(Math.abs(z), 0) + ' = ' + fmt(Math.abs(z) / 2) + '</b> &nbsp; (parallelogram = ' + fmt(Math.abs(z), 0) + ')' +
+        (z === 0 ? '<br>The three points lie on one line.' : (z > 0 ? '<br>A → B → C runs anticlockwise (cross product points up).' : '<br>A → B → C runs clockwise (cross product points down).'));
+    }
+    A.onmove = B.onmove = Cc.onmove = draw; P.handle(A); P.handle(B); P.handle(Cc); draw();
+  };
+
+  /* 12. Moment of a force ------------------------------------------------------ */
+  INIT.moment = function (el) {
+    var u = shell(el), P = Plane(u.body, { x0: -1, x1: 8, y0: -4, y1: 4, w: 432, h: 384, wide: true, nolabels: true, label: 'Moment of a force about a hinge' });
+    var r = 3, th = 90, Fm = 4;
+    function draw() {
+      P.clear(); var t = th / DEG, fx = Fm * 0.5 * Math.cos(t), fy = Fm * 0.5 * Math.sin(t);
+      P.poly([[0, -0.15], [6, -0.15], [6, 0.15], [0, 0.15]], C.c, 0.35, C.c); P.dot(0, 0, C.ink, 6); P.text(0, 0, 'hinge O', C.ink, 0, 22, 'middle', 12);
+      P.arrow(0, 0, r, 0, C.a, 2.6); P.text(r / 2, 0, 'r', C.a, 0, -12);
+      P.arrow(r, 0, r + fx, fy, C.b, 3.4); P.text(r + fx, fy, 'F', C.b, 12, -4);
+      P.line(r + fx, fy, r + fx, 0, C.h, 1.2, '3 3'); P.line(r, 0, r + fx, 0, C.h, 1.2, '3 3'); P.arc(r, 0, 0.9, 0, t, C.ink);
+      var Mz = r * Fm * Math.sin(t);
+      u.out.innerHTML = 'r = ' + fmt(r, 1) + ' m, F = ' + fmt(Fm, 0) + ' N, θ = ' + fmt(th, 0) + '°<br><b>M = r × F, |M| = r F sinθ = ' + fmt(r, 1) + ' × ' + fmt(Fm, 0) + ' × ' + fmt(Math.sin(t), 3) + ' = ' + fmt(Math.abs(Mz)) + ' N·m</b><br>' +
+        (Math.abs(Mz) < 0.01 ? 'The force pushes along the door, so there is no turning effect.' : (Mz > 0 ? 'Direction: +z (out of the page), the door turns anticlockwise.' : 'Direction: ' + MN + 'z (into the page), the door turns clockwise.')) + ' The turning effect is greatest at 90°.';
+    }
+    var K = bar(u);
+    slider(K, 'distance r (m)', 0.5, 6, 0.5, r, function (v) { r = v; draw(); }, function (v) { return fmt(v, 1); });
+    slider(K, 'angle θ', 0, 180, 5, th, function (v) { th = v; draw(); }, function (v) { return fmt(v, 0) + '°'; });
+    slider(K, 'force (N)', 1, 10, 1, Fm, function (v) { Fm = v; draw(); }, function (v) { return fmt(v, 0); });
+    draw();
+  };
+
+  /* 13. Triple product: parallelepiped ------------------------------------------- */
+  INIT.triple3d = function (el) {
+    var u = shell(el), S = Space(u.body, { s: 28, oy: 12, label: 'Parallelepiped and scalar triple product' });
+    var PRE = [[[3, 0, 0], [0, 3, 0]], [[2, 1, 0], [-1, 2, 0]], [[3, 0, 0], [1, 2, 0]]], cur = 0, c = [0, 0, 3];
+    function draw() {
+      S.clear(); var a = PRE[cur][0], b = PRE[cur][1], d = dot(a, cross(b, c)), vtx = {};
+      S.axes(5, 0);
+      var o = [0, 0, 0], ab = add(a, b), ac = add(a, c), bc = add(b, c), abc = add(ab, c);
+      var col = Math.abs(d) < 1e-9 ? C.b : C.a;
+      [[o, a, ab, b], [c, ac, abc, bc], [o, a, ac, c], [b, ab, abc, bc], [o, b, bc, c], [a, ab, abc, ac]].forEach(function (f) { S.poly(f, col, 0.10); });
+      [[o, a], [o, b], [o, c], [a, ab], [a, ac], [b, ab], [b, bc], [c, ac], [c, bc], [ab, abc], [ac, abc], [bc, abc]].forEach(function (e) { S.line(e[0], e[1], '#94a3b8', 1.2); });
+      S.arrow(o, a, C.a, 3); S.arrow(o, b, C.b, 3); S.arrow(o, c, C.r, 3);
+      S.text(a, 'a', C.a, 10, 12); S.text(b, 'b', C.b, 10, -6); S.text(c, 'c', C.r, 10, -6);
+      u.out.innerHTML = 'a = ' + tup(a, 0) + ', b = ' + tup(b, 0) + ', c = ' + tup(c, 1) + '<br>' +
+        '<b>[a b c] = a·(b×c) = ' + fmt(d) + '</b> (the 3×3 determinant)<br>' +
+        'Volume of the parallelepiped = |[a b c]| = <b>' + fmt(Math.abs(d)) + '</b> &nbsp; Volume of the tetrahedron = ⅙|[a b c]| = <b>' + fmt(Math.abs(d) / 6) + '</b><br>' +
+        (Math.abs(d) < 1e-9 ? '<b>The value is 0: the three vectors lie in one plane (coplanar) and the solid is flat.</b>' : 'The three vectors are not coplanar. ' + (d > 0 ? 'They form a right-handed set.' : 'They form a left-handed set (the sign is negative).'));
+    }
+    S.rotControls(u, draw);
+    var K = bar(u);
+    select(K, PRE.map(function (p, i) { return 'a = ' + tup(p[0], 0) + ', b = ' + tup(p[1], 0); }), function (i) { cur = i; draw(); });
+    var K2 = bar(u);
+    ['c₁', 'c₂', 'c₃'].forEach(function (nm, i) { slider(K2, nm, -3, 3, 0.5, c[i], function (q) { c[i] = q; draw(); }, function (q) { return fmt(q, 1); }); });
+    draw();
+  };
+
+  /* 14. Plane and wind --------------------------------------------------------------- */
+  INIT.windplane = function (el) {
+    var u = shell(el), P = Plane(u.body, { x0: -2, x1: 8, y0: -3, y1: 5, w: 400, h: 320, nolabels: true, label: 'Velocity of an airplane in a wind as a vector sum' });
+    var sp = 400, ha = 40, ws = 80, wa = 300;
+    function draw() {
+      P.clear(); var ta = ha / DEG, tw = wa / DEG, a = [sp / 100 * Math.cos(ta), sp / 100 * Math.sin(ta)], w = [ws / 100 * Math.cos(tw), ws / 100 * Math.sin(tw)], g = [a[0] + w[0], a[1] + w[1]];
+      P.arrow(0, 0, a[0], a[1], C.a, 3); P.arrow(a[0], a[1], g[0], g[1], C.c, 3); P.arrow(0, 0, g[0], g[1], C.r, 3.6);
+      P.text(a[0] / 2, a[1] / 2, 'air velocity', C.a, -8, -8, 'end', 11); P.text(a[0] + w[0] / 2, a[1] + w[1] / 2, 'wind', C.c, 12, -2, 'start', 11); P.text(g[0] / 2, g[1] / 2, 'ground', C.r, 22, 14, 'start', 11);
+      var gs = Math.hypot(g[0], g[1]) * 100, ang = Math.atan2(g[1], g[0]) * DEG; if (ang < 0) ang += 360;
+      u.out.innerHTML = 'Air velocity = ' + fmt(sp, 0) + ' km/h at ' + fmt(ha, 0) + '°, wind = ' + fmt(ws, 0) + ' km/h at ' + fmt(wa, 0) + '° (angles measured anticlockwise from the +x direction)<br>' +
+        'Ground velocity = air + wind = (' + fmt(a[0] * 100, 1) + ' + ' + fmt(w[0] * 100, 1) + ', ' + fmt(a[1] * 100, 1) + ' + ' + fmt(w[1] * 100, 1) + ') = ' + tup([g[0] * 100, g[1] * 100], 1) + '<br>' +
+        '<b>Ground speed = ' + fmt(gs, 1) + ' km/h at ' + fmt(ang, 1) + '°</b>';
+    }
+    var K = bar(u);
+    slider(K, 'air speed', 200, 500, 50, sp, function (v) { sp = v; draw(); }, function (v) { return fmt(v, 0); });
+    slider(K, 'heading', 0, 355, 5, ha, function (v) { ha = v; draw(); }, function (v) { return fmt(v, 0) + '°'; });
+    var K2 = bar(u);
+    slider(K2, 'wind speed', 0, 120, 10, ws, function (v) { ws = v; draw(); }, function (v) { return fmt(v, 0); });
+    slider(K2, 'wind direction', 0, 355, 5, wa, function (v) { wa = v; draw(); }, function (v) { return fmt(v, 0) + '°'; });
+    draw();
+  };
+
+  function boot() {
+    var els = document.querySelectorAll('[data-viz]');
+    Array.prototype.forEach.call(els, function (el) {
+      var k = el.getAttribute('data-viz');
+      if (INIT[k]) { try { INIT[k](el); } catch (e) { if (window.console) console.error('viz ' + k, e); } }
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
+})();
+
+</script>
+
+<script>
+(function () {
+  'use strict';
+
+  // >>> This chapter's game link (same as in content-registry.js).
+  var CHAPTER_GAME_URL =
+    'https://whacademypk.com/games/chapter.html?ch=11/math/vectors';
+
+  var params = new URLSearchParams(window.location.search);
+  var backTo = params.get('from');
+  if (!backTo) {
+    try { backTo = sessionStorage.getItem('wha:notesReturn'); } catch (e) { backTo = null; }
+  }
+
+  function isSafe(url) {
+    return /^https:\/\/whacademypk\.com\//.test(url || '');
+  }
+
+  var href, label;
+  if (backTo && isSafe(backTo)) {
+    href = backTo;
+    label = '\u2190  Back to Game';
+  } else {
+    href = CHAPTER_GAME_URL;
+    label = '\uD83C\uDFAE  Play Game';
+  }
+
+  function makeButton() {
+    if (document.getElementById('wha-game-button')) return;
+
+    var btn = document.createElement('a');
+    btn.id = 'wha-game-button';
+    btn.href = href;
+    btn.setAttribute('role', 'button');
+    btn.textContent = label;
+
+    btn.style.cssText = [
+      'position:fixed',
+      'left:50%',
+      'bottom:20px',
+      'transform:translateX(-50%)',
+      'z-index:99999',
+      'background:#4338ca',
+      'color:#ffffff',
+      'font:600 15px/1 system-ui,-apple-system,Segoe UI,Roboto,sans-serif',
+      'padding:14px 26px',
+      'border-radius:999px',
+      'text-decoration:none',
+      'box-shadow:0 6px 20px rgba(0,0,0,0.28)',
+      'display:inline-flex',
+      'align-items:center',
+      'gap:8px',
+      'transition:transform .15s ease, box-shadow .15s ease'
+    ].join(';');
+
+    btn.addEventListener('mouseenter', function () {
+      btn.style.transform = 'translateX(-50%) translateY(-2px)';
+      btn.style.boxShadow = '0 10px 28px rgba(0,0,0,0.34)';
+    });
+    btn.addEventListener('mouseleave', function () {
+      btn.style.transform = 'translateX(-50%)';
+      btn.style.boxShadow = '0 6px 20px rgba(0,0,0,0.28)';
+    });
+
+    document.body.appendChild(btn);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', makeButton);
+  } else {
+    makeButton();
+  }
+})();
+</script>
+
+<script>
+/* Minimal self-hosted KaTeX auto-render for \(...\) and \[...\] — CSP-safe (no CDN). */
+(function(){
+  function walk(node){
+    if(node.nodeType===3){
+      var t=node.nodeValue;
+      if(t.indexOf('\\(')<0 && t.indexOf('\\[')<0) return;
+      var re=/\\\((.+?)\\\)|\\\[(.+?)\\\]/g, m, last=0, frag=document.createDocumentFragment();
+      while((m=re.exec(t))){
+        if(m.index>last) frag.appendChild(document.createTextNode(t.slice(last,m.index)));
+        var span=document.createElement('span'), disp=(m[2]!==undefined);
+        try{ katex.render(disp?m[2]:m[1], span, {throwOnError:false, displayMode:disp}); }
+        catch(e){ span.textContent=m[0]; }
+        frag.appendChild(span); last=re.lastIndex;
+      }
+      if(last<t.length) frag.appendChild(document.createTextNode(t.slice(last)));
+      node.parentNode.replaceChild(frag,node);
+    } else if(node.nodeType===1 && !/^(script|style|textarea)$/i.test(node.tagName)
+              && !(node.className && String(node.className).indexOf('katex')>=0)){
+      for(var i=node.childNodes.length-1;i>=0;i--) walk(node.childNodes[i]);
+    }
+  }
+  function run(){ if(window.katex){ walk(document.getElementById('main-content')||document.body); } }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', run); else run();
+})();
+</script>
+</body>
+</html>
