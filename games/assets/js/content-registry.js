@@ -1339,9 +1339,9 @@ window.WHA_CONTENT = {
             "n": 4,
             "unit": 4,
             "title": "Sequences and Series",
-            "notes": null,
+            "notes": "https://whacademypk.com/notes/class-11/math/sequences-and-series.html",
             "quiz": null,
-            "game": null
+            "game": "https://whacademypk.com/games/chapter.html?ch=11/math/sequences_and_series"
           },
           {
             "n": 5,
