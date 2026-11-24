@@ -1,0 +1,181 @@
+{
+  "chapterId": "class11-math-division_of_polynomials",
+  "classLevel": 11,
+  "subject": "Mathematics",
+  "subjectKey": "math",
+  "title": "Division of Polynomials",
+  "chapterRef": "class11/subjects/math/division_of_polynomials",
+  "schemaVersion": "1.0.0",
+  "learningOutcomes": [
+    "Classify an algebraic expression as a polynomial, a rational expression or an irrational expression, and give the reason.",
+    "Define a polynomial, write its general form and identify terms, coefficients, degree and the zero polynomial.",
+    "Name a polynomial by its degree: constant, linear, quadratic, cubic or bi-quadratic.",
+    "Divide a polynomial of degree up to 4 by a linear polynomial using long division and read off the quotient and remainder.",
+    "Divide a polynomial of degree up to 4 by a quadratic polynomial, handle missing terms and verify the result.",
+    "State the division identity \\(\\text{dividend}=\\text{divisor}\\times\\text{quotient}+\\text{remainder}\\) and the degree rules.",
+    "State and prove the Remainder Theorem.",
+    "Apply the Remainder Theorem to find remainders and unknown constants, including divisors of the form \\(ax+b\\).",
+    "Define a zero of a polynomial, verify zeros, build a polynomial from given zeros and read zeros as the x-intercepts of a graph.",
+    "State and prove the Factor Theorem and separate it from the Remainder Theorem.",
+    "Apply the Factor Theorem to test factors, find unknown constants and find a missing factor.",
+    "Factorize a cubic polynomial completely: guess a root, test it, divide and factorize the quadratic.",
+    "Turn a real-world problem (box volume, area, height of a ball, tickets) into a polynomial equation and solve it with the theorems.",
+    "Connect divisor, factor, zero, root and remainder, and choose the right tool for a question."
+  ],
+  "theory": {
+    "sections": [
+      {
+        "heading": "Polynomial, Rational or Irrational?",
+        "body": "A polynomial is a sum of terms \\(a x^n\\) where every exponent \\(n\\) is a whole number \\((0,1,2,\\ldots)\\). Coefficients may be any real numbers, even irrational ones such as \\(\\sqrt2\\). The expression \\(x^{-3}\\) is not a polynomial (negative exponent) and \\(\\sqrt x\\) is not a polynomial (fractional exponent). A rational expression is a ratio \\(\\frac{P(x)}{Q(x)}\\) of two polynomials with \\(Q(x)\\neq 0\\). An irrational expression has a variable under a root or with a fractional exponent. The graph of a polynomial is one smooth unbroken curve; a rational expression can have a break (an asymptote) where its denominator is zero."
+      },
+      {
+        "heading": "Degree and Names of Polynomials",
+        "body": "The degree is the highest power of the variable. For several variables add the exponents inside each term and take the largest sum. Degree 0 is constant, 1 linear, 2 quadratic, 3 cubic and 4 bi-quadratic. The zero polynomial has no degree. Always arrange a polynomial in descending powers before you work with it."
+      },
+      {
+        "heading": "Long Division and the Division Identity",
+        "body": "To divide a polynomial, write both in descending powers (use a coefficient 0 for every missing power). Divide the leading term of the dividend by the leading term of the divisor, multiply the whole divisor by that quotient term, subtract, bring down the next term, and repeat until the remainder has smaller degree than the divisor. The result is the division identity \\(p(x)=d(x)\\,q(x)+r(x)\\) with \\(\\deg r<\\deg d\\) or \\(r=0\\). The quotient has degree \\(\\deg p-\\deg d\\). A zero remainder means the division is exact."
+      },
+      {
+        "heading": "The Remainder Theorem",
+        "body": "When \\(p(x)\\) is divided by \\(x-c\\), the remainder is \\(p(c)\\). Proof: \\(p(x)=(x-c)q(x)+r\\) with \\(r\\) a constant; put \\(x=c\\) to get \\(p(c)=r\\). For a divisor \\(ax+b\\) solve \\(ax+b=0\\), so the remainder is \\(p\\left(-\\frac{b}{a}\\right)\\). Three instant remainders: dividing by \\(x\\) gives \\(p(0)\\) (the constant term), by \\(x-1\\) gives \\(p(1)\\) (the sum of the coefficients), by \\(x+1\\) gives \\(p(-1)\\)."
+      },
+      {
+        "heading": "Unknown Constants",
+        "body": "If a polynomial contains an unknown such as \\(k\\) and its remainder on division by \\(x-c\\) is given, substitute \\(x=c\\), set the result equal to the remainder, and solve the equation for \\(k\\). If \\(x-c\\) is a factor, the remainder is 0, so the equation is \\(p(c)=0\\). With two unknowns use two conditions to get two equations."
+      },
+      {
+        "heading": "Zeros of a Polynomial",
+        "body": "A zero (root) of \\(p(x)\\) is a number \\(a\\) with \\(p(a)=0\\). On the graph of \\(y=p(x)\\) a real zero is an x-intercept, where the height is 0. A polynomial of degree \\(n\\) has at most \\(n\\) real zeros. A polynomial with given zeros \\(a_1,a_2,\\ldots\\) is \\(k(x-a_1)(x-a_2)\\cdots\\) and is not unique: any non-zero multiple \\(k\\) has the same zeros. The y-intercept of the graph is \\(p(0)\\)."
+      },
+      {
+        "heading": "The Factor Theorem",
+        "body": "\\(x-c\\) is a factor of \\(p(x)\\) if and only if \\(p(c)=0\\). It is the Remainder Theorem in the special case that the remainder is 0, and it works in both directions: a factor gives a zero, and a zero gives a factor. A zero at \\(x=-3\\) gives the factor \\(x+3\\): the sign flips."
+      },
+      {
+        "heading": "Factorizing a Cubic",
+        "body": "Step 1: list the candidates: the divisors of the constant term (with both signs); for a non-leading-1 cubic use the fractions \\(\\frac pq\\) with \\(p\\) dividing the constant term and \\(q\\) dividing the leading coefficient (Rational Root Theorem). Step 2: find \\(c\\) with \\(p(c)=0\\); then \\(x-c\\) is a factor. Step 3: divide to get a quadratic and factorize it. If its discriminant \\(b^2-4ac\\) is negative, or not a perfect square, stop: it does not factorize over the integers."
+      },
+      {
+        "heading": "Applications",
+        "body": "To solve a word problem call the unknown \\(x\\) (or \\(h\\)), express every side with it, write volume or area as a product, move everything to one side, find one positive root by trial with the Factor Theorem, divide, and reject negative or impossible roots. For a ball with \\(h(t)=-16t^2+80t+5\\) the graph is a downward parabola: the height at time \\(t\\) is \\(h(t)\\), also the remainder of \\(h\\) divided by \\(t-t_0\\), the highest point is at \\(t=2.5\\) s (105 ft) and it lands when \\(h(t)=0\\)."
+      }
+    ],
+    "definitions": [
+      {
+        "term": "Polynomial",
+        "definition": "A sum of terms \\(ax^n\\) with every exponent \\(n\\) a whole number; for example \\(3x^2-5x+7\\)."
+      },
+      {
+        "term": "Degree",
+        "definition": "The highest power of the variable in a polynomial."
+      },
+      {
+        "term": "Rational expression",
+        "definition": "A ratio \\(\\frac{P(x)}{Q(x)}\\) of two polynomials with \\(Q(x)\\neq 0\\)."
+      },
+      {
+        "term": "Irrational expression",
+        "definition": "An expression with a variable under a root, or with a fractional exponent."
+      },
+      {
+        "term": "Dividend, divisor",
+        "definition": "The polynomial being divided and the polynomial we divide by."
+      },
+      {
+        "term": "Quotient, remainder",
+        "definition": "The result of dividing, and the part left over, of degree less than the divisor."
+      },
+      {
+        "term": "Division identity",
+        "definition": "\\(p(x)=d(x)\\,q(x)+r(x)\\) with \\(\\deg r<\\deg d\\) or \\(r=0\\)."
+      },
+      {
+        "term": "Remainder Theorem",
+        "definition": "The remainder of \\(p(x)\\div(x-c)\\) is \\(p(c)\\); for \\(ax+b\\) it is \\(p(-b/a)\\)."
+      },
+      {
+        "term": "Zero (root)",
+        "definition": "A number \\(a\\) with \\(p(a)=0\\); on the graph, an x-intercept."
+      },
+      {
+        "term": "Factor Theorem",
+        "definition": "\\(x-c\\) is a factor of \\(p(x)\\) if and only if \\(p(c)=0\\)."
+      },
+      {
+        "term": "Rational Root Theorem",
+        "definition": "A rational zero \\(\\frac pq\\) of an integer-coefficient polynomial has \\(p\\) dividing the constant term and \\(q\\) dividing the leading coefficient."
+      },
+      {
+        "term": "Discriminant",
+        "definition": "\\(b^2-4ac\\) of a quadratic; if negative, the quadratic has no real zeros."
+      }
+    ],
+    "examTips": [
+      "For a divisor \\(x+3\\) evaluate \\(p(-3)\\), not \\(p(3)\\): the sign of \\(c\\) is opposite to the sign in the divisor.",
+      "Write every missing power with coefficient 0 (for example \\(x^3+5\\) is \\(x^3+0x^2+0x+5\\)) before long division.",
+      "Check a division by multiplying: \\(\\text{divisor}\\times\\text{quotient}+\\text{remainder}=\\text{dividend}\\).",
+      "\\(p(1)\\) is the sum of all the coefficients and \\(p(0)\\) is the constant term: two remainders with no work.",
+      "A zero at \\(x=a\\) gives the factor \\(x-a\\); a zero at \\(x=-2\\) gives \\(x+2\\).",
+      "In an unknown-constant question, substitute \\(x=c\\) first, then solve for \\(k\\), then check by substituting \\(k\\) back.",
+      "To factorize a cubic, try \\(\\pm1,\\pm2,\\pm3,\\ldots\\) (divisors of the constant term) until \\(p(c)=0\\).",
+      "In word problems reject negative roots: a length cannot be negative.",
+      "The graph of a polynomial never has a break; a vertical asymptote means the expression is rational, not a polynomial."
+    ]
+  },
+  "achievementHooks": [
+    "first-chapter-complete",
+    "ninety-percent-accuracy-subject"
+  ],
+  "notesUrl": "https://whacademypk.com/notes/class-11/math/division-of-polynomials.html",
+  "practiceBanks": [
+    {
+      "mechanicId": "mcq-arena",
+      "name": "Multiple Choice",
+      "description": "Pick the correct answer. A quick way to check what you know.",
+      "count": 300
+    },
+    {
+      "mechanicId": "speed-challenge",
+      "name": "Speed Quiz",
+      "description": "Answer before the timer runs out. Quick recall practice.",
+      "count": 300
+    },
+    {
+      "mechanicId": "rapid-fire",
+      "name": "Rapid Fire",
+      "description": "Even faster! Short timer, back-to-back questions.",
+      "count": 300
+    },
+    {
+      "mechanicId": "true-false-sprint",
+      "name": "True or False",
+      "description": "Read the statement and tap True or False.",
+      "count": 300
+    },
+    {
+      "mechanicId": "fill-in-the-blank",
+      "name": "Fill in the Blank",
+      "description": "Type the missing word or number to complete the sentence.",
+      "count": 300
+    },
+    {
+      "mechanicId": "matching-grid",
+      "name": "Match the Pairs",
+      "description": "Match each item to its correct partner.",
+      "count": 300
+    },
+    {
+      "mechanicId": "drag-drop-classification",
+      "name": "Sort into Groups",
+      "description": "Drag each item into the correct group.",
+      "count": 300
+    },
+    {
+      "mechanicId": "ordering-sequencing",
+      "name": "Put in Order",
+      "description": "Arrange the steps in the correct sequence.",
+      "count": 300
+    }
+  ]
+}
