@@ -1347,9 +1347,9 @@ window.WHA_CONTENT = {
             "n": 5,
             "unit": 5,
             "title": "Division of Polynomials",
-            "notes": null,
+            "notes": "https://whacademypk.com/notes/class-11/math/division-of-polynomials.html",
             "quiz": null,
-            "game": null
+            "game": "https://whacademypk.com/games/chapter.html?ch=11/math/division_of_polynomials"
           },
           {
             "n": 6,
