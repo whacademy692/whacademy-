@@ -1,0 +1,179 @@
+{
+ "id": "g11-math-c1-e12-q3i",
+ "title": "Exercise 1.2 · Q3(i)",
+ "summary": "Prove that z is real if and only if z=z̄.",
+ "alt": "Exercise 1.2 · Q3(i): Prove that z is real if and only if z=z̄.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -1,
+   5
+  ],
+  "y": [
+   -3,
+   3
+  ],
+  "ratio": 1.0,
+  "pad": 6
+ },
+ "roles": {
+  "z": {
+   "label": "The number z",
+   "color": "#2563eb",
+   "text": "The complex number you are given.",
+   "legend": true
+  },
+  "zb": {
+   "label": "Second number / conjugate",
+   "color": "#e11d48",
+   "text": "The conjugate, or the second number.",
+   "legend": true
+  },
+  "ghost": {
+   "label": "Reference",
+   "color": "#94a3b8",
+   "text": "A reference or earlier position.",
+   "legend": false
+  }
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 0.5,
+   "numbers": true,
+   "xLabel": "Re",
+   "yLabel": "Im",
+   "role": "ink"
+  },
+  {
+   "type": "point",
+   "id": "p1",
+   "at": [
+    3.0,
+    0.0
+   ],
+   "r": 6,
+   "role": "z",
+   "layer": "front",
+   "label": {
+    "text": "z = z̄",
+    "role": "z",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p2",
+   "at": [
+    2.0,
+    2.0
+   ],
+   "r": 6,
+   "role": "z",
+   "layer": "front",
+   "label": {
+    "text": "z",
+    "role": "z",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p3",
+   "at": [
+    2.0,
+    -2.0
+   ],
+   "r": 6,
+   "role": "zb",
+   "layer": "front",
+   "label": {
+    "text": "z̄",
+    "role": "zb",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "segment",
+   "id": "g4",
+   "from": [
+    2.0,
+    2.0
+   ],
+   "to": [
+    2.0,
+    -2.0
+   ],
+   "role": "ghost",
+   "strokeWidth": 2.4,
+   "effect": "draw",
+   "dash": true,
+   "appear": "s2",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Let z = x + iy",
+   "text": "\\[\\begin{aligned}&z=x+iy,\\qquad \\bar z=x-iy\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "If z is real",
+   "text": "\\[\\begin{aligned}&\\text{Then $y=0$, so}\\\\[5pt]&\\bar z=x-i(0)=x=z\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "p1"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "If z = z̄",
+   "text": "\\[\\begin{aligned}&x+iy=x-iy\\ \\Rightarrow\\ 2iy=0\\ \\Rightarrow\\ y=0\\\\[5pt]&\\text{so $z=x$ is real.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "p2",
+      "p3"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Conclusion",
+   "text": "\\[\\begin{aligned}&\\text{Both directions hold, so $z$ is real if}\\\\[5pt]&\\text{and only if $z=\\bar z$. On the plane}\\\\[5pt]&\\text{only points on the real axis are their}\\\\[5pt]&\\text{own mirror image.}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

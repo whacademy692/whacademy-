@@ -1,0 +1,175 @@
+{
+ "id": "g11-math-c1-e11-q7iii",
+ "title": "Exercise 1.1 · Q7(iii)",
+ "summary": "Find |(2−i)(6+3i)|.",
+ "alt": "Exercise 1.1 · Q7(iii): Find |(2−i)(6+3i)|.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -3.3,
+   18.3
+  ],
+  "y": [
+   -6.696,
+   6.696
+  ],
+  "ratio": 0.62,
+  "pad": 6
+ },
+ "roles": {
+  "z": {
+   "label": "The number z",
+   "color": "#2563eb",
+   "text": "The complex number you are given.",
+   "legend": true
+  },
+  "aux": {
+   "label": "Helper lines",
+   "color": "#d97706",
+   "text": "Modulus, angle and construction lines.",
+   "legend": true
+  }
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 2,
+   "numbers": true,
+   "xLabel": "Re",
+   "yLabel": "Im",
+   "role": "ink"
+  },
+  {
+   "type": "vector",
+   "id": "v1",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    15.0,
+    0.0
+   ],
+   "role": "z",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p2",
+   "at": [
+    15.0,
+    0.0
+   ],
+   "r": 6,
+   "role": "z",
+   "layer": "front",
+   "label": {
+    "text": "z",
+    "role": "z",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "segment",
+   "id": "g3",
+   "from": [
+    0.0,
+    0.0
+   ],
+   "to": [
+    15.0,
+    0.0
+   ],
+   "role": "aux",
+   "strokeWidth": 2.4,
+   "effect": "draw",
+   "dash": true,
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "segment",
+   "id": "g4",
+   "from": [
+    15.0,
+    0.0
+   ],
+   "to": [
+    15.0,
+    0.0
+   ],
+   "role": "aux",
+   "strokeWidth": 2.4,
+   "effect": "draw",
+   "dash": true,
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "t5",
+   "at": [
+    7.5,
+    0.0
+   ],
+   "text": "|z| = 15",
+   "role": "aux",
+   "size": "m",
+   "dx": 34,
+   "dy": -6,
+   "keep": true,
+   "appear": "s3",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Reduce to x+iy",
+   "text": "\\[\\begin{aligned}&(2-i)(6+3i)=12+6i-6i-3i^{2}=15\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Read x and y",
+   "text": "\\[\\begin{aligned}&x=15,\\qquad y=0\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "v1",
+      "p2"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Pythagoras",
+   "text": "\\[\\begin{aligned}&\\text{$|z|$ is the length of the arrow from $0$}\\\\[5pt]&\\text{to $z$.}\\\\[5pt]&|z|=\\sqrt{x^{2}+y^{2}}=\\sqrt{225}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Answer",
+   "text": "\\[\\begin{aligned}&|z|=\\textcolor{#047857}{\\mathbf{15}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

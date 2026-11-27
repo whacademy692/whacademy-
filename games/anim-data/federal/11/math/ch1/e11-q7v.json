@@ -1,0 +1,175 @@
+{
+ "id": "g11-math-c1-e11-q7v",
+ "title": "Exercise 1.1 · Q7(v)",
+ "summary": "Find |(√3−√(−8))(√3+√(−8))|.",
+ "alt": "Exercise 1.1 · Q7(v): Find |(√3−√(−8))(√3+√(−8))|.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -2.42,
+   13.42
+  ],
+  "y": [
+   -4.9104,
+   4.9104
+  ],
+  "ratio": 0.62,
+  "pad": 6
+ },
+ "roles": {
+  "z": {
+   "label": "The number z",
+   "color": "#2563eb",
+   "text": "The complex number you are given.",
+   "legend": true
+  },
+  "aux": {
+   "label": "Helper lines",
+   "color": "#d97706",
+   "text": "Modulus, angle and construction lines.",
+   "legend": true
+  }
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 2,
+   "numbers": true,
+   "xLabel": "Re",
+   "yLabel": "Im",
+   "role": "ink"
+  },
+  {
+   "type": "vector",
+   "id": "v1",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    11.0,
+    0.0
+   ],
+   "role": "z",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p2",
+   "at": [
+    11.0,
+    0.0
+   ],
+   "r": 6,
+   "role": "z",
+   "layer": "front",
+   "label": {
+    "text": "z",
+    "role": "z",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "segment",
+   "id": "g3",
+   "from": [
+    0.0,
+    0.0
+   ],
+   "to": [
+    11.0,
+    0.0
+   ],
+   "role": "aux",
+   "strokeWidth": 2.4,
+   "effect": "draw",
+   "dash": true,
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "segment",
+   "id": "g4",
+   "from": [
+    11.0,
+    0.0
+   ],
+   "to": [
+    11.0,
+    0.0
+   ],
+   "role": "aux",
+   "strokeWidth": 2.4,
+   "effect": "draw",
+   "dash": true,
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "t5",
+   "at": [
+    5.5,
+    0.0
+   ],
+   "text": "|z| = 11",
+   "role": "aux",
+   "size": "m",
+   "dx": 34,
+   "dy": -6,
+   "keep": true,
+   "appear": "s3",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Reduce to x+iy",
+   "text": "\\[\\begin{aligned}&\\sqrt{-8}=2\\sqrt2\\,i\\\\[5pt]&(\\sqrt3-2\\sqrt2 i)(\\sqrt3+2\\sqrt2 i)=3-8i^{2}=11\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Read x and y",
+   "text": "\\[\\begin{aligned}&x=11,\\qquad y=0\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "v1",
+      "p2"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Pythagoras",
+   "text": "\\[\\begin{aligned}&\\text{$|z|$ is the length of the arrow from $0$}\\\\[5pt]&\\text{to $z$.}\\\\[5pt]&|z|=\\sqrt{x^{2}+y^{2}}=\\sqrt{121}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Answer",
+   "text": "\\[\\begin{aligned}&|z|=\\textcolor{#047857}{\\mathbf{11}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

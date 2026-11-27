@@ -1,0 +1,156 @@
+{
+ "id": "g11-math-c1-e12-q8ii",
+ "title": "Exercise 1.2 · Q8(ii)",
+ "summary": "Write |z−1|=|z̄+i| in terms of x and y.",
+ "alt": "Exercise 1.2 · Q8(ii): Write |z−1|=|z̄+i| in terms of x and y.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -3,
+   3
+  ],
+  "y": [
+   -3,
+   3
+  ],
+  "ratio": 1.0,
+  "pad": 6
+ },
+ "roles": {
+  "z": {
+   "label": "The number z",
+   "color": "#2563eb",
+   "text": "The complex number you are given.",
+   "legend": true
+  },
+  "zb": {
+   "label": "Second number / conjugate",
+   "color": "#e11d48",
+   "text": "The conjugate, or the second number.",
+   "legend": true
+  },
+  "aux": {
+   "label": "Helper lines",
+   "color": "#d97706",
+   "text": "Modulus, angle and construction lines.",
+   "legend": true
+  }
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 0.5,
+   "numbers": true,
+   "xLabel": "Re",
+   "yLabel": "Im",
+   "role": "ink"
+  },
+  {
+   "type": "segment",
+   "id": "l1",
+   "from": [
+    -3,
+    -3.0
+   ],
+   "to": [
+    3,
+    3.0
+   ],
+   "role": "aux",
+   "strokeWidth": 4,
+   "effect": "draw",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p2",
+   "at": [
+    1.0,
+    0.0
+   ],
+   "r": 6,
+   "role": "z",
+   "layer": "front",
+   "label": {
+    "text": "1",
+    "role": "z",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p3",
+   "at": [
+    0.0,
+    -1.0
+   ],
+   "r": 6,
+   "role": "zb",
+   "layer": "front",
+   "label": {
+    "text": "−i",
+    "role": "zb",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s3",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Let z = x + iy",
+   "text": "\\[\\begin{aligned}&z=x+iy,\\qquad \\bar z=x-iy\\\\[5pt]&z-1=(x-1)+iy,\\qquad \\bar z+i=x+(1-y)i\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Use modulus",
+   "text": "\\[\\begin{aligned}&(x-1)^{2}+y^{2}=x^{2}+(1-y)^{2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Expand",
+   "text": "\\[\\begin{aligned}&x^{2}-2x+1+y^{2}=x^{2}+1-2y+y^{2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Cancel",
+   "text": "\\[\\begin{aligned}&-2x=-2y\\ \\Rightarrow\\ y=x\\\\[5pt]&\\text{The points are equally far from $1$ and}\\\\[5pt]&\\text{$-i$ (perpendicular bisector).}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "p2",
+      "p3"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Equation",
+   "text": "\\[\\begin{aligned}&\\text{Answer:}\\quad \\textcolor{#047857}{\\mathbf{x-y=0}}\\\\[5pt]&\\text{The picture shows every point $z$ that}\\\\[5pt]&\\text{satisfies it.}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

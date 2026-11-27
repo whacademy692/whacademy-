@@ -1,0 +1,187 @@
+{
+ "id": "g11-math-c1-e11-q6i",
+ "title": "Exercise 1.1 · Q6(i)",
+ "summary": "Find the conjugate of 4−3i.",
+ "alt": "Exercise 1.1 · Q6(i): Find the conjugate of 4−3i.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -0.88,
+   4.88
+  ],
+  "y": [
+   -4.32,
+   4.32
+  ],
+  "ratio": 1.1,
+  "pad": 6
+ },
+ "roles": {
+  "z": {
+   "label": "The number z",
+   "color": "#2563eb",
+   "text": "The complex number you are given.",
+   "legend": true
+  },
+  "zb": {
+   "label": "Second number / conjugate",
+   "color": "#e11d48",
+   "text": "The conjugate, or the second number.",
+   "legend": true
+  },
+  "ghost": {
+   "label": "Reference",
+   "color": "#94a3b8",
+   "text": "A reference or earlier position.",
+   "legend": false
+  }
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 1.0,
+   "numbers": true,
+   "xLabel": "Re",
+   "yLabel": "Im",
+   "role": "ink"
+  },
+  {
+   "type": "vector",
+   "id": "v1",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    4.0,
+    -3.0
+   ],
+   "role": "z",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p2",
+   "at": [
+    4.0,
+    -3.0
+   ],
+   "r": 6,
+   "role": "z",
+   "layer": "front",
+   "label": {
+    "text": "z",
+    "role": "z",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "vector",
+   "id": "v3",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    4.0,
+    3.0
+   ],
+   "role": "zb",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p4",
+   "at": [
+    4.0,
+    3.0
+   ],
+   "r": 6,
+   "role": "zb",
+   "layer": "front",
+   "label": {
+    "text": "z̄",
+    "role": "zb",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "segment",
+   "id": "g5",
+   "from": [
+    4.0,
+    -3.0
+   ],
+   "to": [
+    4.0,
+    3.0
+   ],
+   "role": "ghost",
+   "strokeWidth": 2.4,
+   "effect": "draw",
+   "dash": true,
+   "appear": "s2",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Write in x+iy form",
+   "text": "\\[\\begin{aligned}&z = 4 - 3i\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Plot z",
+   "text": "\\[\\begin{aligned}&\\text{Real part $x=4$, imaginary part $y=-3$.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "v1",
+      "p2"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Flip the imaginary sign",
+   "text": "\\[\\begin{aligned}&\\text{The conjugate mirrors $z$ in the real}\\\\[5pt]&\\text{axis.}\\\\[5pt]&\\bar z = \\textcolor{#047857}{\\mathbf{4 + 3i}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "v3",
+      "p4"
+     ],
+     "at": 350
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

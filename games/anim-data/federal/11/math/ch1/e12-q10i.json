@@ -1,0 +1,296 @@
+{
+ "id": "g11-math-c1-e12-q10i",
+ "title": "Exercise 1.2 · Q10(i)",
+ "summary": "For z₁=−3+2i, z₂=1−3i verify |z₁|=|−z₁|=|z̄₁|=|−z̄₁|.",
+ "alt": "Exercise 1.2 · Q10(i): For z₁=−3+2i, z₂=1−3i verify |z₁|=|−z₁|=|z̄₁|=|−z̄₁|.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -5.192,
+   5.192
+  ],
+  "y": [
+   -5.192,
+   5.192
+  ],
+  "ratio": 1.0,
+  "pad": 6
+ },
+ "roles": {
+  "z": {
+   "label": "The number z",
+   "color": "#2563eb",
+   "text": "The complex number you are given.",
+   "legend": true
+  },
+  "zb": {
+   "label": "Second number / conjugate",
+   "color": "#e11d48",
+   "text": "The conjugate, or the second number.",
+   "legend": true
+  },
+  "res": {
+   "label": "Answer",
+   "color": "#059669",
+   "text": "The result of the working.",
+   "legend": true
+  },
+  "vio": {
+   "label": "Third quantity",
+   "color": "#7c3aed",
+   "text": "A third quantity (a sum, a product or a locus).",
+   "legend": true
+  },
+  "ghost": {
+   "label": "Reference",
+   "color": "#94a3b8",
+   "text": "A reference or earlier position.",
+   "legend": false
+  }
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 1,
+   "numbers": true,
+   "xLabel": "Re",
+   "yLabel": "Im",
+   "role": "ink"
+  },
+  {
+   "type": "vector",
+   "id": "v1",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    -3.0,
+    2.0
+   ],
+   "role": "z",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p2",
+   "at": [
+    -3.0,
+    2.0
+   ],
+   "r": 6,
+   "role": "z",
+   "layer": "front",
+   "label": {
+    "text": "z₁",
+    "role": "z",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "vector",
+   "id": "v3",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    3.0,
+    -2.0
+   ],
+   "role": "zb",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p4",
+   "at": [
+    3.0,
+    -2.0
+   ],
+   "r": 6,
+   "role": "zb",
+   "layer": "front",
+   "label": {
+    "text": "−z₁",
+    "role": "zb",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "vector",
+   "id": "v5",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    -3.0,
+    -2.0
+   ],
+   "role": "vio",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p6",
+   "at": [
+    -3.0,
+    -2.0
+   ],
+   "r": 6,
+   "role": "vio",
+   "layer": "front",
+   "label": {
+    "text": "z̄₁",
+    "role": "vio",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "vector",
+   "id": "v7",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    3.0,
+    2.0
+   ],
+   "role": "res",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p8",
+   "at": [
+    3.0,
+    2.0
+   ],
+   "r": 6,
+   "role": "res",
+   "layer": "front",
+   "label": {
+    "text": "−z̄₁",
+    "role": "res",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "circle",
+   "id": "c9",
+   "c": [
+    0.0,
+    0.0
+   ],
+   "r": 3.605551275463989,
+   "role": "ghost",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "fill": false,
+   "dash": true,
+   "appear": "s3",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Find |z₁|",
+   "text": "\\[\\begin{aligned}&|z_1|=\\sqrt{(-3)^{2}+2^{2}}=\\sqrt{13}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "v1",
+      "p2"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Find |−z₁|",
+   "text": "\\[\\begin{aligned}&-z_1=3-2i\\ \\Rightarrow\\ |-z_1|=\\sqrt{9+4}=\\sqrt{13}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "v3",
+      "p4"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Find |z̄₁|",
+   "text": "\\[\\begin{aligned}&\\bar z_1=-3-2i\\ \\Rightarrow\\ |\\bar z_1|=\\sqrt{9+4}=\\sqrt{13}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "v5",
+      "p6"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Find |−z̄₁|",
+   "text": "\\[\\begin{aligned}&-\\bar z_1=3+2i\\ \\Rightarrow\\ |-\\bar z_1|=\\sqrt{9+4}=\\sqrt{13}\\\\[5pt]&\\text{All four points lie on one circle}\\\\[5pt]&\\text{about $0$, so all four moduli are}\\\\[5pt]&\\text{$\\sqrt{13}$.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "v7",
+      "p8",
+      "c9"
+     ],
+     "at": 350
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

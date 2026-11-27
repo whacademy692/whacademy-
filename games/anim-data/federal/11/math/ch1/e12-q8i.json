@@ -1,0 +1,128 @@
+{
+ "id": "g11-math-c1-e12-q8i",
+ "title": "Exercise 1.2 · Q8(i)",
+ "summary": "Write |2z−i|=4 in terms of x and y.",
+ "alt": "Exercise 1.2 · Q8(i): Write |2z−i|=4 in terms of x and y.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -4,
+   4
+  ],
+  "y": [
+   -3,
+   3.2
+  ],
+  "ratio": 0.775,
+  "pad": 6
+ },
+ "roles": {
+  "z": {
+   "label": "The number z",
+   "color": "#2563eb",
+   "text": "The complex number you are given.",
+   "legend": true
+  },
+  "aux": {
+   "label": "Helper lines",
+   "color": "#d97706",
+   "text": "Modulus, angle and construction lines.",
+   "legend": true
+  }
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 1.0,
+   "numbers": true,
+   "xLabel": "Re",
+   "yLabel": "Im",
+   "role": "ink"
+  },
+  {
+   "type": "circle",
+   "id": "c1",
+   "c": [
+    0.0,
+    0.5
+   ],
+   "r": 2.0,
+   "role": "aux",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "fill": "aux",
+   "fillOpacity": 0.08,
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p2",
+   "at": [
+    0.0,
+    0.5
+   ],
+   "r": 5,
+   "role": "z",
+   "layer": "front",
+   "label": {
+    "text": "centre (0, ½)",
+    "role": "z",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": 16
+   },
+   "appear": "s3",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Let z = x + iy",
+   "text": "\\[\\begin{aligned}&z=x+iy,\\qquad \\bar z=x-iy\\\\[5pt]&2z-i=2x+(2y-1)i\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Use modulus",
+   "text": "\\[\\begin{aligned}&|2z-i|=\\sqrt{(2x)^{2}+(2y-1)^{2}}=4\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Square both sides",
+   "text": "\\[\\begin{aligned}&4x^{2}+4y^{2}-4y+1=16\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Tidy",
+   "text": "\\[\\begin{aligned}&4x^{2}+4y^{2}-4y-15=0\\\\[5pt]&\\text{Dividing by 4 gives the circle}\\\\[5pt]&\\text{$x^{2}+\\left(y-\\tfrac12\\right)^{2}=4$.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "c1",
+      "p2"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Equation",
+   "text": "\\[\\begin{aligned}&\\text{Answer:}\\quad \\textcolor{#047857}{\\mathbf{4x^{2}+4y^{2}-4y-15=0}}\\\\[5pt]&\\text{The picture shows every point $z$ that}\\\\[5pt]&\\text{satisfies it.}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

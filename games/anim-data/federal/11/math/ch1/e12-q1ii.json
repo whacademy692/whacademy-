@@ -1,0 +1,202 @@
+{
+ "id": "g11-math-c1-e12-q1ii",
+ "title": "Exercise 1.2 · Q1(ii)",
+ "summary": "Show that Im(iz)=Re(z) for any complex number z.",
+ "alt": "Exercise 1.2 · Q1(ii): Show that Im(iz)=Re(z) for any complex number z.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -3.1,
+   4.1
+  ],
+  "y": [
+   -2.124,
+   3.924
+  ],
+  "ratio": 0.84,
+  "pad": 6
+ },
+ "roles": {
+  "z": {
+   "label": "The number z",
+   "color": "#2563eb",
+   "text": "The complex number you are given.",
+   "legend": true
+  },
+  "res": {
+   "label": "Answer",
+   "color": "#059669",
+   "text": "The result of the working.",
+   "legend": true
+  },
+  "aux": {
+   "label": "Helper lines",
+   "color": "#d97706",
+   "text": "Modulus, angle and construction lines.",
+   "legend": true
+  }
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 1.0,
+   "numbers": true,
+   "xLabel": "Re",
+   "yLabel": "Im",
+   "role": "ink"
+  },
+  {
+   "type": "vector",
+   "id": "v1",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    3.0,
+    2.0
+   ],
+   "role": "z",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p2",
+   "at": [
+    3.0,
+    2.0
+   ],
+   "r": 6,
+   "role": "z",
+   "layer": "front",
+   "label": {
+    "text": "z",
+    "role": "z",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "vector",
+   "id": "v3",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    -2.0,
+    3.0
+   ],
+   "role": "res",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p4",
+   "at": [
+    -2.0,
+    3.0
+   ],
+   "r": 6,
+   "role": "res",
+   "layer": "front",
+   "label": {
+    "text": "iz",
+    "role": "res",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "arc",
+   "id": "a5",
+   "c": [
+    0.0,
+    0.0
+   ],
+   "r": 1.2,
+   "from": 33.69,
+   "to": 123.69,
+   "role": "aux",
+   "strokeWidth": 2.6,
+   "effect": "draw",
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "text",
+   "id": "t6",
+   "at": [
+    0.42541874399117674,
+    1.351456674652478
+   ],
+   "text": "90°",
+   "role": "aux",
+   "size": "s",
+   "dx": 0,
+   "dy": 0,
+   "keep": true,
+   "appear": "s1",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Let z = x + iy",
+   "text": "\\[\\begin{aligned}&z=x+iy,\\qquad \\operatorname{Re}(z)=x,\\ \\operatorname{Im}(z)=y\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "v1",
+      "p2"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Multiply by i",
+   "text": "\\[\\begin{aligned}&iz=i(x+iy)=-y+ix\\\\[5pt]&\\text{The imaginary part of $iz$ is $x$.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "v3",
+      "p4",
+      "a5"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Compare",
+   "text": "\\[\\begin{aligned}&\\operatorname{Im}(iz)=x=\\textcolor{#047857}{\\mathbf{\\operatorname{Re}(z)}}\\\\[5pt]&\\text{Multiplying by $i$ turns the arrow by}\\\\[5pt]&\\text{$90^\\circ$, so $x$ and $y$ swap roles}\\\\[5pt]&\\text{(picture shows $z=3+2i$).}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}
