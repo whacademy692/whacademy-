@@ -1,0 +1,227 @@
+{
+ "id": "g11-math-c1-e14-q7i",
+ "title": "Exercise 1.4 · Q7(i)",
+ "summary": "A particle is at x=2+3i with x_max=1+2√3i. (i) Find the angle at t=0 and the position of the particle.",
+ "alt": "Exercise 1.4 · Q7(i): A particle is at x=2+3i with x_max=1+2√3i. (i) Find the angle at t=0 and the position of the particle.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -5.192,
+   5.192
+  ],
+  "y": [
+   -5.192,
+   5.192
+  ],
+  "ratio": 1.0,
+  "pad": 6
+ },
+ "roles": {
+  "z": {
+   "label": "The number z",
+   "color": "#2563eb",
+   "text": "The complex number you are given.",
+   "legend": true
+  },
+  "zb": {
+   "label": "Second number / conjugate",
+   "color": "#e11d48",
+   "text": "The conjugate, or the second number.",
+   "legend": true
+  },
+  "aux": {
+   "label": "Helper lines",
+   "color": "#d97706",
+   "text": "Modulus, angle and construction lines.",
+   "legend": true
+  },
+  "ghost": {
+   "label": "Reference",
+   "color": "#94a3b8",
+   "text": "A reference or earlier position.",
+   "legend": false
+  }
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 1,
+   "numbers": true,
+   "xLabel": "Re",
+   "yLabel": "Im",
+   "role": "ink"
+  },
+  {
+   "type": "vector",
+   "id": "v1",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    1.0,
+    3.4641016151377544
+   ],
+   "role": "zb",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p2",
+   "at": [
+    1.0,
+    3.4641016151377544
+   ],
+   "r": 6,
+   "role": "zb",
+   "layer": "front",
+   "label": {
+    "text": "x_max",
+    "role": "zb",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "circle",
+   "id": "c3",
+   "c": [
+    0.0,
+    0.0
+   ],
+   "r": 3.605551275463989,
+   "role": "ghost",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "fill": false,
+   "dash": true,
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "vector",
+   "id": "v4",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    2.0,
+    3.0
+   ],
+   "role": "z",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p5",
+   "at": [
+    2.0,
+    3.0
+   ],
+   "r": 6,
+   "role": "z",
+   "layer": "front",
+   "label": {
+    "text": "x",
+    "role": "z",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "arc",
+   "id": "a6",
+   "c": [
+    0.0,
+    0.0
+   ],
+   "r": 1.6,
+   "from": 56.309932474020215,
+   "to": 73.89788624801399,
+   "role": "aux",
+   "strokeWidth": 2.6,
+   "effect": "draw",
+   "appear": "s3",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Use x=x_maxe^iθ",
+   "text": "\\[\\begin{aligned}&\\text{The book writes the position as}\\\\[5pt]&\\text{$x=x_{\\max}e^{i\\theta}$. Here $x_{\\max}$}\\\\[5pt]&\\text{is the position of maximum distance}\\\\[5pt]&\\text{and $x=2+3i$ is where the particle is.}\\\\[5pt]&e^{i\\theta}=\\dfrac{x}{x_{\\max}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "v1",
+      "p2",
+      "c3"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Same distance from the mean",
+   "text": "\\[\\begin{aligned}&|x|=\\sqrt{4+9}=\\sqrt{13},\\qquad |x_{\\max}|=\\sqrt{1+12}=\\sqrt{13}\\\\[5pt]&\\text{Equal moduli, so $x/x_{\\max}$ has}\\\\[5pt]&\\text{modulus 1 and really is a pure turn}\\\\[5pt]&\\text{$e^{i\\theta}$.}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Divide",
+   "text": "\\[\\begin{aligned}&\\dfrac{2+3i}{1+2\\sqrt3\\,i}\\cdot\\dfrac{1-2\\sqrt3\\,i}{1-2\\sqrt3\\,i}=\\dfrac{\\left(2+6\\sqrt3\\right)+\\left(3-4\\sqrt3\\right)i}{13}\\\\[5pt]&\\cos\\theta=\\dfrac{2+6\\sqrt3}{13}\\approx0.953,\\qquad \\sin\\theta=\\dfrac{3-4\\sqrt3}{13}\\approx-0.295\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "v4",
+      "p5"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "The angle",
+   "text": "\\[\\begin{aligned}&\\arg x=\\tan^{-1}\\dfrac32\\approx 56.3^\\circ,\\quad \\arg x_{\\max}=\\tan^{-1}\\left(2\\sqrt3\\right)\\approx 73.9^\\circ\\\\[5pt]&\\theta=\\arg x-\\arg x_{\\max}\\approx\\textcolor{#047857}{\\mathbf{-17.6^\\circ}}\\ (-0.307\\ \\text{rad})\\\\[5pt]&\\text{The negative sign means $x$ is}\\\\[5pt]&\\text{$17.6^\\circ$ clockwise from $x_{\\max}$.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "a6"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Position of the particle",
+   "text": "\\[\\begin{aligned}&x=x_{\\max}e^{i\\theta}=2+3i\\\\[5pt]&\\text{The particle is at $2+3i$, which is}\\\\[5pt]&\\text{$\\sqrt{13}\\approx3.61$ from its mean}\\\\[5pt]&\\text{position, at $56.3^\\circ$ from the real}\\\\[5pt]&\\text{axis. The question gives no other}\\\\[5pt]&\\text{starting rule, so we take this as its}\\\\[5pt]&\\text{position at $t=0$.}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}
