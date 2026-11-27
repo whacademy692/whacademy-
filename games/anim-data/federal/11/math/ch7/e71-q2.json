@@ -1,0 +1,423 @@
+{
+ "id": "g11-math-c7-e71-q2",
+ "title": "Exercise 7.1 · Q2",
+ "summary": "Prove: 1² + 2² + 3² + … + n² = n(n+1)(2n+1)/6",
+ "alt": "Exercise 7.1 · Q2: Prove: 1² + 2² + 3² + … + n² = n(n+1)(2n+1)/6",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   0,
+   112
+  ],
+  "y": [
+   0,
+   54
+  ],
+  "pad": 6
+ },
+ "roles": {
+  "now": {
+   "label": "Current step",
+   "color": "#2563eb",
+   "text": "The step being explained right now.",
+   "legend": false
+  },
+  "done": {
+   "label": "Steps so far",
+   "color": "#059669",
+   "text": "Steps you have already seen.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Last step",
+   "color": "#d97706",
+   "text": "The last step of the solution.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "cur",
+   "label": "Current step",
+   "min": 0,
+   "max": 20,
+   "step": 1,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "text",
+   "id": "ttl",
+   "at": [
+    56,
+    49
+   ],
+   "text": "Exercise 7.1 · Q2",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "nd0",
+   "c": [
+    22,
+    40
+   ],
+   "r": 3.4,
+   "role": "done",
+   "fill": "done",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "id": "nn0",
+   "at": [
+    22,
+    40
+   ],
+   "text": "1",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "appearDur": 380,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "cp0",
+   "at": [
+    43.5,
+    40
+   ],
+   "text": "Check P(1)",
+   "role": "ink",
+   "size": "m",
+   "bold": false,
+   "appear": "s0",
+   "appearDur": 420,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "rg0",
+   "c": [
+    22,
+    40
+   ],
+   "r": 5.4,
+   "role": "now",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "abs(cur-0)<0.5",
+   "appear": "s0",
+   "appearDur": 300
+  },
+  {
+   "type": "segment",
+   "id": "cn1",
+   "from": [
+    22,
+    36.4
+   ],
+   "to": [
+    22,
+    34.6
+   ],
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "draw",
+   "appear": "s1",
+   "appearDur": 350,
+   "layer": "back"
+  },
+  {
+   "type": "circle",
+   "id": "nd1",
+   "c": [
+    22,
+    31
+   ],
+   "r": 3.4,
+   "role": "done",
+   "fill": "done",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "id": "nn1",
+   "at": [
+    22,
+    31
+   ],
+   "text": "2",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "appearDur": 380,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "cp1",
+   "at": [
+    44.65,
+    31
+   ],
+   "text": "Assume P(k)",
+   "role": "ink",
+   "size": "m",
+   "bold": false,
+   "appear": "s1",
+   "appearDur": 420,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "rg1",
+   "c": [
+    22,
+    31
+   ],
+   "r": 5.4,
+   "role": "now",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "abs(cur-1)<0.5",
+   "appear": "s1",
+   "appearDur": 300
+  },
+  {
+   "type": "segment",
+   "id": "cn2",
+   "from": [
+    22,
+    27.4
+   ],
+   "to": [
+    22,
+    25.6
+   ],
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "draw",
+   "appear": "s2",
+   "appearDur": 350,
+   "layer": "back"
+  },
+  {
+   "type": "circle",
+   "id": "nd2",
+   "c": [
+    22,
+    22
+   ],
+   "r": 3.4,
+   "role": "done",
+   "fill": "done",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "id": "nn2",
+   "at": [
+    22,
+    22
+   ],
+   "text": "3",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "appearDur": 380,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "cp2",
+   "at": [
+    51.55,
+    22
+   ],
+   "text": "Add the next term",
+   "role": "ink",
+   "size": "m",
+   "bold": false,
+   "appear": "s2",
+   "appearDur": 420,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "rg2",
+   "c": [
+    22,
+    22
+   ],
+   "r": 5.4,
+   "role": "now",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "abs(cur-2)<0.5",
+   "appear": "s2",
+   "appearDur": 300
+  },
+  {
+   "type": "segment",
+   "id": "cn3",
+   "from": [
+    22,
+    18.4
+   ],
+   "to": [
+    22,
+    16.6
+   ],
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "draw",
+   "appear": "s3",
+   "appearDur": 350,
+   "layer": "back"
+  },
+  {
+   "type": "circle",
+   "id": "nd3",
+   "c": [
+    22,
+    13
+   ],
+   "r": 3.4,
+   "role": "ans",
+   "fill": "ans",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "appear": "s3",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "id": "nn3",
+   "at": [
+    22,
+    13
+   ],
+   "text": "4",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "appearDur": 380,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "cp3",
+   "at": [
+    43.5,
+    13
+   ],
+   "text": "Conclusion",
+   "role": "ink",
+   "size": "m",
+   "bold": false,
+   "appear": "s3",
+   "appearDur": 420,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "rg3",
+   "c": [
+    22,
+    13
+   ],
+   "r": 5.4,
+   "role": "now",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "abs(cur-3)<0.5",
+   "appear": "s3",
+   "appearDur": 300
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Check P(1)",
+   "text": "\\[\\begin{aligned}&P(n):\\ 1^2+2^2+\\dots+n^2=\\dfrac{n(n+1)(2n+1)}{6}\\\\[5pt]&n=1:\\ \\text{LHS}=1,\\ \\ \\text{RHS}=\\dfrac{1\\cdot2\\cdot3}{6}=1\\\\[5pt]&\\text{So $P(1)$ is true.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Assume P(k)",
+   "text": "\\[\\begin{aligned}&\\text{Assume P(k) is true for some } k\\ge 1:\\\\[5pt]&1^2+\\dots+k^2=\\dfrac{k(k+1)(2k+1)}{6}\\qquad(1)\\\\[5pt]&\\text{Aim: P(k+1)}:\\ 1^2+\\dots+(k+1)^2=\\dfrac{(k+1)(k+2)(2k+3)}{6}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Add the next term",
+   "text": "\\[\\begin{aligned}&\\text{Add $(k+1)^{2}$ to both sides of (1):}\\\\[5pt]&\\text{LHS}=\\dfrac{k(k+1)(2k+1)}{6}+(k+1)^2\\\\[5pt]&{}=\\dfrac{(k+1)\\,[\\,k(2k+1)+6(k+1)\\,]}{6}\\\\[5pt]&{}=\\dfrac{(k+1)(2k^2+7k+6)}{6}\\\\[5pt]&{}=\\dfrac{(k+1)(k+2)(2k+3)}{6}\\\\[5pt]&\\text{Since $2k^{2}$+7k+6 = ($k$+2)(2k+3).}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Conclusion",
+   "text": "\\[\\begin{aligned}&\\text{$P(1)$ is true and $P(k)$ implies $P(k+1)$.}\\\\[5pt]&\\textcolor{#047857}{\\mathbf{P(n)\\text{ is true for all } n\\ge 1}}\\ \\blacksquare\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 3
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

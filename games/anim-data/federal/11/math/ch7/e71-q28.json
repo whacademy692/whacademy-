@@ -1,0 +1,515 @@
+{
+ "id": "g11-math-c7-e71-q28",
+ "title": "Exercise 7.1 · Q28",
+ "summary": "Prove: C(2n, n) < 2^(2n−2) for all n ≥ 5",
+ "alt": "Exercise 7.1 · Q28: Prove: C(2n, n) < 2^(2n−2) for all n ≥ 5",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   0,
+   112
+  ],
+  "y": [
+   0,
+   63
+  ],
+  "pad": 6
+ },
+ "roles": {
+  "now": {
+   "label": "Current step",
+   "color": "#2563eb",
+   "text": "The step being explained right now.",
+   "legend": false
+  },
+  "done": {
+   "label": "Steps so far",
+   "color": "#059669",
+   "text": "Steps you have already seen.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Last step",
+   "color": "#d97706",
+   "text": "The last step of the solution.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "cur",
+   "label": "Current step",
+   "min": 0,
+   "max": 20,
+   "step": 1,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "text",
+   "id": "ttl",
+   "at": [
+    56,
+    58
+   ],
+   "text": "Exercise 7.1 · Q28",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "nd0",
+   "c": [
+    22,
+    49
+   ],
+   "r": 3.4,
+   "role": "done",
+   "fill": "done",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "id": "nn0",
+   "at": [
+    22,
+    49
+   ],
+   "text": "1",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "appearDur": 380,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "cp0",
+   "at": [
+    44.65,
+    49
+   ],
+   "text": "Check n = 5",
+   "role": "ink",
+   "size": "m",
+   "bold": false,
+   "appear": "s0",
+   "appearDur": 420,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "rg0",
+   "c": [
+    22,
+    49
+   ],
+   "r": 5.4,
+   "role": "now",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "abs(cur-0)<0.5",
+   "appear": "s0",
+   "appearDur": 300
+  },
+  {
+   "type": "segment",
+   "id": "cn1",
+   "from": [
+    22,
+    45.4
+   ],
+   "to": [
+    22,
+    43.6
+   ],
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "draw",
+   "appear": "s1",
+   "appearDur": 350,
+   "layer": "back"
+  },
+  {
+   "type": "circle",
+   "id": "nd1",
+   "c": [
+    22,
+    40
+   ],
+   "r": 3.4,
+   "role": "done",
+   "fill": "done",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "id": "nn1",
+   "at": [
+    22,
+    40
+   ],
+   "text": "2",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "appearDur": 380,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "cp1",
+   "at": [
+    44.65,
+    40
+   ],
+   "text": "Assume P(k)",
+   "role": "ink",
+   "size": "m",
+   "bold": false,
+   "appear": "s1",
+   "appearDur": 420,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "rg1",
+   "c": [
+    22,
+    40
+   ],
+   "r": 5.4,
+   "role": "now",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "abs(cur-1)<0.5",
+   "appear": "s1",
+   "appearDur": 300
+  },
+  {
+   "type": "segment",
+   "id": "cn2",
+   "from": [
+    22,
+    36.4
+   ],
+   "to": [
+    22,
+    34.6
+   ],
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "draw",
+   "appear": "s2",
+   "appearDur": 350,
+   "layer": "back"
+  },
+  {
+   "type": "circle",
+   "id": "nd2",
+   "c": [
+    22,
+    31
+   ],
+   "r": 3.4,
+   "role": "done",
+   "fill": "done",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "id": "nn2",
+   "at": [
+    22,
+    31
+   ],
+   "text": "3",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "appearDur": 380,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "cp2",
+   "at": [
+    56.15,
+    31
+   ],
+   "text": "Ratio of consecutive…",
+   "role": "ink",
+   "size": "m",
+   "bold": false,
+   "appear": "s2",
+   "appearDur": 420,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "rg2",
+   "c": [
+    22,
+    31
+   ],
+   "r": 5.4,
+   "role": "now",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "abs(cur-2)<0.5",
+   "appear": "s2",
+   "appearDur": 300
+  },
+  {
+   "type": "segment",
+   "id": "cn3",
+   "from": [
+    22,
+    27.4
+   ],
+   "to": [
+    22,
+    25.6
+   ],
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "draw",
+   "appear": "s3",
+   "appearDur": 350,
+   "layer": "back"
+  },
+  {
+   "type": "circle",
+   "id": "nd3",
+   "c": [
+    22,
+    22
+   ],
+   "r": 3.4,
+   "role": "done",
+   "fill": "done",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "appear": "s3",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "id": "nn3",
+   "at": [
+    22,
+    22
+   ],
+   "text": "4",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "appearDur": 380,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "cp3",
+   "at": [
+    38.9,
+    22
+   ],
+   "text": "Finish",
+   "role": "ink",
+   "size": "m",
+   "bold": false,
+   "appear": "s3",
+   "appearDur": 420,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "rg3",
+   "c": [
+    22,
+    22
+   ],
+   "r": 5.4,
+   "role": "now",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "abs(cur-3)<0.5",
+   "appear": "s3",
+   "appearDur": 300
+  },
+  {
+   "type": "segment",
+   "id": "cn4",
+   "from": [
+    22,
+    18.4
+   ],
+   "to": [
+    22,
+    16.6
+   ],
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "draw",
+   "appear": "s4",
+   "appearDur": 350,
+   "layer": "back"
+  },
+  {
+   "type": "circle",
+   "id": "nd4",
+   "c": [
+    22,
+    13
+   ],
+   "r": 3.4,
+   "role": "ans",
+   "fill": "ans",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "appear": "s4",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "id": "nn4",
+   "at": [
+    22,
+    13
+   ],
+   "text": "5",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "appearDur": 380,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "cp4",
+   "at": [
+    43.5,
+    13
+   ],
+   "text": "Conclusion",
+   "role": "ink",
+   "size": "m",
+   "bold": false,
+   "appear": "s4",
+   "appearDur": 420,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "rg4",
+   "c": [
+    22,
+    13
+   ],
+   "r": 5.4,
+   "role": "now",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "abs(cur-4)<0.5",
+   "appear": "s4",
+   "appearDur": 300
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Check n = 5",
+   "text": "\\[\\begin{aligned}&n=5:\\ \\binom{10}{5}=252,\\ \\ 2^{8}=256\\\\[5pt]&252<256\\ \\Rightarrow\\ P(5)\\text{ true}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Assume P(k)",
+   "text": "\\[\\begin{aligned}&\\binom{2k}{k}<2^{2k-2}=4^{k-1}\\qquad(1)\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Ratio of consecutive terms",
+   "text": "\\[\\begin{aligned}&\\binom{2k+2}{k+1}=\\binom{2k}{k}\\cdot\\dfrac{(2k+2)(2k+1)}{(k+1)^2}\\\\[5pt]&{}=\\binom{2k}{k}\\cdot\\dfrac{2(2k+1)}{k+1}\\\\[5pt]&\\dfrac{2(2k+1)}{k+1}=\\dfrac{4k+2}{k+1}<4\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Finish",
+   "text": "\\[\\begin{aligned}&\\binom{2k+2}{k+1}<4\\binom{2k}{k}<4\\cdot4^{k-1}=4^k\\\\[5pt]&{}=2^{2(k+1)-2}\\\\[5pt]&\\text{This is $P(k+1)$.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Conclusion",
+   "text": "\\[\\begin{aligned}&\\text{$P(5)$ is true and $P(k)$ implies $P(k+1)$.}\\\\[5pt]&\\textcolor{#047857}{\\mathbf{P(n)\\text{ is true for all } n\\ge 5}}\\ \\blacksquare\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 4
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}
