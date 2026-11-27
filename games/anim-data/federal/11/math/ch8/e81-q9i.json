@@ -1,0 +1,693 @@
+{
+ "id": "g11-math-c8-e81-q9i",
+ "title": "Exercise 8.1 · Q9(i)",
+ "summary": "α and β are obtuse, sin α = 1/√2 and cos β = −3/5. Find sin(α + β) and sin(α − β).",
+ "alt": "Exercise 8.1 · Q9(i): α and β are obtuse, sin α = 1/√2 and cos β = −3/5. Find sin(α + β) and sin(α − β).",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   0,
+   112.0
+  ],
+  "y": [
+   0,
+   64.0
+  ],
+  "pad": 4
+ },
+ "roles": {
+  "a": {
+   "label": "Given",
+   "color": "#2563eb",
+   "text": "The angle / quantity given in the question.",
+   "legend": false
+  },
+  "b": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "The result being found.",
+   "legend": false
+  },
+  "c": {
+   "label": "Focus",
+   "color": "#d97706",
+   "text": "The part being worked on now.",
+   "legend": false
+  },
+  "d": {
+   "label": "Warning",
+   "color": "#e11d48",
+   "text": "A sign to watch or a part that is removed.",
+   "legend": false
+  },
+  "e": {
+   "label": "Second angle",
+   "color": "#7c3aed",
+   "text": "The second angle or helper line.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "cur",
+   "label": "Current step",
+   "min": 0,
+   "max": 20,
+   "step": 1,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "circle",
+   "c": [
+    30.0,
+    32.0
+   ],
+   "r": 21.0,
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": false,
+   "id": "cir1",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    6.0,
+    32.0
+   ],
+   "to": [
+    54.0,
+    32.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.4,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg2",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    30.0,
+    8.0
+   ],
+   "to": [
+    30.0,
+    56.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.4,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg3",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    3.6,
+    29.6
+   ],
+   "text": "180°",
+   "role": "muted",
+   "size": "s",
+   "bold": false,
+   "keep": true,
+   "id": "tex4",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    30.0,
+    32.0
+   ],
+   "to": [
+    15.151,
+    46.849
+   ],
+   "role": "a",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg5",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(cur>=0)"
+  },
+  {
+   "type": "circle",
+   "c": [
+    15.151,
+    46.849
+   ],
+   "r": 1.35,
+   "role": "a",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.9,
+   "id": "cir6",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(cur>=0)"
+  },
+  {
+   "type": "segment",
+   "from": [
+    15.151,
+    46.849
+   ],
+   "to": [
+    15.151,
+    32.0
+   ],
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "draw",
+   "layer": "back",
+   "dash": true,
+   "id": "seg7",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(abs(cur-0)<0.5)"
+  },
+  {
+   "type": "circle",
+   "c": [
+    15.151,
+    32.0
+   ],
+   "r": 1.35,
+   "role": "a",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.9,
+   "id": "cir8",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(abs(cur-0)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    15.151,
+    28.2
+   ],
+   "text": "−1/√2",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex9",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(abs(cur-0)<0.5)"
+  },
+  {
+   "type": "segment",
+   "from": [
+    15.151,
+    46.849
+   ],
+   "to": [
+    30.0,
+    46.849
+   ],
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "draw",
+   "layer": "back",
+   "dash": true,
+   "id": "seg10",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(abs(cur-0)<0.5)"
+  },
+  {
+   "type": "circle",
+   "c": [
+    30.0,
+    46.849
+   ],
+   "r": 1.35,
+   "role": "a",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.9,
+   "id": "cir11",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(abs(cur-0)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    35.0,
+    46.849
+   ],
+   "text": "1/√2",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex12",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(abs(cur-0)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    52.0
+   ],
+   "text": "cos α = −1/√2",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex13",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(abs(cur-0)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    44.8
+   ],
+   "text": "sin α = 1/√2",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex14",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(abs(cur-0)<0.5)"
+  },
+  {
+   "type": "segment",
+   "from": [
+    30.0,
+    32.0
+   ],
+   "to": [
+    17.4,
+    48.8
+   ],
+   "role": "e",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg15",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(cur>=1)"
+  },
+  {
+   "type": "circle",
+   "c": [
+    17.4,
+    48.8
+   ],
+   "r": 1.35,
+   "role": "e",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "e",
+   "fillOpacity": 0.9,
+   "id": "cir16",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(cur>=1)"
+  },
+  {
+   "type": "segment",
+   "from": [
+    17.4,
+    48.8
+   ],
+   "to": [
+    17.4,
+    32.0
+   ],
+   "role": "e",
+   "strokeWidth": 2.2,
+   "effect": "draw",
+   "layer": "back",
+   "dash": true,
+   "id": "seg17",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(abs(cur-1)<0.5)"
+  },
+  {
+   "type": "circle",
+   "c": [
+    17.4,
+    32.0
+   ],
+   "r": 1.35,
+   "role": "e",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "e",
+   "fillOpacity": 0.9,
+   "id": "cir18",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(abs(cur-1)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    17.4,
+    28.2
+   ],
+   "text": "−3/5",
+   "role": "e",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex19",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(abs(cur-1)<0.5)"
+  },
+  {
+   "type": "segment",
+   "from": [
+    17.4,
+    48.8
+   ],
+   "to": [
+    30.0,
+    48.8
+   ],
+   "role": "e",
+   "strokeWidth": 2.2,
+   "effect": "draw",
+   "layer": "back",
+   "dash": true,
+   "id": "seg20",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(abs(cur-1)<0.5)"
+  },
+  {
+   "type": "circle",
+   "c": [
+    30.0,
+    48.8
+   ],
+   "r": 1.35,
+   "role": "e",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "e",
+   "fillOpacity": 0.9,
+   "id": "cir21",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(abs(cur-1)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    35.0,
+    48.8
+   ],
+   "text": "4/5",
+   "role": "e",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex22",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(abs(cur-1)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    52.0
+   ],
+   "text": "cos β = −3/5",
+   "role": "e",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex23",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(abs(cur-1)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    44.8
+   ],
+   "text": "sin β = 4/5",
+   "role": "e",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex24",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(abs(cur-1)<0.5)"
+  },
+  {
+   "type": "segment",
+   "from": [
+    30.0,
+    32.0
+   ],
+   "to": [
+    27.03,
+    11.211
+   ],
+   "role": "b",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg25",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(cur>=2)"
+  },
+  {
+   "type": "circle",
+   "c": [
+    27.03,
+    11.211
+   ],
+   "r": 1.35,
+   "role": "b",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "b",
+   "fillOpacity": 0.9,
+   "id": "cir26",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(cur>=2)"
+  },
+  {
+   "type": "text",
+   "at": [
+    26.408,
+    6.855
+   ],
+   "text": "α+β",
+   "role": "b",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex27",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(cur>=2)"
+  },
+  {
+   "type": "segment",
+   "from": [
+    30.0,
+    32.0
+   ],
+   "to": [
+    50.789,
+    34.97
+   ],
+   "role": "c",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg28",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(cur>=2)"
+  },
+  {
+   "type": "circle",
+   "c": [
+    50.789,
+    34.97
+   ],
+   "r": 1.35,
+   "role": "c",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.9,
+   "id": "cir29",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(cur>=2)"
+  },
+  {
+   "type": "text",
+   "at": [
+    55.145,
+    35.592
+   ],
+   "text": "α−β",
+   "role": "c",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex30",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(cur>=2)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    52.0
+   ],
+   "text": "sin(α+β) =",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex31",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(abs(cur-2)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    44.8
+   ],
+   "text": "−7√2/10",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex32",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(abs(cur-2)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    37.6
+   ],
+   "text": "sin(α−β) =",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex33",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(abs(cur-2)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    30.4
+   ],
+   "text": "√2/10",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex34",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(abs(cur-2)<0.5)"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Ratios of α",
+   "text": "\\[\\begin{aligned}&\\text{Obtuse means quadrant II: sin is positive}\\\\[5pt]&\\text{and cos is negative.}\\\\[5pt]&\\cos\\alpha=-\\sqrt{1-\\dfrac12}=\\textcolor{#047857}{\\mathbf{-\\dfrac1{\\sqrt2}}}\\\\[5pt]&\\text{So α = 135°.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Ratios of β",
+   "text": "\\[\\begin{aligned}&\\text{β is obtuse, so sin β is positive.}\\\\[5pt]&\\sin\\beta=\\sqrt{1-\\dfrac9{25}}=\\textcolor{#047857}{\\mathbf{\\dfrac45}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Find sin(α ± β)",
+   "text": "\\[\\begin{aligned}&\\sin(\\alpha+\\beta)=\\sin\\alpha\\cos\\beta+\\cos\\alpha\\sin\\beta\\\\[5pt]&{}=\\dfrac1{\\sqrt2}\\Big(-\\dfrac35\\Big)+\\Big(-\\dfrac1{\\sqrt2}\\Big)\\dfrac45=\\textcolor{#047857}{\\mathbf{-\\dfrac{7\\sqrt2}{10}}}\\\\[5pt]&\\sin(\\alpha-\\beta)=\\sin\\alpha\\cos\\beta-\\cos\\alpha\\sin\\beta\\\\[5pt]&{}=\\dfrac{-3}{5\\sqrt2}+\\dfrac4{5\\sqrt2}=\\textcolor{#047857}{\\mathbf{\\dfrac{\\sqrt2}{10}}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 2
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Watch the figure change with every step. Green words are the answers."
+  }
+ ]
+}

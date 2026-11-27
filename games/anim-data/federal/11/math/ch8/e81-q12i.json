@@ -1,0 +1,505 @@
+{
+ "id": "g11-math-c8-e81-q12i",
+ "title": "Exercise 8.1 · Q12(i)",
+ "summary": "If α + β + γ = 180°, prove that tan α + tan β + tan γ = tan α tan β tan γ.",
+ "alt": "Exercise 8.1 · Q12(i): If α + β + γ = 180°, prove that tan α + tan β + tan γ = tan α tan β tan γ.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   0,
+   112.0
+  ],
+  "y": [
+   0,
+   64.0
+  ],
+  "pad": 4
+ },
+ "roles": {
+  "a": {
+   "label": "Given",
+   "color": "#2563eb",
+   "text": "The angle / quantity given in the question.",
+   "legend": false
+  },
+  "b": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "The result being found.",
+   "legend": false
+  },
+  "c": {
+   "label": "Focus",
+   "color": "#d97706",
+   "text": "The part being worked on now.",
+   "legend": false
+  },
+  "d": {
+   "label": "Warning",
+   "color": "#e11d48",
+   "text": "A sign to watch or a part that is removed.",
+   "legend": false
+  },
+  "e": {
+   "label": "Second angle",
+   "color": "#7c3aed",
+   "text": "The second angle or helper line.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "cur",
+   "label": "Current step",
+   "min": 0,
+   "max": 20,
+   "step": 1,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "segment",
+   "from": [
+    0.0,
+    12.0
+   ],
+   "to": [
+    64.0,
+    12.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.6,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg1",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "sector",
+   "c": [
+    32.0,
+    12.0
+   ],
+   "r": 29.0,
+   "from": 0.0,
+   "to": 50.0,
+   "role": "a",
+   "strokeWidth": 1.6,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.2,
+   "id": "sec2",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    32.0,
+    12.0
+   ],
+   "to": [
+    50.641,
+    34.215
+   ],
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg3",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    48.295,
+    19.599
+   ],
+   "text": "α",
+   "role": "a",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex4",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "sector",
+   "c": [
+    32.0,
+    12.0
+   ],
+   "r": 29.0,
+   "from": 50.0,
+   "to": 110.0,
+   "role": "e",
+   "strokeWidth": 1.6,
+   "effect": "pop",
+   "fill": "e",
+   "fillOpacity": 0.2,
+   "id": "sec5",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    32.0,
+    12.0
+   ],
+   "to": [
+    22.081,
+    39.251
+   ],
+   "role": "e",
+   "strokeWidth": 2.2,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg6",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    35.122,
+    29.707
+   ],
+   "text": "β",
+   "role": "e",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex7",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "sector",
+   "c": [
+    32.0,
+    12.0
+   ],
+   "r": 29.0,
+   "from": 110.0,
+   "to": 180.0,
+   "role": "c",
+   "strokeWidth": 1.6,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.2,
+   "id": "sec8",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    32.0,
+    12.0
+   ],
+   "to": [
+    3.0,
+    12.0
+   ],
+   "role": "c",
+   "strokeWidth": 2.2,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg9",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    17.272,
+    22.313
+   ],
+   "text": "γ",
+   "role": "c",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex10",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    32.0,
+    12.0
+   ],
+   "to": [
+    61.0,
+    12.0
+   ],
+   "role": "a",
+   "strokeWidth": 2.2,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg11",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    32.0,
+    7.4
+   ],
+   "text": "180°",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex12",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    82,
+    54.0
+   ],
+   "text": "α + β + γ = 180°",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex13",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(abs(cur-0)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    82,
+    46.8
+   ],
+   "text": "e.g. 50° + 60° + 70°",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex14",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(abs(cur-0)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    82,
+    54.0
+   ],
+   "text": "α + β = 180° − γ",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex15",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(abs(cur-1)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    82,
+    46.8
+   ],
+   "text": "tan(α+β) = −tan γ",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex16",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(abs(cur-1)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    82,
+    54.0
+   ],
+   "text": "tan 50° ≈ 1.192",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex17",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(abs(cur-2)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    82,
+    46.8
+   ],
+   "text": "tan 60° ≈ 1.732",
+   "role": "e",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex18",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(abs(cur-2)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    82,
+    39.6
+   ],
+   "text": "tan 70° ≈ 2.747",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex19",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(abs(cur-2)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    82,
+    54.0
+   ],
+   "text": "Sum ≈ 5.671",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex20",
+   "appear": "s3",
+   "appearDur": 380,
+   "visible": "(abs(cur-3)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    82,
+    46.8
+   ],
+   "text": "Product ≈ 5.671",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex21",
+   "appear": "s3",
+   "appearDur": 380,
+   "visible": "(abs(cur-3)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    82,
+    39.6
+   ],
+   "text": "Equal ✓",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex22",
+   "appear": "s3",
+   "appearDur": 380,
+   "visible": "(abs(cur-3)<0.5)"
+  },
+  {
+   "type": "arc",
+   "c": [
+    32.0,
+    12.0
+   ],
+   "r": 32.5,
+   "from": 0,
+   "to": 110,
+   "role": "b",
+   "strokeWidth": 3.2,
+   "effect": "draw",
+   "id": "arc23",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(abs(cur-1)<0.5)"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Use α + β = 180° − γ",
+   "text": "\\[\\begin{aligned}&\\text{The three angles fill a straight line.}\\\\[5pt]&\\alpha+\\beta=180^\\circ-\\gamma\\\\[5pt]&\\tan(\\alpha+\\beta)=\\tan(180^\\circ-\\gamma)=-\\tan\\gamma\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Expand tan(α + β)",
+   "text": "\\[\\begin{aligned}&\\dfrac{\\tan\\alpha+\\tan\\beta}{1-\\tan\\alpha\\tan\\beta}=-\\tan\\gamma\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Clear the fraction",
+   "text": "\\[\\begin{aligned}&\\tan\\alpha+\\tan\\beta=-\\tan\\gamma(1-\\tan\\alpha\\tan\\beta)\\\\[5pt]&{}=-\\tan\\gamma+\\tan\\alpha\\tan\\beta\\tan\\gamma\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Move −tan γ across",
+   "text": "\\[\\begin{aligned}&\\tan\\alpha+\\tan\\beta+\\tan\\gamma=\\textcolor{#047857}{\\mathbf{\\tan\\alpha\\tan\\beta\\tan\\gamma}}\\ \\blacksquare\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 3
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Watch the figure change with every step. Green words are the answers."
+  }
+ ]
+}

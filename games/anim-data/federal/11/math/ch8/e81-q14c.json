@@ -1,0 +1,559 @@
+{
+ "id": "g11-math-c8-e81-q14c",
+ "title": "Exercise 8.1 · Q14(c)",
+ "summary": "The two wires meet at the same point on the ground. Find cos(θ − 45°), the cosine of the angle between them.",
+ "alt": "Exercise 8.1 · Q14(c): The two wires meet at the same point on the ground. Find cos(θ − 45°), the cosine of the angle between them.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   0,
+   112.0
+  ],
+  "y": [
+   0,
+   64.0
+  ],
+  "pad": 4
+ },
+ "roles": {
+  "a": {
+   "label": "Given",
+   "color": "#2563eb",
+   "text": "The angle / quantity given in the question.",
+   "legend": false
+  },
+  "b": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "The result being found.",
+   "legend": false
+  },
+  "c": {
+   "label": "Focus",
+   "color": "#d97706",
+   "text": "The part being worked on now.",
+   "legend": false
+  },
+  "d": {
+   "label": "Warning",
+   "color": "#e11d48",
+   "text": "A sign to watch or a part that is removed.",
+   "legend": false
+  },
+  "e": {
+   "label": "Second angle",
+   "color": "#7c3aed",
+   "text": "The second angle or helper line.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "cur",
+   "label": "Current step",
+   "min": 0,
+   "max": 20,
+   "step": 1,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "segment",
+   "from": [
+    6,
+    8.0
+   ],
+   "to": [
+    62,
+    8.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.8,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg1",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    22.0,
+    8.0
+   ],
+   "to": [
+    22.0,
+    52.0
+   ],
+   "role": "muted",
+   "strokeWidth": 4.0,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg2",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "polygon",
+   "pts": [
+    [
+     22.0,
+     8.0
+    ],
+    [
+     24.2,
+     8.0
+    ],
+    [
+     24.2,
+     10.2
+    ],
+    [
+     22.0,
+     10.2
+    ]
+   ],
+   "role": "muted",
+   "strokeWidth": 1.6,
+   "effect": "draw",
+   "fill": false,
+   "id": "pol3",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    40.0,
+    8.0
+   ],
+   "r": 1.4,
+   "role": "ink",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "ink",
+   "fillOpacity": 0.9,
+   "id": "cir4",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    22.0,
+    26.0
+   ],
+   "to": [
+    40.0,
+    8.0
+   ],
+   "role": "a",
+   "strokeWidth": 3.0,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg5",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    22.0,
+    26.0
+   ],
+   "r": 1.35,
+   "role": "a",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.9,
+   "id": "cir6",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    22.0,
+    50.0
+   ],
+   "to": [
+    40.0,
+    8.0
+   ],
+   "role": "e",
+   "strokeWidth": 3.0,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg7",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    22.0,
+    50.0
+   ],
+   "r": 1.35,
+   "role": "e",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "e",
+   "fillOpacity": 0.9,
+   "id": "cir8",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "arc",
+   "c": [
+    40.0,
+    8.0
+   ],
+   "r": 9,
+   "from": 135,
+   "to": 180,
+   "role": "a",
+   "strokeWidth": 2.6,
+   "effect": "draw",
+   "id": "arc9",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    27.066,
+    13.358
+   ],
+   "text": "45°",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex10",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "arc",
+   "c": [
+    40.0,
+    8.0
+   ],
+   "r": 15,
+   "from": 113.19859051364818,
+   "to": 180,
+   "role": "e",
+   "strokeWidth": 2.6,
+   "effect": "draw",
+   "id": "arc11",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    23.303,
+    19.01
+   ],
+   "text": "θ",
+   "role": "e",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex12",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "arc",
+   "c": [
+    40.0,
+    8.0
+   ],
+   "r": 21,
+   "from": 113.19859051364818,
+   "to": 135,
+   "role": "b",
+   "strokeWidth": 3.2,
+   "effect": "draw",
+   "id": "arc13",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(cur>=1)"
+  },
+  {
+   "type": "text",
+   "at": [
+    28.143,
+    29.944
+   ],
+   "text": "θ−45°",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex14",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(cur>=1)"
+  },
+  {
+   "type": "text",
+   "at": [
+    83,
+    52.0
+   ],
+   "text": "wires meet here",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex15",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(abs(cur-0)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    83,
+    44.8
+   ],
+   "text": "angle between",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex16",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(abs(cur-0)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    83,
+    37.6
+   ],
+   "text": "them = θ − 45°",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex17",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(abs(cur-0)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    83,
+    52.0
+   ],
+   "text": "cos(θ−45°) =",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex18",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(abs(cur-1)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    83,
+    44.8
+   ],
+   "text": "cosθ cos45°",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex19",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(abs(cur-1)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    83,
+    37.6
+   ],
+   "text": "+ sinθ sin45°",
+   "role": "e",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex20",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(abs(cur-1)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    83,
+    52.0
+   ],
+   "text": "cos θ = 3/√58",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex21",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(abs(cur-2)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    83,
+    44.8
+   ],
+   "text": "sin θ = 7/√58",
+   "role": "e",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex22",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(abs(cur-2)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    83,
+    37.6
+   ],
+   "text": "cos 45° = 1/√2",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex23",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(abs(cur-2)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    83,
+    52.0
+   ],
+   "text": "(3+7)/(√58·√2)",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex24",
+   "appear": "s3",
+   "appearDur": 380,
+   "visible": "(abs(cur-3)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    83,
+    44.8
+   ],
+   "text": "= 10/√116",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex25",
+   "appear": "s3",
+   "appearDur": 380,
+   "visible": "(abs(cur-3)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    83,
+    37.6
+   ],
+   "text": "= 5/√29 ≈ 0.928",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex26",
+   "appear": "s3",
+   "appearDur": 380,
+   "visible": "(abs(cur-3)<0.5)"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Angle between wires",
+   "text": "\\[\\begin{aligned}&\\text{The short wire makes 45° and the long wire}\\\\[5pt]&\\text{θ with the ground.}\\\\[5pt]&\\text{So the angle between the wires is θ − 45°.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Use cos(A − B)",
+   "text": "\\[\\begin{aligned}&\\cos(\\theta-45^\\circ)=\\cos\\theta\\cos45^\\circ+\\sin\\theta\\sin45^\\circ\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Insert the values",
+   "text": "\\[\\begin{aligned}&{}=\\dfrac3{\\sqrt{58}}\\cdot\\dfrac1{\\sqrt2}+\\dfrac7{\\sqrt{58}}\\cdot\\dfrac1{\\sqrt2}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Simplify",
+   "text": "\\[\\begin{aligned}&{}=\\dfrac{10}{\\sqrt{116}}=\\dfrac{10}{2\\sqrt{29}}=\\textcolor{#047857}{\\mathbf{\\dfrac5{\\sqrt{29}}}}\\\\[5pt]&\\text{This is about 0.928.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 3
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Watch the figure change with every step. Green words are the answers."
+  }
+ ]
+}

@@ -1,0 +1,364 @@
+{
+ "id": "g11-math-c8-e81-q14a",
+ "title": "Exercise 8.1 · Q14(a)",
+ "summary": "A short wire is tied to a pole 3 m above the ground and meets the ground 3 m from the pole. Find the angle…",
+ "alt": "Exercise 8.1 · Q14(a): A short wire is tied to a pole 3 m above the ground and meets the ground 3 m from the pole. Find the angle it makes with the ground.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   0,
+   112.0
+  ],
+  "y": [
+   0,
+   64.0
+  ],
+  "pad": 4
+ },
+ "roles": {
+  "a": {
+   "label": "Given",
+   "color": "#2563eb",
+   "text": "The angle / quantity given in the question.",
+   "legend": false
+  },
+  "b": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "The result being found.",
+   "legend": false
+  },
+  "c": {
+   "label": "Focus",
+   "color": "#d97706",
+   "text": "The part being worked on now.",
+   "legend": false
+  },
+  "d": {
+   "label": "Warning",
+   "color": "#e11d48",
+   "text": "A sign to watch or a part that is removed.",
+   "legend": false
+  },
+  "e": {
+   "label": "Second angle",
+   "color": "#7c3aed",
+   "text": "The second angle or helper line.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "cur",
+   "label": "Current step",
+   "min": 0,
+   "max": 20,
+   "step": 1,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "segment",
+   "from": [
+    6,
+    8.0
+   ],
+   "to": [
+    62,
+    8.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.8,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg1",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    22.0,
+    8.0
+   ],
+   "to": [
+    22.0,
+    52.0
+   ],
+   "role": "muted",
+   "strokeWidth": 4.0,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg2",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "polygon",
+   "pts": [
+    [
+     22.0,
+     8.0
+    ],
+    [
+     24.2,
+     8.0
+    ],
+    [
+     24.2,
+     10.2
+    ],
+    [
+     22.0,
+     10.2
+    ]
+   ],
+   "role": "muted",
+   "strokeWidth": 1.6,
+   "effect": "draw",
+   "fill": false,
+   "id": "pol3",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    40.0,
+    8.0
+   ],
+   "r": 1.4,
+   "role": "ink",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "ink",
+   "fillOpacity": 0.9,
+   "id": "cir4",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    22.0,
+    26.0
+   ],
+   "to": [
+    40.0,
+    8.0
+   ],
+   "role": "a",
+   "strokeWidth": 3.0,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg5",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    22.0,
+    26.0
+   ],
+   "r": 1.35,
+   "role": "a",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.9,
+   "id": "cir6",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "polygon",
+   "pts": [
+    [
+     22.0,
+     8.0
+    ],
+    [
+     40.0,
+     8.0
+    ],
+    [
+     22.0,
+     26.0
+    ]
+   ],
+   "role": "a",
+   "strokeWidth": 1.2,
+   "effect": "draw",
+   "fill": "a",
+   "fillOpacity": 0.12,
+   "id": "pol7",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    15.5,
+    17.0
+   ],
+   "text": "3 m",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex8",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    31,
+    3.8
+   ],
+   "text": "3 m",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex9",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "arc",
+   "c": [
+    40.0,
+    8.0
+   ],
+   "r": 9,
+   "from": 135,
+   "to": 180,
+   "role": "b",
+   "strokeWidth": 2.6,
+   "effect": "draw",
+   "id": "arc10",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(cur>=1)"
+  },
+  {
+   "type": "text",
+   "at": [
+    27.066,
+    13.358
+   ],
+   "text": "45°",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex11",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(cur>=1)"
+  },
+  {
+   "type": "text",
+   "at": [
+    83,
+    52.0
+   ],
+   "text": "opposite = 3 m",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex12",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(abs(cur-0)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    83,
+    44.8
+   ],
+   "text": "adjacent = 3 m",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex13",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(abs(cur-0)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    83,
+    52.0
+   ],
+   "text": "tan = 3/3 = 1",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex14",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(abs(cur-1)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    83,
+    44.8
+   ],
+   "text": "angle = 45°",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex15",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(abs(cur-1)<0.5)"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Right triangle",
+   "text": "\\[\\begin{aligned}&\\text{The pole, the ground and the short wire}\\\\[5pt]&\\text{make a right triangle.}\\\\[5pt]&\\text{opposite}=3\\text{ m},\\quad\\text{adjacent}=3\\text{ m}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Find the angle",
+   "text": "\\[\\begin{aligned}&\\tan\\text{(angle)}=\\dfrac33=1\\\\[5pt]&\\text{angle}=\\textcolor{#047857}{\\mathbf{45^\\circ}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 1
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Watch the figure change with every step. Green words are the answers."
+  }
+ ]
+}

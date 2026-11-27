@@ -1,0 +1,425 @@
+{
+ "id": "g11-math-c8-e81-q14b",
+ "title": "Exercise 8.1 · Q14(b)",
+ "summary": "A long wire is tied to the pole 7 m above the ground and meets the ground 3 m from the pole at angle θ.…",
+ "alt": "Exercise 8.1 · Q14(b): A long wire is tied to the pole 7 m above the ground and meets the ground 3 m from the pole at angle θ. Find sin θ and cos θ.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   0,
+   112.0
+  ],
+  "y": [
+   0,
+   64.0
+  ],
+  "pad": 4
+ },
+ "roles": {
+  "a": {
+   "label": "Given",
+   "color": "#2563eb",
+   "text": "The angle / quantity given in the question.",
+   "legend": false
+  },
+  "b": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "The result being found.",
+   "legend": false
+  },
+  "c": {
+   "label": "Focus",
+   "color": "#d97706",
+   "text": "The part being worked on now.",
+   "legend": false
+  },
+  "d": {
+   "label": "Warning",
+   "color": "#e11d48",
+   "text": "A sign to watch or a part that is removed.",
+   "legend": false
+  },
+  "e": {
+   "label": "Second angle",
+   "color": "#7c3aed",
+   "text": "The second angle or helper line.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "cur",
+   "label": "Current step",
+   "min": 0,
+   "max": 20,
+   "step": 1,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "segment",
+   "from": [
+    6,
+    8.0
+   ],
+   "to": [
+    62,
+    8.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.8,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg1",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    22.0,
+    8.0
+   ],
+   "to": [
+    22.0,
+    52.0
+   ],
+   "role": "muted",
+   "strokeWidth": 4.0,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg2",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "polygon",
+   "pts": [
+    [
+     22.0,
+     8.0
+    ],
+    [
+     24.2,
+     8.0
+    ],
+    [
+     24.2,
+     10.2
+    ],
+    [
+     22.0,
+     10.2
+    ]
+   ],
+   "role": "muted",
+   "strokeWidth": 1.6,
+   "effect": "draw",
+   "fill": false,
+   "id": "pol3",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    40.0,
+    8.0
+   ],
+   "r": 1.4,
+   "role": "ink",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "ink",
+   "fillOpacity": 0.9,
+   "id": "cir4",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    22.0,
+    50.0
+   ],
+   "to": [
+    40.0,
+    8.0
+   ],
+   "role": "e",
+   "strokeWidth": 3.0,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg5",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "circle",
+   "c": [
+    22.0,
+    50.0
+   ],
+   "r": 1.35,
+   "role": "e",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "e",
+   "fillOpacity": 0.9,
+   "id": "cir6",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "polygon",
+   "pts": [
+    [
+     22.0,
+     8.0
+    ],
+    [
+     40.0,
+     8.0
+    ],
+    [
+     22.0,
+     50.0
+    ]
+   ],
+   "role": "e",
+   "strokeWidth": 1.2,
+   "effect": "draw",
+   "fill": "e",
+   "fillOpacity": 0.1,
+   "id": "pol7",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    15.5,
+    29.0
+   ],
+   "text": "7 m",
+   "role": "e",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex8",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    31,
+    3.8
+   ],
+   "text": "3 m",
+   "role": "e",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex9",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    38,
+    34.0
+   ],
+   "text": "√58 m",
+   "role": "e",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex10",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(cur>=1)"
+  },
+  {
+   "type": "arc",
+   "c": [
+    40.0,
+    8.0
+   ],
+   "r": 9,
+   "from": 113.19859051364818,
+   "to": 180,
+   "role": "e",
+   "strokeWidth": 2.6,
+   "effect": "draw",
+   "id": "arc11",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(cur>=2)"
+  },
+  {
+   "type": "text",
+   "at": [
+    28.312,
+    15.707
+   ],
+   "text": "θ",
+   "role": "e",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex12",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(cur>=2)"
+  },
+  {
+   "type": "text",
+   "at": [
+    83,
+    52.0
+   ],
+   "text": "opposite = 7 m",
+   "role": "e",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex13",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(abs(cur-0)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    83,
+    44.8
+   ],
+   "text": "adjacent = 3 m",
+   "role": "e",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex14",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(abs(cur-0)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    83,
+    52.0
+   ],
+   "text": "length of wire",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex15",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(abs(cur-1)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    83,
+    44.8
+   ],
+   "text": "√(7²+3²) = √58",
+   "role": "e",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex16",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(abs(cur-1)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    83,
+    52.0
+   ],
+   "text": "sin θ = 7/√58",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex17",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(abs(cur-2)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    83,
+    44.8
+   ],
+   "text": "cos θ = 3/√58",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex18",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(abs(cur-2)<0.5)"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Right triangle",
+   "text": "\\[\\begin{aligned}&\\text{The long wire is the hypotenuse of a right}\\\\[5pt]&\\text{triangle.}\\\\[5pt]&\\text{opposite}=7\\text{ m},\\quad\\text{adjacent}=3\\text{ m}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Length of the wire",
+   "text": "\\[\\begin{aligned}&\\text{wire}=\\sqrt{7^2+3^2}=\\sqrt{58}\\text{ m}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "sin θ and cos θ",
+   "text": "\\[\\begin{aligned}&\\sin\\theta=\\dfrac{\\text{opp}}{\\text{hyp}}=\\textcolor{#047857}{\\mathbf{\\dfrac7{\\sqrt{58}}}}\\\\[5pt]&\\cos\\theta=\\dfrac{\\text{adj}}{\\text{hyp}}=\\textcolor{#047857}{\\mathbf{\\dfrac3{\\sqrt{58}}}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 2
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Watch the figure change with every step. Green words are the answers."
+  }
+ ]
+}
