@@ -1363,9 +1363,9 @@ window.WHA_CONTENT = {
             "n": 7,
             "unit": 7,
             "title": "Mathematical Induction and Binomial Theorem",
-            "notes": null,
+            "notes": "https://whacademypk.com/notes/class-11/math/mathematical-induction-and-binomial-theorem.html",
             "quiz": null,
-            "game": null
+            "game": "https://whacademypk.com/games/chapter.html?ch=11/math/mathematical_induction_and_binomial_theorem"
           },
           {
             "n": 8,
