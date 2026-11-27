@@ -1,0 +1,5405 @@
+{
+ "mechanicId": "speed-challenge",
+ "questions": [
+  {
+   "id": "speed-001",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "toolkit",
+   "prompt": "Convert \\(135^\\circ\\) to radians.",
+   "explanation": "Multiply by \\(\\dfrac{\\pi}{180}\\): \\(135^\\circ=135\\cdot\\dfrac{\\pi}{180}=\\frac{3 \\pi}{4}\\) rad.",
+   "payload": {
+    "options": [
+     "\\(\\frac{3 \\pi}{8}\\)",
+     "\\(\\frac{3 \\pi}{4}\\)",
+     "\\(\\frac{\\pi}{4}\\)",
+     "\\(\\frac{3 \\pi}{2}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-002",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "graphs",
+   "prompt": "How many complete cycles of \\(y=\\cot(3 x)\\) appear in the interval \\([0,\\ \\pi]\\)?",
+   "explanation": "Number of cycles \\(=\\dfrac{\\text{length of interval}}{\\text{period}}\\). The period of \\(y=\\cot(3 x)\\) is \\(\\frac{\\pi}{3}\\), so in \\([0,\\pi]\\) there are \\(\\dfrac{\\pi}{\\frac{\\pi}{3}}=3\\) complete cycles.",
+   "payload": {
+    "options": [
+     "\\(2\\)",
+     "\\(3\\)",
+     "\\(6\\)",
+     "\\(1\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-003",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=4\\sin(\\frac{3 \\pi x}{2})\\).",
+   "explanation": "For \\(y=\\sin(bx+c)\\) the period is \\(\\dfrac{2 \\pi}{|b|}\\). Here \\(b=\\frac{3 \\pi}{2}\\), so the period is \\(\\frac{4}{3}\\). The coefficient in front and the shift inside do not change the period.",
+   "payload": {
+    "options": [
+     "\\(\\frac{4}{3}\\)",
+     "\\(\\frac{8}{3}\\)",
+     "\\(2 \\pi\\)",
+     "\\(\\frac{2}{3}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-004",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "values",
+   "prompt": "Find the exact value of \\(\\cot\\,480^\\circ\\).",
+   "explanation": "Reduce to the reference angle: \\(480^\\circ\\equiv120^\\circ\\) (mod \\(360^\\circ\\)), in quadrant II. Use the sign rule (ASTC) and the special-angle values to get \\(- \\frac{\\sqrt{3}}{3}\\).",
+   "payload": {
+    "options": [
+     "\\(- \\frac{2 \\sqrt{3}}{3}\\)",
+     "\\(\\frac{2 \\sqrt{3}}{3}\\)",
+     "\\(- \\frac{\\sqrt{3}}{3}\\)",
+     "\\(\\sqrt{3}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-005",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "max-min",
+   "prompt": "Find the range of \\(y=\\dfrac{1}{-4 + \\frac{1}{3}\\sin(x)}\\).",
+   "explanation": "Denominator: \\(a=-4\\), \\(|b|=\\frac{1}{3}\\), so it runs from \\(m=- \\frac{13}{3}\\) to \\(M=- \\frac{11}{3}\\). Both have the same sign, so the denominator never reaches 0 and the reciprocal runs from \\(\\dfrac1M\\) to \\(\\dfrac1m\\): \\([- \\frac{3}{11},\\ - \\frac{3}{13}]\\).",
+   "payload": {
+    "options": [
+     "\\([- \\frac{3}{11},\\ - \\frac{3}{13}]\\)",
+     "\\([- \\frac{3}{13},\\ \\frac{3}{13}]\\)",
+     "\\([- \\frac{13}{3},\\ - \\frac{11}{3}]\\)",
+     "\\((-\\infty,\\ - \\frac{3}{11}]\\cup[- \\frac{3}{13},\\ \\infty)\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-006",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=3\\sin(5 x - 2) - 1\\).",
+   "explanation": "\\(-1\\le\\sin(\\cdots)\\le1\\), so multiplying by \\(3\\) gives \\([-3,3]\\) and adding \\(-1\\) shifts it to \\([-4,\\ 2]\\). The inside part only changes the period.",
+   "payload": {
+    "options": [
+     "\\([-3,\\ 3]\\)",
+     "\\([-4,\\ 2]\\)",
+     "\\([-7,\\ 5]\\)",
+     "\\([-5,\\ 3]\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-007",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "domain-range",
+   "prompt": "Find the domain of \\(y=3\\operatorname{cosec}(\\frac{2 x}{3})\\).",
+   "explanation": "\\(\\operatorname{cosec}\\theta\\) is undefined when \\(\\sin\\theta=0\\), i.e. \\(\\theta=n\\pi\\). With \\(\\theta=\\frac{2}{3}x\\): \\(x=\\dfrac{n\\pi}{\\frac{2}{3}}\\).",
+   "payload": {
+    "options": [
+     "\\(x\\ne n\\cdot\\pi,\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne n\\cdot\\frac{3 \\pi}{2},\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne n\\cdot\\frac{3 \\pi}{4},\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne (2n+1)\\cdot\\frac{3 \\pi}{4},\\ n\\in\\mathbb{Z}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-008",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=\\frac{5}{2}\\cos(\\frac{5 x}{2} + \\frac{1}{2}) - 2\\).",
+   "explanation": "\\(-1\\le\\cos(\\cdots)\\le1\\), so multiplying by \\(\\frac{5}{2}\\) gives \\([- \\frac{5}{2},\\frac{5}{2}]\\) and adding \\(-2\\) shifts it to \\([- \\frac{9}{2},\\ \\frac{1}{2}]\\). The inside part only changes the period.",
+   "payload": {
+    "options": [
+     "\\([- \\frac{11}{2},\\ \\frac{3}{2}]\\)",
+     "\\([- \\frac{33}{4},\\ \\frac{17}{4}]\\)",
+     "\\([- \\frac{9}{2},\\ \\frac{1}{2}]\\)",
+     "\\([- \\frac{5}{2},\\ \\frac{5}{2}]\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-009",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=2\\tan(2 x)\\).",
+   "explanation": "\\(\\tan\\) takes every real value, and multiplying by \\(2\\) still gives every real value.",
+   "payload": {
+    "options": [
+     "\\((-\\infty,-2]\\cup[2,\\infty)\\)",
+     "\\((0,\\infty)\\)",
+     "\\([-1,1]\\)",
+     "\\(\\mathbb{R}\\ (\\text{all real numbers})\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-010",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\frac{3}{2}\\operatorname{cosec}(\\frac{5 x}{2} + 2)\\).",
+   "explanation": "For \\(y=\\operatorname{cosec}(bx+c)\\) the period is \\(\\dfrac{2 \\pi}{|b|}\\). Here \\(b=\\frac{5}{2}\\), so the period is \\(\\frac{4 \\pi}{5}\\). The coefficient in front and the shift inside do not change the period.",
+   "payload": {
+    "options": [
+     "\\(\\frac{4 \\pi}{5}\\)",
+     "\\(2 \\pi\\)",
+     "\\(\\frac{2 \\pi}{3}\\)",
+     "\\(5 \\pi\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-011",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "even-odd",
+   "prompt": "Is \\(f(x)=\\dfrac{\\sin^2x}{x^2}\\) even, odd, or neither?",
+   "explanation": "Parities of the factors: \\(\\sin^2x\\) is even, \\(x^2\\) is even. There are 0 odd factors (a product or quotient is odd exactly when the number of odd factors is odd), so the function is even.",
+   "payload": {
+    "options": [
+     "Both even and odd",
+     "Neither even nor odd",
+     "Even",
+     "Odd"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-012",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "max-min",
+   "prompt": "Find the minimum value of \\(y=4\\sin(x) + \\frac{1}{3}\\).",
+   "explanation": "For \\(y=a+b\\,\\sin(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=\\frac{1}{3}\\), \\(|b|=4\\), so \\(M=\\frac{13}{3}\\) and \\(m=- \\frac{11}{3}\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(\\frac{13}{3}\\)",
+     "\\(\\frac{4}{3}\\)",
+     "\\(- \\frac{11}{3}\\)",
+     "\\(-4\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-013",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "max-min",
+   "prompt": "Find the minimum value of \\(y=-6\\sin(x) - 1\\).",
+   "explanation": "For \\(y=a+b\\,\\sin(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=-1\\), \\(|b|=6\\), so \\(M=5\\) and \\(m=-7\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(-6\\)",
+     "\\(-7\\)",
+     "\\(7\\)",
+     "\\(5\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-014",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "values",
+   "prompt": "Find the exact value of \\(\\cot\\,300^\\circ\\).",
+   "explanation": "Reduce to the reference angle: \\(300^\\circ\\equiv300^\\circ\\) (mod \\(360^\\circ\\)), in quadrant IV. Use the sign rule (ASTC) and the special-angle values to get \\(- \\frac{\\sqrt{3}}{3}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{\\sqrt{3}}{3}\\)",
+     "\\(- \\sqrt{2}\\)",
+     "\\(- \\frac{\\sqrt{3}}{3}\\)",
+     "\\(- \\sqrt{3}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-015",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\sin^{5}(\\frac{7 x}{2})\\).",
+   "explanation": "An odd power of sin or cos keeps its sign changes, so the period stays \\(\\dfrac{2\\pi}{|b|}\\). Here \\(b=\\frac{7}{2}\\), so the period is \\(\\frac{4 \\pi}{7}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{2 \\pi}{7}\\)",
+     "\\(\\frac{\\pi}{7}\\)",
+     "\\(\\frac{4 \\pi}{7}\\)",
+     "\\(\\frac{8 \\pi}{7}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-016",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "The function \\(f(x)=\\sin(kx)\\) (\\(k>0\\)) has period \\(\\frac{2 \\pi}{3}\\). Find \\(k\\).",
+   "explanation": "The period of \\(\\sin(kx)\\) is \\(\\dfrac{2 \\pi}{k}\\). Setting \\(\\dfrac{2 \\pi}{k}=\\frac{2 \\pi}{3}\\) gives \\(k=3\\).",
+   "payload": {
+    "options": [
+     "\\(3\\)",
+     "\\(\\frac{1}{3}\\)",
+     "\\(\\frac{2}{3}\\)",
+     "\\(2\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-017",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\cot(\\frac{x}{2}) + \\cot(4 x)\\).",
+   "explanation": "First find the two periods: \\(2 \\pi\\) and \\(\\frac{\\pi}{4}\\). The period of a sum is \\(\\dfrac{\\text{LCM of numerators}}{\\text{HCF of denominators}}\\). Writing the periods as fractions of \\(\\pi\\): \\(2\\) and \\(\\frac{1}{4}\\) give \\(2\\pi\\). So the period is \\(2 \\pi\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{\\pi}{4}\\)",
+     "\\(\\frac{9 \\pi}{4}\\)",
+     "\\(4 \\pi\\)",
+     "\\(2 \\pi\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-018",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\cos(\\frac{5 x}{2}) + \\cos(\\frac{5 x}{3})\\).",
+   "explanation": "First find the two periods: \\(\\frac{4 \\pi}{5}\\) and \\(\\frac{6 \\pi}{5}\\). The period of a sum is \\(\\dfrac{\\text{LCM of numerators}}{\\text{HCF of denominators}}\\). Writing the periods as fractions of \\(\\pi\\): \\(\\frac{4}{5}\\) and \\(\\frac{6}{5}\\) give \\(\\frac{12}{5}\\pi\\). So the period is \\(\\frac{12 \\pi}{5}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{4 \\pi}{5}\\)",
+     "\\(\\frac{12 \\pi}{5}\\)",
+     "\\(\\frac{6 \\pi}{5}\\)",
+     "\\(2 \\pi\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-019",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "max-min",
+   "prompt": "Find the minimum value of \\(y=-2\\sin(x) - 1\\).",
+   "explanation": "For \\(y=a+b\\,\\sin(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=-1\\), \\(|b|=2\\), so \\(M=1\\) and \\(m=-3\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(-3\\)",
+     "\\(2\\)",
+     "\\(3\\)",
+     "\\(-2\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-020",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\cot(5 x) + \\sin(\\frac{2 x}{3})\\).",
+   "explanation": "First find the two periods: \\(\\frac{\\pi}{5}\\) and \\(3 \\pi\\). The period of a sum is \\(\\dfrac{\\text{LCM of numerators}}{\\text{HCF of denominators}}\\). Writing the periods as fractions of \\(\\pi\\): \\(\\frac{1}{5}\\) and \\(3\\) give \\(3\\pi\\). So the period is \\(3 \\pi\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{3 \\pi}{2}\\)",
+     "\\(3 \\pi\\)",
+     "\\(\\frac{3 \\pi}{5}\\)",
+     "\\(\\frac{16 \\pi}{5}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-021",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "max-min",
+   "prompt": "Find the maximum \\(M\\) and minimum \\(m\\) of \\(y=6\\cos(3 x) + 2\\).",
+   "explanation": "For \\(y=a+b\\,\\cos(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=2\\), \\(|b|=6\\), so \\(M=8\\) and \\(m=-4\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(M=9,\\ m=-5\\)",
+     "\\(M=8,\\ m=-4\\)",
+     "\\(M=12,\\ m=-12\\)",
+     "\\(M=-4,\\ m=8\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-022",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "max-min",
+   "prompt": "Find the maximum value of \\(y=\\frac{2}{3}\\sin(x) + 4\\).",
+   "explanation": "For \\(y=a+b\\,\\sin(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=4\\), \\(|b|=\\frac{2}{3}\\), so \\(M=\\frac{14}{3}\\) and \\(m=\\frac{10}{3}\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(\\frac{10}{3}\\)",
+     "\\(\\frac{2}{3}\\)",
+     "\\(\\frac{16}{3}\\)",
+     "\\(\\frac{14}{3}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-023",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "graphs",
+   "prompt": "Describe the horizontal (phase) shift of \\(y=-2\\cos\\left(\\frac{1}{3}\\left(x-\\frac{\\pi}{6}\\right)\\right)\\) compared with the basic cosine wave.",
+   "explanation": "Write the bracket as \\(b(x-c)\\). A factor \\((x-c)\\) shifts the graph right by \\(c\\); \\((x+c)\\) shifts it left. Here the shift is right by \\(\\frac{\\pi}{6}\\).",
+   "payload": {
+    "options": [
+     "Up by \\(\\frac{\\pi}{6}\\)",
+     "Down by \\(\\frac{\\pi}{6}\\)",
+     "Right by \\(\\frac{\\pi}{6}\\)",
+     "Right by \\(\\frac{\\pi}{18}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-024",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "graphs",
+   "prompt": "Describe the horizontal (phase) shift of \\(y=-2\\sin\\left(\\left(x+\\frac{\\pi}{3}\\right)\\right)\\) compared with the basic sine wave.",
+   "explanation": "Write the bracket as \\(b(x-c)\\). A factor \\((x-c)\\) shifts the graph right by \\(c\\); \\((x+c)\\) shifts it left. Here the shift is left by \\(\\frac{\\pi}{3}\\).",
+   "payload": {
+    "options": [
+     "Down by \\(\\frac{\\pi}{3}\\)",
+     "Right by \\(\\frac{\\pi}{3}\\)",
+     "Left by \\(\\frac{\\pi}{3}\\)",
+     "Up by \\(\\frac{\\pi}{3}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-025",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "The function \\(f(x)=\\cot(kx)\\) (\\(k>0\\)) has period \\(\\frac{\\pi}{4}\\). Find \\(k\\).",
+   "explanation": "The period of \\(\\cot(kx)\\) is \\(\\dfrac{\\pi}{k}\\). Setting \\(\\dfrac{\\pi}{k}=\\frac{\\pi}{4}\\) gives \\(k=4\\).",
+   "payload": {
+    "options": [
+     "\\(2\\)",
+     "\\(8\\)",
+     "\\(3\\)",
+     "\\(4\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-026",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=\\frac{1}{2}|\\cos x| - 1\\).",
+   "explanation": "\\(0\\le|\\cos\\theta|\\le1\\), so \\(0\\le\\frac{1}{2}|\\cos\\theta|\\le\\frac{1}{2}\\) and adding \\(-1\\) gives \\([-1,\\ - \\frac{1}{2}]\\).",
+   "payload": {
+    "options": [
+     "\\([0,\\ \\frac{1}{2}]\\)",
+     "\\([-2,\\ 0]\\)",
+     "\\([-1,\\ - \\frac{1}{2}]\\)",
+     "\\([- \\frac{1}{2},\\ - \\frac{1}{2}]\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-027",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "max-min",
+   "prompt": "Find the range of \\(y=\\dfrac{1}{\\frac{3}{2} - 4\\cos(2 x)}\\).",
+   "explanation": "The denominator runs from \\(m=- \\frac{5}{2}\\) to \\(M=\\frac{11}{2}\\) and passes through \\(0\\) (so these \\(x\\) are excluded from the domain). Then \\(y\\) takes values \\(\\le\\dfrac1m=- \\frac{2}{5}\\) or \\(\\ge\\dfrac1M=\\frac{2}{11}\\), with a gap between. There is no maximum and no minimum.",
+   "payload": {
+    "options": [
+     "\\((-\\infty,\\ - \\frac{5}{2}]\\cup[\\frac{11}{2},\\ \\infty)\\)",
+     "\\((-\\infty,\\ - \\frac{2}{5}]\\cup[\\frac{2}{11},\\ \\infty)\\)",
+     "\\([- \\frac{2}{5},\\ \\frac{2}{11}]\\)",
+     "\\(\\mathbb{R}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-028",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\sin(5 x)\\).",
+   "explanation": "For \\(y=\\sin(bx+c)\\) the period is \\(\\dfrac{2 \\pi}{|b|}\\). Here \\(b=5\\), so the period is \\(\\frac{2 \\pi}{5}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{4 \\pi}{11}\\)",
+     "\\(\\pi\\)",
+     "\\(10 \\pi\\)",
+     "\\(\\frac{2 \\pi}{5}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-029",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "graphs",
+   "prompt": "How many complete cycles of \\(y=\\cot(5 x)\\) appear in the interval \\([0,\\ 4 \\pi]\\)?",
+   "explanation": "Number of cycles \\(=\\dfrac{\\text{length of interval}}{\\text{period}}\\). The period of \\(y=\\cot(5 x)\\) is \\(\\frac{\\pi}{5}\\), so in \\([0,4 \\pi]\\) there are \\(\\dfrac{4 \\pi}{\\frac{\\pi}{5}}=20\\) complete cycles.",
+   "payload": {
+    "options": [
+     "\\(60\\)",
+     "\\(20\\)",
+     "\\(10\\)",
+     "\\(19\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-030",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "identities",
+   "prompt": "Simplify \\(\\sin^2\\theta+\\cos^2\\theta\\).",
+   "explanation": "Use the fundamental identities (quotient, reciprocal and Pythagorean) or the double-angle formulas: \\(\\sin^2\\theta+\\cos^2\\theta=1\\).",
+   "payload": {
+    "options": [
+     "\\(\\operatorname{cosec}\\theta\\)",
+     "\\(\\cot\\theta\\)",
+     "\\(1\\)",
+     "\\(0\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-031",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A Ferris wheel of radius \\(25\\) m has its lowest point \\(4\\) m above the ground and makes one revolution in \\(120\\) s. A rider boards at the lowest point. How high above the ground is the rider after \\(90\\) s?",
+   "explanation": "A rider who starts at the lowest point follows \\(h(t)=29-25\\cos\\!\\left(\\dfrac{2\\pi t}{120}\\right)\\) (centre height \\(=\\text{radius}+\\text{platform}=25+4=29\\) m). At \\(t=90\\) s the angle is \\(2\\pi\\cdot\\frac{3}{4}\\), \\(\\cos=0\\), so \\(h=29\\) m.",
+   "payload": {
+    "options": [
+     "\\(25\\text{ m}\\)",
+     "\\(54\\text{ m}\\)",
+     "\\(4\\text{ m}\\)",
+     "\\(29\\text{ m}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-032",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "even-odd",
+   "prompt": "Is \\(f(x)=\\dfrac{\\sin x}{\\tan x}\\) even, odd, or neither?",
+   "explanation": "Parities of the factors: \\(\\sin x\\) is odd, \\(\\tan x\\) is odd. There are 2 odd factors (a product or quotient is odd exactly when the number of odd factors is odd), so the function is even.",
+   "payload": {
+    "options": [
+     "Odd",
+     "Even",
+     "Both even and odd",
+     "Neither even nor odd"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-033",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=2\\sin(4 x)\\).",
+   "explanation": "For \\(y=\\sin(bx+c)\\) the period is \\(\\dfrac{2 \\pi}{|b|}\\). Here \\(b=4\\), so the period is \\(\\frac{\\pi}{2}\\). The coefficient in front and the shift inside do not change the period.",
+   "payload": {
+    "options": [
+     "\\(\\pi\\)",
+     "\\(\\frac{\\pi}{2}\\)",
+     "\\(\\frac{4 \\pi}{9}\\)",
+     "\\(\\frac{2 \\pi}{5}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-034",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "The height of a buoy above the sea bed is modelled by \\(d(t)=10+\\cos\\!\\left(\\dfrac{2\\pi t}{6}\\right)\\), \\(t\\) in hours. Find the least value.",
+   "explanation": "Min \\(=D-A=10-1=9\\).",
+   "payload": {
+    "options": [
+     "\\(9\\text{ m}\\)",
+     "\\(11\\text{ m}\\)",
+     "\\(8\\text{ m}\\)",
+     "\\(1\\text{ m}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-035",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=6\\cos(\\frac{7 x}{3})\\).",
+   "explanation": "\\(-1\\le\\cos(\\cdots)\\le1\\), so multiplying by \\(6\\) gives \\([-6,6]\\). The inside part only changes the period.",
+   "payload": {
+    "options": [
+     "\\([-14,\\ 14]\\)",
+     "\\([-1,\\ 1]\\)",
+     "\\([-12,\\ 12]\\)",
+     "\\([-6,\\ 6]\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-036",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=3\\cos(2 x + 2)\\).",
+   "explanation": "\\(-1\\le\\cos(\\cdots)\\le1\\), so multiplying by \\(3\\) gives \\([-3,3]\\). The inside part only changes the period.",
+   "payload": {
+    "options": [
+     "\\([-6,\\ 6]\\)",
+     "\\([-3,\\ 3]\\)",
+     "\\([-3,\\ 5]\\)",
+     "\\([-4,\\ 4]\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-037",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "The depth of water in a harbour is modelled by \\(d(t)=15+3\\cos\\!\\left(\\dfrac{2\\pi t}{8}\\right)\\), \\(t\\) in hours. How many hours pass between two successive maxima?",
+   "explanation": "The time between successive maxima is one period \\(=\\dfrac{2\\pi}{2\\pi/8}=8\\) hours.",
+   "payload": {
+    "options": [
+     "\\(2\\)",
+     "\\(16\\)",
+     "\\(4\\)",
+     "\\(8\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-038",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=4\\sin(\\frac{7 x}{3} + 2) + 2\\).",
+   "explanation": "\\(-1\\le\\sin(\\cdots)\\le1\\), so multiplying by \\(4\\) gives \\([-4,4]\\) and adding \\(2\\) shifts it to \\([-2,\\ 6]\\). The inside part only changes the period.",
+   "payload": {
+    "options": [
+     "\\([-3,\\ 7]\\)",
+     "\\([1,\\ 3]\\)",
+     "\\([-2,\\ 6]\\)",
+     "\\([-6,\\ 10]\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-039",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "The depth of water in a harbour is modelled by \\(d(t)=6+5\\cos\\!\\left(\\dfrac{2\\pi t}{8}\\right)\\), \\(t\\) in hours. Find the least value.",
+   "explanation": "Min \\(=D-A=6-5=1\\).",
+   "payload": {
+    "options": [
+     "\\(1\\text{ m}\\)",
+     "\\(5\\text{ m}\\)",
+     "\\(6\\text{ m}\\)",
+     "\\(11\\text{ m}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-040",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "max-min",
+   "prompt": "Find the range of \\(y=\\dfrac{1}{-4 + 2\\cos(3 x - 1)}\\).",
+   "explanation": "Denominator: \\(a=-4\\), \\(|b|=2\\), so it runs from \\(m=-6\\) to \\(M=-2\\). Both have the same sign, so the denominator never reaches 0 and the reciprocal runs from \\(\\dfrac1M\\) to \\(\\dfrac1m\\): \\([-0.5,\\ -0.166666666666667]\\).",
+   "payload": {
+    "options": [
+     "\\([-6,\\ -2]\\)",
+     "\\([-0.166666666666667,\\ 0.166666666666667]\\)",
+     "\\([0.166666666666667,\\ 0.5]\\)",
+     "\\([-0.5,\\ -0.166666666666667]\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-041",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "max-min",
+   "prompt": "Find the maximum value of \\(y=-3\\cos^2x - 2\\sin^2x\\).",
+   "explanation": "Use \\(\\sin^2x+\\cos^2x=1\\): the expression is a weighted average of \\(-3\\) and \\(-2\\) with weights between \\(0\\) and \\(1\\), so it lies between them. Maximum \\(=-2\\), minimum \\(=-3\\).",
+   "payload": {
+    "options": [
+     "\\(-2\\)",
+     "\\(-5\\)",
+     "\\(-4\\)",
+     "\\(-1\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-042",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "graphs",
+   "prompt": "How many complete cycles of \\(y=\\sin(8 x)\\) appear in the interval \\([0,\\ 2 \\pi]\\)?",
+   "explanation": "Number of cycles \\(=\\dfrac{\\text{length of interval}}{\\text{period}}\\). The period of \\(y=\\sin(8 x)\\) is \\(\\frac{\\pi}{4}\\), so in \\([0,2 \\pi]\\) there are \\(\\dfrac{2 \\pi}{\\frac{\\pi}{4}}=8\\) complete cycles.",
+   "payload": {
+    "options": [
+     "\\(24\\)",
+     "\\(7\\)",
+     "\\(8\\)",
+     "\\(16\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-043",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "even-odd",
+   "prompt": "Is \\(f(x)=\\cos3x \\cdot \\sin x \\cdot x\\) even, odd, or neither?",
+   "explanation": "Parities of the factors: \\(\\cos3x\\) is even, \\(\\sin x\\) is odd, \\(x\\) is odd. There are 2 odd factors (a product or quotient is odd exactly when the number of odd factors is odd), so the function is even.",
+   "payload": {
+    "options": [
+     "Odd",
+     "Neither even nor odd",
+     "Even",
+     "Both even and odd"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-044",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\cot(\\frac{3 x}{2}) + \\tan(6 x)\\).",
+   "explanation": "First find the two periods: \\(\\frac{2 \\pi}{3}\\) and \\(\\frac{\\pi}{6}\\). The period of a sum is \\(\\dfrac{\\text{LCM of numerators}}{\\text{HCF of denominators}}\\). Writing the periods as fractions of \\(\\pi\\): \\(\\frac{2}{3}\\) and \\(\\frac{1}{6}\\) give \\(\\frac{2}{3}\\pi\\). So the period is \\(\\frac{2 \\pi}{3}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{\\pi}{3}\\)",
+     "\\(\\frac{\\pi}{6}\\)",
+     "\\(\\frac{2 \\pi}{3}\\)",
+     "\\(\\frac{5 \\pi}{6}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-045",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A mass on a spring moves according to \\(x=6\\cos(4t)\\) cm, \\(t\\) in seconds. Find the frequency of the motion (oscillations per second).",
+   "explanation": "Frequency \\(=\\dfrac{1}{T}=\\dfrac{\\omega}{2\\pi}=\\frac{2}{\\pi}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{2}{\\pi}\\)",
+     "\\(\\frac{\\pi}{2}\\)",
+     "\\(\\frac{4}{\\pi}\\)",
+     "\\(\\frac{1}{4}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-046",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "values",
+   "prompt": "Is \\(\\cos\\,200^\\circ\\) positive or negative?",
+   "explanation": "\\(200^\\circ\\) lies in quadrant III (it is coterminal with \\(200^\\circ\\)). ASTC: All positive in I, Sine (and cosec) in II, Tangent (and cot) in III, Cosine (and sec) in IV. So \\(\\cos\\,200^\\circ\\) is negative.",
+   "payload": {
+    "options": [
+     "Positive",
+     "Zero",
+     "Negative",
+     "Undefined"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-047",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=7\\sec(\\frac{7 x}{3} + 5)\\).",
+   "explanation": "For \\(y=\\sec(bx+c)\\) the period is \\(\\dfrac{2 \\pi}{|b|}\\). Here \\(b=\\frac{7}{3}\\), so the period is \\(\\frac{6 \\pi}{7}\\). The coefficient in front and the shift inside do not change the period.",
+   "payload": {
+    "options": [
+     "\\(\\frac{3 \\pi}{7}\\)",
+     "\\(\\frac{14 \\pi}{3}\\)",
+     "\\(2 \\pi\\)",
+     "\\(\\frac{6 \\pi}{7}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-048",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "graphs",
+   "prompt": "State the amplitude of \\(y=-2\\sin\\left(\\left(x-\\frac{\\pi}{6}\\right)\\right) + 4\\).",
+   "explanation": "Amplitude \\(=|a|=2\\).",
+   "payload": {
+    "options": [
+     "\\(-2\\)",
+     "\\(4\\)",
+     "\\(6\\)",
+     "\\(2\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-049",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "domain-range",
+   "prompt": "Find the domain of \\(y=3\\tan(\\frac{2 x}{3})\\).",
+   "explanation": "\\(\\tan\\theta\\) is undefined when \\(\\cos\\theta=0\\), i.e. \\(\\theta=(2n+1)\\frac{\\pi}{2}\\). With \\(\\theta=\\frac{2}{3}x\\): \\(x=\\dfrac{(2n+1)\\pi}{2\\cdot\\frac{2}{3}}\\).",
+   "payload": {
+    "options": [
+     "\\(x\\ne (2n+1)\\cdot\\frac{\\pi}{2},\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne (2n+1)\\cdot\\frac{3 \\pi}{4},\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne n\\cdot\\frac{3 \\pi}{2},\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne n\\cdot\\frac{3 \\pi}{4},\\ n\\in\\mathbb{Z}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-050",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\sin(\\frac{2 x}{5}) + \\cot(\\frac{x}{2})\\).",
+   "explanation": "First find the two periods: \\(5 \\pi\\) and \\(2 \\pi\\). The period of a sum is \\(\\dfrac{\\text{LCM of numerators}}{\\text{HCF of denominators}}\\). Writing the periods as fractions of \\(\\pi\\): \\(5\\) and \\(2\\) give \\(10\\pi\\). So the period is \\(10 \\pi\\).",
+   "payload": {
+    "options": [
+     "\\(2 \\pi\\)",
+     "\\(7 \\pi\\)",
+     "\\(5 \\pi\\)",
+     "\\(10 \\pi\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-051",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "max-min",
+   "prompt": "Find the maximum \\(M\\) and minimum \\(m\\) of \\(y=-3\\cos(x) + 6\\).",
+   "explanation": "For \\(y=a+b\\,\\cos(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=6\\), \\(|b|=3\\), so \\(M=9\\) and \\(m=3\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(M=10,\\ m=2\\)",
+     "\\(M=9,\\ m=3\\)",
+     "\\(M=3,\\ m=-3\\)",
+     "\\(M=3,\\ m=9\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-052",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "values",
+   "prompt": "Find the exact value of \\(\\sin\\,315^\\circ\\).",
+   "explanation": "Reduce to the reference angle: \\(315^\\circ\\equiv315^\\circ\\) (mod \\(360^\\circ\\)), in quadrant IV. Use the sign rule (ASTC) and the special-angle values to get \\(- \\frac{\\sqrt{2}}{2}\\).",
+   "payload": {
+    "options": [
+     "\\(- \\frac{\\sqrt{2}}{2}\\)",
+     "\\(\\frac{2 \\sqrt{3}}{3}\\)",
+     "\\(- \\frac{2 \\sqrt{3}}{3}\\)",
+     "\\(\\sqrt{2}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-053",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "values",
+   "prompt": "Find the exact value of \\(\\tan\\,15^\\circ\\).",
+   "explanation": "Write \\(15^\\circ\\) as a sum or difference of special angles (e.g. \\(45^\\circ\\pm30^\\circ\\) or \\(60^\\circ\\pm45^\\circ\\)) and use the compound-angle formulas. The result is \\(2 - \\sqrt{3}\\).",
+   "payload": {
+    "options": [
+     "\\(\\sqrt{\\frac{\\sqrt{3}}{4} + \\frac{1}{2}}\\)",
+     "\\(-2 + \\sqrt{3}\\)",
+     "\\(\\sqrt{\\frac{1}{2} - \\frac{\\sqrt{3}}{4}}\\)",
+     "\\(2 - \\sqrt{3}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-054",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "graphs",
+   "prompt": "How many times does the graph of \\(y=\\sin(6 x)\\) cross the \\(x\\)-axis for \\(0<x\\le2 \\pi\\)?",
+   "explanation": "The zeros of \\(y=\\sin(6 x)\\) are at \\(x=\\dfrac{n\\pi}{6}\\). Counting those with \\(0<x\\le2 \\pi\\) gives 12.",
+   "payload": {
+    "options": [
+     "\\(11\\)",
+     "\\(13\\)",
+     "\\(14\\)",
+     "\\(12\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-055",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "max-min",
+   "prompt": "Find the maximum value of \\(y=-6\\sin(x) - 2\\).",
+   "explanation": "For \\(y=a+b\\,\\sin(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=-2\\), \\(|b|=6\\), so \\(M=4\\) and \\(m=-8\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(12\\)",
+     "\\(-4\\)",
+     "\\(-8\\)",
+     "\\(4\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-056",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "identities",
+   "prompt": "Simplify \\(\\cos\\theta\\tan\\theta\\sec\\theta\\).",
+   "explanation": "Use the fundamental identities (quotient, reciprocal and Pythagorean) or the double-angle formulas: \\(\\cos\\theta\\tan\\theta\\sec\\theta=\\tan\\theta\\).",
+   "payload": {
+    "options": [
+     "\\(\\cos\\theta\\)",
+     "\\(\\sin2\\theta\\)",
+     "\\(\\tan\\theta\\)",
+     "\\(\\operatorname{cosec}\\theta\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-057",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A voltage of peak value \\(150\\) V and frequency \\(5\\) Hz is written \\(V=150\\sin(kt)^\\circ\\), \\(t\\) in seconds. Find \\(k\\).",
+   "explanation": "\\(k=360\\times f=360\\times5=1800\\).",
+   "payload": {
+    "options": [
+     "\\(900\\)",
+     "\\(1800\\)",
+     "\\(5\\)",
+     "\\(\\frac{1}{72}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-058",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "max-min",
+   "prompt": "Find the range of \\(y=\\dfrac{1}{-3 - \\sin(3 x)}\\).",
+   "explanation": "Denominator: \\(a=-3\\), \\(|b|=1\\), so it runs from \\(m=-4\\) to \\(M=-2\\). Both have the same sign, so the denominator never reaches 0 and the reciprocal runs from \\(\\dfrac1M\\) to \\(\\dfrac1m\\): \\([-0.5,\\ -0.25]\\).",
+   "payload": {
+    "options": [
+     "\\((-\\infty,\\ -0.5]\\cup[-0.25,\\ \\infty)\\)",
+     "\\([-0.5,\\ -0.25]\\)",
+     "\\([0.25,\\ 0.5]\\)",
+     "\\([-4,\\ -2]\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-059",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "values",
+   "prompt": "Is \\(\\cos\\,190^\\circ\\) positive or negative?",
+   "explanation": "\\(190^\\circ\\) lies in quadrant III (it is coterminal with \\(190^\\circ\\)). ASTC: All positive in I, Sine (and cosec) in II, Tangent (and cot) in III, Cosine (and sec) in IV. So \\(\\cos\\,190^\\circ\\) is negative.",
+   "payload": {
+    "options": [
+     "Undefined",
+     "Positive",
+     "Zero",
+     "Negative"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-060",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A Ferris wheel has radius \\(6\\) m, its lowest point is \\(3\\) m above the ground and one revolution takes \\(36\\) s. In the model \\(h=D-R\\cos(Bt)\\), find \\(B\\) (in radians per second).",
+   "explanation": "\\(B=\\dfrac{2\\pi}{T}=\\dfrac{2\\pi}{36}=\\frac{\\pi}{18}\\).",
+   "payload": {
+    "options": [
+     "\\(36\\)",
+     "\\(\\frac{\\pi}{18}\\)",
+     "\\(\\frac{18}{\\pi}\\)",
+     "\\(72 \\pi\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-061",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "max-min",
+   "prompt": "Find the range of \\(y=\\dfrac{1}{\\frac{7}{2} + \\cos(x + 1)}\\).",
+   "explanation": "Denominator: \\(a=\\frac{7}{2}\\), \\(|b|=1\\), so it runs from \\(m=\\frac{5}{2}\\) to \\(M=\\frac{9}{2}\\). Both have the same sign, so the denominator never reaches 0 and the reciprocal runs from \\(\\dfrac1M\\) to \\(\\dfrac1m\\): \\([\\frac{2}{9},\\ \\frac{2}{5}]\\).",
+   "payload": {
+    "options": [
+     "\\((-\\infty,\\ \\frac{2}{5}]\\cup[\\frac{2}{9},\\ \\infty)\\)",
+     "\\([- \\frac{2}{5},\\ - \\frac{2}{9}]\\)",
+     "\\([\\frac{2}{9},\\ \\frac{2}{5}]\\)",
+     "\\([\\frac{5}{2},\\ \\frac{9}{2}]\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-062",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "even-odd",
+   "prompt": "Is \\(f(x)=\\dfrac{\\sin2x}{\\sin^2x}\\) even, odd, or neither?",
+   "explanation": "Parities of the factors: \\(\\sin2x\\) is odd, \\(\\sin^2x\\) is even. There are 1 odd factor (a product or quotient is odd exactly when the number of odd factors is odd), so the function is odd.",
+   "payload": {
+    "options": [
+     "Odd",
+     "Both even and odd",
+     "Even",
+     "Neither even nor odd"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-063",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "graphs",
+   "prompt": "How many times does the graph of \\(y=\\sin(5 x)\\) cross the \\(x\\)-axis for \\(0<x\\le\\pi\\)?",
+   "explanation": "The zeros of \\(y=\\sin(5 x)\\) are at \\(x=\\dfrac{n\\pi}{5}\\). Counting those with \\(0<x\\le\\pi\\) gives 5.",
+   "payload": {
+    "options": [
+     "\\(10\\)",
+     "\\(7\\)",
+     "\\(5\\)",
+     "\\(6\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-064",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(\\theta)=\\cot(5\\theta)\\) in degrees.",
+   "explanation": "In degrees the base period of \\cot is \\(180^\\circ\\). Divide by \\(|b|=5\\): \\(\\dfrac{180^\\circ}{5}=36^\\circ\\).",
+   "payload": {
+    "options": [
+     "\\(36^\\circ\\)",
+     "\\(72^\\circ\\)",
+     "\\(180^\\circ\\)",
+     "\\(900^\\circ\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-065",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "toolkit",
+   "prompt": "Which of these is the correct sign pattern (ASTC) starting from quadrant I?",
+   "explanation": "Quadrant I: all; II: sine; III: tangent; IV: cosine.",
+   "payload": {
+    "options": [
+     "Sine, All, Cosine, Tangent",
+     "Cosine, Sine, Tangent, All",
+     "All, Tangent, Sine, Cosine",
+     "All, Sine, Tangent, Cosine"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-066",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A quantity oscillates sinusoidally between a minimum of \\(11\\) and a maximum of \\(23\\) with period \\(2\\). Find the midline value (the vertical shift).",
+   "explanation": "Midline \\(=\\dfrac{\\max+\\min}{2}=\\dfrac{23+(11)}{2}=17\\).",
+   "payload": {
+    "options": [
+     "\\(23\\)",
+     "\\(18\\)",
+     "\\(17\\)",
+     "\\(11\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-067",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "max-min",
+   "prompt": "Find the maximum value of \\(y=7\\sin^2x - 2\\cos^2x\\).",
+   "explanation": "Use \\(\\sin^2x+\\cos^2x=1\\): the expression is a weighted average of \\(7\\) and \\(-2\\) with weights between \\(0\\) and \\(1\\), so it lies between them. Maximum \\(=7\\), minimum \\(=-2\\).",
+   "payload": {
+    "options": [
+     "\\(-14\\)",
+     "\\(5\\)",
+     "\\(7\\)",
+     "\\(9\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-068",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=3|\\cos x| + 3\\).",
+   "explanation": "\\(0\\le|\\cos\\theta|\\le1\\), so \\(0\\le3|\\cos\\theta|\\le3\\) and adding \\(3\\) gives \\([3,\\ 6]\\).",
+   "payload": {
+    "options": [
+     "\\([0,\\ 6]\\)",
+     "\\([2,\\ 4]\\)",
+     "\\([-3,\\ 6]\\)",
+     "\\([3,\\ 6]\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-069",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "graphs",
+   "prompt": "Describe the horizontal (phase) shift of \\(y=3\\cos\\left(4\\left(x+\\frac{\\pi}{3}\\right)\\right) + 2\\) compared with the basic cosine wave.",
+   "explanation": "Write the bracket as \\(b(x-c)\\). A factor \\((x-c)\\) shifts the graph right by \\(c\\); \\((x+c)\\) shifts it left. Here the shift is left by \\(\\frac{\\pi}{3}\\).",
+   "payload": {
+    "options": [
+     "Down by \\(\\frac{\\pi}{3}\\)",
+     "Right by \\(\\frac{4 \\pi}{3}\\)",
+     "Left by \\(\\frac{\\pi}{3}\\)",
+     "Up by \\(\\frac{\\pi}{3}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-070",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A voltage of peak value \\(311\\) V and frequency \\(56\\) Hz is written \\(V=311\\sin(kt)^\\circ\\), \\(t\\) in seconds. Find \\(k\\).",
+   "explanation": "\\(k=360\\times f=360\\times56=20160\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{7}{45}\\)",
+     "\\(112 \\pi\\)",
+     "\\(56\\)",
+     "\\(20160\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-071",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "The temperature in a room is modelled by \\(d(t)=8+4\\cos\\!\\left(\\dfrac{2\\pi t}{12}\\right)\\), \\(t\\) in hours. Find the least value.",
+   "explanation": "Min \\(=D-A=8-4=4\\).",
+   "payload": {
+    "options": [
+     "\\(8^\\circ\\text{C}\\)",
+     "\\(0^\\circ\\text{C}\\)",
+     "\\(12^\\circ\\text{C}\\)",
+     "\\(4^\\circ\\text{C}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-072",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "max-min",
+   "prompt": "Find the range of \\(y=\\dfrac{1}{7 + \\frac{1}{2}\\sin(x + 2)}\\).",
+   "explanation": "Denominator: \\(a=7\\), \\(|b|=\\frac{1}{2}\\), so it runs from \\(m=\\frac{13}{2}\\) to \\(M=\\frac{15}{2}\\). Both have the same sign, so the denominator never reaches 0 and the reciprocal runs from \\(\\dfrac1M\\) to \\(\\dfrac1m\\): \\([\\frac{2}{15},\\ \\frac{2}{13}]\\).",
+   "payload": {
+    "options": [
+     "\\([\\frac{13}{2},\\ \\frac{15}{2}]\\)",
+     "\\([\\frac{2}{15},\\ \\frac{2}{13}]\\)",
+     "\\([- \\frac{2}{13},\\ - \\frac{2}{15}]\\)",
+     "\\([- \\frac{2}{13},\\ \\frac{2}{13}]\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-073",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "The voltage in a circuit is \\(V=311\\sin(18000t)^\\circ\\), \\(t\\) in seconds. Find the peak (maximum) voltage.",
+   "explanation": "The maximum of \\(A\\sin(\\cdot)\\) is \\(A=311\\) V.",
+   "payload": {
+    "options": [
+     "\\(311\\)",
+     "\\(\\frac{311}{2}\\)",
+     "\\(361\\)",
+     "\\(622\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-074",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "values",
+   "prompt": "Is \\(\\cos\\,-140^\\circ\\) positive or negative?",
+   "explanation": "\\(-140^\\circ\\) lies in quadrant III (it is coterminal with \\(220^\\circ\\)). ASTC: All positive in I, Sine (and cosec) in II, Tangent (and cot) in III, Cosine (and sec) in IV. So \\(\\cos\\,-140^\\circ\\) is negative.",
+   "payload": {
+    "options": [
+     "Undefined",
+     "Negative",
+     "Zero",
+     "Positive"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-075",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "The voltage in a circuit is \\(V=110\\sin(36000t)^\\circ\\), \\(t\\) in seconds. Find the frequency in hertz (cycles per second).",
+   "explanation": "Period \\(=\\dfrac1{100}\\) s, so frequency \\(=100\\) Hz.",
+   "payload": {
+    "options": [
+     "\\(\\frac{5}{18}\\)",
+     "\\(100\\)",
+     "\\(\\frac{1}{100}\\)",
+     "\\(50\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-076",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "identities",
+   "prompt": "Simplify \\(1-\\cos^2\\theta\\).",
+   "explanation": "Use the fundamental identities (quotient, reciprocal and Pythagorean) or the double-angle formulas: \\(1-\\cos^2\\theta=\\sin^2\\theta\\).",
+   "payload": {
+    "options": [
+     "\\(\\operatorname{cosec}\\theta\\)",
+     "\\(\\sin\\theta\\)",
+     "\\(\\cos^2\\theta\\)",
+     "\\(\\sin^2\\theta\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-077",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "values",
+   "prompt": "Is \\(\\tan\\,570^\\circ\\) positive or negative?",
+   "explanation": "\\(570^\\circ\\) lies in quadrant III (it is coterminal with \\(210^\\circ\\)). ASTC: All positive in I, Sine (and cosec) in II, Tangent (and cot) in III, Cosine (and sec) in IV. So \\(\\tan\\,570^\\circ\\) is positive.",
+   "payload": {
+    "options": [
+     "Negative",
+     "Undefined",
+     "Positive",
+     "Zero"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-078",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=7\\sin(\\frac{3 x}{5} - 2)\\).",
+   "explanation": "For \\(y=\\sin(bx+c)\\) the period is \\(\\dfrac{2 \\pi}{|b|}\\). Here \\(b=\\frac{3}{5}\\), so the period is \\(\\frac{10 \\pi}{3}\\). The coefficient in front and the shift inside do not change the period.",
+   "payload": {
+    "options": [
+     "\\(\\frac{10 \\pi}{3}\\)",
+     "\\(\\frac{20 \\pi}{11}\\)",
+     "\\(\\frac{5 \\pi}{3}\\)",
+     "\\(\\frac{6 \\pi}{5}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-079",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "max-min",
+   "prompt": "Find the maximum value of \\(y=12\\cos x + 5\\sin x\\).",
+   "explanation": "For \\(y=a\\cos x+b\\sin x\\), the maximum value is \\(\\sqrt{a^2+b^2}\\) (and the minimum is \\(-\\sqrt{a^2+b^2}\\)). Here \\(\\sqrt{144+25}=13\\).",
+   "payload": {
+    "options": [
+     "\\(13\\)",
+     "\\(169\\)",
+     "\\(17\\)",
+     "\\(12\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-080",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "even-odd",
+   "prompt": "Is \\(f(x)=\\dfrac{\\cos^2x}{\\sin2x}\\) even, odd, or neither?",
+   "explanation": "Parities of the factors: \\(\\cos^2x\\) is even, \\(\\sin2x\\) is odd. There are 1 odd factor (a product or quotient is odd exactly when the number of odd factors is odd), so the function is odd.",
+   "payload": {
+    "options": [
+     "Odd",
+     "Even",
+     "Neither even nor odd",
+     "Both even and odd"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-081",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "max-min",
+   "prompt": "Find the maximum value of \\(y=-3\\sin(2 x + 1) + 4\\).",
+   "explanation": "For \\(y=a+b\\,\\sin(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=4\\), \\(|b|=3\\), so \\(M=7\\) and \\(m=1\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(-12\\)",
+     "\\(7\\)",
+     "\\(-7\\)",
+     "\\(3\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-082",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=3\\tan(3 x)\\).",
+   "explanation": "The period of \\(\\tan(bx+c)\\) is \\(\\dfrac{\\pi}{|b|}\\) (tan and cot repeat every \\(\\pi\\), not \\(2\\pi\\)). Here \\(b=3\\), so the period is \\(\\frac{\\pi}{3}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{\\pi}{3}\\)",
+     "\\(\\frac{2 \\pi}{3}\\)",
+     "\\(3 \\pi\\)",
+     "\\(\\frac{\\pi}{4}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-083",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\sin^{5}(3 x)\\).",
+   "explanation": "An odd power of sin or cos keeps its sign changes, so the period stays \\(\\dfrac{2\\pi}{|b|}\\). Here \\(b=3\\), so the period is \\(\\frac{2 \\pi}{3}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{2 \\pi}{3}\\)",
+     "\\(\\frac{4 \\pi}{3}\\)",
+     "\\(\\frac{\\pi}{6}\\)",
+     "\\(\\frac{\\pi}{3}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-084",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "values",
+   "prompt": "Is \\(\\tan\\,100^\\circ\\) positive or negative?",
+   "explanation": "\\(100^\\circ\\) lies in quadrant II (it is coterminal with \\(100^\\circ\\)). ASTC: All positive in I, Sine (and cosec) in II, Tangent (and cot) in III, Cosine (and sec) in IV. So \\(\\tan\\,100^\\circ\\) is negative.",
+   "payload": {
+    "options": [
+     "Zero",
+     "Positive",
+     "Undefined",
+     "Negative"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-085",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "max-min",
+   "prompt": "What can be said about the extreme values of \\(y=\\dfrac{1}{-3 + 5\\cos(2 x)}\\)?",
+   "explanation": "Denominator from \\(-8\\) to \\(2\\): it changes sign (\\(|a|<|b|\\)) and so passes through 0, where \\(y\\) blows up. There is no maximum or minimum.",
+   "payload": {
+    "options": [
+     "It has a minimum but no maximum",
+     "It has no maximum and no minimum",
+     "It has a maximum and a minimum",
+     "It has a maximum but no minimum"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-086",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "domain-range",
+   "prompt": "Find the domain of \\(y=3\\tan(\\frac{\\pi x}{2})\\).",
+   "explanation": "\\(\\tan\\theta\\) is undefined when \\(\\cos\\theta=0\\), i.e. \\(\\theta=(2n+1)\\frac{\\pi}{2}\\). With \\(\\theta=\\frac{\\pi}{2}x\\): \\(x=\\dfrac{(2n+1)\\pi}{2\\cdot\\frac{\\pi}{2}}\\).",
+   "payload": {
+    "options": [
+     "\\(x\\ne (2n+1)\\cdot1,\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne n\\cdot2,\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne (2n+1)\\cdot2,\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne n\\pi,\\ n\\in\\mathbb{Z}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-087",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "max-min",
+   "prompt": "Find the maximum \\(M\\) and minimum \\(m\\) of \\(y=6\\sin(3 x) + 2\\).",
+   "explanation": "For \\(y=a+b\\,\\sin(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=2\\), \\(|b|=6\\), so \\(M=8\\) and \\(m=-4\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(M=12,\\ m=-12\\)",
+     "\\(M=-4,\\ m=8\\)",
+     "\\(M=9,\\ m=-5\\)",
+     "\\(M=8,\\ m=-4\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-088",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "max-min",
+   "prompt": "Find the range of \\(y=\\dfrac{1}{-4 + \\frac{1}{2}\\sin(2 x + 2)}\\).",
+   "explanation": "Denominator: \\(a=-4\\), \\(|b|=\\frac{1}{2}\\), so it runs from \\(m=- \\frac{9}{2}\\) to \\(M=- \\frac{7}{2}\\). Both have the same sign, so the denominator never reaches 0 and the reciprocal runs from \\(\\dfrac1M\\) to \\(\\dfrac1m\\): \\([- \\frac{2}{7},\\ - \\frac{2}{9}]\\).",
+   "payload": {
+    "options": [
+     "\\([- \\frac{9}{2},\\ - \\frac{7}{2}]\\)",
+     "\\([- \\frac{2}{9},\\ \\frac{2}{9}]\\)",
+     "\\([- \\frac{2}{7},\\ - \\frac{2}{9}]\\)",
+     "\\([\\frac{2}{9},\\ \\frac{2}{7}]\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-089",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "graphs",
+   "prompt": "State the period of \\(y=\\frac{3}{2}\\sin\\left(\\frac{1}{3}\\left(x+\\frac{\\pi}{4}\\right)\\right) + 3\\).",
+   "explanation": "Period \\(=\\dfrac{2\\pi}{|b|}=6 \\pi\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{2 \\pi}{3}\\)",
+     "\\(3 \\pi\\)",
+     "\\(12 \\pi\\)",
+     "\\(6 \\pi\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-090",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\sin^{2}(\\frac{x}{4})\\).",
+   "explanation": "An even power of sin or cos removes the minus sign, so the period is halved to \\(\\dfrac{\\pi}{|b|}\\). (\\(\\tan^n\\) has period \\(\\dfrac{\\pi}{|b|}\\) for every \\(n\\).) Here \\(b=\\frac{1}{4}\\), so the period is \\(4 \\pi\\).",
+   "payload": {
+    "options": [
+     "\\(4 \\pi\\)",
+     "\\(16 \\pi\\)",
+     "\\(2 \\pi\\)",
+     "\\(8 \\pi\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-091",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(\\theta)=\\cos(\\frac{3}{2}\\theta)\\) in degrees.",
+   "explanation": "In degrees the base period of \\cos is \\(360^\\circ\\). Divide by \\(|b|=\\frac{3}{2}\\): \\(\\dfrac{360^\\circ}{\\frac{3}{2}}=240^\\circ\\).",
+   "payload": {
+    "options": [
+     "\\(240^\\circ\\)",
+     "\\(120^\\circ\\)",
+     "\\(360^\\circ\\)",
+     "\\(540^\\circ\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-092",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "max-min",
+   "prompt": "What can be said about the extreme values of \\(y=\\dfrac{1}{6 + 3\\sin(2 x)}\\)?",
+   "explanation": "Denominator from \\(3\\) to \\(9\\): same sign (\\(|a|>|b|\\)), so the denominator never hits 0. Max \\(=\\dfrac1m\\) or min \\(=\\dfrac1M\\) exist (here \\(0.333333333333333\\) and \\(0.111111111111111\\)).",
+   "payload": {
+    "options": [
+     "It has a maximum and a minimum",
+     "It has a maximum but no minimum",
+     "It has no maximum and no minimum",
+     "It has a minimum but no maximum"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-093",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A Ferris wheel has radius \\(10\\) m, its lowest point is \\(4\\) m above the ground and one revolution takes \\(36\\) s. What is the least height of a rider above the ground (in metres)?",
+   "explanation": "The lowest point of the wheel is the platform height, \\(4\\) m.",
+   "payload": {
+    "options": [
+     "\\(4\\)",
+     "\\(0\\)",
+     "\\(10\\)",
+     "\\(6\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-094",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "domain-range",
+   "prompt": "Find the domain of \\(y=-2\\operatorname{cosec}(2 x)\\).",
+   "explanation": "\\(\\operatorname{cosec}\\theta\\) is undefined when \\(\\sin\\theta=0\\), i.e. \\(\\theta=n\\pi\\). With \\(\\theta=2x\\): \\(x=\\dfrac{n\\pi}{2}\\).",
+   "payload": {
+    "options": [
+     "\\(x\\ne n\\cdot\\frac{\\pi}{4},\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne n\\cdot\\frac{\\pi}{2},\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne (2n+1)\\cdot\\frac{\\pi}{2},\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne n\\cdot\\pi,\\ n\\in\\mathbb{Z}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-095",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "max-min",
+   "prompt": "Find the range of \\(y=\\dfrac{1}{-4 + 2\\sin(3 x - 1)}\\).",
+   "explanation": "Denominator: \\(a=-4\\), \\(|b|=2\\), so it runs from \\(m=-6\\) to \\(M=-2\\). Both have the same sign, so the denominator never reaches 0 and the reciprocal runs from \\(\\dfrac1M\\) to \\(\\dfrac1m\\): \\([-0.5,\\ -0.166666666666667]\\).",
+   "payload": {
+    "options": [
+     "\\([-0.166666666666667,\\ 0.166666666666667]\\)",
+     "\\((-\\infty,\\ -0.5]\\cup[-0.166666666666667,\\ \\infty)\\)",
+     "\\([-6,\\ -2]\\)",
+     "\\([-0.5,\\ -0.166666666666667]\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-096",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(\\theta)=\\tan(2\\theta)\\) in degrees.",
+   "explanation": "In degrees the base period of \\tan is \\(180^\\circ\\). Divide by \\(|b|=2\\): \\(\\dfrac{180^\\circ}{2}=90^\\circ\\).",
+   "payload": {
+    "options": [
+     "\\(180^\\circ\\)",
+     "\\(90^\\circ\\)",
+     "\\(360^\\circ\\)",
+     "\\(45^\\circ\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-097",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A Ferris wheel has radius \\(5\\) m, its lowest point is \\(4\\) m above the ground and one revolution takes \\(30\\) s. What is the height of the midline (the centre of the wheel) above the ground (in metres)?",
+   "explanation": "Midline \\(=\\dfrac{\\max+\\min}{2}=\\dfrac{(14)+4}{2}=9\\) m.",
+   "payload": {
+    "options": [
+     "\\(5\\)",
+     "\\(9\\)",
+     "\\(18\\)",
+     "\\(14\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-098",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "max-min",
+   "prompt": "Find the range of \\(y=\\dfrac{1}{\\frac{3}{2} + 4\\sin(2 x - 2)}\\).",
+   "explanation": "The denominator runs from \\(m=- \\frac{5}{2}\\) to \\(M=\\frac{11}{2}\\) and passes through \\(0\\) (so these \\(x\\) are excluded from the domain). Then \\(y\\) takes values \\(\\le\\dfrac1m=- \\frac{2}{5}\\) or \\(\\ge\\dfrac1M=\\frac{2}{11}\\), with a gap between. There is no maximum and no minimum.",
+   "payload": {
+    "options": [
+     "\\([- \\frac{2}{5},\\ \\frac{2}{11}]\\)",
+     "\\((-\\infty,\\ - \\frac{2}{5}]\\cup[\\frac{2}{11},\\ \\infty)\\)",
+     "\\((-\\infty,\\ - \\frac{5}{2}]\\cup[\\frac{11}{2},\\ \\infty)\\)",
+     "\\(\\mathbb{R}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-099",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=-3\\tan(\\frac{3 x}{2} + 1)\\).",
+   "explanation": "The period of \\(\\tan(bx+c)\\) is \\(\\dfrac{\\pi}{|b|}\\) (tan and cot repeat every \\(\\pi\\), not \\(2\\pi\\)). Here \\(b=\\frac{3}{2}\\), so the period is \\(\\frac{2 \\pi}{3}\\).",
+   "payload": {
+    "options": [
+     "\\(2 \\pi\\)",
+     "\\(\\frac{2 \\pi}{5}\\)",
+     "\\(\\frac{3 \\pi}{2}\\)",
+     "\\(\\frac{2 \\pi}{3}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-100",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "toolkit",
+   "prompt": "Convert \\(60^\\circ\\) to radians.",
+   "explanation": "Multiply by \\(\\dfrac{\\pi}{180}\\): \\(60^\\circ=60\\cdot\\dfrac{\\pi}{180}=\\frac{\\pi}{3}\\) rad.",
+   "payload": {
+    "options": [
+     "\\(\\frac{\\pi}{3}\\)",
+     "\\(\\frac{\\pi}{6}\\)",
+     "\\(3 \\pi\\)",
+     "\\(\\frac{2 \\pi}{3}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-101",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "The voltage in a circuit is \\(V=180\\sin(21600t)^\\circ\\), \\(t\\) in seconds. Find the frequency in hertz (cycles per second).",
+   "explanation": "Period \\(=\\dfrac1{60}\\) s, so frequency \\(=60\\) Hz.",
+   "payload": {
+    "options": [
+     "\\(120\\)",
+     "\\(\\frac{1}{6}\\)",
+     "\\(60\\)",
+     "\\(21600\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-102",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=\\frac{5}{2}\\cos(6 x + 5) + 3\\).",
+   "explanation": "\\(-1\\le\\cos(\\cdots)\\le1\\), so multiplying by \\(\\frac{5}{2}\\) gives \\([- \\frac{5}{2},\\frac{5}{2}]\\) and adding \\(3\\) shifts it to \\([\\frac{1}{2},\\ \\frac{11}{2}]\\). The inside part only changes the period.",
+   "payload": {
+    "options": [
+     "\\([\\frac{1}{2},\\ \\frac{11}{2}]\\)",
+     "\\([- \\frac{1}{2},\\ \\frac{13}{2}]\\)",
+     "\\([\\frac{1}{2},\\ \\frac{21}{2}]\\)",
+     "\\([-2,\\ 8]\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-103",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "graphs",
+   "prompt": "Find the maximum value of \\(y=-2\\sin\\left(\\frac{1}{3}\\left(x-\\frac{\\pi}{2}\\right)\\right) - 2\\).",
+   "explanation": "Max \\(=d+|a|=-2+2=0\\).",
+   "payload": {
+    "options": [
+     "\\(-4\\)",
+     "\\(1\\)",
+     "\\(0\\)",
+     "\\(2\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-104",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "toolkit",
+   "prompt": "Convert \\(\\frac{\\pi}{10}\\) radians to degrees.",
+   "explanation": "Multiply by \\(\\dfrac{180}{\\pi}\\): \\(\\frac{\\pi}{10}\\cdot\\dfrac{180^\\circ}{\\pi}=18^\\circ\\).",
+   "payload": {
+    "options": [
+     "\\(18^\\circ\\)",
+     "\\(108^\\circ\\)",
+     "\\(162^\\circ\\)",
+     "\\(54^\\circ\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-105",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\sin^{2}(4 x)\\).",
+   "explanation": "An even power of sin or cos removes the minus sign, so the period is halved to \\(\\dfrac{\\pi}{|b|}\\). (\\(\\tan^n\\) has period \\(\\dfrac{\\pi}{|b|}\\) for every \\(n\\).) Here \\(b=4\\), so the period is \\(\\frac{\\pi}{4}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{\\pi}{4}\\)",
+     "\\(\\pi\\)",
+     "\\(\\frac{\\pi}{2}\\)",
+     "\\(\\frac{\\pi}{8}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-106",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\cos(\\frac{x}{3}) + \\cot(\\frac{x}{3})\\).",
+   "explanation": "First find the two periods: \\(6 \\pi\\) and \\(3 \\pi\\). The period of a sum is \\(\\dfrac{\\text{LCM of numerators}}{\\text{HCF of denominators}}\\). Writing the periods as fractions of \\(\\pi\\): \\(6\\) and \\(3\\) give \\(6\\pi\\). So the period is \\(6 \\pi\\).",
+   "payload": {
+    "options": [
+     "\\(18 \\pi\\)",
+     "\\(12 \\pi\\)",
+     "\\(6 \\pi\\)",
+     "\\(3 \\pi\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-107",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\tan(\\frac{x}{2}) + \\cos(\\frac{5 x}{2})\\).",
+   "explanation": "First find the two periods: \\(2 \\pi\\) and \\(\\frac{4 \\pi}{5}\\). The period of a sum is \\(\\dfrac{\\text{LCM of numerators}}{\\text{HCF of denominators}}\\). Writing the periods as fractions of \\(\\pi\\): \\(2\\) and \\(\\frac{4}{5}\\) give \\(4\\pi\\). So the period is \\(4 \\pi\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{8 \\pi}{5}\\)",
+     "\\(\\frac{14 \\pi}{5}\\)",
+     "\\(8 \\pi\\)",
+     "\\(4 \\pi\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-108",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=-2\\cos(\\frac{\\pi x}{2})\\).",
+   "explanation": "For \\(y=\\cos(bx+c)\\) the period is \\(\\dfrac{2 \\pi}{|b|}\\). Here \\(b=\\frac{\\pi}{2}\\), so the period is \\(4\\). The coefficient in front and the shift inside do not change the period.",
+   "payload": {
+    "options": [
+     "\\(4\\)",
+     "\\(8\\)",
+     "\\(\\pi^{2}\\)",
+     "\\(2\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-109",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "even-odd",
+   "prompt": "Is \\(f(x)=\\dfrac{\\cos3x \\cdot \\operatorname{cosec}x}{x^3}\\) even, odd, or neither?",
+   "explanation": "Parities of the factors: \\(\\cos3x\\) is even, \\(\\operatorname{cosec}x\\) is odd, \\(x^3\\) is odd. There are 2 odd factors (a product or quotient is odd exactly when the number of odd factors is odd), so the function is even.",
+   "payload": {
+    "options": [
+     "Even",
+     "Odd",
+     "Neither even nor odd",
+     "Both even and odd"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-110",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=-3\\tan(\\frac{5 x}{3})\\).",
+   "explanation": "The period of \\(\\tan(bx+c)\\) is \\(\\dfrac{\\pi}{|b|}\\) (tan and cot repeat every \\(\\pi\\), not \\(2\\pi\\)). Here \\(b=\\frac{5}{3}\\), so the period is \\(\\frac{3 \\pi}{5}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{6 \\pi}{5}\\)",
+     "\\(\\frac{3 \\pi}{10}\\)",
+     "\\(\\frac{5 \\pi}{3}\\)",
+     "\\(\\frac{3 \\pi}{5}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-111",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "graphs",
+   "prompt": "State the frequency (number of cycles per unit of \\(x\\)) of \\(y=3\\cos\\left(\\frac{3}{2}\\left(x+\\frac{\\pi}{4}\\right)\\right) + 4\\).",
+   "explanation": "Frequency \\(=\\dfrac1T=\\dfrac{|b|}{2\\pi}=\\frac{3}{4 \\pi}\\).",
+   "payload": {
+    "options": [
+     "\\(3 \\pi\\)",
+     "\\(\\frac{3}{4 \\pi}\\)",
+     "\\(\\frac{3}{2}\\)",
+     "\\(\\frac{2}{3}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-112",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=\\frac{1}{2}\\sec(4 x)\\).",
+   "explanation": "\\(|\\sec\\theta|\\ge1\\), so \\(|y|\\ge\\frac{1}{2}\\): \\(y\\le-\\frac{1}{2}\\) or \\(y\\ge\\frac{1}{2}\\).",
+   "payload": {
+    "options": [
+     "\\([-\\frac{1}{2},\\frac{1}{2}]\\)",
+     "\\((-\\infty,-\\frac{1}{2}]\\cup[\\frac{1}{2},\\infty)\\)",
+     "\\([\\frac{1}{2},\\infty)\\)",
+     "\\((-\\infty,-1]\\cup[1,\\infty)\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-113",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=-2\\cot(\\frac{2 x}{5} - 3)\\).",
+   "explanation": "The period of \\(\\cot(bx+c)\\) is \\(\\dfrac{\\pi}{|b|}\\) (tan and cot repeat every \\(\\pi\\), not \\(2\\pi\\)). Here \\(b=\\frac{2}{5}\\), so the period is \\(\\frac{5 \\pi}{2}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{5 \\pi}{4}\\)",
+     "\\(5 \\pi\\)",
+     "\\(\\frac{2 \\pi}{5}\\)",
+     "\\(\\frac{5 \\pi}{2}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-114",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "values",
+   "prompt": "Is \\(\\sec\\,40^\\circ\\) positive or negative?",
+   "explanation": "\\(40^\\circ\\) lies in quadrant I (it is coterminal with \\(40^\\circ\\)). ASTC: All positive in I, Sine (and cosec) in II, Tangent (and cot) in III, Cosine (and sec) in IV. So \\(\\sec\\,40^\\circ\\) is positive.",
+   "payload": {
+    "options": [
+     "Positive",
+     "Zero",
+     "Negative",
+     "Undefined"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-115",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=4\\operatorname{cosec}(\\frac{\\pi x}{6} - 2)\\).",
+   "explanation": "For \\(y=\\operatorname{cosec}(bx+c)\\) the period is \\(\\dfrac{2 \\pi}{|b|}\\). Here \\(b=\\frac{\\pi}{6}\\), so the period is \\(12\\). The coefficient in front and the shift inside do not change the period.",
+   "payload": {
+    "options": [
+     "\\(12\\)",
+     "\\(24\\)",
+     "\\(\\frac{\\pi^{2}}{3}\\)",
+     "\\(\\frac{2 \\pi}{\\frac{\\pi}{6} + 1}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-116",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "max-min",
+   "prompt": "Find the maximum \\(M\\) and minimum \\(m\\) of \\(y=-6\\cos(2 x) + 7\\).",
+   "explanation": "For \\(y=a+b\\,\\cos(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=7\\), \\(|b|=6\\), so \\(M=13\\) and \\(m=1\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(M=6,\\ m=-6\\)",
+     "\\(M=1,\\ m=13\\)",
+     "\\(M=13,\\ m=1\\)",
+     "\\(M=42,\\ m=-42\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-117",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "toolkit",
+   "prompt": "Convert \\(\\frac{\\pi}{2}\\) radians to degrees.",
+   "explanation": "Multiply by \\(\\dfrac{180}{\\pi}\\): \\(\\frac{\\pi}{2}\\cdot\\dfrac{180^\\circ}{\\pi}=90^\\circ\\).",
+   "payload": {
+    "options": [
+     "\\(270^\\circ\\)",
+     "\\(180^\\circ\\)",
+     "\\(45^\\circ\\)",
+     "\\(90^\\circ\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-118",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=3\\cos(\\frac{3 x}{2} + \\frac{1}{2})\\).",
+   "explanation": "\\(-1\\le\\cos(\\cdots)\\le1\\), so multiplying by \\(3\\) gives \\([-3,3]\\). The inside part only changes the period.",
+   "payload": {
+    "options": [
+     "\\([-1,\\ 1]\\)",
+     "\\([-3,\\ \\frac{7}{2}]\\)",
+     "\\([-6,\\ 6]\\)",
+     "\\([-3,\\ 3]\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-119",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "graphs",
+   "prompt": "How many times does the graph of \\(y=\\tan(4 x)\\) cross the \\(x\\)-axis for \\(0<x\\le\\pi\\)?",
+   "explanation": "The zeros of \\(y=\\tan(4 x)\\) are at \\(x=\\dfrac{n\\pi}{4}\\). Counting those with \\(0<x\\le\\pi\\) gives 4.",
+   "payload": {
+    "options": [
+     "\\(4\\)",
+     "\\(5\\)",
+     "\\(3\\)",
+     "\\(8\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-120",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=2\\sin(\\frac{x}{4})\\).",
+   "explanation": "\\(-1\\le\\sin(\\cdots)\\le1\\), so multiplying by \\(2\\) gives \\([-2,2]\\). The inside part only changes the period.",
+   "payload": {
+    "options": [
+     "\\([-1,\\ 1]\\)",
+     "\\([-2,\\ 2]\\)",
+     "\\([-4,\\ 4]\\)",
+     "\\([-3,\\ 3]\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-121",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "The function \\(f(x)=\\cos(kx)\\) (\\(k>0\\)) has period \\(3 \\pi\\). Find \\(k\\).",
+   "explanation": "The period of \\(\\cos(kx)\\) is \\(\\dfrac{2 \\pi}{k}\\). Setting \\(\\dfrac{2 \\pi}{k}=3 \\pi\\) gives \\(k=\\frac{2}{3}\\).",
+   "payload": {
+    "options": [
+     "\\(3\\)",
+     "\\(\\frac{2}{3}\\)",
+     "\\(\\frac{5}{3}\\)",
+     "\\(\\frac{4}{3}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-122",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=7\\sec(\\frac{4 x}{3} - 1)\\).",
+   "explanation": "For \\(y=\\sec(bx+c)\\) the period is \\(\\dfrac{2 \\pi}{|b|}\\). Here \\(b=\\frac{4}{3}\\), so the period is \\(\\frac{3 \\pi}{2}\\). The coefficient in front and the shift inside do not change the period.",
+   "payload": {
+    "options": [
+     "\\(\\frac{3 \\pi}{2}\\)",
+     "\\(\\frac{12 \\pi}{11}\\)",
+     "\\(\\frac{6 \\pi}{7}\\)",
+     "\\(2 \\pi\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-123",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "max-min",
+   "prompt": "Find the maximum value of \\(y=-6\\cos(x) + 1\\).",
+   "explanation": "For \\(y=a+b\\,\\cos(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=1\\), \\(|b|=6\\), so \\(M=7\\) and \\(m=-5\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(-5\\)",
+     "\\(-7\\)",
+     "\\(6\\)",
+     "\\(7\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-124",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=2\\sec(5 x)\\).",
+   "explanation": "For \\(y=\\sec(bx+c)\\) the period is \\(\\dfrac{2 \\pi}{|b|}\\). Here \\(b=5\\), so the period is \\(\\frac{2 \\pi}{5}\\). The coefficient in front and the shift inside do not change the period.",
+   "payload": {
+    "options": [
+     "\\(\\frac{4 \\pi}{11}\\)",
+     "\\(\\frac{2 \\pi}{5}\\)",
+     "\\(\\frac{\\pi}{3}\\)",
+     "\\(2 \\pi\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-125",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\sin(\\frac{4 x}{3})\\).",
+   "explanation": "For \\(y=\\sin(bx+c)\\) the period is \\(\\dfrac{2 \\pi}{|b|}\\). Here \\(b=\\frac{4}{3}\\), so the period is \\(\\frac{3 \\pi}{2}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{8 \\pi}{3}\\)",
+     "\\(2 \\pi\\)",
+     "\\(\\frac{3 \\pi}{2}\\)",
+     "\\(\\pi\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-126",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\tan^{2}(\\frac{5 x}{4})\\).",
+   "explanation": "An even power of sin or cos removes the minus sign, so the period is halved to \\(\\dfrac{\\pi}{|b|}\\). (\\(\\tan^n\\) has period \\(\\dfrac{\\pi}{|b|}\\) for every \\(n\\).) Here \\(b=\\frac{5}{4}\\), so the period is \\(\\frac{4 \\pi}{5}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{8 \\pi}{5}\\)",
+     "\\(\\frac{2 \\pi}{5}\\)",
+     "\\(\\frac{4 \\pi}{5}\\)",
+     "\\(\\frac{16 \\pi}{5}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-127",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A Ferris wheel has radius \\(10\\) m, its lowest point is \\(1\\) m above the ground and one revolution takes \\(30\\) s. How many revolutions does it make per second?",
+   "explanation": "Frequency \\(=\\dfrac{1}{\\text{period}}=\\dfrac1{30}\\) revolutions per second.",
+   "payload": {
+    "options": [
+     "\\(30\\)",
+     "\\(\\frac{1}{30}\\)",
+     "\\(\\frac{1}{60}\\)",
+     "\\(\\frac{\\pi}{15}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-128",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "graphs",
+   "prompt": "How many complete cycles of \\(y=\\cos(3 x)\\) appear in the interval \\([0,\\ 6 \\pi]\\)?",
+   "explanation": "Number of cycles \\(=\\dfrac{\\text{length of interval}}{\\text{period}}\\). The period of \\(y=\\cos(3 x)\\) is \\(\\frac{2 \\pi}{3}\\), so in \\([0,6 \\pi]\\) there are \\(\\dfrac{6 \\pi}{\\frac{2 \\pi}{3}}=9\\) complete cycles.",
+   "payload": {
+    "options": [
+     "\\(10\\)",
+     "\\(4\\)",
+     "\\(8\\)",
+     "\\(9\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-129",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "max-min",
+   "prompt": "Find the maximum value of \\(y=5\\cos x + 12\\sin x\\).",
+   "explanation": "For \\(y=a\\cos x+b\\sin x\\), the maximum value is \\(\\sqrt{a^2+b^2}\\) (and the minimum is \\(-\\sqrt{a^2+b^2}\\)). Here \\(\\sqrt{25+144}=13\\).",
+   "payload": {
+    "options": [
+     "\\(13\\)",
+     "\\(169\\)",
+     "\\(60\\)",
+     "\\(12\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-130",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "graphs",
+   "prompt": "How many complete cycles of \\(y=\\sin(4 x)\\) appear in the interval \\([0,\\ 6 \\pi]\\)?",
+   "explanation": "Number of cycles \\(=\\dfrac{\\text{length of interval}}{\\text{period}}\\). The period of \\(y=\\sin(4 x)\\) is \\(\\frac{\\pi}{2}\\), so in \\([0,6 \\pi]\\) there are \\(\\dfrac{6 \\pi}{\\frac{\\pi}{2}}=12\\) complete cycles.",
+   "payload": {
+    "options": [
+     "\\(24\\)",
+     "\\(12\\)",
+     "\\(36\\)",
+     "\\(11\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-131",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=3\\sin(2 x)\\).",
+   "explanation": "For \\(y=\\sin(bx+c)\\) the period is \\(\\dfrac{2 \\pi}{|b|}\\). Here \\(b=2\\), so the period is \\(\\pi\\). The coefficient in front and the shift inside do not change the period.",
+   "payload": {
+    "options": [
+     "\\(4 \\pi\\)",
+     "\\(\\pi\\)",
+     "\\(\\frac{2 \\pi}{3}\\)",
+     "\\(\\frac{\\pi}{2}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-132",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\sin(\\frac{5 x}{3}) + \\cot(5 x)\\).",
+   "explanation": "First find the two periods: \\(\\frac{6 \\pi}{5}\\) and \\(\\frac{\\pi}{5}\\). The period of a sum is \\(\\dfrac{\\text{LCM of numerators}}{\\text{HCF of denominators}}\\). Writing the periods as fractions of \\(\\pi\\): \\(\\frac{6}{5}\\) and \\(\\frac{1}{5}\\) give \\(\\frac{6}{5}\\pi\\). So the period is \\(\\frac{6 \\pi}{5}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{6 \\pi}{25}\\)",
+     "\\(\\frac{6 \\pi}{5}\\)",
+     "\\(\\frac{3 \\pi}{5}\\)",
+     "\\(\\frac{12 \\pi}{5}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-133",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "The function \\(f(x)=\\tan(kx)\\) (\\(k>0\\)) has period \\(\\frac{2 \\pi}{5}\\). Find \\(k\\).",
+   "explanation": "The period of \\(\\tan(kx)\\) is \\(\\dfrac{\\pi}{k}\\). Setting \\(\\dfrac{\\pi}{k}=\\frac{2 \\pi}{5}\\) gives \\(k=\\frac{5}{2}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{4}{5}\\)",
+     "\\(\\frac{5}{2}\\)",
+     "\\(\\frac{2}{5}\\)",
+     "\\(\\frac{7}{2}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-134",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "values",
+   "prompt": "Find the exact value of \\(\\cos\\,210^\\circ\\).",
+   "explanation": "Reduce to the reference angle: \\(210^\\circ\\equiv210^\\circ\\) (mod \\(360^\\circ\\)), in quadrant III. Use the sign rule (ASTC) and the special-angle values to get \\(- \\frac{\\sqrt{3}}{2}\\).",
+   "payload": {
+    "options": [
+     "\\(- \\frac{\\sqrt{2}}{2}\\)",
+     "\\(2\\)",
+     "\\(\\frac{1}{2}\\)",
+     "\\(- \\frac{\\sqrt{3}}{2}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-135",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "values",
+   "prompt": "Is \\(\\cos\\,-60^\\circ\\) positive or negative?",
+   "explanation": "\\(-60^\\circ\\) lies in quadrant IV (it is coterminal with \\(300^\\circ\\)). ASTC: All positive in I, Sine (and cosec) in II, Tangent (and cot) in III, Cosine (and sec) in IV. So \\(\\cos\\,-60^\\circ\\) is positive.",
+   "payload": {
+    "options": [
+     "Positive",
+     "Negative",
+     "Zero",
+     "Undefined"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-136",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "identities",
+   "prompt": "Simplify \\(\\cos^2\\theta-\\sin^2\\theta\\).",
+   "explanation": "Use the fundamental identities (quotient, reciprocal and Pythagorean) or the double-angle formulas: \\(\\cos^2\\theta-\\sin^2\\theta=\\cos2\\theta\\).",
+   "payload": {
+    "options": [
+     "\\(1\\)",
+     "\\(\\cot\\theta\\)",
+     "\\(\\cos2\\theta\\)",
+     "\\(\\sec^2\\theta\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-137",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "toolkit",
+   "prompt": "Convert \\(45^\\circ\\) to radians.",
+   "explanation": "Multiply by \\(\\dfrac{\\pi}{180}\\): \\(45^\\circ=45\\cdot\\dfrac{\\pi}{180}=\\frac{\\pi}{4}\\) rad.",
+   "payload": {
+    "options": [
+     "\\(\\frac{\\pi}{4}\\)",
+     "\\(\\frac{3 \\pi}{4}\\)",
+     "\\(\\frac{\\pi}{2}\\)",
+     "\\(\\frac{\\pi}{8}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-138",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=2\\tan(5 x)\\).",
+   "explanation": "The period of \\(\\tan(bx+c)\\) is \\(\\dfrac{\\pi}{|b|}\\) (tan and cot repeat every \\(\\pi\\), not \\(2\\pi\\)). Here \\(b=5\\), so the period is \\(\\frac{\\pi}{5}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{\\pi}{5}\\)",
+     "\\(\\frac{\\pi}{10}\\)",
+     "\\(\\frac{\\pi}{6}\\)",
+     "\\(5 \\pi\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-139",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "max-min",
+   "prompt": "Find the minimum value of \\(y=4\\sin(x) + \\frac{1}{2}\\).",
+   "explanation": "For \\(y=a+b\\,\\sin(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=\\frac{1}{2}\\), \\(|b|=4\\), so \\(M=\\frac{9}{2}\\) and \\(m=- \\frac{7}{2}\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(-4\\)",
+     "\\(- \\frac{7}{2}\\)",
+     "\\(\\frac{9}{2}\\)",
+     "\\(\\frac{7}{2}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-140",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A Ferris wheel has radius \\(20\\) m, its lowest point is \\(4\\) m above the ground and one revolution takes \\(30\\) s. What is the height of the midline (the centre of the wheel) above the ground (in metres)?",
+   "explanation": "Midline \\(=\\dfrac{\\max+\\min}{2}=\\dfrac{(44)+4}{2}=24\\) m.",
+   "payload": {
+    "options": [
+     "\\(25\\)",
+     "\\(40\\)",
+     "\\(44\\)",
+     "\\(24\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-141",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A mass on a spring moves according to \\(x=4\\cos(3t)\\) cm, \\(t\\) in seconds. How far is the mass from the centre of the motion at \\(t=0\\) (in cm)?",
+   "explanation": "\\(x(0)=4\\cos0=4\\) cm: it starts at maximum displacement.",
+   "payload": {
+    "options": [
+     "\\(4\\)",
+     "\\(-4\\)",
+     "\\(0\\)",
+     "\\(2\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-142",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "toolkit",
+   "prompt": "Convert \\(2 \\pi\\) radians to degrees.",
+   "explanation": "Multiply by \\(\\dfrac{180}{\\pi}\\): \\(2 \\pi\\cdot\\dfrac{180^\\circ}{\\pi}=360^\\circ\\).",
+   "payload": {
+    "options": [
+     "\\(720^\\circ\\)",
+     "\\(180^\\circ\\)",
+     "\\(360^\\circ\\)",
+     "\\(1080^\\circ\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-143",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "values",
+   "prompt": "Is \\(\\tan\\,20^\\circ\\) positive or negative?",
+   "explanation": "\\(20^\\circ\\) lies in quadrant I (it is coterminal with \\(20^\\circ\\)). ASTC: All positive in I, Sine (and cosec) in II, Tangent (and cot) in III, Cosine (and sec) in IV. So \\(\\tan\\,20^\\circ\\) is positive.",
+   "payload": {
+    "options": [
+     "Negative",
+     "Zero",
+     "Positive",
+     "Undefined"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-144",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "max-min",
+   "prompt": "Find the minimum value of \\(y=6\\cos(x) + \\frac{1}{3}\\).",
+   "explanation": "For \\(y=a+b\\,\\cos(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=\\frac{1}{3}\\), \\(|b|=6\\), so \\(M=\\frac{19}{3}\\) and \\(m=- \\frac{17}{3}\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(-6\\)",
+     "\\(\\frac{19}{3}\\)",
+     "\\(\\frac{17}{3}\\)",
+     "\\(- \\frac{17}{3}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-145",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "max-min",
+   "prompt": "Find the maximum value of \\(y=-6\\sin(x) + \\frac{3}{2}\\).",
+   "explanation": "For \\(y=a+b\\,\\sin(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=\\frac{3}{2}\\), \\(|b|=6\\), so \\(M=\\frac{15}{2}\\) and \\(m=- \\frac{9}{2}\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(\\frac{15}{2}\\)",
+     "\\(- \\frac{9}{2}\\)",
+     "\\(-9\\)",
+     "\\(6\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-146",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\cos^{2}(5 x)\\).",
+   "explanation": "An even power of sin or cos removes the minus sign, so the period is halved to \\(\\dfrac{\\pi}{|b|}\\). (\\(\\tan^n\\) has period \\(\\dfrac{\\pi}{|b|}\\) for every \\(n\\).) Here \\(b=5\\), so the period is \\(\\frac{\\pi}{5}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{2 \\pi}{5}\\)",
+     "\\(\\frac{\\pi}{10}\\)",
+     "\\(\\frac{\\pi}{5}\\)",
+     "\\(\\frac{4 \\pi}{5}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-147",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\tan^{2}(6 x)\\).",
+   "explanation": "An even power of sin or cos removes the minus sign, so the period is halved to \\(\\dfrac{\\pi}{|b|}\\). (\\(\\tan^n\\) has period \\(\\dfrac{\\pi}{|b|}\\) for every \\(n\\).) Here \\(b=6\\), so the period is \\(\\frac{\\pi}{6}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{\\pi}{3}\\)",
+     "\\(\\frac{2 \\pi}{3}\\)",
+     "\\(\\frac{\\pi}{12}\\)",
+     "\\(\\frac{\\pi}{6}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-148",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "toolkit",
+   "prompt": "Convert \\(90^\\circ\\) to radians.",
+   "explanation": "Multiply by \\(\\dfrac{\\pi}{180}\\): \\(90^\\circ=90\\cdot\\dfrac{\\pi}{180}=\\frac{\\pi}{2}\\) rad.",
+   "payload": {
+    "options": [
+     "\\(2 \\pi\\)",
+     "\\(\\pi\\)",
+     "\\(\\frac{\\pi}{4}\\)",
+     "\\(\\frac{\\pi}{2}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-149",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "toolkit",
+   "prompt": "Convert \\(300^\\circ\\) to radians.",
+   "explanation": "Multiply by \\(\\dfrac{\\pi}{180}\\): \\(300^\\circ=300\\cdot\\dfrac{\\pi}{180}=\\frac{5 \\pi}{3}\\) rad.",
+   "payload": {
+    "options": [
+     "\\(\\frac{3 \\pi}{5}\\)",
+     "\\(\\frac{10 \\pi}{3}\\)",
+     "\\(\\frac{5 \\pi}{3}\\)",
+     "\\(\\frac{7 \\pi}{6}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-150",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "toolkit",
+   "prompt": "Convert \\(\\frac{5 \\pi}{4}\\) radians to degrees.",
+   "explanation": "Multiply by \\(\\dfrac{180}{\\pi}\\): \\(\\frac{5 \\pi}{4}\\cdot\\dfrac{180^\\circ}{\\pi}=225^\\circ\\).",
+   "payload": {
+    "options": [
+     "\\(225^\\circ\\)",
+     "\\(450^\\circ\\)",
+     "\\(112^\\circ\\)",
+     "\\(315^\\circ\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-151",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\tan(6 x) + \\sin(\\frac{x}{2})\\).",
+   "explanation": "First find the two periods: \\(\\frac{\\pi}{6}\\) and \\(4 \\pi\\). The period of a sum is \\(\\dfrac{\\text{LCM of numerators}}{\\text{HCF of denominators}}\\). Writing the periods as fractions of \\(\\pi\\): \\(\\frac{1}{6}\\) and \\(4\\) give \\(4\\pi\\). So the period is \\(4 \\pi\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{\\pi}{6}\\)",
+     "\\(\\frac{25 \\pi}{6}\\)",
+     "\\(4 \\pi\\)",
+     "\\(8 \\pi\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-152",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "graphs",
+   "prompt": "The vertical asymptotes of \\(y=\\tan x\\) are at",
+   "explanation": "They occur where \\(\\cos x=0\\).",
+   "payload": {
+    "options": [
+     "\\(x=n\\frac{\\pi}{2}\\)",
+     "\\(x=2n\\pi\\)",
+     "\\(x=n\\pi\\)",
+     "\\(x=(2n+1)\\frac{\\pi}{2}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-153",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "graphs",
+   "prompt": "What is the midline (the horizontal axis of the wave) of \\(y=\\frac{1}{2}\\sin\\left(\\frac{1}{2}x\\right) + 3\\)?",
+   "explanation": "The midline is \\(y=d=3\\). Write it as \\(y=3\\).",
+   "payload": {
+    "options": [
+     "\\(y=-3\\)",
+     "\\(y=\\frac{1}{2}\\)",
+     "\\(y=\\frac{7}{2}\\)",
+     "\\(y=3\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-154",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A quantity oscillates sinusoidally between a minimum of \\(-13\\) and a maximum of \\(17\\) with period \\(100\\). The model is \\(y=D+A\\sin(Bt)\\) type with \\(B>0\\). Find \\(B\\) (radians).",
+   "explanation": "\\(B=\\dfrac{2\\pi}{T}=\\dfrac{2\\pi}{100}=\\frac{\\pi}{50}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{\\pi}{50}\\)",
+     "\\(100\\)",
+     "\\(200 \\pi\\)",
+     "\\(\\frac{50}{\\pi}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-155",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=5\\sin(2 x + 4) + 2\\).",
+   "explanation": "\\(-1\\le\\sin(\\cdots)\\le1\\), so multiplying by \\(5\\) gives \\([-5,5]\\) and adding \\(2\\) shifts it to \\([-3,\\ 7]\\). The inside part only changes the period.",
+   "payload": {
+    "options": [
+     "\\([-5,\\ 5]\\)",
+     "\\([1,\\ 3]\\)",
+     "\\([-4,\\ 8]\\)",
+     "\\([-3,\\ 7]\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-156",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=2|\\sin3x| + 1\\).",
+   "explanation": "\\(0\\le|\\sin\\theta|\\le1\\), so \\(0\\le2|\\sin\\theta|\\le2\\) and adding \\(1\\) gives \\([1,\\ 3]\\).",
+   "payload": {
+    "options": [
+     "\\([1,\\ 2]\\)",
+     "\\([-2,\\ 3]\\)",
+     "\\([1,\\ 3]\\)",
+     "\\([-1,\\ 3]\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-157",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=5\\sec(2 x)\\).",
+   "explanation": "\\(|\\sec\\theta|\\ge1\\), so \\(|y|\\ge5\\): \\(y\\le-5\\) or \\(y\\ge5\\).",
+   "payload": {
+    "options": [
+     "\\((-\\infty,-1]\\cup[1,\\infty)\\)",
+     "\\([-5,5]\\)",
+     "\\((-\\infty,-5]\\cup[5,\\infty)\\)",
+     "\\(\\mathbb{R}\\ (\\text{all real numbers})\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-158",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "max-min",
+   "prompt": "Find the maximum value of \\(y=\\frac{1}{2}\\sin(3 x) + 3\\).",
+   "explanation": "For \\(y=a+b\\,\\sin(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=3\\), \\(|b|=\\frac{1}{2}\\), so \\(M=\\frac{7}{2}\\) and \\(m=\\frac{5}{2}\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(- \\frac{7}{2}\\)",
+     "\\(4\\)",
+     "\\(\\frac{7}{2}\\)",
+     "\\(\\frac{5}{2}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-159",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "max-min",
+   "prompt": "At what smallest positive \\(x\\) does \\(y=2\\cos(3 x) + 2\\) attain its minimum value?",
+   "explanation": "The minimum needs \\(\\cos(3x)=-1\\) (because \\(b>0\\)). The smallest positive angle with that value is \\(\\pi\\), so \\(x=\\dfrac{\\pi}{3}=\\frac{\\pi}{3}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{\\pi}{3}\\)",
+     "\\(\\frac{\\pi}{2}\\)",
+     "\\(\\frac{\\pi}{6}\\)",
+     "\\(\\pi\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-160",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\frac{3}{2}\\tan(\\frac{x}{4} - 2)\\).",
+   "explanation": "The period of \\(\\tan(bx+c)\\) is \\(\\dfrac{\\pi}{|b|}\\) (tan and cot repeat every \\(\\pi\\), not \\(2\\pi\\)). Here \\(b=\\frac{1}{4}\\), so the period is \\(4 \\pi\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{4 \\pi}{5}\\)",
+     "\\(4 \\pi\\)",
+     "\\(8 \\pi\\)",
+     "\\(\\frac{\\pi}{4}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-161",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "The depth of water in a harbour is modelled by \\(d(t)=10+4\\cos\\!\\left(\\dfrac{2\\pi t}{8}\\right)\\), \\(t\\) in hours. At what time \\(t>0\\) is the first minimum reached?",
+   "explanation": "The minimum needs \\(\\cos(\\cdot)=-1\\): \\(\\dfrac{2\\pi t}{8}=\\pi\\), so \\(t=4\\) hours.",
+   "payload": {
+    "options": [
+     "\\(0\\)",
+     "\\(4\\)",
+     "\\(2\\)",
+     "\\(8\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-162",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "max-min",
+   "prompt": "Find the maximum value of \\(y=4\\sin(\\frac{x}{2} - 2) - 1\\).",
+   "explanation": "For \\(y=a+b\\,\\sin(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=-1\\), \\(|b|=4\\), so \\(M=3\\) and \\(m=-5\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(3\\)",
+     "\\(-3\\)",
+     "\\(7\\)",
+     "\\(-5\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-163",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=3\\cos(\\frac{5 x}{3})\\).",
+   "explanation": "For \\(y=\\cos(bx+c)\\) the period is \\(\\dfrac{2 \\pi}{|b|}\\). Here \\(b=\\frac{5}{3}\\), so the period is \\(\\frac{6 \\pi}{5}\\). The coefficient in front and the shift inside do not change the period.",
+   "payload": {
+    "options": [
+     "\\(\\frac{6 \\pi}{5}\\)",
+     "\\(2 \\pi\\)",
+     "\\(\\frac{10 \\pi}{3}\\)",
+     "\\(\\frac{12 \\pi}{5}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-164",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "applications",
+   "prompt": "A Ferris wheel of radius \\(6\\) m has its lowest point \\(1\\) m above the ground and makes one revolution in \\(72\\) s. A rider boards at the lowest point. How high above the ground is the rider after \\(18\\) s?",
+   "explanation": "A rider who starts at the lowest point follows \\(h(t)=7-6\\cos\\!\\left(\\dfrac{2\\pi t}{72}\\right)\\) (centre height \\(=\\text{radius}+\\text{platform}=6+1=7\\) m). At \\(t=18\\) s the angle is \\(2\\pi\\cdot\\frac{1}{4}\\), \\(\\cos=0\\), so \\(h=7\\) m.",
+   "payload": {
+    "options": [
+     "\\(1\\text{ m}\\)",
+     "\\(6\\text{ m}\\)",
+     "\\(7\\text{ m}\\)",
+     "\\(13\\text{ m}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-165",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "graphs",
+   "prompt": "How many complete cycles of \\(y=\\sin(10 x)\\) appear in the interval \\([0,\\ 4 \\pi]\\)?",
+   "explanation": "Number of cycles \\(=\\dfrac{\\text{length of interval}}{\\text{period}}\\). The period of \\(y=\\sin(10 x)\\) is \\(\\frac{\\pi}{5}\\), so in \\([0,4 \\pi]\\) there are \\(\\dfrac{4 \\pi}{\\frac{\\pi}{5}}=20\\) complete cycles.",
+   "payload": {
+    "options": [
+     "\\(20\\)",
+     "\\(40\\)",
+     "\\(19\\)",
+     "\\(21\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-166",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "The function \\(f(x)=\\tan(kx)\\) (\\(k>0\\)) has period \\(\\frac{\\pi}{5}\\). Find \\(k\\).",
+   "explanation": "The period of \\(\\tan(kx)\\) is \\(\\dfrac{\\pi}{k}\\). Setting \\(\\dfrac{\\pi}{k}=\\frac{\\pi}{5}\\) gives \\(k=5\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{2}{5}\\)",
+     "\\(5\\)",
+     "\\(10\\)",
+     "\\(\\frac{1}{5}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-167",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\sin(\\frac{3 x}{5} + 2)\\).",
+   "explanation": "For \\(y=\\sin(bx+c)\\) the period is \\(\\dfrac{2 \\pi}{|b|}\\). Here \\(b=\\frac{3}{5}\\), so the period is \\(\\frac{10 \\pi}{3}\\). The coefficient in front and the shift inside do not change the period.",
+   "payload": {
+    "options": [
+     "\\(\\frac{5 \\pi}{3}\\)",
+     "\\(\\frac{10 \\pi}{3}\\)",
+     "\\(2 \\pi\\)",
+     "\\(\\frac{20 \\pi}{3}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-168",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "even-odd",
+   "prompt": "Is \\(f(x)=\\tan x \\cdot x^2 \\cdot \\cot x\\) even, odd, or neither?",
+   "explanation": "Parities of the factors: \\(\\tan x\\) is odd, \\(x^2\\) is even, \\(\\cot x\\) is odd. There are 2 odd factors (a product or quotient is odd exactly when the number of odd factors is odd), so the function is even.",
+   "payload": {
+    "options": [
+     "Even",
+     "Both even and odd",
+     "Neither even nor odd",
+     "Odd"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-169",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "max-min",
+   "prompt": "Find the maximum \\(M\\) and minimum \\(m\\) of \\(y=-6\\sin(x) + 3\\).",
+   "explanation": "For \\(y=a+b\\,\\sin(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=3\\), \\(|b|=6\\), so \\(M=9\\) and \\(m=-3\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(M=-3,\\ m=9\\)",
+     "\\(M=10,\\ m=-4\\)",
+     "\\(M=18,\\ m=-18\\)",
+     "\\(M=9,\\ m=-3\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-170",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "applications",
+   "prompt": "A quantity oscillates sinusoidally between a minimum of \\(-3\\) and a maximum of \\(9\\) with period \\(2\\). At \\(t=0\\) the quantity is at its maximum. Which equation models it?",
+   "explanation": "Starting at a maximum means \\(+\\cos\\). \\(A=6\\), midline \\(D=3\\), \\(B=\\dfrac{2\\pi}{2}=\\pi\\).",
+   "payload": {
+    "options": [
+     "\\(y=-6\\cos(\\pi\\,t) + 3\\)",
+     "\\(y=9\\cos(\\pi\\,t)\\)",
+     "\\(y=6\\sin(\\pi\\,t) + 3\\)",
+     "\\(y=6\\cos(\\pi\\,t) + 3\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-171",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "identities",
+   "prompt": "If \\(\\sin\\theta=\\frac{21}{29}\\) and \\(\\theta\\) is in the second quadrant, find \\(\\operatorname{cosec}\\theta\\).",
+   "explanation": "Use \\(\\sin^2\\theta+\\cos^2\\theta=1\\) to find the missing ratio, then fix its sign from the quadrant (ASTC). Here \\(\\sin\\theta=\\frac{21}{29}\\), \\(\\cos\\theta=- \\frac{20}{29}\\), so \\(\\operatorname{cosec}\\theta=\\frac{29}{21}\\).",
+   "payload": {
+    "options": [
+     "\\(- \\frac{29}{21}\\)",
+     "\\(- \\frac{420}{841}\\)",
+     "\\(\\frac{21}{29}\\)",
+     "\\(\\frac{29}{21}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-172",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "applications",
+   "prompt": "A Ferris wheel of radius \\(20\\) m has its lowest point \\(4\\) m above the ground and makes one revolution in \\(60\\) s. A rider boards at the lowest point. How high above the ground is the rider after \\(40\\) s?",
+   "explanation": "A rider who starts at the lowest point follows \\(h(t)=24-20\\cos\\!\\left(\\dfrac{2\\pi t}{60}\\right)\\) (centre height \\(=\\text{radius}+\\text{platform}=20+4=24\\) m). At \\(t=40\\) s the angle is \\(2\\pi\\cdot\\frac{2}{3}\\), \\(\\cos=- \\frac{1}{2}\\), so \\(h=34\\) m.",
+   "payload": {
+    "options": [
+     "\\(34\\text{ m}\\)",
+     "\\(4\\text{ m}\\)",
+     "\\(30\\text{ m}\\)",
+     "\\(44\\text{ m}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-173",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A quantity oscillates sinusoidally between a minimum of \\(-1\\) and a maximum of \\(3\\) with period \\(365\\). The model is \\(y=D+A\\sin(Bt)\\) type with \\(B>0\\). Find \\(B\\) (radians).",
+   "explanation": "\\(B=\\dfrac{2\\pi}{T}=\\dfrac{2\\pi}{365}=\\frac{2 \\pi}{365}\\).",
+   "payload": {
+    "options": [
+     "\\(365\\)",
+     "\\(\\frac{365}{2 \\pi}\\)",
+     "\\(\\frac{2 \\pi}{365}\\)",
+     "\\(730 \\pi\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-174",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A Ferris wheel of radius \\(30\\) m has its lowest point \\(2\\) m above the ground and makes one revolution in \\(90\\) s. A rider boards at the lowest point. How high above the ground is the rider after \\(\\frac{45}{2}\\) s?",
+   "explanation": "A rider who starts at the lowest point follows \\(h(t)=32-30\\cos\\!\\left(\\dfrac{2\\pi t}{90}\\right)\\) (centre height \\(=\\text{radius}+\\text{platform}=30+2=32\\) m). At \\(t=\\frac{45}{2}\\) s the angle is \\(2\\pi\\cdot\\frac{1}{4}\\), \\(\\cos=0\\), so \\(h=32\\) m.",
+   "payload": {
+    "options": [
+     "\\(30\\text{ m}\\)",
+     "\\(32\\text{ m}\\)",
+     "\\(62\\text{ m}\\)",
+     "\\(2\\text{ m}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-175",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "The voltage in a circuit is \\(V=180\\sin(21600t)^\\circ\\), \\(t\\) in seconds. Find the peak (maximum) voltage.",
+   "explanation": "The maximum of \\(A\\sin(\\cdot)\\) is \\(A=180\\) V.",
+   "payload": {
+    "options": [
+     "\\(360\\)",
+     "\\(21600\\)",
+     "\\(240\\)",
+     "\\(180\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-176",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "domain-range",
+   "prompt": "Find the domain of \\(y=3\\operatorname{cosec}(\\frac{x}{2})\\).",
+   "explanation": "\\(\\operatorname{cosec}\\theta\\) is undefined when \\(\\sin\\theta=0\\), i.e. \\(\\theta=n\\pi\\). With \\(\\theta=\\frac{1}{2}x\\): \\(x=\\dfrac{n\\pi}{\\frac{1}{2}}\\).",
+   "payload": {
+    "options": [
+     "\\(x\\ne n\\cdot4 \\pi,\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne n\\cdot\\pi,\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne (2n+1)\\cdot\\pi,\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne n\\cdot2 \\pi,\\ n\\in\\mathbb{Z}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-177",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "graphs",
+   "prompt": "How many complete cycles of \\(y=\\tan(\\frac{x}{2})\\) appear in the interval \\([0,\\ 2 \\pi]\\)?",
+   "explanation": "Number of cycles \\(=\\dfrac{\\text{length of interval}}{\\text{period}}\\). The period of \\(y=\\tan(\\frac{x}{2})\\) is \\(2 \\pi\\), so in \\([0,2 \\pi]\\) there are \\(\\dfrac{2 \\pi}{2 \\pi}=1\\) complete cycles.",
+   "payload": {
+    "options": [
+     "\\(1\\)",
+     "\\(4\\)",
+     "\\(3\\)",
+     "\\(2\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-178",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "identities",
+   "prompt": "Simplify \\(\\sin\\theta\\sec\\theta\\).",
+   "explanation": "Use the fundamental identities (quotient, reciprocal and Pythagorean) or the double-angle formulas: \\(\\sin\\theta\\sec\\theta=\\tan\\theta\\).",
+   "payload": {
+    "options": [
+     "\\(\\cot\\theta\\)",
+     "\\(\\tan\\theta\\)",
+     "\\(1\\)",
+     "\\(\\sec\\theta\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-179",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\frac{2}{3}\\operatorname{cosec}(\\frac{\\pi x}{4} - 1)\\).",
+   "explanation": "For \\(y=\\operatorname{cosec}(bx+c)\\) the period is \\(\\dfrac{2 \\pi}{|b|}\\). Here \\(b=\\frac{\\pi}{4}\\), so the period is \\(8\\). The coefficient in front and the shift inside do not change the period.",
+   "payload": {
+    "options": [
+     "\\(\\frac{2 \\pi}{\\frac{1}{2} + \\frac{\\pi}{4}}\\)",
+     "\\(8\\)",
+     "\\(4\\)",
+     "\\(16\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-180",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=5|\\cos2x|\\).",
+   "explanation": "\\(0\\le|\\cos\\theta|\\le1\\), so \\(0\\le5|\\cos\\theta|\\le5\\) and adding \\(0\\) gives \\([0,\\ 5]\\).",
+   "payload": {
+    "options": [
+     "\\([0,\\ 1]\\)",
+     "\\([0,\\ 5]\\)",
+     "\\([-1,\\ 1]\\)",
+     "\\([-5,\\ 5]\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-181",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "domain-range",
+   "prompt": "Find the domain of \\(y=5\\operatorname{cosec}(\\frac{3 x}{2})\\).",
+   "explanation": "\\(\\operatorname{cosec}\\theta\\) is undefined when \\(\\sin\\theta=0\\), i.e. \\(\\theta=n\\pi\\). With \\(\\theta=\\frac{3}{2}x\\): \\(x=\\dfrac{n\\pi}{\\frac{3}{2}}\\).",
+   "payload": {
+    "options": [
+     "\\(x\\ne n\\cdot\\pi,\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne (2n+1)\\cdot\\frac{2 \\pi}{3},\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne n\\cdot\\frac{\\pi}{3},\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne n\\cdot\\frac{2 \\pi}{3},\\ n\\in\\mathbb{Z}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-182",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "graphs",
+   "prompt": "State the frequency (number of cycles per unit of \\(x\\)) of \\(y=4\\cos\\left(4x\\right) - 1\\).",
+   "explanation": "Frequency \\(=\\dfrac1T=\\dfrac{|b|}{2\\pi}=\\frac{2}{\\pi}\\).",
+   "payload": {
+    "options": [
+     "\\(4\\)",
+     "\\(\\frac{\\pi}{2}\\)",
+     "\\(8 \\pi\\)",
+     "\\(\\frac{2}{\\pi}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-183",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A voltage of peak value \\(150\\) V and frequency \\(25\\) Hz is written \\(V=150\\sin(kt)^\\circ\\), \\(t\\) in seconds. Find \\(k\\).",
+   "explanation": "\\(k=360\\times f=360\\times25=9000\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{72}{5}\\)",
+     "\\(25\\)",
+     "\\(\\frac{5}{72}\\)",
+     "\\(9000\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-184",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "identities",
+   "prompt": "Simplify \\(\\dfrac{1}{\\sec\\theta}\\).",
+   "explanation": "Use the fundamental identities (quotient, reciprocal and Pythagorean) or the double-angle formulas: \\(\\dfrac{1}{\\sec\\theta}=\\cos\\theta\\).",
+   "payload": {
+    "options": [
+     "\\(\\sec^2\\theta\\)",
+     "\\(\\cos\\theta\\)",
+     "\\(\\operatorname{cosec}\\theta\\)",
+     "\\(\\tan\\theta\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-185",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "even-odd",
+   "prompt": "Is \\(f(x)=\\sin^2x \\cdot x \\cdot \\sin x\\) even, odd, or neither?",
+   "explanation": "Parities of the factors: \\(\\sin^2x\\) is even, \\(x\\) is odd, \\(\\sin x\\) is odd. There are 2 odd factors (a product or quotient is odd exactly when the number of odd factors is odd), so the function is even.",
+   "payload": {
+    "options": [
+     "Even",
+     "Neither even nor odd",
+     "Both even and odd",
+     "Odd"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-186",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "even-odd",
+   "prompt": "Is \\(f(x)=\\dfrac{\\cos3x}{\\sin^2x}\\) even, odd, or neither?",
+   "explanation": "Parities of the factors: \\(\\cos3x\\) is even, \\(\\sin^2x\\) is even. There are 0 odd factors (a product or quotient is odd exactly when the number of odd factors is odd), so the function is even.",
+   "payload": {
+    "options": [
+     "Even",
+     "Odd",
+     "Both even and odd",
+     "Neither even nor odd"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-187",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=\\frac{5}{2}\\sin(\\frac{7 x}{2} + \\frac{1}{2})\\).",
+   "explanation": "\\(-1\\le\\sin(\\cdots)\\le1\\), so multiplying by \\(\\frac{5}{2}\\) gives \\([- \\frac{5}{2},\\frac{5}{2}]\\). The inside part only changes the period.",
+   "payload": {
+    "options": [
+     "\\([- \\frac{5}{2},\\ \\frac{5}{2}]\\)",
+     "\\([- \\frac{7}{2},\\ \\frac{7}{2}]\\)",
+     "\\([- \\frac{5}{2},\\ 3]\\)",
+     "\\([-5,\\ 5]\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-188",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "period",
+   "prompt": "The period of \\(y=\\sin(ax+b)\\) is",
+   "explanation": "Only the coefficient of \\(x\\) matters.",
+   "payload": {
+    "options": [
+     "\\(\\dfrac{2\\pi}{a+b}\\)",
+     "\\(\\dfrac{2\\pi}{|a|}\\)",
+     "\\(\\dfrac{2\\pi}{|b|}\\)",
+     "\\(2\\pi|a|\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-189",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=2\\cot(5 x)\\).",
+   "explanation": "The period of \\(\\cot(bx+c)\\) is \\(\\dfrac{\\pi}{|b|}\\) (tan and cot repeat every \\(\\pi\\), not \\(2\\pi\\)). Here \\(b=5\\), so the period is \\(\\frac{\\pi}{5}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{\\pi}{5}\\)",
+     "\\(\\frac{\\pi}{6}\\)",
+     "\\(5 \\pi\\)",
+     "\\(\\frac{2 \\pi}{5}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-190",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "max-min",
+   "prompt": "Find the maximum value of \\(y=2\\sin(x) + 6\\).",
+   "explanation": "For \\(y=a+b\\,\\sin(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=6\\), \\(|b|=2\\), so \\(M=8\\) and \\(m=4\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(12\\)",
+     "\\(-8\\)",
+     "\\(4\\)",
+     "\\(8\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-191",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=2\\sin(\\frac{x}{2} + 4)\\).",
+   "explanation": "For \\(y=\\sin(bx+c)\\) the period is \\(\\dfrac{2 \\pi}{|b|}\\). Here \\(b=\\frac{1}{2}\\), so the period is \\(4 \\pi\\). The coefficient in front and the shift inside do not change the period.",
+   "payload": {
+    "options": [
+     "\\(4 \\pi\\)",
+     "\\(8 \\pi\\)",
+     "\\(\\pi\\)",
+     "\\(2 \\pi\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-192",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "domain-range",
+   "prompt": "Find the domain of \\(y=5\\sec(\\frac{3 x}{2})\\).",
+   "explanation": "\\(\\sec\\theta\\) is undefined when \\(\\cos\\theta=0\\), i.e. \\(\\theta=(2n+1)\\frac{\\pi}{2}\\). With \\(\\theta=\\frac{3}{2}x\\): \\(x=\\dfrac{(2n+1)\\pi}{2\\cdot\\frac{3}{2}}\\).",
+   "payload": {
+    "options": [
+     "\\(x\\ne n\\cdot\\frac{2 \\pi}{3},\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne (2n+1)\\cdot\\frac{\\pi}{3},\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne n\\pi,\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne (2n+1)\\cdot\\frac{\\pi}{2},\\ n\\in\\mathbb{Z}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-193",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "graphs",
+   "prompt": "Find the minimum value of \\(y=6\\sin\\left(x\\right) + 1\\).",
+   "explanation": "Min \\(=d-|a|=1-6=-5\\).",
+   "payload": {
+    "options": [
+     "\\(-5\\)",
+     "\\(7\\)",
+     "\\(-6\\)",
+     "\\(2\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-194",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=6\\cos(\\frac{2 x}{5} + 2)\\).",
+   "explanation": "For \\(y=\\cos(bx+c)\\) the period is \\(\\dfrac{2 \\pi}{|b|}\\). Here \\(b=\\frac{2}{5}\\), so the period is \\(5 \\pi\\). The coefficient in front and the shift inside do not change the period.",
+   "payload": {
+    "options": [
+     "\\(2 \\pi\\)",
+     "\\(\\frac{10 \\pi}{7}\\)",
+     "\\(5 \\pi\\)",
+     "\\(\\frac{4 \\pi}{5}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-195",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\sin^{2}(3 x)\\).",
+   "explanation": "An even power of sin or cos removes the minus sign, so the period is halved to \\(\\dfrac{\\pi}{|b|}\\). (\\(\\tan^n\\) has period \\(\\dfrac{\\pi}{|b|}\\) for every \\(n\\).) Here \\(b=3\\), so the period is \\(\\frac{\\pi}{3}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{\\pi}{3}\\)",
+     "\\(\\frac{2 \\pi}{3}\\)",
+     "\\(\\frac{\\pi}{6}\\)",
+     "\\(\\frac{4 \\pi}{3}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-196",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=4\\sec(2 x)\\).",
+   "explanation": "\\(|\\sec\\theta|\\ge1\\), so \\(|y|\\ge4\\): \\(y\\le-4\\) or \\(y\\ge4\\).",
+   "payload": {
+    "options": [
+     "\\((-\\infty,-1]\\cup[1,\\infty)\\)",
+     "\\([4,\\infty)\\)",
+     "\\([-4,4]\\)",
+     "\\((-\\infty,-4]\\cup[4,\\infty)\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-197",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\cos^{4}(6 x)\\).",
+   "explanation": "An even power of sin or cos removes the minus sign, so the period is halved to \\(\\dfrac{\\pi}{|b|}\\). (\\(\\tan^n\\) has period \\(\\dfrac{\\pi}{|b|}\\) for every \\(n\\).) Here \\(b=6\\), so the period is \\(\\frac{\\pi}{6}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{2 \\pi}{3}\\)",
+     "\\(\\frac{\\pi}{12}\\)",
+     "\\(\\frac{\\pi}{3}\\)",
+     "\\(\\frac{\\pi}{6}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-198",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A Ferris wheel has radius \\(25\\) m, its lowest point is \\(5\\) m above the ground and one revolution takes \\(36\\) s. How many revolutions does it make per second?",
+   "explanation": "Frequency \\(=\\dfrac{1}{\\text{period}}=\\dfrac1{36}\\) revolutions per second.",
+   "payload": {
+    "options": [
+     "\\(\\frac{1}{36}\\)",
+     "\\(36\\)",
+     "\\(\\frac{\\pi}{18}\\)",
+     "\\(\\frac{3}{5}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-199",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "max-min",
+   "prompt": "Find the maximum \\(M\\) and minimum \\(m\\) of \\(y=\\frac{3}{2}\\sin(x + \\frac{1}{2}) - 3\\).",
+   "explanation": "For \\(y=a+b\\,\\sin(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=-3\\), \\(|b|=\\frac{3}{2}\\), so \\(M=- \\frac{3}{2}\\) and \\(m=- \\frac{9}{2}\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(M=- \\frac{1}{2},\\ m=- \\frac{11}{2}\\)",
+     "\\(M=- \\frac{9}{2},\\ m=\\frac{9}{2}\\)",
+     "\\(M=- \\frac{3}{2},\\ m=- \\frac{9}{2}\\)",
+     "\\(M=- \\frac{9}{2},\\ m=- \\frac{3}{2}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-200",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "values",
+   "prompt": "Find the exact value of \\(\\cos\\,135^\\circ\\).",
+   "explanation": "Reduce to the reference angle: \\(135^\\circ\\equiv135^\\circ\\) (mod \\(360^\\circ\\)), in quadrant II. Use the sign rule (ASTC) and the special-angle values to get \\(- \\frac{\\sqrt{2}}{2}\\).",
+   "payload": {
+    "options": [
+     "\\(- \\frac{\\sqrt{3}}{3}\\)",
+     "\\(\\sqrt{2}\\)",
+     "\\(\\frac{\\sqrt{3}}{2}\\)",
+     "\\(- \\frac{\\sqrt{2}}{2}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-201",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "even-odd",
+   "prompt": "Is \\(f(x)=\\dfrac{\\cot x}{\\sin^2x}\\) even, odd, or neither?",
+   "explanation": "Parities of the factors: \\(\\cot x\\) is odd, \\(\\sin^2x\\) is even. There are 1 odd factor (a product or quotient is odd exactly when the number of odd factors is odd), so the function is odd.",
+   "payload": {
+    "options": [
+     "Even",
+     "Neither even nor odd",
+     "Both even and odd",
+     "Odd"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-202",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "graphs",
+   "prompt": "State the frequency (number of cycles per unit of \\(x\\)) of \\(y=-\\cos\\left(3\\left(x-\\frac{\\pi}{3}\\right)\\right) - 2\\).",
+   "explanation": "Frequency \\(=\\dfrac1T=\\dfrac{|b|}{2\\pi}=\\frac{3}{2 \\pi}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{2 \\pi}{3}\\)",
+     "\\(6 \\pi\\)",
+     "\\(\\frac{3}{2 \\pi}\\)",
+     "\\(\\frac{1}{3}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-203",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "max-min",
+   "prompt": "Find the minimum value of \\(y=2\\cos^2x + 1\\sin^2x\\).",
+   "explanation": "Use \\(\\sin^2x+\\cos^2x=1\\): the expression is a weighted average of \\(2\\) and \\(1\\) with weights between \\(0\\) and \\(1\\), so it lies between them. Maximum \\(=2\\), minimum \\(=1\\).",
+   "payload": {
+    "options": [
+     "\\(3\\)",
+     "\\(2\\)",
+     "\\(1\\)",
+     "\\(0\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-204",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=-3\\cos(\\frac{2 x}{5})\\).",
+   "explanation": "For \\(y=\\cos(bx+c)\\) the period is \\(\\dfrac{2 \\pi}{|b|}\\). Here \\(b=\\frac{2}{5}\\), so the period is \\(5 \\pi\\). The coefficient in front and the shift inside do not change the period.",
+   "payload": {
+    "options": [
+     "\\(10 \\pi\\)",
+     "\\(\\pi\\)",
+     "\\(\\frac{5 \\pi}{2}\\)",
+     "\\(5 \\pi\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-205",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "max-min",
+   "prompt": "Find the maximum \\(M\\) and minimum \\(m\\) of \\(y=6\\sin(x) + 5\\).",
+   "explanation": "For \\(y=a+b\\,\\sin(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=5\\), \\(|b|=6\\), so \\(M=11\\) and \\(m=-1\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(M=6,\\ m=-6\\)",
+     "\\(M=-1,\\ m=11\\)",
+     "\\(M=11,\\ m=-1\\)",
+     "\\(M=30,\\ m=-30\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-206",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=-3\\sin(\\frac{\\pi x}{4} + 4)\\).",
+   "explanation": "For \\(y=\\sin(bx+c)\\) the period is \\(\\dfrac{2 \\pi}{|b|}\\). Here \\(b=\\frac{\\pi}{4}\\), so the period is \\(8\\). The coefficient in front and the shift inside do not change the period.",
+   "payload": {
+    "options": [
+     "\\(\\frac{2 \\pi}{\\frac{\\pi}{4} + 1}\\)",
+     "\\(4\\)",
+     "\\(2 \\pi\\)",
+     "\\(8\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-207",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=5\\sin(\\frac{\\pi x}{3}) + \\frac{1}{2}\\).",
+   "explanation": "\\(-1\\le\\sin(\\cdots)\\le1\\), so multiplying by \\(5\\) gives \\([-5,5]\\) and adding \\(\\frac{1}{2}\\) shifts it to \\([- \\frac{9}{2},\\ \\frac{11}{2}]\\). The inside part only changes the period.",
+   "payload": {
+    "options": [
+     "\\([\\frac{1}{2} - \\frac{5 \\pi}{3},\\ \\frac{1}{2} + \\frac{5 \\pi}{3}]\\)",
+     "\\([- \\frac{9}{2},\\ \\frac{11}{2}]\\)",
+     "\\([- \\frac{1}{2},\\ \\frac{3}{2}]\\)",
+     "\\([- \\frac{19}{2},\\ \\frac{21}{2}]\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-208",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A Ferris wheel has radius \\(5\\) m, its lowest point is \\(4\\) m above the ground and one revolution takes \\(36\\) s. What is the height of the midline (the centre of the wheel) above the ground (in metres)?",
+   "explanation": "Midline \\(=\\dfrac{\\max+\\min}{2}=\\dfrac{(14)+4}{2}=9\\) m.",
+   "payload": {
+    "options": [
+     "\\(4\\)",
+     "\\(18\\)",
+     "\\(9\\)",
+     "\\(10\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-209",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=5\\sin(\\frac{x}{4})\\).",
+   "explanation": "\\(-1\\le\\sin(\\cdots)\\le1\\), so multiplying by \\(5\\) gives \\([-5,5]\\). The inside part only changes the period.",
+   "payload": {
+    "options": [
+     "\\([-6,\\ 6]\\)",
+     "\\([-1,\\ 1]\\)",
+     "\\([-5,\\ 5]\\)",
+     "\\([- \\frac{5}{4},\\ \\frac{5}{4}]\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-210",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A Ferris wheel of radius \\(30\\) m has its lowest point \\(3\\) m above the ground and makes one revolution in \\(48\\) s. A rider boards at the lowest point. How high above the ground is the rider after \\(32\\) s?",
+   "explanation": "A rider who starts at the lowest point follows \\(h(t)=33-30\\cos\\!\\left(\\dfrac{2\\pi t}{48}\\right)\\) (centre height \\(=\\text{radius}+\\text{platform}=30+3=33\\) m). At \\(t=32\\) s the angle is \\(2\\pi\\cdot\\frac{2}{3}\\), \\(\\cos=- \\frac{1}{2}\\), so \\(h=48\\) m.",
+   "payload": {
+    "options": [
+     "\\(18\\text{ m}\\)",
+     "\\(48\\text{ m}\\)",
+     "\\(63\\text{ m}\\)",
+     "\\(15 \\sqrt{3} + 33\\text{ m}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-211",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "values",
+   "prompt": "Is \\(\\tan\\,650^\\circ\\) positive or negative?",
+   "explanation": "\\(650^\\circ\\) lies in quadrant IV (it is coterminal with \\(290^\\circ\\)). ASTC: All positive in I, Sine (and cosec) in II, Tangent (and cot) in III, Cosine (and sec) in IV. So \\(\\tan\\,650^\\circ\\) is negative.",
+   "payload": {
+    "options": [
+     "Positive",
+     "Zero",
+     "Undefined",
+     "Negative"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-212",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=5\\cos(\\frac{7 x}{3})\\).",
+   "explanation": "\\(-1\\le\\cos(\\cdots)\\le1\\), so multiplying by \\(5\\) gives \\([-5,5]\\). The inside part only changes the period.",
+   "payload": {
+    "options": [
+     "\\([-10,\\ 10]\\)",
+     "\\([-5,\\ 5]\\)",
+     "\\([- \\frac{35}{3},\\ \\frac{35}{3}]\\)",
+     "\\([-5,\\ 6]\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-213",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "identities",
+   "prompt": "If \\(\\cos\\theta=- \\frac{3}{5}\\) and \\(\\theta\\) is in the second quadrant, find \\(\\operatorname{cosec}\\theta\\).",
+   "explanation": "Use \\(\\sin^2\\theta+\\cos^2\\theta=1\\) to find the missing ratio, then fix its sign from the quadrant (ASTC). Here \\(\\sin\\theta=\\frac{4}{5}\\), \\(\\cos\\theta=- \\frac{3}{5}\\), so \\(\\operatorname{cosec}\\theta=\\frac{5}{4}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{4}{5}\\)",
+     "\\(\\frac{5}{4}\\)",
+     "\\(- \\frac{3}{5}\\)",
+     "\\(- \\frac{12}{25}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-214",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "even-odd",
+   "prompt": "Is \\(f(x)=\\cos^2x \\cdot x^2\\) even, odd, or neither?",
+   "explanation": "Parities of the factors: \\(\\cos^2x\\) is even, \\(x^2\\) is even. There are 0 odd factors (a product or quotient is odd exactly when the number of odd factors is odd), so the function is even.",
+   "payload": {
+    "options": [
+     "Even",
+     "Both even and odd",
+     "Odd",
+     "Neither even nor odd"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-215",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "The temperature in a room is modelled by \\(d(t)=5+4\\cos\\!\\left(\\dfrac{2\\pi t}{12}\\right)\\), \\(t\\) in hours. Find the greatest value.",
+   "explanation": "Max \\(=D+A=5+4=9\\).",
+   "payload": {
+    "options": [
+     "\\(5^\\circ\\text{C}\\)",
+     "\\(13^\\circ\\text{C}\\)",
+     "\\(9^\\circ\\text{C}\\)",
+     "\\(1^\\circ\\text{C}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-216",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "The height of a buoy above the sea bed is modelled by \\(d(t)=6+\\cos\\!\\left(\\dfrac{2\\pi t}{12}\\right)\\), \\(t\\) in hours. Find the difference between the greatest and least values.",
+   "explanation": "Difference \\(=2A=2\\).",
+   "payload": {
+    "options": [
+     "\\(4\\text{ m}\\)",
+     "\\(2\\text{ m}\\)",
+     "\\(12\\text{ m}\\)",
+     "\\(1\\text{ m}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-217",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "The function \\(f(x)=\\tan(kx)\\) (\\(k>0\\)) has period \\(\\frac{3 \\pi}{4}\\). Find \\(k\\).",
+   "explanation": "The period of \\(\\tan(kx)\\) is \\(\\dfrac{\\pi}{k}\\). Setting \\(\\dfrac{\\pi}{k}=\\frac{3 \\pi}{4}\\) gives \\(k=\\frac{4}{3}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{8}{3}\\)",
+     "\\(\\frac{4}{3}\\)",
+     "\\(\\frac{7}{3}\\)",
+     "\\(\\frac{3}{2}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-218",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=\\frac{1}{2}\\sec(x)\\).",
+   "explanation": "\\(|\\sec\\theta|\\ge1\\), so \\(|y|\\ge\\frac{1}{2}\\): \\(y\\le-\\frac{1}{2}\\) or \\(y\\ge\\frac{1}{2}\\).",
+   "payload": {
+    "options": [
+     "\\([-\\frac{1}{2},\\frac{1}{2}]\\)",
+     "\\((-\\infty,-1]\\cup[1,\\infty)\\)",
+     "\\(\\mathbb{R}\\ (\\text{all real numbers})\\)",
+     "\\((-\\infty,-\\frac{1}{2}]\\cup[\\frac{1}{2},\\infty)\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-219",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A Ferris wheel has radius \\(12\\) m, its lowest point is \\(5\\) m above the ground and one revolution takes \\(90\\) s. How many revolutions does it make per second?",
+   "explanation": "Frequency \\(=\\dfrac{1}{\\text{period}}=\\dfrac1{90}\\) revolutions per second.",
+   "payload": {
+    "options": [
+     "\\(\\frac{1}{180}\\)",
+     "\\(\\frac{1}{90}\\)",
+     "\\(\\frac{3}{2}\\)",
+     "\\(\\frac{1}{45}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-220",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "applications",
+   "prompt": "An alternating voltage is \\(V=240\\sin(20160t)^\\circ\\) volts, where \\(t\\) is in seconds. Find \\(V\\) at \\(t=\\frac{1}{168}\\) s.",
+   "explanation": "The angle is \\(20160\\times\\frac{1}{168}=120^\\circ\\). So \\(V=240\\sin120^\\circ=120 \\sqrt{3}\\) V.",
+   "payload": {
+    "options": [
+     "\\(240 \\sqrt{3}\\text{ V}\\)",
+     "\\(120 \\sqrt{3}\\text{ V}\\)",
+     "\\(-120\\text{ V}\\)",
+     "\\(- 120 \\sqrt{3}\\text{ V}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-221",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "The temperature in a room is modelled by \\(d(t)=8+4\\cos\\!\\left(\\dfrac{2\\pi t}{24}\\right)\\), \\(t\\) in hours. How many hours pass between two successive maxima?",
+   "explanation": "The time between successive maxima is one period \\(=\\dfrac{2\\pi}{2\\pi/24}=24\\) hours.",
+   "payload": {
+    "options": [
+     "\\(2 \\pi\\)",
+     "\\(12\\)",
+     "\\(24\\)",
+     "\\(24 \\pi\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-222",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "identities",
+   "prompt": "If \\(\\sin\\theta=\\frac{12}{13}\\) and \\(\\theta\\) is in the first quadrant, find \\(\\operatorname{cosec}\\theta\\).",
+   "explanation": "Use \\(\\sin^2\\theta+\\cos^2\\theta=1\\) to find the missing ratio, then fix its sign from the quadrant (ASTC). Here \\(\\sin\\theta=\\frac{12}{13}\\), \\(\\cos\\theta=\\frac{5}{13}\\), so \\(\\operatorname{cosec}\\theta=\\frac{13}{12}\\).",
+   "payload": {
+    "options": [
+     "\\(- \\frac{12}{13}\\)",
+     "\\(\\frac{12}{13}\\)",
+     "\\(\\frac{13}{12}\\)",
+     "\\(- \\frac{13}{12}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-223",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "max-min",
+   "prompt": "Find the maximum \\(M\\) and minimum \\(m\\) of \\(y=\\frac{3}{2}\\sin(x) + 3\\).",
+   "explanation": "For \\(y=a+b\\,\\sin(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=3\\), \\(|b|=\\frac{3}{2}\\), so \\(M=\\frac{9}{2}\\) and \\(m=\\frac{3}{2}\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(M=\\frac{3}{2},\\ m=\\frac{9}{2}\\)",
+     "\\(M=\\frac{11}{2},\\ m=\\frac{1}{2}\\)",
+     "\\(M=\\frac{9}{2},\\ m=\\frac{3}{2}\\)",
+     "\\(M=\\frac{9}{2},\\ m=- \\frac{9}{2}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-224",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "even-odd",
+   "prompt": "Is \\(f(x)=x^3 \\cdot \\cos^2x\\) even, odd, or neither?",
+   "explanation": "Parities of the factors: \\(x^3\\) is odd, \\(\\cos^2x\\) is even. There are 1 odd factor (a product or quotient is odd exactly when the number of odd factors is odd), so the function is odd.",
+   "payload": {
+    "options": [
+     "Odd",
+     "Even",
+     "Neither even nor odd",
+     "Both even and odd"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-225",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "graphs",
+   "prompt": "State the frequency (number of cycles per unit of \\(x\\)) of \\(y=\\sin\\left(x\\right) - 1\\).",
+   "explanation": "Frequency \\(=\\dfrac1T=\\dfrac{|b|}{2\\pi}=\\frac{1}{2 \\pi}\\).",
+   "payload": {
+    "options": [
+     "\\(2 \\pi\\)",
+     "\\(\\pi\\)",
+     "\\(\\frac{1}{2 \\pi}\\)",
+     "\\(1\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-226",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "even-odd",
+   "prompt": "Is \\(f(x)=\\sin^2x \\cdot x^2\\) even, odd, or neither?",
+   "explanation": "Parities of the factors: \\(\\sin^2x\\) is even, \\(x^2\\) is even. There are 0 odd factors (a product or quotient is odd exactly when the number of odd factors is odd), so the function is even.",
+   "payload": {
+    "options": [
+     "Odd",
+     "Neither even nor odd",
+     "Both even and odd",
+     "Even"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-227",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "max-min",
+   "prompt": "Find the range of \\(y=\\dfrac{1}{6 - \\cos(x)}\\).",
+   "explanation": "Denominator: \\(a=6\\), \\(|b|=1\\), so it runs from \\(m=5\\) to \\(M=7\\). Both have the same sign, so the denominator never reaches 0 and the reciprocal runs from \\(\\dfrac1M\\) to \\(\\dfrac1m\\): \\([0.142857142857143,\\ 0.2]\\).",
+   "payload": {
+    "options": [
+     "\\([-0.2,\\ -0.142857142857143]\\)",
+     "\\((-\\infty,\\ 0.2]\\cup[0.142857142857143,\\ \\infty)\\)",
+     "\\([-0.2,\\ 0.2]\\)",
+     "\\([0.142857142857143,\\ 0.2]\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-228",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "max-min",
+   "prompt": "Find the range of \\(y=\\dfrac{1}{\\frac{5}{2} + \\frac{1}{3}\\sin(\\frac{x}{2})}\\).",
+   "explanation": "Denominator: \\(a=\\frac{5}{2}\\), \\(|b|=\\frac{1}{3}\\), so it runs from \\(m=\\frac{13}{6}\\) to \\(M=\\frac{17}{6}\\). Both have the same sign, so the denominator never reaches 0 and the reciprocal runs from \\(\\dfrac1M\\) to \\(\\dfrac1m\\): \\([\\frac{6}{17},\\ \\frac{6}{13}]\\).",
+   "payload": {
+    "options": [
+     "\\([- \\frac{6}{13},\\ - \\frac{6}{17}]\\)",
+     "\\((-\\infty,\\ \\frac{6}{13}]\\cup[\\frac{6}{17},\\ \\infty)\\)",
+     "\\([\\frac{6}{17},\\ \\frac{6}{13}]\\)",
+     "\\([\\frac{13}{6},\\ \\frac{17}{6}]\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-229",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "max-min",
+   "prompt": "Find the range of \\(y=\\dfrac{1}{-1 + 3\\cos(2 x)}\\).",
+   "explanation": "The denominator runs from \\(m=-4\\) to \\(M=2\\) and passes through \\(0\\) (so these \\(x\\) are excluded from the domain). Then \\(y\\) takes values \\(\\le\\dfrac1m=-0.25\\) or \\(\\ge\\dfrac1M=0.5\\), with a gap between. There is no maximum and no minimum.",
+   "payload": {
+    "options": [
+     "\\((-\\infty,\\ -4]\\cup[2,\\ \\infty)\\)",
+     "\\(\\mathbb{R}\\)",
+     "\\((-\\infty,\\ -0.25]\\cup[0.5,\\ \\infty)\\)",
+     "\\([-0.25,\\ 0.5]\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-230",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "applications",
+   "prompt": "A quantity oscillates sinusoidally between a minimum of \\(2\\) and a maximum of \\(32\\) with period \\(365\\). At \\(t=0\\) the quantity is at its minimum. Which equation models it?",
+   "explanation": "Starting at a minimum means \\(-\\cos\\). \\(A=15\\), midline \\(D=17\\), \\(B=\\dfrac{2\\pi}{365}=\\frac{2 \\pi}{365}\\).",
+   "payload": {
+    "options": [
+     "\\(y=15\\cos(\\frac{2 \\pi}{365}t) + 17\\)",
+     "\\(y=-15\\cos(\\frac{2 \\pi}{365}t) + 17\\)",
+     "\\(y=-15\\cos(365t) + 17\\)",
+     "\\(y=-32\\cos(\\frac{2 \\pi}{365}t)\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-231",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "The function \\(f(x)=\\tan(kx)\\) (\\(k>0\\)) has period \\(\\frac{\\pi}{2}\\). Find \\(k\\).",
+   "explanation": "The period of \\(\\tan(kx)\\) is \\(\\dfrac{\\pi}{k}\\). Setting \\(\\dfrac{\\pi}{k}=\\frac{\\pi}{2}\\) gives \\(k=2\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{1}{2}\\)",
+     "\\(2\\)",
+     "\\(1\\)",
+     "\\(4\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-232",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=3\\sin(\\frac{5 x}{4})\\).",
+   "explanation": "\\(-1\\le\\sin(\\cdots)\\le1\\), so multiplying by \\(3\\) gives \\([-3,3]\\). The inside part only changes the period.",
+   "payload": {
+    "options": [
+     "\\([-1,\\ 1]\\)",
+     "\\([-4,\\ 4]\\)",
+     "\\([-3,\\ 3]\\)",
+     "\\([-6,\\ 6]\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-233",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "max-min",
+   "prompt": "Find the maximum \\(M\\) and minimum \\(m\\) of \\(y=\\cos(x) + 3\\).",
+   "explanation": "For \\(y=a+b\\,\\cos(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=3\\), \\(|b|=1\\), so \\(M=4\\) and \\(m=2\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(M=1,\\ m=-1\\)",
+     "\\(M=5,\\ m=1\\)",
+     "\\(M=2,\\ m=4\\)",
+     "\\(M=4,\\ m=2\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-234",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "values",
+   "prompt": "Is \\(\\sec\\,340^\\circ\\) positive or negative?",
+   "explanation": "\\(340^\\circ\\) lies in quadrant IV (it is coterminal with \\(340^\\circ\\)). ASTC: All positive in I, Sine (and cosec) in II, Tangent (and cot) in III, Cosine (and sec) in IV. So \\(\\sec\\,340^\\circ\\) is positive.",
+   "payload": {
+    "options": [
+     "Negative",
+     "Positive",
+     "Undefined",
+     "Zero"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-235",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=4\\sin(3 x)\\).",
+   "explanation": "\\(-1\\le\\sin(\\cdots)\\le1\\), so multiplying by \\(4\\) gives \\([-4,4]\\). The inside part only changes the period.",
+   "payload": {
+    "options": [
+     "\\([-4,\\ 5]\\)",
+     "\\([-4,\\ 4]\\)",
+     "\\([-5,\\ 5]\\)",
+     "\\([-1,\\ 1]\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-236",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "values",
+   "prompt": "Is \\(\\operatorname{cosec}\\,-210^\\circ\\) positive or negative?",
+   "explanation": "\\(-210^\\circ\\) lies in quadrant II (it is coterminal with \\(150^\\circ\\)). ASTC: All positive in I, Sine (and cosec) in II, Tangent (and cot) in III, Cosine (and sec) in IV. So \\(\\operatorname{cosec}\\,-210^\\circ\\) is positive.",
+   "payload": {
+    "options": [
+     "Positive",
+     "Zero",
+     "Undefined",
+     "Negative"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-237",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "even-odd",
+   "prompt": "Is \\(f(x)=\\cos^2x \\cdot \\sec x \\cdot x^2\\) even, odd, or neither?",
+   "explanation": "Parities of the factors: \\(\\cos^2x\\) is even, \\(\\sec x\\) is even, \\(x^2\\) is even. There are 0 odd factors (a product or quotient is odd exactly when the number of odd factors is odd), so the function is even.",
+   "payload": {
+    "options": [
+     "Even",
+     "Odd",
+     "Both even and odd",
+     "Neither even nor odd"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-238",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "domain-range",
+   "prompt": "Which of the following functions has range \\([-1,1]\\)?",
+   "explanation": "Only sin and cos are bounded by \\(-1\\) and \\(1\\); sec, tan, cot are not.",
+   "payload": {
+    "options": [
+     "\\(y=\\sec x\\)",
+     "\\(y=\\cot x\\)",
+     "\\(y=\\cos x\\)",
+     "\\(y=\\tan x\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-239",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=2\\cot(6 x)\\).",
+   "explanation": "The period of \\(\\cot(bx+c)\\) is \\(\\dfrac{\\pi}{|b|}\\) (tan and cot repeat every \\(\\pi\\), not \\(2\\pi\\)). Here \\(b=6\\), so the period is \\(\\frac{\\pi}{6}\\).",
+   "payload": {
+    "options": [
+     "\\(6 \\pi\\)",
+     "\\(\\frac{\\pi}{7}\\)",
+     "\\(\\frac{\\pi}{6}\\)",
+     "\\(2 \\pi\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-240",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "max-min",
+   "prompt": "Find the minimum value of \\(y=7\\cos(\\frac{x}{2}) - 2\\).",
+   "explanation": "For \\(y=a+b\\,\\cos(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=-2\\), \\(|b|=7\\), so \\(M=5\\) and \\(m=-9\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(-9\\)",
+     "\\(-7\\)",
+     "\\(-14\\)",
+     "\\(9\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-241",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "identities",
+   "prompt": "If \\(\\cos\\theta=- \\frac{3}{5}\\) and \\(\\theta\\) is in the third quadrant, find \\(\\cos\\theta\\).",
+   "explanation": "Use \\(\\sin^2\\theta+\\cos^2\\theta=1\\) to find the missing ratio, then fix its sign from the quadrant (ASTC). Here \\(\\sin\\theta=- \\frac{4}{5}\\), \\(\\cos\\theta=- \\frac{3}{5}\\), so \\(\\cos\\theta=- \\frac{3}{5}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{3}{5}\\)",
+     "\\(\\frac{5}{3}\\)",
+     "\\(- \\frac{3}{5}\\)",
+     "\\(- \\frac{4}{5}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-242",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "applications",
+   "prompt": "A quantity oscillates sinusoidally between a minimum of \\(1\\) and a maximum of \\(7\\) with period \\(4\\). At \\(t=0\\) the quantity is at its maximum. Which equation models it?",
+   "explanation": "Starting at a maximum means \\(+\\cos\\). \\(A=3\\), midline \\(D=4\\), \\(B=\\dfrac{2\\pi}{4}=\\frac{\\pi}{2}\\).",
+   "payload": {
+    "options": [
+     "\\(y=3\\cos(4t) + 4\\)",
+     "\\(y=7\\cos(\\frac{\\pi}{2}t)\\)",
+     "\\(y=3\\sin(\\frac{\\pi}{2}t) + 4\\)",
+     "\\(y=3\\cos(\\frac{\\pi}{2}t) + 4\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-243",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "identities",
+   "prompt": "If \\(\\sin\\theta=- \\frac{8}{17}\\) and \\(\\theta\\) is in the third quadrant, find \\(\\cos\\theta\\).",
+   "explanation": "Use \\(\\sin^2\\theta+\\cos^2\\theta=1\\) to find the missing ratio, then fix its sign from the quadrant (ASTC). Here \\(\\sin\\theta=- \\frac{8}{17}\\), \\(\\cos\\theta=- \\frac{15}{17}\\), so \\(\\cos\\theta=- \\frac{15}{17}\\).",
+   "payload": {
+    "options": [
+     "\\(- \\frac{17}{15}\\)",
+     "\\(- \\frac{15}{17}\\)",
+     "\\(\\frac{8}{15}\\)",
+     "\\(- \\frac{8}{17}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-244",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(\\theta)=\\tan(6\\theta)\\) in degrees.",
+   "explanation": "In degrees the base period of \\tan is \\(180^\\circ\\). Divide by \\(|b|=6\\): \\(\\dfrac{180^\\circ}{6}=30^\\circ\\).",
+   "payload": {
+    "options": [
+     "\\(15^\\circ\\)",
+     "\\(180^\\circ\\)",
+     "\\(1080^\\circ\\)",
+     "\\(30^\\circ\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-245",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\left|\\sin(2 x)\\right|\\).",
+   "explanation": "Taking the absolute value folds the negative half of the wave upwards, so the pattern repeats after half a period: \\(\\dfrac{\\pi}{|b|}\\). Here \\(b=2\\), so the period is \\(\\frac{\\pi}{2}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{\\pi}{2}\\)",
+     "\\(2 \\pi\\)",
+     "\\(\\frac{\\pi}{4}\\)",
+     "\\(\\pi\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-246",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=7\\cot(\\frac{5 x}{4} - 1)\\).",
+   "explanation": "The period of \\(\\cot(bx+c)\\) is \\(\\dfrac{\\pi}{|b|}\\) (tan and cot repeat every \\(\\pi\\), not \\(2\\pi\\)). Here \\(b=\\frac{5}{4}\\), so the period is \\(\\frac{4 \\pi}{5}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{4 \\pi}{9}\\)",
+     "\\(2 \\pi\\)",
+     "\\(\\frac{2 \\pi}{5}\\)",
+     "\\(\\frac{4 \\pi}{5}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-247",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "even-odd",
+   "prompt": "Is \\(f(x)=\\sec x \\cdot \\tan x\\) even, odd, or neither?",
+   "explanation": "Parities of the factors: \\(\\sec x\\) is even, \\(\\tan x\\) is odd. There are 1 odd factor (a product or quotient is odd exactly when the number of odd factors is odd), so the function is odd.",
+   "payload": {
+    "options": [
+     "Even",
+     "Neither even nor odd",
+     "Both even and odd",
+     "Odd"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-248",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\cos(4 x)\\).",
+   "explanation": "For \\(y=\\cos(bx+c)\\) the period is \\(\\dfrac{2 \\pi}{|b|}\\). Here \\(b=4\\), so the period is \\(\\frac{\\pi}{2}\\).",
+   "payload": {
+    "options": [
+     "\\(2 \\pi\\)",
+     "\\(\\frac{4 \\pi}{9}\\)",
+     "\\(\\frac{\\pi}{2}\\)",
+     "\\(8 \\pi\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-249",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=\\frac{1}{2}|\\cos3x|\\).",
+   "explanation": "\\(0\\le|\\cos\\theta|\\le1\\), so \\(0\\le\\frac{1}{2}|\\cos\\theta|\\le\\frac{1}{2}\\) and adding \\(0\\) gives \\([0,\\ \\frac{1}{2}]\\).",
+   "payload": {
+    "options": [
+     "\\([-1,\\ 1]\\)",
+     "\\([- \\frac{1}{2},\\ \\frac{1}{2}]\\)",
+     "\\([0,\\ \\frac{1}{2}]\\)",
+     "\\([0,\\ 1]\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-250",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "values",
+   "prompt": "Find the exact value of \\(\\cot\\,135^\\circ\\).",
+   "explanation": "Reduce to the reference angle: \\(135^\\circ\\equiv135^\\circ\\) (mod \\(360^\\circ\\)), in quadrant II. Use the sign rule (ASTC) and the special-angle values to get \\(-1\\).",
+   "payload": {
+    "options": [
+     "\\(\\sqrt{3}\\)",
+     "\\(-1\\)",
+     "\\(- \\frac{\\sqrt{3}}{3}\\)",
+     "\\(\\frac{1}{2}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-251",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "max-min",
+   "prompt": "Find the range of \\(y=\\dfrac{1}{1 + \\frac{7}{2}\\sin(3 x)}\\).",
+   "explanation": "The denominator runs from \\(m=- \\frac{5}{2}\\) to \\(M=\\frac{9}{2}\\) and passes through \\(0\\) (so these \\(x\\) are excluded from the domain). Then \\(y\\) takes values \\(\\le\\dfrac1m=- \\frac{2}{5}\\) or \\(\\ge\\dfrac1M=\\frac{2}{9}\\), with a gap between. There is no maximum and no minimum.",
+   "payload": {
+    "options": [
+     "\\([- \\frac{2}{5},\\ \\frac{2}{9}]\\)",
+     "\\((-\\infty,\\ - \\frac{2}{5}]\\cup[\\frac{2}{9},\\ \\infty)\\)",
+     "\\((-\\infty,\\ - \\frac{5}{2}]\\cup[\\frac{9}{2},\\ \\infty)\\)",
+     "\\(\\mathbb{R}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-252",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A Ferris wheel has radius \\(15\\) m, its lowest point is \\(4\\) m above the ground and one revolution takes \\(60\\) s. What is the greatest height of a rider above the ground (in metres)?",
+   "explanation": "Greatest height \\(=\\) lowest point \\(+\\) diameter \\(=4+30=34\\) m.",
+   "payload": {
+    "options": [
+     "\\(15\\)",
+     "\\(38\\)",
+     "\\(34\\)",
+     "\\(33\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-253",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\cos(6 x) + \\cos(\\frac{4 x}{3})\\).",
+   "explanation": "First find the two periods: \\(\\frac{\\pi}{3}\\) and \\(\\frac{3 \\pi}{2}\\). The period of a sum is \\(\\dfrac{\\text{LCM of numerators}}{\\text{HCF of denominators}}\\). Writing the periods as fractions of \\(\\pi\\): \\(\\frac{1}{3}\\) and \\(\\frac{3}{2}\\) give \\(3\\pi\\). So the period is \\(3 \\pi\\).",
+   "payload": {
+    "options": [
+     "\\(3 \\pi\\)",
+     "\\(\\frac{\\pi}{3}\\)",
+     "\\(\\frac{11 \\pi}{6}\\)",
+     "\\(\\frac{\\pi}{2}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-254",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=-2\\operatorname{cosec}(\\frac{5 x}{3} - 2)\\).",
+   "explanation": "For \\(y=\\operatorname{cosec}(bx+c)\\) the period is \\(\\dfrac{2 \\pi}{|b|}\\). Here \\(b=\\frac{5}{3}\\), so the period is \\(\\frac{6 \\pi}{5}\\). The coefficient in front and the shift inside do not change the period.",
+   "payload": {
+    "options": [
+     "\\(\\frac{3 \\pi}{4}\\)",
+     "\\(\\frac{6 \\pi}{5}\\)",
+     "\\(\\pi\\)",
+     "\\(\\frac{12 \\pi}{13}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-255",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\cos(\\frac{4 x}{3}) + \\cot(\\frac{3 x}{4})\\).",
+   "explanation": "First find the two periods: \\(\\frac{3 \\pi}{2}\\) and \\(\\frac{4 \\pi}{3}\\). The period of a sum is \\(\\dfrac{\\text{LCM of numerators}}{\\text{HCF of denominators}}\\). Writing the periods as fractions of \\(\\pi\\): \\(\\frac{3}{2}\\) and \\(\\frac{4}{3}\\) give \\(12\\pi\\). So the period is \\(12 \\pi\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{17 \\pi}{6}\\)",
+     "\\(6 \\pi\\)",
+     "\\(12 \\pi\\)",
+     "\\(24 \\pi\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-256",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "max-min",
+   "prompt": "Find the minimum value of \\(y=-6\\cos(x) + 1\\).",
+   "explanation": "For \\(y=a+b\\,\\cos(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=1\\), \\(|b|=6\\), so \\(M=7\\) and \\(m=-5\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(-5\\)",
+     "\\(5\\)",
+     "\\(-6\\)",
+     "\\(7\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-257",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "domain-range",
+   "prompt": "Find the domain of \\(y=\\cot(x)\\).",
+   "explanation": "\\(\\cot\\theta\\) is undefined when \\(\\sin\\theta=0\\), i.e. \\(\\theta=n\\pi\\). With \\(\\theta=1x\\): \\(x=\\dfrac{n\\pi}{1}\\).",
+   "payload": {
+    "options": [
+     "\\(x\\ne n\\cdot2 \\pi,\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne (2n+1)\\cdot\\pi,\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne n\\cdot\\pi,\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne (2n+1)\\cdot\\frac{\\pi}{2},\\ n\\in\\mathbb{Z}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-258",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=4\\operatorname{cosec}(2 x)\\).",
+   "explanation": "\\(|\\operatorname{cosec}\\theta|\\ge1\\), so \\(|y|\\ge4\\): \\(y\\le-4\\) or \\(y\\ge4\\).",
+   "payload": {
+    "options": [
+     "\\([4,\\infty)\\)",
+     "\\([-4,4]\\)",
+     "\\((-\\infty,-4]\\cup[4,\\infty)\\)",
+     "\\(\\mathbb{R}\\ (\\text{all real numbers})\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-259",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "identities",
+   "prompt": "If \\(\\cos\\theta=- \\frac{5}{13}\\) and \\(\\theta\\) is in the third quadrant, find \\(\\tan\\theta\\).",
+   "explanation": "Use \\(\\sin^2\\theta+\\cos^2\\theta=1\\) to find the missing ratio, then fix its sign from the quadrant (ASTC). Here \\(\\sin\\theta=- \\frac{12}{13}\\), \\(\\cos\\theta=- \\frac{5}{13}\\), so \\(\\tan\\theta=\\frac{12}{5}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{12}{5}\\)",
+     "\\(- \\frac{5}{12}\\)",
+     "\\(- \\frac{12}{5}\\)",
+     "\\(- \\frac{5}{13}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-260",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "max-min",
+   "prompt": "At what smallest positive \\(x\\) does \\(y=2\\sin(2 x) + 2\\) attain its minimum value?",
+   "explanation": "The minimum needs \\(\\sin(2x)=-1\\) (because \\(b>0\\)). The smallest positive angle with that value is \\(\\frac{3 \\pi}{2}\\), so \\(x=\\dfrac{\\frac{3 \\pi}{2}}{2}=\\frac{3 \\pi}{4}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{3 \\pi}{4}\\)",
+     "\\(\\frac{\\pi}{2}\\)",
+     "\\(\\frac{\\pi}{4}\\)",
+     "\\(\\pi\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-261",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "max-min",
+   "prompt": "Find the maximum \\(M\\) and minimum \\(m\\) of \\(y=-3\\sin(x) + 6\\).",
+   "explanation": "For \\(y=a+b\\,\\sin(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=6\\), \\(|b|=3\\), so \\(M=9\\) and \\(m=3\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(M=3,\\ m=-3\\)",
+     "\\(M=3,\\ m=9\\)",
+     "\\(M=10,\\ m=2\\)",
+     "\\(M=9,\\ m=3\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-262",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "The function \\(f(x)=\\sin(kx)\\) (\\(k>0\\)) has period \\(\\frac{3 \\pi}{2}\\). Find \\(k\\).",
+   "explanation": "The period of \\(\\sin(kx)\\) is \\(\\dfrac{2 \\pi}{k}\\). Setting \\(\\dfrac{2 \\pi}{k}=\\frac{3 \\pi}{2}\\) gives \\(k=\\frac{4}{3}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{4}{3}\\)",
+     "\\(\\frac{7}{3}\\)",
+     "\\(\\frac{8}{3}\\)",
+     "\\(\\frac{3}{2}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-263",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\cos^{4}(3 x)\\).",
+   "explanation": "An even power of sin or cos removes the minus sign, so the period is halved to \\(\\dfrac{\\pi}{|b|}\\). (\\(\\tan^n\\) has period \\(\\dfrac{\\pi}{|b|}\\) for every \\(n\\).) Here \\(b=3\\), so the period is \\(\\frac{\\pi}{3}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{2 \\pi}{3}\\)",
+     "\\(\\frac{\\pi}{3}\\)",
+     "\\(\\frac{4 \\pi}{3}\\)",
+     "\\(\\frac{\\pi}{6}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-264",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "max-min",
+   "prompt": "Find the range of \\(y=\\dfrac{1}{-1 - 3\\sin(2 x)}\\).",
+   "explanation": "The denominator runs from \\(m=-4\\) to \\(M=2\\) and passes through \\(0\\) (so these \\(x\\) are excluded from the domain). Then \\(y\\) takes values \\(\\le\\dfrac1m=-0.25\\) or \\(\\ge\\dfrac1M=0.5\\), with a gap between. There is no maximum and no minimum.",
+   "payload": {
+    "options": [
+     "\\([-0.25,\\ 0.5]\\)",
+     "\\(\\mathbb{R}\\)",
+     "\\((-\\infty,\\ -4]\\cup[2,\\ \\infty)\\)",
+     "\\((-\\infty,\\ -0.25]\\cup[0.5,\\ \\infty)\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-265",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "identities",
+   "prompt": "If \\(\\sin\\theta=- \\frac{12}{13}\\) and \\(\\theta\\) is in the fourth quadrant, find \\(\\operatorname{cosec}\\theta\\).",
+   "explanation": "Use \\(\\sin^2\\theta+\\cos^2\\theta=1\\) to find the missing ratio, then fix its sign from the quadrant (ASTC). Here \\(\\sin\\theta=- \\frac{12}{13}\\), \\(\\cos\\theta=\\frac{5}{13}\\), so \\(\\operatorname{cosec}\\theta=- \\frac{13}{12}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{13}{12}\\)",
+     "\\(- \\frac{60}{169}\\)",
+     "\\(- \\frac{12}{13}\\)",
+     "\\(- \\frac{13}{12}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-266",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "values",
+   "prompt": "Is \\(\\sin\\,190^\\circ\\) positive or negative?",
+   "explanation": "\\(190^\\circ\\) lies in quadrant III (it is coterminal with \\(190^\\circ\\)). ASTC: All positive in I, Sine (and cosec) in II, Tangent (and cot) in III, Cosine (and sec) in IV. So \\(\\sin\\,190^\\circ\\) is negative.",
+   "payload": {
+    "options": [
+     "Undefined",
+     "Zero",
+     "Negative",
+     "Positive"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-267",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "even-odd",
+   "prompt": "Is \\(f(x)=\\cos3x \\cdot \\sin2x\\) even, odd, or neither?",
+   "explanation": "Parities of the factors: \\(\\cos3x\\) is even, \\(\\sin2x\\) is odd. There are 1 odd factor (a product or quotient is odd exactly when the number of odd factors is odd), so the function is odd.",
+   "payload": {
+    "options": [
+     "Both even and odd",
+     "Odd",
+     "Neither even nor odd",
+     "Even"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-268",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=4\\sin(6 x)\\).",
+   "explanation": "\\(-1\\le\\sin(\\cdots)\\le1\\), so multiplying by \\(4\\) gives \\([-4,4]\\). The inside part only changes the period.",
+   "payload": {
+    "options": [
+     "\\([-4,\\ 4]\\)",
+     "\\([-1,\\ 1]\\)",
+     "\\([-24,\\ 24]\\)",
+     "\\([-4,\\ 5]\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-269",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=4\\sin(\\frac{2 x}{5})\\).",
+   "explanation": "\\(-1\\le\\sin(\\cdots)\\le1\\), so multiplying by \\(4\\) gives \\([-4,4]\\). The inside part only changes the period.",
+   "payload": {
+    "options": [
+     "\\([-5,\\ 5]\\)",
+     "\\([-4,\\ 5]\\)",
+     "\\([-1,\\ 1]\\)",
+     "\\([-4,\\ 4]\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-270",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "domain-range",
+   "prompt": "Find the domain of \\(y=-2\\operatorname{cosec}(\\pi x)\\).",
+   "explanation": "\\(\\operatorname{cosec}\\theta\\) is undefined when \\(\\sin\\theta=0\\), i.e. \\(\\theta=n\\pi\\). With \\(\\theta=\\pi\\,x\\): \\(x=\\dfrac{n\\pi}{\\pi}\\).",
+   "payload": {
+    "options": [
+     "\\(x\\ne n\\cdot\\pi,\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne n\\cdot\\frac{1}{2},\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne n\\cdot1,\\ n\\in\\mathbb{Z}\\)",
+     "\\(x\\ne (2n+1)\\cdot1,\\ n\\in\\mathbb{Z}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-271",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "graphs",
+   "prompt": "State the amplitude of \\(y=\\cos\\left(3\\left(x-\\frac{\\pi}{4}\\right)\\right) - 2\\).",
+   "explanation": "Amplitude \\(=|a|=1\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{1}{2}\\)",
+     "\\(1\\)",
+     "\\(2\\)",
+     "\\(-1\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-272",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\frac{1}{2}\\cos(2 \\pi x)\\).",
+   "explanation": "For \\(y=\\cos(bx+c)\\) the period is \\(\\dfrac{2 \\pi}{|b|}\\). Here \\(b=2 \\pi\\), so the period is \\(1\\). The coefficient in front and the shift inside do not change the period.",
+   "payload": {
+    "options": [
+     "\\(2 \\pi\\)",
+     "\\(1\\)",
+     "\\(4 \\pi^{2}\\)",
+     "\\(\\frac{1}{2}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-273",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "graphs",
+   "prompt": "State the amplitude of \\(y=4\\cos\\left(\\frac{1}{3}\\left(x+\\frac{\\pi}{3}\\right)\\right) + 4\\).",
+   "explanation": "Amplitude \\(=|a|=4\\).",
+   "payload": {
+    "options": [
+     "\\(4\\)",
+     "\\(1\\)",
+     "\\(\\frac{1}{3}\\)",
+     "\\(8\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-274",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=2\\sin(\\frac{3 x}{2})\\).",
+   "explanation": "\\(-1\\le\\sin(\\cdots)\\le1\\), so multiplying by \\(2\\) gives \\([-2,2]\\). The inside part only changes the period.",
+   "payload": {
+    "options": [
+     "\\([-2,\\ 3]\\)",
+     "\\([-2,\\ 2]\\)",
+     "\\([-4,\\ 4]\\)",
+     "\\([-3,\\ 3]\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-275",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "max-min",
+   "prompt": "What can be said about the extreme values of \\(y=\\dfrac{1}{6 + 2\\cos(3 x)}\\)?",
+   "explanation": "Denominator from \\(4\\) to \\(8\\): same sign (\\(|a|>|b|\\)), so the denominator never hits 0. Max \\(=\\dfrac1m\\) or min \\(=\\dfrac1M\\) exist (here \\(0.25\\) and \\(0.125\\)).",
+   "payload": {
+    "options": [
+     "It has no maximum and no minimum",
+     "It has a maximum and a minimum",
+     "It has a maximum but no minimum",
+     "It has a minimum but no maximum"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-276",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "values",
+   "prompt": "Find the exact value of \\(\\sec\\,-120^\\circ\\).",
+   "explanation": "Reduce to the reference angle: \\(-120^\\circ\\equiv240^\\circ\\) (mod \\(360^\\circ\\)), in quadrant III. Use the sign rule (ASTC) and the special-angle values to get \\(-2\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{1}{2}\\)",
+     "\\(-2\\)",
+     "\\(- \\frac{\\sqrt{2}}{2}\\)",
+     "\\(- \\sqrt{2}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-277",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=6\\sec(\\frac{\\pi x}{3} + 1)\\).",
+   "explanation": "For \\(y=\\sec(bx+c)\\) the period is \\(\\dfrac{2 \\pi}{|b|}\\). Here \\(b=\\frac{\\pi}{3}\\), so the period is \\(6\\). The coefficient in front and the shift inside do not change the period.",
+   "payload": {
+    "options": [
+     "\\(6\\)",
+     "\\(\\frac{4 \\cdot 2^{\\frac{48}{341}} \\cdot 3^{\\frac{203}{341}} \\cdot 5^{\\frac{304}{341}} \\cdot 7^{\\frac{148}{341}}}{27}\\)",
+     "\\(\\frac{2 \\pi}{\\frac{1}{2} + \\frac{\\pi}{3}}\\)",
+     "\\(\\pi\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-278",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "max-min",
+   "prompt": "Find the minimum value of \\(y=\\frac{2}{3}\\cos(x) + 5\\).",
+   "explanation": "For \\(y=a+b\\,\\cos(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=5\\), \\(|b|=\\frac{2}{3}\\), so \\(M=\\frac{17}{3}\\) and \\(m=\\frac{13}{3}\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(- \\frac{13}{3}\\)",
+     "\\(\\frac{17}{3}\\)",
+     "\\(\\frac{13}{3}\\)",
+     "\\(\\frac{10}{3}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-279",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "toolkit",
+   "prompt": "Convert \\(240^\\circ\\) to radians.",
+   "explanation": "Multiply by \\(\\dfrac{\\pi}{180}\\): \\(240^\\circ=240\\cdot\\dfrac{\\pi}{180}=\\frac{4 \\pi}{3}\\) rad.",
+   "payload": {
+    "options": [
+     "\\(\\frac{3 \\pi}{4}\\)",
+     "\\(\\frac{2 \\pi}{3}\\)",
+     "\\(\\frac{8 \\pi}{3}\\)",
+     "\\(\\frac{4 \\pi}{3}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-280",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "graphs",
+   "prompt": "State the amplitude of \\(y=5\\sin\\left(4\\left(x+\\frac{\\pi}{4}\\right)\\right) + 4\\).",
+   "explanation": "Amplitude \\(=|a|=5\\).",
+   "payload": {
+    "options": [
+     "\\(20\\)",
+     "\\(5\\)",
+     "\\(4\\)",
+     "\\(10\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-281",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=5\\operatorname{cosec}(x)\\).",
+   "explanation": "\\(|\\operatorname{cosec}\\theta|\\ge1\\), so \\(|y|\\ge5\\): \\(y\\le-5\\) or \\(y\\ge5\\).",
+   "payload": {
+    "options": [
+     "\\((-\\infty,-5]\\cup[5,\\infty)\\)",
+     "\\([-5,5]\\)",
+     "\\((-\\infty,-1]\\cup[1,\\infty)\\)",
+     "\\([5,\\infty)\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-282",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A quantity oscillates sinusoidally between a minimum of \\(-9\\) and a maximum of \\(21\\) with period \\(10\\). Find the midline value (the vertical shift).",
+   "explanation": "Midline \\(=\\dfrac{\\max+\\min}{2}=\\dfrac{21+(-9)}{2}=6\\).",
+   "payload": {
+    "options": [
+     "\\(-9\\)",
+     "\\(7\\)",
+     "\\(6\\)",
+     "\\(15\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-283",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=4|\\cos x| + 3\\).",
+   "explanation": "\\(0\\le|\\cos\\theta|\\le1\\), so \\(0\\le4|\\cos\\theta|\\le4\\) and adding \\(3\\) gives \\([3,\\ 7]\\).",
+   "payload": {
+    "options": [
+     "\\([3,\\ 4]\\)",
+     "\\([-1,\\ 7]\\)",
+     "\\([3,\\ 7]\\)",
+     "\\([-4,\\ 7]\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-284",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A Ferris wheel of radius \\(20\\) m has its lowest point \\(2\\) m above the ground and makes one revolution in \\(90\\) s. A rider boards at the lowest point. How high above the ground is the rider after \\(45\\) s?",
+   "explanation": "A rider who starts at the lowest point follows \\(h(t)=22-20\\cos\\!\\left(\\dfrac{2\\pi t}{90}\\right)\\) (centre height \\(=\\text{radius}+\\text{platform}=20+2=22\\) m). At \\(t=45\\) s the angle is \\(2\\pi\\cdot\\frac{1}{2}\\), \\(\\cos=-1\\), so \\(h=42\\) m.",
+   "payload": {
+    "options": [
+     "\\(40\\text{ m}\\)",
+     "\\(22\\text{ m}\\)",
+     "\\(42\\text{ m}\\)",
+     "\\(2\\text{ m}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-285",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "even-odd",
+   "prompt": "Is \\(f(x)=\\dfrac{\\cos x}{\\cos3x}\\) even, odd, or neither?",
+   "explanation": "Parities of the factors: \\(\\cos x\\) is even, \\(\\cos3x\\) is even. There are 0 odd factors (a product or quotient is odd exactly when the number of odd factors is odd), so the function is even.",
+   "payload": {
+    "options": [
+     "Neither even nor odd",
+     "Both even and odd",
+     "Even",
+     "Odd"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-286",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "max-min",
+   "prompt": "Find the maximum value of \\(y=\\frac{2}{3}\\cos(x) + 1\\).",
+   "explanation": "For \\(y=a+b\\,\\cos(\\cdots)\\) the maximum is \\(a+|b|\\) and the minimum is \\(a-|b|\\). Here \\(a=1\\), \\(|b|=\\frac{2}{3}\\), so \\(M=\\frac{5}{3}\\) and \\(m=\\frac{1}{3}\\). (The sign of \\(b\\) and the inside of the bracket do not change the extreme values.)",
+   "payload": {
+    "options": [
+     "\\(\\frac{5}{3}\\)",
+     "\\(- \\frac{5}{3}\\)",
+     "\\(\\frac{7}{3}\\)",
+     "\\(\\frac{2}{3}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-287",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "toolkit",
+   "prompt": "Convert \\(15^\\circ\\) to radians.",
+   "explanation": "Multiply by \\(\\dfrac{\\pi}{180}\\): \\(15^\\circ=15\\cdot\\dfrac{\\pi}{180}=\\frac{\\pi}{12}\\) rad.",
+   "payload": {
+    "options": [
+     "\\(\\frac{\\pi}{12}\\)",
+     "\\(12 \\pi\\)",
+     "\\(\\frac{\\pi}{24}\\)",
+     "\\(\\frac{\\pi}{6}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-288",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\frac{3}{2}\\cot(\\frac{3 x}{4} + 4)\\).",
+   "explanation": "The period of \\(\\cot(bx+c)\\) is \\(\\dfrac{\\pi}{|b|}\\) (tan and cot repeat every \\(\\pi\\), not \\(2\\pi\\)). Here \\(b=\\frac{3}{4}\\), so the period is \\(\\frac{4 \\pi}{3}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{2 \\pi}{3}\\)",
+     "\\(\\frac{8 \\pi}{3}\\)",
+     "\\(2 \\pi\\)",
+     "\\(\\frac{4 \\pi}{3}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-289",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=2\\cos(2 x)\\).",
+   "explanation": "\\(-1\\le\\cos(\\cdots)\\le1\\), so multiplying by \\(2\\) gives \\([-2,2]\\). The inside part only changes the period.",
+   "payload": {
+    "options": [
+     "\\([-1,\\ 1]\\)",
+     "\\([-2,\\ 3]\\)",
+     "\\([-4,\\ 4]\\)",
+     "\\([-2,\\ 2]\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-290",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "max-min",
+   "prompt": "Find the range of \\(y=\\dfrac{1}{-2 + \\frac{7}{2}\\sin(x - 2)}\\).",
+   "explanation": "The denominator runs from \\(m=- \\frac{11}{2}\\) to \\(M=\\frac{3}{2}\\) and passes through \\(0\\) (so these \\(x\\) are excluded from the domain). Then \\(y\\) takes values \\(\\le\\dfrac1m=- \\frac{2}{11}\\) or \\(\\ge\\dfrac1M=\\frac{2}{3}\\), with a gap between. There is no maximum and no minimum.",
+   "payload": {
+    "options": [
+     "\\([- \\frac{2}{11},\\ \\frac{2}{3}]\\)",
+     "\\(\\mathbb{R}\\)",
+     "\\((-\\infty,\\ - \\frac{11}{2}]\\cup[\\frac{3}{2},\\ \\infty)\\)",
+     "\\((-\\infty,\\ - \\frac{2}{11}]\\cup[\\frac{2}{3},\\ \\infty)\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-291",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "The temperature in a room is modelled by \\(d(t)=10+5\\cos\\!\\left(\\dfrac{2\\pi t}{8}\\right)\\), \\(t\\) in hours. Find the greatest value.",
+   "explanation": "Max \\(=D+A=10+5=15\\).",
+   "payload": {
+    "options": [
+     "\\(50^\\circ\\text{C}\\)",
+     "\\(20^\\circ\\text{C}\\)",
+     "\\(5^\\circ\\text{C}\\)",
+     "\\(15^\\circ\\text{C}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-292",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "period",
+   "prompt": "Find the period of \\(f(x)=\\sec(3 \\pi x + 1)\\).",
+   "explanation": "For \\(y=\\sec(bx+c)\\) the period is \\(\\dfrac{2 \\pi}{|b|}\\). Here \\(b=3 \\pi\\), so the period is \\(\\frac{2}{3}\\). The coefficient in front and the shift inside do not change the period.",
+   "payload": {
+    "options": [
+     "\\(2 \\pi\\)",
+     "\\(\\frac{1}{3}\\)",
+     "\\(\\frac{2}{3}\\)",
+     "\\(\\pi\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-293",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A mass on a spring moves according to \\(x=2\\cos(1t)\\) cm, \\(t\\) in seconds. Find the frequency of the motion (oscillations per second).",
+   "explanation": "Frequency \\(=\\dfrac{1}{T}=\\dfrac{\\omega}{2\\pi}=\\frac{1}{2 \\pi}\\).",
+   "payload": {
+    "options": [
+     "\\(2 \\pi\\)",
+     "\\(1\\)",
+     "\\(\\frac{1}{\\pi}\\)",
+     "\\(\\frac{1}{2 \\pi}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-294",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A quantity oscillates sinusoidally between a minimum of \\(-2\\) and a maximum of \\(6\\) with period \\(100\\). The model is \\(y=D+A\\sin(Bt)\\) type with \\(B>0\\). Find \\(B\\) (radians).",
+   "explanation": "\\(B=\\dfrac{2\\pi}{T}=\\dfrac{2\\pi}{100}=\\frac{\\pi}{50}\\).",
+   "payload": {
+    "options": [
+     "\\(200 \\pi\\)",
+     "\\(100\\)",
+     "\\(\\frac{\\pi}{50}\\)",
+     "\\(\\frac{50}{\\pi}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-295",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "max-min",
+   "prompt": "At what smallest positive \\(x\\) does \\(y=2\\sin(\\frac{x}{2}) - 1\\) attain its maximum value?",
+   "explanation": "The maximum needs \\(\\sin(\\frac{1}{2}x)=1\\) (because \\(b>0\\)). The smallest positive angle with that value is \\(\\frac{\\pi}{2}\\), so \\(x=\\dfrac{\\frac{\\pi}{2}}{\\frac{1}{2}}=\\pi\\).",
+   "payload": {
+    "options": [
+     "\\(4 \\pi\\)",
+     "\\(\\pi\\)",
+     "\\(3 \\pi\\)",
+     "\\(2 \\pi\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-296",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A Ferris wheel has radius \\(30\\) m, its lowest point is \\(1\\) m above the ground and one revolution takes \\(48\\) s. How many revolutions does it make per second?",
+   "explanation": "Frequency \\(=\\dfrac{1}{\\text{period}}=\\dfrac1{48}\\) revolutions per second.",
+   "payload": {
+    "options": [
+     "\\(\\frac{1}{24}\\)",
+     "\\(48\\)",
+     "\\(\\frac{1}{48}\\)",
+     "\\(\\frac{\\pi}{24}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-297",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "domain-range",
+   "prompt": "Find the range of \\(y=\\frac{5}{2}\\cos(\\frac{3 x}{4} - 2) - 2\\).",
+   "explanation": "\\(-1\\le\\cos(\\cdots)\\le1\\), so multiplying by \\(\\frac{5}{2}\\) gives \\([- \\frac{5}{2},\\frac{5}{2}]\\) and adding \\(-2\\) shifts it to \\([- \\frac{9}{2},\\ \\frac{1}{2}]\\). The inside part only changes the period.",
+   "payload": {
+    "options": [
+     "\\([- \\frac{9}{2},\\ \\frac{1}{2}]\\)",
+     "\\([-3,\\ -1]\\)",
+     "\\([- \\frac{31}{8},\\ - \\frac{1}{8}]\\)",
+     "\\([- \\frac{9}{2},\\ \\frac{5}{2}]\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-298",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "applications",
+   "prompt": "A Ferris wheel has radius \\(25\\) m, its lowest point is \\(3\\) m above the ground and one revolution takes \\(120\\) s. In the model \\(h=D-R\\cos(Bt)\\), find \\(B\\) (in radians per second).",
+   "explanation": "\\(B=\\dfrac{2\\pi}{T}=\\dfrac{2\\pi}{120}=\\frac{\\pi}{60}\\).",
+   "payload": {
+    "options": [
+     "\\(120\\)",
+     "\\(240 \\pi\\)",
+     "\\(\\frac{\\pi}{60}\\)",
+     "\\(\\frac{\\pi}{120}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-299",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "values",
+   "prompt": "Is \\(\\tan\\,300^\\circ\\) positive or negative?",
+   "explanation": "\\(300^\\circ\\) lies in quadrant IV (it is coterminal with \\(300^\\circ\\)). ASTC: All positive in I, Sine (and cosec) in II, Tangent (and cot) in III, Cosine (and sec) in IV. So \\(\\tan\\,300^\\circ\\) is negative.",
+   "payload": {
+    "options": [
+     "Negative",
+     "Zero",
+     "Positive",
+     "Undefined"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-300",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "graphs",
+   "prompt": "Find the minimum value of \\(y=-3\\cos\\left(3x\\right) + 2\\).",
+   "explanation": "Min \\(=d-|a|=2-3=-1\\).",
+   "payload": {
+    "options": [
+     "\\(5\\)",
+     "\\(-1\\)",
+     "\\(-3\\)",
+     "\\(3\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  }
+ ]
+}
