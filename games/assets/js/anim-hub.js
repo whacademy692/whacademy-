@@ -273,6 +273,13 @@
     var C = 2 * Math.PI * 16, off = (C * (1 - pct / 100)).toFixed(1);
     return '<svg viewBox="0 0 40 40" class="anim-ring" focusable="false"><circle class="anim-ring__bg" cx="20" cy="20" r="16"/><circle class="anim-ring__fg" cx="20" cy="20" r="16" stroke-dasharray="' + C.toFixed(1) + '" stroke-dashoffset="' + off + '" transform="rotate(-90 20 20)"/></svg><b class="anim-ring__n">' + pct + '<i>%</i></b>';
   }
+  /* each chapter card gets its own accent so the picker is not a wall of one colour */
+  var CH_PALETTE = ['#7c3aed', '#0891b2', '#e11d48', '#059669', '#d97706', '#2563eb', '#c026d3', '#0d9488', '#ea580c', '#4f46e5', '#65a30d', '#db2777'];
+  function chapterAccent(group, ch) {
+    var h = 0, k = String(group.key || '');
+    for (var i = 0; i < k.length; i++) h = (h * 31 + k.charCodeAt(i)) % 97;
+    return CH_PALETTE[(h + (parseInt(ch.n, 10) || 0)) % CH_PALETTE.length];
+  }
   function chapterCard(group, ch) {
     var total = ch.rows.length, done = doneCount(ch.rows);
     var pct = total ? Math.round(done / total * 100) : 0;
@@ -292,7 +299,7 @@
     if (/pythag/i.test(ch.title || '')) art.appendChild(Utils.createEl('span', { class: 'anim-chcard__eq', text: 'a² + b² = c²' }));
     else if (group.key === 'chem') art.appendChild(Utils.createEl('span', { class: 'anim-chcard__eq', text: 'CₙH₂ₙ₊₂' }));
     var rg = Utils.createEl('span', { class: 'anim-chcard__ring', title: pct + '% done' }); rg.innerHTML = ring(pct); art.appendChild(rg);
-    var card = Utils.createEl('button', { class: 'anim-chcard' + (done === total && total ? ' is-done' : ''), type: 'button', style: accentStyle(group.key), 'aria-label': 'Chapter ' + ch.n + ' · ' + ch.title + ' — ' + total + ' animations, ' + done + ' done' }, [
+    var card = Utils.createEl('button', { class: 'anim-chcard' + (done === total && total ? ' is-done' : ''), type: 'button', style: accentStyle(group.key) + '--acc:' + chapterAccent(group, ch) + ';', 'aria-label': 'Chapter ' + ch.n + ' · ' + ch.title + ' — ' + total + ' animations, ' + done + ' done' }, [
       art,
       Utils.createEl('span', { class: 'anim-chcard__body' }, [
         Utils.createEl('span', { class: 'anim-chcard__title', text: ch.title }),
