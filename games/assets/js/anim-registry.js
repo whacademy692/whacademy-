@@ -2398,6 +2398,20 @@ window.WHA_ANIMS = {
                 "question": "Prove that |z₁+z₂|²−|z₁−z₂|²=4Re(z₁)Re(z₂)+4Im(z₁)Im(z₂)."
               },
               {
+                "id": "g11-math-c1-e12-q6",
+                "title": "Exercise 1.2 · Q6",
+                "topic": "Exercise 1.2 · Properties, Parts and Loci",
+                "summary": "Find λ: |z₁/z₂+λ|=√(λ+2) where z₁=3+i, z₂=1+i.",
+                "file": "anim-data/federal/11/math/ch1/e12-q6.json",
+                "minutes": 7,
+                "level": "Challenge",
+                "icon": "🔢",
+                "section": "1.2",
+                "group": "Exercise 1.2 · Properties, Parts and Loci",
+                "label": "Ex 1.2 · Q6",
+                "question": "Find λ: |z₁/z₂+λ|=√(λ+2) where z₁=3+i, z₂=1+i."
+              },
+              {
                 "id": "g11-math-c1-e12-q7",
                 "title": "Exercise 1.2 · Q7",
                 "topic": "Exercise 1.2 · Properties, Parts and Loci",
@@ -3306,6 +3320,34 @@ window.WHA_ANIMS = {
                 "group": "Exercise 1.4 · Polar Form and Applications",
                 "label": "Ex 1.4 · Q6(iii)",
                 "question": "Find the position of a particle from its mean position when the amplitude is 0.004 mm and the angle is π/6."
+              },
+              {
+                "id": "g11-math-c1-e14-q7i",
+                "title": "Exercise 1.4 · Q7(i)",
+                "topic": "Exercise 1.4 · Polar Form and Applications",
+                "summary": "A particle is at x=2+3i with x_max=1+2√3i. (i) Find the angle at t=0 and the position of the particle.",
+                "file": "anim-data/federal/11/math/ch1/e14-q7i.json",
+                "minutes": 5,
+                "level": "Challenge",
+                "icon": "🧭",
+                "section": "1.4",
+                "group": "Exercise 1.4 · Polar Form and Applications",
+                "label": "Ex 1.4 · Q7(i)",
+                "question": "A particle is at x=2+3i with x_max=1+2√3i. (i) Find the angle at t=0 and the position of the particle."
+              },
+              {
+                "id": "g11-math-c1-e14-q7ii",
+                "title": "Exercise 1.4 · Q7(ii)",
+                "topic": "Exercise 1.4 · Polar Form and Applications",
+                "summary": "If x=2+3i and x_max=1+2√3i, calculate the frequency when t=2.",
+                "file": "anim-data/federal/11/math/ch1/e14-q7ii.json",
+                "minutes": 5,
+                "level": "Challenge",
+                "icon": "🧭",
+                "section": "1.4",
+                "group": "Exercise 1.4 · Polar Form and Applications",
+                "label": "Ex 1.4 · Q7(ii)",
+                "question": "If x=2+3i and x_max=1+2√3i, calculate the frequency when t=2."
               },
               {
                 "id": "g11-math-c1-e14-q8i",
