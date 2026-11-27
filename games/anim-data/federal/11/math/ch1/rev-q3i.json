@@ -1,0 +1,121 @@
+{
+ "id": "g11-math-c1-rev-q3i",
+ "title": "Review Exercise 1 · Q3(i)",
+ "summary": "Factorize 3x²+108.",
+ "alt": "Review Exercise 1 · Q3(i): Factorize 3x²+108.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -5.3568,
+   5.3568
+  ],
+  "y": [
+   -8.64,
+   8.64
+  ],
+  "ratio": 1.1,
+  "pad": 6
+ },
+ "roles": {
+  "z": {
+   "label": "The number z",
+   "color": "#2563eb",
+   "text": "The complex number you are given.",
+   "legend": true
+  },
+  "zb": {
+   "label": "Second number / conjugate",
+   "color": "#e11d48",
+   "text": "The conjugate, or the second number.",
+   "legend": true
+  }
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 2,
+   "numbers": true,
+   "xLabel": "Re",
+   "yLabel": "Im",
+   "role": "ink"
+  },
+  {
+   "type": "point",
+   "id": "p1",
+   "at": [
+    0.0,
+    6.0
+   ],
+   "r": 6,
+   "role": "z",
+   "layer": "front",
+   "label": {
+    "text": "+6i",
+    "role": "z",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p2",
+   "at": [
+    0.0,
+    -6.0
+   ],
+   "r": 6,
+   "role": "zb",
+   "layer": "front",
+   "label": {
+    "text": "−6i",
+    "role": "zb",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s2",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Take out the factor",
+   "text": "\\[\\begin{aligned}&3x^{2}+108=3\\left(x^{2}+36\\right)\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Difference of squares",
+   "text": "\\[\\begin{aligned}&\\text{Use $x^2+k^2=x^2-(ki)^2$ because $i^2=-1$.}\\\\[5pt]&x^{2}+36=x^{2}-\\left(6\\,i\\right)^{2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Factorize",
+   "text": "\\[\\begin{aligned}&3x^{2}+108=\\textcolor{#047857}{\\mathbf{3\\left(x+6\\,i\\right)\\left(x-6\\,i\\right)}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "p1",
+      "p2"
+     ],
+     "at": 350
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

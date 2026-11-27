@@ -1,0 +1,318 @@
+{
+ "id": "g11-math-c1-rev-q8",
+ "title": "Review Exercise 1 · Q8",
+ "summary": "A particle is at the position √2+i√2 nm from its mean position. Find its amplitude when θ=45°.",
+ "alt": "Review Exercise 1 · Q8: A particle is at the position √2+i√2 nm from its mean position. Find its amplitude when θ=45°.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   1.0,
+   15.0
+  ],
+  "y": [
+   -0.3999999999999997,
+   10.4
+  ],
+  "pad": 6,
+  "ratio": 0.771
+ },
+ "roles": {
+  "a": {
+   "label": "First quantity",
+   "color": "#2563eb",
+   "text": "The first rotating arrow (phasor).",
+   "legend": true
+  },
+  "b": {
+   "label": "Second quantity",
+   "color": "#e11d48",
+   "text": "The second rotating arrow.",
+   "legend": true
+  },
+  "res": {
+   "label": "Resultant / answer",
+   "color": "#059669",
+   "text": "The sum, or the answer you are asked for.",
+   "legend": true
+  },
+  "aux": {
+   "label": "Helper lines",
+   "color": "#d97706",
+   "text": "Projections and construction lines.",
+   "legend": true
+  },
+  "wall": {
+   "label": "Axes",
+   "color": "#475569",
+   "text": "The Argand plane and the time axis.",
+   "legend": false
+  },
+  "ghost": {
+   "label": "Reference",
+   "color": "#94a3b8",
+   "text": "Circle of the amplitude.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "th",
+   "label": "Angle (°)",
+   "type": "clock",
+   "min": 0,
+   "max": 360,
+   "step": 1,
+   "speed": 40,
+   "loop": "repeat",
+   "default": 0
+  }
+ ],
+ "derived": {
+  "v": "2*cos(th+0)",
+  "w": "2*sin(th+0)"
+ },
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "axr",
+   "from": [
+    3.0000000000000004,
+    5.0
+   ],
+   "to": [
+    13.0,
+    5.0
+   ],
+   "role": "wall",
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "vector",
+   "id": "axi",
+   "from": [
+    8.0,
+    3.3306690738754696e-16
+   ],
+   "to": [
+    8.0,
+    10.0
+   ],
+   "role": "wall",
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "lre",
+   "at": [
+    13.0,
+    4.45
+   ],
+   "text": "Re",
+   "role": "wall",
+   "size": "m",
+   "bold": true,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "lim",
+   "at": [
+    8.55,
+    10.0
+   ],
+   "text": "Im",
+   "role": "wall",
+   "size": "m",
+   "bold": true,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "ci0",
+   "c": [
+    8.0,
+    5.0
+   ],
+   "r": 4.1,
+   "role": "ghost",
+   "fill": false,
+   "strokeWidth": 1.6,
+   "dash": true,
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "vector",
+   "id": "ph0",
+   "from": [
+    8.0,
+    5.0
+   ],
+   "to": [
+    "8.0+4.1*cos(th+0)",
+    "5.0+4.1*sin(th+0)"
+   ],
+   "role": "a",
+   "strokeWidth": 3.6,
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "pt0",
+   "at": [
+    "8.0+4.1*cos(th+0)",
+    "5.0+4.1*sin(th+0)"
+   ],
+   "r": 6,
+   "role": "a",
+   "layer": "front",
+   "label": {
+    "text": "x",
+    "role": "a",
+    "size": "m",
+    "off": -2,
+    "dx": 12,
+    "dy": -12
+   },
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "segment",
+   "id": "cx",
+   "from": [
+    "(8.0+4.1*cos(th+0))",
+    "(5.0+4.1*sin(th+0))"
+   ],
+   "to": [
+    "(8.0+4.1*cos(th+0))",
+    5.0
+   ],
+   "role": "aux",
+   "strokeWidth": 2.4,
+   "dash": true,
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "segment",
+   "id": "cy",
+   "from": [
+    "(8.0+4.1*cos(th+0))",
+    "(5.0+4.1*sin(th+0))"
+   ],
+   "to": [
+    8.0,
+    "(5.0+4.1*sin(th+0))"
+   ],
+   "role": "aux",
+   "strokeWidth": 2.4,
+   "dash": true,
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "px",
+   "at": [
+    "(8.0+4.1*cos(th+0))",
+    5.0
+   ],
+   "r": 5,
+   "role": "aux",
+   "layer": "front",
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "py",
+   "at": [
+    8.0,
+    "(5.0+4.1*sin(th+0))"
+   ],
+   "r": 5,
+   "role": "aux",
+   "layer": "front",
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "arc",
+   "id": "arc",
+   "c": [
+    8.0,
+    5.0
+   ],
+   "r": 1.1,
+   "from": 0,
+   "to": "th+0",
+   "role": "aux",
+   "strokeWidth": 2.6,
+   "appear": "s2",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Use x=x_maxe^iθ",
+   "text": "\\[\\begin{aligned}&x=x_{\\max}\\left(\\cos\\theta+i\\sin\\theta\\right)\\\\[5pt]&x=\\sqrt2+\\sqrt2\\,i,\\qquad \\theta=45^\\circ\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "th": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Put in θ=45°",
+   "text": "\\[\\begin{aligned}&\\cos45^\\circ=\\sin45^\\circ=\\dfrac{\\sqrt2}{2}\\\\[5pt]&x=x_{\\max}\\cdot\\dfrac{\\sqrt2}{2}\\,(1+i)\\end{aligned}\\]",
+   "actions": [
+    {
+     "tween": {
+      "th": 45
+     },
+     "at": 0,
+     "dur": 2400
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Compare the parts",
+   "text": "\\[\\begin{aligned}&x_{\\max}\\cdot\\dfrac{\\sqrt2}{2}=\\sqrt2\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Amplitude",
+   "text": "\\[\\begin{aligned}&x_{\\max}=\\textcolor{#047857}{\\mathbf{2\\ \\text{nm}}}\\\\[5pt]&\\text{Check:}\\\\[5pt]&\\text{$|x|=\\sqrt{(\\sqrt2)^2+(\\sqrt2)^2}=\\sqrt4=2$,}\\\\[5pt]&\\text{because $|e^{i\\theta}|=1$.}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Real part now",
+   "value": "{{v|3}} nm",
+   "role": "a"
+  },
+  {
+   "label": "Imaginary part now",
+   "value": "{{w|3}} nm",
+   "role": "aux"
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

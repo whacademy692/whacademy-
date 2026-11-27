@@ -1,0 +1,173 @@
+{
+ "id": "g11-math-c1-e14-q5v",
+ "title": "Exercise 1.4 · Q5(v)",
+ "summary": "Write arg((1−iz)/(1−z))=π/4 in Cartesian form.",
+ "alt": "Exercise 1.4 · Q5(v): Write arg((1−iz)/(1−z))=π/4 in Cartesian form.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -2.2,
+   2.2
+  ],
+  "y": [
+   -2.2,
+   2.2
+  ],
+  "ratio": 1.0,
+  "pad": 6
+ },
+ "roles": {
+  "zb": {
+   "label": "Second number / conjugate",
+   "color": "#e11d48",
+   "text": "The conjugate, or the second number.",
+   "legend": true
+  },
+  "aux": {
+   "label": "Helper lines",
+   "color": "#d97706",
+   "text": "Modulus, angle and construction lines.",
+   "legend": true
+  },
+  "ghost": {
+   "label": "Reference",
+   "color": "#94a3b8",
+   "text": "A reference or earlier position.",
+   "legend": false
+  }
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 0.5,
+   "numbers": true,
+   "xLabel": "Re",
+   "yLabel": "Im",
+   "role": "ink"
+  },
+  {
+   "type": "arc",
+   "id": "a1",
+   "c": [
+    0.0,
+    0.0
+   ],
+   "r": 1.0,
+   "from": 0.0,
+   "to": 270.0,
+   "role": "aux",
+   "strokeWidth": 4,
+   "effect": "draw",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "arc",
+   "id": "a2",
+   "c": [
+    0.0,
+    0.0
+   ],
+   "r": 1.0,
+   "from": 270.0,
+   "to": 360.0,
+   "role": "ghost",
+   "strokeWidth": 2,
+   "effect": "draw",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p3",
+   "at": [
+    1.0,
+    0.0
+   ],
+   "r": 6,
+   "role": "zb",
+   "layer": "front",
+   "label": {
+    "text": "1 (excluded)",
+    "role": "zb",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -14
+   },
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p4",
+   "at": [
+    0.0,
+    -1.0
+   ],
+   "r": 6,
+   "role": "zb",
+   "layer": "front",
+   "label": {
+    "text": "−i",
+    "role": "zb",
+    "size": "m",
+    "off": -2,
+    "dx": -30,
+    "dy": -12
+   },
+   "appear": "s3",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Put z=x+iy",
+   "text": "\\[\\begin{aligned}&\\dfrac{1-iz}{1-z}=\\dfrac{(1+y)-ix}{(1-x)-iy}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Rationalise",
+   "text": "\\[\\begin{aligned}&\\text{Multiply top and bottom by the}\\\\[5pt]&\\text{conjugate of the bottom.}\\\\[5pt]&{}=\\dfrac{\\left[(1+y)-ix\\right]\\left[(1-x)+iy\\right]}{(1-x)^{2}+y^{2}}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Real and imaginary parts",
+   "text": "\\[\\begin{aligned}&\\text{Re}\\propto 1-x+y,\\qquad \\text{Im}\\propto x^{2}+y^{2}-x+y\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Argument π/4",
+   "text": "\\[\\begin{aligned}&\\text{Real part = imaginary part > 0.}\\\\[5pt]&1-x+y=x^{2}+y^{2}-x+y\\ \\Rightarrow\\ x^{2}+y^{2}=1\\\\[5pt]&\\text{and}\\ 1-x+y>0\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "a1",
+      "a2",
+      "p3",
+      "p4"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Answer",
+   "text": "\\[\\begin{aligned}&\\text{Cartesian form:}\\quad \\textcolor{#047857}{\\mathbf{x^{2}+y^{2}=1,\\quad y>x-1}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

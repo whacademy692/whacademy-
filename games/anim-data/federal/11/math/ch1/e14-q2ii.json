@@ -1,0 +1,221 @@
+{
+ "id": "g11-math-c1-e14-q2ii",
+ "title": "Exercise 1.4 · Q2(ii)",
+ "summary": "Write (cosπ/6−isinπ/6)/(2(cosπ/3+isinπ/3)) in rectangular form.",
+ "alt": "Exercise 1.4 · Q2(ii): Write (cosπ/6−isinπ/6)/(2(cosπ/3+isinπ/3)) in rectangular form.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -1.6,
+   2.2
+  ],
+  "y": [
+   -1.5,
+   2.2
+  ],
+  "ratio": 0.974,
+  "pad": 6
+ },
+ "roles": {
+  "z": {
+   "label": "The number z",
+   "color": "#2563eb",
+   "text": "The complex number you are given.",
+   "legend": true
+  },
+  "zb": {
+   "label": "Second number / conjugate",
+   "color": "#e11d48",
+   "text": "The conjugate, or the second number.",
+   "legend": true
+  },
+  "res": {
+   "label": "Answer",
+   "color": "#059669",
+   "text": "The result of the working.",
+   "legend": true
+  }
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 0.5,
+   "numbers": true,
+   "xLabel": "Re",
+   "yLabel": "Im",
+   "role": "ink"
+  },
+  {
+   "type": "vector",
+   "id": "v1",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    0.8660254037844386,
+    -0.5
+   ],
+   "role": "z",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p2",
+   "at": [
+    0.8660254037844386,
+    -0.5
+   ],
+   "r": 6,
+   "role": "z",
+   "layer": "front",
+   "label": {
+    "text": "−30°",
+    "role": "z",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "vector",
+   "id": "v3",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    1.0,
+    1.7320508075688772
+   ],
+   "role": "zb",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p4",
+   "at": [
+    1.0,
+    1.7320508075688772
+   ],
+   "r": 6,
+   "role": "zb",
+   "layer": "front",
+   "label": {
+    "text": "2 at 60°",
+    "role": "zb",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "vector",
+   "id": "v5",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    0.0,
+    -0.5
+   ],
+   "role": "res",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p6",
+   "at": [
+    0.0,
+    -0.5
+   ],
+   "r": 6,
+   "role": "res",
+   "layer": "front",
+   "label": {
+    "text": "½ at −90°",
+    "role": "res",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s2",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Top in polar form",
+   "text": "\\[\\begin{aligned}&\\text{$\\cos\\theta-i\\sin\\theta=\\cos(-\\theta)+i\\sin(-\\theta)$.}\\\\[5pt]&\\cos\\dfrac\\pi6-i\\sin\\dfrac\\pi6=\\cos\\left(-\\dfrac\\pi6\\right)+i\\sin\\left(-\\dfrac\\pi6\\right)\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "v1",
+      "p2"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Divide",
+   "text": "\\[\\begin{aligned}&\\text{Divide moduli and subtract angles.}\\\\[5pt]&\\dfrac{1}{2}\\left[\\cos\\left(-\\dfrac\\pi6-\\dfrac\\pi3\\right)+i\\sin\\left(-\\dfrac\\pi6-\\dfrac\\pi3\\right)\\right]\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "v3",
+      "p4"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Simplify the angle",
+   "text": "\\[\\begin{aligned}&-\\dfrac\\pi6-\\dfrac\\pi3=-\\dfrac\\pi2\\\\[5pt]&{}=\\dfrac12\\left[\\cos\\left(-\\dfrac\\pi2\\right)+i\\sin\\left(-\\dfrac\\pi2\\right)\\right]\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "v5",
+      "p6"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Rectangular form",
+   "text": "\\[\\begin{aligned}&{}=\\dfrac12\\left(0-i\\right)=\\textcolor{#047857}{\\mathbf{-\\dfrac{i}{2}}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

@@ -1,0 +1,244 @@
+{
+ "id": "g11-math-c1-e14-q2i",
+ "title": "Exercise 1.4 · Q2(i)",
+ "summary": "Write (cosπ/6+isinπ/6)(cosπ/3+isinπ/3) in rectangular form.",
+ "alt": "Exercise 1.4 · Q2(i): Write (cosπ/6+isinπ/6)(cosπ/3+isinπ/3) in rectangular form.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -1.6,
+   1.6
+  ],
+  "y": [
+   -1.2,
+   1.4
+  ],
+  "ratio": 0.812,
+  "pad": 6
+ },
+ "roles": {
+  "z": {
+   "label": "The number z",
+   "color": "#2563eb",
+   "text": "The complex number you are given.",
+   "legend": true
+  },
+  "zb": {
+   "label": "Second number / conjugate",
+   "color": "#e11d48",
+   "text": "The conjugate, or the second number.",
+   "legend": true
+  },
+  "res": {
+   "label": "Answer",
+   "color": "#059669",
+   "text": "The result of the working.",
+   "legend": true
+  },
+  "ghost": {
+   "label": "Reference",
+   "color": "#94a3b8",
+   "text": "A reference or earlier position.",
+   "legend": false
+  }
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 0.5,
+   "numbers": true,
+   "xLabel": "Re",
+   "yLabel": "Im",
+   "role": "ink"
+  },
+  {
+   "type": "vector",
+   "id": "v1",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    0.8660254037844386,
+    0.5
+   ],
+   "role": "z",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p2",
+   "at": [
+    0.8660254037844386,
+    0.5
+   ],
+   "r": 6,
+   "role": "z",
+   "layer": "front",
+   "label": {
+    "text": "30°",
+    "role": "z",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "vector",
+   "id": "v3",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    0.5,
+    0.8660254037844386
+   ],
+   "role": "zb",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p4",
+   "at": [
+    0.5,
+    0.8660254037844386
+   ],
+   "r": 6,
+   "role": "zb",
+   "layer": "front",
+   "label": {
+    "text": "60°",
+    "role": "zb",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "vector",
+   "id": "v5",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    0.0,
+    1.0
+   ],
+   "role": "res",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p6",
+   "at": [
+    0.0,
+    1.0
+   ],
+   "r": 6,
+   "role": "res",
+   "layer": "front",
+   "label": {
+    "text": "i",
+    "role": "res",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "circle",
+   "id": "c7",
+   "c": [
+    0.0,
+    0.0
+   ],
+   "r": 1.0,
+   "role": "ghost",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "fill": false,
+   "dash": true,
+   "appear": "s0",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Both have r=1",
+   "text": "\\[\\begin{aligned}&\\text{Multiply moduli ($1\\times1=1$) and add}\\\\[5pt]&\\text{angles.}\\\\[5pt]&z_1=\\cos\\tfrac\\pi6+i\\sin\\tfrac\\pi6,\\qquad z_2=\\cos\\tfrac\\pi3+i\\sin\\tfrac\\pi3\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "v1",
+      "p2",
+      "c7"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Add the angles",
+   "text": "\\[\\begin{aligned}&\\dfrac{\\pi}{6}+\\dfrac{\\pi}{3}=\\dfrac{\\pi}{2}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "v3",
+      "p4"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Product",
+   "text": "\\[\\begin{aligned}&z_1z_2=\\cos\\dfrac\\pi2+i\\sin\\dfrac\\pi2\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "v5",
+      "p6"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Rectangular form",
+   "text": "\\[\\begin{aligned}&{}=0+i(1)=\\textcolor{#047857}{\\mathbf{i}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

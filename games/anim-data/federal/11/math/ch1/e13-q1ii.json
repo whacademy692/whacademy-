@@ -1,0 +1,127 @@
+{
+ "id": "g11-math-c1-e13-q1ii",
+ "title": "Exercise 1.3 · Q1(ii)",
+ "summary": "Factorize 2z²+18 into linear functions.",
+ "alt": "Exercise 1.3 · Q1(ii): Factorize 2z²+18 into linear functions.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -2.6784,
+   2.6784
+  ],
+  "y": [
+   -4.32,
+   4.32
+  ],
+  "ratio": 1.1,
+  "pad": 6
+ },
+ "roles": {
+  "z": {
+   "label": "The number z",
+   "color": "#2563eb",
+   "text": "The complex number you are given.",
+   "legend": true
+  },
+  "zb": {
+   "label": "Second number / conjugate",
+   "color": "#e11d48",
+   "text": "The conjugate, or the second number.",
+   "legend": true
+  }
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 1.0,
+   "numbers": true,
+   "xLabel": "Re",
+   "yLabel": "Im",
+   "role": "ink"
+  },
+  {
+   "type": "point",
+   "id": "p1",
+   "at": [
+    0.0,
+    3.0
+   ],
+   "r": 6,
+   "role": "z",
+   "layer": "front",
+   "label": {
+    "text": "+3i",
+    "role": "z",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p2",
+   "at": [
+    0.0,
+    -3.0
+   ],
+   "r": 6,
+   "role": "zb",
+   "layer": "front",
+   "label": {
+    "text": "−3i",
+    "role": "zb",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s2",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Look for z²+k²",
+   "text": "\\[\\begin{aligned}&2z^{2}+18=2\\left(z^{2}+9\\right)\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Use i²=−1",
+   "text": "\\[\\begin{aligned}&k^{2}=9\\ \\Rightarrow\\ z^{2}+k^{2}=z^{2}-(ki)^{2}\\ \\text{because}\\ (ki)^{2}=-k^{2}\\\\[5pt]&k=3\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Difference of squares",
+   "text": "\\[\\begin{aligned}&z^{2}-(ki)^{2}=(z+ki)(z-ki)\\\\[5pt]&{}=2\\left(z+3i\\right)\\left(z-3i\\right)\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "p1",
+      "p2"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Answer",
+   "text": "\\[\\begin{aligned}&2 z^{2} + 18=\\textcolor{#047857}{\\mathbf{2\\left(z+3i\\right)\\left(z-3i\\right)}}\\\\[5pt]&\\text{The two roots $\\pm ki$ sit on the}\\\\[5pt]&\\text{imaginary axis.}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

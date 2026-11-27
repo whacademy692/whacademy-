@@ -1,0 +1,188 @@
+{
+ "id": "g11-math-c1-e14-q4vii",
+ "title": "Exercise 1.4 · Q4(vii)",
+ "summary": "Write 10(cos50°+isin50°) in algebraic form.",
+ "alt": "Exercise 1.4 · Q4(vii): Write 10(cos50°+isin50°) in algebraic form.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -5.0741,
+   8.502
+  ],
+  "y": [
+   -5.3453,
+   10.0057
+  ],
+  "ratio": 1.1,
+  "pad": 6
+ },
+ "roles": {
+  "z": {
+   "label": "The number z",
+   "color": "#2563eb",
+   "text": "The complex number you are given.",
+   "legend": true
+  },
+  "aux": {
+   "label": "Helper lines",
+   "color": "#d97706",
+   "text": "Modulus, angle and construction lines.",
+   "legend": true
+  },
+  "ghost": {
+   "label": "Reference",
+   "color": "#94a3b8",
+   "text": "A reference or earlier position.",
+   "legend": false
+  }
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 2,
+   "numbers": true,
+   "xLabel": "Re",
+   "yLabel": "Im",
+   "role": "ink"
+  },
+  {
+   "type": "vector",
+   "id": "v1",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    6.427876096865393,
+    7.66044443118978
+   ],
+   "role": "z",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p2",
+   "at": [
+    6.427876096865393,
+    7.66044443118978
+   ],
+   "r": 6,
+   "role": "z",
+   "layer": "front",
+   "label": {
+    "text": "z",
+    "role": "z",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "arc",
+   "id": "a3",
+   "c": [
+    0.0,
+    0.0
+   ],
+   "r": 3.0,
+   "from": 0.0,
+   "to": 50.0,
+   "role": "aux",
+   "strokeWidth": 2.6,
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "segment",
+   "id": "g4",
+   "from": [
+    0.0,
+    0.0
+   ],
+   "to": [
+    6.427876096865393,
+    0.0
+   ],
+   "role": "ghost",
+   "strokeWidth": 2.4,
+   "effect": "draw",
+   "dash": true,
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "segment",
+   "id": "g5",
+   "from": [
+    6.427876096865393,
+    0.0
+   ],
+   "to": [
+    6.427876096865393,
+    7.66044443118978
+   ],
+   "role": "ghost",
+   "strokeWidth": 2.4,
+   "effect": "draw",
+   "dash": true,
+   "appear": "s2",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read r and θ",
+   "text": "\\[\\begin{aligned}&r=10,\\qquad \\theta=50^\\circ\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "a3"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Use a calculator",
+   "text": "\\[\\begin{aligned}&\\text{$50^\\circ$ is not a special angle, so}\\\\[5pt]&\\text{use decimal values.}\\\\[5pt]&\\cos50^\\circ\\approx 0.6428,\\qquad \\sin50^\\circ\\approx 0.766\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Multiply by 10",
+   "text": "\\[\\begin{aligned}&z\\approx 10(0.6428)+10(0.766)i\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "v1",
+      "p2"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Algebraic form",
+   "text": "\\[\\begin{aligned}&z\\approx\\textcolor{#047857}{\\mathbf{6.43+7.66i}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

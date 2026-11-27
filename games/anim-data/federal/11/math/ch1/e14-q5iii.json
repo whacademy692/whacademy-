@@ -1,0 +1,173 @@
+{
+ "id": "g11-math-c1-e14-q5iii",
+ "title": "Exercise 1.4 · Q5(iii)",
+ "summary": "Write −π/3≤arg(z−4)≤π/3 in Cartesian form.",
+ "alt": "Exercise 1.4 · Q5(iii): Write −π/3≤arg(z−4)≤π/3 in Cartesian form.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -1,
+   13
+  ],
+  "y": [
+   -7.5,
+   7.5
+  ],
+  "ratio": 1.071,
+  "pad": 6
+ },
+ "roles": {
+  "z": {
+   "label": "The number z",
+   "color": "#2563eb",
+   "text": "The complex number you are given.",
+   "legend": true
+  },
+  "aux": {
+   "label": "Helper lines",
+   "color": "#d97706",
+   "text": "Modulus, angle and construction lines.",
+   "legend": true
+  }
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 2,
+   "numbers": true,
+   "xLabel": "Re",
+   "yLabel": "Im",
+   "role": "ink"
+  },
+  {
+   "type": "polygon",
+   "id": "y1",
+   "pts": [
+    [
+     4.0,
+     0.0
+    ],
+    [
+     8.330127018922195,
+     7.5
+    ],
+    [
+     13.0,
+     7.5
+    ],
+    [
+     13.0,
+     -7.5
+    ],
+    [
+     8.330127018922195,
+     -7.5
+    ]
+   ],
+   "role": "aux",
+   "fill": "aux",
+   "fillOpacity": 0.18,
+   "strokeWidth": 0.1,
+   "layer": "back",
+   "effect": "fade",
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "segment",
+   "id": "l2",
+   "from": [
+    -0.33012701892219365,
+    -7.5
+   ],
+   "to": [
+    8.330127018922195,
+    7.5
+   ],
+   "role": "aux",
+   "strokeWidth": 3.4,
+   "effect": "draw",
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "segment",
+   "id": "l3",
+   "from": [
+    8.330127018922195,
+    -7.5
+   ],
+   "to": [
+    -0.33012701892219365,
+    7.5
+   ],
+   "role": "aux",
+   "strokeWidth": 3.4,
+   "effect": "draw",
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p4",
+   "at": [
+    4.0,
+    0.0
+   ],
+   "r": 6,
+   "role": "z",
+   "layer": "front",
+   "label": {
+    "text": "4",
+    "role": "z",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": 16
+   },
+   "appear": "s1",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Put z=x+iy",
+   "text": "\\[\\begin{aligned}&z-4=(x-4)+iy,\\qquad \\arg(z-4)=\\theta\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Rays at the ends",
+   "text": "\\[\\begin{aligned}&\\tan\\dfrac\\pi3=\\sqrt3\\ \\Rightarrow\\ y=\\sqrt3\\,(x-4)\\quad(\\theta=\\tfrac\\pi3)\\\\[5pt]&y=-\\sqrt3\\,(x-4)\\quad(\\theta=-\\tfrac\\pi3)\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "p4"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Between the rays",
+   "text": "\\[\\begin{aligned}&\\text{Angles between $-60^\\circ$ and $60^\\circ$}\\\\[5pt]&\\text{lie to the right of $4$, so $x>4$ and}\\\\[5pt]&\\text{$|y|\\le\\sqrt3(x-4)$.}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Answer",
+   "text": "\\[\\begin{aligned}&\\text{Cartesian form:}\\quad \\textcolor{#047857}{\\mathbf{|y|\\le\\sqrt3\\,(x-4),\\quad x>4}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

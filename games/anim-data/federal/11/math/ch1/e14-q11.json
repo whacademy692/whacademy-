@@ -1,0 +1,457 @@
+{
+ "id": "g11-math-c1-e14-q11",
+ "title": "Exercise 1.4 · Q11",
+ "summary": "Compute the potential difference across two AC supplies where V₁=5cos(t+45°) and V₂=3sin(t+30°).",
+ "alt": "Exercise 1.4 · Q11: Compute the potential difference across two AC supplies where V₁=5cos(t+45°) and V₂=3sin(t+30°).",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   1.0,
+   15.0
+  ],
+  "y": [
+   -0.9999999999999992,
+   14.7
+  ],
+  "pad": 6,
+  "ratio": 1.121
+ },
+ "roles": {
+  "a": {
+   "label": "First quantity",
+   "color": "#2563eb",
+   "text": "The first rotating arrow (phasor).",
+   "legend": true
+  },
+  "b": {
+   "label": "Second quantity",
+   "color": "#e11d48",
+   "text": "The second rotating arrow.",
+   "legend": true
+  },
+  "res": {
+   "label": "Resultant / answer",
+   "color": "#059669",
+   "text": "The sum, or the answer you are asked for.",
+   "legend": true
+  },
+  "aux": {
+   "label": "Helper lines",
+   "color": "#d97706",
+   "text": "Projections and construction lines.",
+   "legend": true
+  },
+  "wall": {
+   "label": "Axes",
+   "color": "#475569",
+   "text": "The Argand plane and the time axis.",
+   "legend": false
+  },
+  "ghost": {
+   "label": "Reference",
+   "color": "#94a3b8",
+   "text": "Circle of the amplitude.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "th",
+   "label": "Angle (°)",
+   "type": "clock",
+   "min": 0,
+   "max": 360,
+   "step": 1,
+   "speed": 40,
+   "loop": "repeat",
+   "default": 0
+  }
+ ],
+ "derived": {
+  "v": "5*cos(th+45)+3*cos(th+-60)"
+ },
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "axr",
+   "from": [
+    3.0000000000000004,
+    9.4
+   ],
+   "to": [
+    13.0,
+    9.4
+   ],
+   "role": "wall",
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "vector",
+   "id": "axi",
+   "from": [
+    8.0,
+    4.4
+   ],
+   "to": [
+    8.0,
+    14.4
+   ],
+   "role": "wall",
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "lre",
+   "at": [
+    13.0,
+    8.85
+   ],
+   "text": "Re",
+   "role": "wall",
+   "size": "m",
+   "bold": true,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "lim",
+   "at": [
+    8.55,
+    14.4
+   ],
+   "text": "Im",
+   "role": "wall",
+   "size": "m",
+   "bold": true,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "ci0",
+   "c": [
+    8.0,
+    9.4
+   ],
+   "r": 2.4014,
+   "role": "ghost",
+   "fill": false,
+   "strokeWidth": 1.6,
+   "dash": true,
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "circle",
+   "id": "ci1",
+   "c": [
+    8.0,
+    9.4
+   ],
+   "r": 4.0023,
+   "role": "ghost",
+   "fill": false,
+   "strokeWidth": 1.6,
+   "dash": true,
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "circle",
+   "id": "ci2",
+   "c": [
+    8.0,
+    9.4
+   ],
+   "r": 4.1,
+   "role": "ghost",
+   "fill": false,
+   "strokeWidth": 1.6,
+   "dash": true,
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "vector",
+   "id": "ph0",
+   "from": [
+    8.0,
+    9.4
+   ],
+   "to": [
+    "8.0+4.0023*cos(th+45)",
+    "9.4+4.0023*sin(th+45)"
+   ],
+   "role": "a",
+   "strokeWidth": 3.6,
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "pt0",
+   "at": [
+    "8.0+4.0023*cos(th+45)",
+    "9.4+4.0023*sin(th+45)"
+   ],
+   "r": 6,
+   "role": "a",
+   "layer": "front",
+   "label": {
+    "text": "V₁",
+    "role": "a",
+    "size": "m",
+    "off": -2,
+    "dx": 12,
+    "dy": -12
+   },
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "vector",
+   "id": "ph1",
+   "from": [
+    "(8.0+4.0023*cos(th+45))",
+    "(9.4+4.0023*sin(th+45))"
+   ],
+   "to": [
+    "((8.0+4.0023*cos(th+45)))+2.4014*cos(th+-60)",
+    "((9.4+4.0023*sin(th+45)))+2.4014*sin(th+-60)"
+   ],
+   "role": "b",
+   "strokeWidth": 3.6,
+   "effect": "draw",
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "pt1",
+   "at": [
+    "((8.0+4.0023*cos(th+45)))+2.4014*cos(th+-60)",
+    "((9.4+4.0023*sin(th+45)))+2.4014*sin(th+-60)"
+   ],
+   "r": 6,
+   "role": "b",
+   "layer": "front",
+   "label": {
+    "text": "V₂",
+    "role": "b",
+    "size": "m",
+    "off": -2,
+    "dx": 12,
+    "dy": -12
+   },
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "vector",
+   "id": "phs",
+   "from": [
+    8.0,
+    9.4
+   ],
+   "to": [
+    "8+4.0023*cos(th+45)+2.4014*cos(th+-60)",
+    "9.4+4.0023*sin(th+45)+2.4014*sin(th+-60)"
+   ],
+   "role": "res",
+   "strokeWidth": 4.2,
+   "effect": "draw",
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "pts",
+   "at": [
+    "8+4.0023*cos(th+45)+2.4014*cos(th+-60)",
+    "9.4+4.0023*sin(th+45)+2.4014*sin(th+-60)"
+   ],
+   "r": 6.5,
+   "role": "res",
+   "layer": "front",
+   "label": {
+    "text": "V",
+    "role": "res",
+    "size": "m",
+    "off": -2,
+    "dx": 18,
+    "dy": 16
+   },
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "vector",
+   "id": "axt",
+   "from": [
+    8.0,
+    3.8000000000000007
+   ],
+   "to": [
+    8.0,
+    -0.6499999999999992
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "lt",
+   "at": [
+    8.75,
+    -0.4499999999999992
+   ],
+   "text": "time",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "keep": true
+  },
+  {
+   "type": "plot",
+   "id": "wv0",
+   "x": "8+4.0023*cos(u+45)",
+   "y": "3.8-3.9*u/360",
+   "var": "u",
+   "domain": [
+    0,
+    360
+   ],
+   "upTo": "th",
+   "role": "a",
+   "strokeWidth": 1.8,
+   "dash": true,
+   "samples": 180,
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "plot",
+   "id": "wv1",
+   "x": "8+2.4014*cos(u+-60)",
+   "y": "3.8-3.9*u/360",
+   "var": "u",
+   "domain": [
+    0,
+    360
+   ],
+   "upTo": "th",
+   "role": "b",
+   "strokeWidth": 1.8,
+   "dash": true,
+   "samples": 180,
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "plot",
+   "id": "wvs",
+   "x": "8+4.0023*cos(u+45)+2.4014*cos(u+-60)",
+   "y": "3.8-3.9*u/360",
+   "var": "u",
+   "domain": [
+    0,
+    360
+   ],
+   "upTo": "th",
+   "role": "res",
+   "strokeWidth": 3.6,
+   "samples": 180,
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "segment",
+   "id": "lk",
+   "from": [
+    "(8+4.0023*cos(th+45)+2.4014*cos(th+-60))",
+    "(9.4+4.0023*sin(th+45)+2.4014*sin(th+-60))"
+   ],
+   "to": [
+    "(8+4.0023*cos(th+45)+2.4014*cos(th+-60))",
+    "3.8-3.9*th/360"
+   ],
+   "role": "aux",
+   "strokeWidth": 1.8,
+   "dash": true,
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "wd",
+   "at": [
+    "(8+4.0023*cos(th+45)+2.4014*cos(th+-60))",
+    "3.8-3.9*th/360"
+   ],
+   "r": 6,
+   "role": "res",
+   "layer": "front",
+   "appear": "s2",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Arrows for each voltage",
+   "text": "\\[\\begin{aligned}&V=\\operatorname{Re}\\left(Ae^{i(t+\\varphi)}\\right)=A\\cos(t+\\varphi)\\\\[5pt]&V_1=5\\cos(t+45^\\circ)\\ \\Rightarrow\\ V_1:\\ 5\\angle 45^\\circ\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Turn sine into cosine",
+   "text": "\\[\\begin{aligned}&\\text{Write $\\sin x=\\cos(x-90^\\circ)$, so the}\\\\[5pt]&\\text{sine wave becomes a cosine wave.}\\\\[5pt]&3\\sin(t+30^\\circ)=3\\cos\\left(t+30^\\circ-90^\\circ\\right)=3\\cos\\left(t-60^\\circ\\right)\\\\[5pt]&V_2:\\ 3\\angle -60^\\circ\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Add the arrows",
+   "text": "\\[\\begin{aligned}&\\text{Add the two arrows tip to tail; the}\\\\[5pt]&\\text{green arrow is the total voltage.}\\\\[5pt]&\\text{Re}=5\\cos 45^\\circ+3\\cos -60^\\circ=5.036\\\\[5pt]&\\text{Im}=5\\sin 45^\\circ+3\\sin -60^\\circ=0.937\\end{aligned}\\]",
+   "actions": [
+    {
+     "tween": {
+      "th": 0
+     },
+     "at": 0,
+     "dur": 1
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Size and angle of the total",
+   "text": "\\[\\begin{aligned}&R=\\sqrt{5.036^{2}+0.937^{2}}\\approx 5.122\\\\[5pt]&\\varphi=\\tan^{-1}\\dfrac{0.937}{5.036}\\approx 10.55^\\circ\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Total voltage",
+   "text": "\\[\\begin{aligned}&V_{\\text{total}}\\approx\\textcolor{#047857}{\\mathbf{5.12\\cos\\left(t+10.5^\\circ\\right)}}\\\\[5pt]&\\text{Press play: the green wave is the sum}\\\\[5pt]&\\text{of the two other waves.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "startClock": "th",
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Total voltage now",
+   "value": "{{v|3}} V",
+   "role": "res"
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

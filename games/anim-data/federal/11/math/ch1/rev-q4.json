@@ -1,0 +1,220 @@
+{
+ "id": "g11-math-c1-rev-q4",
+ "title": "Review Exercise 1 · Q4",
+ "summary": "Locate the complex number z=x+iy on the complex plane if |(z+2i)/(z−2i)|=1.",
+ "alt": "Review Exercise 1 · Q4: Locate the complex number z=x+iy on the complex plane if |(z+2i)/(z−2i)|=1.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -5,
+   5
+  ],
+  "y": [
+   -4,
+   4
+  ],
+  "ratio": 0.8,
+  "pad": 6
+ },
+ "roles": {
+  "z": {
+   "label": "The number z",
+   "color": "#2563eb",
+   "text": "The complex number you are given.",
+   "legend": true
+  },
+  "zb": {
+   "label": "Second number / conjugate",
+   "color": "#e11d48",
+   "text": "The conjugate, or the second number.",
+   "legend": true
+  },
+  "res": {
+   "label": "Answer",
+   "color": "#059669",
+   "text": "The result of the working.",
+   "legend": true
+  },
+  "aux": {
+   "label": "Helper lines",
+   "color": "#d97706",
+   "text": "Modulus, angle and construction lines.",
+   "legend": true
+  }
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 1,
+   "numbers": true,
+   "xLabel": "Re",
+   "yLabel": "Im",
+   "role": "ink"
+  },
+  {
+   "type": "point",
+   "id": "p1",
+   "at": [
+    0.0,
+    2.0
+   ],
+   "r": 6,
+   "role": "z",
+   "layer": "front",
+   "label": {
+    "text": "2i",
+    "role": "z",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p2",
+   "at": [
+    0.0,
+    -2.0
+   ],
+   "r": 6,
+   "role": "zb",
+   "layer": "front",
+   "label": {
+    "text": "−2i",
+    "role": "zb",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "segment",
+   "id": "l3",
+   "from": [
+    -5,
+    0.0
+   ],
+   "to": [
+    5,
+    0.0
+   ],
+   "role": "res",
+   "strokeWidth": 4,
+   "effect": "draw",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p4",
+   "at": [
+    3.0,
+    0.0
+   ],
+   "r": 6,
+   "role": "res",
+   "layer": "front",
+   "label": {
+    "text": "z",
+    "role": "res",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": 16
+   },
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "segment",
+   "id": "g5",
+   "from": [
+    0.0,
+    2.0
+   ],
+   "to": [
+    3.0,
+    0.0
+   ],
+   "role": "aux",
+   "strokeWidth": 2.4,
+   "effect": "draw",
+   "dash": true,
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "segment",
+   "id": "g6",
+   "from": [
+    0.0,
+    -2.0
+   ],
+   "to": [
+    3.0,
+    0.0
+   ],
+   "role": "aux",
+   "strokeWidth": 2.4,
+   "effect": "draw",
+   "dash": true,
+   "appear": "s3",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Remove the fraction",
+   "text": "\\[\\begin{aligned}&\\left|\\dfrac{z+2i}{z-2i}\\right|=1\\ \\Rightarrow\\ |z+2i|=|z-2i|\\\\[5pt]&\\text{$z$ is equally far from $-2i$ and from $2i$.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "p1",
+      "p2"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Use x and y",
+   "text": "\\[\\begin{aligned}&\\sqrt{x^{2}+(y+2)^{2}}=\\sqrt{x^{2}+(y-2)^{2}}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Square and cancel",
+   "text": "\\[\\begin{aligned}&x^{2}+y^{2}+4y+4=x^{2}+y^{2}-4y+4\\\\[5pt]&8y=0\\ \\Rightarrow\\ y=0\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Locus",
+   "text": "\\[\\begin{aligned}&y=0\\\\[5pt]&\\text{$z$ lies on the **real axis** (the}\\\\[5pt]&\\text{perpendicular bisector of the segment}\\\\[5pt]&\\text{from $-2i$ to $2i$).}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "p4"
+     ],
+     "at": 350
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

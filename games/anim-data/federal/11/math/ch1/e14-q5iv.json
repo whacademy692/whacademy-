@@ -1,0 +1,175 @@
+{
+ "id": "g11-math-c1-e14-q5iv",
+ "title": "Exercise 1.4 · Q5(iv)",
+ "summary": "Write 0≤arg((z−4)/(1+i))≤π/6 in Cartesian form.",
+ "alt": "Exercise 1.4 · Q5(iv): Write 0≤arg((z−4)/(1+i))≤π/6 in Cartesian form.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -1,
+   11
+  ],
+  "y": [
+   -2,
+   9
+  ],
+  "ratio": 0.917,
+  "pad": 6
+ },
+ "roles": {
+  "z": {
+   "label": "The number z",
+   "color": "#2563eb",
+   "text": "The complex number you are given.",
+   "legend": true
+  },
+  "aux": {
+   "label": "Helper lines",
+   "color": "#d97706",
+   "text": "Modulus, angle and construction lines.",
+   "legend": true
+  }
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 1,
+   "numbers": true,
+   "xLabel": "Re",
+   "yLabel": "Im",
+   "role": "ink"
+  },
+  {
+   "type": "polygon",
+   "id": "y1",
+   "pts": [
+    [
+     4.0,
+     0.0
+    ],
+    [
+     11.0,
+     7.0
+    ],
+    [
+     11.0,
+     9.0
+    ],
+    [
+     6.411542731880104,
+     9.0
+    ]
+   ],
+   "role": "aux",
+   "fill": "aux",
+   "fillOpacity": 0.18,
+   "strokeWidth": 0.1,
+   "layer": "back",
+   "effect": "fade",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "segment",
+   "id": "l2",
+   "from": [
+    11,
+    7.0
+   ],
+   "to": [
+    2.0,
+    -2
+   ],
+   "role": "aux",
+   "strokeWidth": 3.4,
+   "effect": "draw",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "segment",
+   "id": "l3",
+   "from": [
+    3.4641016151377544,
+    -2
+   ],
+   "to": [
+    6.411542731880104,
+    9
+   ],
+   "role": "aux",
+   "strokeWidth": 3.4,
+   "effect": "draw",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p4",
+   "at": [
+    4.0,
+    0.0
+   ],
+   "r": 6,
+   "role": "z",
+   "layer": "front",
+   "label": {
+    "text": "4",
+    "role": "z",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": 16
+   },
+   "appear": "s2",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Split the argument",
+   "text": "\\[\\begin{aligned}&\\arg\\left(\\dfrac{z-4}{1+i}\\right)=\\arg(z-4)-\\arg(1+i)=\\arg(z-4)-\\dfrac\\pi4\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Solve for arg(z−4)",
+   "text": "\\[\\begin{aligned}&0\\le\\arg(z-4)-\\dfrac\\pi4\\le\\dfrac\\pi6\\ \\Rightarrow\\ \\dfrac\\pi4\\le\\arg(z-4)\\le\\dfrac{5\\pi}{12}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Slopes of the two rays",
+   "text": "\\[\\begin{aligned}&\\tan\\dfrac\\pi4=1,\\qquad \\tan\\dfrac{5\\pi}{12}=2+\\sqrt3\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "p4"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Between the rays",
+   "text": "\\[\\begin{aligned}&\\text{Both angles are in the first quadrant,}\\\\[5pt]&\\text{so $x>4$ and $y$ lies between the two ray}\\\\[5pt]&\\text{heights.}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Answer",
+   "text": "\\[\\begin{aligned}&\\text{Cartesian form:}\\quad \\textcolor{#047857}{\\mathbf{x-4\\le y\\le(2+\\sqrt3)(x-4),\\quad x>4}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

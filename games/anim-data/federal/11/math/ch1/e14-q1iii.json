@@ -1,0 +1,188 @@
+{
+ "id": "g11-math-c1-e14-q1iii",
+ "title": "Exercise 1.4 · Q1(iii)",
+ "summary": "Write −2−i2 in polar form.",
+ "alt": "Exercise 1.4 · Q1(iii): Write −2−i2 in polar form.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -2.6578,
+   1.6477
+  ],
+  "y": [
+   -2.6578,
+   1.6477
+  ],
+  "ratio": 1.0,
+  "pad": 6
+ },
+ "roles": {
+  "z": {
+   "label": "The number z",
+   "color": "#2563eb",
+   "text": "The complex number you are given.",
+   "legend": true
+  },
+  "aux": {
+   "label": "Helper lines",
+   "color": "#d97706",
+   "text": "Modulus, angle and construction lines.",
+   "legend": true
+  },
+  "ghost": {
+   "label": "Reference",
+   "color": "#94a3b8",
+   "text": "A reference or earlier position.",
+   "legend": false
+  }
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 0.5,
+   "numbers": true,
+   "xLabel": "Re",
+   "yLabel": "Im",
+   "role": "ink"
+  },
+  {
+   "type": "vector",
+   "id": "v1",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    -2.0,
+    -2.0
+   ],
+   "role": "z",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p2",
+   "at": [
+    -2.0,
+    -2.0
+   ],
+   "r": 6,
+   "role": "z",
+   "layer": "front",
+   "label": {
+    "text": "z",
+    "role": "z",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "segment",
+   "id": "g3",
+   "from": [
+    0.0,
+    0.0
+   ],
+   "to": [
+    -2.0,
+    0.0
+   ],
+   "role": "ghost",
+   "strokeWidth": 2.4,
+   "effect": "draw",
+   "dash": true,
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "segment",
+   "id": "g4",
+   "from": [
+    -2.0,
+    0.0
+   ],
+   "to": [
+    -2.0,
+    -2.0
+   ],
+   "role": "ghost",
+   "strokeWidth": 2.4,
+   "effect": "draw",
+   "dash": true,
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "arc",
+   "id": "a5",
+   "c": [
+    0.0,
+    0.0
+   ],
+   "r": 0.9899494936611666,
+   "from": -135.0,
+   "to": 0.0,
+   "role": "aux",
+   "strokeWidth": 2.6,
+   "effect": "draw",
+   "appear": "s2",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read x and y",
+   "text": "\\[\\begin{aligned}&z=-2 - 2i,\\quad x=-2,\\ y=-2\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "v1",
+      "p2"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Modulus r",
+   "text": "\\[\\begin{aligned}&r=\\sqrt{(-2)^{2}+(-2)^{2}}=\\sqrt8=2\\sqrt2\\\\[5pt]&r=\\textcolor{#047857}{\\mathbf{2 \\sqrt{2}}}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Argument θ",
+   "text": "\\[\\begin{aligned}&\\text{$x<0,\\ y<0$: third quadrant, so the}\\\\[5pt]&\\text{reference angle $\\frac{\\pi}{4}$ is}\\\\[5pt]&\\text{measured from the negative real axis.}\\\\[5pt]&\\tan\\theta=\\dfrac{-2}{-2}=1\\ \\Rightarrow\\ \\theta=-\\pi+\\dfrac{\\pi}{4}\\\\[5pt]&\\theta=\\textcolor{#047857}{\\mathbf{-\\dfrac{3\\pi}{4}}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "a5"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Polar form",
+   "text": "\\[\\begin{aligned}&z=r(\\cos\\theta+i\\sin\\theta)=\\textcolor{#047857}{\\mathbf{2 \\sqrt{2}\\left[\\cos\\left(-\\dfrac{3\\pi}{4}\\right)+i\\sin\\left(-\\dfrac{3\\pi}{4}\\right)\\right]}}\\\\[5pt]&\\text{Adding $2\\pi$ gives the same angle:}\\\\[5pt]&\\text{$\\theta=\\dfrac{5\\pi}{4}$.}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

@@ -1,0 +1,151 @@
+{
+ "id": "g11-math-c1-e14-q5i",
+ "title": "Exercise 1.4 · Q5(i)",
+ "summary": "Write arg(z−1)=−π/4 in Cartesian form.",
+ "alt": "Exercise 1.4 · Q5(i): Write arg(z−1)=−π/4 in Cartesian form.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -3,
+   8
+  ],
+  "y": [
+   -6.5,
+   2.5
+  ],
+  "ratio": 0.818,
+  "pad": 6
+ },
+ "roles": {
+  "z": {
+   "label": "The number z",
+   "color": "#2563eb",
+   "text": "The complex number you are given.",
+   "legend": true
+  },
+  "zb": {
+   "label": "Second number / conjugate",
+   "color": "#e11d48",
+   "text": "The conjugate, or the second number.",
+   "legend": true
+  },
+  "aux": {
+   "label": "Helper lines",
+   "color": "#d97706",
+   "text": "Modulus, angle and construction lines.",
+   "legend": true
+  }
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 1,
+   "numbers": true,
+   "xLabel": "Re",
+   "yLabel": "Im",
+   "role": "ink"
+  },
+  {
+   "type": "segment",
+   "id": "g1",
+   "from": [
+    1.0,
+    0.0
+   ],
+   "to": [
+    7.0,
+    -6.0
+   ],
+   "role": "aux",
+   "strokeWidth": 4,
+   "effect": "draw",
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p2",
+   "at": [
+    1.0,
+    0.0
+   ],
+   "r": 6,
+   "role": "z",
+   "layer": "front",
+   "label": {
+    "text": "1",
+    "role": "z",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": 14
+   },
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "arc",
+   "id": "a3",
+   "c": [
+    1.0,
+    0.0
+   ],
+   "r": 1.6,
+   "from": -45.0,
+   "to": 0.0,
+   "role": "zb",
+   "strokeWidth": 2.6,
+   "effect": "draw",
+   "appear": "s2",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Put z=x+iy",
+   "text": "\\[\\begin{aligned}&z-1=(x-1)+iy\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Use tanθ",
+   "text": "\\[\\begin{aligned}&\\tan\\left(-\\dfrac\\pi4\\right)=\\dfrac{y}{x-1}\\ \\Rightarrow\\ -1=\\dfrac{y}{x-1}\\\\[5pt]&y=-(x-1)\\ \\Rightarrow\\ x+y-1=0\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "p2"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Which part of the line",
+   "text": "\\[\\begin{aligned}&\\text{The angle $-\\frac\\pi4$ is in the fourth}\\\\[5pt]&\\text{quadrant, so $x-1>0$ and $y<0$.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "a3"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Answer",
+   "text": "\\[\\begin{aligned}&\\text{Cartesian form:}\\quad \\textcolor{#047857}{\\mathbf{x+y=1,\\quad x>1}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

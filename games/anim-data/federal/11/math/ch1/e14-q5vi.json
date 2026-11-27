@@ -1,0 +1,127 @@
+{
+ "id": "g11-math-c1-e14-q5vi",
+ "title": "Exercise 1.4 · Q5(vi)",
+ "summary": "Write 1/2arg(z−i)=π/3−1/2arg(z+i) in Cartesian form.",
+ "alt": "Exercise 1.4 · Q5(vi): Write 1/2arg(z−i)=π/3−1/2arg(z+i) in Cartesian form.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -1,
+   6
+  ],
+  "y": [
+   -1,
+   8
+  ],
+  "ratio": 1.1,
+  "pad": 6
+ },
+ "roles": {
+  "zb": {
+   "label": "Second number / conjugate",
+   "color": "#e11d48",
+   "text": "The conjugate, or the second number.",
+   "legend": true
+  },
+  "aux": {
+   "label": "Helper lines",
+   "color": "#d97706",
+   "text": "Modulus, angle and construction lines.",
+   "legend": true
+  }
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 1,
+   "numbers": true,
+   "xLabel": "Re",
+   "yLabel": "Im",
+   "role": "ink"
+  },
+  {
+   "type": "plot",
+   "id": "f1",
+   "x": "t",
+   "y": "(t+sqrt(4*t^2+3))/1.7320508",
+   "var": "t",
+   "domain": [
+    0,
+    5
+   ],
+   "role": "aux",
+   "strokeWidth": 3.6,
+   "effect": "draw",
+   "appear": "s3",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p2",
+   "at": [
+    0.0,
+    1.0
+   ],
+   "r": 6,
+   "role": "zb",
+   "layer": "front",
+   "label": {
+    "text": "i",
+    "role": "zb",
+    "size": "m",
+    "off": -2,
+    "dx": -18,
+    "dy": -12
+   },
+   "appear": "s2",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Collect the arguments",
+   "text": "\\[\\begin{aligned}&\\arg(z-i)+\\arg(z+i)=\\dfrac{2\\pi}{3}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Add arguments = argument of product",
+   "text": "\\[\\begin{aligned}&\\arg\\left[(z-i)(z+i)\\right]=\\arg\\left(z^{2}+1\\right)=\\dfrac{2\\pi}{3}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Real and imaginary parts",
+   "text": "\\[\\begin{aligned}&z^{2}+1=\\left(x^{2}-y^{2}+1\\right)+2xy\\,i\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "p2"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Use tan2π/3=−√3",
+   "text": "\\[\\begin{aligned}&\\dfrac{2xy}{x^{2}-y^{2}+1}=-\\sqrt3\\ \\Rightarrow\\ \\sqrt3x^{2}+2xy-\\sqrt3y^{2}+\\sqrt3=0\\\\[5pt]&\\text{The angle $\\frac{2\\pi}{3}$ is in the}\\\\[5pt]&\\text{second quadrant: real part negative,}\\\\[5pt]&\\text{imaginary part positive. With}\\\\[5pt]&\\text{principal arguments this is the branch}\\\\[5pt]&\\text{$x>0,\\ y>1$.}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Answer",
+   "text": "\\[\\begin{aligned}&\\text{Cartesian form:}\\quad \\textcolor{#047857}{\\mathbf{\\sqrt3x^{2}+2xy-\\sqrt3y^{2}+\\sqrt3=0,\\quad x>0}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

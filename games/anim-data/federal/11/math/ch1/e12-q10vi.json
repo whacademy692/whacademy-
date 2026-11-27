@@ -1,0 +1,193 @@
+{
+ "id": "g11-math-c1-e12-q10vi",
+ "title": "Exercise 1.2 · Q10(vi)",
+ "summary": "For z₁=−3+2i, z₂=1−3i verify |z₁+z₂|≤|z₁|+|z₂|.",
+ "alt": "Exercise 1.2 · Q10(vi): For z₁=−3+2i, z₂=1−3i verify |z₁+z₂|≤|z₁|+|z₂|.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -3.66,
+   0.66
+  ],
+  "y": [
+   -1.66,
+   2.66
+  ],
+  "ratio": 1.0,
+  "pad": 6
+ },
+ "roles": {
+  "z": {
+   "label": "The number z",
+   "color": "#2563eb",
+   "text": "The complex number you are given.",
+   "legend": true
+  },
+  "zb": {
+   "label": "Second number / conjugate",
+   "color": "#e11d48",
+   "text": "The conjugate, or the second number.",
+   "legend": true
+  },
+  "res": {
+   "label": "Answer",
+   "color": "#059669",
+   "text": "The result of the working.",
+   "legend": true
+  }
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 0.5,
+   "numbers": true,
+   "xLabel": "Re",
+   "yLabel": "Im",
+   "role": "ink"
+  },
+  {
+   "type": "vector",
+   "id": "v1",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    -3.0,
+    2.0
+   ],
+   "role": "z",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p2",
+   "at": [
+    -3.0,
+    2.0
+   ],
+   "r": 6,
+   "role": "z",
+   "layer": "front",
+   "label": {
+    "text": "z₁",
+    "role": "z",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "vector",
+   "id": "v3",
+   "from": [
+    -3.0,
+    2.0
+   ],
+   "to": [
+    -2.0,
+    -1.0
+   ],
+   "role": "zb",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "appear": "s1",
+   "appearDur": 450
+  },
+  {
+   "type": "vector",
+   "id": "v4",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    -2.0,
+    -1.0
+   ],
+   "role": "res",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p5",
+   "at": [
+    -2.0,
+    -1.0
+   ],
+   "r": 6,
+   "role": "res",
+   "layer": "front",
+   "label": {
+    "text": "z₁+z₂",
+    "role": "res",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s2",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Right side",
+   "text": "\\[\\begin{aligned}&|z_1|+|z_2|=\\sqrt{13}+\\sqrt{10}\\approx 3.61+3.16=6.77\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "v1",
+      "p2"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Left side",
+   "text": "\\[\\begin{aligned}&z_1+z_2=-2-i\\ \\Rightarrow\\ |z_1+z_2|=\\sqrt{4+1}=\\sqrt5\\approx 2.24\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "v3"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Compare",
+   "text": "\\[\\begin{aligned}&2.24\\le 6.77\\ \\checkmark\\\\[5pt]&\\text{Going from $0$ to $z_1$ then to $z_1+z_2$ is}\\\\[5pt]&\\text{longer than the direct arrow (triangle}\\\\[5pt]&\\text{inequality).}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "v4",
+      "p5"
+     ],
+     "at": 350
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}

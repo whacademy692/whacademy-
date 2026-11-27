@@ -1,0 +1,188 @@
+{
+ "id": "g11-math-c1-e14-q4v",
+ "title": "Exercise 1.4 · Q4(v)",
+ "summary": "Write 2(cosπ/6+isinπ/6) in algebraic form.",
+ "alt": "Exercise 1.4 · Q4(v): Write 2(cosπ/6+isinπ/6) in algebraic form.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   -1.1131,
+   2.2451
+  ],
+  "y": [
+   -1.0,
+   1.4
+  ],
+  "ratio": 0.715,
+  "pad": 6
+ },
+ "roles": {
+  "z": {
+   "label": "The number z",
+   "color": "#2563eb",
+   "text": "The complex number you are given.",
+   "legend": true
+  },
+  "aux": {
+   "label": "Helper lines",
+   "color": "#d97706",
+   "text": "Modulus, angle and construction lines.",
+   "legend": true
+  },
+  "ghost": {
+   "label": "Reference",
+   "color": "#94a3b8",
+   "text": "A reference or earlier position.",
+   "legend": false
+  }
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 0.5,
+   "numbers": true,
+   "xLabel": "Re",
+   "yLabel": "Im",
+   "role": "ink"
+  },
+  {
+   "type": "vector",
+   "id": "v1",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    1.7320508075688772,
+    1.0
+   ],
+   "role": "z",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "point",
+   "id": "p2",
+   "at": [
+    1.7320508075688772,
+    1.0
+   ],
+   "r": 6,
+   "role": "z",
+   "layer": "front",
+   "label": {
+    "text": "z",
+    "role": "z",
+    "size": "m",
+    "off": -2,
+    "dx": 10,
+    "dy": -12
+   },
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "arc",
+   "id": "a3",
+   "c": [
+    0.0,
+    0.0
+   ],
+   "r": 0.6,
+   "from": 0.0,
+   "to": 30.0,
+   "role": "aux",
+   "strokeWidth": 2.6,
+   "effect": "draw",
+   "appear": "s0",
+   "appearDur": 450
+  },
+  {
+   "type": "segment",
+   "id": "g4",
+   "from": [
+    0.0,
+    0.0
+   ],
+   "to": [
+    1.7320508075688772,
+    0.0
+   ],
+   "role": "ghost",
+   "strokeWidth": 2.4,
+   "effect": "draw",
+   "dash": true,
+   "appear": "s2",
+   "appearDur": 450
+  },
+  {
+   "type": "segment",
+   "id": "g5",
+   "from": [
+    1.7320508075688772,
+    0.0
+   ],
+   "to": [
+    1.7320508075688772,
+    1.0
+   ],
+   "role": "ghost",
+   "strokeWidth": 2.4,
+   "effect": "draw",
+   "dash": true,
+   "appear": "s2",
+   "appearDur": 450
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read r and θ",
+   "text": "\\[\\begin{aligned}&r=2,\\qquad \\theta=\\dfrac{\\pi}{6}\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "a3"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Exact values",
+   "text": "\\[\\begin{aligned}&\\cos \\dfrac{\\pi}{6}=\\frac{\\sqrt{3}}{2},\\qquad \\sin \\dfrac{\\pi}{6}=\\frac{1}{2}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Multiply out",
+   "text": "\\[\\begin{aligned}&z=2\\left(\\frac{\\sqrt{3}}{2}+i\\left(\\frac{1}{2}\\right)\\right)\\\\[5pt]&{}=\\sqrt{3} + i\\end{aligned}\\]",
+   "actions": [
+    {
+     "pulse": [
+      "v1",
+      "p2"
+     ],
+     "at": 350
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Algebraic form",
+   "text": "\\[\\begin{aligned}&z=\\textcolor{#047857}{\\mathbf{\\sqrt{3} + i}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}
