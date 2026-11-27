@@ -1371,9 +1371,9 @@ window.WHA_CONTENT = {
             "n": 8,
             "unit": 8,
             "title": "Fundamental Laws of Trigonometry",
-            "notes": null,
+            "notes": "https://whacademypk.com/notes/class-11/math/fundamental-laws-of-trigonometry.html",
             "quiz": null,
-            "game": null
+            "game": "https://whacademypk.com/games/chapter.html?ch=11/math/fundamental_laws_of_trigonometry"
           },
           {
             "n": 9,
