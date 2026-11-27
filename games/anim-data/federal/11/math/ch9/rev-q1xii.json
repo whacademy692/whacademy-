@@ -1,0 +1,485 @@
+{
+ "id": "g11-math-c9-rev-q1xii",
+ "title": "Review Exercise 9 · Q1(xii)",
+ "summary": "Trig functions that are even and have period 2π:",
+ "alt": "Review Exercise 9 · Q1(xii): Trig functions that are even and have period 2π:",
+ "autoGrid": false,
+ "roles": {
+  "cv": {
+   "label": "The graph",
+   "color": "#2563eb",
+   "text": "The function you are studying.",
+   "legend": true
+  },
+  "cv2": {
+   "label": "Second graph",
+   "color": "#e11d48",
+   "text": "The second function.",
+   "legend": true
+  },
+  "ghost": {
+   "label": "Parent / reference",
+   "color": "#94a3b8",
+   "text": "The plain parent graph (or the reference curve) for comparison.",
+   "legend": true
+  },
+  "mid": {
+   "label": "Midline  y = a",
+   "color": "#d97706",
+   "text": "The horizontal line half-way between the highest and lowest points.",
+   "legend": true
+  },
+  "mx": {
+   "label": "Maximum",
+   "color": "#059669",
+   "text": "Highest values.",
+   "legend": true
+  },
+  "mn": {
+   "label": "Minimum",
+   "color": "#e11d48",
+   "text": "Lowest values.",
+   "legend": true
+  },
+  "per": {
+   "label": "Period",
+   "color": "#7c3aed",
+   "text": "One full cycle before the graph repeats.",
+   "legend": true
+  },
+  "asy": {
+   "label": "Asymptotes",
+   "color": "#dc2626",
+   "text": "Vertical lines the graph never touches.",
+   "legend": true
+  },
+  "key": {
+   "label": "Key points",
+   "color": "#0d9488",
+   "text": "The five key points of one cycle.",
+   "legend": true
+  },
+  "pr": {
+   "label": "Probe",
+   "color": "#ea580c",
+   "text": "The point you are moving along the graph.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "sC",
+   "label": "cos x",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "sS",
+   "label": "sec x",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "sN",
+   "label": "sin x",
+   "type": "toggle",
+   "default": 0,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "sK",
+   "label": "cosec x",
+   "type": "toggle",
+   "default": 0,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "pr",
+   "label": "Probe  x",
+   "min": -6.283185,
+   "max": 6.283185,
+   "step": 0.02,
+   "default": 1,
+   "group": "Probe a point",
+   "hint": "Slide to move the probe along the graph.",
+   "role": "pr"
+  },
+  {
+   "id": "showPr",
+   "label": "Probe",
+   "type": "toggle",
+   "default": 1,
+   "group": "Probe a point"
+  }
+ ],
+ "derived": {
+  "ylo": -4,
+  "yhi": 4,
+  "zin": "(ylo<0&&yhi>0)",
+  "yax": "clamp(0,ylo,yhi)",
+  "pv0": "cos(deg(pr))",
+  "pv1": "sin(deg(pr))",
+  "qv0": "cos(deg((-pr)))",
+  "qv1": "sin(deg((-pr)))"
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 1.612903,
+   "numbers": false,
+   "xLabel": "x",
+   "yLabel": "y",
+   "role": "ink"
+  },
+  {
+   "type": "text",
+   "id": "pl0",
+   "at": [
+    -6.451618,
+    "yax"
+   ],
+   "text": "\\(-2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm0",
+   "at": [
+    -6.451618,
+    "yax"
+   ],
+   "text": "\\(-2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl2",
+   "at": [
+    -3.225804,
+    "yax"
+   ],
+   "text": "\\(-\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm2",
+   "at": [
+    -3.225804,
+    "yax"
+   ],
+   "text": "\\(-\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl6",
+   "at": [
+    3.225804,
+    "yax"
+   ],
+   "text": "\\(\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm6",
+   "at": [
+    3.225804,
+    "yax"
+   ],
+   "text": "\\(\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl8",
+   "at": [
+    6.451618,
+    "yax"
+   ],
+   "text": "\\(2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm8",
+   "at": [
+    6.451618,
+    "yax"
+   ],
+   "text": "\\(2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "plot",
+   "id": "cs",
+   "domain": [
+    -6.283185,
+    6.283185
+   ],
+   "samples": 420,
+   "role": "cv",
+   "strokeWidth": 4,
+   "visible": "sC",
+   "x": "1.026806*t",
+   "y": "cos(deg(t))",
+   "var": "t"
+  },
+  {
+   "type": "plot",
+   "id": "sc",
+   "domain": [
+    -6.283185,
+    6.283185
+   ],
+   "samples": 700,
+   "role": "mx",
+   "strokeWidth": 4,
+   "visible": "sS",
+   "x": "1.026806*t",
+   "y": "if(abs((1/cos(deg(t))))>6,1e9,(1/cos(deg(t))))",
+   "var": "t"
+  },
+  {
+   "type": "plot",
+   "id": "sn",
+   "domain": [
+    -6.283185,
+    6.283185
+   ],
+   "samples": 420,
+   "role": "cv2",
+   "strokeWidth": 3.4,
+   "visible": "sN",
+   "x": "1.026806*t",
+   "y": "sin(deg(t))",
+   "var": "t"
+  },
+  {
+   "type": "plot",
+   "id": "cc",
+   "domain": [
+    -6.283185,
+    6.283185
+   ],
+   "samples": 700,
+   "role": "key",
+   "strokeWidth": 3.4,
+   "visible": "sK",
+   "x": "1.026806*t",
+   "y": "if(abs((1/sin(deg(t))))>6,1e9,(1/sin(deg(t))))",
+   "var": "t"
+  },
+  {
+   "type": "segment",
+   "id": "prl",
+   "from": [
+    "1.026806*(pr)",
+    "ylo"
+   ],
+   "to": [
+    "1.026806*(pr)",
+    "yhi"
+   ],
+   "role": "pr",
+   "strokeWidth": 1.8,
+   "dash": true,
+   "visible": "showPr"
+  },
+  {
+   "type": "point",
+   "id": "pp0",
+   "at": [
+    "1.026806*(pr)",
+    "pv0"
+   ],
+   "r": 5.8,
+   "role": "cv",
+   "layer": "front",
+   "visible": "showPr*(abs(pv0)<1000)"
+  },
+  {
+   "type": "point",
+   "id": "pp1",
+   "at": [
+    "1.026806*(pr)",
+    "pv1"
+   ],
+   "r": 5.8,
+   "role": "cv2",
+   "layer": "front",
+   "visible": "showPr*(abs(pv1)<1000)"
+  },
+  {
+   "type": "point",
+   "id": "pq0",
+   "at": [
+    "1.026806*(-pr)",
+    "qv0"
+   ],
+   "r": 5.8,
+   "role": "cv",
+   "layer": "front",
+   "visible": "showPr*(abs(qv0)<1000)"
+  },
+  {
+   "type": "point",
+   "id": "pq1",
+   "at": [
+    "1.026806*(-pr)",
+    "qv1"
+   ],
+   "r": 5.8,
+   "role": "cv2",
+   "layer": "front",
+   "visible": "showPr*(abs(qv1)<1000)"
+  }
+ ],
+ "handles": [],
+ "readouts": [
+  {
+   "label": "cos x",
+   "value": "{{pv0|3}}",
+   "role": "cv"
+  },
+  {
+   "label": "cos(−x)",
+   "value": "{{qv0|3}}",
+   "role": "cv"
+  },
+  {
+   "label": "sin x",
+   "value": "{{pv1|3}}",
+   "role": "cv2"
+  },
+  {
+   "label": "sin(−x)",
+   "value": "{{qv1|3}}",
+   "role": "cv2"
+  }
+ ],
+ "presets": [
+  {
+   "name": "Even pair: cos & sec",
+   "values": {
+    "sC": 1,
+    "sS": 1,
+    "sN": 0,
+    "sK": 0
+   }
+  },
+  {
+   "name": "Odd pair: sin & cosec",
+   "values": {
+    "sC": 0,
+    "sS": 0,
+    "sN": 1,
+    "sK": 1
+   }
+  },
+  {
+   "name": "All four",
+   "values": {
+    "sC": 1,
+    "sS": 1,
+    "sN": 1,
+    "sK": 1
+   }
+  }
+ ],
+ "formulas": [],
+ "challenges": [],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "text": "\\[\\begin{aligned}&\\text{Trig functions that are even and}\\\\[5pt]&\\text{have period }{2\\pi}\\text{:}\\\\[5pt]&\\text{(a) sin x \\& cos x (b) sec x \\& cos x}\\\\[5pt]&\\text{(c) sin x \\& cosec x (d) tan x \\& cot}\\\\[5pt]&\\text{x}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {},
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Period",
+   "text": "\\[\\begin{aligned}&\\text{Even functions: only cos and sec;}\\\\[5pt]&\\text{both have period }{2\\pi}\\text{.}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Answer",
+   "text": "\\[\\begin{aligned}&\\textcolor{#047857}{\\text{ (b).}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "takeaways": [
+  "Move the probe or the sliders and watch the readouts.",
+  "The picture and the numbers always agree: that is a check on your algebra.",
+  "Try your own values after you finish the steps."
+ ],
+ "notes": [
+  {
+   "title": "Try this",
+   "text": "All the sliders and switches work on the graph at any time."
+  }
+ ],
+ "world": {
+  "x": [
+   -6.451613,
+   6.451613
+  ],
+  "y": [
+   "ylo",
+   "yhi"
+  ],
+  "smooth": true,
+  "pad": 8,
+  "ratio": 0.62
+ },
+ "uiDefaults": {
+  "angles": false
+ },
+ "explore": {
+  "title": "Free play",
+  "text": "Every slider, switch and dot on the graph is yours to use. Change the numbers, watch what moves, then press **Reset** to come back to the exercise."
+ },
+ "challengeIntro": "Test yourself. Each challenge sets up the graph for you where it helps."
+}

@@ -1,0 +1,484 @@
+{
+ "id": "g11-math-c9-rev-q1viii",
+ "title": "Review Exercise 9 · Q1(viii)",
+ "summary": "If tan A=1/7 and tan B=1/3, then cos 2A equals",
+ "alt": "Review Exercise 9 · Q1(viii): If tan A=1/7 and tan B=1/3, then cos 2A equals",
+ "autoGrid": false,
+ "roles": {
+  "cv": {
+   "label": "The graph",
+   "color": "#2563eb",
+   "text": "The function you are studying.",
+   "legend": true
+  },
+  "cv2": {
+   "label": "Second graph",
+   "color": "#e11d48",
+   "text": "The second function.",
+   "legend": true
+  },
+  "ghost": {
+   "label": "Parent / reference",
+   "color": "#94a3b8",
+   "text": "The plain parent graph (or the reference curve) for comparison.",
+   "legend": true
+  },
+  "mid": {
+   "label": "Midline  y = a",
+   "color": "#d97706",
+   "text": "The horizontal line half-way between the highest and lowest points.",
+   "legend": true
+  },
+  "mx": {
+   "label": "Maximum",
+   "color": "#059669",
+   "text": "Highest values.",
+   "legend": true
+  },
+  "mn": {
+   "label": "Minimum",
+   "color": "#e11d48",
+   "text": "Lowest values.",
+   "legend": true
+  },
+  "per": {
+   "label": "Period",
+   "color": "#7c3aed",
+   "text": "One full cycle before the graph repeats.",
+   "legend": true
+  },
+  "asy": {
+   "label": "Asymptotes",
+   "color": "#dc2626",
+   "text": "Vertical lines the graph never touches.",
+   "legend": true
+  },
+  "key": {
+   "label": "Key points",
+   "color": "#0d9488",
+   "text": "The five key points of one cycle.",
+   "legend": true
+  },
+  "pr": {
+   "label": "Probe",
+   "color": "#ea580c",
+   "text": "The point you are moving along the graph.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "th",
+   "label": "Angle  θ  (degrees)",
+   "min": 0,
+   "max": 90,
+   "step": 0.5,
+   "default": 28.0725,
+   "group": "The angle",
+   "hint": "Drag the dot round the circle, or type any angle. It keeps going round: 360° is one full turn.",
+   "role": "cv"
+  },
+  {
+   "id": "showDrop",
+   "label": "Drop-lines (sin and cos)",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showAstc",
+   "label": "Quadrant signs (ASTC)",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showRef",
+   "label": "Reference angle",
+   "type": "toggle",
+   "default": 0,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showTan",
+   "label": "Tangent line",
+   "type": "toggle",
+   "default": 0,
+   "group": "Show on the graph"
+  }
+ ],
+ "derived": {
+  "c0": "cos(th)",
+  "s0": "sin(th)",
+  "thm": "mod(th,360)",
+  "quad": "floor(thm/90)+1",
+  "P": [
+   "c0",
+   "s0"
+  ],
+  "ref": "if(quad==1,thm,if(quad==2,180-thm,if(quad==3,thm-180,360-thm)))",
+  "th2": "90-4*atan(1/3)",
+  "P2": [
+   "cos(th2)",
+   "sin(th2)"
+  ]
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 0.5,
+   "numbers": false,
+   "xLabel": "x",
+   "yLabel": "y",
+   "role": "ink"
+  },
+  {
+   "type": "circle",
+   "id": "uc",
+   "c": [
+    0,
+    0
+   ],
+   "r": 1,
+   "role": "ink",
+   "fill": false,
+   "strokeWidth": 2.4
+  },
+  {
+   "type": "text",
+   "id": "qI",
+   "at": [
+    0.55,
+    0.62
+   ],
+   "text": "I   All +",
+   "role": "muted",
+   "size": "m",
+   "keep": true,
+   "visible": "showAstc"
+  },
+  {
+   "type": "text",
+   "id": "qII",
+   "at": [
+    -0.55,
+    0.62
+   ],
+   "text": "II   Sin +",
+   "role": "muted",
+   "size": "m",
+   "keep": true,
+   "visible": "showAstc"
+  },
+  {
+   "type": "text",
+   "id": "qIII",
+   "at": [
+    -0.55,
+    -0.62
+   ],
+   "text": "III   Tan +",
+   "role": "muted",
+   "size": "m",
+   "keep": true,
+   "visible": "showAstc"
+  },
+  {
+   "type": "text",
+   "id": "qIV",
+   "at": [
+    0.55,
+    -0.62
+   ],
+   "text": "IV   Cos +",
+   "role": "muted",
+   "size": "m",
+   "keep": true,
+   "visible": "showAstc"
+  },
+  {
+   "type": "segment",
+   "id": "rad",
+   "from": [
+    0,
+    0
+   ],
+   "to": "P",
+   "role": "cv",
+   "strokeWidth": 3.6
+  },
+  {
+   "type": "segment",
+   "id": "dropS",
+   "from": [
+    "c0",
+    0
+   ],
+   "to": "P",
+   "role": "mx",
+   "strokeWidth": 3.4,
+   "visible": "showDrop"
+  },
+  {
+   "type": "segment",
+   "id": "dropC",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    "c0",
+    0
+   ],
+   "role": "mn",
+   "strokeWidth": 3.4,
+   "visible": "showDrop",
+   "layer": "front"
+  },
+  {
+   "type": "arc",
+   "id": "angarc",
+   "c": [
+    0,
+    0
+   ],
+   "r": 0.28,
+   "from": 0,
+   "to": "thm",
+   "role": "cv",
+   "strokeWidth": 2.4
+  },
+  {
+   "type": "point",
+   "id": "Pp",
+   "at": "P",
+   "r": 7,
+   "role": "cv",
+   "layer": "front"
+  },
+  {
+   "type": "text",
+   "id": "lcos",
+   "at": [
+    0.5,
+    0
+   ],
+   "text": "cos = {{c0|3}}",
+   "role": "mn",
+   "size": "s",
+   "dy": 16,
+   "keep": true,
+   "visible": "showDrop*(abs(c0)>0.25)"
+  },
+  {
+   "type": "text",
+   "id": "lsin",
+   "at": [
+    "c0",
+    0.5
+   ],
+   "text": "sin = {{s0|3}}",
+   "role": "mx",
+   "size": "s",
+   "dx": 0,
+   "dy": 0,
+   "keep": true,
+   "visible": "showDrop*(abs(s0)>0.25)"
+  },
+  {
+   "type": "segment",
+   "id": "rad2",
+   "from": [
+    0,
+    0
+   ],
+   "to": "P2",
+   "role": "cv2",
+   "strokeWidth": 3,
+   "dash": true
+  },
+  {
+   "type": "point",
+   "id": "P2p",
+   "at": "P2",
+   "r": 6,
+   "role": "cv2",
+   "layer": "front",
+   "label": {
+    "text": "90° − 4B",
+    "off": 0,
+    "dx": 18,
+    "dy": -14,
+    "role": "cv2",
+    "size": "s"
+   }
+  }
+ ],
+ "handles": [
+  {
+   "at": "P",
+   "role": "cv",
+   "drag": {
+    "th": "atan2(py,px) + 360*round((th - atan2(py,px))/360)"
+   },
+   "label": "Drag round the circle"
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Angle θ",
+   "value": "{{th|1}}°",
+   "role": "cv"
+  },
+  {
+   "label": "Quadrant",
+   "value": "{{quad|0}}",
+   "role": "key"
+  },
+  {
+   "label": "sin θ",
+   "value": "{{s0|4}}",
+   "role": "mx"
+  },
+  {
+   "label": "cos θ",
+   "value": "{{c0|4}}",
+   "role": "mn"
+  },
+  {
+   "label": "tan θ",
+   "value": "{{if(abs(c0)<0.000001,9999,s0/c0)|4}}",
+   "role": "per"
+  },
+  {
+   "label": "cos 2A  (tan A = 1/7)",
+   "value": "{{(1-1/49)/(1+1/49)|4}}",
+   "role": "mn"
+  },
+  {
+   "label": "sin 4B  (tan B = 1/3)",
+   "value": "{{sin(4*atan(1/3))|4}}",
+   "role": "cv2"
+  }
+ ],
+ "presets": [
+  {
+   "name": "θ = 2A",
+   "values": {
+    "th": 28.0725
+   }
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Unit circle",
+   "tex": "P=(\\role{mn}{\\cos\\theta},\\ \\role{mx}{\\sin\\theta}),\\qquad \\tan\\theta=\\dfrac{\\role{mx}{\\sin\\theta}}{\\role{mn}{\\cos\\theta}}",
+   "text": "The x-coordinate is cos θ, the y-coordinate is sin θ."
+  },
+  {
+   "title": "ASTC",
+   "tex": "\\text{I: All}\\quad\\text{II: Sin}\\quad\\text{III: Tan}\\quad\\text{IV: Cos}",
+   "text": "The letter says which ratios are positive in that quadrant."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Signs",
+   "prompt": "In which quadrant are **both** sin θ and cos θ negative?",
+   "options": [
+    {
+     "id": "a",
+     "label": "II"
+    },
+    {
+     "id": "b",
+     "label": "III"
+    },
+    {
+     "id": "c",
+     "label": "IV"
+    }
+   ],
+   "answer": "b",
+   "hint": "Left of the y-axis AND below the x-axis.",
+   "explain": "cos is the x-coordinate (negative on the left) and sin is the y-coordinate (negative below). That is quadrant III (only tan is positive).",
+   "set": {
+    "th": 210
+   }
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Full turns",
+   "prompt": "What is \\(\\sin 750^\\circ\\)?",
+   "answer": 0.5,
+   "hint": "750° = 2 × 360° + 30°.",
+   "explain": "Two full turns bring you back: \\(\\sin750^\\circ=\\sin30^\\circ=\\tfrac12\\).",
+   "tolerance": 0.01,
+   "set": {
+    "th": 750
+   }
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "text": "\\[\\begin{aligned}&\\text{If }{\\tan A=\\dfrac17}\\text{ and }{\\tan B=\\dfrac13}\\text{, then }{\\cos2A}\\text{ equals}\\\\[5pt]&\\text{(a) }{\\sin B}\\text{ (b) }{\\sin4B}\\text{ (c) }{\\sin3B}\\text{ (d) }{\\cos2B}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "th": 28.0725
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Step 2",
+   "text": "\\[\\begin{aligned}&\\cos2A=\\dfrac{1-\\tan^2A}{1+\\tan^2A}\\\\[5pt]&{}=\\dfrac{1-\\frac1{49}}{1+\\frac1{49}}=\\dfrac{48}{50}=\\dfrac{24}{25}\\\\[5pt]&\\text{For }{B}\\text{: }{\\sin2B=\\dfrac{2\\tan B}{1+\\tan^2B}=\\dfrac{2/3}{10/9}=\\dfrac35}\\text{,}\\\\[5pt]&{\\cos2B=\\dfrac{1-\\frac19}{1+\\frac19}=\\dfrac45}\\text{, so}\\\\[5pt]&{\\sin4B=2\\sin2B\\cos2B=2\\cdot\\dfrac35\\cdot\\dfrac45=\\dfrac{24}{25}}\\text{ .}\\\\[5pt]&\\text{(Other options: }{\\sin B=\\frac1{\\sqrt{10}}\\approx0.316}\\text{,}\\\\[5pt]&{\\cos2B=0.8}\\text{, }{\\sin3B\\approx0.822}\\text{ — none is }{0.96}\\text{.)}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Answer",
+   "text": "\\[\\begin{aligned}&\\textcolor{#047857}{\\text{ (b) }{\\sin4B}\\text{.}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "takeaways": [
+  "On the unit circle **cos θ is the x-coordinate** and **sin θ is the y-coordinate**.",
+  "After a full turn (360°) the angle comes back to the same point: this is **periodicity**.",
+  "**ASTC** tells the sign in each quadrant."
+ ],
+ "notes": [
+  {
+   "title": "Try this",
+   "text": "Drag the dot, or type any angle (even negative or huge)."
+  }
+ ],
+ "world": {
+  "x": [
+   -1.75,
+   1.75
+  ],
+  "y": [
+   -1.45,
+   1.45
+  ],
+  "ratio": 0.83,
+  "pad": 6
+ },
+ "uiDefaults": {
+  "angles": false
+ },
+ "explore": {
+  "title": "Free play",
+  "text": "Every slider, switch and dot on the graph is yours to use. Change the numbers, watch what moves, then press **Reset** to come back to the exercise."
+ },
+ "challengeIntro": "Test yourself. Each challenge sets up the graph for you where it helps."
+}

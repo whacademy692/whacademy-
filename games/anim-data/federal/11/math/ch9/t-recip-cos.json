@@ -1,0 +1,839 @@
+{
+ "id": "g11-math-c9-t-recip-cos",
+ "title": "Theory · Reciprocal of a cosine wave",
+ "summary": "y = 1 ÷ (a + b cos(cθ + d)): the same idea with cosine in the denominator.",
+ "alt": "Theory · Reciprocal of a cosine wave: y = 1 ÷ (a + b cos(cθ + d)): the same idea with cosine in the denominator.",
+ "autoGrid": false,
+ "roles": {
+  "cv": {
+   "label": "The graph",
+   "color": "#2563eb",
+   "text": "The function you are studying.",
+   "legend": true
+  },
+  "cv2": {
+   "label": "Second graph",
+   "color": "#e11d48",
+   "text": "The second function.",
+   "legend": true
+  },
+  "ghost": {
+   "label": "Parent / reference",
+   "color": "#94a3b8",
+   "text": "The plain parent graph (or the reference curve) for comparison.",
+   "legend": true
+  },
+  "mid": {
+   "label": "Midline  y = a",
+   "color": "#d97706",
+   "text": "The horizontal line half-way between the highest and lowest points.",
+   "legend": true
+  },
+  "mx": {
+   "label": "Maximum",
+   "color": "#059669",
+   "text": "Highest values.",
+   "legend": true
+  },
+  "mn": {
+   "label": "Minimum",
+   "color": "#e11d48",
+   "text": "Lowest values.",
+   "legend": true
+  },
+  "per": {
+   "label": "Period",
+   "color": "#7c3aed",
+   "text": "One full cycle before the graph repeats.",
+   "legend": true
+  },
+  "asy": {
+   "label": "Asymptotes",
+   "color": "#dc2626",
+   "text": "Vertical lines the graph never touches.",
+   "legend": true
+  },
+  "key": {
+   "label": "Key points",
+   "color": "#0d9488",
+   "text": "The five key points of one cycle.",
+   "legend": true
+  },
+  "pr": {
+   "label": "Probe",
+   "color": "#ea580c",
+   "text": "The point you are moving along the graph.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "a",
+   "label": "Midline  a  (moves up / down)",
+   "min": -6,
+   "max": 6,
+   "step": 0.05,
+   "default": 3,
+   "group": "Shape of the wave",
+   "hint": "Shifts the whole graph up (+) or down (−).",
+   "role": "mid"
+  },
+  {
+   "id": "b",
+   "label": "Amplitude  b  (height; − flips it)",
+   "min": -6,
+   "max": 6,
+   "step": 0.05,
+   "default": 1,
+   "group": "Shape of the wave",
+   "hint": "Stretches the graph up and down. A negative b turns it upside-down.",
+   "role": "mx"
+  },
+  {
+   "id": "c",
+   "label": "Frequency c  (squeezes sideways)",
+   "min": 0.25,
+   "max": 6,
+   "step": 0.05,
+   "default": 1,
+   "group": "Shape of the wave",
+   "hint": "Bigger c means a shorter period: the wave is squeezed sideways.",
+   "role": "per"
+  },
+  {
+   "id": "d",
+   "label": "Phase  d  (slides left / right)",
+   "min": -7,
+   "max": 7,
+   "step": 0.05,
+   "default": 0,
+   "group": "Shape of the wave",
+   "hint": "The graph slides to the LEFT by d ÷ c when d is positive.",
+   "role": "key"
+  },
+  {
+   "id": "showMid",
+   "label": "Midline  y = a",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showMax",
+   "label": "Highest and lowest values",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showPer",
+   "label": "Period bracket",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showAsy",
+   "label": "Asymptotes",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showKey",
+   "label": "Key points",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showBase",
+   "label": "The graph of g (before taking 1/g)",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showH",
+   "label": "Draggable dots",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "pr",
+   "label": "Probe  x-value",
+   "min": -6.283185,
+   "max": 6.283185,
+   "step": 0.02,
+   "default": 1.047198,
+   "group": "Probe a point",
+   "hint": "Slide to read off the y-value at any x.",
+   "role": "pr"
+  },
+  {
+   "id": "showPr",
+   "label": "Probe point",
+   "type": "toggle",
+   "default": 0,
+   "group": "Probe a point"
+  }
+ ],
+ "derived": {
+  "gM": "a+abs(b)",
+  "gm": "a-abs(b)",
+  "bnd": "(gM*gm>0.0000001)",
+  "hiY": "1/gm",
+  "loY": "1/gM",
+  "T": "(2*pi)/c",
+  "xs": "(0 - d)/c",
+  "xr": "(0 - d)/c",
+  "rlo": "if(bnd,min(0,loY),-3.5)",
+  "rhi": "if(bnd,max(0,hiY),3.5)",
+  "ylo": "rlo-0.3*(rhi-rlo)-0.05",
+  "yhi": "rhi+0.3*(rhi-rlo)+0.05",
+  "zin": "(ylo<0&&yhi>0)",
+  "yax": "clamp(0,ylo,yhi)",
+  "py": "1/(a + b*cos(deg(c*pr+d)))",
+  "PR": [
+   "0.115516*(pr)",
+   "py"
+  ]
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 0.181452,
+   "numbers": false,
+   "xLabel": "θ",
+   "yLabel": "y",
+   "role": "ink"
+  },
+  {
+   "type": "text",
+   "id": "pl0",
+   "at": [
+    -0.725807,
+    "yax"
+   ],
+   "text": "\\(-2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm0",
+   "at": [
+    -0.725807,
+    "yax"
+   ],
+   "text": "\\(-2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl2",
+   "at": [
+    -0.362903,
+    "yax"
+   ],
+   "text": "\\(-\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm2",
+   "at": [
+    -0.362903,
+    "yax"
+   ],
+   "text": "\\(-\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl6",
+   "at": [
+    0.362903,
+    "yax"
+   ],
+   "text": "\\(\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm6",
+   "at": [
+    0.362903,
+    "yax"
+   ],
+   "text": "\\(\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl8",
+   "at": [
+    0.725807,
+    "yax"
+   ],
+   "text": "\\(2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm8",
+   "at": [
+    0.725807,
+    "yax"
+   ],
+   "text": "\\(2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "plot",
+   "id": "ghost",
+   "domain": [
+    -6.283185,
+    6.283185
+   ],
+   "samples": 400,
+   "role": "ghost",
+   "strokeWidth": 2.6,
+   "dash": true,
+   "visible": "showBase",
+   "x": "0.115516*t",
+   "y": "a + b*cos(deg(c*t+d))",
+   "var": "t"
+  },
+  {
+   "type": "repeat",
+   "id": "asyA",
+   "count": "ceil(c*12.566371/(2*pi))+3",
+   "role": "asy",
+   "visible": "showAsy*(abs(b)>abs(a)-0.000001)",
+   "template": {
+    "type": "segment",
+    "from": [
+     "0.115516*((rad(acos(clamp(-a/b,-1,1))) + (floor((c*-6.283185+d-(rad(acos(clamp(-a/b,-1,1)))))/(2*pi))+i)*2*pi - d)/c)",
+     "ylo"
+    ],
+    "to": [
+     "0.115516*((rad(acos(clamp(-a/b,-1,1))) + (floor((c*-6.283185+d-(rad(acos(clamp(-a/b,-1,1)))))/(2*pi))+i)*2*pi - d)/c)",
+     "yhi"
+    ],
+    "role": "asy",
+    "strokeWidth": 2,
+    "dash": true
+   },
+   "as": "i"
+  },
+  {
+   "type": "repeat",
+   "id": "asyB",
+   "count": "ceil(c*12.566371/(2*pi))+3",
+   "role": "asy",
+   "visible": "showAsy*(abs(b)>abs(a)-0.000001)",
+   "template": {
+    "type": "segment",
+    "from": [
+     "0.115516*((-rad(acos(clamp(-a/b,-1,1))) + (floor((c*-6.283185+d-(-rad(acos(clamp(-a/b,-1,1)))))/(2*pi))+i)*2*pi - d)/c)",
+     "ylo"
+    ],
+    "to": [
+     "0.115516*((-rad(acos(clamp(-a/b,-1,1))) + (floor((c*-6.283185+d-(-rad(acos(clamp(-a/b,-1,1)))))/(2*pi))+i)*2*pi - d)/c)",
+     "yhi"
+    ],
+    "role": "asy",
+    "strokeWidth": 2,
+    "dash": true
+   },
+   "as": "i"
+  },
+  {
+   "type": "segment",
+   "id": "mid",
+   "from": [
+    -0.725806,
+    "a"
+   ],
+   "to": [
+    0.725806,
+    "a"
+   ],
+   "role": "mid",
+   "strokeWidth": 2.2,
+   "dash": true,
+   "visible": "showMid"
+  },
+  {
+   "type": "text",
+   "id": "midl",
+   "at": [
+    0.522581,
+    "a"
+   ],
+   "text": "midline y = {{a|2}}",
+   "role": "mid",
+   "size": "s",
+   "dy": -10,
+   "visible": "showMid",
+   "keep": true
+  },
+  {
+   "type": "plot",
+   "id": "curve",
+   "domain": [
+    -6.283185,
+    6.283185
+   ],
+   "samples": 700,
+   "role": "cv",
+   "strokeWidth": 4,
+   "appear": "s0",
+   "effect": "draw",
+   "appearDur": 1400,
+   "x": "0.115516*t",
+   "y": "if(abs(a + b*cos(deg(c*t+d)))<0.08,1e9,1/(a + b*cos(deg(c*t+d))))",
+   "var": "t"
+  },
+  {
+   "type": "segment",
+   "id": "hiL",
+   "from": [
+    -0.725806,
+    "hiY"
+   ],
+   "to": [
+    0.725806,
+    "hiY"
+   ],
+   "role": "mx",
+   "strokeWidth": 2.2,
+   "dash": true,
+   "visible": "showMax*bnd"
+  },
+  {
+   "type": "segment",
+   "id": "loL",
+   "from": [
+    -0.725806,
+    "loY"
+   ],
+   "to": [
+    0.725806,
+    "loY"
+   ],
+   "role": "mn",
+   "strokeWidth": 2.2,
+   "dash": true,
+   "visible": "showMax*bnd"
+  },
+  {
+   "type": "text",
+   "id": "hiT",
+   "at": [
+    0.493548,
+    "hiY"
+   ],
+   "text": "max = {{hiY|3}}",
+   "role": "mx",
+   "size": "s",
+   "dy": -10,
+   "visible": "showMax*bnd",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "loT",
+   "at": [
+    0.493548,
+    "loY"
+   ],
+   "text": "min = {{loY|3}}",
+   "role": "mn",
+   "size": "s",
+   "dy": 12,
+   "visible": "showMax*bnd",
+   "keep": true
+  },
+  {
+   "type": "repeat",
+   "id": "extp",
+   "count": "ceil(c*12.566371/(2*pi))+3",
+   "role": "key",
+   "visible": "showKey",
+   "template": {
+    "type": "point",
+    "at": [
+     "0.115516*((0 + 0 + (floor((c*-6.283185+d-(0)-0)/(2*pi))+i)*2*pi - d)/c)",
+     "1/(a + b*(1))"
+    ],
+    "r": 4.8,
+    "role": "key",
+    "layer": "front"
+   },
+   "as": "i"
+  },
+  {
+   "type": "repeat",
+   "id": "extm",
+   "count": "ceil(c*12.566371/(2*pi))+3",
+   "role": "key",
+   "visible": "showKey",
+   "template": {
+    "type": "point",
+    "at": [
+     "0.115516*((0 + pi + (floor((c*-6.283185+d-(0)-pi)/(2*pi))+i)*2*pi - d)/c)",
+     "1/(a + b*(-1))"
+    ],
+    "r": 4.8,
+    "role": "key",
+    "layer": "front"
+   },
+   "as": "i"
+  },
+  {
+   "type": "dimension",
+   "id": "per",
+   "from": [
+    "0.115516*(xs + T*ceil((-5.78053 - xs)/T))",
+    "ylo + 0.04*(yhi-ylo)"
+   ],
+   "to": [
+    "0.115516*(xs + T*ceil((-5.78053 - xs)/T) + T)",
+    "ylo + 0.04*(yhi-ylo)"
+   ],
+   "off": 14,
+   "role": "per",
+   "strokeWidth": 2.4,
+   "visible": "showPer",
+   "label": {
+    "text": "T = {{T/pi|3}}π",
+    "role": "per",
+    "size": "m"
+   }
+  },
+  {
+   "type": "segment",
+   "id": "prl",
+   "from": [
+    "0.115516*(pr)",
+    0
+   ],
+   "to": [
+    "0.115516*(pr)",
+    "py"
+   ],
+   "role": "pr",
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "showPr*(abs(py)<1000)"
+  },
+  {
+   "type": "point",
+   "id": "prp",
+   "at": "PR",
+   "r": 6,
+   "role": "pr",
+   "layer": "front",
+   "visible": "showPr*(abs(py)<1000)"
+  },
+  {
+   "type": "text",
+   "id": "prt",
+   "at": [
+    "0.115516*(pr)",
+    "py"
+   ],
+   "text": "({{pr|2}}, {{py|3}})",
+   "role": "pr",
+   "size": "s",
+   "dy": -16,
+   "visible": "showPr*(abs(py)<1000)",
+   "keep": true
+  }
+ ],
+ "handles": [
+  {
+   "at": [
+    -0.653226,
+    "a"
+   ],
+   "role": "mid",
+   "drag": {
+    "a": "py"
+   },
+   "visible": "showH",
+   "label": "Drag up / down: midline a"
+  },
+  {
+   "at": [
+    "0.115516*((0 - d)/c + T*ceil((-5.026548 - ((0 - d)/c))/T))",
+    "a + b"
+   ],
+   "role": "mx",
+   "drag": {
+    "b": "py - a"
+   },
+   "visible": "showH",
+   "label": "Drag up / down: amplitude b"
+  },
+  {
+   "at": [
+    "0.115516*((2*pi - d)/c)",
+    "a + b*cos(deg(2*pi))"
+   ],
+   "role": "per",
+   "drag": {
+    "c": "(2*pi - d)/(px/0.115516)"
+   },
+   "visible": "showH",
+   "label": "Drag left / right: squeeze c"
+  },
+  {
+   "at": [
+    "0.115516*((0 - d)/c)",
+    "a + b*cos(deg(0))"
+   ],
+   "role": "key",
+   "drag": {
+    "d": "0 - c*(px/0.115516)"
+   },
+   "visible": "showH",
+   "label": "Drag left / right: phase d"
+  }
+ ],
+ "readouts": [
+  {
+   "label": "g: max",
+   "value": "{{a+abs(b)|3}}",
+   "role": "mx"
+  },
+  {
+   "label": "g: min",
+   "value": "{{a-abs(b)|3}}",
+   "role": "mn"
+  },
+  {
+   "label": "Same sign?",
+   "value": "yes",
+   "role": "key",
+   "when": "bnd"
+  },
+  {
+   "label": "Same sign?",
+   "value": "NO → unbounded",
+   "role": "asy",
+   "when": "1-bnd"
+  },
+  {
+   "label": "Max of y",
+   "value": "{{hiY|3}}",
+   "role": "mx",
+   "when": "bnd"
+  },
+  {
+   "label": "Min of y",
+   "value": "{{loY|3}}",
+   "role": "mn",
+   "when": "bnd"
+  },
+  {
+   "label": "Period",
+   "value": "{{T/pi|3}} π",
+   "role": "per"
+  },
+  {
+   "label": "y at probe",
+   "value": "{{py|3}}",
+   "role": "pr",
+   "when": "showPr"
+  }
+ ],
+ "presets": [
+  {
+   "name": "Bounded",
+   "values": {
+    "a": 3,
+    "b": 1
+   }
+  },
+  {
+   "name": "Example 1(ii)",
+   "values": {
+    "a": -1,
+    "b": 2
+   }
+  },
+  {
+   "name": "Touching zero",
+   "values": {
+    "a": 1,
+    "b": 1
+   }
+  }
+ ],
+ "formulas": [
+  {
+   "title": "The reciprocal",
+   "tex": "y=\\dfrac{1}{g},\\qquad g=\\role{mid}{a}+\\role{mx}{b}\\cos(\\role{per}{c}\\theta+\\role{key}{d})",
+   "text": "First find the highest and lowest values of the denominator g."
+  },
+  {
+   "title": "Same signs",
+   "tex": "a-|b|\\ \\text{and}\\ a+|b|\\ \\text{same sign}\\ \\Rightarrow\\ \\text{bounded}",
+   "text": "Positive: max = 1/(a − |b|), min = 1/(a + |b|)."
+  },
+  {
+   "title": "Opposite signs",
+   "tex": "g\\ \\text{passes through }0\\ \\Rightarrow\\ \\text{no max or min}",
+   "text": "There are asymptotes and the range has a gap."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Max of 1/g",
+   "prompt": "Find the **maximum** of \\(y=\\dfrac1{5+3\\sin\\theta}\\).",
+   "answer": 0.5,
+   "hint": "g ranges from 2 to 8, both positive. The maximum of 1/g is 1 ÷ (smallest g).",
+   "explain": "g has minimum \\(5-3=2\\) and maximum \\(8\\). Same signs, so \\(y_{max}=\\tfrac12\\) and \\(y_{min}=\\tfrac18\\).",
+   "tolerance": 0.005
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Max or no max?",
+   "prompt": "For which denominator does \\(\\dfrac1g\\) have **no** maximum?",
+   "options": [
+    {
+     "id": "a",
+     "label": "\\(g=4+3\\sin\\theta\\)"
+    },
+    {
+     "id": "b",
+     "label": "\\(g=2+5\\cos\\theta\\)"
+    },
+    {
+     "id": "c",
+     "label": "\\(g=6-\\cos\\theta\\)"
+    }
+   ],
+   "answer": "b",
+   "hint": "Check whether the denominator can be 0.",
+   "explain": "\\(2+5\\cos\\theta\\) ranges from −3 to 7, so it crosses 0 and 1/g blows up. The other two stay positive."
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The denominator",
+   "text": "\\[\\begin{aligned}&M=a+|b|,\\quad m=a-|b|\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "a": 3,
+      "b": 1,
+      "c": 1,
+      "d": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Bounded or not?",
+   "text": "\\[\\begin{aligned}&\\text{Both ends the same sign: bounded.}\\\\[5pt]&\\text{Opposite signs: asymptotes.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "a": 3,
+      "b": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Try Example 1(ii)",
+   "text": "\\[\\begin{aligned}&\\text{Take a = $-$1, b = 2: the denominator}\\\\[5pt]&\\text{passes through 0.}\\\\[5pt]&\\textcolor{#047857}{y=\\dfrac1{2\\cos x-1}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "a": -1,
+      "b": 2
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "takeaways": [
+  "**Step 1:** find M and m of the denominator g.",
+  "**Same signs → bounded.**",
+  "**Opposite signs → no max/min.**"
+ ],
+ "notes": [
+  {
+   "title": "Try this",
+   "text": "Slide a up and down to see exactly when the asymptotes appear."
+  }
+ ],
+ "uiDefaults": {
+  "angles": false
+ },
+ "world": {
+  "x": [
+   -0.725806,
+   0.725806
+  ],
+  "y": [
+   "ylo",
+   "yhi"
+  ],
+  "smooth": true,
+  "pad": 8,
+  "ratio": 0.62
+ },
+ "explore": {
+  "title": "Free play",
+  "text": "Every slider, switch and dot on the graph is yours to use. Change the numbers, watch what moves, then press **Reset** to come back."
+ },
+ "challengeIntro": "Test yourself. Each challenge sets up the graph for you where it helps."
+}

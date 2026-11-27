@@ -1,0 +1,657 @@
+{
+ "id": "g11-math-c9-ex3",
+ "title": "Worked example · Example 3",
+ "summary": "Period of f(x) = cot 3x + sin(2x/3)",
+ "alt": "Example 3: Period of f(x) = cot 3x + sin(2x/3)",
+ "autoGrid": false,
+ "roles": {
+  "cv": {
+   "label": "The graph",
+   "color": "#2563eb",
+   "text": "The function you are studying.",
+   "legend": true
+  },
+  "cv2": {
+   "label": "Second graph",
+   "color": "#e11d48",
+   "text": "The second function.",
+   "legend": true
+  },
+  "ghost": {
+   "label": "Parent / reference",
+   "color": "#94a3b8",
+   "text": "The plain parent graph (or the reference curve) for comparison.",
+   "legend": true
+  },
+  "mid": {
+   "label": "Midline  y = a",
+   "color": "#d97706",
+   "text": "The horizontal line half-way between the highest and lowest points.",
+   "legend": true
+  },
+  "mx": {
+   "label": "Maximum",
+   "color": "#059669",
+   "text": "Highest values.",
+   "legend": true
+  },
+  "mn": {
+   "label": "Minimum",
+   "color": "#e11d48",
+   "text": "Lowest values.",
+   "legend": true
+  },
+  "per": {
+   "label": "Period",
+   "color": "#7c3aed",
+   "text": "One full cycle before the graph repeats.",
+   "legend": true
+  },
+  "asy": {
+   "label": "Asymptotes",
+   "color": "#dc2626",
+   "text": "Vertical lines the graph never touches.",
+   "legend": true
+  },
+  "key": {
+   "label": "Key points",
+   "color": "#0d9488",
+   "text": "The five key points of one cycle.",
+   "legend": true
+  },
+  "pr": {
+   "label": "Probe",
+   "color": "#ea580c",
+   "text": "The point you are moving along the graph.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "b1",
+   "label": "Size of the first part",
+   "min": -9,
+   "max": 9,
+   "step": 0.5,
+   "default": 1,
+   "group": "The two parts",
+   "role": "cv2"
+  },
+  {
+   "id": "c1",
+   "label": "Speed of the first part",
+   "min": 0.25,
+   "max": 8,
+   "step": 0.25,
+   "default": 3,
+   "group": "The two parts",
+   "role": "cv2"
+  },
+  {
+   "id": "b2",
+   "label": "Size of the second part",
+   "min": -9,
+   "max": 9,
+   "step": 0.5,
+   "default": 1,
+   "group": "The two parts",
+   "role": "mx"
+  },
+  {
+   "id": "c2",
+   "label": "Speed of the second part",
+   "min": 0.25,
+   "max": 8,
+   "step": 0.25,
+   "default": 0.666667,
+   "group": "The two parts",
+   "role": "mx"
+  },
+  {
+   "id": "showSum",
+   "label": "The sum  y = f₁ + f₂",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showF1",
+   "label": "First part alone",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showF2",
+   "label": "Second part alone",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showTs",
+   "label": "Mark the period of the sum",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "pr",
+   "label": "Probe  x",
+   "min": -1.570796,
+   "max": 10.995574,
+   "step": 0.02,
+   "default": 1.047198,
+   "group": "Probe a point",
+   "hint": "Slide to move the probe along the graph.",
+   "role": "pr"
+  },
+  {
+   "id": "showPr",
+   "label": "Probe",
+   "type": "toggle",
+   "default": 1,
+   "group": "Probe a point"
+  }
+ ],
+ "derived": {
+  "T1": "pi/c1",
+  "T2": "2*pi/c2",
+  "atdef": "(abs(c1-3)<0.0001)*(abs(c2-0.66667)<0.0001)",
+  "Ts": "3*pi",
+  "ylo": -6,
+  "yhi": 6,
+  "zin": "(ylo<0&&yhi>0)",
+  "yax": "clamp(0,ylo,yhi)",
+  "pv0": "b1*(1/tan(deg(c1*pr)))+b2*sin(deg(c2*pr))"
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 2.419355,
+   "numbers": false,
+   "xLabel": "x",
+   "yLabel": "y",
+   "role": "ink"
+  },
+  {
+   "type": "text",
+   "id": "pl0",
+   "at": [
+    -2.41936,
+    "yax"
+   ],
+   "text": "\\(-\\tfrac{\\pi}{2}\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm0",
+   "at": [
+    -2.41936,
+    "yax"
+   ],
+   "text": "\\(-\\tfrac{\\pi}{2}\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl2",
+   "at": [
+    2.41936,
+    "yax"
+   ],
+   "text": "\\(\\tfrac{\\pi}{2}\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm2",
+   "at": [
+    2.41936,
+    "yax"
+   ],
+   "text": "\\(\\tfrac{\\pi}{2}\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl3",
+   "at": [
+    4.838706,
+    "yax"
+   ],
+   "text": "\\(\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm3",
+   "at": [
+    4.838706,
+    "yax"
+   ],
+   "text": "\\(\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl4",
+   "at": [
+    7.258066,
+    "yax"
+   ],
+   "text": "\\(\\tfrac{3\\pi}{2}\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm4",
+   "at": [
+    7.258066,
+    "yax"
+   ],
+   "text": "\\(\\tfrac{3\\pi}{2}\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl5",
+   "at": [
+    9.677427,
+    "yax"
+   ],
+   "text": "\\(2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm5",
+   "at": [
+    9.677427,
+    "yax"
+   ],
+   "text": "\\(2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl6",
+   "at": [
+    12.096772,
+    "yax"
+   ],
+   "text": "\\(\\tfrac{5\\pi}{2}\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm6",
+   "at": [
+    12.096772,
+    "yax"
+   ],
+   "text": "\\(\\tfrac{5\\pi}{2}\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl7",
+   "at": [
+    14.516132,
+    "yax"
+   ],
+   "text": "\\(3\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm7",
+   "at": [
+    14.516132,
+    "yax"
+   ],
+   "text": "\\(3\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl8",
+   "at": [
+    16.935477,
+    "yax"
+   ],
+   "text": "\\(\\tfrac{7\\pi}{2}\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm8",
+   "at": [
+    16.935477,
+    "yax"
+   ],
+   "text": "\\(\\tfrac{7\\pi}{2}\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "segment",
+   "id": "vTs",
+   "from": [
+    "1.540209*(Ts)",
+    "ylo"
+   ],
+   "to": [
+    "1.540209*(Ts)",
+    "yhi"
+   ],
+   "role": "per",
+   "strokeWidth": 2.6,
+   "dash": true,
+   "visible": "showTs*atdef"
+  },
+  {
+   "type": "segment",
+   "id": "vTs0",
+   "from": [
+    "1.540209*(0)",
+    "ylo"
+   ],
+   "to": [
+    "1.540209*(0)",
+    "yhi"
+   ],
+   "role": "per",
+   "strokeWidth": 2.6,
+   "dash": true,
+   "visible": "showTs*atdef"
+  },
+  {
+   "type": "plot",
+   "id": "s",
+   "domain": [
+    -1.570796,
+    10.995574
+   ],
+   "samples": 700,
+   "role": "cv",
+   "strokeWidth": 4,
+   "visible": "showSum",
+   "appear": "s0",
+   "effect": "draw",
+   "appearDur": 1400,
+   "x": "1.540209*t",
+   "y": "if(abs(b1*(1/tan(deg(c1*t)))+b2*sin(deg(c2*t)))>30,1e9,b1*(1/tan(deg(c1*t)))+b2*sin(deg(c2*t)))",
+   "var": "t"
+  },
+  {
+   "type": "plot",
+   "id": "f1",
+   "domain": [
+    -1.570796,
+    10.995574
+   ],
+   "samples": 700,
+   "role": "cv2",
+   "strokeWidth": 3,
+   "dash": true,
+   "visible": "showF1",
+   "x": "1.540209*t",
+   "y": "if(abs(b1*(1/tan(deg(c1*t))))>9,1e9,b1*(1/tan(deg(c1*t))))",
+   "var": "t"
+  },
+  {
+   "type": "plot",
+   "id": "f2",
+   "domain": [
+    -1.570796,
+    10.995574
+   ],
+   "samples": 420,
+   "role": "mx",
+   "strokeWidth": 3,
+   "dash": true,
+   "visible": "showF2",
+   "x": "1.540209*t",
+   "y": "b2*sin(deg(c2*t))",
+   "var": "t"
+  },
+  {
+   "type": "segment",
+   "id": "prl",
+   "from": [
+    "1.540209*(pr)",
+    "ylo"
+   ],
+   "to": [
+    "1.540209*(pr)",
+    "yhi"
+   ],
+   "role": "pr",
+   "strokeWidth": 1.8,
+   "dash": true,
+   "visible": "showPr"
+  },
+  {
+   "type": "point",
+   "id": "pp0",
+   "at": [
+    "1.540209*(pr)",
+    "pv0"
+   ],
+   "r": 5.8,
+   "role": "pr",
+   "layer": "front",
+   "visible": "showPr*(abs(pv0)<1000)"
+  }
+ ],
+ "handles": [],
+ "readouts": [
+  {
+   "label": "Period of f₁",
+   "value": "{{T1/pi|3}} π",
+   "role": "cv2"
+  },
+  {
+   "label": "Period of f₂",
+   "value": "{{T2/pi|3}} π",
+   "role": "mx"
+  },
+  {
+   "label": "Period of the sum",
+   "value": "{{Ts/pi|3}} π",
+   "role": "per",
+   "when": "atdef"
+  },
+  {
+   "label": "Period of the sum",
+   "value": "change the sliders back to see it",
+   "role": "ghost",
+   "when": "1-atdef"
+  }
+ ],
+ "presets": [
+  {
+   "name": "Exercise values",
+   "values": {
+    "b1": 1,
+    "c1": 3,
+    "b2": 1,
+    "c2": 0.6666666666666666
+   }
+  },
+  {
+   "name": "Same speed",
+   "values": {
+    "c1": 1,
+    "c2": 1
+   }
+  },
+  {
+   "name": "Speeds 1 and 2",
+   "values": {
+    "c1": 1,
+    "c2": 2
+   }
+  },
+  {
+   "name": "Speeds 2 and 3",
+   "values": {
+    "c1": 2,
+    "c2": 3
+   }
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Period of a sum",
+   "tex": "T=\\dfrac{\\text{LCM of numerators}}{\\text{HCF of denominators}}",
+   "text": "Write each period as a fraction of π. The sum repeats once BOTH parts have completed a whole number of cycles."
+  },
+  {
+   "title": "This exercise",
+   "tex": "\\role{cv2}{\\cot3x}\\ ,\\ \\ \\role{mx}{\\sin\\frac{2x}{3}}\\ \\Rightarrow\\ \\role{per}{T=3\\pi}",
+   "text": "Check it on the graph: the purple lines mark one full period of the sum."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Period of a sum",
+   "prompt": "Find the period of \\(\\sin 2x+\\cos 3x\\) as a multiple of \\(\\pi\\).",
+   "answer": 2,
+   "hint": "Periods: \\(\\pi\\) and \\(\\tfrac{2\\pi}{3}\\). LCM of numerators 1,2 is 2; HCF of denominators 1,3 is 1.",
+   "explain": "\\(T=\\dfrac{\\text{LCM}(\\pi,2\\pi)}{\\text{HCF}(1,3)}=2\\pi\\).",
+   "tolerance": 0.02,
+   "unit": "π"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "text": "\\[\\begin{aligned}&f(x)=\\cot3x+\\sin\\dfrac{2x}3\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "b1": 1,
+      "c1": 3,
+      "b2": 1,
+      "c2": 0.666667
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Each period",
+   "text": "\\[\\begin{aligned}&\\cot3x:\\ \\dfrac\\pi3\\qquad\\sin\\dfrac{2x}3:\\ 3\\pi\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Combine",
+   "text": "\\[\\begin{aligned}&\\textcolor{#047857}{T}\\\\[5pt]&\\textcolor{#047857}{{}=\\dfrac{\\mathrm{LCM}(1,3)\\,\\pi}{\\mathrm{HCF}(3,1)}=3\\pi}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "takeaways": [
+  "Find the period of **each part** first.",
+  "The sum repeats after **LCM of numerators ÷ HCF of denominators** (periods written as fractions of π).",
+  "The sum repeats only when **both** parts are back at the start together."
+ ],
+ "notes": [
+  {
+   "title": "Try this",
+   "text": "Change the two speeds: for most pairs the sum has a long period; if one speed is a multiple of the other, the period of the sum is the longer one."
+  }
+ ],
+ "world": {
+  "x": [
+   -2.419355,
+   16.935484
+  ],
+  "y": [
+   "ylo",
+   "yhi"
+  ],
+  "smooth": true,
+  "pad": 8,
+  "ratio": 0.62
+ },
+ "uiDefaults": {
+  "angles": false
+ },
+ "explore": {
+  "title": "Free play",
+  "text": "Every slider, switch and dot on the graph is yours to use. Change the numbers, watch what moves, then press **Reset** to come back."
+ },
+ "challengeIntro": "Test yourself. Each challenge sets up the graph for you where it helps."
+}

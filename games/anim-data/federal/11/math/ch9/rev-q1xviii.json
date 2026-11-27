@@ -1,0 +1,411 @@
+{
+ "id": "g11-math-c9-rev-q1xviii",
+ "title": "Review Exercise 9 · Q1(xviii)",
+ "summary": "Maximum value of 7cos x+24sin x",
+ "alt": "Review Exercise 9 · Q1(xviii): Maximum value of 7cos x+24sin x",
+ "autoGrid": false,
+ "roles": {
+  "cv": {
+   "label": "The graph",
+   "color": "#2563eb",
+   "text": "The function you are studying.",
+   "legend": true
+  },
+  "cv2": {
+   "label": "Second graph",
+   "color": "#e11d48",
+   "text": "The second function.",
+   "legend": true
+  },
+  "ghost": {
+   "label": "Parent / reference",
+   "color": "#94a3b8",
+   "text": "The plain parent graph (or the reference curve) for comparison.",
+   "legend": true
+  },
+  "mid": {
+   "label": "Midline  y = a",
+   "color": "#d97706",
+   "text": "The horizontal line half-way between the highest and lowest points.",
+   "legend": true
+  },
+  "mx": {
+   "label": "Maximum",
+   "color": "#059669",
+   "text": "Highest values.",
+   "legend": true
+  },
+  "mn": {
+   "label": "Minimum",
+   "color": "#e11d48",
+   "text": "Lowest values.",
+   "legend": true
+  },
+  "per": {
+   "label": "Period",
+   "color": "#7c3aed",
+   "text": "One full cycle before the graph repeats.",
+   "legend": true
+  },
+  "asy": {
+   "label": "Asymptotes",
+   "color": "#dc2626",
+   "text": "Vertical lines the graph never touches.",
+   "legend": true
+  },
+  "key": {
+   "label": "Key points",
+   "color": "#0d9488",
+   "text": "The five key points of one cycle.",
+   "legend": true
+  },
+  "pr": {
+   "label": "Probe",
+   "color": "#ea580c",
+   "text": "The point you are moving along the graph.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "p",
+   "label": "Coefficient of cos x   (p)",
+   "min": 0.5,
+   "max": 12,
+   "step": 0.5,
+   "default": 7,
+   "group": "y = p cos x + q sin x",
+   "role": "mn"
+  },
+  {
+   "id": "q",
+   "label": "Coefficient of sin x   (q)",
+   "min": 0.5,
+   "max": 30,
+   "step": 0.5,
+   "default": 24,
+   "group": "y = p cos x + q sin x",
+   "role": "mx"
+  },
+  {
+   "id": "showSin",
+   "label": "As a single wave  R sin(x + α)",
+   "type": "toggle",
+   "default": 0,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showR",
+   "label": "Highest and lowest value",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  }
+ ],
+ "derived": {
+  "R": "sqrt(p^2+q^2)",
+  "ylo": -30,
+  "yhi": 30,
+  "zin": "(ylo<0&&yhi>0)",
+  "yax": "clamp(0,ylo,yhi)"
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 16.129032,
+   "numbers": false,
+   "xLabel": "x",
+   "yLabel": "y",
+   "role": "ink"
+  },
+  {
+   "type": "text",
+   "id": "pl0",
+   "at": [
+    -32.258037,
+    "yax"
+   ],
+   "text": "\\(-\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm0",
+   "at": [
+    -32.258037,
+    "yax"
+   ],
+   "text": "\\(-\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl4",
+   "at": [
+    32.258037,
+    "yax"
+   ],
+   "text": "\\(\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm4",
+   "at": [
+    32.258037,
+    "yax"
+   ],
+   "text": "\\(\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl6",
+   "at": [
+    64.516177,
+    "yax"
+   ],
+   "text": "\\(2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm6",
+   "at": [
+    64.516177,
+    "yax"
+   ],
+   "text": "\\(2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "segment",
+   "id": "hR",
+   "from": [
+    -32.258068,
+    "R"
+   ],
+   "to": [
+    64.516126,
+    "R"
+   ],
+   "role": "mx",
+   "strokeWidth": 2.2,
+   "dash": true,
+   "visible": "showR"
+  },
+  {
+   "type": "text",
+   "id": "hRt",
+   "at": [
+    16.129029,
+    "R"
+   ],
+   "text": "max = √(p²+q²) = {{R|3}}",
+   "role": "mx",
+   "size": "s",
+   "dy": -10,
+   "keep": true,
+   "visible": "showR"
+  },
+  {
+   "type": "segment",
+   "id": "hRn",
+   "from": [
+    -32.258068,
+    "-R"
+   ],
+   "to": [
+    64.516126,
+    "-R"
+   ],
+   "role": "mn",
+   "strokeWidth": 2.2,
+   "dash": true,
+   "visible": "showR"
+  },
+  {
+   "type": "text",
+   "id": "hRnt",
+   "at": [
+    16.129029,
+    "-R"
+   ],
+   "text": "min = −{{R|3}}",
+   "role": "mn",
+   "size": "s",
+   "dy": 12,
+   "keep": true,
+   "visible": "showR"
+  },
+  {
+   "type": "plot",
+   "id": "f",
+   "domain": [
+    -3.141593,
+    6.283185
+   ],
+   "samples": 420,
+   "role": "cv",
+   "strokeWidth": 4.4,
+   "appear": "s0",
+   "effect": "draw",
+   "appearDur": 1400,
+   "x": "10.268061*t",
+   "y": "p*cos(deg(t))+q*sin(deg(t))",
+   "var": "t"
+  },
+  {
+   "type": "plot",
+   "id": "env",
+   "domain": [
+    -3.141593,
+    6.283185
+   ],
+   "samples": 420,
+   "role": "ghost",
+   "strokeWidth": 3,
+   "dash": true,
+   "visible": "showSin",
+   "x": "10.268061*t",
+   "y": "sqrt(p^2+q^2)*sin(deg(t+rad(atan2(p,q))))",
+   "var": "t"
+  }
+ ],
+ "handles": [],
+ "readouts": [
+  {
+   "label": "Maximum √(p²+q²)",
+   "value": "{{R|3}}",
+   "role": "mx"
+  },
+  {
+   "label": "Minimum",
+   "value": "{{-R|3}}",
+   "role": "mn"
+  }
+ ],
+ "presets": [
+  {
+   "name": "7 and 24",
+   "values": {
+    "p": 7,
+    "q": 24
+   }
+  },
+  {
+   "name": "3 and 4",
+   "values": {
+    "p": 3,
+    "q": 4
+   }
+  },
+  {
+   "name": "5 and 12",
+   "values": {
+    "p": 5,
+    "q": 12
+   }
+  },
+  {
+   "name": "8 and 15",
+   "values": {
+    "p": 8,
+    "q": 15
+   }
+  }
+ ],
+ "formulas": [],
+ "challenges": [],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "text": "\\[\\begin{aligned}&\\text{Maximum value of }{7\\cos x+24\\sin x}\\\\[5pt]&\\text{(a) 25 (b) $-$25 (c) 7 (d) 24}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "p": 7,
+      "q": 24
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Step 2",
+   "text": "\\[\\begin{aligned}&{\\sqrt{7^2+24^2}=\\sqrt{49+576}=\\sqrt{625}=25}\\text{ (see Part}\\\\[5pt]&\\text{4 §4.7).}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Answer",
+   "text": "\\[\\begin{aligned}&\\textcolor{#047857}{\\text{ (a) 25.}}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Step 4",
+   "text": "\\[\\begin{aligned}&\\text{Q1 answer sheet}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "takeaways": [
+  "Move the probe or the sliders and watch the readouts.",
+  "The picture and the numbers always agree: that is a check on your algebra.",
+  "Try your own values after you finish the steps."
+ ],
+ "notes": [
+  {
+   "title": "Try this",
+   "text": "All the sliders and switches work on the graph at any time."
+  }
+ ],
+ "world": {
+  "x": [
+   -32.258065,
+   64.516129
+  ],
+  "y": [
+   "ylo",
+   "yhi"
+  ],
+  "smooth": true,
+  "pad": 8,
+  "ratio": 0.62
+ },
+ "uiDefaults": {
+  "angles": false
+ },
+ "explore": {
+  "title": "Free play",
+  "text": "Every slider, switch and dot on the graph is yours to use. Change the numbers, watch what moves, then press **Reset** to come back to the exercise."
+ },
+ "challengeIntro": "Test yourself. Each challenge sets up the graph for you where it helps."
+}

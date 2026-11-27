@@ -1,0 +1,459 @@
+{
+ "id": "g11-math-c9-rev-q4i",
+ "title": "Review Exercise 9 · Q4(i)",
+ "summary": "Prove: (tan (α+β)-tan β)/(1+tan (α+β)tan β)=tan α",
+ "alt": "Review Exercise 9 · Q4(i): Prove: (tan (α+β)-tan β)/(1+tan (α+β)tan β)=tan α",
+ "autoGrid": false,
+ "roles": {
+  "cv": {
+   "label": "The graph",
+   "color": "#2563eb",
+   "text": "The function you are studying.",
+   "legend": true
+  },
+  "cv2": {
+   "label": "Second graph",
+   "color": "#e11d48",
+   "text": "The second function.",
+   "legend": true
+  },
+  "ghost": {
+   "label": "Parent / reference",
+   "color": "#94a3b8",
+   "text": "The plain parent graph (or the reference curve) for comparison.",
+   "legend": true
+  },
+  "mid": {
+   "label": "Midline  y = a",
+   "color": "#d97706",
+   "text": "The horizontal line half-way between the highest and lowest points.",
+   "legend": true
+  },
+  "mx": {
+   "label": "Maximum",
+   "color": "#059669",
+   "text": "Highest values.",
+   "legend": true
+  },
+  "mn": {
+   "label": "Minimum",
+   "color": "#e11d48",
+   "text": "Lowest values.",
+   "legend": true
+  },
+  "per": {
+   "label": "Period",
+   "color": "#7c3aed",
+   "text": "One full cycle before the graph repeats.",
+   "legend": true
+  },
+  "asy": {
+   "label": "Asymptotes",
+   "color": "#dc2626",
+   "text": "Vertical lines the graph never touches.",
+   "legend": true
+  },
+  "key": {
+   "label": "Key points",
+   "color": "#0d9488",
+   "text": "The five key points of one cycle.",
+   "legend": true
+  },
+  "pr": {
+   "label": "Probe",
+   "color": "#ea580c",
+   "text": "The point you are moving along the graph.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "bt",
+   "label": "Angle  β",
+   "min": -1.4,
+   "max": 1.4,
+   "step": 0.05,
+   "default": 0.5,
+   "group": "The identity",
+   "role": "mx"
+  },
+  {
+   "id": "showL",
+   "label": "Left side (solid)",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showR",
+   "label": "Right side (dashed)",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "pr",
+   "label": "Test angle  α",
+   "min": -3.141593,
+   "max": 3.141593,
+   "step": 0.01,
+   "default": 0.9,
+   "group": "Probe a point",
+   "hint": "Slide to move the probe along the graph.",
+   "role": "pr"
+  },
+  {
+   "id": "showPr",
+   "label": "Probe",
+   "type": "toggle",
+   "default": 1,
+   "group": "Probe a point"
+  }
+ ],
+ "derived": {
+  "ylo": -6,
+  "yhi": 6,
+  "zin": "(ylo<0&&yhi>0)",
+  "yax": "clamp(0,ylo,yhi)",
+  "pv0": "(tan(deg(pr+bt))-tan(deg(bt)))/(1+tan(deg(pr+bt))*tan(deg(bt)))",
+  "pv1": "tan(deg(pr))"
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 4.83871,
+   "numbers": false,
+   "xLabel": "α",
+   "yLabel": "y",
+   "role": "ink"
+  },
+  {
+   "type": "text",
+   "id": "pl0",
+   "at": [
+    -9.677411,
+    "yax"
+   ],
+   "text": "\\(-\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm0",
+   "at": [
+    -9.677411,
+    "yax"
+   ],
+   "text": "\\(-\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl1",
+   "at": [
+    -4.838721,
+    "yax"
+   ],
+   "text": "\\(-\\tfrac{\\pi}{2}\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm1",
+   "at": [
+    -4.838721,
+    "yax"
+   ],
+   "text": "\\(-\\tfrac{\\pi}{2}\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl3",
+   "at": [
+    4.838721,
+    "yax"
+   ],
+   "text": "\\(\\tfrac{\\pi}{2}\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm3",
+   "at": [
+    4.838721,
+    "yax"
+   ],
+   "text": "\\(\\tfrac{\\pi}{2}\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl4",
+   "at": [
+    9.677411,
+    "yax"
+   ],
+   "text": "\\(\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm4",
+   "at": [
+    9.677411,
+    "yax"
+   ],
+   "text": "\\(\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "plot",
+   "id": "lhs",
+   "domain": [
+    -3.141593,
+    3.141593
+   ],
+   "samples": 700,
+   "role": "cv",
+   "strokeWidth": 5.5,
+   "visible": "showL",
+   "appear": "s0",
+   "effect": "draw",
+   "appearDur": 1400,
+   "x": "3.080418*t",
+   "y": "if(abs((tan(deg(t+bt))-tan(deg(bt)))/(1+tan(deg(t+bt))*tan(deg(bt))))>12,1e9,(tan(deg(t+bt))-tan(deg(bt)))/(1+tan(deg(t+bt))*tan(deg(bt))))",
+   "var": "t"
+  },
+  {
+   "type": "plot",
+   "id": "rhs",
+   "domain": [
+    -3.141593,
+    3.141593
+   ],
+   "samples": 700,
+   "role": "cv2",
+   "strokeWidth": 3,
+   "dash": true,
+   "visible": "showR",
+   "x": "3.080418*t",
+   "y": "if(abs(tan(deg(t)))>12,1e9,tan(deg(t)))",
+   "var": "t"
+  },
+  {
+   "type": "segment",
+   "id": "prl",
+   "from": [
+    "3.080418*(pr)",
+    "ylo"
+   ],
+   "to": [
+    "3.080418*(pr)",
+    "yhi"
+   ],
+   "role": "pr",
+   "strokeWidth": 1.8,
+   "dash": true,
+   "visible": "showPr"
+  },
+  {
+   "type": "point",
+   "id": "pp0",
+   "at": [
+    "3.080418*(pr)",
+    "pv0"
+   ],
+   "r": 5.8,
+   "role": "cv",
+   "layer": "front",
+   "visible": "showPr*(abs(pv0)<1000)"
+  },
+  {
+   "type": "point",
+   "id": "pp1",
+   "at": [
+    "3.080418*(pr)",
+    "pv1"
+   ],
+   "r": 5.8,
+   "role": "cv2",
+   "layer": "front",
+   "visible": "showPr*(abs(pv1)<1000)"
+  }
+ ],
+ "handles": [],
+ "readouts": [
+  {
+   "label": "Left side",
+   "value": "{{pv0|5}}",
+   "role": "cv"
+  },
+  {
+   "label": "Right side",
+   "value": "{{pv1|5}}",
+   "role": "cv2"
+  },
+  {
+   "label": "Difference",
+   "value": "{{pv0-pv1|6}}",
+   "role": "mx"
+  }
+ ],
+ "presets": [
+  {
+   "name": "π/6",
+   "values": {
+    "pr": 0.5236
+   }
+  },
+  {
+   "name": "π/4",
+   "values": {
+    "pr": 0.7854
+   }
+  },
+  {
+   "name": "π/3",
+   "values": {
+    "pr": 1.0472
+   }
+  },
+  {
+   "name": "1 rad",
+   "values": {
+    "pr": 1
+   }
+  },
+  {
+   "name": "2 rad",
+   "values": {
+    "pr": 2
+   }
+  }
+ ],
+ "formulas": [
+  {
+   "title": "What the graph shows",
+   "tex": "\\role{cv}{\\text{LHS}}=\\role{cv2}{\\text{RHS}}",
+   "text": "If the two curves lie exactly on top of each other for every angle, the identity is true. The Difference readout stays 0."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "What does it show?",
+   "prompt": "If the Difference readout is **not** 0 at some angle, what does that tell you?",
+   "options": [
+    {
+     "id": "a",
+     "label": "The identity is false"
+    },
+    {
+     "id": "b",
+     "label": "The identity is true"
+    },
+    {
+     "id": "c",
+     "label": "Nothing at all"
+    }
+   ],
+   "answer": "a",
+   "hint": "An identity must hold for every angle.",
+   "explain": "An identity holds for every angle where both sides are defined. One angle where the sides differ is enough to show the statement is not an identity."
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "text": "\\[\\begin{aligned}&\\text{Prove:}\\\\[5pt]&{\\dfrac{\\tan(\\alpha+\\beta)-\\tan\\beta}{1+\\tan(\\alpha+\\beta)\\tan\\beta}=\\tan\\alpha}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "bt": 0.5
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Step 1",
+   "text": "\\[\\begin{aligned}&\\text{Let }{A=\\alpha+\\beta}\\text{ and }{B=\\beta}\\text{. The left side}\\\\[5pt]&\\text{has the form}\\\\[5pt]&{\\dfrac{\\tan A-\\tan B}{1+\\tan A\\tan B}=\\tan(A-B)}\\text{ (the}\\\\[5pt]&\\text{compound-angle formula for tan).}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Step 2",
+   "text": "\\[\\begin{aligned}&{\\tan(A-B)=\\tan\\big[(\\alpha+\\beta)-\\beta\\big]=\\tan\\alpha}\\text{ = RHS.}\\\\[5pt]&{\\blacksquare}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "takeaways": [
+  "An **identity** is true for every angle: the two sides draw the same curve.",
+  "The Difference readout should stay at 0 wherever the probe goes.",
+  "Check one or two angles as a test, but a proof needs algebra."
+ ],
+ "notes": [
+  {
+   "title": "Try this",
+   "text": "Hide one side with the switches to see that the other side lies exactly underneath."
+  }
+ ],
+ "world": {
+  "x": [
+   -9.677419,
+   9.677419
+  ],
+  "y": [
+   "ylo",
+   "yhi"
+  ],
+  "smooth": true,
+  "pad": 8,
+  "ratio": 0.62
+ },
+ "uiDefaults": {
+  "angles": false
+ },
+ "explore": {
+  "title": "Free play",
+  "text": "Every slider, switch and dot on the graph is yours to use. Change the numbers, watch what moves, then press **Reset** to come back to the exercise."
+ },
+ "challengeIntro": "Test yourself. Each challenge sets up the graph for you where it helps."
+}

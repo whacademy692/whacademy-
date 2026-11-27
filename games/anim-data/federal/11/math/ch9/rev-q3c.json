@@ -1,0 +1,441 @@
+{
+ "id": "g11-math-c9-rev-q3c",
+ "title": "Review Exercise 9 · Q3(c)",
+ "summary": "Verify the identities: (sin t)/(1-cos t)-(sin tcos t)/(1+cos t)=cosec t(1+cos ²t)",
+ "alt": "Review Exercise 9 · Q3(c): Verify the identities: (sin t)/(1-cos t)-(sin tcos t)/(1+cos t)=cosec t(1+cos ²t)",
+ "autoGrid": false,
+ "roles": {
+  "cv": {
+   "label": "The graph",
+   "color": "#2563eb",
+   "text": "The function you are studying.",
+   "legend": true
+  },
+  "cv2": {
+   "label": "Second graph",
+   "color": "#e11d48",
+   "text": "The second function.",
+   "legend": true
+  },
+  "ghost": {
+   "label": "Parent / reference",
+   "color": "#94a3b8",
+   "text": "The plain parent graph (or the reference curve) for comparison.",
+   "legend": true
+  },
+  "mid": {
+   "label": "Midline  y = a",
+   "color": "#d97706",
+   "text": "The horizontal line half-way between the highest and lowest points.",
+   "legend": true
+  },
+  "mx": {
+   "label": "Maximum",
+   "color": "#059669",
+   "text": "Highest values.",
+   "legend": true
+  },
+  "mn": {
+   "label": "Minimum",
+   "color": "#e11d48",
+   "text": "Lowest values.",
+   "legend": true
+  },
+  "per": {
+   "label": "Period",
+   "color": "#7c3aed",
+   "text": "One full cycle before the graph repeats.",
+   "legend": true
+  },
+  "asy": {
+   "label": "Asymptotes",
+   "color": "#dc2626",
+   "text": "Vertical lines the graph never touches.",
+   "legend": true
+  },
+  "key": {
+   "label": "Key points",
+   "color": "#0d9488",
+   "text": "The five key points of one cycle.",
+   "legend": true
+  },
+  "pr": {
+   "label": "Probe",
+   "color": "#ea580c",
+   "text": "The point you are moving along the graph.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "showL",
+   "label": "Left side (solid)",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showR",
+   "label": "Right side (dashed)",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "pr",
+   "label": "Test angle  θ",
+   "min": 0.2,
+   "max": 6.083185,
+   "step": 0.01,
+   "default": 0.9,
+   "group": "Probe a point",
+   "hint": "Slide to move the probe along the graph.",
+   "role": "pr"
+  },
+  {
+   "id": "showPr",
+   "label": "Probe",
+   "type": "toggle",
+   "default": 1,
+   "group": "Probe a point"
+  }
+ ],
+ "derived": {
+  "ylo": -12,
+  "yhi": 12,
+  "zin": "(ylo<0&&yhi>0)",
+  "yax": "clamp(0,ylo,yhi)",
+  "pv0": "sin(deg(pr))/(1-cos(deg(pr)))-sin(deg(pr))*cos(deg(pr))/(1+cos(deg(pr)))",
+  "pv1": "(1/sin(deg(pr)))*(1+cos(deg(pr))^2)"
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 10.335391,
+   "numbers": false,
+   "xLabel": "θ",
+   "yLabel": "y",
+   "role": "ink"
+  },
+  {
+   "type": "text",
+   "id": "pl1",
+   "at": [
+    10.335415,
+    "yax"
+   ],
+   "text": "\\(\\tfrac{\\pi}{2}\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm1",
+   "at": [
+    10.335415,
+    "yax"
+   ],
+   "text": "\\(\\tfrac{\\pi}{2}\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl2",
+   "at": [
+    20.670764,
+    "yax"
+   ],
+   "text": "\\(\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm2",
+   "at": [
+    20.670764,
+    "yax"
+   ],
+   "text": "\\(\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl3",
+   "at": [
+    31.006179,
+    "yax"
+   ],
+   "text": "\\(\\tfrac{3\\pi}{2}\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm3",
+   "at": [
+    31.006179,
+    "yax"
+   ],
+   "text": "\\(\\tfrac{3\\pi}{2}\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl4",
+   "at": [
+    41.341594,
+    "yax"
+   ],
+   "text": "\\(2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm4",
+   "at": [
+    41.341594,
+    "yax"
+   ],
+   "text": "\\(2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "plot",
+   "id": "lhs",
+   "domain": [
+    0.2,
+    6.083185
+   ],
+   "samples": 700,
+   "role": "cv",
+   "strokeWidth": 5.5,
+   "visible": "showL",
+   "appear": "s0",
+   "effect": "draw",
+   "appearDur": 1400,
+   "x": "6.579714*t",
+   "y": "if(abs(sin(deg(t))/(1-cos(deg(t)))-sin(deg(t))*cos(deg(t))/(1+cos(deg(t))))>25,1e9,sin(deg(t))/(1-cos(deg(t)))-sin(deg(t))*cos(deg(t))/(1+cos(deg(t))))",
+   "var": "t"
+  },
+  {
+   "type": "plot",
+   "id": "rhs",
+   "domain": [
+    0.2,
+    6.083185
+   ],
+   "samples": 700,
+   "role": "cv2",
+   "strokeWidth": 3,
+   "dash": true,
+   "visible": "showR",
+   "x": "6.579714*t",
+   "y": "if(abs((1/sin(deg(t)))*(1+cos(deg(t))^2))>25,1e9,(1/sin(deg(t)))*(1+cos(deg(t))^2))",
+   "var": "t"
+  },
+  {
+   "type": "segment",
+   "id": "prl",
+   "from": [
+    "6.579714*(pr)",
+    "ylo"
+   ],
+   "to": [
+    "6.579714*(pr)",
+    "yhi"
+   ],
+   "role": "pr",
+   "strokeWidth": 1.8,
+   "dash": true,
+   "visible": "showPr"
+  },
+  {
+   "type": "point",
+   "id": "pp0",
+   "at": [
+    "6.579714*(pr)",
+    "pv0"
+   ],
+   "r": 5.8,
+   "role": "cv",
+   "layer": "front",
+   "visible": "showPr*(abs(pv0)<1000)"
+  },
+  {
+   "type": "point",
+   "id": "pp1",
+   "at": [
+    "6.579714*(pr)",
+    "pv1"
+   ],
+   "r": 5.8,
+   "role": "cv2",
+   "layer": "front",
+   "visible": "showPr*(abs(pv1)<1000)"
+  }
+ ],
+ "handles": [],
+ "readouts": [
+  {
+   "label": "Left side",
+   "value": "{{pv0|5}}",
+   "role": "cv"
+  },
+  {
+   "label": "Right side",
+   "value": "{{pv1|5}}",
+   "role": "cv2"
+  },
+  {
+   "label": "Difference",
+   "value": "{{pv0-pv1|6}}",
+   "role": "mx"
+  }
+ ],
+ "presets": [
+  {
+   "name": "π/6",
+   "values": {
+    "pr": 0.5236
+   }
+  },
+  {
+   "name": "π/4",
+   "values": {
+    "pr": 0.7854
+   }
+  },
+  {
+   "name": "π/3",
+   "values": {
+    "pr": 1.0472
+   }
+  },
+  {
+   "name": "1 rad",
+   "values": {
+    "pr": 1
+   }
+  },
+  {
+   "name": "2 rad",
+   "values": {
+    "pr": 2
+   }
+  }
+ ],
+ "formulas": [
+  {
+   "title": "What the graph shows",
+   "tex": "\\role{cv}{\\text{LHS}}=\\role{cv2}{\\text{RHS}}",
+   "text": "If the two curves lie exactly on top of each other for every angle, the identity is true. The Difference readout stays 0."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "What does it show?",
+   "prompt": "If the Difference readout is **not** 0 at some angle, what does that tell you?",
+   "options": [
+    {
+     "id": "a",
+     "label": "The identity is false"
+    },
+    {
+     "id": "b",
+     "label": "The identity is true"
+    },
+    {
+     "id": "c",
+     "label": "Nothing at all"
+    }
+   ],
+   "answer": "a",
+   "hint": "An identity must hold for every angle.",
+   "explain": "An identity holds for every angle where both sides are defined. One angle where the sides differ is enough to show the statement is not an identity."
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "text": "\\[\\begin{aligned}&\\text{Verify the identities:}\\\\[5pt]&{\\dfrac{\\sin t}{1-\\cos t}-\\dfrac{\\sin t\\cos t}{1+\\cos t}=\\csc t\\,(1+\\cos^2t)}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {},
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Max & min",
+   "text": "\\[\\begin{aligned}&\\text{LHS with common denominator}\\\\[5pt]&{(1-\\cos t)(1+\\cos t)=1-\\cos^2t=\\sin^2t}\\text{:}\\\\[5pt]&\\frac{\\sin t(1+\\cos t)-\\sin t\\cos t(1-\\cos t)}{\\sin^2t}\\\\[5pt]&{}=\\frac{\\sin t\\,[\\,1+\\cos t-\\cos t+\\cos^2t\\,]}{\\sin^2t}\\\\[5pt]&{}=\\frac{\\sin t\\,(1+\\cos^2t)}{\\sin^2t}\\\\[5pt]&{}=\\frac{1+\\cos^2t}{\\sin t}=\\csc t\\,(1+\\cos^2t).\\ \\blacksquare\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "takeaways": [
+  "An **identity** is true for every angle: the two sides draw the same curve.",
+  "The Difference readout should stay at 0 wherever the probe goes.",
+  "Check one or two angles as a test, but a proof needs algebra."
+ ],
+ "notes": [
+  {
+   "title": "Try this",
+   "text": "Hide one side with the switches to see that the other side lies exactly underneath."
+  }
+ ],
+ "world": {
+  "x": [
+   1.315943,
+   40.02562
+  ],
+  "y": [
+   "ylo",
+   "yhi"
+  ],
+  "smooth": true,
+  "pad": 8,
+  "ratio": 0.62
+ },
+ "uiDefaults": {
+  "angles": false
+ },
+ "explore": {
+  "title": "Free play",
+  "text": "Every slider, switch and dot on the graph is yours to use. Change the numbers, watch what moves, then press **Reset** to come back to the exercise."
+ },
+ "challengeIntro": "Test yourself. Each challenge sets up the graph for you where it helps."
+}

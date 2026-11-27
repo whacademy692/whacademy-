@@ -1,0 +1,831 @@
+{
+ "id": "g11-math-c9-t-csc",
+ "title": "Theory · Cosecant lab",
+ "summary": "y = a + b csc(cx + d): the reciprocal of a sine wave.",
+ "alt": "Theory · Cosecant lab: y = a + b csc(cx + d): the reciprocal of a sine wave.",
+ "autoGrid": false,
+ "roles": {
+  "cv": {
+   "label": "The graph",
+   "color": "#2563eb",
+   "text": "The function you are studying.",
+   "legend": true
+  },
+  "cv2": {
+   "label": "Second graph",
+   "color": "#e11d48",
+   "text": "The second function.",
+   "legend": true
+  },
+  "ghost": {
+   "label": "Parent / reference",
+   "color": "#94a3b8",
+   "text": "The plain parent graph (or the reference curve) for comparison.",
+   "legend": true
+  },
+  "mid": {
+   "label": "Midline  y = a",
+   "color": "#d97706",
+   "text": "The horizontal line half-way between the highest and lowest points.",
+   "legend": true
+  },
+  "mx": {
+   "label": "Maximum",
+   "color": "#059669",
+   "text": "Highest values.",
+   "legend": true
+  },
+  "mn": {
+   "label": "Minimum",
+   "color": "#e11d48",
+   "text": "Lowest values.",
+   "legend": true
+  },
+  "per": {
+   "label": "Period",
+   "color": "#7c3aed",
+   "text": "One full cycle before the graph repeats.",
+   "legend": true
+  },
+  "asy": {
+   "label": "Asymptotes",
+   "color": "#dc2626",
+   "text": "Vertical lines the graph never touches.",
+   "legend": true
+  },
+  "key": {
+   "label": "Key points",
+   "color": "#0d9488",
+   "text": "The five key points of one cycle.",
+   "legend": true
+  },
+  "pr": {
+   "label": "Probe",
+   "color": "#ea580c",
+   "text": "The point you are moving along the graph.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "a",
+   "label": "Midline  a  (moves up / down)",
+   "min": -6,
+   "max": 6,
+   "step": 0.05,
+   "default": 0,
+   "group": "Shape of the wave",
+   "hint": "Shifts the whole graph up (+) or down (−).",
+   "role": "mid"
+  },
+  {
+   "id": "b",
+   "label": "Amplitude  b  (height; − flips it)",
+   "min": -6,
+   "max": 6,
+   "step": 0.05,
+   "default": 1,
+   "group": "Shape of the wave",
+   "hint": "Stretches the graph up and down. A negative b turns it upside-down.",
+   "role": "mx"
+  },
+  {
+   "id": "c",
+   "label": "Frequency c  (squeezes sideways)",
+   "min": 0.25,
+   "max": 6,
+   "step": 0.05,
+   "default": 1,
+   "group": "Shape of the wave",
+   "hint": "Bigger c means a shorter period: the wave is squeezed sideways.",
+   "role": "per"
+  },
+  {
+   "id": "d",
+   "label": "Phase  d  (slides left / right)",
+   "min": -7,
+   "max": 7,
+   "step": 0.05,
+   "default": 0,
+   "group": "Shape of the wave",
+   "hint": "The graph slides to the LEFT by d ÷ c when d is positive.",
+   "role": "key"
+  },
+  {
+   "id": "showMid",
+   "label": "Midline  y = a",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showMax",
+   "label": "Turning values  a ± |b|",
+   "type": "toggle",
+   "default": 0,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showPer",
+   "label": "Period bracket",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showAsy",
+   "label": "Asymptotes",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showKey",
+   "label": "Key points",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showBase",
+   "label": "Parent graph for comparison",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showH",
+   "label": "Draggable dots",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "pr",
+   "label": "Probe  x-value",
+   "min": -6.283185,
+   "max": 6.283185,
+   "step": 0.02,
+   "default": 1.047198,
+   "group": "Probe a point",
+   "hint": "Slide to read off the y-value at any x.",
+   "role": "pr"
+  },
+  {
+   "id": "showPr",
+   "label": "Probe point",
+   "type": "toggle",
+   "default": 0,
+   "group": "Probe a point"
+  }
+ ],
+ "derived": {
+  "hi": "a+abs(b)",
+  "lo": "a-abs(b)",
+  "T": "(2*pi)/c",
+  "xs": "(pi/2 - d)/c",
+  "xr": "(pi/2 - d)/c",
+  "ylo": "a-3.2*max(abs(b),0.4)-0.3",
+  "yhi": "a+3.2*max(abs(b),0.4)+0.3",
+  "zin": "(ylo<0&&yhi>0)",
+  "yax": "clamp(0,ylo,yhi)",
+  "py": "a + b*(1/sin(deg(c*pr+d)))",
+  "PR": [
+   "0.898455*(pr)",
+   "py"
+  ]
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 1.41129,
+   "numbers": false,
+   "xLabel": "θ",
+   "yLabel": "y",
+   "role": "ink"
+  },
+  {
+   "type": "text",
+   "id": "pl0",
+   "at": [
+    -5.645166,
+    "yax"
+   ],
+   "text": "\\(-2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm0",
+   "at": [
+    -5.645166,
+    "yax"
+   ],
+   "text": "\\(-2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl2",
+   "at": [
+    -2.822578,
+    "yax"
+   ],
+   "text": "\\(-\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm2",
+   "at": [
+    -2.822578,
+    "yax"
+   ],
+   "text": "\\(-\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl6",
+   "at": [
+    2.822578,
+    "yax"
+   ],
+   "text": "\\(\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm6",
+   "at": [
+    2.822578,
+    "yax"
+   ],
+   "text": "\\(\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl8",
+   "at": [
+    5.645166,
+    "yax"
+   ],
+   "text": "\\(2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm8",
+   "at": [
+    5.645166,
+    "yax"
+   ],
+   "text": "\\(2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "plot",
+   "id": "ghost",
+   "domain": [
+    -6.283185,
+    6.283185
+   ],
+   "samples": 600,
+   "role": "ghost",
+   "strokeWidth": 2.6,
+   "dash": true,
+   "visible": "showBase",
+   "x": "0.898455*t",
+   "y": "if(abs((1/sin(deg(t))))>8,1e9,(1/sin(deg(t))))",
+   "var": "t"
+  },
+  {
+   "type": "repeat",
+   "id": "asy",
+   "count": "ceil(abs(c)*12.566371/pi)+3",
+   "role": "asy",
+   "visible": "showAsy",
+   "template": {
+    "type": "segment",
+    "from": [
+     "0.898455*((0 + (floor((c*-6.283185+d-0)/pi)+i)*pi - d)/c)",
+     "ylo"
+    ],
+    "to": [
+     "0.898455*((0 + (floor((c*-6.283185+d-0)/pi)+i)*pi - d)/c)",
+     "yhi"
+    ],
+    "role": "asy",
+    "strokeWidth": 2,
+    "dash": true
+   },
+   "as": "i"
+  },
+  {
+   "type": "segment",
+   "id": "mid",
+   "from": [
+    -5.645161,
+    "a"
+   ],
+   "to": [
+    5.645161,
+    "a"
+   ],
+   "role": "mid",
+   "strokeWidth": 2.2,
+   "dash": true,
+   "visible": "showMid"
+  },
+  {
+   "type": "text",
+   "id": "midl",
+   "at": [
+    4.064516,
+    "a"
+   ],
+   "text": "midline y = {{a|2}}",
+   "role": "mid",
+   "size": "s",
+   "dy": -10,
+   "visible": "showMid",
+   "keep": true
+  },
+  {
+   "type": "plot",
+   "id": "curve",
+   "domain": [
+    -6.283185,
+    6.283185
+   ],
+   "samples": 700,
+   "role": "cv",
+   "strokeWidth": 4,
+   "appear": "s0",
+   "effect": "draw",
+   "appearDur": 1400,
+   "x": "0.898455*t",
+   "y": "if(abs((1/sin(deg(c*t+d))))>8,1e9,a + b*(1/sin(deg(c*t+d))))",
+   "var": "t"
+  },
+  {
+   "type": "segment",
+   "id": "hiL",
+   "from": [
+    -5.645161,
+    "a+abs(b)"
+   ],
+   "to": [
+    5.645161,
+    "a+abs(b)"
+   ],
+   "role": "mx",
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "showMax"
+  },
+  {
+   "type": "segment",
+   "id": "loL",
+   "from": [
+    -5.645161,
+    "a-abs(b)"
+   ],
+   "to": [
+    5.645161,
+    "a-abs(b)"
+   ],
+   "role": "mn",
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "showMax"
+  },
+  {
+   "type": "text",
+   "id": "hiT",
+   "at": [
+    3.83871,
+    "a+abs(b)"
+   ],
+   "text": "a + |b| = {{a+abs(b)|3}}",
+   "role": "mx",
+   "size": "s",
+   "dy": -10,
+   "visible": "showMax",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "loT",
+   "at": [
+    3.83871,
+    "a-abs(b)"
+   ],
+   "text": "a − |b| = {{a-abs(b)|3}}",
+   "role": "mn",
+   "size": "s",
+   "dy": 12,
+   "visible": "showMax",
+   "keep": true
+  },
+  {
+   "type": "repeat",
+   "id": "expmx",
+   "count": "ceil(c*12.566371/(2*pi))+3",
+   "role": "mx",
+   "visible": "(showMax+showKey>0.5)*(b>0)",
+   "template": {
+    "type": "point",
+    "at": [
+     "0.898455*((pi/2 + 0 + (floor((c*-6.283185+d-(pi/2)-0)/(2*pi))+i)*2*pi - d)/c)",
+     "a + b*(1)"
+    ],
+    "r": 5.2,
+    "role": "mx",
+    "layer": "front"
+   },
+   "as": "i"
+  },
+  {
+   "type": "repeat",
+   "id": "expmn",
+   "count": "ceil(c*12.566371/(2*pi))+3",
+   "role": "mn",
+   "visible": "(showMax+showKey>0.5)*(b<0)",
+   "template": {
+    "type": "point",
+    "at": [
+     "0.898455*((pi/2 + 0 + (floor((c*-6.283185+d-(pi/2)-0)/(2*pi))+i)*2*pi - d)/c)",
+     "a + b*(1)"
+    ],
+    "r": 5.2,
+    "role": "mn",
+    "layer": "front"
+   },
+   "as": "i"
+  },
+  {
+   "type": "repeat",
+   "id": "exmmn",
+   "count": "ceil(c*12.566371/(2*pi))+3",
+   "role": "mn",
+   "visible": "(showMax+showKey>0.5)*(b>0)",
+   "template": {
+    "type": "point",
+    "at": [
+     "0.898455*((pi/2 + pi + (floor((c*-6.283185+d-(pi/2)-pi)/(2*pi))+i)*2*pi - d)/c)",
+     "a + b*(-1)"
+    ],
+    "r": 5.2,
+    "role": "mn",
+    "layer": "front"
+   },
+   "as": "i"
+  },
+  {
+   "type": "repeat",
+   "id": "exmmx",
+   "count": "ceil(c*12.566371/(2*pi))+3",
+   "role": "mx",
+   "visible": "(showMax+showKey>0.5)*(b<0)",
+   "template": {
+    "type": "point",
+    "at": [
+     "0.898455*((pi/2 + pi + (floor((c*-6.283185+d-(pi/2)-pi)/(2*pi))+i)*2*pi - d)/c)",
+     "a + b*(-1)"
+    ],
+    "r": 5.2,
+    "role": "mx",
+    "layer": "front"
+   },
+   "as": "i"
+  },
+  {
+   "type": "dimension",
+   "id": "per",
+   "from": [
+    "0.898455*(xs + T*ceil((-5.78053 - xs)/T))",
+    "ylo + 0.04*(yhi-ylo)"
+   ],
+   "to": [
+    "0.898455*(xs + T*ceil((-5.78053 - xs)/T) + T)",
+    "ylo + 0.04*(yhi-ylo)"
+   ],
+   "off": 14,
+   "role": "per",
+   "strokeWidth": 2.4,
+   "visible": "showPer",
+   "label": {
+    "text": "T = {{T/pi|3}}π",
+    "role": "per",
+    "size": "m"
+   }
+  },
+  {
+   "type": "segment",
+   "id": "prl",
+   "from": [
+    "0.898455*(pr)",
+    0
+   ],
+   "to": [
+    "0.898455*(pr)",
+    "py"
+   ],
+   "role": "pr",
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "showPr*(abs(py)<1000)"
+  },
+  {
+   "type": "point",
+   "id": "prp",
+   "at": "PR",
+   "r": 6,
+   "role": "pr",
+   "layer": "front",
+   "visible": "showPr*(abs(py)<1000)"
+  },
+  {
+   "type": "text",
+   "id": "prt",
+   "at": [
+    "0.898455*(pr)",
+    "py"
+   ],
+   "text": "({{pr|2}}, {{py|3}})",
+   "role": "pr",
+   "size": "s",
+   "dy": -16,
+   "visible": "showPr*(abs(py)<1000)",
+   "keep": true
+  }
+ ],
+ "handles": [
+  {
+   "at": [
+    -5.080645,
+    "a"
+   ],
+   "role": "mid",
+   "drag": {
+    "a": "py"
+   },
+   "visible": "showH",
+   "label": "Drag up / down: midline a"
+  },
+  {
+   "at": [
+    "0.898455*((pi/2 - d)/c + T*ceil((-5.026548 - ((pi/2 - d)/c))/T))",
+    "a + b"
+   ],
+   "role": "mx",
+   "drag": {
+    "b": "py - a"
+   },
+   "visible": "showH",
+   "label": "Drag up / down: amplitude b"
+  },
+  {
+   "at": [
+    "0.898455*((5*pi/2 - d)/c)",
+    "a + b*(1/sin(deg(5*pi/2)))"
+   ],
+   "role": "per",
+   "drag": {
+    "c": "(5*pi/2 - d)/(px/0.898455)"
+   },
+   "visible": "showH",
+   "label": "Drag left / right: squeeze c"
+  },
+  {
+   "at": [
+    "0.898455*((pi/2 - d)/c)",
+    "a + b*(1/sin(deg(pi/2)))"
+   ],
+   "role": "key",
+   "drag": {
+    "d": "pi/2 - c*(px/0.898455)"
+   },
+   "visible": "showH",
+   "label": "Drag left / right: phase d"
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Period",
+   "value": "{{T/pi|3}} π",
+   "role": "per"
+  },
+  {
+   "label": "Range",
+   "value": "|y − a| ≥ |b|",
+   "role": "ghost"
+  },
+  {
+   "label": "Midline",
+   "value": "{{a|3}}",
+   "role": "mid"
+  },
+  {
+   "label": "y at probe",
+   "value": "{{py|3}}",
+   "role": "pr",
+   "when": "showPr"
+  }
+ ],
+ "presets": [
+  {
+   "name": "Parent graph",
+   "values": {
+    "a": 0,
+    "b": 1,
+    "c": 1,
+    "d": 0
+   }
+  },
+  {
+   "name": "Twice as tall",
+   "values": {
+    "b": 2
+   }
+  },
+  {
+   "name": "Twice as fast",
+   "values": {
+    "c": 2
+   }
+  },
+  {
+   "name": "Flip upside-down",
+   "values": {
+    "b": -1
+   }
+  },
+  {
+   "name": "Slide up by 2",
+   "values": {
+    "a": 2
+   }
+  },
+  {
+   "name": "Slide left by π/2",
+   "values": {
+    "d": 1.5708
+   }
+  }
+ ],
+ "formulas": [
+  {
+   "title": "The model",
+   "tex": "y=\\role{mid}{a}+\\role{mx}{b}\\,\\csc(\\role{per}{c}\\,x+\\role{key}{d})",
+   "text": "Csc is 1 ÷ sin."
+  },
+  {
+   "title": "Period",
+   "tex": "T=\\dfrac{2\\pi}{\\role{per}{c}}",
+   "text": "Same period as sine."
+  },
+  {
+   "title": "Range",
+   "tex": "|y-a|\\ \\ge\\ |b|",
+   "text": "The branches stay outside the band between a − |b| and a + |b|."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Range",
+   "prompt": "For \\(y=3\\csc x\\), which values of y are **impossible**?",
+   "options": [
+    {
+     "id": "a",
+     "label": "y between −3 and 3"
+    },
+    {
+     "id": "b",
+     "label": "y above 3"
+    },
+    {
+     "id": "c",
+     "label": "y below −3"
+    }
+   ],
+   "answer": "a",
+   "hint": "|sec| and |csc| are at least 1.",
+   "explain": "Since \\(|\\sec x|\\ge 1\\) (and likewise csc), \\(|y|\\ge3\\). The graph never enters the band between −3 and 3."
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The parent graph",
+   "text": "\\[\\begin{aligned}&\\text{Cosecant is 1 $\\div$ sin. It is undefined}\\\\[5pt]&\\text{where sin = 0.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "a": 0,
+      "b": 1,
+      "c": 1,
+      "d": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Turning values",
+   "text": "\\[\\begin{aligned}&\\textcolor{#047857}{y=a\\pm|b|}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "b": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Period",
+   "text": "\\[\\begin{aligned}&\\textcolor{#047857}{T=\\dfrac{2\\pi}{c}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "b": 1,
+      "c": 2
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "takeaways": [
+  "**Period = 2π ÷ c.**",
+  "|csc| ≥ 1, so the range is **(−∞, −|b|] ∪ [|b|, ∞)** when a = 0.",
+  "Csc is undefined wherever sin = 0 (the red lines)."
+ ],
+ "notes": [
+  {
+   "title": "Try this",
+   "text": "Compare with sin: every peak of sin becomes the bottom of an upward branch of csc."
+  }
+ ],
+ "uiDefaults": {
+  "angles": false
+ },
+ "world": {
+  "x": [
+   -5.645161,
+   5.645161
+  ],
+  "y": [
+   "ylo",
+   "yhi"
+  ],
+  "smooth": true,
+  "pad": 8,
+  "ratio": 0.62
+ },
+ "explore": {
+  "title": "Free play",
+  "text": "Every slider, switch and dot on the graph is yours to use. Change the numbers, watch what moves, then press **Reset** to come back."
+ },
+ "challengeIntro": "Test yourself. Each challenge sets up the graph for you where it helps."
+}

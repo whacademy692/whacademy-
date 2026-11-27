@@ -1,0 +1,911 @@
+{
+ "id": "g11-math-c9-ex10",
+ "title": "Worked example · Example 10",
+ "summary": "Ferris wheel: height h(t) = −15 cos(πt/30) + 17",
+ "alt": "Example 10: Ferris wheel: height h(t) = −15 cos(πt/30) + 17",
+ "autoGrid": false,
+ "roles": {
+  "cv": {
+   "label": "The graph",
+   "color": "#2563eb",
+   "text": "The function you are studying.",
+   "legend": true
+  },
+  "cv2": {
+   "label": "Second graph",
+   "color": "#e11d48",
+   "text": "The second function.",
+   "legend": true
+  },
+  "ghost": {
+   "label": "Parent / reference",
+   "color": "#94a3b8",
+   "text": "The plain parent graph (or the reference curve) for comparison.",
+   "legend": true
+  },
+  "mid": {
+   "label": "Midline  y = a",
+   "color": "#d97706",
+   "text": "The horizontal line half-way between the highest and lowest points.",
+   "legend": true
+  },
+  "mx": {
+   "label": "Maximum",
+   "color": "#059669",
+   "text": "Highest values.",
+   "legend": true
+  },
+  "mn": {
+   "label": "Minimum",
+   "color": "#e11d48",
+   "text": "Lowest values.",
+   "legend": true
+  },
+  "per": {
+   "label": "Period",
+   "color": "#7c3aed",
+   "text": "One full cycle before the graph repeats.",
+   "legend": true
+  },
+  "asy": {
+   "label": "Asymptotes",
+   "color": "#dc2626",
+   "text": "Vertical lines the graph never touches.",
+   "legend": true
+  },
+  "key": {
+   "label": "Key points",
+   "color": "#0d9488",
+   "text": "The five key points of one cycle.",
+   "legend": true
+  },
+  "pr": {
+   "label": "Probe",
+   "color": "#ea580c",
+   "text": "The point you are moving along the graph.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "a",
+   "label": "Midline  a  (moves up / down)",
+   "min": 0,
+   "max": 40,
+   "step": 0.5,
+   "default": 17,
+   "group": "Shape of the wave",
+   "hint": "Shifts the whole graph up (+) or down (−).",
+   "role": "mid"
+  },
+  {
+   "id": "b",
+   "label": "Amplitude  b  (height; − flips it)",
+   "min": -30,
+   "max": 30,
+   "step": 0.5,
+   "default": -15,
+   "group": "Shape of the wave",
+   "hint": "Stretches the graph up and down. A negative b turns it upside-down.",
+   "role": "mx"
+  },
+  {
+   "id": "c",
+   "label": "Speed B (rad/s)  (squeezes sideways)",
+   "min": 0.02,
+   "max": 0.6,
+   "step": 0.01,
+   "default": 0.10472,
+   "group": "Shape of the wave",
+   "hint": "Bigger c means a shorter period: the wave is squeezed sideways.",
+   "role": "per"
+  },
+  {
+   "id": "d",
+   "label": "Phase  d  (slides left / right)",
+   "min": -7,
+   "max": 7,
+   "step": 0.05,
+   "default": 0,
+   "group": "Shape of the wave",
+   "hint": "The graph slides to the LEFT by d ÷ c when d is positive.",
+   "role": "key"
+  },
+  {
+   "id": "showMid",
+   "label": "Midline  y = a",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showMax",
+   "label": "Maximum and minimum",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showPer",
+   "label": "Period bracket",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showKey",
+   "label": "Key points",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showBase",
+   "label": "Parent graph for comparison",
+   "type": "toggle",
+   "default": 0,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showH",
+   "label": "Draggable dots",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "pr",
+   "label": "Probe  x-value",
+   "min": 0,
+   "max": 120,
+   "step": 0.02,
+   "default": 30,
+   "group": "Probe a point",
+   "hint": "Slide to read off the y-value at any x.",
+   "role": "pr"
+  },
+  {
+   "id": "showPr",
+   "label": "Probe point",
+   "type": "toggle",
+   "default": 0,
+   "group": "Probe a point"
+  }
+ ],
+ "derived": {
+  "hi": "a+abs(b)",
+  "lo": "a-abs(b)",
+  "T": "(2*pi)/c",
+  "xs": "(0 - d)/c",
+  "xr": "(0 - d)/c",
+  "ylo": "a-abs(b)-0.6*max(abs(b),0.4)-0.3",
+  "yhi": "a+abs(b)+0.3*max(abs(b),0.4)+0.25",
+  "zin": "(ylo<0&&yhi>0)",
+  "yax": "clamp(0,ylo,yhi)",
+  "py": "a + b*cos(deg(c*pr+d))",
+  "PR": [
+   "0.538978*(pr)",
+   "py"
+  ]
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 5.389785,
+   "numbers": false,
+   "xLabel": "t (s)",
+   "yLabel": "h (m)",
+   "role": "ink"
+  },
+  {
+   "type": "text",
+   "id": "nl2",
+   "at": [
+    10.77957,
+    "yax"
+   ],
+   "text": "20",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm2",
+   "at": [
+    10.77957,
+    "yax"
+   ],
+   "text": "20",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nl4",
+   "at": [
+    21.55914,
+    "yax"
+   ],
+   "text": "40",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm4",
+   "at": [
+    21.55914,
+    "yax"
+   ],
+   "text": "40",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nl6",
+   "at": [
+    32.33871,
+    "yax"
+   ],
+   "text": "60",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm6",
+   "at": [
+    32.33871,
+    "yax"
+   ],
+   "text": "60",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nl8",
+   "at": [
+    43.11828,
+    "yax"
+   ],
+   "text": "80",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm8",
+   "at": [
+    43.11828,
+    "yax"
+   ],
+   "text": "80",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nl10",
+   "at": [
+    53.897849,
+    "yax"
+   ],
+   "text": "100",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm10",
+   "at": [
+    53.897849,
+    "yax"
+   ],
+   "text": "100",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nl12",
+   "at": [
+    64.677419,
+    "yax"
+   ],
+   "text": "120",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm12",
+   "at": [
+    64.677419,
+    "yax"
+   ],
+   "text": "120",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "plot",
+   "id": "ghost",
+   "domain": [
+    0,
+    120
+   ],
+   "samples": 400,
+   "role": "ghost",
+   "strokeWidth": 2.6,
+   "dash": true,
+   "visible": "showBase",
+   "x": "0.538978*t",
+   "y": "cos(deg(t))",
+   "var": "t"
+  },
+  {
+   "type": "segment",
+   "id": "mid",
+   "from": [
+    0,
+    "a"
+   ],
+   "to": [
+    64.677419,
+    "a"
+   ],
+   "role": "mid",
+   "strokeWidth": 2.2,
+   "dash": true,
+   "visible": "showMid"
+  },
+  {
+   "type": "text",
+   "id": "midl",
+   "at": [
+    55.622581,
+    "a"
+   ],
+   "text": "midline y = {{a|2}}",
+   "role": "mid",
+   "size": "s",
+   "dy": -10,
+   "visible": "showMid",
+   "keep": true
+  },
+  {
+   "type": "plot",
+   "id": "curve",
+   "domain": [
+    0,
+    120
+   ],
+   "samples": 420,
+   "role": "cv",
+   "strokeWidth": 4,
+   "appear": "s0",
+   "effect": "draw",
+   "appearDur": 1400,
+   "x": "0.538978*t",
+   "y": "a + b*cos(deg(c*t+d))",
+   "var": "t"
+  },
+  {
+   "type": "segment",
+   "id": "hiL",
+   "from": [
+    0,
+    "hi"
+   ],
+   "to": [
+    64.677419,
+    "hi"
+   ],
+   "role": "mx",
+   "strokeWidth": 2.2,
+   "dash": true,
+   "visible": "showMax"
+  },
+  {
+   "type": "segment",
+   "id": "loL",
+   "from": [
+    0,
+    "lo"
+   ],
+   "to": [
+    64.677419,
+    "lo"
+   ],
+   "role": "mn",
+   "strokeWidth": 2.2,
+   "dash": true,
+   "visible": "showMax"
+  },
+  {
+   "type": "text",
+   "id": "hiT",
+   "at": [
+    54.329032,
+    "hi"
+   ],
+   "text": "max = a + |b| = {{hi|3}}",
+   "role": "mx",
+   "size": "s",
+   "dy": -10,
+   "visible": "showMax",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "loT",
+   "at": [
+    54.329032,
+    "lo"
+   ],
+   "text": "min = a − |b| = {{lo|3}}",
+   "role": "mn",
+   "size": "s",
+   "dy": 12,
+   "visible": "showMax",
+   "keep": true
+  },
+  {
+   "type": "repeat",
+   "id": "expmx",
+   "count": "ceil(c*120/(2*pi))+3",
+   "role": "mx",
+   "visible": "(showMax+showKey>0.5)*(b>0)",
+   "template": {
+    "type": "point",
+    "at": [
+     "0.538978*((0 + 0 + (floor((c*0+d-(0)-0)/(2*pi))+i)*2*pi - d)/c)",
+     "a + b*(1)"
+    ],
+    "r": 5.2,
+    "role": "mx",
+    "layer": "front"
+   },
+   "as": "i"
+  },
+  {
+   "type": "repeat",
+   "id": "expmn",
+   "count": "ceil(c*120/(2*pi))+3",
+   "role": "mn",
+   "visible": "(showMax+showKey>0.5)*(b<0)",
+   "template": {
+    "type": "point",
+    "at": [
+     "0.538978*((0 + 0 + (floor((c*0+d-(0)-0)/(2*pi))+i)*2*pi - d)/c)",
+     "a + b*(1)"
+    ],
+    "r": 5.2,
+    "role": "mn",
+    "layer": "front"
+   },
+   "as": "i"
+  },
+  {
+   "type": "repeat",
+   "id": "exmmn",
+   "count": "ceil(c*120/(2*pi))+3",
+   "role": "mn",
+   "visible": "(showMax+showKey>0.5)*(b>0)",
+   "template": {
+    "type": "point",
+    "at": [
+     "0.538978*((0 + pi + (floor((c*0+d-(0)-pi)/(2*pi))+i)*2*pi - d)/c)",
+     "a + b*(-1)"
+    ],
+    "r": 5.2,
+    "role": "mn",
+    "layer": "front"
+   },
+   "as": "i"
+  },
+  {
+   "type": "repeat",
+   "id": "exmmx",
+   "count": "ceil(c*120/(2*pi))+3",
+   "role": "mx",
+   "visible": "(showMax+showKey>0.5)*(b<0)",
+   "template": {
+    "type": "point",
+    "at": [
+     "0.538978*((0 + pi + (floor((c*0+d-(0)-pi)/(2*pi))+i)*2*pi - d)/c)",
+     "a + b*(-1)"
+    ],
+    "r": 5.2,
+    "role": "mx",
+    "layer": "front"
+   },
+   "as": "i"
+  },
+  {
+   "type": "repeat",
+   "id": "keys",
+   "count": "ceil(c*120/(pi/2))+3",
+   "role": "key",
+   "visible": "showKey",
+   "template": {
+    "type": "point",
+    "at": [
+     "0.538978*(((floor((c*0+d)/(pi/2))+i)*pi/2 - d)/c)",
+     "a + b*cos(deg((floor((c*0+d)/(pi/2))+i)*pi/2))"
+    ],
+    "r": 4.2,
+    "role": "key",
+    "layer": "front"
+   },
+   "as": "i"
+  },
+  {
+   "type": "dimension",
+   "id": "per",
+   "from": [
+    "0.538978*(xs + T*ceil((4.8 - xs)/T))",
+    "ylo + 0.04*(yhi-ylo)"
+   ],
+   "to": [
+    "0.538978*(xs + T*ceil((4.8 - xs)/T) + T)",
+    "ylo + 0.04*(yhi-ylo)"
+   ],
+   "off": 14,
+   "role": "per",
+   "strokeWidth": 2.4,
+   "visible": "showPer",
+   "label": {
+    "text": "T = {{T|3}} s",
+    "role": "per",
+    "size": "m"
+   }
+  },
+  {
+   "type": "segment",
+   "id": "prl",
+   "from": [
+    "0.538978*(pr)",
+    0
+   ],
+   "to": [
+    "0.538978*(pr)",
+    "py"
+   ],
+   "role": "pr",
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "showPr*(abs(py)<1000)"
+  },
+  {
+   "type": "point",
+   "id": "prp",
+   "at": "PR",
+   "r": 6,
+   "role": "pr",
+   "layer": "front",
+   "visible": "showPr*(abs(py)<1000)"
+  },
+  {
+   "type": "text",
+   "id": "prt",
+   "at": [
+    "0.538978*(pr)",
+    "py"
+   ],
+   "text": "({{pr|2}}, {{py|3}})",
+   "role": "pr",
+   "size": "s",
+   "dy": -16,
+   "visible": "showPr*(abs(py)<1000)",
+   "keep": true
+  }
+ ],
+ "handles": [
+  {
+   "at": [
+    3.233871,
+    "a"
+   ],
+   "role": "mid",
+   "drag": {
+    "a": "py"
+   },
+   "visible": "showH",
+   "label": "Drag up / down: midline a"
+  },
+  {
+   "at": [
+    "0.538978*((0 - d)/c + T*ceil((12 - ((0 - d)/c))/T))",
+    "a + b"
+   ],
+   "role": "mx",
+   "drag": {
+    "b": "py - a"
+   },
+   "visible": "showH",
+   "label": "Drag up / down: amplitude b"
+  },
+  {
+   "at": [
+    "0.538978*((2*pi - d)/c)",
+    "a + b*cos(deg(2*pi))"
+   ],
+   "role": "per",
+   "drag": {
+    "c": "(2*pi - d)/(px/0.538978)"
+   },
+   "visible": "showH",
+   "label": "Drag left / right: squeeze c"
+  },
+  {
+   "at": [
+    "0.538978*((0 - d)/c)",
+    "a + b*cos(deg(0))"
+   ],
+   "role": "key",
+   "drag": {
+    "d": "0 - c*(px/0.538978)"
+   },
+   "visible": "showH",
+   "label": "Drag left / right: phase d"
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Maximum",
+   "value": "{{hi|3}}",
+   "role": "mx"
+  },
+  {
+   "label": "Minimum",
+   "value": "{{lo|3}}",
+   "role": "mn"
+  },
+  {
+   "label": "Period",
+   "value": "{{T|3}}",
+   "role": "per"
+  },
+  {
+   "label": "Midline",
+   "value": "{{a|3}}",
+   "role": "mid"
+  },
+  {
+   "label": "y at probe",
+   "value": "{{py|3}}",
+   "role": "pr",
+   "when": "showPr"
+  }
+ ],
+ "presets": [
+  {
+   "name": "Example values",
+   "values": {
+    "a": 17,
+    "b": -15,
+    "c": 0.10471975511965977,
+    "d": 0
+   }
+  },
+  {
+   "name": "Twice as tall",
+   "values": {
+    "b": -30
+   }
+  },
+  {
+   "name": "Twice as fast",
+   "values": {
+    "c": 0.209
+   }
+  },
+  {
+   "name": "Flip upside-down",
+   "values": {
+    "b": 15
+   }
+  },
+  {
+   "name": "Slide up by 2",
+   "values": {
+    "a": 19
+   }
+  }
+ ],
+ "formulas": [
+  {
+   "title": "The model",
+   "tex": "y=\\role{mid}{a}+\\role{mx}{b}\\,\\cos(\\role{per}{c}\\,\\theta+\\role{key}{d})",
+   "text": "The same four numbers as for sine. A cosine wave starts at its top (when b > 0)."
+  },
+  {
+   "title": "Highest and lowest",
+   "tex": "\\role{mx}{M}=a+|b|\\qquad \\role{mn}{m}=a-|b|",
+   "text": "c and d do not matter for the height."
+  },
+  {
+   "title": "Period and shift",
+   "tex": "T=\\dfrac{2\\pi}{\\role{per}{c}}\\qquad \\text{shift}=-\\dfrac{\\role{key}{d}}{\\role{per}{c}}",
+   "text": "Period depends only on c."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Max of a wave",
+   "prompt": "A wave is \\(y=1+6\\cos\\theta\\). What is its **maximum** value?",
+   "answer": 7,
+   "hint": "Use \\(M=a+|b|\\).",
+   "explain": "\\(M=a+|b|=1+6=7\\).",
+   "tolerance": 0.01
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Period",
+   "prompt": "What is the period of \\(y=\\cos(3\\theta)\\)? Give your answer as a multiple of \\(\\pi\\) (for example 0.5 means \\(\\tfrac\\pi2\\)).",
+   "answer": 0.6667,
+   "hint": "\\(T=\\dfrac{2\\pi}{c}\\).",
+   "explain": "\\(T=\\dfrac{2\\pi}{3}\\), which is 0.6667 \\(\\pi\\).",
+   "tolerance": 0.02,
+   "unit": "π"
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Which slider?",
+   "prompt": "Which slider makes the wave **twice as tall** without changing its period?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Midline a"
+    },
+    {
+     "id": "b",
+     "label": "Amplitude b"
+    },
+    {
+     "id": "c",
+     "label": "Frequency c"
+    },
+    {
+     "id": "d",
+     "label": "Phase d"
+    }
+   ],
+   "answer": "b",
+   "hint": "Height of the wave = |b|.",
+   "explain": "The amplitude \\(|b|\\) is the height of the wave. Midline a only lifts it; c changes the period; d slides it."
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The problem",
+   "text": "\\[\\begin{aligned}&\\text{Diameter 30 m, centre 17 m high, one}\\\\[5pt]&\\text{turn in 60 s, start at the bottom.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "a": 17,
+      "b": -15,
+      "c": 0.10472,
+      "d": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Lowest and highest",
+   "text": "\\[\\begin{aligned}&\\textcolor{#047857}{2\\ \\text{m}\\ \\text{and}\\ 32\\ \\text{m}}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "The equation",
+   "text": "\\[\\begin{aligned}&\\textcolor{#047857}{h(t)=-15\\cos\\dfrac{\\pi t}{30}+17}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Height at 45 s",
+   "text": "\\[\\begin{aligned}&\\textcolor{#047857}{h(45)=-15\\cos\\tfrac{3\\pi}{2}+17=17\\ \\text{m}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "pr": 45
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Height 15 m",
+   "text": "\\[\\begin{aligned}&\\textcolor{#047857}{\\cos\\dfrac{\\pi t}{30}=\\dfrac2{15}\\Rightarrow t=13.7\\ \\text{s and}\\ 46.3\\ \\text{s}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "pr": 13.7
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "takeaways": [
+  "**Max = a + |b|, Min = a − |b|.** Same as sine: c and d only move or squeeze the wave.",
+  "**Period = 2π ÷ c.**",
+  "Cos and sin are the same wave slid by a quarter turn: cos θ = sin(θ + π/2)."
+ ],
+ "notes": [
+  {
+   "title": "Try this",
+   "text": "Switch on \"Parent graph for comparison\" to see how your wave differs from plain cos θ."
+  }
+ ],
+ "uiDefaults": {
+  "angles": false
+ },
+ "world": {
+  "x": [
+   0,
+   64.677419
+  ],
+  "y": [
+   "ylo",
+   "yhi"
+  ],
+  "smooth": true,
+  "pad": 8,
+  "ratio": 0.62
+ },
+ "explore": {
+  "title": "Free play",
+  "text": "Every slider, switch and dot on the graph is yours to use. Change the numbers, watch what moves, then press **Reset** to come back."
+ },
+ "challengeIntro": "Test yourself. Each challenge sets up the graph for you where it helps."
+}
