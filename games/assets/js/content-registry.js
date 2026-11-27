@@ -1379,9 +1379,9 @@ window.WHA_CONTENT = {
             "n": 9,
             "unit": 9,
             "title": "Trigonometric Functions",
-            "notes": null,
+            "notes": "https://whacademypk.com/notes/class-11/math/trigonometric-functions.html",
             "quiz": null,
-            "game": null
+            "game": "https://whacademypk.com/games/chapter.html?ch=11/math/trigonometric_functions"
           }
         ]
       },
