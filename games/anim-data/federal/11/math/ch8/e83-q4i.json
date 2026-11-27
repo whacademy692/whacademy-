@@ -1,0 +1,731 @@
+{
+ "id": "g11-math-c8-e83-q4i",
+ "title": "Exercise 8.3 · Q4(i)",
+ "summary": "Prove that cos 80° cos 60° cos 40° cos 20° = 1/16.",
+ "alt": "Exercise 8.3 · Q4(i): Prove that cos 80° cos 60° cos 40° cos 20° = 1/16.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   0,
+   112.0
+  ],
+  "y": [
+   0,
+   64.0
+  ],
+  "pad": 4
+ },
+ "roles": {
+  "a": {
+   "label": "Given",
+   "color": "#2563eb",
+   "text": "The angle / quantity given in the question.",
+   "legend": false
+  },
+  "b": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "The result being found.",
+   "legend": false
+  },
+  "c": {
+   "label": "Focus",
+   "color": "#d97706",
+   "text": "The part being worked on now.",
+   "legend": false
+  },
+  "d": {
+   "label": "Warning",
+   "color": "#e11d48",
+   "text": "A sign to watch or a part that is removed.",
+   "legend": false
+  },
+  "e": {
+   "label": "Second angle",
+   "color": "#7c3aed",
+   "text": "The second angle or helper line.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "cur",
+   "label": "Current step",
+   "min": 0,
+   "max": 20,
+   "step": 1,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "circle",
+   "c": [
+    30.0,
+    32.0
+   ],
+   "r": 21.0,
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": false,
+   "id": "cir1",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    6.0,
+    32.0
+   ],
+   "to": [
+    54.0,
+    32.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.4,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg2",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    30.0,
+    8.0
+   ],
+   "to": [
+    30.0,
+    56.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.4,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg3",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    3.6,
+    29.6
+   ],
+   "text": "180°",
+   "role": "muted",
+   "size": "s",
+   "bold": false,
+   "keep": true,
+   "id": "tex4",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    34.2,
+    6.6
+   ],
+   "text": "270°",
+   "role": "muted",
+   "size": "s",
+   "bold": false,
+   "keep": true,
+   "id": "tex5",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    30.0,
+    32.0
+   ],
+   "to": [
+    40.5,
+    50.187
+   ],
+   "role": "a",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg6",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(cur>=0)"
+  },
+  {
+   "type": "circle",
+   "c": [
+    40.5,
+    50.187
+   ],
+   "r": 1.35,
+   "role": "a",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.9,
+   "id": "cir7",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(cur>=0)"
+  },
+  {
+   "type": "text",
+   "at": [
+    42.7,
+    53.997
+   ],
+   "text": "60°",
+   "role": "a",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex8",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(cur>=0)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    52.0
+   ],
+   "text": "cos 60° = 1/2",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex9",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(abs(cur-0)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    44.8
+   ],
+   "text": "target: 1/8",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex10",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(abs(cur-0)<0.5)"
+  },
+  {
+   "type": "segment",
+   "from": [
+    30.0,
+    32.0
+   ],
+   "to": [
+    46.087,
+    45.499
+   ],
+   "role": "e",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg11",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(cur>=1)"
+  },
+  {
+   "type": "circle",
+   "c": [
+    46.087,
+    45.499
+   ],
+   "r": 1.35,
+   "role": "e",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "e",
+   "fillOpacity": 0.9,
+   "id": "cir12",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(cur>=1)"
+  },
+  {
+   "type": "text",
+   "at": [
+    49.458,
+    48.327
+   ],
+   "text": "40°",
+   "role": "e",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex13",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(cur>=1)"
+  },
+  {
+   "type": "segment",
+   "from": [
+    30.0,
+    32.0
+   ],
+   "to": [
+    49.734,
+    39.182
+   ],
+   "role": "c",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg14",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(cur>=1)"
+  },
+  {
+   "type": "circle",
+   "c": [
+    49.734,
+    39.182
+   ],
+   "r": 1.35,
+   "role": "c",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.9,
+   "id": "cir15",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(cur>=1)"
+  },
+  {
+   "type": "text",
+   "at": [
+    53.868,
+    40.687
+   ],
+   "text": "20°",
+   "role": "c",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex16",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(cur>=1)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    52.0
+   ],
+   "text": "cos40°cos20° =",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex17",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(abs(cur-1)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    44.8
+   ],
+   "text": "½(½ + cos20°)",
+   "role": "e",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex18",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(abs(cur-1)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    37.6
+   ],
+   "text": "≈ 0.7198",
+   "role": "e",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex19",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(abs(cur-1)<0.5)"
+  },
+  {
+   "type": "segment",
+   "from": [
+    30.0,
+    32.0
+   ],
+   "to": [
+    33.647,
+    52.681
+   ],
+   "role": "b",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg20",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(cur>=2)"
+  },
+  {
+   "type": "circle",
+   "c": [
+    33.647,
+    52.681
+   ],
+   "r": 1.35,
+   "role": "b",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "b",
+   "fillOpacity": 0.9,
+   "id": "cir21",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(cur>=2)"
+  },
+  {
+   "type": "text",
+   "at": [
+    34.411,
+    57.014
+   ],
+   "text": "80°",
+   "role": "b",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex22",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(cur>=2)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    52.0
+   ],
+   "text": "× cos 80° gives",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex23",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(abs(cur-2)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    44.8
+   ],
+   "text": "¼cos80° + ¼cos100°",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex24",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(abs(cur-2)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    37.6
+   ],
+   "text": "+ 1/8",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex25",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(abs(cur-2)<0.5)"
+  },
+  {
+   "type": "segment",
+   "from": [
+    30.0,
+    32.0
+   ],
+   "to": [
+    26.353,
+    52.681
+   ],
+   "role": "d",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg26",
+   "appear": "s3",
+   "appearDur": 380,
+   "visible": "(cur>=3)"
+  },
+  {
+   "type": "circle",
+   "c": [
+    26.353,
+    52.681
+   ],
+   "r": 1.35,
+   "role": "d",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "d",
+   "fillOpacity": 0.9,
+   "id": "cir27",
+   "appear": "s3",
+   "appearDur": 380,
+   "visible": "(cur>=3)"
+  },
+  {
+   "type": "text",
+   "at": [
+    21.313,
+    55.868
+   ],
+   "text": "100°",
+   "role": "d",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex28",
+   "appear": "s3",
+   "appearDur": 380,
+   "visible": "(cur>=3)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    52.0
+   ],
+   "text": "cos100° = −cos80°",
+   "role": "d",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex29",
+   "appear": "s3",
+   "appearDur": 380,
+   "visible": "(abs(cur-3)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    44.8
+   ],
+   "text": "so ¼(…) = 0",
+   "role": "d",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex30",
+   "appear": "s3",
+   "appearDur": 380,
+   "visible": "(abs(cur-3)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    52.0
+   ],
+   "text": "cos80°cos40°cos20°",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex31",
+   "appear": "s4",
+   "appearDur": 380,
+   "visible": "(abs(cur-4)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    44.8
+   ],
+   "text": "= 1/8",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex32",
+   "appear": "s4",
+   "appearDur": 380,
+   "visible": "(abs(cur-4)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    52.0
+   ],
+   "text": "× cos 60° (= ½)",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex33",
+   "appear": "s5",
+   "appearDur": 380,
+   "visible": "(abs(cur-5)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    44.8
+   ],
+   "text": "= 1/16",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex34",
+   "appear": "s5",
+   "appearDur": 380,
+   "visible": "(abs(cur-5)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    37.6
+   ],
+   "text": "≈ 0.0625",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex35",
+   "appear": "s5",
+   "appearDur": 380,
+   "visible": "(abs(cur-5)<0.5)"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Use cos 60° = 1/2",
+   "text": "\\[\\begin{aligned}&\\cos60^\\circ=\\dfrac12\\\\[5pt]&\\text{So we first need cos 80° cos 40° cos 20°;}\\\\[5pt]&\\text{it should equal 1/8.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Pair cos 40° cos 20°",
+   "text": "\\[\\begin{aligned}&\\cos40^\\circ\\cos20^\\circ=\\tfrac12\\big[\\cos60^\\circ+\\cos20^\\circ\\big]=\\tfrac12\\Big[\\dfrac12+\\cos20^\\circ\\Big]\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Multiply by cos 80°",
+   "text": "\\[\\begin{aligned}&\\cos80^\\circ\\cos40^\\circ\\cos20^\\circ=\\tfrac14\\cos80^\\circ+\\tfrac12\\cos80^\\circ\\cos20^\\circ\\\\[5pt]&\\cos80^\\circ\\cos20^\\circ=\\tfrac12\\cos100^\\circ+\\tfrac14\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Collect the terms",
+   "text": "\\[\\begin{aligned}&{}=\\tfrac14\\cos80^\\circ+\\tfrac14\\cos100^\\circ+\\tfrac18=\\tfrac14(\\cos80^\\circ+\\cos100^\\circ)+\\tfrac18\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Cancel the cosines",
+   "text": "\\[\\begin{aligned}&\\cos100^\\circ=-\\cos80^\\circ,\\ \\text{so the bracket is }0\\\\[5pt]&\\cos80^\\circ\\cos40^\\circ\\cos20^\\circ=\\textcolor{#047857}{\\mathbf{\\dfrac18}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 4
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Multiply by cos 60°",
+   "text": "\\[\\begin{aligned}&\\cos80^\\circ\\cos60^\\circ\\cos40^\\circ\\cos20^\\circ=\\dfrac12\\times\\dfrac18=\\textcolor{#047857}{\\mathbf{\\dfrac1{16}}}\\ \\blacksquare\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 5
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Watch the figure change with every step. Green words are the answers."
+  }
+ ]
+}

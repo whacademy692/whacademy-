@@ -1,0 +1,544 @@
+{
+ "id": "g11-math-c8-e83-q1ix",
+ "title": "Exercise 8.3 · Q1(ix)",
+ "summary": "Write 2 sin 75° sin 15° as a sum or difference.",
+ "alt": "Exercise 8.3 · Q1(ix): Write 2 sin 75° sin 15° as a sum or difference.",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   0,
+   112.0
+  ],
+  "y": [
+   0,
+   64.0
+  ],
+  "pad": 4
+ },
+ "roles": {
+  "a": {
+   "label": "Given",
+   "color": "#2563eb",
+   "text": "The angle / quantity given in the question.",
+   "legend": false
+  },
+  "b": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "The result being found.",
+   "legend": false
+  },
+  "c": {
+   "label": "Focus",
+   "color": "#d97706",
+   "text": "The part being worked on now.",
+   "legend": false
+  },
+  "d": {
+   "label": "Warning",
+   "color": "#e11d48",
+   "text": "A sign to watch or a part that is removed.",
+   "legend": false
+  },
+  "e": {
+   "label": "Second angle",
+   "color": "#7c3aed",
+   "text": "The second angle or helper line.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "cur",
+   "label": "Current step",
+   "min": 0,
+   "max": 20,
+   "step": 1,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "circle",
+   "c": [
+    30.0,
+    32.0
+   ],
+   "r": 21.0,
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": false,
+   "id": "cir1",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    6.0,
+    32.0
+   ],
+   "to": [
+    54.0,
+    32.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.4,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg2",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    30.0,
+    8.0
+   ],
+   "to": [
+    30.0,
+    56.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.4,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg3",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    3.6,
+    29.6
+   ],
+   "text": "180°",
+   "role": "muted",
+   "size": "s",
+   "bold": false,
+   "keep": true,
+   "id": "tex4",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    34.2,
+    6.6
+   ],
+   "text": "270°",
+   "role": "muted",
+   "size": "s",
+   "bold": false,
+   "keep": true,
+   "id": "tex5",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    30.0,
+    32.0
+   ],
+   "to": [
+    35.435,
+    52.284
+   ],
+   "role": "a",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg6",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(cur>=0)"
+  },
+  {
+   "type": "circle",
+   "c": [
+    35.435,
+    52.284
+   ],
+   "r": 1.35,
+   "role": "a",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.9,
+   "id": "cir7",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(cur>=0)"
+  },
+  {
+   "type": "text",
+   "at": [
+    36.574,
+    56.535
+   ],
+   "text": "75°",
+   "role": "a",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex8",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(cur>=0)"
+  },
+  {
+   "type": "segment",
+   "from": [
+    30.0,
+    32.0
+   ],
+   "to": [
+    50.284,
+    37.435
+   ],
+   "role": "e",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg9",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(cur>=0)"
+  },
+  {
+   "type": "circle",
+   "c": [
+    50.284,
+    37.435
+   ],
+   "r": 1.35,
+   "role": "e",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "e",
+   "fillOpacity": 0.9,
+   "id": "cir10",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(cur>=0)"
+  },
+  {
+   "type": "text",
+   "at": [
+    54.535,
+    38.574
+   ],
+   "text": "15°",
+   "role": "e",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex11",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(cur>=0)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    52.0
+   ],
+   "text": "α = 75°",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex12",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(abs(cur-0)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    44.8
+   ],
+   "text": "β = 15°",
+   "role": "e",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex13",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(abs(cur-0)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    37.6
+   ],
+   "text": "",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex14",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(abs(cur-0)<0.5)"
+  },
+  {
+   "type": "segment",
+   "from": [
+    30.0,
+    32.0
+   ],
+   "to": [
+    30.0,
+    53.0
+   ],
+   "role": "b",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg15",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(cur>=1)"
+  },
+  {
+   "type": "circle",
+   "c": [
+    30.0,
+    53.0
+   ],
+   "r": 1.35,
+   "role": "b",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "b",
+   "fillOpacity": 0.9,
+   "id": "cir16",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(cur>=1)"
+  },
+  {
+   "type": "text",
+   "at": [
+    26.4,
+    57.4
+   ],
+   "text": "90°",
+   "role": "b",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex17",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(cur>=1)"
+  },
+  {
+   "type": "segment",
+   "from": [
+    30.0,
+    32.0
+   ],
+   "to": [
+    40.5,
+    50.187
+   ],
+   "role": "c",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg18",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(cur>=1)"
+  },
+  {
+   "type": "circle",
+   "c": [
+    40.5,
+    50.187
+   ],
+   "r": 1.35,
+   "role": "c",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.9,
+   "id": "cir19",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(cur>=1)"
+  },
+  {
+   "type": "text",
+   "at": [
+    46.327,
+    51.458
+   ],
+   "text": "60°",
+   "role": "c",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex20",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(cur>=1)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    52.0
+   ],
+   "text": "α + β = 90°",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex21",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(abs(cur-1)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    44.8
+   ],
+   "text": "α − β = 60°",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex22",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(abs(cur-1)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    52.0
+   ],
+   "text": "cos 60° = 0.5000",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex23",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(abs(cur-2)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    44.8
+   ],
+   "text": "cos 90° = 0",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex24",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(abs(cur-2)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    37.6
+   ],
+   "text": "difference:",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex25",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(abs(cur-2)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    30.4
+   ],
+   "text": "≈ 0.5000",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex26",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(abs(cur-2)<0.5)"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Match the pattern",
+   "text": "\\[\\begin{aligned}&\\text{The factor 2 is already there.}\\\\[5pt]&2\\sin\\alpha\\sin\\beta=\\cos(\\alpha-\\beta)-\\cos(\\alpha+\\beta)\\\\[5pt]&\\alpha=75^\\circ,\\quad\\beta=15^\\circ\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Subtract and add",
+   "text": "\\[\\begin{aligned}&{}=\\cos(75^\\circ-15^\\circ)-\\cos(75^\\circ+15^\\circ)\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Result",
+   "text": "\\[\\begin{aligned}&{}=\\cos60^\\circ-\\cos90^\\circ=\\textcolor{#047857}{\\mathbf{\\dfrac12}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 2
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Watch the figure change with every step. Green words are the answers."
+  }
+ ]
+}

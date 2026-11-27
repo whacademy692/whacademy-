@@ -1,0 +1,595 @@
+{
+ "id": "g11-math-c8-rev-q2iii",
+ "title": "Review Exercise 8 · Q2(iii)",
+ "summary": "sin θ = 3/5 and sin φ = 5/13, with θ obtuse and φ acute. Find tan(θ + φ).",
+ "alt": "Review Exercise 8 · Q2(iii): sin θ = 3/5 and sin φ = 5/13, with θ obtuse and φ acute. Find tan(θ + φ).",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   0,
+   112.0
+  ],
+  "y": [
+   0,
+   64.0
+  ],
+  "pad": 4
+ },
+ "roles": {
+  "a": {
+   "label": "Given",
+   "color": "#2563eb",
+   "text": "The angle / quantity given in the question.",
+   "legend": false
+  },
+  "b": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "The result being found.",
+   "legend": false
+  },
+  "c": {
+   "label": "Focus",
+   "color": "#d97706",
+   "text": "The part being worked on now.",
+   "legend": false
+  },
+  "d": {
+   "label": "Warning",
+   "color": "#e11d48",
+   "text": "A sign to watch or a part that is removed.",
+   "legend": false
+  },
+  "e": {
+   "label": "Second angle",
+   "color": "#7c3aed",
+   "text": "The second angle or helper line.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "cur",
+   "label": "Current step",
+   "min": 0,
+   "max": 20,
+   "step": 1,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "circle",
+   "c": [
+    30.0,
+    32.0
+   ],
+   "r": 21.0,
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "pop",
+   "fill": false,
+   "id": "cir1",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    6.0,
+    32.0
+   ],
+   "to": [
+    54.0,
+    32.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.4,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg2",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    30.0,
+    8.0
+   ],
+   "to": [
+    30.0,
+    56.0
+   ],
+   "role": "muted",
+   "strokeWidth": 1.4,
+   "effect": "draw",
+   "layer": "back",
+   "id": "seg3",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    33.2,
+    57.2
+   ],
+   "text": "90°",
+   "role": "muted",
+   "size": "s",
+   "bold": false,
+   "keep": true,
+   "id": "tex4",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "at": [
+    34.2,
+    6.6
+   ],
+   "text": "270°",
+   "role": "muted",
+   "size": "s",
+   "bold": false,
+   "keep": true,
+   "id": "tex5",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "segment",
+   "from": [
+    30.0,
+    32.0
+   ],
+   "to": [
+    13.2,
+    44.6
+   ],
+   "role": "a",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg6",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(cur>=0)"
+  },
+  {
+   "type": "circle",
+   "c": [
+    13.2,
+    44.6
+   ],
+   "r": 1.35,
+   "role": "a",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "a",
+   "fillOpacity": 0.9,
+   "id": "cir7",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(cur>=0)"
+  },
+  {
+   "type": "text",
+   "at": [
+    9.68,
+    47.24
+   ],
+   "text": "θ",
+   "role": "a",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex8",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(cur>=0)"
+  },
+  {
+   "type": "segment",
+   "from": [
+    30.0,
+    32.0
+   ],
+   "to": [
+    49.385,
+    40.077
+   ],
+   "role": "b",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg9",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(cur>=0)"
+  },
+  {
+   "type": "circle",
+   "c": [
+    49.385,
+    40.077
+   ],
+   "r": 1.35,
+   "role": "b",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "b",
+   "fillOpacity": 0.9,
+   "id": "cir10",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(cur>=0)"
+  },
+  {
+   "type": "text",
+   "at": [
+    53.446,
+    41.769
+   ],
+   "text": "φ",
+   "role": "b",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex11",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(cur>=0)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    52.0
+   ],
+   "text": "tan θ = −3/4",
+   "role": "a",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex12",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(abs(cur-0)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    44.8
+   ],
+   "text": "tan φ = 5/12",
+   "role": "b",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex13",
+   "appear": "s0",
+   "appearDur": 380,
+   "visible": "(abs(cur-0)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    52.0
+   ],
+   "text": "(tanθ + tanφ)",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex14",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(abs(cur-1)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    44.8
+   ],
+   "text": "÷ (1 − tanθ tanφ)",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex15",
+   "appear": "s1",
+   "appearDur": 380,
+   "visible": "(abs(cur-1)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    52.0
+   ],
+   "text": "top = −1/3",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex16",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(abs(cur-2)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    44.8
+   ],
+   "text": "bottom = 63/48",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex17",
+   "appear": "s2",
+   "appearDur": 380,
+   "visible": "(abs(cur-2)<0.5)"
+  },
+  {
+   "type": "segment",
+   "from": [
+    30.0,
+    32.0
+   ],
+   "to": [
+    9.646,
+    37.169
+   ],
+   "role": "c",
+   "strokeWidth": 3,
+   "effect": "draw",
+   "layer": "mid",
+   "id": "seg18",
+   "appear": "s3",
+   "appearDur": 380,
+   "visible": "(cur>=3)"
+  },
+  {
+   "type": "circle",
+   "c": [
+    9.646,
+    37.169
+   ],
+   "r": 1.35,
+   "role": "c",
+   "strokeWidth": 1.5,
+   "effect": "pop",
+   "fill": "c",
+   "fillOpacity": 0.9,
+   "id": "cir19",
+   "appear": "s3",
+   "appearDur": 380,
+   "visible": "(cur>=3)"
+  },
+  {
+   "type": "text",
+   "at": [
+    5.382,
+    38.252
+   ],
+   "text": "θ+φ",
+   "role": "c",
+   "size": "m",
+   "bold": true,
+   "keep": true,
+   "id": "tex20",
+   "appear": "s3",
+   "appearDur": 380,
+   "visible": "(cur>=3)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    52.0
+   ],
+   "text": "−1/3 × 48/63",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex21",
+   "appear": "s3",
+   "appearDur": 380,
+   "visible": "(abs(cur-3)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    44.8
+   ],
+   "text": "= −16/63",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex22",
+   "appear": "s3",
+   "appearDur": 380,
+   "visible": "(abs(cur-3)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    52.0
+   ],
+   "text": "sin(θ+φ) = 16/65",
+   "role": "d",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex23",
+   "appear": "s4",
+   "appearDur": 380,
+   "visible": "(abs(cur-4)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    44.8
+   ],
+   "text": "cos(θ+φ) = −63/65",
+   "role": "d",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex24",
+   "appear": "s4",
+   "appearDur": 380,
+   "visible": "(abs(cur-4)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    37.6
+   ],
+   "text": "ratio = −16/63  ✓",
+   "role": "d",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex25",
+   "appear": "s4",
+   "appearDur": 380,
+   "visible": "(abs(cur-4)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    52.0
+   ],
+   "text": "tan(θ+φ) = −16/63",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex26",
+   "appear": "s5",
+   "appearDur": 380,
+   "visible": "(abs(cur-5)<0.5)"
+  },
+  {
+   "type": "text",
+   "at": [
+    80.0,
+    44.8
+   ],
+   "text": "≈ −0.254",
+   "role": "c",
+   "size": "s",
+   "bold": true,
+   "keep": true,
+   "id": "tex27",
+   "appear": "s5",
+   "appearDur": 380,
+   "visible": "(abs(cur-5)<0.5)"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Find the tangents",
+   "text": "\\[\\begin{aligned}&\\tan\\theta=-\\dfrac34,\\quad\\tan\\varphi=\\dfrac5{12}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Use the formula",
+   "text": "\\[\\begin{aligned}&\\tan(\\theta+\\varphi)=\\dfrac{\\tan\\theta+\\tan\\varphi}{1-\\tan\\theta\\tan\\varphi}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Top and bottom",
+   "text": "\\[\\begin{aligned}&\\text{top}=-\\dfrac34+\\dfrac5{12}=-\\dfrac13,\\quad\\text{bottom}=1+\\dfrac{15}{48}=\\dfrac{63}{48}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Divide",
+   "text": "\\[\\begin{aligned}&-\\dfrac13\\cdot\\dfrac{48}{63}=-\\dfrac{16}{63}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Check with sin and cos",
+   "text": "\\[\\begin{aligned}&\\sin(\\theta+\\varphi)=\\dfrac{16}{65},\\quad\\cos(\\theta+\\varphi)=-\\dfrac{63}{65}\\\\[5pt]&\\dfrac{16/65}{-63/65}=-\\dfrac{16}{63}\\ \\checkmark\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 4
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Result",
+   "text": "\\[\\begin{aligned}&\\tan(\\theta+\\varphi)=\\textcolor{#047857}{\\mathbf{-\\dfrac{16}{63}}}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 5
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Watch the figure change with every step. Green words are the answers."
+  }
+ ]
+}
