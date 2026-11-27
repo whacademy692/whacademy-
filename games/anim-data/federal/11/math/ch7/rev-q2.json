@@ -1,0 +1,607 @@
+{
+ "id": "g11-math-c7-rev-q2",
+ "title": "Review Exercise 7 · Q2",
+ "summary": "Prove by induction, for all positive integers n: 1/(1·2·3) + 1/(2·3·4) + ... + 1/(n(n+1)(n+2)) =…",
+ "alt": "Review Exercise 7 · Q2: Prove by induction, for all positive integers n: 1/(1·2·3) + 1/(2·3·4) + ... + 1/(n(n+1)(n+2)) = n(n+3)/(4(n+1)(n+2))",
+ "autoGrid": false,
+ "defaultTab": "notes",
+ "world": {
+  "x": [
+   0,
+   112
+  ],
+  "y": [
+   0,
+   72
+  ],
+  "pad": 6
+ },
+ "roles": {
+  "now": {
+   "label": "Current step",
+   "color": "#2563eb",
+   "text": "The step being explained right now.",
+   "legend": false
+  },
+  "done": {
+   "label": "Steps so far",
+   "color": "#059669",
+   "text": "Steps you have already seen.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Last step",
+   "color": "#d97706",
+   "text": "The last step of the solution.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "cur",
+   "label": "Current step",
+   "min": 0,
+   "max": 20,
+   "step": 1,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "shapes": [
+  {
+   "type": "text",
+   "id": "ttl",
+   "at": [
+    56,
+    67
+   ],
+   "text": "Review Exercise 7 · Q2",
+   "role": "ink",
+   "size": "l",
+   "bold": true,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "nd0",
+   "c": [
+    22,
+    58
+   ],
+   "r": 3.4,
+   "role": "done",
+   "fill": "done",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "appear": "s0",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "id": "nn0",
+   "at": [
+    22,
+    58
+   ],
+   "text": "1",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "appearDur": 380,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "cp0",
+   "at": [
+    45.8,
+    58
+   ],
+   "text": "Basis: n = 1",
+   "role": "ink",
+   "size": "m",
+   "bold": false,
+   "appear": "s0",
+   "appearDur": 420,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "rg0",
+   "c": [
+    22,
+    58
+   ],
+   "r": 5.4,
+   "role": "now",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "abs(cur-0)<0.5",
+   "appear": "s0",
+   "appearDur": 300
+  },
+  {
+   "type": "segment",
+   "id": "cn1",
+   "from": [
+    22,
+    54.4
+   ],
+   "to": [
+    22,
+    52.6
+   ],
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "draw",
+   "appear": "s1",
+   "appearDur": 350,
+   "layer": "back"
+  },
+  {
+   "type": "circle",
+   "id": "nd1",
+   "c": [
+    22,
+    49
+   ],
+   "r": 3.4,
+   "role": "done",
+   "fill": "done",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "appear": "s1",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "id": "nn1",
+   "at": [
+    22,
+    49
+   ],
+   "text": "2",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "appearDur": 380,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "cp1",
+   "at": [
+    50.4,
+    49
+   ],
+   "text": "Hypothesis: P(m)",
+   "role": "ink",
+   "size": "m",
+   "bold": false,
+   "appear": "s1",
+   "appearDur": 420,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "rg1",
+   "c": [
+    22,
+    49
+   ],
+   "r": 5.4,
+   "role": "now",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "abs(cur-1)<0.5",
+   "appear": "s1",
+   "appearDur": 300
+  },
+  {
+   "type": "segment",
+   "id": "cn2",
+   "from": [
+    22,
+    45.4
+   ],
+   "to": [
+    22,
+    43.6
+   ],
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "draw",
+   "appear": "s2",
+   "appearDur": 350,
+   "layer": "back"
+  },
+  {
+   "type": "circle",
+   "id": "nd2",
+   "c": [
+    22,
+    40
+   ],
+   "r": 3.4,
+   "role": "done",
+   "fill": "done",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "appear": "s2",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "id": "nn2",
+   "at": [
+    22,
+    40
+   ],
+   "text": "3",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "appearDur": 380,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "cp2",
+   "at": [
+    51.55,
+    40
+   ],
+   "text": "Add the next term",
+   "role": "ink",
+   "size": "m",
+   "bold": false,
+   "appear": "s2",
+   "appearDur": 420,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "rg2",
+   "c": [
+    22,
+    40
+   ],
+   "r": 5.4,
+   "role": "now",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "abs(cur-2)<0.5",
+   "appear": "s2",
+   "appearDur": 300
+  },
+  {
+   "type": "segment",
+   "id": "cn3",
+   "from": [
+    22,
+    36.4
+   ],
+   "to": [
+    22,
+    34.6
+   ],
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "draw",
+   "appear": "s3",
+   "appearDur": 350,
+   "layer": "back"
+  },
+  {
+   "type": "circle",
+   "id": "nd3",
+   "c": [
+    22,
+    31
+   ],
+   "r": 3.4,
+   "role": "done",
+   "fill": "done",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "appear": "s3",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "id": "nn3",
+   "at": [
+    22,
+    31
+   ],
+   "text": "4",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "appearDur": 380,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "cp3",
+   "at": [
+    55.0,
+    31
+   ],
+   "text": "Factor the numerator",
+   "role": "ink",
+   "size": "m",
+   "bold": false,
+   "appear": "s3",
+   "appearDur": 420,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "rg3",
+   "c": [
+    22,
+    31
+   ],
+   "r": 5.4,
+   "role": "now",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "abs(cur-3)<0.5",
+   "appear": "s3",
+   "appearDur": 300
+  },
+  {
+   "type": "segment",
+   "id": "cn4",
+   "from": [
+    22,
+    27.4
+   ],
+   "to": [
+    22,
+    25.6
+   ],
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "draw",
+   "appear": "s4",
+   "appearDur": 350,
+   "layer": "back"
+  },
+  {
+   "type": "circle",
+   "id": "nd4",
+   "c": [
+    22,
+    22
+   ],
+   "r": 3.4,
+   "role": "done",
+   "fill": "done",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "appear": "s4",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "id": "nn4",
+   "at": [
+    22,
+    22
+   ],
+   "text": "5",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "appearDur": 380,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "cp4",
+   "at": [
+    52.7,
+    22
+   ],
+   "text": "Cancel one (m + 1)",
+   "role": "ink",
+   "size": "m",
+   "bold": false,
+   "appear": "s4",
+   "appearDur": 420,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "rg4",
+   "c": [
+    22,
+    22
+   ],
+   "r": 5.4,
+   "role": "now",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "abs(cur-4)<0.5",
+   "appear": "s4",
+   "appearDur": 300
+  },
+  {
+   "type": "segment",
+   "id": "cn5",
+   "from": [
+    22,
+    18.4
+   ],
+   "to": [
+    22,
+    16.6
+   ],
+   "role": "muted",
+   "strokeWidth": 2,
+   "effect": "draw",
+   "appear": "s5",
+   "appearDur": 350,
+   "layer": "back"
+  },
+  {
+   "type": "circle",
+   "id": "nd5",
+   "c": [
+    22,
+    13
+   ],
+   "r": 3.4,
+   "role": "ans",
+   "fill": "ans",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.4,
+   "effect": "pop",
+   "appear": "s5",
+   "appearDur": 380
+  },
+  {
+   "type": "text",
+   "id": "nn5",
+   "at": [
+    22,
+    13
+   ],
+   "text": "6",
+   "role": "ink",
+   "size": "s",
+   "bold": true,
+   "appear": "s5",
+   "appearDur": 380,
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "cp5",
+   "at": [
+    43.5,
+    13
+   ],
+   "text": "Conclusion",
+   "role": "ink",
+   "size": "m",
+   "bold": false,
+   "appear": "s5",
+   "appearDur": 420,
+   "keep": true
+  },
+  {
+   "type": "circle",
+   "id": "rg5",
+   "c": [
+    22,
+    13
+   ],
+   "r": 5.4,
+   "role": "now",
+   "fill": false,
+   "strokeWidth": 3,
+   "visible": "abs(cur-5)<0.5",
+   "appear": "s5",
+   "appearDur": 300
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Basis: n = 1",
+   "text": "\\[\\begin{aligned}&\\text{LHS}=\\dfrac1{1\\cdot2\\cdot3}=\\dfrac16\\\\[5pt]&\\text{RHS}=\\dfrac{1\\cdot4}{4\\cdot2\\cdot3}=\\dfrac16\\\\[5pt]&\\text{LHS = RHS, so $P(1)$ is true.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Hypothesis: P(m)",
+   "text": "\\[\\begin{aligned}&\\sum_{k=1}^{m}\\dfrac{1}{k(k+1)(k+2)}=\\dfrac{m(m+3)}{4(m+1)(m+2)}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Add the next term",
+   "text": "\\[\\begin{aligned}&\\dfrac{m(m+3)}{4(m+1)(m+2)}+\\dfrac1{(m+1)(m+2)(m+3)}\\\\[5pt]&{}=\\dfrac{m(m+3)^2+4}{4(m+1)(m+2)(m+3)}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Factor the numerator",
+   "text": "\\[\\begin{aligned}&m(m+3)^2+4=m^3+6m^2+9m+4\\\\[5pt]&{}=(m+1)^2(m+4)\\\\[5pt]&\\text{$m$ = $-$1 makes it zero, so ($m$ + 1) is a}\\\\[5pt]&\\text{factor.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Cancel one (m + 1)",
+   "text": "\\[\\begin{aligned}&{}=\\dfrac{(m+1)^2(m+4)}{4(m+1)(m+2)(m+3)}\\\\[5pt]&{}=\\dfrac{(m+1)(m+4)}{4(m+2)(m+3)}\\\\[5pt]&\\text{This is exactly the formula with $n$ = $m$ +}\\\\[5pt]&\\text{1.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 4
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Conclusion",
+   "text": "\\[\\begin{aligned}&\\text{$P(1)$ is true and $P(m)$ implies $P(m + 1)$.}\\\\[5pt]&\\textcolor{#047857}{\\mathbf{P(n)\\ \\text{holds for all positive integers }n}}\\ \\blacksquare\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "cur": 5
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "How to use this walkthrough",
+   "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ]
+}
