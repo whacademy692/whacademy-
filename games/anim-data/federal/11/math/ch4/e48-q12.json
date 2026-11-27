@@ -12,273 +12,513 @@
   ],
   "y": [
    0,
-   52
+   62
   ],
+  "ratio": 0.554,
   "pad": 6
  },
  "roles": {
-  "now": {
-   "label": "Current step",
+  "bar": {
+   "label": "Each term",
    "color": "#2563eb",
-   "text": "The step being explained right now.",
-   "legend": false
+   "text": "One bar for each term of the sequence.",
+   "legend": true
   },
-  "done": {
-   "label": "Steps so far",
+  "res": {
+   "label": "The term you need",
    "color": "#059669",
-   "text": "Steps you have already seen.",
+   "text": "The answer the question asks for.",
+   "legend": true
+  },
+  "int": {
+   "label": "Growth / extra part",
+   "color": "#d97706",
+   "text": "The part added on top of the starting amount.",
+   "legend": true
+  },
+  "ball": {
+   "label": "The moving thing",
+   "color": "#e11d48",
+   "text": "The object in the story.",
+   "legend": true
+  },
+  "ground": {
+   "label": "Axes and frames",
+   "color": "#475569",
+   "text": "Axes, frames and labels.",
    "legend": false
   },
-  "ans": {
-   "label": "Last step",
-   "color": "#d97706",
-   "text": "The last step of the solution.",
-   "legend": false
+  "path": {
+   "label": "Running total",
+   "color": "#7c3aed",
+   "text": "How much has been added up so far.",
+   "legend": true
   }
  },
  "params": [
   {
-   "id": "cur",
-   "label": "Current step",
+   "id": "tt",
+   "label": "Time",
+   "type": "clock",
    "min": 0,
-   "max": 30,
-   "step": 1,
-   "default": 0,
-   "hidden": true
+   "max": 24.0,
+   "step": 0.01,
+   "speed": 1.0,
+   "loop": "once",
+   "default": 0
   }
  ],
  "shapes": [
   {
-   "type": "text",
-   "id": "ttl",
-   "at": [
-    56,
-    47
+   "type": "segment",
+   "id": "ax",
+   "from": [
+    6.5,
+    11.0
    ],
-   "text": "Exercise 4.8 · Q12",
-   "role": "ink",
-   "size": "l",
-   "bold": true,
-   "keep": true
+   "to": [
+    107,
+    11.0
+   ],
+   "role": "ground",
+   "strokeWidth": 2.6
   },
   {
-   "type": "circle",
-   "id": "nd0",
-   "c": [
-    22,
-    38
-   ],
-   "r": 3.4,
-   "role": "done",
-   "fill": "done",
-   "fillOpacity": 0.16,
-   "strokeWidth": 2.4,
-   "effect": "pop",
-   "appear": "s0",
-   "appearDur": 380
+   "type": "rect",
+   "id": "b0",
+   "x": "8.53083",
+   "y": "11",
+   "w": "3.02167",
+   "h": "10.67368*clamp(tt-0,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
   },
   {
    "type": "text",
-   "id": "nn0",
+   "id": "xt0",
    "at": [
-    22,
-    38
+    "10.04167",
+    "8.4"
    ],
    "text": "1",
-   "role": "ink",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "vl0",
+   "at": [
+    "10.04167",
+    "24.27368"
+   ],
+   "text": "13,000",
+   "role": "ground",
    "size": "s",
    "bold": true,
-   "appear": "s0",
-   "appearDur": 380,
+   "visible": "tt>=0.999",
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "b1",
+   "x": "12.61417",
+   "y": "11",
+   "w": "3.02167",
+   "h": "11.90526*clamp(tt-1,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b2",
+   "x": "16.6975",
+   "y": "11",
+   "w": "3.02167",
+   "h": "13.13684*clamp(tt-2,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b3",
+   "x": "20.78083",
+   "y": "11",
+   "w": "3.02167",
+   "h": "14.36842*clamp(tt-3,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b4",
+   "x": "24.86417",
+   "y": "11",
+   "w": "3.02167",
+   "h": "15.6*clamp(tt-4,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "text",
+   "id": "xt4",
+   "at": [
+    "26.375",
+    "8.4"
+   ],
+   "text": "5",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "b5",
+   "x": "28.9475",
+   "y": "11",
+   "w": "3.02167",
+   "h": "16.83158*clamp(tt-5,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b6",
+   "x": "33.03083",
+   "y": "11",
+   "w": "3.02167",
+   "h": "18.06316*clamp(tt-6,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b7",
+   "x": "37.11417",
+   "y": "11",
+   "w": "3.02167",
+   "h": "19.29474*clamp(tt-7,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b8",
+   "x": "41.1975",
+   "y": "11",
+   "w": "3.02167",
+   "h": "20.52632*clamp(tt-8,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b9",
+   "x": "45.28083",
+   "y": "11",
+   "w": "3.02167",
+   "h": "21.75789*clamp(tt-9,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "text",
+   "id": "xt9",
+   "at": [
+    "46.79167",
+    "8.4"
+   ],
+   "text": "10",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "b10",
+   "x": "49.36417",
+   "y": "11",
+   "w": "3.02167",
+   "h": "22.98947*clamp(tt-10,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b11",
+   "x": "53.4475",
+   "y": "11",
+   "w": "3.02167",
+   "h": "24.22105*clamp(tt-11,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b12",
+   "x": "57.53083",
+   "y": "11",
+   "w": "3.02167",
+   "h": "25.45263*clamp(tt-12,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b13",
+   "x": "61.61417",
+   "y": "11",
+   "w": "3.02167",
+   "h": "26.68421*clamp(tt-13,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b14",
+   "x": "65.6975",
+   "y": "11",
+   "w": "3.02167",
+   "h": "27.91579*clamp(tt-14,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "text",
+   "id": "xt14",
+   "at": [
+    "67.20833",
+    "8.4"
+   ],
+   "text": "15",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "b15",
+   "x": "69.78083",
+   "y": "11",
+   "w": "3.02167",
+   "h": "29.14737*clamp(tt-15,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b16",
+   "x": "73.86417",
+   "y": "11",
+   "w": "3.02167",
+   "h": "30.37895*clamp(tt-16,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b17",
+   "x": "77.9475",
+   "y": "11",
+   "w": "3.02167",
+   "h": "31.61053*clamp(tt-17,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b18",
+   "x": "82.03083",
+   "y": "11",
+   "w": "3.02167",
+   "h": "32.84211*clamp(tt-18,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b19",
+   "x": "86.11417",
+   "y": "11",
+   "w": "3.02167",
+   "h": "34.07368*clamp(tt-19,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "text",
+   "id": "xt19",
+   "at": [
+    "87.625",
+    "8.4"
+   ],
+   "text": "20",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "b20",
+   "x": "90.1975",
+   "y": "11",
+   "w": "3.02167",
+   "h": "35.30526*clamp(tt-20,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b21",
+   "x": "94.28083",
+   "y": "11",
+   "w": "3.02167",
+   "h": "36.53684*clamp(tt-21,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b22",
+   "x": "98.36417",
+   "y": "11",
+   "w": "3.02167",
+   "h": "37.76842*clamp(tt-22,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b23",
+   "x": "102.4475",
+   "y": "11",
+   "w": "3.02167",
+   "h": "39*clamp(tt-23,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "text",
+   "id": "xt23",
+   "at": [
+    "103.95833",
+    "8.4"
+   ],
+   "text": "24",
+   "role": "ground",
+   "size": "s",
    "keep": true
   },
   {
    "type": "text",
-   "id": "cp0",
+   "id": "vl23",
    "at": [
-    51.55,
-    38
+    "101.5",
+    "52.6"
    ],
-   "text": "Identify the A.P.",
-   "role": "ink",
-   "size": "m",
-   "bold": false,
-   "appear": "s0",
-   "appearDur": 420,
-   "keep": true
-  },
-  {
-   "type": "circle",
-   "id": "rg0",
-   "c": [
-    22,
-    38
-   ],
-   "r": 5.4,
-   "role": "now",
-   "fill": false,
-   "strokeWidth": 3,
-   "visible": "abs(cur-0)<0.5",
-   "appear": "s0",
-   "appearDur": 300
-  },
-  {
-   "type": "segment",
-   "id": "cn1",
-   "from": [
-    22,
-    34.4
-   ],
-   "to": [
-    22,
-    32.6
-   ],
-   "role": "muted",
-   "strokeWidth": 2,
-   "effect": "draw",
-   "appear": "s1",
-   "appearDur": 350,
-   "layer": "back"
-  },
-  {
-   "type": "circle",
-   "id": "nd1",
-   "c": [
-    22,
-    29
-   ],
-   "r": 3.4,
-   "role": "done",
-   "fill": "done",
-   "fillOpacity": 0.16,
-   "strokeWidth": 2.4,
-   "effect": "pop",
-   "appear": "s1",
-   "appearDur": 380
-  },
-  {
-   "type": "text",
-   "id": "nn1",
-   "at": [
-    22,
-    29
-   ],
-   "text": "2",
-   "role": "ink",
+   "text": "47,500",
+   "role": "ground",
    "size": "s",
    "bold": true,
-   "appear": "s1",
-   "appearDur": 380,
+   "visible": "tt>=23.999",
    "keep": true
   },
   {
    "type": "text",
-   "id": "cp1",
+   "id": "xl",
    "at": [
-    65.35,
-    29
+    "57",
+    4.2
    ],
-   "text": "Use Sₙ = n/2 [2a₁ + (n − 1)d]",
-   "role": "ink",
-   "size": "m",
-   "bold": false,
-   "appear": "s1",
-   "appearDur": 420,
-   "keep": true
-  },
-  {
-   "type": "circle",
-   "id": "rg1",
-   "c": [
-    22,
-    29
-   ],
-   "r": 5.4,
-   "role": "now",
-   "fill": false,
-   "strokeWidth": 3,
-   "visible": "abs(cur-1)<0.5",
-   "appear": "s1",
-   "appearDur": 300
-  },
-  {
-   "type": "segment",
-   "id": "cn2",
-   "from": [
-    22,
-    25.4
-   ],
-   "to": [
-    22,
-    23.6
-   ],
-   "role": "muted",
-   "strokeWidth": 2,
-   "effect": "draw",
-   "appear": "s2",
-   "appearDur": 350,
-   "layer": "back"
-  },
-  {
-   "type": "circle",
-   "id": "nd2",
-   "c": [
-    22,
-    20
-   ],
-   "r": 3.4,
-   "role": "ans",
-   "fill": "ans",
-   "fillOpacity": 0.16,
-   "strokeWidth": 2.4,
-   "effect": "pop",
-   "appear": "s2",
-   "appearDur": 380
-  },
-  {
-   "type": "text",
-   "id": "nn2",
-   "at": [
-    22,
-    20
-   ],
-   "text": "3",
-   "role": "ink",
+   "text": "month",
+   "role": "ground",
    "size": "s",
    "bold": true,
-   "appear": "s2",
-   "appearDur": 380,
    "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "mf",
+   "x": "8",
+   "y": "55.4",
+   "w": "98",
+   "h": "3.2",
+   "role": "ground",
+   "fill": false,
+   "strokeWidth": 2
+  },
+  {
+   "type": "rect",
+   "id": "mb",
+   "x": "8",
+   "y": "55.4",
+   "w": "min(1,(13000*clamp(tt-0,0,1)+14500*clamp(tt-1,0,1)+16000*clamp(tt-2,0,1)+17500*clamp(tt-3,0,1)+19000*clamp(tt-4,0,1)+20500*clamp(tt-5,0,1)+22000*clamp(tt-6,0,1)+23500*clamp(tt-7,0,1)+25000*clamp(tt-8,0,1)+26500*clamp(tt-9,0,1)+28000*clamp(tt-10,0,1)+29500*clamp(tt-11,0,1)+31000*clamp(tt-12,0,1)+32500*clamp(tt-13,0,1)+34000*clamp(tt-14,0,1)+35500*clamp(tt-15,0,1)+37000*clamp(tt-16,0,1)+38500*clamp(tt-17,0,1)+40000*clamp(tt-18,0,1)+41500*clamp(tt-19,0,1)+43000*clamp(tt-20,0,1)+44500*clamp(tt-21,0,1)+46000*clamp(tt-22,0,1)+47500*clamp(tt-23,0,1))/726000)*98",
+   "h": "3.2",
+   "role": "path",
+   "fill": "path",
+   "fillOpacity": 0.75,
+   "strokeWidth": 0
   },
   {
    "type": "text",
-   "id": "cp2",
+   "id": "ml",
    "at": [
-    42.35,
-    20
+    "57",
+    "61"
    ],
-   "text": "Calculate",
-   "role": "ink",
-   "size": "m",
-   "bold": false,
-   "appear": "s2",
-   "appearDur": 420,
+   "text": "total deposited in 2 years",
+   "role": "path",
+   "size": "s",
+   "bold": true,
    "keep": true
-  },
-  {
-   "type": "circle",
-   "id": "rg2",
-   "c": [
-    22,
-    20
-   ],
-   "r": 5.4,
-   "role": "now",
-   "fill": false,
-   "strokeWidth": 3,
-   "visible": "abs(cur-2)<0.5",
-   "appear": "s2",
-   "appearDur": 300
   }
  ],
  "steps": [
@@ -288,10 +528,11 @@
    "text": "\\[\\begin{aligned}&a_1=13000,\\quad d=1500,\\quad n=24\\\\[5pt]&\\text{Two years = 24 months.}\\end{aligned}\\]",
    "actions": [
     {
-     "set": {
-      "cur": 0
+     "tween": {
+      "tt": 3
      },
-     "at": 0
+     "at": 0,
+     "dur": 2700
     }
    ]
   },
@@ -301,10 +542,11 @@
    "text": "\\[\\begin{aligned}&S_{24}=12\\left[26000+23(1500)\\right]=12(60500)\\end{aligned}\\]",
    "actions": [
     {
-     "set": {
-      "cur": 1
+     "tween": {
+      "tt": 16
      },
-     "at": 0
+     "at": 0,
+     "dur": 11700
     }
    ]
   },
@@ -314,10 +556,11 @@
    "text": "\\[\\begin{aligned}&{}=\\textcolor{#047857}{\\mathbf{\\text{Rs. }726\\,000}}\\end{aligned}\\]",
    "actions": [
     {
-     "set": {
-      "cur": 2
+     "tween": {
+      "tt": 24
      },
-     "at": 0
+     "at": 0,
+     "dur": 7200
     }
    ]
   }
@@ -326,6 +569,23 @@
   {
    "title": "How to use this walkthrough",
    "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ],
+ "derived": {
+  "tot": "13000*clamp(tt-0,0,1)+14500*clamp(tt-1,0,1)+16000*clamp(tt-2,0,1)+17500*clamp(tt-3,0,1)+19000*clamp(tt-4,0,1)+20500*clamp(tt-5,0,1)+22000*clamp(tt-6,0,1)+23500*clamp(tt-7,0,1)+25000*clamp(tt-8,0,1)+26500*clamp(tt-9,0,1)+28000*clamp(tt-10,0,1)+29500*clamp(tt-11,0,1)+31000*clamp(tt-12,0,1)+32500*clamp(tt-13,0,1)+34000*clamp(tt-14,0,1)+35500*clamp(tt-15,0,1)+37000*clamp(tt-16,0,1)+38500*clamp(tt-17,0,1)+40000*clamp(tt-18,0,1)+41500*clamp(tt-19,0,1)+43000*clamp(tt-20,0,1)+44500*clamp(tt-21,0,1)+46000*clamp(tt-22,0,1)+47500*clamp(tt-23,0,1)",
+  "kk": "clamp(floor(tt)+1,1,24)",
+  "cur": "(clamp(floor(tt)+1,1,24)==1 ? 13000 : (clamp(floor(tt)+1,1,24)==2 ? 14500 : (clamp(floor(tt)+1,1,24)==3 ? 16000 : (clamp(floor(tt)+1,1,24)==4 ? 17500 : (clamp(floor(tt)+1,1,24)==5 ? 19000 : (clamp(floor(tt)+1,1,24)==6 ? 20500 : (clamp(floor(tt)+1,1,24)==7 ? 22000 : (clamp(floor(tt)+1,1,24)==8 ? 23500 : (clamp(floor(tt)+1,1,24)==9 ? 25000 : (clamp(floor(tt)+1,1,24)==10 ? 26500 : (clamp(floor(tt)+1,1,24)==11 ? 28000 : (clamp(floor(tt)+1,1,24)==12 ? 29500 : (clamp(floor(tt)+1,1,24)==13 ? 31000 : (clamp(floor(tt)+1,1,24)==14 ? 32500 : (clamp(floor(tt)+1,1,24)==15 ? 34000 : (clamp(floor(tt)+1,1,24)==16 ? 35500 : (clamp(floor(tt)+1,1,24)==17 ? 37000 : (clamp(floor(tt)+1,1,24)==18 ? 38500 : (clamp(floor(tt)+1,1,24)==19 ? 40000 : (clamp(floor(tt)+1,1,24)==20 ? 41500 : (clamp(floor(tt)+1,1,24)==21 ? 43000 : (clamp(floor(tt)+1,1,24)==22 ? 44500 : (clamp(floor(tt)+1,1,24)==23 ? 46000 : 47500)))))))))))))))))))))))"
+ },
+ "readouts": [
+  {
+   "label": "Deposit this month",
+   "value": "{{cur|int}} Rs",
+   "role": "bar"
+  },
+  {
+   "label": "Deposited so far",
+   "value": "{{tot|int}} Rs",
+   "role": "path"
   }
  ]
 }

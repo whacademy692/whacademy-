@@ -12,273 +12,1650 @@
   ],
   "y": [
    0,
-   52
+   62
   ],
+  "ratio": 0.554,
   "pad": 6
  },
  "roles": {
-  "now": {
-   "label": "Current step",
+  "bar": {
+   "label": "Each term",
    "color": "#2563eb",
-   "text": "The step being explained right now.",
-   "legend": false
+   "text": "One bar for each term of the sequence.",
+   "legend": true
   },
-  "done": {
-   "label": "Steps so far",
+  "res": {
+   "label": "The term you need",
    "color": "#059669",
-   "text": "Steps you have already seen.",
+   "text": "The answer the question asks for.",
+   "legend": true
+  },
+  "int": {
+   "label": "Growth / extra part",
+   "color": "#d97706",
+   "text": "The part added on top of the starting amount.",
+   "legend": true
+  },
+  "ball": {
+   "label": "The moving thing",
+   "color": "#e11d48",
+   "text": "The object in the story.",
+   "legend": true
+  },
+  "ground": {
+   "label": "Axes and frames",
+   "color": "#475569",
+   "text": "Axes, frames and labels.",
    "legend": false
   },
-  "ans": {
-   "label": "Last step",
-   "color": "#d97706",
-   "text": "The last step of the solution.",
-   "legend": false
+  "path": {
+   "label": "Running total",
+   "color": "#7c3aed",
+   "text": "How much has been added up so far.",
+   "legend": true
   }
  },
  "params": [
   {
-   "id": "cur",
-   "label": "Current step",
+   "id": "tt",
+   "label": "Time",
+   "type": "clock",
    "min": 0,
-   "max": 30,
-   "step": 1,
-   "default": 0,
-   "hidden": true
+   "max": 5,
+   "step": 0.01,
+   "speed": 0.55,
+   "loop": "once",
+   "default": 0
   }
  ],
  "shapes": [
   {
-   "type": "text",
-   "id": "ttl",
-   "at": [
-    56,
-    47
-   ],
-   "text": "Exercise 4.8 · Q5",
-   "role": "ink",
-   "size": "l",
-   "bold": true,
-   "keep": true
-  },
-  {
-   "type": "circle",
-   "id": "nd0",
-   "c": [
-    22,
-    38
-   ],
-   "r": 3.4,
-   "role": "done",
-   "fill": "done",
-   "fillOpacity": 0.16,
-   "strokeWidth": 2.4,
-   "effect": "pop",
-   "appear": "s0",
-   "appearDur": 380
+   "type": "rect",
+   "id": "cont",
+   "x": 8.0,
+   "y": 14.0,
+   "w": 42.0,
+   "h": 34.0,
+   "role": "ground",
+   "fill": false,
+   "strokeWidth": 3
   },
   {
    "type": "text",
-   "id": "nn0",
+   "id": "ct",
    "at": [
-    22,
-    38
+    29,
+    51.4
    ],
-   "text": "1",
-   "role": "ink",
+   "text": "sealed container",
+   "role": "ground",
    "size": "s",
    "bold": true,
-   "appear": "s0",
-   "appearDur": 380,
    "keep": true
-  },
-  {
-   "type": "text",
-   "id": "cp0",
-   "at": [
-    61.9,
-    38
-   ],
-   "text": "Air left after each stroke",
-   "role": "ink",
-   "size": "m",
-   "bold": false,
-   "appear": "s0",
-   "appearDur": 420,
-   "keep": true
-  },
-  {
-   "type": "circle",
-   "id": "rg0",
-   "c": [
-    22,
-    38
-   ],
-   "r": 5.4,
-   "role": "now",
-   "fill": false,
-   "strokeWidth": 3,
-   "visible": "abs(cur-0)<0.5",
-   "appear": "s0",
-   "appearDur": 300
   },
   {
    "type": "segment",
-   "id": "cn1",
+   "id": "pipe",
    "from": [
-    22,
-    34.4
+    50.0,
+    31
    ],
    "to": [
-    22,
-    32.6
+    58,
+    31
    ],
-   "role": "muted",
-   "strokeWidth": 2,
-   "effect": "draw",
-   "appear": "s1",
-   "appearDur": 350,
-   "layer": "back"
+   "role": "ground",
+   "strokeWidth": 4
   },
   {
-   "type": "circle",
-   "id": "nd1",
-   "c": [
-    22,
-    29
-   ],
-   "r": 3.4,
-   "role": "done",
-   "fill": "done",
-   "fillOpacity": 0.16,
-   "strokeWidth": 2.4,
-   "effect": "pop",
-   "appear": "s1",
-   "appearDur": 380
+   "type": "rect",
+   "id": "cyl",
+   "x": 58,
+   "y": 20,
+   "w": 16,
+   "h": 22,
+   "role": "ground",
+   "fill": false,
+   "strokeWidth": 3
+  },
+  {
+   "type": "rect",
+   "id": "pst",
+   "x": 59,
+   "y": "20.5+16*abs(sin(180*fract(tt)))",
+   "w": 14,
+   "h": 3.2,
+   "role": "int",
+   "fill": "int",
+   "fillOpacity": 0.8,
+   "strokeWidth": 2
   },
   {
    "type": "text",
-   "id": "nn1",
+   "id": "pt",
    "at": [
-    22,
-    29
+    66,
+    16.5
    ],
-   "text": "2",
-   "role": "ink",
+   "text": "pump",
+   "role": "ground",
    "size": "s",
    "bold": true,
-   "appear": "s1",
-   "appearDur": 380,
    "keep": true
   },
   {
-   "type": "text",
-   "id": "cp1",
+   "type": "point",
+   "id": "m0",
    "at": [
-    52.7,
-    29
+    "33.67026",
+    "38.25361"
    ],
-   "text": "After five strokes",
-   "role": "ink",
-   "size": "m",
-   "bold": false,
-   "appear": "s1",
-   "appearDur": 420,
-   "keep": true
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.79519<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
   },
   {
-   "type": "circle",
-   "id": "rg1",
-   "c": [
-    22,
-    29
+   "type": "point",
+   "id": "m1",
+   "at": [
+    "45.81311",
+    "38.19696"
    ],
-   "r": 5.4,
-   "role": "now",
-   "fill": false,
-   "strokeWidth": 3,
-   "visible": "abs(cur-1)<0.5",
-   "appear": "s1",
-   "appearDur": 300
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.92232<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
   },
   {
-   "type": "segment",
-   "id": "cn2",
-   "from": [
-    22,
-    25.4
+   "type": "point",
+   "id": "m2",
+   "at": [
+    "11.1022",
+    "29.96868"
    ],
-   "to": [
-    22,
-    23.6
-   ],
-   "role": "muted",
-   "strokeWidth": 2,
-   "effect": "draw",
-   "appear": "s2",
-   "appearDur": 350,
-   "layer": "back"
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.94336<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
   },
   {
-   "type": "circle",
-   "id": "nd2",
-   "c": [
-    22,
-    20
+   "type": "point",
+   "id": "m3",
+   "at": [
+    "34.66103",
+    "43.02701"
    ],
-   "r": 3.4,
-   "role": "ans",
-   "fill": "ans",
-   "fillOpacity": 0.16,
-   "strokeWidth": 2.4,
-   "effect": "pop",
-   "appear": "s2",
-   "appearDur": 380
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.11321<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m4",
+   "at": [
+    "27.82462",
+    "23.39718"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.54376<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m5",
+   "at": [
+    "31.80977",
+    "16.39343"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.21673<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m6",
+   "at": [
+    "20.62033",
+    "43.49036"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.76573<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m7",
+   "at": [
+    "16.06496",
+    "39.91441"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.13877<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m8",
+   "at": [
+    "33.4632",
+    "19.80098"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.00177<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m9",
+   "at": [
+    "43.11338",
+    "22.28369"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.21548<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m10",
+   "at": [
+    "47.332",
+    "42.17223"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.28931<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m11",
+   "at": [
+    "46.53616",
+    "32.1767"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.67783<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m12",
+   "at": [
+    "17.78162",
+    "44.22928"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.69064<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m13",
+   "at": [
+    "46.72944",
+    "42.81225"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.29879<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m14",
+   "at": [
+    "23.72522",
+    "20.97868"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.1457<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m15",
+   "at": [
+    "12.47531",
+    "25.04077"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.60311<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m16",
+   "at": [
+    "10.12856",
+    "36.33803"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.3379<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m17",
+   "at": [
+    "21.7784",
+    "40.55554"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.48075<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m18",
+   "at": [
+    "22.00014",
+    "30.43655"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.70467<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m19",
+   "at": [
+    "12.16604",
+    "45.25299"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.02287<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m20",
+   "at": [
+    "38.49221",
+    "41.34643"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.01807<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m21",
+   "at": [
+    "39.93406",
+    "26.98553"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.57852<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m22",
+   "at": [
+    "10.34498",
+    "17.40181"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.18092<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m23",
+   "at": [
+    "46.29684",
+    "21.89565"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.75574<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m24",
+   "at": [
+    "45.3269",
+    "44.26131"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.34438<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m25",
+   "at": [
+    "23.48214",
+    "31.74105"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.7756<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m26",
+   "at": [
+    "14.10601",
+    "38.45194"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.79723<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m27",
+   "at": [
+    "42.66838",
+    "17.09895"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.9458<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m28",
+   "at": [
+    "13.46483",
+    "26.22222"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.61083<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m29",
+   "at": [
+    "44.88731",
+    "26.19879"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.9242<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m30",
+   "at": [
+    "30.71547",
+    "25.37351"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.3168<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m31",
+   "at": [
+    "16.74416",
+    "18.34589"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.14887<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m32",
+   "at": [
+    "36.18863",
+    "45.9018"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.16153<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m33",
+   "at": [
+    "11.84498",
+    "45.60097"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.53353<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m34",
+   "at": [
+    "25.42374",
+    "23.1201"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.59396<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m35",
+   "at": [
+    "41.39923",
+    "29.66995"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.42176<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m36",
+   "at": [
+    "12.11687",
+    "43.48208"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.03272<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m37",
+   "at": [
+    "28.75544",
+    "41.15288"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.13057<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m38",
+   "at": [
+    "37.80325",
+    "44.49396"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.6304<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m39",
+   "at": [
+    "39.94436",
+    "19.19892"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.43456<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m40",
+   "at": [
+    "15.67132",
+    "41.34202"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.29481<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m41",
+   "at": [
+    "27.21989",
+    "45.979"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.85225<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m42",
+   "at": [
+    "47.08829",
+    "29.6062"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.48816<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m43",
+   "at": [
+    "37.72119",
+    "30.37127"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.29102<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m44",
+   "at": [
+    "25.344",
+    "20.39519"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.377<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m45",
+   "at": [
+    "47.55873",
+    "44.79448"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.62696<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m46",
+   "at": [
+    "28.97425",
+    "26.15436"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.08914<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m47",
+   "at": [
+    "20.34779",
+    "39.46057"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.86739<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m48",
+   "at": [
+    "23.7304",
+    "39.58068"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.7749<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m49",
+   "at": [
+    "36.39468",
+    "35.92055"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.75964<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m50",
+   "at": [
+    "23.81041",
+    "37.13409"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.28085<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m51",
+   "at": [
+    "28.45604",
+    "39.09242"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.69088<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m52",
+   "at": [
+    "21.16638",
+    "44.36643"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.64969<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m53",
+   "at": [
+    "32.06511",
+    "16.34742"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.54699<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m54",
+   "at": [
+    "19.52631",
+    "36.14929"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.46294<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m55",
+   "at": [
+    "41.03383",
+    "35.42311"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.79763<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m56",
+   "at": [
+    "23.21961",
+    "35.32189"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.73783<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m57",
+   "at": [
+    "41.47117",
+    "26.50135"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.84288<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m58",
+   "at": [
+    "43.05663",
+    "36.65011"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.97612<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m59",
+   "at": [
+    "46.34763",
+    "31.54418"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.52934<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m60",
+   "at": [
+    "16.31456",
+    "41.09861"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.93738<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m61",
+   "at": [
+    "28.13508",
+    "36.74277"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.71969<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m62",
+   "at": [
+    "37.75343",
+    "21.1548"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.78037<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m63",
+   "at": [
+    "32.07212",
+    "35.96669"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.42079<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m64",
+   "at": [
+    "33.70201",
+    "39.24114"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.63687<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m65",
+   "at": [
+    "37.37575",
+    "16.82866"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.16002<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m66",
+   "at": [
+    "26.7606",
+    "35.50351"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.21904<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m67",
+   "at": [
+    "36.06637",
+    "34.92595"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.04186<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m68",
+   "at": [
+    "27.92025",
+    "22.78728"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.05414<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m69",
+   "at": [
+    "15.07402",
+    "25.52053"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.18155<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m70",
+   "at": [
+    "17.34768",
+    "17.06973"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.46533<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m71",
+   "at": [
+    "24.45136",
+    "34.35382"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.59016<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m72",
+   "at": [
+    "19.03816",
+    "43.09547"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.00066<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m73",
+   "at": [
+    "25.40428",
+    "24.35584"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.41004<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m74",
+   "at": [
+    "14.37283",
+    "40.9411"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.37388<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m75",
+   "at": [
+    "11.37036",
+    "34.40692"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.09482<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m76",
+   "at": [
+    "30.71839",
+    "26.1812"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.5809<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m77",
+   "at": [
+    "46.41542",
+    "40.55566"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.4191<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m78",
+   "at": [
+    "40.89361",
+    "35.2689"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.36944<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m79",
+   "at": [
+    "15.40027",
+    "33.87813"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.56386<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m80",
+   "at": [
+    "46.37408",
+    "45.03991"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.60861<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m81",
+   "at": [
+    "23.34241",
+    "42.80401"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.00095<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m82",
+   "at": [
+    "14.1009",
+    "32.97436"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.61517<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m83",
+   "at": [
+    "15.34662",
+    "34.88369"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.89128<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m84",
+   "at": [
+    "24.28224",
+    "28.95051"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.22634<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m85",
+   "at": [
+    "21.07679",
+    "45.17364"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.37978<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m86",
+   "at": [
+    "46.52329",
+    "43.41242"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.59581<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m87",
+   "at": [
+    "19.87334",
+    "45.42942"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.49631<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m88",
+   "at": [
+    "25.78869",
+    "25.57458"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.98428<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m89",
+   "at": [
+    "28.68668",
+    "24.59195"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.47694<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m90",
+   "at": [
+    "14.63167",
+    "34.6506"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.44347<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m91",
+   "at": [
+    "21.13792",
+    "39.45119"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.82681<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m92",
+   "at": [
+    "10.50173",
+    "31.97694"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.27379<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m93",
+   "at": [
+    "45.53962",
+    "39.45722"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.24566<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m94",
+   "at": [
+    "20.17216",
+    "20.64297"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.98883<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m95",
+   "at": [
+    "21.14115",
+    "34.24113"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.47463<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m96",
+   "at": [
+    "34.50531",
+    "34.11561"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.74347<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m97",
+   "at": [
+    "14.4908",
+    "38.81196"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.30069<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m98",
+   "at": [
+    "30.27292",
+    "26.08365"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.29682<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m99",
+   "at": [
+    "30.13497",
+    "29.9301"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.36104<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m100",
+   "at": [
+    "38.31065",
+    "33.72414"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.03643<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m101",
+   "at": [
+    "19.59207",
+    "29.66841"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.91657<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m102",
+   "at": [
+    "43.74174",
+    "32.36777"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.01456<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m103",
+   "at": [
+    "39.57854",
+    "28.83195"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.57564<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m104",
+   "at": [
+    "36.91089",
+    "34.96706"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.48188<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m105",
+   "at": [
+    "44.64518",
+    "27.56419"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.39187<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m106",
+   "at": [
+    "42.37225",
+    "21.89404"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.29645<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m107",
+   "at": [
+    "41.54089",
+    "17.98163"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.83628<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m108",
+   "at": [
+    "36.39562",
+    "28.9846"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.28636<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m109",
+   "at": [
+    "39.66771",
+    "43.32027"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.14268<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m110",
+   "at": [
+    "28.17968",
+    "32.47286"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.49768<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m111",
+   "at": [
+    "22.56801",
+    "20.60583"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.58585<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m112",
+   "at": [
+    "40.84928",
+    "18.05258"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.23002<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m113",
+   "at": [
+    "41.14456",
+    "39.75252"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.6636<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m114",
+   "at": [
+    "10.97103",
+    "37.67796"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.97869<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m115",
+   "at": [
+    "47.93671",
+    "37.03744"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.04889<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m116",
+   "at": [
+    "41.99838",
+    "22.57696"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.64574<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m117",
+   "at": [
+    "46.18531",
+    "37.3733"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.13463<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m118",
+   "at": [
+    "21.11473",
+    "43.53993"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.14973<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m119",
+   "at": [
+    "33.20325",
+    "28.41809"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.16118<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m120",
+   "at": [
+    "33.65139",
+    "17.30689"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.10821<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m121",
+   "at": [
+    "24.40956",
+    "18.16012"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.05756<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m122",
+   "at": [
+    "31.85972",
+    "38.27013"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.87846<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m123",
+   "at": [
+    "15.10465",
+    "28.95012"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.31457<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m124",
+   "at": [
+    "32.80827",
+    "30.68739"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.93854<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m125",
+   "at": [
+    "24.21953",
+    "17.67254"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.6973<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m126",
+   "at": [
+    "15.74215",
+    "34.94038"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.50584<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m127",
+   "at": [
+    "44.59606",
+    "32.64673"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.62088<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m128",
+   "at": [
+    "20.00338",
+    "32.55026"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.25419<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
+  },
+  {
+   "type": "point",
+   "id": "m129",
+   "at": [
+    "38.52199",
+    "31.50987"
+   ],
+   "r": 4.2,
+   "role": "ball",
+   "visible": "0.13378<=0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))"
   },
   {
    "type": "text",
-   "id": "nn2",
+   "id": "pc0",
    "at": [
-    22,
-    20
+    94,
+    "54"
    ],
-   "text": "3",
-   "role": "ink",
+   "text": "start: 100%",
+   "role": "path",
    "size": "s",
    "bold": true,
-   "appear": "s2",
-   "appearDur": 380,
+   "visible": "tt>=0",
    "keep": true
   },
   {
    "type": "text",
-   "id": "cp2",
+   "id": "pc1",
    "at": [
-    52.7,
-    20
+    94,
+    "48.6"
    ],
-   "text": "Convert to percent",
-   "role": "ink",
-   "size": "m",
-   "bold": false,
-   "appear": "s2",
-   "appearDur": 420,
+   "text": "stroke 1: 80%",
+   "role": "path",
+   "size": "s",
+   "bold": true,
+   "visible": "tt>=0.92",
    "keep": true
   },
   {
-   "type": "circle",
-   "id": "rg2",
-   "c": [
-    22,
-    20
+   "type": "text",
+   "id": "pc2",
+   "at": [
+    94,
+    "43.2"
    ],
-   "r": 5.4,
-   "role": "now",
-   "fill": false,
-   "strokeWidth": 3,
-   "visible": "abs(cur-2)<0.5",
-   "appear": "s2",
-   "appearDur": 300
+   "text": "stroke 2: 64%",
+   "role": "path",
+   "size": "s",
+   "bold": true,
+   "visible": "tt>=1.92",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pc3",
+   "at": [
+    94,
+    "37.8"
+   ],
+   "text": "stroke 3: 51.2%",
+   "role": "path",
+   "size": "s",
+   "bold": true,
+   "visible": "tt>=2.92",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pc4",
+   "at": [
+    94,
+    "32.4"
+   ],
+   "text": "stroke 4: 40.96%",
+   "role": "path",
+   "size": "s",
+   "bold": true,
+   "visible": "tt>=3.92",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pc5",
+   "at": [
+    94,
+    "27"
+   ],
+   "text": "stroke 5: 32.768%",
+   "role": "res",
+   "size": "s",
+   "bold": true,
+   "visible": "tt>=4.92",
+   "keep": true
   }
  ],
  "steps": [
@@ -288,10 +1665,11 @@
    "text": "\\[\\begin{aligned}&\\text{After each stroke 4/5 of the air is}\\\\[5pt]&\\text{left, so the amounts form a G.P.}\\\\[5pt]&a=1,\\quad r=\\frac{4}{5}\\end{aligned}\\]",
    "actions": [
     {
-     "set": {
-      "cur": 0
+     "tween": {
+      "tt": 1
      },
-     "at": 0
+     "at": 0,
+     "dur": 2200
     }
    ]
   },
@@ -301,10 +1679,11 @@
    "text": "\\[\\begin{aligned}&\\left(\\frac{4}{5}\\right)^5=\\frac{1024}{3125}=0.32768\\end{aligned}\\]",
    "actions": [
     {
-     "set": {
-      "cur": 1
+     "tween": {
+      "tt": 5
      },
-     "at": 0
+     "at": 0,
+     "dur": 8000
     }
    ]
   },
@@ -314,10 +1693,11 @@
    "text": "\\[\\begin{aligned}&0.32768\\times 100=\\textcolor{#047857}{\\mathbf{32.768\\%}}\\approx 32.77\\%\\end{aligned}\\]",
    "actions": [
     {
-     "set": {
-      "cur": 2
+     "tween": {
+      "tt": 5
      },
-     "at": 0
+     "at": 0,
+     "dur": 100
     }
    ]
   }
@@ -326,6 +1706,22 @@
   {
    "title": "How to use this walkthrough",
    "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ],
+ "derived": {
+  "rem": "0.8^(floor(tt)+clamp((fract(tt)-0.1)/0.45,0,1))",
+  "strokes": "floor(tt)"
+ },
+ "readouts": [
+  {
+   "label": "Strokes done",
+   "value": "{{strokes|int}}",
+   "role": "bar"
+  },
+  {
+   "label": "Air left in the container",
+   "value": "{{rem*100|2}} %",
+   "role": "ball"
   }
  ]
 }

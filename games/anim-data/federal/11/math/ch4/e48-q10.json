@@ -12,273 +12,658 @@
   ],
   "y": [
    0,
-   52
+   62
   ],
+  "ratio": 0.554,
   "pad": 6
  },
  "roles": {
-  "now": {
-   "label": "Current step",
+  "bar": {
+   "label": "Each term",
    "color": "#2563eb",
-   "text": "The step being explained right now.",
-   "legend": false
+   "text": "One bar for each term of the sequence.",
+   "legend": true
   },
-  "done": {
-   "label": "Steps so far",
+  "res": {
+   "label": "The term you need",
    "color": "#059669",
-   "text": "Steps you have already seen.",
+   "text": "The answer the question asks for.",
+   "legend": true
+  },
+  "int": {
+   "label": "Growth / extra part",
+   "color": "#d97706",
+   "text": "The part added on top of the starting amount.",
+   "legend": true
+  },
+  "ball": {
+   "label": "The moving thing",
+   "color": "#e11d48",
+   "text": "The object in the story.",
+   "legend": true
+  },
+  "ground": {
+   "label": "Axes and frames",
+   "color": "#475569",
+   "text": "Axes, frames and labels.",
    "legend": false
   },
-  "ans": {
-   "label": "Last step",
-   "color": "#d97706",
-   "text": "The last step of the solution.",
-   "legend": false
+  "path": {
+   "label": "Running total",
+   "color": "#7c3aed",
+   "text": "How much has been added up so far.",
+   "legend": true
   }
  },
  "params": [
   {
-   "id": "cur",
-   "label": "Current step",
+   "id": "tt",
+   "label": "Time",
+   "type": "clock",
    "min": 0,
-   "max": 30,
-   "step": 1,
-   "default": 0,
-   "hidden": true
+   "max": 11.0,
+   "step": 0.01,
+   "speed": 1.0,
+   "loop": "once",
+   "default": 0
   }
  ],
  "shapes": [
   {
-   "type": "text",
-   "id": "ttl",
-   "at": [
-    56,
-    47
+   "type": "segment",
+   "id": "ax",
+   "from": [
+    6.5,
+    11.0
    ],
-   "text": "Exercise 4.8 · Q10",
-   "role": "ink",
-   "size": "l",
-   "bold": true,
+   "to": [
+    107,
+    11.0
+   ],
+   "role": "ground",
+   "strokeWidth": 2.6
+  },
+  {
+   "type": "rect",
+   "id": "bp0",
+   "x": "9.15818",
+   "y": "11",
+   "w": "6.59273",
+   "h": "15.20679*clamp(tt-0,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "text",
+   "id": "xt0",
+   "at": [
+    "12.45455",
+    "8.4"
+   ],
+   "text": "0",
+   "role": "ground",
+   "size": "s",
    "keep": true
   },
   {
-   "type": "circle",
-   "id": "nd0",
-   "c": [
-    22,
-    38
+   "type": "text",
+   "id": "vl0",
+   "at": [
+    "12.45455",
+    "31.40679"
    ],
-   "r": 3.4,
-   "role": "done",
-   "fill": "done",
-   "fillOpacity": 0.16,
-   "strokeWidth": 2.4,
-   "effect": "pop",
-   "appear": "s0",
-   "appearDur": 380
+   "text": "600,000",
+   "role": "ground",
+   "size": "s",
+   "bold": true,
+   "visible": "tt>=0.999",
+   "keep": true
   },
   {
    "type": "text",
-   "id": "nn0",
+   "id": "em0",
    "at": [
-    22,
-    38
+    "12.45455",
+    "29.00679"
+   ],
+   "text": "💰",
+   "role": "ground",
+   "size": "m",
+   "visible": "tt>=0.999",
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "bp1",
+   "x": "18.06727",
+   "y": "11",
+   "w": "6.59273",
+   "h": "15.20679*clamp(tt-1,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "rect",
+   "id": "bi1",
+   "x": "18.06727",
+   "y": "26.20679",
+   "w": "6.59273",
+   "h": "1.36861*clamp(tt-1,0,1)",
+   "role": "int",
+   "fill": "int",
+   "fillOpacity": 0.7,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "text",
+   "id": "xt1",
+   "at": [
+    "21.36364",
+    "8.4"
    ],
    "text": "1",
-   "role": "ink",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "vl1",
+   "at": [
+    "21.36364",
+    "32.7754"
+   ],
+   "text": "654,000",
+   "role": "ground",
    "size": "s",
    "bold": true,
-   "appear": "s0",
-   "appearDur": 380,
+   "visible": "tt>=1.999",
    "keep": true
   },
   {
    "type": "text",
-   "id": "cp0",
+   "id": "em1",
    "at": [
-    51.55,
-    38
+    "21.36364",
+    "30.3754"
    ],
-   "text": "Identify the G.P.",
-   "role": "ink",
+   "text": "💰",
+   "role": "ground",
    "size": "m",
-   "bold": false,
-   "appear": "s0",
-   "appearDur": 420,
+   "visible": "tt>=1.999",
    "keep": true
   },
   {
-   "type": "circle",
-   "id": "rg0",
-   "c": [
-    22,
-    38
-   ],
-   "r": 5.4,
-   "role": "now",
-   "fill": false,
-   "strokeWidth": 3,
-   "visible": "abs(cur-0)<0.5",
-   "appear": "s0",
-   "appearDur": 300
+   "type": "rect",
+   "id": "bp2",
+   "x": "26.97636",
+   "y": "11",
+   "w": "6.59273",
+   "h": "15.20679*clamp(tt-2,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6
   },
   {
-   "type": "segment",
-   "id": "cn1",
-   "from": [
-    22,
-    34.4
-   ],
-   "to": [
-    22,
-    32.6
-   ],
-   "role": "muted",
-   "strokeWidth": 2,
-   "effect": "draw",
-   "appear": "s1",
-   "appearDur": 350,
-   "layer": "back"
-  },
-  {
-   "type": "circle",
-   "id": "nd1",
-   "c": [
-    22,
-    29
-   ],
-   "r": 3.4,
-   "role": "done",
-   "fill": "done",
-   "fillOpacity": 0.16,
-   "strokeWidth": 2.4,
-   "effect": "pop",
-   "appear": "s1",
-   "appearDur": 380
+   "type": "rect",
+   "id": "bi2",
+   "x": "26.97636",
+   "y": "26.20679",
+   "w": "6.59273",
+   "h": "2.8604*clamp(tt-2,0,1)",
+   "role": "int",
+   "fill": "int",
+   "fillOpacity": 0.7,
+   "strokeWidth": 1.6
   },
   {
    "type": "text",
-   "id": "nn1",
+   "id": "xt2",
    "at": [
-    22,
-    29
+    "30.27273",
+    "8.4"
    ],
    "text": "2",
-   "role": "ink",
+   "role": "ground",
    "size": "s",
-   "bold": true,
-   "appear": "s1",
-   "appearDur": 380,
    "keep": true
   },
   {
    "type": "text",
-   "id": "cp1",
+   "id": "em2",
    "at": [
-    45.8,
-    29
+    "30.27273",
+    "31.86719"
    ],
-   "text": "Use A = P rⁿ",
-   "role": "ink",
+   "text": "💰",
+   "role": "ground",
    "size": "m",
-   "bold": false,
-   "appear": "s1",
-   "appearDur": 420,
+   "visible": "tt>=2.999",
    "keep": true
   },
   {
-   "type": "circle",
-   "id": "rg1",
-   "c": [
-    22,
-    29
-   ],
-   "r": 5.4,
-   "role": "now",
-   "fill": false,
-   "strokeWidth": 3,
-   "visible": "abs(cur-1)<0.5",
-   "appear": "s1",
-   "appearDur": 300
+   "type": "rect",
+   "id": "bp3",
+   "x": "35.88545",
+   "y": "11",
+   "w": "6.59273",
+   "h": "15.20679*clamp(tt-3,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6
   },
   {
-   "type": "segment",
-   "id": "cn2",
-   "from": [
-    22,
-    25.4
-   ],
-   "to": [
-    22,
-    23.6
-   ],
-   "role": "muted",
-   "strokeWidth": 2,
-   "effect": "draw",
-   "appear": "s2",
-   "appearDur": 350,
-   "layer": "back"
-  },
-  {
-   "type": "circle",
-   "id": "nd2",
-   "c": [
-    22,
-    20
-   ],
-   "r": 3.4,
-   "role": "ans",
-   "fill": "ans",
-   "fillOpacity": 0.16,
-   "strokeWidth": 2.4,
-   "effect": "pop",
-   "appear": "s2",
-   "appearDur": 380
+   "type": "rect",
+   "id": "bi3",
+   "x": "35.88545",
+   "y": "26.20679",
+   "w": "6.59273",
+   "h": "4.48644*clamp(tt-3,0,1)",
+   "role": "int",
+   "fill": "int",
+   "fillOpacity": 0.7,
+   "strokeWidth": 1.6
   },
   {
    "type": "text",
-   "id": "nn2",
+   "id": "xt3",
    "at": [
-    22,
-    20
+    "39.18182",
+    "8.4"
    ],
    "text": "3",
-   "role": "ink",
+   "role": "ground",
    "size": "s",
-   "bold": true,
-   "appear": "s2",
-   "appearDur": 380,
    "keep": true
   },
   {
    "type": "text",
-   "id": "cp2",
+   "id": "em3",
    "at": [
-    42.35,
-    20
+    "39.18182",
+    "33.49323"
    ],
-   "text": "Calculate",
-   "role": "ink",
+   "text": "💰",
+   "role": "ground",
    "size": "m",
-   "bold": false,
-   "appear": "s2",
-   "appearDur": 420,
+   "visible": "tt>=3.999",
    "keep": true
   },
   {
-   "type": "circle",
-   "id": "rg2",
-   "c": [
-    22,
-    20
+   "type": "rect",
+   "id": "bp4",
+   "x": "44.79455",
+   "y": "11",
+   "w": "6.59273",
+   "h": "15.20679*clamp(tt-4,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "rect",
+   "id": "bi4",
+   "x": "44.79455",
+   "y": "26.20679",
+   "w": "6.59273",
+   "h": "6.25883*clamp(tt-4,0,1)",
+   "role": "int",
+   "fill": "int",
+   "fillOpacity": 0.7,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "text",
+   "id": "xt4",
+   "at": [
+    "48.09091",
+    "8.4"
    ],
-   "r": 5.4,
-   "role": "now",
-   "fill": false,
-   "strokeWidth": 3,
-   "visible": "abs(cur-2)<0.5",
-   "appear": "s2",
-   "appearDur": 300
+   "text": "4",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "em4",
+   "at": [
+    "48.09091",
+    "35.26562"
+   ],
+   "text": "💰",
+   "role": "ground",
+   "size": "m",
+   "visible": "tt>=4.999",
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "bp5",
+   "x": "53.70364",
+   "y": "11",
+   "w": "6.59273",
+   "h": "15.20679*clamp(tt-5,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "rect",
+   "id": "bi5",
+   "x": "53.70364",
+   "y": "26.20679",
+   "w": "6.59273",
+   "h": "8.19074*clamp(tt-5,0,1)",
+   "role": "int",
+   "fill": "int",
+   "fillOpacity": 0.7,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "text",
+   "id": "xt5",
+   "at": [
+    "57",
+    "8.4"
+   ],
+   "text": "5",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "em5",
+   "at": [
+    "57",
+    "37.19753"
+   ],
+   "text": "💰",
+   "role": "ground",
+   "size": "m",
+   "visible": "tt>=5.999",
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "bp6",
+   "x": "62.61273",
+   "y": "11",
+   "w": "6.59273",
+   "h": "15.20679*clamp(tt-6,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "rect",
+   "id": "bi6",
+   "x": "62.61273",
+   "y": "26.20679",
+   "w": "6.59273",
+   "h": "10.29652*clamp(tt-6,0,1)",
+   "role": "int",
+   "fill": "int",
+   "fillOpacity": 0.7,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "text",
+   "id": "xt6",
+   "at": [
+    "65.90909",
+    "8.4"
+   ],
+   "text": "6",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "em6",
+   "at": [
+    "65.90909",
+    "39.30331"
+   ],
+   "text": "💰",
+   "role": "ground",
+   "size": "m",
+   "visible": "tt>=6.999",
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "bp7",
+   "x": "71.52182",
+   "y": "11",
+   "w": "6.59273",
+   "h": "15.20679*clamp(tt-7,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "rect",
+   "id": "bi7",
+   "x": "71.52182",
+   "y": "26.20679",
+   "w": "6.59273",
+   "h": "12.59182*clamp(tt-7,0,1)",
+   "role": "int",
+   "fill": "int",
+   "fillOpacity": 0.7,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "text",
+   "id": "xt7",
+   "at": [
+    "74.81818",
+    "8.4"
+   ],
+   "text": "7",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "em7",
+   "at": [
+    "74.81818",
+    "41.59861"
+   ],
+   "text": "💰",
+   "role": "ground",
+   "size": "m",
+   "visible": "tt>=7.999",
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "bp8",
+   "x": "80.43091",
+   "y": "11",
+   "w": "6.59273",
+   "h": "15.20679*clamp(tt-8,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "rect",
+   "id": "bi8",
+   "x": "80.43091",
+   "y": "26.20679",
+   "w": "6.59273",
+   "h": "15.09369*clamp(tt-8,0,1)",
+   "role": "int",
+   "fill": "int",
+   "fillOpacity": 0.7,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "text",
+   "id": "xt8",
+   "at": [
+    "83.72727",
+    "8.4"
+   ],
+   "text": "8",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "em8",
+   "at": [
+    "83.72727",
+    "44.10048"
+   ],
+   "text": "💰",
+   "role": "ground",
+   "size": "m",
+   "visible": "tt>=8.999",
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "bp9",
+   "x": "89.34",
+   "y": "11",
+   "w": "6.59273",
+   "h": "15.20679*clamp(tt-9,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "rect",
+   "id": "bi9",
+   "x": "89.34",
+   "y": "26.20679",
+   "w": "6.59273",
+   "h": "17.82073*clamp(tt-9,0,1)",
+   "role": "int",
+   "fill": "int",
+   "fillOpacity": 0.7,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "text",
+   "id": "xt9",
+   "at": [
+    "92.63636",
+    "8.4"
+   ],
+   "text": "9",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "em9",
+   "at": [
+    "92.63636",
+    "46.82752"
+   ],
+   "text": "💰",
+   "role": "ground",
+   "size": "m",
+   "visible": "tt>=9.999",
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "bp10",
+   "x": "98.24909",
+   "y": "11",
+   "w": "6.59273",
+   "h": "15.20679*clamp(tt-10,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "rect",
+   "id": "bi10",
+   "x": "98.24909",
+   "y": "26.20679",
+   "w": "6.59273",
+   "h": "20.79321*clamp(tt-10,0,1)",
+   "role": "res",
+   "fill": "res",
+   "fillOpacity": 0.7,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "text",
+   "id": "xt10",
+   "at": [
+    "101.54545",
+    "8.4"
+   ],
+   "text": "10",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "vl10",
+   "at": [
+    "101.5",
+    "52.2"
+   ],
+   "text": "1,420,418",
+   "role": "res",
+   "size": "s",
+   "bold": true,
+   "visible": "tt>=10.999",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "em10",
+   "at": [
+    "101.54545",
+    "49.8"
+   ],
+   "text": "💰",
+   "role": "ground",
+   "size": "m",
+   "visible": "tt>=10.999",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "xl",
+   "at": [
+    "57",
+    4.2
+   ],
+   "text": "year",
+   "role": "ground",
+   "size": "s",
+   "bold": true,
+   "keep": true
   }
  ],
  "steps": [
@@ -288,10 +673,11 @@
    "text": "\\[\\begin{aligned}&\\text{Each year the amount is multiplied by}\\\\[5pt]&\\text{1.09.}\\\\[5pt]&P=600000,\\quad r=1.09,\\quad n=10\\end{aligned}\\]",
    "actions": [
     {
-     "set": {
-      "cur": 0
+     "tween": {
+      "tt": 2
      },
-     "at": 0
+     "at": 0,
+     "dur": 1800
     }
    ]
   },
@@ -301,10 +687,11 @@
    "text": "\\[\\begin{aligned}&A=600000(1.09)^{10}=600000(2.36736367)\\end{aligned}\\]",
    "actions": [
     {
-     "set": {
-      "cur": 1
+     "tween": {
+      "tt": 7
      },
-     "at": 0
+     "at": 0,
+     "dur": 4500
     }
    ]
   },
@@ -314,10 +701,11 @@
    "text": "\\[\\begin{aligned}&{}=\\textcolor{#047857}{\\mathbf{\\text{Rs. }1\\,420\\,418.20}}\\end{aligned}\\]",
    "actions": [
     {
-     "set": {
-      "cur": 2
+     "tween": {
+      "tt": 11
      },
-     "at": 0
+     "at": 0,
+     "dur": 3600
     }
    ]
   }
@@ -326,6 +714,18 @@
   {
    "title": "How to use this walkthrough",
    "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ],
+ "derived": {
+  "tot": "600000*clamp(tt-0,0,1)+654000*clamp(tt-1,0,1)+712860*clamp(tt-2,0,1)+777017.4*clamp(tt-3,0,1)+846948.966*clamp(tt-4,0,1)+923174.37294*clamp(tt-5,0,1)+1006260.0665*clamp(tt-6,0,1)+1096823.47249*clamp(tt-7,0,1)+1195537.58501*clamp(tt-8,0,1)+1303135.96767*clamp(tt-9,0,1)+1420418.20476*clamp(tt-10,0,1)",
+  "kk": "clamp(floor(tt)+1,1,11)",
+  "cur": "(clamp(floor(tt)+1,1,11)==1 ? 600000 : (clamp(floor(tt)+1,1,11)==2 ? 654000 : (clamp(floor(tt)+1,1,11)==3 ? 712860 : (clamp(floor(tt)+1,1,11)==4 ? 777017.4 : (clamp(floor(tt)+1,1,11)==5 ? 846948.966 : (clamp(floor(tt)+1,1,11)==6 ? 923174.37294 : (clamp(floor(tt)+1,1,11)==7 ? 1006260.0665 : (clamp(floor(tt)+1,1,11)==8 ? 1096823.47249 : (clamp(floor(tt)+1,1,11)==9 ? 1195537.58501 : (clamp(floor(tt)+1,1,11)==10 ? 1303135.96767 : 1420418.20476))))))))))"
+ },
+ "readouts": [
+  {
+   "label": "Amount now",
+   "value": "{{cur|int}} Rs",
+   "role": "bar"
   }
  ]
 }

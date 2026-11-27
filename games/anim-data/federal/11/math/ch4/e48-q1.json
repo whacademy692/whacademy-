@@ -12,194 +12,471 @@
   ],
   "y": [
    0,
-   52
+   62
   ],
+  "ratio": 0.554,
   "pad": 6
  },
  "roles": {
-  "now": {
-   "label": "Current step",
+  "bar": {
+   "label": "Each term",
    "color": "#2563eb",
-   "text": "The step being explained right now.",
-   "legend": false
+   "text": "One bar for each term of the sequence.",
+   "legend": true
   },
-  "done": {
-   "label": "Steps so far",
+  "res": {
+   "label": "The term you need",
    "color": "#059669",
-   "text": "Steps you have already seen.",
+   "text": "The answer the question asks for.",
+   "legend": true
+  },
+  "int": {
+   "label": "Growth / extra part",
+   "color": "#d97706",
+   "text": "The part added on top of the starting amount.",
+   "legend": true
+  },
+  "ball": {
+   "label": "The moving thing",
+   "color": "#e11d48",
+   "text": "The object in the story.",
+   "legend": true
+  },
+  "ground": {
+   "label": "Axes and frames",
+   "color": "#475569",
+   "text": "Axes, frames and labels.",
    "legend": false
   },
-  "ans": {
-   "label": "Last step",
-   "color": "#d97706",
-   "text": "The last step of the solution.",
-   "legend": false
+  "path": {
+   "label": "Running total",
+   "color": "#7c3aed",
+   "text": "How much has been added up so far.",
+   "legend": true
   }
  },
  "params": [
   {
-   "id": "cur",
-   "label": "Current step",
+   "id": "tt",
+   "label": "Time",
+   "type": "clock",
    "min": 0,
-   "max": 30,
-   "step": 1,
-   "default": 0,
-   "hidden": true
+   "max": 20.0,
+   "step": 0.01,
+   "speed": 1.0,
+   "loop": "once",
+   "default": 0
   }
  ],
  "shapes": [
   {
-   "type": "text",
-   "id": "ttl",
-   "at": [
-    56,
-    47
+   "type": "segment",
+   "id": "ax",
+   "from": [
+    32.5,
+    11.0
    ],
-   "text": "Exercise 4.8 · Q1",
-   "role": "ink",
-   "size": "l",
-   "bold": true,
-   "keep": true
+   "to": [
+    109,
+    11.0
+   ],
+   "role": "ground",
+   "strokeWidth": 2.6
   },
   {
-   "type": "circle",
-   "id": "nd0",
-   "c": [
-    22,
-    38
-   ],
-   "r": 3.4,
-   "role": "done",
-   "fill": "done",
-   "fillOpacity": 0.16,
-   "strokeWidth": 2.4,
-   "effect": "pop",
-   "appear": "s0",
-   "appearDur": 380
+   "type": "rect",
+   "id": "b0",
+   "x": "34.481",
+   "y": "11",
+   "w": "2.738",
+   "h": "1.12821*clamp(tt-0,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
   },
   {
    "type": "text",
-   "id": "nn0",
+   "id": "xt0",
    "at": [
-    22,
-    38
+    "35.85",
+    "8.4"
    ],
    "text": "1",
-   "role": "ink",
+   "role": "ground",
    "size": "s",
-   "bold": true,
-   "appear": "s0",
-   "appearDur": 380,
    "keep": true
   },
   {
    "type": "text",
-   "id": "cp0",
+   "id": "vl0",
    "at": [
-    50.4,
-    38
+    "35.85",
+    "14.72821"
    ],
-   "text": "Spot the pattern",
-   "role": "ink",
-   "size": "m",
-   "bold": false,
-   "appear": "s0",
-   "appearDur": 420,
+   "text": "20",
+   "role": "ground",
+   "size": "s",
+   "bold": true,
+   "visible": "tt>=0.999",
    "keep": true
   },
   {
-   "type": "circle",
-   "id": "rg0",
-   "c": [
-    22,
-    38
+   "type": "rect",
+   "id": "b1",
+   "x": "38.181",
+   "y": "11",
+   "w": "2.738",
+   "h": "3.38462*clamp(tt-1,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b2",
+   "x": "41.881",
+   "y": "11",
+   "w": "2.738",
+   "h": "5.64103*clamp(tt-2,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b3",
+   "x": "45.581",
+   "y": "11",
+   "w": "2.738",
+   "h": "7.89744*clamp(tt-3,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b4",
+   "x": "49.281",
+   "y": "11",
+   "w": "2.738",
+   "h": "10.15385*clamp(tt-4,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "text",
+   "id": "xt4",
+   "at": [
+    "50.65",
+    "8.4"
    ],
-   "r": 5.4,
-   "role": "now",
-   "fill": false,
-   "strokeWidth": 3,
-   "visible": "abs(cur-0)<0.5",
-   "appear": "s0",
-   "appearDur": 300
+   "text": "5",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "b5",
+   "x": "52.981",
+   "y": "11",
+   "w": "2.738",
+   "h": "12.41026*clamp(tt-5,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b6",
+   "x": "56.681",
+   "y": "11",
+   "w": "2.738",
+   "h": "14.66667*clamp(tt-6,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b7",
+   "x": "60.381",
+   "y": "11",
+   "w": "2.738",
+   "h": "16.92308*clamp(tt-7,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b8",
+   "x": "64.081",
+   "y": "11",
+   "w": "2.738",
+   "h": "19.17949*clamp(tt-8,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b9",
+   "x": "67.781",
+   "y": "11",
+   "w": "2.738",
+   "h": "21.4359*clamp(tt-9,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "text",
+   "id": "xt9",
+   "at": [
+    "69.15",
+    "8.4"
+   ],
+   "text": "10",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "b10",
+   "x": "71.481",
+   "y": "11",
+   "w": "2.738",
+   "h": "23.69231*clamp(tt-10,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b11",
+   "x": "75.181",
+   "y": "11",
+   "w": "2.738",
+   "h": "25.94872*clamp(tt-11,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b12",
+   "x": "78.881",
+   "y": "11",
+   "w": "2.738",
+   "h": "28.20513*clamp(tt-12,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b13",
+   "x": "82.581",
+   "y": "11",
+   "w": "2.738",
+   "h": "30.46154*clamp(tt-13,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b14",
+   "x": "86.281",
+   "y": "11",
+   "w": "2.738",
+   "h": "32.71795*clamp(tt-14,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "text",
+   "id": "xt14",
+   "at": [
+    "87.65",
+    "8.4"
+   ],
+   "text": "15",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "b15",
+   "x": "89.981",
+   "y": "11",
+   "w": "2.738",
+   "h": "34.97436*clamp(tt-15,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b16",
+   "x": "93.681",
+   "y": "11",
+   "w": "2.738",
+   "h": "37.23077*clamp(tt-16,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b17",
+   "x": "97.381",
+   "y": "11",
+   "w": "2.738",
+   "h": "39.48718*clamp(tt-17,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b18",
+   "x": "101.081",
+   "y": "11",
+   "w": "2.738",
+   "h": "41.74359*clamp(tt-18,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "rect",
+   "id": "b19",
+   "x": "104.781",
+   "y": "11",
+   "w": "2.738",
+   "h": "44*clamp(tt-19,0,1)",
+   "role": "res",
+   "fill": "res",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "text",
+   "id": "xt19",
+   "at": [
+    "106.15",
+    "8.4"
+   ],
+   "text": "20",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "vl19",
+   "at": [
+    "103.5",
+    "57.6"
+   ],
+   "text": "780",
+   "role": "res",
+   "size": "s",
+   "bold": true,
+   "visible": "tt>=19.999",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "xl",
+   "at": [
+    "71",
+    4.2
+   ],
+   "text": "second",
+   "role": "ground",
+   "size": "s",
+   "bold": true,
+   "keep": true
   },
   {
    "type": "segment",
-   "id": "cn1",
+   "id": "gr",
    "from": [
-    22,
-    34.4
+    3,
+    11.0
    ],
    "to": [
-    22,
-    32.6
+    27,
+    11.0
    ],
-   "role": "muted",
-   "strokeWidth": 2,
-   "effect": "draw",
-   "appear": "s1",
-   "appearDur": 350,
-   "layer": "back"
+   "role": "ground",
+   "strokeWidth": 3
   },
   {
-   "type": "circle",
-   "id": "nd1",
-   "c": [
-    22,
-    29
+   "type": "segment",
+   "id": "tr",
+   "from": [
+    15,
+    11.0
    ],
-   "r": 3.4,
-   "role": "ans",
-   "fill": "ans",
-   "fillOpacity": 0.16,
-   "strokeWidth": 2.4,
-   "effect": "pop",
-   "appear": "s1",
-   "appearDur": 380
+   "to": [
+    15,
+    "11+0.0055*alt"
+   ],
+   "role": "int",
+   "strokeWidth": 3,
+   "dash": true
   },
   {
    "type": "text",
-   "id": "nn1",
+   "id": "rk",
    "at": [
-    22,
-    29
+    15,
+    "11+0.0055*alt+3.2"
    ],
-   "text": "2",
-   "role": "ink",
+   "text": "🚀",
+   "role": "ground",
+   "size": "l",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "rl",
+   "at": [
+    15,
+    4.2
+   ],
+   "text": "rocket",
+   "role": "ground",
    "size": "s",
    "bold": true,
-   "appear": "s1",
-   "appearDur": 380,
    "keep": true
-  },
-  {
-   "type": "text",
-   "id": "cp1",
-   "at": [
-    57.3,
-    29
-   ],
-   "text": "Use aₙ = a₁ + (n − 1)d",
-   "role": "ink",
-   "size": "m",
-   "bold": false,
-   "appear": "s1",
-   "appearDur": 420,
-   "keep": true
-  },
-  {
-   "type": "circle",
-   "id": "rg1",
-   "c": [
-    22,
-    29
-   ],
-   "r": 5.4,
-   "role": "now",
-   "fill": false,
-   "strokeWidth": 3,
-   "visible": "abs(cur-1)<0.5",
-   "appear": "s1",
-   "appearDur": 300
   }
  ],
  "steps": [
@@ -209,10 +486,11 @@
    "text": "\\[\\begin{aligned}&20,\\ 60,\\ 100,\\ \\ldots\\\\[5pt]&\\text{Each second adds 40 feet more, so this}\\\\[5pt]&\\text{is an A.P.}\\\\[5pt]&a_1=20,\\quad d=40\\end{aligned}\\]",
    "actions": [
     {
-     "set": {
-      "cur": 0
+     "tween": {
+      "tt": 3
      },
-     "at": 0
+     "at": 0,
+     "dur": 2700
     }
    ]
   },
@@ -222,10 +500,11 @@
    "text": "\\[\\begin{aligned}&a_{20}=20+19(40)=20+760=\\textcolor{#047857}{\\mathbf{780}}\\\\[5pt]&\\text{The rocket rises 780 feet in the 20th}\\\\[5pt]&\\text{second.}\\end{aligned}\\]",
    "actions": [
     {
-     "set": {
-      "cur": 1
+     "tween": {
+      "tt": 20
      },
-     "at": 0
+     "at": 0,
+     "dur": 12000
     }
    ]
   }
@@ -234,6 +513,24 @@
   {
    "title": "How to use this walkthrough",
    "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ],
+ "derived": {
+  "tot": "20*clamp(tt-0,0,1)+60*clamp(tt-1,0,1)+100*clamp(tt-2,0,1)+140*clamp(tt-3,0,1)+180*clamp(tt-4,0,1)+220*clamp(tt-5,0,1)+260*clamp(tt-6,0,1)+300*clamp(tt-7,0,1)+340*clamp(tt-8,0,1)+380*clamp(tt-9,0,1)+420*clamp(tt-10,0,1)+460*clamp(tt-11,0,1)+500*clamp(tt-12,0,1)+540*clamp(tt-13,0,1)+580*clamp(tt-14,0,1)+620*clamp(tt-15,0,1)+660*clamp(tt-16,0,1)+700*clamp(tt-17,0,1)+740*clamp(tt-18,0,1)+780*clamp(tt-19,0,1)",
+  "alt": "20*tt^2",
+  "kk": "clamp(floor(tt)+1,1,20)",
+  "cur": "(clamp(floor(tt)+1,1,20)==1 ? 20 : (clamp(floor(tt)+1,1,20)==2 ? 60 : (clamp(floor(tt)+1,1,20)==3 ? 100 : (clamp(floor(tt)+1,1,20)==4 ? 140 : (clamp(floor(tt)+1,1,20)==5 ? 180 : (clamp(floor(tt)+1,1,20)==6 ? 220 : (clamp(floor(tt)+1,1,20)==7 ? 260 : (clamp(floor(tt)+1,1,20)==8 ? 300 : (clamp(floor(tt)+1,1,20)==9 ? 340 : (clamp(floor(tt)+1,1,20)==10 ? 380 : (clamp(floor(tt)+1,1,20)==11 ? 420 : (clamp(floor(tt)+1,1,20)==12 ? 460 : (clamp(floor(tt)+1,1,20)==13 ? 500 : (clamp(floor(tt)+1,1,20)==14 ? 540 : (clamp(floor(tt)+1,1,20)==15 ? 580 : (clamp(floor(tt)+1,1,20)==16 ? 620 : (clamp(floor(tt)+1,1,20)==17 ? 660 : (clamp(floor(tt)+1,1,20)==18 ? 700 : (clamp(floor(tt)+1,1,20)==19 ? 740 : 780)))))))))))))))))))"
+ },
+ "readouts": [
+  {
+   "label": "Rise this second",
+   "value": "{{cur|int}} ft",
+   "role": "bar"
+  },
+  {
+   "label": "Altitude of the rocket",
+   "value": "{{alt|int}} ft",
+   "role": "path"
   }
  ]
 }

@@ -12,273 +12,392 @@
   ],
   "y": [
    0,
-   52
+   62
   ],
+  "ratio": 0.554,
   "pad": 6
  },
  "roles": {
-  "now": {
-   "label": "Current step",
+  "bar": {
+   "label": "Each term",
    "color": "#2563eb",
-   "text": "The step being explained right now.",
-   "legend": false
+   "text": "One bar for each term of the sequence.",
+   "legend": true
   },
-  "done": {
-   "label": "Steps so far",
+  "res": {
+   "label": "The term you need",
    "color": "#059669",
-   "text": "Steps you have already seen.",
+   "text": "The answer the question asks for.",
+   "legend": true
+  },
+  "int": {
+   "label": "Growth / extra part",
+   "color": "#d97706",
+   "text": "The part added on top of the starting amount.",
+   "legend": true
+  },
+  "ball": {
+   "label": "The moving thing",
+   "color": "#e11d48",
+   "text": "The object in the story.",
+   "legend": true
+  },
+  "ground": {
+   "label": "Axes and frames",
+   "color": "#475569",
+   "text": "Axes, frames and labels.",
    "legend": false
   },
-  "ans": {
-   "label": "Last step",
-   "color": "#d97706",
-   "text": "The last step of the solution.",
-   "legend": false
+  "path": {
+   "label": "Running total",
+   "color": "#7c3aed",
+   "text": "How much has been added up so far.",
+   "legend": true
   }
  },
  "params": [
   {
-   "id": "cur",
-   "label": "Current step",
+   "id": "tt",
+   "label": "Time",
+   "type": "clock",
    "min": 0,
-   "max": 30,
-   "step": 1,
-   "default": 0,
-   "hidden": true
+   "max": 5.0,
+   "step": 0.01,
+   "speed": 1.0,
+   "loop": "once",
+   "default": 0
   }
  ],
  "shapes": [
   {
-   "type": "text",
-   "id": "ttl",
-   "at": [
-    56,
-    47
+   "type": "segment",
+   "id": "ax",
+   "from": [
+    6.5,
+    11.0
    ],
-   "text": "Exercise 4.8 · Q6",
-   "role": "ink",
-   "size": "l",
-   "bold": true,
+   "to": [
+    107,
+    11.0
+   ],
+   "role": "ground",
+   "strokeWidth": 2.6
+  },
+  {
+   "type": "rect",
+   "id": "bp0",
+   "x": "10.548",
+   "y": "11",
+   "w": "14.504",
+   "h": "23.71432*clamp(tt-0,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "text",
+   "id": "xt0",
+   "at": [
+    "17.8",
+    "8.4"
+   ],
+   "text": "0",
+   "role": "ground",
+   "size": "s",
    "keep": true
   },
   {
-   "type": "circle",
-   "id": "nd0",
-   "c": [
-    22,
-    38
+   "type": "text",
+   "id": "vl0",
+   "at": [
+    "17.8",
+    "39.91432"
    ],
-   "r": 3.4,
-   "role": "done",
-   "fill": "done",
-   "fillOpacity": 0.16,
-   "strokeWidth": 2.4,
-   "effect": "pop",
-   "appear": "s0",
-   "appearDur": 380
+   "text": "20,000",
+   "role": "ground",
+   "size": "s",
+   "bold": true,
+   "visible": "tt>=0.999",
+   "keep": true
   },
   {
    "type": "text",
-   "id": "nn0",
+   "id": "em0",
    "at": [
-    22,
-    38
+    "17.8",
+    "37.51432"
+   ],
+   "text": "💰",
+   "role": "ground",
+   "size": "m",
+   "visible": "tt>=0.999",
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "bp1",
+   "x": "30.148",
+   "y": "11",
+   "w": "14.504",
+   "h": "23.71432*clamp(tt-1,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "rect",
+   "id": "bi1",
+   "x": "30.148",
+   "y": "34.71432",
+   "w": "14.504",
+   "h": "2.60857*clamp(tt-1,0,1)",
+   "role": "int",
+   "fill": "int",
+   "fillOpacity": 0.7,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "text",
+   "id": "xt1",
+   "at": [
+    "37.4",
+    "8.4"
    ],
    "text": "1",
-   "role": "ink",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "vl1",
+   "at": [
+    "37.4",
+    "42.52289"
+   ],
+   "text": "22,200",
+   "role": "ground",
    "size": "s",
    "bold": true,
-   "appear": "s0",
-   "appearDur": 380,
+   "visible": "tt>=1.999",
    "keep": true
   },
   {
    "type": "text",
-   "id": "cp0",
+   "id": "em1",
    "at": [
-    51.55,
-    38
+    "37.4",
+    "40.12289"
    ],
-   "text": "Identify the G.P.",
-   "role": "ink",
+   "text": "💰",
+   "role": "ground",
    "size": "m",
-   "bold": false,
-   "appear": "s0",
-   "appearDur": 420,
+   "visible": "tt>=1.999",
    "keep": true
   },
   {
-   "type": "circle",
-   "id": "rg0",
-   "c": [
-    22,
-    38
-   ],
-   "r": 5.4,
-   "role": "now",
-   "fill": false,
-   "strokeWidth": 3,
-   "visible": "abs(cur-0)<0.5",
-   "appear": "s0",
-   "appearDur": 300
+   "type": "rect",
+   "id": "bp2",
+   "x": "49.748",
+   "y": "11",
+   "w": "14.504",
+   "h": "23.71432*clamp(tt-2,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6
   },
   {
-   "type": "segment",
-   "id": "cn1",
-   "from": [
-    22,
-    34.4
-   ],
-   "to": [
-    22,
-    32.6
-   ],
-   "role": "muted",
-   "strokeWidth": 2,
-   "effect": "draw",
-   "appear": "s1",
-   "appearDur": 350,
-   "layer": "back"
-  },
-  {
-   "type": "circle",
-   "id": "nd1",
-   "c": [
-    22,
-    29
-   ],
-   "r": 3.4,
-   "role": "done",
-   "fill": "done",
-   "fillOpacity": 0.16,
-   "strokeWidth": 2.4,
-   "effect": "pop",
-   "appear": "s1",
-   "appearDur": 380
+   "type": "rect",
+   "id": "bi2",
+   "x": "49.748",
+   "y": "34.71432",
+   "w": "14.504",
+   "h": "5.50409*clamp(tt-2,0,1)",
+   "role": "int",
+   "fill": "int",
+   "fillOpacity": 0.7,
+   "strokeWidth": 1.6
   },
   {
    "type": "text",
-   "id": "nn1",
+   "id": "xt2",
    "at": [
-    22,
-    29
+    "57",
+    "8.4"
    ],
    "text": "2",
-   "role": "ink",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "vl2",
+   "at": [
+    "57",
+    "45.41841"
+   ],
+   "text": "24,642",
+   "role": "ground",
    "size": "s",
    "bold": true,
-   "appear": "s1",
-   "appearDur": 380,
+   "visible": "tt>=2.999",
    "keep": true
   },
   {
    "type": "text",
-   "id": "cp1",
+   "id": "em2",
    "at": [
-    45.8,
-    29
+    "57",
+    "43.01841"
    ],
-   "text": "Use A = P rⁿ",
-   "role": "ink",
+   "text": "💰",
+   "role": "ground",
    "size": "m",
-   "bold": false,
-   "appear": "s1",
-   "appearDur": 420,
+   "visible": "tt>=2.999",
    "keep": true
   },
   {
-   "type": "circle",
-   "id": "rg1",
-   "c": [
-    22,
-    29
-   ],
-   "r": 5.4,
-   "role": "now",
-   "fill": false,
-   "strokeWidth": 3,
-   "visible": "abs(cur-1)<0.5",
-   "appear": "s1",
-   "appearDur": 300
+   "type": "rect",
+   "id": "bp3",
+   "x": "69.348",
+   "y": "11",
+   "w": "14.504",
+   "h": "23.71432*clamp(tt-3,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6
   },
   {
-   "type": "segment",
-   "id": "cn2",
-   "from": [
-    22,
-    25.4
-   ],
-   "to": [
-    22,
-    23.6
-   ],
-   "role": "muted",
-   "strokeWidth": 2,
-   "effect": "draw",
-   "appear": "s2",
-   "appearDur": 350,
-   "layer": "back"
-  },
-  {
-   "type": "circle",
-   "id": "nd2",
-   "c": [
-    22,
-    20
-   ],
-   "r": 3.4,
-   "role": "ans",
-   "fill": "ans",
-   "fillOpacity": 0.16,
-   "strokeWidth": 2.4,
-   "effect": "pop",
-   "appear": "s2",
-   "appearDur": 380
+   "type": "rect",
+   "id": "bi3",
+   "x": "69.348",
+   "y": "34.71432",
+   "w": "14.504",
+   "h": "8.71812*clamp(tt-3,0,1)",
+   "role": "int",
+   "fill": "int",
+   "fillOpacity": 0.7,
+   "strokeWidth": 1.6
   },
   {
    "type": "text",
-   "id": "nn2",
+   "id": "xt3",
    "at": [
-    22,
-    20
+    "76.6",
+    "8.4"
    ],
    "text": "3",
-   "role": "ink",
+   "role": "ground",
    "size": "s",
-   "bold": true,
-   "appear": "s2",
-   "appearDur": 380,
    "keep": true
   },
   {
    "type": "text",
-   "id": "cp2",
+   "id": "vl3",
    "at": [
-    42.35,
-    20
+    "76.6",
+    "48.63243"
    ],
-   "text": "Calculate",
-   "role": "ink",
-   "size": "m",
-   "bold": false,
-   "appear": "s2",
-   "appearDur": 420,
+   "text": "27,353",
+   "role": "ground",
+   "size": "s",
+   "bold": true,
+   "visible": "tt>=3.999",
    "keep": true
   },
   {
-   "type": "circle",
-   "id": "rg2",
-   "c": [
-    22,
-    20
+   "type": "text",
+   "id": "em3",
+   "at": [
+    "76.6",
+    "46.23243"
    ],
-   "r": 5.4,
-   "role": "now",
-   "fill": false,
-   "strokeWidth": 3,
-   "visible": "abs(cur-2)<0.5",
-   "appear": "s2",
-   "appearDur": 300
+   "text": "💰",
+   "role": "ground",
+   "size": "m",
+   "visible": "tt>=3.999",
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "bp4",
+   "x": "88.948",
+   "y": "11",
+   "w": "14.504",
+   "h": "23.71432*clamp(tt-4,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.55,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "rect",
+   "id": "bi4",
+   "x": "88.948",
+   "y": "34.71432",
+   "w": "14.504",
+   "h": "12.28568*clamp(tt-4,0,1)",
+   "role": "res",
+   "fill": "res",
+   "fillOpacity": 0.7,
+   "strokeWidth": 1.6
+  },
+  {
+   "type": "text",
+   "id": "xt4",
+   "at": [
+    "96.2",
+    "8.4"
+   ],
+   "text": "4",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "vl4",
+   "at": [
+    "96.2",
+    "52.2"
+   ],
+   "text": "30,361",
+   "role": "res",
+   "size": "s",
+   "bold": true,
+   "visible": "tt>=4.999",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "em4",
+   "at": [
+    "96.2",
+    "49.8"
+   ],
+   "text": "💰",
+   "role": "ground",
+   "size": "m",
+   "visible": "tt>=4.999",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "xl",
+   "at": [
+    "57",
+    4.2
+   ],
+   "text": "year",
+   "role": "ground",
+   "size": "s",
+   "bold": true,
+   "keep": true
   }
  ],
  "steps": [
@@ -288,10 +407,11 @@
    "text": "\\[\\begin{aligned}&\\text{Each year the amount is multiplied by}\\\\[5pt]&\\text{1.11.}\\\\[5pt]&P=20000,\\quad r=1.11,\\quad n=4\\end{aligned}\\]",
    "actions": [
     {
-     "set": {
-      "cur": 0
+     "tween": {
+      "tt": 2
      },
-     "at": 0
+     "at": 0,
+     "dur": 1800
     }
    ]
   },
@@ -301,10 +421,11 @@
    "text": "\\[\\begin{aligned}&A=20000(1.11)^4=20000(1.51807041)\\end{aligned}\\]",
    "actions": [
     {
-     "set": {
-      "cur": 1
+     "tween": {
+      "tt": 3
      },
-     "at": 0
+     "at": 0,
+     "dur": 900
     }
    ]
   },
@@ -314,10 +435,11 @@
    "text": "\\[\\begin{aligned}&{}=\\textcolor{#047857}{\\mathbf{\\text{Rs. }30\\,361.41}}\\end{aligned}\\]",
    "actions": [
     {
-     "set": {
-      "cur": 2
+     "tween": {
+      "tt": 5
      },
-     "at": 0
+     "at": 0,
+     "dur": 1800
     }
    ]
   }
@@ -326,6 +448,18 @@
   {
    "title": "How to use this walkthrough",
    "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ],
+ "derived": {
+  "tot": "20000*clamp(tt-0,0,1)+22200*clamp(tt-1,0,1)+24642*clamp(tt-2,0,1)+27352.62*clamp(tt-3,0,1)+30361.4082*clamp(tt-4,0,1)",
+  "kk": "clamp(floor(tt)+1,1,5)",
+  "cur": "(clamp(floor(tt)+1,1,5)==1 ? 20000 : (clamp(floor(tt)+1,1,5)==2 ? 22200 : (clamp(floor(tt)+1,1,5)==3 ? 24642 : (clamp(floor(tt)+1,1,5)==4 ? 27352.62 : 30361.4082))))"
+ },
+ "readouts": [
+  {
+   "label": "Amount now",
+   "value": "{{cur|int}} Rs",
+   "role": "bar"
   }
  ]
 }

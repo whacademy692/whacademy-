@@ -12,194 +12,435 @@
   ],
   "y": [
    0,
-   52
+   62
   ],
+  "ratio": 0.554,
   "pad": 6
  },
  "roles": {
-  "now": {
-   "label": "Current step",
+  "ball": {
+   "label": "The ball",
+   "color": "#e11d48",
+   "text": "The moving ball.",
+   "legend": true
+  },
+  "path": {
+   "label": "Height against time",
    "color": "#2563eb",
-   "text": "The step being explained right now.",
-   "legend": false
+   "text": "The curve traces the height of the ball as time runs.",
+   "legend": true
   },
-  "done": {
-   "label": "Steps so far",
-   "color": "#059669",
-   "text": "Steps you have already seen.",
-   "legend": false
-  },
-  "ans": {
-   "label": "Last step",
+  "mark": {
+   "label": "Rebound heights",
    "color": "#d97706",
-   "text": "The last step of the solution.",
+   "text": "A tick marks how high each rebound reaches.",
+   "legend": true
+  },
+  "ground": {
+   "label": "Ground and axes",
+   "color": "#475569",
+   "text": "The ground and the time axis.",
+   "legend": false
+  },
+  "tower": {
+   "label": "Tower / tube",
+   "color": "#94a3b8",
+   "text": "Where the ball is dropped from.",
    "legend": false
   }
  },
  "params": [
   {
-   "id": "cur",
-   "label": "Current step",
+   "id": "tt",
+   "label": "Time",
+   "type": "clock",
    "min": 0,
-   "max": 30,
-   "step": 1,
-   "default": 0,
-   "hidden": true
+   "max": 4.75,
+   "step": 0.01,
+   "speed": 1,
+   "loop": "once",
+   "default": 0
   }
  ],
  "shapes": [
   {
-   "type": "text",
-   "id": "ttl",
-   "at": [
-    56,
-    47
+   "type": "segment",
+   "id": "gnd",
+   "from": [
+    3,
+    8.0
    ],
-   "text": "Exercise 4.4 · Q26",
-   "role": "ink",
-   "size": "l",
-   "bold": true,
-   "keep": true
+   "to": [
+    42,
+    8.0
+   ],
+   "role": "ground",
+   "strokeWidth": 3
   },
   {
-   "type": "circle",
-   "id": "nd0",
-   "c": [
-    22,
-    38
+   "type": "vector",
+   "id": "axt",
+   "from": [
+    47.0,
+    8.0
    ],
-   "r": 3.4,
-   "role": "done",
-   "fill": "done",
-   "fillOpacity": 0.16,
-   "strokeWidth": 2.4,
-   "effect": "pop",
-   "appear": "s0",
-   "appearDur": 380
+   "to": [
+    112.0,
+    8.0
+   ],
+   "role": "ground",
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "vector",
+   "id": "axh",
+   "from": [
+    47.0,
+    8.0
+   ],
+   "to": [
+    47.0,
+    58.0
+   ],
+   "role": "ground",
+   "strokeWidth": 2.2
   },
   {
    "type": "text",
-   "id": "nn0",
+   "id": "lt",
    "at": [
-    22,
-    38
+    107.0,
+    4.8
    ],
-   "text": "1",
-   "role": "ink",
+   "text": "time",
+   "role": "ground",
    "size": "s",
    "bold": true,
-   "appear": "s0",
-   "appearDur": 380,
    "keep": true
   },
   {
    "type": "text",
-   "id": "cp0",
+   "id": "lh",
    "at": [
-    46.95,
-    38
+    57.0,
+    59.6
    ],
-   "text": "Spot the G.P.",
-   "role": "ink",
-   "size": "m",
-   "bold": false,
-   "appear": "s0",
-   "appearDur": 420,
+   "text": "height (ft)",
+   "role": "ground",
+   "size": "s",
+   "bold": true,
    "keep": true
-  },
-  {
-   "type": "circle",
-   "id": "rg0",
-   "c": [
-    22,
-    38
-   ],
-   "r": 5.4,
-   "role": "now",
-   "fill": false,
-   "strokeWidth": 3,
-   "visible": "abs(cur-0)<0.5",
-   "appear": "s0",
-   "appearDur": 300
   },
   {
    "type": "segment",
-   "id": "cn1",
+   "id": "drp",
    "from": [
-    22,
-    34.4
+    9.0,
+    55.8
    ],
    "to": [
-    22,
-    32.6
+    19.0,
+    55.8
    ],
-   "role": "muted",
-   "strokeWidth": 2,
-   "effect": "draw",
-   "appear": "s1",
-   "appearDur": 350,
-   "layer": "back"
-  },
-  {
-   "type": "circle",
-   "id": "nd1",
-   "c": [
-    22,
-    29
-   ],
-   "r": 3.4,
-   "role": "ans",
-   "fill": "ans",
-   "fillOpacity": 0.16,
-   "strokeWidth": 2.4,
-   "effect": "pop",
-   "appear": "s1",
-   "appearDur": 380
+   "role": "tower",
+   "strokeWidth": 3,
+   "dash": true
   },
   {
    "type": "text",
-   "id": "nn1",
+   "id": "drl",
    "at": [
-    22,
-    29
+    21,
+    59.2
    ],
-   "text": "2",
-   "role": "ink",
+   "text": "dropped from 16 ft",
+   "role": "ground",
    "size": "s",
    "bold": true,
-   "appear": "s1",
-   "appearDur": 380,
    "keep": true
+  },
+  {
+   "type": "segment",
+   "id": "tk1",
+   "from": [
+    18.2,
+    21.3
+   ],
+   "to": [
+    22.2,
+    21.3
+   ],
+   "role": "mark",
+   "strokeWidth": 2.6,
+   "visible": "tt>=2.399"
   },
   {
    "type": "text",
-   "id": "cp1",
+   "id": "lb1",
    "at": [
-    49.25,
-    29
+    89.0,
+    53.0
    ],
-   "text": "The 6th rebound",
-   "role": "ink",
-   "size": "m",
-   "bold": false,
-   "appear": "s1",
-   "appearDur": 420,
+   "text": "rebound 1: 4 ft",
+   "role": "mark",
+   "size": "s",
+   "bold": true,
+   "visible": "tt>=2.399",
    "keep": true
   },
   {
-   "type": "circle",
-   "id": "rg1",
-   "c": [
-    22,
-    29
+   "type": "point",
+   "id": "pk1",
+   "at": [
+    78.32631578947368,
+    19.5
    ],
-   "r": 5.4,
-   "role": "now",
-   "fill": false,
-   "strokeWidth": 3,
-   "visible": "abs(cur-1)<0.5",
-   "appear": "s1",
-   "appearDur": 300
+   "r": 4.5,
+   "role": "mark",
+   "layer": "front",
+   "visible": "tt>=2.399"
+  },
+  {
+   "type": "segment",
+   "id": "tk2",
+   "from": [
+    18.2,
+    12.675
+   ],
+   "to": [
+    22.2,
+    12.675
+   ],
+   "role": "mark",
+   "strokeWidth": 2.6,
+   "visible": "tt>=3.599"
+  },
+  {
+   "type": "text",
+   "id": "lb2",
+   "at": [
+    89.0,
+    48.4
+   ],
+   "text": "rebound 2: 1 ft",
+   "role": "mark",
+   "size": "s",
+   "bold": true,
+   "visible": "tt>=3.599",
+   "keep": true
+  },
+  {
+   "type": "point",
+   "id": "pk2",
+   "at": [
+    93.98947368421054,
+    10.875
+   ],
+   "r": 4.5,
+   "role": "mark",
+   "layer": "front",
+   "visible": "tt>=3.599"
+  },
+  {
+   "type": "segment",
+   "id": "tk3",
+   "from": [
+    18.2,
+    10.51875
+   ],
+   "to": [
+    22.2,
+    10.51875
+   ],
+   "role": "mark",
+   "strokeWidth": 2.6,
+   "visible": "tt>=4.199"
+  },
+  {
+   "type": "text",
+   "id": "lb3",
+   "at": [
+    89.0,
+    43.8
+   ],
+   "text": "rebound 3: 0.25 ft",
+   "role": "mark",
+   "size": "s",
+   "bold": true,
+   "visible": "tt>=4.199",
+   "keep": true
+  },
+  {
+   "type": "point",
+   "id": "pk3",
+   "at": [
+    101.82105263157897,
+    8.71875
+   ],
+   "r": 4.5,
+   "role": "mark",
+   "layer": "front",
+   "visible": "tt>=4.199"
+  },
+  {
+   "type": "segment",
+   "id": "tk4",
+   "from": [
+    18.2,
+    9.9796875
+   ],
+   "to": [
+    22.2,
+    9.9796875
+   ],
+   "role": "mark",
+   "strokeWidth": 2.6,
+   "visible": "tt>=4.499"
+  },
+  {
+   "type": "text",
+   "id": "lb4",
+   "at": [
+    89.0,
+    39.2
+   ],
+   "text": "rebound 4: 0.062 ft",
+   "role": "mark",
+   "size": "s",
+   "bold": true,
+   "visible": "tt>=4.499",
+   "keep": true
+  },
+  {
+   "type": "point",
+   "id": "pk4",
+   "at": [
+    105.73684210526315,
+    8.1796875
+   ],
+   "r": 4.5,
+   "role": "mark",
+   "layer": "front",
+   "visible": "tt>=4.499"
+  },
+  {
+   "type": "segment",
+   "id": "tk5",
+   "from": [
+    18.2,
+    9.844921875
+   ],
+   "to": [
+    22.2,
+    9.844921875
+   ],
+   "role": "mark",
+   "strokeWidth": 2.6,
+   "visible": "tt>=4.649"
+  },
+  {
+   "type": "text",
+   "id": "lb5",
+   "at": [
+    89.0,
+    34.6
+   ],
+   "text": "rebound 5: 0.016 ft",
+   "role": "mark",
+   "size": "s",
+   "bold": true,
+   "visible": "tt>=4.649",
+   "keep": true
+  },
+  {
+   "type": "point",
+   "id": "pk5",
+   "at": [
+    107.69473684210527,
+    8.044921875
+   ],
+   "r": 4.5,
+   "role": "mark",
+   "layer": "front",
+   "visible": "tt>=4.649"
+  },
+  {
+   "type": "segment",
+   "id": "tk6",
+   "from": [
+    18.2,
+    9.81123046875
+   ],
+   "to": [
+    22.2,
+    9.81123046875
+   ],
+   "role": "mark",
+   "strokeWidth": 2.6,
+   "visible": "tt>=4.724"
+  },
+  {
+   "type": "text",
+   "id": "lb6",
+   "at": [
+    89.0,
+    30.0
+   ],
+   "text": "rebound 6: 1/256 ft",
+   "role": "mark",
+   "size": "s",
+   "bold": true,
+   "visible": "tt>=4.724",
+   "keep": true
+  },
+  {
+   "type": "point",
+   "id": "pk6",
+   "at": [
+    108.67368421052632,
+    8.01123046875
+   ],
+   "r": 4.5,
+   "role": "mark",
+   "layer": "front",
+   "visible": "tt>=4.724"
+  },
+  {
+   "type": "plot",
+   "id": "crv",
+   "x": "47+62*u/4.75",
+   "y": "8+2.875*((u<1.6 ? 16*(1-(u/1.6)^2) : (u<3.2 ? 4*(1-((u-2.4)/0.8)^2) : (u<4 ? 1*(1-((u-3.6)/0.4)^2) : (u<4.4 ? 0.25*(1-((u-4.2)/0.2)^2) : (u<4.6 ? 0.0625*(1-((u-4.5)/0.1)^2) : (u<4.7 ? 0.01562*(1-((u-4.65)/0.05)^2) : (u<4.75 ? 0.00391*(1-((u-4.725)/0.025)^2) : 0))))))))",
+   "var": "u",
+   "domain": [
+    0,
+    4.75
+   ],
+   "upTo": "tt",
+   "role": "path",
+   "strokeWidth": 3.4,
+   "samples": 700
+  },
+  {
+   "type": "point",
+   "id": "bwd",
+   "at": [
+    "47+62*tt/4.75",
+    "8+2.875*yb"
+   ],
+   "r": 5,
+   "role": "path",
+   "layer": "front"
+  },
+  {
+   "type": "point",
+   "id": "ball",
+   "at": [
+    14.0,
+    "8+2.875*yb+1.8"
+   ],
+   "r": 11,
+   "role": "ball",
+   "layer": "front"
   }
  ],
  "steps": [
@@ -209,10 +450,11 @@
    "text": "\\[\\begin{aligned}&\\text{The rebound heights are 16/4, 16/16, ...}\\\\[5pt]&\\text{so each is 1/4 of the one before.}\\\\[5pt]&a_1=\\frac{16}{4}=4,\\quad r=\\frac{1}{4}\\end{aligned}\\]",
    "actions": [
     {
-     "set": {
-      "cur": 0
+     "tween": {
+      "tt": 2.4
      },
-     "at": 0
+     "at": 0,
+     "dur": 3200
     }
    ]
   },
@@ -222,10 +464,11 @@
    "text": "\\[\\begin{aligned}&a_6=a_1r^5=4\\left(\\frac{1}{4}\\right)^5=\\frac{4}{1024}\\\\[5pt]&{}=\\textcolor{#047857}{\\mathbf{\\frac{1}{256}\\text{ ft}}}\\\\[5pt]&\\text{That is about 0.0039 ft.}\\end{aligned}\\]",
    "actions": [
     {
-     "set": {
-      "cur": 1
+     "tween": {
+      "tt": 4.725
      },
-     "at": 0
+     "at": 0,
+     "dur": 5200
     }
    ]
   }
@@ -234,6 +477,28 @@
   {
    "title": "How to use this walkthrough",
    "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ],
+ "derived": {
+  "yb": "(tt<1.6 ? 16*(1-(tt/1.6)^2) : (tt<3.2 ? 4*(1-((tt-2.4)/0.8)^2) : (tt<4 ? 1*(1-((tt-3.6)/0.4)^2) : (tt<4.4 ? 0.25*(1-((tt-4.2)/0.2)^2) : (tt<4.6 ? 0.0625*(1-((tt-4.5)/0.1)^2) : (tt<4.7 ? 0.01562*(1-((tt-4.65)/0.05)^2) : (tt<4.75 ? 0.00391*(1-((tt-4.725)/0.025)^2) : 0)))))))",
+  "dist": "(tt<1.6 ? (16-yb) : (tt<3.2 ? (16+(tt<2.4 ? yb : 8-yb)) : (tt<4 ? (24+(tt<3.6 ? yb : 2-yb)) : (tt<4.4 ? (26+(tt<4.2 ? yb : 0.5-yb)) : (tt<4.6 ? (26.5+(tt<4.5 ? yb : 0.125-yb)) : (tt<4.7 ? (26.625+(tt<4.65 ? yb : 0.03125-yb)) : (tt<4.75 ? (26.65625+(tt<4.725 ? yb : 0.00781-yb)) : 26.66406)))))))",
+  "hits": "(tt>=1.6)+(tt>=3.2)+(tt>=4)+(tt>=4.4)+(tt>=4.6)+(tt>=4.7)+(tt>=4.75)"
+ },
+ "readouts": [
+  {
+   "label": "Times it has hit the ground",
+   "value": "{{hits|int}}",
+   "role": "ball"
+  },
+  {
+   "label": "Height now",
+   "value": "{{yb|2}} ft",
+   "role": "path"
+  },
+  {
+   "label": "Distance travelled so far",
+   "value": "{{dist|1}} ft",
+   "role": "mark"
   }
  ]
 }

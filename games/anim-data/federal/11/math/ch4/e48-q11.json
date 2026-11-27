@@ -12,273 +12,537 @@
   ],
   "y": [
    0,
-   52
+   62
   ],
+  "ratio": 0.554,
   "pad": 6
  },
  "roles": {
-  "now": {
-   "label": "Current step",
+  "bar": {
+   "label": "Each term",
    "color": "#2563eb",
-   "text": "The step being explained right now.",
-   "legend": false
+   "text": "One bar for each term of the sequence.",
+   "legend": true
   },
-  "done": {
-   "label": "Steps so far",
+  "res": {
+   "label": "The term you need",
    "color": "#059669",
-   "text": "Steps you have already seen.",
+   "text": "The answer the question asks for.",
+   "legend": true
+  },
+  "int": {
+   "label": "Growth / extra part",
+   "color": "#d97706",
+   "text": "The part added on top of the starting amount.",
+   "legend": true
+  },
+  "ball": {
+   "label": "The moving thing",
+   "color": "#e11d48",
+   "text": "The object in the story.",
+   "legend": true
+  },
+  "ground": {
+   "label": "Axes and frames",
+   "color": "#475569",
+   "text": "Axes, frames and labels.",
    "legend": false
   },
-  "ans": {
-   "label": "Last step",
-   "color": "#d97706",
-   "text": "The last step of the solution.",
-   "legend": false
+  "path": {
+   "label": "Running total",
+   "color": "#7c3aed",
+   "text": "How much has been added up so far.",
+   "legend": true
   }
  },
  "params": [
   {
-   "id": "cur",
-   "label": "Current step",
+   "id": "tt",
+   "label": "Time",
+   "type": "clock",
    "min": 0,
-   "max": 30,
-   "step": 1,
-   "default": 0,
-   "hidden": true
+   "max": 10.0,
+   "step": 0.01,
+   "speed": 1.0,
+   "loop": "once",
+   "default": 0
   }
  ],
  "shapes": [
   {
-   "type": "text",
-   "id": "ttl",
-   "at": [
-    56,
-    47
+   "type": "segment",
+   "id": "ax",
+   "from": [
+    6.5,
+    11.0
    ],
-   "text": "Exercise 4.8 · Q11",
-   "role": "ink",
-   "size": "l",
-   "bold": true,
-   "keep": true
+   "to": [
+    107,
+    11.0
+   ],
+   "role": "ground",
+   "strokeWidth": 2.6
   },
   {
-   "type": "circle",
-   "id": "nd0",
-   "c": [
-    22,
-    38
-   ],
-   "r": 3.4,
-   "role": "done",
-   "fill": "done",
-   "fillOpacity": 0.16,
-   "strokeWidth": 2.4,
-   "effect": "pop",
-   "appear": "s0",
-   "appearDur": 380
+   "type": "rect",
+   "id": "b0",
+   "x": "9.274",
+   "y": "11",
+   "w": "7.252",
+   "h": "12.89256*clamp(tt-0,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
   },
   {
    "type": "text",
-   "id": "nn0",
+   "id": "xt0",
    "at": [
-    22,
-    38
+    "12.9",
+    "8.4"
    ],
    "text": "1",
-   "role": "ink",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "vl0",
+   "at": [
+    "12.9",
+    "29.09256"
+   ],
+   "text": "5,000",
+   "role": "ground",
    "size": "s",
    "bold": true,
-   "appear": "s0",
-   "appearDur": 380,
+   "visible": "tt>=0.999",
    "keep": true
   },
   {
    "type": "text",
-   "id": "cp0",
+   "id": "em0",
    "at": [
-    51.55,
-    38
+    "12.9",
+    "26.69256"
    ],
-   "text": "Identify the A.P.",
-   "role": "ink",
+   "text": "🛡️",
+   "role": "ground",
    "size": "m",
-   "bold": false,
-   "appear": "s0",
-   "appearDur": 420,
+   "visible": "tt>=0.999",
    "keep": true
   },
   {
-   "type": "circle",
-   "id": "rg0",
-   "c": [
-    22,
-    38
-   ],
-   "r": 5.4,
-   "role": "now",
-   "fill": false,
-   "strokeWidth": 3,
-   "visible": "abs(cur-0)<0.5",
-   "appear": "s0",
-   "appearDur": 300
-  },
-  {
-   "type": "segment",
-   "id": "cn1",
-   "from": [
-    22,
-    34.4
-   ],
-   "to": [
-    22,
-    32.6
-   ],
-   "role": "muted",
-   "strokeWidth": 2,
-   "effect": "draw",
-   "appear": "s1",
-   "appearDur": 350,
-   "layer": "back"
-  },
-  {
-   "type": "circle",
-   "id": "nd1",
-   "c": [
-    22,
-    29
-   ],
-   "r": 3.4,
-   "role": "done",
-   "fill": "done",
-   "fillOpacity": 0.16,
-   "strokeWidth": 2.4,
-   "effect": "pop",
-   "appear": "s1",
-   "appearDur": 380
+   "type": "rect",
+   "id": "b1",
+   "x": "19.074",
+   "y": "11",
+   "w": "7.252",
+   "h": "15.79339*clamp(tt-1,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
   },
   {
    "type": "text",
-   "id": "nn1",
+   "id": "xt1",
    "at": [
-    22,
-    29
+    "22.7",
+    "8.4"
    ],
    "text": "2",
-   "role": "ink",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "vl1",
+   "at": [
+    "22.7",
+    "31.99339"
+   ],
+   "text": "6,125",
+   "role": "ground",
    "size": "s",
    "bold": true,
-   "appear": "s1",
-   "appearDur": 380,
+   "visible": "tt>=1.999",
    "keep": true
   },
   {
    "type": "text",
-   "id": "cp1",
+   "id": "em1",
    "at": [
-    65.35,
-    29
+    "22.7",
+    "29.59339"
    ],
-   "text": "Use Sₙ = n/2 [2a₁ + (n − 1)d]",
-   "role": "ink",
+   "text": "🛡️",
+   "role": "ground",
    "size": "m",
-   "bold": false,
-   "appear": "s1",
-   "appearDur": 420,
+   "visible": "tt>=1.999",
    "keep": true
   },
   {
-   "type": "circle",
-   "id": "rg1",
-   "c": [
-    22,
-    29
-   ],
-   "r": 5.4,
-   "role": "now",
-   "fill": false,
-   "strokeWidth": 3,
-   "visible": "abs(cur-1)<0.5",
-   "appear": "s1",
-   "appearDur": 300
-  },
-  {
-   "type": "segment",
-   "id": "cn2",
-   "from": [
-    22,
-    25.4
-   ],
-   "to": [
-    22,
-    23.6
-   ],
-   "role": "muted",
-   "strokeWidth": 2,
-   "effect": "draw",
-   "appear": "s2",
-   "appearDur": 350,
-   "layer": "back"
-  },
-  {
-   "type": "circle",
-   "id": "nd2",
-   "c": [
-    22,
-    20
-   ],
-   "r": 3.4,
-   "role": "ans",
-   "fill": "ans",
-   "fillOpacity": 0.16,
-   "strokeWidth": 2.4,
-   "effect": "pop",
-   "appear": "s2",
-   "appearDur": 380
+   "type": "rect",
+   "id": "b2",
+   "x": "28.874",
+   "y": "11",
+   "w": "7.252",
+   "h": "18.69421*clamp(tt-2,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
   },
   {
    "type": "text",
-   "id": "nn2",
+   "id": "xt2",
    "at": [
-    22,
-    20
+    "32.5",
+    "8.4"
    ],
    "text": "3",
-   "role": "ink",
+   "role": "ground",
    "size": "s",
-   "bold": true,
-   "appear": "s2",
-   "appearDur": 380,
    "keep": true
   },
   {
    "type": "text",
-   "id": "cp2",
+   "id": "em2",
    "at": [
-    42.35,
-    20
+    "32.5",
+    "32.49421"
    ],
-   "text": "Calculate",
-   "role": "ink",
+   "text": "🛡️",
+   "role": "ground",
    "size": "m",
-   "bold": false,
-   "appear": "s2",
-   "appearDur": 420,
+   "visible": "tt>=2.999",
    "keep": true
   },
   {
-   "type": "circle",
-   "id": "rg2",
-   "c": [
-    22,
-    20
+   "type": "rect",
+   "id": "b3",
+   "x": "38.674",
+   "y": "11",
+   "w": "7.252",
+   "h": "21.59504*clamp(tt-3,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "text",
+   "id": "xt3",
+   "at": [
+    "42.3",
+    "8.4"
    ],
-   "r": 5.4,
-   "role": "now",
+   "text": "4",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "em3",
+   "at": [
+    "42.3",
+    "35.39504"
+   ],
+   "text": "🛡️",
+   "role": "ground",
+   "size": "m",
+   "visible": "tt>=3.999",
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "b4",
+   "x": "48.474",
+   "y": "11",
+   "w": "7.252",
+   "h": "24.49587*clamp(tt-4,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "text",
+   "id": "xt4",
+   "at": [
+    "52.1",
+    "8.4"
+   ],
+   "text": "5",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "em4",
+   "at": [
+    "52.1",
+    "38.29587"
+   ],
+   "text": "🛡️",
+   "role": "ground",
+   "size": "m",
+   "visible": "tt>=4.999",
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "b5",
+   "x": "58.274",
+   "y": "11",
+   "w": "7.252",
+   "h": "27.39669*clamp(tt-5,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "text",
+   "id": "xt5",
+   "at": [
+    "61.9",
+    "8.4"
+   ],
+   "text": "6",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "em5",
+   "at": [
+    "61.9",
+    "41.19669"
+   ],
+   "text": "🛡️",
+   "role": "ground",
+   "size": "m",
+   "visible": "tt>=5.999",
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "b6",
+   "x": "68.074",
+   "y": "11",
+   "w": "7.252",
+   "h": "30.29752*clamp(tt-6,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "text",
+   "id": "xt6",
+   "at": [
+    "71.7",
+    "8.4"
+   ],
+   "text": "7",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "em6",
+   "at": [
+    "71.7",
+    "44.09752"
+   ],
+   "text": "🛡️",
+   "role": "ground",
+   "size": "m",
+   "visible": "tt>=6.999",
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "b7",
+   "x": "77.874",
+   "y": "11",
+   "w": "7.252",
+   "h": "33.19835*clamp(tt-7,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "text",
+   "id": "xt7",
+   "at": [
+    "81.5",
+    "8.4"
+   ],
+   "text": "8",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "em7",
+   "at": [
+    "81.5",
+    "46.99835"
+   ],
+   "text": "🛡️",
+   "role": "ground",
+   "size": "m",
+   "visible": "tt>=7.999",
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "b8",
+   "x": "87.674",
+   "y": "11",
+   "w": "7.252",
+   "h": "36.09917*clamp(tt-8,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "text",
+   "id": "xt8",
+   "at": [
+    "91.3",
+    "8.4"
+   ],
+   "text": "9",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "em8",
+   "at": [
+    "91.3",
+    "49.89917"
+   ],
+   "text": "🛡️",
+   "role": "ground",
+   "size": "m",
+   "visible": "tt>=8.999",
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "b9",
+   "x": "97.474",
+   "y": "11",
+   "w": "7.252",
+   "h": "39*clamp(tt-9,0,1)",
+   "role": "bar",
+   "fill": "bar",
+   "fillOpacity": 0.6,
+   "strokeWidth": 1.8
+  },
+  {
+   "type": "text",
+   "id": "xt9",
+   "at": [
+    "101.1",
+    "8.4"
+   ],
+   "text": "10",
+   "role": "ground",
+   "size": "s",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "vl9",
+   "at": [
+    "101.1",
+    "55.2"
+   ],
+   "text": "15,125",
+   "role": "ground",
+   "size": "s",
+   "bold": true,
+   "visible": "tt>=9.999",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "em9",
+   "at": [
+    "101.1",
+    "52.8"
+   ],
+   "text": "🛡️",
+   "role": "ground",
+   "size": "m",
+   "visible": "tt>=9.999",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "xl",
+   "at": [
+    "57",
+    4.2
+   ],
+   "text": "year",
+   "role": "ground",
+   "size": "s",
+   "bold": true,
+   "keep": true
+  },
+  {
+   "type": "rect",
+   "id": "mf",
+   "x": "8",
+   "y": "55.4",
+   "w": "98",
+   "h": "3.2",
+   "role": "ground",
    "fill": false,
-   "strokeWidth": 3,
-   "visible": "abs(cur-2)<0.5",
-   "appear": "s2",
-   "appearDur": 300
+   "strokeWidth": 2
+  },
+  {
+   "type": "rect",
+   "id": "mb",
+   "x": "8",
+   "y": "55.4",
+   "w": "min(1,(5000*clamp(tt-0,0,1)+6125*clamp(tt-1,0,1)+7250*clamp(tt-2,0,1)+8375*clamp(tt-3,0,1)+9500*clamp(tt-4,0,1)+10625*clamp(tt-5,0,1)+11750*clamp(tt-6,0,1)+12875*clamp(tt-7,0,1)+14000*clamp(tt-8,0,1)+15125*clamp(tt-9,0,1))/100625)*98",
+   "h": "3.2",
+   "role": "path",
+   "fill": "path",
+   "fillOpacity": 0.75,
+   "strokeWidth": 0
+  },
+  {
+   "type": "text",
+   "id": "ml",
+   "at": [
+    "57",
+    "61"
+   ],
+   "text": "total paid to the insurance company",
+   "role": "path",
+   "size": "s",
+   "bold": true,
+   "keep": true
   }
  ],
  "steps": [
@@ -288,10 +552,11 @@
    "text": "\\[\\begin{aligned}&5000,\\ 6125,\\ 7250,\\ \\ldots\\\\[5pt]&a_1=5000,\\quad d=6125-5000=1125,\\quad n=10\\end{aligned}\\]",
    "actions": [
     {
-     "set": {
-      "cur": 0
+     "tween": {
+      "tt": 2
      },
-     "at": 0
+     "at": 0,
+     "dur": 1800
     }
    ]
   },
@@ -301,10 +566,11 @@
    "text": "\\[\\begin{aligned}&S_{10}=5\\left[10000+9(1125)\\right]=5(20125)\\end{aligned}\\]",
    "actions": [
     {
-     "set": {
-      "cur": 1
+     "tween": {
+      "tt": 7
      },
-     "at": 0
+     "at": 0,
+     "dur": 4500
     }
    ]
   },
@@ -314,10 +580,11 @@
    "text": "\\[\\begin{aligned}&{}=\\textcolor{#047857}{\\mathbf{\\text{Rs. }100\\,625}}\\end{aligned}\\]",
    "actions": [
     {
-     "set": {
-      "cur": 2
+     "tween": {
+      "tt": 10
      },
-     "at": 0
+     "at": 0,
+     "dur": 2700
     }
    ]
   }
@@ -326,6 +593,23 @@
   {
    "title": "How to use this walkthrough",
    "text": "Try the question on paper first, then press Play (or tap Next) and compare each step with your own working. Green words are the answers."
+  }
+ ],
+ "derived": {
+  "tot": "5000*clamp(tt-0,0,1)+6125*clamp(tt-1,0,1)+7250*clamp(tt-2,0,1)+8375*clamp(tt-3,0,1)+9500*clamp(tt-4,0,1)+10625*clamp(tt-5,0,1)+11750*clamp(tt-6,0,1)+12875*clamp(tt-7,0,1)+14000*clamp(tt-8,0,1)+15125*clamp(tt-9,0,1)",
+  "kk": "clamp(floor(tt)+1,1,10)",
+  "cur": "(clamp(floor(tt)+1,1,10)==1 ? 5000 : (clamp(floor(tt)+1,1,10)==2 ? 6125 : (clamp(floor(tt)+1,1,10)==3 ? 7250 : (clamp(floor(tt)+1,1,10)==4 ? 8375 : (clamp(floor(tt)+1,1,10)==5 ? 9500 : (clamp(floor(tt)+1,1,10)==6 ? 10625 : (clamp(floor(tt)+1,1,10)==7 ? 11750 : (clamp(floor(tt)+1,1,10)==8 ? 12875 : (clamp(floor(tt)+1,1,10)==9 ? 14000 : 15125)))))))))"
+ },
+ "readouts": [
+  {
+   "label": "Payment this year",
+   "value": "{{cur|int}} Rs",
+   "role": "bar"
+  },
+  {
+   "label": "Paid so far",
+   "value": "{{tot|int}} Rs",
+   "role": "path"
   }
  ]
 }
