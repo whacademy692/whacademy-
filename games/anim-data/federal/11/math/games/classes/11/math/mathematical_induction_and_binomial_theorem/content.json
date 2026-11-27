@@ -1,0 +1,181 @@
+{
+  "chapterId": "class11-math-mathematical_induction_and_binomial_theorem",
+  "classLevel": 11,
+  "subject": "Mathematics",
+  "subjectKey": "math",
+  "title": "Mathematical Induction and Binomial Theorem",
+  "chapterRef": "class11/subjects/math/mathematical_induction_and_binomial_theorem",
+  "schemaVersion": "1.0.0",
+  "learningOutcomes": [
+    "State the principle of mathematical induction and identify the basis step, the inductive hypothesis, the inductive step and the conclusion.",
+    "Prove summation formulae, divisibility statements and inequalities for positive integers by mathematical induction.",
+    "State the binomial theorem and expand \\((a+b)^{n}\\) for a positive integer \\(n\\) using binomial coefficients and Pascal's triangle.",
+    "Use the general term \\(T_{r+1}=\\binom{n}{r}a^{n-r}b^{r}\\) to find a required term, the middle term(s), the term independent of \\(x\\) and the coefficient of a given power.",
+    "Expand \\((1+x)^{n}\\) for a negative or fractional index as an infinite series valid for \\(|x|<1\\) and use it to find approximate values.",
+    "Use the binomial theorem to find remainders, last digits and divisibility of numbers with large exponents.",
+    "Apply induction and the binomial theorem to real-world situations such as dominoes, coin tossing and Pascal's triangle."
+  ],
+  "theory": {
+    "sections": [
+      {
+        "heading": "Principle of Mathematical Induction",
+        "body": "A statement \\(P(n)\\) about positive integers is proved for every \\(n\\ge n_{0}\\) in two steps. <b>Basis step:</b> show that \\(P(n_{0})\\) is true. <b>Inductive step:</b> assume \\(P(k)\\) is true for some \\(k\\ge n_{0}\\) (the inductive hypothesis) and prove that \\(P(k+1)\\) is true. Both steps are needed: like a row of dominoes, the basis step topples the first one and the inductive step shows that each one topples the next."
+      },
+      {
+        "heading": "Writing an Induction Proof",
+        "body": "Write \\(P(n)\\) clearly, check the basis step with actual numbers, state the hypothesis \\(P(k)\\), write down \\(P(k+1)\\), then use the hypothesis to reach \\(P(k+1)\\). For a sum, add the new term \\((k+1)\\)th to both sides of \\(P(k)\\). For divisibility, write \\(f(k+1)\\) in terms of \\(f(k)\\). For an inequality, multiply or add a suitable quantity. End with the conclusion that \\(P(n)\\) is true for all \\(n\\ge n_{0}\\)."
+      },
+      {
+        "heading": "Standard Results Proved by Induction",
+        "body": "\\(1+2+\\cdots+n=\\frac{n(n+1)}{2}\\); \\(1^{2}+2^{2}+\\cdots+n^{2}=\\frac{n(n+1)(2n+1)}{6}\\); \\(1^{3}+2^{3}+\\cdots+n^{3}=\\left[\\frac{n(n+1)}{2}\\right]^{2}\\); \\(1+3+5+\\cdots+(2n-1)=n^{2}\\). Divisibility examples: \\(n^{3}-n\\) is divisible by 6, \\(4^{n}+15n-1\\) is divisible by 9. Inequality examples: \\(2^{n}>n^{2}\\) for \\(n\\ge5\\) and \\(n!>2^{n}\\) for \\(n\\ge4\\); here the basis step starts at the first value where the inequality is true."
+      },
+      {
+        "heading": "Binomial Theorem",
+        "body": "For a positive integer \\(n\\), \\((a+b)^{n}=\\binom{n}{0}a^{n}+\\binom{n}{1}a^{n-1}b+\\binom{n}{2}a^{n-2}b^{2}+\\cdots+\\binom{n}{n}b^{n}\\), where \\(\\binom{n}{r}=\\frac{n!}{r!\\,(n-r)!}\\). The expansion has \\(n+1\\) terms and the powers of \\(a\\) and \\(b\\) in every term add up to \\(n\\). For \\((a-b)^{n}\\) the signs alternate."
+      },
+      {
+        "heading": "Pascal's Triangle",
+        "body": "Row \\(n\\) of Pascal's triangle lists \\(\\binom{n}{0},\\binom{n}{1},\\ldots,\\binom{n}{n}\\), the coefficients of \\((a+b)^{n}\\). Each entry is the sum of the two entries above it: \\(\\binom{n}{r-1}+\\binom{n}{r}=\\binom{n+1}{r}\\) (Pascal's rule). Row 5 is \\(1,5,10,10,5,1\\). The symmetry \\(\\binom{n}{r}=\\binom{n}{n-r}\\) makes every row read the same from both ends."
+      },
+      {
+        "heading": "General Term, Middle Term and Term Independent of x",
+        "body": "The general term of \\((a+b)^{n}\\) is \\(T_{r+1}=\\binom{n}{r}a^{n-r}b^{r}\\). If \\(n\\) is even there is one middle term, the \\(\\left(\\frac{n}{2}+1\\right)\\)th; if \\(n\\) is odd there are two, the \\(\\frac{n+1}{2}\\)th and \\(\\frac{n+3}{2}\\)th. The \\(r\\)th term from the end is the \\((n-r+2)\\)th from the beginning. To find the term independent of \\(x\\), write \\(T_{r+1}\\), put the power of \\(x\\) equal to zero, solve for \\(r\\) and substitute."
+      },
+      {
+        "heading": "Properties of Binomial Coefficients",
+        "body": "The sum of the coefficients of \\((1+x)^{n}\\) is \\(2^{n}\\) (put \\(x=1\\)). Putting \\(x=-1\\) gives \\(\\binom{n}{0}-\\binom{n}{1}+\\binom{n}{2}-\\cdots=0\\) for \\(n\\ge1\\), so the sum of the coefficients at even places equals the sum at odd places, each \\(2^{n-1}\\). The sum of the coefficients of \\((ax+b)^{n}\\) is \\((a+b)^{n}\\). \\((x+y)^{n}+(x-y)^{n}\\) has \\(\\lfloor n/2\\rfloor+1\\) terms."
+      },
+      {
+        "heading": "Binomial Series for Any Index",
+        "body": "For a negative or fractional index \\(n\\) and \\(|x|<1\\): \\((1+x)^{n}=1+nx+\\frac{n(n-1)}{2!}x^{2}+\\frac{n(n-1)(n-2)}{3!}x^{3}+\\cdots\\). The series never stops, and it is valid only for \\(|x|<1\\). To expand \\((a+bx)^{n}\\) take \\(a^{n}\\) out first: \\(a^{n}\\left(1+\\frac{b}{a}x\\right)^{n}\\), valid for \\(\\left|\\frac{bx}{a}\\right|<1\\). Examples: \\((1+x)^{-1}=1-x+x^{2}-\\cdots\\), \\((1+x)^{1/2}=1+\\frac{x}{2}-\\frac{x^{2}}{8}+\\cdots\\)."
+      },
+      {
+        "heading": "Approximations with the Binomial Series",
+        "body": "When \\(x\\) is small, the first few terms give a good approximation. Write the number as \\(1+x\\) with small \\(x\\), for example \\(\\sqrt{1.04}=(1+0.04)^{1/2}\\approx1+0.02-0.0002=1.0198\\), or \\((1.01)^{12}\\approx1+12(0.01)+66(0.01)^{2}=1.1266\\). Each extra term improves the accuracy."
+      },
+      {
+        "heading": "Last Digits, Remainders and Divisibility",
+        "body": "<b>Last digit:</b> the last digits of the powers of a digit repeat in a cycle (2: 2,4,8,6; 3: 3,9,7,1; 7: 7,9,3,1; 8: 8,4,2,6; 4 and 9 have length 2; 0, 1, 5, 6 stay the same). Divide the exponent by the cyclicity; a remainder 0 means the last place of the cycle. <b>Remainder:</b> find a small power \\(a^{p}=mk\\pm1\\), write \\(a^{n}=(mk\\pm1)^{q}\\,a^{s}\\) and expand: every term except the last is a multiple of \\(m\\). <b>Divisibility:</b> write \\(a^{n}=(1+(a-1))^{n}\\) and expand."
+      }
+    ],
+    "definitions": [
+      {
+        "term": "Principle of mathematical induction",
+        "definition": "A proof that \\(P(n)\\) holds for all \\(n\\ge n_{0}\\): prove \\(P(n_{0})\\), then prove \\(P(k)\\Rightarrow P(k+1)\\)."
+      },
+      {
+        "term": "Basis step",
+        "definition": "The check that the statement is true for the first value \\(n_{0}\\)."
+      },
+      {
+        "term": "Inductive hypothesis",
+        "definition": "The assumption that \\(P(k)\\) is true for some \\(k\\ge n_{0}\\)."
+      },
+      {
+        "term": "Inductive step",
+        "definition": "The proof that \\(P(k+1)\\) follows from \\(P(k)\\)."
+      },
+      {
+        "term": "Counter-example",
+        "definition": "A single value of \\(n\\) for which a statement is false, such as \\(n=40\\) for \\(n^{2}+n+41\\) being prime."
+      },
+      {
+        "term": "Binomial coefficient",
+        "definition": "\\(\\binom{n}{r}=\\frac{n!}{r!\\,(n-r)!}\\), the number of ways to choose \\(r\\) objects from \\(n\\)."
+      },
+      {
+        "term": "Binomial theorem",
+        "definition": "\\((a+b)^{n}=\\sum_{r=0}^{n}\\binom{n}{r}a^{n-r}b^{r}\\) for a positive integer \\(n\\)."
+      },
+      {
+        "term": "Pascal's triangle",
+        "definition": "A triangular array in which row \\(n\\) gives the coefficients of \\((a+b)^{n}\\) and each entry is the sum of the two above it."
+      },
+      {
+        "term": "General term",
+        "definition": "\\(T_{r+1}=\\binom{n}{r}a^{n-r}b^{r}\\), the \\((r+1)\\)th term of \\((a+b)^{n}\\)."
+      },
+      {
+        "term": "Middle term",
+        "definition": "The \\(\\left(\\frac{n}{2}+1\\right)\\)th term when \\(n\\) is even; two middle terms when \\(n\\) is odd."
+      },
+      {
+        "term": "Term independent of x",
+        "definition": "The term in which the power of \\(x\\) is zero."
+      },
+      {
+        "term": "Binomial series",
+        "definition": "The infinite expansion of \\((1+x)^{n}\\) for a negative or fractional \\(n\\), valid for \\(|x|<1\\)."
+      },
+      {
+        "term": "Cyclicity",
+        "definition": "The length of the repeating cycle of last digits of the powers of a number."
+      }
+    ],
+    "examTips": [
+      "In an induction proof write all three parts clearly: basis step with real numbers, hypothesis \\(P(k)\\), and the step to \\(P(k+1)\\); finish with a conclusion sentence.",
+      "For an inequality, start the basis step at the first value where it is true (for example \\(n=5\\) for \\(2^{n}>n^{2}\\)), not automatically at \\(n=1\\).",
+      "Check which index \\(T_{r+1}\\) means: the \\((r+1)\\)th term uses \\(\\binom{n}{r}\\), so the 4th term has \\(r=3\\).",
+      "For the term independent of \\(x\\), collect the power of \\(x\\) in \\(T_{r+1}\\), set it to zero, solve for \\(r\\), and then evaluate the coefficient with its sign.",
+      "Sum of coefficients: put \\(x=1\\). Alternating sum: put \\(x=-1\\).",
+      "For a negative or fractional index, first take \\(a^{n}\\) out so that the bracket looks like \\((1+y)^{n}\\), and state the range \\(|y|<1\\).",
+      "Last digit: divide the exponent by the cyclicity; a remainder 0 means the last place of the cycle, not the first.",
+      "Remainder questions: look for a power of the base that is one more or one less than a multiple of the divisor, then use the last term of the binomial expansion."
+    ]
+  },
+  "achievementHooks": [
+    "first-chapter-complete",
+    "ninety-percent-accuracy-subject"
+  ],
+  "notesUrl": "https://whacademypk.com/notes/class-11/math/mathematical-induction-and-binomial-theorem.html",
+  "practiceBanks": [
+    {
+      "mechanicId": "mcq-arena",
+      "name": "Multiple Choice",
+      "description": "Pick the correct answer. A quick way to check what you know.",
+      "count": 300
+    },
+    {
+      "mechanicId": "speed-challenge",
+      "name": "Speed Quiz",
+      "description": "Answer before the timer runs out. Quick recall practice.",
+      "count": 300
+    },
+    {
+      "mechanicId": "rapid-fire",
+      "name": "Rapid Fire",
+      "description": "Even faster! Short timer, back-to-back questions.",
+      "count": 300
+    },
+    {
+      "mechanicId": "true-false-sprint",
+      "name": "True or False",
+      "description": "Read the statement and tap True or False.",
+      "count": 300
+    },
+    {
+      "mechanicId": "fill-in-the-blank",
+      "name": "Fill in the Blank",
+      "description": "Type the missing word or number to complete the sentence.",
+      "count": 300
+    },
+    {
+      "mechanicId": "matching-grid",
+      "name": "Match the Pairs",
+      "description": "Match each item to its correct partner.",
+      "count": 300
+    },
+    {
+      "mechanicId": "drag-drop-classification",
+      "name": "Sort into Groups",
+      "description": "Drag each item into the correct group.",
+      "count": 300
+    },
+    {
+      "mechanicId": "ordering-sequencing",
+      "name": "Put in Order",
+      "description": "Arrange the steps in the correct sequence.",
+      "count": 300
+    }
+  ]
+}

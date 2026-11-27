@@ -1,0 +1,5105 @@
+{
+ "mechanicId": "mcq-arena",
+ "questions": [
+  {
+   "id": "mcq-001",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "remainder-binomial",
+   "prompt": "Find the remainder when \\(3^{155}\\) is divided by \\(10\\).",
+   "explanation": "\\(3^{2}=9=10\\times1-1\\). Write \\(155=2\\times77+1\\), so \\(3^{155}=(10-1)^{77}\\cdot3^{1}\\). By the binomial theorem every term of the bracket except the last is a multiple of \\(10\\), so the remainder comes from \\((-1)^{77}\\cdot3^{1}\\) = \\(-3\\), which leaves remainder \\(7\\).",
+   "payload": {
+    "options": [
+     "7",
+     "9",
+     "3",
+     "6"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-002",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{30}-(x-y)^{30}\\) after simplification?",
+   "explanation": "The terms with even powers of \\(y\\) cancel and the odd ones double, so \\(\\lfloor(30+1)/2\\rfloor=15\\) terms remain.",
+   "payload": {
+    "options": [
+     "31",
+     "14",
+     "30",
+     "15"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-003",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "series-range",
+   "prompt": "For which values of \\(x\\) is the binomial series of \\((4-2x)^{-\\frac{1}{2}}\\) valid?",
+   "explanation": "Write the bracket as \\(4\\left(1-\\frac{2}{4}x\\right)\\). The binomial series needs the second term to be smaller than 1 in size: \\(\\left|\\frac{2}{4}x\\right|<1\\), that is \\(|x|<2\\).",
+   "payload": {
+    "options": [
+     "\\(|x|<6\\)",
+     "\\(|x|<\\frac{4}{3}\\)",
+     "\\(|x|<2\\)",
+     "\\(|x|<\\frac{1}{2}\\)"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-004",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "series-concepts",
+   "prompt": "Which of the following statements about the binomial series is NOT correct?",
+   "explanation": "This statement is not correct. The coefficient of \\(x^{2}\\) is \\(\\frac38\\).",
+   "payload": {
+    "options": [
+     "The expansion of \\((1+x)^{1/2}\\) begins \\(1+\\frac{x}{2}-\\frac{x^{2}}{8}+\\cdots\\).",
+     "The expansion of \\((1+x)^{-1/2}\\) begins \\(1-\\frac{x}{2}+\\frac{x^{2}}{8}-\\cdots\\).",
+     "The coefficient of \\(x^{2}\\) in the expansion of \\((1+x)^{-3}\\) is \\(6\\).",
+     "The series of \\((2+x)^{-1}\\) in powers of \\(x\\) is valid for \\(|x|<2\\)."
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-005",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "series-concepts",
+   "prompt": "Which of the following statements about the binomial series is correct?",
+   "explanation": "This statement is correct. The coefficient of \\(x^{2}\\) is \\(\\frac{(-\\frac12)(-\\frac32)}{2}=\\frac38\\).",
+   "payload": {
+    "options": [
+     "The series for \\((1+x)^{n}\\) with \\(n=\\tfrac12\\) ends after \\(n+1\\) terms.",
+     "The expansion of \\((1+x)^{-1/2}\\) begins \\(1-\\frac{x}{2}+\\frac{3x^{2}}{8}-\\cdots\\).",
+     "The series of \\((2+x)^{-1}\\) in powers of \\(x\\) is valid for \\(|x|<1\\).",
+     "For \\(|x|\\ge1\\) the series \\(1-x+x^{2}-\\cdots\\) still gives the value of \\(\\frac{1}{1+x}\\)."
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-006",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "series-coefficient",
+   "prompt": "Find the coefficient of \\(x^{2}\\) in the expansion of \\((1-x)^{\\frac{2}{3}}\\).",
+   "explanation": "\\(\\frac{\\left(\\frac{2}{3}\\right)\\times\\left(-\\frac{1}{3}\\right)}{2!}(-1)^{2}=-\\frac{1}{9}\\) (the coefficient of \\(x^{2}\\) is \\(\\frac{n(n-1)\\cdots(n-1)}{2!}a^{2}\\) with \\(n=\\frac{2}{3},\\ a=-1\\)).",
+   "payload": {
+    "options": [
+     "\\(\\frac{8}{9}\\)",
+     "\\(-\\frac{1}{9}\\)",
+     "\\(\\frac{1}{9}\\)",
+     "\\(-\\frac{4}{81}\\)"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-007",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "binomial-concepts",
+   "prompt": "Choose the false statement about the binomial theorem and Pascal's triangle.",
+   "explanation": "This statement is not correct. It is \\(\\binom{5}{2}=10\\).",
+   "payload": {
+    "options": [
+     "The coefficient of \\(x^{2}\\) in \\((1+x)^{5}\\) is \\(5\\).",
+     "The expansion of \\((x+y)^{7}+(x-y)^{7}\\) has 4 terms.",
+     "The sum of all the binomial coefficients in the expansion of \\((1+x)^{n}\\) is \\(2^{n}\\).",
+     "The sum of the binomial coefficients at the even places equals the sum at the odd places in \\((1+x)^{n}\\) for \\(n\\ge1\\)."
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-008",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "binomial-concepts",
+   "prompt": "Identify the true statement about the binomial theorem and Pascal's triangle.",
+   "explanation": "This statement is correct. The coefficients rise to the middle and then fall.",
+   "payload": {
+    "options": [
+     "The greatest binomial coefficient in \\((1+x)^{n}\\) with even \\(n\\) is \\(\\binom{n}{n/2}\\).",
+     "The expansion of \\((a+b)^{n}\\) has \\(n\\) terms.",
+     "The coefficient of \\(x^{2}\\) in \\((1+x)^{5}\\) is \\(5\\).",
+     "The general term of \\((a+b)^{n}\\) is \\(T_{r}=\\binom{n}{r}a^{n-r}b^{r}\\)."
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-009",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "approximation",
+   "prompt": "Use the first three terms of the binomial expansion to find \\((1+0.03)^{18}\\) approximately.",
+   "explanation": "\\((1+x)^{18}\\approx1+18 x+153 x^{2}\\) with \\(x=0.03\\): \\(1+0.54+0.1377=1.6777\\).",
+   "payload": {
+    "options": [
+     "1.4023",
+     "1.54",
+     "1.699732",
+     "1.6777"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-010",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "inequality-induction",
+   "prompt": "Find the smallest positive integer \\(n_{0}\\) such that \\(2^{n}>n^{4}\\) for every \\(n\\ge n_{0}\\).",
+   "explanation": "At \\(n=16\\) the values are \\(65536\\) and \\(65536\\), so they are equal; at \\(n=17\\) we get \\(131072>83521\\), and the inductive step then keeps it true for every larger \\(n\\). So the basis step starts at \\(n=17\\).",
+   "payload": {
+    "options": [
+     "17",
+     "27",
+     "34",
+     "16"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-011",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{9}{4}\\).",
+   "explanation": "\\(\\binom{9}{4}=\\frac{9\\times8\\times7\\times6}{4\\times3\\times2\\times1}=126\\)",
+   "payload": {
+    "options": [
+     "126",
+     "1512",
+     "84",
+     "210"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-012",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "induction-steps",
+   "prompt": "For \\(P(n):\\ 1+2+3+\\cdots+n=\\frac{n \\left(n + 1\\right)}{2}\\), what is the value of each side when \\(n=4\\)?",
+   "explanation": "Put \\(n=4\\) in the right side: \\(10\\). The left side (sum of the first \\(4\\) terms) gives the same value \\(10\\).",
+   "payload": {
+    "options": [
+     "9",
+     "15",
+     "14",
+     "10"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-013",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "middle-term",
+   "prompt": "Which term is the middle term in the expansion of \\((a+b)^{16}\\)?",
+   "explanation": "There are \\(16+1=17\\) terms (an odd number), so the middle one is the \\(\\frac{16}{2}+1=9\\)th term.",
+   "payload": {
+    "options": [
+     "10th",
+     "11th",
+     "8th",
+     "9th"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-014",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((a+b)^{9}\\)?",
+   "explanation": "\\((a+b)^{9}\\) has \\(9+1=10\\) terms.",
+   "payload": {
+    "options": [
+     "20",
+     "9",
+     "10",
+     "5"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-015",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "series-range",
+   "prompt": "For which values of \\(x\\) is the binomial series of \\((3-5x)^{-\\frac{3}{2}}\\) valid?",
+   "explanation": "Write the bracket as \\(3\\left(1-\\frac{5}{3}x\\right)\\). The binomial series needs the second term to be smaller than 1 in size: \\(\\left|\\frac{5}{3}x\\right|<1\\), that is \\(|x|<\\frac{3}{5}\\).",
+   "payload": {
+    "options": [
+     "\\(|x|<\\frac{5}{3}\\)",
+     "\\(|x|<\\frac{4}{5}\\)",
+     "\\(|x|<\\frac{3}{5}\\)",
+     "\\(|x|<\\frac{1}{2}\\)"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-016",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "induction-concepts",
+   "prompt": "Pick the correct statement about mathematical induction.",
+   "explanation": "This statement is correct. It is true for \\(n=1\\) and the inductive step works.",
+   "payload": {
+    "options": [
+     "The inductive step for \\(1^{2}+2^{2}+\\cdots+n^{2}\\) adds \\(k^{2}\\) to both sides of \\(P(k)\\).",
+     "For the statement \\(n!>2^{n}\\) the basis step can be checked at \\(n=1\\).",
+     "In a proof by induction we may skip the basis step if the inductive step is proved.",
+     "The statement \\(1^{3}+2^{3}+\\cdots+n^{3}=\\left(\\frac{n(n+1)}{2}\\right)^{2}\\) can be proved by induction."
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-017",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "middle-term",
+   "prompt": "Find the middle term of \\((x+2)^{6}\\).",
+   "explanation": "The middle term is the \\(4\\)th term: \\(\\binom{6}{3}x^{3}(2)^{3}=160x^{3}\\)",
+   "payload": {
+    "options": [
+     "\\(60x^{4}\\)",
+     "\\(160x^{3}\\)",
+     "\\(20x^{3}\\)",
+     "\\(240x^{2}\\)"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-018",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((3x+1)^{8}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((3+1)^{8}=65536\\).",
+   "payload": {
+    "options": [
+     "6561",
+     "6562",
+     "16384",
+     "65536"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-019",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "general-term",
+   "prompt": "Find the 8th term in the expansion of \\((x-1)^{8}\\) in descending powers of \\(x\\).",
+   "explanation": "\\(T_{8}=\\binom{8}{7}x^{1}(-1)^{7}=-8x\\)",
+   "payload": {
+    "options": [
+     "\\(-8x\\)",
+     "\\(1\\)",
+     "\\(-8x^{7}\\)",
+     "\\(28x^{2}\\)"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-020",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(13^{564}\\)?",
+   "explanation": "The last digit of \\(13\\) is \\(3\\); its powers end in \\(3,9,7,1\\) and repeat (cyclicity \\(4\\)). \\(564=4\\times141+0\\), so take place \\(4\\): last digit \\(1\\).",
+   "payload": {
+    "options": [
+     "7",
+     "9",
+     "5",
+     "1"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-021",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1^{3}+2^{3}+3^{3}+\\cdots+8^{3}\\).",
+   "explanation": "\\(S_{n}=\\left[\\frac{n(n+1)}{2}\\right]^{2}\\ \\text{with}\\ n=8:\\ S=1296\\)",
+   "payload": {
+    "options": [
+     "784",
+     "1304",
+     "2025",
+     "1296"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-022",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "series-concepts",
+   "prompt": "Choose the true statement about the binomial series.",
+   "explanation": "This statement is correct. The coefficient of \\(x^{r}\\) is \\((-1)^{r}(r+1)\\).",
+   "payload": {
+    "options": [
+     "The series for \\((1+x)^{-2}\\) stops after three terms.",
+     "The coefficient of \\(x^{3}\\) in the expansion of \\((1+x)^{1/2}\\) is \\(-\\frac{1}{16}\\).",
+     "For non-integer \\(n\\) we can expand \\((a+bx)^{n}\\) directly without taking \\(a\\) out as a factor.",
+     "The expansion of \\((1+x)^{-2}\\) is \\(1-2x+3x^{2}-4x^{3}+\\cdots\\)."
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-023",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(22^{850}\\)?",
+   "explanation": "The last digit of \\(22\\) is \\(2\\); its powers end in \\(2,4,8,6\\) and repeat (cyclicity \\(4\\)). \\(850=4\\times212+2\\), so take place \\(2\\): last digit \\(4\\).",
+   "payload": {
+    "options": [
+     "5",
+     "6",
+     "4",
+     "2"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-024",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "induction-steps",
+   "prompt": "For \\(P(n):\\ 1^{2}+2^{2}+3^{2}+\\cdots+n^{2}=\\frac{n \\left(n + 1\\right) \\left(2 n + 1\\right)}{6}\\), what is the value of each side when \\(n=3\\)?",
+   "explanation": "Put \\(n=3\\) in the right side: \\(14\\). The left side (sum of the first \\(3\\) terms) gives the same value \\(14\\).",
+   "payload": {
+    "options": [
+     "30",
+     "14",
+     "15",
+     "28"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-025",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1^{2}+3^{2}+5^{2}+\\cdots+15^{2}\\).",
+   "explanation": "\\(S_{n}=\\frac{n(2n-1)(2n+1)}{3}\\ \\text{with}\\ n=8:\\ S=680\\)",
+   "payload": {
+    "options": [
+     "680",
+     "688",
+     "1360",
+     "969"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-026",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1^{2}+2^{2}+3^{2}+\\cdots+5^{2}\\).",
+   "explanation": "\\(S_{n}=\\frac{n(n+1)(2n+1)}{6}\\ \\text{with}\\ n=5:\\ S=55\\)",
+   "payload": {
+    "options": [
+     "60",
+     "91",
+     "54",
+     "55"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-027",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{15}{6}\\).",
+   "explanation": "\\(\\binom{15}{6}=\\frac{15\\times14\\times13\\times12\\times11\\times10}{6\\times5\\times4\\times3\\times2\\times1}=5005\\)",
+   "payload": {
+    "options": [
+     "5005",
+     "3003",
+     "8008",
+     "6435"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-028",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{13}{2}\\).",
+   "explanation": "\\(\\binom{13}{2}=\\frac{13\\times12}{2\\times1}=78\\)",
+   "payload": {
+    "options": [
+     "91",
+     "78",
+     "13",
+     "169"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-029",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "remainder-binomial",
+   "prompt": "Find the remainder when \\(5^{107}\\) is divided by \\(21\\).",
+   "explanation": "\\(5^{3}=125=21\\times6-1\\). Write \\(107=3\\times35+2\\), so \\(5^{107}=(126-1)^{35}\\cdot5^{2}\\). By the binomial theorem every term of the bracket except the last is a multiple of \\(21\\), so the remainder comes from \\((-1)^{35}\\cdot5^{2}\\) = \\(-25\\), which leaves remainder \\(17\\).",
+   "payload": {
+    "options": [
+     "17",
+     "5",
+     "19",
+     "16"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-030",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((x+5)^{4}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((1+5)^{4}=1296\\).",
+   "payload": {
+    "options": [
+     "7776",
+     "1296",
+     "625",
+     "626"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-031",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "remainder-binomial",
+   "prompt": "Find the remainder when \\(5^{267}\\) is divided by \\(11\\).",
+   "explanation": "\\(5^{5}=3125=11\\times284+1\\). Write \\(267=5\\times53+2\\), so \\(5^{267}=(3124+1)^{53}\\cdot5^{2}\\). By the binomial theorem every term of the bracket except the last is a multiple of \\(11\\), so the remainder comes from \\(1\\cdot5^{2}\\) = \\(25\\), which leaves remainder \\(3\\).",
+   "payload": {
+    "options": [
+     "3",
+     "8",
+     "2",
+     "5"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-032",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "pascal-rule",
+   "prompt": "In Pascal's triangle two neighbouring entries of row \\(12\\) are \\(792\\) and \\(924\\). What is the entry directly below them in row \\(13\\)?",
+   "explanation": "\\(792+924=1716\\ \\ (\\text{Pascal's rule: }\\binom{12}{5}+\\binom{12}{6}=\\binom{13}{6})\\)",
+   "payload": {
+    "options": [
+     "2508",
+     "792",
+     "1848",
+     "1716"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-033",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "series-concepts",
+   "prompt": "Only one statement about the binomial series is false. Which one?",
+   "explanation": "This statement is not correct. The binomial series is stated for \\((1+y)^{n}\\), so we first write \\(a^{n}\\left(1+\\frac{b}{a}x\\right)^{n}\\).",
+   "payload": {
+    "options": [
+     "The expansion of \\((1+x)^{1/2}\\) begins \\(1+\\frac{x}{2}-\\frac{x^{2}}{8}+\\cdots\\).",
+     "For non-integer \\(n\\) we can expand \\((a+bx)^{n}\\) directly without taking \\(a\\) out as a factor.",
+     "The coefficient of \\(x^{2}\\) in the expansion of \\((1+x)^{-3}\\) is \\(6\\).",
+     "The series of \\((2+x)^{-1}\\) in powers of \\(x\\) is valid for \\(|x|<2\\)."
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-034",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "binomial-concepts",
+   "prompt": "Only one statement about the binomial theorem and Pascal's triangle is true. Which one?",
+   "explanation": "This statement is correct. This gives the value of \\(r\\).",
+   "payload": {
+    "options": [
+     "In Pascal's triangle each entry is the product of the two entries above it.",
+     "The binomial theorem for a positive integer index gives an infinite series.",
+     "To find the term independent of \\(x\\) we put the power of \\(x\\) in \\(T_{r+1}\\) equal to \\(0\\).",
+     "The sum of the binomial coefficients of \\((1+x)^{n}\\) is \\(n^{2}\\)."
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-035",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(4^{860}\\)?",
+   "explanation": "The last digit of \\(4\\) is \\(4\\); its powers end in \\(4,6\\) and repeat (cyclicity \\(2\\)). \\(860=2\\times430+0\\), so take place \\(2\\): last digit \\(6\\).",
+   "payload": {
+    "options": [
+     "0",
+     "7",
+     "8",
+     "6"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-036",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "induction-concepts",
+   "prompt": "Which of the following statements about mathematical induction is NOT correct?",
+   "explanation": "This statement is not correct. It is used for statements about integers \\(n\\) starting at a given value.",
+   "payload": {
+    "options": [
+     "In the inductive step we assume \\(P(k)\\) is true and prove that \\(P(k+1)\\) is true.",
+     "Mathematical induction is used to prove statements about all real numbers.",
+     "The expression \\(n^{3}-n\\) is divisible by 6 for every positive integer \\(n\\).",
+     "If the basis step and the inductive step are both proved, the statement is true for every integer from the starting value onwards."
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-037",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "pascal-rule",
+   "prompt": "In Pascal's triangle two neighbouring entries of row \\(8\\) are \\(28\\) and \\(56\\). What is the entry directly below them in row \\(9\\)?",
+   "explanation": "\\(28+56=84\\ \\ (\\text{Pascal's rule: }\\binom{8}{2}+\\binom{8}{3}=\\binom{9}{3})\\)",
+   "payload": {
+    "options": [
+     "112",
+     "92",
+     "1568",
+     "84"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-038",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "applications-concepts",
+   "prompt": "Which of the following statements about last digits and remainders is correct?",
+   "explanation": "This statement is correct. \\((10+1)^{n}-1\\) leaves only multiples of 10.",
+   "payload": {
+    "options": [
+     "The unit digit of \\(7^{100}\\) is \\(7\\).",
+     "Any power of a number ending in 4 always ends in 4.",
+     "The number \\(11^{n}-1\\) is divisible by 10 for every positive integer \\(n\\).",
+     "The unit digit of \\(13^{n}\\) is \\(3\\) whenever \\(n\\) is a multiple of 4."
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-039",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{4}\\) in the expansion of \\((-x+3)^{9}\\).",
+   "explanation": "\\(\\text{coefficient of }x^{4}=\\binom{9}{4}(-1)^{4}(3)^{5}=126\\cdot1\\cdot243=30618\\)",
+   "payload": {
+    "options": [
+     "10206",
+     "-10206",
+     "30618",
+     "2016"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-040",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "induction-concepts",
+   "prompt": "Which one of these statements about mathematical induction is true?",
+   "explanation": "This statement is correct. It is proved by induction.",
+   "payload": {
+    "options": [
+     "If a statement is checked for \\(n=1,2,\\ldots,100\\) it is proved for every positive integer \\(n\\).",
+     "The expression \\(n^{2}+n\\) is odd for every positive integer \\(n\\).",
+     "The formula \\(1^{2}+2^{2}+\\cdots+n^{2}=\\frac{n(n+1)(2n+1)}{6}\\) holds for every positive integer \\(n\\).",
+     "The sum \\(1+2+3+\\cdots+n\\) is equal to \\(n^{2}\\)."
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-041",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "induction-steps",
+   "prompt": "In proving \\(P(n):\\ \\frac{1}{1\\cdot2}+\\frac{1}{2\\cdot3}+\\cdots+\\frac{1}{n \\left(n + 1\\right)}=\\frac{n}{n + 1}\\) by induction, which term is added to both sides of \\(P(k)\\) to reach \\(P(k+1)\\)?",
+   "explanation": "The new last term of the left side is the \\((k+1)\\)th term \\(\\frac{1}{\\left(k + 1\\right) \\left(k + 2\\right)}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{1}{k \\left(k + 1\\right)}\\)",
+     "\\(\\frac{1}{\\left(k + 1\\right) \\left(k + 2\\right)}\\)",
+     "\\(\\frac{1}{\\left(k + 2\\right) \\left(k + 3\\right)}\\)",
+     "\\(\\frac{k + 1}{k + 2}\\)"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-042",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "induction-concepts",
+   "prompt": "Choose the false statement about mathematical induction.",
+   "explanation": "This statement is not correct. The basis step is also required.",
+   "payload": {
+    "options": [
+     "To prove \\(2^{n}>n^{2}\\) for \\(n\\ge5\\) by induction, the basis step is taken at \\(n=5\\).",
+     "If \\(P(k)\\Rightarrow P(k+1)\\) is proved, then \\(P(n)\\) is true for all \\(n\\) without checking any starting value.",
+     "The sum \\(1+3+5+\\cdots+(2n-1)\\) of the first \\(n\\) odd numbers equals \\(n^{2}\\).",
+     "Induction can only prove a statement that is already given; it does not discover the formula for us."
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-043",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{32}{x}=\\binom{32}{12}\\) and \\(x\\ne 12\\), find \\(x\\).",
+   "explanation": "\\(\\binom{32}{x}=\\binom{32}{12}\\Rightarrow x=12\\ \\text{or}\\ x=32-12=20\\)",
+   "payload": {
+    "options": [
+     "20",
+     "21",
+     "22",
+     "40"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-044",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1+2+3+\\cdots+18\\).",
+   "explanation": "\\(S_{n}=\\frac{n(n+1)}{2}\\ \\text{with}\\ n=18:\\ S=171\\)",
+   "payload": {
+    "options": [
+     "153",
+     "189",
+     "171",
+     "172"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-045",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the value of \\(\\binom{12}{0}-\\binom{12}{1}+\\binom{12}{2}-\\cdots+(-1)^{12}\\binom{12}{12}\\).",
+   "explanation": "Put \\(x=-1\\) in \\((1+x)^{12}\\): \\((1-1)^{12}=0\\).",
+   "payload": {
+    "options": [
+     "2048",
+     "0",
+     "4096",
+     "1"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-046",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{n}{15}=\\binom{n}{18}\\), find \\(n\\).",
+   "explanation": "\\(\\binom{n}{15}=\\binom{n}{18}\\Rightarrow n=15+18=33\\)",
+   "payload": {
+    "options": [
+     "33",
+     "34",
+     "3",
+     "66"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-047",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{5}\\) in the expansion of \\((-x+3)^{7}\\).",
+   "explanation": "\\(\\text{coefficient of }x^{5}=\\binom{7}{5}(-1)^{5}(3)^{2}=21\\cdot-1\\cdot9=-189\\)",
+   "payload": {
+    "options": [
+     "-189",
+     "672",
+     "189",
+     "5103"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-048",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{5}{2}\\).",
+   "explanation": "\\(\\binom{5}{2}=\\frac{5\\times4}{2\\times1}=10\\)",
+   "payload": {
+    "options": [
+     "20",
+     "10",
+     "15",
+     "25"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-049",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "remainder-binomial",
+   "prompt": "Find the remainder when \\(9^{94}\\) is divided by \\(25\\).",
+   "explanation": "\\(9^{5}=59049=25\\times2362-1\\). Write \\(94=5\\times18+4\\), so \\(9^{94}=(59050-1)^{18}\\cdot9^{4}\\). By the binomial theorem every term of the bracket except the last is a multiple of \\(25\\), so the remainder comes from \\((-1)^{18}\\cdot9^{4}\\) = \\(6561\\), which leaves remainder \\(11\\).",
+   "payload": {
+    "options": [
+     "12",
+     "9",
+     "11",
+     "10"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-050",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "general-term",
+   "prompt": "Find the 7th term in the expansion of \\((x+3)^{7}\\) in descending powers of \\(x\\).",
+   "explanation": "\\(T_{7}=\\binom{7}{6}x^{1}(3)^{6}=5103x\\)",
+   "payload": {
+    "options": [
+     "\\(5103x\\)",
+     "\\(2187\\)",
+     "\\(5103x^{6}\\)",
+     "\\(5103x^{2}\\)"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-051",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((a+b)^{11}\\)?",
+   "explanation": "\\((a+b)^{11}\\) has \\(11+1=12\\) terms.",
+   "payload": {
+    "options": [
+     "10",
+     "12",
+     "24",
+     "22"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-052",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{26}{x}=\\binom{26}{6}\\) and \\(x\\ne 6\\), find \\(x\\).",
+   "explanation": "\\(\\binom{26}{x}=\\binom{26}{6}\\Rightarrow x=6\\ \\text{or}\\ x=26-6=20\\)",
+   "payload": {
+    "options": [
+     "20",
+     "6",
+     "21",
+     "22"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-053",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "binomial-concepts",
+   "prompt": "Pick the correct statement about the binomial theorem and Pascal's triangle.",
+   "explanation": "This statement is correct. The sign of \\(T_{r+1}\\) is \\((-1)^{r}\\).",
+   "payload": {
+    "options": [
+     "The terms of \\((a-b)^{n}\\) have alternating signs.",
+     "We have \\(\\binom{n}{r}=\\binom{n}{n+r}\\).",
+     "The 4th term of \\((a+b)^{n}\\) is \\(\\binom{n}{4}a^{n-4}b^{4}\\).",
+     "The greatest coefficient in \\((1+x)^{10}\\) is \\(\\binom{10}{4}\\)."
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-054",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "pascal-rule",
+   "prompt": "In Pascal's triangle two neighbouring entries of row \\(8\\) are \\(56\\) and \\(70\\). What is the entry directly below them in row \\(9\\)?",
+   "explanation": "\\(56+70=126\\ \\ (\\text{Pascal's rule: }\\binom{8}{3}+\\binom{8}{4}=\\binom{9}{4})\\)",
+   "payload": {
+    "options": [
+     "126",
+     "134",
+     "182",
+     "3920"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-055",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "series-coefficient",
+   "prompt": "Find the coefficient of \\(x^{2}\\) in the expansion of \\((1-2x)^{-3}\\).",
+   "explanation": "\\(\\frac{\\left(-3\\right)\\times\\left(-4\\right)}{2!}(-2)^{2}=24\\) (the coefficient of \\(x^{2}\\) is \\(\\frac{n(n-1)\\cdots(n-1)}{2!}a^{2}\\) with \\(n=-3,\\ a=-2\\)).",
+   "payload": {
+    "options": [
+     "24",
+     "25",
+     "6",
+     "-12"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-056",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{2}\\) in the expansion of \\((2x+3)^{6}\\).",
+   "explanation": "\\(\\text{coefficient of }x^{2}=\\binom{6}{2}(2)^{2}(3)^{4}=15\\cdot4\\cdot81=4860\\)",
+   "payload": {
+    "options": [
+     "-4860",
+     "4860",
+     "60",
+     "2160"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-057",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{16}{14}\\).",
+   "explanation": "\\(\\binom{16}{14}=\\binom{16}{2}=\\frac{16\\times15}{2\\times1}=120\\)",
+   "payload": {
+    "options": [
+     "680",
+     "560",
+     "16",
+     "120"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-058",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "applications-concepts",
+   "prompt": "Only one statement about last digits and remainders is false. Which one?",
+   "explanation": "This statement is not correct. The remainder is \\(1\\), so the fractional part is \\(\\frac{1}{31}\\).",
+   "payload": {
+    "options": [
+     "The unit digit of \\(2^{100}\\) is \\(6\\).",
+     "The last digits of the powers of 2 repeat in the cycle \\(2,4,8,6\\).",
+     "The fractional part of \\(\\frac{2^{510}}{31}\\) is \\(\\frac{2}{31}\\).",
+     "Every power of 5 ends in 5."
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-059",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "divisibility",
+   "prompt": "What is the largest positive integer that divides \\(n(n+1)(2n+1)\\) for every positive integer \\(n\\)?",
+   "explanation": "Try small values: \\(6,\\ 30,\\ 84,\\ 180\\) have greatest common divisor \\(6\\); induction or the binomial theorem shows that \\(6\\) always divides it.",
+   "payload": {
+    "options": [
+     "3",
+     "7",
+     "5",
+     "6"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-060",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "series-coefficient",
+   "prompt": "Find the coefficient of \\(x^{2}\\) in the expansion of \\((1+3x)^{\\frac{1}{2}}\\).",
+   "explanation": "\\(\\frac{\\left(\\frac{1}{2}\\right)\\times\\left(-\\frac{1}{2}\\right)}{2!}(3)^{2}=-\\frac{9}{8}\\) (the coefficient of \\(x^{2}\\) is \\(\\frac{n(n-1)\\cdots(n-1)}{2!}a^{2}\\) with \\(n=\\frac{1}{2},\\ a=3\\)).",
+   "payload": {
+    "options": [
+     "\\(\\frac{27}{16}\\)",
+     "\\(-\\frac{9}{8}\\)",
+     "\\(-\\frac{3}{8}\\)",
+     "\\(-\\frac{9}{4}\\)"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-061",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "series-coefficient",
+   "prompt": "Find the coefficient of \\(x^{4}\\) in the expansion of \\((1-3x)^{-\\frac{1}{4}}\\).",
+   "explanation": "\\(\\frac{\\left(-\\frac{1}{4}\\right)\\times\\left(-\\frac{5}{4}\\right)\\times\\left(-\\frac{9}{4}\\right)\\times\\left(-\\frac{13}{4}\\right)}{4!}(-3)^{4}=\\frac{15795}{2048}\\) (the coefficient of \\(x^{4}\\) is \\(\\frac{n(n-1)\\cdots(n-3)}{4!}a^{4}\\) with \\(n=-\\frac{1}{4},\\ a=-3\\)).",
+   "payload": {
+    "options": [
+     "\\(\\frac{15795}{1024}\\)",
+     "\\(-\\frac{15795}{2048}\\)",
+     "\\(\\frac{15795}{2048}\\)",
+     "\\(\\frac{17843}{2048}\\)"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-062",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "general-term",
+   "prompt": "Find the 2nd term in the expansion of \\((x+1)^{4}\\) in descending powers of \\(x\\).",
+   "explanation": "\\(T_{2}=\\binom{4}{1}x^{3}(1)^{1}=4x^{3}\\)",
+   "payload": {
+    "options": [
+     "\\(4x^{3}\\)",
+     "\\(6x^{2}\\)",
+     "\\(x^{4}\\)",
+     "\\(4x\\)"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-063",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "induction-steps",
+   "prompt": "For \\(P(n):\\ 1^{2}+3^{2}+5^{2}+\\cdots+\\left(2 n - 1\\right)^{2}=\\frac{n \\left(2 n - 1\\right) \\left(2 n + 1\\right)}{3}\\), what is the value of each side when \\(n=5\\)?",
+   "explanation": "Put \\(n=5\\) in the right side: \\(165\\). The left side (sum of the first \\(5\\) terms) gives the same value \\(165\\).",
+   "payload": {
+    "options": [
+     "164",
+     "165",
+     "166",
+     "286"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-064",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "general-term",
+   "prompt": "Find the 2nd term in the expansion of \\((x+3)^{6}\\) in descending powers of \\(x\\).",
+   "explanation": "\\(T_{2}=\\binom{6}{1}x^{5}(3)^{1}=18x^{5}\\)",
+   "payload": {
+    "options": [
+     "\\(18x^{5}\\)",
+     "\\(1458x\\)",
+     "\\(x^{6}\\)",
+     "\\(135x^{4}\\)"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-065",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{16}{6}\\).",
+   "explanation": "\\(\\binom{16}{6}=\\frac{16\\times15\\times14\\times13\\times12\\times11}{6\\times5\\times4\\times3\\times2\\times1}=8008\\)",
+   "payload": {
+    "options": [
+     "4368",
+     "12376",
+     "8008",
+     "11440"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-066",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{n}{3}=\\binom{n}{10}\\), find \\(n\\).",
+   "explanation": "\\(\\binom{n}{3}=\\binom{n}{10}\\Rightarrow n=3+10=13\\)",
+   "payload": {
+    "options": [
+     "7",
+     "26",
+     "13",
+     "12"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-067",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "independent-term",
+   "prompt": "Find the term independent of \\(x\\) in the expansion of \\(\\left(x^{2}-\\frac{2}{x^{2}}\\right)^{12}\\).",
+   "explanation": "\\(T_{r+1}=\\binom{12}{r}c^{r}x^{24-4r}\\ \\ (c=-2)\\Rightarrow 24-4r=0,\\ r=6\\) so the term is \\(T_{7}=\\binom{12}{6}(-2)^{6}=59136\\).",
+   "payload": {
+    "options": [
+     "-59136",
+     "59136",
+     "-101376",
+     "924"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-068",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{2}\\) in the expansion of \\((x+4)^{7}\\).",
+   "explanation": "\\(\\binom{7}{2}(4)^{5}=21\\times1024=21504\\)",
+   "payload": {
+    "options": [
+     "1045",
+     "8960",
+     "21504",
+     "336"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-069",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "induction-concepts",
+   "prompt": "Identify the false statement about mathematical induction.",
+   "explanation": "This statement is not correct. That is the sum of the first \\(n\\) numbers; the sum of cubes is the square of it, \\(\\left(\\frac{n(n+1)}{2}\\right)^{2}\\).",
+   "payload": {
+    "options": [
+     "The inductive step for \\(1+2+\\cdots+n=\\frac{n(n+1)}{2}\\) adds \\((k+1)\\) to both sides of \\(P(k)\\).",
+     "To prove \\(2^{n}>n^{2}\\) for \\(n\\ge5\\) by induction, the basis step is taken at \\(n=5\\).",
+     "The formula \\(1^{3}+2^{3}+\\cdots+n^{3}=\\frac{n(n+1)}{2}\\) is correct.",
+     "The sum \\(1+3+5+\\cdots+(2n-1)\\) of the first \\(n\\) odd numbers equals \\(n^{2}\\)."
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-070",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{40}{x}=\\binom{40}{8}\\) and \\(x\\ne 8\\), find \\(x\\).",
+   "explanation": "\\(\\binom{40}{x}=\\binom{40}{8}\\Rightarrow x=8\\ \\text{or}\\ x=40-8=32\\)",
+   "payload": {
+    "options": [
+     "64",
+     "32",
+     "34",
+     "40"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-071",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "binomial-concepts",
+   "prompt": "Pick the incorrect statement about the binomial theorem and Pascal's triangle.",
+   "explanation": "This statement is not correct. We put the power of \\(x\\) equal to zero and solve for \\(r\\).",
+   "payload": {
+    "options": [
+     "Pascal's rule states that \\(\\binom{n}{r-1}+\\binom{n}{r}=\\binom{n+1}{r}\\).",
+     "The term independent of \\(x\\) is found by putting \\(r=0\\) in the general term.",
+     "The middle term of \\((1+x)^{6}\\) is \\(20x^{3}\\).",
+     "In every term of the expansion of \\((a+b)^{n}\\) the powers of \\(a\\) and \\(b\\) add up to \\(n\\)."
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-072",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "induction-steps",
+   "prompt": "Let \\(P(n):\\ 1+2+2^{2}+\\cdots+2^{n - 1}=2^{n} - 1\\). Which of the following is the statement \\(P(k+1)\\)?",
+   "explanation": "Replace every \\(n\\) by \\(k+1\\) on both sides, including the last term of the left side.",
+   "payload": {
+    "options": [
+     "\\(1+2+2^{2}+\\cdots+2^{k}=2^{k + 1} - 1\\)",
+     "\\(1+2+2^{2}+\\cdots+2^{k}=2^{k} - 1\\)",
+     "\\(1+2+2^{2}+\\cdots+2^{k - 1}=2^{k + 1} - 1\\)",
+     "\\(1+2+2^{2}+\\cdots+2^{k + 1}=2^{k + 2} - 1\\)"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-073",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "applications-concepts",
+   "prompt": "Which statement about last digits and remainders holds?",
+   "explanation": "This statement is correct. \\(10^{n}-1=(9+1)^{n}-1\\) and every term of the binomial expansion left over has a factor 9.",
+   "payload": {
+    "options": [
+     "If the remainder on dividing the exponent by the cyclicity is 0, the last digit is the first digit of the cycle.",
+     "The expression \\(4^{n}+15n-1\\) is divisible by 7 for every positive integer \\(n\\).",
+     "The number \\(10^{n}+1\\) is divisible by 9 for every positive integer \\(n\\).",
+     "The number \\(10^{n}-1\\) is divisible by 9 for every positive integer \\(n\\)."
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-074",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "applications-concepts",
+   "prompt": "Which of these is a correct fact about last digits and remainders?",
+   "explanation": "This statement is correct. Write \\(4^{n}=(1+3)^{n}\\) and expand.",
+   "payload": {
+    "options": [
+     "The unit digit of \\(7^{100}\\) is \\(7\\).",
+     "The expression \\(4^{n}+15n-1\\) is divisible by 9 for every positive integer \\(n\\).",
+     "Any power of a number ending in 4 always ends in 4.",
+     "The unit digit of \\(13^{n}\\) is \\(3\\) whenever \\(n\\) is a multiple of 4."
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-075",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "inequality-induction",
+   "prompt": "Find the smallest positive integer \\(n_{0}\\) such that \\(8^{n}>5^{n}+25\\) for every \\(n\\ge n_{0}\\).",
+   "explanation": "At \\(n=1\\) the values are \\(8\\) and \\(30\\), so the inequality fails; at \\(n=2\\) we get \\(64>50\\), and the inductive step then keeps it true for every larger \\(n\\). So the basis step starts at \\(n=2\\).",
+   "payload": {
+    "options": [
+     "0",
+     "2",
+     "1",
+     "5"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-076",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(\\frac{1}{1\\cdot3}+\\frac{1}{3\\cdot5}+\\cdots+\\frac{1}{29\\cdot31}\\).",
+   "explanation": "\\(S_{n}=\\frac{n}{2n+1}\\ \\text{with}\\ n=15:\\ S=\\frac{15}{31}\\)",
+   "payload": {
+    "options": [
+     "\\(\\frac{14}{29}\\)",
+     "\\(-\\frac{16}{31}\\)",
+     "\\(\\frac{46}{31}\\)",
+     "\\(\\frac{15}{31}\\)"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-077",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the value of \\(\\binom{10}{1}+\\binom{10}{2}+\\cdots+\\binom{10}{10}\\).",
+   "explanation": "The full sum is \\(2^{10}\\); remove \\(\\binom{10}{0}=1\\) to get \\(2^{10}-1=1023\\).",
+   "payload": {
+    "options": [
+     "1021",
+     "1022",
+     "1023",
+     "2046"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-078",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1\\cdot2\\cdot3+2\\cdot3\\cdot4+\\cdots+9\\cdot10\\cdot11\\).",
+   "explanation": "\\(S_{n}=\\frac{n(n+1)(n+2)(n+3)}{4}\\ \\text{with}\\ n=9:\\ S=2970\\)",
+   "payload": {
+    "options": [
+     "2969",
+     "1980",
+     "4290",
+     "2970"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-079",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{35}+(x-y)^{35}\\) after simplification?",
+   "explanation": "The terms with odd powers of \\(y\\) cancel and the others double, so \\(\\lfloor 35/2\\rfloor+1=18\\) terms remain.",
+   "payload": {
+    "options": [
+     "16",
+     "20",
+     "35",
+     "18"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-080",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{3}\\) in the expansion of \\((x+3)^{12}\\).",
+   "explanation": "\\(\\binom{12}{3}(3)^{9}=220\\times19683=4330260\\)",
+   "payload": {
+    "options": [
+     "3247695",
+     "19903",
+     "4330260",
+     "5940"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-081",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "independent-term",
+   "prompt": "Find the term independent of \\(x\\) in the expansion of \\(\\left(x^{3}+\\frac{2}{x^{2}}\\right)^{5}\\).",
+   "explanation": "\\(T_{r+1}=\\binom{5}{r}c^{r}x^{15-5r}\\ \\ (c=2)\\Rightarrow 15-5r=0,\\ r=3\\) so the term is \\(T_{4}=\\binom{5}{3}(2)^{3}=80\\).",
+   "payload": {
+    "options": [
+     "80",
+     "10",
+     "40",
+     "-80"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-082",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "inequality-induction",
+   "prompt": "Find the smallest positive integer \\(n_{0}\\) such that \\(2^{n}>5n\\) for every \\(n\\ge n_{0}\\).",
+   "explanation": "At \\(n=4\\) the values are \\(16\\) and \\(20\\), so the inequality fails; at \\(n=5\\) we get \\(32>25\\), and the inductive step then keeps it true for every larger \\(n\\). So the basis step starts at \\(n=5\\).",
+   "payload": {
+    "options": [
+     "10",
+     "5",
+     "3",
+     "4"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-083",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "independent-term",
+   "prompt": "Find the term independent of \\(x\\) in the expansion of \\(\\left(x^{3}+\\frac{2}{x^{3}}\\right)^{18}\\).",
+   "explanation": "\\(T_{r+1}=\\binom{18}{r}c^{r}x^{54-6r}\\ \\ (c=2)\\Rightarrow 54-6r=0,\\ r=9\\) so the term is \\(T_{10}=\\binom{18}{9}(2)^{9}=24893440\\).",
+   "payload": {
+    "options": [
+     "48620",
+     "44808192",
+     "11202048",
+     "24893440"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-084",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the sum of the binomial coefficients at the even places (r = 0, 2, 4, ...) of \\((1+x)^{14}\\).",
+   "explanation": "Even-place sum = odd-place sum, and together they make \\(2^{14}\\), so each is \\(2^{13}=8192\\).",
+   "payload": {
+    "options": [
+     "8194",
+     "8192",
+     "8193",
+     "16384"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-085",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{20}{x}=\\binom{20}{4}\\) and \\(x\\ne 4\\), find \\(x\\).",
+   "explanation": "\\(\\binom{20}{x}=\\binom{20}{4}\\Rightarrow x=4\\ \\text{or}\\ x=20-4=16\\)",
+   "payload": {
+    "options": [
+     "15",
+     "20",
+     "17",
+     "16"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-086",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "divisibility",
+   "prompt": "What is the largest positive integer that divides \\(8^{n}-1\\) for every positive integer \\(n\\)?",
+   "explanation": "Try small values: \\(7,\\ 63,\\ 511,\\ 4095\\) have greatest common divisor \\(7\\); induction or the binomial theorem shows that \\(7\\) always divides it.",
+   "payload": {
+    "options": [
+     "7",
+     "9",
+     "14",
+     "6"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-087",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "independent-term",
+   "prompt": "Find the term independent of \\(x\\) in the expansion of \\(\\left(x^{4}-\\frac{2}{x}\\right)^{5}\\).",
+   "explanation": "\\(T_{r+1}=\\binom{5}{r}c^{r}x^{20-5r}\\ \\ (c=-2)\\Rightarrow 20-5r=0,\\ r=4\\) so the term is \\(T_{5}=\\binom{5}{4}(-2)^{4}=80\\).",
+   "payload": {
+    "options": [
+     "5",
+     "-10",
+     "80",
+     "-80"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-088",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "series-coefficient",
+   "prompt": "Find the coefficient of \\(x^{2}\\) in the expansion of \\((1-3x)^{-\\frac{1}{2}}\\).",
+   "explanation": "\\(\\frac{\\left(-\\frac{1}{2}\\right)\\times\\left(-\\frac{3}{2}\\right)}{2!}(-3)^{2}=\\frac{27}{8}\\) (the coefficient of \\(x^{2}\\) is \\(\\frac{n(n-1)\\cdots(n-1)}{2!}a^{2}\\) with \\(n=-\\frac{1}{2},\\ a=-3\\)).",
+   "payload": {
+    "options": [
+     "\\(\\frac{27}{8}\\)",
+     "\\(\\frac{135}{16}\\)",
+     "\\(\\frac{3}{2}\\)",
+     "\\(-\\frac{9}{8}\\)"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-089",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the value of \\(\\binom{16}{0}-\\binom{16}{1}+\\binom{16}{2}-\\cdots+(-1)^{16}\\binom{16}{16}\\).",
+   "explanation": "Put \\(x=-1\\) in \\((1+x)^{16}\\): \\((1-1)^{16}=0\\).",
+   "payload": {
+    "options": [
+     "32768",
+     "0",
+     "1",
+     "65536"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-090",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{7}\\) in the expansion of \\((x-3)^{11}\\).",
+   "explanation": "\\(\\binom{11}{7}(-3)^{4}=330\\times81=26730\\)",
+   "payload": {
+    "options": [
+     "411",
+     "-4455",
+     "26730",
+     "-721710"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-091",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "approximation",
+   "prompt": "Use the first three terms of the binomial series to approximate \\(\\frac{1}{(1+0.05)^{2}}\\).",
+   "explanation": "With \\(x=0.05\\): \\((1+x)^{-2}\\approx1-2x+3x^{2}\\) gives \\(1-0.1+0.0075\\) = \\(0.9075\\).",
+   "payload": {
+    "options": [
+     "1.1075",
+     "0.8925",
+     "0.9075",
+     "0.907"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-092",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{n}{3}=\\binom{n}{16}\\), find \\(n\\).",
+   "explanation": "\\(\\binom{n}{3}=\\binom{n}{16}\\Rightarrow n=3+16=19\\)",
+   "payload": {
+    "options": [
+     "19",
+     "38",
+     "13",
+     "18"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-093",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{3}\\) in the expansion of \\((1+5x)^{7}\\).",
+   "explanation": "\\(\\binom{7}{3}(5)^{3}=35\\times125=4375\\)",
+   "payload": {
+    "options": [
+     "4375",
+     "175",
+     "21875",
+     "160"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-094",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1+2+4+\\cdots+2^{8}\\).",
+   "explanation": "\\(S_{n}=2^{n}-1\\ \\text{with}\\ n=9:\\ S=511\\)",
+   "payload": {
+    "options": [
+     "511",
+     "1022",
+     "512",
+     "510"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-095",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "induction-concepts",
+   "prompt": "Only one statement about mathematical induction is false. Which one?",
+   "explanation": "This statement is not correct. The basis step is also required.",
+   "payload": {
+    "options": [
+     "Induction is often compared to a row of dominoes: the basis step topples the first one and the inductive step shows each one topples the next.",
+     "In the inductive step we assume \\(P(k)\\) is true and prove that \\(P(k+1)\\) is true.",
+     "If \\(P(k)\\Rightarrow P(k+1)\\) is proved, then \\(P(n)\\) is true for all \\(n\\) without checking any starting value.",
+     "The expression \\(n^{3}-n\\) is divisible by 6 for every positive integer \\(n\\)."
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-096",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "series-concepts",
+   "prompt": "Only one statement about the binomial series is true. Which one?",
+   "explanation": "This statement is correct. The coefficient of \\(x^{2}\\) is \\(\\frac{(-\\frac12)(-\\frac32)}{2}=\\frac38\\).",
+   "payload": {
+    "options": [
+     "The expansion of \\((1+x)^{-1/2}\\) begins \\(1-\\frac{x}{2}+\\frac{x^{2}}{8}-\\cdots\\).",
+     "The series for \\((1+x)^{-2}\\) stops after three terms.",
+     "The coefficient of \\(x^{3}\\) in the expansion of \\((1+x)^{1/2}\\) is \\(-\\frac{1}{16}\\).",
+     "The expansion of \\((1+x)^{-1/2}\\) begins \\(1-\\frac{x}{2}+\\frac{3x^{2}}{8}-\\cdots\\)."
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-097",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "independent-term",
+   "prompt": "Find the term independent of \\(x\\) in the expansion of \\(\\left(x^{2}+\\frac{1}{x}\\right)^{6}\\).",
+   "explanation": "\\(T_{r+1}=\\binom{6}{r}c^{r}x^{12-3r}\\ \\ (c=1)\\Rightarrow 12-3r=0,\\ r=4\\) so the term is \\(T_{5}=\\binom{6}{4}(1)^{4}=15\\).",
+   "payload": {
+    "options": [
+     "-15",
+     "15",
+     "6",
+     "20"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-098",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{12}{10}\\).",
+   "explanation": "\\(\\binom{12}{10}=\\binom{12}{2}=\\frac{12\\times11}{2\\times1}=66\\)",
+   "payload": {
+    "options": [
+     "66",
+     "12",
+     "286",
+     "220"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-099",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "induction-steps",
+   "prompt": "In proving \\(P(n):\\ 1+2+3+\\cdots+n=\\frac{n \\left(n + 1\\right)}{2}\\) by induction, which term is added to both sides of \\(P(k)\\) to reach \\(P(k+1)\\)?",
+   "explanation": "The new last term of the left side is the \\((k+1)\\)th term \\(\\left(k + 1\\right)\\).",
+   "payload": {
+    "options": [
+     "\\(k\\)",
+     "\\(\\frac{\\left(k + 1\\right) \\left(k + 2\\right)}{2}\\)",
+     "\\(\\left(k + 1\\right)\\)",
+     "\\(\\left(k + 2\\right)\\)"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-100",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((a+b)^{35}\\)?",
+   "explanation": "\\((a+b)^{35}\\) has \\(35+1=36\\) terms.",
+   "payload": {
+    "options": [
+     "35",
+     "37",
+     "36",
+     "46"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-101",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{34}{x}=\\binom{34}{10}\\) and \\(x\\ne 10\\), find \\(x\\).",
+   "explanation": "\\(\\binom{34}{x}=\\binom{34}{10}\\Rightarrow x=10\\ \\text{or}\\ x=34-10=24\\)",
+   "payload": {
+    "options": [
+     "26",
+     "24",
+     "25",
+     "23"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-102",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(92^{768}\\)?",
+   "explanation": "The last digit of \\(92\\) is \\(2\\); its powers end in \\(2,4,8,6\\) and repeat (cyclicity \\(4\\)). \\(768=4\\times192+0\\), so take place \\(4\\): last digit \\(6\\).",
+   "payload": {
+    "options": [
+     "4",
+     "2",
+     "8",
+     "6"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-103",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "binomial-concepts",
+   "prompt": "Identify the false statement about the binomial theorem and Pascal's triangle.",
+   "explanation": "This statement is not correct. The signs alternate: \\((a-b)^{3}=a^{3}-3a^{2}b+3ab^{2}-b^{3}\\).",
+   "payload": {
+    "options": [
+     "The coefficient of \\(x^{2}\\) in \\((1+x)^{5}\\) is \\(10\\).",
+     "Every term in the expansion of \\((a-b)^{n}\\) is positive.",
+     "In Pascal's triangle every entry is the sum of the two entries directly above it.",
+     "If \\(n\\) is odd, the expansion of \\((a+b)^{n}\\) has two middle terms."
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-104",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "series-concepts",
+   "prompt": "Which of these is a correct fact about the binomial series?",
+   "explanation": "This statement is correct. Keep only the first two terms of the series.",
+   "payload": {
+    "options": [
+     "For small \\(x\\), \\(\\sqrt{1+x}\\approx1+\\frac{x}{2}\\).",
+     "For \\(|x|\\ge1\\) the series \\(1-x+x^{2}-\\cdots\\) still gives the value of \\(\\frac{1}{1+x}\\).",
+     "The expansion of \\((1+x)^{-1/2}\\) begins \\(1-\\frac{x}{2}+\\frac{x^{2}}{8}-\\cdots\\).",
+     "The series for \\((1+x)^{-2}\\) stops after three terms."
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-105",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "induction-steps",
+   "prompt": "Let \\(P(n):\\ 2+4+6+\\cdots+2 n=n \\left(n + 1\\right)\\). Which of the following is the statement \\(P(k+1)\\)?",
+   "explanation": "Replace every \\(n\\) by \\(k+1\\) on both sides, including the last term of the left side.",
+   "payload": {
+    "options": [
+     "\\(2+4+6+\\cdots+\\left(2 k + 2\\right)=\\left(k + 1\\right) \\left(k + 2\\right)\\)",
+     "\\(2+4+6+\\cdots+\\left(2 k + 4\\right)=\\left(k + 2\\right) \\left(k + 3\\right)\\)",
+     "\\(2+4+6+\\cdots+2 k=\\left(k + 1\\right) \\left(k + 2\\right)\\)",
+     "\\(2+4+6+\\cdots+\\left(2 k + 2\\right)=k \\left(k + 1\\right)\\)"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-106",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "binomial-concepts",
+   "prompt": "Which statement about the binomial theorem and Pascal's triangle holds?",
+   "explanation": "This statement is correct. These are \\(\\binom{5}{0},\\binom{5}{1},\\ldots,\\binom{5}{5}\\).",
+   "payload": {
+    "options": [
+     "The expansion of \\((x+y)^{n}+(x-y)^{n}\\) contains only odd powers of \\(y\\).",
+     "The value of \\(\\binom{n}{0}-\\binom{n}{1}+\\binom{n}{2}-\\cdots+(-1)^{n}\\binom{n}{n}\\) is \\(1\\) for \\(n\\ge1\\).",
+     "Row 5 of Pascal's triangle is \\(1,5,10,10,5,1\\).",
+     "Row 5 of Pascal's triangle is \\(1,5,10,5,1\\)."
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-107",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "inequality-induction",
+   "prompt": "Find the smallest positive integer \\(n_{0}\\) such that \\(n!>6^{n}\\) for every \\(n\\ge n_{0}\\).",
+   "explanation": "At \\(n=13\\) the values are \\(6227020800\\) and \\(13060694016\\), so the inequality fails; at \\(n=14\\) we get \\(87178291200>78364164096\\), and the inductive step then keeps it true for every larger \\(n\\). So the basis step starts at \\(n=14\\).",
+   "payload": {
+    "options": [
+     "13",
+     "16",
+     "14",
+     "24"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-108",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the value of \\(\\binom{13}{0}-\\binom{13}{1}+\\binom{13}{2}-\\cdots+(-1)^{13}\\binom{13}{13}\\).",
+   "explanation": "Put \\(x=-1\\) in \\((1+x)^{13}\\): \\((1-1)^{13}=0\\).",
+   "payload": {
+    "options": [
+     "0",
+     "-1",
+     "1",
+     "8192"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-109",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "independent-term",
+   "prompt": "Find the term independent of \\(x\\) in the expansion of \\(\\left(x-\\frac{2}{x^{2}}\\right)^{9}\\).",
+   "explanation": "\\(T_{r+1}=\\binom{9}{r}c^{r}x^{9-3r}\\ \\ (c=-2)\\Rightarrow 9-3r=0,\\ r=3\\) so the term is \\(T_{4}=\\binom{9}{3}(-2)^{3}=-672\\).",
+   "payload": {
+    "options": [
+     "2016",
+     "-672",
+     "672",
+     "144"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-110",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{2}\\) in the expansion of \\((1+5x)^{6}\\).",
+   "explanation": "\\(\\binom{6}{2}(5)^{2}=15\\times25=375\\)",
+   "payload": {
+    "options": [
+     "375",
+     "75",
+     "2500",
+     "40"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-111",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "binomial-concepts",
+   "prompt": "Only one statement about the binomial theorem and Pascal's triangle is false. Which one?",
+   "explanation": "This statement is not correct. Only the odd powers of \\(y\\) survive, so it has 4 terms.",
+   "payload": {
+    "options": [
+     "The coefficients in the expansion of \\((a+b)^{n}\\) are the entries of row \\(n\\) of Pascal's triangle.",
+     "For integers \\(0\\le r\\le n\\) we have \\(\\binom{n}{r}=\\binom{n}{n-r}\\).",
+     "The expansion of \\((x+y)^{7}-(x-y)^{7}\\) has 8 terms.",
+     "The \\(r\\)th term from the end of \\((a+b)^{n}\\) is the \\((n-r+2)\\)th term from the beginning."
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-112",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "series-concepts",
+   "prompt": "Which of these is NOT true about the binomial series?",
+   "explanation": "This statement is not correct. The valid range is \\(|x|<2\\).",
+   "payload": {
+    "options": [
+     "To expand \\((a+bx)^{n}\\) for non-integer \\(n\\), we first write it as \\(a^{n}\\left(1+\\frac{b}{a}x\\right)^{n}\\).",
+     "The series of \\((2+x)^{-1}\\) in powers of \\(x\\) is valid for \\(|x|<1\\).",
+     "When \\(n\\) is a positive integer, the series for \\((1+x)^{n}\\) stops after \\(n+1\\) terms.",
+     "The expansion of \\((1-x)^{-2}\\) is \\(1+2x+3x^{2}+4x^{3}+\\cdots\\)."
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-113",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "induction-steps",
+   "prompt": "For \\(P(n):\\ 1^{2}+3^{2}+5^{2}+\\cdots+\\left(2 n - 1\\right)^{2}=\\frac{n \\left(2 n - 1\\right) \\left(2 n + 1\\right)}{3}\\), what is the value of each side when \\(n=3\\)?",
+   "explanation": "Put \\(n=3\\) in the right side: \\(35\\). The left side (sum of the first \\(3\\) terms) gives the same value \\(35\\).",
+   "payload": {
+    "options": [
+     "35",
+     "34",
+     "84",
+     "70"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-114",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1+3+5+\\cdots+17\\).",
+   "explanation": "\\(S_{n}=n^{2}\\ \\text{with}\\ n=9:\\ S=81\\)",
+   "payload": {
+    "options": [
+     "64",
+     "81",
+     "90",
+     "100"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-115",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{2}\\) in the expansion of \\((1+3x)^{5}\\).",
+   "explanation": "\\(\\binom{5}{2}(3)^{2}=10\\times9=90\\)",
+   "payload": {
+    "options": [
+     "30",
+     "90",
+     "270",
+     "19"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-116",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "applications-concepts",
+   "prompt": "Identify the false statement about last digits and remainders.",
+   "explanation": "This statement is not correct. The order is \\(2,4,8,6\\).",
+   "payload": {
+    "options": [
+     "The last digits of the powers of 2 repeat in the cycle \\(2,4,6,8\\).",
+     "The unit digit of \\(7^{100}\\) is \\(1\\).",
+     "To find the last digit of \\(a^{n}\\), divide \\(n\\) by the cyclicity of the last digit of \\(a\\) and use the remainder; a remainder 0 means the last place of the cycle.",
+     "The last digits of the powers of 3 repeat in the cycle \\(3,9,7,1\\)."
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-117",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "applications-concepts",
+   "prompt": "Which of the following statements about last digits and remainders is NOT correct?",
+   "explanation": "This statement is not correct. \\(6^{n}\\) leaves 1 and \\(5^{n}\\) leaves 0.",
+   "payload": {
+    "options": [
+     "The numbers \\(6^{n}\\) and \\(5^{n}\\) leave the same remainder when divided by 5.",
+     "The unit digit of \\(2^{100}\\) is \\(6\\).",
+     "The last digits of the powers of 2 repeat in the cycle \\(2,4,8,6\\).",
+     "Every power of 5 ends in 5."
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-118",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "middle-term",
+   "prompt": "Find the middle term of \\((x-2)^{6}\\).",
+   "explanation": "The middle term is the \\(4\\)th term: \\(\\binom{6}{3}x^{3}(-2)^{3}=-160x^{3}\\)",
+   "payload": {
+    "options": [
+     "\\(60x^{4}\\)",
+     "\\(240x^{2}\\)",
+     "\\(20x^{3}\\)",
+     "\\(-160x^{3}\\)"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-119",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "independent-term",
+   "prompt": "Find the term independent of \\(x\\) in the expansion of \\(\\left(x-\\frac{2}{x^{2}}\\right)^{3}\\).",
+   "explanation": "\\(T_{r+1}=\\binom{3}{r}c^{r}x^{3-3r}\\ \\ (c=-2)\\Rightarrow 3-3r=0,\\ r=1\\) so the term is \\(T_{2}=\\binom{3}{1}(-2)^{1}=-6\\).",
+   "payload": {
+    "options": [
+     "6",
+     "1",
+     "3",
+     "-6"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-120",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "independent-term",
+   "prompt": "Find the term independent of \\(x\\) in the expansion of \\(\\left(x+\\frac{2}{x^{2}}\\right)^{3}\\).",
+   "explanation": "\\(T_{r+1}=\\binom{3}{r}c^{r}x^{3-3r}\\ \\ (c=2)\\Rightarrow 3-3r=0,\\ r=1\\) so the term is \\(T_{2}=\\binom{3}{1}(2)^{1}=6\\).",
+   "payload": {
+    "options": [
+     "6",
+     "12",
+     "-6",
+     "1"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-121",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "binomial-concepts",
+   "prompt": "Which one of these statements about the binomial theorem and Pascal's triangle is false?",
+   "explanation": "This statement is not correct. The middle (4th) term is \\(\\binom{6}{3}x^{3}=20x^{3}\\).",
+   "payload": {
+    "options": [
+     "The general term in the expansion of \\((a+b)^{n}\\) is \\(T_{r+1}=\\binom{n}{r}a^{n-r}b^{r}\\).",
+     "The middle term of \\((1+x)^{6}\\) is \\(15x^{3}\\).",
+     "If \\(n\\) is even, the expansion of \\((a+b)^{n}\\) has exactly one middle term.",
+     "The expansion of \\((a+b)^{n}\\) has \\(n+1\\) terms when \\(n\\) is a positive integer."
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-122",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "middle-term",
+   "prompt": "Find the middle term of \\((x-2)^{8}\\).",
+   "explanation": "The middle term is the \\(5\\)th term: \\(\\binom{8}{4}x^{4}(-2)^{4}=1120x^{4}\\)",
+   "payload": {
+    "options": [
+     "\\(-1792x^{3}\\)",
+     "\\(-448x^{5}\\)",
+     "\\(1120x^{4}\\)",
+     "\\(70x^{4}\\)"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-123",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{2}\\) in the expansion of \\((1-3x)^{5}\\).",
+   "explanation": "\\(\\binom{5}{2}(-3)^{2}=10\\times9=90\\)",
+   "payload": {
+    "options": [
+     "19",
+     "90",
+     "-270",
+     "-30"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-124",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "applications-concepts",
+   "prompt": "Choose the false statement about last digits and remainders.",
+   "explanation": "This statement is not correct. At \\(n=1\\) it is \\(18\\), which is not divisible by 7; it is always divisible by 9.",
+   "payload": {
+    "options": [
+     "The unit digit of \\(7^{100}\\) is \\(1\\).",
+     "The expression \\(4^{n}+15n-1\\) is divisible by 7 for every positive integer \\(n\\).",
+     "To find the last digit of \\(a^{n}\\), divide \\(n\\) by the cyclicity of the last digit of \\(a\\) and use the remainder; a remainder 0 means the last place of the cycle.",
+     "The last digits of the powers of 3 repeat in the cycle \\(3,9,7,1\\)."
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-125",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{8}\\) in the expansion of \\((x+5)^{10}\\).",
+   "explanation": "\\(\\binom{10}{8}(5)^{2}=45\\times25=1125\\)",
+   "payload": {
+    "options": [
+     "70",
+     "50",
+     "17578125",
+     "1125"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-126",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "series-range",
+   "prompt": "For which values of \\(x\\) is the binomial series of \\((1+4x)^{-\\frac{1}{2}}\\) valid?",
+   "explanation": "Write the bracket as \\(1\\left(1+\\frac{4}{1}x\\right)\\). The binomial series needs the second term to be smaller than 1 in size: \\(\\left|\\frac{4}{1}x\\right|<1\\), that is \\(|x|<\\frac{1}{4}\\).",
+   "payload": {
+    "options": [
+     "\\(|x|<\\frac{1}{4}\\)",
+     "\\(|x|<\\frac{1}{5}\\)",
+     "\\(|x|<\\frac{1}{2}\\)",
+     "\\(|x|<4\\)"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-127",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(91^{456}\\)?",
+   "explanation": "Every power of a number ending in \\(1\\) also ends in \\(1\\), so the last digit is \\(1\\).",
+   "payload": {
+    "options": [
+     "1",
+     "3",
+     "5",
+     "2"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-128",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{12}{2}\\).",
+   "explanation": "\\(\\binom{12}{2}=\\frac{12\\times11}{2\\times1}=66\\)",
+   "payload": {
+    "options": [
+     "66",
+     "132",
+     "220",
+     "12"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-129",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "applications-concepts",
+   "prompt": "Which one of these statements about last digits and remainders is false?",
+   "explanation": "This statement is not correct. Every power of 5 ends in 5.",
+   "payload": {
+    "options": [
+     "The unit digit of \\(13^{n}\\) is \\(1\\) whenever \\(n\\) is a multiple of 4.",
+     "The number \\(6^{n}-5^{n}\\) leaves remainder 1 when divided by 5.",
+     "Every power of 5 ends in 0.",
+     "If \\(a^{p}=mk\\pm1\\), the binomial theorem applied to \\((mk\\pm1)^{q}\\) gives the remainder of \\(a^{pq}\\) on division by \\(m\\)."
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-130",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(57^{130}\\)?",
+   "explanation": "The last digit of \\(57\\) is \\(7\\); its powers end in \\(7,9,3,1\\) and repeat (cyclicity \\(4\\)). \\(130=4\\times32+2\\), so take place \\(2\\): last digit \\(9\\).",
+   "payload": {
+    "options": [
+     "1",
+     "3",
+     "0",
+     "9"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-131",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "binomial-concepts",
+   "prompt": "Which of the following statements about the binomial theorem and Pascal's triangle is NOT correct?",
+   "explanation": "This statement is not correct. It is \\((1-1)^{n}=0\\).",
+   "payload": {
+    "options": [
+     "The value of \\(\\binom{n}{0}-\\binom{n}{1}+\\binom{n}{2}-\\cdots+(-1)^{n}\\binom{n}{n}\\) is \\(1\\) for \\(n\\ge1\\).",
+     "The coefficient of \\(x^{2}\\) in \\((1+x)^{5}\\) is \\(10\\).",
+     "In Pascal's triangle every entry is the sum of the two entries directly above it.",
+     "If \\(n\\) is odd, the expansion of \\((a+b)^{n}\\) has two middle terms."
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-132",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(71^{618}\\)?",
+   "explanation": "Every power of a number ending in \\(1\\) also ends in \\(1\\), so the last digit is \\(1\\).",
+   "payload": {
+    "options": [
+     "5",
+     "3",
+     "1",
+     "2"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-133",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "series-concepts",
+   "prompt": "Identify the true statement about the binomial series.",
+   "explanation": "This statement is correct. Write the number as \\(1+x\\) with small \\(x\\) and use the first few terms.",
+   "payload": {
+    "options": [
+     "The coefficient of \\(x^{2}\\) in the expansion of \\((1+x)^{-3}\\) is \\(-6\\).",
+     "The binomial series for \\((1+x)^{1/2}\\) is valid for every real number \\(x\\).",
+     "The binomial series can be used to find approximate values such as \\((1.02)^{1/3}\\) or \\(\\sqrt{1.04}\\).",
+     "The series for \\((1+x)^{n}\\) with \\(n=\\tfrac12\\) ends after \\(n+1\\) terms."
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-134",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the value of \\(\\binom{8}{1}+\\binom{8}{2}+\\cdots+\\binom{8}{8}\\).",
+   "explanation": "The full sum is \\(2^{8}\\); remove \\(\\binom{8}{0}=1\\) to get \\(2^{8}-1=255\\).",
+   "payload": {
+    "options": [
+     "255",
+     "253",
+     "257",
+     "128"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-135",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((4x-1)^{7}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((4-1)^{7}=2187\\).",
+   "payload": {
+    "options": [
+     "2187",
+     "6561",
+     "16383",
+     "729"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-136",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "general-term",
+   "prompt": "Find the 9th term in the expansion of \\((x+1)^{9}\\) in descending powers of \\(x\\).",
+   "explanation": "\\(T_{9}=\\binom{9}{8}x^{1}(1)^{8}=9x\\)",
+   "payload": {
+    "options": [
+     "\\(1\\)",
+     "\\(9x\\)",
+     "\\(36x^{2}\\)",
+     "\\(9x^{8}\\)"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-137",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{8}{3}\\).",
+   "explanation": "\\(\\binom{8}{3}=\\frac{8\\times7\\times6}{3\\times2\\times1}=56\\)",
+   "payload": {
+    "options": [
+     "168",
+     "28",
+     "84",
+     "56"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-138",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "approximation",
+   "prompt": "Use the first three terms of the binomial expansion to find \\((1+0.01)^{6}\\) approximately.",
+   "explanation": "\\((1+x)^{6}\\approx1+6 x+15 x^{2}\\) with \\(x=0.01\\): \\(1+0.06+0.0015=1.0615\\).",
+   "payload": {
+    "options": [
+     "1.06152",
+     "1.0585",
+     "1.0615",
+     "1.06"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-139",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "induction-concepts",
+   "prompt": "Which of these is NOT true about mathematical induction?",
+   "explanation": "This statement is not correct. It is used for statements about integers \\(n\\) starting at a given value.",
+   "payload": {
+    "options": [
+     "The formula \\(1^{2}+2^{2}+\\cdots+n^{2}=\\frac{n(n+1)(2n+1)}{6}\\) holds for every positive integer \\(n\\).",
+     "In divisibility proofs by induction we usually write \\(f(k+1)\\) in terms of \\(f(k)\\) and show that the difference is divisible by the number.",
+     "The assumption that \\(P(k)\\) is true is called the inductive hypothesis.",
+     "Mathematical induction is used to prove statements about all real numbers."
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-140",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{40}-(x-y)^{40}\\) after simplification?",
+   "explanation": "The terms with even powers of \\(y\\) cancel and the odd ones double, so \\(\\lfloor(40+1)/2\\rfloor=20\\) terms remain.",
+   "payload": {
+    "options": [
+     "19",
+     "41",
+     "20",
+     "40"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-141",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{2}\\) in the expansion of \\((1-3x)^{8}\\).",
+   "explanation": "\\(\\binom{8}{2}(-3)^{2}=28\\times9=252\\)",
+   "payload": {
+    "options": [
+     "-1512",
+     "37",
+     "252",
+     "-84"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-142",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "applications-concepts",
+   "prompt": "Choose the true statement about last digits and remainders.",
+   "explanation": "This statement is correct. \\(10^{n}-1=(9+1)^{n}-1\\) and every term of the binomial expansion left over has a factor 9.",
+   "payload": {
+    "options": [
+     "The binomial theorem cannot be used to find remainders of large powers.",
+     "The fractional part of \\(\\frac{2^{510}}{31}\\) is \\(\\frac{2}{31}\\).",
+     "The number \\(10^{n}-1\\) is divisible by 9 for every positive integer \\(n\\).",
+     "If the remainder on dividing the exponent by the cyclicity is 0, the last digit is the first digit of the cycle."
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-143",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "induction-concepts",
+   "prompt": "Which one of these statements about mathematical induction is false?",
+   "explanation": "This statement is not correct. That is the sum of the first \\(n\\) numbers; the sum of cubes is the square of it, \\(\\left(\\frac{n(n+1)}{2}\\right)^{2}\\).",
+   "payload": {
+    "options": [
+     "In divisibility proofs by induction we usually write \\(f(k+1)\\) in terms of \\(f(k)\\) and show that the difference is divisible by the number.",
+     "The assumption that \\(P(k)\\) is true is called the inductive hypothesis.",
+     "In a proof by induction of a statement about all integers \\(n\\ge3\\), the basis step is checked at \\(n=3\\).",
+     "The formula \\(1^{3}+2^{3}+\\cdots+n^{3}=\\frac{n(n+1)}{2}\\) is correct."
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-144",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "independent-term",
+   "prompt": "Find the term independent of \\(x\\) in the expansion of \\(\\left(x^{2}+\\frac{1}{x}\\right)^{18}\\).",
+   "explanation": "\\(T_{r+1}=\\binom{18}{r}c^{r}x^{36-3r}\\ \\ (c=1)\\Rightarrow 36-3r=0,\\ r=12\\) so the term is \\(T_{13}=\\binom{18}{12}(1)^{12}=18564\\).",
+   "payload": {
+    "options": [
+     "18564",
+     "-18564",
+     "8568",
+     "31824"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-145",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((2x-1)^{7}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((2-1)^{7}=1\\).",
+   "payload": {
+    "options": [
+     "127",
+     "7",
+     "-128",
+     "1"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-146",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "induction-concepts",
+   "prompt": "Which statement about mathematical induction holds?",
+   "explanation": "This statement is correct. This is exactly the principle of mathematical induction.",
+   "payload": {
+    "options": [
+     "If a statement is checked for \\(n=1,2,\\ldots,100\\) it is proved for every positive integer \\(n\\).",
+     "The expression \\(n^{2}+n\\) is odd for every positive integer \\(n\\).",
+     "The sum \\(1+2+3+\\cdots+n\\) is equal to \\(n^{2}\\).",
+     "If the basis step and the inductive step are both proved, the statement is true for every integer from the starting value onwards."
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-147",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((2x+3)^{8}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((2+3)^{8}=390625\\).",
+   "payload": {
+    "options": [
+     "1679616",
+     "6817",
+     "390625",
+     "78125"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-148",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "binomial-concepts",
+   "prompt": "Which of the following statements about the binomial theorem and Pascal's triangle is correct?",
+   "explanation": "This statement is correct. These are \\(\\binom{5}{0},\\binom{5}{1},\\ldots,\\binom{5}{5}\\).",
+   "payload": {
+    "options": [
+     "The sum of the binomial coefficients of \\((1+x)^{n}\\) is \\(n^{2}\\).",
+     "Row 5 of Pascal's triangle is \\(1,5,10,10,5,1\\).",
+     "The expansion of \\((x+y)^{7}-(x-y)^{7}\\) has 8 terms.",
+     "The expansion of \\((x+y)^{n}+(x-y)^{n}\\) contains only odd powers of \\(y\\)."
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-149",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "series-concepts",
+   "prompt": "Pick the incorrect statement about the binomial series.",
+   "explanation": "This statement is not correct. The series is valid only for \\(|x|<1\\).",
+   "payload": {
+    "options": [
+     "The first three terms of \\((1+x)^{n}\\) are \\(1+nx+\\frac{n(n-1)}{2!}x^{2}\\) for any index \\(n\\).",
+     "When \\(n\\) is a negative integer or a fraction, the series for \\((1+x)^{n}\\) does not terminate.",
+     "The expansion of \\((1+x)^{-1}\\) is \\(1-x+x^{2}-x^{3}+\\cdots\\) for \\(|x|<1\\).",
+     "For \\(|x|\\ge1\\) the series \\(1-x+x^{2}-\\cdots\\) still gives the value of \\(\\frac{1}{1+x}\\)."
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-150",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{4}\\) in the expansion of \\((-2x-2)^{7}\\).",
+   "explanation": "\\(\\text{coefficient of }x^{4}=\\binom{7}{4}(-2)^{4}(-2)^{3}=35\\cdot16\\cdot-8=-4480\\)",
+   "payload": {
+    "options": [
+     "8960",
+     "4480",
+     "560",
+     "-4480"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-151",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "induction-steps",
+   "prompt": "In proving \\(P(n):\\ 2+4+6+\\cdots+2 n=n \\left(n + 1\\right)\\) by induction, which term is added to both sides of \\(P(k)\\) to reach \\(P(k+1)\\)?",
+   "explanation": "The new last term of the left side is the \\((k+1)\\)th term \\(\\left(2 k + 2\\right)\\).",
+   "payload": {
+    "options": [
+     "\\(\\left(k + 1\\right) \\left(k + 2\\right)\\)",
+     "\\(2 k\\)",
+     "\\(\\left(2 k + 2\\right)\\)",
+     "\\(\\left(2 k + 4\\right)\\)"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-152",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "remainder-binomial",
+   "prompt": "Find the remainder when \\(13^{73}\\) is divided by \\(9\\).",
+   "explanation": "\\(13^{3}=2197=9\\times244+1\\). Write \\(73=3\\times24+1\\), so \\(13^{73}=(2196+1)^{24}\\cdot13^{1}\\). By the binomial theorem every term of the bracket except the last is a multiple of \\(9\\), so the remainder comes from \\(1\\cdot13^{1}\\) = \\(13\\), which leaves remainder \\(4\\).",
+   "payload": {
+    "options": [
+     "3",
+     "6",
+     "4",
+     "5"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-153",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(17^{66}\\)?",
+   "explanation": "The last digit of \\(17\\) is \\(7\\); its powers end in \\(7,9,3,1\\) and repeat (cyclicity \\(4\\)). \\(66=4\\times16+2\\), so take place \\(2\\): last digit \\(9\\).",
+   "payload": {
+    "options": [
+     "7",
+     "0",
+     "3",
+     "9"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-154",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "remainder-binomial",
+   "prompt": "Find the remainder when \\(7^{58}\\) is divided by \\(9\\).",
+   "explanation": "\\(7^{3}=343=9\\times38+1\\). Write \\(58=3\\times19+1\\), so \\(7^{58}=(342+1)^{19}\\cdot7^{1}\\). By the binomial theorem every term of the bracket except the last is a multiple of \\(9\\), so the remainder comes from \\(1\\cdot7^{1}\\) = \\(7\\), which leaves remainder \\(7\\).",
+   "payload": {
+    "options": [
+     "7",
+     "6",
+     "0",
+     "8"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-155",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "series-coefficient",
+   "prompt": "Find the coefficient of \\(x^{2}\\) in the expansion of \\((1-2x)^{-1}\\).",
+   "explanation": "\\(\\frac{\\left(-1\\right)\\times\\left(-2\\right)}{2!}(-2)^{2}=4\\) (the coefficient of \\(x^{2}\\) is \\(\\frac{n(n-1)\\cdots(n-1)}{2!}a^{2}\\) with \\(n=-1,\\ a=-2\\)).",
+   "payload": {
+    "options": [
+     "-4",
+     "4",
+     "-2",
+     "8"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-156",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "independent-term",
+   "prompt": "Find the term independent of \\(x\\) in the expansion of \\(\\left(x^{3}+\\frac{2}{x^{3}}\\right)^{4}\\).",
+   "explanation": "\\(T_{r+1}=\\binom{4}{r}c^{r}x^{12-6r}\\ \\ (c=2)\\Rightarrow 12-6r=0,\\ r=2\\) so the term is \\(T_{3}=\\binom{4}{2}(2)^{2}=24\\).",
+   "payload": {
+    "options": [
+     "32",
+     "8",
+     "24",
+     "-24"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-157",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "remainder-binomial",
+   "prompt": "Find the remainder when \\(11^{263}\\) is divided by \\(25\\).",
+   "explanation": "\\(11^{5}=161051=25\\times6442+1\\). Write \\(263=5\\times52+3\\), so \\(11^{263}=(161050+1)^{52}\\cdot11^{3}\\). By the binomial theorem every term of the bracket except the last is a multiple of \\(25\\), so the remainder comes from \\(1\\cdot11^{3}\\) = \\(1331\\), which leaves remainder \\(6\\).",
+   "payload": {
+    "options": [
+     "11",
+     "7",
+     "6",
+     "8"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-158",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((x+4)^{8}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((1+4)^{8}=390625\\).",
+   "payload": {
+    "options": [
+     "40",
+     "65537",
+     "390625",
+     "78125"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-159",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "induction-concepts",
+   "prompt": "Only one statement about mathematical induction is true. Which one?",
+   "explanation": "This statement is correct. At \\(n=40\\) the value is \\(1681=41\\times41\\). A pattern that works for many cases can still fail, so it needs a proof.",
+   "payload": {
+    "options": [
+     "The statement \\(2^{n}>n^{2}\\) is true for every positive integer \\(n\\).",
+     "Proving \\(P(1)\\) alone is enough to prove \\(P(n)\\) for all \\(n\\).",
+     "In the inductive step we must prove that \\(P(k)\\) is true.",
+     "The statement \\(n^{2}+n+41\\text{ is prime}\\) is true for \\(n=1,2,\\ldots,39\\) but false for \\(n=40\\)."
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-160",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{2}\\) in the expansion of \\((1+3x)^{8}\\).",
+   "explanation": "\\(\\binom{8}{2}(3)^{2}=28\\times9=252\\)",
+   "payload": {
+    "options": [
+     "252",
+     "37",
+     "84",
+     "1512"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-161",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "divisibility",
+   "prompt": "What is the largest positive integer that divides \\(n^{7}-n\\) for every positive integer \\(n\\)?",
+   "explanation": "Try small values: \\(0,\\ 126,\\ 2184,\\ 16380\\) have greatest common divisor \\(42\\); induction or the binomial theorem shows that \\(42\\) always divides it.",
+   "payload": {
+    "options": [
+     "42",
+     "21",
+     "44",
+     "43"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-162",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((2x-1)^{9}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((2-1)^{9}=1\\).",
+   "payload": {
+    "options": [
+     "9",
+     "1",
+     "-512",
+     "511"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-163",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "applications-concepts",
+   "prompt": "Identify the true statement about last digits and remainders.",
+   "explanation": "This statement is correct. The cyclicity of 9 is 2.",
+   "payload": {
+    "options": [
+     "The remainder when \\(5^{103}\\) is divided by 13 is 5.",
+     "Every power of 5 ends in 0.",
+     "The powers of 9 end alternately in \\(9\\) and \\(1\\).",
+     "The cyclicity of the last digit 9 is 4."
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-164",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "series-range",
+   "prompt": "For which values of \\(x\\) is the binomial series of \\((1-3x)^{-\\frac{3}{2}}\\) valid?",
+   "explanation": "Write the bracket as \\(1\\left(1-\\frac{3}{1}x\\right)\\). The binomial series needs the second term to be smaller than 1 in size: \\(\\left|\\frac{3}{1}x\\right|<1\\), that is \\(|x|<\\frac{1}{3}\\).",
+   "payload": {
+    "options": [
+     "\\(|x|<\\frac{1}{4}\\)",
+     "\\(|x|<3\\)",
+     "\\(|x|<\\frac{1}{3}\\)",
+     "\\(|x|<1\\)"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-165",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{36}-(x-y)^{36}\\) after simplification?",
+   "explanation": "The terms with even powers of \\(y\\) cancel and the odd ones double, so \\(\\lfloor(36+1)/2\\rfloor=18\\) terms remain.",
+   "payload": {
+    "options": [
+     "17",
+     "20",
+     "37",
+     "18"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-166",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(18^{766}\\)?",
+   "explanation": "The last digit of \\(18\\) is \\(8\\); its powers end in \\(8,4,2,6\\) and repeat (cyclicity \\(4\\)). \\(766=4\\times191+2\\), so take place \\(2\\): last digit \\(4\\).",
+   "payload": {
+    "options": [
+     "8",
+     "4",
+     "2",
+     "5"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-167",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "approximation",
+   "prompt": "Use the first three terms of the binomial series to approximate \\(\\sqrt{1+0.05}\\).",
+   "explanation": "With \\(x=0.05\\): \\((1+x)^{\\frac{1}{2}}\\approx1+\\frac{1}{2}x-\\frac{1}{8}x^{2}\\) gives \\(1+0.025-0.0003125\\) = \\(1.0246875\\).",
+   "payload": {
+    "options": [
+     "1.0246875",
+     "0.9746875",
+     "1.02469531",
+     "1.025"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-168",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "binomial-concepts",
+   "prompt": "Which of these is a correct fact about the binomial theorem and Pascal's triangle?",
+   "explanation": "This statement is correct. Terms with odd powers of \\(y\\) cancel; the others double.",
+   "payload": {
+    "options": [
+     "Pascal's rule states that \\(\\binom{n}{r}+\\binom{n}{r-1}=\\binom{n+1}{r-1}\\).",
+     "The middle term of \\((1+x)^{6}\\) is \\(15x^{3}\\).",
+     "The expansion of \\((x+y)^{n}+(x-y)^{n}\\) contains no term with an odd power of \\(y\\).",
+     "We have \\(\\binom{n}{r}=\\binom{n}{n+r}\\)."
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-169",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "induction-concepts",
+   "prompt": "Choose the true statement about mathematical induction.",
+   "explanation": "This statement is correct. The new last term on the left is \\(k+1\\).",
+   "payload": {
+    "options": [
+     "The statement \\(2^{n}>n^{2}\\) is true for every positive integer \\(n\\).",
+     "The inductive step for \\(1+2+\\cdots+n=\\frac{n(n+1)}{2}\\) adds \\((k+1)\\) to both sides of \\(P(k)\\).",
+     "Proving \\(P(1)\\) alone is enough to prove \\(P(n)\\) for all \\(n\\).",
+     "In the inductive step we must prove that \\(P(k)\\) is true."
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-170",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{8}{6}\\).",
+   "explanation": "\\(\\binom{8}{6}=\\binom{8}{2}=\\frac{8\\times7}{2\\times1}=28\\)",
+   "payload": {
+    "options": [
+     "8",
+     "56",
+     "28",
+     "84"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-171",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "approximation",
+   "prompt": "Use the first three terms of the binomial series to approximate \\(\\frac{1}{1-0.01}\\).",
+   "explanation": "With \\(x=-0.01\\): \\((1+x)^{-1}\\approx1-x+x^{2}\\) gives \\(1+0.01+0.0001\\) = \\(1.0101\\).",
+   "payload": {
+    "options": [
+     "1.010101",
+     "1.0099",
+     "1.0101",
+     "1.01"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-172",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "induction-concepts",
+   "prompt": "Which of the following statements about mathematical induction is correct?",
+   "explanation": "This statement is correct. This picture shows why both steps are needed.",
+   "payload": {
+    "options": [
+     "Induction is often compared to a row of dominoes: the basis step topples the first one and the inductive step shows each one topples the next.",
+     "The inductive step for \\(1^{2}+2^{2}+\\cdots+n^{2}\\) adds \\(k^{2}\\) to both sides of \\(P(k)\\).",
+     "For the statement \\(n!>2^{n}\\) the basis step can be checked at \\(n=1\\).",
+     "In a proof by induction we may skip the basis step if the inductive step is proved."
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-173",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "induction-concepts",
+   "prompt": "Identify the true statement about mathematical induction.",
+   "explanation": "This statement is correct. We first guess or are given the formula, and induction then proves it.",
+   "payload": {
+    "options": [
+     "The inductive step for \\(1^{2}+2^{2}+\\cdots+n^{2}\\) adds \\(k^{2}\\) to both sides of \\(P(k)\\).",
+     "For the statement \\(n!>2^{n}\\) the basis step can be checked at \\(n=1\\).",
+     "Induction can only prove a statement that is already given; it does not discover the formula for us.",
+     "In a proof by induction we may skip the basis step if the inductive step is proved."
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-174",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "induction-concepts",
+   "prompt": "Which of these is a correct fact about mathematical induction?",
+   "explanation": "This statement is correct. We start from the first value in the claim.",
+   "payload": {
+    "options": [
+     "The statement \\(2^{n}>n^{2}\\) is true for every positive integer \\(n\\).",
+     "Proving \\(P(1)\\) alone is enough to prove \\(P(n)\\) for all \\(n\\).",
+     "In a proof by induction of a statement about all integers \\(n\\ge3\\), the basis step is checked at \\(n=3\\).",
+     "In the inductive step we must prove that \\(P(k)\\) is true."
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-175",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "general-term",
+   "prompt": "Find the 8th term in the expansion of \\((x-2)^{9}\\) in descending powers of \\(x\\).",
+   "explanation": "\\(T_{8}=\\binom{9}{7}x^{2}(-2)^{7}=-4608x^{2}\\)",
+   "payload": {
+    "options": [
+     "\\(5376x^{3}\\)",
+     "\\(2304x\\)",
+     "\\(-4608x^{2}\\)",
+     "\\(-4608x^{7}\\)"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-176",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the sum of the binomial coefficients at the even places (r = 0, 2, 4, ...) of \\((1+x)^{15}\\).",
+   "explanation": "Even-place sum = odd-place sum, and together they make \\(2^{15}\\), so each is \\(2^{14}=16384\\).",
+   "payload": {
+    "options": [
+     "32768",
+     "8192",
+     "16385",
+     "16384"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-177",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((3x+2)^{7}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((3+2)^{7}=78125\\).",
+   "payload": {
+    "options": [
+     "78125",
+     "279936",
+     "15625",
+     "35"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-178",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "series-concepts",
+   "prompt": "Identify the false statement about the binomial series.",
+   "explanation": "This statement is not correct. The third term has \\(x^{2}\\).",
+   "payload": {
+    "options": [
+     "The binomial series for \\((1+x)^{n}\\) with non-integer \\(n\\) is valid when \\(|x|<1\\).",
+     "The expansion of \\((1-x)^{-1}\\) is \\(1+x+x^{2}+x^{3}+\\cdots\\) for \\(|x|<1\\).",
+     "The first three terms of \\((1+x)^{n}\\) are \\(1+nx+\\frac{n(n-1)}{2}x^{3}\\).",
+     "The coefficient of \\(x^{3}\\) in the expansion of \\((1+x)^{1/2}\\) is \\(\\frac{1}{16}\\)."
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-179",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "general-term",
+   "prompt": "Find the 6th term in the expansion of \\((x+1)^{6}\\) in descending powers of \\(x\\).",
+   "explanation": "\\(T_{6}=\\binom{6}{5}x^{1}(1)^{5}=6x\\)",
+   "payload": {
+    "options": [
+     "\\(15x^{2}\\)",
+     "\\(6x^{5}\\)",
+     "\\(6x\\)",
+     "\\(1\\)"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-180",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "general-term",
+   "prompt": "Find the 5th term in the expansion of \\((x+3)^{5}\\) in descending powers of \\(x\\).",
+   "explanation": "\\(T_{5}=\\binom{5}{4}x^{1}(3)^{4}=405x\\)",
+   "payload": {
+    "options": [
+     "\\(405x^{4}\\)",
+     "\\(270x^{2}\\)",
+     "\\(405x\\)",
+     "\\(243\\)"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-181",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "divisibility",
+   "prompt": "What is the largest positive integer that divides \\(5^{n}-4n-1\\) for every positive integer \\(n\\)?",
+   "explanation": "Try small values: \\(0,\\ 16,\\ 112,\\ 608\\) have greatest common divisor \\(16\\); induction or the binomial theorem shows that \\(16\\) always divides it.",
+   "payload": {
+    "options": [
+     "18",
+     "32",
+     "48",
+     "16"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-182",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{5}\\) in the expansion of \\((-x+1)^{7}\\).",
+   "explanation": "\\(\\text{coefficient of }x^{5}=\\binom{7}{5}(-1)^{5}(1)^{2}=21\\cdot-1\\cdot1=-21\\)",
+   "payload": {
+    "options": [
+     "-21",
+     "21",
+     "-7",
+     "0"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-183",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(\\frac{1}{1\\cdot3}+\\frac{1}{3\\cdot5}+\\cdots+\\frac{1}{13\\cdot15}\\).",
+   "explanation": "\\(S_{n}=\\frac{n}{2n+1}\\ \\text{with}\\ n=7:\\ S=\\frac{7}{15}\\)",
+   "payload": {
+    "options": [
+     "\\(\\frac{22}{15}\\)",
+     "\\(\\frac{8}{9}\\)",
+     "\\(\\frac{6}{13}\\)",
+     "\\(\\frac{7}{15}\\)"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-184",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1^{3}+2^{3}+3^{3}+\\cdots+18^{3}\\).",
+   "explanation": "\\(S_{n}=\\left[\\frac{n(n+1)}{2}\\right]^{2}\\ \\text{with}\\ n=18:\\ S=29241\\)",
+   "payload": {
+    "options": [
+     "29240",
+     "29241",
+     "29259",
+     "29242"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-185",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "induction-steps",
+   "prompt": "Let \\(P(n):\\ \\frac{1}{1\\cdot2}+\\frac{1}{2\\cdot3}+\\cdots+\\frac{1}{n \\left(n + 1\\right)}=\\frac{n}{n + 1}\\). Which of the following is the statement \\(P(k+1)\\)?",
+   "explanation": "Replace every \\(n\\) by \\(k+1\\) on both sides, including the last term of the left side.",
+   "payload": {
+    "options": [
+     "\\(\\frac{1}{1\\cdot2}+\\frac{1}{2\\cdot3}+\\cdots+\\frac{1}{\\left(k + 2\\right) \\left(k + 3\\right)}=\\frac{k + 2}{k + 3}\\)",
+     "\\(\\frac{1}{1\\cdot2}+\\frac{1}{2\\cdot3}+\\cdots+\\frac{1}{\\left(k + 1\\right) \\left(k + 2\\right)}=\\frac{k + 1}{k + 2}\\)",
+     "\\(\\frac{1}{1\\cdot2}+\\frac{1}{2\\cdot3}+\\cdots+\\frac{1}{\\left(k + 1\\right) \\left(k + 2\\right)}=\\frac{k}{k + 1}\\)",
+     "\\(\\frac{1}{1\\cdot2}+\\frac{1}{2\\cdot3}+\\cdots+\\frac{1}{k \\left(k + 1\\right)}=\\frac{k + 1}{k + 2}\\)"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-186",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "remainder-binomial",
+   "prompt": "Find the remainder when \\(2^{298}\\) is divided by \\(15\\).",
+   "explanation": "\\(2^{4}=16=15\\times1+1\\). Write \\(298=4\\times74+2\\), so \\(2^{298}=(15+1)^{74}\\cdot2^{2}\\). By the binomial theorem every term of the bracket except the last is a multiple of \\(15\\), so the remainder comes from \\(1\\cdot2^{2}\\) = \\(4\\), which leaves remainder \\(4\\).",
+   "payload": {
+    "options": [
+     "2",
+     "6",
+     "11",
+     "4"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-187",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "independent-term",
+   "prompt": "Find the term independent of \\(x\\) in the expansion of \\(\\left(x^{4}+\\frac{3}{x^{3}}\\right)^{14}\\).",
+   "explanation": "\\(T_{r+1}=\\binom{14}{r}c^{r}x^{56-7r}\\ \\ (c=3)\\Rightarrow 56-7r=0,\\ r=8\\) so the term is \\(T_{9}=\\binom{14}{8}(3)^{8}=19702683\\).",
+   "payload": {
+    "options": [
+     "3003",
+     "2189187",
+     "19702683",
+     "39405366"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-188",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "series-range",
+   "prompt": "For which values of \\(x\\) is the binomial series of \\((2-4x)^{-2}\\) valid?",
+   "explanation": "Write the bracket as \\(2\\left(1-\\frac{4}{2}x\\right)\\). The binomial series needs the second term to be smaller than 1 in size: \\(\\left|\\frac{4}{2}x\\right|<1\\), that is \\(|x|<\\frac{1}{2}\\).",
+   "payload": {
+    "options": [
+     "\\(|x|<\\frac{1}{2}\\)",
+     "\\(|x|<1\\)",
+     "\\(|x|<8\\)",
+     "\\(|x|<6\\)"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-189",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "middle-term",
+   "prompt": "Which term is the middle term in the expansion of \\((a+b)^{24}\\)?",
+   "explanation": "There are \\(24+1=25\\) terms (an odd number), so the middle one is the \\(\\frac{24}{2}+1=13\\)th term.",
+   "payload": {
+    "options": [
+     "13th",
+     "25th",
+     "15th",
+     "12th"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-190",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "binomial-concepts",
+   "prompt": "Which of these is NOT true about the binomial theorem and Pascal's triangle?",
+   "explanation": "This statement is not correct. An even \\(n\\) gives an odd number \\(n+1\\) of terms, hence one middle term.",
+   "payload": {
+    "options": [
+     "The expansion of \\((x+y)^{7}+(x-y)^{7}\\) has 4 terms.",
+     "The sum of all the binomial coefficients in the expansion of \\((1+x)^{n}\\) is \\(2^{n}\\).",
+     "If \\(n\\) is even, the expansion of \\((a+b)^{n}\\) has two middle terms.",
+     "The sum of the binomial coefficients at the even places equals the sum at the odd places in \\((1+x)^{n}\\) for \\(n\\ge1\\)."
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-191",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "independent-term",
+   "prompt": "Which term is independent of \\(x\\) in the expansion of \\(\\left(x^{3}+\\frac{1}{x}\\right)^{20}\\)? (Give the term number.)",
+   "explanation": "\\(60-4r=0\\Rightarrow r=15\\), so it is the \\((r+1)=16\\)th term.",
+   "payload": {
+    "options": [
+     "16",
+     "5",
+     "17",
+     "6"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-192",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "applications-concepts",
+   "prompt": "Which of these is NOT true about last digits and remainders?",
+   "explanation": "This statement is not correct. It is \\(6\\) because \\(100\\) is a multiple of 4.",
+   "payload": {
+    "options": [
+     "The unit digit of \\(13^{n}\\) is \\(1\\) whenever \\(n\\) is a multiple of 4.",
+     "The unit digit of \\(2^{100}\\) is \\(2\\).",
+     "The number \\(6^{n}-5^{n}\\) leaves remainder 1 when divided by 5.",
+     "If \\(a^{p}=mk\\pm1\\), the binomial theorem applied to \\((mk\\pm1)^{q}\\) gives the remainder of \\(a^{pq}\\) on division by \\(m\\)."
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-193",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "series-coefficient",
+   "prompt": "Find the coefficient of \\(x^{4}\\) in the expansion of \\((1-x)^{-\\frac{1}{2}}\\).",
+   "explanation": "\\(\\frac{\\left(-\\frac{1}{2}\\right)\\times\\left(-\\frac{3}{2}\\right)\\times\\left(-\\frac{5}{2}\\right)\\times\\left(-\\frac{7}{2}\\right)}{4!}(-1)^{4}=\\frac{35}{128}\\) (the coefficient of \\(x^{4}\\) is \\(\\frac{n(n-1)\\cdots(n-3)}{4!}a^{4}\\) with \\(n=-\\frac{1}{2},\\ a=-1\\)).",
+   "payload": {
+    "options": [
+     "\\(-\\frac{35}{128}\\)",
+     "\\(\\frac{63}{256}\\)",
+     "\\(\\frac{35}{64}\\)",
+     "\\(\\frac{35}{128}\\)"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-194",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "remainder-binomial",
+   "prompt": "Find the remainder when \\(3^{64}\\) is divided by \\(8\\).",
+   "explanation": "\\(3^{2}=9=8\\times1+1\\). Write \\(64=2\\times32+0\\), so \\(3^{64}=(8+1)^{32}\\). By the binomial theorem every term of the bracket except the last is a multiple of \\(8\\), so the remainder comes from \\(1\\) = \\(1\\), which leaves remainder \\(1\\).",
+   "payload": {
+    "options": [
+     "1",
+     "0",
+     "3",
+     "7"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-195",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "binomial-concepts",
+   "prompt": "Which one of these statements about the binomial theorem and Pascal's triangle is true?",
+   "explanation": "This statement is correct. Terms with odd powers of \\(y\\) cancel; the others double.",
+   "payload": {
+    "options": [
+     "The general term of \\((a+b)^{n}\\) is \\(T_{r}=\\binom{n}{r}a^{n-r}b^{r}\\).",
+     "The expansion of \\((x+y)^{n}+(x-y)^{n}\\) contains no term with an odd power of \\(y\\).",
+     "If \\(n\\) is even, the expansion of \\((a+b)^{n}\\) has two middle terms.",
+     "Pascal's rule states that \\(\\binom{n}{r}+\\binom{n}{r-1}=\\binom{n+1}{r-1}\\)."
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-196",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{14}{3}\\).",
+   "explanation": "\\(\\binom{14}{3}=\\frac{14\\times13\\times12}{3\\times2\\times1}=364\\)",
+   "payload": {
+    "options": [
+     "1001",
+     "1092",
+     "364",
+     "2184"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-197",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "series-range",
+   "prompt": "For which values of \\(x\\) is the binomial series of \\((1-5x)^{-3}\\) valid?",
+   "explanation": "Write the bracket as \\(1\\left(1-\\frac{5}{1}x\\right)\\). The binomial series needs the second term to be smaller than 1 in size: \\(\\left|\\frac{5}{1}x\\right|<1\\), that is \\(|x|<\\frac{1}{5}\\).",
+   "payload": {
+    "options": [
+     "\\(|x|<\\frac{1}{5}\\)",
+     "\\(|x|<6\\)",
+     "\\(|x|<1\\)",
+     "\\(|x|<5\\)"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-198",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{n}{6}=\\binom{n}{7}\\), find \\(n\\).",
+   "explanation": "\\(\\binom{n}{6}=\\binom{n}{7}\\Rightarrow n=6+7=13\\)",
+   "payload": {
+    "options": [
+     "42",
+     "1",
+     "26",
+     "13"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-199",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(38^{507}\\)?",
+   "explanation": "The last digit of \\(38\\) is \\(8\\); its powers end in \\(8,4,2,6\\) and repeat (cyclicity \\(4\\)). \\(507=4\\times126+3\\), so take place \\(3\\): last digit \\(2\\).",
+   "payload": {
+    "options": [
+     "8",
+     "2",
+     "4",
+     "3"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-200",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{3}\\) in the expansion of \\((1-x)^{10}\\).",
+   "explanation": "\\(\\binom{10}{3}(-1)^{3}=120\\times-1=-120\\)",
+   "payload": {
+    "options": [
+     "210",
+     "120",
+     "119",
+     "-120"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-201",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{6}\\) in the expansion of \\((-2x+1)^{9}\\).",
+   "explanation": "\\(\\text{coefficient of }x^{6}=\\binom{9}{6}(-2)^{6}(1)^{3}=84\\cdot64\\cdot1=5376\\)",
+   "payload": {
+    "options": [
+     "5376",
+     "-672",
+     "2304",
+     "-5376"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-202",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "general-term",
+   "prompt": "Find the 3rd term in the expansion of \\((x+3)^{5}\\) in descending powers of \\(x\\).",
+   "explanation": "\\(T_{3}=\\binom{5}{2}x^{3}(3)^{2}=90x^{3}\\)",
+   "payload": {
+    "options": [
+     "\\(15x^{4}\\)",
+     "\\(90x^{3}\\)",
+     "\\(270x^{2}\\)",
+     "\\(90x^{2}\\)"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-203",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "remainder-binomial",
+   "prompt": "Find the remainder when \\(2^{75}\\) is divided by \\(11\\).",
+   "explanation": "\\(2^{5}=32=11\\times3-1\\). Write \\(75=5\\times15+0\\), so \\(2^{75}=(33-1)^{15}\\). By the binomial theorem every term of the bracket except the last is a multiple of \\(11\\), so the remainder comes from \\((-1)^{15}\\) = \\(-1\\), which leaves remainder \\(10\\).",
+   "payload": {
+    "options": [
+     "1",
+     "9",
+     "2",
+     "10"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-204",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "series-coefficient",
+   "prompt": "Find the coefficient of \\(x^{4}\\) in the expansion of \\((1+3x)^{-\\frac{1}{4}}\\).",
+   "explanation": "\\(\\frac{\\left(-\\frac{1}{4}\\right)\\times\\left(-\\frac{5}{4}\\right)\\times\\left(-\\frac{9}{4}\\right)\\times\\left(-\\frac{13}{4}\\right)}{4!}(3)^{4}=\\frac{15795}{2048}\\) (the coefficient of \\(x^{4}\\) is \\(\\frac{n(n-1)\\cdots(n-3)}{4!}a^{4}\\) with \\(n=-\\frac{1}{4},\\ a=3\\)).",
+   "payload": {
+    "options": [
+     "\\(-\\frac{405}{128}\\)",
+     "\\(\\frac{15795}{2048}\\)",
+     "\\(-\\frac{161109}{8192}\\)",
+     "\\(\\frac{15795}{1024}\\)"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-205",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{n}{3}=\\binom{n}{7}\\), find \\(n\\).",
+   "explanation": "\\(\\binom{n}{3}=\\binom{n}{7}\\Rightarrow n=3+7=10\\)",
+   "payload": {
+    "options": [
+     "10",
+     "21",
+     "11",
+     "20"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-206",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "series-concepts",
+   "prompt": "Which one of these statements about the binomial series is true?",
+   "explanation": "This statement is correct. Write the number as \\(1+x\\) with small \\(x\\) and use the first few terms.",
+   "payload": {
+    "options": [
+     "The series of \\((1+x)^{-1}\\) is \\(1+x+x^{2}+x^{3}+\\cdots\\).",
+     "The expansion of \\((1+x)^{1/2}\\) begins \\(1+\\frac{x}{2}+\\frac{x^{2}}{8}+\\cdots\\).",
+     "The binomial series can be used to find approximate values such as \\((1.02)^{1/3}\\) or \\(\\sqrt{1.04}\\).",
+     "The first three terms of \\((1+x)^{n}\\) are \\(1+nx+\\frac{n(n-1)}{2}x^{3}\\)."
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-207",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "remainder-binomial",
+   "prompt": "Find the remainder when \\(11^{33}\\) is divided by \\(24\\).",
+   "explanation": "\\(11^{2}=121=24\\times5+1\\). Write \\(33=2\\times16+1\\), so \\(11^{33}=(120+1)^{16}\\cdot11^{1}\\). By the binomial theorem every term of the bracket except the last is a multiple of \\(24\\), so the remainder comes from \\(1\\cdot11^{1}\\) = \\(11\\), which leaves remainder \\(11\\).",
+   "payload": {
+    "options": [
+     "12",
+     "13",
+     "11",
+     "10"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-208",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "series-coefficient",
+   "prompt": "Find the coefficient of \\(x^{2}\\) in the expansion of \\((1+3x)^{-\\frac{1}{2}}\\).",
+   "explanation": "\\(\\frac{\\left(-\\frac{1}{2}\\right)\\times\\left(-\\frac{3}{2}\\right)}{2!}(3)^{2}=\\frac{27}{8}\\) (the coefficient of \\(x^{2}\\) is \\(\\frac{n(n-1)\\cdots(n-1)}{2!}a^{2}\\) with \\(n=-\\frac{1}{2},\\ a=3\\)).",
+   "payload": {
+    "options": [
+     "\\(\\frac{27}{4}\\)",
+     "\\(-\\frac{135}{16}\\)",
+     "\\(\\frac{27}{8}\\)",
+     "\\(-\\frac{3}{2}\\)"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-209",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "applications-concepts",
+   "prompt": "Only one statement about last digits and remainders is true. Which one?",
+   "explanation": "This statement is correct. \\((10+1)^{n}-1\\) leaves only multiples of 10.",
+   "payload": {
+    "options": [
+     "The number \\(11^{n}-1\\) is divisible by 10 for every positive integer \\(n\\).",
+     "The unit digit of \\(13^{n}\\) is \\(3\\) whenever \\(n\\) is a multiple of 4.",
+     "The numbers \\(6^{n}\\) and \\(5^{n}\\) leave the same remainder when divided by 5.",
+     "The binomial theorem cannot be used to find remainders of large powers."
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-210",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{5}\\) in the expansion of \\((x+1)^{8}\\).",
+   "explanation": "\\(\\text{coefficient of }x^{5}=\\binom{8}{5}(1)^{5}(1)^{3}=56\\cdot1\\cdot1=56\\)",
+   "payload": {
+    "options": [
+     "56",
+     "-56",
+     "28",
+     "1792"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-211",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "middle-term",
+   "prompt": "Find the middle term of \\((x+3)^{12}\\).",
+   "explanation": "The middle term is the \\(7\\)th term: \\(\\binom{12}{6}x^{6}(3)^{6}=673596x^{6}\\)",
+   "payload": {
+    "options": [
+     "\\(192456x^{7}\\)",
+     "\\(924x^{6}\\)",
+     "\\(673596x^{6}\\)",
+     "\\(1732104x^{5}\\)"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-212",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "series-concepts",
+   "prompt": "Which one of these statements about the binomial series is false?",
+   "explanation": "This statement is not correct. It is \\(\\frac{(-3)(-4)}{2!}=+6\\).",
+   "payload": {
+    "options": [
+     "The coefficient of \\(x^{2}\\) in the expansion of \\((1+x)^{-3}\\) is \\(-6\\).",
+     "To expand \\((a+bx)^{n}\\) for non-integer \\(n\\), we first write it as \\(a^{n}\\left(1+\\frac{b}{a}x\\right)^{n}\\).",
+     "When \\(n\\) is a positive integer, the series for \\((1+x)^{n}\\) stops after \\(n+1\\) terms.",
+     "The expansion of \\((1-x)^{-2}\\) is \\(1+2x+3x^{2}+4x^{3}+\\cdots\\)."
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-213",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{4}\\) in the expansion of \\((1-2x)^{6}\\).",
+   "explanation": "\\(\\binom{6}{4}(-2)^{4}=15\\times16=240\\)",
+   "payload": {
+    "options": [
+     "240",
+     "31",
+     "-30",
+     "-192"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-214",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(92^{283}\\)?",
+   "explanation": "The last digit of \\(92\\) is \\(2\\); its powers end in \\(2,4,8,6\\) and repeat (cyclicity \\(4\\)). \\(283=4\\times70+3\\), so take place \\(3\\): last digit \\(8\\).",
+   "payload": {
+    "options": [
+     "2",
+     "0",
+     "9",
+     "8"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-215",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "middle-term",
+   "prompt": "Which term is the middle term in the expansion of \\((a+b)^{26}\\)?",
+   "explanation": "There are \\(26+1=27\\) terms (an odd number), so the middle one is the \\(\\frac{26}{2}+1=14\\)th term.",
+   "payload": {
+    "options": [
+     "15th",
+     "13th",
+     "14th",
+     "16th"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-216",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "general-term",
+   "prompt": "Find the 5th term in the expansion of \\((x+2)^{6}\\) in descending powers of \\(x\\).",
+   "explanation": "\\(T_{5}=\\binom{6}{4}x^{2}(2)^{4}=240x^{2}\\)",
+   "payload": {
+    "options": [
+     "\\(192x\\)",
+     "\\(240x^{2}\\)",
+     "\\(60x^{4}\\)",
+     "\\(160x^{3}\\)"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-217",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{5}\\) in the expansion of \\((x+3)^{7}\\).",
+   "explanation": "\\(\\binom{7}{5}(3)^{2}=21\\times9=189\\)",
+   "payload": {
+    "options": [
+     "5103",
+     "30",
+     "21",
+     "189"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-218",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "middle-term",
+   "prompt": "Which term is the middle term in the expansion of \\((a+b)^{22}\\)?",
+   "explanation": "There are \\(22+1=23\\) terms (an odd number), so the middle one is the \\(\\frac{22}{2}+1=12\\)th term.",
+   "payload": {
+    "options": [
+     "23rd",
+     "13th",
+     "14th",
+     "12th"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-219",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "series-coefficient",
+   "prompt": "Find the coefficient of \\(x^{2}\\) in the expansion of \\((1-2x)^{-2}\\).",
+   "explanation": "\\(\\frac{\\left(-2\\right)\\times\\left(-3\\right)}{2!}(-2)^{2}=12\\) (the coefficient of \\(x^{2}\\) is \\(\\frac{n(n-1)\\cdots(n-1)}{2!}a^{2}\\) with \\(n=-2,\\ a=-2\\)).",
+   "payload": {
+    "options": [
+     "-6",
+     "12",
+     "-12",
+     "13"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-220",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "inequality-induction",
+   "prompt": "Find the smallest positive integer \\(n_{0}\\) such that \\(n^{2}>4n+1\\) for every \\(n\\ge n_{0}\\).",
+   "explanation": "At \\(n=4\\) the values are \\(16\\) and \\(17\\), so the inequality fails; at \\(n=5\\) we get \\(25>21\\), and the inductive step then keeps it true for every larger \\(n\\). So the basis step starts at \\(n=5\\).",
+   "payload": {
+    "options": [
+     "6",
+     "5",
+     "3",
+     "4"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-221",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "middle-term",
+   "prompt": "Which terms are the two middle terms in the expansion of \\((a+b)^{41}\\)?",
+   "explanation": "There are \\(41+1=42\\) terms (an even number), so there are two middle terms: the \\(\\frac{41+1}{2}=21\\)th and the \\(22\\)th.",
+   "payload": {
+    "options": [
+     "20th and 21st",
+     "20th and 22nd",
+     "21st and 22nd",
+     "22nd and 23rd"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-222",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{31}+(x-y)^{31}\\) after simplification?",
+   "explanation": "The terms with odd powers of \\(y\\) cancel and the others double, so \\(\\lfloor 31/2\\rfloor+1=16\\) terms remain.",
+   "payload": {
+    "options": [
+     "15",
+     "18",
+     "16",
+     "32"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-223",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(66^{901}\\)?",
+   "explanation": "Every power of a number ending in \\(6\\) also ends in \\(6\\), so the last digit is \\(6\\).",
+   "payload": {
+    "options": [
+     "0",
+     "7",
+     "8",
+     "6"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-224",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "pascal-rule",
+   "prompt": "In Pascal's triangle two neighbouring entries of row \\(6\\) are \\(15\\) and \\(20\\). What is the entry directly below them in row \\(7\\)?",
+   "explanation": "\\(15+20=35\\ \\ (\\text{Pascal's rule: }\\binom{6}{2}+\\binom{6}{3}=\\binom{7}{3})\\)",
+   "payload": {
+    "options": [
+     "40",
+     "35",
+     "15",
+     "41"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-225",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((a+b)^{6}\\)?",
+   "explanation": "\\((a+b)^{6}\\) has \\(6+1=7\\) terms.",
+   "payload": {
+    "options": [
+     "17",
+     "7",
+     "9",
+     "14"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-226",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{11}{7}\\).",
+   "explanation": "\\(\\binom{11}{7}=\\binom{11}{4}=\\frac{11\\times10\\times9\\times8}{4\\times3\\times2\\times1}=330\\)",
+   "payload": {
+    "options": [
+     "165",
+     "462",
+     "792",
+     "330"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-227",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(28^{297}\\)?",
+   "explanation": "The last digit of \\(28\\) is \\(8\\); its powers end in \\(8,4,2,6\\) and repeat (cyclicity \\(4\\)). \\(297=4\\times74+1\\), so take place \\(1\\): last digit \\(8\\).",
+   "payload": {
+    "options": [
+     "2",
+     "4",
+     "9",
+     "8"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-228",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "independent-term",
+   "prompt": "Which term is independent of \\(x\\) in the expansion of \\(\\left(x^{4}+\\frac{1}{x^{2}}\\right)^{12}\\)? (Give the term number.)",
+   "explanation": "\\(48-6r=0\\Rightarrow r=8\\), so it is the \\((r+1)=9\\)th term.",
+   "payload": {
+    "options": [
+     "4",
+     "10",
+     "7",
+     "9"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-229",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "pascal-rule",
+   "prompt": "In Pascal's triangle two neighbouring entries of row \\(14\\) are \\(3432\\) and \\(3003\\). What is the entry directly below them in row \\(15\\)?",
+   "explanation": "\\(3432+3003=6435\\ \\ (\\text{Pascal's rule: }\\binom{14}{7}+\\binom{14}{8}=\\binom{15}{8})\\)",
+   "payload": {
+    "options": [
+     "3432",
+     "10306296",
+     "9867",
+     "6435"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-230",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "applications-concepts",
+   "prompt": "Which one of these statements about last digits and remainders is true?",
+   "explanation": "This statement is correct. The cyclicity of 9 is 2.",
+   "payload": {
+    "options": [
+     "The number \\(10^{n}+1\\) is divisible by 9 for every positive integer \\(n\\).",
+     "The last digits of the powers of 2 repeat in the cycle \\(2,4,6,8\\).",
+     "The powers of 9 end alternately in \\(9\\) and \\(1\\).",
+     "The remainder when \\(5^{103}\\) is divided by 13 is 5."
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-231",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "series-concepts",
+   "prompt": "Pick the correct statement about the binomial series.",
+   "explanation": "This statement is correct. Keep only the first two terms of the series.",
+   "payload": {
+    "options": [
+     "For small \\(x\\), \\(\\sqrt{1+x}\\approx1+\\frac{x}{2}\\).",
+     "The binomial series for \\((1+x)^{1/2}\\) is valid for every real number \\(x\\).",
+     "The series for \\((1+x)^{n}\\) with \\(n=\\tfrac12\\) ends after \\(n+1\\) terms.",
+     "The series of \\((2+x)^{-1}\\) in powers of \\(x\\) is valid for \\(|x|<1\\)."
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-232",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "independent-term",
+   "prompt": "Find the term independent of \\(x\\) in the expansion of \\(\\left(x-\\frac{2}{x^{2}}\\right)^{15}\\).",
+   "explanation": "\\(T_{r+1}=\\binom{15}{r}c^{r}x^{15-3r}\\ \\ (c=-2)\\Rightarrow 15-3r=0,\\ r=5\\) so the term is \\(T_{6}=\\binom{15}{5}(-2)^{5}=-96096\\).",
+   "payload": {
+    "options": [
+     "-96096",
+     "21840",
+     "96096",
+     "3075072"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-233",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "induction-steps",
+   "prompt": "Let \\(P(n):\\ 1+3+5+\\cdots+2 n - 1=n^{2}\\). Which of the following is the statement \\(P(k+1)\\)?",
+   "explanation": "Replace every \\(n\\) by \\(k+1\\) on both sides, including the last term of the left side.",
+   "payload": {
+    "options": [
+     "\\(1+3+5+\\cdots+\\left(2 k + 3\\right)=\\left(k + 2\\right)^{2}\\)",
+     "\\(1+3+5+\\cdots+\\left(2 k + 1\\right)=k^{2}\\)",
+     "\\(1+3+5+\\cdots+\\left(2 k + 1\\right)=\\left(k + 1\\right)^{2}\\)",
+     "\\(1+3+5+\\cdots+2 k - 1=\\left(k + 1\\right)^{2}\\)"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-234",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "induction-steps",
+   "prompt": "Let \\(P(n):\\ 1^{3}+2^{3}+3^{3}+\\cdots+n^{3}=\\frac{n^{2} \\left(n + 1\\right)^{2}}{4}\\). Which of the following is the statement \\(P(k+1)\\)?",
+   "explanation": "Replace every \\(n\\) by \\(k+1\\) on both sides, including the last term of the left side.",
+   "payload": {
+    "options": [
+     "\\(1^{3}+2^{3}+3^{3}+\\cdots+\\left(k + 1\\right)^{3}=\\frac{\\left(k + 1\\right)^{2} \\left(k + 2\\right)^{2}}{4}\\)",
+     "\\(1^{3}+2^{3}+3^{3}+\\cdots+k^{3}=\\frac{\\left(k + 1\\right)^{2} \\left(k + 2\\right)^{2}}{4}\\)",
+     "\\(1^{3}+2^{3}+3^{3}+\\cdots+\\left(k + 2\\right)^{3}=\\frac{\\left(k + 2\\right)^{2} \\left(k + 3\\right)^{2}}{4}\\)",
+     "\\(1^{3}+2^{3}+3^{3}+\\cdots+\\left(k + 1\\right)^{3}=\\frac{k^{2} \\left(k + 1\\right)^{2}}{4}\\)"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-235",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{4}-(x-y)^{4}\\) after simplification?",
+   "explanation": "The terms with even powers of \\(y\\) cancel and the odd ones double, so \\(\\lfloor(4+1)/2\\rfloor=2\\) terms remain.",
+   "payload": {
+    "options": [
+     "1",
+     "12",
+     "2",
+     "3"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-236",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((x-2)^{8}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((1-2)^{8}=1\\).",
+   "payload": {
+    "options": [
+     "256",
+     "-1",
+     "1",
+     "257"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-237",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "applications-concepts",
+   "prompt": "Pick the correct statement about last digits and remainders.",
+   "explanation": "This statement is correct. Write \\(4^{n}=(1+3)^{n}\\) and expand.",
+   "payload": {
+    "options": [
+     "The expression \\(4^{n}+15n-1\\) is divisible by 9 for every positive integer \\(n\\).",
+     "The cyclicity of the last digit 9 is 4.",
+     "The unit digit of \\(2^{100}\\) is \\(2\\).",
+     "The unit digit of \\(7^{100}\\) is \\(7\\)."
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-238",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "approximation",
+   "prompt": "Use the first three terms of the binomial expansion to find \\((1+0.001)^{9}\\) approximately.",
+   "explanation": "\\((1+x)^{9}\\approx1+9 x+36 x^{2}\\) with \\(x=0.001\\): \\(1+0.009+0.000036=1.009036\\).",
+   "payload": {
+    "options": [
+     "1.009009",
+     "1.009036",
+     "1.009",
+     "1.008964"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-239",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "divisibility",
+   "prompt": "What is the largest positive integer that divides \\(n(n+1)(n+2)(n+3)\\) for every positive integer \\(n\\)?",
+   "explanation": "Try small values: \\(24,\\ 120,\\ 360,\\ 840\\) have greatest common divisor \\(24\\); induction or the binomial theorem shows that \\(24\\) always divides it.",
+   "payload": {
+    "options": [
+     "24",
+     "26",
+     "23",
+     "72"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-240",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{n}{9}=\\binom{n}{20}\\), find \\(n\\).",
+   "explanation": "\\(\\binom{n}{9}=\\binom{n}{20}\\Rightarrow n=9+20=29\\)",
+   "payload": {
+    "options": [
+     "11",
+     "31",
+     "29",
+     "30"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-241",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "induction-steps",
+   "prompt": "For \\(P(n):\\ \\frac{1}{1\\cdot2}+\\frac{1}{2\\cdot3}+\\cdots+\\frac{1}{n \\left(n + 1\\right)}=\\frac{n}{n + 1}\\), what is the value of each side when \\(n=4\\)?",
+   "explanation": "Put \\(n=4\\) in the right side: \\(\\frac{4}{5}\\). The left side (sum of the first \\(4\\) terms) gives the same value \\(\\frac{4}{5}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{9}{5}\\)",
+     "\\(\\frac{8}{5}\\)",
+     "\\(\\frac{3}{4}\\)",
+     "\\(\\frac{4}{5}\\)"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-242",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "binomial-concepts",
+   "prompt": "Choose the true statement about the binomial theorem and Pascal's triangle.",
+   "explanation": "This statement is correct. The coefficients rise to the middle and then fall.",
+   "payload": {
+    "options": [
+     "Row 5 of Pascal's triangle is \\(1,5,10,5,1\\).",
+     "The greatest binomial coefficient in \\((1+x)^{n}\\) with even \\(n\\) is \\(\\binom{n}{n/2}\\).",
+     "Every term in the expansion of \\((a-b)^{n}\\) is positive.",
+     "The expansion of \\((a+b)^{n}\\) has \\(n\\) terms."
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-243",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "induction-steps",
+   "prompt": "Let \\(P(n):\\ 1+2+3+\\cdots+n=\\frac{n \\left(n + 1\\right)}{2}\\). Which of the following is the statement \\(P(k+1)\\)?",
+   "explanation": "Replace every \\(n\\) by \\(k+1\\) on both sides, including the last term of the left side.",
+   "payload": {
+    "options": [
+     "\\(1+2+3+\\cdots+\\left(k + 1\\right)=\\frac{\\left(k + 1\\right) \\left(k + 2\\right)}{2}\\)",
+     "\\(1+2+3+\\cdots+\\left(k + 1\\right)=\\frac{k \\left(k + 1\\right)}{2}\\)",
+     "\\(1+2+3+\\cdots+\\left(k + 2\\right)=\\frac{\\left(k + 2\\right) \\left(k + 3\\right)}{2}\\)",
+     "\\(1+2+3+\\cdots+k=\\frac{\\left(k + 1\\right) \\left(k + 2\\right)}{2}\\)"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-244",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "middle-term",
+   "prompt": "Which term is the middle term in the expansion of \\((a+b)^{40}\\)?",
+   "explanation": "There are \\(40+1=41\\) terms (an odd number), so the middle one is the \\(\\frac{40}{2}+1=21\\)th term.",
+   "payload": {
+    "options": [
+     "20th",
+     "22nd",
+     "23rd",
+     "21st"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-245",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{7}+(x-y)^{7}\\) after simplification?",
+   "explanation": "The terms with odd powers of \\(y\\) cancel and the others double, so \\(\\lfloor 7/2\\rfloor+1=4\\) terms remain.",
+   "payload": {
+    "options": [
+     "4",
+     "8",
+     "6",
+     "3"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-246",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "general-term",
+   "prompt": "Find the 6th term in the expansion of \\((x-1)^{8}\\) in descending powers of \\(x\\).",
+   "explanation": "\\(T_{6}=\\binom{8}{5}x^{3}(-1)^{5}=-56x^{3}\\)",
+   "payload": {
+    "options": [
+     "\\(70x^{4}\\)",
+     "\\(-56x^{3}\\)",
+     "\\(28x^{2}\\)",
+     "\\(-56x^{5}\\)"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-247",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "approximation",
+   "prompt": "Use the first three terms of the binomial series to approximate \\(\\sqrt{1+0.1}\\).",
+   "explanation": "With \\(x=0.1\\): \\((1+x)^{\\frac{1}{2}}\\approx1+\\frac{1}{2}x-\\frac{1}{8}x^{2}\\) gives \\(1+0.05-0.00125\\) = \\(1.04875\\).",
+   "payload": {
+    "options": [
+     "1.05",
+     "0.94875",
+     "1.05125",
+     "1.04875"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-248",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(39^{237}\\)?",
+   "explanation": "The last digit of \\(39\\) is \\(9\\); its powers end in \\(9,1\\) and repeat (cyclicity \\(2\\)). \\(237=2\\times118+1\\), so take place \\(1\\): last digit \\(9\\).",
+   "payload": {
+    "options": [
+     "0",
+     "1",
+     "3",
+     "9"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-249",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1+2+3+\\cdots+14\\).",
+   "explanation": "\\(S_{n}=\\frac{n(n+1)}{2}\\ \\text{with}\\ n=14:\\ S=105\\)",
+   "payload": {
+    "options": [
+     "105",
+     "104",
+     "119",
+     "106"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-250",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((x+4)^{4}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((1+4)^{4}=625\\).",
+   "payload": {
+    "options": [
+     "20",
+     "625",
+     "256",
+     "3125"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-251",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "divisibility",
+   "prompt": "What is the largest positive integer that divides \\(n^{3}-n\\) for every positive integer \\(n\\)?",
+   "explanation": "Try small values: \\(0,\\ 6,\\ 24,\\ 60\\) have greatest common divisor \\(6\\); induction or the binomial theorem shows that \\(6\\) always divides it.",
+   "payload": {
+    "options": [
+     "18",
+     "5",
+     "7",
+     "6"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-252",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "series-range",
+   "prompt": "For which values of \\(x\\) is the binomial series of \\((1-3x)^{\\frac{1}{3}}\\) valid?",
+   "explanation": "Write the bracket as \\(1\\left(1-\\frac{3}{1}x\\right)\\). The binomial series needs the second term to be smaller than 1 in size: \\(\\left|\\frac{3}{1}x\\right|<1\\), that is \\(|x|<\\frac{1}{3}\\).",
+   "payload": {
+    "options": [
+     "\\(|x|<\\frac{1}{4}\\)",
+     "\\(|x|<1\\)",
+     "\\(|x|<\\frac{1}{3}\\)",
+     "\\(|x|<\\frac{2}{3}\\)"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-253",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "series-coefficient",
+   "prompt": "Find the coefficient of \\(x^{3}\\) in the expansion of \\((1+3x)^{-\\frac{2}{3}}\\).",
+   "explanation": "\\(\\frac{\\left(-\\frac{2}{3}\\right)\\times\\left(-\\frac{5}{3}\\right)\\times\\left(-\\frac{8}{3}\\right)}{3!}(3)^{3}=-\\frac{40}{3}\\) (the coefficient of \\(x^{3}\\) is \\(\\frac{n(n-1)\\cdots(n-2)}{3!}a^{3}\\) with \\(n=-\\frac{2}{3},\\ a=3\\)).",
+   "payload": {
+    "options": [
+     "\\(-\\frac{40}{27}\\)",
+     "\\(-\\frac{40}{3}\\)",
+     "\\(\\frac{110}{3}\\)",
+     "\\(-\\frac{40}{81}\\)"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-254",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "remainder-binomial",
+   "prompt": "Find the remainder when \\(5^{255}\\) is divided by \\(22\\).",
+   "explanation": "\\(5^{5}=3125=22\\times142+1\\). Write \\(255=5\\times51+0\\), so \\(5^{255}=(3124+1)^{51}\\). By the binomial theorem every term of the bracket except the last is a multiple of \\(22\\), so the remainder comes from \\(1\\) = \\(1\\), which leaves remainder \\(1\\).",
+   "payload": {
+    "options": [
+     "3",
+     "1",
+     "21",
+     "0"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-255",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "independent-term",
+   "prompt": "Which term is independent of \\(x\\) in the expansion of \\(\\left(x+\\frac{1}{x^{2}}\\right)^{12}\\)? (Give the term number.)",
+   "explanation": "\\(12-3r=0\\Rightarrow r=4\\), so it is the \\((r+1)=5\\)th term.",
+   "payload": {
+    "options": [
+     "5",
+     "4",
+     "6",
+     "8"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-256",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1+2+3+\\cdots+20\\).",
+   "explanation": "\\(S_{n}=\\frac{n(n+1)}{2}\\ \\text{with}\\ n=20:\\ S=210\\)",
+   "payload": {
+    "options": [
+     "210",
+     "211",
+     "420",
+     "231"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-257",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the sum of the binomial coefficients at the even places (r = 0, 2, 4, ...) of \\((1+x)^{18}\\).",
+   "explanation": "Even-place sum = odd-place sum, and together they make \\(2^{18}\\), so each is \\(2^{17}=131072\\).",
+   "payload": {
+    "options": [
+     "131072",
+     "131073",
+     "262144",
+     "131071"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-258",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "remainder-binomial",
+   "prompt": "Find the remainder when \\(10^{118}\\) is divided by \\(7\\).",
+   "explanation": "\\(10^{3}=1000=7\\times143-1\\). Write \\(118=3\\times39+1\\), so \\(10^{118}=(1001-1)^{39}\\cdot10^{1}\\). By the binomial theorem every term of the bracket except the last is a multiple of \\(7\\), so the remainder comes from \\((-1)^{39}\\cdot10^{1}\\) = \\(-10\\), which leaves remainder \\(4\\).",
+   "payload": {
+    "options": [
+     "5",
+     "3",
+     "4",
+     "6"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-259",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(2+4+6+\\cdots+24\\).",
+   "explanation": "\\(S_{n}=n(n+1)\\ \\text{with}\\ n=12:\\ S=156\\)",
+   "payload": {
+    "options": [
+     "182",
+     "156",
+     "312",
+     "157"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-260",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((2x+1)^{5}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((2+1)^{5}=243\\).",
+   "payload": {
+    "options": [
+     "32",
+     "33",
+     "15",
+     "243"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-261",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "induction-steps",
+   "prompt": "In proving \\(P(n):\\ 1^{3}+2^{3}+3^{3}+\\cdots+n^{3}=\\frac{n^{2} \\left(n + 1\\right)^{2}}{4}\\) by induction, which term is added to both sides of \\(P(k)\\) to reach \\(P(k+1)\\)?",
+   "explanation": "The new last term of the left side is the \\((k+1)\\)th term \\(\\left(k + 1\\right)^{3}\\).",
+   "payload": {
+    "options": [
+     "\\(\\frac{\\left(k + 1\\right)^{2} \\left(k + 2\\right)^{2}}{4}\\)",
+     "\\(\\left(k + 1\\right)^{3}\\)",
+     "\\(k^{3}\\)",
+     "\\(\\left(k + 2\\right)^{3}\\)"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-262",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "induction-steps",
+   "prompt": "For \\(P(n):\\ 1^{3}+2^{3}+3^{3}+\\cdots+n^{3}=\\frac{n^{2} \\left(n + 1\\right)^{2}}{4}\\), what is the value of each side when \\(n=4\\)?",
+   "explanation": "Put \\(n=4\\) in the right side: \\(100\\). The left side (sum of the first \\(4\\) terms) gives the same value \\(100\\).",
+   "payload": {
+    "options": [
+     "36",
+     "225",
+     "99",
+     "100"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-263",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{5}\\) in the expansion of \\((x+4)^{7}\\).",
+   "explanation": "\\(\\binom{7}{5}(4)^{2}=21\\times16=336\\)",
+   "payload": {
+    "options": [
+     "21504",
+     "336",
+     "37",
+     "28"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-264",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "divisibility",
+   "prompt": "What is the largest positive integer that divides \\(10^{n}-9n-1\\) for every positive integer \\(n\\)?",
+   "explanation": "Try small values: \\(0,\\ 81,\\ 972,\\ 9963\\) have greatest common divisor \\(81\\); induction or the binomial theorem shows that \\(81\\) always divides it.",
+   "payload": {
+    "options": [
+     "162",
+     "243",
+     "82",
+     "81"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-265",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(55^{670}\\)?",
+   "explanation": "Every power of a number ending in \\(5\\) also ends in \\(5\\), so the last digit is \\(5\\).",
+   "payload": {
+    "options": [
+     "9",
+     "6",
+     "7",
+     "5"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-266",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "induction-concepts",
+   "prompt": "Pick the incorrect statement about mathematical induction.",
+   "explanation": "This statement is not correct. It is used for statements about integers \\(n\\) starting at a given value.",
+   "payload": {
+    "options": [
+     "Mathematical induction has two parts: a basis step and an inductive step.",
+     "Mathematical induction is used to prove statements about all real numbers.",
+     "In the basis step we check that the statement is true for the first value of \\(n\\), usually \\(n=1\\).",
+     "The inequality \\(n!>2^{n}\\) is true for every integer \\(n\\ge4\\)."
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-267",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "independent-term",
+   "prompt": "Which term is independent of \\(x\\) in the expansion of \\(\\left(x^{4}+\\frac{1}{x}\\right)^{20}\\)? (Give the term number.)",
+   "explanation": "\\(80-5r=0\\Rightarrow r=16\\), so it is the \\((r+1)=17\\)th term.",
+   "payload": {
+    "options": [
+     "17",
+     "15",
+     "5",
+     "18"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-268",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "independent-term",
+   "prompt": "Find the term independent of \\(x\\) in the expansion of \\(\\left(x^{3}+\\frac{2}{x^{3}}\\right)^{6}\\).",
+   "explanation": "\\(T_{r+1}=\\binom{6}{r}c^{r}x^{18-6r}\\ \\ (c=2)\\Rightarrow 18-6r=0,\\ r=3\\) so the term is \\(T_{4}=\\binom{6}{3}(2)^{3}=160\\).",
+   "payload": {
+    "options": [
+     "20",
+     "160",
+     "240",
+     "60"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-269",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{2}\\) in the expansion of \\((x+4)^{10}\\).",
+   "explanation": "\\(\\binom{10}{2}(4)^{8}=45\\times65536=2949120\\)",
+   "payload": {
+    "options": [
+     "65581",
+     "2949120",
+     "720",
+     "1966080"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-270",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "independent-term",
+   "prompt": "Find the term independent of \\(x\\) in the expansion of \\(\\left(x^{3}-\\frac{2}{x^{3}}\\right)^{8}\\).",
+   "explanation": "\\(T_{r+1}=\\binom{8}{r}c^{r}x^{24-6r}\\ \\ (c=-2)\\Rightarrow 24-6r=0,\\ r=4\\) so the term is \\(T_{5}=\\binom{8}{4}(-2)^{4}=1120\\).",
+   "payload": {
+    "options": [
+     "70",
+     "-1120",
+     "-1792",
+     "1120"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-271",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "divisibility",
+   "prompt": "What is the largest positive integer that divides \\(11^{n}-1\\) for every positive integer \\(n\\)?",
+   "explanation": "Try small values: \\(10,\\ 120,\\ 1330,\\ 14640\\) have greatest common divisor \\(10\\); induction or the binomial theorem shows that \\(10\\) always divides it.",
+   "payload": {
+    "options": [
+     "9",
+     "10",
+     "12",
+     "30"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-272",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(33^{111}\\)?",
+   "explanation": "The last digit of \\(33\\) is \\(3\\); its powers end in \\(3,9,7,1\\) and repeat (cyclicity \\(4\\)). \\(111=4\\times27+3\\), so take place \\(3\\): last digit \\(7\\).",
+   "payload": {
+    "options": [
+     "1",
+     "9",
+     "3",
+     "7"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-273",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "approximation",
+   "prompt": "Use the first three terms of the binomial expansion to find \\((1+0.001)^{13}\\) approximately.",
+   "explanation": "\\((1+x)^{13}\\approx1+13 x+78 x^{2}\\) with \\(x=0.001\\): \\(1+0.013+0.000078=1.013078\\).",
+   "payload": {
+    "options": [
+     "1.012922",
+     "1.013013",
+     "1.013078",
+     "1.01307829"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-274",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((x+2)^{9}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((1+2)^{9}=19683\\).",
+   "payload": {
+    "options": [
+     "513",
+     "59049",
+     "19683",
+     "512"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-275",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "middle-term",
+   "prompt": "Find the middle term of \\((x-1)^{6}\\).",
+   "explanation": "The middle term is the \\(4\\)th term: \\(\\binom{6}{3}x^{3}(-1)^{3}=-20x^{3}\\)",
+   "payload": {
+    "options": [
+     "\\(15x^{2}\\)",
+     "\\(20x^{3}\\)",
+     "\\(15x^{4}\\)",
+     "\\(-20x^{3}\\)"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-276",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "series-concepts",
+   "prompt": "Choose the false statement about the binomial series.",
+   "explanation": "This statement is not correct. The signs alternate: \\(1-2x+3x^{2}-4x^{3}+\\cdots\\).",
+   "payload": {
+    "options": [
+     "The binomial series for \\((1+x)^{n}\\) with non-integer \\(n\\) is valid when \\(|x|<1\\).",
+     "The expansion of \\((1-x)^{-1}\\) is \\(1+x+x^{2}+x^{3}+\\cdots\\) for \\(|x|<1\\).",
+     "The expansion of \\((1+x)^{-2}\\) is \\(1+2x+3x^{2}+4x^{3}+\\cdots\\).",
+     "The coefficient of \\(x^{3}\\) in the expansion of \\((1+x)^{1/2}\\) is \\(\\frac{1}{16}\\)."
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-277",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "pascal-rule",
+   "prompt": "In Pascal's triangle two neighbouring entries of row \\(12\\) are \\(495\\) and \\(220\\). What is the entry directly below them in row \\(13\\)?",
+   "explanation": "\\(495+220=715\\ \\ (\\text{Pascal's rule: }\\binom{12}{8}+\\binom{12}{9}=\\binom{13}{9})\\)",
+   "payload": {
+    "options": [
+     "108900",
+     "495",
+     "727",
+     "715"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-278",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "applications-concepts",
+   "prompt": "Pick the incorrect statement about last digits and remainders.",
+   "explanation": "This statement is not correct. \\(4^{2}=16\\) ends in 6; the last digits alternate \\(4,6\\).",
+   "payload": {
+    "options": [
+     "The remainder when \\(5^{103}\\) is divided by 13 is 8.",
+     "Any power of a number ending in 6 also ends in 6.",
+     "The fractional part of \\(\\frac{2^{510}}{31}\\) is \\(\\frac{1}{31}\\).",
+     "Any power of a number ending in 4 always ends in 4."
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-279",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{25}{x}=\\binom{25}{3}\\) and \\(x\\ne 3\\), find \\(x\\).",
+   "explanation": "\\(\\binom{25}{x}=\\binom{25}{3}\\Rightarrow x=3\\ \\text{or}\\ x=25-3=22\\)",
+   "payload": {
+    "options": [
+     "23",
+     "24",
+     "44",
+     "22"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-280",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "series-range",
+   "prompt": "For which values of \\(x\\) is the binomial series of \\((4+x)^{-\\frac{3}{2}}\\) valid?",
+   "explanation": "Write the bracket as \\(4\\left(1+\\frac{1}{4}x\\right)\\). The binomial series needs the second term to be smaller than 1 in size: \\(\\left|\\frac{1}{4}x\\right|<1\\), that is \\(|x|<4\\).",
+   "payload": {
+    "options": [
+     "\\(|x|<4\\)",
+     "\\(|x|<2\\)",
+     "\\(|x|<1\\)",
+     "\\(|x|<\\frac{1}{4}\\)"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-281",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "middle-term",
+   "prompt": "Find the middle term of \\((x+2)^{12}\\).",
+   "explanation": "The middle term is the \\(7\\)th term: \\(\\binom{12}{6}x^{6}(2)^{6}=59136x^{6}\\)",
+   "payload": {
+    "options": [
+     "\\(101376x^{5}\\)",
+     "\\(59136x^{6}\\)",
+     "\\(25344x^{7}\\)",
+     "\\(924x^{6}\\)"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-282",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "middle-term",
+   "prompt": "Find the middle term of \\((x+3)^{10}\\).",
+   "explanation": "The middle term is the \\(6\\)th term: \\(\\binom{10}{5}x^{5}(3)^{5}=61236x^{5}\\)",
+   "payload": {
+    "options": [
+     "\\(153090x^{4}\\)",
+     "\\(61236x^{5}\\)",
+     "\\(252x^{5}\\)",
+     "\\(17010x^{6}\\)"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-283",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{21}{x}=\\binom{21}{3}\\) and \\(x\\ne 3\\), find \\(x\\).",
+   "explanation": "\\(\\binom{21}{x}=\\binom{21}{3}\\Rightarrow x=3\\ \\text{or}\\ x=21-3=18\\)",
+   "payload": {
+    "options": [
+     "17",
+     "19",
+     "20",
+     "18"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-284",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "remainder-binomial",
+   "prompt": "Find the remainder when \\(9^{72}\\) is divided by \\(11\\).",
+   "explanation": "\\(9^{5}=59049=11\\times5368+1\\). Write \\(72=5\\times14+2\\), so \\(9^{72}=(59048+1)^{14}\\cdot9^{2}\\). By the binomial theorem every term of the bracket except the last is a multiple of \\(11\\), so the remainder comes from \\(1\\cdot9^{2}\\) = \\(81\\), which leaves remainder \\(4\\).",
+   "payload": {
+    "options": [
+     "9",
+     "3",
+     "7",
+     "4"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-285",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "independent-term",
+   "prompt": "Which term is independent of \\(x\\) in the expansion of \\(\\left(x^{3}+\\frac{1}{x^{2}}\\right)^{5}\\)? (Give the term number.)",
+   "explanation": "\\(15-5r=0\\Rightarrow r=3\\), so it is the \\((r+1)=4\\)th term.",
+   "payload": {
+    "options": [
+     "3",
+     "2",
+     "5",
+     "4"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-286",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1^{2}+2^{2}+3^{2}+\\cdots+3^{2}\\).",
+   "explanation": "\\(S_{n}=\\frac{n(n+1)(2n+1)}{6}\\ \\text{with}\\ n=3:\\ S=14\\)",
+   "payload": {
+    "options": [
+     "5",
+     "14",
+     "28",
+     "13"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-287",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "binomial-sums",
+   "prompt": "The sum of all the binomial coefficients of \\((1+x)^{n}\\) is \\(1024\\). Find \\(n\\).",
+   "explanation": "\\(2^{n}=1024=2^{10}\\Rightarrow n=10\\)",
+   "payload": {
+    "options": [
+     "9",
+     "10",
+     "1014",
+     "512"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-288",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the value of \\(\\binom{7}{0}-\\binom{7}{1}+\\binom{7}{2}-\\cdots+(-1)^{7}\\binom{7}{7}\\).",
+   "explanation": "Put \\(x=-1\\) in \\((1+x)^{7}\\): \\((1-1)^{7}=0\\).",
+   "payload": {
+    "options": [
+     "1",
+     "0",
+     "64",
+     "-1"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-289",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "independent-term",
+   "prompt": "Which term is independent of \\(x\\) in the expansion of \\(\\left(x^{3}+\\frac{1}{x^{3}}\\right)^{24}\\)? (Give the term number.)",
+   "explanation": "\\(72-6r=0\\Rightarrow r=12\\), so it is the \\((r+1)=13\\)th term.",
+   "payload": {
+    "options": [
+     "12",
+     "14",
+     "13",
+     "11"
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-290",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "series-coefficient",
+   "prompt": "Find the coefficient of \\(x^{2}\\) in the expansion of \\((1+x)^{-3}\\).",
+   "explanation": "\\(\\frac{\\left(-3\\right)\\times\\left(-4\\right)}{2!}(1)^{2}=6\\) (the coefficient of \\(x^{2}\\) is \\(\\frac{n(n-1)\\cdots(n-1)}{2!}a^{2}\\) with \\(n=-3,\\ a=1\\)).",
+   "payload": {
+    "options": [
+     "-6",
+     "6",
+     "7",
+     "-10"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-291",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{32}-(x-y)^{32}\\) after simplification?",
+   "explanation": "The terms with even powers of \\(y\\) cancel and the odd ones double, so \\(\\lfloor(32+1)/2\\rfloor=16\\) terms remain.",
+   "payload": {
+    "options": [
+     "16",
+     "17",
+     "32",
+     "33"
+    ],
+    "correctIndex": 0
+   }
+  },
+  {
+   "id": "mcq-292",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{5}{3}\\).",
+   "explanation": "\\(\\binom{5}{3}=\\binom{5}{2}=\\frac{5\\times4}{2\\times1}=10\\)",
+   "payload": {
+    "options": [
+     "30",
+     "10",
+     "60",
+     "5"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-293",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1^{3}+2^{3}+3^{3}+\\cdots+10^{3}\\).",
+   "explanation": "\\(S_{n}=\\left[\\frac{n(n+1)}{2}\\right]^{2}\\ \\text{with}\\ n=10:\\ S=3025\\)",
+   "payload": {
+    "options": [
+     "3035",
+     "3025",
+     "3026",
+     "3024"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-294",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "inequality-induction",
+   "prompt": "Find the smallest positive integer \\(n_{0}\\) such that \\(n!>4^{n}\\) for every \\(n\\ge n_{0}\\).",
+   "explanation": "At \\(n=8\\) the values are \\(40320\\) and \\(65536\\), so the inequality fails; at \\(n=9\\) we get \\(362880>262144\\), and the inductive step then keeps it true for every larger \\(n\\). So the basis step starts at \\(n=9\\).",
+   "payload": {
+    "options": [
+     "18",
+     "7",
+     "11",
+     "9"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-295",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the value of \\(\\binom{19}{0}+\\binom{19}{1}+\\binom{19}{2}+\\cdots+\\binom{19}{19}\\).",
+   "explanation": "Put \\(a=b=1\\) in \\((a+b)^{19}\\): the sum is \\(2^{19}=524288\\).",
+   "payload": {
+    "options": [
+     "361",
+     "524288",
+     "1048576",
+     "524289"
+    ],
+    "correctIndex": 1
+   }
+  },
+  {
+   "id": "mcq-296",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{23}+(x-y)^{23}\\) after simplification?",
+   "explanation": "The terms with odd powers of \\(y\\) cancel and the others double, so \\(\\lfloor 23/2\\rfloor+1=12\\) terms remain.",
+   "payload": {
+    "options": [
+     "24",
+     "23",
+     "14",
+     "12"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-297",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((2x-3)^{9}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((2-3)^{9}=-1\\).",
+   "payload": {
+    "options": [
+     "-19171",
+     "-10077696",
+     "-9",
+     "-1"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-298",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Easy",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1^{2}+2^{2}+3^{2}+\\cdots+9^{2}\\).",
+   "explanation": "\\(S_{n}=\\frac{n(n+1)(2n+1)}{6}\\ \\text{with}\\ n=9:\\ S=285\\)",
+   "payload": {
+    "options": [
+     "570",
+     "385",
+     "284",
+     "285"
+    ],
+    "correctIndex": 3
+   }
+  },
+  {
+   "id": "mcq-299",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Medium",
+   "topicTag": "series-concepts",
+   "prompt": "Which statement about the binomial series holds?",
+   "explanation": "This statement is correct. The coefficient of \\(x^{r}\\) is \\((-1)^{r}(r+1)\\).",
+   "payload": {
+    "options": [
+     "The expansion of \\((1+x)^{-2}\\) is \\(1+2x+3x^{2}+4x^{3}+\\cdots\\).",
+     "The series of \\((1+x)^{-1}\\) is \\(1+x+x^{2}+x^{3}+\\cdots\\).",
+     "The expansion of \\((1+x)^{-2}\\) is \\(1-2x+3x^{2}-4x^{3}+\\cdots\\).",
+     "The expansion of \\((1+x)^{1/2}\\) begins \\(1+\\frac{x}{2}+\\frac{x^{2}}{8}+\\cdots\\)."
+    ],
+    "correctIndex": 2
+   }
+  },
+  {
+   "id": "mcq-300",
+   "mechanicId": "mcq-arena",
+   "difficulty": "Hard",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the sum of the binomial coefficients at the even places (r = 0, 2, 4, ...) of \\((1+x)^{12}\\).",
+   "explanation": "Even-place sum = odd-place sum, and together they make \\(2^{12}\\), so each is \\(2^{11}=2048\\).",
+   "payload": {
+    "options": [
+     "2050",
+     "4096",
+     "2048",
+     "4095"
+    ],
+    "correctIndex": 2
+   }
+  }
+ ]
+}

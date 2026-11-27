@@ -1,0 +1,5405 @@
+{
+ "mechanicId": "speed-challenge",
+ "questions": [
+  {
+   "id": "speed-001",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{17}-(x-y)^{17}\\) after simplification?",
+   "explanation": "The terms with even powers of \\(y\\) cancel and the odd ones double, so \\(\\lfloor(17+1)/2\\rfloor=9\\) terms remain.",
+   "payload": {
+    "options": [
+     "9",
+     "7",
+     "17",
+     "10"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-002",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "remainder-binomial",
+   "prompt": "Find the remainder when \\(7^{245}\\) is divided by \\(5\\).",
+   "explanation": "\\(7^{2}=49=5\\times10-1\\). Write \\(245=2\\times122+1\\), so \\(7^{245}=(50-1)^{122}\\cdot7^{1}\\). By the binomial theorem every term of the bracket except the last is a multiple of \\(5\\), so the remainder comes from \\((-1)^{122}\\cdot7^{1}\\) = \\(7\\), which leaves remainder \\(2\\).",
+   "payload": {
+    "options": [
+     "4",
+     "3",
+     "1",
+     "2"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-003",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(29^{706}\\)?",
+   "explanation": "The last digit of \\(29\\) is \\(9\\); its powers end in \\(9,1\\) and repeat (cyclicity \\(2\\)). \\(706=2\\times353+0\\), so take place \\(2\\): last digit \\(1\\).",
+   "payload": {
+    "options": [
+     "5",
+     "3",
+     "9",
+     "1"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-004",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(6^{29}\\)?",
+   "explanation": "Every power of a number ending in \\(6\\) also ends in \\(6\\), so the last digit is \\(6\\).",
+   "payload": {
+    "options": [
+     "7",
+     "0",
+     "6",
+     "8"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-005",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "induction-steps",
+   "prompt": "For \\(P(n):\\ 1\\cdot2+2\\cdot3+\\cdots+n \\left(n + 1\\right)=\\frac{n \\left(n + 1\\right) \\left(n + 2\\right)}{3}\\), what is the value of each side when \\(n=3\\)?",
+   "explanation": "Put \\(n=3\\) in the right side: \\(20\\). The left side (sum of the first \\(3\\) terms) gives the same value \\(20\\).",
+   "payload": {
+    "options": [
+     "19",
+     "23",
+     "20",
+     "21"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-006",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((a+b)^{22}\\)?",
+   "explanation": "\\((a+b)^{22}\\) has \\(22+1=23\\) terms.",
+   "payload": {
+    "options": [
+     "46",
+     "23",
+     "33",
+     "25"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-007",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{38}{x}=\\binom{38}{6}\\) and \\(x\\ne 6\\), find \\(x\\).",
+   "explanation": "\\(\\binom{38}{x}=\\binom{38}{6}\\Rightarrow x=6\\ \\text{or}\\ x=38-6=32\\)",
+   "payload": {
+    "options": [
+     "31",
+     "33",
+     "34",
+     "32"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-008",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the sum of the binomial coefficients at the even places (r = 0, 2, 4, ...) of \\((1+x)^{10}\\).",
+   "explanation": "Even-place sum = odd-place sum, and together they make \\(2^{10}\\), so each is \\(2^{9}=512\\).",
+   "payload": {
+    "options": [
+     "513",
+     "512",
+     "1024",
+     "1023"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-009",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{5}\\) in the expansion of \\((1+5x)^{6}\\).",
+   "explanation": "\\(\\binom{6}{5}(5)^{5}=6\\times3125=18750\\)",
+   "payload": {
+    "options": [
+     "18750",
+     "30",
+     "3131",
+     "15625"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-010",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the sum of the binomial coefficients at the even places (r = 0, 2, 4, ...) of \\((1+x)^{19}\\).",
+   "explanation": "Even-place sum = odd-place sum, and together they make \\(2^{19}\\), so each is \\(2^{18}=262144\\).",
+   "payload": {
+    "options": [
+     "262146",
+     "262144",
+     "524287",
+     "131072"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-011",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "remainder-binomial",
+   "prompt": "Find the remainder when \\(6^{167}\\) is divided by \\(11\\).",
+   "explanation": "\\(6^{5}=7776=11\\times707-1\\). Write \\(167=5\\times33+2\\), so \\(6^{167}=(7777-1)^{33}\\cdot6^{2}\\). By the binomial theorem every term of the bracket except the last is a multiple of \\(11\\), so the remainder comes from \\((-1)^{33}\\cdot6^{2}\\) = \\(-36\\), which leaves remainder \\(8\\).",
+   "payload": {
+    "options": [
+     "6",
+     "7",
+     "8",
+     "3"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-012",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1+3+5+\\cdots+5\\).",
+   "explanation": "\\(S_{n}=n^{2}\\ \\text{with}\\ n=3:\\ S=9\\)",
+   "payload": {
+    "options": [
+     "4",
+     "16",
+     "9",
+     "10"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-013",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{4}\\) in the expansion of \\((1+2x)^{5}\\).",
+   "explanation": "\\(\\binom{5}{4}(2)^{4}=5\\times16=80\\)",
+   "payload": {
+    "options": [
+     "80",
+     "10",
+     "32",
+     "21"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-014",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "middle-term",
+   "prompt": "Which term is the middle term in the expansion of \\((a+b)^{12}\\)?",
+   "explanation": "There are \\(12+1=13\\) terms (an odd number), so the middle one is the \\(\\frac{12}{2}+1=7\\)th term.",
+   "payload": {
+    "options": [
+     "8th",
+     "13th",
+     "7th",
+     "6th"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-015",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1+2+3+\\cdots+6\\).",
+   "explanation": "\\(S_{n}=\\frac{n(n+1)}{2}\\ \\text{with}\\ n=6:\\ S=21\\)",
+   "payload": {
+    "options": [
+     "20",
+     "42",
+     "21",
+     "15"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-016",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(57^{33}\\)?",
+   "explanation": "The last digit of \\(57\\) is \\(7\\); its powers end in \\(7,9,3,1\\) and repeat (cyclicity \\(4\\)). \\(33=4\\times8+1\\), so take place \\(1\\): last digit \\(7\\).",
+   "payload": {
+    "options": [
+     "9",
+     "7",
+     "8",
+     "1"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-017",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the sum of the binomial coefficients at the even places (r = 0, 2, 4, ...) of \\((1+x)^{13}\\).",
+   "explanation": "Even-place sum = odd-place sum, and together they make \\(2^{13}\\), so each is \\(2^{12}=4096\\).",
+   "payload": {
+    "options": [
+     "2048",
+     "4096",
+     "4098",
+     "8191"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-018",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(8^{168}\\)?",
+   "explanation": "The last digit of \\(8\\) is \\(8\\); its powers end in \\(8,4,2,6\\) and repeat (cyclicity \\(4\\)). \\(168=4\\times42+0\\), so take place \\(4\\): last digit \\(6\\).",
+   "payload": {
+    "options": [
+     "8",
+     "2",
+     "6",
+     "7"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-019",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{10}{6}\\).",
+   "explanation": "\\(\\binom{10}{6}=\\binom{10}{4}=\\frac{10\\times9\\times8\\times7}{4\\times3\\times2\\times1}=210\\)",
+   "payload": {
+    "options": [
+     "462",
+     "120",
+     "210",
+     "252"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-020",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((a+b)^{21}\\)?",
+   "explanation": "\\((a+b)^{21}\\) has \\(21+1=22\\) terms.",
+   "payload": {
+    "options": [
+     "23",
+     "22",
+     "44",
+     "24"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-021",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "middle-term",
+   "prompt": "Find the middle term of \\((x+3)^{4}\\).",
+   "explanation": "The middle term is the \\(3\\)th term: \\(\\binom{4}{2}x^{2}(3)^{2}=54x^{2}\\)",
+   "payload": {
+    "options": [
+     "\\(108x\\)",
+     "\\(6x^{2}\\)",
+     "\\(54x^{2}\\)",
+     "\\(12x^{3}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-022",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{12}{3}\\).",
+   "explanation": "\\(\\binom{12}{3}=\\frac{12\\times11\\times10}{3\\times2\\times1}=220\\)",
+   "payload": {
+    "options": [
+     "66",
+     "220",
+     "286",
+     "1320"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-023",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(12^{446}\\)?",
+   "explanation": "The last digit of \\(12\\) is \\(2\\); its powers end in \\(2,4,8,6\\) and repeat (cyclicity \\(4\\)). \\(446=4\\times111+2\\), so take place \\(2\\): last digit \\(4\\).",
+   "payload": {
+    "options": [
+     "4",
+     "6",
+     "8",
+     "5"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-024",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((a+b)^{18}\\)?",
+   "explanation": "\\((a+b)^{18}\\) has \\(18+1=19\\) terms.",
+   "payload": {
+    "options": [
+     "19",
+     "18",
+     "21",
+     "17"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-025",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{30}{x}=\\binom{30}{10}\\) and \\(x\\ne 10\\), find \\(x\\).",
+   "explanation": "\\(\\binom{30}{x}=\\binom{30}{10}\\Rightarrow x=10\\ \\text{or}\\ x=30-10=20\\)",
+   "payload": {
+    "options": [
+     "20",
+     "40",
+     "10",
+     "30"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-026",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(98^{215}\\)?",
+   "explanation": "The last digit of \\(98\\) is \\(8\\); its powers end in \\(8,4,2,6\\) and repeat (cyclicity \\(4\\)). \\(215=4\\times53+3\\), so take place \\(3\\): last digit \\(2\\).",
+   "payload": {
+    "options": [
+     "6",
+     "3",
+     "2",
+     "4"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-027",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{13}{x}=\\binom{13}{3}\\) and \\(x\\ne 3\\), find \\(x\\).",
+   "explanation": "\\(\\binom{13}{x}=\\binom{13}{3}\\Rightarrow x=3\\ \\text{or}\\ x=13-3=10\\)",
+   "payload": {
+    "options": [
+     "10",
+     "13",
+     "20",
+     "9"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-028",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(37^{292}\\)?",
+   "explanation": "The last digit of \\(37\\) is \\(7\\); its powers end in \\(7,9,3,1\\) and repeat (cyclicity \\(4\\)). \\(292=4\\times73+0\\), so take place \\(4\\): last digit \\(1\\).",
+   "payload": {
+    "options": [
+     "1",
+     "2",
+     "3",
+     "7"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-029",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "independent-term",
+   "prompt": "Which term is independent of \\(x\\) in the expansion of \\(\\left(x^{3}+\\frac{1}{x^{3}}\\right)^{20}\\)? (Give the term number.)",
+   "explanation": "\\(60-6r=0\\Rightarrow r=10\\), so it is the \\((r+1)=11\\)th term.",
+   "payload": {
+    "options": [
+     "10",
+     "11",
+     "9",
+     "12"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-030",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{n}{3}=\\binom{n}{12}\\), find \\(n\\).",
+   "explanation": "\\(\\binom{n}{3}=\\binom{n}{12}\\Rightarrow n=3+12=15\\)",
+   "payload": {
+    "options": [
+     "15",
+     "14",
+     "36",
+     "30"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-031",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{10}{4}\\).",
+   "explanation": "\\(\\binom{10}{4}=\\frac{10\\times9\\times8\\times7}{4\\times3\\times2\\times1}=210\\)",
+   "payload": {
+    "options": [
+     "330",
+     "120",
+     "210",
+     "252"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-032",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "inequality-induction",
+   "prompt": "Find the smallest positive integer \\(n_{0}\\) such that \\(2^{n}>20n\\) for every \\(n\\ge n_{0}\\).",
+   "explanation": "At \\(n=7\\) the values are \\(128\\) and \\(140\\), so the inequality fails; at \\(n=8\\) we get \\(256>160\\), and the inductive step then keeps it true for every larger \\(n\\). So the basis step starts at \\(n=8\\).",
+   "payload": {
+    "options": [
+     "8",
+     "18",
+     "16",
+     "6"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-033",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(27^{82}\\)?",
+   "explanation": "The last digit of \\(27\\) is \\(7\\); its powers end in \\(7,9,3,1\\) and repeat (cyclicity \\(4\\)). \\(82=4\\times20+2\\), so take place \\(2\\): last digit \\(9\\).",
+   "payload": {
+    "options": [
+     "7",
+     "1",
+     "9",
+     "0"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-034",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1+2+4+\\cdots+2^{10}\\).",
+   "explanation": "\\(S_{n}=2^{n}-1\\ \\text{with}\\ n=11:\\ S=2047\\)",
+   "payload": {
+    "options": [
+     "4095",
+     "2058",
+     "2048",
+     "2047"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-035",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{30}+(x-y)^{30}\\) after simplification?",
+   "explanation": "The terms with odd powers of \\(y\\) cancel and the others double, so \\(\\lfloor 30/2\\rfloor+1=16\\) terms remain.",
+   "payload": {
+    "options": [
+     "18",
+     "16",
+     "30",
+     "32"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-036",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((a+b)^{36}\\)?",
+   "explanation": "\\((a+b)^{36}\\) has \\(36+1=37\\) terms.",
+   "payload": {
+    "options": [
+     "39",
+     "37",
+     "38",
+     "35"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-037",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "induction-steps",
+   "prompt": "For \\(P(n):\\ 1^{2}+2^{2}+3^{2}+\\cdots+n^{2}=\\frac{n \\left(n + 1\\right) \\left(2 n + 1\\right)}{6}\\), what is the value of each side when \\(n=5\\)?",
+   "explanation": "Put \\(n=5\\) in the right side: \\(55\\). The left side (sum of the first \\(5\\) terms) gives the same value \\(55\\).",
+   "payload": {
+    "options": [
+     "91",
+     "110",
+     "56",
+     "55"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-038",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(2+4+6+\\cdots+32\\).",
+   "explanation": "\\(S_{n}=n(n+1)\\ \\text{with}\\ n=16:\\ S=272\\)",
+   "payload": {
+    "options": [
+     "272",
+     "240",
+     "273",
+     "288"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-039",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{n}{6}=\\binom{n}{8}\\), find \\(n\\).",
+   "explanation": "\\(\\binom{n}{6}=\\binom{n}{8}\\Rightarrow n=6+8=14\\)",
+   "payload": {
+    "options": [
+     "2",
+     "48",
+     "15",
+     "14"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-040",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{n}{9}=\\binom{n}{14}\\), find \\(n\\).",
+   "explanation": "\\(\\binom{n}{9}=\\binom{n}{14}\\Rightarrow n=9+14=23\\)",
+   "payload": {
+    "options": [
+     "23",
+     "5",
+     "22",
+     "24"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-041",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "pascal-rule",
+   "prompt": "In Pascal's triangle two neighbouring entries of row \\(10\\) are \\(120\\) and \\(45\\). What is the entry directly below them in row \\(11\\)?",
+   "explanation": "\\(120+45=165\\ \\ (\\text{Pascal's rule: }\\binom{10}{7}+\\binom{10}{8}=\\binom{11}{8})\\)",
+   "payload": {
+    "options": [
+     "165",
+     "240",
+     "285",
+     "5400"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-042",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "binomial-sums",
+   "prompt": "The sum of all the binomial coefficients of \\((1+x)^{n}\\) is \\(8\\). Find \\(n\\).",
+   "explanation": "\\(2^{n}=8=2^{3}\\Rightarrow n=3\\)",
+   "payload": {
+    "options": [
+     "5",
+     "1",
+     "3",
+     "4"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-043",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "middle-term",
+   "prompt": "Find the middle term of \\((x-3)^{10}\\).",
+   "explanation": "The middle term is the \\(6\\)th term: \\(\\binom{10}{5}x^{5}(-3)^{5}=-61236x^{5}\\)",
+   "payload": {
+    "options": [
+     "\\(153090x^{4}\\)",
+     "\\(17010x^{6}\\)",
+     "\\(-61236x^{5}\\)",
+     "\\(252x^{5}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-044",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(\\frac{1}{1\\cdot2}+\\frac{1}{2\\cdot3}+\\cdots+\\frac{1}{16\\cdot17}\\).",
+   "explanation": "\\(S_{n}=\\frac{n}{n+1}\\ \\text{with}\\ n=16:\\ S=\\frac{16}{17}\\)",
+   "payload": {
+    "options": [
+     "\\(\\frac{16}{17}\\)",
+     "\\(\\frac{17}{18}\\)",
+     "\\(\\frac{15}{16}\\)",
+     "\\(\\frac{32}{17}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-045",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the sum of the binomial coefficients at the even places (r = 0, 2, 4, ...) of \\((1+x)^{20}\\).",
+   "explanation": "Even-place sum = odd-place sum, and together they make \\(2^{20}\\), so each is \\(2^{19}=524288\\).",
+   "payload": {
+    "options": [
+     "524288",
+     "524290",
+     "262144",
+     "1048575"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-046",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{15}+(x-y)^{15}\\) after simplification?",
+   "explanation": "The terms with odd powers of \\(y\\) cancel and the others double, so \\(\\lfloor 15/2\\rfloor+1=8\\) terms remain.",
+   "payload": {
+    "options": [
+     "9",
+     "8",
+     "16",
+     "7"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-047",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the value of \\(\\binom{15}{1}+\\binom{15}{2}+\\cdots+\\binom{15}{15}\\).",
+   "explanation": "The full sum is \\(2^{15}\\); remove \\(\\binom{15}{0}=1\\) to get \\(2^{15}-1=32767\\).",
+   "payload": {
+    "options": [
+     "32765",
+     "65534",
+     "32766",
+     "32767"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-048",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{32}{x}=\\binom{32}{8}\\) and \\(x\\ne 8\\), find \\(x\\).",
+   "explanation": "\\(\\binom{32}{x}=\\binom{32}{8}\\Rightarrow x=8\\ \\text{or}\\ x=32-8=24\\)",
+   "payload": {
+    "options": [
+     "32",
+     "23",
+     "24",
+     "8"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-049",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1^{2}+2^{2}+3^{2}+\\cdots+7^{2}\\).",
+   "explanation": "\\(S_{n}=\\frac{n(n+1)(2n+1)}{6}\\ \\text{with}\\ n=7:\\ S=140\\)",
+   "payload": {
+    "options": [
+     "280",
+     "140",
+     "141",
+     "204"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-050",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "pascal-rule",
+   "prompt": "In Pascal's triangle two neighbouring entries of row \\(8\\) are \\(56\\) and \\(28\\). What is the entry directly below them in row \\(9\\)?",
+   "explanation": "\\(56+28=84\\ \\ (\\text{Pascal's rule: }\\binom{8}{5}+\\binom{8}{6}=\\binom{9}{6})\\)",
+   "payload": {
+    "options": [
+     "140",
+     "112",
+     "84",
+     "1568"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-051",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((2x+3)^{5}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((2+3)^{5}=3125\\).",
+   "payload": {
+    "options": [
+     "625",
+     "3125",
+     "275",
+     "25"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-052",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "inequality-induction",
+   "prompt": "Find the smallest positive integer \\(n_{0}\\) such that \\(2^{n}>100n\\) for every \\(n\\ge n_{0}\\).",
+   "explanation": "At \\(n=9\\) the values are \\(512\\) and \\(900\\), so the inequality fails; at \\(n=10\\) we get \\(1024>1000\\), and the inductive step then keeps it true for every larger \\(n\\). So the basis step starts at \\(n=10\\).",
+   "payload": {
+    "options": [
+     "20",
+     "12",
+     "10",
+     "9"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-053",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the value of \\(\\binom{14}{0}-\\binom{14}{1}+\\binom{14}{2}-\\cdots+(-1)^{14}\\binom{14}{14}\\).",
+   "explanation": "Put \\(x=-1\\) in \\((1+x)^{14}\\): \\((1-1)^{14}=0\\).",
+   "payload": {
+    "options": [
+     "1",
+     "-1",
+     "8192",
+     "0"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-054",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{8}\\) in the expansion of \\((x+2)^{10}\\).",
+   "explanation": "\\(\\binom{10}{8}(2)^{2}=45\\times4=180\\)",
+   "payload": {
+    "options": [
+     "180",
+     "20",
+     "11520",
+     "49"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-055",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((3x-1)^{12}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((3-1)^{12}=4096\\).",
+   "payload": {
+    "options": [
+     "8192",
+     "4096",
+     "2048",
+     "531441"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-056",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "pascal-rule",
+   "prompt": "In Pascal's triangle two neighbouring entries of row \\(6\\) are \\(6\\) and \\(15\\). What is the entry directly below them in row \\(7\\)?",
+   "explanation": "\\(6+15=21\\ \\ (\\text{Pascal's rule: }\\binom{6}{1}+\\binom{6}{2}=\\binom{7}{2})\\)",
+   "payload": {
+    "options": [
+     "21",
+     "90",
+     "30",
+     "6"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-057",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the value of \\(\\binom{9}{1}+\\binom{9}{2}+\\cdots+\\binom{9}{9}\\).",
+   "explanation": "The full sum is \\(2^{9}\\); remove \\(\\binom{9}{0}=1\\) to get \\(2^{9}-1=511\\).",
+   "payload": {
+    "options": [
+     "509",
+     "511",
+     "1022",
+     "510"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-058",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((a+b)^{10}\\)?",
+   "explanation": "\\((a+b)^{10}\\) has \\(10+1=11\\) terms.",
+   "payload": {
+    "options": [
+     "9",
+     "22",
+     "13",
+     "11"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-059",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{37}+(x-y)^{37}\\) after simplification?",
+   "explanation": "The terms with odd powers of \\(y\\) cancel and the others double, so \\(\\lfloor 37/2\\rfloor+1=19\\) terms remain.",
+   "payload": {
+    "options": [
+     "18",
+     "20",
+     "19",
+     "17"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-060",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((4x-1)^{5}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((4-1)^{5}=243\\).",
+   "payload": {
+    "options": [
+     "243",
+     "729",
+     "1023",
+     "15"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-061",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1^{2}+3^{2}+5^{2}+\\cdots+7^{2}\\).",
+   "explanation": "\\(S_{n}=\\frac{n(2n-1)(2n+1)}{3}\\ \\text{with}\\ n=4:\\ S=84\\)",
+   "payload": {
+    "options": [
+     "84",
+     "85",
+     "168",
+     "88"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-062",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{39}-(x-y)^{39}\\) after simplification?",
+   "explanation": "The terms with even powers of \\(y\\) cancel and the odd ones double, so \\(\\lfloor(39+1)/2\\rfloor=20\\) terms remain.",
+   "payload": {
+    "options": [
+     "21",
+     "18",
+     "20",
+     "19"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-063",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1+2+3+\\cdots+10\\).",
+   "explanation": "\\(S_{n}=\\frac{n(n+1)}{2}\\ \\text{with}\\ n=10:\\ S=55\\)",
+   "payload": {
+    "options": [
+     "66",
+     "45",
+     "54",
+     "55"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-064",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "induction-steps",
+   "prompt": "In proving \\(P(n):\\ 1\\cdot1!+2\\cdot2!+\\cdots+n n!=\\left(n + 1\\right)! - 1\\) by induction, which term is added to both sides of \\(P(k)\\) to reach \\(P(k+1)\\)?",
+   "explanation": "The new last term of the left side is the \\((k+1)\\)th term \\(\\left(k + 1\\right) \\left(k + 1\\right)!\\).",
+   "payload": {
+    "options": [
+     "\\(\\left(k + 1\\right) \\left(k + 1\\right)!\\)",
+     "\\(\\left(k + 2\\right) \\left(k + 2\\right)!\\)",
+     "\\(\\left(k + 2\\right)! - 1\\)",
+     "\\(k k!\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-065",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the value of \\(\\binom{15}{0}-\\binom{15}{1}+\\binom{15}{2}-\\cdots+(-1)^{15}\\binom{15}{15}\\).",
+   "explanation": "Put \\(x=-1\\) in \\((1+x)^{15}\\): \\((1-1)^{15}=0\\).",
+   "payload": {
+    "options": [
+     "0",
+     "32768",
+     "1",
+     "16384"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-066",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(23^{289}\\)?",
+   "explanation": "The last digit of \\(23\\) is \\(3\\); its powers end in \\(3,9,7,1\\) and repeat (cyclicity \\(4\\)). \\(289=4\\times72+1\\), so take place \\(1\\): last digit \\(3\\).",
+   "payload": {
+    "options": [
+     "9",
+     "3",
+     "7",
+     "1"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-067",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{n}{3}=\\binom{n}{5}\\), find \\(n\\).",
+   "explanation": "\\(\\binom{n}{3}=\\binom{n}{5}\\Rightarrow n=3+5=8\\)",
+   "payload": {
+    "options": [
+     "7",
+     "10",
+     "15",
+     "8"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-068",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "middle-term",
+   "prompt": "Find the middle term of \\((x-3)^{6}\\).",
+   "explanation": "The middle term is the \\(4\\)th term: \\(\\binom{6}{3}x^{3}(-3)^{3}=-540x^{3}\\)",
+   "payload": {
+    "options": [
+     "\\(20x^{3}\\)",
+     "\\(1215x^{2}\\)",
+     "\\(-540x^{3}\\)",
+     "\\(135x^{4}\\)"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-069",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{14}{2}\\).",
+   "explanation": "\\(\\binom{14}{2}=\\frac{14\\times13}{2\\times1}=91\\)",
+   "payload": {
+    "options": [
+     "91",
+     "182",
+     "196",
+     "364"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-070",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "pascal-rule",
+   "prompt": "In Pascal's triangle two neighbouring entries of row \\(10\\) are \\(210\\) and \\(252\\). What is the entry directly below them in row \\(11\\)?",
+   "explanation": "\\(210+252=462\\ \\ (\\text{Pascal's rule: }\\binom{10}{4}+\\binom{10}{5}=\\binom{11}{5})\\)",
+   "payload": {
+    "options": [
+     "462",
+     "672",
+     "472",
+     "210"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-071",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "independent-term",
+   "prompt": "Which term is independent of \\(x\\) in the expansion of \\(\\left(x^{2}+\\frac{1}{x^{2}}\\right)^{12}\\)? (Give the term number.)",
+   "explanation": "\\(24-4r=0\\Rightarrow r=6\\), so it is the \\((r+1)=7\\)th term.",
+   "payload": {
+    "options": [
+     "7",
+     "8",
+     "5",
+     "6"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-072",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(57^{227}\\)?",
+   "explanation": "The last digit of \\(57\\) is \\(7\\); its powers end in \\(7,9,3,1\\) and repeat (cyclicity \\(4\\)). \\(227=4\\times56+3\\), so take place \\(3\\): last digit \\(3\\).",
+   "payload": {
+    "options": [
+     "1",
+     "7",
+     "5",
+     "3"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-073",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1\\cdot2+2\\cdot3+\\cdots+5\\cdot6\\).",
+   "explanation": "\\(S_{n}=\\frac{n(n+1)(n+2)}{3}\\ \\text{with}\\ n=5:\\ S=70\\)",
+   "payload": {
+    "options": [
+     "40",
+     "71",
+     "70",
+     "140"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-074",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{3}\\) in the expansion of \\((-2x-3)^{9}\\).",
+   "explanation": "\\(\\text{coefficient of }x^{3}=\\binom{9}{3}(-2)^{3}(-3)^{6}=84\\cdot-8\\cdot729=-489888\\)",
+   "payload": {
+    "options": [
+     "-489888",
+     "489888",
+     "-10500",
+     "-145152"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-075",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((3x-1)^{4}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((3-1)^{4}=16\\).",
+   "payload": {
+    "options": [
+     "82",
+     "81",
+     "8",
+     "16"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-076",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(2+4+6+\\cdots+28\\).",
+   "explanation": "\\(S_{n}=n(n+1)\\ \\text{with}\\ n=14:\\ S=210\\)",
+   "payload": {
+    "options": [
+     "420",
+     "211",
+     "210",
+     "209"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-077",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "pascal-rule",
+   "prompt": "In Pascal's triangle two neighbouring entries of row \\(4\\) are \\(6\\) and \\(4\\). What is the entry directly below them in row \\(5\\)?",
+   "explanation": "\\(6+4=10\\ \\ (\\text{Pascal's rule: }\\binom{4}{2}+\\binom{4}{3}=\\binom{5}{3})\\)",
+   "payload": {
+    "options": [
+     "10",
+     "24",
+     "12",
+     "14"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-078",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{n}{6}=\\binom{n}{10}\\), find \\(n\\).",
+   "explanation": "\\(\\binom{n}{6}=\\binom{n}{10}\\Rightarrow n=6+10=16\\)",
+   "payload": {
+    "options": [
+     "17",
+     "16",
+     "15",
+     "4"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-079",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(44^{924}\\)?",
+   "explanation": "The last digit of \\(44\\) is \\(4\\); its powers end in \\(4,6\\) and repeat (cyclicity \\(2\\)). \\(924=2\\times462+0\\), so take place \\(2\\): last digit \\(6\\).",
+   "payload": {
+    "options": [
+     "8",
+     "0",
+     "4",
+     "6"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-080",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "middle-term",
+   "prompt": "Which term is the middle term in the expansion of \\((a+b)^{36}\\)?",
+   "explanation": "There are \\(36+1=37\\) terms (an odd number), so the middle one is the \\(\\frac{36}{2}+1=19\\)th term.",
+   "payload": {
+    "options": [
+     "19th",
+     "37th",
+     "20th",
+     "18th"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-081",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{20}-(x-y)^{20}\\) after simplification?",
+   "explanation": "The terms with even powers of \\(y\\) cancel and the odd ones double, so \\(\\lfloor(20+1)/2\\rfloor=10\\) terms remain.",
+   "payload": {
+    "options": [
+     "8",
+     "10",
+     "11",
+     "21"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-082",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((a+b)^{8}\\)?",
+   "explanation": "\\((a+b)^{8}\\) has \\(8+1=9\\) terms.",
+   "payload": {
+    "options": [
+     "7",
+     "10",
+     "11",
+     "9"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-083",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{14}+(x-y)^{14}\\) after simplification?",
+   "explanation": "The terms with odd powers of \\(y\\) cancel and the others double, so \\(\\lfloor 14/2\\rfloor+1=8\\) terms remain.",
+   "payload": {
+    "options": [
+     "8",
+     "16",
+     "10",
+     "15"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-084",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "pascal-rule",
+   "prompt": "In Pascal's triangle two neighbouring entries of row \\(4\\) are \\(4\\) and \\(6\\). What is the entry directly below them in row \\(5\\)?",
+   "explanation": "\\(4+6=10\\ \\ (\\text{Pascal's rule: }\\binom{4}{1}+\\binom{4}{2}=\\binom{5}{2})\\)",
+   "payload": {
+    "options": [
+     "14",
+     "4",
+     "10",
+     "24"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-085",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((2x+1)^{8}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((2+1)^{8}=6561\\).",
+   "payload": {
+    "options": [
+     "256",
+     "24",
+     "19683",
+     "6561"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-086",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{8}{2}\\).",
+   "explanation": "\\(\\binom{8}{2}=\\frac{8\\times7}{2\\times1}=28\\)",
+   "payload": {
+    "options": [
+     "8",
+     "28",
+     "64",
+     "56"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-087",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(33^{305}\\)?",
+   "explanation": "The last digit of \\(33\\) is \\(3\\); its powers end in \\(3,9,7,1\\) and repeat (cyclicity \\(4\\)). \\(305=4\\times76+1\\), so take place \\(1\\): last digit \\(3\\).",
+   "payload": {
+    "options": [
+     "3",
+     "7",
+     "4",
+     "5"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-088",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1+2+4+\\cdots+2^{6}\\).",
+   "explanation": "\\(S_{n}=2^{n}-1\\ \\text{with}\\ n=7:\\ S=127\\)",
+   "payload": {
+    "options": [
+     "134",
+     "127",
+     "255",
+     "126"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-089",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(33^{596}\\)?",
+   "explanation": "The last digit of \\(33\\) is \\(3\\); its powers end in \\(3,9,7,1\\) and repeat (cyclicity \\(4\\)). \\(596=4\\times149+0\\), so take place \\(4\\): last digit \\(1\\).",
+   "payload": {
+    "options": [
+     "2",
+     "7",
+     "1",
+     "9"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-090",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "induction-steps",
+   "prompt": "In proving \\(P(n):\\ 1^{2}+2^{2}+3^{2}+\\cdots+n^{2}=\\frac{n \\left(n + 1\\right) \\left(2 n + 1\\right)}{6}\\) by induction, which term is added to both sides of \\(P(k)\\) to reach \\(P(k+1)\\)?",
+   "explanation": "The new last term of the left side is the \\((k+1)\\)th term \\(\\left(k + 1\\right)^{2}\\).",
+   "payload": {
+    "options": [
+     "\\(\\left(k + 1\\right)^{2}\\)",
+     "\\(\\frac{\\left(k + 1\\right) \\left(k + 2\\right) \\left(2 k + 3\\right)}{6}\\)",
+     "\\(k^{2}\\)",
+     "\\(\\left(k + 2\\right)^{2}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-091",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(13^{79}\\)?",
+   "explanation": "The last digit of \\(13\\) is \\(3\\); its powers end in \\(3,9,7,1\\) and repeat (cyclicity \\(4\\)). \\(79=4\\times19+3\\), so take place \\(3\\): last digit \\(7\\).",
+   "payload": {
+    "options": [
+     "8",
+     "7",
+     "1",
+     "3"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-092",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{9}{2}\\).",
+   "explanation": "\\(\\binom{9}{2}=\\frac{9\\times8}{2\\times1}=36\\)",
+   "payload": {
+    "options": [
+     "81",
+     "36",
+     "72",
+     "84"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-093",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{6}{2}\\).",
+   "explanation": "\\(\\binom{6}{2}=\\frac{6\\times5}{2\\times1}=15\\)",
+   "payload": {
+    "options": [
+     "30",
+     "15",
+     "6",
+     "21"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-094",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "approximation",
+   "prompt": "Use the first three terms of the binomial expansion to find \\((1+0.03)^{14}\\) approximately.",
+   "explanation": "\\((1+x)^{14}\\approx1+14 x+91 x^{2}\\) with \\(x=0.03\\): \\(1+0.42+0.0819=1.5019\\).",
+   "payload": {
+    "options": [
+     "1.5019",
+     "1.511728",
+     "1.3381",
+     "1.4326"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-095",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{15}-(x-y)^{15}\\) after simplification?",
+   "explanation": "The terms with even powers of \\(y\\) cancel and the odd ones double, so \\(\\lfloor(15+1)/2\\rfloor=8\\) terms remain.",
+   "payload": {
+    "options": [
+     "15",
+     "6",
+     "9",
+     "8"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-096",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(8^{71}\\)?",
+   "explanation": "The last digit of \\(8\\) is \\(8\\); its powers end in \\(8,4,2,6\\) and repeat (cyclicity \\(4\\)). \\(71=4\\times17+3\\), so take place \\(3\\): last digit \\(2\\).",
+   "payload": {
+    "options": [
+     "4",
+     "6",
+     "2",
+     "3"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-097",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((2x+1)^{6}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((2+1)^{6}=729\\).",
+   "payload": {
+    "options": [
+     "65",
+     "729",
+     "18",
+     "243"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-098",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{19}{x}=\\binom{19}{5}\\) and \\(x\\ne 5\\), find \\(x\\).",
+   "explanation": "\\(\\binom{19}{x}=\\binom{19}{5}\\Rightarrow x=5\\ \\text{or}\\ x=19-5=14\\)",
+   "payload": {
+    "options": [
+     "13",
+     "28",
+     "14",
+     "15"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-099",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "middle-term",
+   "prompt": "Which terms are the two middle terms in the expansion of \\((a+b)^{25}\\)?",
+   "explanation": "There are \\(25+1=26\\) terms (an even number), so there are two middle terms: the \\(\\frac{25+1}{2}=13\\)th and the \\(14\\)th.",
+   "payload": {
+    "options": [
+     "13th only",
+     "13th and 14th",
+     "12th and 14th",
+     "14th and 15th"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-100",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "approximation",
+   "prompt": "Use the first three terms of the binomial expansion to find \\((1+0.01)^{14}\\) approximately.",
+   "explanation": "\\((1+x)^{14}\\approx1+14 x+91 x^{2}\\) with \\(x=0.01\\): \\(1+0.14+0.0091=1.1491\\).",
+   "payload": {
+    "options": [
+     "1.1414",
+     "1.1309",
+     "1.1491",
+     "1.149464"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-101",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the value of \\(\\binom{14}{0}+\\binom{14}{1}+\\binom{14}{2}+\\cdots+\\binom{14}{14}\\).",
+   "explanation": "Put \\(a=b=1\\) in \\((a+b)^{14}\\): the sum is \\(2^{14}=16384\\).",
+   "payload": {
+    "options": [
+     "8192",
+     "32768",
+     "32767",
+     "16384"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-102",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(15^{412}\\)?",
+   "explanation": "Every power of a number ending in \\(5\\) also ends in \\(5\\), so the last digit is \\(5\\).",
+   "payload": {
+    "options": [
+     "7",
+     "6",
+     "5",
+     "9"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-103",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((x+1)^{3}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((1+1)^{3}=8\\).",
+   "payload": {
+    "options": [
+     "16",
+     "8",
+     "2",
+     "1"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-104",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{3}\\) in the expansion of \\((3x-2)^{8}\\).",
+   "explanation": "\\(\\text{coefficient of }x^{3}=\\binom{8}{3}(3)^{3}(-2)^{5}=56\\cdot27\\cdot-32=-48384\\)",
+   "payload": {
+    "options": [
+     "-48384",
+     "30240",
+     "48384",
+     "1512"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-105",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{11}{8}\\).",
+   "explanation": "\\(\\binom{11}{8}=\\binom{11}{3}=\\frac{11\\times10\\times9}{3\\times2\\times1}=165\\)",
+   "payload": {
+    "options": [
+     "330",
+     "495",
+     "165",
+     "55"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-106",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "pascal-rule",
+   "prompt": "In Pascal's triangle two neighbouring entries of row \\(14\\) are \\(91\\) and \\(364\\). What is the entry directly below them in row \\(15\\)?",
+   "explanation": "\\(91+364=455\\ \\ (\\text{Pascal's rule: }\\binom{14}{2}+\\binom{14}{3}=\\binom{15}{3})\\)",
+   "payload": {
+    "options": [
+     "469",
+     "33124",
+     "728",
+     "455"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-107",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "middle-term",
+   "prompt": "Which terms are the two middle terms in the expansion of \\((a+b)^{7}\\)?",
+   "explanation": "There are \\(7+1=8\\) terms (an even number), so there are two middle terms: the \\(\\frac{7+1}{2}=4\\)th and the \\(5\\)th.",
+   "payload": {
+    "options": [
+     "4th and 5th",
+     "3rd and 5th",
+     "4th only",
+     "3rd and 4th"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-108",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(2+4+6+\\cdots+20\\).",
+   "explanation": "\\(S_{n}=n(n+1)\\ \\text{with}\\ n=10:\\ S=110\\)",
+   "payload": {
+    "options": [
+     "120",
+     "111",
+     "110",
+     "109"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-109",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((x-2)^{12}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((1-2)^{12}=1\\).",
+   "payload": {
+    "options": [
+     "4097",
+     "-12",
+     "-1",
+     "1"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-110",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "divisibility",
+   "prompt": "What is the largest positive integer that divides \\(10^{n}-1\\) for every positive integer \\(n\\)?",
+   "explanation": "Try small values: \\(9,\\ 99,\\ 999,\\ 9999\\) have greatest common divisor \\(9\\); induction or the binomial theorem shows that \\(9\\) always divides it.",
+   "payload": {
+    "options": [
+     "8",
+     "9",
+     "11",
+     "18"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-111",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the value of \\(\\binom{4}{1}+\\binom{4}{2}+\\cdots+\\binom{4}{4}\\).",
+   "explanation": "The full sum is \\(2^{4}\\); remove \\(\\binom{4}{0}=1\\) to get \\(2^{4}-1=15\\).",
+   "payload": {
+    "options": [
+     "15",
+     "8",
+     "16",
+     "13"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-112",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{33}+(x-y)^{33}\\) after simplification?",
+   "explanation": "The terms with odd powers of \\(y\\) cancel and the others double, so \\(\\lfloor 33/2\\rfloor+1=17\\) terms remain.",
+   "payload": {
+    "options": [
+     "19",
+     "15",
+     "17",
+     "16"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-113",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{10}{7}\\).",
+   "explanation": "\\(\\binom{10}{7}=\\binom{10}{3}=\\frac{10\\times9\\times8}{3\\times2\\times1}=120\\)",
+   "payload": {
+    "options": [
+     "330",
+     "210",
+     "120",
+     "45"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-114",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1^{3}+2^{3}+3^{3}+\\cdots+20^{3}\\).",
+   "explanation": "\\(S_{n}=\\left[\\frac{n(n+1)}{2}\\right]^{2}\\ \\text{with}\\ n=20:\\ S=44100\\)",
+   "payload": {
+    "options": [
+     "53361",
+     "88200",
+     "44100",
+     "36100"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-115",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "divisibility",
+   "prompt": "What is the largest positive integer that divides \\(4^{n}+15n-1\\) for every positive integer \\(n\\)?",
+   "explanation": "Try small values: \\(18,\\ 45,\\ 108,\\ 315\\) have greatest common divisor \\(9\\); induction or the binomial theorem shows that \\(9\\) always divides it.",
+   "payload": {
+    "options": [
+     "10",
+     "9",
+     "18",
+     "8"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-116",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{39}+(x-y)^{39}\\) after simplification?",
+   "explanation": "The terms with odd powers of \\(y\\) cancel and the others double, so \\(\\lfloor 39/2\\rfloor+1=20\\) terms remain.",
+   "payload": {
+    "options": [
+     "39",
+     "20",
+     "19",
+     "21"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-117",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((x+4)^{5}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((1+4)^{5}=3125\\).",
+   "payload": {
+    "options": [
+     "1024",
+     "15625",
+     "3125",
+     "25"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-118",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "remainder-binomial",
+   "prompt": "Find the remainder when \\(11^{193}\\) is divided by \\(14\\).",
+   "explanation": "\\(11^{3}=1331=14\\times95+1\\). Write \\(193=3\\times64+1\\), so \\(11^{193}=(1330+1)^{64}\\cdot11^{1}\\). By the binomial theorem every term of the bracket except the last is a multiple of \\(14\\), so the remainder comes from \\(1\\cdot11^{1}\\) = \\(11\\), which leaves remainder \\(11\\).",
+   "payload": {
+    "options": [
+     "11",
+     "10",
+     "3",
+     "13"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-119",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{29}+(x-y)^{29}\\) after simplification?",
+   "explanation": "The terms with odd powers of \\(y\\) cancel and the others double, so \\(\\lfloor 29/2\\rfloor+1=15\\) terms remain.",
+   "payload": {
+    "options": [
+     "29",
+     "30",
+     "14",
+     "15"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-120",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((5x-2)^{7}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((5-2)^{7}=2187\\).",
+   "payload": {
+    "options": [
+     "2187",
+     "6561",
+     "77997",
+     "-10000000"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-121",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "series-coefficient",
+   "prompt": "Find the coefficient of \\(x^{4}\\) in the expansion of \\((1+2x)^{\\frac{1}{2}}\\).",
+   "explanation": "\\(\\frac{\\left(\\frac{1}{2}\\right)\\times\\left(-\\frac{1}{2}\\right)\\times\\left(-\\frac{3}{2}\\right)\\times\\left(-\\frac{5}{2}\\right)}{4!}(2)^{4}=-\\frac{5}{8}\\) (the coefficient of \\(x^{4}\\) is \\(\\frac{n(n-1)\\cdots(n-3)}{4!}a^{4}\\) with \\(n=\\frac{1}{2},\\ a=2\\)).",
+   "payload": {
+    "options": [
+     "\\(-\\frac{5}{64}\\)",
+     "\\(-\\frac{5}{8}\\)",
+     "\\(-\\frac{5}{4}\\)",
+     "\\(\\frac{1}{2}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-122",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1+3+5+\\cdots+37\\).",
+   "explanation": "\\(S_{n}=n^{2}\\ \\text{with}\\ n=19:\\ S=361\\)",
+   "payload": {
+    "options": [
+     "360",
+     "361",
+     "380",
+     "324"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-123",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{2}\\) in the expansion of \\((x+5)^{7}\\).",
+   "explanation": "\\(\\binom{7}{2}(5)^{5}=21\\times3125=65625\\)",
+   "payload": {
+    "options": [
+     "525",
+     "21875",
+     "65625",
+     "3146"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-124",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "pascal-rule",
+   "prompt": "In Pascal's triangle two neighbouring entries of row \\(6\\) are \\(20\\) and \\(15\\). What is the entry directly below them in row \\(7\\)?",
+   "explanation": "\\(20+15=35\\ \\ (\\text{Pascal's rule: }\\binom{6}{3}+\\binom{6}{4}=\\binom{7}{4})\\)",
+   "payload": {
+    "options": [
+     "40",
+     "20",
+     "300",
+     "35"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-125",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{11}-(x-y)^{11}\\) after simplification?",
+   "explanation": "The terms with even powers of \\(y\\) cancel and the odd ones double, so \\(\\lfloor(11+1)/2\\rfloor=6\\) terms remain.",
+   "payload": {
+    "options": [
+     "12",
+     "8",
+     "7",
+     "6"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-126",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{14}{x}=\\binom{14}{6}\\) and \\(x\\ne 6\\), find \\(x\\).",
+   "explanation": "\\(\\binom{14}{x}=\\binom{14}{6}\\Rightarrow x=6\\ \\text{or}\\ x=14-6=8\\)",
+   "payload": {
+    "options": [
+     "8",
+     "16",
+     "14",
+     "7"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-127",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the sum of the binomial coefficients at the even places (r = 0, 2, 4, ...) of \\((1+x)^{6}\\).",
+   "explanation": "Even-place sum = odd-place sum, and together they make \\(2^{6}\\), so each is \\(2^{5}=32\\).",
+   "payload": {
+    "options": [
+     "34",
+     "63",
+     "32",
+     "33"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-128",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "inequality-induction",
+   "prompt": "Find the smallest positive integer \\(n_{0}\\) such that \\(n!>n^{4}\\) for every \\(n\\ge n_{0}\\).",
+   "explanation": "At \\(n=6\\) the values are \\(720\\) and \\(1296\\), so the inequality fails; at \\(n=7\\) we get \\(5040>2401\\), and the inductive step then keeps it true for every larger \\(n\\). So the basis step starts at \\(n=7\\).",
+   "payload": {
+    "options": [
+     "5",
+     "9",
+     "7",
+     "17"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-129",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((a+b)^{27}\\)?",
+   "explanation": "\\((a+b)^{27}\\) has \\(27+1=28\\) terms.",
+   "payload": {
+    "options": [
+     "29",
+     "38",
+     "28",
+     "56"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-130",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{4}\\) in the expansion of \\((1+4x)^{9}\\).",
+   "explanation": "\\(\\binom{9}{4}(4)^{4}=126\\times256=32256\\)",
+   "payload": {
+    "options": [
+     "32256",
+     "382",
+     "129024",
+     "504"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-131",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(3^{645}\\)?",
+   "explanation": "The last digit of \\(3\\) is \\(3\\); its powers end in \\(3,9,7,1\\) and repeat (cyclicity \\(4\\)). \\(645=4\\times161+1\\), so take place \\(1\\): last digit \\(3\\).",
+   "payload": {
+    "options": [
+     "7",
+     "1",
+     "3",
+     "9"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-132",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1+2+3+\\cdots+16\\).",
+   "explanation": "\\(S_{n}=\\frac{n(n+1)}{2}\\ \\text{with}\\ n=16:\\ S=136\\)",
+   "payload": {
+    "options": [
+     "136",
+     "152",
+     "135",
+     "272"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-133",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "middle-term",
+   "prompt": "Which term is the middle term in the expansion of \\((a+b)^{8}\\)?",
+   "explanation": "There are \\(8+1=9\\) terms (an odd number), so the middle one is the \\(\\frac{8}{2}+1=5\\)th term.",
+   "payload": {
+    "options": [
+     "7th",
+     "5th",
+     "9th",
+     "4th"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-134",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{28}{x}=\\binom{28}{8}\\) and \\(x\\ne 8\\), find \\(x\\).",
+   "explanation": "\\(\\binom{28}{x}=\\binom{28}{8}\\Rightarrow x=8\\ \\text{or}\\ x=28-8=20\\)",
+   "payload": {
+    "options": [
+     "22",
+     "20",
+     "40",
+     "21"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-135",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the value of \\(\\binom{16}{1}+\\binom{16}{2}+\\cdots+\\binom{16}{16}\\).",
+   "explanation": "The full sum is \\(2^{16}\\); remove \\(\\binom{16}{0}=1\\) to get \\(2^{16}-1=65535\\).",
+   "payload": {
+    "options": [
+     "131070",
+     "65533",
+     "65534",
+     "65535"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-136",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{5}\\) in the expansion of \\((x+2)^{7}\\).",
+   "explanation": "\\(\\binom{7}{5}(2)^{2}=21\\times4=84\\)",
+   "payload": {
+    "options": [
+     "672",
+     "84",
+     "14",
+     "25"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-137",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{38}+(x-y)^{38}\\) after simplification?",
+   "explanation": "The terms with odd powers of \\(y\\) cancel and the others double, so \\(\\lfloor 38/2\\rfloor+1=20\\) terms remain.",
+   "payload": {
+    "options": [
+     "38",
+     "20",
+     "21",
+     "40"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-138",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the value of \\(\\binom{15}{0}+\\binom{15}{1}+\\binom{15}{2}+\\cdots+\\binom{15}{15}\\).",
+   "explanation": "Put \\(a=b=1\\) in \\((a+b)^{15}\\): the sum is \\(2^{15}=32768\\).",
+   "payload": {
+    "options": [
+     "65536",
+     "32768",
+     "32769",
+     "16384"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-139",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(65^{201}\\)?",
+   "explanation": "Every power of a number ending in \\(5\\) also ends in \\(5\\), so the last digit is \\(5\\).",
+   "payload": {
+    "options": [
+     "6",
+     "5",
+     "9",
+     "7"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-140",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{34}+(x-y)^{34}\\) after simplification?",
+   "explanation": "The terms with odd powers of \\(y\\) cancel and the others double, so \\(\\lfloor 34/2\\rfloor+1=18\\) terms remain.",
+   "payload": {
+    "options": [
+     "17",
+     "34",
+     "18",
+     "19"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-141",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(63^{62}\\)?",
+   "explanation": "The last digit of \\(63\\) is \\(3\\); its powers end in \\(3,9,7,1\\) and repeat (cyclicity \\(4\\)). \\(62=4\\times15+2\\), so take place \\(2\\): last digit \\(9\\).",
+   "payload": {
+    "options": [
+     "7",
+     "0",
+     "3",
+     "9"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-142",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(38^{604}\\)?",
+   "explanation": "The last digit of \\(38\\) is \\(8\\); its powers end in \\(8,4,2,6\\) and repeat (cyclicity \\(4\\)). \\(604=4\\times151+0\\), so take place \\(4\\): last digit \\(6\\).",
+   "payload": {
+    "options": [
+     "8",
+     "0",
+     "4",
+     "6"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-143",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((x+2)^{11}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((1+2)^{11}=177147\\).",
+   "payload": {
+    "options": [
+     "59049",
+     "531441",
+     "33",
+     "177147"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-144",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((a+b)^{5}\\)?",
+   "explanation": "\\((a+b)^{5}\\) has \\(5+1=6\\) terms.",
+   "payload": {
+    "options": [
+     "6",
+     "16",
+     "5",
+     "4"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-145",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "induction-steps",
+   "prompt": "For \\(P(n):\\ 2+4+6+\\cdots+2 n=n \\left(n + 1\\right)\\), what is the value of each side when \\(n=4\\)?",
+   "explanation": "Put \\(n=4\\) in the right side: \\(20\\). The left side (sum of the first \\(4\\) terms) gives the same value \\(20\\).",
+   "payload": {
+    "options": [
+     "30",
+     "20",
+     "40",
+     "24"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-146",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "binomial-sums",
+   "prompt": "The sum of all the binomial coefficients of \\((1+x)^{n}\\) is \\(64\\). Find \\(n\\).",
+   "explanation": "\\(2^{n}=64=2^{6}\\Rightarrow n=6\\)",
+   "payload": {
+    "options": [
+     "58",
+     "8",
+     "12",
+     "6"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-147",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(61^{990}\\)?",
+   "explanation": "Every power of a number ending in \\(1\\) also ends in \\(1\\), so the last digit is \\(1\\).",
+   "payload": {
+    "options": [
+     "3",
+     "1",
+     "2",
+     "5"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-148",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{13}{10}\\).",
+   "explanation": "\\(\\binom{13}{10}=\\binom{13}{3}=\\frac{13\\times12\\times11}{3\\times2\\times1}=286\\)",
+   "payload": {
+    "options": [
+     "78",
+     "286",
+     "1001",
+     "715"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-149",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "independent-term",
+   "prompt": "Which term is independent of \\(x\\) in the expansion of \\(\\left(x+\\frac{1}{x^{2}}\\right)^{3}\\)? (Give the term number.)",
+   "explanation": "\\(3-3r=0\\Rightarrow r=1\\), so it is the \\((r+1)=2\\)th term.",
+   "payload": {
+    "options": [
+     "4",
+     "1",
+     "2",
+     "3"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-150",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((3x+2)^{4}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((3+2)^{4}=625\\).",
+   "payload": {
+    "options": [
+     "625",
+     "20",
+     "97",
+     "125"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-151",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{n}{3}=\\binom{n}{18}\\), find \\(n\\).",
+   "explanation": "\\(\\binom{n}{3}=\\binom{n}{18}\\Rightarrow n=3+18=21\\)",
+   "payload": {
+    "options": [
+     "42",
+     "15",
+     "22",
+     "21"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-152",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{2}\\) in the expansion of \\((1-x)^{6}\\).",
+   "explanation": "\\(\\binom{6}{2}(-1)^{2}=15\\times1=15\\)",
+   "payload": {
+    "options": [
+     "15",
+     "-20",
+     "-15",
+     "16"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-153",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the sum of the binomial coefficients at the even places (r = 0, 2, 4, ...) of \\((1+x)^{17}\\).",
+   "explanation": "Even-place sum = odd-place sum, and together they make \\(2^{17}\\), so each is \\(2^{16}=65536\\).",
+   "payload": {
+    "options": [
+     "65536",
+     "131072",
+     "65537",
+     "32768"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-154",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "binomial-sums",
+   "prompt": "The sum of all the binomial coefficients of \\((1+x)^{n}\\) is \\(256\\). Find \\(n\\).",
+   "explanation": "\\(2^{n}=256=2^{8}\\Rightarrow n=8\\)",
+   "payload": {
+    "options": [
+     "8",
+     "7",
+     "10",
+     "128"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-155",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(75^{799}\\)?",
+   "explanation": "Every power of a number ending in \\(5\\) also ends in \\(5\\), so the last digit is \\(5\\).",
+   "payload": {
+    "options": [
+     "7",
+     "5",
+     "6",
+     "9"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-156",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "remainder-binomial",
+   "prompt": "Find the remainder when \\(10^{186}\\) is divided by \\(13\\).",
+   "explanation": "\\(10^{3}=1000=13\\times77-1\\). Write \\(186=3\\times62+0\\), so \\(10^{186}=(1001-1)^{62}\\). By the binomial theorem every term of the bracket except the last is a multiple of \\(13\\), so the remainder comes from \\((-1)^{62}\\) = \\(1\\), which leaves remainder \\(1\\).",
+   "payload": {
+    "options": [
+     "3",
+     "10",
+     "2",
+     "1"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-157",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((a+b)^{31}\\)?",
+   "explanation": "\\((a+b)^{31}\\) has \\(31+1=32\\) terms.",
+   "payload": {
+    "options": [
+     "34",
+     "32",
+     "64",
+     "33"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-158",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "series-coefficient",
+   "prompt": "Find the coefficient of \\(x^{2}\\) in the expansion of \\((1+x)^{-2}\\).",
+   "explanation": "\\(\\frac{\\left(-2\\right)\\times\\left(-3\\right)}{2!}(1)^{2}=3\\) (the coefficient of \\(x^{2}\\) is \\(\\frac{n(n-1)\\cdots(n-1)}{2!}a^{2}\\) with \\(n=-2,\\ a=1\\)).",
+   "payload": {
+    "options": [
+     "6",
+     "-3",
+     "3",
+     "4"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-159",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "pascal-rule",
+   "prompt": "In Pascal's triangle two neighbouring entries of row \\(14\\) are \\(3003\\) and \\(2002\\). What is the entry directly below them in row \\(15\\)?",
+   "explanation": "\\(3003+2002=5005\\ \\ (\\text{Pascal's rule: }\\binom{14}{8}+\\binom{14}{9}=\\binom{15}{9})\\)",
+   "payload": {
+    "options": [
+     "6012006",
+     "3003",
+     "5005",
+     "6006"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-160",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "inequality-induction",
+   "prompt": "Find the smallest positive integer \\(n_{0}\\) such that \\(n!>3^{n}\\) for every \\(n\\ge n_{0}\\).",
+   "explanation": "At \\(n=6\\) the values are \\(720\\) and \\(729\\), so the inequality fails; at \\(n=7\\) we get \\(5040>2187\\), and the inductive step then keeps it true for every larger \\(n\\). So the basis step starts at \\(n=7\\).",
+   "payload": {
+    "options": [
+     "6",
+     "7",
+     "8",
+     "9"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-161",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "induction-steps",
+   "prompt": "For \\(P(n):\\ 1\\cdot1!+2\\cdot2!+\\cdots+n n!=\\left(n + 1\\right)! - 1\\), what is the value of each side when \\(n=4\\)?",
+   "explanation": "Put \\(n=4\\) in the right side: \\(119\\). The left side (sum of the first \\(4\\) terms) gives the same value \\(119\\).",
+   "payload": {
+    "options": [
+     "119",
+     "120",
+     "118",
+     "719"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-162",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((2x+3)^{4}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((2+3)^{4}=625\\).",
+   "payload": {
+    "options": [
+     "1296",
+     "97",
+     "20",
+     "625"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-163",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "middle-term",
+   "prompt": "Which term is the middle term in the expansion of \\((a+b)^{28}\\)?",
+   "explanation": "There are \\(28+1=29\\) terms (an odd number), so the middle one is the \\(\\frac{28}{2}+1=15\\)th term.",
+   "payload": {
+    "options": [
+     "29th",
+     "15th",
+     "16th",
+     "14th"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-164",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{7}{4}\\).",
+   "explanation": "\\(\\binom{7}{4}=\\binom{7}{3}=\\frac{7\\times6\\times5}{3\\times2\\times1}=35\\)",
+   "payload": {
+    "options": [
+     "35",
+     "70",
+     "21",
+     "840"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-165",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1+2+3+\\cdots+12\\).",
+   "explanation": "\\(S_{n}=\\frac{n(n+1)}{2}\\ \\text{with}\\ n=12:\\ S=78\\)",
+   "payload": {
+    "options": [
+     "91",
+     "78",
+     "79",
+     "77"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-166",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{7}{5}\\).",
+   "explanation": "\\(\\binom{7}{5}=\\binom{7}{2}=\\frac{7\\times6}{2\\times1}=21\\)",
+   "payload": {
+    "options": [
+     "21",
+     "35",
+     "56",
+     "7"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-167",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "approximation",
+   "prompt": "Use the first three terms of the binomial series to approximate \\(\\sqrt{1+0.03}\\).",
+   "explanation": "With \\(x=0.03\\): \\((1+x)^{\\frac{1}{2}}\\approx1+\\frac{1}{2}x-\\frac{1}{8}x^{2}\\) gives \\(1+0.015-0.0001125\\) = \\(1.0148875\\).",
+   "payload": {
+    "options": [
+     "0.9848875",
+     "1.0148875",
+     "1.0151125",
+     "1.015"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-168",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(63^{159}\\)?",
+   "explanation": "The last digit of \\(63\\) is \\(3\\); its powers end in \\(3,9,7,1\\) and repeat (cyclicity \\(4\\)). \\(159=4\\times39+3\\), so take place \\(3\\): last digit \\(7\\).",
+   "payload": {
+    "options": [
+     "3",
+     "7",
+     "8",
+     "1"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-169",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{14}{8}\\).",
+   "explanation": "\\(\\binom{14}{8}=\\binom{14}{6}=\\frac{14\\times13\\times12\\times11\\times10\\times9}{6\\times5\\times4\\times3\\times2\\times1}=3003\\)",
+   "payload": {
+    "options": [
+     "2002",
+     "3432",
+     "3003",
+     "6435"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-170",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "binomial-sums",
+   "prompt": "The sum of all the binomial coefficients of \\((1+x)^{n}\\) is \\(16\\). Find \\(n\\).",
+   "explanation": "\\(2^{n}=16=2^{4}\\Rightarrow n=4\\)",
+   "payload": {
+    "options": [
+     "12",
+     "5",
+     "4",
+     "2"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-171",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{9}{7}\\).",
+   "explanation": "\\(\\binom{9}{7}=\\binom{9}{2}=\\frac{9\\times8}{2\\times1}=36\\)",
+   "payload": {
+    "options": [
+     "9",
+     "84",
+     "120",
+     "36"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-172",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1+3+5+\\cdots+29\\).",
+   "explanation": "\\(S_{n}=n^{2}\\ \\text{with}\\ n=15:\\ S=225\\)",
+   "payload": {
+    "options": [
+     "196",
+     "256",
+     "450",
+     "225"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-173",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(92^{186}\\)?",
+   "explanation": "The last digit of \\(92\\) is \\(2\\); its powers end in \\(2,4,8,6\\) and repeat (cyclicity \\(4\\)). \\(186=4\\times46+2\\), so take place \\(2\\): last digit \\(4\\).",
+   "payload": {
+    "options": [
+     "8",
+     "4",
+     "5",
+     "6"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-174",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((3x-1)^{6}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((3-1)^{6}=64\\).",
+   "payload": {
+    "options": [
+     "64",
+     "730",
+     "32",
+     "729"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-175",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((5x-2)^{12}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((5-2)^{12}=531441\\).",
+   "payload": {
+    "options": [
+     "36",
+     "244144721",
+     "531441",
+     "1594323"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-176",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1\\cdot2+2\\cdot3+\\cdots+11\\cdot12\\).",
+   "explanation": "\\(S_{n}=\\frac{n(n+1)(n+2)}{3}\\ \\text{with}\\ n=11:\\ S=572\\)",
+   "payload": {
+    "options": [
+     "572",
+     "440",
+     "728",
+     "571"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-177",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(72^{154}\\)?",
+   "explanation": "The last digit of \\(72\\) is \\(2\\); its powers end in \\(2,4,8,6\\) and repeat (cyclicity \\(4\\)). \\(154=4\\times38+2\\), so take place \\(2\\): last digit \\(4\\).",
+   "payload": {
+    "options": [
+     "6",
+     "8",
+     "5",
+     "4"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-178",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{13}{9}\\).",
+   "explanation": "\\(\\binom{13}{9}=\\binom{13}{4}=\\frac{13\\times12\\times11\\times10}{4\\times3\\times2\\times1}=715\\)",
+   "payload": {
+    "options": [
+     "286",
+     "2002",
+     "1287",
+     "715"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-179",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{15}{9}\\).",
+   "explanation": "\\(\\binom{15}{9}=\\binom{15}{6}=\\frac{15\\times14\\times13\\times12\\times11\\times10}{6\\times5\\times4\\times3\\times2\\times1}=5005\\)",
+   "payload": {
+    "options": [
+     "6435",
+     "3003",
+     "5005",
+     "11440"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-180",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "middle-term",
+   "prompt": "Which term is the middle term in the expansion of \\((a+b)^{32}\\)?",
+   "explanation": "There are \\(32+1=33\\) terms (an odd number), so the middle one is the \\(\\frac{32}{2}+1=17\\)th term.",
+   "payload": {
+    "options": [
+     "16th",
+     "33rd",
+     "17th",
+     "19th"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-181",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{13}{8}\\).",
+   "explanation": "\\(\\binom{13}{8}=\\binom{13}{5}=\\frac{13\\times12\\times11\\times10\\times9}{5\\times4\\times3\\times2\\times1}=1287\\)",
+   "payload": {
+    "options": [
+     "715",
+     "1287",
+     "3003",
+     "1716"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-182",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(82^{267}\\)?",
+   "explanation": "The last digit of \\(82\\) is \\(2\\); its powers end in \\(2,4,8,6\\) and repeat (cyclicity \\(4\\)). \\(267=4\\times66+3\\), so take place \\(3\\): last digit \\(8\\).",
+   "payload": {
+    "options": [
+     "8",
+     "2",
+     "9",
+     "6"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-183",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{12}{4}\\).",
+   "explanation": "\\(\\binom{12}{4}=\\frac{12\\times11\\times10\\times9}{4\\times3\\times2\\times1}=495\\)",
+   "payload": {
+    "options": [
+     "11880",
+     "792",
+     "5940",
+     "495"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-184",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "remainder-binomial",
+   "prompt": "Find the remainder when \\(7^{37}\\) is divided by \\(18\\).",
+   "explanation": "\\(7^{3}=343=18\\times19+1\\). Write \\(37=3\\times12+1\\), so \\(7^{37}=(342+1)^{12}\\cdot7^{1}\\). By the binomial theorem every term of the bracket except the last is a multiple of \\(18\\), so the remainder comes from \\(1\\cdot7^{1}\\) = \\(7\\), which leaves remainder \\(7\\).",
+   "payload": {
+    "options": [
+     "9",
+     "6",
+     "11",
+     "7"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-185",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the value of \\(\\binom{9}{0}+\\binom{9}{1}+\\binom{9}{2}+\\cdots+\\binom{9}{9}\\).",
+   "explanation": "Put \\(a=b=1\\) in \\((a+b)^{9}\\): the sum is \\(2^{9}=512\\).",
+   "payload": {
+    "options": [
+     "1023",
+     "1024",
+     "513",
+     "512"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-186",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(71^{36}\\)?",
+   "explanation": "Every power of a number ending in \\(1\\) also ends in \\(1\\), so the last digit is \\(1\\).",
+   "payload": {
+    "options": [
+     "3",
+     "1",
+     "5",
+     "2"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-187",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{2}\\) in the expansion of \\((x+2)^{7}\\).",
+   "explanation": "\\(\\binom{7}{2}(2)^{5}=21\\times32=672\\)",
+   "payload": {
+    "options": [
+     "53",
+     "672",
+     "84",
+     "560"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-188",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(64^{374}\\)?",
+   "explanation": "The last digit of \\(64\\) is \\(4\\); its powers end in \\(4,6\\) and repeat (cyclicity \\(2\\)). \\(374=2\\times187+0\\), so take place \\(2\\): last digit \\(6\\).",
+   "payload": {
+    "options": [
+     "0",
+     "4",
+     "6",
+     "8"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-189",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{10}{3}\\).",
+   "explanation": "\\(\\binom{10}{3}=\\frac{10\\times9\\times8}{3\\times2\\times1}=120\\)",
+   "payload": {
+    "options": [
+     "45",
+     "210",
+     "165",
+     "120"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-190",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{n}{6}=\\binom{n}{18}\\), find \\(n\\).",
+   "explanation": "\\(\\binom{n}{6}=\\binom{n}{18}\\Rightarrow n=6+18=24\\)",
+   "payload": {
+    "options": [
+     "24",
+     "26",
+     "12",
+     "23"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-191",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{7}{3}\\).",
+   "explanation": "\\(\\binom{7}{3}=\\frac{7\\times6\\times5}{3\\times2\\times1}=35\\)",
+   "payload": {
+    "options": [
+     "105",
+     "21",
+     "210",
+     "35"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-192",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "approximation",
+   "prompt": "Use the first three terms of the binomial expansion to find \\((1+0.005)^{17}\\) approximately.",
+   "explanation": "\\((1+x)^{17}\\approx1+17 x+136 x^{2}\\) with \\(x=0.005\\): \\(1+0.085+0.0034=1.0884\\).",
+   "payload": {
+    "options": [
+     "1.0884",
+     "1.088485",
+     "1.085",
+     "1.085425"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-193",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((x+5)^{6}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((1+5)^{6}=46656\\).",
+   "payload": {
+    "options": [
+     "36",
+     "46656",
+     "279936",
+     "15625"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-194",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{21}+(x-y)^{21}\\) after simplification?",
+   "explanation": "The terms with odd powers of \\(y\\) cancel and the others double, so \\(\\lfloor 21/2\\rfloor+1=11\\) terms remain.",
+   "payload": {
+    "options": [
+     "13",
+     "21",
+     "11",
+     "12"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-195",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(84^{794}\\)?",
+   "explanation": "The last digit of \\(84\\) is \\(4\\); its powers end in \\(4,6\\) and repeat (cyclicity \\(2\\)). \\(794=2\\times397+0\\), so take place \\(2\\): last digit \\(6\\).",
+   "payload": {
+    "options": [
+     "8",
+     "4",
+     "7",
+     "6"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-196",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{12}{5}\\).",
+   "explanation": "\\(\\binom{12}{5}=\\frac{12\\times11\\times10\\times9\\times8}{5\\times4\\times3\\times2\\times1}=792\\)",
+   "payload": {
+    "options": [
+     "792",
+     "924",
+     "495",
+     "1287"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-197",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(28^{200}\\)?",
+   "explanation": "The last digit of \\(28\\) is \\(8\\); its powers end in \\(8,4,2,6\\) and repeat (cyclicity \\(4\\)). \\(200=4\\times50+0\\), so take place \\(4\\): last digit \\(6\\).",
+   "payload": {
+    "options": [
+     "0",
+     "8",
+     "6",
+     "2"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-198",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "remainder-binomial",
+   "prompt": "Find the remainder when \\(5^{112}\\) is divided by \\(13\\).",
+   "explanation": "\\(5^{2}=25=13\\times2-1\\). Write \\(112=2\\times56+0\\), so \\(5^{112}=(26-1)^{56}\\). By the binomial theorem every term of the bracket except the last is a multiple of \\(13\\), so the remainder comes from \\((-1)^{56}\\) = \\(1\\), which leaves remainder \\(1\\).",
+   "payload": {
+    "options": [
+     "3",
+     "0",
+     "12",
+     "1"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-199",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{5}\\) in the expansion of \\((x-1)^{8}\\).",
+   "explanation": "\\(\\text{coefficient of }x^{5}=\\binom{8}{5}(1)^{5}(-1)^{3}=56\\cdot1\\cdot-1=-56\\)",
+   "payload": {
+    "options": [
+     "0",
+     "-56",
+     "28",
+     "56"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-200",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the value of \\(\\binom{5}{1}+\\binom{5}{2}+\\cdots+\\binom{5}{5}\\).",
+   "explanation": "The full sum is \\(2^{5}\\); remove \\(\\binom{5}{0}=1\\) to get \\(2^{5}-1=31\\).",
+   "payload": {
+    "options": [
+     "32",
+     "33",
+     "62",
+     "31"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-201",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "middle-term",
+   "prompt": "Find the middle term of \\((x-3)^{4}\\).",
+   "explanation": "The middle term is the \\(3\\)th term: \\(\\binom{4}{2}x^{2}(-3)^{2}=54x^{2}\\)",
+   "payload": {
+    "options": [
+     "\\(-108x\\)",
+     "\\(54x^{2}\\)",
+     "\\(-12x^{3}\\)",
+     "\\(6x^{2}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-202",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{14}{x}=\\binom{14}{2}\\) and \\(x\\ne 2\\), find \\(x\\).",
+   "explanation": "\\(\\binom{14}{x}=\\binom{14}{2}\\Rightarrow x=2\\ \\text{or}\\ x=14-2=12\\)",
+   "payload": {
+    "options": [
+     "11",
+     "14",
+     "13",
+     "12"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-203",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(2+4+6+\\cdots+40\\).",
+   "explanation": "\\(S_{n}=n(n+1)\\ \\text{with}\\ n=20:\\ S=420\\)",
+   "payload": {
+    "options": [
+     "380",
+     "419",
+     "420",
+     "440"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-204",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{15}{10}\\).",
+   "explanation": "\\(\\binom{15}{10}=\\binom{15}{5}=\\frac{15\\times14\\times13\\times12\\times11}{5\\times4\\times3\\times2\\times1}=3003\\)",
+   "payload": {
+    "options": [
+     "1365",
+     "5005",
+     "8008",
+     "3003"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-205",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(3+3^{2}+3^{3}+\\cdots+3^{6}\\).",
+   "explanation": "\\(S_{n}=\\frac{3(3^{n}-1)}{2}\\ \\text{with}\\ n=6:\\ S=1092\\)",
+   "payload": {
+    "options": [
+     "1098",
+     "1092",
+     "1091",
+     "2184"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-206",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the value of \\(\\binom{19}{1}+\\binom{19}{2}+\\cdots+\\binom{19}{19}\\).",
+   "explanation": "The full sum is \\(2^{19}\\); remove \\(\\binom{19}{0}=1\\) to get \\(2^{19}-1=524287\\).",
+   "payload": {
+    "options": [
+     "524285",
+     "524289",
+     "524287",
+     "524288"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-207",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "series-coefficient",
+   "prompt": "Find the coefficient of \\(x^{4}\\) in the expansion of \\((1-x)^{-\\frac{3}{2}}\\).",
+   "explanation": "\\(\\frac{\\left(-\\frac{3}{2}\\right)\\times\\left(-\\frac{5}{2}\\right)\\times\\left(-\\frac{7}{2}\\right)\\times\\left(-\\frac{9}{2}\\right)}{4!}(-1)^{4}=\\frac{315}{128}\\) (the coefficient of \\(x^{4}\\) is \\(\\frac{n(n-1)\\cdots(n-3)}{4!}a^{4}\\) with \\(n=-\\frac{3}{2},\\ a=-1\\)).",
+   "payload": {
+    "options": [
+     "\\(-\\frac{315}{128}\\)",
+     "\\(\\frac{693}{256}\\)",
+     "\\(\\frac{443}{128}\\)",
+     "\\(\\frac{315}{128}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-208",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "independent-term",
+   "prompt": "Which term is independent of \\(x\\) in the expansion of \\(\\left(x^{2}+\\frac{1}{x^{3}}\\right)^{10}\\)? (Give the term number.)",
+   "explanation": "\\(20-5r=0\\Rightarrow r=4\\), so it is the \\((r+1)=5\\)th term.",
+   "payload": {
+    "options": [
+     "6",
+     "3",
+     "5",
+     "7"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-209",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(22^{268}\\)?",
+   "explanation": "The last digit of \\(22\\) is \\(2\\); its powers end in \\(2,4,8,6\\) and repeat (cyclicity \\(4\\)). \\(268=4\\times67+0\\), so take place \\(4\\): last digit \\(6\\).",
+   "payload": {
+    "options": [
+     "8",
+     "2",
+     "0",
+     "6"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-210",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{2}\\) in the expansion of \\((x+3)^{7}\\).",
+   "explanation": "\\(\\binom{7}{2}(3)^{5}=21\\times243=5103\\)",
+   "payload": {
+    "options": [
+     "189",
+     "2835",
+     "264",
+     "5103"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-211",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1+2+3+\\cdots+8\\).",
+   "explanation": "\\(S_{n}=\\frac{n(n+1)}{2}\\ \\text{with}\\ n=8:\\ S=36\\)",
+   "payload": {
+    "options": [
+     "36",
+     "45",
+     "44",
+     "35"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-212",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{8}{5}\\).",
+   "explanation": "\\(\\binom{8}{5}=\\binom{8}{3}=\\frac{8\\times7\\times6}{3\\times2\\times1}=56\\)",
+   "payload": {
+    "options": [
+     "126",
+     "70",
+     "56",
+     "28"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-213",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "induction-steps",
+   "prompt": "Let \\(P(n):\\ 1^{2}+2^{2}+3^{2}+\\cdots+n^{2}=\\frac{n \\left(n + 1\\right) \\left(2 n + 1\\right)}{6}\\). Which of the following is the statement \\(P(k+1)\\)?",
+   "explanation": "Replace every \\(n\\) by \\(k+1\\) on both sides, including the last term of the left side.",
+   "payload": {
+    "options": [
+     "\\(1^{2}+2^{2}+3^{2}+\\cdots+\\left(k + 1\\right)^{2}=\\frac{\\left(k + 1\\right) \\left(k + 2\\right) \\left(2 k + 3\\right)}{6}\\)",
+     "\\(1^{2}+2^{2}+3^{2}+\\cdots+\\left(k + 1\\right)^{2}=\\frac{k \\left(k + 1\\right) \\left(2 k + 1\\right)}{6}\\)",
+     "\\(1^{2}+2^{2}+3^{2}+\\cdots+k^{2}=\\frac{\\left(k + 1\\right) \\left(k + 2\\right) \\left(2 k + 3\\right)}{6}\\)",
+     "\\(1^{2}+2^{2}+3^{2}+\\cdots+\\left(k + 2\\right)^{2}=\\frac{\\left(k + 2\\right) \\left(k + 3\\right) \\left(2 k + 5\\right)}{6}\\)"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-214",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "induction-steps",
+   "prompt": "In proving \\(P(n):\\ 1+2+2^{2}+\\cdots+2^{n - 1}=2^{n} - 1\\) by induction, which term is added to both sides of \\(P(k)\\) to reach \\(P(k+1)\\)?",
+   "explanation": "The new last term of the left side is the \\((k+1)\\)th term \\(2^{k}\\).",
+   "payload": {
+    "options": [
+     "\\(2^{k - 1}\\)",
+     "\\(2^{k}\\)",
+     "\\(2^{k + 1}\\)",
+     "\\(2^{k + 1} - 1\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-215",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{5}\\) in the expansion of \\((x+5)^{7}\\).",
+   "explanation": "\\(\\binom{7}{5}(5)^{2}=21\\times25=525\\)",
+   "payload": {
+    "options": [
+     "525",
+     "65625",
+     "35",
+     "46"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-216",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{7}{2}\\).",
+   "explanation": "\\(\\binom{7}{2}=\\frac{7\\times6}{2\\times1}=21\\)",
+   "payload": {
+    "options": [
+     "7",
+     "35",
+     "21",
+     "28"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-217",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{n}{6}=\\binom{n}{12}\\), find \\(n\\).",
+   "explanation": "\\(\\binom{n}{6}=\\binom{n}{12}\\Rightarrow n=6+12=18\\)",
+   "payload": {
+    "options": [
+     "18",
+     "20",
+     "17",
+     "72"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-218",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{8}{4}\\).",
+   "explanation": "\\(\\binom{8}{4}=\\frac{8\\times7\\times6\\times5}{4\\times3\\times2\\times1}=70\\)",
+   "payload": {
+    "options": [
+     "126",
+     "840",
+     "70",
+     "56"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-219",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "induction-steps",
+   "prompt": "For \\(P(n):\\ 1+3+5+\\cdots+2 n - 1=n^{2}\\), what is the value of each side when \\(n=5\\)?",
+   "explanation": "Put \\(n=5\\) in the right side: \\(25\\). The left side (sum of the first \\(5\\) terms) gives the same value \\(25\\).",
+   "payload": {
+    "options": [
+     "30",
+     "25",
+     "26",
+     "24"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-220",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "remainder-binomial",
+   "prompt": "Find the remainder when \\(13^{123}\\) is divided by \\(11\\).",
+   "explanation": "\\(13^{5}=371293=11\\times33754-1\\). Write \\(123=5\\times24+3\\), so \\(13^{123}=(371294-1)^{24}\\cdot13^{3}\\). By the binomial theorem every term of the bracket except the last is a multiple of \\(11\\), so the remainder comes from \\((-1)^{24}\\cdot13^{3}\\) = \\(2197\\), which leaves remainder \\(8\\).",
+   "payload": {
+    "options": [
+     "9",
+     "7",
+     "10",
+     "8"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-221",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(62^{138}\\)?",
+   "explanation": "The last digit of \\(62\\) is \\(2\\); its powers end in \\(2,4,8,6\\) and repeat (cyclicity \\(4\\)). \\(138=4\\times34+2\\), so take place \\(2\\): last digit \\(4\\).",
+   "payload": {
+    "options": [
+     "6",
+     "4",
+     "5",
+     "2"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-222",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1+3+5+\\cdots+9\\).",
+   "explanation": "\\(S_{n}=n^{2}\\ \\text{with}\\ n=5:\\ S=25\\)",
+   "payload": {
+    "options": [
+     "16",
+     "26",
+     "25",
+     "36"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-223",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "series-coefficient",
+   "prompt": "Find the coefficient of \\(x^{2}\\) in the expansion of \\((1-3x)^{\\frac{1}{2}}\\).",
+   "explanation": "\\(\\frac{\\left(\\frac{1}{2}\\right)\\times\\left(-\\frac{1}{2}\\right)}{2!}(-3)^{2}=-\\frac{9}{8}\\) (the coefficient of \\(x^{2}\\) is \\(\\frac{n(n-1)\\cdots(n-1)}{2!}a^{2}\\) with \\(n=\\frac{1}{2},\\ a=-3\\)).",
+   "payload": {
+    "options": [
+     "\\(-\\frac{27}{16}\\)",
+     "\\(-\\frac{1}{8}\\)",
+     "\\(-\\frac{9}{4}\\)",
+     "\\(-\\frac{9}{8}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-224",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((x+1)^{7}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((1+1)^{7}=128\\).",
+   "payload": {
+    "options": [
+     "128",
+     "256",
+     "1",
+     "64"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-225",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{n}{6}=\\binom{n}{17}\\), find \\(n\\).",
+   "explanation": "\\(\\binom{n}{6}=\\binom{n}{17}\\Rightarrow n=6+17=23\\)",
+   "payload": {
+    "options": [
+     "46",
+     "11",
+     "22",
+     "23"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-226",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "divisibility",
+   "prompt": "What is the largest positive integer that divides \\(7^{n}-6n-1\\) for every positive integer \\(n\\)?",
+   "explanation": "Try small values: \\(0,\\ 36,\\ 324,\\ 2376\\) have greatest common divisor \\(36\\); induction or the binomial theorem shows that \\(36\\) always divides it.",
+   "payload": {
+    "options": [
+     "72",
+     "37",
+     "108",
+     "36"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-227",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "middle-term",
+   "prompt": "Find the middle term of \\((x+2)^{8}\\).",
+   "explanation": "The middle term is the \\(5\\)th term: \\(\\binom{8}{4}x^{4}(2)^{4}=1120x^{4}\\)",
+   "payload": {
+    "options": [
+     "\\(448x^{5}\\)",
+     "\\(1120x^{4}\\)",
+     "\\(70x^{4}\\)",
+     "\\(1792x^{3}\\)"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-228",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{20}+(x-y)^{20}\\) after simplification?",
+   "explanation": "The terms with odd powers of \\(y\\) cancel and the others double, so \\(\\lfloor 20/2\\rfloor+1=11\\) terms remain.",
+   "payload": {
+    "options": [
+     "22",
+     "21",
+     "11",
+     "12"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-229",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{n}{3}=\\binom{n}{19}\\), find \\(n\\).",
+   "explanation": "\\(\\binom{n}{3}=\\binom{n}{19}\\Rightarrow n=3+19=22\\)",
+   "payload": {
+    "options": [
+     "24",
+     "23",
+     "21",
+     "22"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-230",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(65^{395}\\)?",
+   "explanation": "Every power of a number ending in \\(5\\) also ends in \\(5\\), so the last digit is \\(5\\).",
+   "payload": {
+    "options": [
+     "6",
+     "5",
+     "9",
+     "7"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-231",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(35^{638}\\)?",
+   "explanation": "Every power of a number ending in \\(5\\) also ends in \\(5\\), so the last digit is \\(5\\).",
+   "payload": {
+    "options": [
+     "7",
+     "5",
+     "6",
+     "9"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-232",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(61^{214}\\)?",
+   "explanation": "Every power of a number ending in \\(1\\) also ends in \\(1\\), so the last digit is \\(1\\).",
+   "payload": {
+    "options": [
+     "5",
+     "3",
+     "2",
+     "1"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-233",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "middle-term",
+   "prompt": "Which term is the middle term in the expansion of \\((a+b)^{18}\\)?",
+   "explanation": "There are \\(18+1=19\\) terms (an odd number), so the middle one is the \\(\\frac{18}{2}+1=10\\)th term.",
+   "payload": {
+    "options": [
+     "9th",
+     "11th",
+     "19th",
+     "10th"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-234",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "middle-term",
+   "prompt": "Which term is the middle term in the expansion of \\((a+b)^{4}\\)?",
+   "explanation": "There are \\(4+1=5\\) terms (an odd number), so the middle one is the \\(\\frac{4}{2}+1=3\\)th term.",
+   "payload": {
+    "options": [
+     "4th",
+     "5th",
+     "3rd",
+     "2nd"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-235",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "pascal-rule",
+   "prompt": "In Pascal's triangle two neighbouring entries of row \\(8\\) are \\(8\\) and \\(28\\). What is the entry directly below them in row \\(9\\)?",
+   "explanation": "\\(8+28=36\\ \\ (\\text{Pascal's rule: }\\binom{8}{1}+\\binom{8}{2}=\\binom{9}{2})\\)",
+   "payload": {
+    "options": [
+     "224",
+     "56",
+     "44",
+     "36"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-236",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(85^{233}\\)?",
+   "explanation": "Every power of a number ending in \\(5\\) also ends in \\(5\\), so the last digit is \\(5\\).",
+   "payload": {
+    "options": [
+     "5",
+     "6",
+     "9",
+     "7"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-237",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "middle-term",
+   "prompt": "Find the middle term of \\((x+2)^{10}\\).",
+   "explanation": "The middle term is the \\(6\\)th term: \\(\\binom{10}{5}x^{5}(2)^{5}=8064x^{5}\\)",
+   "payload": {
+    "options": [
+     "\\(13440x^{4}\\)",
+     "\\(252x^{5}\\)",
+     "\\(3360x^{6}\\)",
+     "\\(8064x^{5}\\)"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-238",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "independent-term",
+   "prompt": "Which term is independent of \\(x\\) in the expansion of \\(\\left(x^{2}+\\frac{1}{x^{2}}\\right)^{4}\\)? (Give the term number.)",
+   "explanation": "\\(8-4r=0\\Rightarrow r=2\\), so it is the \\((r+1)=3\\)th term.",
+   "payload": {
+    "options": [
+     "1",
+     "2",
+     "4",
+     "3"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-239",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "middle-term",
+   "prompt": "Which terms are the two middle terms in the expansion of \\((a+b)^{37}\\)?",
+   "explanation": "There are \\(37+1=38\\) terms (an even number), so there are two middle terms: the \\(\\frac{37+1}{2}=19\\)th and the \\(20\\)th.",
+   "payload": {
+    "options": [
+     "18th and 19th",
+     "18th and 20th",
+     "19th and 20th",
+     "19th only"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-240",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1+3+5+\\cdots+25\\).",
+   "explanation": "\\(S_{n}=n^{2}\\ \\text{with}\\ n=13:\\ S=169\\)",
+   "payload": {
+    "options": [
+     "168",
+     "169",
+     "196",
+     "182"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-241",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(56^{594}\\)?",
+   "explanation": "Every power of a number ending in \\(6\\) also ends in \\(6\\), so the last digit is \\(6\\).",
+   "payload": {
+    "options": [
+     "7",
+     "6",
+     "8",
+     "0"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-242",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{15}{4}\\).",
+   "explanation": "\\(\\binom{15}{4}=\\frac{15\\times14\\times13\\times12}{4\\times3\\times2\\times1}=1365\\)",
+   "payload": {
+    "options": [
+     "455",
+     "32760",
+     "1365",
+     "1820"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-243",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(26^{449}\\)?",
+   "explanation": "Every power of a number ending in \\(6\\) also ends in \\(6\\), so the last digit is \\(6\\).",
+   "payload": {
+    "options": [
+     "0",
+     "7",
+     "8",
+     "6"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-244",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the value of \\(\\binom{10}{0}-\\binom{10}{1}+\\binom{10}{2}-\\cdots+(-1)^{10}\\binom{10}{10}\\).",
+   "explanation": "Put \\(x=-1\\) in \\((1+x)^{10}\\): \\((1-1)^{10}=0\\).",
+   "payload": {
+    "options": [
+     "1024",
+     "-1",
+     "512",
+     "0"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-245",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{2}\\) in the expansion of \\((-2x-2)^{4}\\).",
+   "explanation": "\\(\\text{coefficient of }x^{2}=\\binom{4}{2}(-2)^{2}(-2)^{2}=6\\cdot4\\cdot4=96\\)",
+   "payload": {
+    "options": [
+     "24",
+     "-32",
+     "-96",
+     "96"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-246",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(23^{95}\\)?",
+   "explanation": "The last digit of \\(23\\) is \\(3\\); its powers end in \\(3,9,7,1\\) and repeat (cyclicity \\(4\\)). \\(95=4\\times23+3\\), so take place \\(3\\): last digit \\(7\\).",
+   "payload": {
+    "options": [
+     "1",
+     "3",
+     "7",
+     "9"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-247",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((2x-3)^{5}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((2-3)^{5}=-1\\).",
+   "payload": {
+    "options": [
+     "-211",
+     "-7776",
+     "-1",
+     "1"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-248",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{15}{x}=\\binom{15}{5}\\) and \\(x\\ne 5\\), find \\(x\\).",
+   "explanation": "\\(\\binom{15}{x}=\\binom{15}{5}\\Rightarrow x=5\\ \\text{or}\\ x=15-5=10\\)",
+   "payload": {
+    "options": [
+     "12",
+     "15",
+     "10",
+     "5"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-249",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the value of \\(\\binom{12}{1}+\\binom{12}{2}+\\cdots+\\binom{12}{12}\\).",
+   "explanation": "The full sum is \\(2^{12}\\); remove \\(\\binom{12}{0}=1\\) to get \\(2^{12}-1=4095\\).",
+   "payload": {
+    "options": [
+     "4093",
+     "8190",
+     "4095",
+     "4094"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-250",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((4x-1)^{6}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((4-1)^{6}=729\\).",
+   "payload": {
+    "options": [
+     "729",
+     "18",
+     "4097",
+     "4096"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-251",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{9}{3}\\).",
+   "explanation": "\\(\\binom{9}{3}=\\frac{9\\times8\\times7}{3\\times2\\times1}=84\\)",
+   "payload": {
+    "options": [
+     "252",
+     "84",
+     "504",
+     "36"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-252",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "pascal-rule",
+   "prompt": "In Pascal's triangle two neighbouring entries of row \\(14\\) are \\(364\\) and \\(1001\\). What is the entry directly below them in row \\(15\\)?",
+   "explanation": "\\(364+1001=1365\\ \\ (\\text{Pascal's rule: }\\binom{14}{3}+\\binom{14}{4}=\\binom{15}{4})\\)",
+   "payload": {
+    "options": [
+     "2002",
+     "1379",
+     "364364",
+     "1365"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-253",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1\\cdot2+2\\cdot3+\\cdots+7\\cdot8\\).",
+   "explanation": "\\(S_{n}=\\frac{n(n+1)(n+2)}{3}\\ \\text{with}\\ n=7:\\ S=168\\)",
+   "payload": {
+    "options": [
+     "175",
+     "336",
+     "168",
+     "240"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-254",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((x+y)^{32}+(x-y)^{32}\\) after simplification?",
+   "explanation": "The terms with odd powers of \\(y\\) cancel and the others double, so \\(\\lfloor 32/2\\rfloor+1=17\\) terms remain.",
+   "payload": {
+    "options": [
+     "34",
+     "33",
+     "16",
+     "17"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-255",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{13}{5}\\).",
+   "explanation": "\\(\\binom{13}{5}=\\frac{13\\times12\\times11\\times10\\times9}{5\\times4\\times3\\times2\\times1}=1287\\)",
+   "payload": {
+    "options": [
+     "1716",
+     "1287",
+     "715",
+     "2002"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-256",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "divisibility",
+   "prompt": "What is the largest positive integer that divides \\(n^{2}+n\\) for every positive integer \\(n\\)?",
+   "explanation": "Try small values: \\(2,\\ 6,\\ 12,\\ 20\\) have greatest common divisor \\(2\\); induction or the binomial theorem shows that \\(2\\) always divides it.",
+   "payload": {
+    "options": [
+     "1",
+     "6",
+     "5",
+     "2"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-257",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "remainder-binomial",
+   "prompt": "Find the remainder when \\(13^{294}\\) is divided by \\(8\\).",
+   "explanation": "\\(13^{2}=169=8\\times21+1\\). Write \\(294=2\\times147+0\\), so \\(13^{294}=(168+1)^{147}\\). By the binomial theorem every term of the bracket except the last is a multiple of \\(8\\), so the remainder comes from \\(1\\) = \\(1\\), which leaves remainder \\(1\\).",
+   "payload": {
+    "options": [
+     "2",
+     "0",
+     "1",
+     "5"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-258",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(83^{94}\\)?",
+   "explanation": "The last digit of \\(83\\) is \\(3\\); its powers end in \\(3,9,7,1\\) and repeat (cyclicity \\(4\\)). \\(94=4\\times23+2\\), so take place \\(2\\): last digit \\(9\\).",
+   "payload": {
+    "options": [
+     "9",
+     "1",
+     "0",
+     "3"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-259",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((x+3)^{4}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((1+3)^{4}=256\\).",
+   "payload": {
+    "options": [
+     "1024",
+     "81",
+     "16",
+     "256"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-260",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(96^{367}\\)?",
+   "explanation": "Every power of a number ending in \\(6\\) also ends in \\(6\\), so the last digit is \\(6\\).",
+   "payload": {
+    "options": [
+     "7",
+     "8",
+     "0",
+     "6"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-261",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "pascal-rule",
+   "prompt": "In Pascal's triangle two neighbouring entries of row \\(8\\) are \\(28\\) and \\(8\\). What is the entry directly below them in row \\(9\\)?",
+   "explanation": "\\(28+8=36\\ \\ (\\text{Pascal's rule: }\\binom{8}{6}+\\binom{8}{7}=\\binom{9}{7})\\)",
+   "payload": {
+    "options": [
+     "44",
+     "36",
+     "224",
+     "28"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-262",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(42^{397}\\)?",
+   "explanation": "The last digit of \\(42\\) is \\(2\\); its powers end in \\(2,4,8,6\\) and repeat (cyclicity \\(4\\)). \\(397=4\\times99+1\\), so take place \\(1\\): last digit \\(2\\).",
+   "payload": {
+    "options": [
+     "2",
+     "8",
+     "3",
+     "4"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-263",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((2x+1)^{9}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((2+1)^{9}=19683\\).",
+   "payload": {
+    "options": [
+     "6561",
+     "512",
+     "19683",
+     "27"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-264",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the value of \\(\\binom{6}{1}+\\binom{6}{2}+\\cdots+\\binom{6}{6}\\).",
+   "explanation": "The full sum is \\(2^{6}\\); remove \\(\\binom{6}{0}=1\\) to get \\(2^{6}-1=63\\).",
+   "payload": {
+    "options": [
+     "64",
+     "63",
+     "126",
+     "62"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-265",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((2x+3)^{7}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((2+3)^{7}=78125\\).",
+   "payload": {
+    "options": [
+     "390625",
+     "279936",
+     "78125",
+     "2315"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-266",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{2}\\) in the expansion of \\((1+4x)^{7}\\).",
+   "explanation": "\\(\\binom{7}{2}(4)^{2}=21\\times16=336\\)",
+   "payload": {
+    "options": [
+     "2240",
+     "336",
+     "37",
+     "84"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-267",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1+3+5+\\cdots+33\\).",
+   "explanation": "\\(S_{n}=n^{2}\\ \\text{with}\\ n=17:\\ S=289\\)",
+   "payload": {
+    "options": [
+     "289",
+     "306",
+     "288",
+     "578"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-268",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "remainder-binomial",
+   "prompt": "Find the remainder when \\(5^{87}\\) is divided by \\(12\\).",
+   "explanation": "\\(5^{2}=25=12\\times2+1\\). Write \\(87=2\\times43+1\\), so \\(5^{87}=(24+1)^{43}\\cdot5^{1}\\). By the binomial theorem every term of the bracket except the last is a multiple of \\(12\\), so the remainder comes from \\(1\\cdot5^{1}\\) = \\(5\\), which leaves remainder \\(5\\).",
+   "payload": {
+    "options": [
+     "5",
+     "7",
+     "4",
+     "6"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-269",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of the coefficients in the expansion of \\((1+x)^{4}\\).",
+   "explanation": "Put \\(x=1\\): \\(2^{4}=16\\).",
+   "payload": {
+    "options": [
+     "16",
+     "8",
+     "15",
+     "18"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-270",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{10}{8}\\).",
+   "explanation": "\\(\\binom{10}{8}=\\binom{10}{2}=\\frac{10\\times9}{2\\times1}=45\\)",
+   "payload": {
+    "options": [
+     "120",
+     "10",
+     "45",
+     "165"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-271",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{35}{x}=\\binom{35}{5}\\) and \\(x\\ne 5\\), find \\(x\\).",
+   "explanation": "\\(\\binom{35}{x}=\\binom{35}{5}\\Rightarrow x=5\\ \\text{or}\\ x=35-5=30\\)",
+   "payload": {
+    "options": [
+     "30",
+     "31",
+     "5",
+     "35"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-272",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((a+b)^{38}\\)?",
+   "explanation": "\\((a+b)^{38}\\) has \\(38+1=39\\) terms.",
+   "payload": {
+    "options": [
+     "37",
+     "39",
+     "41",
+     "49"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-273",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{6}{4}\\).",
+   "explanation": "\\(\\binom{6}{4}=\\binom{6}{2}=\\frac{6\\times5}{2\\times1}=15\\)",
+   "payload": {
+    "options": [
+     "35",
+     "20",
+     "15",
+     "6"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-274",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((2x-3)^{3}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((2-3)^{3}=-1\\).",
+   "payload": {
+    "options": [
+     "-3",
+     "-1",
+     "-216",
+     "-19"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-275",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(73^{175}\\)?",
+   "explanation": "The last digit of \\(73\\) is \\(3\\); its powers end in \\(3,9,7,1\\) and repeat (cyclicity \\(4\\)). \\(175=4\\times43+3\\), so take place \\(3\\): last digit \\(7\\).",
+   "payload": {
+    "options": [
+     "8",
+     "9",
+     "3",
+     "7"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-276",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{2}\\) in the expansion of \\((x+3)^{10}\\).",
+   "explanation": "\\(\\binom{10}{2}(3)^{8}=45\\times6561=295245\\)",
+   "payload": {
+    "options": [
+     "6606",
+     "295245",
+     "405",
+     "262440"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-277",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "ncr-symmetry",
+   "prompt": "If \\(\\binom{n}{9}=\\binom{n}{19}\\), find \\(n\\).",
+   "explanation": "\\(\\binom{n}{9}=\\binom{n}{19}\\Rightarrow n=9+19=28\\)",
+   "payload": {
+    "options": [
+     "28",
+     "29",
+     "30",
+     "56"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-278",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((a+b)^{16}\\)?",
+   "explanation": "\\((a+b)^{16}\\) has \\(16+1=17\\) terms.",
+   "payload": {
+    "options": [
+     "17",
+     "34",
+     "16",
+     "19"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-279",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1+2+4+\\cdots+2^{4}\\).",
+   "explanation": "\\(S_{n}=2^{n}-1\\ \\text{with}\\ n=5:\\ S=31\\)",
+   "payload": {
+    "options": [
+     "31",
+     "30",
+     "62",
+     "36"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-280",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "number-of-terms",
+   "prompt": "How many terms are there in the expansion of \\((a+b)^{40}\\)?",
+   "explanation": "\\((a+b)^{40}\\) has \\(40+1=41\\) terms.",
+   "payload": {
+    "options": [
+     "42",
+     "40",
+     "43",
+     "41"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-281",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(1+3+5+\\cdots+21\\).",
+   "explanation": "\\(S_{n}=n^{2}\\ \\text{with}\\ n=11:\\ S=121\\)",
+   "payload": {
+    "options": [
+     "242",
+     "122",
+     "144",
+     "121"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-282",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "coefficient-of-xk",
+   "prompt": "Find the coefficient of \\(x^{3}\\) in the expansion of \\((x-2)^{9}\\).",
+   "explanation": "\\(\\binom{9}{3}(-2)^{6}=84\\times64=5376\\)",
+   "payload": {
+    "options": [
+     "-4032",
+     "-672",
+     "148",
+     "5376"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-283",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(9^{286}\\)?",
+   "explanation": "The last digit of \\(9\\) is \\(9\\); its powers end in \\(9,1\\) and repeat (cyclicity \\(2\\)). \\(286=2\\times143+0\\), so take place \\(2\\): last digit \\(1\\).",
+   "payload": {
+    "options": [
+     "1",
+     "3",
+     "9",
+     "5"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-284",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "binomial-sums",
+   "prompt": "The sum of all the binomial coefficients of \\((1+x)^{n}\\) is \\(4096\\). Find \\(n\\).",
+   "explanation": "\\(2^{n}=4096=2^{12}\\Rightarrow n=12\\)",
+   "payload": {
+    "options": [
+     "4084",
+     "12",
+     "13",
+     "24"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-285",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "induction-sum-formulas",
+   "prompt": "Using the formula proved by induction, find the value of \\(2+4+6+\\cdots+36\\).",
+   "explanation": "\\(S_{n}=n(n+1)\\ \\text{with}\\ n=18:\\ S=342\\)",
+   "payload": {
+    "options": [
+     "343",
+     "380",
+     "342",
+     "360"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-286",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "binomial-sums",
+   "prompt": "The sum of all the binomial coefficients of \\((1+x)^{n}\\) is \\(2048\\). Find \\(n\\).",
+   "explanation": "\\(2^{n}=2048=2^{11}\\Rightarrow n=11\\)",
+   "payload": {
+    "options": [
+     "12",
+     "1024",
+     "11",
+     "10"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-287",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{9}{6}\\).",
+   "explanation": "\\(\\binom{9}{6}=\\binom{9}{3}=\\frac{9\\times8\\times7}{3\\times2\\times1}=84\\)",
+   "payload": {
+    "options": [
+     "126",
+     "210",
+     "36",
+     "84"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-288",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(18^{475}\\)?",
+   "explanation": "The last digit of \\(18\\) is \\(8\\); its powers end in \\(8,4,2,6\\) and repeat (cyclicity \\(4\\)). \\(475=4\\times118+3\\), so take place \\(3\\): last digit \\(2\\).",
+   "payload": {
+    "options": [
+     "6",
+     "8",
+     "3",
+     "2"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-289",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{11}{9}\\).",
+   "explanation": "\\(\\binom{11}{9}=\\binom{11}{2}=\\frac{11\\times10}{2\\times1}=55\\)",
+   "payload": {
+    "options": [
+     "11",
+     "55",
+     "220",
+     "165"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-290",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "induction-steps",
+   "prompt": "For \\(P(n):\\ 1+2+2^{2}+\\cdots+2^{n - 1}=2^{n} - 1\\), what is the value of each side when \\(n=3\\)?",
+   "explanation": "Put \\(n=3\\) in the right side: \\(7\\). The left side (sum of the first \\(3\\) terms) gives the same value \\(7\\).",
+   "payload": {
+    "options": [
+     "7",
+     "15",
+     "14",
+     "10"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-291",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "pascal-rule",
+   "prompt": "In Pascal's triangle two neighbouring entries of row \\(14\\) are \\(1001\\) and \\(2002\\). What is the entry directly below them in row \\(15\\)?",
+   "explanation": "\\(1001+2002=3003\\ \\ (\\text{Pascal's rule: }\\binom{14}{4}+\\binom{14}{5}=\\binom{15}{5})\\)",
+   "payload": {
+    "options": [
+     "3003",
+     "4004",
+     "3017",
+     "2004002"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-292",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "approximation",
+   "prompt": "Use the first three terms of the binomial expansion to find \\((1+0.02)^{12}\\) approximately.",
+   "explanation": "\\((1+x)^{12}\\approx1+12 x+66 x^{2}\\) with \\(x=0.02\\): \\(1+0.24+0.0264=1.2664\\).",
+   "payload": {
+    "options": [
+     "1.2136",
+     "1.2448",
+     "1.2664",
+     "1.26816"
+    ],
+    "correctIndex": 2,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-293",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "binomial-sums",
+   "prompt": "Find the sum of the binomial coefficients at the even places (r = 0, 2, 4, ...) of \\((1+x)^{9}\\).",
+   "explanation": "Even-place sum = odd-place sum, and together they make \\(2^{9}\\), so each is \\(2^{8}=256\\).",
+   "payload": {
+    "options": [
+     "257",
+     "511",
+     "128",
+     "256"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-294",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "ncr-values",
+   "prompt": "Evaluate \\(\\binom{6}{3}\\).",
+   "explanation": "\\(\\binom{6}{3}=\\frac{6\\times5\\times4}{3\\times2\\times1}=20\\)",
+   "payload": {
+    "options": [
+     "20",
+     "60",
+     "15",
+     "35"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-295",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "last-digit",
+   "prompt": "What is the last (unit) digit of \\(22^{171}\\)?",
+   "explanation": "The last digit of \\(22\\) is \\(2\\); its powers end in \\(2,4,8,6\\) and repeat (cyclicity \\(4\\)). \\(171=4\\times42+3\\), so take place \\(3\\): last digit \\(8\\).",
+   "payload": {
+    "options": [
+     "9",
+     "8",
+     "2",
+     "0"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-296",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Easy",
+   "topicTag": "binomial-sums",
+   "prompt": "The sum of all the binomial coefficients of \\((1+x)^{n}\\) is \\(128\\). Find \\(n\\).",
+   "explanation": "\\(2^{n}=128=2^{7}\\Rightarrow n=7\\)",
+   "payload": {
+    "options": [
+     "9",
+     "6",
+     "14",
+     "7"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-297",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "middle-term",
+   "prompt": "Which terms are the two middle terms in the expansion of \\((a+b)^{11}\\)?",
+   "explanation": "There are \\(11+1=12\\) terms (an even number), so there are two middle terms: the \\(\\frac{11+1}{2}=6\\)th and the \\(7\\)th.",
+   "payload": {
+    "options": [
+     "5th and 7th",
+     "6th and 7th",
+     "7th and 8th",
+     "6th only"
+    ],
+    "correctIndex": 1,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-298",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Hard",
+   "topicTag": "sum-coefficients",
+   "prompt": "Find the sum of all the coefficients in the expansion of \\((4x-1)^{11}\\).",
+   "explanation": "Put \\(x=1\\): the sum of the coefficients is \\((4-1)^{11}=177147\\).",
+   "payload": {
+    "options": [
+     "177147",
+     "4194303",
+     "-4194304",
+     "33"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-299",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "pascal-rule",
+   "prompt": "In Pascal's triangle two neighbouring entries of row \\(12\\) are \\(792\\) and \\(495\\). What is the entry directly below them in row \\(13\\)?",
+   "explanation": "\\(792+495=1287\\ \\ (\\text{Pascal's rule: }\\binom{12}{7}+\\binom{12}{8}=\\binom{13}{8})\\)",
+   "payload": {
+    "options": [
+     "2079",
+     "792",
+     "1584",
+     "1287"
+    ],
+    "correctIndex": 3,
+    "timeLimitSec": 20
+   }
+  },
+  {
+   "id": "speed-300",
+   "mechanicId": "speed-challenge",
+   "difficulty": "Medium",
+   "topicTag": "inequality-induction",
+   "prompt": "Find the smallest positive integer \\(n_{0}\\) such that \\(5^{n}>2^{n}+4\\) for every \\(n\\ge n_{0}\\).",
+   "explanation": "At \\(n=1\\) the values are \\(5\\) and \\(6\\), so the inequality fails; at \\(n=2\\) we get \\(25>8\\), and the inductive step then keeps it true for every larger \\(n\\). So the basis step starts at \\(n=2\\).",
+   "payload": {
+    "options": [
+     "2",
+     "0",
+     "5",
+     "3"
+    ],
+    "correctIndex": 0,
+    "timeLimitSec": 20
+   }
+  }
+ ]
+}
