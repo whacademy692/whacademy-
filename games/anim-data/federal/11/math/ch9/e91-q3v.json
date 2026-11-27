@@ -1,0 +1,822 @@
+{
+ "id": "g11-math-c9-e91-q3v",
+ "title": "Exercise 9.1 · Q3(v)",
+ "summary": "Find the domain and range: y=4tan π x",
+ "alt": "Exercise 9.1 · Q3(v): Find the domain and range: y=4tan π x",
+ "autoGrid": false,
+ "roles": {
+  "cv": {
+   "label": "The graph",
+   "color": "#2563eb",
+   "text": "The function you are studying.",
+   "legend": true
+  },
+  "cv2": {
+   "label": "Second graph",
+   "color": "#e11d48",
+   "text": "The second function.",
+   "legend": true
+  },
+  "ghost": {
+   "label": "Parent / reference",
+   "color": "#94a3b8",
+   "text": "The plain parent graph (or the reference curve) for comparison.",
+   "legend": true
+  },
+  "mid": {
+   "label": "Midline  y = a",
+   "color": "#d97706",
+   "text": "The horizontal line half-way between the highest and lowest points.",
+   "legend": true
+  },
+  "mx": {
+   "label": "Maximum",
+   "color": "#059669",
+   "text": "Highest values.",
+   "legend": true
+  },
+  "mn": {
+   "label": "Minimum",
+   "color": "#e11d48",
+   "text": "Lowest values.",
+   "legend": true
+  },
+  "per": {
+   "label": "Period",
+   "color": "#7c3aed",
+   "text": "One full cycle before the graph repeats.",
+   "legend": true
+  },
+  "asy": {
+   "label": "Asymptotes",
+   "color": "#dc2626",
+   "text": "Vertical lines the graph never touches.",
+   "legend": true
+  },
+  "key": {
+   "label": "Key points",
+   "color": "#0d9488",
+   "text": "The five key points of one cycle.",
+   "legend": true
+  },
+  "pr": {
+   "label": "Probe",
+   "color": "#ea580c",
+   "text": "The point you are moving along the graph.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "a",
+   "label": "Midline  a  (moves up / down)",
+   "min": -6,
+   "max": 6,
+   "step": 0.05,
+   "default": 0,
+   "group": "Shape of the wave",
+   "hint": "Shifts the whole graph up (+) or down (−).",
+   "role": "mid"
+  },
+  {
+   "id": "b",
+   "label": "Amplitude  b  (height; − flips it)",
+   "min": -7,
+   "max": 7,
+   "step": 0.05,
+   "default": 4,
+   "group": "Shape of the wave",
+   "hint": "Stretches the graph up and down. A negative b turns it upside-down.",
+   "role": "mx"
+  },
+  {
+   "id": "c",
+   "label": "Frequency c  (squeezes sideways)",
+   "min": 0.25,
+   "max": 6,
+   "step": 0.05,
+   "default": 3.141593,
+   "group": "Shape of the wave",
+   "hint": "Bigger c means a shorter period: the wave is squeezed sideways.",
+   "role": "per"
+  },
+  {
+   "id": "d",
+   "label": "Phase  d  (slides left / right)",
+   "min": -7,
+   "max": 7,
+   "step": 0.05,
+   "default": 0,
+   "group": "Shape of the wave",
+   "hint": "The graph slides to the LEFT by d ÷ c when d is positive.",
+   "role": "key"
+  },
+  {
+   "id": "showMid",
+   "label": "Midline  y = a",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showMax",
+   "label": "Reference values",
+   "type": "toggle",
+   "default": 0,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showPer",
+   "label": "Period bracket",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showAsy",
+   "label": "Asymptotes",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showKey",
+   "label": "Key points",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showBase",
+   "label": "Parent graph for comparison",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showH",
+   "label": "Draggable dots",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "pr",
+   "label": "Probe  x-value",
+   "min": -2,
+   "max": 2,
+   "step": 0.02,
+   "default": 0,
+   "group": "Probe a point",
+   "hint": "Slide to read off the y-value at any x.",
+   "role": "pr"
+  },
+  {
+   "id": "showPr",
+   "label": "Probe point",
+   "type": "toggle",
+   "default": 0,
+   "group": "Probe a point"
+  }
+ ],
+ "derived": {
+  "hi": "a+abs(b)",
+  "lo": "a-abs(b)",
+  "T": "(pi)/c",
+  "xs": "(0 - d)/c",
+  "xr": "(pi/4 - d)/c",
+  "ylo": "a-3.2*max(abs(b),0.4)-0.3",
+  "yhi": "a+3.2*max(abs(b),0.4)+0.3",
+  "zin": "(ylo<0&&yhi>0)",
+  "yax": "clamp(0,ylo,yhi)",
+  "py": "a + b*tan(deg(c*pr+d))",
+  "PR": [
+   "10.564516*(pr)",
+   "py"
+  ]
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 5.282258,
+   "numbers": false,
+   "xLabel": "x",
+   "yLabel": "y",
+   "role": "ink"
+  },
+  {
+   "type": "text",
+   "id": "nl0",
+   "at": [
+    -21.129032,
+    "yax"
+   ],
+   "text": "-2",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm0",
+   "at": [
+    -21.129032,
+    "yax"
+   ],
+   "text": "-2",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nl1",
+   "at": [
+    -15.846774,
+    "yax"
+   ],
+   "text": "-1.5",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm1",
+   "at": [
+    -15.846774,
+    "yax"
+   ],
+   "text": "-1.5",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nl2",
+   "at": [
+    -10.564516,
+    "yax"
+   ],
+   "text": "-1",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm2",
+   "at": [
+    -10.564516,
+    "yax"
+   ],
+   "text": "-1",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nl3",
+   "at": [
+    -5.282258,
+    "yax"
+   ],
+   "text": "-0.5",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm3",
+   "at": [
+    -5.282258,
+    "yax"
+   ],
+   "text": "-0.5",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nl5",
+   "at": [
+    5.282258,
+    "yax"
+   ],
+   "text": "0.5",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm5",
+   "at": [
+    5.282258,
+    "yax"
+   ],
+   "text": "0.5",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nl6",
+   "at": [
+    10.564516,
+    "yax"
+   ],
+   "text": "1",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm6",
+   "at": [
+    10.564516,
+    "yax"
+   ],
+   "text": "1",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nl7",
+   "at": [
+    15.846774,
+    "yax"
+   ],
+   "text": "1.5",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm7",
+   "at": [
+    15.846774,
+    "yax"
+   ],
+   "text": "1.5",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nl8",
+   "at": [
+    21.129032,
+    "yax"
+   ],
+   "text": "2",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm8",
+   "at": [
+    21.129032,
+    "yax"
+   ],
+   "text": "2",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "plot",
+   "id": "ghost",
+   "domain": [
+    -2,
+    2
+   ],
+   "samples": 600,
+   "role": "ghost",
+   "strokeWidth": 2.6,
+   "dash": true,
+   "visible": "showBase",
+   "x": "10.564516*t",
+   "y": "if(abs(tan(deg(t)))>8,1e9,tan(deg(t)))",
+   "var": "t"
+  },
+  {
+   "type": "repeat",
+   "id": "asy",
+   "count": "ceil(abs(c)*4/pi)+3",
+   "role": "asy",
+   "visible": "showAsy",
+   "template": {
+    "type": "segment",
+    "from": [
+     "10.564516*((pi/2 + (floor((c*-2+d-pi/2)/pi)+i)*pi - d)/c)",
+     "ylo"
+    ],
+    "to": [
+     "10.564516*((pi/2 + (floor((c*-2+d-pi/2)/pi)+i)*pi - d)/c)",
+     "yhi"
+    ],
+    "role": "asy",
+    "strokeWidth": 2,
+    "dash": true
+   },
+   "as": "i"
+  },
+  {
+   "type": "segment",
+   "id": "mid",
+   "from": [
+    -21.129032,
+    "a"
+   ],
+   "to": [
+    21.129032,
+    "a"
+   ],
+   "role": "mid",
+   "strokeWidth": 2.2,
+   "dash": true,
+   "visible": "showMid"
+  },
+  {
+   "type": "text",
+   "id": "midl",
+   "at": [
+    15.212903,
+    "a"
+   ],
+   "text": "midline y = {{a|2}}",
+   "role": "mid",
+   "size": "s",
+   "dy": -10,
+   "visible": "showMid",
+   "keep": true
+  },
+  {
+   "type": "plot",
+   "id": "curve",
+   "domain": [
+    -2,
+    2
+   ],
+   "samples": 700,
+   "role": "cv",
+   "strokeWidth": 4,
+   "appear": "s0",
+   "effect": "draw",
+   "appearDur": 1400,
+   "x": "10.564516*t",
+   "y": "if(abs(tan(deg(c*t+d)))>8,1e9,a + b*tan(deg(c*t+d)))",
+   "var": "t"
+  },
+  {
+   "type": "repeat",
+   "id": "keys",
+   "count": "ceil(c*4/(pi/4))+3",
+   "role": "key",
+   "visible": "showKey",
+   "template": {
+    "type": "point",
+    "at": [
+     "10.564516*(((floor((c*-2+d)/(pi/4))+i)*pi/4 - d)/c)",
+     "a + b*tan(deg((floor((c*-2+d)/(pi/4))+i)*pi/4))"
+    ],
+    "r": 4.2,
+    "role": "key",
+    "layer": "front",
+    "visible": "mod(floor((c*-2+d)/(pi/4))+i,4)!=2"
+   },
+   "as": "i"
+  },
+  {
+   "type": "dimension",
+   "id": "per",
+   "from": [
+    "10.564516*(xs + T*ceil((-1.84 - xs)/T))",
+    "ylo + 0.04*(yhi-ylo)"
+   ],
+   "to": [
+    "10.564516*(xs + T*ceil((-1.84 - xs)/T) + T)",
+    "ylo + 0.04*(yhi-ylo)"
+   ],
+   "off": 14,
+   "role": "per",
+   "strokeWidth": 2.4,
+   "visible": "showPer",
+   "label": {
+    "text": "T = {{T|3}}",
+    "role": "per",
+    "size": "m"
+   }
+  },
+  {
+   "type": "segment",
+   "id": "prl",
+   "from": [
+    "10.564516*(pr)",
+    0
+   ],
+   "to": [
+    "10.564516*(pr)",
+    "py"
+   ],
+   "role": "pr",
+   "strokeWidth": 2,
+   "dash": true,
+   "visible": "showPr*(abs(py)<1000)"
+  },
+  {
+   "type": "point",
+   "id": "prp",
+   "at": "PR",
+   "r": 6,
+   "role": "pr",
+   "layer": "front",
+   "visible": "showPr*(abs(py)<1000)"
+  },
+  {
+   "type": "text",
+   "id": "prt",
+   "at": [
+    "10.564516*(pr)",
+    "py"
+   ],
+   "text": "({{pr|2}}, {{py|3}})",
+   "role": "pr",
+   "size": "s",
+   "dy": -16,
+   "visible": "showPr*(abs(py)<1000)",
+   "keep": true
+  }
+ ],
+ "handles": [
+  {
+   "at": [
+    -19.016129,
+    "a"
+   ],
+   "role": "mid",
+   "drag": {
+    "a": "py"
+   },
+   "visible": "showH",
+   "label": "Drag up / down: midline a"
+  },
+  {
+   "at": [
+    "10.564516*((pi/4 - d)/c + T*ceil((-1.6 - ((pi/4 - d)/c))/T))",
+    "a + b"
+   ],
+   "role": "mx",
+   "drag": {
+    "b": "py - a"
+   },
+   "visible": "showH",
+   "label": "Drag up / down: amplitude b"
+  },
+  {
+   "at": [
+    "10.564516*((pi - d)/c)",
+    "a + b*tan(deg(pi))"
+   ],
+   "role": "per",
+   "drag": {
+    "c": "(pi - d)/(px/10.564516)"
+   },
+   "visible": "showH",
+   "label": "Drag left / right: squeeze c"
+  },
+  {
+   "at": [
+    "10.564516*((0 - d)/c)",
+    "a + b*tan(deg(0))"
+   ],
+   "role": "key",
+   "drag": {
+    "d": "0 - c*(px/10.564516)"
+   },
+   "visible": "showH",
+   "label": "Drag left / right: phase d"
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Period",
+   "value": "{{T|3}}",
+   "role": "per"
+  },
+  {
+   "label": "Range",
+   "value": "all real y",
+   "role": "ghost"
+  },
+  {
+   "label": "Midline",
+   "value": "{{a|3}}",
+   "role": "mid"
+  },
+  {
+   "label": "y at probe",
+   "value": "{{py|3}}",
+   "role": "pr",
+   "when": "showPr"
+  }
+ ],
+ "presets": [
+  {
+   "name": "Exercise values",
+   "values": {
+    "a": 0,
+    "b": 4,
+    "c": 3.141592653589793,
+    "d": 0
+   }
+  },
+  {
+   "name": "Flip upside-down",
+   "values": {
+    "b": -4
+   }
+  }
+ ],
+ "formulas": [
+  {
+   "title": "The model",
+   "tex": "y=\\role{mid}{a}+\\role{mx}{b}\\,\\tan(\\role{per}{c}\\,x+\\role{key}{d})",
+   "text": "Tangent has no highest or lowest value."
+  },
+  {
+   "title": "Period",
+   "tex": "T=\\dfrac{\\pi}{\\role{per}{c}}",
+   "text": "Tan repeats every π (not 2π)."
+  },
+  {
+   "title": "Asymptotes",
+   "tex": "\\role{per}{c}x+\\role{key}{d}=\\dfrac\\pi2+n\\pi",
+   "text": "The graph is undefined here: these are the vertical red lines."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Period",
+   "prompt": "What is the period of \\(y=\\tan(3 x)\\) as a multiple of \\(\\pi\\)?",
+   "answer": 0.3333,
+   "hint": "For tan and cot, \\(T=\\dfrac{\\pi}{c}\\).",
+   "explain": "\\(T=\\dfrac{\\pi}{3}\\), that is 0.3333 \\(\\pi\\).",
+   "tolerance": 0.02,
+   "unit": "π"
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Range",
+   "prompt": "What is the **range** of \\(y=b\\tan(cx+d)\\) for any b ≠ 0?",
+   "options": [
+    {
+     "id": "a",
+     "label": "[−|b|, |b|]"
+    },
+    {
+     "id": "b",
+     "label": "All real numbers"
+    },
+    {
+     "id": "c",
+     "label": "(−∞, −|b|] ∪ [|b|, ∞)"
+    }
+   ],
+   "answer": "b",
+   "hint": "Look at how the branch climbs without limit.",
+   "explain": "Each branch goes from −∞ to +∞, so every real value is reached."
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "text": "\\[\\begin{aligned}&\\text{Find the domain and range: }{y=4\\tan\\pi x}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "a": 0,
+      "b": 4,
+      "c": 3.141593,
+      "d": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Where it breaks",
+   "text": "\\[\\begin{aligned}&{\\tan u}\\text{ is undefined when }{u=(2n+1)\\dfrac\\pi2}\\text{. Here}\\\\[5pt]&{u=\\pi x}\\text{:}\\\\[5pt]&\\pi x=(2n+1)\\frac\\pi2\\ \\Rightarrow\\ x=\\frac{2n+1}2=n+\\frac12.\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "showAsy": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Domain",
+   "text": "\\[\\begin{aligned}&\\text{Domain }{=\\mathbb R-\\left\\{\\dfrac{2n+1}2:n\\in\\mathbb Z\\right\\}}\\text{ (all}\\\\[5pt]&\\text{reals except half-odd-integers}\\\\[5pt]&{\\pm\\frac12,\\pm\\frac32,\\dots}\\text{).}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Range",
+   "text": "\\[\\begin{aligned}&\\text{Range }{=\\mathbb R}\\text{.}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "showMax": 1
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "takeaways": [
+  "**Period = π ÷ c** for tan and cot.",
+  "The range is **all real numbers**; the domain excludes the asymptotes.",
+  "Tan is increasing in each branch; cot is decreasing."
+ ],
+ "notes": [
+  {
+   "title": "Try this",
+   "text": "Turn on the key points: every branch passes through three of them (value −b, 0 and +b relative to the midline)."
+  }
+ ],
+ "uiDefaults": {
+  "angles": false
+ },
+ "world": {
+  "x": [
+   -21.129032,
+   21.129032
+  ],
+  "y": [
+   "ylo",
+   "yhi"
+  ],
+  "smooth": true,
+  "pad": 8,
+  "ratio": 0.62
+ },
+ "explore": {
+  "title": "Free play",
+  "text": "Every slider, switch and dot on the graph is yours to use. Change the numbers, watch what moves, then press **Reset** to come back to the exercise."
+ },
+ "challengeIntro": "Test yourself. Each challenge sets up the graph for you where it helps."
+}

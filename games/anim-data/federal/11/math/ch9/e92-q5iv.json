@@ -1,0 +1,421 @@
+{
+ "id": "g11-math-c9-e92-q5iv",
+ "title": "Exercise 9.2 · Q5(iv)",
+ "summary": "Solve graphically: tan x=x",
+ "alt": "Exercise 9.2 · Q5(iv): Solve graphically: tan x=x",
+ "autoGrid": false,
+ "roles": {
+  "cv": {
+   "label": "The graph",
+   "color": "#2563eb",
+   "text": "The function you are studying.",
+   "legend": true
+  },
+  "cv2": {
+   "label": "Second graph",
+   "color": "#e11d48",
+   "text": "The second function.",
+   "legend": true
+  },
+  "ghost": {
+   "label": "Parent / reference",
+   "color": "#94a3b8",
+   "text": "The plain parent graph (or the reference curve) for comparison.",
+   "legend": true
+  },
+  "mid": {
+   "label": "Midline  y = a",
+   "color": "#d97706",
+   "text": "The horizontal line half-way between the highest and lowest points.",
+   "legend": true
+  },
+  "mx": {
+   "label": "Maximum",
+   "color": "#059669",
+   "text": "Highest values.",
+   "legend": true
+  },
+  "mn": {
+   "label": "Minimum",
+   "color": "#e11d48",
+   "text": "Lowest values.",
+   "legend": true
+  },
+  "per": {
+   "label": "Period",
+   "color": "#7c3aed",
+   "text": "One full cycle before the graph repeats.",
+   "legend": true
+  },
+  "asy": {
+   "label": "Asymptotes",
+   "color": "#dc2626",
+   "text": "Vertical lines the graph never touches.",
+   "legend": true
+  },
+  "key": {
+   "label": "Key points",
+   "color": "#0d9488",
+   "text": "The five key points of one cycle.",
+   "legend": true
+  },
+  "pr": {
+   "label": "Probe",
+   "color": "#ea580c",
+   "text": "The point you are moving along the graph.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "pr",
+   "label": "Probe  x",
+   "min": -5.2,
+   "max": 5.2,
+   "step": 0.02,
+   "default": 1,
+   "group": "Probe a point",
+   "hint": "Slide to move the probe along the graph.",
+   "role": "pr"
+  },
+  {
+   "id": "showPr",
+   "label": "Probe",
+   "type": "toggle",
+   "default": 1,
+   "group": "Probe a point"
+  }
+ ],
+ "derived": {
+  "ylo": -6,
+  "yhi": 6,
+  "zin": "(ylo<0&&yhi>0)",
+  "yax": "clamp(0,ylo,yhi)",
+  "pv0": "tan(deg(pr))",
+  "pv1": "pr"
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 1.861042,
+   "numbers": false,
+   "xLabel": "x",
+   "yLabel": "y",
+   "role": "ink"
+  },
+  {
+   "type": "text",
+   "id": "nl1",
+   "at": [
+    -7.444169,
+    "yax"
+   ],
+   "text": "-4",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm1",
+   "at": [
+    -7.444169,
+    "yax"
+   ],
+   "text": "-4",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nl3",
+   "at": [
+    -3.722084,
+    "yax"
+   ],
+   "text": "-2",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm3",
+   "at": [
+    -3.722084,
+    "yax"
+   ],
+   "text": "-2",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nl7",
+   "at": [
+    3.722084,
+    "yax"
+   ],
+   "text": "2",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm7",
+   "at": [
+    3.722084,
+    "yax"
+   ],
+   "text": "2",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nl9",
+   "at": [
+    7.444169,
+    "yax"
+   ],
+   "text": "4",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm9",
+   "at": [
+    7.444169,
+    "yax"
+   ],
+   "text": "4",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "plot",
+   "id": "t",
+   "domain": [
+    -5.2,
+    5.2
+   ],
+   "samples": 700,
+   "role": "cv",
+   "strokeWidth": 4,
+   "appear": "s0",
+   "effect": "draw",
+   "appearDur": 1400,
+   "x": "1.861042*t",
+   "y": "if(abs(tan(deg(t)))>8,1e9,tan(deg(t)))",
+   "var": "t"
+  },
+  {
+   "type": "plot",
+   "id": "l",
+   "domain": [
+    -5.2,
+    5.2
+   ],
+   "samples": 420,
+   "role": "cv2",
+   "strokeWidth": 4,
+   "x": "1.861042*t",
+   "y": "t",
+   "var": "t"
+  },
+  {
+   "type": "point",
+   "id": "r0",
+   "at": [
+    0,
+    0
+   ],
+   "r": 7,
+   "role": "key",
+   "layer": "front"
+  },
+  {
+   "type": "point",
+   "id": "r1",
+   "at": [
+    8.362424,
+    4.493409
+   ],
+   "r": 7,
+   "role": "key",
+   "layer": "front"
+  },
+  {
+   "type": "point",
+   "id": "r2",
+   "at": [
+    -8.362424,
+    -4.493409
+   ],
+   "r": 7,
+   "role": "key",
+   "layer": "front"
+  },
+  {
+   "type": "segment",
+   "id": "prl",
+   "from": [
+    "1.861042*(pr)",
+    "ylo"
+   ],
+   "to": [
+    "1.861042*(pr)",
+    "yhi"
+   ],
+   "role": "pr",
+   "strokeWidth": 1.8,
+   "dash": true,
+   "visible": "showPr"
+  },
+  {
+   "type": "point",
+   "id": "pp0",
+   "at": [
+    "1.861042*(pr)",
+    "pv0"
+   ],
+   "r": 5.8,
+   "role": "cv",
+   "layer": "front",
+   "visible": "showPr*(abs(pv0)<1000)"
+  },
+  {
+   "type": "point",
+   "id": "pp1",
+   "at": [
+    "1.861042*(pr)",
+    "pv1"
+   ],
+   "r": 5.8,
+   "role": "cv2",
+   "layer": "front",
+   "visible": "showPr*(abs(pv1)<1000)"
+  }
+ ],
+ "handles": [],
+ "readouts": [
+  {
+   "label": "tan x",
+   "value": "{{pv0|4}}",
+   "role": "cv"
+  },
+  {
+   "label": "x",
+   "value": "{{pv1|4}}",
+   "role": "cv2"
+  },
+  {
+   "label": "tan x − x",
+   "value": "{{pv0-pv1|4}}",
+   "role": "mx"
+  }
+ ],
+ "presets": [
+  {
+   "name": "x = 1 (tan above line)",
+   "values": {
+    "pr": 1
+   }
+  },
+  {
+   "name": "Second root 4.4934",
+   "values": {
+    "pr": 4.4934
+   }
+  },
+  {
+   "name": "x = 3",
+   "values": {
+    "pr": 3
+   }
+  }
+ ],
+ "formulas": [],
+ "challenges": [],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "text": "\\[\\begin{aligned}&\\text{Solve graphically: }{\\tan x=x}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {},
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "The graph",
+   "text": "\\[\\begin{aligned}&\\text{Draw }{y=\\tan x}\\text{ and }{y=x}\\text{. They meet at the}\\\\[5pt]&\\text{origin. In each branch of tan beyond}\\\\[5pt]&\\text{the first, the steep curve crosses}\\\\[5pt]&\\text{the line once.}\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Answer",
+   "text": "\\[\\begin{aligned}&\\textcolor{#047857}{\\text{ }{x=0}\\text{ and further roots}}\\\\[5pt]&\\textcolor{#047857}{{x\\approx\\pm4.493,\\ \\pm7.725,\\ \\pm10.904,\\dots}\\text{ (one in}}\\\\[5pt]&\\textcolor{#047857}{\\text{each interval }{\\left(n\\pi,\\ n\\pi+\\frac\\pi2\\right)}\\text{, }{n\\ge1}\\text{, and}}\\\\[5pt]&\\textcolor{#047857}{\\text{the negatives). In the first branch}}\\\\[5pt]&\\textcolor{#047857}{{\\left(0,\\frac\\pi2\\right)}\\text{ the tangent is always above the}}\\\\[5pt]&\\textcolor{#047857}{\\text{line, so there is no root there}}\\\\[5pt]&\\textcolor{#047857}{\\text{other than }{0}\\text{.}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "takeaways": [
+  "Move the probe or the sliders and watch the readouts.",
+  "The picture and the numbers always agree: that is a check on your algebra.",
+  "Try your own values after you finish the steps."
+ ],
+ "notes": [
+  {
+   "title": "Try this",
+   "text": "All the sliders and switches work on the graph at any time."
+  }
+ ],
+ "world": {
+  "x": [
+   -9.677419,
+   9.677419
+  ],
+  "y": [
+   "ylo",
+   "yhi"
+  ],
+  "smooth": true,
+  "pad": 8,
+  "ratio": 0.62
+ },
+ "uiDefaults": {
+  "angles": false
+ },
+ "explore": {
+  "title": "Free play",
+  "text": "Every slider, switch and dot on the graph is yours to use. Change the numbers, watch what moves, then press **Reset** to come back to the exercise."
+ },
+ "challengeIntro": "Test yourself. Each challenge sets up the graph for you where it helps."
+}

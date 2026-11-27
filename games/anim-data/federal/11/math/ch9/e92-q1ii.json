@@ -1,0 +1,601 @@
+{
+ "id": "g11-math-c9-e92-q1ii",
+ "title": "Exercise 9.2 · Q1(ii)",
+ "summary": "Check whether each function is odd or even: y=x³sin xcos x",
+ "alt": "Exercise 9.2 · Q1(ii): Check whether each function is odd or even: y=x³sin xcos x",
+ "autoGrid": false,
+ "roles": {
+  "cv": {
+   "label": "The graph",
+   "color": "#2563eb",
+   "text": "The function you are studying.",
+   "legend": true
+  },
+  "cv2": {
+   "label": "Second graph",
+   "color": "#e11d48",
+   "text": "The second function.",
+   "legend": true
+  },
+  "ghost": {
+   "label": "Parent / reference",
+   "color": "#94a3b8",
+   "text": "The plain parent graph (or the reference curve) for comparison.",
+   "legend": true
+  },
+  "mid": {
+   "label": "Midline  y = a",
+   "color": "#d97706",
+   "text": "The horizontal line half-way between the highest and lowest points.",
+   "legend": true
+  },
+  "mx": {
+   "label": "Maximum",
+   "color": "#059669",
+   "text": "Highest values.",
+   "legend": true
+  },
+  "mn": {
+   "label": "Minimum",
+   "color": "#e11d48",
+   "text": "Lowest values.",
+   "legend": true
+  },
+  "per": {
+   "label": "Period",
+   "color": "#7c3aed",
+   "text": "One full cycle before the graph repeats.",
+   "legend": true
+  },
+  "asy": {
+   "label": "Asymptotes",
+   "color": "#dc2626",
+   "text": "Vertical lines the graph never touches.",
+   "legend": true
+  },
+  "key": {
+   "label": "Key points",
+   "color": "#0d9488",
+   "text": "The five key points of one cycle.",
+   "legend": true
+  },
+  "pr": {
+   "label": "Probe",
+   "color": "#ea580c",
+   "text": "The point you are moving along the graph.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "showMir",
+   "label": "The mirror curve  y = f(−x)",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showNeg",
+   "label": "The upside-down curve  y = −f(x)",
+   "type": "toggle",
+   "default": 0,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "pr",
+   "label": "Probe  x",
+   "min": -4,
+   "max": 4,
+   "step": 0.02,
+   "default": 1.2,
+   "group": "Probe a point",
+   "hint": "Slide to move the probe along the graph.",
+   "role": "pr"
+  },
+  {
+   "id": "showPr",
+   "label": "Probe",
+   "type": "toggle",
+   "default": 1,
+   "group": "Probe a point"
+  }
+ ],
+ "derived": {
+  "ylo": -37.47,
+  "yhi": 37.47,
+  "zin": "(ylo<0&&yhi>0)",
+  "yax": "clamp(0,ylo,yhi)",
+  "pv0": "pr^3*sin(deg(pr))*cos(deg(pr))",
+  "qv0": "(-pr)^3*sin(deg((-pr)))*cos(deg((-pr)))"
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 15.108871,
+   "numbers": false,
+   "xLabel": "x",
+   "yLabel": "y",
+   "role": "ink"
+  },
+  {
+   "type": "text",
+   "id": "nl0",
+   "at": [
+    -60.435484,
+    "yax"
+   ],
+   "text": "-4",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm0",
+   "at": [
+    -60.435484,
+    "yax"
+   ],
+   "text": "-4",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nl1",
+   "at": [
+    -45.326613,
+    "yax"
+   ],
+   "text": "-3",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm1",
+   "at": [
+    -45.326613,
+    "yax"
+   ],
+   "text": "-3",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nl2",
+   "at": [
+    -30.217742,
+    "yax"
+   ],
+   "text": "-2",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm2",
+   "at": [
+    -30.217742,
+    "yax"
+   ],
+   "text": "-2",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nl3",
+   "at": [
+    -15.108871,
+    "yax"
+   ],
+   "text": "-1",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm3",
+   "at": [
+    -15.108871,
+    "yax"
+   ],
+   "text": "-1",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nl5",
+   "at": [
+    15.108871,
+    "yax"
+   ],
+   "text": "1",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm5",
+   "at": [
+    15.108871,
+    "yax"
+   ],
+   "text": "1",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nl6",
+   "at": [
+    30.217742,
+    "yax"
+   ],
+   "text": "2",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm6",
+   "at": [
+    30.217742,
+    "yax"
+   ],
+   "text": "2",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nl7",
+   "at": [
+    45.326613,
+    "yax"
+   ],
+   "text": "3",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm7",
+   "at": [
+    45.326613,
+    "yax"
+   ],
+   "text": "3",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nl8",
+   "at": [
+    60.435484,
+    "yax"
+   ],
+   "text": "4",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "nm8",
+   "at": [
+    60.435484,
+    "yax"
+   ],
+   "text": "4",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "plot",
+   "id": "f",
+   "domain": [
+    -4,
+    4
+   ],
+   "samples": 700,
+   "role": "cv",
+   "strokeWidth": 4,
+   "appear": "s0",
+   "effect": "draw",
+   "appearDur": 1400,
+   "x": "15.108871*t",
+   "y": "if(abs(t^3*sin(deg(t))*cos(deg(t)))>60,1e9,t^3*sin(deg(t))*cos(deg(t)))",
+   "var": "t"
+  },
+  {
+   "type": "plot",
+   "id": "fm",
+   "domain": [
+    -4,
+    4
+   ],
+   "samples": 700,
+   "role": "cv2",
+   "strokeWidth": 3,
+   "dash": true,
+   "visible": "showMir",
+   "x": "15.108871*t",
+   "y": "if(abs((-t)^3*sin(deg((-t)))*cos(deg((-t))))>60,1e9,(-t)^3*sin(deg((-t)))*cos(deg((-t))))",
+   "var": "t"
+  },
+  {
+   "type": "plot",
+   "id": "nf",
+   "domain": [
+    -4,
+    4
+   ],
+   "samples": 700,
+   "role": "mx",
+   "strokeWidth": 3,
+   "dash": true,
+   "visible": "showNeg",
+   "x": "15.108871*t",
+   "y": "if(abs(-(t^3*sin(deg(t))*cos(deg(t))))>60,1e9,-(t^3*sin(deg(t))*cos(deg(t))))",
+   "var": "t"
+  },
+  {
+   "type": "segment",
+   "id": "prl",
+   "from": [
+    "15.108871*(pr)",
+    "ylo"
+   ],
+   "to": [
+    "15.108871*(pr)",
+    "yhi"
+   ],
+   "role": "pr",
+   "strokeWidth": 1.8,
+   "dash": true,
+   "visible": "showPr"
+  },
+  {
+   "type": "point",
+   "id": "pp0",
+   "at": [
+    "15.108871*(pr)",
+    "pv0"
+   ],
+   "r": 5.8,
+   "role": "cv",
+   "layer": "front",
+   "visible": "showPr*(abs(pv0)<1000)"
+  },
+  {
+   "type": "point",
+   "id": "pq0",
+   "at": [
+    "15.108871*(-pr)",
+    "qv0"
+   ],
+   "r": 5.8,
+   "role": "cv2",
+   "layer": "front",
+   "visible": "showPr*(abs(qv0)<1000)"
+  }
+ ],
+ "handles": [],
+ "readouts": [
+  {
+   "label": "f(x)",
+   "value": "{{pv0|4}}",
+   "role": "cv"
+  },
+  {
+   "label": "f(−x)",
+   "value": "{{qv0|4}}",
+   "role": "cv2"
+  },
+  {
+   "label": "f(x) + f(−x)",
+   "value": "{{pv0+qv0|4}}",
+   "role": "mx"
+  },
+  {
+   "label": "f(x) − f(−x)",
+   "value": "{{pv0-qv0|4}}",
+   "role": "mn"
+  }
+ ],
+ "presets": [
+  {
+   "name": "x = 0.5",
+   "values": {
+    "pr": 0.5
+   }
+  },
+  {
+   "name": "x = 1",
+   "values": {
+    "pr": 1
+   }
+  },
+  {
+   "name": "x = 2",
+   "values": {
+    "pr": 2
+   }
+  },
+  {
+   "name": "x = −1.5",
+   "values": {
+    "pr": -1.5
+   }
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Even function",
+   "tex": "\\role{cv2}{f(-x)} = \\role{cv}{f(x)}",
+   "text": "The graph is a mirror image about the y-axis. f(x) − f(−x) is always 0."
+  },
+  {
+   "title": "Odd function",
+   "tex": "\\role{cv2}{f(-x)} = -\\role{cv}{f(x)}",
+   "text": "The graph is unchanged by a half-turn about the origin. f(x) + f(−x) is always 0."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Odd or even?",
+   "prompt": "Which of these is an **odd** function?",
+   "options": [
+    {
+     "id": "a",
+     "label": "\\(x^2\\cos x\\)"
+    },
+    {
+     "id": "b",
+     "label": "\\(x\\sin x\\)"
+    },
+    {
+     "id": "c",
+     "label": "\\(x\\cos x\\)"
+    }
+   ],
+   "answer": "c",
+   "hint": "Odd × even = odd.",
+   "explain": "x is odd and cos x is even, so \\(x\\cos x\\) is odd. The other two are even (x² and cos are even; x and sin are both odd, so x sin x is even)."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "The symmetry",
+   "prompt": "What symmetry has the graph of an **even** function?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Mirror image in the y-axis"
+    },
+    {
+     "id": "b",
+     "label": "Half-turn about the origin"
+    },
+    {
+     "id": "c",
+     "label": "Mirror image in the x-axis"
+    }
+   ],
+   "answer": "a",
+   "hint": "Even: f(−x) = f(x).",
+   "explain": "f(−x) = f(x) means the point at −x is level with the point at x: a mirror image in the y-axis."
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "text": "\\[\\begin{aligned}&\\text{Check whether each function is odd}\\\\[5pt]&\\text{or even: }{y=x^3\\sin x\\cos x}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {},
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Step 1",
+   "text": "\\[\\begin{aligned}&f(-x)=(-x)^3\\sin(-x)\\cos(-x)\\\\[5pt]&{}=(-x^3)(-\\sin x)(\\cos x)=x^3\\sin x\\cos x=f(x)\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Answer",
+   "text": "\\[\\begin{aligned}&\\textcolor{#047857}{\\text{ Even. (Two odd factors }{x^3,\\sin x}\\text{ and}}\\\\[5pt]&\\textcolor{#047857}{\\text{one even factor.)}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "takeaways": [
+  "**Even:** f(−x) = f(x). The graph is a mirror image about the y-axis.",
+  "**Odd:** f(−x) = −f(x). Turning the graph half a turn about the origin leaves it unchanged.",
+  "Even × even = even, odd × odd = even, even × odd = odd."
+ ],
+ "notes": [
+  {
+   "title": "Try this",
+   "text": "Move the probe to a positive and then a negative x: the two points P and Q show f(x) and f(−x)."
+  }
+ ],
+ "world": {
+  "x": [
+   -60.435484,
+   60.435484
+  ],
+  "y": [
+   "ylo",
+   "yhi"
+  ],
+  "smooth": true,
+  "pad": 8,
+  "ratio": 0.62
+ },
+ "uiDefaults": {
+  "angles": false
+ },
+ "explore": {
+  "title": "Free play",
+  "text": "Every slider, switch and dot on the graph is yours to use. Change the numbers, watch what moves, then press **Reset** to come back to the exercise."
+ },
+ "challengeIntro": "Test yourself. Each challenge sets up the graph for you where it helps."
+}

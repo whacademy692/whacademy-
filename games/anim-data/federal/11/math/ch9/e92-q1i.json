@@ -1,0 +1,489 @@
+{
+ "id": "g11-math-c9-e92-q1i",
+ "title": "Exercise 9.2 · Q1(i)",
+ "summary": "Check whether each function is odd or even: y=sin x+xcos x",
+ "alt": "Exercise 9.2 · Q1(i): Check whether each function is odd or even: y=sin x+xcos x",
+ "autoGrid": false,
+ "roles": {
+  "cv": {
+   "label": "The graph",
+   "color": "#2563eb",
+   "text": "The function you are studying.",
+   "legend": true
+  },
+  "cv2": {
+   "label": "Second graph",
+   "color": "#e11d48",
+   "text": "The second function.",
+   "legend": true
+  },
+  "ghost": {
+   "label": "Parent / reference",
+   "color": "#94a3b8",
+   "text": "The plain parent graph (or the reference curve) for comparison.",
+   "legend": true
+  },
+  "mid": {
+   "label": "Midline  y = a",
+   "color": "#d97706",
+   "text": "The horizontal line half-way between the highest and lowest points.",
+   "legend": true
+  },
+  "mx": {
+   "label": "Maximum",
+   "color": "#059669",
+   "text": "Highest values.",
+   "legend": true
+  },
+  "mn": {
+   "label": "Minimum",
+   "color": "#e11d48",
+   "text": "Lowest values.",
+   "legend": true
+  },
+  "per": {
+   "label": "Period",
+   "color": "#7c3aed",
+   "text": "One full cycle before the graph repeats.",
+   "legend": true
+  },
+  "asy": {
+   "label": "Asymptotes",
+   "color": "#dc2626",
+   "text": "Vertical lines the graph never touches.",
+   "legend": true
+  },
+  "key": {
+   "label": "Key points",
+   "color": "#0d9488",
+   "text": "The five key points of one cycle.",
+   "legend": true
+  },
+  "pr": {
+   "label": "Probe",
+   "color": "#ea580c",
+   "text": "The point you are moving along the graph.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "showMir",
+   "label": "The mirror curve  y = f(−x)",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showNeg",
+   "label": "The upside-down curve  y = −f(x)",
+   "type": "toggle",
+   "default": 0,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "pr",
+   "label": "Probe  x",
+   "min": -6.283185,
+   "max": 6.283185,
+   "step": 0.02,
+   "default": 1.2,
+   "group": "Probe a point",
+   "hint": "Slide to move the probe along the graph.",
+   "role": "pr"
+  },
+  {
+   "id": "showPr",
+   "label": "Probe",
+   "type": "toggle",
+   "default": 1,
+   "group": "Probe a point"
+  }
+ ],
+ "derived": {
+  "ylo": -7.89,
+  "yhi": 7.89,
+  "zin": "(ylo<0&&yhi>0)",
+  "yax": "clamp(0,ylo,yhi)",
+  "pv0": "sin(deg(pr))+pr*cos(deg(pr))",
+  "qv0": "sin(deg((-pr)))+(-pr)*cos(deg((-pr)))"
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 3.181452,
+   "numbers": false,
+   "xLabel": "x",
+   "yLabel": "y",
+   "role": "ink"
+  },
+  {
+   "type": "text",
+   "id": "pl0",
+   "at": [
+    -12.725816,
+    "yax"
+   ],
+   "text": "\\(-2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm0",
+   "at": [
+    -12.725816,
+    "yax"
+   ],
+   "text": "\\(-2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl2",
+   "at": [
+    -6.362898,
+    "yax"
+   ],
+   "text": "\\(-\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm2",
+   "at": [
+    -6.362898,
+    "yax"
+   ],
+   "text": "\\(-\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl6",
+   "at": [
+    6.362898,
+    "yax"
+   ],
+   "text": "\\(\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm6",
+   "at": [
+    6.362898,
+    "yax"
+   ],
+   "text": "\\(\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl8",
+   "at": [
+    12.725816,
+    "yax"
+   ],
+   "text": "\\(2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm8",
+   "at": [
+    12.725816,
+    "yax"
+   ],
+   "text": "\\(2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "plot",
+   "id": "f",
+   "domain": [
+    -6.283185,
+    6.283185
+   ],
+   "samples": 700,
+   "role": "cv",
+   "strokeWidth": 4,
+   "appear": "s0",
+   "effect": "draw",
+   "appearDur": 1400,
+   "x": "2.025375*t",
+   "y": "if(abs(sin(deg(t))+t*cos(deg(t)))>60,1e9,sin(deg(t))+t*cos(deg(t)))",
+   "var": "t"
+  },
+  {
+   "type": "plot",
+   "id": "fm",
+   "domain": [
+    -6.283185,
+    6.283185
+   ],
+   "samples": 700,
+   "role": "cv2",
+   "strokeWidth": 3,
+   "dash": true,
+   "visible": "showMir",
+   "x": "2.025375*t",
+   "y": "if(abs(sin(deg((-t)))+(-t)*cos(deg((-t))))>60,1e9,sin(deg((-t)))+(-t)*cos(deg((-t))))",
+   "var": "t"
+  },
+  {
+   "type": "plot",
+   "id": "nf",
+   "domain": [
+    -6.283185,
+    6.283185
+   ],
+   "samples": 700,
+   "role": "mx",
+   "strokeWidth": 3,
+   "dash": true,
+   "visible": "showNeg",
+   "x": "2.025375*t",
+   "y": "if(abs(-(sin(deg(t))+t*cos(deg(t))))>60,1e9,-(sin(deg(t))+t*cos(deg(t))))",
+   "var": "t"
+  },
+  {
+   "type": "segment",
+   "id": "prl",
+   "from": [
+    "2.025375*(pr)",
+    "ylo"
+   ],
+   "to": [
+    "2.025375*(pr)",
+    "yhi"
+   ],
+   "role": "pr",
+   "strokeWidth": 1.8,
+   "dash": true,
+   "visible": "showPr"
+  },
+  {
+   "type": "point",
+   "id": "pp0",
+   "at": [
+    "2.025375*(pr)",
+    "pv0"
+   ],
+   "r": 5.8,
+   "role": "cv",
+   "layer": "front",
+   "visible": "showPr*(abs(pv0)<1000)"
+  },
+  {
+   "type": "point",
+   "id": "pq0",
+   "at": [
+    "2.025375*(-pr)",
+    "qv0"
+   ],
+   "r": 5.8,
+   "role": "cv2",
+   "layer": "front",
+   "visible": "showPr*(abs(qv0)<1000)"
+  }
+ ],
+ "handles": [],
+ "readouts": [
+  {
+   "label": "f(x)",
+   "value": "{{pv0|4}}",
+   "role": "cv"
+  },
+  {
+   "label": "f(−x)",
+   "value": "{{qv0|4}}",
+   "role": "cv2"
+  },
+  {
+   "label": "f(x) + f(−x)",
+   "value": "{{pv0+qv0|4}}",
+   "role": "mx"
+  },
+  {
+   "label": "f(x) − f(−x)",
+   "value": "{{pv0-qv0|4}}",
+   "role": "mn"
+  }
+ ],
+ "presets": [
+  {
+   "name": "x = 0.5",
+   "values": {
+    "pr": 0.5
+   }
+  },
+  {
+   "name": "x = 1",
+   "values": {
+    "pr": 1
+   }
+  },
+  {
+   "name": "x = 2",
+   "values": {
+    "pr": 2
+   }
+  },
+  {
+   "name": "x = −1.5",
+   "values": {
+    "pr": -1.5
+   }
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Even function",
+   "tex": "\\role{cv2}{f(-x)} = \\role{cv}{f(x)}",
+   "text": "The graph is a mirror image about the y-axis. f(x) − f(−x) is always 0."
+  },
+  {
+   "title": "Odd function",
+   "tex": "\\role{cv2}{f(-x)} = -\\role{cv}{f(x)}",
+   "text": "The graph is unchanged by a half-turn about the origin. f(x) + f(−x) is always 0."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Odd or even?",
+   "prompt": "Which of these is an **odd** function?",
+   "options": [
+    {
+     "id": "a",
+     "label": "\\(x^2\\cos x\\)"
+    },
+    {
+     "id": "b",
+     "label": "\\(x\\sin x\\)"
+    },
+    {
+     "id": "c",
+     "label": "\\(x\\cos x\\)"
+    }
+   ],
+   "answer": "c",
+   "hint": "Odd × even = odd.",
+   "explain": "x is odd and cos x is even, so \\(x\\cos x\\) is odd. The other two are even (x² and cos are even; x and sin are both odd, so x sin x is even)."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "The symmetry",
+   "prompt": "What symmetry has the graph of an **even** function?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Mirror image in the y-axis"
+    },
+    {
+     "id": "b",
+     "label": "Half-turn about the origin"
+    },
+    {
+     "id": "c",
+     "label": "Mirror image in the x-axis"
+    }
+   ],
+   "answer": "a",
+   "hint": "Even: f(−x) = f(x).",
+   "explain": "f(−x) = f(x) means the point at −x is level with the point at x: a mirror image in the y-axis."
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "text": "\\[\\begin{aligned}&\\text{Check whether each function is odd}\\\\[5pt]&\\text{or even: }{y=\\sin x+x\\cos x}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {},
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Step 1",
+   "text": "\\[\\begin{aligned}&f(-x)=\\sin(-x)+(-x)\\cos(-x)\\\\[5pt]&{}=-\\sin x-x\\cos x=-(\\sin x+x\\cos x)=-f(x)\\end{aligned}\\]",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Answer",
+   "text": "\\[\\begin{aligned}&\\textcolor{#047857}{\\text{ Odd. (Both terms are odd: }{\\sin x}\\text{ is}}\\\\[5pt]&\\textcolor{#047857}{\\text{odd; }{x\\cos x}\\text{ = O$\\times$E = O.)}}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "takeaways": [
+  "**Even:** f(−x) = f(x). The graph is a mirror image about the y-axis.",
+  "**Odd:** f(−x) = −f(x). Turning the graph half a turn about the origin leaves it unchanged.",
+  "Even × even = even, odd × odd = even, even × odd = odd."
+ ],
+ "notes": [
+  {
+   "title": "Try this",
+   "text": "Move the probe to a positive and then a negative x: the two points P and Q show f(x) and f(−x)."
+  }
+ ],
+ "world": {
+  "x": [
+   -12.725806,
+   12.725806
+  ],
+  "y": [
+   "ylo",
+   "yhi"
+  ],
+  "smooth": true,
+  "pad": 8,
+  "ratio": 0.62
+ },
+ "uiDefaults": {
+  "angles": false
+ },
+ "explore": {
+  "title": "Free play",
+  "text": "Every slider, switch and dot on the graph is yours to use. Change the numbers, watch what moves, then press **Reset** to come back to the exercise."
+ },
+ "challengeIntro": "Test yourself. Each challenge sets up the graph for you where it helps."
+}

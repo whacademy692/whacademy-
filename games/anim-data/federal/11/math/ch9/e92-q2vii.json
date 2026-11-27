@@ -1,0 +1,477 @@
+{
+ "id": "g11-math-c9-e92-q2vii",
+ "title": "Exercise 9.2 · Q2(vii)",
+ "summary": "Draw the graph of each function: y=cos ²x",
+ "alt": "Exercise 9.2 · Q2(vii): Draw the graph of each function: y=cos ²x",
+ "autoGrid": false,
+ "roles": {
+  "cv": {
+   "label": "The graph",
+   "color": "#2563eb",
+   "text": "The function you are studying.",
+   "legend": true
+  },
+  "cv2": {
+   "label": "Second graph",
+   "color": "#e11d48",
+   "text": "The second function.",
+   "legend": true
+  },
+  "ghost": {
+   "label": "Parent / reference",
+   "color": "#94a3b8",
+   "text": "The plain parent graph (or the reference curve) for comparison.",
+   "legend": true
+  },
+  "mid": {
+   "label": "Midline  y = a",
+   "color": "#d97706",
+   "text": "The horizontal line half-way between the highest and lowest points.",
+   "legend": true
+  },
+  "mx": {
+   "label": "Maximum",
+   "color": "#059669",
+   "text": "Highest values.",
+   "legend": true
+  },
+  "mn": {
+   "label": "Minimum",
+   "color": "#e11d48",
+   "text": "Lowest values.",
+   "legend": true
+  },
+  "per": {
+   "label": "Period",
+   "color": "#7c3aed",
+   "text": "One full cycle before the graph repeats.",
+   "legend": true
+  },
+  "asy": {
+   "label": "Asymptotes",
+   "color": "#dc2626",
+   "text": "Vertical lines the graph never touches.",
+   "legend": true
+  },
+  "key": {
+   "label": "Key points",
+   "color": "#0d9488",
+   "text": "The five key points of one cycle.",
+   "legend": true
+  },
+  "pr": {
+   "label": "Probe",
+   "color": "#ea580c",
+   "text": "The point you are moving along the graph.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "b",
+   "label": "Height b  (scales the graph)",
+   "min": -4,
+   "max": 4,
+   "step": 0.25,
+   "default": 1,
+   "group": "Shape",
+   "role": "mx"
+  },
+  {
+   "id": "c",
+   "label": "Speed c  (squeezes sideways)",
+   "min": 0.25,
+   "max": 4,
+   "step": 0.25,
+   "default": 1,
+   "group": "Shape",
+   "role": "per"
+  },
+  {
+   "id": "showPar",
+   "label": "The un-squared graph",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "showHL",
+   "label": "Highest and lowest value",
+   "type": "toggle",
+   "default": 1,
+   "group": "Show on the graph"
+  },
+  {
+   "id": "pr",
+   "label": "Probe  x",
+   "min": -6.283185,
+   "max": 6.283185,
+   "step": 0.02,
+   "default": 1.047198,
+   "group": "Probe a point",
+   "hint": "Slide to move the probe along the graph.",
+   "role": "pr"
+  },
+  {
+   "id": "showPr",
+   "label": "Probe",
+   "type": "toggle",
+   "default": 1,
+   "group": "Probe a point"
+  }
+ ],
+ "derived": {
+  "ylo": -1.6,
+  "yhi": 1.8,
+  "zin": "(ylo<0&&yhi>0)",
+  "yax": "clamp(0,ylo,yhi)",
+  "pv0": "b*cos(deg(c*pr))^2"
+ },
+ "shapes": [
+  {
+   "type": "axes",
+   "id": "ax",
+   "step": 0.685484,
+   "numbers": false,
+   "xLabel": "x",
+   "yLabel": "y",
+   "role": "ink"
+  },
+  {
+   "type": "text",
+   "id": "pl0",
+   "at": [
+    -2.741938,
+    "yax"
+   ],
+   "text": "\\(-2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm0",
+   "at": [
+    -2.741938,
+    "yax"
+   ],
+   "text": "\\(-2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl2",
+   "at": [
+    -1.370967,
+    "yax"
+   ],
+   "text": "\\(-\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm2",
+   "at": [
+    -1.370967,
+    "yax"
+   ],
+   "text": "\\(-\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl6",
+   "at": [
+    1.370967,
+    "yax"
+   ],
+   "text": "\\(\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm6",
+   "at": [
+    1.370967,
+    "yax"
+   ],
+   "text": "\\(\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pl8",
+   "at": [
+    2.741938,
+    "yax"
+   ],
+   "text": "\\(2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": 15,
+   "visible": "zin>0.5",
+   "keep": true
+  },
+  {
+   "type": "text",
+   "id": "pm8",
+   "at": [
+    2.741938,
+    "yax"
+   ],
+   "text": "\\(2\\pi\\)",
+   "role": "muted",
+   "size": "s",
+   "dy": -12,
+   "visible": "zin<0.5",
+   "keep": true
+  },
+  {
+   "type": "segment",
+   "id": "h0",
+   "from": [
+    -2.741935,
+    "0"
+   ],
+   "to": [
+    2.741935,
+    "0"
+   ],
+   "role": "mn",
+   "strokeWidth": 2.2,
+   "dash": true,
+   "visible": "showHL"
+  },
+  {
+   "type": "text",
+   "id": "h0t",
+   "at": [
+    1.864516,
+    "0"
+   ],
+   "text": "lowest = 0",
+   "role": "mn",
+   "size": "s",
+   "dy": 12,
+   "keep": true,
+   "visible": "showHL"
+  },
+  {
+   "type": "segment",
+   "id": "h1",
+   "from": [
+    -2.741935,
+    "b"
+   ],
+   "to": [
+    2.741935,
+    "b"
+   ],
+   "role": "mx",
+   "strokeWidth": 2.2,
+   "dash": true,
+   "visible": "showHL"
+  },
+  {
+   "type": "text",
+   "id": "h1t",
+   "at": [
+    1.864516,
+    "b"
+   ],
+   "text": "highest = {{b|2}}",
+   "role": "mx",
+   "size": "s",
+   "dy": -10,
+   "keep": true,
+   "visible": "showHL"
+  },
+  {
+   "type": "plot",
+   "id": "par",
+   "domain": [
+    -6.283185,
+    6.283185
+   ],
+   "samples": 420,
+   "role": "ghost",
+   "strokeWidth": 3,
+   "dash": true,
+   "visible": "showPar",
+   "x": "0.436393*t",
+   "y": "cos(deg(t))",
+   "var": "t"
+  },
+  {
+   "type": "plot",
+   "id": "f",
+   "domain": [
+    -6.283185,
+    6.283185
+   ],
+   "samples": 420,
+   "role": "cv",
+   "strokeWidth": 4,
+   "appear": "s0",
+   "effect": "draw",
+   "appearDur": 1400,
+   "x": "0.436393*t",
+   "y": "b*cos(deg(c*t))^2",
+   "var": "t"
+  },
+  {
+   "type": "segment",
+   "id": "prl",
+   "from": [
+    "0.436393*(pr)",
+    "ylo"
+   ],
+   "to": [
+    "0.436393*(pr)",
+    "yhi"
+   ],
+   "role": "pr",
+   "strokeWidth": 1.8,
+   "dash": true,
+   "visible": "showPr"
+  },
+  {
+   "type": "point",
+   "id": "pp0",
+   "at": [
+    "0.436393*(pr)",
+    "pv0"
+   ],
+   "r": 5.8,
+   "role": "pr",
+   "layer": "front",
+   "visible": "showPr*(abs(pv0)<1000)"
+  }
+ ],
+ "handles": [],
+ "readouts": [
+  {
+   "label": "Period",
+   "value": "{{1/c|3}} π",
+   "role": "per"
+  }
+ ],
+ "presets": [
+  {
+   "name": "Exercise graph",
+   "values": {
+    "b": 1,
+    "c": 1.0
+   }
+  },
+  {
+   "name": "Twice as tall",
+   "values": {
+    "b": 2
+   }
+  },
+  {
+   "name": "Twice as fast",
+   "values": {
+    "c": 2
+   }
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Squares of trig functions",
+   "tex": "\\cos^2x=\\dfrac{1+\\cos2x}{2},\\qquad \\sin^2x=\\dfrac{1-\\cos2x}{2}",
+   "text": "This turns a square into a plain cosine wave with midline ½ and half the height."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Period",
+   "prompt": "What is the period of \\(\\cos^2x\\) as a multiple of \\(\\pi\\)?",
+   "answer": 1,
+   "hint": "\\(\\cos^2x=\\dfrac{1+\\cos2x}{2}\\).",
+   "explain": "\\(\\cos2x\\) has period \\(\\pi\\), so \\(\\cos^2x\\) repeats every \\(\\pi\\).",
+   "tolerance": 0.02,
+   "unit": "π"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The question",
+   "text": "\\[\\begin{aligned}&\\text{Draw the graph of each function:}\\\\[5pt]&{y=\\cos^2x}\\end{aligned}\\]",
+   "actions": [
+    {
+     "set": {
+      "b": 1,
+      "c": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Range",
+   "text": "\\[\\begin{aligned}&\\text{Use }{\\cos^2x=\\dfrac{1+\\cos2x}2}\\text{ $\\Rightarrow$ a cosine of}\\\\[5pt]&\\text{amplitude }{\\frac12}\\text{, period }{\\pi}\\text{, midline }{y=\\frac12}\\text{.}\\\\[5pt]&\\text{Range }{[0,1]}\\text{. Even (and non-negative).}\\end{aligned}\\]",
+   "actions": []
+  }
+ ],
+ "takeaways": [
+  "A squared sine or cosine **never goes below 0** and **never above 1**.",
+  "Squaring **halves the period**: cos²x repeats every π.",
+  "tan²x is never negative, and still has asymptotes."
+ ],
+ "notes": [
+  {
+   "title": "Try this",
+   "text": "Use the height and speed sliders to explore b·f(c x)²."
+  }
+ ],
+ "world": {
+  "x": [
+   -2.741935,
+   2.741935
+  ],
+  "y": [
+   "ylo",
+   "yhi"
+  ],
+  "smooth": true,
+  "pad": 8,
+  "ratio": 0.62
+ },
+ "uiDefaults": {
+  "angles": false
+ },
+ "explore": {
+  "title": "Free play",
+  "text": "Every slider, switch and dot on the graph is yours to use. Change the numbers, watch what moves, then press **Reset** to come back to the exercise."
+ },
+ "challengeIntro": "Test yourself. Each challenge sets up the graph for you where it helps."
+}
