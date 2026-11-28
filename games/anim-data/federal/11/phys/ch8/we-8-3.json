@@ -1,0 +1,362 @@
+{
+ "id": "g11-phys-c8-we-8-3",
+ "title": "Example 8.3 · Heat when internal energy falls",
+ "summary": "The internal energy of a gas decreases by 200 J while 50 J of work is done by the gas. How much energy is…",
+ "alt": "Example 8.3: The internal energy of a gas decreases by 200 J while 50 J of work is done by the gas. How much energy is transferred as heat? Is the work done positive or negative?",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "bbase",
+   "from": [
+    0.7,
+    10.0
+   ],
+   "to": [
+    12.2,
+    10.0
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0"
+  },
+  {
+   "type": "rect",
+   "id": "bar0",
+   "x": 1.9499999999999997,
+   "y": 10.0,
+   "w": 2.2,
+   "h": 0.5599999999999999,
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s1",
+   "effect": "fade",
+   "appearDur": 800
+  },
+  {
+   "type": "text",
+   "id": "bn0",
+   "at": [
+    3.05,
+    13.3
+   ],
+   "text": "Work W",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "bv0",
+   "at": [
+    3.05,
+    11.110000000000001
+   ],
+   "text": "+50",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "bs0",
+   "at": [
+    3.05,
+    6.6
+   ],
+   "text": "by the gas",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bar1",
+   "x": 5.4,
+   "y": 7.76,
+   "w": 2.2,
+   "h": 2.2399999999999998,
+   "role": "u",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s2",
+   "effect": "fade",
+   "appearDur": 800
+  },
+  {
+   "type": "text",
+   "id": "bn1",
+   "at": [
+    6.5,
+    13.3
+   ],
+   "text": "Change ΔU",
+   "role": "u",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "bv1",
+   "at": [
+    6.5,
+    7.21
+   ],
+   "text": "−200",
+   "role": "u",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "bs1",
+   "at": [
+    6.5,
+    6.6
+   ],
+   "text": "falls",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bar2",
+   "x": 8.85,
+   "y": 8.32,
+   "w": 2.2,
+   "h": 1.68,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s3",
+   "effect": "fade",
+   "appearDur": 800
+  },
+  {
+   "type": "text",
+   "id": "bn2",
+   "at": [
+    9.95,
+    13.3
+   ],
+   "text": "Heat Q",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "bv2",
+   "at": [
+    9.95,
+    7.7700000000000005
+   ],
+   "text": "−150",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "bs2",
+   "at": [
+    9.95,
+    6.6
+   ],
+   "text": "given out",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 0.8499999999999999,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    1.4
+   ],
+   "text": "Q = −150 J (heat out); W positive",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "A gas loses \\( 200 \\) J of internal energy while it does \\( 50 \\) J of work. Find the heat \\( Q \\) and the sign of the work.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Signs",
+   "text": "Internal energy **decreases**: \\( \\Delta U = -200 \\) J. Work is done **by** the gas: \\( W = +50 \\) J (positive).",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "First law",
+   "text": "\\[ Q = \\Delta U + W = -200 + 50 = -150\\ \\text{J} \\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Meaning",
+   "text": "Q is negative, so **150 J of heat flows out** of the gas. The work done by the gas is **positive**.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "First law",
+   "tex": "\\role{hot}{Q} = \\role{u}{\\Delta U} + \\role{work}{W}",
+   "text": "W positive when done by the gas."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A gas loses **100 J** of internal energy while doing **30 J** of work. What is Q (J)?",
+   "answer": -70,
+   "hint": "Q = ΔU + W.",
+   "explain": "\\( Q = -100 + 30 = -70 \\) J.",
+   "tolerance": 1,
+   "unit": "J"
+  }
+ ],
+ "takeaways": [
+  "\\( Q = \\Delta U + W \\); a fall in U with positive W means heat leaves."
+ ]
+}

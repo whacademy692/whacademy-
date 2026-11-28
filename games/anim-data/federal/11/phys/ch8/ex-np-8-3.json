@@ -1,0 +1,221 @@
+{
+ "id": "g11-phys-c8-ex-np-8-3",
+ "title": "Ex NP 8.3 · Volume increase for a 1 K rise",
+ "summary": "One mole of a perfect gas in a cylinder with a piston has pressure P, volume V and temperature T. If its…",
+ "alt": "Ex NP 8.3: One mole of a perfect gas in a cylinder with a piston has pressure P, volume V and temperature T. If its temperature is increased by 1 K. Find the increase in volume, if initial volume was 100 m³. (Ans: 0.37 m³)",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "text",
+   "id": "as",
+   "at": [
+    6.45,
+    12.6
+   ],
+   "text": "assumed: initial T₁ = 273 K (key matches this)",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "f1",
+   "at": [
+    6.45,
+    10.6
+   ],
+   "text": "constant P (free piston): V₁ / T₁ = V₂ / T₂",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "f2",
+   "at": [
+    6.45,
+    9.0
+   ],
+   "text": "ΔV = V₁ ΔT / T₁ = 100 × 1 / 273",
+   "role": "wall",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 5.8500000000000005,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    6.4
+   ],
+   "text": "ΔV = 0.37 m³",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "A mole of gas under a free piston is warmed by \\( 1 \\) K from \\( V_1 = 100 \\) m³. Find \\( \\Delta V \\). (The initial temperature is not given.)",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Assumption",
+   "text": "The book answer matches \\( T_1 = 273 \\) K, so we take that. (A real mole of gas is far smaller than 100 m³; the question just uses the number.)",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Charles's law",
+   "text": "At constant pressure \\( V_1/T_1 = V_2/T_2 \\), so \\( \\Delta V = V_1\\,\\Delta T/T_1 \\).",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Substitute",
+   "text": "\\[ \\Delta V = \\dfrac{100 \\times 1}{273} = 0.37\\ \\text{m}^3 \\]",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Charles's law",
+   "tex": "\\dfrac{\\role{ent}{V_1}}{\\role{hot}{T_1}} = \\dfrac{V_2}{T_2}",
+   "text": "Constant pressure; kelvin."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A gas at 300 K and 60 m³ is warmed by 1 K at constant pressure. Find ΔV (m³).",
+   "answer": 0.2,
+   "hint": "ΔV = V₁ΔT/T₁.",
+   "explain": "\\( \\Delta V = 60/300 = 0.2 \\) m³.",
+   "tolerance": 0.005,
+   "unit": "m³"
+  }
+ ],
+ "takeaways": [
+  "\\( \\Delta V = V_1\\Delta T/T_1 \\) at constant pressure (T₁ taken as 273 K)."
+ ]
+}

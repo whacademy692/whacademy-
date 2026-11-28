@@ -1,0 +1,324 @@
+{
+ "id": "g11-phys-c8-ex-mcq-17",
+ "title": "Ex MCQ 17 · Hollow and solid spheres",
+ "summary": "Two spheres of same size are made of the same material, but one is hollow and the other is solid. They are heated…",
+ "alt": "Ex MCQ 17: Two spheres of same size are made of the same material, but one is hollow and the other is solid. They are heated to the same temperature. Then: (A) Both spheres will expand equally. (B) The hollow sphere will expand more than the solid one. (C) The solid sphere will expand more than the hollow one. (D) No conclusion can be drawn about their relative expansions unless the nature of the material is known.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "circle",
+   "id": "s1",
+   "c": [
+    3.6,
+    10.5
+   ],
+   "r": 2.0,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.35,
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "pop"
+  },
+  {
+   "type": "circle",
+   "id": "s2",
+   "c": [
+    9.3,
+    10.5
+   ],
+   "r": 2.0,
+   "role": "wall",
+   "fill": false,
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "pop"
+  },
+  {
+   "type": "circle",
+   "id": "s2c",
+   "c": [
+    9.3,
+    10.5
+   ],
+   "r": 1.1,
+   "role": "wall",
+   "fill": false,
+   "strokeWidth": 2,
+   "dash": [
+    5,
+    4
+   ],
+   "appear": "s0",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "s1t",
+   "at": [
+    3.6,
+    7.8
+   ],
+   "text": "solid",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "s2t",
+   "at": [
+    9.3,
+    7.8
+   ],
+   "text": "hollow",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "circle",
+   "id": "e1",
+   "c": [
+    3.6,
+    10.5
+   ],
+   "r": 2.3,
+   "role": "hot",
+   "strokeWidth": 2.5,
+   "fill": false,
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "circle",
+   "id": "e2",
+   "c": [
+    9.3,
+    10.5
+   ],
+   "r": 2.3,
+   "role": "hot",
+   "strokeWidth": 2.5,
+   "fill": false,
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "circle",
+   "id": "e2c",
+   "c": [
+    9.3,
+    10.5
+   ],
+   "r": 1.25,
+   "role": "hot",
+   "strokeWidth": 2,
+   "fill": false,
+   "dash": [
+    5,
+    4
+   ],
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "c1",
+   "at": [
+    6.45,
+    6.0
+   ],
+   "text": "same material, size, ΔT: same expansion",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 3.45,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s2",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    4.0
+   ],
+   "text": "Both expand equally   →   (A)",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s2",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "A solid and a hollow sphere of the same size and material are heated equally. Compare their expansion. (Thermal expansion is a Class 11 topic outside the Unit 8 text, so the idea is explained here.)",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Same material, same ΔT",
+   "text": "The cavity expands just like the material around it, so the outer size grows by the **same amount** for both.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Answer: (A)",
+   "text": "Both spheres expand equally.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Thermal expansion",
+   "tex": "\\Delta L = \\alpha\\,L\\,\\Delta T",
+   "text": "Depends on the material, size and temperature rise, not on a cavity."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "A hollow and a solid sphere of the same material and size are heated equally. Their volumes increase:",
+   "options": [
+    {
+     "id": "a",
+     "label": "by the same amount"
+    },
+    {
+     "id": "b",
+     "label": "more for the hollow one"
+    },
+    {
+     "id": "c",
+     "label": "more for the solid one"
+    },
+    {
+     "id": "d",
+     "label": "cannot say"
+    }
+   ],
+   "answer": "a",
+   "hint": "Same material and ΔT.",
+   "explain": "The cavity expands like the surrounding material, so both expand equally."
+  }
+ ],
+ "takeaways": [
+  "Expansion depends on material, size and ΔT, not on a cavity."
+ ]
+}

@@ -1,0 +1,593 @@
+{
+ "id": "g11-phys-c8-ex-sq-07",
+ "title": "Ex SQ 8.7 · Adiabat steeper than isotherm",
+ "summary": "Why is the slope of an adiabatic curve steeper than the slope of isothermal curve?",
+ "alt": "Ex SQ 8.7: Why is the slope of an adiabatic curve steeper than the slope of isothermal curve?",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "pax",
+   "from": [
+    2.1,
+    4.8
+   ],
+   "to": [
+    12.0,
+    4.8
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5,
+   "appear": "s0"
+  },
+  {
+   "type": "vector",
+   "id": "pay",
+   "from": [
+    2.1,
+    4.8
+   ],
+   "to": [
+    2.1,
+    12.899999999999999
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "pxl",
+   "at": [
+    12.05,
+    4.3
+   ],
+   "text": "V",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "pyl",
+   "at": [
+    1.9000000000000001,
+    13.349999999999998
+   ],
+   "text": "P",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "segment",
+   "id": "xt0",
+   "from": [
+    4.45,
+    4.8
+   ],
+   "to": [
+    4.45,
+    4.6
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "xtl0",
+   "at": [
+    4.45,
+    4.1499999999999995
+   ],
+   "text": "1",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s0"
+  },
+  {
+   "type": "segment",
+   "id": "xt1",
+   "from": [
+    9.15,
+    4.8
+   ],
+   "to": [
+    9.15,
+    4.6
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "xtl1",
+   "at": [
+    9.15,
+    4.1499999999999995
+   ],
+   "text": "3",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s0"
+  },
+  {
+   "type": "segment",
+   "id": "yt0",
+   "from": [
+    2.1,
+    6.7
+   ],
+   "to": [
+    1.9000000000000001,
+    6.7
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "ytl0",
+   "at": [
+    1.1500000000000001,
+    6.7
+   ],
+   "text": "2",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s0"
+  },
+  {
+   "type": "segment",
+   "id": "yt1",
+   "from": [
+    2.1,
+    10.5
+   ],
+   "to": [
+    1.9000000000000001,
+    10.5
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "ytl1",
+   "at": [
+    1.1500000000000001,
+    10.5
+   ],
+   "text": "6",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s0"
+  },
+  {
+   "type": "polyline",
+   "id": "pc1",
+   "pts": [
+    [
+     4.45,
+     10.5
+    ],
+    [
+     4.685,
+     9.982
+    ],
+    [
+     4.92,
+     9.55
+    ],
+    [
+     5.155,
+     9.185
+    ],
+    [
+     5.39,
+     8.871
+    ],
+    [
+     5.625,
+     8.6
+    ],
+    [
+     5.86,
+     8.363
+    ],
+    [
+     6.095,
+     8.153
+    ],
+    [
+     6.33,
+     7.967
+    ],
+    [
+     6.565,
+     7.8
+    ],
+    [
+     6.8,
+     7.65
+    ],
+    [
+     7.035,
+     7.514
+    ],
+    [
+     7.27,
+     7.391
+    ],
+    [
+     7.505,
+     7.278
+    ],
+    [
+     7.74,
+     7.175
+    ],
+    [
+     7.975,
+     7.08
+    ],
+    [
+     8.21,
+     6.992
+    ],
+    [
+     8.445,
+     6.911
+    ],
+    [
+     8.68,
+     6.836
+    ],
+    [
+     8.915,
+     6.766
+    ],
+    [
+     9.15,
+     6.7
+    ]
+   ],
+   "role": "hot",
+   "strokeWidth": 4,
+   "appear": "s1",
+   "effect": "draw",
+   "appearDur": 900
+  },
+  {
+   "type": "polyline",
+   "id": "pc2",
+   "pts": [
+    [
+     4.45,
+     10.5
+    ],
+    [
+     4.685,
+     9.788
+    ],
+    [
+     4.92,
+     9.216
+    ],
+    [
+     5.155,
+     8.748
+    ],
+    [
+     5.39,
+     8.359
+    ],
+    [
+     5.625,
+     8.031
+    ],
+    [
+     5.86,
+     7.752
+    ],
+    [
+     6.095,
+     7.512
+    ],
+    [
+     6.33,
+     7.303
+    ],
+    [
+     6.565,
+     7.121
+    ],
+    [
+     6.8,
+     6.96
+    ],
+    [
+     7.035,
+     6.817
+    ],
+    [
+     7.27,
+     6.69
+    ],
+    [
+     7.505,
+     6.576
+    ],
+    [
+     7.74,
+     6.473
+    ],
+    [
+     7.975,
+     6.38
+    ],
+    [
+     8.21,
+     6.296
+    ],
+    [
+     8.445,
+     6.219
+    ],
+    [
+     8.68,
+     6.149
+    ],
+    [
+     8.915,
+     6.084
+    ],
+    [
+     9.15,
+     6.024
+    ]
+   ],
+   "role": "cold",
+   "strokeWidth": 4,
+   "appear": "s2",
+   "effect": "draw",
+   "appearDur": 900
+  },
+  {
+   "type": "point",
+   "id": "pd3",
+   "at": [
+    4.45,
+    10.5
+   ],
+   "role": "me",
+   "r": 7,
+   "appear": "s0",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "pt4",
+   "at": [
+    7.975,
+    8.22
+   ],
+   "text": "isotherm",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "pt5",
+   "at": [
+    8.915,
+    5.655
+   ],
+   "text": "adiabat (steeper)",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 1.6500000000000001,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    2.2
+   ],
+   "text": "adiabat falls faster: T drops as well",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "Compare the two curves that start from the same point on a P–V diagram. (This explanation is written by W.H. Academy; the book gives no model answer.)",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Isothermal",
+   "text": "Heat flows in to keep \\( T \\) constant, so only the **volume** change lowers the pressure: \\( PV = \\text{constant} \\).",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Adiabatic",
+   "text": "No heat enters, so the gas does work at the cost of its internal energy: **T falls** while V rises. Both the larger volume and the lower temperature lower P, so P drops faster.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Answer",
+   "text": "That is why the adiabat is **steeper**. In symbols it follows \\( PV^{\\gamma} = \\text{constant} \\) with \\( \\gamma > 1 \\), while the isotherm has \\( PV = \\text{constant} \\).",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Two curves",
+   "tex": "\\role{hot}{PV} = \\text{const}\\quad \\role{cold}{PV^{\\gamma}} = \\text{const}",
+   "text": "γ > 1."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "During an adiabatic expansion the temperature of the gas:",
+   "options": [
+    {
+     "id": "a",
+     "label": "falls"
+    },
+    {
+     "id": "b",
+     "label": "rises"
+    },
+    {
+     "id": "c",
+     "label": "stays the same"
+    },
+    {
+     "id": "d",
+     "label": "cannot say"
+    }
+   ],
+   "answer": "a",
+   "hint": "Q = 0, the gas does work.",
+   "explain": "The work comes from internal energy, so T falls."
+  }
+ ],
+ "takeaways": [
+  "Adiabat is steeper because T also falls as the gas expands."
+ ]
+}

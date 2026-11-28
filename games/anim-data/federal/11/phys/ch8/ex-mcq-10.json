@@ -1,0 +1,241 @@
+{
+ "id": "g11-phys-c8-ex-mcq-10",
+ "title": "Ex MCQ 10 · Inside temperature of a refrigerator",
+ "summary": "The coefficient of performance of a refrigerator operating at room temperature is 5. The temperature inside the…",
+ "alt": "Ex MCQ 10: The coefficient of performance of a refrigerator operating at room temperature is 5. The temperature inside the refrigerator is: (A) 150 K (B) 200 K (C) 250 K (D) 300 K",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "text",
+   "id": "as",
+   "at": [
+    6.45,
+    12.6
+   ],
+   "text": "assumed: room temperature T₁ = 300 K",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "f1",
+   "at": [
+    6.45,
+    10.6
+   ],
+   "text": "CP = T₂ / (T₁ − T₂) = 5",
+   "role": "wall",
+   "size": "m",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "f2",
+   "at": [
+    6.45,
+    9.2
+   ],
+   "text": "T₂ = 5(300 − T₂)",
+   "role": "wall",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "f3",
+   "at": [
+    6.45,
+    7.8
+   ],
+   "text": "6 T₂ = 1500",
+   "role": "wall",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 4.8500000000000005,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s4",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    5.4
+   ],
+   "text": "T₂ = 250 K   →   (C)",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s4",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "A refrigerator has \\( \\text{CP} = 5 \\) at room temperature. Find the temperature inside. (Room temperature is not given.)",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Assumption",
+   "text": "Take room temperature \\( T_1 = 300 \\) K. The inside is the cold space at \\( T_2 \\).",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Formula",
+   "text": "\\[ \\text{CP} = \\dfrac{T_2}{T_1 - T_2} = 5 \\Rightarrow T_2 = 5(300 - T_2) \\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Solve",
+   "text": "\\( 6T_2 = 1500 \\), so \\( T_2 = 250 \\) K.",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Answer: (C)",
+   "text": "250 K. This uses room temperature = 300 K; another room temperature would give a different value.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Coefficient of performance",
+   "tex": "\\text{CP} = \\dfrac{\\role{cold}{T_2}}{\\role{hot}{T_1} - \\role{cold}{T_2}}",
+   "text": "Kelvin."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "An ideal refrigerator has CP = 4 and room temperature 300 K. Find T₂ (K).",
+   "answer": 240,
+   "hint": "T₂ = 4(300 − T₂).",
+   "explain": "\\( 5T_2 = 1200 \\), so \\( T_2 = 240 \\) K.",
+   "tolerance": 1,
+   "unit": "K"
+  }
+ ],
+ "takeaways": [
+  "\\( \\text{CP} = T_2/(T_1 - T_2) \\); needs room temperature (taken as 300 K)."
+ ]
+}

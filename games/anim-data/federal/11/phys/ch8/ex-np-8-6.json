@@ -1,0 +1,326 @@
+{
+ "id": "g11-phys-c8-ex-np-8-6",
+ "title": "Ex NP 8.6 · Change of heat source temperature",
+ "summary": "If a heat engine at room temperature has an efficiency 50%, you change the heat source to increase the efficiency…",
+ "alt": "Ex NP 8.6: If a heat engine at room temperature has an efficiency 50%, you change the heat source to increase the efficiency up to, 70%. Find the temperature difference between the two heat sources. (Ans: 397 K)",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "bbase",
+   "from": [
+    0.7,
+    4.4
+   ],
+   "to": [
+    12.2,
+    4.4
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0"
+  },
+  {
+   "type": "rect",
+   "id": "bar0",
+   "x": 2.7,
+   "y": 4.4,
+   "w": 2.8,
+   "h": 4.172,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s1",
+   "effect": "fade",
+   "appearDur": 800
+  },
+  {
+   "type": "text",
+   "id": "bn0",
+   "at": [
+    4.1,
+    3.6500000000000004
+   ],
+   "text": "η = 50%",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "bv0",
+   "at": [
+    4.1,
+    9.122
+   ],
+   "text": "596 K",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "bs0",
+   "at": [
+    4.1,
+    2.8000000000000003
+   ],
+   "text": "T₁ = 298/0.5",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bar1",
+   "x": 7.5,
+   "y": 4.4,
+   "w": 2.8,
+   "h": 6.951,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s3",
+   "effect": "fade",
+   "appearDur": 800
+  },
+  {
+   "type": "text",
+   "id": "bn1",
+   "at": [
+    8.9,
+    3.6500000000000004
+   ],
+   "text": "η = 70%",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "bv1",
+   "at": [
+    8.9,
+    11.901
+   ],
+   "text": "993 K",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "bs1",
+   "at": [
+    8.9,
+    2.8000000000000003
+   ],
+   "text": "T₁′ = 298/0.3",
+   "role": "wall",
+   "size": "s",
+   "bold": false,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "as",
+   "at": [
+    6.45,
+    13.4
+   ],
+   "text": "assumed: room (sink) T₂ = 25 °C = 298 K",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 0.44999999999999996,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s4",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    1.0
+   ],
+   "text": "T₁′ − T₁ = 397 K",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s4",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "The sink is at room temperature and the efficiency rises from \\( 50\\% \\) to \\( 70\\% \\) by changing the source. Find the difference between the two source temperatures. (Room temperature is not given.)",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Assumptions",
+   "text": "Room temperature \\( T_2 = 25\\ \\text{°C} = 298 \\) K, and \"difference\" means \\( T_1' - T_1 \\) (this matches the book answer).",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "First source",
+   "text": "\\( T_1 = \\dfrac{T_2}{1 - \\eta} = \\dfrac{298}{0.50} = 596 \\) K.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "New source",
+   "text": "\\( T_1' = \\dfrac{298}{0.30} = 993 \\) K.",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Difference",
+   "text": "\\( 993 - 596 = 397 \\) K.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Source temperature",
+   "tex": "\\role{hot}{T_1} = \\dfrac{\\role{cold}{T_2}}{1 - \\eta}",
+   "text": "From η = 1 − T₂/T₁."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "With T₂ = 300 K, find the source temperature (K) for η = 40%.",
+   "answer": 500,
+   "hint": "T₁ = T₂/(1 − η).",
+   "explain": "\\( T_1 = 300/0.6 = 500 \\) K.",
+   "tolerance": 1,
+   "unit": "K"
+  }
+ ],
+ "takeaways": [
+  "\\( T_1 = T_2/(1-\\eta) \\); room temperature taken as 298 K."
+ ]
+}

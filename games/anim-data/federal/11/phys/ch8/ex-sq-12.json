@@ -1,0 +1,458 @@
+{
+ "id": "g11-phys-c8-ex-sq-12",
+ "title": "Ex SQ 8.12 · Refrigerator and air conditioner",
+ "summary": "What are the similarities and dissimilarities in the working of refrigerator and air conditioner?",
+ "alt": "Ex SQ 8.12: What are the similarities and dissimilarities in the working of refrigerator and air conditioner?",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "hotR",
+   "x": 2.0,
+   "y": 12.2,
+   "w": 8.8,
+   "h": 1.3,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "coldR",
+   "x": 2.0,
+   "y": 1.7,
+   "w": 8.8,
+   "h": 1.3,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.28,
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "hotL",
+   "at": [
+    6.45,
+    12.85
+   ],
+   "text": "Hot surroundings",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "coldL",
+   "at": [
+    6.45,
+    2.35
+   ],
+   "text": "Cold space",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "sct",
+   "at": [
+    6.45,
+    14.3
+   ],
+   "text": "same principle in both",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "mach",
+   "x": 3.7,
+   "y": 6.0,
+   "w": 5.4,
+   "h": 2.9,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.1,
+   "strokeWidth": 4,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "machT",
+   "at": [
+    6.45,
+    7.45
+   ],
+   "text": "REFRIGERATOR",
+   "role": "wall",
+   "size": "m",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bC",
+   "x": 5.420000000000001,
+   "y": 3.0,
+   "w": 1.9599999999999997,
+   "h": 3.0,
+   "role": "cold",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 1.5,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bH",
+   "x": 5.0,
+   "y": 8.9,
+   "w": 2.8,
+   "h": 3.3,
+   "role": "hot",
+   "fill": true,
+   "fillOpacity": 0.4,
+   "strokeWidth": 1.5,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "bW",
+   "x": 9.1,
+   "y": 7.03,
+   "w": 3.2,
+   "h": 0.84,
+   "role": "work",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 1.5,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "aC",
+   "from": [
+    6.4,
+    3.0
+   ],
+   "to": [
+    6.4,
+    5.9
+   ],
+   "role": "cold",
+   "strokeWidth": 4,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "aH",
+   "from": [
+    6.4,
+    8.9
+   ],
+   "to": [
+    6.4,
+    12.1
+   ],
+   "role": "hot",
+   "strokeWidth": 4,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "aW",
+   "from": [
+    12.4,
+    7.45
+   ],
+   "to": [
+    9.2,
+    7.45
+   ],
+   "role": "work",
+   "strokeWidth": 4,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "q1q",
+   "at": [
+    10.25,
+    10.6
+   ],
+   "text": "Q₁ = ?",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "disappear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "q1",
+   "at": [
+    10.25,
+    10.6
+   ],
+   "text": "Q₁ = Q₂ + W",
+   "role": "hot",
+   "size": "s",
+   "bold": true,
+   "appear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "q2q",
+   "at": [
+    10.25,
+    4.5
+   ],
+   "text": "Q₂ = ?",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "disappear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "q2",
+   "at": [
+    10.25,
+    4.5
+   ],
+   "text": "Q₂ = heat taken in",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "wwq",
+   "at": [
+    10.9,
+    8.42
+   ],
+   "text": "W = ?",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "disappear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "ww",
+   "at": [
+    10.9,
+    8.42
+   ],
+   "text": "W = work in",
+   "role": "work",
+   "size": "s",
+   "bold": true,
+   "appear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "dr",
+   "at": [
+    6.45,
+    1.2
+   ],
+   "text": "fridge: cools a small insulated box",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "da",
+   "at": [
+    6.45,
+    0.6
+   ],
+   "text": "air conditioner: cools a room, rejects heat outdoors",
+   "role": "cold",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "Compare how a refrigerator and an air conditioner work. (The unit text does not list the differences, so they are written here by W.H. Academy.)",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Similarities",
+   "text": "Both are heat engines run **in reverse**: a compressor does work \\( W \\), takes heat \\( Q_2 \\) from a cold space and rejects \\( Q_1 = Q_2 + W \\) to the hotter surroundings. Both need work, as the Clausius statement says.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Dissimilarities",
+   "text": "A refrigerator cools a small closed, insulated box (food). A room air conditioner cools a living space and discharges the heat outdoors.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Reversed engine",
+   "tex": "\\role{hot}{Q_1} = \\role{cold}{Q_2} + \\role{work}{W}",
+   "text": "Heat rejected = heat removed + work."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Both a refrigerator and an air conditioner need:",
+   "options": [
+    {
+     "id": "a",
+     "label": "work input"
+    },
+    {
+     "id": "b",
+     "label": "no energy"
+    },
+    {
+     "id": "c",
+     "label": "a hotter cold space"
+    },
+    {
+     "id": "d",
+     "label": "zero heat rejection"
+    }
+   ],
+   "answer": "a",
+   "hint": "Clausius statement.",
+   "explain": "Heat cannot flow from cold to hot without work."
+  }
+ ],
+ "takeaways": [
+  "Same principle: work moves heat from a cold space to a hot one."
+ ]
+}

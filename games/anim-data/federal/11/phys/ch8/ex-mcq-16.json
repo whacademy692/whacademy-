@@ -1,0 +1,221 @@
+{
+ "id": "g11-phys-c8-ex-mcq-16",
+ "title": "Ex MCQ 16 · Boltzmann constant",
+ "summary": "Boltzmann constant k is equal to: (A) N_A/R (B) R/N_A (C) R/N₀ (D) N₀/R",
+ "alt": "Ex MCQ 16: Boltzmann constant k is equal to: (A) N_A/R (B) R/N_A (C) R/N₀ (D) N₀/R",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Cylinder",
+   "color": "#475569",
+   "text": "The container walls.",
+   "legend": false
+  },
+  "hot": {
+   "label": "Hot",
+   "color": "#ea580c",
+   "text": "Hot reservoir / heat going in.",
+   "legend": false
+  },
+  "cold": {
+   "label": "Cold",
+   "color": "#2563eb",
+   "text": "Cold reservoir / heat going out.",
+   "legend": false
+  },
+  "work": {
+   "label": "Work",
+   "color": "#d97706",
+   "text": "Work done by (or on) the gas.",
+   "legend": false
+  },
+  "u": {
+   "label": "Internal energy",
+   "color": "#4f46e5",
+   "text": "Energy stored in the molecules.",
+   "legend": false
+  },
+  "gas": {
+   "label": "Gas molecules",
+   "color": "#0ea5e9",
+   "text": "The molecules of the gas (colour = speed: blue slow, red fast).",
+   "legend": false
+  },
+  "ent": {
+   "label": "Entropy",
+   "color": "#c026d3",
+   "text": "Disorder of the molecules.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Allowed",
+   "color": "#059669",
+   "text": "Allowed by the laws of physics.",
+   "legend": false
+  },
+  "no": {
+   "label": "Impossible",
+   "color": "#e11d48",
+   "text": "Never observed in nature.",
+   "legend": false
+  },
+  "th": {
+   "label": "Theory",
+   "color": "#059669",
+   "text": "What the gas law predicts.",
+   "legend": false
+  },
+  "me": {
+   "label": "Live reading",
+   "color": "#e11d48",
+   "text": "What the simulated gas shows right now.",
+   "legend": false
+  },
+  "pis": {
+   "label": "Piston",
+   "color": "#7c3aed",
+   "text": "The movable piston.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "text",
+   "id": "c1",
+   "at": [
+    6.45,
+    11.0
+   ],
+   "text": "R = gas constant per MOLE = 8.314 J/mol K",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "c2",
+   "at": [
+    6.45,
+    9.4
+   ],
+   "text": "N_A = molecules per mole = 6.02×10²³",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "c3",
+   "at": [
+    6.45,
+    7.6
+   ],
+   "text": "k = R / N_A = 1.38×10⁻²³ J/K",
+   "role": "u",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.7,
+   "y": 4.45,
+   "w": 11.5,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    5.0
+   ],
+   "text": "k = R / N_A   →   (B)",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "Which expression equals the Boltzmann constant \\( k \\)? (Option C prints \\( N_0 \\); the usual symbol is \\( N_A \\).)",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Per mole to per molecule",
+   "text": "\\( R \\) is energy per kelvin **per mole**. Dividing by the number of molecules in a mole gives the value **per molecule**.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Compute",
+   "text": "\\[ k = \\dfrac{R}{N_A} = \\dfrac{8.314}{6.02\\times10^{23}} = 1.38\\times10^{-23}\\ \\text{J K}^{-1} \\]",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Answer: (B)",
+   "text": "The key is (B). If \\( N_0 \\) in (C) is meant as the Avogadro number it has the same value as \\( N_A \\), and (C) would then be the same expression.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Boltzmann constant",
+   "tex": "\\role{u}{k} = \\dfrac{R}{N_A}",
+   "text": "Gas constant per molecule."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "Using R = 8.314 and N_A = 6.02 × 10²³, find k in units of 10⁻²³ J/K.",
+   "answer": 1.38,
+   "hint": "k = R / N_A.",
+   "explain": "\\( k = 1.38\\times10^{-23} \\) J/K.",
+   "tolerance": 0.02,
+   "unit": "×10⁻²³"
+  }
+ ],
+ "takeaways": [
+  "\\( k = R/N_A \\): the gas constant per molecule."
+ ]
+}
