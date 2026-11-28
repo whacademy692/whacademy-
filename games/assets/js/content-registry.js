@@ -1409,9 +1409,9 @@ window.WHA_CONTENT = {
             "n": 3,
             "unit": 3,
             "title": "Translatory Motion",
-            "notes": null,
+            "notes": "https://whacademypk.com/notes/class-11/physics/translatory-motion.html",
             "quiz": null,
-            "game": null
+            "game": "https://whacademypk.com/games/chapter.html?ch=11/phys/translatory_motion"
           },
           {
             "n": 4,
