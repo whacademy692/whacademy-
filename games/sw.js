@@ -8,8 +8,31 @@
 // v142: GitHub Pages sends max-age=600, and cache.add()/fetch() inside a worker honour that browser cache, so a
 // just-deployed site kept serving the OLD files (new look for a second after a hard refresh, then old again).
 // Fix: pre-cache and revalidate with cache:'reload' / 'no-cache', and app files (html/css/js) are NETWORK-FIRST.
-const CACHE_VERSION = 'wha-v173';
+// v174: a failed network fetch + empty cache used to answer undefined -> Chrome "This site can't be reached ERR_FAILED"
+// (pages then opened a few seconds later on the next try). Now: one quick retry, then cache, then a friendly self-retrying page.
+const CACHE_VERSION = 'wha-v174';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
+
+// Network fetch with ONE quick retry (a cold/failed connection usually works the second time).
+function fetchRetry(request) {
+  return fetch(request, { cache: 'no-cache' }).catch((err) => {
+    console.warn('[sw] network fetch failed, retrying once:', request.url, err && err.message);
+    return new Promise((resolve) => setTimeout(resolve, 400)).then(() => fetch(request, { cache: 'no-cache' }));
+  });
+}
+
+// Last resort when the network AND the cache both have nothing: never hand the browser `undefined`.
+function offlineFallback(request) {
+  if (request.mode !== 'navigate') return Response.error();
+  const html = '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">' +
+    '<title>Reconnecting - W.H. Academy</title><style>body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;' +
+    'background:#0f172a;color:#e2e8f0;font-family:system-ui,sans-serif;text-align:center;padding:24px}h1{font-size:1.25rem;margin:0 0 8px}' +
+    'p{margin:0 0 16px;color:#94a3b8}button{background:#4f46e5;color:#fff;border:0;border-radius:8px;padding:10px 18px;font-size:1rem;cursor:pointer}</style></head>' +
+    '<body><div><h1>Reconnecting&hellip;</h1><p id="m">Your connection dropped for a moment. Trying again.</p>' +
+    '<button onclick="location.reload()">Try again now</button></div>' +
+    '<script>var n=0;setInterval(function(){if(++n<=6)location.reload();else document.getElementById("m").textContent="Still cannot connect. Check your internet and tap Try again."},2500)</script></body></html>';
+  return new Response(html, { status: 503, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' } });
+}
 
 const STATIC_ASSETS = [
   'welcome.html', 'login.html', 'dashboard.html', 'profile.html', 'settings.html',
@@ -145,13 +168,13 @@ self.addEventListener('fetch', (event) => {
 
   if (isChapterContent) {
     event.respondWith(
-      fetch(event.request, { cache: 'no-cache' })
+      fetchRetry(event.request)
         .then((response) => {
           const clone = response.clone();
           caches.open(STATIC_CACHE).then((cache) => cache.put(event.request, clone));
           return response;
         })
-        .catch(() => caches.match(event.request))
+        .catch(() => caches.match(event.request).then((cached) => cached || offlineFallback(event.request)))
     );
     return;
   }
@@ -161,7 +184,7 @@ self.addEventListener('fetch', (event) => {
   const isAppFile = event.request.mode === 'navigate' || /\.(html|css|js|json)$/.test(url.pathname);
   if (isAppFile) {
     event.respondWith(
-      fetch(event.request, { cache: 'no-cache' })
+      fetchRetry(event.request)
         .then((response) => {
           if (response && response.ok) {
             const clone = response.clone();
@@ -169,7 +192,7 @@ self.addEventListener('fetch', (event) => {
           }
           return response;
         })
-        .catch(() => caches.match(event.request))
+        .catch(() => caches.match(event.request).then((cached) => cached || offlineFallback(event.request)))
     );
     return;
   }
