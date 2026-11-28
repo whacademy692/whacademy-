@@ -11,7 +11,7 @@
 // v174: a failed network fetch + empty cache used to answer undefined -> Chrome "This site can't be reached ERR_FAILED"
 // (pages then opened a few seconds later on the next try). Now: one quick retry, then cache, then a friendly self-retrying page.
 // v175: Class 11 Physics Unit 3 (Translatory Motion) game content + notes page added.
-const CACHE_VERSION = 'wha-v175';
+const CACHE_VERSION = 'wha-v176';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
 // Network fetch with ONE quick retry (a cold/failed connection usually works the second time).
