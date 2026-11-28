@@ -1,0 +1,318 @@
+{
+ "id": "g11-phys-c3-we-3-4",
+ "title": "Example 3.4 · Horizontal launch from a building",
+ "summary": "Fall time from the vertical motion, then x = v_i t.",
+ "alt": "If a projectile is launched horizontally with a speed of 12.0 m s⁻¹ from the top of a 24.6 m high building, determine the horizontal displacement of the projectile.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": false
+  },
+  "acc": {
+   "label": "Acceleration",
+   "color": "#ea580c",
+   "text": "Acceleration.",
+   "legend": false
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": false
+  },
+  "hx": {
+   "label": "Horizontal part",
+   "color": "#0891b2",
+   "text": "The horizontal (x) component.",
+   "legend": false
+  },
+  "vy": {
+   "label": "Vertical part",
+   "color": "#c026d3",
+   "text": "The vertical (y) component.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "s417",
+   "from": [
+    0.6,
+    7.3
+   ],
+   "to": [
+    12.3,
+    7.3
+   ],
+   "role": "wall",
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "rect",
+   "id": "r418",
+   "x": 0.9,
+   "y": 7.3,
+   "w": 1.5,
+   "h": 5.4,
+   "role": "wall",
+   "fill": "wall",
+   "fillOpacity": 0.12,
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t419",
+   "at": [
+    1.65,
+    10.0
+   ],
+   "text": "24.6 m",
+   "role": "dis",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "v420",
+   "from": [
+    2.6,
+    12.7
+   ],
+   "to": [
+    4.4,
+    12.7
+   ],
+   "role": "hx",
+   "strokeWidth": 4.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t421",
+   "at": [
+    3.6,
+    13.45
+   ],
+   "text": "12 m/s",
+   "role": "hx",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "plot",
+   "id": "g422",
+   "role": "vel",
+   "strokeWidth": 3,
+   "domain": [
+    2.4,
+    11.2
+   ],
+   "fn": "12.7000 - 0.06973*(x-2.4)^2",
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "v423",
+   "from": [
+    0.5,
+    12.5
+   ],
+   "to": [
+    0.5,
+    7.5
+   ],
+   "role": "vy",
+   "strokeWidth": 3,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "segment",
+   "id": "s424",
+   "from": [
+    2.4,
+    6.8
+   ],
+   "to": [
+    11.2,
+    6.8
+   ],
+   "role": "hx",
+   "strokeWidth": 2.5,
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t425",
+   "at": [
+    6.8,
+    6.3
+   ],
+   "text": "x = ?",
+   "role": "hx",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t426",
+   "at": [
+    6.45,
+    5.55
+   ],
+   "text": "y = ½ g t² → t² = 2(24.6)/9.8 = 5.02",
+   "role": "vy",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t427",
+   "at": [
+    6.45,
+    4.6
+   ],
+   "text": "t = 2.24 s",
+   "role": "vy",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t428",
+   "at": [
+    6.45,
+    3.6499999999999995
+   ],
+   "text": "x = v_ix t = 12.0 × 2.24",
+   "role": "hx",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r429",
+   "x": 0.6,
+   "y": 0.75,
+   "w": 11.7,
+   "h": 1.1,
+   "role": "ans",
+   "fill": "ans",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "t430",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "x = 26.9 m",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Given",
+   "text": "Horizontal launch: **v_ix = 12.0 m s⁻¹**, **v_iy = 0**, height **y = 24.6 m**. Find the horizontal distance **x**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Time of fall (vertical)",
+   "text": "Vertically the ball is simply falling from rest: \\( y = \\tfrac12 g t^2 \\Rightarrow 24.6 = \\tfrac12(9.8)t^2 \\Rightarrow t^2 = 5.02 \\Rightarrow t = 2.24 \\) s.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Horizontal distance",
+   "text": "Horizontally there is no acceleration (\\( a_x = 0 \\)), so \\( x = v_{ix}\\,t = 12\\times2.24 \\).",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Answer",
+   "text": "\\( x = 26.9 \\) m.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Horizontal launch",
+   "tex": "y = \\tfrac12 g t^2,\\qquad x = v_i t",
+   "text": "The two motions share only the time."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A ball leaves a 19.6 m high cliff horizontally at 10 m/s. Find x (m). Use g = 9.8.",
+   "answer": 20,
+   "hint": "t = √(2y/g) = 2 s.",
+   "explain": "\\( t = 2 \\) s, \\( x = 10\\times2 = 20 \\) m.",
+   "tolerance": 0.2,
+   "unit": "m"
+  }
+ ],
+ "takeaways": [
+  "Time comes from the **vertical** motion; distance = **v_i × t** horizontally."
+ ]
+}

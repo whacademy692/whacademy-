@@ -1,0 +1,446 @@
+{
+ "id": "g11-phys-c3-ex-cq-01",
+ "title": "Comprehensive Question 3.1 · Derivation of the equations of motion",
+ "summary": "Slope of the v–t graph gives v_f = v_i + at; its area gives S; multiplying the two gives 2aS = v_f² − v_i².",
+ "alt": "Comprehensive Question 3.1 — Derive the equations of motion for uniformly accelerated objects.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": false
+  },
+  "acc": {
+   "label": "Acceleration",
+   "color": "#ea580c",
+   "text": "Acceleration.",
+   "legend": false
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": false
+  },
+  "tim": {
+   "label": "Time",
+   "color": "#7c3aed",
+   "text": "Time.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "v862",
+   "from": [
+    1.6,
+    7.6
+   ],
+   "to": [
+    11.9,
+    7.6
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "v863",
+   "from": [
+    1.6,
+    7.6
+   ],
+   "to": [
+    1.6,
+    14.1
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t864",
+   "at": [
+    11.200000000000001,
+    8.15
+   ],
+   "text": "t",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t865",
+   "at": [
+    1.8,
+    14.45
+   ],
+   "text": "v",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "polygon",
+   "id": "pg866",
+   "pts": [
+    [
+     1.6,
+     7.6
+    ],
+    [
+     1.6,
+     9.28
+    ],
+    [
+     8.8,
+     12.64
+    ],
+    [
+     8.8,
+     7.6
+    ]
+   ],
+   "role": "dis",
+   "fill": "dis",
+   "fillOpacity": 0.2,
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "s867",
+   "from": [
+    1.6,
+    9.28
+   ],
+   "to": [
+    8.8,
+    12.64
+   ],
+   "role": "vel",
+   "strokeWidth": 4,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "segment",
+   "id": "s868",
+   "from": [
+    1.6,
+    9.28
+   ],
+   "to": [
+    8.8,
+    9.28
+   ],
+   "role": "wall",
+   "strokeWidth": 1.5,
+   "dash": [
+    5,
+    4
+   ],
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t869",
+   "at": [
+    1.2000000000000002,
+    7.1499999999999995
+   ],
+   "text": "O",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t870",
+   "at": [
+    1.1500000000000001,
+    9.28
+   ],
+   "text": "A",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t871",
+   "at": [
+    9.200000000000001,
+    12.84
+   ],
+   "text": "B",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t872",
+   "at": [
+    9.25,
+    9.28
+   ],
+   "text": "C",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t873",
+   "at": [
+    8.8,
+    7.1
+   ],
+   "text": "D",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "s874",
+   "from": [
+    8.8,
+    9.28
+   ],
+   "to": [
+    8.8,
+    12.64
+   ],
+   "role": "acc",
+   "strokeWidth": 4,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t875",
+   "at": [
+    10.100000000000001,
+    10.96
+   ],
+   "text": "BC = at",
+   "role": "acc",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t876",
+   "at": [
+    5.0,
+    8.83
+   ],
+   "text": "AC = t",
+   "role": "tim",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t877",
+   "at": [
+    6.2,
+    14.4
+   ],
+   "text": "area OABD = S",
+   "role": "dis",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t878",
+   "at": [
+    6.45,
+    5.55
+   ],
+   "text": "a = BC/AC = (v_f − v_i)/t",
+   "role": "acc",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t879",
+   "at": [
+    6.45,
+    4.6
+   ],
+   "text": "v_f = v_i + at",
+   "role": "vel",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t880",
+   "at": [
+    6.45,
+    3.6499999999999995
+   ],
+   "text": "S = ½(v_i + v_f)t = v_i t + ½at²",
+   "role": "dis",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t881",
+   "at": [
+    6.45,
+    2.6999999999999993
+   ],
+   "text": "2aS = (v_i + v_f)(v_f − v_i)",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r882",
+   "x": 0.6,
+   "y": 0.75,
+   "w": 11.7,
+   "h": 1.1,
+   "role": "ans",
+   "fill": "ans",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "t883",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "v_f² = v_i² + 2aS",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The v–t graph",
+   "text": "A body moves in a straight line with constant acceleration \\( a \\): velocity \\( OA = v_i \\) at the start, \\( BD = v_f \\) after time \\( OD = t \\). The graph is the straight line AB.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "First equation",
+   "text": "The slope of AB is the acceleration: \\( a = \\dfrac{BC}{AC} = \\dfrac{BD - CD}{OD} = \\dfrac{v_f - v_i}{t} \\), so \\( v_f = v_i + at \\).",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Second equation",
+   "text": "The distance is the area of the trapezium OABD: \\( S = \\tfrac12(OA + BD)\\times OD = \\tfrac12(v_i + v_f)t \\). Put \\( v_f = v_i + at \\): \\( S = v_it + \\tfrac12at^2 \\).",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Third equation",
+   "text": "\\( 2S = (v_i + v_f)\\,t \\). Multiply both sides by \\( a = \\dfrac{BC}{OD} \\): \\( 2aS = (v_i + v_f)(v_f - v_i) \\), so \\( 2aS = v_f^2 - v_i^2 \\).",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Equations of motion",
+   "tex": "v_f = v_i + at,\\quad S = v_it + \\tfrac12at^2,\\quad 2aS = v_f^2 - v_i^2",
+   "text": "Constant acceleration, straight line."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "v_i = 2 m/s, v_f = 8 m/s over S = 25 m. Find a (m/s²).",
+   "answer": 1.2,
+   "hint": "2aS = v_f² − v_i².",
+   "explain": "\\( a = (64 - 4)/(2\\times25) = 1.2 \\) m/s².",
+   "tolerance": 0.01,
+   "unit": "m/s²"
+  }
+ ],
+ "takeaways": [
+  "Slope of v–t = a; area under v–t = S.",
+  "Eliminating t gives 2aS = v_f² − v_i²."
+ ]
+}

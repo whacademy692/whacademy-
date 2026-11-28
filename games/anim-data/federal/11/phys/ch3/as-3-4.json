@@ -1,0 +1,379 @@
+{
+ "id": "g11-phys-c3-as-3-4",
+ "title": "Assignment 3.4 · Recoil of the gun",
+ "summary": "Initial momentum zero, so the gun gets equal and opposite momentum.",
+ "alt": "A bullet of mass 20 g is fired from a gun with a muzzle velocity of 100 m s⁻¹. Find the recoil of the gun if its mass is 5 kg.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": false
+  },
+  "acc": {
+   "label": "Acceleration",
+   "color": "#ea580c",
+   "text": "Acceleration.",
+   "legend": false
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": false
+  },
+  "mom": {
+   "label": "Momentum",
+   "color": "#0891b2",
+   "text": "Momentum p = mv.",
+   "legend": false
+  },
+  "m1": {
+   "label": "Object 1",
+   "color": "#2563eb",
+   "text": "The first object.",
+   "legend": false
+  },
+  "m2": {
+   "label": "Object 2",
+   "color": "#ea580c",
+   "text": "The second object.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "text",
+   "id": "t501",
+   "at": [
+    6.45,
+    12.9
+   ],
+   "text": "before the shot: both at rest",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r502",
+   "x": 3.0,
+   "y": 11.2,
+   "w": 3.6,
+   "h": 1.0,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.28,
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t503",
+   "at": [
+    4.8,
+    11.7
+   ],
+   "text": "gun 5 kg",
+   "role": "m1",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "circle",
+   "id": "c504",
+   "c": [
+    6.3,
+    11.7
+   ],
+   "r": 0.3,
+   "role": "m2",
+   "fill": "m2",
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t505",
+   "at": [
+    6.45,
+    9.700000000000001
+   ],
+   "text": "after the shot",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r506",
+   "x": 4.6,
+   "y": 8.0,
+   "w": 3.6,
+   "h": 1.0,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.28,
+   "strokeWidth": 2,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t507",
+   "at": [
+    6.3999999999999995,
+    8.5
+   ],
+   "text": "gun 5 kg",
+   "role": "m1",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "circle",
+   "id": "c508",
+   "c": [
+    8.7,
+    8.5
+   ],
+   "r": 0.3,
+   "role": "m2",
+   "fill": "m2",
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "v509",
+   "from": [
+    8.9,
+    8.5
+   ],
+   "to": [
+    12.0,
+    8.5
+   ],
+   "role": "m2",
+   "strokeWidth": 4.5,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t510",
+   "at": [
+    10.5,
+    9.200000000000001
+   ],
+   "text": "100 m/s",
+   "role": "m2",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "v511",
+   "from": [
+    4.4,
+    8.5
+   ],
+   "to": [
+    1.6,
+    8.5
+   ],
+   "role": "m1",
+   "strokeWidth": 4.5,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t512",
+   "at": [
+    3.0,
+    9.200000000000001
+   ],
+   "text": "v_g = ?",
+   "role": "m1",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t513",
+   "at": [
+    6.45,
+    5.55
+   ],
+   "text": "p_i = p_f = 0",
+   "role": "mom",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t514",
+   "at": [
+    6.45,
+    4.6
+   ],
+   "text": "m_g v_g + m_b v_b = 0",
+   "role": "mom",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t515",
+   "at": [
+    6.45,
+    3.6499999999999995
+   ],
+   "text": "5 v_g + 0.020(100) = 0",
+   "role": "acc",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t516",
+   "at": [
+    6.45,
+    2.6999999999999993
+   ],
+   "text": "v_g = −2/5 = −0.4 m/s",
+   "role": "m1",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r517",
+   "x": 0.6,
+   "y": 0.75,
+   "w": 11.7,
+   "h": 1.1,
+   "role": "ans",
+   "fill": "ans",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "t518",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "v_g = −0.4 m/s (recoil)",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Given",
+   "text": "Bullet **m_b = 20 g = 0.020 kg**, **v_b = 100 m s⁻¹**; gun **m_g = 5 kg**. Find the recoil velocity **v_g**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Momentum is conserved",
+   "text": "Before the shot everything is at rest: \\( p_i = 0 \\). After the shot \\( p_f = m_g v_g + m_b v_b \\), and \\( p_f = p_i = 0 \\).",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Substitute",
+   "text": "\\( 5\\,v_g + 0.020(100) = 0 \\Rightarrow 5\\,v_g = -2 \\).",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Answer",
+   "text": "\\( v_g = -0.4 \\) m s⁻¹: the gun recoils at 0.4 m s⁻¹, opposite to the bullet.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Recoil",
+   "tex": "m_g v_g + m_b v_b = 0",
+   "text": "Equal and opposite momenta."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A 0.05 kg bullet leaves a 4 kg rifle at 200 m/s. Find the recoil speed (m/s).",
+   "answer": 2.5,
+   "hint": "m_r v_r = m_b v_b.",
+   "explain": "\\( 0.05\\times200/4 = 2.5 \\) m/s.",
+   "tolerance": 0.025,
+   "unit": "m/s"
+  }
+ ],
+ "takeaways": [
+  "The lighter object moves faster; the momenta are equal and opposite."
+ ]
+}

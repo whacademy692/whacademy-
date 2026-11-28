@@ -1,0 +1,615 @@
+{
+ "id": "g11-phys-c3-th-vt-eq1",
+ "title": "First equation of motion: v_f = v_i + at",
+ "summary": "On a v–t graph the slope is the acceleration, so the velocity grows by at in time t.",
+ "alt": "A straight velocity–time graph from v_i to v_f with the rise at and the run t marked.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -2.6,
+   12.6
+  ],
+  "y": [
+   -2.2,
+   11.8
+  ],
+  "ratio": 1.0857,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": true
+  },
+  "acc": {
+   "label": "Acceleration",
+   "color": "#ea580c",
+   "text": "Acceleration.",
+   "legend": true
+  },
+  "tim": {
+   "label": "Time",
+   "color": "#7c3aed",
+   "text": "Time.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "vi",
+   "label": "Starting velocity v_i (m/s)",
+   "type": "number",
+   "min": 0,
+   "max": 5,
+   "step": 1,
+   "default": 2,
+   "unit": "m/s",
+   "role": "vel"
+  },
+  {
+   "id": "a",
+   "label": "Acceleration a (m/s²)",
+   "type": "number",
+   "min": 0.5,
+   "max": 1.5,
+   "step": 0.5,
+   "default": 1,
+   "unit": "m/s²",
+   "role": "acc"
+  },
+  {
+   "id": "tm",
+   "label": "Time t (s)",
+   "type": "number",
+   "min": 1,
+   "max": 8,
+   "step": 1,
+   "default": 5,
+   "unit": "s",
+   "role": "tim"
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 4,
+   "step": 0.01,
+   "default": 4,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "vf": "vi+a*tm"
+ },
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "v1",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    11.7,
+    0
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "vector",
+   "id": "v2",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    0,
+    9.0
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t3",
+   "at": [
+    11.0,
+    0.55
+   ],
+   "text": "t (s)",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t4",
+   "at": [
+    0.2,
+    9.35
+   ],
+   "text": "v (m/s)",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s5",
+   "from": [
+    2.8,
+    -0.1
+   ],
+   "to": [
+    2.8,
+    0.1
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t6",
+   "at": [
+    2.8,
+    -0.5
+   ],
+   "text": "2",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s7",
+   "from": [
+    5.6,
+    -0.1
+   ],
+   "to": [
+    5.6,
+    0.1
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t8",
+   "at": [
+    5.6,
+    -0.5
+   ],
+   "text": "4",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s9",
+   "from": [
+    8.399999999999999,
+    -0.1
+   ],
+   "to": [
+    8.399999999999999,
+    0.1
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t10",
+   "at": [
+    8.399999999999999,
+    -0.5
+   ],
+   "text": "6",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s11",
+   "from": [
+    11.2,
+    -0.1
+   ],
+   "to": [
+    11.2,
+    0.1
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t12",
+   "at": [
+    11.2,
+    -0.5
+   ],
+   "text": "8",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s13",
+   "from": [
+    -0.1,
+    2.5
+   ],
+   "to": [
+    0.1,
+    2.5
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t14",
+   "at": [
+    -0.55,
+    2.5
+   ],
+   "text": "5",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s15",
+   "from": [
+    -0.1,
+    5.0
+   ],
+   "to": [
+    0.1,
+    5.0
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t16",
+   "at": [
+    -0.55,
+    5.0
+   ],
+   "text": "10",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s17",
+   "from": [
+    -0.1,
+    7.5
+   ],
+   "to": [
+    0.1,
+    7.5
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t18",
+   "at": [
+    -0.55,
+    7.5
+   ],
+   "text": "15",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "line",
+   "from": [
+    0,
+    "0.5*(vi)"
+   ],
+   "to": [
+    "1.4*(tm)",
+    "0.5*(vf)"
+   ],
+   "role": "vel",
+   "strokeWidth": 4.5
+  },
+  {
+   "type": "segment",
+   "id": "base",
+   "from": [
+    0,
+    "0.5*(vi)"
+   ],
+   "to": [
+    "1.4*(tm)",
+    "0.5*(vi)"
+   ],
+   "role": "wall",
+   "strokeWidth": 1.8,
+   "dash": [
+    6,
+    5
+   ],
+   "visible": "lv>=1"
+  },
+  {
+   "type": "vector",
+   "id": "rise",
+   "from": [
+    "1.4*(tm)",
+    "0.5*(vi)"
+   ],
+   "to": [
+    "1.4*(tm)",
+    "0.5*(vf)"
+   ],
+   "role": "acc",
+   "strokeWidth": 5.5,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "text",
+   "id": "t19",
+   "at": [
+    "1.4*(tm)+1.0",
+    "0.5*((vi+vf)/2)"
+   ],
+   "text": "a t",
+   "role": "acc",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "vector",
+   "id": "run",
+   "from": [
+    0,
+    -0.4
+   ],
+   "to": [
+    "1.4*(tm)",
+    -0.4
+   ],
+   "role": "tim",
+   "strokeWidth": 5,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "text",
+   "id": "t20",
+   "at": [
+    "1.4*(tm)/2",
+    -1.05
+   ],
+   "text": "t",
+   "role": "tim",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "text",
+   "id": "t21",
+   "at": [
+    -0.95,
+    "0.5*(vi)"
+   ],
+   "text": "v_i",
+   "role": "vel",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t22",
+   "at": [
+    "1.4*(tm)+0.95",
+    "0.5*(vf)+0.3"
+   ],
+   "text": "v_f",
+   "role": "vel",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t23",
+   "at": [
+    5.0,
+    11.2
+   ],
+   "text": "slope = rise / run = at / t = a = {{a|1}} m/s²",
+   "role": "acc",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t24",
+   "at": [
+    5.0,
+    10.3
+   ],
+   "text": "v_f = v_i + at = {{vi|0}} + {{a|1}}×{{tm|0}} = {{vf|1}} m/s",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Velocity against time",
+   "text": "A body moves with constant acceleration. On the **v–t graph** its velocity is a straight line that starts at \\( v_i \\).",
+   "actions": [
+    {
+     "set": {
+      "lv": 0,
+      "vi": 2,
+      "a": 1,
+      "tm": 5
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "The rise is a·t",
+   "text": "In time \\( t \\) the line rises by \\( v_f - v_i \\). Since the velocity changes by \\( a \\) every second, the rise is \\( a t \\).",
+   "actions": [
+    {
+     "set": {
+      "lv": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "The slope is a",
+   "text": "Slope = rise ÷ run = \\( \\dfrac{at}{t} = a \\): the **slope of the v–t graph is the acceleration**.",
+   "actions": [
+    {
+     "set": {
+      "lv": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "First equation",
+   "text": "Read the end height: \\( v_f = v_i + at \\). With \\( v_i = {{vi|0}} \\), \\( a = {{a|1}} \\), \\( t = {{tm|0}} \\): \\( v_f = {{vf|1}} \\) m s⁻¹.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Try other values",
+   "text": "Drag the sliders: a bigger **a** gives a steeper line; a longer **t** gives a taller rise.",
+   "actions": [
+    {
+     "set": {
+      "lv": 4
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "tm": 8
+     },
+     "at": 0,
+     "dur": 3500
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "v_f",
+   "value": "{{vf|1}} m/s",
+   "role": "vel"
+  },
+  {
+   "label": "a t",
+   "value": "{{a*tm|1}} m/s",
+   "role": "acc"
+  },
+  {
+   "label": "slope",
+   "value": "{{a|1}} m/s²",
+   "role": "acc"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "First equation of motion",
+   "tex": "v_f = \\role{vel}{v_i} + \\role{acc}{a}\\,\\role{tim}{t}",
+   "text": "Slope of v–t = a."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "v_i = 3 m/s, a = 2 m/s², t = 4 s. Find v_f (m/s).",
+   "answer": 11,
+   "hint": "v_f = v_i + at.",
+   "explain": "\\( 3 + 2\\times4 = 11 \\) m/s.",
+   "tolerance": 0.11,
+   "unit": "m/s"
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "What does the slope of a velocity–time graph give?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Acceleration"
+    },
+    {
+     "id": "b",
+     "label": "Distance"
+    },
+    {
+     "id": "c",
+     "label": "Time"
+    }
+   ],
+   "answer": "a",
+   "hint": "Slope = rise/run = Δv/Δt.",
+   "explain": "Slope = Δv/Δt = acceleration."
+  }
+ ],
+ "takeaways": [
+  "The slope of a v–t graph is the acceleration.",
+  "**v_f = v_i + at** is the straight line on that graph."
+ ]
+}

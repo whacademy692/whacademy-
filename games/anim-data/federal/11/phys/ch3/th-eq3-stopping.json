@@ -1,0 +1,450 @@
+{
+ "id": "g11-phys-c3-th-eq3-stopping",
+ "title": "Third equation of motion: stopping distance of a braking car",
+ "summary": "Watch a car brake to rest: v² = v_i² + 2aS gives the stopping distance S = v_i²/2a.",
+ "alt": "A car on a road braking uniformly with its speed arrow shrinking until it stops.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -0.5,
+   16.5
+  ],
+  "y": [
+   -1.2,
+   6.6
+  ],
+  "ratio": 2.1795,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": true
+  },
+  "acc": {
+   "label": "Acceleration",
+   "color": "#ea580c",
+   "text": "Acceleration.",
+   "legend": true
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": true
+  },
+  "tim": {
+   "label": "Time",
+   "color": "#7c3aed",
+   "text": "Time.",
+   "legend": false
+  },
+  "m1": {
+   "label": "Object 1",
+   "color": "#2563eb",
+   "text": "The first object.",
+   "legend": true
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "vi",
+   "label": "Starting speed v_i (m/s)",
+   "type": "number",
+   "min": 10,
+   "max": 30,
+   "step": 5,
+   "default": 20,
+   "unit": "m/s",
+   "role": "vel"
+  },
+  {
+   "id": "br",
+   "label": "Braking deceleration (m/s²)",
+   "type": "number",
+   "min": 2,
+   "max": 8,
+   "step": 1,
+   "default": 5,
+   "unit": "m/s²",
+   "role": "acc"
+  },
+  {
+   "id": "pr",
+   "label": "Braking progress",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0,
+   "role": "tim"
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 4,
+   "step": 0.01,
+   "default": 4,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "S": "vi*vi/(2*br)",
+  "T": "vi/br",
+  "pp": "2*pr-pr*pr",
+  "vn": "vi*(1-pr)",
+  "dn": "S*(2*pr-pr*pr)"
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "road",
+   "from": [
+    -0.3,
+    1.4
+   ],
+   "to": [
+    16.3,
+    1.4
+   ],
+   "role": "wall",
+   "strokeWidth": 3
+  },
+  {
+   "type": "segment",
+   "id": "ruler",
+   "from": [
+    1.9,
+    0.6
+   ],
+   "to": [
+    12.4,
+    0.6
+   ],
+   "role": "dis",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "t48",
+   "at": [
+    7.9,
+    0.0
+   ],
+   "text": "stopping distance S = vᵢ² / 2a = {{S|1}} m",
+   "role": "dis",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s49",
+   "from": [
+    1.9,
+    0.45
+   ],
+   "to": [
+    1.9,
+    0.75
+   ],
+   "role": "dis",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "segment",
+   "id": "s50",
+   "from": [
+    12.4,
+    0.45
+   ],
+   "to": [
+    12.4,
+    0.75
+   ],
+   "role": "dis",
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "rect",
+   "id": "car",
+   "x": "1.0+10.5*pp",
+   "y": 1.65,
+   "w": 1.8,
+   "h": 0.9,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.35,
+   "strokeWidth": 2
+  },
+  {
+   "type": "circle",
+   "id": "c51",
+   "c": [
+    "1.0+10.5*pp+0.4",
+    1.5
+   ],
+   "r": 0.17,
+   "role": "wall",
+   "fill": "wall",
+   "fillOpacity": 0.7,
+   "strokeWidth": 1.5
+  },
+  {
+   "type": "circle",
+   "id": "c52",
+   "c": [
+    "1.0+10.5*pp+1.4",
+    1.5
+   ],
+   "r": 0.17,
+   "role": "wall",
+   "fill": "wall",
+   "fillOpacity": 0.7,
+   "strokeWidth": 1.5
+  },
+  {
+   "type": "vector",
+   "id": "va",
+   "from": [
+    "1.0+10.5*pp+1.8",
+    3.3
+   ],
+   "to": [
+    "1.0+10.5*pp+1.8+0.13*vn",
+    3.3
+   ],
+   "role": "vel",
+   "strokeWidth": 5,
+   "visible": "vn>0.4"
+  },
+  {
+   "type": "text",
+   "id": "t53",
+   "at": [
+    "1.0+10.5*pp+1.8+0.065*vn",
+    3.95
+   ],
+   "text": "v = {{vn|1}} m/s",
+   "role": "vel",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s54",
+   "from": [
+    1.9,
+    1.4
+   ],
+   "to": [
+    1.9,
+    2.2
+   ],
+   "role": "wall",
+   "strokeWidth": 1.5,
+   "dash": [
+    3,
+    3
+   ]
+  },
+  {
+   "type": "text",
+   "id": "t55",
+   "at": [
+    8.0,
+    5.7
+   ],
+   "text": "v² = vᵢ² + 2aS  with  v = 0, a = −{{br|0}}",
+   "role": "acc",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t56",
+   "at": [
+    8.0,
+    4.85
+   ],
+   "text": "S = vᵢ² / 2a = {{vi|0}}² / (2×{{br|0}}) = {{S|1}} m",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A car brakes",
+   "text": "A car moves at \\( v_i \\) and brakes with a constant deceleration. Press play and watch the speed arrow shrink.",
+   "actions": [
+    {
+     "set": {
+      "lv": 0,
+      "pr": 0,
+      "vi": 20,
+      "br": 5
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Brake to rest",
+   "text": "The car slows uniformly and stops after time \\( T = v_i/a = {{T|1}} \\) s, having covered the distance S.",
+   "actions": [
+    {
+     "set": {
+      "lv": 1
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "pr": 1
+     },
+     "at": 0,
+     "dur": 6500
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "No time needed",
+   "text": "Eliminating time from the first two equations gives \\( v_f^2 = v_i^2 + 2aS \\). The car stops, so \\( v_f = 0 \\) and \\( a \\) is negative.",
+   "actions": [
+    {
+     "set": {
+      "lv": 2,
+      "pr": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Stopping distance",
+   "text": "\\( S = \\dfrac{v_i^2}{2a} = {{S|1}} \\) m. **Double the speed and the distance becomes four times as large.**",
+   "actions": [
+    {
+     "set": {
+      "lv": 3,
+      "pr": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Try a wet road",
+   "text": "A smaller braking deceleration (wet road) means a longer stopping distance. Change the sliders and play again.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3,
+      "pr": 0,
+      "br": 3
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "pr": 1
+     },
+     "at": 400,
+     "dur": 6500
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Now",
+   "value": "{{vn|1}} m/s",
+   "role": "vel"
+  },
+  {
+   "label": "Gone",
+   "value": "{{dn|1}} m",
+   "role": "dis"
+  },
+  {
+   "label": "S",
+   "value": "{{S|1}} m",
+   "role": "dis"
+  },
+  {
+   "label": "Time",
+   "value": "{{T|1}} s",
+   "role": "tim"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Third equation of motion",
+   "tex": "v_f^2 = v_i^2 + 2aS \\;\\Rightarrow\\; S = \\dfrac{v_i^2}{2a}\\ (v_f = 0)",
+   "text": "Use it when time is not involved."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A car at 30 m/s brakes at 7 m/s². Find the stopping distance (m).",
+   "answer": 64.3,
+   "hint": "S = v_i²/2a.",
+   "explain": "\\( 900/14 = 64.3 \\) m.",
+   "tolerance": 0.1,
+   "unit": "m"
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "The speed is doubled with the same braking. The stopping distance becomes:",
+   "options": [
+    {
+     "id": "a",
+     "label": "2 times"
+    },
+    {
+     "id": "b",
+     "label": "4 times"
+    },
+    {
+     "id": "c",
+     "label": "8 times"
+    }
+   ],
+   "answer": "b",
+   "hint": "S is proportional to v_i².",
+   "explain": "\\( S \\propto v_i^2 \\), so doubling v_i multiplies S by 4."
+  }
+ ],
+ "takeaways": [
+  "**2aS = v_f² − v_i²**: no time needed.",
+  "Stopping distance ∝ v_i²."
+ ]
+}

@@ -1,0 +1,340 @@
+{
+ "id": "g11-phys-c3-as-3-2a",
+ "title": "Assignment 3.2 (a) · Height of the tower",
+ "summary": "Dropped from rest: h = ½ g t², and the mass does not matter.",
+ "alt": "A 1 kg ball is dropped from the top of the leaning tower of Pisa. The ball reaches the ground in 3.34 s. Find the height of the tower.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": false
+  },
+  "acc": {
+   "label": "Acceleration",
+   "color": "#ea580c",
+   "text": "Acceleration.",
+   "legend": false
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": false
+  },
+  "tim": {
+   "label": "Time",
+   "color": "#7c3aed",
+   "text": "Time.",
+   "legend": false
+  },
+  "grav": {
+   "label": "Gravity (g)",
+   "color": "#dc2626",
+   "text": "The acceleration due to gravity, g = 9.8 m s-2 downward.",
+   "legend": false
+  },
+  "m1": {
+   "label": "Object 1",
+   "color": "#2563eb",
+   "text": "The first object.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "s386",
+   "from": [
+    0.6,
+    7.2
+   ],
+   "to": [
+    12.3,
+    7.2
+   ],
+   "role": "wall",
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "rect",
+   "id": "r387",
+   "x": 2.0,
+   "y": 7.2,
+   "w": 2.0,
+   "h": 6.0,
+   "role": "wall",
+   "fill": "wall",
+   "fillOpacity": 0.12,
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t388",
+   "at": [
+    3.0,
+    14.0
+   ],
+   "text": "tower",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "circle",
+   "id": "c389",
+   "c": [
+    3.0,
+    13.5
+   ],
+   "r": 0.38,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t390",
+   "at": [
+    6.0,
+    13.5
+   ],
+   "text": "dropped, v_i = 0",
+   "role": "vel",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "v391",
+   "from": [
+    5.2,
+    13.2
+   ],
+   "to": [
+    5.2,
+    7.4
+   ],
+   "role": "dis",
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t392",
+   "at": [
+    6.7,
+    10.3
+   ],
+   "text": "h = ?",
+   "role": "dis",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "circle",
+   "id": "c393",
+   "c": [
+    3.0,
+    7.6000000000000005
+   ],
+   "r": 0.38,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t394",
+   "at": [
+    8.9,
+    8.2
+   ],
+   "text": "t = 3.34 s",
+   "role": "tim",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "v395",
+   "from": [
+    11.4,
+    12.8
+   ],
+   "to": [
+    11.4,
+    10.8
+   ],
+   "role": "grav",
+   "strokeWidth": 3.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t396",
+   "at": [
+    11.0,
+    13.5
+   ],
+   "text": "g",
+   "role": "grav",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t397",
+   "at": [
+    6.45,
+    5.55
+   ],
+   "text": "h = v_i t + ½ g t² = ½ g t²",
+   "role": "dis",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t398",
+   "at": [
+    6.45,
+    4.6
+   ],
+   "text": "h = ½(9.8)(3.34)² = 4.9 × 11.16",
+   "role": "acc",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r399",
+   "x": 0.6,
+   "y": 0.75,
+   "w": 11.7,
+   "h": 1.1,
+   "role": "ans",
+   "fill": "ans",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "t400",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "h = 54.7 m",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Given",
+   "text": "Dropped, so **v_i = 0**. **t = 3.34 s**, **g = 9.8 m s⁻²** (downward is positive). The 1 kg mass is not needed.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Choose the equation",
+   "text": "Use the 2nd equation: \\( h = v_i t + \\tfrac12 g t^2 \\), with \\( v_i = 0 \\).",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Substitute",
+   "text": "\\( h = \\tfrac12(9.8)(3.34)^2 = 4.9\\times11.16 \\).",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Answer",
+   "text": "\\( h = 54.7 \\) m.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Free fall from rest",
+   "tex": "h = \\tfrac12 g t^2",
+   "text": "The mass cancels: all bodies fall with the same g."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A stone dropped from a bridge takes 2 s to reach the water. Find the height (m). Use g = 9.8.",
+   "answer": 19.6,
+   "hint": "h = ½ g t².",
+   "explain": "\\( \\tfrac12(9.8)(4) = 19.6 \\) m.",
+   "tolerance": 0.196,
+   "unit": "m"
+  }
+ ],
+ "takeaways": [
+  "Free fall from rest: **h = ½ g t²**.",
+  "Mass does not matter."
+ ]
+}

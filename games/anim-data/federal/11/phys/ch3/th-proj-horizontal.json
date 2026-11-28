@@ -1,0 +1,463 @@
+{
+ "id": "g11-phys-c3-th-proj-horizontal",
+ "title": "Horizontal projectile: time of flight and range",
+ "summary": "A body launched sideways from a height H falls for T = √(2H/g) and lands R = v_x T away.",
+ "alt": "A cliff with a ball thrown horizontally, its parabolic path, the horizontal, vertical and resultant velocity arrows.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -1.0,
+   13.4
+  ],
+  "y": [
+   -0.3,
+   11.4
+  ],
+  "ratio": 1.2308,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": true
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": true
+  },
+  "tim": {
+   "label": "Time",
+   "color": "#7c3aed",
+   "text": "Time.",
+   "legend": false
+  },
+  "grav": {
+   "label": "Gravity (g)",
+   "color": "#dc2626",
+   "text": "The acceleration due to gravity, g = 9.8 m s-2 downward.",
+   "legend": true
+  },
+  "m1": {
+   "label": "Object 1",
+   "color": "#2563eb",
+   "text": "The first object.",
+   "legend": true
+  },
+  "hx": {
+   "label": "Horizontal part",
+   "color": "#0891b2",
+   "text": "The horizontal (x) component.",
+   "legend": true
+  },
+  "vy": {
+   "label": "Vertical part",
+   "color": "#c026d3",
+   "text": "The vertical (y) component.",
+   "legend": true
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "vx",
+   "label": "Launch speed v_x (m/s)",
+   "type": "number",
+   "min": 5,
+   "max": 15,
+   "step": 1,
+   "default": 10,
+   "unit": "m/s",
+   "role": "hx"
+  },
+  {
+   "id": "H",
+   "label": "Height H (m)",
+   "type": "number",
+   "min": 10,
+   "max": 40,
+   "step": 5,
+   "default": 20,
+   "unit": "m",
+   "role": "dis"
+  },
+  {
+   "id": "ph",
+   "label": "Flight progress",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.005,
+   "default": 0,
+   "role": "tim"
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 4,
+   "step": 0.01,
+   "default": 4,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "T": "sqrt(2*H/9.8)",
+  "R": "vx*T",
+  "ks": "min(10.5/R,8.4/H)",
+  "tt": "ph*T",
+  "x": "vx*tt",
+  "y": "H-4.9*tt*tt",
+  "vy": "9.8*tt",
+  "v": "hypot(vx,vy)",
+  "an": "atan2(vy,vx)"
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ground",
+   "from": [
+    -0.5,
+    2.4
+   ],
+   "to": [
+    13.2,
+    2.4
+   ],
+   "role": "wall",
+   "strokeWidth": 3
+  },
+  {
+   "type": "rect",
+   "id": "cliff",
+   "x": -0.8,
+   "y": 2.4,
+   "w": 2.0,
+   "h": "ks*H",
+   "role": "wall",
+   "fill": "wall",
+   "fillOpacity": 0.18,
+   "strokeWidth": 2
+  },
+  {
+   "type": "plot",
+   "id": "path",
+   "role": "dis",
+   "strokeWidth": 2.2,
+   "domain": [
+    0,
+    1
+   ],
+   "x": "1.2+ks*vx*T*u",
+   "y": "2.4+ks*(H-4.9*(T*u)^2)",
+   "var": "u",
+   "dash": [
+    5,
+    4
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "hline",
+   "from": [
+    0.85,
+    2.4
+   ],
+   "to": [
+    0.85,
+    "2.4+ks*H"
+   ],
+   "role": "dis",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t139",
+   "at": [
+    0.19999999999999996,
+    "2.4+ks*H/2"
+   ],
+   "text": "H",
+   "role": "dis",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "ball",
+   "c": [
+    "1.2+ks*x",
+    "2.4+ks*y"
+   ],
+   "r": 0.3,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.6,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "vector",
+   "id": "avx",
+   "from": [
+    "1.2+ks*x",
+    "2.4+ks*y"
+   ],
+   "to": [
+    "1.2+ks*x+0.08*vx",
+    "2.4+ks*y"
+   ],
+   "role": "hx",
+   "strokeWidth": 4.5
+  },
+  {
+   "type": "vector",
+   "id": "avy",
+   "from": [
+    "1.2+ks*x",
+    "2.4+ks*y"
+   ],
+   "to": [
+    "1.2+ks*x",
+    "2.4+ks*y-0.07*vy"
+   ],
+   "role": "vy",
+   "strokeWidth": 4.5,
+   "visible": "lv>=2&&vy>0.5&&ph<0.97"
+  },
+  {
+   "type": "vector",
+   "id": "avr",
+   "from": [
+    "1.2+ks*x",
+    "2.4+ks*y"
+   ],
+   "to": [
+    "1.2+ks*x+0.08*vx",
+    "2.4+ks*y-0.07*vy"
+   ],
+   "role": "vel",
+   "strokeWidth": 4.5,
+   "visible": "lv>=2&&vy>0.5&&ph<0.97"
+  },
+  {
+   "type": "segment",
+   "id": "rule",
+   "from": [
+    1.2,
+    2.1
+   ],
+   "to": [
+    "1.2+ks*R",
+    2.1
+   ],
+   "role": "dis",
+   "strokeWidth": 2.5,
+   "visible": "lv>=3"
+  },
+  {
+   "type": "text",
+   "id": "t140",
+   "at": [
+    "1.2+ks*R/2",
+    1.55
+   ],
+   "text": "R = v_x T = {{R|1}} m",
+   "role": "dis",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3"
+  },
+  {
+   "type": "text",
+   "id": "t141",
+   "at": [
+    "1.2+ks*R/2",
+    0.75
+   ],
+   "text": "T = √(2H/g) = {{T|2}} s",
+   "role": "tim",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Launch sideways",
+   "text": "A ball leaves the edge of a cliff of height \\( H \\) with a **horizontal** velocity \\( v_x \\). Initially there is no vertical velocity.",
+   "actions": [
+    {
+     "set": {
+      "lv": 0,
+      "ph": 0,
+      "vx": 10,
+      "H": 20
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "A parabola",
+   "text": "The ball moves along the right branch of a parabola: constant speed sideways, free fall downward.",
+   "actions": [
+    {
+     "set": {
+      "lv": 1,
+      "vx": 10,
+      "H": 20
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "ph": 1
+     },
+     "at": 0,
+     "dur": 5500
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Components in flight",
+   "text": "At each point the **teal** arrow \\( v_x \\) never changes, while the **pink** arrow \\( v_y = g t \\) keeps growing. The **blue** resultant \\( v = \\sqrt{v_x^2 + v_y^2} \\) tilts steeper.",
+   "actions": [
+    {
+     "set": {
+      "lv": 2,
+      "ph": 0.6,
+      "vx": 10,
+      "H": 20
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Time and range",
+   "text": "The fall alone fixes the time: \\( H = \\tfrac12 g T^2 \\Rightarrow T = \\sqrt{2H/g} = {{T|2}} \\) s. Then \\( R = v_x T = {{R|1}} \\) m.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3,
+      "ph": 1,
+      "vx": 10,
+      "H": 20
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "A higher cliff",
+   "text": "Raise \\( H \\) to 40 m: the fall takes longer, so the same \\( v_x \\) carries the ball farther.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3,
+      "ph": 0,
+      "vx": 10,
+      "H": 40
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "ph": 1
+     },
+     "at": 300,
+     "dur": 5500
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "T",
+   "value": "{{T|2}} s",
+   "role": "tim"
+  },
+  {
+   "label": "R",
+   "value": "{{R|1}} m",
+   "role": "dis"
+  },
+  {
+   "label": "v",
+   "value": "{{v|1}} m/s",
+   "role": "vel"
+  },
+  {
+   "label": "Below horizontal",
+   "value": "{{an|0}}°",
+   "role": "ang"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Horizontal projectile",
+   "tex": "\\role{tim}{T} = \\sqrt{\\dfrac{2H}{g}},\\quad \\role{dis}{R} = \\role{hx}{v_x}\\,T",
+   "text": "v_y = g t, v = √(v_x² + v_y²)."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A ball is thrown horizontally at 10 m/s from a height of 19.6 m. Find the range R (m). Use g = 9.8.",
+   "answer": 20,
+   "hint": "T = √(2H/g), then R = v_x T.",
+   "explain": "\\( T = \\sqrt{2(19.6)/9.8} = 2 \\) s, so \\( R = 10\\times2 = 20 \\) m.",
+   "tolerance": 0.1,
+   "unit": "m"
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "The launch speed v_x is doubled (same height). The time of flight:",
+   "options": [
+    {
+     "id": "a",
+     "label": "Doubles"
+    },
+    {
+     "id": "b",
+     "label": "Stays the same"
+    },
+    {
+     "id": "c",
+     "label": "Halves"
+    }
+   ],
+   "answer": "b",
+   "hint": "T depends only on H.",
+   "explain": "T = √(2H/g) has no v_x in it."
+  }
+ ],
+ "takeaways": [
+  "T = √(2H/g); R = v_x T.",
+  "v_x stays constant; only v_y changes."
+ ]
+}

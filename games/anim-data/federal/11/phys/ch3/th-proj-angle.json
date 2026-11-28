@@ -1,0 +1,520 @@
+{
+ "id": "g11-phys-c3-th-proj-angle",
+ "title": "Projectile at an angle: components, height, time and range",
+ "summary": "Resolve v_i into v_i cosθ and v_i sinθ, then follow H, T and R as the ball flies.",
+ "alt": "A ball launched at an angle with its parabolic path, velocity components, maximum height and range marked.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -0.8,
+   13.4
+  ],
+  "y": [
+   -0.4,
+   8.4
+  ],
+  "ratio": 1.6136,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": true
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": true
+  },
+  "tim": {
+   "label": "Time",
+   "color": "#7c3aed",
+   "text": "Time.",
+   "legend": false
+  },
+  "m1": {
+   "label": "Object 1",
+   "color": "#2563eb",
+   "text": "The first object.",
+   "legend": true
+  },
+  "hx": {
+   "label": "Horizontal part",
+   "color": "#0891b2",
+   "text": "The horizontal (x) component.",
+   "legend": true
+  },
+  "vy": {
+   "label": "Vertical part",
+   "color": "#c026d3",
+   "text": "The vertical (y) component.",
+   "legend": true
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "An angle.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "vi",
+   "label": "Launch speed v_i (m/s)",
+   "type": "number",
+   "min": 10,
+   "max": 30,
+   "step": 5,
+   "default": 20,
+   "unit": "m/s",
+   "role": "vel"
+  },
+  {
+   "id": "th",
+   "label": "Launch angle θ (°)",
+   "type": "number",
+   "min": 10,
+   "max": 80,
+   "step": 5,
+   "default": 30,
+   "unit": "°",
+   "role": "ang"
+  },
+  {
+   "id": "ph",
+   "label": "Flight progress",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.005,
+   "default": 0,
+   "role": "tim"
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 5,
+   "step": 0.01,
+   "default": 5,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "vx": "vi*cos(th)",
+  "vy0": "vi*sin(th)",
+  "T": "2*vy0/9.8",
+  "H": "vy0*vy0/19.6",
+  "R": "vi*vi*sin(2*th)/9.8",
+  "ks": "min(11.6/R,5.6/H)",
+  "tt": "ph*T",
+  "x": "vx*tt",
+  "y": "vy0*tt-4.9*tt*tt",
+  "vy": "vy0-9.8*tt",
+  "v": "hypot(vx,vy)"
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ground",
+   "from": [
+    -0.5,
+    1.8
+   ],
+   "to": [
+    13.2,
+    1.8
+   ],
+   "role": "wall",
+   "strokeWidth": 3
+  },
+  {
+   "type": "plot",
+   "id": "path",
+   "role": "dis",
+   "strokeWidth": 2.2,
+   "domain": [
+    0,
+    1
+   ],
+   "x": "0.6+ks*vx*T*u",
+   "y": "1.8+ks*(vy0*T*u-4.9*(T*u)^2)",
+   "var": "u",
+   "dash": [
+    5,
+    4
+   ]
+  },
+  {
+   "type": "arc",
+   "id": "a142",
+   "c": [
+    0.6,
+    1.8
+   ],
+   "r": 1.1,
+   "from": 0,
+   "to": "th",
+   "role": "ang",
+   "strokeWidth": 2.5,
+   "visible": "ph<0.04"
+  },
+  {
+   "type": "text",
+   "id": "t143",
+   "at": [
+    2.5,
+    2.35
+   ],
+   "text": "θ",
+   "role": "ang",
+   "size": "s",
+   "bold": true,
+   "visible": "ph<0.04"
+  },
+  {
+   "type": "circle",
+   "id": "ball",
+   "c": [
+    "0.6+ks*x",
+    "1.8+ks*y"
+   ],
+   "r": 0.22,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.6,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "vector",
+   "id": "avx",
+   "from": [
+    "0.6+ks*x",
+    "1.8+ks*y"
+   ],
+   "to": [
+    "0.6+ks*x+0.075*vx",
+    "1.8+ks*y"
+   ],
+   "role": "hx",
+   "strokeWidth": 4.5
+  },
+  {
+   "type": "vector",
+   "id": "avy",
+   "from": [
+    "0.6+ks*x",
+    "1.8+ks*y"
+   ],
+   "to": [
+    "0.6+ks*x",
+    "1.8+ks*y+0.075*vy"
+   ],
+   "role": "vy",
+   "strokeWidth": 4.5,
+   "visible": "abs(vy)>0.4"
+  },
+  {
+   "type": "vector",
+   "id": "avr",
+   "from": [
+    "0.6+ks*x",
+    "1.8+ks*y"
+   ],
+   "to": [
+    "0.6+ks*x+0.075*vx",
+    "1.8+ks*y+0.075*vy"
+   ],
+   "role": "vel",
+   "strokeWidth": 4.5
+  },
+  {
+   "type": "segment",
+   "id": "s144",
+   "from": [
+    "0.6+ks*R/2",
+    1.8
+   ],
+   "to": [
+    "0.6+ks*R/2",
+    "1.8+ks*H"
+   ],
+   "role": "dis",
+   "strokeWidth": 2,
+   "dash": [
+    5,
+    4
+   ],
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t145",
+   "at": [
+    "0.6+ks*R/2+0.6",
+    "1.8+ks*H/2"
+   ],
+   "text": "H",
+   "role": "dis",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "segment",
+   "id": "s146",
+   "from": [
+    0.6,
+    1.48
+   ],
+   "to": [
+    "0.6+ks*R",
+    1.48
+   ],
+   "role": "dis",
+   "strokeWidth": 2.5,
+   "visible": "lv>=3"
+  },
+  {
+   "type": "text",
+   "id": "t147",
+   "at": [
+    "0.6+ks*R/2",
+    1.05
+   ],
+   "text": "R",
+   "role": "dis",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3"
+  },
+  {
+   "type": "text",
+   "id": "t148",
+   "at": [
+    6.6,
+    0.95
+   ],
+   "text": "H = vᵢ² sin²θ / 2g = {{H|1}} m",
+   "role": "dis",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t149",
+   "at": [
+    6.6,
+    0.25
+   ],
+   "text": "R = vᵢ² sin2θ / g = {{R|1}} m,   T = {{T|2}} s",
+   "role": "dis",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Resolve the launch velocity",
+   "text": "A ball is launched at speed \\( v_i \\) and angle \\( \\theta \\). Split it: \\( v_x = v_i\\cos\\theta = {{vx|1}} \\) and \\( v_{y0} = v_i\\sin\\theta = {{vy0|1}} \\) m s⁻¹.",
+   "actions": [
+    {
+     "set": {
+      "lv": 0,
+      "ph": 0,
+      "vi": 20,
+      "th": 30
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Rising",
+   "text": "Gravity pulls only vertically: \\( v_y \\) shrinks while \\( v_x \\) stays the same.",
+   "actions": [
+    {
+     "set": {
+      "lv": 1,
+      "vi": 20,
+      "th": 30
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "ph": 0.5
+     },
+     "at": 0,
+     "dur": 3200
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Highest point",
+   "text": "At the top \\( v_y = 0 \\), so the velocity is **horizontal** (\\( v = v_x \\)). \\( H = \\dfrac{v_i^2\\sin^2\\theta}{2g} = {{H|1}} \\) m.",
+   "actions": [
+    {
+     "set": {
+      "lv": 2,
+      "ph": 0.5,
+      "vi": 20,
+      "th": 30
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Landing",
+   "text": "The flight is symmetric: \\( T = \\dfrac{2v_i\\sin\\theta}{g} = {{T|2}} \\) s and \\( R = \\dfrac{v_i^2\\sin2\\theta}{g} = {{R|1}} \\) m.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3,
+      "vi": 20,
+      "th": 30
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "ph": 1
+     },
+     "at": 0,
+     "dur": 3200
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Try 45°",
+   "text": "At \\( \\theta = 45^\\circ \\) the range is greatest. Drag the sliders to explore \\( v_i \\) and \\( \\theta \\).",
+   "actions": [
+    {
+     "set": {
+      "lv": 3,
+      "ph": 0,
+      "vi": 20,
+      "th": 45
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "ph": 1
+     },
+     "at": 300,
+     "dur": 4500
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "H",
+   "value": "{{H|1}} m",
+   "role": "dis"
+  },
+  {
+   "label": "T",
+   "value": "{{T|2}} s",
+   "role": "tim"
+  },
+  {
+   "label": "R",
+   "value": "{{R|1}} m",
+   "role": "dis"
+  },
+  {
+   "label": "v_x",
+   "value": "{{vx|1}} m/s",
+   "role": "hx"
+  },
+  {
+   "label": "v_y",
+   "value": "{{vy|1}} m/s",
+   "role": "vy"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Projectile at an angle",
+   "tex": "H = \\dfrac{v_i^2\\sin^2\\theta}{2g},\\quad T = \\dfrac{2v_i\\sin\\theta}{g},\\quad R = \\dfrac{v_i^2\\sin 2\\theta}{g}",
+   "text": "v_x = v_i cosθ (constant), v_y = v_i sinθ − g t."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A ball is launched at 20 m/s at 30°. Find the range R (m). Use g = 9.8.",
+   "answer": 35.3,
+   "hint": "R = v_i² sin2θ / g.",
+   "explain": "\\( 400\\sin60^\\circ/9.8 = 35.3 \\) m.",
+   "tolerance": 0.1,
+   "unit": "m"
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "For the same launch, find the maximum height H (m).",
+   "answer": 5.1,
+   "hint": "H = (v_i sinθ)² / 2g.",
+   "explain": "\\( 10^2/19.6 = 5.1 \\) m.",
+   "tolerance": 0.05,
+   "unit": "m"
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "At the highest point of the path, the velocity of the projectile is:",
+   "options": [
+    {
+     "id": "a",
+     "label": "Zero"
+    },
+    {
+     "id": "b",
+     "label": "Horizontal, equal to v_x"
+    },
+    {
+     "id": "c",
+     "label": "Vertical, equal to v_y"
+    }
+   ],
+   "answer": "b",
+   "hint": "v_y = 0 at the top.",
+   "explain": "Only v_x remains, so the velocity is horizontal."
+  }
+ ],
+ "takeaways": [
+  "v_x = v_i cosθ is constant; v_y = v_i sinθ − gt.",
+  "H, T and R follow from the vertical and horizontal motions."
+ ]
+}

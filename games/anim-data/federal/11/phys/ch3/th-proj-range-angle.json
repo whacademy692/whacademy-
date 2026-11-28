@@ -1,0 +1,630 @@
+{
+ "id": "g11-phys-c3-th-proj-range-angle",
+ "title": "Range and angle: complementary angles give the same range",
+ "summary": "Launch at θ and at 90°−θ with the same speed: the paths differ but the range is the same, and 45° is best.",
+ "alt": "Two projectile paths at complementary angles landing at the same point, with a range-against-angle graph below.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -0.8,
+   14.2
+  ],
+  "y": [
+   -0.8,
+   11.6
+  ],
+  "ratio": 1.2097,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": true
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": true
+  },
+  "tim": {
+   "label": "Time",
+   "color": "#7c3aed",
+   "text": "Time.",
+   "legend": false
+  },
+  "m1": {
+   "label": "Object 1",
+   "color": "#2563eb",
+   "text": "The first object.",
+   "legend": true
+  },
+  "m2": {
+   "label": "Object 2",
+   "color": "#ea580c",
+   "text": "The second object.",
+   "legend": true
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "An angle.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "Allowed or correct.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "th",
+   "label": "Launch angle θ (°) (v_i = 20 m/s)",
+   "type": "number",
+   "min": 15,
+   "max": 75,
+   "step": 5,
+   "default": 30,
+   "unit": "°",
+   "role": "ang"
+  },
+  {
+   "id": "tm",
+   "label": "Time t (s)",
+   "type": "number",
+   "min": 0,
+   "max": 4,
+   "step": 0.05,
+   "default": 0,
+   "unit": "s",
+   "role": "tim"
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 4,
+   "step": 0.01,
+   "default": 4,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "vx1": "20.0*cos(th)",
+  "vy1": "20.0*sin(th)",
+  "vx2": "20.0*sin(th)",
+  "vy2": "20.0*cos(th)",
+  "T1": "2*vy1/9.8",
+  "T2": "2*vy2/9.8",
+  "R": "20.0*20.0*sin(2*th)/9.8",
+  "H1": "vy1*vy1/19.6",
+  "H2": "vy2*vy2/19.6",
+  "t1": "min(tm,T1)",
+  "t2": "min(tm,T2)"
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ground",
+   "from": [
+    -0.5,
+    6.6
+   ],
+   "to": [
+    13.2,
+    6.6
+   ],
+   "role": "wall",
+   "strokeWidth": 3
+  },
+  {
+   "type": "plot",
+   "id": "p1",
+   "role": "m1",
+   "strokeWidth": 2.4,
+   "domain": [
+    0,
+    1
+   ],
+   "x": "0.6+0.2*vx1*T1*u",
+   "y": "6.6+0.2*(vy1*T1*u-4.9*(T1*u)^2)",
+   "var": "u"
+  },
+  {
+   "type": "plot",
+   "id": "p2",
+   "role": "m2",
+   "strokeWidth": 2.4,
+   "domain": [
+    0,
+    1
+   ],
+   "x": "0.6+0.2*vx2*T2*u",
+   "y": "6.6+0.2*(vy2*T2*u-4.9*(T2*u)^2)",
+   "var": "u",
+   "visible": "lv>=1"
+  },
+  {
+   "type": "circle",
+   "id": "b1",
+   "c": [
+    "0.6+0.2*vx1*t1",
+    "6.6+0.2*(vy1*t1-4.9*t1*t1)"
+   ],
+   "r": 0.2,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.7,
+   "strokeWidth": 2
+  },
+  {
+   "type": "circle",
+   "id": "b2",
+   "c": [
+    "0.6+0.2*vx2*t2",
+    "6.6+0.2*(vy2*t2-4.9*t2*t2)"
+   ],
+   "r": 0.2,
+   "role": "m2",
+   "fill": "m2",
+   "fillOpacity": 0.7,
+   "strokeWidth": 2,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "text",
+   "id": "t184",
+   "at": [
+    8.6,
+    11.0
+   ],
+   "text": "θ = {{th|0}}°  (blue)",
+   "role": "m1",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t185",
+   "at": [
+    8.6,
+    10.3
+   ],
+   "text": "90° − θ = {{90-th|0}}°  (orange)",
+   "role": "m2",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "text",
+   "id": "t186",
+   "at": [
+    6.6,
+    5.95
+   ],
+   "text": "same range R = {{R|1}} m for both",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "vector",
+   "id": "v187",
+   "from": [
+    1.4,
+    0.9
+   ],
+   "to": [
+    10.5,
+    0.9
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "vector",
+   "id": "v188",
+   "from": [
+    1.4,
+    0.9
+   ],
+   "to": [
+    1.4,
+    5.1000000000000005
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t189",
+   "at": [
+    11.4,
+    0.9500000000000001
+   ],
+   "text": "θ (°)",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t190",
+   "at": [
+    1.7,
+    5.5
+   ],
+   "text": "R (m)",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t191",
+   "at": [
+    5.648,
+    0.4
+   ],
+   "text": "45",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t192",
+   "at": [
+    9.896,
+    0.4
+   ],
+   "text": "90",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t193",
+   "at": [
+    1.4,
+    0.4
+   ],
+   "text": "0",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true
+  },
+  {
+   "type": "plot",
+   "id": "gR",
+   "role": "dis",
+   "strokeWidth": 3,
+   "domain": [
+    1.4,
+    9.896
+   ],
+   "fn": "0.9 + 0.0878*(20.0*20.0*sin(2*((x-1.4)/0.0944))/9.8)",
+   "visible": "lv>=2"
+  },
+  {
+   "type": "circle",
+   "id": "c194",
+   "c": [
+    "1.4+0.0944*th",
+    "0.9+0.0878*R"
+   ],
+   "r": 0.17,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.9,
+   "strokeWidth": 1.5,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "circle",
+   "id": "c195",
+   "c": [
+    "1.4+0.0944*(90-th)",
+    "0.9+0.0878*R"
+   ],
+   "r": 0.17,
+   "role": "m2",
+   "fill": "m2",
+   "fillOpacity": 0.9,
+   "strokeWidth": 1.5,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "segment",
+   "id": "s196",
+   "from": [
+    "1.4+0.0944*th",
+    "0.9+0.0878*R"
+   ],
+   "to": [
+    "1.4+0.0944*(90-th)",
+    "0.9+0.0878*R"
+   ],
+   "role": "ans",
+   "strokeWidth": 1.5,
+   "dash": [
+    5,
+    4
+   ],
+   "visible": "lv>=2"
+  },
+  {
+   "type": "segment",
+   "id": "s197",
+   "from": [
+    "1.4+0.0944*th",
+    0.9
+   ],
+   "to": [
+    "1.4+0.0944*th",
+    "0.9+0.0878*R"
+   ],
+   "role": "m1",
+   "strokeWidth": 1.2,
+   "dash": [
+    3,
+    3
+   ],
+   "visible": "lv>=2"
+  },
+  {
+   "type": "segment",
+   "id": "s198",
+   "from": [
+    "1.4+0.0944*(90-th)",
+    0.9
+   ],
+   "to": [
+    "1.4+0.0944*(90-th)",
+    "0.9+0.0878*R"
+   ],
+   "role": "m2",
+   "strokeWidth": 1.2,
+   "dash": [
+    3,
+    3
+   ],
+   "visible": "lv>=2"
+  },
+  {
+   "type": "segment",
+   "id": "s199",
+   "from": [
+    5.648,
+    0.9
+   ],
+   "to": [
+    5.648,
+    4.48224
+   ],
+   "role": "ok",
+   "strokeWidth": 1.5,
+   "dash": [
+    6,
+    4
+   ],
+   "visible": "lv>=3"
+  },
+  {
+   "type": "text",
+   "id": "t200",
+   "at": [
+    7.848,
+    4.88224
+   ],
+   "text": "45°: R is greatest",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Launch at 30°",
+   "text": "A ball is launched at \\( v_i = 20 \\) m s⁻¹ and \\( \\theta = {{th|0}}^\\circ \\). Press play and note where it lands.",
+   "actions": [
+    {
+     "set": {
+      "lv": 0,
+      "tm": 0,
+      "th": 30
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "tm": 2.2
+     },
+     "at": 100,
+     "dur": 2600
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Complementary angle",
+   "text": "Now add the angle \\( 90^\\circ - \\theta = 60^\\circ \\): a **higher, longer** flight that lands at the **same point**.",
+   "actions": [
+    {
+     "set": {
+      "lv": 1,
+      "tm": 0,
+      "th": 30
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "tm": 4
+     },
+     "at": 100,
+     "dur": 5500
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Why the same range?",
+   "text": "Because \\( \\sin 2\\theta = \\sin(180^\\circ - 2\\theta) \\). The graph of \\( R \\) against \\( \\theta \\) is symmetric about 45°, so \\( \\theta \\) and \\( 90^\\circ - \\theta \\) share the same height on it.",
+   "actions": [
+    {
+     "set": {
+      "lv": 2,
+      "tm": 4,
+      "th": 30
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "The best angle",
+   "text": "The peak of the curve is at **45°**: \\( R_{max} = v_i^2/g \\). Move \\( \\theta \\) to 45° and the two paths merge.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3,
+      "tm": 0,
+      "th": 45
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "tm": 3
+     },
+     "at": 200,
+     "dur": 4200
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Highest and farthest",
+   "text": "At 45° the maximum height is \\( H = R/4 \\), so \\( R_{max} = 4H \\).",
+   "actions": [
+    {
+     "set": {
+      "lv": 3,
+      "tm": 3,
+      "th": 45
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "R",
+   "value": "{{R|1}} m",
+   "role": "dis"
+  },
+  {
+   "label": "H (θ)",
+   "value": "{{H1|1}} m",
+   "role": "m1"
+  },
+  {
+   "label": "H (90°−θ)",
+   "value": "{{H2|1}} m",
+   "role": "m2"
+  },
+  {
+   "label": "T (θ)",
+   "value": "{{T1|2}} s",
+   "role": "m1"
+  },
+  {
+   "label": "T (90°−θ)",
+   "value": "{{T2|2}} s",
+   "role": "m2"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Range and angle",
+   "tex": "R = \\dfrac{v_i^2\\sin 2\\theta}{g}",
+   "text": "R is the same for θ and 90°−θ; R is greatest at 45°, where R_max = v_i²/g = 4H."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "Which angle (in degrees) gives the same range as 25°, with the same launch speed?",
+   "answer": 65,
+   "hint": "Complementary: add to 90°.",
+   "explain": "\\( 90 - 25 = 65 \\).",
+   "tolerance": 0.1,
+   "unit": "°"
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "v_i = 20 m/s. Find the maximum possible range R_max (m). Use g = 9.8.",
+   "answer": 40.8,
+   "hint": "R_max at 45°: R = v_i²/g.",
+   "explain": "\\( 400/9.8 = 40.8 \\) m.",
+   "tolerance": 0.1,
+   "unit": "m"
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "For a fixed launch speed, which angle gives the greatest range?",
+   "options": [
+    {
+     "id": "a",
+     "label": "30°"
+    },
+    {
+     "id": "b",
+     "label": "45°"
+    },
+    {
+     "id": "c",
+     "label": "60°"
+    }
+   ],
+   "answer": "b",
+   "hint": "sin2θ is largest when 2θ = 90°.",
+   "explain": "\\( \\sin2\\theta = 1 \\) at \\( \\theta = 45^\\circ \\)."
+  }
+ ],
+ "takeaways": [
+  "θ and 90°−θ give the same range.",
+  "45° gives the greatest range, R_max = v_i²/g = 4H."
+ ]
+}

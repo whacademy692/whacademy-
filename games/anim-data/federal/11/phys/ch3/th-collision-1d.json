@@ -1,0 +1,680 @@
+{
+ "id": "g11-phys-c3-th-collision-1d",
+ "title": "One-dimensional collisions: elastic and perfectly inelastic",
+ "summary": "Momentum is conserved in every collision; kinetic energy is conserved only when the collision is elastic.",
+ "alt": "Two blocks that collide and either bounce apart or stick together, with velocity arrows and kinetic-energy bars before and after.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -0.5,
+   14.5
+  ],
+  "y": [
+   -2.9,
+   8.8
+  ],
+  "ratio": 1.2821,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": true
+  },
+  "tim": {
+   "label": "Time",
+   "color": "#7c3aed",
+   "text": "Time.",
+   "legend": false
+  },
+  "mom": {
+   "label": "Momentum",
+   "color": "#0891b2",
+   "text": "Momentum p = mv.",
+   "legend": true
+  },
+  "ke": {
+   "label": "Kinetic energy",
+   "color": "#d97706",
+   "text": "Kinetic energy.",
+   "legend": true
+  },
+  "m1": {
+   "label": "Object 1",
+   "color": "#2563eb",
+   "text": "The first object.",
+   "legend": true
+  },
+  "m2": {
+   "label": "Object 2",
+   "color": "#ea580c",
+   "text": "The second object.",
+   "legend": true
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "Allowed or correct.",
+   "legend": false
+  },
+  "no": {
+   "label": "Wrong / zero",
+   "color": "#e11d48",
+   "text": "Wrong, impossible or lost.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "m1",
+   "label": "Mass m₁ (kg)",
+   "type": "number",
+   "min": 1,
+   "max": 10,
+   "step": 1,
+   "default": 5,
+   "unit": "kg",
+   "role": "m1"
+  },
+  {
+   "id": "m2",
+   "label": "Mass m₂ (kg)",
+   "type": "number",
+   "min": 1,
+   "max": 10,
+   "step": 1,
+   "default": 10,
+   "unit": "kg",
+   "role": "m2"
+  },
+  {
+   "id": "u1",
+   "label": "Velocity u₁ before (m/s)",
+   "type": "number",
+   "min": 1,
+   "max": 12,
+   "step": 1,
+   "default": 10,
+   "unit": "m/s",
+   "role": "m1"
+  },
+  {
+   "id": "u2",
+   "label": "Velocity u₂ before (m/s)",
+   "type": "number",
+   "min": -4,
+   "max": 8,
+   "step": 1,
+   "default": 5,
+   "unit": "m/s",
+   "role": "m2"
+  },
+  {
+   "id": "mode",
+   "label": "Type: 0 = elastic, 1 = perfectly inelastic",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 1,
+   "default": 0,
+   "role": "ke"
+  },
+  {
+   "id": "pr",
+   "label": "Time (collision at 1)",
+   "type": "number",
+   "min": 0,
+   "max": 2,
+   "step": 0.01,
+   "default": 0,
+   "role": "tim"
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 5,
+   "step": 0.01,
+   "default": 5,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "u2e": "min(u2,u1-1)",
+  "M": "m1+m2",
+  "v1e": "((m1-m2)*u1+2*m2*u2e)/M",
+  "v2e": "((m2-m1)*u2e+2*m1*u1)/M",
+  "vc": "(m1*u1+m2*u2e)/M",
+  "v1f": "if(mode==0,v1e,vc)",
+  "v2f": "if(mode==0,v2e,vc)",
+  "vel1": "if(pr<1,u1,v1f)",
+  "vel2": "if(pr<1,u2e,v2f)",
+  "w1": "0.8+0.42*sqrt(m1)",
+  "w2": "0.8+0.42*sqrt(m2)",
+  "xr1": "clamp(7+0.38*vel1*(pr-1),0.2,14.2)",
+  "xl2": "clamp(7+0.38*vel2*(pr-1),0.2,14.2)",
+  "KEb": "0.5*m1*u1*u1+0.5*m2*u2e*u2e",
+  "KEa": "0.5*m1*v1f*v1f+0.5*m2*v2f*v2f",
+  "pb": "m1*u1+m2*u2e",
+  "pa": "m1*v1f+m2*v2f",
+  "keep": "100*KEa/KEb",
+  "apr": "u1-u2e",
+  "sep": "v2f-v1f"
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ground",
+   "from": [
+    -0.3,
+    3.0
+   ],
+   "to": [
+    14.3,
+    3.0
+   ],
+   "role": "wall",
+   "strokeWidth": 3
+  },
+  {
+   "type": "rect",
+   "id": "b1",
+   "x": "xr1-w1",
+   "y": 3.0,
+   "w": "w1",
+   "h": 1.2,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "rect",
+   "id": "b2",
+   "x": "xl2",
+   "y": 3.0,
+   "w": "w2",
+   "h": 1.2,
+   "role": "m2",
+   "fill": "m2",
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "t241",
+   "at": [
+    "xr1-w1/2",
+    3.6
+   ],
+   "text": "{{m1|0}} kg",
+   "role": "m1",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t242",
+   "at": [
+    "xl2+w2/2",
+    3.6
+   ],
+   "text": "{{m2|0}} kg",
+   "role": "m2",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "vector",
+   "id": "v243",
+   "from": [
+    "xr1-w1/2",
+    4.7
+   ],
+   "to": [
+    "xr1-w1/2+0.25*vel1",
+    4.7
+   ],
+   "role": "m1",
+   "strokeWidth": 4.5,
+   "visible": "abs(vel1)>0.05"
+  },
+  {
+   "type": "vector",
+   "id": "v244",
+   "from": [
+    "xl2+w2/2",
+    4.7
+   ],
+   "to": [
+    "xl2+w2/2+0.25*vel2",
+    4.7
+   ],
+   "role": "m2",
+   "strokeWidth": 4.5,
+   "visible": "abs(vel2)>0.05"
+  },
+  {
+   "type": "text",
+   "id": "t245",
+   "at": [
+    "xr1-w1/2",
+    5.4
+   ],
+   "text": "v₁ = {{vel1|2}}",
+   "role": "m1",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t246",
+   "at": [
+    "xl2+w2/2",
+    5.4
+   ],
+   "text": "v₂ = {{vel2|2}}",
+   "role": "m2",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t247",
+   "at": [
+    7.0,
+    8.05
+   ],
+   "text": "u₂ must be less than u₁ for a collision",
+   "role": "no",
+   "size": "s",
+   "bold": true,
+   "visible": "u2>=u1"
+  },
+  {
+   "type": "text",
+   "id": "t248",
+   "at": [
+    7.0,
+    7.9
+   ],
+   "text": "p before = {{pb|1}},  p after = {{pa|1}} kg m/s",
+   "role": "mom",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t249",
+   "at": [
+    7.0,
+    7.1
+   ],
+   "text": "KE before = {{KEb|1}} J,  after = {{KEa|1}} J",
+   "role": "ke",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t250",
+   "at": [
+    7.0,
+    6.3
+   ],
+   "text": "elastic: relative speed is kept",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3&&mode==0"
+  },
+  {
+   "type": "text",
+   "id": "t251",
+   "at": [
+    7.0,
+    6.3
+   ],
+   "text": "inelastic: they stick, KE is lost",
+   "role": "no",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3&&mode==1"
+  },
+  {
+   "type": "text",
+   "id": "t252",
+   "at": [
+    1.2,
+    1.55
+   ],
+   "text": "before",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t253",
+   "at": [
+    1.2,
+    0.5
+   ],
+   "text": "after",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "rect",
+   "id": "kb",
+   "x": 2.0,
+   "y": 1.3,
+   "w": 8.0,
+   "h": 0.5,
+   "role": "ke",
+   "fill": "ke",
+   "fillOpacity": 0.35,
+   "strokeWidth": 2,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "rect",
+   "id": "ka",
+   "x": 2.0,
+   "y": 0.25,
+   "w": "8*KEa/KEb",
+   "h": 0.5,
+   "role": "ke",
+   "fill": "ke",
+   "fillOpacity": 0.35,
+   "strokeWidth": 2,
+   "visible": "lv>=2&&pr>=1.02"
+  },
+  {
+   "type": "text",
+   "id": "t254",
+   "at": [
+    11.6,
+    1.55
+   ],
+   "text": "{{KEb|0}} J",
+   "role": "ke",
+   "size": 0.72,
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t255",
+   "at": [
+    11.6,
+    0.5
+   ],
+   "text": "{{KEa|0}} J  ({{keep|0}}%)",
+   "role": "ke",
+   "size": 0.72,
+   "bold": true,
+   "visible": "lv>=2&&pr>=1.02"
+  },
+  {
+   "type": "text",
+   "id": "t256",
+   "at": [
+    7.0,
+    -0.75
+   ],
+   "text": "bars: kinetic energy",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true,
+   "visible": "lv>=2"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Two bodies approach",
+   "text": "A 5 kg body at 10 m s⁻¹ catches a 10 kg body moving the same way at 5 m s⁻¹. Press play and watch the collision at \\( t = 1 \\).",
+   "actions": [
+    {
+     "set": {
+      "m1": 5,
+      "m2": 10,
+      "u1": 10,
+      "u2": 5,
+      "mode": 0,
+      "lv": 0,
+      "pr": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Elastic collision",
+   "text": "They bounce apart. **Elastic:** the bodies do not stick and no kinetic energy is lost.",
+   "actions": [
+    {
+     "set": {
+      "m1": 5,
+      "m2": 10,
+      "u1": 10,
+      "u2": 5,
+      "mode": 0,
+      "lv": 1,
+      "pr": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "pr": 2
+     },
+     "at": 200,
+     "dur": 4200
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "What is conserved?",
+   "text": "Momentum is \\( {{pb|0}} \\) before and after. Kinetic energy is also the same (the bars match), and the **relative speed** of approach {{apr|0}} equals that of separation {{sep|0}}. Here \\( v_1 = {{v1f|2}} \\), \\( v_2 = {{v2f|2}} \\) m s⁻¹.",
+   "actions": [
+    {
+     "set": {
+      "m1": 5,
+      "m2": 10,
+      "u1": 10,
+      "u2": 5,
+      "mode": 0,
+      "lv": 2,
+      "pr": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Perfectly inelastic",
+   "text": "Two equal carts, 2 m s⁻¹ and \\( -1 \\) m s⁻¹, **couple together** and move off with one velocity: \\( v = \\dfrac{m_1u_1 + m_2u_2}{m_1 + m_2} = {{vc|1}} \\) m s⁻¹.",
+   "actions": [
+    {
+     "set": {
+      "m1": 5,
+      "m2": 5,
+      "u1": 2,
+      "u2": -1,
+      "mode": 1,
+      "lv": 2,
+      "pr": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "pr": 2
+     },
+     "at": 200,
+     "dur": 4200
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Momentum yes, KE no",
+   "text": "Momentum is still conserved ({{pb|1}} → {{pa|1}}), but kinetic energy drops from {{KEb|1}} J to {{KEa|2}} J. The lost energy becomes heat, sound and deformation.",
+   "actions": [
+    {
+     "set": {
+      "m1": 5,
+      "m2": 5,
+      "u1": 2,
+      "u2": -1,
+      "mode": 1,
+      "lv": 3,
+      "pr": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Light on heavy",
+   "text": "Same elastic formulas, new numbers: a 1 kg body at 4 m s⁻¹ hits a 7 kg body at rest. It rebounds with \\( v_1 = {{v1e|1}} \\) and the heavy one moves at \\( v_2 = {{v2e|1}} \\) m s⁻¹. (Same ratio as a 0.5 kg and 3.5 kg pair.)",
+   "actions": [
+    {
+     "set": {
+      "m1": 1,
+      "m2": 7,
+      "u1": 4,
+      "u2": 0,
+      "mode": 0,
+      "lv": 3,
+      "pr": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "pr": 2
+     },
+     "at": 200,
+     "dur": 4200
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Momentum before",
+   "value": "{{pb|1}} kg m/s",
+   "role": "mom"
+  },
+  {
+   "label": "Momentum after",
+   "value": "{{pa|1}} kg m/s",
+   "role": "mom"
+  },
+  {
+   "label": "KE before",
+   "value": "{{KEb|1}} J",
+   "role": "ke"
+  },
+  {
+   "label": "KE after",
+   "value": "{{KEa|1}} J",
+   "role": "ke"
+  },
+  {
+   "label": "v₁ after",
+   "value": "{{v1f|2}} m/s",
+   "role": "m1"
+  },
+  {
+   "label": "v₂ after",
+   "value": "{{v2f|2}} m/s",
+   "role": "m2"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Collisions",
+   "tex": "m_1u_1 + m_2u_2 = m_1v_1 + m_2v_2\\ (\\text{always}),\\qquad \\tfrac12 m_1u_1^2 + \\tfrac12 m_2u_2^2 = \\tfrac12 m_1v_1^2 + \\tfrac12 m_2v_2^2\\ (\\text{elastic only})",
+   "text": "Perfectly inelastic: v = (m₁u₁ + m₂u₂)/(m₁ + m₂)."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A 5 kg body at 10 m/s collides elastically with a 10 kg body at 5 m/s (same direction). Find the first body’s velocity afterwards (m/s).",
+   "answer": 3.33,
+   "hint": "Use the elastic formula for v₁.",
+   "explain": "\\( v_1 = \\tfrac{-5}{15}(10) + \\tfrac{20}{15}(5) = 3.33 \\) m/s.",
+   "tolerance": 0.02,
+   "unit": "m/s"
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "Two equal carts roll towards each other at 2 m/s and 1 m/s and couple. Find the speed of the pair (m/s).",
+   "answer": 0.5,
+   "hint": "m(2) + m(−1) = 2m v.",
+   "explain": "\\( v = 1/2 = 0.5 \\) m/s.",
+   "tolerance": 0.01,
+   "unit": "m/s"
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "In a perfectly inelastic collision:",
+   "options": [
+    {
+     "id": "a",
+     "label": "Momentum and KE are both conserved"
+    },
+    {
+     "id": "b",
+     "label": "Only momentum is conserved"
+    },
+    {
+     "id": "c",
+     "label": "Only KE is conserved"
+    }
+   ],
+   "answer": "b",
+   "hint": "The bodies stick together.",
+   "explain": "Momentum is always conserved; some KE is lost."
+  }
+ ],
+ "takeaways": [
+  "Momentum is conserved in **every** collision.",
+  "Elastic: KE conserved. Perfectly inelastic: bodies stick and KE is lost."
+ ]
+}

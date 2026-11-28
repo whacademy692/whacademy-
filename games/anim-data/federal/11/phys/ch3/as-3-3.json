@@ -1,0 +1,372 @@
+{
+ "id": "g11-phys-c3-as-3-3",
+ "title": "Assignment 3.3 · Height, time and range",
+ "summary": "H, T and R for a ball thrown at 30 m/s and 30°.",
+ "alt": "A ball is thrown with a speed of 30 m s⁻¹ at an angle of 30° with the horizontal. Determine (a) the height to which it rises, (b) the time of flight and (c) the horizontal range.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": false
+  },
+  "acc": {
+   "label": "Acceleration",
+   "color": "#ea580c",
+   "text": "Acceleration.",
+   "legend": false
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": false
+  },
+  "tim": {
+   "label": "Time",
+   "color": "#7c3aed",
+   "text": "Time.",
+   "legend": false
+  },
+  "hx": {
+   "label": "Horizontal part",
+   "color": "#0891b2",
+   "text": "The horizontal (x) component.",
+   "legend": false
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "An angle.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "s467",
+   "from": [
+    0.6,
+    8.0
+   ],
+   "to": [
+    12.3,
+    8.0
+   ],
+   "role": "wall",
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "plot",
+   "id": "g468",
+   "role": "dis",
+   "strokeWidth": 3,
+   "domain": [
+    1.2,
+    11.8
+   ],
+   "fn": "13.40000 - 0.19224*(x-6.5000)^2",
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "v469",
+   "from": [
+    1.2,
+    8.0
+   ],
+   "to": [
+    3.798076211353316,
+    9.5
+   ],
+   "role": "vel",
+   "strokeWidth": 4.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t470",
+   "at": [
+    4.398076211353316,
+    9.85
+   ],
+   "text": "v_i = 30 m/s",
+   "role": "vel",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "arc",
+   "id": "a471",
+   "c": [
+    1.2,
+    8.0
+   ],
+   "r": 1.7,
+   "from": 0,
+   "to": 30,
+   "role": "ang",
+   "strokeWidth": 2.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t472",
+   "at": [
+    3.55,
+    8.425
+   ],
+   "text": "θ = 30°",
+   "role": "ang",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "s473",
+   "from": [
+    6.5,
+    8.0
+   ],
+   "to": [
+    6.5,
+    13.4
+   ],
+   "role": "dis",
+   "strokeWidth": 2.5,
+   "dash": [
+    6,
+    5
+   ],
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t474",
+   "at": [
+    7.5,
+    10.7
+   ],
+   "text": "H",
+   "role": "dis",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "v475",
+   "from": [
+    1.2,
+    7.4
+   ],
+   "to": [
+    11.8,
+    7.4
+   ],
+   "role": "tim",
+   "strokeWidth": 2.5,
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t476",
+   "at": [
+    6.5,
+    6.8
+   ],
+   "text": "T = time of flight",
+   "role": "tim",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "s477",
+   "from": [
+    11.8,
+    7.7
+   ],
+   "to": [
+    11.8,
+    7.1
+   ],
+   "role": "hx",
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t478",
+   "at": [
+    11.2,
+    6.3
+   ],
+   "text": "R",
+   "role": "hx",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t479",
+   "at": [
+    6.45,
+    5.55
+   ],
+   "text": "(a) H = 900 × 0.25 / 19.6 = 11.5 m",
+   "role": "dis",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t480",
+   "at": [
+    6.45,
+    4.6
+   ],
+   "text": "(b) T = 2(30)(0.5)/9.8 = 3.06 s",
+   "role": "tim",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t481",
+   "at": [
+    6.45,
+    3.6499999999999995
+   ],
+   "text": "(c) R = 900 × 0.866 / 9.8 = 79.5 m",
+   "role": "hx",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r482",
+   "x": 0.6,
+   "y": 0.75,
+   "w": 11.7,
+   "h": 1.1,
+   "role": "ans",
+   "fill": "ans",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "t483",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "H = 11.5 m, T = 3.06 s, R = 79.5 m",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Given",
+   "text": "**v_i = 30 m s⁻¹**, **θ = 30°**, **g = 9.8 m s⁻²**. Find **H**, **T** and **R**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "(a) Height",
+   "text": "\\( H = \\dfrac{v_i^2\\sin^2\\theta}{2g} = \\dfrac{900\\times0.25}{19.6} = 11.5 \\) m.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "(b) Time of flight",
+   "text": "\\( T = \\dfrac{2v_i\\sin\\theta}{g} = \\dfrac{2(30)(0.5)}{9.8} = 3.06 \\) s.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "(c) Range",
+   "text": "\\( R = \\dfrac{v_i^2\\sin2\\theta}{g} = \\dfrac{900\\times0.866}{9.8} = 79.5 \\) m.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Projectile at an angle",
+   "tex": "H = \\dfrac{v_i^2\\sin^2\\theta}{2g},\\; T = \\dfrac{2v_i\\sin\\theta}{g},\\; R = \\dfrac{v_i^2\\sin2\\theta}{g}",
+   "text": ""
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "Check: for the same ball find R/H (no units).",
+   "answer": 6.93,
+   "hint": "R/H = 79.5/11.5.",
+   "explain": "\\( 79.5/11.48 = 6.93 \\) (equal to \\( 4/\\tan30^\\circ \\)).",
+   "tolerance": 0.1
+  }
+ ],
+ "takeaways": [
+  "Three formulas, one launch: **H, T, R** all come from **v_i** and **θ**."
+ ]
+}

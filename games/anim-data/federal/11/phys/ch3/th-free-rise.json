@@ -1,0 +1,470 @@
+{
+ "id": "g11-phys-c3-th-free-rise",
+ "title": "A ball thrown straight up: slowing, stopping and returning",
+ "summary": "Going up, v and g point opposite ways and the ball slows; at the top v = 0 but g is still 9.8; coming down it speeds up.",
+ "alt": "A ball thrown upward with velocity and gravity arrows, a height marker and live read-outs of v and h.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -1.0,
+   15.0
+  ],
+  "y": [
+   -0.5,
+   15.2
+  ],
+  "ratio": 1.0191,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": true
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": true
+  },
+  "tim": {
+   "label": "Time",
+   "color": "#7c3aed",
+   "text": "Time.",
+   "legend": false
+  },
+  "grav": {
+   "label": "Gravity (g)",
+   "color": "#dc2626",
+   "text": "The acceleration due to gravity, g = 9.8 m s-2 downward.",
+   "legend": true
+  },
+  "m1": {
+   "label": "Object 1",
+   "color": "#2563eb",
+   "text": "The first object.",
+   "legend": true
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "Allowed or correct.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "vi",
+   "label": "Launch speed v_i (m/s)",
+   "type": "number",
+   "min": 10,
+   "max": 20,
+   "step": 1,
+   "default": 15,
+   "unit": "m/s",
+   "role": "vel"
+  },
+  {
+   "id": "ph",
+   "label": "Flight progress",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.005,
+   "default": 0,
+   "role": "tim"
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 4,
+   "step": 0.01,
+   "default": 4,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "T": "2*vi/9.8",
+  "H": "vi*vi/19.6",
+  "tt": "ph*2*vi/9.8",
+  "v": "vi-9.8*ph*2*vi/9.8",
+  "h": "vi*ph*2*vi/9.8-4.9*(ph*2*vi/9.8)^2"
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ground",
+   "from": [
+    0.3,
+    1.0
+   ],
+   "to": [
+    8.0,
+    1.0
+   ],
+   "role": "wall",
+   "strokeWidth": 3
+  },
+  {
+   "type": "segment",
+   "id": "topline",
+   "from": [
+    2.2,
+    "1.0+0.62*H"
+   ],
+   "to": [
+    9.0,
+    "1.0+0.62*H"
+   ],
+   "role": "dis",
+   "strokeWidth": 1.8,
+   "dash": [
+    6,
+    5
+   ]
+  },
+  {
+   "type": "text",
+   "id": "toplab",
+   "at": [
+    11.8,
+    "1.0+0.62*H+0.5"
+   ],
+   "text": "H = {{H|1}} m",
+   "role": "dis",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "ball",
+   "c": [
+    3.0,
+    "1.0+0.62*h+0.45"
+   ],
+   "r": 0.45,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "vector",
+   "id": "vup",
+   "from": [
+    4.0,
+    "1.0+0.62*h+0.45"
+   ],
+   "to": [
+    4.0,
+    "1.0+0.62*h+0.45+0.12*v"
+   ],
+   "role": "vel",
+   "strokeWidth": 5,
+   "visible": "v>0.4"
+  },
+  {
+   "type": "vector",
+   "id": "vdn",
+   "from": [
+    4.0,
+    "1.0+0.62*h+0.45"
+   ],
+   "to": [
+    4.0,
+    "1.0+0.62*h+0.45+0.12*v"
+   ],
+   "role": "vel",
+   "strokeWidth": 5,
+   "visible": "v<-0.4"
+  },
+  {
+   "type": "text",
+   "id": "vlab",
+   "at": [
+    6.0,
+    "1.0+0.62*h+0.45+0.06*v"
+   ],
+   "text": "v = {{v|1}}",
+   "role": "vel",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "vector",
+   "id": "gv",
+   "from": [
+    2.0,
+    "1.0+0.62*h+0.45"
+   ],
+   "to": [
+    2.0,
+    "1.0+0.62*h+0.45-2.0"
+   ],
+   "role": "grav",
+   "strokeWidth": 5
+  },
+  {
+   "type": "text",
+   "id": "glab",
+   "at": [
+    1.0,
+    "1.0+0.62*h+0.45-1.0"
+   ],
+   "text": "g",
+   "role": "grav",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t113",
+   "at": [
+    10.5,
+    3.4
+   ],
+   "text": "going up: v and g opposite",
+   "role": "vel",
+   "size": "s",
+   "bold": true,
+   "visible": "ph<0.495&&ph>0.005"
+  },
+  {
+   "type": "text",
+   "id": "t114",
+   "at": [
+    10.5,
+    3.4
+   ],
+   "text": "at the top: v = 0, g = 9.8",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "visible": "ph>=0.495&&ph<=0.505"
+  },
+  {
+   "type": "text",
+   "id": "t115",
+   "at": [
+    10.5,
+    3.4
+   ],
+   "text": "coming down: v and g agree",
+   "role": "grav",
+   "size": "s",
+   "bold": true,
+   "visible": "ph>0.505&&ph<0.995"
+  },
+  {
+   "type": "text",
+   "id": "t116",
+   "at": [
+    10.5,
+    2.5
+   ],
+   "text": "time up = time down = {{T/2|2}} s",
+   "role": "tim",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3"
+  },
+  {
+   "type": "text",
+   "id": "t117",
+   "at": [
+    10.5,
+    1.6
+   ],
+   "text": "back at the same speed",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3&&ph>0.99"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Throw it up",
+   "text": "A ball is thrown **upward** with \\( v_i \\). Taking up as positive, \\( g = -9.8 \\) m s⁻²: gravity points down the whole time.",
+   "actions": [
+    {
+     "set": {
+      "lv": 0,
+      "ph": 0,
+      "vi": 15
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Going up",
+   "text": "The velocity arrow points up and shrinks because \\( v = v_i - g t \\): velocity and acceleration are **opposite**.",
+   "actions": [
+    {
+     "set": {
+      "lv": 1,
+      "vi": 15
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "ph": 0.5
+     },
+     "at": 0,
+     "dur": 3800
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "At the top",
+   "text": "At the highest point \\( v = 0 \\) for an instant, but the acceleration is still 9.8 m s⁻² downward. That is why the ball turns back. \\( H = v_i^2/2g = {{H|1}} \\) m.",
+   "actions": [
+    {
+     "set": {
+      "lv": 2,
+      "ph": 0.5,
+      "vi": 15
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Coming down",
+   "text": "Now velocity and acceleration point the **same way** and the ball speeds up.",
+   "actions": [
+    {
+     "set": {
+      "lv": 2,
+      "vi": 15
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "ph": 1
+     },
+     "at": 0,
+     "dur": 3800
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Symmetry",
+   "text": "Time up = time down, so the total time is \\( T = 2v_i/g = {{T|2}} \\) s, and the ball returns with the same speed it was thrown.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3,
+      "ph": 1,
+      "vi": 15
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "v",
+   "value": "{{v|1}} m/s",
+   "role": "vel"
+  },
+  {
+   "label": "h",
+   "value": "{{h|1}} m",
+   "role": "dis"
+  },
+  {
+   "label": "t",
+   "value": "{{tt|2}} s",
+   "role": "tim"
+  },
+  {
+   "label": "H",
+   "value": "{{H|1}} m",
+   "role": "dis"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Thrown upward",
+   "tex": "v = v_i - g t,\\quad H = \\dfrac{v_i^2}{2g},\\quad T = \\dfrac{2v_i}{g}",
+   "text": "g is negative when up is positive."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A ball is thrown up at 19.6 m/s. Find its maximum height (m). Use g = 9.8.",
+   "answer": 19.6,
+   "hint": "H = v_i²/2g.",
+   "explain": "\\( 19.6^2/19.6 = 19.6 \\) m.",
+   "tolerance": 0.1,
+   "unit": "m"
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "How long does it stay in the air (s)?",
+   "answer": 4,
+   "hint": "T = 2v_i/g.",
+   "explain": "\\( 2\\times19.6/9.8 = 4 \\) s.",
+   "tolerance": 0.05,
+   "unit": "s"
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "At the highest point of the throw, the acceleration is:",
+   "options": [
+    {
+     "id": "a",
+     "label": "Zero"
+    },
+    {
+     "id": "b",
+     "label": "9.8 m/s² downward"
+    },
+    {
+     "id": "c",
+     "label": "9.8 m/s² upward"
+    }
+   ],
+   "answer": "b",
+   "hint": "Gravity never switches off.",
+   "explain": "g = 9.8 m s⁻² downward at every point."
+  }
+ ],
+ "takeaways": [
+  "At the top: **v = 0**, **a = g** (not zero).",
+  "Rise time = fall time."
+ ]
+}

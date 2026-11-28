@@ -1,0 +1,452 @@
+{
+ "id": "g11-phys-c3-as-3-1a",
+ "title": "Assignment 3.1 (1) · A slowing train",
+ "summary": "Convert km/h to m/s, then t = (v_f − v_i)/a with a negative.",
+ "alt": "A train slows down from 80 km h⁻¹ with a uniform retardation of 2 m s⁻². How long will it take to attain a speed of 20 km h⁻¹?",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": false
+  },
+  "acc": {
+   "label": "Acceleration",
+   "color": "#ea580c",
+   "text": "Acceleration.",
+   "legend": false
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": false
+  },
+  "tim": {
+   "label": "Time",
+   "color": "#7c3aed",
+   "text": "Time.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "v311",
+   "from": [
+    1.6,
+    7.9
+   ],
+   "to": [
+    11.7,
+    7.9
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "v312",
+   "from": [
+    1.6,
+    7.9
+   ],
+   "to": [
+    1.6,
+    13.8
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t313",
+   "at": [
+    11.0,
+    8.450000000000001
+   ],
+   "text": "t (s)",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t314",
+   "at": [
+    1.8,
+    14.15
+   ],
+   "text": "v (m/s)",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "s315",
+   "from": [
+    6.4,
+    7.800000000000001
+   ],
+   "to": [
+    6.4,
+    8.0
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t316",
+   "at": [
+    6.4,
+    7.4
+   ],
+   "text": "5",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "s317",
+   "from": [
+    11.2,
+    7.800000000000001
+   ],
+   "to": [
+    11.2,
+    8.0
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t318",
+   "at": [
+    11.2,
+    7.4
+   ],
+   "text": "10",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "s319",
+   "from": [
+    1.5,
+    9.10096
+   ],
+   "to": [
+    1.7000000000000002,
+    9.10096
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t320",
+   "at": [
+    1.05,
+    9.10096
+   ],
+   "text": "5.56",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "s321",
+   "from": [
+    1.5,
+    12.69952
+   ],
+   "to": [
+    1.7000000000000002,
+    12.69952
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t322",
+   "at": [
+    1.05,
+    12.69952
+   ],
+   "text": "22.22",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "polyline",
+   "id": "p323",
+   "pts": [
+    [
+     1.6,
+     12.700000000000001
+    ],
+    [
+     9.599999999999998,
+     9.100000000000001
+    ]
+   ],
+   "role": "vel",
+   "strokeWidth": 3.5,
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "segment",
+   "id": "s324",
+   "from": [
+    1.6,
+    9.100000000000001
+   ],
+   "to": [
+    9.599999999999998,
+    9.100000000000001
+   ],
+   "role": "wall",
+   "strokeWidth": 1.5,
+   "dash": [
+    5,
+    5
+   ],
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "segment",
+   "id": "s325",
+   "from": [
+    9.599999999999998,
+    7.9
+   ],
+   "to": [
+    9.599999999999998,
+    9.100000000000001
+   ],
+   "role": "tim",
+   "strokeWidth": 1.5,
+   "dash": [
+    5,
+    5
+   ],
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t326",
+   "at": [
+    9.599999999999998,
+    6.95
+   ],
+   "text": "t = ?",
+   "role": "tim",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t327",
+   "at": [
+    6.45,
+    5.55
+   ],
+   "text": "80 km/h = 80/3.6 = 22.22 m/s",
+   "role": "vel",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t328",
+   "at": [
+    6.45,
+    4.6
+   ],
+   "text": "20 km/h = 20/3.6 = 5.56 m/s",
+   "role": "vel",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t329",
+   "at": [
+    6.45,
+    3.6499999999999995
+   ],
+   "text": "t = (v_f − v_i)/a",
+   "role": "tim",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t330",
+   "at": [
+    6.45,
+    2.6999999999999993
+   ],
+   "text": "t = (5.56 − 22.22)/(−2) = 8.33 s",
+   "role": "acc",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r331",
+   "x": 0.6,
+   "y": 0.75,
+   "w": 11.7,
+   "h": 1.1,
+   "role": "ans",
+   "fill": "ans",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s4",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "t332",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "t = 8.33 s",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s4",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Given",
+   "text": "The train slows from **80 km h⁻¹** to **20 km h⁻¹** with retardation 2 m s⁻². Find the time.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Same units first",
+   "text": "Change km h⁻¹ to m s⁻¹ by dividing by 3.6: \\( v_i = 80/3.6 = 22.22 \\), \\( v_f = 20/3.6 = 5.56 \\) m s⁻¹.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Retardation is negative",
+   "text": "Slowing down means the acceleration points against the motion: **a = −2 m s⁻²**. From \\( v_f = v_i + at \\): \\( t = (v_f - v_i)/a \\).",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Substitute",
+   "text": "\\( t = \\dfrac{5.56 - 22.22}{-2} = \\dfrac{-16.67}{-2} \\).",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Answer",
+   "text": "\\( t = 8.33 \\) s. The two negatives cancel, so the time is positive.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "First equation, solved for time",
+   "tex": "t = \\dfrac{v_f - v_i}{a}",
+   "text": "Retardation: use a negative value."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A train slows from 30 m/s to 10 m/s with a = −2 m/s². Find t (s).",
+   "answer": 10,
+   "hint": "t = (v_f − v_i)/a.",
+   "explain": "\\( (10-30)/(-2) = 10 \\) s.",
+   "tolerance": 0.1,
+   "unit": "s"
+  }
+ ],
+ "takeaways": [
+  "Convert km/h to m/s (÷3.6) before using the equations.",
+  "Retardation = negative acceleration."
+ ]
+}

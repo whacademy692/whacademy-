@@ -1,0 +1,425 @@
+{
+ "id": "g11-phys-c3-we-3-2",
+ "title": "Example 3.2 · Distance covered while accelerating",
+ "summary": "S = v_i t + ½ at²: the area under the v–t graph of the car.",
+ "alt": "A car is travelling initially with a velocity of 4 m s⁻¹ and then accelerates at 1 m s⁻² for 10 s. Find the distance travelled by the car during this time.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": false
+  },
+  "acc": {
+   "label": "Acceleration",
+   "color": "#ea580c",
+   "text": "Acceleration.",
+   "legend": false
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "v291",
+   "from": [
+    1.6,
+    7.8
+   ],
+   "to": [
+    11.7,
+    7.8
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "v292",
+   "from": [
+    1.6,
+    7.8
+   ],
+   "to": [
+    1.6,
+    13.899999999999999
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t293",
+   "at": [
+    11.0,
+    8.35
+   ],
+   "text": "t (s)",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t294",
+   "at": [
+    1.8,
+    14.249999999999998
+   ],
+   "text": "v (m/s)",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "s295",
+   "from": [
+    6.4,
+    7.7
+   ],
+   "to": [
+    6.4,
+    7.8999999999999995
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t296",
+   "at": [
+    6.4,
+    7.3
+   ],
+   "text": "5",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "s297",
+   "from": [
+    11.2,
+    7.7
+   ],
+   "to": [
+    11.2,
+    7.8999999999999995
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t298",
+   "at": [
+    11.2,
+    7.3
+   ],
+   "text": "10",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "s299",
+   "from": [
+    1.5,
+    9.4
+   ],
+   "to": [
+    1.7000000000000002,
+    9.4
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t300",
+   "at": [
+    1.05,
+    9.4
+   ],
+   "text": "4",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "s301",
+   "from": [
+    1.5,
+    13.399999999999999
+   ],
+   "to": [
+    1.7000000000000002,
+    13.399999999999999
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t302",
+   "at": [
+    1.05,
+    13.399999999999999
+   ],
+   "text": "14",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "polyline",
+   "id": "p303",
+   "pts": [
+    [
+     1.6,
+     9.4
+    ],
+    [
+     11.2,
+     13.399999999999999
+    ]
+   ],
+   "role": "vel",
+   "strokeWidth": 3.5,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t304",
+   "at": [
+    6.2,
+    11.999999999999998
+   ],
+   "text": "slope = a",
+   "role": "acc",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "polygon",
+   "id": "pg305",
+   "pts": [
+    [
+     1.6,
+     7.8
+    ],
+    [
+     1.6,
+     9.4
+    ],
+    [
+     11.2,
+     13.399999999999999
+    ],
+    [
+     11.2,
+     7.8
+    ]
+   ],
+   "role": "dis",
+   "fill": "dis",
+   "fillOpacity": 0.28,
+   "strokeWidth": 2,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t306",
+   "at": [
+    6.4,
+    9.08
+   ],
+   "text": "area = S",
+   "role": "dis",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t307",
+   "at": [
+    6.45,
+    5.55
+   ],
+   "text": "S = v_i t + ½ a t²",
+   "role": "dis",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t308",
+   "at": [
+    6.45,
+    4.6
+   ],
+   "text": "S = 4(10) + ½(1)(10)² = 40 + 50",
+   "role": "acc",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r309",
+   "x": 0.6,
+   "y": 0.75,
+   "w": 11.7,
+   "h": 1.1,
+   "role": "ans",
+   "fill": "ans",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s5",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "t310",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "S = 90 m",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s5",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Given",
+   "text": "A car starts at **v_i = 4 m s⁻¹**, accelerates at **a = 1 m s⁻²** for **t = 10 s**. Find the distance **S**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Draw the v–t graph",
+   "text": "The velocity rises in a straight line from 4 m s⁻¹ to \\( 4 + 1\\times10 = 14 \\) m s⁻¹ in 10 s.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Distance = area",
+   "text": "The distance travelled is the **area under the graph**: a trapezium with parallel sides 4 and 14 and width 10.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Second equation",
+   "text": "Using the 2nd equation: \\( S = v_i t + \\tfrac12 a t^2 \\).",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Substitute",
+   "text": "\\( S = 4(10) + \\tfrac12(1)(10)^2 = 40 + 50 \\).",
+   "actions": []
+  },
+  {
+   "id": "s5",
+   "title": "Answer",
+   "text": "\\( S = 90 \\) m. (Check by the trapezium: \\( \\tfrac12(4+14)\\times10 = 90 \\).)",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Second equation of motion",
+   "tex": "S = v_i t + \\tfrac12 a t^2",
+   "text": "The area under the v–t graph."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A car at 5 m/s accelerates at 2 m/s² for 6 s. Find S (m).",
+   "answer": 66,
+   "hint": "S = v_i t + ½ a t².",
+   "explain": "\\( 5(6) + \\tfrac12(2)(36) = 30 + 36 = 66 \\) m.",
+   "tolerance": 0.66,
+   "unit": "m"
+  }
+ ],
+ "takeaways": [
+  "**S = v_i t + ½ a t²** is the area of the trapezium under the v–t graph."
+ ]
+}

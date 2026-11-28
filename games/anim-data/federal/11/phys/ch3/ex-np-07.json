@@ -1,0 +1,453 @@
+{
+ "id": "g11-phys-c3-ex-np-07",
+ "title": "Numerical Problem 3.7 · Light ball hits a heavy ball at rest",
+ "summary": "v₁ = −3.0 m/s (rebounds) and v₂ = 1.0 m/s.",
+ "alt": "Numerical Problem 3.7 — A 0.5 kg ball travelling at a speed of 4 m s⁻¹ to the right collides elastically with another ball of 3.5 kg which is initially at rest. Find the velocities of both balls after the collision.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": false
+  },
+  "acc": {
+   "label": "Acceleration",
+   "color": "#ea580c",
+   "text": "Acceleration.",
+   "legend": false
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": false
+  },
+  "m1": {
+   "label": "Object 1",
+   "color": "#2563eb",
+   "text": "The first object.",
+   "legend": false
+  },
+  "m2": {
+   "label": "Object 2",
+   "color": "#ea580c",
+   "text": "The second object.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "Allowed or correct.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "s1082",
+   "from": [
+    0.6,
+    12.4
+   ],
+   "to": [
+    12.3,
+    12.4
+   ],
+   "role": "wall",
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t1083",
+   "at": [
+    1.0,
+    14.6
+   ],
+   "text": "before",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r1084",
+   "x": 2.0,
+   "y": 12.4,
+   "w": 1.4,
+   "h": 1.0,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.28,
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t1085",
+   "at": [
+    2.7,
+    12.9
+   ],
+   "text": "0.5 kg",
+   "role": "m1",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "v1086",
+   "from": [
+    3.6,
+    12.9
+   ],
+   "to": [
+    5.8,
+    12.9
+   ],
+   "role": "m1",
+   "strokeWidth": 4.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t1087",
+   "at": [
+    4.7,
+    13.6
+   ],
+   "text": "4",
+   "role": "m1",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r1088",
+   "x": 7.8,
+   "y": 12.4,
+   "w": 2.6,
+   "h": 1.0,
+   "role": "m2",
+   "fill": "m2",
+   "fillOpacity": 0.28,
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t1089",
+   "at": [
+    9.1,
+    12.9
+   ],
+   "text": "3.5 kg",
+   "role": "m2",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t1090",
+   "at": [
+    1.0,
+    11.5
+   ],
+   "text": "after",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r1091",
+   "x": 2.0,
+   "y": 9.4,
+   "w": 1.4,
+   "h": 1.0,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.28,
+   "strokeWidth": 2,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t1092",
+   "at": [
+    2.7,
+    9.9
+   ],
+   "text": "0.5 kg",
+   "role": "m1",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "v1093",
+   "from": [
+    1.9,
+    9.9
+   ],
+   "to": [
+    0.7,
+    9.9
+   ],
+   "role": "m1",
+   "strokeWidth": 4.5,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t1094",
+   "at": [
+    1.3,
+    10.6
+   ],
+   "text": "3.0",
+   "role": "m1",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r1095",
+   "x": 7.8,
+   "y": 9.4,
+   "w": 2.6,
+   "h": 1.0,
+   "role": "m2",
+   "fill": "m2",
+   "fillOpacity": 0.28,
+   "strokeWidth": 2,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t1096",
+   "at": [
+    9.1,
+    9.9
+   ],
+   "text": "3.5 kg",
+   "role": "m2",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "v1097",
+   "from": [
+    10.6,
+    9.9
+   ],
+   "to": [
+    11.7,
+    9.9
+   ],
+   "role": "m2",
+   "strokeWidth": 4.5,
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t1098",
+   "at": [
+    11.2,
+    10.6
+   ],
+   "text": "1.0",
+   "role": "m2",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "s1099",
+   "from": [
+    0.6,
+    9.4
+   ],
+   "to": [
+    12.3,
+    9.4
+   ],
+   "role": "wall",
+   "strokeWidth": 3,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t1100",
+   "at": [
+    6.45,
+    5.55
+   ],
+   "text": "v₁ = (0.5−3.5)/4 × 4 = −3.0 m/s",
+   "role": "m1",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t1101",
+   "at": [
+    6.45,
+    4.6
+   ],
+   "text": "v₂ = 2(0.5)/4 × 4 = 1.0 m/s",
+   "role": "m2",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t1102",
+   "at": [
+    6.45,
+    3.6499999999999995
+   ],
+   "text": "p: 2.0 → 0.5(−3) + 3.5(1) = 2.0",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r1103",
+   "x": 0.6,
+   "y": 0.75,
+   "w": 11.7,
+   "h": 1.1,
+   "role": "ans",
+   "fill": "ans",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "t1104",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "v₁ = −3.0 m/s,  v₂ = 1.0 m/s",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Given",
+   "text": "**m₁ = 0.5 kg, u₁ = +4 m s⁻¹**; **m₂ = 3.5 kg, u₂ = 0**. Elastic collision. Find **v₁** and **v₂**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "First ball",
+   "text": "\\( v_1 = \\dfrac{m_1 - m_2}{m_1 + m_2}u_1 = \\dfrac{0.5 - 3.5}{4}(4) = -3.0 \\) m s⁻¹ (it **rebounds** to the left).",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Second ball",
+   "text": "\\( v_2 = \\dfrac{2m_1}{m_1 + m_2}u_1 = \\dfrac{2(0.5)}{4}(4) = 1.0 \\) m s⁻¹ (to the right).",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Check",
+   "text": "Momentum: \\( 0.5(4) = 2.0 \\) before; \\( 0.5(-3) + 3.5(1) = 2.0 \\) after. Relative speed: approach 4, separation \\( 1 - (-3) = 4 \\).",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Elastic collision, target at rest",
+   "tex": "v_1 = \\dfrac{m_1 - m_2}{m_1 + m_2}u_1,\\qquad v_2 = \\dfrac{2m_1}{m_1 + m_2}u_1",
+   "text": "u₂ = 0."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A 1 kg ball at 5 m/s hits a 4 kg ball at rest elastically. Find v₁ (m/s; − means backwards).",
+   "answer": -3,
+   "hint": "v₁ = (m₁ − m₂)u₁/(m₁ + m₂).",
+   "explain": "\\( \\dfrac{1 - 4}{5}(5) = -3 \\) m/s.",
+   "tolerance": 0.02,
+   "unit": "m/s"
+  }
+ ],
+ "takeaways": [
+  "A light body hitting a heavier one at rest rebounds (v₁ < 0)."
+ ]
+}

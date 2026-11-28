@@ -1,0 +1,347 @@
+{
+ "id": "g11-phys-c3-ex-mcq-08",
+ "title": "MCQ 8 · Force on a projectile in flight",
+ "summary": "Once launched, only gravity (the weight) acts on a projectile when air resistance is ignored.",
+ "alt": "MCQ 8 — What is the force experienced by a projectile after the initial force that launched it into the air, in the absence of air resistance? A. the gravitational force  B. the nuclear force  C. the contact force  D. the electromagnetic force",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": false
+  },
+  "acc": {
+   "label": "Acceleration",
+   "color": "#ea580c",
+   "text": "Acceleration.",
+   "legend": false
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": false
+  },
+  "grav": {
+   "label": "Gravity (g)",
+   "color": "#dc2626",
+   "text": "The acceleration due to gravity, g = 9.8 m s-2 downward.",
+   "legend": false
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "An angle.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "s634",
+   "from": [
+    0.6,
+    8.0
+   ],
+   "to": [
+    12.3,
+    8.0
+   ],
+   "role": "wall",
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "plot",
+   "id": "g635",
+   "role": "dis",
+   "strokeWidth": 3,
+   "domain": [
+    1.2,
+    11.8
+   ],
+   "fn": "13.40000 - 0.19224*(x-6.5000)^2",
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "v636",
+   "from": [
+    1.2,
+    8.0
+   ],
+   "to": [
+    2.9207293090531383,
+    10.457456132866975
+   ],
+   "role": "vel",
+   "strokeWidth": 4.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t637",
+   "at": [
+    3.5207293090531384,
+    10.807456132866974
+   ],
+   "text": "v_i",
+   "role": "vel",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "arc",
+   "id": "a638",
+   "c": [
+    1.2,
+    8.0
+   ],
+   "r": 1.7,
+   "from": 0,
+   "to": 55,
+   "role": "ang",
+   "strokeWidth": 2.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t639",
+   "at": [
+    3.55,
+    8.600533624358945
+   ],
+   "text": "θ = 55°",
+   "role": "ang",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "v640",
+   "from": [
+    4.0,
+    12.198504805980777
+   ],
+   "to": [
+    4.0,
+    10.598504805980777
+   ],
+   "role": "grav",
+   "strokeWidth": 4,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "v641",
+   "from": [
+    6.5,
+    13.4
+   ],
+   "to": [
+    6.5,
+    11.8
+   ],
+   "role": "grav",
+   "strokeWidth": 4,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "v642",
+   "from": [
+    9.0,
+    12.198504805980777
+   ],
+   "to": [
+    9.0,
+    10.598504805980777
+   ],
+   "role": "grav",
+   "strokeWidth": 4,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t643",
+   "at": [
+    9.8,
+    11.5
+   ],
+   "text": "weight",
+   "role": "grav",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t644",
+   "at": [
+    6.45,
+    5.55
+   ],
+   "text": "launch force acts only at launch",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t645",
+   "at": [
+    6.45,
+    4.6
+   ],
+   "text": "in flight: only gravity",
+   "role": "grav",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t646",
+   "at": [
+    6.45,
+    3.6499999999999995
+   ],
+   "text": "no air → no other force",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r647",
+   "x": 0.6,
+   "y": 0.75,
+   "w": 11.7,
+   "h": 1.1,
+   "role": "ans",
+   "fill": "ans",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "t648",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "A. the gravitational force",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The launch",
+   "text": "A launching force (a throw, a kick, a gun) acts only **while the body is being launched**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "In flight",
+   "text": "After it leaves the launcher there is no contact, and with no air resistance the only force left is **gravity (its weight)**.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Check the options",
+   "text": "Nuclear and electromagnetic forces are not acting; the contact force ended at launch.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Answer",
+   "text": "**A. the gravitational force.**",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Force on a projectile",
+   "tex": "\\vec F = m\\vec g = -mg\\,\\hat j",
+   "text": "Acceleration is g, downward, at every point."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Ignoring air, the only force on a stone after it leaves your hand is:",
+   "options": [
+    {
+     "id": "a",
+     "label": "Its weight"
+    },
+    {
+     "id": "b",
+     "label": "Your push"
+    },
+    {
+     "id": "c",
+     "label": "A forward force"
+    }
+   ],
+   "answer": "a",
+   "hint": "Only gravity.",
+   "explain": "The push ended at release; only the weight remains."
+  }
+ ],
+ "takeaways": [
+  "In flight (no air) the only force is gravity: a = g downward."
+ ]
+}

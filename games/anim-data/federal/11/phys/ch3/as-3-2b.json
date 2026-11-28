@@ -1,0 +1,359 @@
+{
+ "id": "g11-phys-c3-as-3-2b",
+ "title": "Assignment 3.2 (b) · Speed at the ground",
+ "summary": "v_f = v_i + gt from rest: 9.8 × 3.34.",
+ "alt": "Find the velocity of the ball when it strikes the ground. (Assignment 3.2: the 1 kg ball dropped from the tower, t = 3.34 s.)",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": false
+  },
+  "acc": {
+   "label": "Acceleration",
+   "color": "#ea580c",
+   "text": "Acceleration.",
+   "legend": false
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": false
+  },
+  "tim": {
+   "label": "Time",
+   "color": "#7c3aed",
+   "text": "Time.",
+   "legend": false
+  },
+  "grav": {
+   "label": "Gravity (g)",
+   "color": "#dc2626",
+   "text": "The acceleration due to gravity, g = 9.8 m s-2 downward.",
+   "legend": false
+  },
+  "m1": {
+   "label": "Object 1",
+   "color": "#2563eb",
+   "text": "The first object.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "Allowed or correct.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "s401",
+   "from": [
+    0.6,
+    7.2
+   ],
+   "to": [
+    12.3,
+    7.2
+   ],
+   "role": "wall",
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "rect",
+   "id": "r402",
+   "x": 2.0,
+   "y": 7.2,
+   "w": 2.0,
+   "h": 6.0,
+   "role": "wall",
+   "fill": "wall",
+   "fillOpacity": 0.12,
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t403",
+   "at": [
+    3.0,
+    14.0
+   ],
+   "text": "tower",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "circle",
+   "id": "c404",
+   "c": [
+    3.0,
+    13.5
+   ],
+   "r": 0.38,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t405",
+   "at": [
+    6.0,
+    13.5
+   ],
+   "text": "dropped, v_i = 0",
+   "role": "vel",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "v406",
+   "from": [
+    5.2,
+    13.2
+   ],
+   "to": [
+    5.2,
+    7.4
+   ],
+   "role": "dis",
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t407",
+   "at": [
+    6.7,
+    10.3
+   ],
+   "text": "h = ?",
+   "role": "dis",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "circle",
+   "id": "c408",
+   "c": [
+    3.0,
+    7.6000000000000005
+   ],
+   "r": 0.38,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.5,
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t409",
+   "at": [
+    8.9,
+    8.2
+   ],
+   "text": "t = 3.34 s",
+   "role": "tim",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "v410",
+   "from": [
+    11.4,
+    12.8
+   ],
+   "to": [
+    11.4,
+    10.8
+   ],
+   "role": "grav",
+   "strokeWidth": 3.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t411",
+   "at": [
+    11.0,
+    13.5
+   ],
+   "text": "g",
+   "role": "grav",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t412",
+   "at": [
+    6.45,
+    5.55
+   ],
+   "text": "v_f = v_i + g t",
+   "role": "vel",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t413",
+   "at": [
+    6.45,
+    4.6
+   ],
+   "text": "v_f = 0 + 9.8 × 3.34",
+   "role": "acc",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t414",
+   "at": [
+    6.45,
+    3.6499999999999995
+   ],
+   "text": "check: √(2gh) = √(2×9.8×54.7)",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r415",
+   "x": 0.6,
+   "y": 0.75,
+   "w": 11.7,
+   "h": 1.1,
+   "role": "ans",
+   "fill": "ans",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "t416",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "v_f = 32.7 m/s (downward)",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Given",
+   "text": "**v_i = 0**, **g = 9.8 m s⁻²**, **t = 3.34 s**. Find **v_f**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Choose the equation",
+   "text": "Use the 1st equation: \\( v_f = v_i + gt \\).",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Substitute",
+   "text": "\\( v_f = 0 + 9.8\\times3.34 \\).",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Answer and check",
+   "text": "\\( v_f = 32.7 \\) m s⁻¹ downward. Check: \\( \\sqrt{2gh} = \\sqrt{2\\times9.8\\times54.7} = 32.7 \\) m s⁻¹. ✔",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "First equation, free fall",
+   "tex": "v_f = v_i + g t",
+   "text": "Downward is positive here."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A ball is dropped and falls for 3 s. Find its speed (m/s). Use g = 9.8.",
+   "answer": 29.4,
+   "hint": "v = g t.",
+   "explain": "\\( 9.8\\times3 = 29.4 \\) m/s.",
+   "tolerance": 0.294,
+   "unit": "m/s"
+  }
+ ],
+ "takeaways": [
+  "From rest, **v = g t**: speed grows by 9.8 m/s every second."
+ ]
+}

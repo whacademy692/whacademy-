@@ -1,0 +1,805 @@
+{
+ "id": "g11-phys-c3-th-proj-graphs",
+ "title": "Projectile graphs: x–t, y–t, v_x–t and v_y–t",
+ "summary": "The four graphs of a projectile: a straight line, a parabola, a flat line and a falling line.",
+ "alt": "Four small graphs against time for a projectile: x–t, y–t, v_x–t and v_y–t, each with a moving dot.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -0.4,
+   15.0
+  ],
+  "y": [
+   -0.6,
+   12.0
+  ],
+  "ratio": 1.2222,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": true
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": true
+  },
+  "tim": {
+   "label": "Time",
+   "color": "#7c3aed",
+   "text": "Time.",
+   "legend": false
+  },
+  "hx": {
+   "label": "Horizontal part",
+   "color": "#0891b2",
+   "text": "The horizontal (x) component.",
+   "legend": true
+  },
+  "vy": {
+   "label": "Vertical part",
+   "color": "#c026d3",
+   "text": "The vertical (y) component.",
+   "legend": true
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "An angle.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "th",
+   "label": "Launch angle θ (°) (v_i = 20 m/s)",
+   "type": "number",
+   "min": 20,
+   "max": 70,
+   "step": 5,
+   "default": 40,
+   "unit": "°",
+   "role": "ang"
+  },
+  {
+   "id": "ph",
+   "label": "Fraction of the flight time",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.005,
+   "default": 0,
+   "role": "tim"
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 3,
+   "step": 0.01,
+   "default": 3,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "vx": "20.0*cos(th)",
+  "vy0": "20.0*sin(th)",
+  "T": "2*vy0/9.8",
+  "R": "vx*T",
+  "H": "vy0*vy0/19.6",
+  "tt": "ph*T",
+  "x": "vx*tt",
+  "y": "vy0*tt-4.9*tt*tt",
+  "vy": "vy0-9.8*tt"
+ },
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "v150",
+   "from": [
+    0.9,
+    7.4
+   ],
+   "to": [
+    6.500000000000001,
+    7.4
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "vector",
+   "id": "v151",
+   "from": [
+    0.9,
+    7.4
+   ],
+   "to": [
+    0.9,
+    10.9
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t152",
+   "at": [
+    3.5,
+    11.4
+   ],
+   "text": "x–t graph",
+   "role": "dis",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t153",
+   "at": [
+    3.5,
+    6.95
+   ],
+   "text": "T/2",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t154",
+   "at": [
+    6.1000000000000005,
+    6.95
+   ],
+   "text": "T",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s155",
+   "from": [
+    3.5,
+    7.32
+   ],
+   "to": [
+    3.5,
+    7.48
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "segment",
+   "id": "s156",
+   "from": [
+    6.1000000000000005,
+    7.32
+   ],
+   "to": [
+    6.1000000000000005,
+    7.48
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "vector",
+   "id": "v157",
+   "from": [
+    8.4,
+    7.4
+   ],
+   "to": [
+    14.000000000000002,
+    7.4
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "vector",
+   "id": "v158",
+   "from": [
+    8.4,
+    7.4
+   ],
+   "to": [
+    8.4,
+    10.9
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t159",
+   "at": [
+    11.0,
+    11.4
+   ],
+   "text": "y–t graph",
+   "role": "dis",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t160",
+   "at": [
+    11.0,
+    6.95
+   ],
+   "text": "T/2",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t161",
+   "at": [
+    13.600000000000001,
+    6.95
+   ],
+   "text": "T",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s162",
+   "from": [
+    11.0,
+    7.32
+   ],
+   "to": [
+    11.0,
+    7.48
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "segment",
+   "id": "s163",
+   "from": [
+    13.600000000000001,
+    7.32
+   ],
+   "to": [
+    13.600000000000001,
+    7.48
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "vector",
+   "id": "v164",
+   "from": [
+    0.9,
+    1.0
+   ],
+   "to": [
+    6.500000000000001,
+    1.0
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "vector",
+   "id": "v165",
+   "from": [
+    0.9,
+    1.0
+   ],
+   "to": [
+    0.9,
+    4.5
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t166",
+   "at": [
+    3.5,
+    5.0
+   ],
+   "text": "vₓ–t graph",
+   "role": "hx",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t167",
+   "at": [
+    3.5,
+    0.55
+   ],
+   "text": "T/2",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t168",
+   "at": [
+    6.1000000000000005,
+    0.55
+   ],
+   "text": "T",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s169",
+   "from": [
+    3.5,
+    0.92
+   ],
+   "to": [
+    3.5,
+    1.08
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "segment",
+   "id": "s170",
+   "from": [
+    6.1000000000000005,
+    0.92
+   ],
+   "to": [
+    6.1000000000000005,
+    1.08
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "vector",
+   "id": "v171",
+   "from": [
+    8.4,
+    1.0
+   ],
+   "to": [
+    14.000000000000002,
+    1.0
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "vector",
+   "id": "v172",
+   "from": [
+    8.4,
+    1.0
+   ],
+   "to": [
+    8.4,
+    4.5
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t173",
+   "at": [
+    11.0,
+    5.0
+   ],
+   "text": "v_y–t graph",
+   "role": "vy",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t174",
+   "at": [
+    11.0,
+    0.55
+   ],
+   "text": "T/2",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t175",
+   "at": [
+    13.600000000000001,
+    0.55
+   ],
+   "text": "T",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s176",
+   "from": [
+    11.0,
+    0.92
+   ],
+   "to": [
+    11.0,
+    1.08
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "segment",
+   "id": "s177",
+   "from": [
+    13.600000000000001,
+    0.92
+   ],
+   "to": [
+    13.600000000000001,
+    1.08
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "plot",
+   "id": "gx",
+   "role": "dis",
+   "strokeWidth": 3.2,
+   "domain": [
+    0.9,
+    6.1000000000000005
+   ],
+   "fn": "7.4 + 0.078*(R*(x-0.9)/5.2)"
+  },
+  {
+   "type": "circle",
+   "id": "dx",
+   "c": [
+    "0.9+5.2*ph",
+    "7.4+0.078*x"
+   ],
+   "r": 0.17,
+   "role": "dis",
+   "fill": "dis",
+   "fillOpacity": 0.9,
+   "strokeWidth": 1.5
+  },
+  {
+   "type": "plot",
+   "id": "gy",
+   "role": "dis",
+   "strokeWidth": 3.2,
+   "domain": [
+    8.4,
+    13.600000000000001
+   ],
+   "fn": "7.4 + 0.173*(4*H*((x-8.4)/5.2)*(1-(x-8.4)/5.2))"
+  },
+  {
+   "type": "circle",
+   "id": "dy",
+   "c": [
+    "8.4+5.2*ph",
+    "7.4+0.173*y"
+   ],
+   "r": 0.17,
+   "role": "dis",
+   "fill": "dis",
+   "fillOpacity": 0.9,
+   "strokeWidth": 1.5
+  },
+  {
+   "type": "plot",
+   "id": "gvx",
+   "role": "hx",
+   "strokeWidth": 3.2,
+   "domain": [
+    0.9,
+    6.1000000000000005
+   ],
+   "fn": "1.0 + 0.16*vx"
+  },
+  {
+   "type": "circle",
+   "id": "dvx",
+   "c": [
+    "0.9+5.2*ph",
+    "1.0+0.16*vx"
+   ],
+   "r": 0.17,
+   "role": "hx",
+   "fill": "hx",
+   "fillOpacity": 0.9,
+   "strokeWidth": 1.5
+  },
+  {
+   "type": "segment",
+   "id": "s178",
+   "from": [
+    8.4,
+    2.75
+   ],
+   "to": [
+    13.600000000000001,
+    2.75
+   ],
+   "role": "wall",
+   "strokeWidth": 1.2,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "plot",
+   "id": "gvy",
+   "role": "vy",
+   "strokeWidth": 3.2,
+   "domain": [
+    8.4,
+    13.600000000000001
+   ],
+   "fn": "1.0 + 1.75 + 0.08*(vy0*(1-2*(x-8.4)/5.2))"
+  },
+  {
+   "type": "circle",
+   "id": "dvy",
+   "c": [
+    "8.4+5.2*ph",
+    "1.0+1.75+0.08*vy"
+   ],
+   "r": 0.17,
+   "role": "vy",
+   "fill": "vy",
+   "fillOpacity": 0.9,
+   "strokeWidth": 1.5
+  },
+  {
+   "type": "text",
+   "id": "t179",
+   "at": [
+    7.9,
+    2.75
+   ],
+   "text": "0",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t180",
+   "at": [
+    3.5,
+    6.25
+   ],
+   "text": "straight line: x = v_x t",
+   "role": "dis",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t181",
+   "at": [
+    11.0,
+    6.25
+   ],
+   "text": "parabola",
+   "role": "dis",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t182",
+   "at": [
+    3.5,
+    -0.1499999999999999
+   ],
+   "text": "flat: v_x never changes",
+   "role": "hx",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t183",
+   "at": [
+    11.0,
+    -0.1499999999999999
+   ],
+   "text": "slope = −g, zero at T/2",
+   "role": "vy",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "One flight, four graphs",
+   "text": "A ball is launched at 20 m s⁻¹ and \\( \\theta = {{th|0}}^\\circ \\). Each graph shows one quantity against time, from launch to landing at \\( T \\).",
+   "actions": [
+    {
+     "set": {
+      "lv": 0,
+      "ph": 0,
+      "th": 40
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Watch the dots",
+   "text": "The dots move together: \\( x \\) grows steadily, \\( y \\) rises then falls, \\( v_x \\) stays level and \\( v_y \\) decreases through zero.",
+   "actions": [
+    {
+     "set": {
+      "lv": 1,
+      "th": 40
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "ph": 1
+     },
+     "at": 0,
+     "dur": 6000
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Read the shapes",
+   "text": "**x–t:** straight line (constant \\( v_x \\)). **y–t:** parabola. \\( v_x \\)–t: horizontal. \\( v_y \\)–t: straight line with slope \\( -g \\), crossing zero at the top (\\( t = T/2 \\)).",
+   "actions": [
+    {
+     "set": {
+      "lv": 2,
+      "ph": 1,
+      "th": 40
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Change the angle",
+   "text": "Raise \\( \\theta \\) to 65°: \\( v_x \\) falls, \\( v_y \\) starts larger and the flight lasts longer.",
+   "actions": [
+    {
+     "set": {
+      "lv": 2,
+      "ph": 0,
+      "th": 65
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "ph": 1
+     },
+     "at": 300,
+     "dur": 5500
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "x",
+   "value": "{{x|1}} m",
+   "role": "dis"
+  },
+  {
+   "label": "y",
+   "value": "{{y|1}} m",
+   "role": "dis"
+  },
+  {
+   "label": "v_x",
+   "value": "{{vx|1}} m/s",
+   "role": "hx"
+  },
+  {
+   "label": "v_y",
+   "value": "{{vy|1}} m/s",
+   "role": "vy"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Projectile graphs",
+   "tex": "x = v_x t,\\quad y = v_{y0}t - \\tfrac12 g t^2,\\quad v_x = \\text{const},\\quad v_y = v_{y0} - g t",
+   "text": "v_x–t flat, v_y–t straight line of slope −g."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which graph of a projectile is a horizontal straight line?",
+   "options": [
+    {
+     "id": "a",
+     "label": "x–t"
+    },
+    {
+     "id": "b",
+     "label": "v_x–t"
+    },
+    {
+     "id": "c",
+     "label": "v_y–t"
+    }
+   ],
+   "answer": "b",
+   "hint": "Which velocity component never changes?",
+   "explain": "v_x is constant, so its graph is horizontal."
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A projectile is launched at 20 m/s and 60°. What is v_x (m/s) at every instant?",
+   "answer": 10,
+   "hint": "v_x = v_i cosθ.",
+   "explain": "\\( 20\\cos60^\\circ = 10 \\) m/s.",
+   "tolerance": 0.05,
+   "unit": "m/s"
+  }
+ ],
+ "takeaways": [
+  "x–t straight, y–t parabola, v_x–t flat, v_y–t sloping line (slope −g).",
+  "v_y = 0 at t = T/2, the highest point."
+ ]
+}

@@ -1,0 +1,656 @@
+{
+ "id": "g11-phys-c3-th-elastic-cases",
+ "title": "Elastic collisions: the four special cases",
+ "summary": "Equal masses swap velocities; a light body bounces back from a heavy one; a heavy body barely slows down when it hits a light one.",
+ "alt": "Two blocks colliding elastically for four mass ratios, with velocity arrows and kinetic-energy bars.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -0.5,
+   14.5
+  ],
+  "y": [
+   -2.9,
+   8.8
+  ],
+  "ratio": 1.2821,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": true
+  },
+  "tim": {
+   "label": "Time",
+   "color": "#7c3aed",
+   "text": "Time.",
+   "legend": false
+  },
+  "mom": {
+   "label": "Momentum",
+   "color": "#0891b2",
+   "text": "Momentum p = mv.",
+   "legend": true
+  },
+  "ke": {
+   "label": "Kinetic energy",
+   "color": "#d97706",
+   "text": "Kinetic energy.",
+   "legend": true
+  },
+  "m1": {
+   "label": "Object 1",
+   "color": "#2563eb",
+   "text": "The first object.",
+   "legend": true
+  },
+  "m2": {
+   "label": "Object 2",
+   "color": "#ea580c",
+   "text": "The second object.",
+   "legend": true
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "Allowed or correct.",
+   "legend": false
+  },
+  "no": {
+   "label": "Wrong / zero",
+   "color": "#e11d48",
+   "text": "Wrong, impossible or lost.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "m1",
+   "label": "Mass m₁ (kg)",
+   "type": "number",
+   "min": 1,
+   "max": 10,
+   "step": 1,
+   "default": 5,
+   "unit": "kg",
+   "role": "m1"
+  },
+  {
+   "id": "m2",
+   "label": "Mass m₂ (kg)",
+   "type": "number",
+   "min": 1,
+   "max": 10,
+   "step": 1,
+   "default": 10,
+   "unit": "kg",
+   "role": "m2"
+  },
+  {
+   "id": "u1",
+   "label": "Velocity u₁ before (m/s)",
+   "type": "number",
+   "min": 1,
+   "max": 12,
+   "step": 1,
+   "default": 10,
+   "unit": "m/s",
+   "role": "m1"
+  },
+  {
+   "id": "u2",
+   "label": "Velocity u₂ before (m/s)",
+   "type": "number",
+   "min": -4,
+   "max": 8,
+   "step": 1,
+   "default": 5,
+   "unit": "m/s",
+   "role": "m2"
+  },
+  {
+   "id": "pr",
+   "label": "Time (collision at 1)",
+   "type": "number",
+   "min": 0,
+   "max": 2,
+   "step": 0.01,
+   "default": 0,
+   "role": "tim"
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 5,
+   "step": 0.01,
+   "default": 5,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "u2e": "min(u2,u1-1)",
+  "M": "m1+m2",
+  "v1e": "((m1-m2)*u1+2*m2*u2e)/M",
+  "v2e": "((m2-m1)*u2e+2*m1*u1)/M",
+  "vc": "(m1*u1+m2*u2e)/M",
+  "v1f": "v1e",
+  "v2f": "v2e",
+  "vel1": "if(pr<1,u1,v1f)",
+  "vel2": "if(pr<1,u2e,v2f)",
+  "w1": "0.8+0.42*sqrt(m1)",
+  "w2": "0.8+0.42*sqrt(m2)",
+  "xr1": "clamp(7+0.38*vel1*(pr-1),0.2,14.2)",
+  "xl2": "clamp(7+0.38*vel2*(pr-1),0.2,14.2)",
+  "KEb": "0.5*m1*u1*u1+0.5*m2*u2e*u2e",
+  "KEa": "0.5*m1*v1f*v1f+0.5*m2*v2f*v2f",
+  "pb": "m1*u1+m2*u2e",
+  "pa": "m1*v1f+m2*v2f",
+  "keep": "100*KEa/KEb",
+  "apr": "u1-u2e",
+  "sep": "v2f-v1f"
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ground",
+   "from": [
+    -0.3,
+    3.0
+   ],
+   "to": [
+    14.3,
+    3.0
+   ],
+   "role": "wall",
+   "strokeWidth": 3
+  },
+  {
+   "type": "rect",
+   "id": "b1",
+   "x": "xr1-w1",
+   "y": 3.0,
+   "w": "w1",
+   "h": 1.2,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "rect",
+   "id": "b2",
+   "x": "xl2",
+   "y": 3.0,
+   "w": "w2",
+   "h": 1.2,
+   "role": "m2",
+   "fill": "m2",
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "t257",
+   "at": [
+    "xr1-w1/2",
+    3.6
+   ],
+   "text": "{{m1|0}} kg",
+   "role": "m1",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t258",
+   "at": [
+    "xl2+w2/2",
+    3.6
+   ],
+   "text": "{{m2|0}} kg",
+   "role": "m2",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "vector",
+   "id": "v259",
+   "from": [
+    "xr1-w1/2",
+    4.7
+   ],
+   "to": [
+    "xr1-w1/2+0.25*vel1",
+    4.7
+   ],
+   "role": "m1",
+   "strokeWidth": 4.5,
+   "visible": "abs(vel1)>0.05"
+  },
+  {
+   "type": "vector",
+   "id": "v260",
+   "from": [
+    "xl2+w2/2",
+    4.7
+   ],
+   "to": [
+    "xl2+w2/2+0.25*vel2",
+    4.7
+   ],
+   "role": "m2",
+   "strokeWidth": 4.5,
+   "visible": "abs(vel2)>0.05"
+  },
+  {
+   "type": "text",
+   "id": "t261",
+   "at": [
+    "xr1-w1/2",
+    5.4
+   ],
+   "text": "v₁ = {{vel1|2}}",
+   "role": "m1",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t262",
+   "at": [
+    "xl2+w2/2",
+    5.4
+   ],
+   "text": "v₂ = {{vel2|2}}",
+   "role": "m2",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t263",
+   "at": [
+    7.0,
+    8.05
+   ],
+   "text": "u₂ must be less than u₁ for a collision",
+   "role": "no",
+   "size": "s",
+   "bold": true,
+   "visible": "u2>=u1"
+  },
+  {
+   "type": "text",
+   "id": "t264",
+   "at": [
+    7.0,
+    7.9
+   ],
+   "text": "Case 1: equal masses swap velocities",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "visible": "lv==1"
+  },
+  {
+   "type": "text",
+   "id": "t265",
+   "at": [
+    7.0,
+    7.9
+   ],
+   "text": "Case 2: equal masses, target at rest",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "visible": "lv==2"
+  },
+  {
+   "type": "text",
+   "id": "t266",
+   "at": [
+    7.0,
+    7.9
+   ],
+   "text": "Case 3: light body hits heavy body at rest",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "visible": "lv==3"
+  },
+  {
+   "type": "text",
+   "id": "t267",
+   "at": [
+    7.0,
+    7.9
+   ],
+   "text": "Case 4: heavy body hits light body at rest",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "visible": "lv==4"
+  },
+  {
+   "type": "text",
+   "id": "t268",
+   "at": [
+    7.0,
+    6.45
+   ],
+   "text": "v₁ = {{v1e|2}},  v₂ = {{v2e|2}} m/s",
+   "role": "vel",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1&&pr>=1.9"
+  },
+  {
+   "type": "text",
+   "id": "t269",
+   "at": [
+    1.2,
+    1.55
+   ],
+   "text": "before",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t270",
+   "at": [
+    1.2,
+    0.5
+   ],
+   "text": "after",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "rect",
+   "id": "kb",
+   "x": 2.0,
+   "y": 1.3,
+   "w": 8.0,
+   "h": 0.5,
+   "role": "ke",
+   "fill": "ke",
+   "fillOpacity": 0.35,
+   "strokeWidth": 2,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "rect",
+   "id": "ka",
+   "x": 2.0,
+   "y": 0.25,
+   "w": "8*KEa/KEb",
+   "h": 0.5,
+   "role": "ke",
+   "fill": "ke",
+   "fillOpacity": 0.35,
+   "strokeWidth": 2,
+   "visible": "lv>=2&&pr>=1.02"
+  },
+  {
+   "type": "text",
+   "id": "t271",
+   "at": [
+    11.6,
+    1.55
+   ],
+   "text": "{{KEb|0}} J",
+   "role": "ke",
+   "size": 0.72,
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t272",
+   "at": [
+    11.6,
+    0.5
+   ],
+   "text": "{{KEa|0}} J  ({{keep|0}}%)",
+   "role": "ke",
+   "size": 0.72,
+   "bold": true,
+   "visible": "lv>=2&&pr>=1.02"
+  },
+  {
+   "type": "text",
+   "id": "t273",
+   "at": [
+    7.0,
+    -0.75
+   ],
+   "text": "bars: kinetic energy",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true,
+   "visible": "lv>=2"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Elastic collisions",
+   "text": "In an **elastic** collision momentum **and** kinetic energy are conserved. Four special cases follow from \\( v_1 \\) and \\( v_2 \\) of the general formulas.",
+   "actions": [
+    {
+     "set": {
+      "m1": 4,
+      "m2": 4,
+      "u1": 6,
+      "u2": 2,
+      "lv": 0,
+      "pr": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Equal masses swap velocities",
+   "text": "\\( m_1 = m_2 \\): \\( v_1 = u_2 \\) and \\( v_2 = u_1 \\). Here 6 m s⁻¹ and 2 m s⁻¹ simply exchange: \\( v_1 = {{v1e|0}} \\), \\( v_2 = {{v2e|0}} \\).",
+   "actions": [
+    {
+     "set": {
+      "m1": 4,
+      "m2": 4,
+      "u1": 6,
+      "u2": 2,
+      "lv": 1,
+      "pr": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "pr": 2
+     },
+     "at": 200,
+     "dur": 4200
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Target at rest",
+   "text": "\\( m_1 = m_2 \\), \\( u_2 = 0 \\): the first body **stops** and the second moves off with \\( u_1 \\). (Newton’s cradle.)",
+   "actions": [
+    {
+     "set": {
+      "m1": 4,
+      "m2": 4,
+      "u1": 6,
+      "u2": 0,
+      "lv": 2,
+      "pr": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "pr": 2
+     },
+     "at": 200,
+     "dur": 4200
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Light hits heavy",
+   "text": "\\( m_2 \\gg m_1 \\), \\( u_2 = 0 \\): \\( v_1 \\approx -u_1 \\) and \\( v_2 \\approx 0 \\). The light body **bounces back** at nearly the same speed; the heavy body hardly moves (a ball hitting a wall).",
+   "actions": [
+    {
+     "set": {
+      "m1": 1,
+      "m2": 10,
+      "u1": 8,
+      "u2": 0,
+      "lv": 3,
+      "pr": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "pr": 2
+     },
+     "at": 200,
+     "dur": 4200
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Heavy hits light",
+   "text": "\\( m_1 \\gg m_2 \\), \\( u_2 = 0 \\): \\( v_1 \\approx u_1 \\) and \\( v_2 \\approx 2u_1 \\). The heavy body barely slows; the light body shoots off at **about twice** the speed.",
+   "actions": [
+    {
+     "set": {
+      "m1": 10,
+      "m2": 1,
+      "u1": 6,
+      "u2": 0,
+      "lv": 4,
+      "pr": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "pr": 2
+     },
+     "at": 200,
+     "dur": 4200
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "v₁",
+   "value": "{{v1e|2}} m/s",
+   "role": "m1"
+  },
+  {
+   "label": "v₂",
+   "value": "{{v2e|2}} m/s",
+   "role": "m2"
+  },
+  {
+   "label": "p before = after",
+   "value": "{{pb|1}} kg m/s",
+   "role": "mom"
+  },
+  {
+   "label": "KE before = after",
+   "value": "{{KEb|0}} J",
+   "role": "ke"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Elastic collision",
+   "tex": "v_1 = \\dfrac{m_1 - m_2}{m_1 + m_2}u_1 + \\dfrac{2m_2}{m_1 + m_2}u_2,\\quad v_2 = \\dfrac{2m_1}{m_1 + m_2}u_1 - \\dfrac{m_1 - m_2}{m_1 + m_2}u_2",
+   "text": "Both p and KE are conserved."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "Two 4 kg bodies collide elastically. The first moves at 6 m/s; the second is at rest. Find the final speed of the second body (m/s).",
+   "answer": 6,
+   "hint": "Equal masses exchange velocities.",
+   "explain": "m₁ = m₂ and u₂ = 0: \\( v_2 = u_1 = 6 \\) m/s.",
+   "tolerance": 0.05,
+   "unit": "m/s"
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A 1 kg ball at 8 m/s hits a 10 kg body at rest, elastically. Find the velocity of the ball afterwards (m/s; − means backwards).",
+   "answer": -6.5,
+   "hint": "v₁ = (m₁ − m₂)u₁/(m₁ + m₂).",
+   "explain": "\\( \\dfrac{1-10}{11}(8) = -6.5 \\) m/s: it rebounds.",
+   "tolerance": 0.1,
+   "unit": "m/s"
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "A heavy body hits a light body at rest elastically. The light body moves off at about:",
+   "options": [
+    {
+     "id": "a",
+     "label": "Half the speed"
+    },
+    {
+     "id": "b",
+     "label": "The same speed"
+    },
+    {
+     "id": "c",
+     "label": "Twice the speed"
+    }
+   ],
+   "answer": "c",
+   "hint": "Case 4: v₂ ≈ 2u₁.",
+   "explain": "When m₁ ≫ m₂, \\( v_2 = 2m_1u_1/(m_1 + m_2) \\approx 2u_1 \\)."
+  }
+ ],
+ "takeaways": [
+  "Equal masses swap velocities; a target at rest ends up with all the speed.",
+  "Light on heavy: bounces back. Heavy on light: light flies off at ≈ 2u₁."
+ ]
+}

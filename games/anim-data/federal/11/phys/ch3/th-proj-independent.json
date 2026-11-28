@@ -1,0 +1,672 @@
+{
+ "id": "g11-phys-c3-th-proj-independent",
+ "title": "Two balls: one dropped, one thrown sideways",
+ "summary": "Dropped and horizontally thrown balls fall together: the horizontal motion does not affect the vertical motion.",
+ "alt": "Two balls released from the same height, with ghost images and horizontal lines showing equal heights at each moment.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -0.5,
+   15.5
+  ],
+  "y": [
+   -1.2,
+   9.4
+  ],
+  "ratio": 1.5094,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": true
+  },
+  "acc": {
+   "label": "Acceleration",
+   "color": "#ea580c",
+   "text": "Acceleration.",
+   "legend": true
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": true
+  },
+  "tim": {
+   "label": "Time",
+   "color": "#7c3aed",
+   "text": "Time.",
+   "legend": false
+  },
+  "m1": {
+   "label": "Object 1",
+   "color": "#2563eb",
+   "text": "The first object.",
+   "legend": true
+  },
+  "m2": {
+   "label": "Object 2",
+   "color": "#ea580c",
+   "text": "The second object.",
+   "legend": true
+  },
+  "hx": {
+   "label": "Horizontal part",
+   "color": "#0891b2",
+   "text": "The horizontal (x) component.",
+   "legend": true
+  },
+  "vy": {
+   "label": "Vertical part",
+   "color": "#c026d3",
+   "text": "The vertical (y) component.",
+   "legend": true
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "vx",
+   "label": "Sideways speed of ball B (m/s)",
+   "type": "number",
+   "min": 2,
+   "max": 8,
+   "step": 1,
+   "default": 5,
+   "unit": "m/s",
+   "role": "hx"
+  },
+  {
+   "id": "tm",
+   "label": "Time t (s)",
+   "type": "number",
+   "min": 0,
+   "max": 2,
+   "step": 0.05,
+   "default": 0,
+   "unit": "s",
+   "role": "tim"
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 4,
+   "step": 0.01,
+   "default": 4,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "yA": "7.36-0.35*4.9*tm*tm",
+  "xB": "3.4+0.6*vx*tm",
+  "vyv": "9.8*tm",
+  "xm": "vx*tm",
+  "hm": "4.9*tm*tm"
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ground",
+   "from": [
+    -0.3,
+    0.5
+   ],
+   "to": [
+    15.3,
+    0.5
+   ],
+   "role": "wall",
+   "strokeWidth": 3
+  },
+  {
+   "type": "segment",
+   "id": "s118",
+   "from": [
+    0.8,
+    7.36
+   ],
+   "to": [
+    4.4,
+    7.36
+   ],
+   "role": "wall",
+   "strokeWidth": 1.5,
+   "dash": [
+    5,
+    5
+   ]
+  },
+  {
+   "type": "text",
+   "id": "t119",
+   "at": [
+    1.5,
+    8.46
+   ],
+   "text": "A",
+   "role": "m1",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t120",
+   "at": [
+    3.4,
+    8.46
+   ],
+   "text": "B",
+   "role": "m2",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t121",
+   "at": [
+    8.6,
+    8.46
+   ],
+   "text": "A dropped, B thrown sideways",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "plot",
+   "id": "trailB",
+   "role": "m2",
+   "strokeWidth": 2,
+   "domain": [
+    0,
+    2
+   ],
+   "x": "3.4+0.6*vx*u",
+   "y": "7.36-0.35*4.9*u*u",
+   "var": "u",
+   "upTo": "tm",
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "trailA",
+   "from": [
+    1.5,
+    7.36
+   ],
+   "to": [
+    1.5,
+    "yA"
+   ],
+   "role": "m1",
+   "strokeWidth": 2,
+   "dash": [
+    4,
+    4
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "s122",
+   "from": [
+    1.5,
+    "7.36-0.35*4.9*0.25"
+   ],
+   "to": [
+    "3.4+0.6*vx*0.5",
+    "7.36-0.35*4.9*0.25"
+   ],
+   "role": "dis",
+   "strokeWidth": 1.5,
+   "dash": [
+    5,
+    4
+   ],
+   "visible": "lv>=2&&tm>=0.5-0.001"
+  },
+  {
+   "type": "circle",
+   "id": "c123",
+   "c": [
+    1.5,
+    "7.36-0.35*4.9*0.25"
+   ],
+   "r": 0.3,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.15,
+   "strokeWidth": 1.5,
+   "visible": "tm>=0.5-0.001"
+  },
+  {
+   "type": "circle",
+   "id": "c124",
+   "c": [
+    "3.4+0.6*vx*0.5",
+    "7.36-0.35*4.9*0.25"
+   ],
+   "r": 0.3,
+   "role": "m2",
+   "fill": "m2",
+   "fillOpacity": 0.15,
+   "strokeWidth": 1.5,
+   "visible": "tm>=0.5-0.001"
+  },
+  {
+   "type": "segment",
+   "id": "s125",
+   "from": [
+    1.5,
+    "7.36-0.35*4.9*1.0"
+   ],
+   "to": [
+    "3.4+0.6*vx*1.0",
+    "7.36-0.35*4.9*1.0"
+   ],
+   "role": "dis",
+   "strokeWidth": 1.5,
+   "dash": [
+    5,
+    4
+   ],
+   "visible": "lv>=2&&tm>=1.0-0.001"
+  },
+  {
+   "type": "circle",
+   "id": "c126",
+   "c": [
+    1.5,
+    "7.36-0.35*4.9*1.0"
+   ],
+   "r": 0.3,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.15,
+   "strokeWidth": 1.5,
+   "visible": "tm>=1.0-0.001"
+  },
+  {
+   "type": "circle",
+   "id": "c127",
+   "c": [
+    "3.4+0.6*vx*1.0",
+    "7.36-0.35*4.9*1.0"
+   ],
+   "r": 0.3,
+   "role": "m2",
+   "fill": "m2",
+   "fillOpacity": 0.15,
+   "strokeWidth": 1.5,
+   "visible": "tm>=1.0-0.001"
+  },
+  {
+   "type": "segment",
+   "id": "s128",
+   "from": [
+    1.5,
+    "7.36-0.35*4.9*2.25"
+   ],
+   "to": [
+    "3.4+0.6*vx*1.5",
+    "7.36-0.35*4.9*2.25"
+   ],
+   "role": "dis",
+   "strokeWidth": 1.5,
+   "dash": [
+    5,
+    4
+   ],
+   "visible": "lv>=2&&tm>=1.5-0.001"
+  },
+  {
+   "type": "circle",
+   "id": "c129",
+   "c": [
+    1.5,
+    "7.36-0.35*4.9*2.25"
+   ],
+   "r": 0.3,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.15,
+   "strokeWidth": 1.5,
+   "visible": "tm>=1.5-0.001"
+  },
+  {
+   "type": "circle",
+   "id": "c130",
+   "c": [
+    "3.4+0.6*vx*1.5",
+    "7.36-0.35*4.9*2.25"
+   ],
+   "r": 0.3,
+   "role": "m2",
+   "fill": "m2",
+   "fillOpacity": 0.15,
+   "strokeWidth": 1.5,
+   "visible": "tm>=1.5-0.001"
+  },
+  {
+   "type": "segment",
+   "id": "s131",
+   "from": [
+    1.5,
+    "7.36-0.35*4.9*4.0"
+   ],
+   "to": [
+    "3.4+0.6*vx*2.0",
+    "7.36-0.35*4.9*4.0"
+   ],
+   "role": "dis",
+   "strokeWidth": 1.5,
+   "dash": [
+    5,
+    4
+   ],
+   "visible": "lv>=2&&tm>=2.0-0.001"
+  },
+  {
+   "type": "circle",
+   "id": "c132",
+   "c": [
+    1.5,
+    "7.36-0.35*4.9*4.0"
+   ],
+   "r": 0.3,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.15,
+   "strokeWidth": 1.5,
+   "visible": "tm>=2.0-0.001"
+  },
+  {
+   "type": "circle",
+   "id": "c133",
+   "c": [
+    "3.4+0.6*vx*2.0",
+    "7.36-0.35*4.9*4.0"
+   ],
+   "r": 0.3,
+   "role": "m2",
+   "fill": "m2",
+   "fillOpacity": 0.15,
+   "strokeWidth": 1.5,
+   "visible": "tm>=2.0-0.001"
+  },
+  {
+   "type": "circle",
+   "id": "ballA",
+   "c": [
+    1.5,
+    "yA"
+   ],
+   "r": 0.4,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.6,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "circle",
+   "id": "ballB",
+   "c": [
+    "xB",
+    "yA"
+   ],
+   "r": 0.4,
+   "role": "m2",
+   "fill": "m2",
+   "fillOpacity": 0.6,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "vector",
+   "id": "v134",
+   "from": [
+    1.5,
+    "yA-0.5"
+   ],
+   "to": [
+    1.5,
+    "yA-0.5-0.08*vyv"
+   ],
+   "role": "vy",
+   "strokeWidth": 4.5,
+   "visible": "lv>=3&&vyv>0.6"
+  },
+  {
+   "type": "vector",
+   "id": "v135",
+   "from": [
+    "xB",
+    "yA-0.5"
+   ],
+   "to": [
+    "xB",
+    "yA-0.5-0.08*vyv"
+   ],
+   "role": "vy",
+   "strokeWidth": 4.5,
+   "visible": "lv>=3&&vyv>0.6"
+  },
+  {
+   "type": "vector",
+   "id": "v136",
+   "from": [
+    "xB+0.5",
+    "yA"
+   ],
+   "to": [
+    "xB+0.5+0.12*vx",
+    "yA"
+   ],
+   "role": "hx",
+   "strokeWidth": 4.5,
+   "visible": "lv>=3"
+  },
+  {
+   "type": "text",
+   "id": "t137",
+   "at": [
+    8.0,
+    -0.4
+   ],
+   "text": "same height at every moment",
+   "role": "dis",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2&&lv<4"
+  },
+  {
+   "type": "text",
+   "id": "t138",
+   "at": [
+    8.0,
+    -0.4
+   ],
+   "text": "they land together, for any sideways speed",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=4"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Two balls, one release",
+   "text": "Ball **A** is simply dropped. Ball **B** is thrown sideways at the same moment from the same height. Which one lands first?",
+   "actions": [
+    {
+     "set": {
+      "lv": 0,
+      "tm": 0,
+      "vx": 5
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Watch them fall",
+   "text": "Both balls fall side by side. The ghost images mark every half second.",
+   "actions": [
+    {
+     "set": {
+      "lv": 1,
+      "vx": 5
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "tm": 2
+     },
+     "at": 0,
+     "dur": 6000
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Same height every moment",
+   "text": "The dashed lines are horizontal: at each instant the two balls are at the **same height**. The sideways motion of B did not slow its fall.",
+   "actions": [
+    {
+     "set": {
+      "lv": 2,
+      "tm": 2,
+      "vx": 5
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Two independent motions",
+   "text": "Vertically both have the same \\( v_y = g t \\) (the pink arrows). Only B has the constant horizontal velocity \\( v_x \\) (the teal arrow).",
+   "actions": [
+    {
+     "set": {
+      "lv": 3,
+      "tm": 1.5,
+      "vx": 5
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Faster sideways, same fall",
+   "text": "Try \\( v_x = 8 \\) m s⁻¹. The curve is longer, but the ball still lands at the same time as A.",
+   "actions": [
+    {
+     "set": {
+      "lv": 4,
+      "tm": 0,
+      "vx": 8
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "tm": 2
+     },
+     "at": 200,
+     "dur": 5500
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "t",
+   "value": "{{tm|2}} s",
+   "role": "tim"
+  },
+  {
+   "label": "Fallen (A and B)",
+   "value": "{{hm|1}} m",
+   "role": "dis"
+  },
+  {
+   "label": "v_y (A and B)",
+   "value": "{{vyv|1}} m/s",
+   "role": "vy"
+  },
+  {
+   "label": "B sideways",
+   "value": "{{xm|1}} m",
+   "role": "hx"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Independent motions",
+   "tex": "\\role{hx}{x = v_x t},\\qquad \\role{vy}{y = \\tfrac12 g t^2}",
+   "text": "Horizontal: constant velocity. Vertical: free fall."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "A ball is dropped and another is thrown horizontally from the same height at the same time (ignore air). Which lands first?",
+   "options": [
+    {
+     "id": "a",
+     "label": "The dropped ball"
+    },
+    {
+     "id": "b",
+     "label": "The thrown ball"
+    },
+    {
+     "id": "c",
+     "label": "They land together"
+    }
+   ],
+   "answer": "c",
+   "hint": "Compare the vertical motions.",
+   "explain": "Both have v_y = 0 at the start and the same g, so they take the same time."
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A ball is thrown horizontally at 6 m/s from a cliff 19.6 m high. How far from the base does it land (m)? Use g = 9.8.",
+   "answer": 12,
+   "hint": "Fall time first: h = ½ g t².",
+   "explain": "\\( t = \\sqrt{2(19.6)/9.8} = 2 \\) s, so \\( x = 6\\times2 = 12 \\) m.",
+   "tolerance": 0.1,
+   "unit": "m"
+  }
+ ],
+ "takeaways": [
+  "Horizontal and vertical motions are **independent**.",
+  "Time of fall depends only on the height, not on v_x."
+ ]
+}

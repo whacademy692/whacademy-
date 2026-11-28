@@ -1,0 +1,375 @@
+{
+ "id": "g11-phys-c3-th-air-resistance",
+ "title": "Projectile with and without air resistance (illustration)",
+ "summary": "Air resistance takes energy and speed from a projectile, so the real path is lower and shorter than the ideal parabola.",
+ "alt": "Two paths from the same launch: a symmetric ideal parabola and a lower, shorter, steeper-falling path with air resistance.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -0.8,
+   13.4
+  ],
+  "y": [
+   -0.8,
+   6.8
+  ],
+  "ratio": 1.8684,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": true
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": true
+  },
+  "tim": {
+   "label": "Time",
+   "color": "#7c3aed",
+   "text": "Time.",
+   "legend": false
+  },
+  "m1": {
+   "label": "Object 1",
+   "color": "#2563eb",
+   "text": "The first object.",
+   "legend": true
+  },
+  "m2": {
+   "label": "Object 2",
+   "color": "#ea580c",
+   "text": "The second object.",
+   "legend": true
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "Allowed or correct.",
+   "legend": false
+  },
+  "no": {
+   "label": "Wrong / zero",
+   "color": "#e11d48",
+   "text": "Wrong, impossible or lost.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "tm",
+   "label": "Time t (s)",
+   "type": "number",
+   "min": 0,
+   "max": 6,
+   "step": 0.05,
+   "default": 0,
+   "unit": "s",
+   "role": "tim"
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 4,
+   "step": 0.01,
+   "default": 4,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "tw": "min(tm,5.3054)",
+  "xi": "28.2843*tm",
+  "yi": "28.2843*tm-4.9*tm*tm",
+  "xw": "28.2843/0.1*(1-exp(-0.1*tw))",
+  "yw": "(28.2843+9.8/0.1)/0.1*(1-exp(-0.1*tw))-9.8/0.1*tw"
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ground",
+   "from": [
+    -0.5,
+    1.8
+   ],
+   "to": [
+    13.2,
+    1.8
+   ],
+   "role": "wall",
+   "strokeWidth": 3
+  },
+  {
+   "type": "plot",
+   "id": "pi",
+   "role": "m1",
+   "strokeWidth": 2.4,
+   "domain": [
+    0,
+    5.772300254584061
+   ],
+   "x": "0.6+0.07*28.2843*u",
+   "y": "1.8+0.07*(28.2843*u-4.9*u*u)",
+   "var": "u"
+  },
+  {
+   "type": "plot",
+   "id": "pw",
+   "role": "m2",
+   "strokeWidth": 2.4,
+   "domain": [
+    0,
+    5.3054
+   ],
+   "x": "0.6+0.07*28.2843/0.1*(1-exp(-0.1*u))",
+   "y": "1.8+0.07*((28.2843+9.8/0.1)/0.1*(1-exp(-0.1*u))-9.8/0.1*u)",
+   "var": "u",
+   "visible": "lv>=1"
+  },
+  {
+   "type": "circle",
+   "id": "bi",
+   "c": [
+    "0.6+0.07*xi",
+    "1.8+0.07*yi"
+   ],
+   "r": 0.2,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.7,
+   "strokeWidth": 2,
+   "visible": "yi>=0"
+  },
+  {
+   "type": "circle",
+   "id": "bw",
+   "c": [
+    "0.6+0.07*xw",
+    "1.8+0.07*yw"
+   ],
+   "r": 0.2,
+   "role": "m2",
+   "fill": "m2",
+   "fillOpacity": 0.7,
+   "strokeWidth": 2,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "text",
+   "id": "t209",
+   "at": [
+    3.2,
+    5.9
+   ],
+   "text": "blue: no air (ideal parabola)",
+   "role": "m1",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t210",
+   "at": [
+    3.2,
+    5.2
+   ],
+   "text": "orange: with air resistance",
+   "role": "m2",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "text",
+   "id": "t211",
+   "at": [
+    7.8,
+    0.9
+   ],
+   "text": "lower, shorter, falls more steeply",
+   "role": "no",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t212",
+   "at": [
+    7.8,
+    0.2
+   ],
+   "text": "range and height both smaller",
+   "role": "no",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The ideal path",
+   "text": "Without air, a projectile follows a **symmetric parabola**: the same rise and fall. Here \\( v_i = 40 \\) m s⁻¹ at 45°.",
+   "actions": [
+    {
+     "set": {
+      "lv": 0,
+      "tm": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "tm": 5.8
+     },
+     "at": 0,
+     "dur": 5000
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Add air resistance",
+   "text": "Air resistance acts like friction and **opposes the motion**. The same launch now follows the orange path.",
+   "actions": [
+    {
+     "set": {
+      "lv": 1,
+      "tm": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "tm": 5.8
+     },
+     "at": 0,
+     "dur": 5500
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Lower and shorter",
+   "text": "The projectile loses energy, and both velocity components are reduced. The height and the range are smaller than the ideal ones.",
+   "actions": [
+    {
+     "set": {
+      "lv": 2,
+      "tm": 5.8
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Not symmetric",
+   "text": "With air the path is **not symmetric**: it falls more steeply than it rose. The parabola is the model we use when air resistance can be ignored.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3,
+      "tm": 5.8
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "t",
+   "value": "{{tm|1}} s",
+   "role": "tim"
+  },
+  {
+   "label": "Ideal x",
+   "value": "{{xi|0}} m",
+   "role": "m1"
+  },
+  {
+   "label": "With air x",
+   "value": "{{xw|0}} m",
+   "role": "m2"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Effect of air resistance",
+   "tex": "\\text{air resistance}\\ \\Rightarrow\\ \\text{energy and velocity decrease} \\Rightarrow R,\\ H\\ \\text{decrease}",
+   "text": "Illustrative model: a drag force proportional to speed (k = 0.1 per second). Real air drag is more complicated."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Compared with the ideal parabola, the range with air resistance is:",
+   "options": [
+    {
+     "id": "a",
+     "label": "Larger"
+    },
+    {
+     "id": "b",
+     "label": "Smaller"
+    },
+    {
+     "id": "c",
+     "label": "The same"
+    }
+   ],
+   "answer": "b",
+   "hint": "Air resistance removes energy.",
+   "explain": "It decreases the velocity, so the range and height decrease."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Air resistance acts on a projectile:",
+   "options": [
+    {
+     "id": "a",
+     "label": "Along the motion, speeding it up"
+    },
+    {
+     "id": "b",
+     "label": "Against the motion, like friction"
+    },
+    {
+     "id": "c",
+     "label": "Only at the highest point"
+    }
+   ],
+   "answer": "b",
+   "hint": "Think of friction.",
+   "explain": "It opposes the motion, like friction."
+  }
+ ],
+ "takeaways": [
+  "Air resistance acts like friction and reduces energy and velocity.",
+  "The real path is lower, shorter and not symmetric. (Illustration only.)"
+ ]
+}

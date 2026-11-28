@@ -1,0 +1,308 @@
+{
+ "id": "g11-phys-c3-ex-np-05",
+ "title": "Numerical Problem 3.5 · Launch speed from a cliff",
+ "summary": "Fall time t = √(2y/g) = 3.04 s, then v_i = X/t = 5.79 m/s.",
+ "alt": "Numerical Problem 3.5 — A projectile is launched horizontally from the top of a 45.2 m high cliff and lands a distance of 17.6 m from the base of the cliff. Determine the magnitude of the launch velocity.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": false
+  },
+  "acc": {
+   "label": "Acceleration",
+   "color": "#ea580c",
+   "text": "Acceleration.",
+   "legend": false
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": false
+  },
+  "tim": {
+   "label": "Time",
+   "color": "#7c3aed",
+   "text": "Time.",
+   "legend": false
+  },
+  "hx": {
+   "label": "Horizontal part",
+   "color": "#0891b2",
+   "text": "The horizontal (x) component.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "s1046",
+   "from": [
+    0.6,
+    6.9
+   ],
+   "to": [
+    12.3,
+    6.9
+   ],
+   "role": "wall",
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "rect",
+   "id": "r1047",
+   "x": 0.8,
+   "y": 6.9,
+   "w": 2.2,
+   "h": 7.0,
+   "role": "wall",
+   "fill": "wall",
+   "fillOpacity": 0.2,
+   "strokeWidth": 2.5,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "s1048",
+   "from": [
+    1.7,
+    6.9
+   ],
+   "to": [
+    1.7,
+    13.9
+   ],
+   "role": "dis",
+   "strokeWidth": 2,
+   "dash": [
+    6,
+    5
+   ],
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t1049",
+   "at": [
+    3.7,
+    10.4
+   ],
+   "text": "45.2 m",
+   "role": "dis",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "v1050",
+   "from": [
+    3.0,
+    13.9
+   ],
+   "to": [
+    5.0,
+    13.9
+   ],
+   "role": "vel",
+   "strokeWidth": 4.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t1051",
+   "at": [
+    4.0,
+    14.5
+   ],
+   "text": "v_i = ?",
+   "role": "vel",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "plot",
+   "id": "g1052",
+   "role": "dis",
+   "strokeWidth": 3,
+   "domain": [
+    3.0,
+    12.4
+   ],
+   "fn": "13.9 - 0.07922*(x-3.0)^2",
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "v1053",
+   "from": [
+    3.0,
+    6.3
+   ],
+   "to": [
+    12.4,
+    6.3
+   ],
+   "role": "hx",
+   "strokeWidth": 2.5,
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t1054",
+   "at": [
+    7.7,
+    7.5
+   ],
+   "text": "X = 17.6 m",
+   "role": "hx",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t1055",
+   "at": [
+    6.45,
+    5.55
+   ],
+   "text": "t = √(2y/g) = √(2×45.2/9.8) = 3.04 s",
+   "role": "tim",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t1056",
+   "at": [
+    6.45,
+    4.6
+   ],
+   "text": "v_i = X / t = 17.6 / 3.04",
+   "role": "vel",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r1057",
+   "x": 0.6,
+   "y": 0.75,
+   "w": 11.7,
+   "h": 1.1,
+   "role": "ans",
+   "fill": "ans",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "t1058",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "v_i = 5.79 m/s",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Given",
+   "text": "**y = 45.2 m**, **X = 17.6 m**, \\( v_{iy} = 0 \\), \\( a_y = g = 9.8 \\) m s⁻². Find **v_i**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Time of fall",
+   "text": "Vertical motion: \\( y = \\tfrac12gt^2 \\), so \\( t = \\sqrt{\\dfrac{2y}{g}} = \\sqrt{\\dfrac{2(45.2)}{9.8}} = \\sqrt{9.224} = 3.04 \\) s.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Launch speed",
+   "text": "Horizontal motion: \\( X = v_it \\), so \\( v_i = \\dfrac{17.6}{3.04} \\).",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Answer",
+   "text": "\\( v_i = 5.79 \\) m s⁻¹.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Horizontal launch",
+   "tex": "t = \\sqrt{\\dfrac{2y}{g}},\\qquad v_i = \\dfrac{X}{t}",
+   "text": ""
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A ball leaves a 19.6 m high cliff horizontally and lands 15 m from the base. Find its launch speed (m/s). Use g = 9.8.",
+   "answer": 7.5,
+   "hint": "Fall time first.",
+   "explain": "\\( t = \\sqrt{2(19.6)/9.8} = 2 \\) s, \\( v_i = 15/2 = 7.5 \\) m/s.",
+   "tolerance": 0.05,
+   "unit": "m/s"
+  }
+ ],
+ "takeaways": [
+  "Fall time comes from the height; then v_i = X / t."
+ ]
+}

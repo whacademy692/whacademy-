@@ -1,0 +1,464 @@
+{
+ "id": "g11-phys-c3-th-momentum",
+ "title": "Momentum p = m v and kinetic energy KE = p²/2m",
+ "summary": "Momentum is the area of an m×v rectangle; the same momentum can carry very different kinetic energies.",
+ "alt": "A rectangle of width mass and height velocity whose area is the momentum, with bars for momentum and kinetic energy.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -0.5,
+   14.5
+  ],
+  "y": [
+   -1.4,
+   9.6
+  ],
+  "ratio": 1.3636,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": true
+  },
+  "mom": {
+   "label": "Momentum",
+   "color": "#0891b2",
+   "text": "Momentum p = mv.",
+   "legend": true
+  },
+  "ke": {
+   "label": "Kinetic energy",
+   "color": "#d97706",
+   "text": "Kinetic energy.",
+   "legend": true
+  },
+  "m1": {
+   "label": "Object 1",
+   "color": "#2563eb",
+   "text": "The first object.",
+   "legend": true
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "Allowed or correct.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "m",
+   "label": "Mass m (kg)",
+   "type": "number",
+   "min": 1,
+   "max": 10,
+   "step": 1,
+   "default": 4,
+   "unit": "kg",
+   "role": "m1"
+  },
+  {
+   "id": "v",
+   "label": "Velocity v (m/s)",
+   "type": "number",
+   "min": 1,
+   "max": 10,
+   "step": 1,
+   "default": 3,
+   "unit": "m/s",
+   "role": "vel"
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 4,
+   "step": 0.01,
+   "default": 4,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "p": "m*v",
+  "KE": "0.5*m*v*v",
+  "pk": "p*p/(2*m)"
+ },
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "v213",
+   "from": [
+    1.4,
+    1.2
+   ],
+   "to": [
+    7.800000000000001,
+    1.2
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "vector",
+   "id": "v214",
+   "from": [
+    1.4,
+    1.2
+   ],
+   "to": [
+    1.4,
+    7.0
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t215",
+   "at": [
+    7.4,
+    0.6499999999999999
+   ],
+   "text": "mass m",
+   "role": "m1",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t216",
+   "at": [
+    1.9,
+    7.4
+   ],
+   "text": "velocity v",
+   "role": "vel",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "rect",
+   "id": "area",
+   "x": 1.4,
+   "y": 1.2,
+   "w": "0.55*m",
+   "h": "0.5*v",
+   "role": "mom",
+   "fill": "mom",
+   "fillOpacity": 0.3,
+   "strokeWidth": 3
+  },
+  {
+   "type": "text",
+   "id": "t217",
+   "at": [
+    "1.4+0.55*m/2",
+    0.7
+   ],
+   "text": "{{m|0}} kg",
+   "role": "m1",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "vlab",
+   "at": [
+    1.2,
+    "1.2+0.5*v/2"
+   ],
+   "text": "{{v|0}}",
+   "role": "vel",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t218",
+   "at": [
+    4.6,
+    6.75
+   ],
+   "text": "area = p = {{p|0}}",
+   "role": "mom",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "rect",
+   "id": "barp",
+   "x": 8.9,
+   "y": 1.2,
+   "w": 1.4,
+   "h": "0.055*p",
+   "role": "mom",
+   "fill": "mom",
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.5,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t219",
+   "at": [
+    9.6,
+    0.7
+   ],
+   "text": "p",
+   "role": "mom",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t220",
+   "at": [
+    9.6,
+    "1.2+0.055*p+0.45"
+   ],
+   "text": "{{p|0}}",
+   "role": "mom",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "rect",
+   "id": "barke",
+   "x": 11.7,
+   "y": 1.2,
+   "w": 1.4,
+   "h": "0.011*KE",
+   "role": "ke",
+   "fill": "ke",
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.5,
+   "visible": "lv>=3"
+  },
+  {
+   "type": "text",
+   "id": "t221",
+   "at": [
+    12.399999999999999,
+    0.7
+   ],
+   "text": "KE",
+   "role": "ke",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3"
+  },
+  {
+   "type": "text",
+   "id": "t222",
+   "at": [
+    12.399999999999999,
+    "1.2+0.011*KE+0.45"
+   ],
+   "text": "{{KE|0}} J",
+   "role": "ke",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3"
+  },
+  {
+   "type": "text",
+   "id": "t223",
+   "at": [
+    8.4,
+    8.9
+   ],
+   "text": "p = m v = {{m|0}} × {{v|0}} = {{p|0}} kg m/s",
+   "role": "mom",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t224",
+   "at": [
+    8.4,
+    8.1
+   ],
+   "text": "KE = p² / 2m = {{pk|1}} J",
+   "role": "ke",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Mass and velocity",
+   "text": "Momentum depends on **both** how much matter moves and how fast: \\( \\vec p = m\\vec v \\). A heavy slow body and a light fast body can have the same momentum.",
+   "actions": [
+    {
+     "set": {
+      "lv": 0,
+      "m": 4,
+      "v": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Momentum is an area",
+   "text": "Draw a rectangle of width \\( m \\) and height \\( v \\). Its **area** is \\( p = mv = {{p|0}} \\) kg m s⁻¹.",
+   "actions": [
+    {
+     "set": {
+      "lv": 1,
+      "m": 4,
+      "v": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Change m or v",
+   "text": "Double the mass or double the velocity and the momentum doubles: the rectangle grows.",
+   "actions": [
+    {
+     "set": {
+      "lv": 2,
+      "m": 4,
+      "v": 3
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "m": 8
+     },
+     "at": 300,
+     "dur": 2200
+    },
+    {
+     "tween": {
+      "v": 6
+     },
+     "at": 2700,
+     "dur": 2200
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Same p: heavy and slow",
+   "text": "Take \\( m = 6 \\), \\( v = 2 \\): \\( p = 12 \\). The kinetic energy is \\( p^2/2m = {{pk|0}} \\) J.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3,
+      "m": 6,
+      "v": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Same p: light and fast",
+   "text": "Take \\( m = 2 \\), \\( v = 6 \\): the **same** \\( p = 12 \\), but the kinetic energy is now \\( {{pk|0}} \\) J, three times larger. Equal momentum does not mean equal energy.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3,
+      "m": 2,
+      "v": 6
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "p = mv",
+   "value": "{{p|0}} kg m/s",
+   "role": "mom"
+  },
+  {
+   "label": "KE",
+   "value": "{{KE|1}} J",
+   "role": "ke"
+  },
+  {
+   "label": "p²/2m",
+   "value": "{{pk|1}} J",
+   "role": "ke"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Momentum and kinetic energy",
+   "tex": "\\role{mom}{p} = m\\,v,\\qquad \\role{ke}{KE} = \\tfrac12 m v^2 = \\dfrac{p^2}{2m}",
+   "text": "Momentum is a vector; kinetic energy is a scalar."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A car of mass 1000 kg moves at 20 m/s. Find its momentum (kg m/s).",
+   "answer": 20000,
+   "hint": "p = m v.",
+   "explain": "\\( 1000\\times20 = 20000 \\) kg m s⁻¹.",
+   "tolerance": 200.0,
+   "unit": "kg m/s"
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Two bodies have the same momentum. The one with the smaller mass has:",
+   "options": [
+    {
+     "id": "a",
+     "label": "More kinetic energy"
+    },
+    {
+     "id": "b",
+     "label": "Less kinetic energy"
+    },
+    {
+     "id": "c",
+     "label": "The same kinetic energy"
+    }
+   ],
+   "answer": "a",
+   "hint": "KE = p²/2m.",
+   "explain": "For equal p, KE is proportional to 1/m: the lighter body has more KE."
+  }
+ ],
+ "takeaways": [
+  "p = mv; its SI unit is kg m s⁻¹ (= N s).",
+  "KE = p²/2m: equal momentum does not mean equal energy."
+ ]
+}

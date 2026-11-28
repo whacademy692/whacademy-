@@ -1,0 +1,444 @@
+{
+ "id": "g11-phys-c3-th-free-fall",
+ "title": "Free fall: a dropped ball",
+ "summary": "A dropped ball gains 9.8 m/s every second and falls 4.9, 19.6 and 44.1 m in 1, 2 and 3 seconds.",
+ "alt": "A ball falling from rest with ghost images at each second, a distance ruler and a velocity arrow.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -1.0,
+   16.0
+  ],
+  "y": [
+   -0.5,
+   16.8
+  ],
+  "ratio": 0.9827,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": true
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": true
+  },
+  "tim": {
+   "label": "Time",
+   "color": "#7c3aed",
+   "text": "Time.",
+   "legend": false
+  },
+  "grav": {
+   "label": "Gravity (g)",
+   "color": "#dc2626",
+   "text": "The acceleration due to gravity, g = 9.8 m s-2 downward.",
+   "legend": true
+  },
+  "m1": {
+   "label": "Object 1",
+   "color": "#2563eb",
+   "text": "The first object.",
+   "legend": true
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "tm",
+   "label": "Time of fall t (s)",
+   "type": "number",
+   "min": 0,
+   "max": 3,
+   "step": 0.05,
+   "default": 0,
+   "unit": "s",
+   "role": "tim"
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 4,
+   "step": 0.01,
+   "default": 4,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "h": "4.9*tm*tm",
+  "v": "9.8*tm",
+  "yb": "15.6-0.33*4.9*tm*tm"
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ground",
+   "from": [
+    0.3,
+    0.3
+   ],
+   "to": [
+    15.7,
+    0.3
+   ],
+   "role": "wall",
+   "strokeWidth": 3
+  },
+  {
+   "type": "segment",
+   "id": "s99",
+   "from": [
+    2.6,
+    15.6
+   ],
+   "to": [
+    2.6,
+    0.3
+   ],
+   "role": "wall",
+   "strokeWidth": 1.5,
+   "dash": [
+    5,
+    5
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "s100",
+   "from": [
+    2.3,
+    13.982999999999999
+   ],
+   "to": [
+    2.9,
+    13.982999999999999
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "circle",
+   "id": "c101",
+   "c": [
+    3.8,
+    13.982999999999999
+   ],
+   "r": 0.4,
+   "role": "vel",
+   "fill": "vel",
+   "fillOpacity": 0.18,
+   "strokeWidth": 1.5,
+   "visible": "tm>=1-0.001"
+  },
+  {
+   "type": "text",
+   "id": "t102",
+   "at": [
+    10.6,
+    13.982999999999999
+   ],
+   "text": "1 s:  h = 4.9 m,  v = 9.8 m/s",
+   "role": "vel",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1&&tm>=1-0.001"
+  },
+  {
+   "type": "segment",
+   "id": "s103",
+   "from": [
+    2.3,
+    9.131999999999998
+   ],
+   "to": [
+    2.9,
+    9.131999999999998
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "circle",
+   "id": "c104",
+   "c": [
+    3.8,
+    9.131999999999998
+   ],
+   "r": 0.4,
+   "role": "vel",
+   "fill": "vel",
+   "fillOpacity": 0.18,
+   "strokeWidth": 1.5,
+   "visible": "tm>=2-0.001"
+  },
+  {
+   "type": "text",
+   "id": "t105",
+   "at": [
+    10.6,
+    9.131999999999998
+   ],
+   "text": "2 s:  h = 19.6 m,  v = 19.6 m/s",
+   "role": "vel",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1&&tm>=2-0.001"
+  },
+  {
+   "type": "segment",
+   "id": "s106",
+   "from": [
+    2.3,
+    1.0469999999999988
+   ],
+   "to": [
+    2.9,
+    1.0469999999999988
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "circle",
+   "id": "c107",
+   "c": [
+    3.8,
+    1.0469999999999988
+   ],
+   "r": 0.4,
+   "role": "vel",
+   "fill": "vel",
+   "fillOpacity": 0.18,
+   "strokeWidth": 1.5,
+   "visible": "tm>=3-0.001"
+  },
+  {
+   "type": "text",
+   "id": "t108",
+   "at": [
+    10.6,
+    1.0469999999999988
+   ],
+   "text": "3 s:  h = 44.1 m,  v = 29.4 m/s",
+   "role": "vel",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1&&tm>=3-0.001"
+  },
+  {
+   "type": "circle",
+   "id": "ball",
+   "c": [
+    3.8,
+    "yb"
+   ],
+   "r": 0.45,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.55,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "vector",
+   "id": "vv",
+   "from": [
+    3.8,
+    "yb-0.55"
+   ],
+   "to": [
+    3.8,
+    "yb-0.55-0.1*v"
+   ],
+   "role": "vel",
+   "strokeWidth": 5,
+   "visible": "v>0.5"
+  },
+  {
+   "type": "vector",
+   "id": "v109",
+   "from": [
+    0.6,
+    14.4
+   ],
+   "to": [
+    0.6,
+    11.6
+   ],
+   "role": "grav",
+   "strokeWidth": 4.5
+  },
+  {
+   "type": "text",
+   "id": "t110",
+   "at": [
+    0.6,
+    15.2
+   ],
+   "text": "g",
+   "role": "grav",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t111",
+   "at": [
+    10.0,
+    6.6
+   ],
+   "text": "v = g t,   h = ½ g t²",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t112",
+   "at": [
+    10.0,
+    5.5
+   ],
+   "text": "extra each second: 4.9, 14.7, 24.5 m",
+   "role": "dis",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Release the ball",
+   "text": "A ball is **dropped** (\\( v_i = 0 \\)). Only gravity acts, so \\( a = g = 9.8 \\) m s⁻² downward.",
+   "actions": [
+    {
+     "set": {
+      "lv": 0,
+      "tm": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Fall for 3 seconds",
+   "text": "Every second the speed grows by 9.8 m s⁻¹. The ghost images mark each second, and they get further apart.",
+   "actions": [
+    {
+     "set": {
+      "lv": 1
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "tm": 3
+     },
+     "at": 0,
+     "dur": 6000
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "The two equations",
+   "text": "From \\( v_i = 0 \\): \\( v = g t \\) and \\( h = \\tfrac12 g t^2 \\). The mass does not appear, so every body falls the same way.",
+   "actions": [
+    {
+     "set": {
+      "lv": 2,
+      "tm": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Distances grow",
+   "text": "The ball covers 4.9 m in the 1st second, 14.7 m in the 2nd and 24.5 m in the 3rd: it falls farther each second because it is faster.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3,
+      "tm": 3
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "t",
+   "value": "{{tm|2}} s",
+   "role": "tim"
+  },
+  {
+   "label": "v",
+   "value": "{{v|1}} m/s",
+   "role": "vel"
+  },
+  {
+   "label": "h fallen",
+   "value": "{{h|1}} m",
+   "role": "dis"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Free fall from rest",
+   "tex": "v = g\\,t,\\qquad h = \\tfrac12 g\\,t^2",
+   "text": "g = 9.8 m s⁻²."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A stone is dropped from rest. Find its speed after 2.5 s (m/s). Use g = 9.8.",
+   "answer": 24.5,
+   "hint": "v = g t.",
+   "explain": "\\( 9.8\\times2.5 = 24.5 \\) m/s.",
+   "tolerance": 0.245,
+   "unit": "m/s"
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "How far does it fall in 4 s (m)?",
+   "answer": 78.4,
+   "hint": "h = ½ g t².",
+   "explain": "\\( \\tfrac12(9.8)(16) = 78.4 \\) m.",
+   "tolerance": 0.1,
+   "unit": "m"
+  }
+ ],
+ "takeaways": [
+  "From rest: **v = gt**, **h = ½ g t²**.",
+  "Mass does not matter."
+ ]
+}

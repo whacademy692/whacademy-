@@ -1,0 +1,403 @@
+{
+ "id": "g11-phys-c3-as-3-1b",
+ "title": "Assignment 3.1 (2) · Acceleration and time",
+ "summary": "Use 2aS = v_f² − v_i² for a, then v_f = v_i + at for t.",
+ "alt": "A car travels with a velocity of 5 m s⁻¹. It then accelerates uniformly and travels a distance of 50 m. If the velocity reached is 15 m s⁻¹, find the acceleration and the time to travel this distance.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": false
+  },
+  "acc": {
+   "label": "Acceleration",
+   "color": "#ea580c",
+   "text": "Acceleration.",
+   "legend": false
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": false
+  },
+  "tim": {
+   "label": "Time",
+   "color": "#7c3aed",
+   "text": "Time.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "v333",
+   "from": [
+    1.6,
+    7.9
+   ],
+   "to": [
+    11.1,
+    7.9
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "v334",
+   "from": [
+    1.6,
+    7.9
+   ],
+   "to": [
+    1.6,
+    13.8
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t335",
+   "at": [
+    10.4,
+    8.450000000000001
+   ],
+   "text": "t (s)",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t336",
+   "at": [
+    1.8,
+    14.15
+   ],
+   "text": "v (m/s)",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "s337",
+   "from": [
+    9.1,
+    7.800000000000001
+   ],
+   "to": [
+    9.1,
+    8.0
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t338",
+   "at": [
+    9.1,
+    7.4
+   ],
+   "text": "5",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "s339",
+   "from": [
+    1.5,
+    9.5875
+   ],
+   "to": [
+    1.7000000000000002,
+    9.5875
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t340",
+   "at": [
+    1.05,
+    9.5875
+   ],
+   "text": "5",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "s341",
+   "from": [
+    1.5,
+    12.9625
+   ],
+   "to": [
+    1.7000000000000002,
+    12.9625
+   ],
+   "role": "wall",
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t342",
+   "at": [
+    1.05,
+    12.9625
+   ],
+   "text": "15",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "polyline",
+   "id": "p343",
+   "pts": [
+    [
+     1.6,
+     9.5875
+    ],
+    [
+     9.1,
+     12.9625
+    ]
+   ],
+   "role": "vel",
+   "strokeWidth": 3.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "polygon",
+   "id": "pg344",
+   "pts": [
+    [
+     1.6,
+     7.9
+    ],
+    [
+     1.6,
+     9.5875
+    ],
+    [
+     9.1,
+     12.9625
+    ],
+    [
+     9.1,
+     7.9
+    ]
+   ],
+   "role": "dis",
+   "fill": "dis",
+   "fillOpacity": 0.28,
+   "strokeWidth": 2,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t345",
+   "at": [
+    5.35,
+    8.912500000000001
+   ],
+   "text": "area = 50 m",
+   "role": "dis",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t346",
+   "at": [
+    6.45,
+    5.55
+   ],
+   "text": "2aS = v_f² − v_i²",
+   "role": "acc",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t347",
+   "at": [
+    6.45,
+    4.6
+   ],
+   "text": "a = (225 − 25)/(2×50) = 2 m/s²",
+   "role": "acc",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t348",
+   "at": [
+    6.45,
+    3.6499999999999995
+   ],
+   "text": "t = (v_f − v_i)/a = (15 − 5)/2",
+   "role": "tim",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t349",
+   "at": [
+    6.45,
+    2.6999999999999993
+   ],
+   "text": "t = 5 s",
+   "role": "tim",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r350",
+   "x": 0.6,
+   "y": 0.75,
+   "w": 11.7,
+   "h": 1.1,
+   "role": "ans",
+   "fill": "ans",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s2",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "t351",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "a = 2 m/s²,  t = 5 s",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s2",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Given",
+   "text": "**v_i = 5 m s⁻¹**, **v_f = 15 m s⁻¹**, **S = 50 m**. Find **a** and **t**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Acceleration from the 3rd equation",
+   "text": "Time is not given, so use \\( 2aS = v_f^2 - v_i^2 \\): \\( a = \\dfrac{15^2 - 5^2}{2\\times50} = \\dfrac{200}{100} = 2 \\) m s⁻².",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Time from the 1st equation",
+   "text": "\\( t = \\dfrac{v_f - v_i}{a} = \\dfrac{15-5}{2} = 5 \\) s.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Check with the graph",
+   "text": "The area of the trapezium is \\( \\tfrac12(5+15)\\times5 = 50 \\) m, the given distance. ✔",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Third equation of motion",
+   "tex": "2aS = v_f^2 - v_i^2",
+   "text": "Use it when the time is not involved."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A car goes from 10 m/s to 20 m/s over 75 m. Find a (m/s²).",
+   "answer": 2,
+   "hint": "2aS = v_f² − v_i².",
+   "explain": "\\( a = (400-100)/(2\\times75) = 2 \\) m/s².",
+   "tolerance": 0.02,
+   "unit": "m/s²"
+  }
+ ],
+ "takeaways": [
+  "No time given? Use **2aS = v_f² − v_i²**."
+ ]
+}

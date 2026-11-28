@@ -1,0 +1,393 @@
+{
+ "id": "g11-phys-c3-ex-sq-03",
+ "title": "Short Question 3.3 · Can v or a be zero?",
+ "summary": "v is never zero for an angled or horizontal launch; a = g is never zero.",
+ "alt": "Short Question 3.3 — For a projectile motion, is the velocity ever zero? Is the acceleration ever zero?",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": false
+  },
+  "acc": {
+   "label": "Acceleration",
+   "color": "#ea580c",
+   "text": "Acceleration.",
+   "legend": false
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": false
+  },
+  "grav": {
+   "label": "Gravity (g)",
+   "color": "#dc2626",
+   "text": "The acceleration due to gravity, g = 9.8 m s-2 downward.",
+   "legend": false
+  },
+  "m1": {
+   "label": "Object 1",
+   "color": "#2563eb",
+   "text": "The first object.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "text",
+   "id": "t703",
+   "at": [
+    3.4,
+    14.5
+   ],
+   "text": "angled launch",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "s704",
+   "from": [
+    0.8,
+    8.4
+   ],
+   "to": [
+    6.4,
+    8.4
+   ],
+   "role": "wall",
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "plot",
+   "id": "g705",
+   "role": "dis",
+   "strokeWidth": 3,
+   "domain": [
+    1.0,
+    6.2
+   ],
+   "fn": "12.80000 - 0.65089*(x-3.6000)^2",
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "v706",
+   "from": [
+    3.6,
+    12.8
+   ],
+   "to": [
+    5.4,
+    12.8
+   ],
+   "role": "vel",
+   "strokeWidth": 4.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t707",
+   "at": [
+    4.5,
+    13.5
+   ],
+   "text": "v ≠ 0",
+   "role": "vel",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t708",
+   "at": [
+    9.7,
+    14.5
+   ],
+   "text": "vertical throw",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "s709",
+   "from": [
+    9.7,
+    8.4
+   ],
+   "to": [
+    9.7,
+    13.2
+   ],
+   "role": "dis",
+   "strokeWidth": 2.5,
+   "dash": [
+    6,
+    5
+   ],
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "circle",
+   "id": "c710",
+   "c": [
+    9.7,
+    13.5
+   ],
+   "r": 0.35,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.6,
+   "strokeWidth": 2.5,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t711",
+   "at": [
+    11.2,
+    13.5
+   ],
+   "text": "v = 0",
+   "role": "vel",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "v712",
+   "from": [
+    8.6,
+    13.5
+   ],
+   "to": [
+    8.6,
+    11.9
+   ],
+   "role": "grav",
+   "strokeWidth": 4.5,
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t713",
+   "at": [
+    7.9,
+    12.7
+   ],
+   "text": "g",
+   "role": "grav",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "v714",
+   "from": [
+    3.6,
+    12.8
+   ],
+   "to": [
+    3.6,
+    11.2
+   ],
+   "role": "grav",
+   "strokeWidth": 4.5,
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t715",
+   "at": [
+    4.3,
+    11.8
+   ],
+   "text": "g",
+   "role": "grav",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t716",
+   "at": [
+    6.45,
+    5.55
+   ],
+   "text": "v: never 0 (angled launch)",
+   "role": "vel",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t717",
+   "at": [
+    6.45,
+    4.6
+   ],
+   "text": "v = 0 only at top of a vertical throw",
+   "role": "vel",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t718",
+   "at": [
+    6.45,
+    3.6499999999999995
+   ],
+   "text": "a = g ≠ 0 at every instant",
+   "role": "grav",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r719",
+   "x": 0.6,
+   "y": 0.75,
+   "w": 11.7,
+   "h": 1.1,
+   "role": "ans",
+   "fill": "ans",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "t720",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "v rarely zero; a is never zero",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Velocity of a launched projectile",
+   "text": "For an angled (or horizontal) launch the horizontal part \\( v_i\\cos\\theta \\) **never changes**, so the velocity is never zero. At the top only \\( v_y \\) is zero.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Vertical throw",
+   "text": "Only for a **vertical** throw (\\( \\theta = 90^\\circ \\)) is the velocity zero, and only for an instant at the top.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Acceleration",
+   "text": "The acceleration is **g downward** at every instant in the air (\\( a_x = 0 \\), \\( a_y = \\mp g \\)). It is never zero.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Answer",
+   "text": "v: not zero for an angled launch (zero only at the top of a vertical throw). a: never zero.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Components",
+   "tex": "v_x = v_i\\cos\\theta\\ (\\text{constant}),\\qquad a = g\\ (\\text{downward})",
+   "text": ""
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which quantity of a projectile in flight is never zero?",
+   "options": [
+    {
+     "id": "a",
+     "label": "The acceleration"
+    },
+    {
+     "id": "b",
+     "label": "The vertical velocity"
+    },
+    {
+     "id": "c",
+     "label": "The speed at the top of a vertical throw"
+    }
+   ],
+   "answer": "a",
+   "hint": "Gravity never switches off.",
+   "explain": "a = g downward at every instant."
+  }
+ ],
+ "takeaways": [
+  "v_x keeps v from being zero; a = g is never zero."
+ ]
+}

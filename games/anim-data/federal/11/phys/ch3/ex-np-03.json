@@ -1,0 +1,327 @@
+{
+ "id": "g11-phys-c3-ex-np-03",
+ "title": "Numerical Problem 3.3 · Landing a jet on a short runway",
+ "summary": "Stopping takes at least 20 s and 1 km, so a 0.8 km runway is too short.",
+ "alt": "Numerical Problem 3.3 — A jet plane comes in for a landing with a speed of 100 m s⁻¹, and its acceleration can have a maximum magnitude of 5.00 m s⁻² as it comes to rest. (a) From the instant the plane touches the runway, what is the minimum time interval needed before it can come to rest? (b) Can this plane land on a small tropical island airport where the runway is 0.8 km long? Explain your answer.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": false
+  },
+  "acc": {
+   "label": "Acceleration",
+   "color": "#ea580c",
+   "text": "Acceleration.",
+   "legend": false
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": false
+  },
+  "tim": {
+   "label": "Time",
+   "color": "#7c3aed",
+   "text": "Time.",
+   "legend": false
+  },
+  "m1": {
+   "label": "Object 1",
+   "color": "#2563eb",
+   "text": "The first object.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "Allowed or correct.",
+   "legend": false
+  },
+  "no": {
+   "label": "Wrong / zero",
+   "color": "#e11d48",
+   "text": "Wrong, impossible or lost.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "s1015",
+   "from": [
+    0.6,
+    9.2
+   ],
+   "to": [
+    12.3,
+    9.2
+   ],
+   "role": "wall",
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "rect",
+   "id": "r1016",
+   "x": 1.0,
+   "y": 9.4,
+   "w": 2.6,
+   "h": 0.9,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.28,
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t1017",
+   "at": [
+    2.3,
+    9.85
+   ],
+   "text": "jet",
+   "role": "m1",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "v1018",
+   "from": [
+    3.8,
+    9.85
+   ],
+   "to": [
+    5.4,
+    9.85
+   ],
+   "role": "vel",
+   "strokeWidth": 4.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t1019",
+   "at": [
+    4.6,
+    10.6
+   ],
+   "text": "100 m/s",
+   "role": "vel",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r1020",
+   "x": 1.2,
+   "y": 11.9,
+   "w": 10.0,
+   "h": 0.7,
+   "role": "no",
+   "fill": "no",
+   "fillOpacity": 0.3,
+   "strokeWidth": 2,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t1021",
+   "at": [
+    6.2,
+    12.25
+   ],
+   "text": "needed: 1000 m",
+   "role": "no",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r1022",
+   "x": 1.2,
+   "y": 13.0,
+   "w": 8.0,
+   "h": 0.7,
+   "role": "ok",
+   "fill": "ok",
+   "fillOpacity": 0.3,
+   "strokeWidth": 2,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t1023",
+   "at": [
+    5.2,
+    13.35
+   ],
+   "text": "runway: 800 m",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t1024",
+   "at": [
+    6.45,
+    5.55
+   ],
+   "text": "t = (0 − 100) / (−5.00) = 20 s",
+   "role": "tim",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t1025",
+   "at": [
+    6.45,
+    4.6
+   ],
+   "text": "S = (0 − 10000) / (2×−5.00)",
+   "role": "dis",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t1026",
+   "at": [
+    6.45,
+    3.6499999999999995
+   ],
+   "text": "S = 1000 m = 1 km > 0.8 km",
+   "role": "no",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r1027",
+   "x": 0.6,
+   "y": 0.75,
+   "w": 11.7,
+   "h": 1.1,
+   "role": "ans",
+   "fill": "ans",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "t1028",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "t = 20 s;  it cannot land",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Given",
+   "text": "**v_i = 100 m s⁻¹**, **v_f = 0**, **a = −5.00 m s⁻²** (the greatest braking).",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "(a) Time",
+   "text": "\\( v_f = v_i + at \\Rightarrow t = \\dfrac{0 - 100}{-5.00} = 20 \\) s.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "(b) Distance",
+   "text": "\\( S = \\dfrac{v_f^2 - v_i^2}{2a} = \\dfrac{0 - 10000}{2(-5.00)} = 1000 \\) m = **1 km**.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Compare",
+   "text": "The plane needs at least **1 km** but the runway is only **0.8 km (800 m)**. It **cannot** land safely.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Stopping",
+   "tex": "t = \\dfrac{v_f - v_i}{a},\\qquad S = \\dfrac{v_f^2 - v_i^2}{2a}",
+   "text": ""
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A jet lands at 80 m/s with maximum deceleration 5 m/s². Find the shortest runway needed (m).",
+   "answer": 640,
+   "hint": "S = v_i²/2a.",
+   "explain": "\\( 6400/10 = 640 \\) m.",
+   "tolerance": 0.5,
+   "unit": "m"
+  }
+ ],
+ "takeaways": [
+  "Minimum landing run S = v_i²/2a: here 1 km, more than the 0.8 km runway."
+ ]
+}

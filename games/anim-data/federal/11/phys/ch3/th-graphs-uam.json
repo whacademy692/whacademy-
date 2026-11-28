@@ -1,0 +1,878 @@
+{
+ "id": "g11-phys-c3-th-graphs-uam",
+ "title": "Graphs of uniformly accelerated motion: s–t, v–t and a–t",
+ "summary": "See how one motion looks on three graphs: a parabola for distance, a slope for velocity, a flat line for acceleration.",
+ "alt": "Three side-by-side graphs: distance–time curve, velocity–time line and acceleration–time line of the same motion.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -0.3,
+   15.7
+  ],
+  "y": [
+   -2.3,
+   9.6
+  ],
+  "ratio": 1.3445,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": true
+  },
+  "acc": {
+   "label": "Acceleration",
+   "color": "#ea580c",
+   "text": "Acceleration.",
+   "legend": true
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": true
+  },
+  "tim": {
+   "label": "Time",
+   "color": "#7c3aed",
+   "text": "Time.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "vi",
+   "label": "Starting velocity v_i (m/s)",
+   "type": "number",
+   "min": 0,
+   "max": 4,
+   "step": 1,
+   "default": 1,
+   "unit": "m/s",
+   "role": "vel"
+  },
+  {
+   "id": "a",
+   "label": "Acceleration a (m/s²)",
+   "type": "number",
+   "min": 0,
+   "max": 2,
+   "step": 0.5,
+   "default": 1,
+   "unit": "m/s²",
+   "role": "acc"
+  },
+  {
+   "id": "tm",
+   "label": "Time (s)",
+   "type": "number",
+   "min": 0,
+   "max": 4,
+   "step": 0.05,
+   "default": 0,
+   "unit": "s",
+   "role": "tim"
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 5,
+   "step": 0.01,
+   "default": 5,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "s": "vi*tm+0.5*a*tm*tm",
+  "v": "vi+a*tm"
+ },
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "v57",
+   "from": [
+    0.4,
+    1.0
+   ],
+   "to": [
+    4.6000000000000005,
+    1.0
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "vector",
+   "id": "v58",
+   "from": [
+    0.4,
+    1.0
+   ],
+   "to": [
+    0.4,
+    7.9
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t59",
+   "at": [
+    2.4,
+    8.7
+   ],
+   "text": "s–t graph",
+   "role": "dis",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t60",
+   "at": [
+    4.3500000000000005,
+    1.5
+   ],
+   "text": "t",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s61",
+   "from": [
+    1.35,
+    0.92
+   ],
+   "to": [
+    1.35,
+    1.08
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t62",
+   "at": [
+    1.35,
+    0.5
+   ],
+   "text": "1",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s63",
+   "from": [
+    2.3,
+    0.92
+   ],
+   "to": [
+    2.3,
+    1.08
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t64",
+   "at": [
+    2.3,
+    0.5
+   ],
+   "text": "2",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s65",
+   "from": [
+    3.2499999999999996,
+    0.92
+   ],
+   "to": [
+    3.2499999999999996,
+    1.08
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t66",
+   "at": [
+    3.2499999999999996,
+    0.5
+   ],
+   "text": "3",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s67",
+   "from": [
+    4.2,
+    0.92
+   ],
+   "to": [
+    4.2,
+    1.08
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t68",
+   "at": [
+    4.2,
+    0.5
+   ],
+   "text": "4",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true
+  },
+  {
+   "type": "vector",
+   "id": "v69",
+   "from": [
+    4.95,
+    1.0
+   ],
+   "to": [
+    9.15,
+    1.0
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "vector",
+   "id": "v70",
+   "from": [
+    4.95,
+    1.0
+   ],
+   "to": [
+    4.95,
+    7.9
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t71",
+   "at": [
+    6.95,
+    8.7
+   ],
+   "text": "v–t graph",
+   "role": "vel",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t72",
+   "at": [
+    8.9,
+    1.5
+   ],
+   "text": "t",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s73",
+   "from": [
+    5.9,
+    0.92
+   ],
+   "to": [
+    5.9,
+    1.08
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t74",
+   "at": [
+    5.9,
+    0.5
+   ],
+   "text": "1",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s75",
+   "from": [
+    6.85,
+    0.92
+   ],
+   "to": [
+    6.85,
+    1.08
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t76",
+   "at": [
+    6.85,
+    0.5
+   ],
+   "text": "2",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s77",
+   "from": [
+    7.8,
+    0.92
+   ],
+   "to": [
+    7.8,
+    1.08
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t78",
+   "at": [
+    7.8,
+    0.5
+   ],
+   "text": "3",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s79",
+   "from": [
+    8.75,
+    0.92
+   ],
+   "to": [
+    8.75,
+    1.08
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t80",
+   "at": [
+    8.75,
+    0.5
+   ],
+   "text": "4",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true
+  },
+  {
+   "type": "vector",
+   "id": "v81",
+   "from": [
+    9.5,
+    1.0
+   ],
+   "to": [
+    13.7,
+    1.0
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "vector",
+   "id": "v82",
+   "from": [
+    9.5,
+    1.0
+   ],
+   "to": [
+    9.5,
+    7.9
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t83",
+   "at": [
+    11.5,
+    8.7
+   ],
+   "text": "a–t graph",
+   "role": "acc",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t84",
+   "at": [
+    13.45,
+    1.5
+   ],
+   "text": "t",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s85",
+   "from": [
+    10.45,
+    0.92
+   ],
+   "to": [
+    10.45,
+    1.08
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t86",
+   "at": [
+    10.45,
+    0.5
+   ],
+   "text": "1",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s87",
+   "from": [
+    11.4,
+    0.92
+   ],
+   "to": [
+    11.4,
+    1.08
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t88",
+   "at": [
+    11.4,
+    0.5
+   ],
+   "text": "2",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s89",
+   "from": [
+    12.35,
+    0.92
+   ],
+   "to": [
+    12.35,
+    1.08
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t90",
+   "at": [
+    12.35,
+    0.5
+   ],
+   "text": "3",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s91",
+   "from": [
+    13.3,
+    0.92
+   ],
+   "to": [
+    13.3,
+    1.08
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t92",
+   "at": [
+    13.3,
+    0.5
+   ],
+   "text": "4",
+   "role": "wall",
+   "size": 0.72,
+   "bold": true
+  },
+  {
+   "type": "plot",
+   "id": "pst",
+   "role": "dis",
+   "strokeWidth": 3.5,
+   "domain": [
+    0.4,
+    4.2
+   ],
+   "fn": "1.0 + 0.125*(vi*((x-0.4)/0.95) + 0.5*a*((x-0.4)/0.95)^2)"
+  },
+  {
+   "type": "plot",
+   "id": "pvt",
+   "role": "vel",
+   "strokeWidth": 3.5,
+   "domain": [
+    4.95,
+    8.75
+   ],
+   "fn": "1.0 + 0.5*(vi + a*((x-4.95)/0.95))"
+  },
+  {
+   "type": "plot",
+   "id": "pat",
+   "role": "acc",
+   "strokeWidth": 3.5,
+   "domain": [
+    9.5,
+    13.3
+   ],
+   "fn": "1.0 + 2.6*a"
+  },
+  {
+   "type": "circle",
+   "id": "m1",
+   "c": [
+    "0.4+0.95*tm",
+    "1.0+0.125*s"
+   ],
+   "r": 0.17,
+   "role": "dis",
+   "fill": "dis",
+   "fillOpacity": 0.9,
+   "strokeWidth": 1.5
+  },
+  {
+   "type": "circle",
+   "id": "m2",
+   "c": [
+    "4.95+0.95*tm",
+    "1.0+0.5*v"
+   ],
+   "r": 0.17,
+   "role": "vel",
+   "fill": "vel",
+   "fillOpacity": 0.9,
+   "strokeWidth": 1.5
+  },
+  {
+   "type": "circle",
+   "id": "m3",
+   "c": [
+    "9.5+0.95*tm",
+    "1.0+2.6*a"
+   ],
+   "r": 0.17,
+   "role": "acc",
+   "fill": "acc",
+   "fillOpacity": 0.9,
+   "strokeWidth": 1.5
+  },
+  {
+   "type": "text",
+   "id": "t93",
+   "at": [
+    2.4,
+    -0.55
+   ],
+   "text": "slope = v",
+   "role": "dis",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "text",
+   "id": "t94",
+   "at": [
+    6.95,
+    -0.55
+   ],
+   "text": "slope = a",
+   "role": "vel",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "text",
+   "id": "t95",
+   "at": [
+    11.5,
+    -0.55
+   ],
+   "text": "a is constant",
+   "role": "acc",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "text",
+   "id": "t96",
+   "at": [
+    6.95,
+    -1.35
+   ],
+   "text": "area = S",
+   "role": "vel",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t97",
+   "at": [
+    7.0,
+    -2.0
+   ],
+   "text": "a = 0: s–t straight, v–t flat",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3&&a<0.25"
+  },
+  {
+   "type": "text",
+   "id": "t98",
+   "at": [
+    7.0,
+    -2.0
+   ],
+   "text": "a > 0: s–t curves upward",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2&&a>=0.25"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "One motion, three graphs",
+   "text": "A body has constant acceleration \\( a \\). Its motion can be drawn as distance–time, velocity–time and acceleration–time graphs.",
+   "actions": [
+    {
+     "set": {
+      "lv": 0,
+      "tm": 0,
+      "vi": 1,
+      "a": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Run the motion",
+   "text": "Watch the three dots move together: the s–t dot climbs faster and faster, the v–t dot rises steadily, the a–t dot stays level.",
+   "actions": [
+    {
+     "set": {
+      "lv": 1,
+      "vi": 1,
+      "a": 1
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "tm": 4
+     },
+     "at": 0,
+     "dur": 6000
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Read the slopes",
+   "text": "Slope of s–t = velocity (it gets steeper). Slope of v–t = acceleration (constant). Area under v–t = distance.",
+   "actions": [
+    {
+     "set": {
+      "lv": 2,
+      "tm": 4,
+      "vi": 1,
+      "a": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Take away the acceleration",
+   "text": "With \\( a = 0 \\) the velocity is constant: the v–t graph is flat and the s–t graph becomes a straight line.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3,
+      "a": 0,
+      "tm": 4,
+      "vi": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "More acceleration",
+   "text": "Raise \\( a \\) to 2: the v–t line is steeper and the s–t curve bends more.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3,
+      "a": 2,
+      "tm": 4,
+      "vi": 1
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "s",
+   "value": "{{s|1}} m",
+   "role": "dis"
+  },
+  {
+   "label": "v",
+   "value": "{{v|1}} m/s",
+   "role": "vel"
+  },
+  {
+   "label": "a",
+   "value": "{{a|1}} m/s²",
+   "role": "acc"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Three graphs",
+   "tex": "s = v_i t + \\tfrac12 a t^2,\\quad v = v_i + a t,\\quad a = \\text{constant}",
+   "text": "Parabola, straight line, horizontal line."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "A body moves with constant acceleration. Its distance–time graph is:",
+   "options": [
+    {
+     "id": "a",
+     "label": "A straight line"
+    },
+    {
+     "id": "b",
+     "label": "A parabola"
+    },
+    {
+     "id": "c",
+     "label": "A horizontal line"
+    }
+   ],
+   "answer": "b",
+   "hint": "S = v_i t + ½ a t² has t².",
+   "explain": "S contains \\( t^2 \\): a parabola."
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "v_i = 1 m/s and a = 2 m/s². Find v at t = 4 s (m/s).",
+   "answer": 9,
+   "hint": "v = v_i + at.",
+   "explain": "\\( 1 + 2\\times4 = 9 \\) m/s.",
+   "tolerance": 0.09,
+   "unit": "m/s"
+  }
+ ],
+ "takeaways": [
+  "s–t: parabola. v–t: straight line. a–t: horizontal line.",
+  "Slope of s–t = v; slope of v–t = a; area under v–t = S."
+ ]
+}

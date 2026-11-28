@@ -1,0 +1,453 @@
+{
+ "id": "g11-phys-c3-ex-np-06",
+ "title": "Numerical Problem 3.6 · Two carts couple together",
+ "summary": "Momentum is conserved: m(2) + m(−1) = 2m v, so v = 0.5 m/s to the right.",
+ "alt": "Numerical Problem 3.6 — Two equal-mass carts roll towards each other on a level, low-friction track. One cart rolls rightward at 2 m s⁻¹ and the other cart rolls leftward at 1 m s⁻¹. After the carts collide, they couple and roll together. Ignoring resistive forces, find their combined speed.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": false
+  },
+  "acc": {
+   "label": "Acceleration",
+   "color": "#ea580c",
+   "text": "Acceleration.",
+   "legend": false
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": false
+  },
+  "mom": {
+   "label": "Momentum",
+   "color": "#0891b2",
+   "text": "Momentum p = mv.",
+   "legend": false
+  },
+  "m1": {
+   "label": "Object 1",
+   "color": "#2563eb",
+   "text": "The first object.",
+   "legend": false
+  },
+  "m2": {
+   "label": "Object 2",
+   "color": "#ea580c",
+   "text": "The second object.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "s1059",
+   "from": [
+    0.6,
+    12.0
+   ],
+   "to": [
+    12.3,
+    12.0
+   ],
+   "role": "wall",
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "segment",
+   "id": "s1060",
+   "from": [
+    0.6,
+    7.9
+   ],
+   "to": [
+    12.3,
+    7.9
+   ],
+   "role": "wall",
+   "strokeWidth": 3,
+   "appear": "s3",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t1061",
+   "at": [
+    1.2,
+    14.4
+   ],
+   "text": "before",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r1062",
+   "x": 1.6,
+   "y": 12.0,
+   "w": 2.2,
+   "h": 1.2,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.28,
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t1063",
+   "at": [
+    2.7,
+    12.6
+   ],
+   "text": "m",
+   "role": "m1",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "v1064",
+   "from": [
+    4.0,
+    12.6
+   ],
+   "to": [
+    6.0,
+    12.6
+   ],
+   "role": "m1",
+   "strokeWidth": 4.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t1065",
+   "at": [
+    5.0,
+    13.3
+   ],
+   "text": "2",
+   "role": "m1",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r1066",
+   "x": 9.2,
+   "y": 12.0,
+   "w": 2.2,
+   "h": 1.2,
+   "role": "m2",
+   "fill": "m2",
+   "fillOpacity": 0.28,
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t1067",
+   "at": [
+    10.299999999999999,
+    12.6
+   ],
+   "text": "m",
+   "role": "m2",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "v1068",
+   "from": [
+    9.0,
+    12.6
+   ],
+   "to": [
+    8.0,
+    12.6
+   ],
+   "role": "m2",
+   "strokeWidth": 4.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t1069",
+   "at": [
+    8.5,
+    13.3
+   ],
+   "text": "1",
+   "role": "m2",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t1070",
+   "at": [
+    1.2,
+    9.6
+   ],
+   "text": "after",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r1071",
+   "x": 4.6,
+   "y": 7.9,
+   "w": 2.2,
+   "h": 1.2,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.28,
+   "strokeWidth": 2,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t1072",
+   "at": [
+    5.699999999999999,
+    8.5
+   ],
+   "text": "m",
+   "role": "m1",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r1073",
+   "x": 6.8,
+   "y": 7.9,
+   "w": 2.2,
+   "h": 1.2,
+   "role": "m2",
+   "fill": "m2",
+   "fillOpacity": 0.28,
+   "strokeWidth": 2,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t1074",
+   "at": [
+    7.9,
+    8.5
+   ],
+   "text": "m",
+   "role": "m2",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "v1075",
+   "from": [
+    9.2,
+    8.5
+   ],
+   "to": [
+    10.4,
+    8.5
+   ],
+   "role": "ans",
+   "strokeWidth": 4.5,
+   "appear": "s3",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t1076",
+   "at": [
+    9.8,
+    9.3
+   ],
+   "text": "0.5",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t1077",
+   "at": [
+    6.45,
+    5.55
+   ],
+   "text": "m₁u₁ + m₂u₂ = (m₁ + m₂) v",
+   "role": "mom",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t1078",
+   "at": [
+    6.45,
+    4.6
+   ],
+   "text": "m(2) + m(−1) = 2m v",
+   "role": "mom",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t1079",
+   "at": [
+    6.45,
+    3.6499999999999995
+   ],
+   "text": "v = 1/2 = 0.5 m/s  (right)",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r1080",
+   "x": 0.6,
+   "y": 0.75,
+   "w": 11.7,
+   "h": 1.1,
+   "role": "ans",
+   "fill": "ans",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "t1081",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "v = 0.5 m/s to the right",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Given",
+   "text": "Equal masses \\( m_1 = m_2 = m \\); \\( u_1 = +2 \\) m s⁻¹ (right is positive), \\( u_2 = -1 \\) m s⁻¹. Find the common speed **v**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Momentum conservation",
+   "text": "\\( m_1u_1 + m_2u_2 = (m_1 + m_2)v \\).",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Substitute",
+   "text": "\\( m(2) + m(-1) = 2m\\,v \\), so \\( m = 2m\\,v \\).",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Answer",
+   "text": "\\( v = 0.5 \\) m s⁻¹, to the right (the direction of the faster cart).",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Perfectly inelastic collision",
+   "tex": "v = \\dfrac{m_1u_1 + m_2u_2}{m_1 + m_2}",
+   "text": "Bodies stick together."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "Two equal carts roll towards each other at 3 m/s and 1 m/s and couple. Find their combined speed (m/s).",
+   "answer": 1,
+   "hint": "(3 − 1)/2.",
+   "explain": "\\( v = (3 - 1)/2 = 1 \\) m/s.",
+   "tolerance": 0.01,
+   "unit": "m/s"
+  }
+ ],
+ "takeaways": [
+  "Coupled bodies move with v = (m₁u₁ + m₂u₂)/(m₁ + m₂)."
+ ]
+}

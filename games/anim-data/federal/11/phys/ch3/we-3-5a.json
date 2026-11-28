@@ -1,0 +1,289 @@
+{
+ "id": "g11-phys-c3-we-3-5a",
+ "title": "Example 3.5 (a) · Time of flight",
+ "summary": "T = 2 v_i sinθ / g for 200 m/s at 30°.",
+ "alt": "A projectile is launched with an initial speed of 200.0 m s⁻¹ at an angle of 30° with the horizontal. Determine the time of flight.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": false
+  },
+  "acc": {
+   "label": "Acceleration",
+   "color": "#ea580c",
+   "text": "Acceleration.",
+   "legend": false
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": false
+  },
+  "tim": {
+   "label": "Time",
+   "color": "#7c3aed",
+   "text": "Time.",
+   "legend": false
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "An angle.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "s431",
+   "from": [
+    0.6,
+    8.0
+   ],
+   "to": [
+    12.3,
+    8.0
+   ],
+   "role": "wall",
+   "strokeWidth": 3,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "plot",
+   "id": "g432",
+   "role": "dis",
+   "strokeWidth": 3,
+   "domain": [
+    1.2,
+    11.8
+   ],
+   "fn": "13.40000 - 0.19224*(x-6.5000)^2",
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "v433",
+   "from": [
+    1.2,
+    8.0
+   ],
+   "to": [
+    3.798076211353316,
+    9.5
+   ],
+   "role": "vel",
+   "strokeWidth": 4.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t434",
+   "at": [
+    4.398076211353316,
+    9.85
+   ],
+   "text": "v_i = 200 m/s",
+   "role": "vel",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "arc",
+   "id": "a435",
+   "c": [
+    1.2,
+    8.0
+   ],
+   "r": 1.7,
+   "from": 0,
+   "to": 30,
+   "role": "ang",
+   "strokeWidth": 2.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t436",
+   "at": [
+    3.55,
+    8.425
+   ],
+   "text": "θ = 30°",
+   "role": "ang",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "v437",
+   "from": [
+    1.2,
+    7.4
+   ],
+   "to": [
+    11.8,
+    7.4
+   ],
+   "role": "tim",
+   "strokeWidth": 2.5,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t438",
+   "at": [
+    6.5,
+    6.8
+   ],
+   "text": "time of flight T",
+   "role": "tim",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t439",
+   "at": [
+    6.45,
+    5.55
+   ],
+   "text": "T = 2 v_i sinθ / g",
+   "role": "tim",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t440",
+   "at": [
+    6.45,
+    4.6
+   ],
+   "text": "T = 2(200)(0.5)/9.8",
+   "role": "acc",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "r441",
+   "x": 0.6,
+   "y": 0.75,
+   "w": 11.7,
+   "h": 1.1,
+   "role": "ans",
+   "fill": "ans",
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "t442",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "T = 20.41 s",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Given",
+   "text": "**v_i = 200.0 m s⁻¹**, **θ = 30°**, **g = 9.8 m s⁻²**. Find the time of flight **T**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Formula",
+   "text": "The vertical motion goes up and comes back to the launch level: \\( T = \\dfrac{2 v_i \\sin\\theta}{g} \\).",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Substitute",
+   "text": "\\( T = \\dfrac{2(200)\\sin30^\\circ}{9.8} = \\dfrac{2(200)(0.5)}{9.8} \\).",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Answer",
+   "text": "\\( T = 20.41 \\) s.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Time of flight",
+   "tex": "T = \\dfrac{2 v_i \\sin\\theta}{g}",
+   "text": "Level ground, no air resistance."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A ball is kicked at 20 m/s at 30°. Find T (s). Use g = 9.8.",
+   "answer": 2.04,
+   "hint": "T = 2 v_i sinθ/g.",
+   "explain": "\\( 2(20)(0.5)/9.8 = 2.04 \\) s.",
+   "tolerance": 0.02,
+   "unit": "s"
+  }
+ ],
+ "takeaways": [
+  "**T = 2 v_i sinθ / g**: depends only on the vertical launch speed."
+ ]
+}

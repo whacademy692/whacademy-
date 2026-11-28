@@ -1,0 +1,622 @@
+{
+ "id": "g11-phys-c3-th-vt-eq2",
+ "title": "Second equation of motion: S = v_i t + ½ a t²",
+ "summary": "The distance is the area under the v–t graph: a rectangle v_i t plus a triangle ½ a t².",
+ "alt": "A trapezium under the velocity–time graph split into a rectangle and a triangle.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -2.6,
+   12.6
+  ],
+  "y": [
+   -2.2,
+   11.8
+  ],
+  "ratio": 1.0857,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": true
+  },
+  "acc": {
+   "label": "Acceleration",
+   "color": "#ea580c",
+   "text": "Acceleration.",
+   "legend": true
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": true
+  },
+  "tim": {
+   "label": "Time",
+   "color": "#7c3aed",
+   "text": "Time.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "vi",
+   "label": "Starting velocity v_i (m/s)",
+   "type": "number",
+   "min": 0,
+   "max": 5,
+   "step": 1,
+   "default": 2,
+   "unit": "m/s",
+   "role": "vel"
+  },
+  {
+   "id": "a",
+   "label": "Acceleration a (m/s²)",
+   "type": "number",
+   "min": 0,
+   "max": 1.5,
+   "step": 0.5,
+   "default": 1,
+   "unit": "m/s²",
+   "role": "acc"
+  },
+  {
+   "id": "tm",
+   "label": "Time t (s)",
+   "type": "number",
+   "min": 1,
+   "max": 8,
+   "step": 1,
+   "default": 6,
+   "unit": "s",
+   "role": "tim"
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 4,
+   "step": 0.01,
+   "default": 4,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "vf": "vi+a*tm",
+  "Sr": "vi*tm",
+  "St": "0.5*a*tm*tm",
+  "S": "vi*tm+0.5*a*tm*tm"
+ },
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "v25",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    11.7,
+    0
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "vector",
+   "id": "v26",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    0,
+    9.0
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t27",
+   "at": [
+    11.0,
+    0.55
+   ],
+   "text": "t (s)",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t28",
+   "at": [
+    0.2,
+    9.35
+   ],
+   "text": "v (m/s)",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s29",
+   "from": [
+    2.8,
+    -0.1
+   ],
+   "to": [
+    2.8,
+    0.1
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t30",
+   "at": [
+    2.8,
+    -0.5
+   ],
+   "text": "2",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s31",
+   "from": [
+    5.6,
+    -0.1
+   ],
+   "to": [
+    5.6,
+    0.1
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t32",
+   "at": [
+    5.6,
+    -0.5
+   ],
+   "text": "4",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s33",
+   "from": [
+    8.399999999999999,
+    -0.1
+   ],
+   "to": [
+    8.399999999999999,
+    0.1
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t34",
+   "at": [
+    8.399999999999999,
+    -0.5
+   ],
+   "text": "6",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s35",
+   "from": [
+    11.2,
+    -0.1
+   ],
+   "to": [
+    11.2,
+    0.1
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t36",
+   "at": [
+    11.2,
+    -0.5
+   ],
+   "text": "8",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s37",
+   "from": [
+    -0.1,
+    2.5
+   ],
+   "to": [
+    0.1,
+    2.5
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t38",
+   "at": [
+    -0.55,
+    2.5
+   ],
+   "text": "5",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s39",
+   "from": [
+    -0.1,
+    5.0
+   ],
+   "to": [
+    0.1,
+    5.0
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t40",
+   "at": [
+    -0.55,
+    5.0
+   ],
+   "text": "10",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "s41",
+   "from": [
+    -0.1,
+    7.5
+   ],
+   "to": [
+    0.1,
+    7.5
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "t42",
+   "at": [
+    -0.55,
+    7.5
+   ],
+   "text": "15",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "polygon",
+   "id": "trap",
+   "pts": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     "0.5*(vi)"
+    ],
+    [
+     "1.4*(tm)",
+     "0.5*(vf)"
+    ],
+    [
+     "1.4*(tm)",
+     0
+    ]
+   ],
+   "role": "dis",
+   "fill": "dis",
+   "fillOpacity": 0.28,
+   "strokeWidth": 2,
+   "visible": "lv<1"
+  },
+  {
+   "type": "polygon",
+   "id": "rect",
+   "pts": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     "0.5*(vi)"
+    ],
+    [
+     "1.4*(tm)",
+     "0.5*(vi)"
+    ],
+    [
+     "1.4*(tm)",
+     0
+    ]
+   ],
+   "role": "vel",
+   "fill": "vel",
+   "fillOpacity": 0.3,
+   "strokeWidth": 2,
+   "visible": "lv>=1&&vi>0"
+  },
+  {
+   "type": "polygon",
+   "id": "tri",
+   "pts": [
+    [
+     0,
+     "0.5*(vi)"
+    ],
+    [
+     "1.4*(tm)",
+     "0.5*(vi)"
+    ],
+    [
+     "1.4*(tm)",
+     "0.5*(vf)"
+    ]
+   ],
+   "role": "acc",
+   "fill": "acc",
+   "fillOpacity": 0.32,
+   "strokeWidth": 2,
+   "visible": "lv>=1&&a>0"
+  },
+  {
+   "type": "segment",
+   "id": "line",
+   "from": [
+    0,
+    "0.5*(vi)"
+   ],
+   "to": [
+    "1.4*(tm)",
+    "0.5*(vf)"
+   ],
+   "role": "vel",
+   "strokeWidth": 3.5
+  },
+  {
+   "type": "text",
+   "id": "t43",
+   "at": [
+    "1.4*(tm)/2",
+    "0.5*(vi/2)-0.1"
+   ],
+   "text": "v_i t",
+   "role": "vel",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1&&vi>0.5"
+  },
+  {
+   "type": "text",
+   "id": "t44",
+   "at": [
+    "1.4*(tm)*0.72",
+    "0.5*(vi+0.3*a*tm)+0.25"
+   ],
+   "text": "½ a t²",
+   "role": "acc",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1&&a>0&&tm>1"
+  },
+  {
+   "type": "text",
+   "id": "t45",
+   "at": [
+    5.0,
+    11.2
+   ],
+   "text": "v_i t = {{Sr|1}} m,   ½ a t² = {{St|1}} m",
+   "role": "dis",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t46",
+   "at": [
+    5.0,
+    10.3
+   ],
+   "text": "S = {{Sr|1}} + {{St|1}} = {{S|1}} m",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3"
+  },
+  {
+   "type": "text",
+   "id": "t47",
+   "at": [
+    -0.95,
+    "0.5*(vi)"
+   ],
+   "text": "v_i",
+   "role": "vel",
+   "size": "s",
+   "bold": true
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Distance = area",
+   "text": "The distance travelled is the **area under the v–t graph**: here a trapezium from 0 to \\( t \\).",
+   "actions": [
+    {
+     "set": {
+      "lv": 0,
+      "vi": 2,
+      "a": 1,
+      "tm": 6
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Split into two shapes",
+   "text": "Cut the trapezium into a **rectangle** (height \\( v_i \\), width \\( t \\)) and a **triangle** (base \\( t \\), height \\( at \\)).",
+   "actions": [
+    {
+     "set": {
+      "lv": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Add the areas",
+   "text": "Rectangle \\( = v_i t \\). Triangle \\( = \\tfrac12\\, t \\times at = \\tfrac12 a t^2 \\).",
+   "actions": [
+    {
+     "set": {
+      "lv": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Second equation",
+   "text": "\\( S = v_i t + \\tfrac12 a t^2 = {{S|1}} \\) m for these values.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Set a = 0",
+   "text": "With no acceleration the triangle disappears and the distance is just \\( v_i t \\): uniform motion.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3,
+      "a": 0
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "S",
+   "value": "{{S|1}} m",
+   "role": "dis"
+  },
+  {
+   "label": "v_i t",
+   "value": "{{Sr|1}} m",
+   "role": "vel"
+  },
+  {
+   "label": "½ a t²",
+   "value": "{{St|1}} m",
+   "role": "acc"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Second equation of motion",
+   "tex": "S = \\role{vel}{v_i t} + \\role{acc}{\\tfrac12 a t^2}",
+   "text": "Area under the v–t graph."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "v_i = 4 m/s, a = 1 m/s², t = 10 s. Find S (m).",
+   "answer": 90,
+   "hint": "S = v_i t + ½ a t².",
+   "explain": "\\( 40 + 50 = 90 \\) m.",
+   "tolerance": 0.9,
+   "unit": "m"
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A car starts from rest with a = 2 m/s². Find S in 5 s (m).",
+   "answer": 25,
+   "hint": "v_i = 0, so S = ½ a t².",
+   "explain": "\\( \\tfrac12(2)(25) = 25 \\) m.",
+   "tolerance": 0.25,
+   "unit": "m"
+  }
+ ],
+ "takeaways": [
+  "Distance = area under the v–t graph.",
+  "**S = v_i t + ½ a t²**: a rectangle plus a triangle."
+ ]
+}

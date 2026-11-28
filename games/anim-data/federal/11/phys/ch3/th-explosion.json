@@ -1,0 +1,600 @@
+{
+ "id": "g11-phys-c3-th-explosion",
+ "title": "Explosion: a body at rest splits and the pieces fly apart",
+ "summary": "A body at rest breaks into two pieces with equal and opposite momenta; the lighter piece moves faster and gets more kinetic energy.",
+ "alt": "Two blocks flying apart from rest, with equal and opposite momentum bars and kinetic energy bars.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -1.0,
+   15.0
+  ],
+  "y": [
+   -2.6,
+   8.8
+  ],
+  "ratio": 1.4035,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": true
+  },
+  "tim": {
+   "label": "Time",
+   "color": "#7c3aed",
+   "text": "Time.",
+   "legend": false
+  },
+  "mom": {
+   "label": "Momentum",
+   "color": "#0891b2",
+   "text": "Momentum p = mv.",
+   "legend": true
+  },
+  "ke": {
+   "label": "Kinetic energy",
+   "color": "#d97706",
+   "text": "Kinetic energy.",
+   "legend": true
+  },
+  "m1": {
+   "label": "Object 1",
+   "color": "#2563eb",
+   "text": "The first object.",
+   "legend": true
+  },
+  "m2": {
+   "label": "Object 2",
+   "color": "#ea580c",
+   "text": "The second object.",
+   "legend": true
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "Allowed or correct.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "m1",
+   "label": "Mass of piece 1 (kg)",
+   "type": "number",
+   "min": 1,
+   "max": 6,
+   "step": 0.5,
+   "default": 3,
+   "unit": "kg",
+   "role": "m1"
+  },
+  {
+   "id": "m2",
+   "label": "Mass of piece 2 (kg)",
+   "type": "number",
+   "min": 1,
+   "max": 6,
+   "step": 0.5,
+   "default": 6,
+   "unit": "kg",
+   "role": "m2"
+  },
+  {
+   "id": "p",
+   "label": "Momentum given to each piece (kg m/s)",
+   "type": "number",
+   "min": 1.2,
+   "max": 6,
+   "step": 0.6,
+   "default": 4.8,
+   "unit": "kg m/s",
+   "role": "mom"
+  },
+  {
+   "id": "ph",
+   "label": "Time after the explosion",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0,
+   "role": "tim"
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 4,
+   "step": 0.01,
+   "default": 4,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "v1": "p/m1",
+  "v2": "p/m2",
+  "w1": "0.8+0.42*sqrt(m1)",
+  "w2": "0.8+0.42*sqrt(m2)",
+  "K1": "p*p/(2*m1)",
+  "K2": "p*p/(2*m2)",
+  "x1": "7-w1-0.8*v1*ph",
+  "x2": "7+0.8*v2*ph"
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ground",
+   "from": [
+    -0.5,
+    3.2
+   ],
+   "to": [
+    14.5,
+    3.2
+   ],
+   "role": "wall",
+   "strokeWidth": 3
+  },
+  {
+   "type": "rect",
+   "id": "b1",
+   "x": "x1",
+   "y": 3.2,
+   "w": "w1",
+   "h": 1.2,
+   "role": "m1",
+   "fill": "m1",
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "rect",
+   "id": "b2",
+   "x": "x2",
+   "y": 3.2,
+   "w": "w2",
+   "h": 1.2,
+   "role": "m2",
+   "fill": "m2",
+   "fillOpacity": 0.35,
+   "strokeWidth": 2.5
+  },
+  {
+   "type": "text",
+   "id": "t225",
+   "at": [
+    "x1+w1/2",
+    3.8000000000000003
+   ],
+   "text": "{{m1|1}} kg",
+   "role": "m1",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t226",
+   "at": [
+    "x2+w2/2",
+    3.8000000000000003
+   ],
+   "text": "{{m2|1}} kg",
+   "role": "m2",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "t227",
+   "at": [
+    7.0,
+    5.4
+   ],
+   "text": "at rest: total momentum = 0",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "visible": "ph<0.02"
+  },
+  {
+   "type": "vector",
+   "id": "v228",
+   "from": [
+    "x1",
+    4.9
+   ],
+   "to": [
+    "x1-0.45*v1",
+    4.9
+   ],
+   "role": "m1",
+   "strokeWidth": 4.5,
+   "visible": "ph>=0.02"
+  },
+  {
+   "type": "vector",
+   "id": "v229",
+   "from": [
+    "x2+w2",
+    4.9
+   ],
+   "to": [
+    "x2+w2+0.45*v2",
+    4.9
+   ],
+   "role": "m2",
+   "strokeWidth": 4.5,
+   "visible": "ph>=0.02"
+  },
+  {
+   "type": "text",
+   "id": "t230",
+   "at": [
+    "x1-0.2*v1",
+    5.6
+   ],
+   "text": "v₁ = {{v1|2}}",
+   "role": "m1",
+   "size": "s",
+   "bold": true,
+   "visible": "ph>=0.02"
+  },
+  {
+   "type": "text",
+   "id": "t231",
+   "at": [
+    "x2+w2+0.2*v2",
+    5.6
+   ],
+   "text": "v₂ = {{v2|2}}",
+   "role": "m2",
+   "size": "s",
+   "bold": true,
+   "visible": "ph>=0.02"
+  },
+  {
+   "type": "vector",
+   "id": "v232",
+   "from": [
+    7.0,
+    1.7
+   ],
+   "to": [
+    "7-0.6*p",
+    1.7
+   ],
+   "role": "m1",
+   "strokeWidth": 5,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "vector",
+   "id": "v233",
+   "from": [
+    7.0,
+    1.7
+   ],
+   "to": [
+    "7+0.6*p",
+    1.7
+   ],
+   "role": "m2",
+   "strokeWidth": 5,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t234",
+   "at": [
+    "7-0.6*p-1.3",
+    1.7
+   ],
+   "text": "p₁",
+   "role": "m1",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t235",
+   "at": [
+    "7+0.6*p+1.3",
+    1.7
+   ],
+   "text": "p₂",
+   "role": "m2",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t236",
+   "at": [
+    7.0,
+    6.95
+   ],
+   "text": "m₁v₁ = m₂v₂ = {{p|1}} kg m/s,  total = 0",
+   "role": "mom",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "rect",
+   "id": "k1",
+   "x": "7-0.25*K1",
+   "y": 0.35,
+   "w": "0.25*K1",
+   "h": 0.55,
+   "role": "ke",
+   "fill": "ke",
+   "fillOpacity": 0.35,
+   "strokeWidth": 2,
+   "visible": "lv>=3"
+  },
+  {
+   "type": "rect",
+   "id": "k2",
+   "x": 7.0,
+   "y": 0.35,
+   "w": "0.25*K2",
+   "h": 0.55,
+   "role": "ke",
+   "fill": "ke",
+   "fillOpacity": 0.35,
+   "strokeWidth": 2,
+   "visible": "lv>=3"
+  },
+  {
+   "type": "text",
+   "id": "t237",
+   "at": [
+    "7-0.25*K1-1.2",
+    0.62
+   ],
+   "text": "{{K1|1}} J",
+   "role": "m1",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3"
+  },
+  {
+   "type": "text",
+   "id": "t238",
+   "at": [
+    "7+0.25*K2+1.2",
+    0.62
+   ],
+   "text": "{{K2|1}} J",
+   "role": "m2",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3"
+  },
+  {
+   "type": "text",
+   "id": "t239",
+   "at": [
+    7.0,
+    -0.55
+   ],
+   "text": "KE = p²/2m: the lighter piece has more",
+   "role": "ke",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3"
+  },
+  {
+   "type": "text",
+   "id": "t240",
+   "at": [
+    7.0,
+    -1.6
+   ],
+   "text": "KE comes from the explosion, momentum does not",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=4"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Before the explosion",
+   "text": "A body of mass \\( m_1 + m_2 \\) is at rest, so its total momentum is **zero**. Inside it, a spring or an explosive is about to push it into two pieces.",
+   "actions": [
+    {
+     "set": {
+      "lv": 0,
+      "ph": 0,
+      "m1": 3,
+      "m2": 6,
+      "p": 4.8
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Pieces fly apart",
+   "text": "The pieces move in **opposite** directions. The light piece moves faster than the heavy one.",
+   "actions": [
+    {
+     "set": {
+      "lv": 1,
+      "m1": 3,
+      "m2": 6,
+      "p": 4.8
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "ph": 1
+     },
+     "at": 0,
+     "dur": 3500
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Momentum balance",
+   "text": "No external force acts, so the total momentum stays zero: \\( m_1v_1 - m_2v_2 = 0 \\). With \\( m_1 = 3 \\) kg, \\( v_1 = {{v1|1}} \\) m s⁻¹ and \\( m_2 = 6 \\) kg: \\( v_2 = {{v2|1}} \\) m s⁻¹.",
+   "actions": [
+    {
+     "set": {
+      "lv": 2,
+      "ph": 1,
+      "m1": 3,
+      "m2": 6,
+      "p": 4.8
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Kinetic energy appears",
+   "text": "Before the explosion KE was zero; now it is \\( {{K1|2}} + {{K2|2}} \\) J. Momentum is conserved but kinetic energy is **not**: it came from stored energy.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3,
+      "ph": 1,
+      "m1": 3,
+      "m2": 6,
+      "p": 4.8
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Light and heavy",
+   "text": "Make piece 1 only 1 kg: it flies off at \\( {{v1|1}} \\) m s⁻¹ with most of the energy, while the heavy piece creeps away.",
+   "actions": [
+    {
+     "set": {
+      "lv": 4,
+      "ph": 0,
+      "m1": 1,
+      "m2": 6,
+      "p": 4.8
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "ph": 1
+     },
+     "at": 300,
+     "dur": 3500
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "v₁",
+   "value": "{{v1|2}} m/s",
+   "role": "m1"
+  },
+  {
+   "label": "v₂",
+   "value": "{{v2|2}} m/s",
+   "role": "m2"
+  },
+  {
+   "label": "KE₁",
+   "value": "{{K1|2}} J",
+   "role": "m1"
+  },
+  {
+   "label": "KE₂",
+   "value": "{{K2|2}} J",
+   "role": "m2"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Explosion at rest",
+   "tex": "0 = m_1 v_1 - m_2 v_2 \\;\\Rightarrow\\; v_2 = \\dfrac{m_1}{m_2}\\,v_1",
+   "text": "Equal and opposite momenta; KE = p²/2m."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A body at rest breaks into 3 kg (moving at 1.6 m/s) and 6 kg pieces. Find the speed of the 6 kg piece (m/s).",
+   "answer": 0.8,
+   "hint": "Equal and opposite momenta.",
+   "explain": "\\( 3(1.6) = 6v_2 \\Rightarrow v_2 = 0.8 \\) m/s.",
+   "tolerance": 0.01,
+   "unit": "m/s"
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "Find the kinetic energy (J) of the 6 kg piece moving at 0.8 m/s.",
+   "answer": 1.92,
+   "hint": "KE = ½ m v².",
+   "explain": "\\( \\tfrac12(6)(0.8)^2 = 1.92 \\) J.",
+   "tolerance": 0.01,
+   "unit": "J"
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "After an explosion from rest, which piece has more kinetic energy?",
+   "options": [
+    {
+     "id": "a",
+     "label": "The heavier piece"
+    },
+    {
+     "id": "b",
+     "label": "The lighter piece"
+    },
+    {
+     "id": "c",
+     "label": "Both equal"
+    }
+   ],
+   "answer": "b",
+   "hint": "KE = p²/2m with equal p.",
+   "explain": "Equal momenta: the lighter piece has the larger KE."
+  }
+ ],
+ "takeaways": [
+  "Total momentum before = after = 0: the pieces have equal and opposite momenta.",
+  "Kinetic energy increases; the lighter piece gets more of it."
+ ]
+}

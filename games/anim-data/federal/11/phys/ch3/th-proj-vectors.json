@@ -1,0 +1,591 @@
+{
+ "id": "g11-phys-c3-th-proj-vectors",
+ "title": "Velocity vectors along a projectile path",
+ "summary": "At five points of the flight: v_x is always the same, v_y shrinks to zero at the top and then grows downward.",
+ "alt": "A projectile path with velocity, horizontal and vertical component arrows drawn at five equally timed positions.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -0.6,
+   14.0
+  ],
+  "y": [
+   -0.8,
+   8.0
+  ],
+  "ratio": 1.6591,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid, ground and frame lines.",
+   "legend": false
+  },
+  "vel": {
+   "label": "Velocity",
+   "color": "#2563eb",
+   "text": "Velocity (speed and direction).",
+   "legend": true
+  },
+  "dis": {
+   "label": "Displacement / distance",
+   "color": "#059669",
+   "text": "Displacement, distance or height.",
+   "legend": true
+  },
+  "hx": {
+   "label": "Horizontal part",
+   "color": "#0891b2",
+   "text": "The horizontal (x) component.",
+   "legend": true
+  },
+  "vy": {
+   "label": "Vertical part",
+   "color": "#c026d3",
+   "text": "The vertical (y) component.",
+   "legend": true
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "An angle.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "th",
+   "label": "Launch angle θ (°) (v_i = 20 m/s)",
+   "type": "number",
+   "min": 20,
+   "max": 70,
+   "step": 5,
+   "default": 40,
+   "unit": "°",
+   "role": "ang"
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 5,
+   "step": 0.01,
+   "default": 5,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "vx": "20.0*cos(th)",
+  "vy0": "20.0*sin(th)",
+  "T": "2*vy0/9.8",
+  "R": "vx*T",
+  "H": "vy0*vy0/19.6"
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ground",
+   "from": [
+    -0.5,
+    1.4
+   ],
+   "to": [
+    13.6,
+    1.4
+   ],
+   "role": "wall",
+   "strokeWidth": 3
+  },
+  {
+   "type": "plot",
+   "id": "path",
+   "role": "dis",
+   "strokeWidth": 2.2,
+   "domain": [
+    0,
+    1
+   ],
+   "x": "0.8+0.3*vx*T*u",
+   "y": "1.4+0.3*(vy0*T*u-4.9*(T*u)^2)",
+   "var": "u",
+   "dash": [
+    5,
+    4
+   ]
+  },
+  {
+   "type": "circle",
+   "id": "c201",
+   "c": [
+    "0.8+0.3*R*0.0",
+    "1.4+0.3*4*H*0.0"
+   ],
+   "r": 0.14,
+   "role": "wall",
+   "fill": "wall",
+   "fillOpacity": 0.9,
+   "strokeWidth": 1.5
+  },
+  {
+   "type": "vector",
+   "id": "vx0",
+   "from": [
+    "0.8+0.3*R*0.0",
+    "1.4+0.3*4*H*0.0"
+   ],
+   "to": [
+    "0.8+0.3*R*0.0+0.1*vx",
+    "1.4+0.3*4*H*0.0"
+   ],
+   "role": "hx",
+   "strokeWidth": 4,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "vector",
+   "id": "vy0",
+   "from": [
+    "0.8+0.3*R*0.0",
+    "1.4+0.3*4*H*0.0"
+   ],
+   "to": [
+    "0.8+0.3*R*0.0",
+    "1.4+0.3*4*H*0.0+0.1*vy0*(1-2*0.0)"
+   ],
+   "role": "vy",
+   "strokeWidth": 4,
+   "visible": "lv>=2&&abs(vy0*(1-2*0.0))>0.5"
+  },
+  {
+   "type": "vector",
+   "id": "vr0",
+   "from": [
+    "0.8+0.3*R*0.0",
+    "1.4+0.3*4*H*0.0"
+   ],
+   "to": [
+    "0.8+0.3*R*0.0+0.1*vx",
+    "1.4+0.3*4*H*0.0+0.1*vy0*(1-2*0.0)"
+   ],
+   "role": "vel",
+   "strokeWidth": 4.5,
+   "visible": "lv>=3"
+  },
+  {
+   "type": "circle",
+   "id": "c202",
+   "c": [
+    "0.8+0.3*R*0.25",
+    "1.4+0.3*4*H*0.1875"
+   ],
+   "r": 0.14,
+   "role": "wall",
+   "fill": "wall",
+   "fillOpacity": 0.9,
+   "strokeWidth": 1.5
+  },
+  {
+   "type": "vector",
+   "id": "vx1",
+   "from": [
+    "0.8+0.3*R*0.25",
+    "1.4+0.3*4*H*0.1875"
+   ],
+   "to": [
+    "0.8+0.3*R*0.25+0.1*vx",
+    "1.4+0.3*4*H*0.1875"
+   ],
+   "role": "hx",
+   "strokeWidth": 4,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "vector",
+   "id": "vy1",
+   "from": [
+    "0.8+0.3*R*0.25",
+    "1.4+0.3*4*H*0.1875"
+   ],
+   "to": [
+    "0.8+0.3*R*0.25",
+    "1.4+0.3*4*H*0.1875+0.1*vy0*(1-2*0.25)"
+   ],
+   "role": "vy",
+   "strokeWidth": 4,
+   "visible": "lv>=2&&abs(vy0*(1-2*0.25))>0.5"
+  },
+  {
+   "type": "vector",
+   "id": "vr1",
+   "from": [
+    "0.8+0.3*R*0.25",
+    "1.4+0.3*4*H*0.1875"
+   ],
+   "to": [
+    "0.8+0.3*R*0.25+0.1*vx",
+    "1.4+0.3*4*H*0.1875+0.1*vy0*(1-2*0.25)"
+   ],
+   "role": "vel",
+   "strokeWidth": 4.5,
+   "visible": "lv>=3"
+  },
+  {
+   "type": "circle",
+   "id": "c203",
+   "c": [
+    "0.8+0.3*R*0.5",
+    "1.4+0.3*4*H*0.25"
+   ],
+   "r": 0.14,
+   "role": "wall",
+   "fill": "wall",
+   "fillOpacity": 0.9,
+   "strokeWidth": 1.5
+  },
+  {
+   "type": "vector",
+   "id": "vx2",
+   "from": [
+    "0.8+0.3*R*0.5",
+    "1.4+0.3*4*H*0.25"
+   ],
+   "to": [
+    "0.8+0.3*R*0.5+0.1*vx",
+    "1.4+0.3*4*H*0.25"
+   ],
+   "role": "hx",
+   "strokeWidth": 4,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "vector",
+   "id": "vy2",
+   "from": [
+    "0.8+0.3*R*0.5",
+    "1.4+0.3*4*H*0.25"
+   ],
+   "to": [
+    "0.8+0.3*R*0.5",
+    "1.4+0.3*4*H*0.25+0.1*vy0*(1-2*0.5)"
+   ],
+   "role": "vy",
+   "strokeWidth": 4,
+   "visible": "lv>=2&&abs(vy0*(1-2*0.5))>0.5"
+  },
+  {
+   "type": "vector",
+   "id": "vr2",
+   "from": [
+    "0.8+0.3*R*0.5",
+    "1.4+0.3*4*H*0.25"
+   ],
+   "to": [
+    "0.8+0.3*R*0.5+0.1*vx",
+    "1.4+0.3*4*H*0.25+0.1*vy0*(1-2*0.5)"
+   ],
+   "role": "vel",
+   "strokeWidth": 4.5,
+   "visible": "lv>=3"
+  },
+  {
+   "type": "circle",
+   "id": "c204",
+   "c": [
+    "0.8+0.3*R*0.75",
+    "1.4+0.3*4*H*0.1875"
+   ],
+   "r": 0.14,
+   "role": "wall",
+   "fill": "wall",
+   "fillOpacity": 0.9,
+   "strokeWidth": 1.5
+  },
+  {
+   "type": "vector",
+   "id": "vx3",
+   "from": [
+    "0.8+0.3*R*0.75",
+    "1.4+0.3*4*H*0.1875"
+   ],
+   "to": [
+    "0.8+0.3*R*0.75+0.1*vx",
+    "1.4+0.3*4*H*0.1875"
+   ],
+   "role": "hx",
+   "strokeWidth": 4,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "vector",
+   "id": "vy3",
+   "from": [
+    "0.8+0.3*R*0.75",
+    "1.4+0.3*4*H*0.1875"
+   ],
+   "to": [
+    "0.8+0.3*R*0.75",
+    "1.4+0.3*4*H*0.1875+0.1*vy0*(1-2*0.75)"
+   ],
+   "role": "vy",
+   "strokeWidth": 4,
+   "visible": "lv>=2&&abs(vy0*(1-2*0.75))>0.5"
+  },
+  {
+   "type": "vector",
+   "id": "vr3",
+   "from": [
+    "0.8+0.3*R*0.75",
+    "1.4+0.3*4*H*0.1875"
+   ],
+   "to": [
+    "0.8+0.3*R*0.75+0.1*vx",
+    "1.4+0.3*4*H*0.1875+0.1*vy0*(1-2*0.75)"
+   ],
+   "role": "vel",
+   "strokeWidth": 4.5,
+   "visible": "lv>=3"
+  },
+  {
+   "type": "circle",
+   "id": "c205",
+   "c": [
+    "0.8+0.3*R*1.0",
+    "1.4+0.3*4*H*0.0"
+   ],
+   "r": 0.14,
+   "role": "wall",
+   "fill": "wall",
+   "fillOpacity": 0.9,
+   "strokeWidth": 1.5
+  },
+  {
+   "type": "vector",
+   "id": "vx4",
+   "from": [
+    "0.8+0.3*R*1.0",
+    "1.4+0.3*4*H*0.0"
+   ],
+   "to": [
+    "0.8+0.3*R*1.0+0.1*vx",
+    "1.4+0.3*4*H*0.0"
+   ],
+   "role": "hx",
+   "strokeWidth": 4,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "vector",
+   "id": "vy4",
+   "from": [
+    "0.8+0.3*R*1.0",
+    "1.4+0.3*4*H*0.0"
+   ],
+   "to": [
+    "0.8+0.3*R*1.0",
+    "1.4+0.3*4*H*0.0+0.1*vy0*(1-2*1.0)"
+   ],
+   "role": "vy",
+   "strokeWidth": 4,
+   "visible": "lv>=2&&abs(vy0*(1-2*1.0))>0.5"
+  },
+  {
+   "type": "vector",
+   "id": "vr4",
+   "from": [
+    "0.8+0.3*R*1.0",
+    "1.4+0.3*4*H*0.0"
+   ],
+   "to": [
+    "0.8+0.3*R*1.0+0.1*vx",
+    "1.4+0.3*4*H*0.0+0.1*vy0*(1-2*1.0)"
+   ],
+   "role": "vel",
+   "strokeWidth": 4.5,
+   "visible": "lv>=3"
+  },
+  {
+   "type": "text",
+   "id": "t206",
+   "at": [
+    "0.8+0.3*R*0.5",
+    "1.4+0.3*4*H*0.25+1.1"
+   ],
+   "text": "top: v_y = 0",
+   "role": "vy",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t207",
+   "at": [
+    6.5,
+    0.45
+   ],
+   "text": "v_x is the same at every point",
+   "role": "hx",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1&&lv<4"
+  },
+  {
+   "type": "text",
+   "id": "t208",
+   "at": [
+    6.5,
+    0.45
+   ],
+   "text": "speed is least at the top: v = v_x",
+   "role": "vel",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=4"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Five positions",
+   "text": "The path is drawn with the ball marked at equal time intervals: launch, quarter-time, **top**, three-quarter time and landing.",
+   "actions": [
+    {
+     "set": {
+      "lv": 0,
+      "th": 40
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Horizontal velocity",
+   "text": "The **teal** arrow \\( v_x = v_i\\cos\\theta \\) is the same length at every point: nothing pushes the ball sideways.",
+   "actions": [
+    {
+     "set": {
+      "lv": 1,
+      "th": 40
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Vertical velocity",
+   "text": "The **pink** arrow \\( v_y \\) points up and shrinks, is **zero at the top**, then points down and grows. Going up and coming down at the same height it has the same size.",
+   "actions": [
+    {
+     "set": {
+      "lv": 2,
+      "th": 40
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "The resultant",
+   "text": "The **blue** arrow is the vector sum \\( \\vec v = \\vec v_x + \\vec v_y \\). It is always tangent to the path and is shortest at the top.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3,
+      "th": 40
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Least speed at the top",
+   "text": "At the top \\( v = v_x \\). Change \\( \\theta \\) to 60°: \\( v_x \\) is smaller, so the speed at the top is smaller too.",
+   "actions": [
+    {
+     "set": {
+      "lv": 4,
+      "th": 60
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "v_x",
+   "value": "{{vx|1}} m/s",
+   "role": "hx"
+  },
+  {
+   "label": "v_y launch",
+   "value": "{{vy0|1}} m/s",
+   "role": "vy"
+  },
+  {
+   "label": "Speed at top",
+   "value": "{{vx|1}} m/s",
+   "role": "vel"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Velocity of a projectile",
+   "tex": "\\vec v = \\role{hx}{v_x}\\,\\hat i + \\role{vy}{(v_{y0} - g t)}\\,\\hat j",
+   "text": "v_x constant; v_y decreases at 9.8 m s⁻¹ every second."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A ball is launched at 20 m/s and 60°. What is its speed at the highest point (m/s)?",
+   "answer": 10,
+   "hint": "At the top only v_x remains.",
+   "explain": "\\( v = v_x = 20\\cos60^\\circ = 10 \\) m/s.",
+   "tolerance": 0.05,
+   "unit": "m/s"
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which component of a projectile’s velocity is zero at the highest point?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Horizontal"
+    },
+    {
+     "id": "b",
+     "label": "Vertical"
+    },
+    {
+     "id": "c",
+     "label": "Both"
+    }
+   ],
+   "answer": "b",
+   "hint": "Gravity changes v_y only.",
+   "explain": "v_y = 0 at the top; v_x is unchanged."
+  }
+ ],
+ "takeaways": [
+  "v_x is constant; v_y goes up → 0 → down.",
+  "The velocity is tangent to the path; speed is least at the top."
+ ]
+}
