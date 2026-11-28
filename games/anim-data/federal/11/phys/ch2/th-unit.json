@@ -1,0 +1,435 @@
+{
+ "id": "g11-phys-c2-th-unit",
+ "title": "Position vector and unit vector",
+ "summary": "Move the point P(a, b): the position vector is r = aî + bĵ and its unit vector r̂ always has length exactly 1.",
+ "alt": "A point P in the plane with its position vector from the origin, the unit vectors i and j along the axes and the unit vector in the direction of r.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -8.5,
+   8.5
+  ],
+  "y": [
+   -8.5,
+   8.5
+  ],
+  "ratio": 1.0,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid and frame lines.",
+   "legend": false
+  },
+  "va": {
+   "label": "Vector A",
+   "color": "#2563eb",
+   "text": "The first vector, A.",
+   "legend": true
+  },
+  "cx": {
+   "label": "x-component",
+   "color": "#0891b2",
+   "text": "The horizontal (x) component.",
+   "legend": true
+  },
+  "cy": {
+   "label": "y-component",
+   "color": "#c026d3",
+   "text": "The vertical (y) component.",
+   "legend": true
+  },
+  "unit": {
+   "label": "Unit vector",
+   "color": "#16a34a",
+   "text": "A unit vector: length exactly 1.",
+   "legend": true
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "a",
+   "label": "x-coordinate a",
+   "type": "number",
+   "min": -5,
+   "max": 5,
+   "step": 1,
+   "default": 3
+  },
+  {
+   "id": "b",
+   "label": "y-coordinate b",
+   "type": "number",
+   "min": -5,
+   "max": 5,
+   "step": 1,
+   "default": 4
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 9,
+   "step": 0.01,
+   "default": 9,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "r": "hypot(a,b)",
+  "ux": "a/r",
+  "uy": "b/r"
+ },
+ "shapes": [
+  {
+   "type": "grid",
+   "id": "grid",
+   "step": 1,
+   "role": "grid",
+   "uiToggle": "grid"
+  },
+  {
+   "type": "axes",
+   "id": "axes",
+   "step": 1,
+   "role": "wall",
+   "xLabel": "x",
+   "yLabel": "y",
+   "numbers": false
+  },
+  {
+   "type": "vector",
+   "id": "ih",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    1,
+    0
+   ],
+   "role": "cx",
+   "strokeWidth": 5,
+   "label": {
+    "text": "\\(\\hat{i}\\)",
+    "role": "cx",
+    "off": 4
+   },
+   "visible": "lv>=1"
+  },
+  {
+   "type": "vector",
+   "id": "jh",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    0,
+    1
+   ],
+   "role": "cy",
+   "strokeWidth": 5,
+   "label": {
+    "text": "\\(\\hat{j}\\)",
+    "role": "cy",
+    "off": 4
+   },
+   "visible": "lv>=1"
+  },
+  {
+   "type": "vector",
+   "id": "r",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    "a",
+    "b"
+   ],
+   "role": "va",
+   "strokeWidth": 4.5,
+   "label": {
+    "text": "r",
+    "role": "va",
+    "off": 5
+   },
+   "visible": "r>0.01"
+  },
+  {
+   "type": "point",
+   "id": "P",
+   "at": [
+    "a",
+    "b"
+   ],
+   "role": "va",
+   "r": 7
+  },
+  {
+   "type": "text",
+   "id": "Pl",
+   "at": [
+    "a+((a>=0)?1.2:-1.2)",
+    "b+((b>=0)?0.7:-0.7)"
+   ],
+   "text": "P({{a|0}}, {{b|0}})",
+   "role": "va",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "vector",
+   "id": "rh",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    "ux",
+    "uy"
+   ],
+   "role": "unit",
+   "strokeWidth": 6,
+   "visible": "lv>=3&&r>0.01"
+  },
+  {
+   "type": "text",
+   "id": "rhl",
+   "at": [
+    "ux*1.9+((uy>=0)?0.5:-0.5)",
+    "uy*1.9"
+   ],
+   "text": "\\(\\hat{r}\\)",
+   "role": "unit",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3&&r>0.01"
+  },
+  {
+   "type": "text",
+   "id": "t1",
+   "at": [
+    0,
+    -5.9
+   ],
+   "text": "r = {{a|0}} î {{b|+}} ĵ     |r| = √(a²+b²) = {{r|2}}",
+   "role": "va",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t2",
+   "at": [
+    0,
+    -6.8
+   ],
+   "text": "r̂ = r/|r| = ({{ux|2}}, {{uy|2}})",
+   "role": "unit",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3"
+  },
+  {
+   "type": "text",
+   "id": "t3",
+   "at": [
+    0,
+    -7.7
+   ],
+   "text": "|r̂| = {{hypot(ux,uy)|2}}  (a unit vector has length 1, no unit)",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3"
+  },
+  {
+   "type": "text",
+   "id": "t0",
+   "at": [
+    0,
+    -6.8
+   ],
+   "text": "r = 0 is the null vector: zero length, no direction",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "visible": "r<0.01"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Unit vectors î and ĵ",
+   "text": "**î** and **ĵ** are vectors of length 1 along +x and +y. They only show direction: they have no unit.",
+   "actions": [
+    {
+     "set": {
+      "lv": 1,
+      "a": 3,
+      "b": 4
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Position vector",
+   "text": "The **position vector** of P({{a|0}}, {{b|0}}) points from the origin to P. In components \\( \\vec r = a\\hat i + b\\hat j \\), and its length is \\( r = \\sqrt{a^2 + b^2} = {{r|2}} \\).",
+   "actions": [
+    {
+     "set": {
+      "lv": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Unit vector of r",
+   "text": "Divide a vector by its own length to get a vector of length 1 in the same direction: \\( \\hat r = \\vec r / r = ({{ux|2}}, {{uy|2}}) \\).",
+   "actions": [
+    {
+     "set": {
+      "lv": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Move P about",
+   "text": "Drag the sliders: r̂ turns with r but its length stays exactly 1.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "a": -4,
+      "b": 3
+     },
+     "at": 0,
+     "dur": 2800
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "The null vector",
+   "text": "If P is the origin the vector has zero length and no direction: the **null vector**. Its unit vector does not exist.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "a": 0,
+      "b": 0
+     },
+     "at": 0,
+     "dur": 2600
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "r = √(a²+b²)",
+   "value": "{{r|2}}",
+   "role": "va"
+  },
+  {
+   "label": "r̂ x",
+   "value": "{{ux|2}}",
+   "role": "unit"
+  },
+  {
+   "label": "r̂ y",
+   "value": "{{uy|2}}",
+   "role": "unit"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Position and unit vector",
+   "tex": "\\vec r = a\\,\\hat i + b\\,\\hat j, \\quad r = \\sqrt{a^2 + b^2}, \\quad \\hat r = \\dfrac{\\vec r}{r}",
+   "text": "r̂ has magnitude 1 and no unit."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "Find the magnitude of the position vector of the point P(6, 8).",
+   "answer": 10,
+   "hint": "r = √(a²+b²).",
+   "explain": "\\( r = \\sqrt{36 + 64} = 10 \\).",
+   "tolerance": 0.05
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "The position vector is (3, 4). What is the x-component of its unit vector?",
+   "answer": 0.6,
+   "hint": "Divide by r = 5.",
+   "explain": "\\( \\hat r_x = 3/5 = 0.6 \\).",
+   "tolerance": 0.01
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "What unit does the unit vector î carry?",
+   "options": [
+    {
+     "id": "a",
+     "label": "metre"
+    },
+    {
+     "id": "b",
+     "label": "newton"
+    },
+    {
+     "id": "c",
+     "label": "No unit (dimensionless)"
+    },
+    {
+     "id": "d",
+     "label": "Same as the vector it came from"
+    }
+   ],
+   "answer": "c",
+   "hint": "Its magnitude is just the number 1.",
+   "explain": "A unit vector has magnitude 1 and only shows direction, so it carries **no unit**."
+  }
+ ],
+ "takeaways": [
+  "**Position vector** of P(a, b): r = a î + b ĵ, r = √(a² + b²).",
+  "**Unit vector**: r̂ = r / r, magnitude 1, no unit.",
+  "**Null vector**: zero magnitude, arbitrary direction."
+ ]
+}

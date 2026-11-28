@@ -1,0 +1,389 @@
+{
+ "id": "g11-phys-c2-as-2-3",
+ "title": "Assignment 2.3 · Magnitude of a cross product",
+ "summary": "Vectors of magnitudes 3.2 and 5.2 at 60°: find |A × B| (W.H.-written solution).",
+ "alt": "Assignment 2.3: Two vectors A and B of magnitudes 3.2 and 5.2 units make an angle of 60°. Find the magnitude of their cross product.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid and frame lines.",
+   "legend": false
+  },
+  "va": {
+   "label": "Vector A",
+   "color": "#2563eb",
+   "text": "The first vector, A.",
+   "legend": false
+  },
+  "vb": {
+   "label": "Vector B",
+   "color": "#ea580c",
+   "text": "The second vector, B.",
+   "legend": false
+  },
+  "res": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "The resultant, or the answer being built.",
+   "legend": false
+  },
+  "cx": {
+   "label": "x-component",
+   "color": "#0891b2",
+   "text": "The horizontal (x) component.",
+   "legend": false
+  },
+  "cy": {
+   "label": "y-component",
+   "color": "#c026d3",
+   "text": "The vertical (y) component.",
+   "legend": false
+  },
+  "dot": {
+   "label": "Dot product",
+   "color": "#d97706",
+   "text": "The scalar (dot) product and the projections that make it.",
+   "legend": false
+  },
+  "crs": {
+   "label": "Cross product",
+   "color": "#7c3aed",
+   "text": "The vector (cross) product, area and direction.",
+   "legend": false
+  },
+  "unit": {
+   "label": "Unit vector",
+   "color": "#16a34a",
+   "text": "A unit vector: length exactly 1.",
+   "legend": false
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "The angle between vectors, or the angle from the +x axis.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "Allowed or correct.",
+   "legend": false
+  },
+  "no": {
+   "label": "Wrong / zero",
+   "color": "#e11d48",
+   "text": "Wrong, impossible or zero.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "polygon",
+   "id": "fpg1",
+   "pts": [
+    [
+     1.4,
+     7.0
+    ],
+    [
+     6.04,
+     7.0
+    ],
+    [
+     9.81,
+     13.53
+    ],
+    [
+     5.17,
+     13.53
+    ]
+   ],
+   "role": "crs",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "fade",
+   "layer": "back"
+  },
+  {
+   "type": "vector",
+   "id": "fv2",
+   "from": [
+    1.4,
+    7.0
+   ],
+   "to": [
+    6.04,
+    7.0
+   ],
+   "role": "va",
+   "strokeWidth": 4.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "ft3",
+   "at": [
+    3.72,
+    6.45
+   ],
+   "text": "A = 3.2",
+   "role": "va",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "fv4",
+   "from": [
+    1.4,
+    7.0
+   ],
+   "to": [
+    5.17,
+    13.53
+   ],
+   "role": "vb",
+   "strokeWidth": 4.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "ft5",
+   "at": [
+    2.285,
+    10.565000000000001
+   ],
+   "text": "B = 5.2",
+   "role": "vb",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "arc",
+   "id": "far6",
+   "c": [
+    1.4,
+    7.0
+   ],
+   "r": 1.16,
+   "from": 0,
+   "to": 60.0,
+   "role": "ang",
+   "strokeWidth": 2.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "fal7",
+   "at": [
+    2.907,
+    7.87
+   ],
+   "text": "60°",
+   "role": "ang",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "fv8",
+   "from": [
+    5.17,
+    13.53
+   ],
+   "to": [
+    5.17,
+    7.0
+   ],
+   "role": "crs",
+   "strokeWidth": 2.5,
+   "appear": "s1",
+   "effect": "draw",
+   "dash": [
+    6,
+    5
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "fv9",
+   "from": [
+    5.17,
+    7.0
+   ],
+   "to": [
+    1.4,
+    7.0
+   ],
+   "role": "wall",
+   "strokeWidth": 1,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "hl",
+   "at": [
+    5.87,
+    10.265
+   ],
+   "text": "h",
+   "role": "crs",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln0",
+   "at": [
+    6.45,
+    5.0
+   ],
+   "text": "height h = B sin θ = 5.2 sin 60° = 4.50",
+   "role": "crs",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln1",
+   "at": [
+    6.45,
+    4.05
+   ],
+   "text": "|A × B| = A B sin θ",
+   "role": "crs",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln2",
+   "at": [
+    6.45,
+    3.1
+   ],
+   "text": "= 3.2 × 5.2 × sin 60° = 16.64 × 0.866",
+   "role": "crs",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.6,
+   "y": 0.75,
+   "w": 11.7,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "|A × B| = 14.4 units",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Given",
+   "text": "A = 3.2, B = 5.2 and the angle between them θ = 60°.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "The parallelogram",
+   "text": "The magnitude of the cross product equals the area of the parallelogram on A and B: base A and height \\( h = B\\sin\\theta \\).",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Use the formula",
+   "text": "\\( |\\vec A\\times\\vec B| = AB\\sin\\theta \\).",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Substitute",
+   "text": "\\( 3.2\\times5.2\\times\\sin60^\\circ = 16.64\\times0.866 = 14.4 \\) units.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Magnitude of the cross product",
+   "tex": "|\\vec A\\times\\vec B| = AB\\sin\\theta",
+   "text": "Direction (not asked here) is perpendicular to both, by the right-hand rule."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A = 6, B = 4 and the angle between them is 30°. Find |A × B|.",
+   "answer": 12,
+   "hint": "A B sin θ.",
+   "explain": "\\( 6\\times4\\times\\sin30^\\circ = 12 \\).",
+   "tolerance": 0.05
+  }
+ ],
+ "takeaways": [
+  "**|A × B| = AB sin θ**.",
+  "The book prints no answer: this solution is W.H.-written (flag F4)."
+ ]
+}

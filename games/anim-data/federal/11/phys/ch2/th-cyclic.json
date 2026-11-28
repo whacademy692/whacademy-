@@ -1,0 +1,865 @@
+{
+ "id": "g11-phys-c2-th-cyclic",
+ "title": "î, ĵ, k̂ cross products: the cyclic rule",
+ "summary": "Pick any two unit vectors and see their cross product: forward order i → j → k → i gives +, reverse order gives −.",
+ "alt": "A three-dimensional set of axes with two unit vectors highlighted and their cross product drawn along the third axis, positive or negative.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -8.5,
+   8.5
+  ],
+  "y": [
+   -8.5,
+   8.5
+  ],
+  "ratio": 1.0,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid and frame lines.",
+   "legend": false
+  },
+  "va": {
+   "label": "Vector A",
+   "color": "#2563eb",
+   "text": "The first vector, A.",
+   "legend": true
+  },
+  "vb": {
+   "label": "Vector B",
+   "color": "#ea580c",
+   "text": "The second vector, B.",
+   "legend": true
+  },
+  "res": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "The resultant, or the answer being built.",
+   "legend": true
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "Allowed or correct.",
+   "legend": false
+  },
+  "no": {
+   "label": "Wrong / zero",
+   "color": "#e11d48",
+   "text": "Wrong, impossible or zero.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "pair",
+   "label": "Cross product of",
+   "type": "choice",
+   "options": [
+    {
+     "value": 0,
+     "label": "î × ĵ"
+    },
+    {
+     "value": 1,
+     "label": "ĵ × k̂"
+    },
+    {
+     "value": 2,
+     "label": "k̂ × î"
+    },
+    {
+     "value": 3,
+     "label": "ĵ × î"
+    },
+    {
+     "value": 4,
+     "label": "k̂ × ĵ"
+    },
+    {
+     "value": 5,
+     "label": "î × k̂"
+    }
+   ],
+   "default": 0
+  }
+ ],
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "ax0",
+   "from": [
+    2.9699999999999998,
+    1.9949999999999999
+   ],
+   "to": [
+    -2.62,
+    -2.52
+   ],
+   "role": "wall",
+   "strokeWidth": 1.5,
+   "dash": [
+    3,
+    5
+   ],
+   "opacity": "0.6"
+  },
+  {
+   "type": "text",
+   "id": "axl0",
+   "at": [
+    -3.1919999999999997,
+    -2.7720000000000002
+   ],
+   "text": "\\(\\hat{i}\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "ax1",
+   "from": [
+    -3.7749999999999995,
+    0.0
+   ],
+   "to": [
+    5.8999999999999995,
+    0.0
+   ],
+   "role": "wall",
+   "strokeWidth": 1.5,
+   "dash": [
+    3,
+    5
+   ],
+   "opacity": "0.6"
+  },
+  {
+   "type": "text",
+   "id": "axl1",
+   "at": [
+    6.89,
+    0.0
+   ],
+   "text": "\\(\\hat{j}\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "ax2",
+   "from": [
+    0.5,
+    -4.2749999999999995
+   ],
+   "to": [
+    0.5,
+    5.3999999999999995
+   ],
+   "role": "wall",
+   "strokeWidth": 1.5,
+   "dash": [
+    3,
+    5
+   ],
+   "opacity": "0.6"
+  },
+  {
+   "type": "text",
+   "id": "axl2",
+   "at": [
+    0.5,
+    5.94
+   ],
+   "text": "\\(\\hat{k}\\)",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "vector",
+   "id": "a0",
+   "from": [
+    0.5,
+    0.0
+   ],
+   "to": [
+    -2.1,
+    -2.1
+   ],
+   "role": "va",
+   "strokeWidth": 4.5,
+   "visible": "pair==0"
+  },
+  {
+   "type": "vector",
+   "id": "b0",
+   "from": [
+    0.5,
+    0.0
+   ],
+   "to": [
+    5.0,
+    0.0
+   ],
+   "role": "vb",
+   "strokeWidth": 4.5,
+   "visible": "pair==0"
+  },
+  {
+   "type": "vector",
+   "id": "r0",
+   "from": [
+    0.5,
+    0.0
+   ],
+   "to": [
+    0.5,
+    4.5
+   ],
+   "role": "res",
+   "strokeWidth": 6,
+   "visible": "pair==0"
+  },
+  {
+   "type": "text",
+   "id": "ra0",
+   "at": [
+    -1.76,
+    -1.26
+   ],
+   "text": "\\(\\hat{i}\\)",
+   "role": "va",
+   "size": "s",
+   "bold": true,
+   "visible": "pair==0"
+  },
+  {
+   "type": "text",
+   "id": "rb0",
+   "at": [
+    3.1999999999999997,
+    0.9
+   ],
+   "text": "\\(\\hat{j}\\)",
+   "role": "vb",
+   "size": "s",
+   "bold": true,
+   "visible": "pair==0"
+  },
+  {
+   "type": "text",
+   "id": "eq0",
+   "at": [
+    0,
+    7.4
+   ],
+   "text": "\\(\\hat{i}\\times\\hat{j} = \\hat{k}\\)",
+   "role": "res",
+   "size": "l",
+   "bold": true,
+   "visible": "pair==0"
+  },
+  {
+   "type": "vector",
+   "id": "a1",
+   "from": [
+    0.5,
+    0.0
+   ],
+   "to": [
+    5.0,
+    0.0
+   ],
+   "role": "va",
+   "strokeWidth": 4.5,
+   "visible": "pair==1"
+  },
+  {
+   "type": "vector",
+   "id": "b1",
+   "from": [
+    0.5,
+    0.0
+   ],
+   "to": [
+    0.5,
+    4.5
+   ],
+   "role": "vb",
+   "strokeWidth": 4.5,
+   "visible": "pair==1"
+  },
+  {
+   "type": "vector",
+   "id": "r1",
+   "from": [
+    0.5,
+    0.0
+   ],
+   "to": [
+    -2.1,
+    -2.1
+   ],
+   "role": "res",
+   "strokeWidth": 6,
+   "visible": "pair==1"
+  },
+  {
+   "type": "text",
+   "id": "ra1",
+   "at": [
+    3.1999999999999997,
+    0.9
+   ],
+   "text": "\\(\\hat{j}\\)",
+   "role": "va",
+   "size": "s",
+   "bold": true,
+   "visible": "pair==1"
+  },
+  {
+   "type": "text",
+   "id": "rb1",
+   "at": [
+    0.5,
+    2.6999999999999997
+   ],
+   "text": "\\(\\hat{k}\\)",
+   "role": "vb",
+   "size": "s",
+   "bold": true,
+   "visible": "pair==1"
+  },
+  {
+   "type": "text",
+   "id": "eq1",
+   "at": [
+    0,
+    7.4
+   ],
+   "text": "\\(\\hat{j}\\times\\hat{k} = \\hat{i}\\)",
+   "role": "res",
+   "size": "l",
+   "bold": true,
+   "visible": "pair==1"
+  },
+  {
+   "type": "vector",
+   "id": "a2",
+   "from": [
+    0.5,
+    0.0
+   ],
+   "to": [
+    0.5,
+    4.5
+   ],
+   "role": "va",
+   "strokeWidth": 4.5,
+   "visible": "pair==2"
+  },
+  {
+   "type": "vector",
+   "id": "b2",
+   "from": [
+    0.5,
+    0.0
+   ],
+   "to": [
+    -2.1,
+    -2.1
+   ],
+   "role": "vb",
+   "strokeWidth": 4.5,
+   "visible": "pair==2"
+  },
+  {
+   "type": "vector",
+   "id": "r2",
+   "from": [
+    0.5,
+    0.0
+   ],
+   "to": [
+    5.0,
+    0.0
+   ],
+   "role": "res",
+   "strokeWidth": 6,
+   "visible": "pair==2"
+  },
+  {
+   "type": "text",
+   "id": "ra2",
+   "at": [
+    0.5,
+    2.6999999999999997
+   ],
+   "text": "\\(\\hat{k}\\)",
+   "role": "va",
+   "size": "s",
+   "bold": true,
+   "visible": "pair==2"
+  },
+  {
+   "type": "text",
+   "id": "rb2",
+   "at": [
+    -1.76,
+    -1.26
+   ],
+   "text": "\\(\\hat{i}\\)",
+   "role": "vb",
+   "size": "s",
+   "bold": true,
+   "visible": "pair==2"
+  },
+  {
+   "type": "text",
+   "id": "eq2",
+   "at": [
+    0,
+    7.4
+   ],
+   "text": "\\(\\hat{k}\\times\\hat{i} = \\hat{j}\\)",
+   "role": "res",
+   "size": "l",
+   "bold": true,
+   "visible": "pair==2"
+  },
+  {
+   "type": "vector",
+   "id": "a3",
+   "from": [
+    0.5,
+    0.0
+   ],
+   "to": [
+    5.0,
+    0.0
+   ],
+   "role": "va",
+   "strokeWidth": 4.5,
+   "visible": "pair==3"
+  },
+  {
+   "type": "vector",
+   "id": "b3",
+   "from": [
+    0.5,
+    0.0
+   ],
+   "to": [
+    -2.1,
+    -2.1
+   ],
+   "role": "vb",
+   "strokeWidth": 4.5,
+   "visible": "pair==3"
+  },
+  {
+   "type": "vector",
+   "id": "r3",
+   "from": [
+    0.5,
+    0.0
+   ],
+   "to": [
+    0.5,
+    -4.5
+   ],
+   "role": "res",
+   "strokeWidth": 6,
+   "visible": "pair==3"
+  },
+  {
+   "type": "text",
+   "id": "ra3",
+   "at": [
+    3.1999999999999997,
+    0.9
+   ],
+   "text": "\\(\\hat{j}\\)",
+   "role": "va",
+   "size": "s",
+   "bold": true,
+   "visible": "pair==3"
+  },
+  {
+   "type": "text",
+   "id": "rb3",
+   "at": [
+    -1.76,
+    -1.26
+   ],
+   "text": "\\(\\hat{i}\\)",
+   "role": "vb",
+   "size": "s",
+   "bold": true,
+   "visible": "pair==3"
+  },
+  {
+   "type": "text",
+   "id": "eq3",
+   "at": [
+    0,
+    7.4
+   ],
+   "text": "\\(\\hat{j}\\times\\hat{i} = -\\hat{k}\\)",
+   "role": "res",
+   "size": "l",
+   "bold": true,
+   "visible": "pair==3"
+  },
+  {
+   "type": "vector",
+   "id": "a4",
+   "from": [
+    0.5,
+    0.0
+   ],
+   "to": [
+    0.5,
+    4.5
+   ],
+   "role": "va",
+   "strokeWidth": 4.5,
+   "visible": "pair==4"
+  },
+  {
+   "type": "vector",
+   "id": "b4",
+   "from": [
+    0.5,
+    0.0
+   ],
+   "to": [
+    5.0,
+    0.0
+   ],
+   "role": "vb",
+   "strokeWidth": 4.5,
+   "visible": "pair==4"
+  },
+  {
+   "type": "vector",
+   "id": "r4",
+   "from": [
+    0.5,
+    0.0
+   ],
+   "to": [
+    3.1,
+    2.1
+   ],
+   "role": "res",
+   "strokeWidth": 6,
+   "visible": "pair==4"
+  },
+  {
+   "type": "text",
+   "id": "ra4",
+   "at": [
+    0.5,
+    2.6999999999999997
+   ],
+   "text": "\\(\\hat{k}\\)",
+   "role": "va",
+   "size": "s",
+   "bold": true,
+   "visible": "pair==4"
+  },
+  {
+   "type": "text",
+   "id": "rb4",
+   "at": [
+    3.1999999999999997,
+    0.9
+   ],
+   "text": "\\(\\hat{j}\\)",
+   "role": "vb",
+   "size": "s",
+   "bold": true,
+   "visible": "pair==4"
+  },
+  {
+   "type": "text",
+   "id": "eq4",
+   "at": [
+    0,
+    7.4
+   ],
+   "text": "\\(\\hat{k}\\times\\hat{j} = -\\hat{i}\\)",
+   "role": "res",
+   "size": "l",
+   "bold": true,
+   "visible": "pair==4"
+  },
+  {
+   "type": "vector",
+   "id": "a5",
+   "from": [
+    0.5,
+    0.0
+   ],
+   "to": [
+    -2.1,
+    -2.1
+   ],
+   "role": "va",
+   "strokeWidth": 4.5,
+   "visible": "pair==5"
+  },
+  {
+   "type": "vector",
+   "id": "b5",
+   "from": [
+    0.5,
+    0.0
+   ],
+   "to": [
+    0.5,
+    4.5
+   ],
+   "role": "vb",
+   "strokeWidth": 4.5,
+   "visible": "pair==5"
+  },
+  {
+   "type": "vector",
+   "id": "r5",
+   "from": [
+    0.5,
+    0.0
+   ],
+   "to": [
+    -4.0,
+    0.0
+   ],
+   "role": "res",
+   "strokeWidth": 6,
+   "visible": "pair==5"
+  },
+  {
+   "type": "text",
+   "id": "ra5",
+   "at": [
+    -1.76,
+    -1.26
+   ],
+   "text": "\\(\\hat{i}\\)",
+   "role": "va",
+   "size": "s",
+   "bold": true,
+   "visible": "pair==5"
+  },
+  {
+   "type": "text",
+   "id": "rb5",
+   "at": [
+    0.5,
+    2.6999999999999997
+   ],
+   "text": "\\(\\hat{k}\\)",
+   "role": "vb",
+   "size": "s",
+   "bold": true,
+   "visible": "pair==5"
+  },
+  {
+   "type": "text",
+   "id": "eq5",
+   "at": [
+    0,
+    7.4
+   ],
+   "text": "\\(\\hat{i}\\times\\hat{k} = -\\hat{j}\\)",
+   "role": "res",
+   "size": "l",
+   "bold": true,
+   "visible": "pair==5"
+  },
+  {
+   "type": "text",
+   "id": "hint",
+   "at": [
+    0,
+    -7.3
+   ],
+   "text": "cycle i → j → k → i : plus.  Against the cycle : minus.",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "î × ĵ = k̂",
+   "text": "\\(\\hat{i}\\times\\hat{j} = \\hat{k}\\)  The result is perpendicular to both unit vectors. Forward in the cycle i → j → k → i, so the answer is **+**.",
+   "actions": [
+    {
+     "set": {
+      "pair": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "ĵ × k̂ = î",
+   "text": "\\(\\hat{j}\\times\\hat{k} = \\hat{i}\\)  The result is perpendicular to both unit vectors. Forward in the cycle i → j → k → i, so the answer is **+**.",
+   "actions": [
+    {
+     "set": {
+      "pair": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "k̂ × î = ĵ",
+   "text": "\\(\\hat{k}\\times\\hat{i} = \\hat{j}\\)  The result is perpendicular to both unit vectors. Forward in the cycle i → j → k → i, so the answer is **+**.",
+   "actions": [
+    {
+     "set": {
+      "pair": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "ĵ × î = −k̂",
+   "text": "\\(\\hat{j}\\times\\hat{i} = -\\hat{k}\\)  The result is perpendicular to both unit vectors. Reverse of the cycle, so the answer is **−**.",
+   "actions": [
+    {
+     "set": {
+      "pair": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "k̂ × ĵ = −î",
+   "text": "\\(\\hat{k}\\times\\hat{j} = -\\hat{i}\\)  The result is perpendicular to both unit vectors. Reverse of the cycle, so the answer is **−**.",
+   "actions": [
+    {
+     "set": {
+      "pair": 4
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "î × k̂ = −ĵ",
+   "text": "\\(\\hat{i}\\times\\hat{k} = -\\hat{j}\\)  The result is perpendicular to both unit vectors. Reverse of the cycle, so the answer is **−**.",
+   "actions": [
+    {
+     "set": {
+      "pair": 5
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Cyclic order",
+   "tex": "\\hat i\\times\\hat j=\\hat k,\\quad \\hat j\\times\\hat k=\\hat i,\\quad \\hat k\\times\\hat i=\\hat j",
+   "text": "Reversing the order reverses the sign: ĵ × î = −k̂."
+  },
+  {
+   "title": "Same unit vector",
+   "tex": "\\hat i\\times\\hat i=\\hat j\\times\\hat j=\\hat k\\times\\hat k=\\vec 0",
+   "text": "sin 0° = 0, so a vector crossed with itself is the null vector."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "ĵ × î = ?",
+   "options": [
+    {
+     "id": "a",
+     "label": "k̂"
+    },
+    {
+     "id": "b",
+     "label": "−k̂"
+    },
+    {
+     "id": "c",
+     "label": "0"
+    },
+    {
+     "id": "d",
+     "label": "1"
+    }
+   ],
+   "answer": "b",
+   "hint": "Reverse of î × ĵ = k̂.",
+   "explain": "ĵ × î = −(î × ĵ) = **−k̂**."
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "î × k̂ = ?",
+   "options": [
+    {
+     "id": "a",
+     "label": "ĵ"
+    },
+    {
+     "id": "b",
+     "label": "−ĵ"
+    },
+    {
+     "id": "c",
+     "label": "k̂"
+    },
+    {
+     "id": "d",
+     "label": "0"
+    }
+   ],
+   "answer": "b",
+   "hint": "Is î → k̂ forward in the cycle i → j → k → i?",
+   "explain": "k̂ × î = ĵ, so î × k̂ = **−ĵ**."
+  },
+  {
+   "id": "c3",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "Evaluate (î × ĵ) · k̂.",
+   "answer": 1,
+   "hint": "î × ĵ = k̂ first.",
+   "explain": "\\( \\hat k\\cdot\\hat k = 1 \\).",
+   "tolerance": 0.01
+  }
+ ],
+ "takeaways": [
+  "**î × ĵ = k̂, ĵ × k̂ = î, k̂ × î = ĵ.**",
+  "Reverse the order and the sign flips.",
+  "**î × î = ĵ × ĵ = k̂ × k̂ = 0.**"
+ ]
+}

@@ -1,0 +1,447 @@
+{
+ "id": "g11-phys-c2-th-work",
+ "title": "Work as a dot product: W = F · d",
+ "summary": "Pull a block with a slanted rope: only the part of the force along the motion does work, W = F d cos θ.",
+ "alt": "A block on the ground pulled by a force at angle θ to the horizontal, with the horizontal component and the displacement arrow marked.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -8.5,
+   8.5
+  ],
+  "y": [
+   -8.5,
+   8.5
+  ],
+  "ratio": 1.0,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid and frame lines.",
+   "legend": false
+  },
+  "va": {
+   "label": "Vector A",
+   "color": "#2563eb",
+   "text": "The first vector, A.",
+   "legend": true
+  },
+  "vb": {
+   "label": "Vector B",
+   "color": "#ea580c",
+   "text": "The second vector, B.",
+   "legend": true
+  },
+  "cx": {
+   "label": "x-component",
+   "color": "#0891b2",
+   "text": "The horizontal (x) component.",
+   "legend": true
+  },
+  "cy": {
+   "label": "y-component",
+   "color": "#c026d3",
+   "text": "The vertical (y) component.",
+   "legend": true
+  },
+  "dot": {
+   "label": "Dot product",
+   "color": "#d97706",
+   "text": "The scalar (dot) product and the projections that make it.",
+   "legend": false
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "The angle between vectors, or the angle from the +x axis.",
+   "legend": false
+  },
+  "no": {
+   "label": "Wrong / zero",
+   "color": "#e11d48",
+   "text": "Wrong, impossible or zero.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "f",
+   "label": "Force F (N)",
+   "type": "number",
+   "min": 1,
+   "max": 10,
+   "step": 1,
+   "default": 10
+  },
+  {
+   "id": "th",
+   "label": "Rope angle θ (°)",
+   "type": "number",
+   "min": 0,
+   "max": 90,
+   "step": 1,
+   "default": 60
+  },
+  {
+   "id": "d",
+   "label": "Displacement d (m)",
+   "type": "number",
+   "min": 1,
+   "max": 8,
+   "step": 1,
+   "default": 5
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 9,
+   "step": 0.01,
+   "default": 9,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "fx": "f*cos(th)",
+  "fy": "f*sin(th)",
+  "W": "f*d*cos(th)",
+  "bx0": "-7",
+  "by0": "-3.25"
+ },
+ "shapes": [
+  {
+   "type": "segment",
+   "id": "gnd",
+   "from": [
+    -8.3,
+    -4
+   ],
+   "to": [
+    8.3,
+    -4
+   ],
+   "role": "wall",
+   "strokeWidth": 3
+  },
+  {
+   "type": "rect",
+   "id": "blk",
+   "x": -7,
+   "y": -4,
+   "w": 2,
+   "h": 1.5,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 3
+  },
+  {
+   "type": "segment",
+   "id": "gx",
+   "from": [
+    "bx0+0.7*fx",
+    "by0"
+   ],
+   "to": [
+    "bx0+0.7*fx",
+    "by0+0.7*fy"
+   ],
+   "role": "cy",
+   "strokeWidth": 2,
+   "dash": [
+    6,
+    5
+   ],
+   "visible": "lv>=1"
+  },
+  {
+   "type": "segment",
+   "id": "gy",
+   "from": [
+    "bx0",
+    "by0+0.7*fy"
+   ],
+   "to": [
+    "bx0+0.7*fx",
+    "by0+0.7*fy"
+   ],
+   "role": "cx",
+   "strokeWidth": 2,
+   "dash": [
+    6,
+    5
+   ],
+   "visible": "lv>=1"
+  },
+  {
+   "type": "vector",
+   "id": "Fx",
+   "from": [
+    "bx0",
+    "by0"
+   ],
+   "to": [
+    "bx0+0.7*fx",
+    "by0"
+   ],
+   "role": "cx",
+   "strokeWidth": 6,
+   "visible": "lv>=1&&fx>0.1"
+  },
+  {
+   "type": "vector",
+   "id": "Fy",
+   "from": [
+    "bx0",
+    "by0"
+   ],
+   "to": [
+    "bx0",
+    "by0+0.7*fy"
+   ],
+   "role": "cy",
+   "strokeWidth": 5,
+   "visible": "lv>=1&&fy>0.1"
+  },
+  {
+   "type": "vector",
+   "id": "F",
+   "from": [
+    "bx0",
+    "by0"
+   ],
+   "to": [
+    "bx0+0.7*fx",
+    "by0+0.7*fy"
+   ],
+   "role": "va",
+   "strokeWidth": 4.5,
+   "label": {
+    "text": "F",
+    "role": "va",
+    "off": 5
+   }
+  },
+  {
+   "type": "vector",
+   "id": "D",
+   "from": [
+    "bx0",
+    -5.2
+   ],
+   "to": [
+    "bx0+d",
+    -5.2
+   ],
+   "role": "vb",
+   "strokeWidth": 5,
+   "label": {
+    "text": "d",
+    "role": "vb",
+    "off": 5
+   },
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "tfx",
+   "at": [
+    "bx0+0.35*fx",
+    "by0-0.75"
+   ],
+   "text": "\\(F\\cos\\theta\\)",
+   "role": "cx",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1&&fx>2"
+  },
+  {
+   "type": "text",
+   "id": "t1",
+   "at": [
+    1.0,
+    6.8
+   ],
+   "text": "F cos θ = {{fx|2}} N (along d)",
+   "role": "cx",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "text",
+   "id": "t2",
+   "at": [
+    1.0,
+    5.8
+   ],
+   "text": "F sin θ = {{fy|2}} N (no work)",
+   "role": "cy",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "text",
+   "id": "t3",
+   "at": [
+    1.0,
+    4.8
+   ],
+   "text": "W = F d cos θ = {{W|1}} J",
+   "role": "dot",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A slanted pull",
+   "text": "A rope pulls a block with force **F** at angle θ above the horizontal while the block moves a distance d along the ground.",
+   "actions": [
+    {
+     "set": {
+      "lv": 0,
+      "f": 10,
+      "th": 60,
+      "d": 5
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Split the force",
+   "text": "Only the horizontal component \\( F\\cos\\theta = {{fx|2}} \\) N pushes the block along its path. The vertical part \\( F\\sin\\theta = {{fy|2}} \\) N is perpendicular to the motion and does **no work**.",
+   "actions": [
+    {
+     "set": {
+      "lv": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Work = F · d",
+   "text": "Work is the dot product of force and displacement: \\( W = \\vec F\\cdot\\vec d = F d\\cos\\theta = {{W|1}} \\) J. It is a **scalar**.",
+   "actions": [
+    {
+     "set": {
+      "lv": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Pull flat, then straight up",
+   "text": "At θ = 0° the whole force works (W = Fd). Raise the rope to 90° and W falls to zero: a force perpendicular to the motion does no work.",
+   "actions": [
+    {
+     "set": {
+      "lv": 2,
+      "th": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "th": 90
+     },
+     "at": 0,
+     "dur": 5000
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Work W",
+   "value": "{{W|1}} J",
+   "role": "dot"
+  },
+  {
+   "label": "F cos θ",
+   "value": "{{fx|2}} N",
+   "role": "cx"
+  },
+  {
+   "label": "θ",
+   "value": "{{th|0}}°",
+   "role": "ang"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Work",
+   "tex": "W = \\vec F\\cdot\\vec d = F\\,d\\cos\\theta",
+   "text": "The component of F along d, times d."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A force of 20 N moves a body 5 m, the force making 60° with the displacement. Find the work done (J).",
+   "answer": 50,
+   "hint": "W = F d cos θ.",
+   "explain": "\\( W = 20\\times5\\times\\cos60^\\circ = 50 \\) J.",
+   "tolerance": 0.1,
+   "unit": "J"
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "How much work does a force do when it acts at 90° to the displacement?",
+   "answer": 0,
+   "hint": "cos 90° = 0.",
+   "explain": "cos 90° = 0, so **W = 0**.",
+   "tolerance": 0.01,
+   "unit": "J"
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Why does the vertical part of the rope force do no work on a block sliding on a table?",
+   "options": [
+    {
+     "id": "a",
+     "label": "It is too small"
+    },
+    {
+     "id": "b",
+     "label": "It is perpendicular to the displacement"
+    },
+    {
+     "id": "c",
+     "label": "It is a scalar"
+    },
+    {
+     "id": "d",
+     "label": "It acts for no time"
+    }
+   ],
+   "answer": "b",
+   "hint": "Look at the angle between force and displacement.",
+   "explain": "The dot product of perpendicular vectors is zero."
+  }
+ ],
+ "takeaways": [
+  "**W = F · d = F d cos θ**: a scalar.",
+  "Only the component of F **along** the displacement does work.",
+  "Power is also a dot product: **P = F · v**."
+ ]
+}

@@ -1,0 +1,583 @@
+{
+ "id": "g11-phys-c2-th-quadrants",
+ "title": "Signs of the components in the four quadrants",
+ "summary": "Turn a vector all the way round and watch the signs of Aₓ and Aᵧ change from one quadrant to the next.",
+ "alt": "A vector rotating about the origin with its x and y components and the current quadrant highlighted.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -8.5,
+   8.5
+  ],
+  "y": [
+   -8.5,
+   8.5
+  ],
+  "ratio": 1.0,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid and frame lines.",
+   "legend": false
+  },
+  "va": {
+   "label": "Vector A",
+   "color": "#2563eb",
+   "text": "The first vector, A.",
+   "legend": true
+  },
+  "cx": {
+   "label": "x-component",
+   "color": "#0891b2",
+   "text": "The horizontal (x) component.",
+   "legend": true
+  },
+  "cy": {
+   "label": "y-component",
+   "color": "#c026d3",
+   "text": "The vertical (y) component.",
+   "legend": true
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "The angle between vectors, or the angle from the +x axis.",
+   "legend": true
+  },
+  "res": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "The resultant, or the answer being built.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "th",
+   "label": "Angle θ (°)",
+   "type": "clock",
+   "min": 0,
+   "max": 360,
+   "step": 1,
+   "speed": 45,
+   "loop": "repeat",
+   "default": 40
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 9,
+   "step": 0.01,
+   "default": 9,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "Ax": "6*cos(th)",
+  "Ay": "6*sin(th)",
+  "q": "(th<90)?1:((th<180)?2:((th<270)?3:4))"
+ },
+ "shapes": [
+  {
+   "type": "grid",
+   "id": "grid",
+   "step": 1,
+   "role": "grid",
+   "uiToggle": "grid"
+  },
+  {
+   "type": "axes",
+   "id": "axes",
+   "step": 1,
+   "role": "wall",
+   "xLabel": "x",
+   "yLabel": "y",
+   "numbers": false
+  },
+  {
+   "type": "polygon",
+   "id": "qd1",
+   "pts": [
+    [
+     0,
+     0
+    ],
+    [
+     8.4,
+     0
+    ],
+    [
+     8.4,
+     8.4
+    ],
+    [
+     0,
+     8.4
+    ]
+   ],
+   "role": "res",
+   "fill": true,
+   "fillOpacity": 0.13,
+   "strokeWidth": 1,
+   "visible": "q==1",
+   "layer": "back"
+  },
+  {
+   "type": "text",
+   "id": "qn1",
+   "at": [
+    7.6,
+    1.5
+   ],
+   "text": "I",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "polygon",
+   "id": "qd2",
+   "pts": [
+    [
+     0,
+     0
+    ],
+    [
+     -8.4,
+     0
+    ],
+    [
+     -8.4,
+     8.4
+    ],
+    [
+     0,
+     8.4
+    ]
+   ],
+   "role": "res",
+   "fill": true,
+   "fillOpacity": 0.13,
+   "strokeWidth": 1,
+   "visible": "q==2",
+   "layer": "back"
+  },
+  {
+   "type": "text",
+   "id": "qn2",
+   "at": [
+    -7.6,
+    1.5
+   ],
+   "text": "II",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "polygon",
+   "id": "qd3",
+   "pts": [
+    [
+     0,
+     0
+    ],
+    [
+     -8.4,
+     0
+    ],
+    [
+     -8.4,
+     -8.4
+    ],
+    [
+     0,
+     -8.4
+    ]
+   ],
+   "role": "res",
+   "fill": true,
+   "fillOpacity": 0.13,
+   "strokeWidth": 1,
+   "visible": "q==3",
+   "layer": "back"
+  },
+  {
+   "type": "text",
+   "id": "qn3",
+   "at": [
+    -7.6,
+    -1.5
+   ],
+   "text": "III",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "polygon",
+   "id": "qd4",
+   "pts": [
+    [
+     0,
+     0
+    ],
+    [
+     8.4,
+     0
+    ],
+    [
+     8.4,
+     -8.4
+    ],
+    [
+     0,
+     -8.4
+    ]
+   ],
+   "role": "res",
+   "fill": true,
+   "fillOpacity": 0.13,
+   "strokeWidth": 1,
+   "visible": "q==4",
+   "layer": "back"
+  },
+  {
+   "type": "text",
+   "id": "qn4",
+   "at": [
+    7.6,
+    -1.5
+   ],
+   "text": "IV",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "pj1",
+   "from": [
+    "Ax",
+    0
+   ],
+   "to": [
+    "Ax",
+    "Ay"
+   ],
+   "role": "cy",
+   "strokeWidth": 2,
+   "dash": [
+    6,
+    5
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "pj2",
+   "from": [
+    0,
+    "Ay"
+   ],
+   "to": [
+    "Ax",
+    "Ay"
+   ],
+   "role": "cx",
+   "strokeWidth": 2,
+   "dash": [
+    6,
+    5
+   ]
+  },
+  {
+   "type": "vector",
+   "id": "cmx",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    "Ax",
+    0
+   ],
+   "role": "cx",
+   "strokeWidth": 6
+  },
+  {
+   "type": "vector",
+   "id": "cmy",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    0,
+    "Ay"
+   ],
+   "role": "cy",
+   "strokeWidth": 6
+  },
+  {
+   "type": "vector",
+   "id": "A",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    "Ax",
+    "Ay"
+   ],
+   "role": "va",
+   "strokeWidth": 4.5,
+   "label": {
+    "text": "A",
+    "role": "va",
+    "off": 5
+   }
+  },
+  {
+   "type": "arc",
+   "id": "th_arc",
+   "c": [
+    0,
+    0
+   ],
+   "r": 1.4,
+   "from": 0,
+   "to": "th",
+   "role": "ang",
+   "strokeWidth": 2.5,
+   "label": {
+    "text": "{{th|0}}°",
+    "role": "ang"
+   },
+   "visible": "th>1"
+  },
+  {
+   "type": "text",
+   "id": "tx",
+   "at": [
+    -4.6,
+    -7.3
+   ],
+   "text": "Aₓ = A cos θ = {{Ax|2}}",
+   "role": "cx",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "ty",
+   "at": [
+    4.0,
+    -7.3
+   ],
+   "text": "Aᵧ = A sin θ = {{Ay|2}}",
+   "role": "cy",
+   "size": "s",
+   "bold": true
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Quadrant I (0°–90°)",
+   "text": "For θ between 0° and 90° both cos θ and sin θ are positive, so both components are positive. This is the first quadrant.",
+   "actions": [
+    {
+     "set": {
+      "th": 40
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Quadrant II (90°–180°)",
+   "text": "Past 90° the vector leans left. Aₓ = A cos θ becomes **negative** while Aᵧ stays positive.",
+   "actions": [
+    {
+     "set": {
+      "th": 40
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "th": 130
+     },
+     "at": 0,
+     "dur": 3200
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Quadrant III (180°–270°)",
+   "text": "Past 180° the vector points down-left: **both** components are negative.",
+   "actions": [
+    {
+     "set": {
+      "th": 130
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "th": 220
+     },
+     "at": 0,
+     "dur": 3200
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Quadrant IV (270°–360°)",
+   "text": "Past 270° the vector points down-right: Aₓ is positive again and Aᵧ is negative.",
+   "actions": [
+    {
+     "set": {
+      "th": 220
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "th": 320
+     },
+     "at": 0,
+     "dur": 3200
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Run the full circle",
+   "text": "Press play on the angle slider to spin the vector once around. The formulas Aₓ = A cos θ and Aᵧ = A sin θ work for every angle; the signs come out by themselves.",
+   "actions": [
+    {
+     "set": {
+      "th": 320
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "th": 360
+     },
+     "at": 0,
+     "dur": 1800
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "θ",
+   "value": "{{th|0}}°",
+   "role": "ang"
+  },
+  {
+   "label": "Aₓ",
+   "value": "{{Ax|2}}",
+   "role": "cx"
+  },
+  {
+   "label": "Aᵧ",
+   "value": "{{Ay|2}}",
+   "role": "cy"
+  },
+  {
+   "label": "Quadrant",
+   "value": "{{q}}",
+   "role": "wall"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Signs by quadrant",
+   "tex": "I: (+,+) \\quad II: (-,+) \\quad III: (-,-) \\quad IV: (+,-)",
+   "text": "Signs of (Aₓ, Aᵧ) for θ measured from the +x axis."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A vector of magnitude 6 makes 120° with the +x axis. What is its x-component?",
+   "answer": -3,
+   "hint": "cos 120° = −0.5.",
+   "explain": "\\( A_x = 6\\cos120^\\circ = -3 \\).",
+   "tolerance": 0.05
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "In which quadrant are both components negative?",
+   "options": [
+    {
+     "id": "a",
+     "label": "I"
+    },
+    {
+     "id": "b",
+     "label": "II"
+    },
+    {
+     "id": "c",
+     "label": "III"
+    },
+    {
+     "id": "d",
+     "label": "IV"
+    }
+   ],
+   "answer": "c",
+   "hint": "Left of the y-axis and below the x-axis.",
+   "explain": "Aₓ < 0 and Aᵧ < 0 means quadrant **III** (180°–270°)."
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "For θ = 300° what are the signs of (Aₓ, Aᵧ)?",
+   "options": [
+    {
+     "id": "a",
+     "label": "(+, +)"
+    },
+    {
+     "id": "b",
+     "label": "(−, +)"
+    },
+    {
+     "id": "c",
+     "label": "(−, −)"
+    },
+    {
+     "id": "d",
+     "label": "(+, −)"
+    }
+   ],
+   "answer": "d",
+   "hint": "300° lies in the fourth quadrant.",
+   "explain": "cos 300° = +0.5 and sin 300° = −0.87: **(+, −)**."
+  }
+ ],
+ "takeaways": [
+  "The formulas work for **every** angle; only the signs change.",
+  "**I (+,+), II (−,+), III (−,−), IV (+,−).**",
+  "Always sketch the vector before trusting a calculator angle."
+ ]
+}

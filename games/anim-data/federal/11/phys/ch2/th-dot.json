@@ -1,0 +1,463 @@
+{
+ "id": "g11-phys-c2-th-dot",
+ "title": "The dot product: A · B = AB cos θ",
+ "summary": "Project B on A, multiply by A, and see the dot product change sign as the angle between the vectors grows from 0° to 180°.",
+ "alt": "Two vectors drawn from the same point at angle θ, with the projection of B along A shown and the scalar product written below.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -8.5,
+   8.5
+  ],
+  "y": [
+   -8.5,
+   8.5
+  ],
+  "ratio": 1.0,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid and frame lines.",
+   "legend": false
+  },
+  "va": {
+   "label": "Vector A",
+   "color": "#2563eb",
+   "text": "The first vector, A.",
+   "legend": true
+  },
+  "vb": {
+   "label": "Vector B",
+   "color": "#ea580c",
+   "text": "The second vector, B.",
+   "legend": true
+  },
+  "dot": {
+   "label": "Dot product",
+   "color": "#d97706",
+   "text": "The scalar (dot) product and the projections that make it.",
+   "legend": true
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "The angle between vectors, or the angle from the +x axis.",
+   "legend": true
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "Allowed or correct.",
+   "legend": false
+  },
+  "no": {
+   "label": "Wrong / zero",
+   "color": "#e11d48",
+   "text": "Wrong, impossible or zero.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "ma",
+   "label": "Magnitude A",
+   "type": "number",
+   "min": 1,
+   "max": 8,
+   "step": 1,
+   "default": 5
+  },
+  {
+   "id": "mb",
+   "label": "Magnitude B",
+   "type": "number",
+   "min": 1,
+   "max": 6,
+   "step": 1,
+   "default": 4
+  },
+  {
+   "id": "th",
+   "label": "Angle θ between them (°)",
+   "type": "number",
+   "min": 0,
+   "max": 180,
+   "step": 1,
+   "default": 55
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 9,
+   "step": 0.01,
+   "default": 9,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "bx": "mb*cos(th)",
+  "by": "mb*sin(th)",
+  "dv": "ma*mb*cos(th)"
+ },
+ "shapes": [
+  {
+   "type": "grid",
+   "id": "grid",
+   "step": 1,
+   "role": "grid",
+   "uiToggle": "grid"
+  },
+  {
+   "type": "axes",
+   "id": "axes",
+   "step": 1,
+   "role": "wall",
+   "xLabel": "x",
+   "yLabel": "y",
+   "numbers": false
+  },
+  {
+   "type": "segment",
+   "id": "gd",
+   "from": [
+    "bx",
+    "by"
+   ],
+   "to": [
+    "bx",
+    -0.35
+   ],
+   "role": "dot",
+   "strokeWidth": 2,
+   "dash": [
+    6,
+    5
+   ],
+   "visible": "lv>=1"
+  },
+  {
+   "type": "vector",
+   "id": "pr",
+   "from": [
+    0,
+    -0.35
+   ],
+   "to": [
+    "bx",
+    -0.35
+   ],
+   "role": "dot",
+   "strokeWidth": 7,
+   "visible": "lv>=1&&abs(bx)>0.05"
+  },
+  {
+   "type": "text",
+   "id": "prl",
+   "at": [
+    "bx/2",
+    -1.25
+   ],
+   "text": "\\(B\\cos\\theta\\)",
+   "role": "dot",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1&&abs(bx)>0.6"
+  },
+  {
+   "type": "vector",
+   "id": "A",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    "ma",
+    0
+   ],
+   "role": "va",
+   "strokeWidth": 4.5,
+   "label": {
+    "text": "A",
+    "role": "va",
+    "off": 5
+   }
+  },
+  {
+   "type": "vector",
+   "id": "B",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    "bx",
+    "by"
+   ],
+   "role": "vb",
+   "strokeWidth": 4.5,
+   "label": {
+    "text": "B",
+    "role": "vb",
+    "off": 5
+   },
+   "visible": "by>0.001||bx<-0.001||bx>0.001"
+  },
+  {
+   "type": "arc",
+   "id": "tha",
+   "c": [
+    0,
+    0
+   ],
+   "r": 1.5,
+   "from": 0,
+   "to": "th",
+   "role": "ang",
+   "strokeWidth": 2.5,
+   "label": {
+    "text": "θ={{th|0}}°",
+    "role": "ang"
+   },
+   "visible": "th>2"
+  },
+  {
+   "type": "text",
+   "id": "t1",
+   "at": [
+    0,
+    -4.6
+   ],
+   "text": "B cos θ = {{bx|2}}   (component of B along A)",
+   "role": "dot",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "text",
+   "id": "t2",
+   "at": [
+    0,
+    -5.6
+   ],
+   "text": "A · B = A (B cos θ) = {{dv|1}}",
+   "role": "dot",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t3",
+   "at": [
+    0,
+    -6.6
+   ],
+   "text": "θ < 90°: positive",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3&&th<89.5"
+  },
+  {
+   "type": "text",
+   "id": "t4",
+   "at": [
+    0,
+    -6.6
+   ],
+   "text": "θ = 90°: A · B = 0 (perpendicular)",
+   "role": "ang",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3&&abs(th-90)<=0.5"
+  },
+  {
+   "type": "text",
+   "id": "t5",
+   "at": [
+    0,
+    -6.6
+   ],
+   "text": "θ > 90°: negative",
+   "role": "no",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3&&th>90.5"
+  },
+  {
+   "type": "text",
+   "id": "t6",
+   "at": [
+    0,
+    -7.6
+   ],
+   "text": "maximum AB when θ = 0°, minimum −AB when θ = 180°",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=4"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Two vectors, one angle",
+   "text": "Draw **A** and **B** from the same point; θ is the angle between them (0° to 180°).",
+   "actions": [
+    {
+     "set": {
+      "lv": 0,
+      "ma": 5,
+      "mb": 4,
+      "th": 55
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Project B on A",
+   "text": "Drop a perpendicular from the head of **B** onto the line of **A**. The projection (the component of B along A) is \\( B\\cos\\theta = {{bx|2}} \\).",
+   "actions": [
+    {
+     "set": {
+      "lv": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Multiply by A",
+   "text": "The **dot product** is the magnitude of A times the component of B along A: \\( \\vec A \\cdot \\vec B = A\\,(B\\cos\\theta) = {{dv|1}} \\). It is a **scalar**.",
+   "actions": [
+    {
+     "set": {
+      "lv": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Sweep θ from 0° to 180°",
+   "text": "Watch the sign: positive for acute angles, zero at 90°, negative for obtuse angles.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3,
+      "th": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "th": 180
+     },
+     "at": 0,
+     "dur": 6000
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Special cases",
+   "text": "Parallel (θ = 0°): A · B = AB. Anti-parallel (θ = 180°): A · B = −AB. Perpendicular (θ = 90°): A · B = 0. Order does not matter: A · B = B · A.",
+   "actions": [
+    {
+     "set": {
+      "lv": 4,
+      "th": 90
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "A · B",
+   "value": "{{dv|1}}",
+   "role": "dot"
+  },
+  {
+   "label": "B cos θ",
+   "value": "{{bx|2}}",
+   "role": "dot"
+  },
+  {
+   "label": "θ",
+   "value": "{{th|0}}°",
+   "role": "ang"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Scalar (dot) product",
+   "tex": "\\vec A\\cdot\\vec B = \\role{va}{A}\\,\\role{vb}{B}\\,\\role{ang}{\\cos\\theta} = \\role{va}{A}\\,(\\role{dot}{B\\cos\\theta})",
+   "text": "A scalar; commutative: A · B = B · A."
+  },
+  {
+   "title": "Angle from the dot product",
+   "tex": "\\cos\\theta = \\dfrac{\\vec A\\cdot\\vec B}{AB}",
+   "text": "This is why the dot product is used to find the angle between two vectors."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A = 4, B = 5 and θ = 60°. Find A · B.",
+   "answer": 10,
+   "hint": "A B cos θ.",
+   "explain": "\\( 4 \\times 5 \\times \\cos60^\\circ = 10 \\).",
+   "tolerance": 0.05
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "Two non-zero vectors have A · B = 0. What is the angle (°) between them?",
+   "answer": 90,
+   "hint": "cos θ = 0.",
+   "explain": "\\( \\cos\\theta = 0 \\Rightarrow \\theta = 90^\\circ \\): perpendicular.",
+   "tolerance": 0.5,
+   "unit": "°"
+  },
+  {
+   "id": "c3",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A = 3 and B = 7 point in exactly opposite directions. Find A · B.",
+   "answer": -21,
+   "hint": "θ = 180°, cos 180° = −1.",
+   "explain": "\\( 3 \\times 7 \\times \\cos180^\\circ = -21 \\).",
+   "tolerance": 0.05
+  },
+  {
+   "id": "c4",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "B = 6 makes 30° with A. Find the component of B along A.",
+   "answer": 5.196,
+   "hint": "B cos θ.",
+   "explain": "\\( 6\\cos30^\\circ = 5.196 \\).",
+   "tolerance": 0.02
+  }
+ ],
+ "takeaways": [
+  "**A · B = AB cos θ** = (A cos θ) B = A (B cos θ): a **scalar**.",
+  "Maximum **AB** at 0°, **0** at 90°, **−AB** at 180°.",
+  "Commutative: **A · B = B · A**. Used for work, power and flux."
+ ]
+}

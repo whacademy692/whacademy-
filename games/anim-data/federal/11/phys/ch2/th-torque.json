@@ -1,0 +1,542 @@
+{
+ "id": "g11-phys-c2-th-torque",
+ "title": "Torque is a cross product: τ = r × F",
+ "summary": "Push a spanner at different angles: only the part of F perpendicular to the spanner turns the nut, τ = r F sin θ.",
+ "alt": "A spanner from a pivot with a force applied at its end at angle θ and the perpendicular component marked, with an out-of-page or into-page symbol for the torque direction.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -8.5,
+   8.5
+  ],
+  "y": [
+   -8.5,
+   8.5
+  ],
+  "ratio": 1.0,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid and frame lines.",
+   "legend": false
+  },
+  "va": {
+   "label": "Vector A",
+   "color": "#2563eb",
+   "text": "The first vector, A.",
+   "legend": true
+  },
+  "vb": {
+   "label": "Vector B",
+   "color": "#ea580c",
+   "text": "The second vector, B.",
+   "legend": true
+  },
+  "cy": {
+   "label": "y-component",
+   "color": "#c026d3",
+   "text": "The vertical (y) component.",
+   "legend": true
+  },
+  "cx": {
+   "label": "x-component",
+   "color": "#0891b2",
+   "text": "The horizontal (x) component.",
+   "legend": true
+  },
+  "crs": {
+   "label": "Cross product",
+   "color": "#7c3aed",
+   "text": "The vector (cross) product, area and direction.",
+   "legend": false
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "The angle between vectors, or the angle from the +x axis.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "r",
+   "label": "Spanner length r (m)",
+   "type": "number",
+   "min": 1,
+   "max": 4,
+   "step": 1,
+   "default": 4
+  },
+  {
+   "id": "f",
+   "label": "Force F (N)",
+   "type": "number",
+   "min": 1,
+   "max": 10,
+   "step": 1,
+   "default": 5
+  },
+  {
+   "id": "th",
+   "label": "Angle θ (°)",
+   "type": "number",
+   "min": -180,
+   "max": 180,
+   "step": 1,
+   "default": 60
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 9,
+   "step": 0.01,
+   "default": 9,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "px": "-4",
+  "tx": "-4+r",
+  "fx": "0.45*f*cos(th)",
+  "fy": "0.45*f*sin(th)",
+  "tau": "r*f*sin(th)"
+ },
+ "shapes": [
+  {
+   "type": "rect",
+   "id": "span",
+   "x": "px",
+   "y": -0.2,
+   "w": "r",
+   "h": 0.4,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.3,
+   "strokeWidth": 3
+  },
+  {
+   "type": "circle",
+   "id": "piv",
+   "c": [
+    "px",
+    0
+   ],
+   "r": 0.35,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 3
+  },
+  {
+   "type": "text",
+   "id": "pvl",
+   "at": [
+    "px",
+    -1.1
+   ],
+   "text": "pivot",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "gh",
+   "from": [
+    "tx+fx",
+    0
+   ],
+   "to": [
+    "tx+fx",
+    "fy"
+   ],
+   "role": "cy",
+   "strokeWidth": 2,
+   "dash": [
+    6,
+    5
+   ],
+   "visible": "lv>=1&&abs(fy)>0.05"
+  },
+  {
+   "type": "segment",
+   "id": "gv",
+   "from": [
+    "tx",
+    "fy"
+   ],
+   "to": [
+    "tx+fx",
+    "fy"
+   ],
+   "role": "cx",
+   "strokeWidth": 2,
+   "dash": [
+    6,
+    5
+   ],
+   "visible": "lv>=1&&abs(fx)>0.05&&abs(fy)>0.05"
+  },
+  {
+   "type": "vector",
+   "id": "Fy",
+   "from": [
+    "tx",
+    0
+   ],
+   "to": [
+    "tx",
+    "fy"
+   ],
+   "role": "cy",
+   "strokeWidth": 6,
+   "visible": "lv>=1&&abs(fy)>0.1"
+  },
+  {
+   "type": "vector",
+   "id": "F",
+   "from": [
+    "tx",
+    0
+   ],
+   "to": [
+    "tx+fx",
+    "fy"
+   ],
+   "role": "va",
+   "strokeWidth": 4.5,
+   "label": {
+    "text": "F",
+    "role": "va",
+    "off": 5
+   }
+  },
+  {
+   "type": "vector",
+   "id": "rv",
+   "from": [
+    "px",
+    0
+   ],
+   "to": [
+    "tx",
+    0
+   ],
+   "role": "vb",
+   "strokeWidth": 3,
+   "visible": "lv>=0"
+  },
+  {
+   "type": "text",
+   "id": "rl",
+   "at": [
+    "px+r/2",
+    1.0
+   ],
+   "text": "r",
+   "role": "vb",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "arc",
+   "id": "tha",
+   "c": [
+    "tx",
+    0
+   ],
+   "r": 1.2,
+   "from": 0,
+   "to": "th",
+   "role": "ang",
+   "strokeWidth": 2.5,
+   "label": {
+    "text": "{{th|0}}°",
+    "role": "ang"
+   },
+   "visible": "abs(th)>3"
+  },
+  {
+   "type": "text",
+   "id": "t1",
+   "at": [
+    0,
+    -4.6
+   ],
+   "text": "F⊥ = F sin θ = {{f*sin(th)|2}} N",
+   "role": "cy",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "text",
+   "id": "t2",
+   "at": [
+    0,
+    -5.6
+   ],
+   "text": "τ = r F sin θ = {{tau|1}} N m",
+   "role": "crs",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t3",
+   "at": [
+    0,
+    -6.6
+   ],
+   "text": "direction: out of the page (+k̂)",
+   "role": "crs",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3&&tau>0.001"
+  },
+  {
+   "type": "text",
+   "id": "t4",
+   "at": [
+    0,
+    -6.6
+   ],
+   "text": "direction: into the page (−k̂)",
+   "role": "crs",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3&&tau<-0.001"
+  },
+  {
+   "type": "text",
+   "id": "t5",
+   "at": [
+    0,
+    -6.6
+   ],
+   "text": "F along the spanner: no turning, τ = 0",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2&&abs(tau)<=0.001"
+  },
+  {
+   "type": "circle",
+   "id": "mkc",
+   "c": [
+    -6.9,
+    5.9
+   ],
+   "r": 0.8,
+   "role": "crs",
+   "fill": true,
+   "fillOpacity": 0.15,
+   "strokeWidth": 2.5,
+   "visible": "(lv>=3&&tau>0.001)||(lv>=3&&tau<-0.001)"
+  },
+  {
+   "type": "point",
+   "id": "mkd",
+   "at": [
+    -6.9,
+    5.9
+   ],
+   "role": "crs",
+   "r": 6,
+   "visible": "lv>=3&&tau>0.001"
+  },
+  {
+   "type": "segment",
+   "id": "mkx1",
+   "from": [
+    -7.396000000000001,
+    5.404
+   ],
+   "to": [
+    -6.404,
+    6.396000000000001
+   ],
+   "role": "crs",
+   "strokeWidth": 3,
+   "visible": "lv>=3&&tau<-0.001"
+  },
+  {
+   "type": "segment",
+   "id": "mkx2",
+   "from": [
+    -7.396000000000001,
+    6.396000000000001
+   ],
+   "to": [
+    -6.404,
+    5.404
+   ],
+   "role": "crs",
+   "strokeWidth": 3,
+   "visible": "lv>=3&&tau<-0.001"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A spanner and a push",
+   "text": "A force **F** is applied at the end of a spanner of length r, at angle θ to the spanner. The pivot is the nut.",
+   "actions": [
+    {
+     "set": {
+      "lv": 0,
+      "r": 4,
+      "f": 5,
+      "th": 60
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Only the perpendicular part turns",
+   "text": "Split F. The part along the spanner pushes straight at the pivot and cannot turn it. The part perpendicular to the spanner is \\( F\\sin\\theta = {{f*sin(th)|2}} \\) N.",
+   "actions": [
+    {
+     "set": {
+      "lv": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Torque = r F sin θ",
+   "text": "The magnitude of the torque is \\( \\tau = rF\\sin\\theta = {{tau|1}} \\) N m: the magnitude of the cross product \\( \\vec r\\times\\vec F \\).",
+   "actions": [
+    {
+     "set": {
+      "lv": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Direction by the right-hand rule",
+   "text": "Curl your fingers from **r** to **F**: the thumb points out of the page for a counter-clockwise turn. The torque is a **vector** along the axis of rotation.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Sweep the angle",
+   "text": "Torque is largest at θ = 90° (push at right angles) and zero when you push or pull along the spanner (0° or 180°). Push the other way (negative θ) and the direction flips.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "th": 90
+     },
+     "at": 0,
+     "dur": 3500
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "τ",
+   "value": "{{tau|1}} N m",
+   "role": "crs"
+  },
+  {
+   "label": "F sin θ",
+   "value": "{{f*sin(th)|2}} N",
+   "role": "cy"
+  },
+  {
+   "label": "θ",
+   "value": "{{th|0}}°",
+   "role": "ang"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Torque",
+   "tex": "\\vec\\tau = \\vec r\\times\\vec F, \\qquad \\tau = r\\,F\\sin\\theta",
+   "text": "r first, F second (the order matters for the sign)."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A force F = 10 N acts on a spanner at r = 2 m, making 30° with the spanner. Find the torque (N m).",
+   "answer": 10,
+   "hint": "τ = r F sin θ.",
+   "explain": "\\( \\tau = 2\\times10\\times\\sin30^\\circ = 10 \\) N m.",
+   "tolerance": 0.05,
+   "unit": "N m"
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "The same 5 N force is applied at 90° to a 4 m spanner. Find the torque (N m).",
+   "answer": 20,
+   "hint": "sin 90° = 1.",
+   "explain": "\\( 4\\times5\\times1 = 20 \\) N m.",
+   "tolerance": 0.05,
+   "unit": "N m"
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "The force is applied exactly along the spanner (θ = 0°). The torque is…",
+   "options": [
+    {
+     "id": "a",
+     "label": "Maximum"
+    },
+    {
+     "id": "b",
+     "label": "Half the maximum"
+    },
+    {
+     "id": "c",
+     "label": "Zero"
+    },
+    {
+     "id": "d",
+     "label": "Negative"
+    }
+   ],
+   "answer": "c",
+   "hint": "sin 0°.",
+   "explain": "sin 0° = 0, so **no torque**."
+  }
+ ],
+ "takeaways": [
+  "**τ = r × F**, magnitude **r F sin θ**.",
+  "Maximum at **90°**, zero at 0° and 180°.",
+  "Direction along the axis, by the right-hand rule."
+ ]
+}

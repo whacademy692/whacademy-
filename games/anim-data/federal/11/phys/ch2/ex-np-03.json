@@ -1,0 +1,408 @@
+{
+ "id": "g11-phys-c2-ex-np-03",
+ "title": "Ex NP 2.3 · Dot and cross product of F and r",
+ "summary": "A vector F having magnitude 5.5 N makes 10° with x-axis and a vector r with magnitude 4.3 m makes 80° with x-axis.…",
+ "alt": "Ex NP 2.3: A vector F having magnitude 5.5 N makes 10° with x-axis and a vector r with magnitude 4.3 m makes 80° with x-axis. What is the magnitude of their dot and cross products?",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid and frame lines.",
+   "legend": false
+  },
+  "va": {
+   "label": "Vector A",
+   "color": "#2563eb",
+   "text": "The first vector, A.",
+   "legend": false
+  },
+  "vb": {
+   "label": "Vector B",
+   "color": "#ea580c",
+   "text": "The second vector, B.",
+   "legend": false
+  },
+  "res": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "The resultant, or the answer being built.",
+   "legend": false
+  },
+  "cx": {
+   "label": "x-component",
+   "color": "#0891b2",
+   "text": "The horizontal (x) component.",
+   "legend": false
+  },
+  "cy": {
+   "label": "y-component",
+   "color": "#c026d3",
+   "text": "The vertical (y) component.",
+   "legend": false
+  },
+  "dot": {
+   "label": "Dot product",
+   "color": "#d97706",
+   "text": "The scalar (dot) product and the projections that make it.",
+   "legend": false
+  },
+  "crs": {
+   "label": "Cross product",
+   "color": "#7c3aed",
+   "text": "The vector (cross) product, area and direction.",
+   "legend": false
+  },
+  "unit": {
+   "label": "Unit vector",
+   "color": "#16a34a",
+   "text": "A unit vector: length exactly 1.",
+   "legend": false
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "The angle between vectors, or the angle from the +x axis.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "Allowed or correct.",
+   "legend": false
+  },
+  "no": {
+   "label": "Wrong / zero",
+   "color": "#e11d48",
+   "text": "Wrong, impossible or zero.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "fv1",
+   "from": [
+    1.8,
+    7.0
+   ],
+   "to": [
+    8.029,
+    8.098
+   ],
+   "role": "va",
+   "strokeWidth": 4.5,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "tF",
+   "at": [
+    7.435,
+    8.668
+   ],
+   "text": "F = 5.5 N",
+   "role": "va",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "fv2",
+   "from": [
+    1.8,
+    7.0
+   ],
+   "to": [
+    2.659,
+    11.87
+   ],
+   "role": "vb",
+   "strokeWidth": 4.5,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "ft3",
+   "at": [
+    0.929,
+    9.635
+   ],
+   "text": "r = 4.3 m",
+   "role": "vb",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "fv4",
+   "from": [
+    1.8,
+    7.0
+   ],
+   "to": [
+    8.93,
+    7.0
+   ],
+   "role": "wall",
+   "strokeWidth": 1.5,
+   "appear": "s0",
+   "effect": "draw",
+   "dash": [
+    4,
+    5
+   ]
+  },
+  {
+   "type": "arc",
+   "id": "far5",
+   "c": [
+    1.8,
+    7.0
+   ],
+   "r": 2.53,
+   "from": 10.0,
+   "to": 80.0,
+   "role": "ang",
+   "strokeWidth": 2.5,
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "fal6",
+   "at": [
+    5.289,
+    10.489
+   ],
+   "text": "θ = 70°",
+   "role": "ang",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "arc",
+   "id": "far7",
+   "c": [
+    1.8,
+    7.0
+   ],
+   "r": 1.84,
+   "from": 0,
+   "to": 10.0,
+   "role": "wall",
+   "strokeWidth": 2.5,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "arc",
+   "id": "far8",
+   "c": [
+    1.8,
+    7.0
+   ],
+   "r": 3.45,
+   "from": 0,
+   "to": 80.0,
+   "role": "wall",
+   "strokeWidth": 2.5,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "t10",
+   "at": [
+    5.71,
+    6.5
+   ],
+   "text": "10°",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "t80",
+   "at": [
+    2.433,
+    10.75
+   ],
+   "text": "80°",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln0",
+   "at": [
+    6.45,
+    5.5
+   ],
+   "text": "θ = 80° − 10° = 70°",
+   "role": "ang",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln1",
+   "at": [
+    6.45,
+    4.55
+   ],
+   "text": "F r = 5.5 × 4.3 = 23.65",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln2",
+   "at": [
+    6.45,
+    3.6
+   ],
+   "text": "dot = F r cos 70° = 23.65 × 0.342 = 8.1",
+   "role": "dot",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln3",
+   "at": [
+    6.45,
+    2.6500000000000004
+   ],
+   "text": "cross = F r sin 70° = 23.65 × 0.940 = 22.2",
+   "role": "crs",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.6,
+   "y": 0.75,
+   "w": 11.7,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s4",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "dot 8.1 N m   ·   cross 22.2 N m",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s4",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the data",
+   "text": "F = 5.5 N at 10° and r = 4.3 m at 80°, both measured from +x. Find \\( \\vec F\\cdot\\vec r \\) and \\( |\\vec F\\times\\vec r| \\).",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Angle between the vectors",
+   "text": "Both angles are from the same axis, so \\( \\theta = 80^\\circ - 10^\\circ = 70^\\circ \\). Also \\( Fr = 5.5\\times4.3 = 23.65 \\) N m.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Angle and product",
+   "text": "The product \\( Fr = 23.65 \\) N m is common to both formulas. Only cos 70° and sin 70° differ.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Dot product",
+   "text": "\\( \\vec F\\cdot\\vec r = Fr\\cos70^\\circ = 23.65\\times0.342 = 8.1 \\) N m.",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Cross product",
+   "text": "\\( |\\vec F\\times\\vec r| = Fr\\sin70^\\circ = 23.65\\times0.9397 = 22.2 \\) N m. (Order r × F would give the torque, flag F10.)",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Dot and cross magnitudes",
+   "tex": "\\vec F\\cdot\\vec r = Fr\\cos\\theta,\\qquad |\\vec F\\times\\vec r| = Fr\\sin\\theta",
+   "text": "θ is the angle between the two vectors, not the angle from the x-axis."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "F = 4 N at 20°, r = 3 m at 50°. Find F · r (1 decimal).",
+   "answer": 10.4,
+   "hint": "θ = 30°.",
+   "explain": "\\( 12\\cos30^\\circ = 10.4 \\) N m.",
+   "tolerance": 0.1
+  }
+ ],
+ "takeaways": [
+  "**θ = 80° − 10° = 70°** (between the vectors).",
+  "**Dot = 8.1 N m**, **cross = 22.2 N m**."
+ ]
+}

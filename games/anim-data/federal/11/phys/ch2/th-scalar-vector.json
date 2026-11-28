@@ -1,0 +1,393 @@
+{
+ "id": "g11-phys-c2-th-scalar-vector",
+ "title": "Distance is a scalar, displacement is a vector",
+ "summary": "Walk east and then north: the distance you travelled is the sum of the legs, but the displacement is the straight arrow from start to finish.",
+ "alt": "A path of two perpendicular legs from a start point, with the straight displacement arrow joining start and end.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -8.5,
+   8.5
+  ],
+  "y": [
+   -8.5,
+   8.5
+  ],
+  "ratio": 1.0,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid and frame lines.",
+   "legend": false
+  },
+  "va": {
+   "label": "Vector A",
+   "color": "#2563eb",
+   "text": "The first vector, A.",
+   "legend": true
+  },
+  "vb": {
+   "label": "Vector B",
+   "color": "#ea580c",
+   "text": "The second vector, B.",
+   "legend": true
+  },
+  "res": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "The resultant, or the answer being built.",
+   "legend": true
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "The angle between vectors, or the angle from the +x axis.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "de",
+   "label": "Walk east (m)",
+   "type": "number",
+   "min": 1,
+   "max": 8,
+   "step": 1,
+   "default": 3
+  },
+  {
+   "id": "dn",
+   "label": "Then north (m)",
+   "type": "number",
+   "min": 1,
+   "max": 8,
+   "step": 1,
+   "default": 4
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 9,
+   "step": 0.01,
+   "default": 9,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "dist": "de+dn",
+  "disp": "hypot(de,dn)",
+  "ang": "atan(dn/de)",
+  "S": "-5",
+  "T": "-4"
+ },
+ "shapes": [
+  {
+   "type": "grid",
+   "id": "grid",
+   "step": 1,
+   "role": "grid",
+   "uiToggle": "grid"
+  },
+  {
+   "type": "axes",
+   "id": "axes",
+   "step": 1,
+   "role": "wall",
+   "xLabel": "x",
+   "yLabel": "y",
+   "numbers": false
+  },
+  {
+   "type": "point",
+   "id": "st",
+   "at": [
+    "S",
+    "T"
+   ],
+   "role": "wall",
+   "r": 7
+  },
+  {
+   "type": "text",
+   "id": "stl",
+   "at": [
+    "S-1.0",
+    "T+0.8"
+   ],
+   "text": "start",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "vector",
+   "id": "leg1",
+   "from": [
+    "S",
+    "T"
+   ],
+   "to": [
+    "S+de",
+    "T"
+   ],
+   "role": "va",
+   "strokeWidth": 4.5,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "vector",
+   "id": "leg2",
+   "from": [
+    "S+de",
+    "T"
+   ],
+   "to": [
+    "S+de",
+    "T+dn"
+   ],
+   "role": "vb",
+   "strokeWidth": 4.5,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "text",
+   "id": "l1",
+   "at": [
+    "S+de/2",
+    "T-0.9"
+   ],
+   "text": "{{de|0}} m east",
+   "role": "va",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "text",
+   "id": "l2",
+   "at": [
+    "S+de+1.9",
+    "T+dn/2"
+   ],
+   "text": "{{dn|0}} m north",
+   "role": "vb",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "vector",
+   "id": "D",
+   "from": [
+    "S",
+    "T"
+   ],
+   "to": [
+    "S+de",
+    "T+dn"
+   ],
+   "role": "res",
+   "strokeWidth": 5,
+   "label": {
+    "text": "displacement",
+    "role": "res",
+    "off": 5
+   },
+   "visible": "lv>=3"
+  },
+  {
+   "type": "text",
+   "id": "t1",
+   "at": [
+    0,
+    7.7
+   ],
+   "text": "Distance (scalar) = {{dist|0}} m",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t2",
+   "at": [
+    0,
+    6.8
+   ],
+   "text": "Displacement (vector) = {{disp|2}} m, {{ang|0}}° N of E",
+   "role": "res",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The start",
+   "text": "You start at a point and will walk in two straight legs.",
+   "actions": [
+    {
+     "set": {
+      "lv": 0,
+      "de": 3,
+      "dn": 4
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Two legs",
+   "text": "Walk {{de|0}} m east, then {{dn|0}} m north. Each leg is itself a vector: it has a size **and** a direction.",
+   "actions": [
+    {
+     "set": {
+      "lv": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Distance: add the lengths",
+   "text": "The **distance** is the total path length: {{de|0}} + {{dn|0}} = {{dist|0}} m. It needs only a number and a unit, so it is a **scalar**.",
+   "actions": [
+    {
+     "set": {
+      "lv": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Displacement: start to finish",
+   "text": "The **displacement** is the straight arrow from start to finish: magnitude \\( \\sqrt{ {{de|0}}^2 + {{dn|0}}^2 } = {{disp|2}} \\) m, direction {{ang|1}}° north of east. It needs a direction too, so it is a **vector**.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Change the legs",
+   "text": "Try other legs. The displacement is never longer than the distance, and they are equal only when you walk in a straight line.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "de": 6,
+      "dn": 2
+     },
+     "at": 0,
+     "dur": 2500
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Distance (scalar)",
+   "value": "{{dist|0}} m",
+   "role": "ans"
+  },
+  {
+   "label": "Displacement (vector)",
+   "value": "{{disp|2}} m",
+   "role": "res"
+  },
+  {
+   "label": "Direction",
+   "value": "{{ang|1}}°",
+   "role": "ang"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Scalar and vector",
+   "tex": "\\text{distance} = \\ell_1 + \\ell_2, \\qquad |\\vec d\\,| = \\sqrt{\\ell_1^2 + \\ell_2^2}",
+   "text": "For perpendicular legs."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A student walks **6 m** east and then **8 m** north. What is the magnitude of her displacement (m)?",
+   "answer": 10,
+   "hint": "Pythagoras on the two legs.",
+   "explain": "\\( \\sqrt{6^2 + 8^2} = 10 \\) m.",
+   "tolerance": 0.05,
+   "unit": "m"
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "For the same walk, what is the distance travelled (m)?",
+   "answer": 14,
+   "hint": "Distance adds the path lengths.",
+   "explain": "\\( 6 + 8 = 14 \\) m.",
+   "tolerance": 0.05,
+   "unit": "m"
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which of these is a vector quantity?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Mass"
+    },
+    {
+     "id": "b",
+     "label": "Time"
+    },
+    {
+     "id": "c",
+     "label": "Velocity"
+    },
+    {
+     "id": "d",
+     "label": "Temperature"
+    }
+   ],
+   "answer": "c",
+   "hint": "Does it need a direction?",
+   "explain": "Velocity needs magnitude **and** direction. Mass, time and temperature are scalars."
+  }
+ ],
+ "takeaways": [
+  "A **scalar** has magnitude only (number + unit): distance, mass, time, temperature.",
+  "A **vector** has magnitude **and** direction: displacement, velocity, force.",
+  "Displacement ≤ distance."
+ ]
+}

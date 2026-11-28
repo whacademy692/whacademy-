@@ -1,0 +1,804 @@
+{
+ "id": "g11-phys-c2-ex-sq-08",
+ "title": "Ex SQ 2.8 · A · B in components",
+ "summary": "Show that: A · B = AₓBₓ + AᵧBᵧ + A_zB_z.",
+ "alt": "Ex SQ 2.8: Show that: A · B = AₓBₓ + AᵧBᵧ + A_zB_z.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid and frame lines.",
+   "legend": false
+  },
+  "va": {
+   "label": "Vector A",
+   "color": "#2563eb",
+   "text": "The first vector, A.",
+   "legend": false
+  },
+  "vb": {
+   "label": "Vector B",
+   "color": "#ea580c",
+   "text": "The second vector, B.",
+   "legend": false
+  },
+  "res": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "The resultant, or the answer being built.",
+   "legend": false
+  },
+  "cx": {
+   "label": "x-component",
+   "color": "#0891b2",
+   "text": "The horizontal (x) component.",
+   "legend": false
+  },
+  "cy": {
+   "label": "y-component",
+   "color": "#c026d3",
+   "text": "The vertical (y) component.",
+   "legend": false
+  },
+  "dot": {
+   "label": "Dot product",
+   "color": "#d97706",
+   "text": "The scalar (dot) product and the projections that make it.",
+   "legend": false
+  },
+  "crs": {
+   "label": "Cross product",
+   "color": "#7c3aed",
+   "text": "The vector (cross) product, area and direction.",
+   "legend": false
+  },
+  "unit": {
+   "label": "Unit vector",
+   "color": "#16a34a",
+   "text": "A unit vector: length exactly 1.",
+   "legend": false
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "The angle between vectors, or the angle from the +x axis.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "Allowed or correct.",
+   "legend": false
+  },
+  "no": {
+   "label": "Wrong / zero",
+   "color": "#e11d48",
+   "text": "Wrong, impossible or zero.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "text",
+   "id": "ch0",
+   "at": [
+    4.6,
+    14.4
+   ],
+   "text": "Bₓ î",
+   "role": "vb",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ch1",
+   "at": [
+    7.2,
+    14.4
+   ],
+   "text": "Bᵧ ĵ",
+   "role": "vb",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ch2",
+   "at": [
+    9.8,
+    14.4
+   ],
+   "text": "B_z k̂",
+   "role": "vb",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "rh0",
+   "at": [
+    2.0,
+    13.0
+   ],
+   "text": "Aₓ î",
+   "role": "va",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "rh1",
+   "at": [
+    2.0,
+    11.3
+   ],
+   "text": "Aᵧ ĵ",
+   "role": "va",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "rh2",
+   "at": [
+    2.0,
+    9.6
+   ],
+   "text": "A_z k̂",
+   "role": "va",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "cell00",
+   "x": 3.4499999999999997,
+   "y": 12.25,
+   "w": 2.3,
+   "h": 1.5,
+   "role": "ok",
+   "fill": true,
+   "fillOpacity": 0.22,
+   "strokeWidth": 2,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "co00",
+   "at": [
+    4.6,
+    13.3
+   ],
+   "text": "AₓBₓ",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "u00",
+   "at": [
+    4.6,
+    12.65
+   ],
+   "text": "\\(\\hat{i}\\cdot\\hat{i}\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade",
+   "disappear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "v00",
+   "at": [
+    4.6,
+    12.65
+   ],
+   "text": "= 1",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "pop"
+  },
+  {
+   "type": "rect",
+   "id": "cell01",
+   "x": 6.050000000000001,
+   "y": 12.25,
+   "w": 2.3,
+   "h": 1.5,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.06,
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "co01",
+   "at": [
+    7.2,
+    13.3
+   ],
+   "text": "AₓBᵧ",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "u01",
+   "at": [
+    7.2,
+    12.65
+   ],
+   "text": "\\(\\hat{i}\\cdot\\hat{j}\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade",
+   "disappear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "v01",
+   "at": [
+    7.2,
+    12.65
+   ],
+   "text": "= 0",
+   "role": "muted",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "pop"
+  },
+  {
+   "type": "rect",
+   "id": "cell02",
+   "x": 8.65,
+   "y": 12.25,
+   "w": 2.3,
+   "h": 1.5,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.06,
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "co02",
+   "at": [
+    9.8,
+    13.3
+   ],
+   "text": "AₓB_z",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "u02",
+   "at": [
+    9.8,
+    12.65
+   ],
+   "text": "\\(\\hat{i}\\cdot\\hat{k}\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade",
+   "disappear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "v02",
+   "at": [
+    9.8,
+    12.65
+   ],
+   "text": "= 0",
+   "role": "muted",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "pop"
+  },
+  {
+   "type": "rect",
+   "id": "cell10",
+   "x": 3.4499999999999997,
+   "y": 10.55,
+   "w": 2.3,
+   "h": 1.5,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.06,
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "co10",
+   "at": [
+    4.6,
+    11.600000000000001
+   ],
+   "text": "AᵧBₓ",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "u10",
+   "at": [
+    4.6,
+    10.950000000000001
+   ],
+   "text": "\\(\\hat{j}\\cdot\\hat{i}\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade",
+   "disappear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "v10",
+   "at": [
+    4.6,
+    10.950000000000001
+   ],
+   "text": "= 0",
+   "role": "muted",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "pop"
+  },
+  {
+   "type": "rect",
+   "id": "cell11",
+   "x": 6.050000000000001,
+   "y": 10.55,
+   "w": 2.3,
+   "h": 1.5,
+   "role": "ok",
+   "fill": true,
+   "fillOpacity": 0.22,
+   "strokeWidth": 2,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "co11",
+   "at": [
+    7.2,
+    11.600000000000001
+   ],
+   "text": "AᵧBᵧ",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "u11",
+   "at": [
+    7.2,
+    10.950000000000001
+   ],
+   "text": "\\(\\hat{j}\\cdot\\hat{j}\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade",
+   "disappear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "v11",
+   "at": [
+    7.2,
+    10.950000000000001
+   ],
+   "text": "= 1",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "pop"
+  },
+  {
+   "type": "rect",
+   "id": "cell12",
+   "x": 8.65,
+   "y": 10.55,
+   "w": 2.3,
+   "h": 1.5,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.06,
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "co12",
+   "at": [
+    9.8,
+    11.600000000000001
+   ],
+   "text": "AᵧB_z",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "u12",
+   "at": [
+    9.8,
+    10.950000000000001
+   ],
+   "text": "\\(\\hat{j}\\cdot\\hat{k}\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade",
+   "disappear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "v12",
+   "at": [
+    9.8,
+    10.950000000000001
+   ],
+   "text": "= 0",
+   "role": "muted",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "pop"
+  },
+  {
+   "type": "rect",
+   "id": "cell20",
+   "x": 3.4499999999999997,
+   "y": 8.85,
+   "w": 2.3,
+   "h": 1.5,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.06,
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "co20",
+   "at": [
+    4.6,
+    9.9
+   ],
+   "text": "A_zBₓ",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "u20",
+   "at": [
+    4.6,
+    9.25
+   ],
+   "text": "\\(\\hat{k}\\cdot\\hat{i}\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade",
+   "disappear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "v20",
+   "at": [
+    4.6,
+    9.25
+   ],
+   "text": "= 0",
+   "role": "muted",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "pop"
+  },
+  {
+   "type": "rect",
+   "id": "cell21",
+   "x": 6.050000000000001,
+   "y": 8.85,
+   "w": 2.3,
+   "h": 1.5,
+   "role": "wall",
+   "fill": true,
+   "fillOpacity": 0.06,
+   "strokeWidth": 2,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "co21",
+   "at": [
+    7.2,
+    9.9
+   ],
+   "text": "A_zBᵧ",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "u21",
+   "at": [
+    7.2,
+    9.25
+   ],
+   "text": "\\(\\hat{k}\\cdot\\hat{j}\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade",
+   "disappear": "s2"
+  },
+  {
+   "type": "text",
+   "id": "v21",
+   "at": [
+    7.2,
+    9.25
+   ],
+   "text": "= 0",
+   "role": "muted",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "pop"
+  },
+  {
+   "type": "rect",
+   "id": "cell22",
+   "x": 8.65,
+   "y": 8.85,
+   "w": 2.3,
+   "h": 1.5,
+   "role": "ok",
+   "fill": true,
+   "fillOpacity": 0.22,
+   "strokeWidth": 2,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "co22",
+   "at": [
+    9.8,
+    9.9
+   ],
+   "text": "A_zB_z",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "u22",
+   "at": [
+    9.8,
+    9.25
+   ],
+   "text": "\\(\\hat{k}\\cdot\\hat{k}\\)",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade",
+   "disappear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "v22",
+   "at": [
+    9.8,
+    9.25
+   ],
+   "text": "= 1",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ln0",
+   "at": [
+    6.45,
+    7.3
+   ],
+   "text": "(Aₓî + Aᵧĵ + A_zk̂) · (Bₓî + Bᵧĵ + B_zk̂)",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln1",
+   "at": [
+    6.45,
+    6.35
+   ],
+   "text": "= AₓBₓ + AᵧBᵧ + A_zB_z",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.6,
+   "y": 0.75,
+   "w": 11.7,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "A · B = AₓBₓ + AᵧBᵧ + A_zB_z",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Expand the product",
+   "text": "Multiplying the two sums term by term gives **nine** products: \\( A_xB_x(\\hat i\\cdot\\hat i) + A_xB_y(\\hat i\\cdot\\hat j) + \\dots \\).",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Same unit vectors",
+   "text": "\\( \\hat i\\cdot\\hat i = \\hat j\\cdot\\hat j = \\hat k\\cdot\\hat k = 1 \\): the three diagonal terms survive as \\( A_xB_x,\\; A_yB_y,\\; A_zB_z \\).",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Different unit vectors",
+   "text": "\\( \\hat i\\cdot\\hat j = \\hat j\\cdot\\hat k = \\hat k\\cdot\\hat i = 0 \\): the six off-diagonal terms vanish (perpendicular unit vectors).",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Result",
+   "text": "Only three terms are left: \\( \\vec A\\cdot\\vec B = A_xB_x + A_yB_y + A_zB_z \\). ∎",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Dot product in components",
+   "tex": "\\vec A\\cdot\\vec B = A_xB_x + A_yB_y + A_zB_z",
+   "text": "Eq 2.13."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "How many of the nine cross terms (such as AₓBᵧ î·ĵ) are zero?",
+   "answer": 6,
+   "hint": "Only matching unit vectors survive.",
+   "explain": "Three diagonal terms survive; the other **six** are zero.",
+   "tolerance": 0.01
+  }
+ ],
+ "takeaways": [
+  "Nine terms, only **three** survive.",
+  "**î·î = 1** keeps AₓBₓ etc.; **î·ĵ = 0** kills the rest."
+ ]
+}

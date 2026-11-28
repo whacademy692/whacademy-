@@ -1,0 +1,476 @@
+{
+ "id": "g11-phys-c2-th-area",
+ "title": "Why |A × B| is the area of the parallelogram",
+ "summary": "Cut the slanted triangle off one side of the parallelogram and slide it to the other: the figure becomes a rectangle A × (B sin θ).",
+ "alt": "A parallelogram on two vectors whose slanted triangular end is cut off and moved to the other end to form a rectangle with the same area.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -8.5,
+   8.5
+  ],
+  "y": [
+   -8.5,
+   8.5
+  ],
+  "ratio": 1.0,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid and frame lines.",
+   "legend": false
+  },
+  "va": {
+   "label": "Vector A",
+   "color": "#2563eb",
+   "text": "The first vector, A.",
+   "legend": true
+  },
+  "vb": {
+   "label": "Vector B",
+   "color": "#ea580c",
+   "text": "The second vector, B.",
+   "legend": true
+  },
+  "crs": {
+   "label": "Cross product",
+   "color": "#7c3aed",
+   "text": "The vector (cross) product, area and direction.",
+   "legend": true
+  },
+  "dot": {
+   "label": "Dot product",
+   "color": "#d97706",
+   "text": "The scalar (dot) product and the projections that make it.",
+   "legend": true
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "Allowed or correct.",
+   "legend": false
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "The angle between vectors, or the angle from the +x axis.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "ma",
+   "label": "Side A (base)",
+   "type": "number",
+   "min": 2,
+   "max": 5,
+   "step": 1,
+   "default": 5
+  },
+  {
+   "id": "mb",
+   "label": "Side B",
+   "type": "number",
+   "min": 2,
+   "max": 5,
+   "step": 1,
+   "default": 4
+  },
+  {
+   "id": "th",
+   "label": "Angle θ (°)",
+   "type": "number",
+   "min": 20,
+   "max": 90,
+   "step": 1,
+   "default": 60
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 9,
+   "step": 0.01,
+   "default": 9,
+   "hidden": true
+  },
+  {
+   "id": "s",
+   "label": "s",
+   "type": "number",
+   "min": 0,
+   "max": 1,
+   "step": 0.01,
+   "default": 0,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "ox": "-6",
+  "oy": "-3",
+  "bx": "mb*cos(th)",
+  "by": "mb*sin(th)",
+  "ar": "ma*mb*sin(th)"
+ },
+ "shapes": [
+  {
+   "type": "grid",
+   "id": "grid",
+   "step": 1,
+   "role": "grid",
+   "uiToggle": "grid"
+  },
+  {
+   "type": "polygon",
+   "id": "par",
+   "pts": [
+    [
+     "ox",
+     "oy"
+    ],
+    [
+     "ox+ma",
+     "oy"
+    ],
+    [
+     "ox+ma+bx",
+     "oy+by"
+    ],
+    [
+     "ox+bx",
+     "oy+by"
+    ]
+   ],
+   "role": "crs",
+   "fill": true,
+   "fillOpacity": 0.14,
+   "strokeWidth": 2.5,
+   "layer": "back"
+  },
+  {
+   "type": "polygon",
+   "id": "tri",
+   "pts": [
+    [
+     "ox+s*ma",
+     "oy"
+    ],
+    [
+     "ox+bx+s*ma",
+     "oy+by"
+    ],
+    [
+     "ox+bx+s*ma",
+     "oy"
+    ]
+   ],
+   "role": "dot",
+   "fill": true,
+   "fillOpacity": 0.5,
+   "strokeWidth": 2.5,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "rect",
+   "id": "rct",
+   "x": "ox+bx",
+   "y": "oy",
+   "w": "ma",
+   "h": "by",
+   "role": "ok",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2.5,
+   "visible": "lv>=3&&s>0.99",
+   "dash": [
+    7,
+    5
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "hgt",
+   "from": [
+    "ox+bx",
+    "oy+by"
+   ],
+   "to": [
+    "ox+bx",
+    "oy"
+   ],
+   "role": "crs",
+   "strokeWidth": 2.5,
+   "dash": [
+    6,
+    5
+   ],
+   "visible": "lv>=1&&s<0.5"
+  },
+  {
+   "type": "vector",
+   "id": "A",
+   "from": [
+    "ox",
+    "oy"
+   ],
+   "to": [
+    "ox+ma",
+    "oy"
+   ],
+   "role": "va",
+   "strokeWidth": 4.5,
+   "label": {
+    "text": "A",
+    "role": "va",
+    "off": 5
+   }
+  },
+  {
+   "type": "vector",
+   "id": "B",
+   "from": [
+    "ox",
+    "oy"
+   ],
+   "to": [
+    "ox+bx",
+    "oy+by"
+   ],
+   "role": "vb",
+   "strokeWidth": 4.5,
+   "label": {
+    "text": "B",
+    "role": "vb",
+    "off": 5
+   }
+  },
+  {
+   "type": "arc",
+   "id": "tha",
+   "c": [
+    "ox",
+    "oy"
+   ],
+   "r": 1.2,
+   "from": 0,
+   "to": "th",
+   "role": "ang",
+   "strokeWidth": 2.5,
+   "label": {
+    "text": "{{th|0}}°",
+    "role": "ang"
+   }
+  },
+  {
+   "type": "text",
+   "id": "hl",
+   "at": [
+    "ox+bx+0.9",
+    "oy+by/2"
+   ],
+   "text": "h",
+   "role": "crs",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1&&s<0.5"
+  },
+  {
+   "type": "text",
+   "id": "t1",
+   "at": [
+    0,
+    7.5
+   ],
+   "text": "height h = B sin θ = {{by|2}}",
+   "role": "crs",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "text",
+   "id": "t2",
+   "at": [
+    0,
+    6.6
+   ],
+   "text": "rectangle: A × h = {{ma|0}} × {{by|2}} = {{ar|1}}",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3&&s>0.99"
+  },
+  {
+   "type": "text",
+   "id": "t3",
+   "at": [
+    0,
+    5.7
+   ],
+   "text": "Area = AB sin θ = |A × B| = {{ar|1}}",
+   "role": "crs",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=4"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "The parallelogram",
+   "text": "A and B are adjacent sides of a parallelogram. We want its area.",
+   "actions": [
+    {
+     "set": {
+      "lv": 0,
+      "s": 0,
+      "ma": 5,
+      "mb": 4,
+      "th": 60
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Base and height",
+   "text": "Take A as the base. The perpendicular height is \\( h = B\\sin\\theta = {{by|2}} \\), not B itself.",
+   "actions": [
+    {
+     "set": {
+      "lv": 1,
+      "s": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Cut the triangle",
+   "text": "Cut off the slanted triangle at the left end (shaded).",
+   "actions": [
+    {
+     "set": {
+      "lv": 2,
+      "s": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Slide it to the other end",
+   "text": "Slide the triangle to the right end. The two slanted edges fit together exactly and the figure is now a **rectangle** of the same area.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3,
+      "s": 0
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "s": 1
+     },
+     "at": 0,
+     "dur": 3200
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Area = |A × B|",
+   "text": "Rectangle: base × height = \\( A \\times B\\sin\\theta = {{ar|1}} \\). That is exactly the magnitude of the cross product, so \\( \\text{Area} = |\\vec A\\times\\vec B| \\).",
+   "actions": [
+    {
+     "set": {
+      "lv": 4,
+      "s": 1
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Area",
+   "value": "{{ar|1}}",
+   "role": "crs"
+  },
+  {
+   "label": "h = B sin θ",
+   "value": "{{by|2}}",
+   "role": "crs"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Parallelogram area",
+   "tex": "\\text{Area} = \\text{base}\\times\\text{height} = A\\,(B\\sin\\theta) = |\\vec A\\times\\vec B|",
+   "text": "n̂ then gives the direction of the area, perpendicular to the plane."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "Adjacent sides 5 and 4 make 30°. Find the area of the parallelogram.",
+   "answer": 10,
+   "hint": "A B sin θ.",
+   "explain": "\\( 5\\times4\\times\\sin30^\\circ = 10 \\).",
+   "tolerance": 0.05
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "What is the area (in the same units) when the sides are perpendicular and equal 3 and 6?",
+   "answer": 18,
+   "hint": "sin 90° = 1: it is a rectangle.",
+   "explain": "\\( 3\\times6\\times1 = 18 \\).",
+   "tolerance": 0.05
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "In the diagram, which length multiplies A to give the area?",
+   "options": [
+    {
+     "id": "a",
+     "label": "B"
+    },
+    {
+     "id": "b",
+     "label": "B cos θ"
+    },
+    {
+     "id": "c",
+     "label": "B sin θ"
+    },
+    {
+     "id": "d",
+     "label": "A + B"
+    }
+   ],
+   "answer": "c",
+   "hint": "Perpendicular height.",
+   "explain": "The perpendicular height is **B sin θ**."
+  }
+ ],
+ "takeaways": [
+  "**Area of the parallelogram = AB sin θ = |A × B|.**",
+  "Base A, perpendicular height **B sin θ**.",
+  "n̂ gives the direction of the area: normal to the plane."
+ ]
+}

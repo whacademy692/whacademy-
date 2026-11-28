@@ -1,0 +1,559 @@
+{
+ "id": "g11-phys-c2-ex-cq-01",
+ "title": "Ex CQ 2.1 · Resolution of a vector in 2-D",
+ "summary": "Explain the resolution of a vector in 2-D as two rectangular components.",
+ "alt": "Ex CQ 2.1: Explain the resolution of a vector in 2-D as two rectangular components.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid and frame lines.",
+   "legend": false
+  },
+  "va": {
+   "label": "Vector A",
+   "color": "#2563eb",
+   "text": "The first vector, A.",
+   "legend": false
+  },
+  "vb": {
+   "label": "Vector B",
+   "color": "#ea580c",
+   "text": "The second vector, B.",
+   "legend": false
+  },
+  "res": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "The resultant, or the answer being built.",
+   "legend": false
+  },
+  "cx": {
+   "label": "x-component",
+   "color": "#0891b2",
+   "text": "The horizontal (x) component.",
+   "legend": false
+  },
+  "cy": {
+   "label": "y-component",
+   "color": "#c026d3",
+   "text": "The vertical (y) component.",
+   "legend": false
+  },
+  "dot": {
+   "label": "Dot product",
+   "color": "#d97706",
+   "text": "The scalar (dot) product and the projections that make it.",
+   "legend": false
+  },
+  "crs": {
+   "label": "Cross product",
+   "color": "#7c3aed",
+   "text": "The vector (cross) product, area and direction.",
+   "legend": false
+  },
+  "unit": {
+   "label": "Unit vector",
+   "color": "#16a34a",
+   "text": "A unit vector: length exactly 1.",
+   "legend": false
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "The angle between vectors, or the angle from the +x axis.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "Allowed or correct.",
+   "legend": false
+  },
+  "no": {
+   "label": "Wrong / zero",
+   "color": "#e11d48",
+   "text": "Wrong, impossible or zero.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "fax1",
+   "from": [
+    1.94,
+    7.4
+   ],
+   "to": [
+    11.3,
+    7.4
+   ],
+   "role": "wall",
+   "strokeWidth": 2.2,
+   "appear": "s0"
+  },
+  {
+   "type": "vector",
+   "id": "fay2",
+   "from": [
+    2.3,
+    7.112
+   ],
+   "to": [
+    2.3,
+    13.016
+   ],
+   "role": "wall",
+   "strokeWidth": 2.2,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "flx3",
+   "at": [
+    11.65,
+    7.0
+   ],
+   "text": "x",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "fly4",
+   "at": [
+    2.75,
+    13.116
+   ],
+   "text": "y",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "vector",
+   "id": "fv5",
+   "from": [
+    2.3,
+    7.4
+   ],
+   "to": [
+    8.05,
+    11.733
+   ],
+   "role": "va",
+   "strokeWidth": 4.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "ft6",
+   "at": [
+    4.625,
+    10.017
+   ],
+   "text": "A",
+   "role": "va",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "arc",
+   "id": "far7",
+   "c": [
+    2.3,
+    7.4
+   ],
+   "r": 2.304,
+   "from": 0,
+   "to": 37.0,
+   "role": "ang",
+   "strokeWidth": 2.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "fal8",
+   "at": [
+    5.796,
+    8.57
+   ],
+   "text": "θ",
+   "role": "ang",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "fv9",
+   "from": [
+    8.05,
+    7.4
+   ],
+   "to": [
+    8.05,
+    11.733
+   ],
+   "role": "cy",
+   "strokeWidth": 2,
+   "appear": "s1",
+   "effect": "draw",
+   "dash": [
+    6,
+    5
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "fv10",
+   "from": [
+    2.3,
+    11.733
+   ],
+   "to": [
+    8.05,
+    11.733
+   ],
+   "role": "cx",
+   "strokeWidth": 2,
+   "appear": "s1",
+   "effect": "draw",
+   "dash": [
+    6,
+    5
+   ]
+  },
+  {
+   "type": "vector",
+   "id": "fv11",
+   "from": [
+    2.3,
+    7.4
+   ],
+   "to": [
+    8.05,
+    7.4
+   ],
+   "role": "cx",
+   "strokeWidth": 5.5,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "fv12",
+   "from": [
+    2.3,
+    7.4
+   ],
+   "to": [
+    2.3,
+    11.733
+   ],
+   "role": "cy",
+   "strokeWidth": 5.5,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "polygon",
+   "id": "frq13",
+   "pts": [
+    [
+     8.05,
+     7.4
+    ],
+    [
+     7.546,
+     7.4
+    ],
+    [
+     7.546,
+     7.904
+    ],
+    [
+     8.05,
+     7.904
+    ]
+   ],
+   "role": "wall",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2,
+   "appear": "s1"
+  },
+  {
+   "type": "point",
+   "id": "fd14",
+   "at": [
+    2.3,
+    7.4
+   ],
+   "role": "wall",
+   "r": 4,
+   "appear": "s1",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "fdl15",
+   "at": [
+    1.9,
+    6.95
+   ],
+   "text": "O",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "point",
+   "id": "fd16",
+   "at": [
+    8.05,
+    7.4
+   ],
+   "role": "wall",
+   "r": 4,
+   "appear": "s1",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "fdl17",
+   "at": [
+    8.15,
+    6.9
+   ],
+   "text": "Q",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "point",
+   "id": "fd18",
+   "at": [
+    2.3,
+    11.733
+   ],
+   "role": "wall",
+   "r": 4,
+   "appear": "s1",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "fdl19",
+   "at": [
+    1.8499999999999999,
+    11.733
+   ],
+   "text": "S",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "point",
+   "id": "fd20",
+   "at": [
+    8.05,
+    11.733
+   ],
+   "role": "wall",
+   "r": 4,
+   "appear": "s1",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "fdl21",
+   "at": [
+    8.350000000000001,
+    12.033000000000001
+   ],
+   "text": "P",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln0",
+   "at": [
+    6.45,
+    5.5
+   ],
+   "text": "OQ = Ax,  OS = Ay  ⇒  A = Ax î + Ay ĵ",
+   "role": "va",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln1",
+   "at": [
+    6.45,
+    4.55
+   ],
+   "text": "triangle OPQ: sin θ = Ay/A, cos θ = Ax/A",
+   "role": "cx",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln2",
+   "at": [
+    6.45,
+    3.6
+   ],
+   "text": "A = √(Ax² + Ay²),  θ = tan⁻¹(Ay/Ax)",
+   "role": "ang",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln3",
+   "at": [
+    6.45,
+    2.6500000000000004
+   ],
+   "text": "Ex 2.1: F = 50 N, 30° → 43.3 N, 25 N",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.6,
+   "y": 0.75,
+   "w": 11.7,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s2",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "Ax = A cos θ,   Ay = A sin θ",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s2",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "Show how a vector in a plane is split into two **rectangular components**.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Figure 2.1",
+   "text": "Vector **A** makes angle θ with +x. Drop perpendiculars from its head P to the axes: they meet the x-axis at Q and the y-axis at S. Then \\( OQ = A_x \\), \\( OS = A_y \\), so \\( \\vec A = A_x\\hat i + A_y\\hat j \\).",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Magnitudes from triangle OPQ",
+   "text": "\\( \\sin\\theta = A_y/A \\Rightarrow A_y = A\\sin\\theta \\) and \\( \\cos\\theta = A_x/A \\Rightarrow A_x = A\\cos\\theta \\).",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Vector from components",
+   "text": "Pythagoras: \\( A = \\sqrt{A_x^2 + A_y^2} \\). Also \\( \\tan\\theta = A_y/A_x \\Rightarrow \\theta = \\tan^{-1}(A_y/A_x) \\) (check the quadrant).",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Example 2.1",
+   "text": "\\( F = 50\\) N at 30°: \\( F_x = 50\\cos30^\\circ = 43.3 \\) N and \\( F_y = 50\\sin30^\\circ = 25 \\) N.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Rectangular components",
+   "tex": "A_x = A\\cos\\theta,\\; A_y = A\\sin\\theta,\\; A = \\sqrt{A_x^2 + A_y^2},\\; \\theta = \\tan^{-1}\\dfrac{A_y}{A_x}",
+   "text": "Eq 2.1–2.5."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "F = 50 N at 30° to +x. Find Fx (1 decimal).",
+   "answer": 43.3,
+   "hint": "Fx = F cos θ.",
+   "explain": "\\( 50\\cos30^\\circ = 43.3 \\) N.",
+   "tolerance": 0.1
+  }
+ ],
+ "takeaways": [
+  "**Components** are perpendicular: **Ax = A cos θ**, **Ay = A sin θ**.",
+  "**A = Ax î + Ay ĵ**; **A = √(Ax² + Ay²)**, **θ = tan⁻¹(Ay/Ax)**."
+ ]
+}

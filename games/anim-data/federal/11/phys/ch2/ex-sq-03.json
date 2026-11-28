@@ -1,0 +1,391 @@
+{
+ "id": "g11-phys-c2-ex-sq-03",
+ "title": "Ex SQ 2.3 · Scalar product is commutative",
+ "summary": "Show that scalar product obeys commutative property.",
+ "alt": "Ex SQ 2.3: Show that scalar product obeys commutative property.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid and frame lines.",
+   "legend": false
+  },
+  "va": {
+   "label": "Vector A",
+   "color": "#2563eb",
+   "text": "The first vector, A.",
+   "legend": false
+  },
+  "vb": {
+   "label": "Vector B",
+   "color": "#ea580c",
+   "text": "The second vector, B.",
+   "legend": false
+  },
+  "res": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "The resultant, or the answer being built.",
+   "legend": false
+  },
+  "cx": {
+   "label": "x-component",
+   "color": "#0891b2",
+   "text": "The horizontal (x) component.",
+   "legend": false
+  },
+  "cy": {
+   "label": "y-component",
+   "color": "#c026d3",
+   "text": "The vertical (y) component.",
+   "legend": false
+  },
+  "dot": {
+   "label": "Dot product",
+   "color": "#d97706",
+   "text": "The scalar (dot) product and the projections that make it.",
+   "legend": false
+  },
+  "crs": {
+   "label": "Cross product",
+   "color": "#7c3aed",
+   "text": "The vector (cross) product, area and direction.",
+   "legend": false
+  },
+  "unit": {
+   "label": "Unit vector",
+   "color": "#16a34a",
+   "text": "A unit vector: length exactly 1.",
+   "legend": false
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "The angle between vectors, or the angle from the +x axis.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "Allowed or correct.",
+   "legend": false
+  },
+  "no": {
+   "label": "Wrong / zero",
+   "color": "#e11d48",
+   "text": "Wrong, impossible or zero.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "fv1",
+   "from": [
+    1.8,
+    8.0
+   ],
+   "to": [
+    7.8,
+    8.0
+   ],
+   "role": "va",
+   "strokeWidth": 4.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "ft2",
+   "at": [
+    4.8,
+    7.4
+   ],
+   "text": "A",
+   "role": "va",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "fv3",
+   "from": [
+    1.8,
+    8.0
+   ],
+   "to": [
+    5.014,
+    11.83
+   ],
+   "role": "vb",
+   "strokeWidth": 4.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "ft4",
+   "at": [
+    2.807,
+    9.915
+   ],
+   "text": "B",
+   "role": "vb",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "arc",
+   "id": "far5",
+   "c": [
+    1.8,
+    8.0
+   ],
+   "r": 1.3,
+   "from": 0,
+   "to": 50.0,
+   "role": "ang",
+   "strokeWidth": 2.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "fal6",
+   "at": [
+    3.685,
+    8.879
+   ],
+   "text": "θ",
+   "role": "ang",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "fv7",
+   "from": [
+    5.014,
+    11.83
+   ],
+   "to": [
+    5.014,
+    8.0
+   ],
+   "role": "dot",
+   "strokeWidth": 2,
+   "appear": "s1",
+   "effect": "draw",
+   "dash": [
+    6,
+    5
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "fv8",
+   "from": [
+    1.8,
+    7.3
+   ],
+   "to": [
+    5.014,
+    7.3
+   ],
+   "role": "dot",
+   "strokeWidth": 6,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "ft9",
+   "at": [
+    3.407,
+    6.7
+   ],
+   "text": "B cos θ",
+   "role": "dot",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln0",
+   "at": [
+    6.45,
+    5.5
+   ],
+   "text": "A · B = A (B cos θ) = AB cos θ",
+   "role": "dot",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln1",
+   "at": [
+    6.45,
+    4.55
+   ],
+   "text": "B · A = B (A cos θ) = BA cos θ",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln2",
+   "at": [
+    6.45,
+    3.6
+   ],
+   "text": "AB = BA  (ordinary numbers)",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln3",
+   "at": [
+    6.45,
+    2.6500000000000004
+   ],
+   "text": "⇒ A · B = B · A",
+   "role": "ans",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.6,
+   "y": 0.75,
+   "w": 11.7,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "A · B = B · A",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "What we must show",
+   "text": "The scalar product of A and B equals the scalar product of B and A.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "A · B",
+   "text": "\\( \\vec A\\cdot\\vec B = AB\\cos\\theta \\): A times the projection of B on A.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "B · A",
+   "text": "\\( \\vec B\\cdot\\vec A = BA\\cos\\theta \\): B times the projection of A on B. The angle between the two vectors is the same θ whichever you name first.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Compare",
+   "text": "A and B are ordinary numbers, so \\( AB = BA \\); cos θ is the same. Therefore \\( \\vec A\\cdot\\vec B = \\vec B\\cdot\\vec A \\): the dot product is **commutative**.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Commutative",
+   "tex": "\\vec A\\cdot\\vec B = AB\\cos\\theta = BA\\cos\\theta = \\vec B\\cdot\\vec A",
+   "text": "The cross product is **not** commutative."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which product changes sign when the vectors are swapped?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Dot product"
+    },
+    {
+     "id": "b",
+     "label": "Cross product"
+    },
+    {
+     "id": "c",
+     "label": "Both"
+    },
+    {
+     "id": "d",
+     "label": "Neither"
+    }
+   ],
+   "answer": "b",
+   "hint": "Only one is commutative.",
+   "explain": "A × B = −B × A, while A · B = B · A."
+  }
+ ],
+ "takeaways": [
+  "**A · B = B · A** because AB cos θ = BA cos θ.",
+  "The cross product is anti-commutative."
+ ]
+}

@@ -1,0 +1,470 @@
+{
+ "id": "g11-phys-c2-th-compose",
+ "title": "From components back to the vector: A and θ",
+ "summary": "Set Aₓ and Aᵧ and read off the magnitude and direction, including what happens when Aₓ is negative.",
+ "alt": "A vector drawn from the origin to the point (Aₓ, Aᵧ) with dashed projections, the angle from the +x axis and the quadrant shown.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -8.5,
+   8.5
+  ],
+  "y": [
+   -8.5,
+   8.5
+  ],
+  "ratio": 1.0,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid and frame lines.",
+   "legend": false
+  },
+  "va": {
+   "label": "Vector A",
+   "color": "#2563eb",
+   "text": "The first vector, A.",
+   "legend": true
+  },
+  "cx": {
+   "label": "x-component",
+   "color": "#0891b2",
+   "text": "The horizontal (x) component.",
+   "legend": true
+  },
+  "cy": {
+   "label": "y-component",
+   "color": "#c026d3",
+   "text": "The vertical (y) component.",
+   "legend": true
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "The angle between vectors, or the angle from the +x axis.",
+   "legend": true
+  },
+  "no": {
+   "label": "Wrong / zero",
+   "color": "#e11d48",
+   "text": "Wrong, impossible or zero.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "ax",
+   "label": "Aₓ",
+   "type": "number",
+   "min": -6,
+   "max": 6,
+   "step": 1,
+   "default": 4
+  },
+  {
+   "id": "ay",
+   "label": "Aᵧ",
+   "type": "number",
+   "min": -6,
+   "max": 6,
+   "step": 1,
+   "default": 3
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 9,
+   "step": 0.01,
+   "default": 9,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "m": "hypot(ax,ay)",
+  "thf": "mod(atan2(ay,ax),360)",
+  "thp": "atan(ay/ax)",
+  "q": "(ax>=0&&ay>=0)?1:((ax<0&&ay>=0)?2:((ax<0&&ay<0)?3:4))"
+ },
+ "shapes": [
+  {
+   "type": "grid",
+   "id": "grid",
+   "step": 1,
+   "role": "grid",
+   "uiToggle": "grid"
+  },
+  {
+   "type": "axes",
+   "id": "axes",
+   "step": 1,
+   "role": "wall",
+   "xLabel": "x",
+   "yLabel": "y",
+   "numbers": false
+  },
+  {
+   "type": "segment",
+   "id": "pj1",
+   "from": [
+    "ax",
+    0
+   ],
+   "to": [
+    "ax",
+    "ay"
+   ],
+   "role": "cy",
+   "strokeWidth": 2,
+   "dash": [
+    6,
+    5
+   ],
+   "visible": "lv>=0"
+  },
+  {
+   "type": "segment",
+   "id": "pj2",
+   "from": [
+    0,
+    "ay"
+   ],
+   "to": [
+    "ax",
+    "ay"
+   ],
+   "role": "cx",
+   "strokeWidth": 2,
+   "dash": [
+    6,
+    5
+   ],
+   "visible": "lv>=0"
+  },
+  {
+   "type": "vector",
+   "id": "cmx",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    "ax",
+    0
+   ],
+   "role": "cx",
+   "strokeWidth": 6
+  },
+  {
+   "type": "vector",
+   "id": "cmy",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    0,
+    "ay"
+   ],
+   "role": "cy",
+   "strokeWidth": 6
+  },
+  {
+   "type": "text",
+   "id": "lax",
+   "at": [
+    "ax/2",
+    "(ay>=0)?-0.85:0.85"
+   ],
+   "text": "\\(A_x\\)",
+   "role": "cx",
+   "size": "s",
+   "bold": true,
+   "visible": "abs(ax)>0.6"
+  },
+  {
+   "type": "text",
+   "id": "lay",
+   "at": [
+    "(ax>=0)?-0.95:0.95",
+    "ay/2"
+   ],
+   "text": "\\(A_y\\)",
+   "role": "cy",
+   "size": "s",
+   "bold": true,
+   "visible": "abs(ay)>0.6"
+  },
+  {
+   "type": "vector",
+   "id": "A",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    "ax",
+    "ay"
+   ],
+   "role": "va",
+   "strokeWidth": 4.5,
+   "label": {
+    "text": "A",
+    "role": "va",
+    "off": 5
+   },
+   "visible": "m>0.01"
+  },
+  {
+   "type": "arc",
+   "id": "thA",
+   "c": [
+    0,
+    0
+   ],
+   "r": 1.5,
+   "from": 0,
+   "to": "thf",
+   "role": "ang",
+   "strokeWidth": 2.5,
+   "label": {
+    "text": "{{thf|1}}°",
+    "role": "ang"
+   },
+   "visible": "lv>=3&&m>0.01"
+  },
+  {
+   "type": "text",
+   "id": "t1",
+   "at": [
+    0,
+    -6.3
+   ],
+   "text": "A = √(Aₓ²+Aᵧ²) = {{m|2}}",
+   "role": "va",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "text",
+   "id": "t2",
+   "at": [
+    0,
+    -7.1
+   ],
+   "text": "tan⁻¹(Aᵧ/Aₓ) = {{thp|1}}°",
+   "role": "cy",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2&&abs(ax)>0.01"
+  },
+  {
+   "type": "text",
+   "id": "t3",
+   "at": [
+    0,
+    -7.9
+   ],
+   "text": "angle from +x = {{thf|1}}°   (quadrant {{q}})",
+   "role": "ang",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3"
+  },
+  {
+   "type": "text",
+   "id": "t4",
+   "at": [
+    0,
+    7.6
+   ],
+   "text": "Aₓ < 0: add 180° to the calculator angle",
+   "role": "no",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3&&ax<0&&abs(ax)>0.01"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Start with the two components",
+   "text": "The vector **A** has components \\(A_x = {{ax|0}}\\) and \\(A_y = {{ay|0}}\\). Together they give the point (Aₓ, Aᵧ) and the vector from the origin to it.",
+   "actions": [
+    {
+     "set": {
+      "ax": 4,
+      "ay": 3,
+      "lv": 0
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Length by Pythagoras",
+   "text": "The components and A form a right triangle with A as the hypotenuse: \\( A = \\sqrt{A_x^2 + A_y^2} = {{m|2}} \\). (4, 3 gives the famous 3-4-5 triangle.)",
+   "actions": [
+    {
+     "set": {
+      "lv": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Angle by tan⁻¹",
+   "text": "\\( \\tan\\theta = A_y / A_x \\) so \\( \\theta = \\tan^{-1}(A_y/A_x) = {{thp|1}}^\\circ \\).",
+   "actions": [
+    {
+     "set": {
+      "lv": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Check the quadrant",
+   "text": "Both components are positive, so A is in the **first quadrant** and the calculator angle is already the angle from +x: θ = {{thf|1}}°.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Make Aₓ negative",
+   "text": "Now Aₓ = {{ax|0}}, Aᵧ = {{ay|0}}: the vector points into the **second quadrant**. The calculator still shows a negative angle, so we add 180° to get {{thf|1}}° from +x.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "ax": -4
+     },
+     "at": 0,
+     "dur": 2500
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Both negative",
+   "text": "With Aₓ and Aᵧ both negative the vector is in the **third quadrant**: again add 180° to the calculator angle.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3,
+      "ax": -4
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "ay": -3
+     },
+     "at": 0,
+     "dur": 2500
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "A",
+   "value": "{{m|2}}",
+   "role": "va"
+  },
+  {
+   "label": "θ from +x",
+   "value": "{{thf|1}}°",
+   "role": "ang"
+  },
+  {
+   "label": "Quadrant",
+   "value": "{{q}}",
+   "role": "wall"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Magnitude and direction",
+   "tex": "A = \\sqrt{A_x^2 + A_y^2}, \\qquad \\theta = \\tan^{-1}\\!\\left(\\dfrac{A_y}{A_x}\\right)",
+   "text": "Check the quadrant: if Aₓ < 0 add 180° to the calculator value."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "The components of a force are **6 N** and **8 N**. Find its magnitude (N).",
+   "answer": 10,
+   "hint": "Pythagoras.",
+   "explain": "\\( F = \\sqrt{6^2 + 8^2} = 10 \\) N.",
+   "tolerance": 0.05,
+   "unit": "N"
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "Find the angle (°) of the vector with components Aₓ = 1 and Aᵧ = 1 from the +x axis.",
+   "answer": 45,
+   "hint": "tan θ = 1.",
+   "explain": "\\( \\theta = \\tan^{-1}(1) = 45^\\circ \\).",
+   "tolerance": 0.5,
+   "unit": "°"
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "A has Aₓ = −3 and Aᵧ = 3. The calculator gives tan⁻¹(3/−3) = −45°. What is the angle from the +x axis?",
+   "options": [
+    {
+     "id": "a",
+     "label": "45°"
+    },
+    {
+     "id": "b",
+     "label": "135°"
+    },
+    {
+     "id": "c",
+     "label": "225°"
+    },
+    {
+     "id": "d",
+     "label": "315°"
+    }
+   ],
+   "answer": "b",
+   "hint": "Aₓ is negative, Aᵧ positive: second quadrant.",
+   "explain": "Second quadrant: −45° + 180° = **135°**."
+  }
+ ],
+ "takeaways": [
+  "**A = √(Aₓ² + Aᵧ²)** and **θ = tan⁻¹(Aᵧ/Aₓ)**.",
+  "Resolving and rebuilding are inverse jobs: they undo each other.",
+  "Check the quadrant from the signs of Aₓ and Aᵧ."
+ ]
+}

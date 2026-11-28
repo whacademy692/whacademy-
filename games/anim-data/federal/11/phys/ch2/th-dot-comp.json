@@ -1,0 +1,395 @@
+{
+ "id": "g11-phys-c2-th-dot-comp",
+ "title": "Dot product from components and the angle between vectors",
+ "summary": "Enter the components of two vectors, multiply matching components, add, and read off the dot product and the angle.",
+ "alt": "Two vectors drawn from the origin with the angle between them marked and the component-wise dot product calculated underneath.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -8.5,
+   8.5
+  ],
+  "y": [
+   -8.5,
+   8.5
+  ],
+  "ratio": 1.0,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid and frame lines.",
+   "legend": false
+  },
+  "va": {
+   "label": "Vector A",
+   "color": "#2563eb",
+   "text": "The first vector, A.",
+   "legend": true
+  },
+  "vb": {
+   "label": "Vector B",
+   "color": "#ea580c",
+   "text": "The second vector, B.",
+   "legend": true
+  },
+  "dot": {
+   "label": "Dot product",
+   "color": "#d97706",
+   "text": "The scalar (dot) product and the projections that make it.",
+   "legend": true
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "The angle between vectors, or the angle from the +x axis.",
+   "legend": true
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "Allowed or correct.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "ax",
+   "label": "Aₓ",
+   "type": "number",
+   "min": -5,
+   "max": 5,
+   "step": 1,
+   "default": 3
+  },
+  {
+   "id": "ay",
+   "label": "Aᵧ",
+   "type": "number",
+   "min": -5,
+   "max": 5,
+   "step": 1,
+   "default": 2
+  },
+  {
+   "id": "bx",
+   "label": "Bₓ",
+   "type": "number",
+   "min": -5,
+   "max": 5,
+   "step": 1,
+   "default": 1
+  },
+  {
+   "id": "by",
+   "label": "Bᵧ",
+   "type": "number",
+   "min": -5,
+   "max": 5,
+   "step": 1,
+   "default": 4
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 9,
+   "step": 0.01,
+   "default": 9,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "dv": "ax*bx+ay*by",
+  "ma": "hypot(ax,ay)",
+  "mb": "hypot(bx,by)",
+  "cs": "dv/(ma*mb)",
+  "th": "acos(clamp(dv/(ma*mb),-1,1))"
+ },
+ "shapes": [
+  {
+   "type": "grid",
+   "id": "grid",
+   "step": 1,
+   "role": "grid",
+   "uiToggle": "grid"
+  },
+  {
+   "type": "axes",
+   "id": "axes",
+   "step": 1,
+   "role": "wall",
+   "xLabel": "x",
+   "yLabel": "y",
+   "numbers": false
+  },
+  {
+   "type": "vector",
+   "id": "A",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    "ax",
+    "ay"
+   ],
+   "role": "va",
+   "strokeWidth": 4.5,
+   "label": {
+    "text": "A",
+    "role": "va",
+    "off": 5
+   },
+   "visible": "ma>0.01"
+  },
+  {
+   "type": "vector",
+   "id": "B",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    "bx",
+    "by"
+   ],
+   "role": "vb",
+   "strokeWidth": 4.5,
+   "label": {
+    "text": "B",
+    "role": "vb",
+    "off": 5
+   },
+   "visible": "mb>0.01"
+  },
+  {
+   "type": "angle",
+   "id": "ag",
+   "at": [
+    0,
+    0
+   ],
+   "from": [
+    "ax",
+    "ay"
+   ],
+   "to": [
+    "bx",
+    "by"
+   ],
+   "role": "ang",
+   "r": 30,
+   "strokeWidth": 2.5,
+   "label": {
+    "text": "{{ang|1}}°",
+    "role": "ang"
+   },
+   "visible": "lv>=3&&ma>0.01&&mb>0.01&&abs(cs)<0.9999"
+  },
+  {
+   "type": "text",
+   "id": "t1",
+   "at": [
+    0,
+    -5.9
+   ],
+   "text": "A · B = AₓBₓ + AᵧBᵧ = {{ax*bx|0}} {{ay*by|+}} = {{dv|0}}",
+   "role": "dot",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "text",
+   "id": "t2",
+   "at": [
+    0,
+    -6.8
+   ],
+   "text": "A = {{ma|2}},  B = {{mb|2}}",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "t3",
+   "at": [
+    0,
+    -7.7
+   ],
+   "text": "cos θ = A·B/(AB) = {{cs|3}}  →  θ = {{th|1}}°",
+   "role": "ang",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3&&ma>0.01&&mb>0.01"
+  },
+  {
+   "type": "text",
+   "id": "t4",
+   "at": [
+    0,
+    7.7
+   ],
+   "text": "A · B = 0: the vectors are perpendicular",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3&&abs(dv)<0.001&&ma>0.01&&mb>0.01"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Two vectors in components",
+   "text": "\\( \\vec A = {{ax|0}}\\hat i {{ay|+}}\\hat j \\) and \\( \\vec B = {{bx|0}}\\hat i {{by|+}}\\hat j \\).",
+   "actions": [
+    {
+     "set": {
+      "lv": 0,
+      "ax": 3,
+      "ay": 2,
+      "bx": 1,
+      "by": 4
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Multiply like with like",
+   "text": "Since î·î = ĵ·ĵ = 1 and î·ĵ = 0, only matching components survive: \\( \\vec A\\cdot\\vec B = A_xB_x + A_yB_y = {{dv|0}} \\).",
+   "actions": [
+    {
+     "set": {
+      "lv": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Find the magnitudes",
+   "text": "\\( A = \\sqrt{A_x^2 + A_y^2} = {{ma|2}} \\) and \\( B = \\sqrt{B_x^2 + B_y^2} = {{mb|2}} \\).",
+   "actions": [
+    {
+     "set": {
+      "lv": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Angle between them",
+   "text": "\\( \\cos\\theta = \\dfrac{\\vec A\\cdot\\vec B}{AB} = {{cs|3}} \\), so \\( \\theta = {{th|1}}^\\circ \\).",
+   "actions": [
+    {
+     "set": {
+      "lv": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "A perpendicular pair",
+   "text": "A = (3, 4) and B = (4, −3): 12 − 12 = 0, so the vectors are **perpendicular** (θ = 90°). This is the dot-product test for perpendicular vectors.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3,
+      "ax": 3,
+      "ay": 4,
+      "bx": 4,
+      "by": -3
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "A · B",
+   "value": "{{dv|0}}",
+   "role": "dot"
+  },
+  {
+   "label": "θ",
+   "value": "{{th|1}}°",
+   "role": "ang"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Dot product in components",
+   "tex": "\\vec A\\cdot\\vec B = A_xB_x + A_yB_y + A_zB_z",
+   "text": "Multiply matching components and add: a scalar."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "Find A · B for A = (1, 2) and B = (3, 4).",
+   "answer": 11,
+   "hint": "AₓBₓ + AᵧBᵧ.",
+   "explain": "\\( 1\\times3 + 2\\times4 = 11 \\).",
+   "tolerance": 0.05
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "Find the angle (°) between A = (1, 0) and B = (1, 1).",
+   "answer": 45,
+   "hint": "cos θ = (A·B)/(AB) = 1/√2.",
+   "explain": "\\( \\cos\\theta = \\dfrac{1}{1\\cdot\\sqrt2} \\Rightarrow \\theta = 45^\\circ \\).",
+   "tolerance": 0.5,
+   "unit": "°"
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "A = (2, 6) and B = (3, −1). The dot product is…",
+   "options": [
+    {
+     "id": "a",
+     "label": "0, so perpendicular"
+    },
+    {
+     "id": "b",
+     "label": "12, so acute"
+    },
+    {
+     "id": "c",
+     "label": "−12, so obtuse"
+    },
+    {
+     "id": "d",
+     "label": "6, so acute"
+    }
+   ],
+   "answer": "a",
+   "hint": "2×3 + 6×(−1).",
+   "explain": "\\( 6 - 6 = 0 \\): the vectors are perpendicular."
+  }
+ ],
+ "takeaways": [
+  "**A · B = AₓBₓ + AᵧBᵧ + A_zB_z** (add the products of matching components).",
+  "**cos θ = A·B / AB** gives the angle.",
+  "A · B = 0 (for non-zero vectors) means **perpendicular**."
+ ]
+}

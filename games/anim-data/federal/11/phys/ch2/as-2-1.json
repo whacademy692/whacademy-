@@ -1,0 +1,418 @@
+{
+ "id": "g11-phys-c2-as-2-1",
+ "title": "Assignment 2.1 · Force from its components",
+ "summary": "Fatima's pull has x- and y-components 12 N and 5 N: find the force (W.H.-written solution).",
+ "alt": "Assignment 2.1: Fatima pulls her trolley bag up a ramp. The x-component and y-component of her force are 12 N and 5 N. Find the force.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid and frame lines.",
+   "legend": false
+  },
+  "va": {
+   "label": "Vector A",
+   "color": "#2563eb",
+   "text": "The first vector, A.",
+   "legend": false
+  },
+  "vb": {
+   "label": "Vector B",
+   "color": "#ea580c",
+   "text": "The second vector, B.",
+   "legend": false
+  },
+  "res": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "The resultant, or the answer being built.",
+   "legend": false
+  },
+  "cx": {
+   "label": "x-component",
+   "color": "#0891b2",
+   "text": "The horizontal (x) component.",
+   "legend": false
+  },
+  "cy": {
+   "label": "y-component",
+   "color": "#c026d3",
+   "text": "The vertical (y) component.",
+   "legend": false
+  },
+  "dot": {
+   "label": "Dot product",
+   "color": "#d97706",
+   "text": "The scalar (dot) product and the projections that make it.",
+   "legend": false
+  },
+  "crs": {
+   "label": "Cross product",
+   "color": "#7c3aed",
+   "text": "The vector (cross) product, area and direction.",
+   "legend": false
+  },
+  "unit": {
+   "label": "Unit vector",
+   "color": "#16a34a",
+   "text": "A unit vector: length exactly 1.",
+   "legend": false
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "The angle between vectors, or the angle from the +x axis.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "Allowed or correct.",
+   "legend": false
+  },
+  "no": {
+   "label": "Wrong / zero",
+   "color": "#e11d48",
+   "text": "Wrong, impossible or zero.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "fax1",
+   "from": [
+    1.3,
+    7.4
+   ],
+   "to": [
+    11.8,
+    7.4
+   ],
+   "role": "wall",
+   "strokeWidth": 2.2,
+   "appear": "s0"
+  },
+  {
+   "type": "vector",
+   "id": "fay2",
+   "from": [
+    1.6,
+    7.1
+   ],
+   "to": [
+    1.6,
+    13.1
+   ],
+   "role": "wall",
+   "strokeWidth": 2.2,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "flx3",
+   "at": [
+    12.15,
+    7.0
+   ],
+   "text": "x",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "fly4",
+   "at": [
+    2.0500000000000003,
+    13.2
+   ],
+   "text": "y",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "vector",
+   "id": "fv5",
+   "from": [
+    1.6,
+    7.4
+   ],
+   "to": [
+    8.8,
+    7.4
+   ],
+   "role": "cx",
+   "strokeWidth": 5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "ft6",
+   "at": [
+    5.2,
+    6.8500000000000005
+   ],
+   "text": "Fx = 12 N",
+   "role": "cx",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "fv7",
+   "from": [
+    8.8,
+    7.4
+   ],
+   "to": [
+    8.8,
+    10.4
+   ],
+   "role": "cy",
+   "strokeWidth": 5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "ft8",
+   "at": [
+    9.9,
+    8.9
+   ],
+   "text": "Fy = 5 N",
+   "role": "cy",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "fv9",
+   "from": [
+    1.6,
+    7.4
+   ],
+   "to": [
+    8.8,
+    10.4
+   ],
+   "role": "va",
+   "strokeWidth": 4.5,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "ft10",
+   "at": [
+    4.4,
+    9.5
+   ],
+   "text": "F = ?",
+   "role": "va",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "arc",
+   "id": "far11",
+   "c": [
+    1.6,
+    7.4
+   ],
+   "r": 2.1,
+   "from": 0,
+   "to": 22.619864948040426,
+   "role": "ang",
+   "strokeWidth": 2.5,
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "fal12",
+   "at": [
+    4.792,
+    8.038
+   ],
+   "text": "22.6°",
+   "role": "ang",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "polygon",
+   "id": "frq13",
+   "pts": [
+    [
+     8.8,
+     7.4
+    ],
+    [
+     8.26,
+     7.4
+    ],
+    [
+     8.26,
+     7.94
+    ],
+    [
+     8.8,
+     7.94
+    ]
+   ],
+   "role": "wall",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "ln0",
+   "at": [
+    6.45,
+    5.5
+   ],
+   "text": "F = √(Fx² + Fy²) = √(12² + 5²)",
+   "role": "va",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln1",
+   "at": [
+    6.45,
+    4.55
+   ],
+   "text": "= √(144 + 25) = √169 = 13 N",
+   "role": "va",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln2",
+   "at": [
+    6.45,
+    3.6
+   ],
+   "text": "tan θ = Fy/Fx = 5/12  →  θ = 22.6°",
+   "role": "ang",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.6,
+   "y": 0.75,
+   "w": 11.7,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s2",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "F = 13 N at 22.6° to the x-axis",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s2",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Given",
+   "text": "The two components are perpendicular: \\(F_x = 12\\) N along the ramp direction (x) and \\(F_y = 5\\) N (y). We need the single force **F** they make together.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Magnitude by Pythagoras",
+   "text": "The components and F form a right triangle with F as hypotenuse: \\( F = \\sqrt{12^2 + 5^2} = \\sqrt{169} = 13 \\) N. (A 5-12-13 triangle.)",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "Direction",
+   "text": "\\( \\tan\\theta = F_y/F_x = 5/12 \\Rightarrow \\theta = \\tan^{-1}(5/12) = 22.6^\\circ \\) with the x-axis.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Vector from components",
+   "tex": "F = \\sqrt{F_x^2 + F_y^2},\\qquad \\theta = \\tan^{-1}\\!\\dfrac{F_y}{F_x}",
+   "text": "Both components are positive: first quadrant, no correction needed."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A force has components 6 N and 8 N. Find its magnitude (N).",
+   "answer": 10,
+   "hint": "Pythagoras.",
+   "explain": "\\( \\sqrt{36 + 64} = 10 \\) N.",
+   "tolerance": 0.05,
+   "unit": "N"
+  }
+ ],
+ "takeaways": [
+  "**F = √(Fx² + Fy²)** and **θ = tan⁻¹(Fy/Fx)**.",
+  "The book prints no answer for this assignment: this one is W.H.-written (flag F4)."
+ ]
+}

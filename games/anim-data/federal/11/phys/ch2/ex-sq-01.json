@@ -1,0 +1,364 @@
+{
+ "id": "g11-phys-c2-ex-sq-01",
+ "title": "Ex SQ 2.1 · Cross product vanishes",
+ "summary": "If the cross product of two vectors vanishes, what will you say about their orientation?",
+ "alt": "Ex SQ 2.1: If the cross product of two vectors vanishes, what will you say about their orientation?",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid and frame lines.",
+   "legend": false
+  },
+  "va": {
+   "label": "Vector A",
+   "color": "#2563eb",
+   "text": "The first vector, A.",
+   "legend": false
+  },
+  "vb": {
+   "label": "Vector B",
+   "color": "#ea580c",
+   "text": "The second vector, B.",
+   "legend": false
+  },
+  "res": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "The resultant, or the answer being built.",
+   "legend": false
+  },
+  "cx": {
+   "label": "x-component",
+   "color": "#0891b2",
+   "text": "The horizontal (x) component.",
+   "legend": false
+  },
+  "cy": {
+   "label": "y-component",
+   "color": "#c026d3",
+   "text": "The vertical (y) component.",
+   "legend": false
+  },
+  "dot": {
+   "label": "Dot product",
+   "color": "#d97706",
+   "text": "The scalar (dot) product and the projections that make it.",
+   "legend": false
+  },
+  "crs": {
+   "label": "Cross product",
+   "color": "#7c3aed",
+   "text": "The vector (cross) product, area and direction.",
+   "legend": false
+  },
+  "unit": {
+   "label": "Unit vector",
+   "color": "#16a34a",
+   "text": "A unit vector: length exactly 1.",
+   "legend": false
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "The angle between vectors, or the angle from the +x axis.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "Allowed or correct.",
+   "legend": false
+  },
+  "no": {
+   "label": "Wrong / zero",
+   "color": "#e11d48",
+   "text": "Wrong, impossible or zero.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "r1a",
+   "from": [
+    1.6,
+    13.0
+   ],
+   "to": [
+    6.4,
+    13.0
+   ],
+   "role": "va",
+   "strokeWidth": 4.5,
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "r1b",
+   "from": [
+    1.6,
+    12.55
+   ],
+   "to": [
+    4.4,
+    12.55
+   ],
+   "role": "vb",
+   "strokeWidth": 4.5,
+   "appear": "s2",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "r1l",
+   "at": [
+    4.0,
+    13.85
+   ],
+   "text": "θ = 0°  (parallel)",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "r2a",
+   "from": [
+    1.6,
+    10.7
+   ],
+   "to": [
+    6.4,
+    10.7
+   ],
+   "role": "va",
+   "strokeWidth": 4.5,
+   "appear": "s3",
+   "effect": "draw"
+  },
+  {
+   "type": "vector",
+   "id": "r2b",
+   "from": [
+    4.6,
+    10.25
+   ],
+   "to": [
+    1.6,
+    10.25
+   ],
+   "role": "vb",
+   "strokeWidth": 4.5,
+   "appear": "s3",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "r2l",
+   "at": [
+    4.0,
+    11.55
+   ],
+   "text": "θ = 180°  (anti-parallel)",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "eqn",
+   "at": [
+    9.5,
+    12.6
+   ],
+   "text": "sin 0° = 0",
+   "role": "crs",
+   "size": "m",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "eqn2",
+   "at": [
+    9.5,
+    10.4
+   ],
+   "text": "sin 180° = 0",
+   "role": "crs",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln0",
+   "at": [
+    6.45,
+    8.4
+   ],
+   "text": "|A × B| = AB sin θ = 0",
+   "role": "crs",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln1",
+   "at": [
+    6.45,
+    7.45
+   ],
+   "text": "⇒ sin θ = 0  (A, B not zero)",
+   "role": "crs",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln2",
+   "at": [
+    6.45,
+    6.5
+   ],
+   "text": "or one of them is the null vector",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.6,
+   "y": 0.75,
+   "w": 11.7,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "parallel (0°) or anti-parallel (180°)",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Read the question",
+   "text": "The cross product \\( \\vec A\\times\\vec B \\) is the **zero vector**. What does that say about A and B?",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "Write the magnitude",
+   "text": "\\( |\\vec A\\times\\vec B| = AB\\sin\\theta = 0 \\). If neither vector is zero, then \\( \\sin\\theta = 0 \\).",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "θ = 0°",
+   "text": "\\( \\sin0^\\circ = 0 \\): the vectors point the same way (**parallel**). The parallelogram they span has no height.",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "θ = 180°",
+   "text": "\\( \\sin180^\\circ = 0 \\): the vectors point in opposite directions (**anti-parallel**). Again no area.",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "A special case",
+   "text": "Also possible: A or B is itself a null vector (magnitude 0). Then the product is zero whatever the angle.",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Zero cross product",
+   "tex": "\\vec A\\times\\vec B = \\vec 0 \\;\\Rightarrow\\; \\theta = 0^\\circ \\text{ or } 180^\\circ",
+   "text": "Parallel or anti-parallel (or a null vector)."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "For which angle is A × B = 0 (non-zero vectors)?",
+   "options": [
+    {
+     "id": "a",
+     "label": "90°"
+    },
+    {
+     "id": "b",
+     "label": "45°"
+    },
+    {
+     "id": "c",
+     "label": "180°"
+    },
+    {
+     "id": "d",
+     "label": "60°"
+    }
+   ],
+   "answer": "c",
+   "hint": "sin θ = 0.",
+   "explain": "\\( \\sin180^\\circ = 0 \\)."
+  }
+ ],
+ "takeaways": [
+  "**A × B = 0** ⇒ the vectors are **parallel or anti-parallel**.",
+  "Unless one of them is a null vector."
+ ]
+}

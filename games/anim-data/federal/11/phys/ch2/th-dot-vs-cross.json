@@ -1,0 +1,695 @@
+{
+ "id": "g11-phys-c2-th-dot-vs-cross",
+ "title": "Dot vs cross: cos θ and sin θ side by side",
+ "summary": "As the angle between two vectors grows, the dot product follows cos θ and the cross product follows sin θ: find where they are equal.",
+ "alt": "A graph of cos θ and sin θ for angles from 0 to 180 degrees with a moving marker, showing where the magnitudes of dot and cross product are equal.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -8.5,
+   8.5
+  ],
+  "y": [
+   -8.5,
+   8.5
+  ],
+  "ratio": 1.0,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid and frame lines.",
+   "legend": false
+  },
+  "dot": {
+   "label": "Dot product",
+   "color": "#d97706",
+   "text": "The scalar (dot) product and the projections that make it.",
+   "legend": true
+  },
+  "crs": {
+   "label": "Cross product",
+   "color": "#7c3aed",
+   "text": "The vector (cross) product, area and direction.",
+   "legend": true
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "The angle between vectors, or the angle from the +x axis.",
+   "legend": true
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "Allowed or correct.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "th",
+   "label": "Angle θ between the vectors (°)",
+   "type": "number",
+   "min": 0,
+   "max": 180,
+   "step": 1,
+   "default": 30
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 9,
+   "step": 0.01,
+   "default": 9,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "gx": "-7+th*14/180",
+  "cv": "cos(th)",
+  "sv": "sin(th)"
+ },
+ "shapes": [
+  {
+   "type": "grid",
+   "id": "grid",
+   "step": 1,
+   "role": "grid",
+   "uiToggle": "grid"
+  },
+  {
+   "type": "vector",
+   "id": "gax",
+   "from": [
+    -7.6,
+    0
+   ],
+   "to": [
+    7.9,
+    0
+   ],
+   "role": "wall",
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "vector",
+   "id": "gay",
+   "from": [
+    -7,
+    -5.8
+   ],
+   "to": [
+    -7,
+    6.0
+   ],
+   "role": "wall",
+   "strokeWidth": 2.2
+  },
+  {
+   "type": "text",
+   "id": "xl",
+   "at": [
+    7.9,
+    -0.9
+   ],
+   "text": "θ",
+   "role": "wall",
+   "size": "m",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "yl",
+   "at": [
+    -6.2,
+    6.4
+   ],
+   "text": "value (× AB)",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "yt1",
+   "at": [
+    -7.7,
+    5
+   ],
+   "text": "1",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "yt0",
+   "at": [
+    -7.7,
+    -5
+   ],
+   "text": "−1",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "xt0",
+   "from": [
+    -7.0,
+    -0.25
+   ],
+   "to": [
+    -7.0,
+    0.25
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "xtl0",
+   "at": [
+    -7.0,
+    -0.95
+   ],
+   "text": "0°",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "xt1",
+   "from": [
+    -3.5,
+    -0.25
+   ],
+   "to": [
+    -3.5,
+    0.25
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "xtl1",
+   "at": [
+    -3.5,
+    -0.95
+   ],
+   "text": "45°",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "xt2",
+   "from": [
+    0.0,
+    -0.25
+   ],
+   "to": [
+    0.0,
+    0.25
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "xtl2",
+   "at": [
+    0.0,
+    -0.95
+   ],
+   "text": "90°",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "xt3",
+   "from": [
+    3.5,
+    -0.25
+   ],
+   "to": [
+    3.5,
+    0.25
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "xtl3",
+   "at": [
+    3.5,
+    -0.95
+   ],
+   "text": "135°",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "segment",
+   "id": "xt4",
+   "from": [
+    7.0,
+    -0.25
+   ],
+   "to": [
+    7.0,
+    0.25
+   ],
+   "role": "wall",
+   "strokeWidth": 2
+  },
+  {
+   "type": "text",
+   "id": "xtl4",
+   "at": [
+    7.0,
+    -0.95
+   ],
+   "text": "180°",
+   "role": "wall",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "plot",
+   "id": "cc",
+   "x": "-7+u*14/180",
+   "y": "5*cos(u)",
+   "var": "u",
+   "domain": [
+    0,
+    180
+   ],
+   "samples": 120,
+   "role": "dot",
+   "strokeWidth": 3.5
+  },
+  {
+   "type": "plot",
+   "id": "cs",
+   "x": "-7+u*14/180",
+   "y": "5*sin(u)",
+   "var": "u",
+   "domain": [
+    0,
+    180
+   ],
+   "samples": 120,
+   "role": "crs",
+   "strokeWidth": 3.5
+  },
+  {
+   "type": "plot",
+   "id": "ca",
+   "x": "-7+u*14/180",
+   "y": "5*abs(cos(u))",
+   "var": "u",
+   "domain": [
+    0,
+    180
+   ],
+   "samples": 120,
+   "role": "dot",
+   "strokeWidth": 2,
+   "dash": [
+    6,
+    5
+   ],
+   "visible": "lv>=4",
+   "opacity": "0.75"
+  },
+  {
+   "type": "point",
+   "id": "e45",
+   "at": [
+    -3.5,
+    3.5355339059327373
+   ],
+   "role": "ok",
+   "r": 7,
+   "visible": "lv>=4"
+  },
+  {
+   "type": "point",
+   "id": "e135",
+   "at": [
+    3.5,
+    3.5355339059327378
+   ],
+   "role": "ok",
+   "r": 7,
+   "visible": "lv>=5"
+  },
+  {
+   "type": "text",
+   "id": "e45l",
+   "at": [
+    -3.5,
+    4.435533905932737
+   ],
+   "text": "45°",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=4"
+  },
+  {
+   "type": "text",
+   "id": "e135l",
+   "at": [
+    3.5,
+    4.435533905932738
+   ],
+   "text": "135°",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=5"
+  },
+  {
+   "type": "segment",
+   "id": "gv",
+   "from": [
+    "gx",
+    0
+   ],
+   "to": [
+    "gx",
+    "5*cos(th)"
+   ],
+   "role": "dot",
+   "strokeWidth": 2,
+   "dash": [
+    5,
+    5
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "gs",
+   "from": [
+    "gx",
+    0
+   ],
+   "to": [
+    "gx",
+    "5*sin(th)"
+   ],
+   "role": "crs",
+   "strokeWidth": 2,
+   "dash": [
+    5,
+    5
+   ]
+  },
+  {
+   "type": "point",
+   "id": "pc",
+   "at": [
+    "gx",
+    "5*cos(th)"
+   ],
+   "role": "dot",
+   "r": 7
+  },
+  {
+   "type": "point",
+   "id": "ps",
+   "at": [
+    "gx",
+    "5*sin(th)"
+   ],
+   "role": "crs",
+   "r": 7
+  },
+  {
+   "type": "text",
+   "id": "c1",
+   "at": [
+    -3.9,
+    -5.2
+   ],
+   "text": "dot ÷ AB = cos θ = {{cv|2}}",
+   "role": "dot",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "c2",
+   "at": [
+    3.9,
+    -5.2
+   ],
+   "text": "cross ÷ AB = sin θ = {{sv|2}}",
+   "role": "crs",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "text",
+   "id": "c3",
+   "at": [
+    0,
+    -6.4
+   ],
+   "text": "tan θ = |A × B| / A · B = {{sv/cv|2}}",
+   "role": "ang",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3&&abs(cv)>0.01"
+  },
+  {
+   "type": "text",
+   "id": "c4",
+   "at": [
+    0,
+    -7.5
+   ],
+   "text": "equal in size where tan θ = ±1: θ = 45° or 135°",
+   "role": "ok",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=4"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Two curves",
+   "text": "For two vectors of magnitudes A and B, the **dot product** is \\( AB\\cos\\theta \\) and the **magnitude of the cross product** is \\( AB\\sin\\theta \\). The graph shows \\( \\cos\\theta \\) and \\( \\sin\\theta \\), the parts multiplied by AB.",
+   "actions": [
+    {
+     "set": {
+      "lv": 0,
+      "th": 30
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Parallel: θ = 0°",
+   "text": "At 0° cos θ = 1 (dot product is maximum, AB) and sin θ = 0 (cross product is zero).",
+   "actions": [
+    {
+     "set": {
+      "lv": 1
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "th": 0
+     },
+     "at": 0,
+     "dur": 1800
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Perpendicular: θ = 90°",
+   "text": "At 90° cos θ = 0 (dot product is zero) and sin θ = 1 (cross product is maximum, AB).",
+   "actions": [
+    {
+     "set": {
+      "lv": 2
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "th": 90
+     },
+     "at": 0,
+     "dur": 2500
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "The ratio is tan θ",
+   "text": "Divide the two: \\( |\\vec A\\times\\vec B| / (\\vec A\\cdot\\vec B) = \\tan\\theta \\). This is how problems such as “the cross product is √3 times the dot product” give θ = 60°.",
+   "actions": [
+    {
+     "set": {
+      "lv": 3
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "th": 60
+     },
+     "at": 0,
+     "dur": 2200
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Where are they equal?",
+   "text": "\\( |\\cos\\theta| = |\\sin\\theta| \\Rightarrow \\tan\\theta = 1 \\Rightarrow \\theta = 45^\\circ \\). The dashed curve is |cos θ|.",
+   "actions": [
+    {
+     "set": {
+      "lv": 4
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "th": 45
+     },
+     "at": 0,
+     "dur": 2200
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "135° works too",
+   "text": "For an obtuse angle the dot product is negative, but its **magnitude** equals the cross product at 135°. The textbook MCQ offers only 45°, so the answer is 45° (flag F5).",
+   "actions": [
+    {
+     "set": {
+      "lv": 5
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "th": 135
+     },
+     "at": 0,
+     "dur": 2600
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "cos θ",
+   "value": "{{cv|2}}",
+   "role": "dot"
+  },
+  {
+   "label": "sin θ",
+   "value": "{{sv|2}}",
+   "role": "crs"
+  },
+  {
+   "label": "θ",
+   "value": "{{th|0}}°",
+   "role": "ang"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Same two vectors, two products",
+   "tex": "\\vec A\\cdot\\vec B = AB\\cos\\theta, \\qquad |\\vec A\\times\\vec B| = AB\\sin\\theta",
+   "text": "Dot: component along. Cross: component across."
+  },
+  {
+   "title": "Dividing them",
+   "tex": "\\dfrac{|\\vec A\\times\\vec B|}{\\vec A\\cdot\\vec B} = \\tan\\theta",
+   "text": "Useful when both products are given."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "The magnitude of the cross product of two vectors is √3 times their dot product. Find the angle (°).",
+   "answer": 60,
+   "hint": "tan θ = √3.",
+   "explain": "\\( \\tan\\theta = \\sqrt3 \\Rightarrow \\theta = 60^\\circ \\).",
+   "tolerance": 0.5,
+   "unit": "°"
+  },
+  {
+   "id": "c2",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "The dot and cross products have magnitudes 6√3 and 6. Find the angle (°).",
+   "answer": 30,
+   "hint": "tan θ = 6/(6√3).",
+   "explain": "\\( \\tan\\theta = 1/\\sqrt3 \\Rightarrow \\theta = 30^\\circ \\).",
+   "tolerance": 0.5,
+   "unit": "°"
+  },
+  {
+   "id": "c3",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "For which of these angles is |A · B| = |A × B|?",
+   "options": [
+    {
+     "id": "a",
+     "label": "30°"
+    },
+    {
+     "id": "b",
+     "label": "45°"
+    },
+    {
+     "id": "c",
+     "label": "60°"
+    },
+    {
+     "id": "d",
+     "label": "90°"
+    }
+   ],
+   "answer": "b",
+   "hint": "You need tan θ = 1.",
+   "explain": "\\( \\tan45^\\circ = 1 \\): **45°**."
+  }
+ ],
+ "takeaways": [
+  "**Dot** ∝ **cos θ**, **cross** ∝ **sin θ**.",
+  "Parallel: dot maximum, cross zero. Perpendicular: dot zero, cross maximum.",
+  "**tan θ = |A × B| / A · B**; |A · B| = |A × B| at 45° (and 135°)."
+ ]
+}

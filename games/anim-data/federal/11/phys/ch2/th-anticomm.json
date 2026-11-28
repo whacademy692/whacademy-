@@ -1,0 +1,439 @@
+{
+ "id": "g11-phys-c2-th-anticomm",
+ "title": "Order matters for ×, not for ·",
+ "summary": "Swap A and B: A × B turns into −(B × A), but A · B and B · A are identical.",
+ "alt": "Two vectors with an arc showing the sense from the first to the second, the direction symbol of the cross product flipping when the order is swapped and the dot product staying the same.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -8.5,
+   8.5
+  ],
+  "y": [
+   -8.5,
+   8.5
+  ],
+  "ratio": 1.0,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid and frame lines.",
+   "legend": false
+  },
+  "va": {
+   "label": "Vector A",
+   "color": "#2563eb",
+   "text": "The first vector, A.",
+   "legend": true
+  },
+  "vb": {
+   "label": "Vector B",
+   "color": "#ea580c",
+   "text": "The second vector, B.",
+   "legend": true
+  },
+  "crs": {
+   "label": "Cross product",
+   "color": "#7c3aed",
+   "text": "The vector (cross) product, area and direction.",
+   "legend": true
+  },
+  "dot": {
+   "label": "Dot product",
+   "color": "#d97706",
+   "text": "The scalar (dot) product and the projections that make it.",
+   "legend": true
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "The angle between vectors, or the angle from the +x axis.",
+   "legend": false
+  }
+ },
+ "params": [
+  {
+   "id": "ma",
+   "label": "Magnitude A",
+   "type": "number",
+   "min": 1,
+   "max": 5,
+   "step": 1,
+   "default": 4
+  },
+  {
+   "id": "mb",
+   "label": "Magnitude B",
+   "type": "number",
+   "min": 1,
+   "max": 5,
+   "step": 1,
+   "default": 3
+  },
+  {
+   "id": "th",
+   "label": "Angle between (°)",
+   "type": "number",
+   "min": 10,
+   "max": 170,
+   "step": 1,
+   "default": 60
+  },
+  {
+   "id": "o",
+   "label": "Order",
+   "type": "choice",
+   "options": [
+    {
+     "value": 0,
+     "label": "A × B"
+    },
+    {
+     "value": 1,
+     "label": "B × A"
+    }
+   ],
+   "default": 0
+  }
+ ],
+ "derived": {
+  "bx": "mb*cos(th)",
+  "by": "mb*sin(th)",
+  "v": "(o==0?1:-1)*ma*mb*sin(th)",
+  "dv": "ma*mb*cos(th)"
+ },
+ "shapes": [
+  {
+   "type": "grid",
+   "id": "grid",
+   "step": 1,
+   "role": "grid",
+   "uiToggle": "grid"
+  },
+  {
+   "type": "axes",
+   "id": "axes",
+   "step": 1,
+   "role": "wall",
+   "xLabel": "x",
+   "yLabel": "y",
+   "numbers": false
+  },
+  {
+   "type": "vector",
+   "id": "A",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    "ma",
+    0
+   ],
+   "role": "va",
+   "strokeWidth": 4.5,
+   "label": {
+    "text": "A",
+    "role": "va",
+    "off": 5
+   }
+  },
+  {
+   "type": "vector",
+   "id": "B",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    "bx",
+    "by"
+   ],
+   "role": "vb",
+   "strokeWidth": 4.5,
+   "label": {
+    "text": "B",
+    "role": "vb",
+    "off": 5
+   }
+  },
+  {
+   "type": "arc",
+   "id": "a0",
+   "c": [
+    0,
+    0
+   ],
+   "r": 1.6,
+   "from": 0,
+   "to": "th",
+   "role": "ang",
+   "strokeWidth": 2.5,
+   "visible": "o==0",
+   "label": {
+    "text": "A → B",
+    "role": "ang"
+   }
+  },
+  {
+   "type": "arc",
+   "id": "a1",
+   "c": [
+    0,
+    0
+   ],
+   "r": 1.6,
+   "from": "th",
+   "to": 0,
+   "role": "ang",
+   "strokeWidth": 2.5,
+   "visible": "o==1",
+   "label": {
+    "text": "B → A",
+    "role": "ang"
+   }
+  },
+  {
+   "type": "text",
+   "id": "t1",
+   "at": [
+    0,
+    -4.6
+   ],
+   "text": "A × B = +AB sin θ k̂ = {{v|1}} k̂",
+   "role": "crs",
+   "size": "s",
+   "bold": true,
+   "visible": "o==0"
+  },
+  {
+   "type": "text",
+   "id": "t2",
+   "at": [
+    0,
+    -4.6
+   ],
+   "text": "B × A = −AB sin θ k̂ = {{v|1}} k̂",
+   "role": "crs",
+   "size": "s",
+   "bold": true,
+   "visible": "o==1"
+  },
+  {
+   "type": "text",
+   "id": "t3",
+   "at": [
+    0,
+    -5.6
+   ],
+   "text": "(out of the page)",
+   "role": "crs",
+   "size": "s",
+   "bold": true,
+   "visible": "v>0.001"
+  },
+  {
+   "type": "text",
+   "id": "t4",
+   "at": [
+    0,
+    -5.6
+   ],
+   "text": "(into the page)",
+   "role": "crs",
+   "size": "s",
+   "bold": true,
+   "visible": "v<-0.001"
+  },
+  {
+   "type": "text",
+   "id": "t5",
+   "at": [
+    0,
+    -6.9
+   ],
+   "text": "A · B = B · A = {{dv|1}}   (same either way)",
+   "role": "dot",
+   "size": "s",
+   "bold": true
+  },
+  {
+   "type": "circle",
+   "id": "mkc",
+   "c": [
+    -6.9,
+    5.9
+   ],
+   "r": 0.8,
+   "role": "crs",
+   "fill": true,
+   "fillOpacity": 0.15,
+   "strokeWidth": 2.5,
+   "visible": "(v>0.001)||(v<-0.001)"
+  },
+  {
+   "type": "point",
+   "id": "mkd",
+   "at": [
+    -6.9,
+    5.9
+   ],
+   "role": "crs",
+   "r": 6,
+   "visible": "v>0.001"
+  },
+  {
+   "type": "segment",
+   "id": "mkx1",
+   "from": [
+    -7.396000000000001,
+    5.404
+   ],
+   "to": [
+    -6.404,
+    6.396000000000001
+   ],
+   "role": "crs",
+   "strokeWidth": 3,
+   "visible": "v<-0.001"
+  },
+  {
+   "type": "segment",
+   "id": "mkx2",
+   "from": [
+    -7.396000000000001,
+    6.396000000000001
+   ],
+   "to": [
+    -6.404,
+    5.404
+   ],
+   "role": "crs",
+   "strokeWidth": 3,
+   "visible": "v<-0.001"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A × B",
+   "text": "Curl your right-hand fingers from **A** to **B**: the thumb points out of the page, \\( \\vec A\\times\\vec B = {{ma*mb*sin(th)|1}}\\,\\hat k \\).",
+   "actions": [
+    {
+     "set": {
+      "o": 0,
+      "ma": 4,
+      "mb": 3,
+      "th": 60
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "B × A",
+   "text": "Now curl the fingers from **B** to **A**: the other way round, so the thumb points **into** the page. Same magnitude, opposite direction: \\( \\vec B\\times\\vec A = -\\vec A\\times\\vec B \\).",
+   "actions": [
+    {
+     "set": {
+      "o": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Not commutative",
+   "text": "The cross product is **anti-commutative**: swapping the order reverses the sign. So A × B ≠ B × A (unless both are zero).",
+   "actions": [
+    {
+     "set": {
+      "o": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "The dot product does not care",
+   "text": "\\( \\vec A\\cdot\\vec B = AB\\cos\\theta = BA\\cos\\theta = \\vec B\\cdot\\vec A \\) and cos θ does not depend on which vector is named first: the dot product is **commutative**.",
+   "actions": [
+    {
+     "set": {
+      "o": 0
+     },
+     "at": 0
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Result",
+   "value": "{{v|1}} k̂",
+   "role": "crs"
+  },
+  {
+   "label": "A · B",
+   "value": "{{dv|1}}",
+   "role": "dot"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Order of the product",
+   "tex": "\\vec A\\times\\vec B = -\\,\\vec B\\times\\vec A, \\qquad \\vec A\\cdot\\vec B = \\vec B\\cdot\\vec A",
+   "text": "Cross: anti-commutative. Dot: commutative."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "If A × B = 12 k̂, what is the coefficient of k̂ in B × A?",
+   "answer": -12,
+   "hint": "Reverse the order.",
+   "explain": "\\( \\vec B\\times\\vec A = -12\\,\\hat k \\).",
+   "tolerance": 0.01
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "Which product is commutative?",
+   "options": [
+    {
+     "id": "a",
+     "label": "Dot product"
+    },
+    {
+     "id": "b",
+     "label": "Cross product"
+    },
+    {
+     "id": "c",
+     "label": "Both"
+    },
+    {
+     "id": "d",
+     "label": "Neither"
+    }
+   ],
+   "answer": "a",
+   "hint": "cos θ is the same for A·B and B·A.",
+   "explain": "Only the **dot product** is commutative."
+  }
+ ],
+ "takeaways": [
+  "**A × B = −B × A**: the direction flips, the magnitude stays.",
+  "**A · B = B · A**.",
+  "That is why r × F (not F × r) defines torque."
+ ]
+}

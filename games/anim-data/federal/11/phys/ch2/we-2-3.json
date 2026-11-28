@@ -1,0 +1,636 @@
+{
+ "id": "g11-phys-c2-we-2-3",
+ "title": "Example 2.3 · Area of a parallelogram from A × B",
+ "summary": "Adjacent sides (î + 6ĵ + 2k̂) and (7î + ĵ + 5k̂) m: find A × B and the area (flag F3).",
+ "alt": "Example 2.3: Find the area of the parallelogram whose adjacent sides are given by the vectors A = (î + 6ĵ + 2k̂) m and B = (7î + ĵ + 5k̂) m.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid and frame lines.",
+   "legend": false
+  },
+  "va": {
+   "label": "Vector A",
+   "color": "#2563eb",
+   "text": "The first vector, A.",
+   "legend": false
+  },
+  "vb": {
+   "label": "Vector B",
+   "color": "#ea580c",
+   "text": "The second vector, B.",
+   "legend": false
+  },
+  "res": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "The resultant, or the answer being built.",
+   "legend": false
+  },
+  "cx": {
+   "label": "x-component",
+   "color": "#0891b2",
+   "text": "The horizontal (x) component.",
+   "legend": false
+  },
+  "cy": {
+   "label": "y-component",
+   "color": "#c026d3",
+   "text": "The vertical (y) component.",
+   "legend": false
+  },
+  "dot": {
+   "label": "Dot product",
+   "color": "#d97706",
+   "text": "The scalar (dot) product and the projections that make it.",
+   "legend": false
+  },
+  "crs": {
+   "label": "Cross product",
+   "color": "#7c3aed",
+   "text": "The vector (cross) product, area and direction.",
+   "legend": false
+  },
+  "unit": {
+   "label": "Unit vector",
+   "color": "#16a34a",
+   "text": "A unit vector: length exactly 1.",
+   "legend": false
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "The angle between vectors, or the angle from the +x axis.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "Allowed or correct.",
+   "legend": false
+  },
+  "no": {
+   "label": "Wrong / zero",
+   "color": "#e11d48",
+   "text": "Wrong, impossible or zero.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "text",
+   "id": "h0",
+   "at": [
+    3.4,
+    14.2
+   ],
+   "text": "\\(\\hat{i}\\)",
+   "role": "cx",
+   "size": "l",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "h1",
+   "at": [
+    6.45,
+    14.2
+   ],
+   "text": "\\(\\hat{j}\\)",
+   "role": "cy",
+   "size": "l",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "h2",
+   "at": [
+    9.5,
+    14.2
+   ],
+   "text": "\\(\\hat{k}\\)",
+   "role": "va",
+   "size": "l",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "m00",
+   "at": [
+    3.4,
+    13.200000000000001
+   ],
+   "text": "1",
+   "role": "wall",
+   "size": "l",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "m01",
+   "at": [
+    6.45,
+    13.200000000000001
+   ],
+   "text": "6",
+   "role": "wall",
+   "size": "l",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "m02",
+   "at": [
+    9.5,
+    13.200000000000001
+   ],
+   "text": "2",
+   "role": "wall",
+   "size": "l",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "m10",
+   "at": [
+    3.4,
+    12.200000000000001
+   ],
+   "text": "7",
+   "role": "wall",
+   "size": "l",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "m11",
+   "at": [
+    6.45,
+    12.200000000000001
+   ],
+   "text": "1",
+   "role": "wall",
+   "size": "l",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "m12",
+   "at": [
+    9.5,
+    12.200000000000001
+   ],
+   "text": "5",
+   "role": "wall",
+   "size": "l",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "rA",
+   "at": [
+    1.0,
+    13.200000000000001
+   ],
+   "text": "A",
+   "role": "va",
+   "size": "m",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "rB",
+   "at": [
+    1.0,
+    12.200000000000001
+   ],
+   "text": "B",
+   "role": "vb",
+   "size": "m",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "polyline",
+   "id": "brL",
+   "pts": [
+    [
+     2.2,
+     14.8
+    ],
+    [
+     1.9,
+     14.8
+    ],
+    [
+     1.9,
+     11.0
+    ],
+    [
+     2.2,
+     11.0
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5,
+   "appear": "s0"
+  },
+  {
+   "type": "polyline",
+   "id": "brR",
+   "pts": [
+    [
+     10.6,
+     14.8
+    ],
+    [
+     10.9,
+     14.8
+    ],
+    [
+     10.9,
+     11.0
+    ],
+    [
+     10.6,
+     11.0
+    ]
+   ],
+   "role": "wall",
+   "strokeWidth": 2.5,
+   "appear": "s0"
+  },
+  {
+   "type": "rect",
+   "id": "hi0",
+   "x": 5.9,
+   "y": 12.780000000000001,
+   "w": 1.1,
+   "h": 0.84,
+   "role": "cx",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 2.5,
+   "appear": "s1",
+   "effect": "pop",
+   "disappear": "s2"
+  },
+  {
+   "type": "rect",
+   "id": "hi1",
+   "x": 8.95,
+   "y": 12.780000000000001,
+   "w": 1.1,
+   "h": 0.84,
+   "role": "cx",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 2.5,
+   "appear": "s1",
+   "effect": "pop",
+   "disappear": "s2"
+  },
+  {
+   "type": "rect",
+   "id": "hi2",
+   "x": 5.9,
+   "y": 11.780000000000001,
+   "w": 1.1,
+   "h": 0.84,
+   "role": "cx",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 2.5,
+   "appear": "s1",
+   "effect": "pop",
+   "disappear": "s2"
+  },
+  {
+   "type": "rect",
+   "id": "hi3",
+   "x": 8.95,
+   "y": 11.780000000000001,
+   "w": 1.1,
+   "h": 0.84,
+   "role": "cx",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 2.5,
+   "appear": "s1",
+   "effect": "pop",
+   "disappear": "s2"
+  },
+  {
+   "type": "rect",
+   "id": "hj0",
+   "x": 2.8499999999999996,
+   "y": 12.780000000000001,
+   "w": 1.1,
+   "h": 0.84,
+   "role": "cy",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 2.5,
+   "appear": "s2",
+   "effect": "pop",
+   "disappear": "s3"
+  },
+  {
+   "type": "rect",
+   "id": "hj1",
+   "x": 8.95,
+   "y": 12.780000000000001,
+   "w": 1.1,
+   "h": 0.84,
+   "role": "cy",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 2.5,
+   "appear": "s2",
+   "effect": "pop",
+   "disappear": "s3"
+  },
+  {
+   "type": "rect",
+   "id": "hj2",
+   "x": 2.8499999999999996,
+   "y": 11.780000000000001,
+   "w": 1.1,
+   "h": 0.84,
+   "role": "cy",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 2.5,
+   "appear": "s2",
+   "effect": "pop",
+   "disappear": "s3"
+  },
+  {
+   "type": "rect",
+   "id": "hj3",
+   "x": 8.95,
+   "y": 11.780000000000001,
+   "w": 1.1,
+   "h": 0.84,
+   "role": "cy",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 2.5,
+   "appear": "s2",
+   "effect": "pop",
+   "disappear": "s3"
+  },
+  {
+   "type": "rect",
+   "id": "hk0",
+   "x": 2.8499999999999996,
+   "y": 12.780000000000001,
+   "w": 1.1,
+   "h": 0.84,
+   "role": "va",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "rect",
+   "id": "hk1",
+   "x": 5.9,
+   "y": 12.780000000000001,
+   "w": 1.1,
+   "h": 0.84,
+   "role": "va",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "rect",
+   "id": "hk2",
+   "x": 2.8499999999999996,
+   "y": 11.780000000000001,
+   "w": 1.1,
+   "h": 0.84,
+   "role": "va",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "rect",
+   "id": "hk3",
+   "x": 5.9,
+   "y": 11.780000000000001,
+   "w": 1.1,
+   "h": 0.84,
+   "role": "va",
+   "fill": true,
+   "fillOpacity": 0.25,
+   "strokeWidth": 2.5,
+   "appear": "s3",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ln0",
+   "at": [
+    6.45,
+    9.6
+   ],
+   "text": "î:  (6)(5) − (2)(1) = 30 − 2 = 28",
+   "role": "cx",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln1",
+   "at": [
+    6.45,
+    8.65
+   ],
+   "text": "ĵ:  −[(1)(5) − (2)(7)] = −(5 − 14) = +9",
+   "role": "cy",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln2",
+   "at": [
+    6.45,
+    7.699999999999999
+   ],
+   "text": "k̂:  (1)(1) − (6)(7) = 1 − 42 = −41",
+   "role": "va",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln3",
+   "at": [
+    6.45,
+    6.75
+   ],
+   "text": "|A × B| = √(28² + 9² + 41²) = √2546",
+   "role": "crs",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "res",
+   "at": [
+    6.45,
+    5.3
+   ],
+   "text": "A × B = 28 î + 9 ĵ − 41 k̂  (m²)",
+   "role": "crs",
+   "size": "m",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.6,
+   "y": 0.75,
+   "w": 11.7,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s4",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "Area = |A × B| = 50.5 m²",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s4",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "Set up the determinant",
+   "text": "The cross product in components is the determinant \\( \\begin{vmatrix} \\hat i & \\hat j & \\hat k \\\\ 1 & 6 & 2 \\\\ 7 & 1 & 5 \\end{vmatrix} \\). Its **magnitude** will be the area of the parallelogram.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "î coefficient",
+   "text": "Cover the î column: \\( 6\\times5 - 2\\times1 = 28 \\).",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "ĵ coefficient",
+   "text": "Cover the ĵ column and **subtract**: \\( -(1\\times5 - 2\\times7) = -(5-14) = +9 \\).",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "k̂ coefficient",
+   "text": "Cover the k̂ column: \\( 1\\times1 - 6\\times7 = -41 \\). So \\( \\vec A\\times\\vec B = 28\\hat i + 9\\hat j - 41\\hat k \\) m². (This is where the book stops, flag F3.)",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "Area from the magnitude",
+   "text": "The question asks for an **area**, so take the magnitude: \\( \\sqrt{28^2 + 9^2 + 41^2} = \\sqrt{784 + 81 + 1681} = \\sqrt{2546} = 50.5 \\) m².",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Cross product determinant",
+   "tex": "\\vec A\\times\\vec B = (A_yB_z - A_zB_y)\\hat i + (A_zB_x - A_xB_z)\\hat j + (A_xB_y - A_yB_x)\\hat k",
+   "text": "The ĵ term is the one with the minus sign when you expand along the top row."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "Find |A × B| for A = î + 2ĵ + 3k̂ and B = 4î + 5ĵ + 6k̂ (2 decimals).",
+   "answer": 7.35,
+   "hint": "A × B = −3î + 6ĵ − 3k̂.",
+   "explain": "\\( \\sqrt{9 + 36 + 9} = \\sqrt{54} = 7.35 \\).",
+   "tolerance": 0.02
+  }
+ ],
+ "takeaways": [
+  "**A × B** = determinant; **|A × B|** = area of the parallelogram.",
+  "Watch the minus sign on the ĵ term.",
+  "Flag F3: the book stops at the vector; the area 50.5 m² is added by W.H."
+ ]
+}

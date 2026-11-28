@@ -1,0 +1,483 @@
+{
+ "id": "g11-phys-c2-ex-sq-06",
+ "title": "Ex SQ 2.6 · Rectangular components and how to find them",
+ "summary": "What are rectangular components of a vector? How they can be found?",
+ "alt": "Ex SQ 2.6: What are rectangular components of a vector? How they can be found?",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   0,
+   12.9
+  ],
+  "y": [
+   0.3,
+   14.8
+  ],
+  "ratio": 0.8896551724137931,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid and frame lines.",
+   "legend": false
+  },
+  "va": {
+   "label": "Vector A",
+   "color": "#2563eb",
+   "text": "The first vector, A.",
+   "legend": false
+  },
+  "vb": {
+   "label": "Vector B",
+   "color": "#ea580c",
+   "text": "The second vector, B.",
+   "legend": false
+  },
+  "res": {
+   "label": "Result",
+   "color": "#059669",
+   "text": "The resultant, or the answer being built.",
+   "legend": false
+  },
+  "cx": {
+   "label": "x-component",
+   "color": "#0891b2",
+   "text": "The horizontal (x) component.",
+   "legend": false
+  },
+  "cy": {
+   "label": "y-component",
+   "color": "#c026d3",
+   "text": "The vertical (y) component.",
+   "legend": false
+  },
+  "dot": {
+   "label": "Dot product",
+   "color": "#d97706",
+   "text": "The scalar (dot) product and the projections that make it.",
+   "legend": false
+  },
+  "crs": {
+   "label": "Cross product",
+   "color": "#7c3aed",
+   "text": "The vector (cross) product, area and direction.",
+   "legend": false
+  },
+  "unit": {
+   "label": "Unit vector",
+   "color": "#16a34a",
+   "text": "A unit vector: length exactly 1.",
+   "legend": false
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "The angle between vectors, or the angle from the +x axis.",
+   "legend": false
+  },
+  "ok": {
+   "label": "Correct",
+   "color": "#059669",
+   "text": "Allowed or correct.",
+   "legend": false
+  },
+  "no": {
+   "label": "Wrong / zero",
+   "color": "#e11d48",
+   "text": "Wrong, impossible or zero.",
+   "legend": false
+  },
+  "ans": {
+   "label": "Answer",
+   "color": "#d97706",
+   "text": "The answer to the question.",
+   "legend": false
+  }
+ },
+ "params": [],
+ "shapes": [
+  {
+   "type": "vector",
+   "id": "fax1",
+   "from": [
+    1.49,
+    7.6
+   ],
+   "to": [
+    11.41,
+    7.6
+   ],
+   "role": "wall",
+   "strokeWidth": 2.2,
+   "appear": "s0"
+  },
+  {
+   "type": "vector",
+   "id": "fay2",
+   "from": [
+    1.8,
+    7.29
+   ],
+   "to": [
+    1.8,
+    14.11
+   ],
+   "role": "wall",
+   "strokeWidth": 2.2,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "flx3",
+   "at": [
+    11.76,
+    7.199999999999999
+   ],
+   "text": "x",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "text",
+   "id": "fly4",
+   "at": [
+    2.25,
+    14.209999999999999
+   ],
+   "text": "y",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s0"
+  },
+  {
+   "type": "vector",
+   "id": "fv5",
+   "from": [
+    1.8,
+    7.6
+   ],
+   "to": [
+    6.752,
+    11.331
+   ],
+   "role": "va",
+   "strokeWidth": 4.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "ft6",
+   "at": [
+    3.6759999999999997,
+    10.065999999999999
+   ],
+   "text": "A",
+   "role": "va",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "arc",
+   "id": "far7",
+   "c": [
+    1.8,
+    7.6
+   ],
+   "r": 2.17,
+   "from": 0,
+   "to": 37.0,
+   "role": "ang",
+   "strokeWidth": 2.5,
+   "appear": "s0",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "fal8",
+   "at": [
+    4.887,
+    8.633
+   ],
+   "text": "θ",
+   "role": "ang",
+   "size": "s",
+   "bold": true,
+   "appear": "s0",
+   "effect": "fade"
+  },
+  {
+   "type": "segment",
+   "id": "fv9",
+   "from": [
+    6.752,
+    7.6
+   ],
+   "to": [
+    6.752,
+    11.331
+   ],
+   "role": "cy",
+   "strokeWidth": 2,
+   "appear": "s1",
+   "effect": "draw",
+   "dash": [
+    6,
+    5
+   ]
+  },
+  {
+   "type": "segment",
+   "id": "fv10",
+   "from": [
+    1.8,
+    11.331
+   ],
+   "to": [
+    6.752,
+    11.331
+   ],
+   "role": "cx",
+   "strokeWidth": 2,
+   "appear": "s1",
+   "effect": "draw",
+   "dash": [
+    6,
+    5
+   ]
+  },
+  {
+   "type": "vector",
+   "id": "fv11",
+   "from": [
+    1.8,
+    7.042
+   ],
+   "to": [
+    6.752,
+    7.042
+   ],
+   "role": "cx",
+   "strokeWidth": 5.5,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "ft12",
+   "at": [
+    4.276,
+    6.492
+   ],
+   "text": "Ax",
+   "role": "cx",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "vector",
+   "id": "fv13",
+   "from": [
+    1.242,
+    7.6
+   ],
+   "to": [
+    1.242,
+    11.331
+   ],
+   "role": "cy",
+   "strokeWidth": 5.5,
+   "appear": "s1",
+   "effect": "draw"
+  },
+  {
+   "type": "text",
+   "id": "ft14",
+   "at": [
+    0.742,
+    9.466
+   ],
+   "text": "Ay",
+   "role": "cy",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "polygon",
+   "id": "frq15",
+   "pts": [
+    [
+     6.752,
+     7.6
+    ],
+    [
+     6.256,
+     7.6
+    ],
+    [
+     6.256,
+     8.096
+    ],
+    [
+     6.752,
+     8.096
+    ]
+   ],
+   "role": "wall",
+   "fill": false,
+   "fillOpacity": 0,
+   "strokeWidth": 2,
+   "appear": "s1"
+  },
+  {
+   "type": "text",
+   "id": "ln0",
+   "at": [
+    6.45,
+    5.5
+   ],
+   "text": "mutually perpendicular components",
+   "role": "wall",
+   "size": "s",
+   "bold": true,
+   "appear": "s1",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln1",
+   "at": [
+    6.45,
+    4.55
+   ],
+   "text": "Ax = A cos θ,    Ay = A sin θ",
+   "role": "cx",
+   "size": "s",
+   "bold": true,
+   "appear": "s2",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln2",
+   "at": [
+    6.45,
+    3.6
+   ],
+   "text": "A = Ax î + Ay ĵ",
+   "role": "va",
+   "size": "s",
+   "bold": true,
+   "appear": "s3",
+   "effect": "fade"
+  },
+  {
+   "type": "text",
+   "id": "ln3",
+   "at": [
+    6.45,
+    2.6500000000000004
+   ],
+   "text": "A = √(Ax²+Ay²),  θ = tan⁻¹(Ay/Ax)",
+   "role": "ang",
+   "size": "s",
+   "bold": true,
+   "appear": "s4",
+   "effect": "fade"
+  },
+  {
+   "type": "rect",
+   "id": "ansb",
+   "x": 0.6,
+   "y": 0.75,
+   "w": 11.7,
+   "h": 1.1,
+   "role": "ans",
+   "fill": true,
+   "fillOpacity": 0.16,
+   "strokeWidth": 2.5,
+   "appear": "s2",
+   "effect": "pop"
+  },
+  {
+   "type": "text",
+   "id": "ans",
+   "at": [
+    6.45,
+    1.3
+   ],
+   "text": "Ax = A cos θ,  Ay = A sin θ",
+   "role": "ans",
+   "size": "m",
+   "bold": true,
+   "appear": "s2",
+   "effect": "pop"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "A vector at an angle",
+   "text": "Take a vector **A** at angle θ to the +x axis.",
+   "actions": []
+  },
+  {
+   "id": "s1",
+   "title": "What they are",
+   "text": "Perpendicular projections of A on the x-axis and y-axis are its **rectangular components** \\( A_x \\) and \\( A_y \\): mutually perpendicular, so they do not affect each other.",
+   "actions": []
+  },
+  {
+   "id": "s2",
+   "title": "How to find them (A, θ known)",
+   "text": "In the right triangle: \\( A_x = A\\cos\\theta \\) and \\( A_y = A\\sin\\theta \\).",
+   "actions": []
+  },
+  {
+   "id": "s3",
+   "title": "Write the vector",
+   "text": "\\( \\vec A = A_x\\hat i + A_y\\hat j \\).",
+   "actions": []
+  },
+  {
+   "id": "s4",
+   "title": "The other direction",
+   "text": "If the components are known: \\( A = \\sqrt{A_x^2 + A_y^2} \\) and \\( \\theta = \\tan^{-1}(A_y/A_x) \\).",
+   "actions": []
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Rectangular components",
+   "tex": "A_x = A\\cos\\theta,\\quad A_y = A\\sin\\theta",
+   "text": "Eq 2.1, 2.2."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A = 8 at 60° from the x-axis. Find its y-component (2 decimals).",
+   "answer": 6.93,
+   "hint": "Ay = A sin θ.",
+   "explain": "\\( 8\\sin60^\\circ = 6.93 \\).",
+   "tolerance": 0.02
+  }
+ ],
+ "takeaways": [
+  "**Rectangular components** are perpendicular: Ax along x, Ay along y.",
+  "**Ax = A cos θ**, **Ay = A sin θ**; **A = Ax î + Ay ĵ**."
+ ]
+}

@@ -1,0 +1,467 @@
+{
+ "id": "g11-phys-c2-th-resolve",
+ "title": "Resolving a vector into x and y components",
+ "summary": "Change the magnitude and the angle: Aₓ = A cos θ and Aᵧ = A sin θ are the two perpendicular parts of the same vector.",
+ "alt": "A vector A drawn from the origin at angle θ with its horizontal component along the x-axis and vertical component along the y-axis, joined by dashed lines to form a right triangle.",
+ "autoGrid": false,
+ "world": {
+  "x": [
+   -8.5,
+   8.5
+  ],
+  "y": [
+   -8.5,
+   8.5
+  ],
+  "ratio": 1.0,
+  "pad": 6
+ },
+ "roles": {
+  "wall": {
+   "label": "Axes / frame",
+   "color": "#475569",
+   "text": "Axes, grid and frame lines.",
+   "legend": false
+  },
+  "va": {
+   "label": "Vector A",
+   "color": "#2563eb",
+   "text": "The first vector, A.",
+   "legend": true
+  },
+  "cx": {
+   "label": "x-component",
+   "color": "#0891b2",
+   "text": "The horizontal (x) component.",
+   "legend": true
+  },
+  "cy": {
+   "label": "y-component",
+   "color": "#c026d3",
+   "text": "The vertical (y) component.",
+   "legend": true
+  },
+  "ang": {
+   "label": "Angle",
+   "color": "#e11d48",
+   "text": "The angle between vectors, or the angle from the +x axis.",
+   "legend": true
+  }
+ },
+ "params": [
+  {
+   "id": "m",
+   "label": "Magnitude A",
+   "type": "number",
+   "min": 1,
+   "max": 8,
+   "step": 0.5,
+   "default": 6
+  },
+  {
+   "id": "th",
+   "label": "Angle θ (°)",
+   "type": "number",
+   "min": 0,
+   "max": 90,
+   "step": 1,
+   "default": 40
+  },
+  {
+   "id": "lv",
+   "label": "lv",
+   "type": "number",
+   "min": 0,
+   "max": 9,
+   "step": 0.01,
+   "default": 9,
+   "hidden": true
+  }
+ ],
+ "derived": {
+  "Ax": "m*cos(th)",
+  "Ay": "m*sin(th)"
+ },
+ "shapes": [
+  {
+   "type": "grid",
+   "id": "grid",
+   "step": 1,
+   "role": "grid",
+   "uiToggle": "grid"
+  },
+  {
+   "type": "axes",
+   "id": "axes",
+   "step": 1,
+   "role": "wall",
+   "xLabel": "x",
+   "yLabel": "y",
+   "numbers": false
+  },
+  {
+   "type": "segment",
+   "id": "pj1",
+   "from": [
+    "Ax",
+    0
+   ],
+   "to": [
+    "Ax",
+    "Ay"
+   ],
+   "role": "cy",
+   "strokeWidth": 2,
+   "dash": [
+    6,
+    5
+   ],
+   "visible": "lv>=1"
+  },
+  {
+   "type": "segment",
+   "id": "pj2",
+   "from": [
+    0,
+    "Ay"
+   ],
+   "to": [
+    "Ax",
+    "Ay"
+   ],
+   "role": "cx",
+   "strokeWidth": 2,
+   "dash": [
+    6,
+    5
+   ],
+   "visible": "lv>=1"
+  },
+  {
+   "type": "vector",
+   "id": "cmx",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    "Ax",
+    0
+   ],
+   "role": "cx",
+   "strokeWidth": 6,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "vector",
+   "id": "cmy",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    0,
+    "Ay"
+   ],
+   "role": "cy",
+   "strokeWidth": 6,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "text",
+   "id": "lax",
+   "at": [
+    "Ax/2",
+    -0.85
+   ],
+   "text": "\\(A_x\\)",
+   "role": "cx",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "text",
+   "id": "lay",
+   "at": [
+    -0.95,
+    "Ay/2"
+   ],
+   "text": "\\(A_y\\)",
+   "role": "cy",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=1"
+  },
+  {
+   "type": "angle",
+   "id": "rt",
+   "at": [
+    "Ax",
+    0
+   ],
+   "from": [
+    "Ax",
+    1
+   ],
+   "to": [
+    0,
+    0
+   ],
+   "role": "wall",
+   "r": 22,
+   "strokeWidth": 2.5,
+   "label": "",
+   "visible": "lv>=1"
+  },
+  {
+   "type": "vector",
+   "id": "A",
+   "from": [
+    0,
+    0
+   ],
+   "to": [
+    "Ax",
+    "Ay"
+   ],
+   "role": "va",
+   "strokeWidth": 4.5,
+   "label": {
+    "text": "A",
+    "role": "va",
+    "off": 5
+   }
+  },
+  {
+   "type": "arc",
+   "id": "th_arc",
+   "c": [
+    0,
+    0
+   ],
+   "r": 1.6,
+   "from": 0,
+   "to": "th",
+   "role": "ang",
+   "strokeWidth": 2.5,
+   "label": {
+    "text": "θ={{th|0}}°",
+    "role": "ang"
+   }
+  },
+  {
+   "type": "text",
+   "id": "tx",
+   "at": [
+    3.9,
+    -5.3
+   ],
+   "text": "Aₓ = A cos θ = {{Ax|2}}",
+   "role": "cx",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=2"
+  },
+  {
+   "type": "text",
+   "id": "ty",
+   "at": [
+    3.9,
+    -6.5
+   ],
+   "text": "Aᵧ = A sin θ = {{Ay|2}}",
+   "role": "cy",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=3"
+  },
+  {
+   "type": "text",
+   "id": "tc",
+   "at": [
+    3.9,
+    -7.7
+   ],
+   "text": "check: √(Aₓ²+Aᵧ²) = {{hypot(Ax,Ay)|2}}",
+   "role": "va",
+   "size": "s",
+   "bold": true,
+   "visible": "lv>=4"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s0",
+   "title": "One vector, two directions",
+   "text": "A vector **A** of magnitude {{m|1}} makes an angle θ = {{th|0}}° with the +x axis. Instead of one slanted arrow we can describe the same vector with a horizontal part and a vertical part.",
+   "actions": [
+    {
+     "set": {
+      "lv": 0,
+      "m": 6,
+      "th": 40
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Drop perpendiculars",
+   "text": "Draw a dashed line from the head of **A** straight down to the x-axis and another across to the y-axis. The two perpendicular pieces are the **rectangular components** \\(A_x\\) and \\(A_y\\).",
+   "actions": [
+    {
+     "set": {
+      "lv": 1
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "The x-component",
+   "text": "In the right triangle, **A** is the hypotenuse and \\(A_x\\) is the side next to θ, so \\( \\cos\\theta = A_x / A \\). Hence \\( A_x = A\\cos\\theta = {{Ax|2}} \\).",
+   "actions": [
+    {
+     "set": {
+      "lv": 2
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "The y-component",
+   "text": "The side opposite θ gives \\( \\sin\\theta = A_y / A \\). Hence \\( A_y = A\\sin\\theta = {{Ay|2}} \\).",
+   "actions": [
+    {
+     "set": {
+      "lv": 3
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Check with Pythagoras",
+   "text": "Putting the two parts back together must give the original length: \\( \\sqrt{A_x^2 + A_y^2} = {{hypot(Ax,Ay)|2}} \\), which equals A. ✔",
+   "actions": [
+    {
+     "set": {
+      "lv": 4
+     },
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Sweep the angle",
+   "text": "Slide θ from 0° to 90°: \\(A_x\\) shrinks while \\(A_y\\) grows. At 45° they are equal; at 90° the whole vector is vertical.",
+   "actions": [
+    {
+     "set": {
+      "lv": 4
+     },
+     "at": 0
+    },
+    {
+     "tween": {
+      "th": 90
+     },
+     "at": 0,
+     "dur": 5000
+    }
+   ]
+  }
+ ],
+ "readouts": [
+  {
+   "label": "Aₓ = A cos θ",
+   "value": "{{Ax|2}}",
+   "role": "cx"
+  },
+  {
+   "label": "Aᵧ = A sin θ",
+   "value": "{{Ay|2}}",
+   "role": "cy"
+  },
+  {
+   "label": "θ",
+   "value": "{{th|0}}°",
+   "role": "ang"
+  }
+ ],
+ "formulas": [
+  {
+   "title": "Components from magnitude and angle",
+   "tex": "A_x = \\role{va}{A}\\cos\\role{ang}{\\theta}, \\qquad A_y = \\role{va}{A}\\sin\\role{ang}{\\theta}",
+   "text": "θ is measured from the +x axis. Then A = Aₓ î + Aᵧ ĵ."
+  },
+  {
+   "title": "Back to the vector",
+   "tex": "A = \\sqrt{A_x^2 + A_y^2}, \\qquad \\tan\\theta = \\dfrac{A_y}{A_x}",
+   "text": "Pythagoras gives the length; the ratio gives the angle."
+  }
+ ],
+ "challenges": [
+  {
+   "id": "c1",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A force of **20 N** acts at **30°** above the horizontal. Find its horizontal component (N).",
+   "answer": 17.32,
+   "hint": "Aₓ = A cos θ.",
+   "explain": "\\( A_x = 20\\cos30^\\circ = 17.32 \\) N.",
+   "tolerance": 0.05,
+   "unit": "N"
+  },
+  {
+   "id": "c2",
+   "type": "choice",
+   "title": "Now you try",
+   "prompt": "At what angle are the x- and y-components of a vector equal in size?",
+   "options": [
+    {
+     "id": "a",
+     "label": "30°"
+    },
+    {
+     "id": "b",
+     "label": "45°"
+    },
+    {
+     "id": "c",
+     "label": "60°"
+    },
+    {
+     "id": "d",
+     "label": "90°"
+    }
+   ],
+   "answer": "b",
+   "hint": "You need cos θ = sin θ.",
+   "explain": "\\( \\cos\\theta = \\sin\\theta \\Rightarrow \\tan\\theta = 1 \\Rightarrow \\theta = 45^\\circ \\)."
+  },
+  {
+   "id": "c3",
+   "type": "number",
+   "title": "Now you try",
+   "prompt": "A 10 N force has a y-component of 6 N. Find its x-component (N).",
+   "answer": 8,
+   "hint": "Use Pythagoras: 10² = Aₓ² + 6².",
+   "explain": "\\( A_x = \\sqrt{10^2 - 6^2} = \\sqrt{64} = 8 \\) N.",
+   "tolerance": 0.05,
+   "unit": "N"
+  }
+ ],
+ "takeaways": [
+  "**Aₓ = A cos θ** and **Aᵧ = A sin θ**, with θ measured from the +x axis.",
+  "The components are **perpendicular**, so they are called rectangular components.",
+  "Check: **√(Aₓ² + Aᵧ²) = A**."
+ ]
+}
